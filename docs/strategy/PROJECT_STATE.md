@@ -335,6 +335,13 @@ artifacts remain outside Git.
   stripping, tamper rejection, the read-only mount boundary, zero label or
   prediction consumption, repository checks, signatures, hosted Python
   3.11/3.14 CI, and Occam's Razor. PR 30 merged by exact fast-forward.
+- Prediction-path revision `a9c6b41` verifies every pinned checkpoint file,
+  audits exact training overlap with the frozen standardizer, constructs a
+  network-disabled container command with only the safe input, model, and
+  output mounts, validates the four-row smoke probe, aligns finite multitask
+  predictions, and requires two byte-identical canonical runs. Six new focused
+  tests bring the suite to 76. No model has been downloaded or run and no
+  benchmark label has been opened. This code awaits pre-attempt review.
 
 ## Active hypotheses
 
@@ -390,9 +397,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Implement and fixture-test only the direct CheMeleon source verification,
-training-overlap audit, digest-pinned container invocation, canonical output
-alignment, repeat check, and prediction receipt. The runner must accept only
-the reviewed five-column projection and mount only it read-only. Do not open a
-benchmark label or begin the single real attempt until this path passes local
-and hosted checks.
+Independently review prediction-path revision `a9c6b41` before the single real
+attempt. Verify source download and hashes, overlap standardization, safe mount
+set, disabled container network, smoke selection, task-column resolution,
+finite row alignment, repeat enforcement, failure receipt, runtime and storage
+limits, zero label access, tests, and Occam simplicity. Do not download or run
+the model until this exact gate passes and merges.
