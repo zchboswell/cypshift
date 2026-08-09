@@ -447,3 +447,39 @@
   two audit defects.
 - Reversal condition: Revert if v3 cannot reproduce the scientific payload or
   if its model-facing interface can resolve a canonical measurement table.
+
+## D-021 — Freeze one isolated CheMeleon transfer attempt
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Attempt only the OpenADMET four-task CheMeleon checkpoint at model
+  revision `ef24cf94`, using the resolved upstream CPU container digest
+  `sha256:e2b18fff`. Accept only the existing label-absent 7,724-structure view,
+  use the frozen standardized structure, run two complete predictions, and
+  require byte-identical canonical output before one scoring pass.
+- Environment boundary: The digest is a 7.72 GB compressed linux/amd64 image
+  that embeds framework revision `6077d125`; it is not the v0.2.0 source
+  revision previously inspected. Run it under explicit arm64-host emulation
+  with a 120-minute and 25-GiB limit. Add no core dependency, environment
+  manager, public CLI command, custom loader, framework, or upstream patch.
+- Overlap boundary: Standardize all 8,068 published training structures with
+  the frozen Phase 0 policy. Preserve official TDC and full Octant populations
+  with contamination counts. Also report a TDC companion excluding the union
+  of existing strict exclusions and exact CheMeleon-training overlaps, and an
+  Octant exact-overlap-excluded companion. Call them exact-structure-disjoint,
+  not clean zero-shot.
+- Metric boundary: Map the three continuous CYP outputs to fixed TDC average-
+  precision rankings with higher pIC50 as higher inhibitor score; use CYP3A4
+  pIC50 directly for Octant MAE. Do not flip polarity, fit a threshold, select
+  a population, calibrate, fine-tune, or combine after results exist. Count
+  three TDC official, three TDC union-disjoint, one Octant full, and one Octant
+  exact-disjoint analysis.
+- Retention rule: Retain a completed run as external transfer evidence whether
+  it wins or loses. Never add CheMeleon to the native Phase 0.5 ensemble. Reject
+  and record a precise blocker if provenance, alignment, finiteness,
+  repeatability, runtime, storage, or scoring preconditions fail. Make no
+  second checkpoint or environment attempt in Phase 0.5.
+- Contract: `benchmarks/chemeleon_inference_contract.json` is authoritative.
+- Reversal condition: Reverse before inference only if a pinned primary source
+  contradicts the contract or the authoritative challenge release supersedes
+  Phase 0.5. After inference begins, preserve the attempt and its outcome.

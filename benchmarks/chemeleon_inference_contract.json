@@ -1,0 +1,127 @@
+{
+  "schema_version": "cypshift.chemeleon_inference_contract.v1",
+  "frozen_at_utc": "2026-08-09T22:33:38Z",
+  "scope": "Phase 0.5 public-data transfer reference only; this contract does not define or imply a challenge model, endpoint mapping, or external-data permission.",
+  "public_source_manifest": {
+    "path": "benchmarks/public_sources.json",
+    "sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074",
+    "source_key": "external_models.chemeleon_cyp"
+  },
+  "model": {
+    "id": "openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1",
+    "revision": "ef24cf941ae21c7d7a64df378a846bd2066eceda",
+    "license": "Apache-2.0",
+    "training_source": "ChEMBL 37",
+    "training_rows": 8068,
+    "training_split": "none; all curated rows used for training",
+    "training_structure_column": "OPENADMET_CANONICAL_SMILES",
+    "required_files": {
+      "README.md": "a540281e3319af82f547b146de932e00f8b2985c2928a715211158e870c5d4bb",
+      "anvil_training/anvil_recipe.yaml": "4249da7e536755bd6668ef04b3796512d4b00dc591b993a66898bac4e589473d",
+      "anvil_training/data/X_train.csv": "208d3662cdf3221c9ef7e4adc138fd48e1ae03ef9edb3e984f8344c8c26d35dd",
+      "anvil_training/model.json": "ccb04ca4ed5b529aa1ed813abc72b05bebc6f51849ed6269b3910fa139000904",
+      "anvil_training/model.pth": "81d15cc43a3608f1aab465b1e690d86fd41c420615094cca1439c2e52f3b4e7b",
+      "anvil_training/recipe_components/data.yaml": "be642e92ff817b46e5d892521f19c3664e8ab3214890686f4824b014e99eaa2c",
+      "anvil_training/recipe_components/eval.yaml": "60486432d4767aef7430b7a023d6c4d1cf9a3cb08ee4d6cbddf9b1345c9b0966",
+      "anvil_training/recipe_components/metadata.yaml": "c4426f8f0fab9710f15288e1b0a999bbdad48cbe0fc816d1a1f8e75b8f77d215",
+      "anvil_training/recipe_components/procedure.yaml": "da4d36f6068804d53712510bc3e03d9361b7e112134d8f17357379e04c2f54f1"
+    }
+  },
+  "execution_environment": {
+    "image": "ghcr.io/openadmet/openadmet-models@sha256:e2b18fff9987c7fe4738289f9dad57edf9c3fa6793be739187b24743d4247191",
+    "manifest_digest": "sha256:e2b18fff9987c7fe4738289f9dad57edf9c3fa6793be739187b24743d4247191",
+    "config_digest": "sha256:96b4437c16a415cf8e9eafdaa760e07274d159b8d308eb72d2028a0bfdeb7362",
+    "embedded_framework_revision": "6077d125f86463dca2e301becd2c264d521f1d81",
+    "image_created_utc": "2026-07-10T15:59:57.384905111Z",
+    "platform": "linux/amd64",
+    "compressed_layer_bytes": 7717969914,
+    "layer_count": 17,
+    "observed_mutable_tag": "main",
+    "observed_tag_at_utc": "2026-08-09T22:30:26Z",
+    "disclosures": [
+      "The model card names the mutable main image. This attempt uses only the resolved digest above.",
+      "The resolved image embeds framework revision 6077d125, not stable tag v0.2.0 at cdf3e9f7; the container digest is authoritative for inference.",
+      "The framework pyproject declares MIT while the image metadata declares Apache-2.0; both notices remain disclosed.",
+      "The image is amd64 and will run under explicit emulation on the arm64 development host."
+    ]
+  },
+  "benchmark_input": {
+    "prediction_input_schema": "cypshift.prediction_inputs.v1",
+    "prediction_input_aggregate_sha256": "f4cf7f3e2bc7f0e6ed12c10b8129cf3daf55c187ed6154e60b3aa96fdf334d0c",
+    "prediction_input_manifest_sha256": "9e5350490dfc4674b96960644e3e49c4887ec37d3fbb62de22d47dc6481444a1",
+    "heldout_structures": 7724,
+    "heldout_measurements_materialized": 0,
+    "input_structure_field": "standardized_structure",
+    "input_structure_policy": "rdkit-cleanup-fragment-parent-v1",
+    "preprocessing_disclosure": "Inference uses the frozen cypshift standardized structure. The model was trained on OPENADMET_CANONICAL_SMILES, so canonicalization may differ. No raw-structure alternative will be scored."
+  },
+  "task_mapping": {
+    "tdc_cyp2c9_veith": {
+      "model_output": "OPENADMET_LOGAC50_CYP2C9",
+      "metric": "average_precision",
+      "polarity": "higher predicted pIC50 ranks the positive inhibitor class higher"
+    },
+    "tdc_cyp2d6_veith": {
+      "model_output": "OPENADMET_LOGAC50_CYP2D6",
+      "metric": "average_precision",
+      "polarity": "higher predicted pIC50 ranks the positive inhibitor class higher"
+    },
+    "tdc_cyp3a4_veith": {
+      "model_output": "OPENADMET_LOGAC50_CYP3A4",
+      "metric": "average_precision",
+      "polarity": "higher predicted pIC50 ranks the positive inhibitor class higher"
+    },
+    "octant_cyp3a4_active_preincubation_pIC50": {
+      "model_output": "OPENADMET_LOGAC50_CYP3A4",
+      "metric": "mean_absolute_error",
+      "assay_disclosure": "ChEMBL-trained pIC50 is transferred to the Octant active-enzyme preincubation assay; it is not a direct-inhibition or assay-equivalence claim."
+    }
+  },
+  "overlap_audit": {
+    "method": "Apply rdkit-cleanup-fragment-parent-v1 to every published X_train.csv structure and compare exact standardized_structure_hash values with all 7724 frozen benchmark structures.",
+    "official_population_policy": "Preserve every official TDC test row and the complete Octant outer population, with exact training-overlap counts disclosed.",
+    "companion_population_policy": "For each TDC task exclude the union of the existing seven-row TDC strict set and exact CheMeleon-training overlaps. For Octant exclude exact CheMeleon-training overlaps.",
+    "claim_boundary": "Call the companion exact-structure-disjoint only. Do not call it clean zero-shot because analog and source-record overlap can remain."
+  },
+  "attempt": {
+    "limit": 1,
+    "definition": "One digest-pinned CPU environment pull, one deterministic four-structure smoke probe, and two full label-absent inference runs. The full runs must produce byte-identical canonical predictions before scoring.",
+    "smoke_selection": "Choose the lexicographically smallest held-out molecule_id from Octant and each of the three TDC tasks; do not use a label.",
+    "runtime_limit_minutes": 120,
+    "temporary_disk_limit_gib": 25,
+    "accelerator": "cpu",
+    "platform": "linux/amd64",
+    "forbidden_remediation": [
+      "another checkpoint or container digest",
+      "a custom checkpoint loader",
+      "an upstream source patch",
+      "a raw-structure scoring alternative",
+      "a polarity flip after observing scores",
+      "threshold fitting, calibration, fine-tuning, stacking, or model selection"
+    ]
+  },
+  "scoring": {
+    "precondition": "Two complete label-absent prediction roots are byte-identical and all source, input, output, row-alignment, finiteness, and overlap receipts pass.",
+    "label_access": "Open the frozen held-out labels once after prediction freeze.",
+    "evaluations": {
+      "tdc_official": 3,
+      "tdc_union_disjoint_companion": 3,
+      "octant_full_outer": 1,
+      "octant_exact_structure_disjoint_companion": 1,
+      "total": 8
+    },
+    "selection_changes": 0,
+    "comparison_status": "TDC official rows share the fixed split, population, and average-precision metric, but training source, label provenance, preprocessing, and any exact overlap are disclosed. Companion and Octant rows are transfer analyses and are not ranked against TDC anchors."
+  },
+  "acceptance": {
+    "retain_as_external_evidence_if": "The exact checkpoint and environment complete aligned finite predictions twice within both budgets, the overlap audit is complete, and the one scoring pass produces all supported declared populations.",
+    "performance_gate": "None. Report the frozen result whether it is better or worse; never add this external model to the native ensemble in Phase 0.5.",
+    "reject_if": "Any provenance, environment, alignment, finiteness, repeatability, budget, or scoring precondition fails. Record the precise blocker and do not attempt another model or environment in this phase."
+  },
+  "simplicity": {
+    "core_dependencies_added": 0,
+    "public_cli_commands_added": 0,
+    "adapter_frameworks_added": 0,
+    "implementation_shape": "One focused label-absent preparation and prediction path, one scorer, files and receipts only."
+  }
+}

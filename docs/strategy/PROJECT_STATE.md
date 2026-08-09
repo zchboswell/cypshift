@@ -313,6 +313,12 @@ artifacts remain outside Git.
   evaluations, fits, point changes, or selection changes, repository checks,
   signatures, hosted Python 3.11/3.14 CI, and Occam's Razor. PR 28 merged by
   exact fast-forward with the reviewed signature intact.
+- D-021 freezes one external-model attempt before inference. It binds the exact
+  CheMeleon checkpoint, required files, resolved 7.72 GB linux/amd64 container
+  digest, label-absent 7,724-structure input, standardized-structure overlap
+  audit, fixed task mappings and polarity, two-run reproducibility requirement,
+  eight scoring analyses, 120-minute and 25-GiB budgets, and a no-patch failure
+  boundary. It adds no core dependency, CLI surface, or ensemble candidate.
 
 ## Active hypotheses
 
@@ -368,9 +374,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Freeze the smallest isolated OpenADMET CheMeleon attempt before inference.
-Pin its exact source and model revisions, license, required environment, task
-and output semantics, and accessible training structures. Define the overlap
-audit, apples-to-apples population, one-attempt failure boundary, acceptance
-criterion, runtime budget, and artifact receipts. Add no core dependency,
-public CLI surface, adapter framework, or result-informed choice.
+Independently inspect D-021 and the exact CheMeleon contract before any model
+download or inference. Verify the model files, digest-resolved environment,
+label firewall, overlap populations, task polarity, fixed eight-evaluation
+count, two-run rule, budgets, failure boundary, and Occam simplicity. After the
+contract merges, implement only the focused fixture-tested preparation,
+prediction, and receipt path before the one real attempt begins.

@@ -5,6 +5,13 @@ It pins source revisions, URLs, licenses, file sizes, SHA-256 digests, row
 counts, fixed TDC splits, dated leaderboard anchors, and external-model files.
 Raw public data and generated benchmark artifacts stay out of Git.
 
+`chemeleon_inference_contract.json` freezes the single allowed external-model
+attempt. It binds the checkpoint, all required model files, the resolved
+container digest, the label-absent benchmark view, task mappings, overlap
+audit, two-run reproducibility rule, eight declared scoring analyses, budgets,
+and failure boundary before inference. The container stays isolated and adds
+no core dependency or public CLI command.
+
 ## Octant compound-level ingestion
 
 The Octant adapter treats the 30-minute active-CYP3A4 preincubation assay as
