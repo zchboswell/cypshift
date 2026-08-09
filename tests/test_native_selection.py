@@ -10,6 +10,7 @@ import pytest
 from cypshift.native_combinations import (
     run_native_combinations,
     run_retained_mean_prediction,
+    run_retained_mean_scoring,
 )
 from cypshift.native_evaluation import (
     prepare_prediction_inputs,
@@ -69,6 +70,38 @@ def _force_all_combinations_to_mean(root: Path) -> None:
     manifest["aggregate_sha256"] = hashlib.sha256(material.encode()).hexdigest()
     manifest_path.write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def _write_public_sources(path: Path) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "sources": {
+                    "octant_cyp": {"revision": "octant-test-revision"},
+                    "tdc_admet": {
+                        "archive": {
+                            "dataset_persistent_id": "doi:test",
+                            "dataset_version": "1.0",
+                            "sha256": "archive-hash",
+                        }
+                    },
+                    "tdc_leaderboards": {
+                        "pages": {
+                            task: {
+                                "anchors": {
+                                    "MapLight + GNN": {"mean": 0.8, "std": 0.01},
+                                    "Chemprop-RDKit": {"mean": 0.7, "std": 0.02},
+                                    "Chemprop": {"mean": 0.6, "std": 0.03},
+                                }
+                            }
+                            for task in TDC_TASKS
+                        }
+                    },
+                }
+            }
+        ),
+        encoding="utf-8",
     )
 
 
@@ -484,35 +517,7 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
         predictions,
     )
     public_sources = tmp_path / "public_sources.json"
-    public_sources.write_text(
-        json.dumps(
-            {
-                "sources": {
-                    "octant_cyp": {"revision": "octant-test-revision"},
-                    "tdc_admet": {
-                        "archive": {
-                            "dataset_persistent_id": "doi:test",
-                            "dataset_version": "1.0",
-                            "sha256": "archive-hash",
-                        }
-                    },
-                    "tdc_leaderboards": {
-                        "pages": {
-                            task: {
-                                "anchors": {
-                                    "MapLight + GNN": {"mean": 0.8, "std": 0.01},
-                                    "Chemprop-RDKit": {"mean": 0.7, "std": 0.02},
-                                    "Chemprop": {"mean": 0.6, "std": 0.03},
-                                }
-                            }
-                            for task in TDC_TASKS
-                        }
-                    }
-                }
-            }
-        ),
-        encoding="utf-8",
-    )
+    _write_public_sources(public_sources)
     first = run_heldout_scoring(
         octant,
         tdc,
@@ -786,5 +791,89 @@ def test_retained_mean_prediction_is_label_free_receipt_bound_and_deterministic(
             combinations,
             base_predictions,
             tmp_path / "tampered",
+            source_revision="test-revision",
+        )
+
+
+def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
+    tmp_path: Path,
+) -> None:
+    octant, tdc, validation, _ = _fixture(
+        tmp_path / "fixture", valid_heldout_labels=True
+    )
+    selection = tmp_path / "selection"
+    run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
+    prediction_inputs = tmp_path / "prediction-inputs"
+    prepare_prediction_inputs(
+        octant,
+        tdc,
+        validation / "tdc" / "official_split.csv",
+        validation,
+        prediction_inputs,
+    )
+    base_predictions = tmp_path / "base-predictions"
+    run_heldout_prediction(prediction_inputs, selection, base_predictions)
+    combinations = tmp_path / "combinations"
+    run_native_combinations(
+        prediction_inputs,
+        selection,
+        combinations,
+        source_revision="test-revision",
+    )
+    _force_all_combinations_to_mean(combinations)
+    predictions = tmp_path / "mean-predictions"
+    run_retained_mean_prediction(
+        combinations,
+        base_predictions,
+        predictions,
+        source_revision="test-revision",
+    )
+    public_sources = tmp_path / "public_sources.json"
+    _write_public_sources(public_sources)
+
+    first = run_retained_mean_scoring(
+        octant,
+        tdc,
+        validation,
+        combinations,
+        predictions,
+        public_sources,
+        tmp_path / "scores-one",
+        source_revision="test-revision",
+    )
+    run_retained_mean_scoring(
+        octant,
+        tdc,
+        validation,
+        combinations,
+        predictions,
+        public_sources,
+        tmp_path / "scores-two",
+        source_revision="test-revision",
+    )
+    for path in sorted((tmp_path / "scores-one").iterdir()):
+        assert path.read_bytes() == (tmp_path / "scores-two" / path.name).read_bytes()
+    score_rows = _read_rows(first.scores_path)
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    assert len(score_rows) == 7
+    assert {row["family"] for row in score_rows} == {"unweighted_mean"}
+    assert manifest["heldout_labels_parsed"] == 8
+    assert manifest["tdc_public_test_evaluations"] == 3
+    assert manifest["tdc_strict_companion_analyses"] == 3
+    assert manifest["octant_outer_evaluations"] == 1
+    assert manifest["rejected_candidate_evaluations"] == 0
+    assert manifest["model_fits"] == 0
+    assert manifest["model_selection_changes"] == 0
+    assert manifest["scoring_attempt"] == 1
+
+    with pytest.raises(NativeSelectionError, match="already exists"):
+        run_retained_mean_scoring(
+            octant,
+            tdc,
+            validation,
+            combinations,
+            predictions,
+            public_sources,
+            tmp_path / "scores-one",
             source_revision="test-revision",
         )

@@ -13,10 +13,17 @@ from statistics import median
 from typing import Any
 
 from cypshift.native_evaluation import (
+    SCORECARD_COLUMNS,
+    _load_scoring_labels,
+    _mcc_threshold,
+    _octant_score_row,
     _retained_configurations,
+    _tdc_anchors,
+    _tdc_score_row,
     _verify_prediction_inputs,
     _verify_prediction_receipt,
     _verify_selection_receipt,
+    _write_csv_rows,
 )
 from cypshift.native_selection import (
     FAMILIES,
@@ -39,13 +46,16 @@ from cypshift.native_selection import (
     _primary_score,
     _read_csv,
     _read_json,
+    _verify_input_receipts,
     _write_json,
 )
+from cypshift.tdc import TDC_TASKS
 
 COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v3"
 RETAINED_MEAN_PREDICTION_SCHEMA_VERSION = (
     "cypshift.retained_mean_heldout_prediction.v1"
 )
+RETAINED_MEAN_SCORING_SCHEMA_VERSION = "cypshift.retained_mean_heldout_scoring.v1"
 COMBINATION_CANDIDATES = (
     "best_single",
     "unweighted_mean",
@@ -147,6 +157,16 @@ class RetainedMeanPredictionResult:
     manifest_path: Path
     predictions_path: Path
     prediction_rows: int
+
+
+@dataclass(frozen=True, slots=True)
+class RetainedMeanScoringResult:
+    """One immutable scoring pass for the retained mean only."""
+
+    manifest_path: Path
+    scores_path: Path
+    tdc_evaluations: int
+    octant_evaluations: int
 
 
 def run_native_combinations(
@@ -561,6 +581,311 @@ def run_retained_mean_prediction(
         predictions_path=predictions_path,
         prediction_rows=rows_written,
     )
+
+
+def run_retained_mean_scoring(
+    octant_canonical: Path,
+    tdc_canonical: Path,
+    validation_root: Path,
+    combination_root: Path,
+    prediction_root: Path,
+    public_sources_path: Path,
+    output_directory: Path,
+    *,
+    source_revision: str,
+    attempt: int = 1,
+) -> RetainedMeanScoringResult:
+    """Score only the frozen retained mean on the declared populations."""
+
+    if output_directory.exists():
+        raise NativeSelectionError(
+            f"output path already exists: {output_directory}. Scoring is immutable."
+        )
+    if not source_revision.strip():
+        raise NativeSelectionError("source revision must not be empty")
+    if attempt < 1:
+        raise NativeSelectionError("scoring attempt must be positive")
+    verified_inputs = _verify_input_receipts(
+        octant_canonical, tdc_canonical, validation_root
+    )
+    combination_manifest, retained = _verify_combination_receipt(combination_root)
+    if combination_manifest.get("input_hashes") != verified_inputs:
+        raise NativeSelectionError("combination inputs do not match canonical receipts")
+    prediction_manifest = _verify_retained_mean_prediction_receipt(
+        prediction_root, combination_root, combination_manifest
+    )
+    predictions = _validated_mean_predictions(prediction_root, prediction_manifest, retained)
+    _verify_scoring_populations(predictions, validation_root)
+    thresholds = _mean_oof_thresholds(combination_root)
+
+    octant_ids = {
+        row["molecule_id"] for row in predictions if row["benchmark"] == "octant_cyp"
+    }
+    tdc_ids = {
+        row["molecule_id"]
+        for row in predictions
+        if row["benchmark"] == "tdc_admet_group"
+    }
+    octant_labels = _load_scoring_labels(
+        octant_canonical / "measurements.csv", octant_ids, regression=True
+    )
+    tdc_labels = _load_scoring_labels(
+        tdc_canonical / "measurements.csv", tdc_ids, regression=False
+    )
+    if set(octant_labels) != octant_ids or set(tdc_labels) != tdc_ids:
+        raise NativeSelectionError("held-out label alignment is incomplete")
+    exclusions = {
+        row["molecule_id"]
+        for row in _read_csv(validation_root / "tdc" / "strict_test_exclusions.csv")
+    }
+    anchors = _tdc_anchors(_read_json(public_sources_path))
+
+    groups: dict[tuple[str, str], list[dict[str, str]]] = {}
+    scored_rows: list[dict[str, str]] = []
+    for row in predictions:
+        labels = octant_labels if row["benchmark"] == "octant_cyp" else tdc_labels
+        target = labels[row["molecule_id"]][0]
+        scored_rows.append(
+            {
+                **row,
+                "target": _number(target),
+                "strict_excluded": str(row["molecule_id"] in exclusions).lower(),
+            }
+        )
+        groups.setdefault((row["benchmark"], row["task"]), []).append(
+            {
+                **row,
+                "family": "unweighted_mean",
+                "configuration_id": "four_family_unweighted_mean",
+            }
+        )
+
+    score_rows: list[dict[str, str]] = []
+    for benchmark, task in sorted(groups):
+        rows = groups[(benchmark, task)]
+        if benchmark == "octant_cyp":
+            score_rows.append(
+                _octant_score_row(
+                    task, "unweighted_mean", rows, octant_labels
+                )
+            )
+            continue
+        threshold = thresholds[task]
+        score_rows.append(
+            _tdc_score_row(
+                task,
+                "unweighted_mean",
+                "official",
+                rows,
+                tdc_labels,
+                threshold,
+                anchors[task],
+            )
+        )
+        strict_rows = [row for row in rows if row["molecule_id"] not in exclusions]
+        score_rows.append(
+            _tdc_score_row(
+                task,
+                "unweighted_mean",
+                "strict",
+                strict_rows,
+                tdc_labels,
+                threshold,
+                None,
+            )
+        )
+
+    output_directory.mkdir(parents=True)
+    scored_path = output_directory / "scored_retained_mean_predictions.csv"
+    scores_path = output_directory / "heldout_scores.csv"
+    _write_csv(
+        scored_path,
+        (*RETAINED_MEAN_COLUMNS, "target", "strict_excluded"),
+        scored_rows,
+    )
+    _write_csv_rows(scores_path, SCORECARD_COLUMNS, score_rows)
+    outputs = {
+        scored_path.name: _file_hash(scored_path),
+        scores_path.name: _file_hash(scores_path),
+    }
+    manifest_path = output_directory / "retained_mean_scoring_manifest.json"
+    _write_json(
+        manifest_path,
+        {
+            "schema_version": RETAINED_MEAN_SCORING_SCHEMA_VERSION,
+            "metric_schema_version": "cypshift.native_metrics.v1",
+            "source_revision": source_revision,
+            "package_version": metadata.version("cypshift"),
+            "prediction_manifest_sha256": _file_hash(
+                prediction_root / "retained_mean_prediction_manifest.json"
+            ),
+            "prediction_aggregate_sha256": prediction_manifest["aggregate_sha256"],
+            "combination_manifest_sha256": _file_hash(
+                combination_root / "combination_manifest.json"
+            ),
+            "combination_aggregate_sha256": combination_manifest["aggregate_sha256"],
+            "public_sources_sha256": _file_hash(public_sources_path),
+            "input_hashes": verified_inputs,
+            "outputs": outputs,
+            "aggregate_recipe": AGGREGATE_RECIPE,
+            "aggregate_sha256": _hash_mapping(outputs),
+            "candidate": "unweighted_mean",
+            "heldout_labels_parsed": len(octant_labels) + len(tdc_labels),
+            "tdc_public_test_evaluations": len(TDC_TASKS),
+            "tdc_strict_companion_analyses": len(TDC_TASKS),
+            "octant_outer_evaluations": 1,
+            "rejected_candidate_evaluations": 0,
+            "model_fits": 0,
+            "model_selection_changes": 0,
+            "scoring_attempt": attempt,
+        },
+    )
+    return RetainedMeanScoringResult(
+        manifest_path=manifest_path,
+        scores_path=scores_path,
+        tdc_evaluations=len(TDC_TASKS),
+        octant_evaluations=1,
+    )
+
+
+def _verify_retained_mean_prediction_receipt(
+    root: Path,
+    combination_root: Path,
+    combination_manifest: Mapping[str, Any],
+) -> dict[str, Any]:
+    manifest = _read_json(root / "retained_mean_prediction_manifest.json")
+    if manifest.get("schema_version") != RETAINED_MEAN_PREDICTION_SCHEMA_VERSION:
+        raise NativeSelectionError("unsupported retained-mean prediction schema")
+    if any(
+        manifest.get(field) != 0
+        for field in (
+            "model_fits",
+            "heldout_measurement_tables_opened",
+            "heldout_labels_parsed",
+            "tdc_public_test_evaluations",
+            "octant_outer_evaluations",
+        )
+    ):
+        raise NativeSelectionError("retained-mean prediction is not label clean")
+    if (
+        manifest.get("candidate") != "unweighted_mean"
+        or manifest.get("combination_manifest_sha256")
+        != _file_hash(combination_root / "combination_manifest.json")
+        or manifest.get("combination_aggregate_sha256")
+        != combination_manifest.get("aggregate_sha256")
+    ):
+        raise NativeSelectionError("retained-mean prediction is not bound to combination")
+    for field in (
+        "selection_aggregate_sha256",
+        "prediction_input_aggregate_sha256",
+    ):
+        if manifest.get(field) != combination_manifest.get(field):
+            raise NativeSelectionError(f"retained-mean prediction {field} differs")
+    outputs = manifest.get("outputs")
+    expected_outputs = {"retained_mean_heldout_predictions.csv"}
+    if not isinstance(outputs, dict) or set(outputs) != expected_outputs:
+        raise NativeSelectionError("retained-mean prediction outputs are invalid")
+    for name, expected in outputs.items():
+        if not isinstance(expected, str) or _file_hash(root / name) != expected:
+            raise NativeSelectionError(f"retained-mean output hash mismatch: {name}")
+    if _hash_mapping(outputs) != manifest.get("aggregate_sha256"):
+        raise NativeSelectionError("retained-mean prediction aggregate hash mismatch")
+    return manifest
+
+
+def _validated_mean_predictions(
+    root: Path,
+    manifest: Mapping[str, Any],
+    retained: Mapping[str, Any],
+) -> list[dict[str, str]]:
+    rows = _read_csv(root / "retained_mean_heldout_predictions.csv")
+    datasets = retained.get("datasets")
+    if not isinstance(datasets, list):
+        raise NativeSelectionError("retained-combination datasets are invalid")
+    tasks = {
+        (str(item["benchmark"]), str(item["task"])): str(item["problem_type"])
+        for item in datasets
+    }
+    seen: set[tuple[str, str, str]] = set()
+    for row in rows:
+        key = (row["benchmark"], row["task"], row["molecule_id"])
+        problem_type = tasks.get(key[:2])
+        try:
+            prediction = float(row["prediction"])
+        except ValueError as exc:
+            raise NativeSelectionError("retained-mean prediction must be numeric") from exc
+        if (
+            key in seen
+            or row.get("candidate") != "unweighted_mean"
+            or row.get("base_family_count") != str(len(FAMILIES))
+            or row.get("problem_type") != problem_type
+            or not row.get("standardized_structure_hash")
+            or not math.isfinite(prediction)
+            or (problem_type == "classification" and not 0.0 <= prediction <= 1.0)
+        ):
+            raise NativeSelectionError("retained-mean prediction row is invalid")
+        seen.add(key)
+    if (
+        len(rows) != manifest.get("prediction_rows")
+        or len(rows) != manifest.get("heldout_structures")
+        or {key[:2] for key in seen} != set(tasks)
+    ):
+        raise NativeSelectionError("retained-mean prediction population is incomplete")
+    return rows
+
+
+def _verify_scoring_populations(
+    predictions: Sequence[Mapping[str, str]], validation_root: Path
+) -> None:
+    expected: dict[tuple[str, str], set[str]] = {
+        ("octant_cyp", "cyp3a4_active_preincubation_pIC50"): {
+            row["molecule_id"]
+            for row in _read_csv(
+                validation_root / "octant" / "octant_grouped_split.csv"
+            )
+            if row.get("outer_partition") == "validation"
+            and row.get("has_measurement") == "true"
+        }
+    }
+    for task in TDC_TASKS:
+        expected[("tdc_admet_group", task)] = set()
+    for row in _read_csv(validation_root / "tdc" / "official_split.csv"):
+        if row.get("partition") == "test":
+            key = ("tdc_admet_group", row.get("task", ""))
+            if key not in expected:
+                raise NativeSelectionError("official split contains an unknown task")
+            expected[key].add(row["molecule_id"])
+    observed: dict[tuple[str, str], set[str]] = {}
+    for prediction_row in predictions:
+        observed.setdefault(
+            (prediction_row["benchmark"], prediction_row["task"]), set()
+        ).add(
+            prediction_row["molecule_id"]
+        )
+    if observed != expected:
+        raise NativeSelectionError("retained-mean scoring population differs from split")
+
+
+def _mean_oof_thresholds(root: Path) -> dict[str, float]:
+    groups: dict[str, list[tuple[int, float]]] = {}
+    seen: set[tuple[str, str]] = set()
+    for row in _read_csv(root / "combination_oof_predictions.csv"):
+        if row.get("candidate") != "unweighted_mean" or row.get(
+            "problem_type"
+        ) != "classification":
+            continue
+        identity = (row["task"], row["molecule_id"])
+        if identity in seen:
+            raise NativeSelectionError("duplicate retained-mean OOF prediction")
+        seen.add(identity)
+        target = int(float(row["target"]))
+        prediction = float(row["prediction"])
+        if target not in {0, 1} or not math.isfinite(prediction):
+            raise NativeSelectionError("retained-mean OOF row is invalid")
+        groups.setdefault(row["task"], []).append((target, prediction))
+    if set(groups) != set(TDC_TASKS):
+        raise NativeSelectionError("retained-mean OOF thresholds are incomplete")
+    return {task: _mcc_threshold(values) for task, values in groups.items()}
 
 
 def _verify_combination_receipt(
