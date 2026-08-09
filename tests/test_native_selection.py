@@ -922,10 +922,10 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
     assert scorecard_manifest["point_score_changes"] == 0
     assert scorecard_manifest["additional_heldout_label_access"] == 0
     assert scorecard_manifest["additional_heldout_evaluations"] == 0
-    assert scorecard_manifest["combination_selection_runtime_seconds"] == "0.5"
+    assert scorecard_manifest["combination_selection_runtime_seconds"] == 0.5
     assert (
         scorecard_manifest["retained_mean_prediction_runtime_upper_bound_seconds"]
-        == "1"
+        == 1.0
     )
 
     def reject_label_load(*args: object, **kwargs: object) -> object:
