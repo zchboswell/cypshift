@@ -7,7 +7,11 @@ from pathlib import Path
 
 import pytest
 
-from cypshift.native_evaluation import run_heldout_prediction, run_heldout_scoring
+from cypshift.native_evaluation import (
+    prepare_prediction_inputs,
+    run_heldout_prediction,
+    run_heldout_scoring,
+)
 from cypshift.native_selection import (
     FAMILIES,
     NativeSelectionError,
@@ -385,20 +389,29 @@ def test_heldout_prediction_is_label_blind_and_deterministic(tmp_path: Path) -> 
         octant, tdc, validation, selection, nonlinear_trees=4
     )
     official_split = validation / "tdc" / "official_split.csv"
+    prediction_inputs = tmp_path / "prediction-inputs"
+    prepared = prepare_prediction_inputs(
+        octant, tdc, official_split, validation, prediction_inputs
+    )
+    assert prepared.training_measurement_rows == 48
+    for path in (
+        prediction_inputs / "octant" / "measurements.csv",
+        prediction_inputs / "tdc" / "measurements.csv",
+    ):
+        assert "DO_NOT_PARSE" not in path.read_text(encoding="utf-8")
+
+    # The model-facing interface has no canonical-data argument. Removing the
+    # source measurements proves prediction can only see the prepared view.
+    (octant / "measurements.csv").unlink()
+    (tdc / "measurements.csv").unlink()
 
     first = run_heldout_prediction(
-        octant,
-        tdc,
-        official_split,
-        validation,
+        prediction_inputs,
         selection,
         tmp_path / "predictions-one",
     )
     run_heldout_prediction(
-        octant,
-        tdc,
-        official_split,
-        validation,
+        prediction_inputs,
         selection,
         tmp_path / "predictions-two",
     )
@@ -423,11 +436,16 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
     selection = tmp_path / "selection"
     predictions = tmp_path / "predictions"
     run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
-    run_heldout_prediction(
+    prediction_inputs = tmp_path / "prediction-inputs"
+    prepare_prediction_inputs(
         octant,
         tdc,
         validation / "tdc" / "official_split.csv",
         validation,
+        prediction_inputs,
+    )
+    run_heldout_prediction(
+        prediction_inputs,
         selection,
         predictions,
     )

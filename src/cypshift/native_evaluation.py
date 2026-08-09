@@ -7,7 +7,7 @@ import math
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
-from importlib import import_module
+from importlib import import_module, metadata
 from pathlib import Path
 from statistics import median
 from typing import Any, Literal
@@ -36,7 +36,8 @@ from cypshift.native_selection import (
 )
 from cypshift.tdc import TDC_TASKS
 
-HELDOUT_PREDICTION_SCHEMA_VERSION = "cypshift.heldout_prediction.v1"
+PREDICTION_INPUT_SCHEMA_VERSION = "cypshift.prediction_inputs.v1"
+HELDOUT_PREDICTION_SCHEMA_VERSION = "cypshift.heldout_prediction.v2"
 HELDOUT_COLUMNS = (
     "benchmark",
     "task",
@@ -86,6 +87,15 @@ class HeldoutPredictionResult:
 
 
 @dataclass(frozen=True, slots=True)
+class PredictionInputResult:
+    """Label-absent training and structure view for held-out prediction."""
+
+    manifest_path: Path
+    training_measurement_rows: int
+    heldout_structures: int
+
+
+@dataclass(frozen=True, slots=True)
 class HeldoutScoringResult:
     """One immutable held-out scoring pass."""
 
@@ -95,44 +105,160 @@ class HeldoutScoringResult:
     octant_evaluations: int
 
 
-def run_heldout_prediction(
+def prepare_prediction_inputs(
     octant_canonical: Path,
     tdc_canonical: Path,
     tdc_official_split: Path,
     validation_root: Path,
+    output_directory: Path,
+) -> PredictionInputResult:
+    """Materialize a receipt-bound view with no held-out measurement rows."""
+
+    if output_directory.exists():
+        raise NativeSelectionError(
+            f"output path already exists: {output_directory}. "
+            "Prediction-input artifacts are immutable."
+        )
+    verified_inputs = _verify_input_receipts(
+        octant_canonical, tdc_canonical, validation_root
+    )
+    _verify_official_split(tdc_official_split, validation_root)
+    octant_split = validation_root / "octant" / "octant_grouped_split.csv"
+    tdc_folds = validation_root / "tdc" / "tdc_inner_folds.csv"
+    octant_training_ids = {
+        row["molecule_id"]
+        for row in _read_csv(octant_split)
+        if row.get("outer_partition") == "train"
+        and row.get("has_measurement") == "true"
+    }
+    tdc_training_ids = {
+        row["molecule_id"] for row in _read_csv(tdc_folds)
+    }
+    tdc_test_ids = {
+        row["molecule_id"]
+        for row in _read_csv(tdc_official_split)
+        if row.get("partition") == "test"
+    }
+    octant_heldout_ids = {
+        row["molecule_id"]
+        for row in _read_csv(octant_split)
+        if row.get("outer_partition") == "validation"
+        and row.get("has_measurement") == "true"
+    }
+    if octant_training_ids & octant_heldout_ids or tdc_training_ids & tdc_test_ids:
+        raise NativeSelectionError("prediction-input train and held-out IDs overlap")
+
+    output_directory.mkdir(parents=True)
+    outputs: dict[str, str] = {}
+    scanned_rows = 0
+    training_rows = 0
+    for prefix, canonical, training_ids in (
+        ("octant", octant_canonical, octant_training_ids),
+        ("tdc", tdc_canonical, tdc_training_ids),
+    ):
+        destination = output_directory / prefix
+        destination.mkdir()
+        molecules_source = canonical / "molecules.csv"
+        molecules_target = destination / "molecules.csv"
+        molecules_target.write_bytes(molecules_source.read_bytes())
+        rows, columns = _read_csv_with_columns(canonical / "measurements.csv")
+        scanned_rows += len(rows)
+        selected_rows = [row for row in rows if row.get("molecule_id") in training_ids]
+        selected_ids = {row.get("molecule_id", "") for row in selected_rows}
+        if selected_ids != training_ids or len(selected_rows) != len(training_ids):
+            raise NativeSelectionError(
+                f"{prefix} training measurement view is incomplete or duplicated"
+            )
+        measurements_target = destination / "measurements.csv"
+        _write_csv_rows(measurements_target, columns, selected_rows)
+        training_rows += len(selected_rows)
+        outputs[f"{prefix}/molecules.csv"] = _file_hash(molecules_target)
+        outputs[f"{prefix}/measurements.csv"] = _file_hash(measurements_target)
+
+    copied_inputs = {
+        "octant/grouped_split.csv": octant_split,
+        "tdc/inner_folds.csv": tdc_folds,
+        "tdc/official_split.csv": tdc_official_split,
+    }
+    for relative_name, source in copied_inputs.items():
+        target = output_directory / relative_name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+        outputs[relative_name] = _file_hash(target)
+
+    material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
+    manifest_path = output_directory / "prediction_input_manifest.json"
+    _write_json(
+        manifest_path,
+        {
+            "schema_version": PREDICTION_INPUT_SCHEMA_VERSION,
+            "source_input_hashes": verified_inputs,
+            "official_split_sha256": _file_hash(tdc_official_split),
+            "outputs": outputs,
+            "aggregate_recipe": (
+                "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined "
+                "with newline characters, without a trailing newline"
+            ),
+            "aggregate_sha256": sha256(material.encode()).hexdigest(),
+            "source_measurement_rows_scanned": scanned_rows,
+            "training_measurement_rows_materialized": training_rows,
+            "heldout_measurement_rows_materialized": 0,
+            "heldout_structures": len(octant_heldout_ids) + len(tdc_test_ids),
+            "packages": {
+                "cypshift": metadata.version("cypshift"),
+                "rdkit": metadata.version("rdkit"),
+            },
+            "boundary": (
+                "This source/split preparation stage scans canonical rows, then "
+                "materializes only authorized training measurements. The model "
+                "prediction stage accepts this label-absent view, not canonical "
+                "measurement tables."
+            ),
+        },
+    )
+    return PredictionInputResult(
+        manifest_path=manifest_path,
+        training_measurement_rows=training_rows,
+        heldout_structures=len(octant_heldout_ids) + len(tdc_test_ids),
+    )
+
+
+def run_heldout_prediction(
+    prediction_inputs: Path,
     selection_root: Path,
     output_directory: Path,
 ) -> HeldoutPredictionResult:
-    """Retrain frozen candidates and predict held-out structures without labels."""
+    """Retrain and predict from a structurally label-absent input view."""
 
     if output_directory.exists():
         raise NativeSelectionError(
             f"output path already exists: {output_directory}. "
             "Held-out prediction artifacts are immutable."
         )
-    verified_inputs = _verify_input_receipts(
-        octant_canonical, tdc_canonical, validation_root
-    )
+    input_manifest = _verify_prediction_inputs(prediction_inputs)
+    verified_inputs = input_manifest["source_input_hashes"]
     selection_manifest, retained_models = _verify_selection_receipt(
         selection_root, verified_inputs
     )
-    _verify_official_split(tdc_official_split, validation_root)
     training = [
         _load_octant_selection(
-            octant_canonical,
-            validation_root / "octant" / "octant_grouped_split.csv",
+            prediction_inputs / "octant",
+            prediction_inputs / "octant" / "grouped_split.csv",
         ),
         *_load_tdc_selections(
-            tdc_canonical,
-            validation_root / "tdc" / "tdc_inner_folds.csv",
+            prediction_inputs / "tdc",
+            prediction_inputs / "tdc" / "inner_folds.csv",
         ),
     ]
     heldout = [
         _load_octant_heldout(
-            octant_canonical,
-            validation_root / "octant" / "octant_grouped_split.csv",
+            prediction_inputs / "octant",
+            prediction_inputs / "octant" / "grouped_split.csv",
         ),
-        *_load_tdc_heldout(tdc_canonical, tdc_official_split),
+        *_load_tdc_heldout(
+            prediction_inputs / "tdc",
+            prediction_inputs / "tdc" / "official_split.csv",
+        ),
     ]
     retained_configs = _retained_configurations(retained_models)
     if [(item.benchmark, item.task) for item in training] != [
@@ -195,11 +321,16 @@ def run_heldout_prediction(
         {
             "schema_version": HELDOUT_PREDICTION_SCHEMA_VERSION,
             "selection_schema_version": SELECTION_SCHEMA_VERSION,
+            "prediction_input_schema_version": PREDICTION_INPUT_SCHEMA_VERSION,
+            "prediction_input_aggregate_sha256": input_manifest["aggregate_sha256"],
+            "prediction_input_manifest_sha256": _file_hash(
+                prediction_inputs / "prediction_input_manifest.json"
+            ),
             "selection_aggregate_sha256": selection_manifest["aggregate_sha256"],
             "selection_manifest_sha256": _file_hash(
                 selection_root / "selection_manifest.json"
             ),
-            "official_split_sha256": _file_hash(tdc_official_split),
+            "official_split_sha256": input_manifest["official_split_sha256"],
             "outputs": outputs,
             "aggregate_recipe": (
                 "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined "
@@ -365,6 +496,32 @@ def _verify_prediction_receipt(root: Path) -> dict[str, Any]:
     material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
     if sha256(material.encode()).hexdigest() != manifest.get("aggregate_sha256"):
         raise NativeSelectionError("prediction aggregate hash mismatch")
+    return manifest
+
+
+def _verify_prediction_inputs(root: Path) -> dict[str, Any]:
+    manifest = _read_json(root / "prediction_input_manifest.json")
+    if manifest.get("schema_version") != PREDICTION_INPUT_SCHEMA_VERSION:
+        raise NativeSelectionError("unsupported prediction-input schema")
+    if manifest.get("heldout_measurement_rows_materialized") != 0:
+        raise NativeSelectionError("prediction-input view contains held-out labels")
+    source_hashes = manifest.get("source_input_hashes")
+    outputs = manifest.get("outputs")
+    if not isinstance(source_hashes, dict) or not isinstance(outputs, dict):
+        raise NativeSelectionError("prediction-input receipt is incomplete")
+    for name, expected in sorted(outputs.items()):
+        if (
+            not isinstance(name, str)
+            or not isinstance(expected, str)
+            or Path(name).is_absolute()
+            or ".." in Path(name).parts
+        ):
+            raise NativeSelectionError("prediction-input output entry is invalid")
+        if _file_hash(root / name) != expected:
+            raise NativeSelectionError(f"prediction-input hash mismatch: {name}")
+    material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
+    if sha256(material.encode()).hexdigest() != manifest.get("aggregate_sha256"):
+        raise NativeSelectionError("prediction-input aggregate hash mismatch")
     return manifest
 
 
@@ -564,6 +721,18 @@ def _write_csv_rows(path: Path, columns: Sequence[str], rows: Sequence[Mapping[s
         writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def _read_csv_with_columns(path: Path) -> tuple[list[dict[str, str]], tuple[str, ...]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames is None:
+            raise NativeSelectionError(f"CSV has no header: {path}")
+        columns = tuple(reader.fieldnames)
+        rows = list(reader)
+    if any(None in row for row in rows):
+        raise NativeSelectionError(f"CSV row has too many fields: {path}")
+    return rows, columns
 
 
 def _verify_selection_receipt(

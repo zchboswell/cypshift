@@ -10,18 +10,12 @@ from cypshift.native_evaluation import run_heldout_prediction
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--octant-canonical", type=Path, required=True)
-    parser.add_argument("--tdc-canonical", type=Path, required=True)
-    parser.add_argument("--tdc-official-split", type=Path, required=True)
-    parser.add_argument("--validation", type=Path, required=True)
+    parser.add_argument("--prediction-inputs", type=Path, required=True)
     parser.add_argument("--selection", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     result = run_heldout_prediction(
-        args.octant_canonical,
-        args.tdc_canonical,
-        args.tdc_official_split,
-        args.validation,
+        args.prediction_inputs,
         args.selection,
         args.out,
     )
