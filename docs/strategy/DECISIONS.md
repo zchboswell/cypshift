@@ -50,7 +50,11 @@
   protection was requested for the private personal repository. Until the
   repository becomes public or the account plan changes, every post-bootstrap
   change must still use a branch and pull request by procedure; force-pushes and
-  direct `main` updates remain prohibited by project policy.
+  unreviewed direct `main` updates remain prohibited by project policy.
+- Merge procedure: GitHub's hosted rebase merge was tested on PR 1 and rewrote
+  the SSH-signed branch commit as unsigned. Future pull requests are integrated
+  only after review by fast-forwarding the signed branch commit locally and
+  pushing that exact commit to `main`; the remote topic branch is then deleted.
 
 ## D-005 — Authorship and tooling provenance
 

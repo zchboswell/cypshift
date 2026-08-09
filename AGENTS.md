@@ -19,6 +19,10 @@ action.
 - Work in small, reviewable milestones and make atomic signed commits.
 - Push passing milestones frequently. Do not manufacture commits without a
   coherent rationale.
+- Open a pull request before integrating every post-bootstrap branch. After its
+  checks and record are complete, integrate the reviewed signed commit locally
+  with a fast-forward-only merge and push `main`. Do not use GitHub's hosted
+  rebase merge because it rewrites SSH-signed commits without their signature.
 - Explain why a change exists in its commit body or pull request, including
   validation evidence and reversal conditions when material.
 - Never add Codex, OpenAI, an AI system, or an automated tool as an author or
