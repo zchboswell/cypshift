@@ -454,9 +454,16 @@
 - Status: accepted
 - Decision: Attempt only the OpenADMET four-task CheMeleon checkpoint at model
   revision `ef24cf94`, using the resolved upstream CPU container digest
-  `sha256:e2b18fff`. Accept only the existing label-absent 7,724-structure view,
-  use the frozen standardized structure, run two complete predictions, and
-  require byte-identical canonical output before one scoring pass.
+  `sha256:e2b18fff`. Materialize a five-column label-free projection for the
+  exact 7,724 identities, use the frozen standardized structure, run two
+  complete predictions, and require byte-identical canonical output before one
+  scoring pass.
+- Firewall boundary: The broader native prediction-input molecule tables are
+  not label-absent because provenance embeds original outcomes. Only the
+  preparation projector may open them. The model container may read only the
+  exact-hash, read-only projection of benchmark, task, molecule ID,
+  standardized structure, and structure hash. It must not receive a broader
+  prediction, canonical, split, measurement, provenance, or label root.
 - Environment boundary: The digest is a 7.72 GB compressed linux/amd64 image
   that embeds framework revision `6077d125`; it is not the v0.2.0 source
   revision previously inspected. Run it under explicit arm64-host emulation

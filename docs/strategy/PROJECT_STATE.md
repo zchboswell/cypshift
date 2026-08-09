@@ -315,10 +315,20 @@ artifacts remain outside Git.
   exact fast-forward with the reviewed signature intact.
 - D-021 freezes one external-model attempt before inference. It binds the exact
   CheMeleon checkpoint, required files, resolved 7.72 GB linux/amd64 container
-  digest, label-absent 7,724-structure input, standardized-structure overlap
-  audit, fixed task mappings and polarity, two-run reproducibility requirement,
-  eight scoring analyses, 120-minute and 25-GiB budgets, and a no-patch failure
-  boundary. It adds no core dependency, CLI surface, or ensemble candidate.
+  digest, five-column label-free 7,724-structure projection,
+  standardized-structure overlap audit, fixed task mappings and polarity,
+  two-run reproducibility requirement, eight scoring analyses, 120-minute and
+  25-GiB budgets, and a no-patch failure boundary. It adds no core dependency,
+  CLI surface, or ensemble candidate. Contract v1 at head `2596469` is rejected
+  because it incorrectly treated outcome-bearing molecule provenance as
+  model-facing label-absent input; the stripped projection is its remediation.
+- The corrected preparation boundary projects only benchmark, task, molecule
+  ID, standardized structure, and structure hash. Two real preparation runs
+  are byte-identical across 7,724 rows with exact 212/2,419/2,626/2,467 task
+  counts, population-key hash `ebdc065f`, and aggregate `18332ea6`. The receipt
+  records zero measurement tables opened, provenance outcomes parsed, held-out
+  labels parsed, native predictions consumed, fits, or evaluations. The
+  broader roots cannot be mounted into the future container.
 
 ## Active hypotheses
 
@@ -374,9 +384,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently inspect D-021 and the exact CheMeleon contract before any model
-download or inference. Verify the model files, digest-resolved environment,
-label firewall, overlap populations, task polarity, fixed eight-evaluation
-count, two-run rule, budgets, failure boundary, and Occam simplicity. After the
-contract merges, implement only the focused fixture-tested preparation,
-prediction, and receipt path before the one real attempt begins.
+Independently re-review D-021 and the remediated five-column preparation
+boundary before any model download or inference. Verify exact source and
+population receipts, hidden-outcome stripping, output columns, row order and
+counts, key and output hashes, tamper rejection, container mount rule,
+digest-resolved environment, overlap populations, task polarity, eight-
+evaluation count, budgets, failure boundary, tests, and Occam simplicity.

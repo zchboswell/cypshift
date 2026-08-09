@@ -7,10 +7,34 @@ Raw public data and generated benchmark artifacts stay out of Git.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved
-container digest, the label-absent benchmark view, task mappings, overlap
-audit, two-run reproducibility rule, eight declared scoring analyses, budgets,
-and failure boundary before inference. The container stays isolated and adds
-no core dependency or public CLI command.
+container digest, a stripped five-column model-facing projection, task
+mappings, overlap audit, two-run reproducibility rule, eight declared scoring
+analyses, budgets, and failure boundary before inference. The broader native
+prediction-input molecule tables contain original outcomes inside provenance;
+they are preparation inputs only and must never be mounted into the container.
+The container receives only the audited stripped CSV. It stays isolated and
+adds no core dependency or public CLI command.
+
+Prepare that model-facing file before any checkpoint download or inference:
+
+```console
+uv run python scripts/prepare_chemeleon_inference.py \
+  --prediction-inputs artifacts/benchmarks/native-prediction-inputs-v1 \
+  --population-keys artifacts/benchmarks/native-retained-mean-predictions-v1 \
+  --contract benchmarks/chemeleon_inference_contract.json \
+  --out artifacts/benchmarks/chemeleon-input-v2 \
+  --source-revision fc0bc842dd4bd75cb725bef4810431eb16a89edb
+```
+
+Two runs produce byte-identical five-column files with 7,724 rows. The CSV
+SHA-256 is `9829a8adaa667419cccba78a9201dea3d08d0b68af3b0e4c08129d5a037dc7e4`;
+the population-key SHA-256 is
+`ebdc065fad80ec319799bff61837490af192297e7b039d7939e4d8f8a8d4c7e7`;
+and the output aggregate is
+`18332ea6c4a510c46ef393f865515d2111edf9fbe36572f8848b2c61a6d8a1a2`.
+The receipt records zero measurement tables opened, outcome values parsed,
+held-out labels parsed, native predictions consumed, model fits, or model
+evaluations. Only `chemeleon_inference_input.csv` may be mounted read-only.
 
 ## Octant compound-level ingestion
 

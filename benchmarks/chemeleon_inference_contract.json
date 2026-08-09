@@ -51,9 +51,47 @@
     "prediction_input_manifest_sha256": "9e5350490dfc4674b96960644e3e49c4887ec37d3fbb62de22d47dc6481444a1",
     "heldout_structures": 7724,
     "heldout_measurements_materialized": 0,
+    "boundary_disclosure": "This broader preparation root is not model-facing and is not label-absent: molecule provenance contains original outcomes. It may be read only by the audited projection step."
+  },
+  "population_key_source": {
+    "schema_version": "cypshift.retained_mean_heldout_prediction.v1",
+    "aggregate_sha256": "b6e6db44f7436655cd978f181b326ef445fe39057430dae68ccb51afb2c5c873",
+    "manifest_sha256": "c7f0e4c1e35a0657c4f3849f82cd317fe0e456963774a62e3c27a4c7451f77a6",
+    "prediction_csv_sha256": "a1fbb06ae01bcce7f5667346cc771f22cbbd1c1c7639a6c98e2fd31adfd7f84d",
+    "consumed_fields": ["benchmark", "task", "molecule_id"],
+    "ignored_fields": [
+      "candidate",
+      "prediction",
+      "problem_type",
+      "standardized_structure_hash",
+      "base_family_count"
+    ],
+    "purpose": "Freeze the exact label-free evaluation identities without using a benchmark outcome or native prediction value."
+  },
+  "model_facing_projection": {
+    "schema_version": "cypshift.chemeleon_inference_input.v1",
+    "columns": [
+      "benchmark",
+      "task",
+      "molecule_id",
+      "standardized_structure",
+      "standardized_structure_hash"
+    ],
     "input_structure_field": "standardized_structure",
     "input_structure_policy": "rdkit-cleanup-fragment-parent-v1",
-    "preprocessing_disclosure": "Inference uses the frozen cypshift standardized structure. The model was trained on OPENADMET_CANONICAL_SMILES, so canonicalization may differ. No raw-structure alternative will be scored."
+    "source_rule": "Join exact population keys to the broader preparation molecule tables, project only the five columns above, sort by benchmark/task/molecule_id, and reject missing, duplicate, extra, misordered, or hash-inconsistent rows.",
+    "mount_rule": "Mount only the verified five-column projection read-only. Never mount the broader preparation, retained-mean, canonical, split, measurement, or label roots into the container.",
+    "preprocessing_disclosure": "Inference uses the frozen cypshift standardized structure. The model was trained on OPENADMET_CANONICAL_SMILES, so canonicalization may differ. No raw-structure alternative will be scored.",
+    "preparation_source_revision": "fc0bc842dd4bd75cb725bef4810431eb16a89edb",
+    "expected_output_sha256": "9829a8adaa667419cccba78a9201dea3d08d0b68af3b0e4c08129d5a037dc7e4",
+    "expected_population_key_sha256": "ebdc065fad80ec319799bff61837490af192297e7b039d7939e4d8f8a8d4c7e7",
+    "expected_aggregate_sha256": "18332ea6c4a510c46ef393f865515d2111edf9fbe36572f8848b2c61a6d8a1a2"
+  },
+  "expected_task_counts": {
+    "cyp2c9_veith": 2419,
+    "cyp2d6_veith": 2626,
+    "cyp3a4_active_preincubation_pIC50": 212,
+    "cyp3a4_veith": 2467
   },
   "task_mapping": {
     "tdc_cyp2c9_veith": {
