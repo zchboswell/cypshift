@@ -38,6 +38,9 @@ None has been tested.
 - Low-activity interval handling may dominate regression behavior.
 - TDI labels may be unstable near potency and shift thresholds.
 - Dependency and data licenses have not yet been audited.
+- GitHub cannot enforce branch protection while the personal repository is
+  private on the current account plan; branch and pull-request discipline is
+  procedural until publication or a plan change.
 
 ## Exact next action
 

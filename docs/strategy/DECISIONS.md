@@ -46,6 +46,11 @@
 - Alternatives: Public-from-start development; direct pushes to `main`.
 - Reversal condition: Make the repository public after Phase 0, data licensing,
   and disclosure checks pass.
+- Implementation note: GitHub returned a plan restriction when branch
+  protection was requested for the private personal repository. Until the
+  repository becomes public or the account plan changes, every post-bootstrap
+  change must still use a branch and pull request by procedure; force-pushes and
+  direct `main` updates remain prohibited by project policy.
 
 ## D-005 — Authorship and tooling provenance
 
