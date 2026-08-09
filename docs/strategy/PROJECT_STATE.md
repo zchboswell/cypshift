@@ -297,7 +297,15 @@ artifacts remain outside Git.
   are 0.0055 lower MAE and +0.0144/+0.0073/+0.0068 AUPRC. It still trails the
   Chemprop-RDKit anchors by 0.0286/0.0183/0.0260 AUPRC. The raw score aggregate
   is `e91329cca76159b42d9f539850420ecf1b960aafe66592148788001864064db0`.
-  No superiority claim is supported; independent score review is pending.
+  Independent review passed on exact head `c112d40`, and PR 27 merged by exact
+  fast-forward. No superiority claim is supported.
+- Offline scorecard completion opens no canonical measurement path and adds no
+  evaluation. V1 is rejected because it combined base and combination
+  selection runtime in one row field. V2 separates the components but encodes
+  manifest seconds as text. V3 is the first complete candidate: seven rows, 51
+  columns, byte-identical repeats, unchanged point results, and aggregate
+  `16369cfd2c2e2ce8372260c66cc3efa7aad719666fd66f6ab2d9c20ab334d89f`.
+  Independent scorecard review is pending.
 
 ## Active hypotheses
 
@@ -353,7 +361,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently reproduce the seven raw retained-mean score rows, receipt chain,
-populations, grouped-OOF thresholds, metrics, deltas, and evaluation counts.
-Then materialize a complete seven-row canonical scorecard from the frozen
-scored receipt without opening another label or adding an evaluation.
+Independently review retained-mean scorecard v3. Verify exact raw-score
+invariance, all 51 fields, runtime-component semantics, revisions, split and
+population hashes, public reference uncertainty and deltas, warnings, receipt
+chain, byte-identical repeat, and zero additional label access or evaluations.
+Apply Occam's Razor before merge or external-model work.

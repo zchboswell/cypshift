@@ -306,3 +306,26 @@ The mean improves every prior native best: Octant MAE falls from 0.5489 to
 0.5434; TDC AUPRC rises from 0.7340/0.6474/0.8431 to
 0.7484/0.6547/0.8500. It still trails the Chemprop-RDKit public anchors by
 0.0286/0.0183/0.0260 AUPRC. No superiority claim is made.
+
+Canonical completion uses only the frozen scored receipt:
+
+```console
+uv run python scripts/complete_retained_mean_scorecard.py \
+  --scores artifacts/benchmarks/native-retained-mean-scores-v1 \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --public-sources benchmarks/public_sources.json \
+  --out artifacts/benchmarks/native-retained-mean-scorecard-v3 \
+  --source-revision ebc89af8defe8aa2419ae2d6a3807a60e60246c6 \
+  --selection-runtime-seconds 215 \
+  --combination-runtime-seconds 470.2 \
+  --prediction-runtime-seconds 62 \
+  --mean-prediction-runtime-upper-bound-seconds 1 \
+  --scoring-runtime-seconds 2.94 \
+  --hardware "local Apple CPU (model unspecified)"
+```
+
+V1 and V2 are retained rejected candidates for runtime-provenance clarity. V3
+has seven rows and 51 columns. Its two roots are byte-identical with aggregate
+`16369cfd2c2e2ce8372260c66cc3efa7aad719666fd66f6ab2d9c20ab334d89f`.
+Completion records zero additional label access, evaluations, point changes,
+or selection changes.
