@@ -194,6 +194,17 @@ artifacts remain outside Git.
   `tdc_leaderboards` beneath `tdc_admet` rather than at its actual sibling
   source-manifest path. No score or partial output exists; models,
   configurations, thresholds, predictions, and populations remain unchanged.
+- After a signed path-only remediation and an explicit attempt-number fix,
+  scoring attempt 2 completed: 12 official TDC evaluations, 12 strict companion
+  analyses, and 4 Octant outer evaluations. Scorecard aggregate is
+  `2cc47a1600b5809a4317b8c8ec719bc702e43d6e6f9b335d0f189c3546720a1a`.
+- Best native official TDC AUPRC is ECFP logistic 0.7340 for CYP2C9,
+  ExtraTrees 0.6474 for CYP2D6, and ECFP logistic 0.8431 for CYP3A4. These trail
+  dated Chemprop-RDKit anchors by 0.0430, 0.0256, and 0.0329 and MapLight + GNN
+  by 0.1250, 0.1426, and 0.0729. No superiority claim is supported.
+- Removing the seven standardized-overlap test rows changes AUPRC by no more
+  than 0.0006 for any retained native family. Best Octant grouped-outer MAE is
+  0.5489 from ExtraTrees versus 0.6663 for the training-median prior.
 
 ## Active hypotheses
 
@@ -249,8 +260,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Merge the narrow scoring-attempt-1 remediation after hosted CI verifies the
-exact signed head. The change may correct only the frozen leaderboard JSON
-path and its regression fixture; do not change models, configurations,
-thresholds, predictions, populations, or metrics. Then run and record scoring
-attempt 2 explicitly, whether it passes or fails.
+Obtain a fresh independent review of the first complete scorecard and its exact
+selection, prediction, scoring, comparison, strict-population, and failed-attempt
+receipts. Remediate material findings without changing observed results. Only
+after review may complete OOF predictions support the predeclared single-model,
+mean, median, and nonnegative-stack comparison or the isolated CheMeleon attempt.

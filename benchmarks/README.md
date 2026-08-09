@@ -156,3 +156,26 @@ selection receipt chain; retrains only the frozen family configurations; and
 writes label-free predictions plus three declared ExtraTrees seed predictions.
 It records zero held-out labels parsed and zero evaluations. A later scorer may
 consume the immutable prediction receipt exactly once.
+
+## First held-out scorecard
+
+Scoring attempt 1 parsed the 7,724 held-out labels but failed before calculating
+or writing a score because of an incorrect leaderboard-manifest access path.
+The failed attempt is retained in the experiment ledger. A signed, CI-verified
+path-only remediation preceded attempt 2; no model, prediction, threshold,
+population, or metric changed.
+
+Attempt 2 produced the first scorecard with aggregate
+`2cc47a1600b5809a4317b8c8ec719bc702e43d6e6f9b335d0f189c3546720a1a`:
+
+| Task | Best native family | Native | Chemprop-RDKit | MapLight + GNN |
+| --- | --- | ---: | ---: | ---: |
+| TDC CYP2C9 AUPRC | ECFP logistic | 0.7340 | 0.777 | 0.859 |
+| TDC CYP2D6 AUPRC | ExtraTrees | 0.6474 | 0.673 | 0.790 |
+| TDC CYP3A4 AUPRC | ECFP logistic | 0.8431 | 0.876 | 0.916 |
+
+The strict seven-row leakage companion changes native AUPRC by at most 0.0006.
+The best Octant grouped-outer result is ExtraTrees MAE 0.5489. These results
+validate the benchmark path and strong classical baselines; they do not support
+a superiority claim. Public reference comparisons retain the disclosed
+standardization and fingerprint differences.
