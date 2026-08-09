@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.14"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.3"
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Sync locked environment
+        run: uv sync --locked --all-groups
+
+      - name: Check formatting and types
+        run: |
+          uv run --locked ruff check .
+          uv run --locked mypy src
+
+      - name: Run tests
+        run: uv run --locked pytest
+
+      - name: Build distributions
+        run: uv build
+
+      - name: Reproduce installed vertical slice
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv venv "$RUNNER_TEMP/cypshift-smoke" --python "${{ matrix.python-version }}"
+          cypshift_smoke_python="$RUNNER_TEMP/cypshift-smoke/bin/python"
+          cypshift_smoke_cli="$RUNNER_TEMP/cypshift-smoke/bin/cypshift"
+          uv pip install --python "$cypshift_smoke_python" dist/cypshift-*.whl
+
+          for cypshift_run_name in one two; do
+            cypshift_run_dir="$RUNNER_TEMP/cypshift-run-$cypshift_run_name"
+            "$cypshift_smoke_cli" audit examples/synthetic/molecules.csv \
+              --measurements examples/synthetic/measurements.csv \
+              --out "$cypshift_run_dir"
+            "$cypshift_smoke_cli" train \
+              --data "$cypshift_run_dir" --out "$cypshift_run_dir"
+            "$cypshift_smoke_cli" predict \
+              --data "$cypshift_run_dir" \
+              --model "$cypshift_run_dir/model.json" \
+              --out "$cypshift_run_dir"
+            "$cypshift_smoke_cli" report \
+              --run "$cypshift_run_dir" --out "$cypshift_run_dir"
+          done
+
+          diff --recursive \
+            "$RUNNER_TEMP/cypshift-run-one" \
+            "$RUNNER_TEMP/cypshift-run-two"

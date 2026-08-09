@@ -112,3 +112,9 @@
 - Sources:
   - https://pypi.org/project/rdkit/
   - https://www.rdkit.org/docs/Install.html
+  - https://docs.astral.sh/uv/guides/integration/github/
+  - https://docs.github.com/en/actions/reference/security/secure-use
+- CI implementation note: Pin uv 0.12.3 and the full commits for checkout
+  v7.0.1 and setup-uv v9.0.0. Test the declared minimum Python 3.11 and
+  current Python 3.14 on Linux. The build-backend range follows uv's 0.12
+  migration guidance while retaining an upper compatibility bound.
