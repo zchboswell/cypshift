@@ -1,0 +1,31 @@
+{
+  "schema_version": "cypshift.retained_mean_scoring_preflight_failure.v1",
+  "recorded_at_utc": "2026-08-09T21:57:51Z",
+  "invocation_order": 1,
+  "scoring_attempt": 1,
+  "status": "preflight_failed_before_label_access",
+  "reviewed_head": "9c0204301cd83cc1523a980098e77dc344b66b53",
+  "scorer_source_revision": "9f0b7068d6d957cbcf4a5d833f980ba1fb869085",
+  "inputs": {
+    "octant_canonical": "artifacts/benchmarks/octant-source-freeze-v2/canonical",
+    "tdc_canonical": "artifacts/benchmarks/tdc-source-freeze-v2/canonical",
+    "validation": "artifacts/benchmarks/public-validation-freeze-v2",
+    "combinations": "artifacts/benchmarks/native-combinations-v3",
+    "predictions": "artifacts/benchmarks/native-retained-mean-predictions-v1",
+    "public_sources": "benchmarks/public_sources.json"
+  },
+  "failure_stage": "retained-mean official-population preflight",
+  "exception_type": "NativeSelectionError",
+  "exception_message": "cannot read artifacts/benchmarks/public-validation-freeze-v2/tdc/official_split.csv: [Errno 2] No such file or directory",
+  "cause": "The frozen validation root retains the audited official-split hash but does not duplicate the source official_split.csv file.",
+  "elapsed_seconds": 0.54,
+  "heldout_label_loader_calls": 0,
+  "heldout_labels_parsed": 0,
+  "tdc_public_test_evaluations": 0,
+  "tdc_strict_companion_analyses": 0,
+  "octant_outer_evaluations": 0,
+  "output_directory_created": false,
+  "remediation_source_revision": "925dccfa0f1c4966886a68af7c5c80a069ca6ca4",
+  "remediation": "Require the source official split as an explicit scorer input, verify it against the retained audit hash, and test the real nonduplicated layout.",
+  "score_state": "All real retained-mean scores remain unknown."
+}

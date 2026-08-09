@@ -276,13 +276,20 @@ artifacts remain outside Git.
   arithmetic and receipts, exercised malformed-input rejection, found no
   actionable complexity, and confirmed hosted CI. PR 23 merged by exact
   fast-forward. The prediction remains unscored.
-- Independent review rejected scorer head `8da9aa9` because public-anchor and
-  strict-exclusion parsing occurred after synthetic label loading. Remediation
-  `9f0b706` moves all deterministic preflight ahead of both label loaders and
-  adds failure probes that forbid label access. The scorer still evaluates only
-  the retained mean and records three TDC official, three strict companion, and
-  one Octant outer evaluation. Two synthetic runs are byte-identical and all 64
-  tests pass. No real held-out label has been opened. Re-review is pending.
+- Independent review rejected scorer head `8da9aa9` because two deterministic
+  checks occurred after synthetic label loading. Remediation `9f0b706` moved
+  them before both label loaders; re-review passed on exact head `9c02043`, and
+  PR 25 merged by exact fast-forward.
+- The first real invocation then failed in preflight because the validation
+  root retains the official-split hash but does not duplicate the split file.
+  It opened zero labels, ran zero evaluations, and created no output. The
+  retained failure receipt is
+  `benchmarks/receipts/retained_mean_scoring_preflight_attempt_1.json`; all real
+  retained-mean scores remain unknown.
+- Remediation `925dccf` makes the audited source official split an explicit
+  scorer input. The regression test removes the fixture copy from the
+  validation root, and all 64 tests pass. No metric, threshold, candidate,
+  population, or evaluation count changed. Independent re-review is pending.
 
 ## Active hypotheses
 
@@ -338,8 +345,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain independent re-review of the exact signed scorer remediation. Verify receipt
-ordering, population identity, grouped-OOF thresholds, metric equivalence,
-complete deterministic preflight before label access, seven explicit evaluation
-counts, deterministic synthetic outputs, and Occam's Razor. Do not run it on
-real held-out labels before that review passes and the exact head merges.
+Obtain independent re-review of the explicit official-split input on the exact
+signed head. Verify its audit binding and the real nonduplicated layout. Confirm
+that preflight ordering, populations, metrics, thresholds, candidates, and
+counts are unchanged. Do not invoke the real scorer again before that review
+passes and the exact head merges.
