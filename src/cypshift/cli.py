@@ -15,6 +15,7 @@ from cypshift.baseline import (
     predict_baseline,
     train_baseline,
 )
+from cypshift.report import ReportError, generate_report
 from cypshift.schema import RecordError
 
 
@@ -75,6 +76,16 @@ def build_parser() -> argparse.ArgumentParser:
     predict_parser.add_argument(
         "--out", required=True, type=Path, help="output directory"
     )
+
+    report_parser = commands.add_parser(
+        "report", help="render a verified static run report"
+    )
+    report_parser.add_argument(
+        "--run", required=True, type=Path, help="completed run directory"
+    )
+    report_parser.add_argument(
+        "--out", required=True, type=Path, help="output directory"
+    )
     return parser
 
 
@@ -123,6 +134,16 @@ def main(argv: Sequence[str] | None = None) -> int:
                 f"Outputs: {prediction_result.predictions_path.parent}"
             )
             return 0
-    except (AuditError, BaselineError, OSError, RecordError) as exc:
+        if args.command == "report":
+            report_path = generate_report(args.run, args.out)
+            print(f"Report complete: {report_path}")
+            return 0
+    except (
+        AuditError,
+        BaselineError,
+        OSError,
+        RecordError,
+        ReportError,
+    ) as exc:
         parser.error(str(exc))
     return 2

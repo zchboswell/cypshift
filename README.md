@@ -19,6 +19,24 @@ audit -> standardize -> split -> train -> predict -> report
 The production interface will remain limited to `audit`, `train`, `predict`,
 and `report`.
 
+## Phase 0 quickstart
+
+The current vertical slice uses only invented fixture data and demonstrates
+pipeline mechanics, not biological performance. From a clone with `uv`
+installed:
+
+```bash
+uv sync --locked --all-groups
+uv run cypshift audit examples/synthetic/molecules.csv \
+  --measurements examples/synthetic/measurements.csv --out results
+uv run cypshift train --data results --out results
+uv run cypshift predict --data results --model results/model.json --out results
+uv run cypshift report --run results --out results
+```
+
+Open `results/report.html` in a browser. Each command refuses to overwrite its
+own artifacts, so use a new output directory for a repeated run.
+
 ## Project record
 
 - [Project charter](docs/strategy/PROJECT_CHARTER.md)

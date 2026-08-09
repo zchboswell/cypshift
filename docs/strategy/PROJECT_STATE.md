@@ -8,11 +8,12 @@ Phase 0 — vertical-slice implementation.
 
 ## Best validated system
 
-The Phase 0 endpoint-context median is the only predictive system. On the CC0
-synthetic fixture, `audit -> train -> predict` produces canonical data, a
-duplicate-safe fixture split, a model, 21 predictions, prediction cards, and a
-hashed run manifest. Independent same-seed runs are byte-identical. The locked
-package passes 21 tests, Ruff, strict mypy, and distribution builds.
+The complete Phase 0 vertical slice is now the best validated system. On the
+CC0 synthetic fixture, `audit -> train -> predict -> report` produces canonical
+data, a duplicate-safe fixture split, an endpoint-context median, 21
+predictions, cards, a hashed manifest, and a static report. Independent
+same-seed runs are byte-identical. The locked package passes 26 tests, Ruff,
+strict mypy, and distribution builds.
 
 ## Strongest evidence
 
@@ -34,6 +35,9 @@ package passes 21 tests, Ruff, strict mypy, and distribution builds.
 - The trivial median model uses only uncensored numeric training measurements;
   its model and split hashes bind the 21 deterministic predictions and cards
   to the recorded inputs and resolved seed.
+- The report verifies all manifest-listed artifact hashes before rendering and
+  states that the fixture, split, and model do not support biological or
+  competition-performance claims.
 
 ## Active hypotheses
 
@@ -63,5 +67,5 @@ None has been tested.
 
 ## Exact next action
 
-Generate the minimal static report, complete the four-command CLI, and exercise
-the entire installed vertical slice before adding CI.
+Add the smallest CI workflow and run the installed four-command slice twice in
+fresh environments to close Phase 0 reproducibility checks.
