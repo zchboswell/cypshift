@@ -264,3 +264,21 @@ The exact-structure-grouped random companion looks better for every learned
 family: 0.0247-0.0347 lower MAE on Octant and 0.0100-0.0376 higher AUPRC on
 TDC. These are validation-optimism diagnostics, not selection evidence or
 public-test results.
+
+The retained mean is applied in a separate label-free step:
+
+```console
+uv run python scripts/predict_retained_mean_heldout.py \
+  --combinations artifacts/benchmarks/native-combinations-v3 \
+  --base-predictions artifacts/benchmarks/native-heldout-predictions-v2 \
+  --out artifacts/benchmarks/native-retained-mean-predictions-v1 \
+  --source-revision 8b6bb9af0dad0e647f1dad4adb836e5c0b726bfa
+```
+
+Two runs produce byte-identical roots. Each root contains one prediction for
+each of 7,724 held-out molecules and has aggregate
+`b6e6db44f7436655cd978f181b326ef445fe39057430dae68ccb51afb2c5c873`.
+The receipt binds combination v3 and held-out prediction v2. It records 30,896
+base predictions averaged, zero fits, zero measurement tables opened, zero
+labels parsed, and zero evaluations. These predictions remain unscored until
+independent review passes.

@@ -266,6 +266,13 @@ artifacts remain outside Git.
   full scientific invariance, nested isolation, random grouping, zero held-out
   access, repository checks, and Occam's Razor. It found no actionable excess
   complexity. PR 21 merged by exact fast-forward with the reviewed signature.
+- The retained-mean prediction stage accepts only combination v3 and held-out
+  prediction v2. Two runs produce 7,724 byte-identical predictions with
+  aggregate
+  `b6e6db44f7436655cd978f181b326ef445fe39057430dae68ccb51afb2c5c873`.
+  The receipt records 30,896 base predictions averaged, zero fits, zero
+  measurement tables opened, zero labels parsed, and zero evaluations. The
+  result is frozen but not scored or independently reviewed.
 
 ## Active hypotheses
 
@@ -321,9 +328,7 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Implement one receipt-bound, label-absent prediction stage that applies the
-retained unweighted mean to the four frozen base held-out predictions for each
-task. It must accept only the reviewed combination-v3 and heldout-prediction-v2
-receipts, write exactly one prediction per held-out molecule, perform no fit,
-open no measurement table, and record zero evaluations. Reproduce its complete
-root byte-for-byte before any scorer is implemented or run.
+Obtain independent review of the exact retained-mean prediction implementation,
+receipt chain, 7,724-row arithmetic, byte-identical repeat, test coverage, and
+Occam's Razor. Do not implement or run its held-out scorer before that review
+passes and the exact signed head merges.
