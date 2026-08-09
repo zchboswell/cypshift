@@ -492,6 +492,12 @@
   five-column task field. V2 keys all four mappings by their literal input task
   values and requires this equality before output creation, model download, or
   container access. The five-column scientific payload is unchanged.
+- Attempt-control remediation: Contract v2 is also rejected for inference. Its
+  runner did not bind all overlap provenance and allowed caller-selected output
+  paths and source revisions. V3 fixes one input, output, adjacent exclusive
+  start sentinel, and clean Git revision. It validates the overlap contract,
+  input, population key, training file, source, package, and standardizer before
+  canonical prediction. The five-column scientific payload remains unchanged.
 - Reversal condition: Reverse before inference only if a pinned primary source
   contradicts the contract or the authoritative challenge release supersedes
   Phase 0.5. After inference begins, preserve the attempt and its outcome.

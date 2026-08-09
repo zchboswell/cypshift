@@ -351,6 +351,16 @@ artifacts remain outside Git.
   reproduces all five columns, 7,724 rows, task counts, key hash, CSV hash, and
   aggregate exactly; only its contract receipt changes. No external action has
   occurred.
+- Independent re-review rejected signed head `4808121`. The input mapping,
+  runtime, disk accounting, raw/log binding, and safe container boundary pass,
+  but prediction did not verify the overlap receipt against the current
+  contract and input. The runner also accepted caller-selected output paths and
+  source revisions. Remediation `d613116` and input v4 remove those freedoms:
+  one fixed
+  repository input, output, and adjacent exclusive start sentinel are bound to
+  a clean Git revision, and all overlap provenance is checked before canonical
+  prediction. Input bytes and scientific hashes remain unchanged. Eight new
+  focused checks bring the suite to 85. No external action has occurred.
 
 ## Active hypotheses
 
@@ -406,10 +416,11 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently re-review prediction-path remediation `0936323` before the single
-real attempt. Verify the real contract/input task preflight occurs before every
-external action, source download and hashes, overlap standardization, safe
-mount set, disabled network, smoke selection, task-column resolution, finite
-alignment, repeat enforcement, complete success and failure receipts, runtime
-and image-plus-file storage limits, zero label access, tests, and Occam
-simplicity. Do not download or run the model until this exact gate passes.
+Independently re-review contract-v3 prediction-path remediation `d613116`
+before the
+single real attempt. Verify the exact task preflight, fixed input/output/start
+sentinel, clean Git revision, complete overlap provenance, source hashes, safe
+mount set, disabled network, smoke selection, finite alignment, repeat
+enforcement, complete receipts, runtime and storage limits, zero label access,
+tests, and Occam simplicity. Do not download or run the model until this exact
+gate passes.
