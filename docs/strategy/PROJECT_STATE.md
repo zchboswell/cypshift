@@ -30,8 +30,12 @@ strict mypy, distribution builds, Linux CI on Python 3.11/3.14, and a local
 macOS installed-wheel run. Independent review findings are remediated and
 re-verified.
 
-No real-data Phase 0.5 result exists yet. Phase 0 `v0.1.0` remains the best
-validated system until a public-data milestone passes its frozen checks.
+The first real-data Phase 0.5 ingestion milestone passes its frozen checks.
+The exact Octant compound-level release maps deterministically into 1,340
+accepted molecules and 1,084 numeric measurements; 256 rows without source
+pIC50 values remain explicit molecule records and do not become fabricated
+measurements. This establishes data-contract evidence, not model-performance
+evidence, so Phase 0 `v0.1.0` remains the best validated predictive system.
 
 ## Phase 0.5 benchmark contract
 
@@ -66,8 +70,9 @@ validated system until a public-data milestone passes its frozen checks.
   both required tracks are reproducible and reported.
 
 Exact revisions, licenses, file hashes, row counts, schemas, package versions,
-and dated leaderboard anchors are deliberately not asserted here. Freezing
-them is the first implementation milestone after this KB change merges.
+and dated leaderboard anchors are frozen in
+`benchmarks/public_sources.json`. Raw source files and generated benchmark
+artifacts remain outside Git.
 
 ## Strongest evidence
 
@@ -99,6 +104,18 @@ them is the first implementation milestone after this KB change merges.
   an unreported unsupported context. The release candidate preserves exact raw
   text, rejects malformed numerics and rows, binds `v0.1.0`, and reports the
   unsupported context explicitly.
+- The Octant source contract pins dataset revision
+  `96dc1cceaa545a22041d1e16a9c2524a658403f8` and compound-level file SHA-256
+  `19e537166a17a42dd50cc262dd6eb0a963c181830fdc52db0fba98533e01c9c6`.
+- The concrete adapter preserves raw structure text, source QC values, assay
+  context, revision, and hash. Its full-data rehearsal retains all 1,340
+  molecules, maps the 1,084 numeric pIC50 rows, and explicitly records 256
+  missing-pIC50 omissions. Two runs are byte-identical.
+- All 1,340 Octant structures pass the Phase 0 chemistry audit; 424 carry an
+  unspecified-stereochemistry warning. No molecule is quarantined, silently
+  standardized, or linked to a quarantined measurement.
+- Development metadata advances to `0.2.0.dev0` with source state
+  `unreleased`; signed Phase 0 tag `v0.1.0` remains immutable.
 
 ## Active hypotheses
 
@@ -154,6 +171,7 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Freeze the public benchmark sources and licenses, create immutable download
-manifests, and implement the OpenADMET Octant compound-level ingestion path
-without changing the four-command public CLI.
+Implement the exact TDC fixed-split adapter and freeze grouped Octant inner
+validation, including split hashes, standardized-structure leakage audits,
+metric-polarity tests, and reconstruction from a clean cache. Do not evaluate
+TDC public-test labels or begin model selection yet.

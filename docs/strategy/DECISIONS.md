@@ -187,3 +187,27 @@
   the public topology cannot support the planned analysis; benchmark work
   begins expanding into prohibited architecture; or a component fails its
   predefined ablation or clean-reproduction check.
+
+## D-012 — Frozen Phase 0.5 public-source contracts
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Bind Phase 0.5 public inputs and external anchors to the exact
+  revisions, URLs, file sizes, SHA-256 digests, schemas, row counts, licenses,
+  and capture times in `benchmarks/public_sources.json`. Keep raw and generated
+  data out of Git. Treat the Octant dataset as CC-BY-4.0 and retain attribution
+  because its card metadata and body conflict.
+- Evidence: Mutable dataset, package, model, and leaderboard references cannot
+  support reproducible or apples-to-apples claims. The frozen Octant table also
+  exposes documented discrepancies: 1,340 rather than the blog's 1,343
+  inhibition compounds, 2,446 rather than the card's 2,442 reactivity rows,
+  and 256 compound rows without numeric pIC50 values.
+- Assay boundary: Represent Octant inhibition as 30-minute active-CYP3A4
+  preincubation with DBOMF fluorescence readout and unreported NADPH state. It
+  may combine reversible and metabolism-dependent effects and is not the
+  challenge minus-NADPH direct-inhibition endpoint.
+- Alternatives: Follow mutable latest releases; infer a direct-inhibition
+  label; track redistributed raw files; omit public-page capture hashes.
+- Reversal condition: An upstream correction, licensing clarification, or
+  authoritative challenge contract requires a new explicitly versioned source
+  manifest. Existing manifests and results remain immutable evidence.
