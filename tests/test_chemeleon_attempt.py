@@ -123,6 +123,7 @@ def test_prediction_rejects_nonfinite_value(tmp_path: Path) -> None:
     [
         "schema_version",
         "source_revision",
+        "package_version",
         "contract_sha256",
         "input_sha256",
         "population_key_sha256",

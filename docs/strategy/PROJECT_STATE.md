@@ -360,7 +360,7 @@ artifacts remain outside Git.
   repository input, output, and adjacent exclusive start sentinel are bound to
   a clean Git revision, and all overlap provenance is checked before canonical
   prediction. Input bytes and scientific hashes remain unchanged. Eight new
-  focused checks bring the suite to 85. No external action has occurred.
+  focused checks bring the suite to 86. No external action has occurred.
 
 ## Active hypotheses
 
