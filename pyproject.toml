@@ -19,6 +19,11 @@ dependencies = [
 cypshift = "cypshift.cli:main"
 
 [dependency-groups]
+benchmark = [
+    "numpy>=2,<3",
+    "scikit-learn>=1.9,<1.10",
+    "scipy>=1.17,<2",
+]
 dev = [
     "mypy>=1.17",
     "pytest>=8.4",

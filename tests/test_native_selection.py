@@ -1,0 +1,322 @@
+from __future__ import annotations
+
+import csv
+import hashlib
+import json
+from pathlib import Path
+
+import pytest
+
+from cypshift.native_selection import (
+    FAMILIES,
+    NativeSelectionError,
+    run_native_selection,
+)
+from cypshift.tdc import TDC_TASKS
+
+
+def _write_csv(
+    path: Path, columns: tuple[str, ...], rows: list[dict[str, str]]
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _structure_hash(structure: str) -> str:
+    return hashlib.sha256(structure.encode()).hexdigest()
+
+
+def _file_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
+    (validation / "octant" / "split_manifest.json").write_text(
+        json.dumps(
+            {
+                "input_hashes": {
+                    "molecules.csv": _file_hash(octant / "molecules.csv"),
+                    "measurements.csv": _file_hash(octant / "measurements.csv"),
+                }
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (validation / "tdc" / "tdc_split_audit.json").write_text(
+        json.dumps(
+            {
+                "input_hashes": {
+                    "molecules.csv": _file_hash(tdc / "molecules.csv"),
+                    "measurements.csv": _file_hash(tdc / "measurements.csv"),
+                }
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    output_paths = {
+        "octant/octant_grouped_split.csv": (
+            validation / "octant" / "octant_grouped_split.csv"
+        ),
+        "octant/split_manifest.json": validation / "octant" / "split_manifest.json",
+        "tdc/tdc_inner_folds.csv": validation / "tdc" / "tdc_inner_folds.csv",
+        "tdc/tdc_split_audit.json": validation / "tdc" / "tdc_split_audit.json",
+    }
+    output_hashes = {
+        name: _file_hash(path) for name, path in sorted(output_paths.items())
+    }
+    aggregate_material = "\n".join(
+        f"{name}={output_hashes[name]}" for name in sorted(output_hashes)
+    )
+    (validation / "public_validation_manifest.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "cypshift.public_validation_freeze.v1",
+                "outputs": output_hashes,
+                "aggregate_sha256": hashlib.sha256(
+                    aggregate_material.encode()
+                ).hexdigest(),
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
+def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
+    structures = (
+        "CCO",
+        "CCN",
+        "CCC",
+        "CCCl",
+        "CCBr",
+        "CCF",
+        "COC",
+        "CNC",
+        "C1CC1",
+        "c1ccccc1",
+        "c1ccncc1",
+        "c1ccoc1",
+    )
+    molecule_columns = (
+        "molecule_id",
+        "status",
+        "standardized_structure",
+        "standardized_structure_hash",
+    )
+    measurement_columns = ("molecule_id", "value")
+
+    octant = root / "octant"
+    octant_molecules = []
+    octant_measurements = []
+    octant_splits = []
+    selected_ids = set()
+    for index, structure in enumerate(structures):
+        molecule_id = f"octant-{index:02d}"
+        selected_ids.add(molecule_id)
+        octant_molecules.append(
+            {
+                "molecule_id": molecule_id,
+                "status": "accepted",
+                "standardized_structure": structure,
+                "standardized_structure_hash": _structure_hash(structure),
+            }
+        )
+        octant_measurements.append(
+            {"molecule_id": molecule_id, "value": str(3.0 + index / 4)}
+        )
+        octant_splits.append(
+            {
+                "molecule_id": molecule_id,
+                "outer_partition": "train",
+                "inner_fold": str(index % 4),
+                "has_measurement": "true",
+            }
+        )
+    octant_molecules.append(
+        {
+            "molecule_id": "octant-outer",
+            "status": "accepted",
+            "standardized_structure": "CC=O",
+            "standardized_structure_hash": _structure_hash("CC=O"),
+        }
+    )
+    octant_measurements.append(
+        {"molecule_id": "octant-outer", "value": "DO_NOT_PARSE"}
+    )
+    octant_splits.append(
+        {
+            "molecule_id": "octant-outer",
+            "outer_partition": "validation",
+            "inner_fold": "",
+            "has_measurement": "true",
+        }
+    )
+    _write_csv(octant / "molecules.csv", molecule_columns, octant_molecules)
+    _write_csv(
+        octant / "measurements.csv", measurement_columns, octant_measurements
+    )
+
+    tdc = root / "tdc"
+    tdc_molecules = []
+    tdc_measurements = []
+    tdc_folds = []
+    for task_index, task in enumerate(TDC_TASKS):
+        for index, structure in enumerate(structures):
+            molecule_id = f"tdc:{task}:train_val:{index:05d}"
+            selected_ids.add(molecule_id)
+            decorated = structure + ".[Na+]" if task_index == 1 else structure
+            tdc_molecules.append(
+                {
+                    "molecule_id": molecule_id,
+                    "status": "accepted",
+                    "standardized_structure": decorated,
+                    "standardized_structure_hash": _structure_hash(decorated),
+                }
+            )
+            tdc_measurements.append(
+                {"molecule_id": molecule_id, "value": str(index % 2)}
+            )
+            tdc_folds.append(
+                {
+                    "task": task,
+                    "molecule_id": molecule_id,
+                    "inner_fold": str(index % 4),
+                }
+            )
+        test_id = f"tdc:{task}:test:00001"
+        tdc_molecules.append(
+            {
+                "molecule_id": test_id,
+                "status": "accepted",
+                "standardized_structure": "CC#N",
+                "standardized_structure_hash": _structure_hash("CC#N"),
+            }
+        )
+        tdc_measurements.append(
+            {"molecule_id": test_id, "value": "DO_NOT_PARSE"}
+        )
+    _write_csv(tdc / "molecules.csv", molecule_columns, tdc_molecules)
+    _write_csv(tdc / "measurements.csv", measurement_columns, tdc_measurements)
+
+    validation = root / "validation"
+    _write_csv(
+        validation / "octant" / "octant_grouped_split.csv",
+        ("molecule_id", "outer_partition", "inner_fold", "has_measurement"),
+        octant_splits,
+    )
+    _write_csv(
+        validation / "tdc" / "tdc_inner_folds.csv",
+        ("task", "molecule_id", "inner_fold"),
+        tdc_folds,
+    )
+    _write_receipts(octant, tdc, validation)
+    return octant, tdc, validation, selected_ids
+
+
+def test_native_selection_is_deterministic_and_never_parses_held_out_labels(
+    tmp_path: Path,
+) -> None:
+    octant, tdc, validation, selected_ids = _fixture(tmp_path / "fixture")
+
+    first = run_native_selection(
+        octant, tdc, validation, tmp_path / "first", nonlinear_trees=4
+    )
+    run_native_selection(
+        octant, tdc, validation, tmp_path / "second", nonlinear_trees=4
+    )
+
+    for path in sorted((tmp_path / "first").iterdir()):
+        assert path.read_bytes() == (tmp_path / "second" / path.name).read_bytes()
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    retained_models = json.loads(
+        first.retained_models_path.read_text(encoding="utf-8")
+    )
+    with first.retained_predictions_path.open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        retained = list(csv.DictReader(handle))
+    with (tmp_path / "first" / "selection_scores.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        scores = list(csv.DictReader(handle))
+    assert manifest["public_test_labels_parsed"] == 0
+    assert manifest["public_test_evaluations"] == 0
+    assert manifest["octant_outer_labels_parsed"] == 0
+    assert manifest["octant_outer_evaluations"] == 0
+    assert manifest["retained_prediction_rows"] == 192
+    assert first.row_count == 192
+    assert first.model_fit_count == 240
+    assert len(retained) == 192
+    assert {row["molecule_id"] for row in retained} == selected_ids
+    assert {row["family"] for row in retained} == set(FAMILIES)
+    assert len(retained_models["datasets"]) == 4
+    assert all(
+        len(dataset["families"]) == 4
+        for dataset in retained_models["datasets"]
+    )
+    assert all(
+        sum(
+            row["benchmark"] == dataset["benchmark"]
+            and row["task"] == dataset["task"]
+            and row["score_role"] == "candidate"
+            for row in scores
+        )
+        == 13
+        for dataset in retained_models["datasets"]
+    )
+    knn_rows = [row for row in retained if row["family"] == "similarity_knn"]
+    assert all(row["nearest_neighbor_similarity"] for row in knn_rows)
+    assert all(row["local_support_count"] for row in knn_rows)
+
+
+def test_native_selection_refuses_overwrite_and_missing_selected_target(
+    tmp_path: Path,
+) -> None:
+    octant, tdc, validation, _ = _fixture(tmp_path / "fixture")
+    output = tmp_path / "selection"
+    run_native_selection(octant, tdc, validation, output, nonlinear_trees=2)
+    with pytest.raises(NativeSelectionError, match="already exists"):
+        run_native_selection(octant, tdc, validation, output, nonlinear_trees=2)
+
+    fold_path = validation / "tdc" / "tdc_inner_folds.csv"
+    original_folds = fold_path.read_bytes()
+    fold_path.write_bytes(original_folds + b"\n")
+    with pytest.raises(NativeSelectionError, match="output hash mismatch"):
+        run_native_selection(
+            octant,
+            tdc,
+            validation,
+            tmp_path / "tampered",
+            nonlinear_trees=2,
+        )
+    fold_path.write_bytes(original_folds)
+
+    rows: list[dict[str, str]]
+    with (octant / "measurements.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        rows = list(csv.DictReader(handle))
+    _write_csv(
+        octant / "measurements-missing.csv",
+        ("molecule_id", "value"),
+        rows[1:],
+    )
+    (octant / "measurements.csv").replace(octant / "measurements-original.csv")
+    (octant / "measurements-missing.csv").replace(octant / "measurements.csv")
+    _write_receipts(octant, tdc, validation)
+    with pytest.raises(NativeSelectionError, match="missing targets=1"):
+        run_native_selection(
+            octant,
+            tdc,
+            validation,
+            tmp_path / "misaligned",
+            nonlinear_trees=2,
+        )

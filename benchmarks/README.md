@@ -94,3 +94,32 @@ to the adapter manifest.
 records the exact aggregate-hash recipe. The frozen aggregate is
 `b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12`.
 The freeze performs zero model fits and zero public-test evaluations.
+
+## Native selection contract
+
+Native candidate selection is a separate benchmark-only workflow; it does not
+add a public CLI command or a core runtime dependency. Install the locked
+benchmark group, then run:
+
+```console
+uv sync --locked --all-groups
+uv run python scripts/select_native_models.py \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --out artifacts/benchmarks/native-selection-v1
+```
+
+The selection path verifies the complete validation receipt chain before any
+fit. It parses only the 872 measured Octant inner-selection rows and the 30,038
+TDC `train_val` rows. Octant outer labels and TDC public-test labels are not
+parsed or evaluated.
+
+The frozen four-family grid is deliberately small: one training prior; three
+regularization values for a chiral 2,048-bit ECFP4 linear model; six
+similarity-weighted Tanimoto kNN configurations; and three 128-tree ExtraTrees
+leaf-size configurations. Classification uses pooled grouped-OOF average
+precision; regression uses pooled grouped-OOF MAE. The retained stochastic
+configuration is rerun with exactly three declared seeds. Generated selection
+artifacts remain outside Git; their hashes and keep/reject decision enter the
+experiment ledger after the first run.

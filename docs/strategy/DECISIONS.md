@@ -278,3 +278,34 @@
 - Reversal condition: New pinned primary evidence contradicts the assay
   protocol, or an upstream split correction requires another explicit schema
   version. Never reinterpret an existing artifact version in place.
+
+## D-015 — Minimum native inner-selection ladder
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Run exactly four native families on the frozen grouped inner folds:
+  training prevalence or median; chiral 2,048-bit ECFP4 logistic regression or
+  ridge; Tanimoto similarity-weighted kNN; and ExtraTrees on the same fixed
+  ECFP. Keep NumPy, SciPy, and scikit-learn 1.9 in a benchmark-only dependency
+  group so the core wheel and four-command CLI remain unchanged.
+- Configuration boundary: Linear regularization is `0.1`, `1`, or `10`; kNN
+  uses `k` in `5`, `15`, `50` and similarity power `1` or `2`; ExtraTrees uses
+  128 trees, `sqrt` feature sampling, leaf size `1`, `3`, or `10`, one job, and
+  balanced class weights for classification. Select each family/task by pooled
+  grouped-OOF AUPRC or MAE with a lexical tie break. Rerun only the retained
+  stochastic configuration at seeds 20260809, 20260810, and 20260811 and use
+  their mean OOF prediction.
+- Leakage boundary: Verify the full public-validation receipt chain before
+  fitting. Parse only frozen inner-selection rows. Do not parse or evaluate
+  Octant outer labels or TDC public-test labels. Freeze retained configuration,
+  prediction, input, and output hashes before any held-out evaluation.
+- Rationale: This is the directive's smallest complete ladder and keeps every
+  family at six or fewer candidate configurations. ECFP linear establishes a
+  strong conventional baseline, kNN measures local analog support directly,
+  and ExtraTrees supplies one nonlinear fixed-feature residual without adding
+  a boosting library or descriptor subsystem.
+- Reversal condition: Before results exist, reverse only for a demonstrated
+  implementation, convergence, receipt-integrity, or bounded-resource defect.
+  After results exist, do not opportunistically expand or retune the grid;
+  diagnose predefined split, label, polarity, preprocessing, prevalence,
+  leakage, metric, and feature checks first.
