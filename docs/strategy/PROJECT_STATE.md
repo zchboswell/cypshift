@@ -276,13 +276,13 @@ artifacts remain outside Git.
   arithmetic and receipts, exercised malformed-input rejection, found no
   actionable complexity, and confirmed hosted CI. PR 23 merged by exact
   fast-forward. The prediction remains unscored.
-- A scorer candidate exists at signed commit `a2fd485`. It verifies source,
-  split, combination, and retained-mean receipts before label access; scores
-  only the retained mean; derives binary thresholds from its grouped OOF rows;
-  and records three TDC official, three strict companion, and one Octant outer
-  evaluation. Two synthetic runs are byte-identical and all 64 tests pass. No
-  real held-out label has been opened by this scorer. Independent review is
-  pending.
+- Independent review rejected scorer head `8da9aa9` because public-anchor and
+  strict-exclusion parsing occurred after synthetic label loading. Remediation
+  `9f0b706` moves all deterministic preflight ahead of both label loaders and
+  adds failure probes that forbid label access. The scorer still evaluates only
+  the retained mean and records three TDC official, three strict companion, and
+  one Octant outer evaluation. Two synthetic runs are byte-identical and all 64
+  tests pass. No real held-out label has been opened. Re-review is pending.
 
 ## Active hypotheses
 
@@ -338,8 +338,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain independent review of the exact signed scorer candidate. Verify receipt
+Obtain independent re-review of the exact signed scorer remediation. Verify receipt
 ordering, population identity, grouped-OOF thresholds, metric equivalence,
-seven explicit evaluation counts, deterministic synthetic outputs, and
-Occam's Razor. Do not run it on real held-out labels before that review passes
-and the exact head merges.
+complete deterministic preflight before label access, seven explicit evaluation
+counts, deterministic synthetic outputs, and Occam's Razor. Do not run it on
+real held-out labels before that review passes and the exact head merges.
