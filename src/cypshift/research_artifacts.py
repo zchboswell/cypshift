@@ -115,6 +115,9 @@ def complete_oof_research_artifact(
         "octant_cyp": validation_root / "octant" / "octant_grouped_split.csv",
         "tdc_admet_group": validation_root / "tdc" / "tdc_inner_folds.csv",
     }
+    split_hashes = {
+        benchmark: _file_hash(path) for benchmark, path in split_paths.items()
+    }
     split_metadata, support = _split_metadata(split_rows)
     quality = {
         "octant_cyp": _measurement_quality(octant_canonical / "measurements.csv"),
@@ -180,7 +183,7 @@ def complete_oof_research_artifact(
                         (benchmark, task, family)
                     ],
                     "data_sha256": data_hashes[benchmark],
-                    "split_sha256": _file_hash(split_paths[benchmark]),
+                    "split_sha256": split_hashes[benchmark],
                     "selection_aggregate_sha256": selection_manifest[
                         "aggregate_sha256"
                     ],
