@@ -329,6 +329,12 @@ artifacts remain outside Git.
   records zero measurement tables opened, provenance outcomes parsed, held-out
   labels parsed, native predictions consumed, fits, or evaluations. The
   broader roots cannot be mounted into the future container.
+- Independent re-review passed on exact signed head `db51e24`. It verified the
+  checkpoint and container provenance, all five projection columns, exact key
+  order and task counts, source and output receipt chains, hidden-outcome
+  stripping, tamper rejection, the read-only mount boundary, zero label or
+  prediction consumption, repository checks, signatures, hosted Python
+  3.11/3.14 CI, and Occam's Razor. PR 30 merged by exact fast-forward.
 
 ## Active hypotheses
 
@@ -384,9 +390,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently re-review D-021 and the remediated five-column preparation
-boundary before any model download or inference. Verify exact source and
-population receipts, hidden-outcome stripping, output columns, row order and
-counts, key and output hashes, tamper rejection, container mount rule,
-digest-resolved environment, overlap populations, task polarity, eight-
-evaluation count, budgets, failure boundary, tests, and Occam simplicity.
+Implement and fixture-test only the direct CheMeleon source verification,
+training-overlap audit, digest-pinned container invocation, canonical output
+alignment, repeat check, and prediction receipt. The runner must accept only
+the reviewed five-column projection and mount only it read-only. Do not open a
+benchmark label or begin the single real attempt until this path passes local
+and hosted checks.
