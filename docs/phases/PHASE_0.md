@@ -1,6 +1,6 @@
 # Phase 0 — ground truth and working vertical slice
 
-Status: planned
+Status: in progress
 
 Plan frozen: 2026-08-09
 

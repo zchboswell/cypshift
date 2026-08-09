@@ -4,11 +4,13 @@ Last updated: 2026-08-09
 
 ## Current phase
 
-Phase 0 — governance and vertical-slice planning.
+Phase 0 — vertical-slice implementation.
 
 ## Best validated system
 
-None. No model, data adapter, metric, or vertical slice has been implemented.
+No predictive system yet. The minimal Python 3.12 package bootstrap is
+validated: the package and RDKit import, Ruff and mypy pass, and wheel plus
+source distributions build successfully from the locked environment.
 
 ## Strongest evidence
 
@@ -19,6 +21,8 @@ None. No model, data adapter, metric, or vertical slice has been implemented.
   covers CYP3A4 and CYP2D6.
 - The official schema, metric code, submission contract, data snapshot, and
   complete rules are not frozen until the 2026-08-17 launch.
+- The locked Phase 0 toolchain builds with RDKit as the sole runtime dependency;
+  pandas, Pydantic, and a CLI framework remain absent.
 
 ## Active hypotheses
 
@@ -37,13 +41,15 @@ None has been tested.
 - Series inference may be ambiguous without explicit parent identifiers.
 - Low-activity interval handling may dominate regression behavior.
 - TDI labels may be unstable near potency and shift thresholds.
-- Dependency and data licenses have not yet been audited.
+- The final project license remains deferred until retained dependencies and
+  redistributed assets are frozen. RDKit's BSD-3-Clause license is compatible
+  with the intended permissive release.
 - GitHub cannot enforce branch protection while the personal repository is
   private on the current account plan; branch and pull-request discipline is
   procedural until publication or a plan change.
 
 ## Exact next action
 
-Implement the Phase 0 synthetic fixture and the smallest complete
-`audit -> standardize -> split -> train -> predict -> report` path after this
-governance milestone is reviewed and merged.
+Establish the minimal installable package, then implement the synthetic fixture,
+canonical schemas, and chemistry audit without introducing another runtime
+dependency.

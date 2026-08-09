@@ -77,3 +77,38 @@
   dependencies and data.
 - Alternatives: Add a license before the dependency audit.
 - Reversal condition: The dependency and asset set is frozen and compatible.
+
+## D-007 — Orchestration continuity through Phase 0
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Keep the current orchestrator through Phase 0 and restore context
+  from the canonical knowledge base after every compression or handoff. Add no
+  architecture beyond what the running vertical slice requires.
+- Evidence: The current orchestrator owns the intent and decision history;
+  replacement before implementation would add context loss and duplicate
+  planning.
+- Alternatives: Hand implementation immediately to a fresh orchestrator.
+- Reversal condition: Scope expansion, simplicity violations, or inability to
+  leave a clean reproducible state. After Phase 0, use a fresh agent as an
+  independent reviewer before considering orchestration handoff.
+
+## D-008 — Minimal Phase 0 Python toolchain
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Develop with Python 3.12 while supporting Python 3.11 and newer;
+  use `uv` and `uv_build`; retain RDKit as the sole runtime dependency; keep
+  pytest, Ruff, and mypy development-only. Use the standard library for the
+  CLI, CSV/JSON I/O, schemas, hashing, statistics, and HTML generation.
+- Evidence: The host already provides Python 3.11/3.12 and `uv`. RDKit 2026.03.4
+  provides Python 3.11-3.14 wheels across major platforms under BSD-3-Clause.
+  The vertical slice requires chemistry parsing and standardization but does
+  not require pandas, Pydantic, Click, Typer, or a configuration framework.
+- Alternatives: system Python 3.9; pandas/Pydantic/Typer stack; a larger
+  cheminformatics framework; Conda-only installation.
+- Reversal condition: A launch-day requirement or measured user need that the
+  standard library plus RDKit cannot meet cleanly.
+- Sources:
+  - https://pypi.org/project/rdkit/
+  - https://www.rdkit.org/docs/Install.html
