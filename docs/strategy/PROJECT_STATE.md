@@ -8,10 +8,11 @@ Phase 0 — vertical-slice implementation.
 
 ## Best validated system
 
-No predictive system yet. The installed `cypshift audit` command validates the
-CC0 synthetic fixture, preserves raw structures and assay context, writes
-deterministic canonical CSV and JSON artifacts, and refuses silent overwrite.
-The locked package passes 15 tests, Ruff, strict mypy, and distribution builds.
+The Phase 0 endpoint-context median is the only predictive system. On the CC0
+synthetic fixture, `audit -> train -> predict` produces canonical data, a
+duplicate-safe fixture split, a model, 21 predictions, prediction cards, and a
+hashed run manifest. Independent same-seed runs are byte-identical. The locked
+package passes 21 tests, Ruff, strict mypy, and distribution builds.
 
 ## Strongest evidence
 
@@ -27,6 +28,12 @@ The locked package passes 15 tests, Ruff, strict mypy, and distribution builds.
 - The synthetic audit detects and records invalid chemistry, fragment-parent
   changes, assigned and unassigned stereochemistry, and standardized
   duplicates without using official challenge data.
+- The deterministic fixture split keeps standardized duplicates together,
+  excludes quarantined chemistry, and is explicitly labeled as a pipeline test
+  rather than challenge-faithful validation.
+- The trivial median model uses only uncensored numeric training measurements;
+  its model and split hashes bind the 21 deterministic predictions and cards
+  to the recorded inputs and resolved seed.
 
 ## Active hypotheses
 
@@ -56,5 +63,5 @@ None has been tested.
 
 ## Exact next action
 
-Implement the deterministic fixture split and endpoint-context median baseline,
-then write prediction artifacts and their reproducible run manifest.
+Generate the minimal static report, complete the four-command CLI, and exercise
+the entire installed vertical slice before adding CI.

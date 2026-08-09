@@ -7,6 +7,7 @@ without changing the chemistry or measurement truth preserved here.
 
 from __future__ import annotations
 
+import json
 from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
@@ -93,6 +94,57 @@ class MoleculeRecord:
     standardization_version: str
     source: str
     provenance: str
+
+    @classmethod
+    def from_mapping(cls, row: Mapping[str, str]) -> MoleculeRecord:
+        """Parse one previously audited canonical molecule row."""
+
+        status_text = _required_text(row, "status")
+        stereo_text = _required_text(row, "stereochemistry_status")
+        try:
+            status = MoleculeStatus(status_text)
+            stereochemistry_status = StereochemistryStatus(stereo_text)
+        except ValueError as exc:
+            raise RecordError("invalid canonical molecule status") from exc
+
+        record = cls(
+            molecule_id=_required_text(row, "molecule_id"),
+            raw_structure=_required_text(row, "raw_structure"),
+            structure_format=_required_text(row, "structure_format"),
+            standardized_structure=_optional_text(row, "standardized_structure"),
+            standardized_structure_hash=_optional_text(
+                row, "standardized_structure_hash"
+            ),
+            status=status,
+            stereochemistry_status=stereochemistry_status,
+            input_fragments=_json_string_tuple(row, "input_fragments"),
+            standardization_changed=_required_bool(
+                row, "standardization_changed"
+            ),
+            duplicate_of=_optional_text(row, "duplicate_of"),
+            warnings=_json_string_tuple(row, "warnings"),
+            standardization_version=_required_text(
+                row, "standardization_version"
+            ),
+            source=_required_text(row, "source"),
+            provenance=_required_text(row, "provenance"),
+        )
+        if status is MoleculeStatus.ACCEPTED:
+            if (
+                record.standardized_structure is None
+                or record.standardized_structure_hash is None
+            ):
+                raise RecordError(
+                    "accepted molecule requires standardized structure and hash"
+                )
+        elif (
+            record.standardized_structure is not None
+            or record.standardized_structure_hash is not None
+        ):
+            raise RecordError(
+                "quarantined molecule cannot have standardized structure or hash"
+            )
+        return record
 
     def to_dict(self) -> dict[str, Any]:
         """Return a stable JSON-compatible representation."""
@@ -228,3 +280,32 @@ def _optional_float(row: Mapping[str, str], field: str) -> float | None:
         return float(value)
     except ValueError as exc:
         raise RecordError(f"{field} must be numeric; got {value!r}") from exc
+
+
+def _optional_text(row: Mapping[str, str], field: str) -> str | None:
+    value = row.get(field)
+    if value is None or not value.strip():
+        return None
+    return value.strip()
+
+
+def _required_bool(row: Mapping[str, str], field: str) -> bool:
+    value = _required_text(row, field).lower()
+    if value == "true":
+        return True
+    if value == "false":
+        return False
+    raise RecordError(f"{field} must be 'true' or 'false'; got {value!r}")
+
+
+def _json_string_tuple(row: Mapping[str, str], field: str) -> tuple[str, ...]:
+    value = _required_text(row, field)
+    try:
+        parsed = json.loads(value)
+    except json.JSONDecodeError as exc:
+        raise RecordError(f"{field} must be a JSON string array") from exc
+    if not isinstance(parsed, list) or not all(
+        isinstance(item, str) for item in parsed
+    ):
+        raise RecordError(f"{field} must be a JSON string array")
+    return tuple(parsed)
