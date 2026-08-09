@@ -8,6 +8,7 @@ without changing the chemistry or measurement truth preserved here.
 from __future__ import annotations
 
 import json
+import math
 from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
@@ -61,12 +62,12 @@ class MoleculeInput:
             field: _required_text(row, field)
             for field in (
                 "molecule_id",
-                "structure",
                 "structure_format",
                 "source",
                 "provenance",
             )
         }
+        values["structure"] = _required_raw_text(row, "structure")
         if values["structure_format"].lower() != "smiles":
             raise RecordError(
                 "structure_format must be 'smiles' in the Phase 0 adapter; "
@@ -109,7 +110,7 @@ class MoleculeRecord:
 
         record = cls(
             molecule_id=_required_text(row, "molecule_id"),
-            raw_structure=_required_text(row, "raw_structure"),
+            raw_structure=_required_raw_text(row, "raw_structure"),
             structure_format=_required_text(row, "structure_format"),
             standardized_structure=_optional_text(row, "standardized_structure"),
             standardized_structure_hash=_optional_text(
@@ -272,14 +273,24 @@ def _required_text(row: Mapping[str, str], field: str) -> str:
     return value.strip()
 
 
+def _required_raw_text(row: Mapping[str, str], field: str) -> str:
+    value = row.get(field)
+    if value is None or not value.strip():
+        raise RecordError(f"{field} is required")
+    return value
+
+
 def _optional_float(row: Mapping[str, str], field: str) -> float | None:
     value = row.get(field)
     if value is None or not value.strip():
         return None
     try:
-        return float(value)
+        parsed = float(value)
     except ValueError as exc:
         raise RecordError(f"{field} must be numeric; got {value!r}") from exc
+    if not math.isfinite(parsed):
+        raise RecordError(f"{field} must be finite; got {value!r}")
+    return parsed
 
 
 def _optional_text(row: Mapping[str, str], field: str) -> str | None:

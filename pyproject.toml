@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "cypshift"
-version = "0.0.1"
+version = "0.1.0"
 description = "Series-first, competence-aware CYP inhibition prediction"
 readme = "README.md"
 authors = [{ name = "zchboswell" }]

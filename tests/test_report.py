@@ -32,6 +32,8 @@ def test_report_is_deterministic_and_states_limitations(tmp_path: Path) -> None:
     assert "Synthetic vertical-slice report" in content
     assert "no competition score" in content
     assert "endpoint_context_median" in content
+    assert "no_uncensored_numeric_training_measurement" in content
+    assert "Unsupported model contexts" in content
     assert "All listed artifacts were hash-verified" in content
     assert "The endpoint-context median is not a competitive model" in content
 
@@ -68,7 +70,11 @@ def test_report_escapes_untrusted_artifact_text() -> None:
         ],
         "assay_context_counts": [],
     }
-    model = {"method": "median", "fit_summary": {}}
+    model = {
+        "method": "median",
+        "fit_summary": {},
+        "unsupported_contexts": [],
+    }
     manifest = {
         "resolved_configuration": {},
         "summary": {},

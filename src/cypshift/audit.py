@@ -9,7 +9,7 @@ from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from cypshift.chemistry import STANDARDIZATION_VERSION, audit_molecules
 from cypshift.schema import (
@@ -158,7 +158,19 @@ def _read_csv(path: Path, expected_columns: Sequence[str]) -> list[dict[str, str
                     f"{path.name} columns do not match the Phase 0 adapter. "
                     f"Expected {list(expected_columns)!r}; got {list(actual_columns)!r}."
                 )
-            rows = [dict(row) for row in reader]
+            rows = []
+            for row in reader:
+                if None in row or any(value is None for value in row.values()):
+                    raise AuditError(
+                        f"{path.name} row {reader.line_num} has the wrong "
+                        "number of fields"
+                    )
+                rows.append(
+                    {
+                        column: cast(str, row[column])
+                        for column in expected_columns
+                    }
+                )
     except OSError as exc:
         raise AuditError(f"cannot read {path}: {exc}") from exc
     if not rows:

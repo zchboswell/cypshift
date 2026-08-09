@@ -68,7 +68,12 @@ def render_report(
         ("Validation fraction", configuration.get("validation_fraction")),
         ("Accepted molecules", audit_summary.get("molecules_accepted")),
         ("Quarantined molecules", audit_summary.get("molecules_quarantined")),
-        ("Model contexts", model_summary.get("contexts")),
+        ("Observed contexts", model_summary.get("contexts_observed")),
+        ("Supported model contexts", model_summary.get("contexts_supported")),
+        (
+            "Unsupported model contexts",
+            model_summary.get("contexts_unsupported"),
+        ),
         ("Training measurements used", model_summary.get("measurements_used")),
         ("Predictions", run_summary.get("predictions")),
         ("LLM adjudication used", configuration.get("llm_adjudication_used")),
@@ -105,6 +110,26 @@ def render_report(
                     "probe",
                     "readout",
                     "count",
+                )
+            )
+        )
+
+    unsupported_rows = []
+    for context in _sequence(model, "unsupported_contexts"):
+        record = _as_mapping(context, "unsupported context")
+        unsupported_rows.append(
+            tuple(
+                record.get(field)
+                for field in (
+                    "endpoint",
+                    "isoform",
+                    "nadph_condition",
+                    "probe",
+                    "readout",
+                    "unit",
+                    "reason",
+                    "observed_measurement_count",
+                    "training_measurement_count",
                 )
             )
         )
@@ -153,6 +178,25 @@ def render_report(
                     assay_rows,
                 ),
             ),
+            _section(
+                "Unsupported model contexts",
+                '<p class="note">Observed contexts without an uncensored numeric '
+                "training value are recorded here and omitted from predictions.</p>"
+                + _table(
+                    (
+                        "Endpoint",
+                        "Isoform",
+                        "NADPH",
+                        "Probe",
+                        "Readout",
+                        "Unit",
+                        "Reason",
+                        "Observed",
+                        "Training",
+                    ),
+                    unsupported_rows,
+                ),
+            ),
             _section("Software", _table(("Component", "Version"), software_rows)),
             _section(
                 "Artifact integrity",
@@ -166,6 +210,7 @@ def render_report(
                 "<li>The fixture split is a deterministic pipeline test only.</li>"
                 "<li>The endpoint-context median is not a competitive model.</li>"
                 "<li>Censored values are preserved but excluded from this fit.</li>"
+                "<li>Unsupported assay contexts are omitted and listed explicitly.</li>"
                 "<li>The provisional standardization policy requires launch-day review.</li>"
                 "<li>No uncertainty, calibration, TDI classifier, or LLM is used.</li>"
                 "</ul>",

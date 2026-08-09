@@ -45,10 +45,25 @@ def test_model_uses_only_uncensored_training_measurements(tmp_path: Path) -> Non
 
     assert result.model["method"] == "endpoint_context_median"
     assert result.model["fit_summary"] == {
-        "contexts": 3,
+        "contexts_observed": 4,
+        "contexts_supported": 3,
+        "contexts_unsupported": 1,
         "measurements_not_used": 8,
         "measurements_used": 3,
     }
+    assert result.model["unsupported_contexts"] == [
+        {
+            "endpoint": "direct_inhibition",
+            "isoform": "synthetic_isoform_a",
+            "nadph_condition": "present",
+            "probe": "synthetic_probe_a",
+            "readout": "p_activity",
+            "unit": "synthetic_log_unit",
+            "reason": "no_uncensored_numeric_training_measurement",
+            "observed_measurement_count": 2,
+            "training_measurement_count": 1,
+        }
+    ]
     assert result.model["resolved_configuration"]["split_scope"] == (
         "synthetic_fixture_pipeline_test_only"
     )
@@ -77,8 +92,11 @@ def test_prediction_artifacts_and_manifest_are_reproducible(tmp_path: Path) -> N
     ).hexdigest()
     assert manifest["output_hashes"]["predictions.csv"] == prediction_hash
     assert manifest["resolved_configuration"]["llm_adjudication_used"] is False
+    assert manifest["software"]["cypshift"] == "0.1.0"
+    assert manifest["software"]["source_revision"] == "v0.1.0"
     assert manifest["summary"] == {
-        "contexts": 3,
+        "contexts_supported": 3,
+        "contexts_unsupported": 1,
         "molecules": 7,
         "predictions": 21,
         "quarantined_molecules_excluded": 1,
@@ -112,6 +130,17 @@ def test_predict_rejects_split_not_bound_to_model(tmp_path: Path) -> None:
         predict_baseline(run, run / "model.json", split_path, run)
 
 
+def test_training_rejects_malformed_canonical_csv_row(tmp_path: Path) -> None:
+    run = audited_fixture(tmp_path)
+    measurements = run / "measurements.csv"
+    lines = measurements.read_text(encoding="utf-8").splitlines()
+    lines[1] += ",unheaded-value"
+    measurements.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    with pytest.raises(BaselineError, match="wrong number of fields"):
+        train_baseline(run, run)
+
+
 def test_train_and_predict_cli_smoke(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
@@ -133,6 +162,7 @@ def test_train_and_predict_cli_smoke(
     predict_message = capsys.readouterr().out
 
     assert train_status == 0
-    assert "3 endpoint contexts" in train_message
+    assert "3 supported endpoint contexts; 1 unsupported" in train_message
     assert predict_status == 0
     assert "21 predictions" in predict_message
+    assert "3 supported contexts; 1 unsupported" in predict_message

@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from cypshift.audit import AuditError, run_audit
+from cypshift.baseline import load_audited_dataset
 from cypshift.cli import main
 
 FIXTURE = Path(__file__).parents[1] / "examples" / "synthetic"
@@ -80,6 +81,43 @@ def test_audit_rejects_unknown_columns_without_silent_loss(tmp_path: Path) -> No
 
     with pytest.raises(AuditError, match="columns do not match"):
         run_audit(molecules, FIXTURE / "measurements.csv", tmp_path / "out")
+
+
+def test_audit_rejects_extra_csv_cells(tmp_path: Path) -> None:
+    molecules = tmp_path / "molecules.csv"
+    molecules.write_text(
+        "molecule_id,structure,structure_format,source,provenance\n"
+        "one,CCO,smiles,test,test,unheaded-value\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(AuditError, match="wrong number of fields"):
+        run_audit(molecules, FIXTURE / "measurements.csv", tmp_path / "out")
+
+
+def test_audit_preserves_exact_raw_structure_text(tmp_path: Path) -> None:
+    molecules = tmp_path / "molecules.csv"
+    measurements = tmp_path / "measurements.csv"
+    molecules.write_text(
+        "molecule_id,structure,structure_format,source,provenance\n"
+        'one,"  CCO  ",smiles,test,test\n',
+        encoding="utf-8",
+    )
+    measurements.write_text(
+        "measurement_id,molecule_id,endpoint,isoform,nadph_condition,probe,"
+        "readout,value,lower_bound,upper_bound,censoring,unit,quality,source,"
+        "provenance\n"
+        "measure-one,one,direct,isoform,absent,probe,readout,5.0,,,none,unit,"
+        "quality,test,test\n",
+        encoding="utf-8",
+    )
+
+    result = run_audit(molecules, measurements, tmp_path / "out")
+
+    assert result.molecules[0].raw_structure == "  CCO  "
+    assert "input_structure_whitespace" in result.molecules[0].warnings
+    reloaded = load_audited_dataset(tmp_path / "out")
+    assert reloaded.molecules[0].raw_structure == "  CCO  "
 
 
 def test_audit_cli_reports_counts_and_output(

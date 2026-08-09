@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import pytest
 
-from cypshift.schema import Censoring, MeasurementRecord, RecordError
+from cypshift.schema import (
+    Censoring,
+    MeasurementRecord,
+    MoleculeInput,
+    RecordError,
+)
 
 
 def measurement_row(**overrides: str) -> dict[str, str]:
@@ -37,6 +42,20 @@ def test_measurement_preserves_assay_context_and_uncertainty() -> None:
     assert record.censoring is Censoring.NONE
 
 
+def test_molecule_input_preserves_exact_nonblank_structure_text() -> None:
+    record = MoleculeInput.from_mapping(
+        {
+            "molecule_id": "molecule-001",
+            "structure": "  CCO  ",
+            "structure_format": "smiles",
+            "source": "test",
+            "provenance": "hand_authored",
+        }
+    )
+
+    assert record.structure == "  CCO  "
+
+
 @pytest.mark.parametrize(
     ("overrides", "message"),
     [
@@ -53,6 +72,9 @@ def test_measurement_preserves_assay_context_and_uncertainty() -> None:
             {"lower_bound": "6.5", "upper_bound": "6.0"},
             "lower_bound cannot exceed upper_bound",
         ),
+        ({"value": "NaN"}, "value must be finite"),
+        ({"value": "Inf"}, "value must be finite"),
+        ({"lower_bound": "-Inf"}, "lower_bound must be finite"),
     ],
 )
 def test_measurement_rejects_incoherent_numeric_contract(

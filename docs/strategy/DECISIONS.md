@@ -118,3 +118,18 @@
   v7.0.1 and setup-uv v9.0.0. Test the declared minimum Python 3.11 and
   current Python 3.14 on Linux. The build-backend range follows uv's 0.12
   migration guidance while retaining an upper compatibility bound.
+
+## D-009 — Phase 0 source-revision binding
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Release the completed Phase 0 state as package version `0.1.0` and
+  bind its manifests to the signed Git tag `v0.1.0`.
+- Evidence: Package version `0.0.1` covered multiple materially different
+  commits and could not uniquely select reproducible source. A signed tag is
+  available in both source control and installed-wheel metadata without adding
+  a runtime dependency or requiring a Git checkout at prediction time.
+- Alternatives: Read the local Git commit dynamically; add build-backend
+  version plugins; retain package version alone without a source mapping.
+- Reversal condition: Begin post-Phase-0 development, which must advance the
+  development version before producing new run manifests.

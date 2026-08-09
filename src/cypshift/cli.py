@@ -116,9 +116,11 @@ def main(argv: Sequence[str] | None = None) -> int:
                 seed=args.seed,
                 validation_fraction=args.validation_fraction,
             )
-            context_count = training_result.model["fit_summary"]["contexts"]
+            fit_summary = training_result.model["fit_summary"]
             print(
-                f"Training complete: {context_count} endpoint contexts. "
+                "Training complete: "
+                f"{fit_summary['contexts_supported']} supported endpoint contexts; "
+                f"{fit_summary['contexts_unsupported']} unsupported. "
                 f"Model: {training_result.model_path}; "
                 f"split: {training_result.split_path}"
             )
@@ -131,6 +133,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(
                 "Prediction complete: "
                 f"{prediction_result.prediction_count} predictions. "
+                f"{prediction_result.supported_context_count} supported contexts; "
+                f"{prediction_result.unsupported_context_count} unsupported. "
                 f"Outputs: {prediction_result.predictions_path.parent}"
             )
             return 0

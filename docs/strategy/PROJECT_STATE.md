@@ -4,16 +4,17 @@ Last updated: 2026-08-09
 
 ## Current phase
 
-Phase 0 — vertical-slice implementation.
+Phase 0 — independent-review remediation.
 
 ## Best validated system
 
-The complete Phase 0 vertical slice is now the best validated system. On the
-CC0 synthetic fixture, `audit -> train -> predict -> report` produces canonical
+The Phase 0 `v0.1.0` release candidate is the best validated system. On the CC0
+synthetic fixture, `audit -> train -> predict -> report` produces canonical
 data, a duplicate-safe fixture split, an endpoint-context median, 21
 predictions, cards, a hashed manifest, and a static report. Independent
-same-seed runs are byte-identical. The locked package passes 26 tests, Ruff,
-strict mypy, and distribution builds.
+same-seed runs are byte-identical. Independent review findings have been
+remediated locally; the locked package passes 34 tests, Ruff, strict mypy, and
+distribution builds. Hosted and reviewer re-verification remain pending.
 
 ## Strongest evidence
 
@@ -38,6 +39,13 @@ strict mypy, and distribution builds.
 - The report verifies all manifest-listed artifact hashes before rendering and
   states that the fixture, split, and model do not support biological or
   competition-performance claims.
+- Hosted CI passed the installed-wheel vertical slice twice on Python 3.11 and
+  3.14 using read-only permissions, locked dependencies, and full action SHAs.
+- Independent review found silent raw-structure trimming, non-finite numeric
+  acceptance, malformed-row acceptance, missing source revision binding, and
+  an unreported unsupported context. The release candidate preserves exact raw
+  text, rejects malformed numerics and rows, binds `v0.1.0`, and reports the
+  unsupported context explicitly.
 
 ## Active hypotheses
 
@@ -67,5 +75,5 @@ None has been tested.
 
 ## Exact next action
 
-Add the smallest CI workflow and run the installed four-command slice twice in
-fresh environments to close Phase 0 reproducibility checks.
+Run hosted CI and independent re-verification on the review remediations, then
+complete the Phase 0 ledger, closeout record, state handoff, and signed tag.

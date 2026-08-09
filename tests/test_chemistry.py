@@ -27,6 +27,14 @@ def test_invalid_structure_is_explicitly_quarantined() -> None:
     assert record.warnings == ("invalid_structure",)
 
 
+def test_raw_structure_whitespace_is_preserved_and_warned() -> None:
+    record = standardize_molecule(molecule("whitespace", "  CCO  "))
+
+    assert record.raw_structure == "  CCO  "
+    assert record.standardized_structure == "CCO"
+    assert "input_structure_whitespace" in record.warnings
+
+
 def test_fragment_removal_is_never_silent() -> None:
     record = standardize_molecule(
         molecule("salt", "CC[NH+](C)C.[Cl-]")

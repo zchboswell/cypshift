@@ -11,11 +11,11 @@ from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
 from statistics import median
-from typing import Any
+from typing import Any, cast
 
 from rdkit import rdBase
 
-from cypshift import __version__
+from cypshift import __release_tag__, __version__
 from cypshift.audit import (
     AUDIT_SCHEMA_VERSION,
     MEASUREMENT_COLUMNS,
@@ -101,6 +101,8 @@ class PredictionResult:
     prediction_cards_path: Path
     manifest_path: Path
     prediction_count: int
+    supported_context_count: int
+    unsupported_context_count: int
 
 
 def train_baseline(
@@ -124,14 +126,20 @@ def train_baseline(
         row["molecule_id"]: row["partition"] for row in split_rows
     }
     values_by_context: dict[AssayContext, list[float]] = defaultdict(list)
+    observed_counts: dict[AssayContext, int] = defaultdict(int)
+    training_counts: dict[AssayContext, int] = defaultdict(int)
     used_measurements = 0
     for measurement in dataset.measurements:
+        context = _context(measurement)
+        observed_counts[context] += 1
+        if partition_by_molecule[measurement.molecule_id] == "train":
+            training_counts[context] += 1
         if (
             partition_by_molecule[measurement.molecule_id] == "train"
             and measurement.censoring is Censoring.NONE
             and measurement.value is not None
         ):
-            values_by_context[_context(measurement)].append(measurement.value)
+            values_by_context[context].append(measurement.value)
             used_measurements += 1
     if not values_by_context:
         raise BaselineError(
@@ -151,6 +159,21 @@ def train_baseline(
             }
         )
         contexts.append(context_record)
+    unsupported_contexts = []
+    for context in sorted(set(observed_counts) - set(values_by_context)):
+        context_record = dict(zip(CONTEXT_FIELDS, context, strict=True))
+        context_record.update(
+            {
+                "reason": (
+                    "no_training_partition_measurement"
+                    if training_counts[context] == 0
+                    else "no_uncensored_numeric_training_measurement"
+                ),
+                "observed_measurement_count": observed_counts[context],
+                "training_measurement_count": training_counts[context],
+            }
+        )
+        unsupported_contexts.append(context_record)
     model: dict[str, Any] = {
         "schema_version": MODEL_SCHEMA_VERSION,
         "method": "endpoint_context_median",
@@ -163,11 +186,14 @@ def train_baseline(
         "training_data_hashes": dict(dataset.hashes),
         "split_sha256": sha256(split_bytes).hexdigest(),
         "fit_summary": {
-            "contexts": len(contexts),
+            "contexts_observed": len(observed_counts),
+            "contexts_supported": len(contexts),
+            "contexts_unsupported": len(unsupported_contexts),
             "measurements_used": used_measurements,
             "measurements_not_used": len(dataset.measurements) - used_measurements,
         },
         "contexts": contexts,
+        "unsupported_contexts": unsupported_contexts,
     }
     model_bytes = _json_bytes(model)
 
@@ -212,6 +238,9 @@ def predict_baseline(
     contexts = model.get("contexts")
     if not isinstance(contexts, list) or not contexts:
         raise BaselineError("model contains no endpoint contexts")
+    unsupported_contexts = model.get("unsupported_contexts")
+    if not isinstance(unsupported_contexts, list):
+        raise BaselineError("model unsupported_contexts must be an array")
 
     for molecule in dataset.molecules:
         if molecule.status is MoleculeStatus.QUARANTINED:
@@ -278,6 +307,7 @@ def predict_baseline(
         },
         "software": {
             "cypshift": __version__,
+            "source_revision": __release_tag__,
             "python": platform.python_version(),
             "rdkit": rdBase.rdkitVersion,
         },
@@ -297,7 +327,8 @@ def predict_baseline(
                     row["molecule_id"] for row in prediction_rows
                 }
             ),
-            "contexts": len(contexts),
+            "contexts_supported": len(contexts),
+            "contexts_unsupported": len(unsupported_contexts),
             "quarantined_molecules_excluded": sum(
                 molecule.status is MoleculeStatus.QUARANTINED
                 for molecule in dataset.molecules
@@ -316,6 +347,8 @@ def predict_baseline(
         prediction_cards_path=cards_path,
         manifest_path=manifest_path,
         prediction_count=len(prediction_rows),
+        supported_context_count=len(contexts),
+        unsupported_context_count=len(unsupported_contexts),
     )
 
 
@@ -431,7 +464,20 @@ def _read_csv(path: Path, expected_columns: Sequence[str]) -> list[dict[str, str
                 raise BaselineError(
                     f"{path.name} columns do not match its canonical schema"
                 )
-            return [dict(row) for row in reader]
+            rows = []
+            for row in reader:
+                if None in row or any(value is None for value in row.values()):
+                    raise BaselineError(
+                        f"{path.name} row {reader.line_num} has the wrong "
+                        "number of fields"
+                    )
+                rows.append(
+                    {
+                        column: cast(str, row[column])
+                        for column in expected_columns
+                    }
+                )
+            return rows
     except OSError as exc:
         raise BaselineError(f"cannot read {path}: {exc}") from exc
 

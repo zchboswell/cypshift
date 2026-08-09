@@ -41,8 +41,14 @@ def audit_molecules(molecules: list[MoleculeInput]) -> list[MoleculeRecord]:
 def standardize_molecule(molecule: MoleculeInput) -> MoleculeRecord:
     """Parse one SMILES and retain an explicit record of every derived change."""
 
+    parsing_structure = molecule.structure.strip()
+    input_warnings = (
+        ["input_structure_whitespace"]
+        if parsing_structure != molecule.structure
+        else []
+    )
     with rdBase.BlockLogs():
-        parsed: Chem.Mol | None = Chem.MolFromSmiles(molecule.structure)
+        parsed: Chem.Mol | None = Chem.MolFromSmiles(parsing_structure)
     if parsed is None:
         return MoleculeRecord(
             molecule_id=molecule.molecule_id,
@@ -55,7 +61,7 @@ def standardize_molecule(molecule: MoleculeInput) -> MoleculeRecord:
             input_fragments=(),
             standardization_changed=False,
             duplicate_of=None,
-            warnings=("invalid_structure",),
+            warnings=(*input_warnings, "invalid_structure"),
             standardization_version=STANDARDIZATION_VERSION,
             source=molecule.source,
             provenance=molecule.provenance,
@@ -77,7 +83,7 @@ def standardize_molecule(molecule: MoleculeInput) -> MoleculeRecord:
     )
     changed = standardized_structure != parsed_structure
 
-    warnings: list[str] = []
+    warnings = input_warnings
     if len(fragments) > 1:
         warnings.append("multiple_fragments_input")
     if changed:
