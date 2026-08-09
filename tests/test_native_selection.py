@@ -828,12 +828,18 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
         predictions,
         source_revision="test-revision",
     )
+    official_split = tmp_path / "external_official_split.csv"
+    official_split.write_bytes(
+        (validation / "tdc" / "official_split.csv").read_bytes()
+    )
+    (validation / "tdc" / "official_split.csv").unlink()
     public_sources = tmp_path / "public_sources.json"
     _write_public_sources(public_sources)
 
     first = run_retained_mean_scoring(
         octant,
         tdc,
+        official_split,
         validation,
         combinations,
         predictions,
@@ -844,6 +850,7 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
     run_retained_mean_scoring(
         octant,
         tdc,
+        official_split,
         validation,
         combinations,
         predictions,
@@ -870,6 +877,7 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
         run_retained_mean_scoring(
             octant,
             tdc,
+            official_split,
             validation,
             combinations,
             predictions,
@@ -890,6 +898,7 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
         run_retained_mean_scoring(
             octant,
             tdc,
+            official_split,
             validation,
             combinations,
             predictions,
@@ -904,6 +913,7 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
         run_retained_mean_scoring(
             octant,
             tdc,
+            official_split,
             validation,
             combinations,
             predictions,

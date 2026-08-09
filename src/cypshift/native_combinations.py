@@ -20,6 +20,7 @@ from cypshift.native_evaluation import (
     _retained_configurations,
     _tdc_anchors,
     _tdc_score_row,
+    _verify_official_split,
     _verify_prediction_inputs,
     _verify_prediction_receipt,
     _verify_selection_receipt,
@@ -586,6 +587,7 @@ def run_retained_mean_prediction(
 def run_retained_mean_scoring(
     octant_canonical: Path,
     tdc_canonical: Path,
+    tdc_official_split: Path,
     validation_root: Path,
     combination_root: Path,
     prediction_root: Path,
@@ -608,6 +610,7 @@ def run_retained_mean_scoring(
     verified_inputs = _verify_input_receipts(
         octant_canonical, tdc_canonical, validation_root
     )
+    _verify_official_split(tdc_official_split, validation_root)
     combination_manifest, retained = _verify_combination_receipt(combination_root)
     if combination_manifest.get("input_hashes") != verified_inputs:
         raise NativeSelectionError("combination inputs do not match canonical receipts")
@@ -615,7 +618,7 @@ def run_retained_mean_scoring(
         prediction_root, combination_root, combination_manifest
     )
     predictions = _validated_mean_predictions(prediction_root, prediction_manifest, retained)
-    _verify_scoring_populations(predictions, validation_root)
+    _verify_scoring_populations(predictions, validation_root, tdc_official_split)
     thresholds = _mean_oof_thresholds(combination_root)
     exclusions = _strict_exclusions(predictions, validation_root)
     anchors = _tdc_anchors(_read_json(public_sources_path))
@@ -722,6 +725,7 @@ def run_retained_mean_scoring(
             ),
             "combination_aggregate_sha256": combination_manifest["aggregate_sha256"],
             "public_sources_sha256": _file_hash(public_sources_path),
+            "official_split_sha256": _file_hash(tdc_official_split),
             "input_hashes": verified_inputs,
             "outputs": outputs,
             "aggregate_recipe": AGGREGATE_RECIPE,
@@ -832,7 +836,9 @@ def _validated_mean_predictions(
 
 
 def _verify_scoring_populations(
-    predictions: Sequence[Mapping[str, str]], validation_root: Path
+    predictions: Sequence[Mapping[str, str]],
+    validation_root: Path,
+    tdc_official_split: Path,
 ) -> None:
     expected: dict[tuple[str, str], set[str]] = {
         ("octant_cyp", "cyp3a4_active_preincubation_pIC50"): {
@@ -846,7 +852,7 @@ def _verify_scoring_populations(
     }
     for task in TDC_TASKS:
         expected[("tdc_admet_group", task)] = set()
-    for row in _read_csv(validation_root / "tdc" / "official_split.csv"):
+    for row in _read_csv(tdc_official_split):
         if row.get("partition") == "test":
             key = ("tdc_admet_group", row.get("task", ""))
             if key not in expected:

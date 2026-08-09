@@ -12,6 +12,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--octant-canonical", type=Path, required=True)
     parser.add_argument("--tdc-canonical", type=Path, required=True)
+    parser.add_argument("--tdc-official-split", type=Path, required=True)
     parser.add_argument("--validation", type=Path, required=True)
     parser.add_argument("--combinations", type=Path, required=True)
     parser.add_argument("--predictions", type=Path, required=True)
@@ -23,6 +24,7 @@ def main() -> None:
     result = run_retained_mean_scoring(
         args.octant_canonical,
         args.tdc_canonical,
+        args.tdc_official_split,
         args.validation,
         args.combinations,
         args.predictions,
