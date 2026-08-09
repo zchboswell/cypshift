@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from cypshift.native_combinations import run_native_combinations
 from cypshift.native_evaluation import (
     prepare_prediction_inputs,
     run_heldout_prediction,
@@ -40,6 +41,11 @@ def _structure_hash(structure: str) -> str:
 
 def _file_hash(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _read_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
@@ -215,7 +221,7 @@ def _fixture(
             tdc_measurements.append(
                 {
                     "molecule_id": molecule_id,
-                    "value": str(index % 2),
+                    "value": str((index // 4) % 2),
                     "lower_bound": "",
                     "upper_bound": "",
                 }
@@ -597,4 +603,73 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
             predictions,
             public_sources,
             tmp_path / "tampered-scores",
+        )
+
+
+def test_native_combinations_are_nested_label_clean_and_deterministic(
+    tmp_path: Path,
+) -> None:
+    octant, tdc, validation, _ = _fixture(tmp_path / "fixture")
+    selection = tmp_path / "selection"
+    run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
+
+    first = run_native_combinations(
+        octant,
+        tdc,
+        validation,
+        selection,
+        tmp_path / "combinations-one",
+        source_revision="test-revision",
+    )
+    run_native_combinations(
+        octant,
+        tdc,
+        validation,
+        selection,
+        tmp_path / "combinations-two",
+        source_revision="test-revision",
+    )
+    for path in sorted((tmp_path / "combinations-one").iterdir()):
+        assert path.read_bytes() == (
+            tmp_path / "combinations-two" / path.name
+        ).read_bytes()
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    assert manifest["combination_prediction_rows"] == 192
+    assert manifest["random_assignment_rows"] == 48
+    assert manifest["random_prediction_rows"] == 192
+    assert manifest["model_fits"] == 384
+    assert manifest["heldout_labels_parsed"] == 0
+    assert manifest["tdc_public_test_evaluations"] == 0
+    assert manifest["octant_outer_evaluations"] == 0
+    assert manifest["random_results_used_for_selection"] is False
+
+    retained = json.loads(first.retained_path.read_text(encoding="utf-8"))
+    assert len(retained["datasets"]) == 4
+    assert all(
+        dataset["retained_candidate"]
+        in {
+            "best_single",
+            "unweighted_mean",
+            "median",
+            "nonnegative_linear_stack",
+        }
+        for dataset in retained["datasets"]
+    )
+    assignments = _read_rows(
+        tmp_path / "combinations-one" / "random_fold_assignments.csv"
+    )
+    by_structure: dict[tuple[str, str, str], set[str]] = {}
+    for row in assignments:
+        key = (row["benchmark"], row["task"], row["standardized_structure_hash"])
+        by_structure.setdefault(key, set()).add(row["random_fold"])
+    assert all(len(folds) == 1 for folds in by_structure.values())
+
+    with pytest.raises(NativeSelectionError, match="already exists"):
+        run_native_combinations(
+            octant,
+            tdc,
+            validation,
+            selection,
+            tmp_path / "combinations-one",
+            source_revision="test-revision",
         )
