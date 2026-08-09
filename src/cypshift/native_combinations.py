@@ -39,7 +39,7 @@ from cypshift.native_selection import (
     _write_json,
 )
 
-COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v2"
+COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v3"
 COMBINATION_CANDIDATES = (
     "best_single",
     "unweighted_mean",
@@ -120,7 +120,8 @@ class CombinationResult:
     manifest_path: Path
     retained_path: Path
     combination_rows: int
-    model_fits: int
+    base_model_fits: int
+    total_fit_operations: int
 
 
 def run_native_combinations(
@@ -173,7 +174,7 @@ def run_native_combinations(
     random_prediction_rows: list[dict[str, str]] = []
     optimism_rows: list[dict[str, str]] = []
     combination_rows = 0
-    model_fits = 0
+    base_model_fits = 0
     with combination_path.open("x", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(
             handle, fieldnames=COMBINATION_PREDICTION_COLUMNS, lineterminator="\n"
@@ -185,7 +186,7 @@ def run_native_combinations(
             candidates, nested_weights, nested_fits = _combination_candidates(
                 dataset, base, configurations[key]
             )
-            model_fits += nested_fits
+            base_model_fits += nested_fits
             scores = {
                 name: _primary_score(dataset, values)
                 for name, values in candidates.items()
@@ -261,7 +262,7 @@ def run_native_combinations(
             random_base, random_fits = _retained_base_oof(
                 random_dataset, configurations[key]
             )
-            model_fits += random_fits
+            base_model_fits += random_fits
             for index, molecule_id in enumerate(dataset.molecule_ids):
                 random_assignment_rows.append(
                     {
@@ -345,6 +346,9 @@ def run_native_combinations(
             optimism_path,
         )
     }
+    nested_nnls_fits = sum(len(set(dataset.folds)) for dataset in datasets)
+    final_nnls_fits = len(datasets)
+    total_fit_operations = base_model_fits + nested_nnls_fits + final_nnls_fits
     manifest_path = output_directory / "combination_manifest.json"
     _write_json(
         manifest_path,
@@ -368,7 +372,10 @@ def run_native_combinations(
             "combination_prediction_rows": combination_rows,
             "random_assignment_rows": len(random_assignment_rows),
             "random_prediction_rows": len(random_prediction_rows),
-            "model_fits": model_fits,
+            "base_model_fits": base_model_fits,
+            "nested_nnls_fits": nested_nnls_fits,
+            "final_nnls_fits": final_nnls_fits,
+            "total_fit_operations": total_fit_operations,
             "heldout_labels_parsed": 0,
             "tdc_public_test_evaluations": 0,
             "octant_outer_evaluations": 0,
@@ -385,7 +392,8 @@ def run_native_combinations(
         manifest_path=manifest_path,
         retained_path=retained_path,
         combination_rows=combination_rows,
-        model_fits=model_fits,
+        base_model_fits=base_model_fits,
+        total_fit_operations=total_fit_operations,
     )
 
 

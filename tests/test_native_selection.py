@@ -643,7 +643,10 @@ def test_native_combinations_are_nested_label_clean_and_deterministic(
     assert manifest["combination_prediction_rows"] == 192
     assert manifest["random_assignment_rows"] == 48
     assert manifest["random_prediction_rows"] == 192
-    assert manifest["model_fits"] == 384
+    assert manifest["base_model_fits"] == 384
+    assert manifest["nested_nnls_fits"] == 16
+    assert manifest["final_nnls_fits"] == 4
+    assert manifest["total_fit_operations"] == 404
     assert manifest["heldout_labels_parsed"] == 0
     assert manifest["tdc_public_test_evaluations"] == 0
     assert manifest["octant_outer_evaluations"] == 0

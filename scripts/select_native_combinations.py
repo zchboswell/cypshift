@@ -23,8 +23,9 @@ def main() -> None:
     )
     print(
         f"Native combinations complete: {result.combination_rows} OOF candidate "
-        f"rows from {result.model_fits} nested/random fits; zero held-out labels "
-        f"parsed and zero held-out evaluations. Outputs: {args.out}"
+        f"rows from {result.base_model_fits} base-model fits and "
+        f"{result.total_fit_operations - result.base_model_fits} NNLS fits; zero "
+        f"held-out labels parsed and zero held-out evaluations. Outputs: {args.out}"
     )
 
 
