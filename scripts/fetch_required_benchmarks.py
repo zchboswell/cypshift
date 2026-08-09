@@ -31,6 +31,8 @@ def main() -> None:
     octant = _mapping(_mapping(manifest, "sources"), "octant_cyp")
     tdc = _mapping(_mapping(manifest, "sources"), "tdc_admet")
     revision = _text(octant, "revision")
+    octant_repository = _mapping(octant, "linked_repository")
+    inhibition_protocol = _mapping(octant_repository, "inhibition_protocol")
     inhibition = next(
         (
             entry
@@ -58,6 +60,18 @@ def main() -> None:
                 expected_hash=_digest(inhibition, "sha256"),
             )
         )
+        receipts.append(
+            _fetch(
+                _text(inhibition_protocol, "url"),
+                temporary_root
+                / "octant_cyp"
+                / revision
+                / _text(inhibition_protocol, "path"),
+                root=temporary_root,
+                expected_size=_integer(inhibition_protocol, "size_bytes"),
+                expected_hash=_digest(inhibition_protocol, "sha256"),
+            )
+        )
         archive_name = _text(archive, "path")
         receipts.append(
             _fetch(
@@ -79,7 +93,7 @@ def main() -> None:
             encoding="utf-8",
         )
         os.replace(temporary_root, args.out)
-    print(f"Verified 2 required public inputs in {args.out}")
+    print(f"Verified 2 benchmark inputs and 1 assay protocol in {args.out}")
 
 
 def _fetch(
@@ -130,7 +144,7 @@ def _read_manifest(path: Path) -> dict[str, Any]:
         raise SystemExit(f"cannot read public source manifest {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise SystemExit("public source manifest must be an object")
-    if value.get("schema_version") != "cypshift.public_sources.v1":
+    if value.get("schema_version") != "cypshift.public_sources.v2":
         raise SystemExit("unsupported public source manifest schema")
     return cast(dict[str, Any], value)
 

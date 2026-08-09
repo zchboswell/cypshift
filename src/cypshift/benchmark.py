@@ -15,16 +15,25 @@ from typing import Any, cast
 from cypshift.audit import MEASUREMENT_COLUMNS, MOLECULE_INPUT_COLUMNS
 from cypshift.schema import MeasurementRecord, MoleculeInput, RecordError
 
-OCTANT_ADAPTER_SCHEMA_VERSION = "cypshift.octant_inhibition_adapter.v1"
+OCTANT_ADAPTER_SCHEMA_VERSION = "cypshift.octant_inhibition_adapter.v2"
 OCTANT_DATASET_ID = (
     "openadmet/Octant_CYP_inhibition_reactivity_blog_release"
 )
 OCTANT_ENDPOINT = "inhibition_pIC50_active_enzyme_preincubation"
-OCTANT_NADPH_CONDITION = "not_reported_active_enzyme_preincubation_30min"
+OCTANT_NADPH_CONDITION = (
+    "nadp_plus_100uM_with_g6p_g6pd_regeneration_"
+    "active_preincubation_30min"
+)
+OCTANT_PROTOCOL_PATH = "protocols/cyp_inhibition_assay.md"
+OCTANT_PROTOCOL_BLOB_SHA1 = "53f55aa8333bd6d64671b71589e874d3a0a29f53"
+OCTANT_PROTOCOL_SHA256 = (
+    "5077b362330a505a7ecb703a1fac8858e0487af712d0ad51438570edbef77265"
+)
 OCTANT_ASSAY_WARNING = (
-    "Active-enzyme preincubation may combine reversible inhibition with "
-    "metabolism-dependent effects; this is not the challenge minus-NADPH "
-    "direct-inhibition endpoint."
+    "NADP+ was supplied with a G6P/G6PD regeneration system during 30-minute "
+    "active-CYP3A4 preincubation, creating NADPH-generating metabolic "
+    "conditions; this is not the challenge minus-NADPH direct-inhibition "
+    "endpoint."
 )
 OCTANT_INHIBITION_COLUMNS = (
     "ocnt_batch",
@@ -192,6 +201,11 @@ def prepare_octant_inhibition(
                 {
                     **provenance_base,
                     "assay_warning": OCTANT_ASSAY_WARNING,
+                    "inhibition_protocol": {
+                        "git_blob_sha1": OCTANT_PROTOCOL_BLOB_SHA1,
+                        "path": OCTANT_PROTOCOL_PATH,
+                        "sha256": OCTANT_PROTOCOL_SHA256,
+                    },
                     "source_values": source_values,
                 }
             ),
@@ -228,8 +242,17 @@ def prepare_octant_inhibition(
             "isoform": "CYP3A4",
             "nadph_condition": OCTANT_NADPH_CONDITION,
             "preincubation": "30 minutes with active CYP3A4",
+            "cofactor_system": (
+                "100 uM NADP+ with 1X internal G6P/G6PD regeneration system; "
+                "NADPH-generating conditions, not directly added exogenous NADPH"
+            ),
             "probe": "DBOMF",
             "readout": "fluorescence",
+            "protocol": {
+                "git_blob_sha1": OCTANT_PROTOCOL_BLOB_SHA1,
+                "path": OCTANT_PROTOCOL_PATH,
+                "sha256": OCTANT_PROTOCOL_SHA256,
+            },
             "warning": OCTANT_ASSAY_WARNING,
         },
         "outputs": {
@@ -369,6 +392,9 @@ __all__ = [
     "OCTANT_ENDPOINT",
     "OCTANT_INHIBITION_COLUMNS",
     "OCTANT_NADPH_CONDITION",
+    "OCTANT_PROTOCOL_BLOB_SHA1",
+    "OCTANT_PROTOCOL_PATH",
+    "OCTANT_PROTOCOL_SHA256",
     "OctantAdapterResult",
     "prepare_octant_inhibition",
 ]

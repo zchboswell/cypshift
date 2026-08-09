@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 from pathlib import Path
 
@@ -11,7 +12,12 @@ from cypshift.audit import (
     MOLECULE_INPUT_COLUMNS,
     run_audit,
 )
-from cypshift.tdc import TDC_SPLIT_COLUMNS, TDC_TASKS
+from cypshift.tdc import (
+    TDC_ADAPTER_SCHEMA_VERSION,
+    TDC_DATASET_ID,
+    TDC_SPLIT_COLUMNS,
+    TDC_TASKS,
+)
 from cypshift.validation import (
     ValidationDataError,
     audit_tdc_official_splits,
@@ -28,7 +34,12 @@ def _write_csv(
         writer.writerows(rows)
 
 
-def _measurement(molecule_id: str, value: str, isoform: str = "CYP3A4") -> dict[str, str]:
+def _measurement(
+    molecule_id: str,
+    value: str,
+    isoform: str = "CYP3A4",
+    source: str = "synthetic_test",
+) -> dict[str, str]:
     return {
         "measurement_id": f"{molecule_id}:measurement",
         "molecule_id": molecule_id,
@@ -43,7 +54,7 @@ def _measurement(molecule_id: str, value: str, isoform: str = "CYP3A4") -> dict[
         "censoring": "none",
         "unit": "benchmark_unit",
         "quality": "synthetic_test",
-        "source": "synthetic_test",
+        "source": source,
         "provenance": "synthetic_test",
     }
 
@@ -61,6 +72,23 @@ def _audit(
     canonical = root / "canonical"
     run_audit(molecules_path, measurements_path, canonical)
     return canonical
+
+
+def _adapter_manifest(path: Path, split_path: Path) -> Path:
+    path.write_text(
+        json.dumps(
+            {
+                "schema_version": TDC_ADAPTER_SCHEMA_VERSION,
+                "outputs": {
+                    "official_split.csv": hashlib.sha256(
+                        split_path.read_bytes()
+                    ).hexdigest()
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    return path
 
 
 def test_octant_grouped_split_is_deterministic_and_scaffold_safe(
@@ -129,8 +157,11 @@ def test_tdc_split_audit_preserves_official_and_flags_standardized_overlap(
         source_rows = [
             ("train_val", "C(C)O", "0"),
             ("train_val", "c1ccncc1", "1"),
+            ("train_val", "c1ccccc1", "0"),
+            ("train_val", "Cc1ccccc1", "1"),
+            ("train_val", "C1CCCCC1", "0"),
             ("test", "CCO", "0"),
-            ("test", "C1CCCCC1", "1"),
+            ("test", "c1ccoc1", "1"),
         ]
         for index, (partition, structure, label) in enumerate(source_rows, start=1):
             molecule_id = f"tdc:{task}:{partition}:{index:05d}"
@@ -139,11 +170,24 @@ def test_tdc_split_audit_preserves_official_and_flags_standardized_overlap(
                     "molecule_id": molecule_id,
                     "structure": structure,
                     "structure_format": "smiles",
-                    "source": f"synthetic_tdc/{task}",
-                    "provenance": "synthetic_tdc",
+                    "source": f"{TDC_DATASET_ID}/{task}",
+                    "provenance": json.dumps(
+                        {
+                            "official_partition": partition,
+                            "source_row": index + 1,
+                            "task": task,
+                        }
+                    ),
                 }
             )
-            measurements.append(_measurement(molecule_id, label, isoform))
+            measurements.append(
+                _measurement(
+                    molecule_id,
+                    label,
+                    isoform,
+                    source=f"{TDC_DATASET_ID}/{task}",
+                )
+            )
             split_rows.append(
                 {
                     "molecule_id": molecule_id,
@@ -155,12 +199,18 @@ def test_tdc_split_audit_preserves_official_and_flags_standardized_overlap(
     canonical = _audit(tmp_path / "tdc", molecules, measurements)
     split_path = tmp_path / "official_split.csv"
     _write_csv(split_path, TDC_SPLIT_COLUMNS, split_rows)
+    adapter_manifest = _adapter_manifest(tmp_path / "adapter_manifest.json", split_path)
 
-    first = audit_tdc_official_splits(canonical, split_path, tmp_path / "first")
-    second = audit_tdc_official_splits(canonical, split_path, tmp_path / "second")
+    first = audit_tdc_official_splits(
+        canonical, split_path, adapter_manifest, tmp_path / "first"
+    )
+    second = audit_tdc_official_splits(
+        canonical, split_path, adapter_manifest, tmp_path / "second"
+    )
 
     assert first.report_path.read_bytes() == second.report_path.read_bytes()
     assert first.exclusions_path.read_bytes() == second.exclusions_path.read_bytes()
+    assert first.inner_folds_path.read_bytes() == second.inner_folds_path.read_bytes()
     report = json.loads(first.report_path.read_text(encoding="utf-8"))
     assert first.exclusion_count == 3
     assert report["metric"] == {
@@ -168,6 +218,11 @@ def test_tdc_split_audit_preserves_official_and_flags_standardized_overlap(
         "name": "AUPRC",
     }
     assert report["public_test_evaluations"] == 0
+    with first.inner_folds_path.open(encoding="utf-8", newline="") as handle:
+        inner_rows = list(csv.DictReader(handle))
+    assert first.inner_fold_row_count == 15
+    assert all("train_val" in row["molecule_id"] for row in inner_rows)
+    assert {row["inner_fold"] for row in inner_rows} == {"0", "1", "2", "3"}
     for task in TDC_TASKS:
         overlap = report["tasks"][task]["standardized_structure_overlap"]
         assert overlap == {
@@ -177,6 +232,52 @@ def test_tdc_split_audit_preserves_official_and_flags_standardized_overlap(
             "train_val_rows": 1,
         }
         assert report["tasks"][task]["raw_structure_overlap"]["structures"] == 0
+        task_inner = [row for row in inner_rows if row["task"] == task]
+        by_id = {row["molecule_id"]: row for row in task_inner}
+        benzene_id = f"tdc:{task}:train_val:00003"
+        toluene_id = f"tdc:{task}:train_val:00004"
+        assert by_id[benzene_id]["group_hash"] == by_id[toluene_id]["group_hash"]
+        assert by_id[benzene_id]["inner_fold"] == by_id[toluene_id]["inner_fold"]
+
+    tampered_rows = [dict(row) for row in split_rows]
+    tampered_rows[0]["task"] = "cyp2d6_veith"
+    tampered_rows[0]["source_row"] = "999999"
+    tampered_split = tmp_path / "tampered_split.csv"
+    _write_csv(tampered_split, TDC_SPLIT_COLUMNS, tampered_rows)
+    tampered_manifest = _adapter_manifest(
+        tmp_path / "tampered_manifest.json", tampered_split
+    )
+    with pytest.raises(ValidationDataError, match="canonical provenance"):
+        audit_tdc_official_splits(
+            canonical,
+            tampered_split,
+            tampered_manifest,
+            tmp_path / "tampered-output",
+        )
+
+
+def test_tdc_split_audit_rejects_adapter_manifest_hash_mismatch(
+    tmp_path: Path,
+) -> None:
+    split_path = tmp_path / "official_split.csv"
+    _write_csv(split_path, TDC_SPLIT_COLUMNS, [])
+    manifest = tmp_path / "adapter_manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": TDC_ADAPTER_SCHEMA_VERSION,
+                "outputs": {"official_split.csv": "0" * 64},
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValidationDataError, match="does not match"):
+        audit_tdc_official_splits(
+            tmp_path / "missing-canonical",
+            split_path,
+            manifest,
+            tmp_path / "output",
+        )
 
 
 def test_validation_artifacts_refuse_overwrite(tmp_path: Path) -> None:

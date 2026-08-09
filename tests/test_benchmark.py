@@ -12,6 +12,9 @@ from cypshift.benchmark import (
     OCTANT_ASSAY_WARNING,
     OCTANT_INHIBITION_COLUMNS,
     OCTANT_NADPH_CONDITION,
+    OCTANT_PROTOCOL_BLOB_SHA1,
+    OCTANT_PROTOCOL_PATH,
+    OCTANT_PROTOCOL_SHA256,
     BenchmarkDataError,
     prepare_octant_inhibition,
 )
@@ -89,6 +92,16 @@ def test_octant_adapter_preserves_context_and_reuses_canonical_audit(
     assert provenance["source_values"]["CYP3A4_pIC50_se"] == "0.05"
     assert manifest["source_revision"] == "frozen-revision"
     assert manifest["assay_context"]["warning"] == OCTANT_ASSAY_WARNING
+    assert manifest["schema_version"] == "cypshift.octant_inhibition_adapter.v2"
+    assert manifest["assay_context"]["protocol"] == {
+        "git_blob_sha1": OCTANT_PROTOCOL_BLOB_SHA1,
+        "path": OCTANT_PROTOCOL_PATH,
+        "sha256": OCTANT_PROTOCOL_SHA256,
+    }
+    assert "NADPH-generating metabolic conditions" in OCTANT_ASSAY_WARNING
+    assert "not directly added exogenous NADPH" in manifest["assay_context"][
+        "cofactor_system"
+    ]
     assert manifest["measurement_omissions"] == {
         "missing_source_CYP3A4_pIC50": 0
     }
@@ -96,6 +109,26 @@ def test_octant_adapter_preserves_context_and_reuses_canonical_audit(
     assert canonical.report["summary"]["measurements_total"] == 2
     assert canonical.molecules[0].raw_structure == " CCO "
     assert "input_structure_whitespace" in canonical.molecules[0].warnings
+
+
+def test_public_source_contract_pins_octant_inhibition_protocol() -> None:
+    source_manifest = Path(__file__).parents[1] / "benchmarks" / "public_sources.json"
+    manifest = json.loads(source_manifest.read_text(encoding="utf-8"))
+    octant = manifest["sources"]["octant_cyp"]
+
+    assert manifest["schema_version"] == "cypshift.public_sources.v2"
+    assert octant["assay_context"]["nadph_condition"] == OCTANT_NADPH_CONDITION
+    assert octant["linked_repository"]["inhibition_protocol"] == {
+        "git_blob_sha1": OCTANT_PROTOCOL_BLOB_SHA1,
+        "path": OCTANT_PROTOCOL_PATH,
+        "sha256": OCTANT_PROTOCOL_SHA256,
+        "size_bytes": 5251,
+        "url": (
+            "https://raw.githubusercontent.com/OpenADMET/Octant_CYP_blog_post/"
+            "58b3d6a63d25b18bee0b68af07cf1a5b30e6cf0d/"
+            "protocols/cyp_inhibition_assay.md"
+        ),
+    }
 
 
 def test_octant_adapter_retains_molecules_without_numeric_results(

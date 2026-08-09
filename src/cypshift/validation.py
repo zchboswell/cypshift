@@ -18,10 +18,15 @@ from rdkit import Chem, rdBase
 from cypshift.baseline import BaselineError, load_audited_dataset
 from cypshift.metrics import AUPRC_DIRECTION
 from cypshift.schema import MoleculeRecord, MoleculeStatus
-from cypshift.tdc import TDC_SPLIT_COLUMNS, TDC_TASKS
+from cypshift.tdc import (
+    TDC_ADAPTER_SCHEMA_VERSION,
+    TDC_DATASET_ID,
+    TDC_SPLIT_COLUMNS,
+    TDC_TASKS,
+)
 
 OCTANT_GROUPED_SPLIT_SCHEMA_VERSION = "cypshift.octant_grouped_split.v1"
-TDC_SPLIT_AUDIT_SCHEMA_VERSION = "cypshift.tdc_split_audit.v1"
+TDC_SPLIT_AUDIT_SCHEMA_VERSION = "cypshift.tdc_split_audit.v2"
 OCTANT_SPLIT_COLUMNS = (
     "molecule_id",
     "standardized_structure_hash",
@@ -37,6 +42,14 @@ TDC_EXCLUSION_COLUMNS = (
     "molecule_id",
     "standardized_structure_hash",
     "reason",
+)
+TDC_INNER_FOLD_COLUMNS = (
+    "task",
+    "molecule_id",
+    "standardized_structure_hash",
+    "group_type",
+    "group_hash",
+    "inner_fold",
 )
 
 
@@ -60,7 +73,9 @@ class TdcSplitAuditResult:
 
     report_path: Path
     exclusions_path: Path
+    inner_folds_path: Path
     exclusion_count: int
+    inner_fold_row_count: int
 
 
 def freeze_octant_grouped_split(
@@ -199,7 +214,10 @@ def freeze_octant_grouped_split(
 def audit_tdc_official_splits(
     canonical_directory: Path,
     official_split_path: Path,
+    adapter_manifest_path: Path,
     output_directory: Path,
+    *,
+    seed: int = 20260809,
 ) -> TdcSplitAuditResult:
     """Audit exact and standardized leakage without changing official splits."""
 
@@ -208,8 +226,20 @@ def audit_tdc_official_splits(
             f"output path already exists: {output_directory}. "
             "Validation artifacts are immutable."
         )
-    dataset = _load_dataset(canonical_directory)
     split_rows = _read_csv(official_split_path, TDC_SPLIT_COLUMNS)
+    actual_split_hash = _file_hash(official_split_path)
+    adapter_manifest = _read_json(adapter_manifest_path)
+    if adapter_manifest.get("schema_version") != TDC_ADAPTER_SCHEMA_VERSION:
+        raise ValidationDataError("unsupported TDC adapter manifest schema")
+    outputs = adapter_manifest.get("outputs")
+    if not isinstance(outputs, Mapping):
+        raise ValidationDataError("TDC adapter manifest outputs must be an object")
+    expected_split_hash = outputs.get("official_split.csv")
+    if expected_split_hash != actual_split_hash:
+        raise ValidationDataError(
+            "official split hash does not match the TDC adapter manifest"
+        )
+    dataset = _load_dataset(canonical_directory)
     molecule_by_id = {molecule.molecule_id: molecule for molecule in dataset.molecules}
     if len(molecule_by_id) != len(dataset.molecules):
         raise ValidationDataError("canonical TDC molecule IDs are not unique")
@@ -225,6 +255,19 @@ def audit_tdc_official_splits(
         raise ValidationDataError(
             "official split molecule IDs do not exactly match canonical molecules"
         )
+    unexpected_tasks = sorted({row["task"] for row in split_rows} - set(TDC_TASKS))
+    if unexpected_tasks:
+        raise ValidationDataError(
+            "official split has unexpected tasks: " + ", ".join(unexpected_tasks)
+        )
+    unexpected_partitions = sorted(
+        {row["partition"] for row in split_rows} - {"train_val", "test"}
+    )
+    if unexpected_partitions:
+        raise ValidationDataError(
+            "official split has unexpected partitions: "
+            + ", ".join(unexpected_partitions)
+        )
     measurement_by_id = {}
     for measurement in dataset.measurements:
         if measurement.molecule_id in measurement_by_id:
@@ -238,18 +281,16 @@ def audit_tdc_official_splits(
         raise ValidationDataError(
             "TDC split audit requires one label for every canonical molecule"
         )
+    for row in split_rows:
+        molecule = molecule_by_id[row["molecule_id"]]
+        measurement = measurement_by_id[row["molecule_id"]]
+        _validate_tdc_split_row(row, molecule, measurement.isoform, measurement.source)
 
     tasks: dict[str, Any] = {}
     exclusion_rows: list[dict[str, str]] = []
+    inner_fold_rows: list[dict[str, str]] = []
     for task in TDC_TASKS:
         task_rows = [row for row in split_rows if row["task"] == task]
-        unexpected_partitions = sorted(
-            {row["partition"] for row in task_rows} - {"train_val", "test"}
-        )
-        if unexpected_partitions:
-            raise ValidationDataError(
-                f"{task} has unexpected partitions: {', '.join(unexpected_partitions)}"
-            )
         rows_by_partition = {
             partition: [
                 row for row in task_rows if row["partition"] == partition
@@ -297,6 +338,31 @@ def audit_tdc_official_splits(
                         "reason": "standardized_structure_in_train_val",
                     }
                 )
+        train_groups: dict[str, list[str]] = defaultdict(list)
+        for molecule in molecules_by_partition["train_val"]:
+            _, group_hash = _scaffold_group(molecule)
+            train_groups[group_hash].append(molecule.molecule_id)
+        if len(train_groups) < 4:
+            raise ValidationDataError(
+                f"{task} requires at least four chemistry groups for inner folds"
+            )
+        inner_fold_by_group = _balanced_group_folds(
+            train_groups, seed, fold_count=4
+        )
+        for molecule in sorted(
+            molecules_by_partition["train_val"], key=lambda item: item.molecule_id
+        ):
+            group_type, group_hash = _scaffold_group(molecule)
+            inner_fold_rows.append(
+                {
+                    "task": task,
+                    "molecule_id": molecule.molecule_id,
+                    "standardized_structure_hash": _structure_hash(molecule),
+                    "group_type": group_type,
+                    "group_hash": group_hash,
+                    "inner_fold": str(inner_fold_by_group[group_hash]),
+                }
+            )
         partition_summary = {}
         for partition, molecules in molecules_by_partition.items():
             positives = sum(
@@ -336,20 +402,38 @@ def audit_tdc_official_splits(
                     len(labels) > 1 for labels in labels_by_overlap.values()
                 ),
             },
+            "inner_folds": [
+                {
+                    "fold": fold,
+                    "rows": sum(
+                        inner_fold_by_group[group_hash] == fold
+                        for group_hash in train_groups
+                        for _ in train_groups[group_hash]
+                    ),
+                    "groups": sum(
+                        assigned_fold == fold
+                        for assigned_fold in inner_fold_by_group.values()
+                    ),
+                    "positive": sum(
+                        measurement_by_id[molecule_id].value == 1.0
+                        for group_hash, molecule_ids in train_groups.items()
+                        if inner_fold_by_group[group_hash] == fold
+                        for molecule_id in molecule_ids
+                    ),
+                }
+                for fold in range(4)
+            ],
         }
-    unexpected_tasks = sorted({row["task"] for row in split_rows} - set(TDC_TASKS))
-    if unexpected_tasks:
-        raise ValidationDataError(
-            "official split has unexpected tasks: " + ", ".join(unexpected_tasks)
-        )
-
     exclusion_rows.sort(key=lambda row: (row["task"], row["molecule_id"]))
+    inner_fold_rows.sort(key=lambda row: (row["task"], row["molecule_id"]))
     exclusion_bytes = _csv_bytes(TDC_EXCLUSION_COLUMNS, exclusion_rows)
+    inner_fold_bytes = _csv_bytes(TDC_INNER_FOLD_COLUMNS, inner_fold_rows)
     report = {
         "schema_version": TDC_SPLIT_AUDIT_SCHEMA_VERSION,
         "input_hashes": {
             **dict(dataset.hashes),
-            "official_split.csv": _file_hash(official_split_path),
+            "adapter_manifest.json": _file_hash(adapter_manifest_path),
+            "official_split.csv": actual_split_hash,
         },
         "official_policy": (
             "Preserve and report the official test population unchanged. "
@@ -359,6 +443,12 @@ def audit_tdc_official_splits(
             "Report a separate companion score excluding test molecules whose "
             "standardized structure occurs in train_val."
         ),
+        "inner_selection_policy": (
+            "Within each task's train_val population, Bemis-Murcko scaffold "
+            "groups are assigned without labels to four row-balanced inner folds. "
+            "No public-test row receives an inner fold."
+        ),
+        "seed": seed,
         "metric": {"name": "AUPRC", "direction": AUPRC_DIRECTION},
         "public_test_evaluations": 0,
         "tasks": tasks,
@@ -367,18 +457,27 @@ def audit_tdc_official_splits(
             "path": "strict_test_exclusions.csv",
             "sha256": sha256(exclusion_bytes).hexdigest(),
         },
+        "inner_folds": {
+            "rows": len(inner_fold_rows),
+            "path": "tdc_inner_folds.csv",
+            "sha256": sha256(inner_fold_bytes).hexdigest(),
+        },
         "deterministic": True,
     }
     report_bytes = _json_bytes(report)
     output_directory.mkdir(parents=True)
     report_path = output_directory / "tdc_split_audit.json"
     exclusions_path = output_directory / "strict_test_exclusions.csv"
+    inner_folds_path = output_directory / "tdc_inner_folds.csv"
     _write_new(report_path, report_bytes)
     _write_new(exclusions_path, exclusion_bytes)
+    _write_new(inner_folds_path, inner_fold_bytes)
     return TdcSplitAuditResult(
         report_path=report_path,
         exclusions_path=exclusions_path,
+        inner_folds_path=inner_folds_path,
         exclusion_count=len(exclusion_rows),
+        inner_fold_row_count=len(inner_fold_rows),
     )
 
 
@@ -444,6 +543,52 @@ def _structure_hash(molecule: MoleculeRecord) -> str:
     return molecule.standardized_structure_hash
 
 
+def _validate_tdc_split_row(
+    row: Mapping[str, str],
+    molecule: MoleculeRecord,
+    measurement_isoform: str,
+    measurement_source: str,
+) -> None:
+    try:
+        source_row = int(row["source_row"])
+    except ValueError as exc:
+        raise ValidationDataError(
+            f"official split source_row is not an integer for {molecule.molecule_id}"
+        ) from exc
+    try:
+        provenance = json.loads(molecule.provenance)
+    except json.JSONDecodeError as exc:
+        raise ValidationDataError(
+            f"invalid TDC provenance for {molecule.molecule_id}"
+        ) from exc
+    if not isinstance(provenance, Mapping):
+        raise ValidationDataError(
+            f"TDC provenance for {molecule.molecule_id} must be an object"
+        )
+    expected = {
+        "task": row["task"],
+        "official_partition": row["partition"],
+        "source_row": source_row,
+    }
+    for field, expected_value in expected.items():
+        if provenance.get(field) != expected_value:
+            raise ValidationDataError(
+                f"official split {field} does not match canonical provenance "
+                f"for {molecule.molecule_id}"
+            )
+    expected_source = f"{TDC_DATASET_ID}/{row['task']}"
+    if molecule.source != expected_source or measurement_source != expected_source:
+        raise ValidationDataError(
+            f"official split task does not match canonical source for "
+            f"{molecule.molecule_id}"
+        )
+    if measurement_isoform != TDC_TASKS[row["task"]]:
+        raise ValidationDataError(
+            f"official split task does not match measurement isoform for "
+            f"{molecule.molecule_id}"
+        )
+
+
 def _read_csv(path: Path, expected_columns: Sequence[str]) -> list[dict[str, str]]:
     try:
         with path.open(encoding="utf-8", newline="") as handle:
@@ -468,6 +613,16 @@ def _read_csv(path: Path, expected_columns: Sequence[str]) -> list[dict[str, str
     except OSError as exc:
         raise ValidationDataError(f"cannot read {path}: {exc}") from exc
     return rows
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValidationDataError(f"cannot read {path}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise ValidationDataError(f"{path.name} must contain a JSON object")
+    return cast(dict[str, Any], value)
 
 
 def _file_hash(path: Path) -> str:
@@ -507,6 +662,7 @@ __all__ = [
     "OCTANT_GROUPED_SPLIT_SCHEMA_VERSION",
     "OCTANT_SPLIT_COLUMNS",
     "TDC_EXCLUSION_COLUMNS",
+    "TDC_INNER_FOLD_COLUMNS",
     "TDC_SPLIT_AUDIT_SCHEMA_VERSION",
     "OctantSplitResult",
     "TdcSplitAuditResult",

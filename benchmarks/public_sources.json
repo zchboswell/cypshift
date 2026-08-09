@@ -1,5 +1,5 @@
 {
-  "schema_version": "cypshift.public_sources.v1",
+  "schema_version": "cypshift.public_sources.v2",
   "captured_at_utc": "2026-08-09T17:54:29Z",
   "sources": {
     "octant_cyp": {
@@ -12,7 +12,14 @@
       "linked_repository": {
         "url": "https://github.com/OpenADMET/Octant_CYP_blog_post",
         "revision": "58b3d6a63d25b18bee0b68af07cf1a5b30e6cf0d",
-        "license": "Apache-2.0"
+        "license": "Apache-2.0",
+        "inhibition_protocol": {
+          "path": "protocols/cyp_inhibition_assay.md",
+          "url": "https://raw.githubusercontent.com/OpenADMET/Octant_CYP_blog_post/58b3d6a63d25b18bee0b68af07cf1a5b30e6cf0d/protocols/cyp_inhibition_assay.md",
+          "git_blob_sha1": "53f55aa8333bd6d64671b71589e874d3a0a29f53",
+          "size_bytes": 5251,
+          "sha256": "5077b362330a505a7ecb703a1fac8858e0487af712d0ad51438570edbef77265"
+        }
       },
       "license": {
         "dataset_card_metadata": "CC-BY-4.0",
@@ -22,9 +29,11 @@
       "assay_context": {
         "core_endpoint": "CYP3A4 pIC50",
         "preincubation": "30 minutes with active CYP3A4",
+        "nadph_condition": "nadp_plus_100uM_with_g6p_g6pd_regeneration_active_preincubation_30min",
+        "cofactor_system": "100 uM NADP+ with 1X internal G6P/G6PD regeneration system; NADPH-generating conditions, not directly added exogenous NADPH",
         "probe": "DBOMF",
         "readout": "fluorescence",
-        "warning": "Active-enzyme preincubation may combine reversible inhibition with metabolism-dependent effects; this is not the challenge minus-NADPH direct-inhibition endpoint."
+        "warning": "NADP+ was supplied with a G6P/G6PD regeneration system during 30-minute active-CYP3A4 preincubation, creating NADPH-generating metabolic conditions; this is not the challenge minus-NADPH direct-inhibition endpoint."
       },
       "files": [
         {

@@ -57,7 +57,7 @@ def _load_tdc_contract(path: Path) -> dict[str, Any]:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise SystemExit(f"cannot read public source manifest {path}: {exc}") from exc
-    if value.get("schema_version") != "cypshift.public_sources.v1":
+    if value.get("schema_version") != "cypshift.public_sources.v2":
         raise SystemExit("unsupported public source manifest schema")
     try:
         source = value["sources"]["tdc_admet"]
