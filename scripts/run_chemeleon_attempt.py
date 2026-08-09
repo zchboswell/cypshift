@@ -27,6 +27,7 @@ from cypshift.chemeleon_attempt import (
     require_docker_ready,
     require_identical_predictions,
     resolve_prediction_column,
+    validate_task_mapping,
     verify_model_files,
 )
 
@@ -46,6 +47,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.out.exists():
         parser.error(f"output path already exists: {args.out}")
+    validate_task_mapping(args.input, args.contract)
     require_docker_ready()
 
     contract = _read_json(args.contract)
@@ -55,13 +57,15 @@ def main() -> None:
     if shutil.disk_usage(args.out.parent).free < disk_limit:
         parser.error("free disk is below the frozen CheMeleon attempt limit")
     start = time.monotonic()
+    deadline = start + runtime_limit
     step = "initialize"
     args.out.mkdir(parents=True)
     try:
         step = "download_model"
         source_root = args.out / "source"
-        _download_model(contract, args.contract, source_root)
+        _download_model(contract, args.contract, source_root, deadline=deadline)
         verified = verify_model_files(source_root, args.contract)
+        _require_disk_limit(args.out, disk_limit)
 
         step = "audit_overlap"
         overlap_root = args.out / "overlap"
@@ -79,6 +83,9 @@ def main() -> None:
             ["docker", "pull", "--platform", "linux/amd64", image],
             args.out / "docker_pull.log",
             timeout=_remaining(start, runtime_limit),
+        )
+        _require_disk_limit(
+            args.out, disk_limit, image_size=_docker_image_size(image)
         )
 
         model_directory = source_root / "anvil_training"
@@ -135,6 +142,9 @@ def main() -> None:
             canonical_paths.append(canonical_root / "chemeleon_predictions.csv")
             run_manifests.append(manifest_path)
             run_runtimes.append(run_runtime)
+            _require_disk_limit(
+                args.out, disk_limit, image_size=_docker_image_size(image)
+            )
 
         step = "repeat_check"
         require_identical_predictions(canonical_paths[0], canonical_paths[1])
@@ -149,6 +159,12 @@ def main() -> None:
             overlap_root / "chemeleon_overlap_manifest.json",
             smoke_input,
             smoke_raw,
+            args.out / "docker_pull.log",
+            smoke_root / "container.log",
+            args.out / "run1" / "raw_predictions.csv",
+            args.out / "run1" / "container.log",
+            args.out / "run2" / "raw_predictions.csv",
+            args.out / "run2" / "container.log",
             *canonical_paths,
             *run_manifests,
         ]
@@ -183,6 +199,11 @@ def main() -> None:
             },
         )
     except Exception as exc:
+        retained_files = {
+            str(path.relative_to(args.out)): _file_hash(path)
+            for path in sorted(args.out.rglob("*"))
+            if path.is_file() and path.name != "chemeleon_attempt_failure.json"
+        }
         _write_json(
             args.out / "chemeleon_attempt_failure.json",
             {
@@ -191,9 +212,14 @@ def main() -> None:
                 "failed_step": step,
                 "error_type": type(exc).__name__,
                 "error": str(exc),
+                "source_revision": args.source_revision,
+                "contract_sha256": _file_hash(args.contract),
+                "input_sha256": _file_hash(args.input),
                 "elapsed_seconds": time.monotonic() - start,
                 "heldout_labels_parsed": 0,
                 "model_evaluations": 0,
+                "retained_files": retained_files,
+                "retained_files_aggregate_sha256": _hash_mapping(retained_files),
             },
         )
         raise
@@ -201,7 +227,11 @@ def main() -> None:
 
 
 def _download_model(
-    contract: Mapping[str, Any], contract_path: Path, output: Path
+    contract: Mapping[str, Any],
+    contract_path: Path,
+    output: Path,
+    *,
+    deadline: float,
 ) -> None:
     model = _mapping(contract, "model")
     model_id = _text(model, "id")
@@ -230,6 +260,10 @@ def _download_model(
                 with urllib.request.urlopen(request, timeout=120) as response:
                     with destination.open("xb") as handle:
                         for block in iter(lambda: response.read(1024 * 1024), b""):
+                            if time.monotonic() > deadline:
+                                raise CheMeleonInputError(
+                                    "CheMeleon attempt exceeded runtime limit"
+                                )
                             handle.write(block)
                             digest.update(block)
             except (OSError, urllib.error.URLError) as exc:
@@ -299,6 +333,27 @@ def _remaining(start: float, limit: float) -> float:
     if remaining <= 0:
         raise CheMeleonInputError("CheMeleon attempt exceeded runtime limit")
     return remaining
+
+
+def _docker_image_size(image: str) -> int:
+    result = subprocess.run(
+        ["docker", "image", "inspect", "--format", "{{.Size}}", image],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise CheMeleonInputError("cannot inspect pinned Docker image size")
+    try:
+        return int(result.stdout.strip())
+    except ValueError as exc:
+        raise CheMeleonInputError("Docker image size is not an integer") from exc
+
+
+def _require_disk_limit(root: Path, limit: int, *, image_size: int = 0) -> None:
+    file_bytes = sum(path.stat().st_size for path in root.rglob("*") if path.is_file())
+    if file_bytes + image_size > limit:
+        raise CheMeleonInputError("CheMeleon attempt exceeded temporary disk limit")
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:

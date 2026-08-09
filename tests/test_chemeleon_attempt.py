@@ -15,6 +15,7 @@ from cypshift.chemeleon_attempt import (
     canonicalize_predictions,
     docker_prediction_command,
     require_identical_predictions,
+    validate_task_mapping_values,
     verify_model_files,
 )
 
@@ -158,6 +159,19 @@ def test_repeat_check_rejects_different_predictions(tmp_path: Path) -> None:
     second.write_text("prediction\n2\n", encoding="utf-8")
     with pytest.raises(CheMeleonInputError, match="not identical"):
         require_identical_predictions(first, second)
+
+
+def test_real_contract_task_mapping_matches_reviewed_input() -> None:
+    root = Path(__file__).resolve().parents[1]
+    validate_task_mapping_values(
+        {
+            "cyp2c9_veith",
+            "cyp2d6_veith",
+            "cyp3a4_veith",
+            "cyp3a4_active_preincubation_pIC50",
+        },
+        root / "benchmarks" / "chemeleon_inference_contract.json",
+    )
 
 
 def _fixture(tmp_path: Path) -> tuple[Path, Path, Path]:

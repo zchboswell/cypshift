@@ -60,6 +60,30 @@ def verify_model_files(model_root: Path, contract_path: Path) -> dict[str, str]:
     return verified
 
 
+def validate_task_mapping(input_path: Path, contract_path: Path) -> None:
+    """Require the contract keys to equal the exact model-facing task values."""
+
+    contract = _read_json(contract_path)
+    _validate_input(input_path, contract)
+    rows = _read_csv(input_path, required=CHEMELEON_INPUT_COLUMNS, exact=True)
+    validate_task_mapping_values({row["task"] for row in rows}, contract_path)
+
+
+def validate_task_mapping_values(
+    input_tasks: set[str], contract_path: Path
+) -> None:
+    """Validate known task values without requiring an untracked real artifact."""
+
+    contract = _read_json(contract_path)
+    task_mapping = _mapping(contract, "task_mapping")
+    if input_tasks != set(task_mapping):
+        raise CheMeleonInputError(
+            "contract task mapping does not match model-facing input tasks"
+        )
+    for task in sorted(input_tasks):
+        _text(_mapping(task_mapping, task), "model_output")
+
+
 def audit_training_overlap(
     input_path: Path,
     model_root: Path,
@@ -495,5 +519,7 @@ __all__ = [
     "require_docker_ready",
     "require_identical_predictions",
     "resolve_prediction_column",
+    "validate_task_mapping",
+    "validate_task_mapping_values",
     "verify_model_files",
 ]
