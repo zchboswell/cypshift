@@ -13,6 +13,7 @@ from cypshift.chemeleon_attempt import (
     PREDICTION_COLUMNS,
     audit_training_overlap,
     canonicalize_predictions,
+    claim_single_attempt,
     docker_prediction_command,
     require_identical_predictions,
     validate_task_mapping_values,
@@ -39,9 +40,7 @@ def test_overlap_and_prediction_receipts_are_label_free(tmp_path: Path) -> None:
         "false",
     ]
     overlap_manifest = json.loads(
-        (overlap_root / "chemeleon_overlap_manifest.json").read_text(
-            encoding="utf-8"
-        )
+        (overlap_root / "chemeleon_overlap_manifest.json").read_text(encoding="utf-8")
     )
     assert overlap_manifest["heldout_labels_parsed"] == 0
     assert overlap_manifest["model_evaluations"] == 0
@@ -119,6 +118,48 @@ def test_prediction_rejects_nonfinite_value(tmp_path: Path) -> None:
         )
 
 
+@pytest.mark.parametrize(
+    "field",
+    [
+        "schema_version",
+        "source_revision",
+        "contract_sha256",
+        "input_sha256",
+        "population_key_sha256",
+        "training_structure_file_sha256",
+        "standardization_version",
+    ],
+)
+def test_prediction_rejects_wrong_overlap_provenance(
+    tmp_path: Path, field: str
+) -> None:
+    input_path, model_root, contract = _fixture(tmp_path)
+    overlap_root = tmp_path / "overlap"
+    audit_training_overlap(
+        input_path,
+        model_root,
+        contract,
+        overlap_root,
+        source_revision="fixture-revision",
+    )
+    manifest_path = overlap_root / "chemeleon_overlap_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest[field] = "wrong"
+    _write_json(manifest_path, manifest)
+    raw_path = tmp_path / "raw.csv"
+    _write_raw_predictions(input_path, raw_path)
+    with pytest.raises(CheMeleonInputError, match=f"mismatch: {field}"):
+        canonicalize_predictions(
+            input_path,
+            raw_path,
+            overlap_root,
+            contract,
+            tmp_path / "predictions",
+            source_revision="fixture-revision",
+            runtime_seconds=1.0,
+        )
+
+
 def test_model_file_tampering_is_rejected(tmp_path: Path) -> None:
     _, model_root, contract = _fixture(tmp_path)
     training_path = model_root / "anvil_training" / "data" / "X_train.csv"
@@ -141,7 +182,9 @@ def test_docker_command_mounts_only_safe_inputs(tmp_path: Path) -> None:
         output_directory=output_root,
         output_name="raw.csv",
     )
-    mounts = [command[index + 1] for index, value in enumerate(command) if value == "-v"]
+    mounts = [
+        command[index + 1] for index, value in enumerate(command) if value == "-v"
+    ]
     assert mounts == [
         f"{input_path.resolve()}:/input.csv:ro",
         f"{model_root.resolve()}:/model:ro",
@@ -174,6 +217,19 @@ def test_real_contract_task_mapping_matches_reviewed_input() -> None:
     )
 
 
+def test_single_attempt_claim_rejects_another_root_or_sentinel(
+    tmp_path: Path,
+) -> None:
+    output_root = tmp_path / "attempt"
+    sentinel = tmp_path / "attempt.started.json"
+    claim_single_attempt(output_root, sentinel, {"status": "started"})
+    assert json.loads(sentinel.read_text(encoding="utf-8")) == {"status": "started"}
+    with pytest.raises(CheMeleonInputError, match="already exists"):
+        claim_single_attempt(output_root, tmp_path / "other.json", {})
+    with pytest.raises(CheMeleonInputError, match="already exists"):
+        claim_single_attempt(tmp_path / "other", sentinel, {})
+
+
 def _fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
     rows = [
         {
@@ -194,8 +250,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
     input_path = tmp_path / "input.csv"
     _write_csv(input_path, CHEMELEON_INPUT_COLUMNS, rows)
     key_material = "\n".join(
-        "|".join(row[field] for field in CHEMELEON_INPUT_COLUMNS[:3])
-        for row in rows
+        "|".join(row[field] for field in CHEMELEON_INPUT_COLUMNS[:3]) for row in rows
     )
 
     model_root = tmp_path / "model_root"
@@ -247,9 +302,7 @@ def _write_raw_predictions(
         rows = list(csv.DictReader(handle))
     if reverse:
         rows.reverse()
-    rows[0][
-        "OADMET_PRED_openadmet-AC50_OPENADMET_LOGAC50_CYP3A4"
-    ] = first_prediction
+    rows[0]["OADMET_PRED_openadmet-AC50_OPENADMET_LOGAC50_CYP3A4"] = first_prediction
     rows[0]["OADMET_PRED_openadmet-AC50_OPENADMET_LOGAC50_CYP2C9"] = "4.0"
     rows[1]["OADMET_PRED_openadmet-AC50_OPENADMET_LOGAC50_CYP3A4"] = "4.5"
     rows[1]["OADMET_PRED_openadmet-AC50_OPENADMET_LOGAC50_CYP2C9"] = "6.5"

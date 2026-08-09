@@ -1,5 +1,5 @@
 {
-  "schema_version": "cypshift.chemeleon_inference_contract.v2",
+  "schema_version": "cypshift.chemeleon_inference_contract.v3",
   "frozen_at_utc": "2026-08-09T22:33:38Z",
   "scope": "Phase 0.5 public-data transfer reference only; this contract does not define or imply a challenge model, endpoint mapping, or external-data permission.",
   "public_source_manifest": {
@@ -123,6 +123,9 @@
   },
   "attempt": {
     "limit": 1,
+    "input_path": "artifacts/benchmarks/chemeleon-input-v4/chemeleon_inference_input.csv",
+    "output_path": "artifacts/benchmarks/chemeleon-attempt-v1",
+    "sentinel_path": "artifacts/benchmarks/chemeleon-attempt-v1.started.json",
     "definition": "One digest-pinned CPU environment pull, one deterministic four-structure smoke probe, and two full label-absent inference runs. The full runs must produce byte-identical canonical predictions before scoring.",
     "smoke_selection": "Choose the lexicographically smallest held-out molecule_id from Octant and each of the three TDC tasks; do not use a label.",
     "runtime_limit_minutes": 120,

@@ -69,9 +69,7 @@ def validate_task_mapping(input_path: Path, contract_path: Path) -> None:
     validate_task_mapping_values({row["task"] for row in rows}, contract_path)
 
 
-def validate_task_mapping_values(
-    input_tasks: set[str], contract_path: Path
-) -> None:
+def validate_task_mapping_values(input_tasks: set[str], contract_path: Path) -> None:
     """Validate known task values without requiring an untracked real artifact."""
 
     contract = _read_json(contract_path)
@@ -82,6 +80,19 @@ def validate_task_mapping_values(
         )
     for task in sorted(input_tasks):
         _text(_mapping(task_mapping, task), "model_output")
+
+
+def claim_single_attempt(
+    output_root: Path, sentinel_path: Path, receipt: Mapping[str, Any]
+) -> None:
+    """Claim the one frozen attempt with an exclusive durable sentinel."""
+
+    _require_new(output_root)
+    _require_new(sentinel_path)
+    output_root.mkdir(parents=False)
+    with sentinel_path.open("x", encoding="utf-8") as handle:
+        json.dump(receipt, handle, indent=2, sort_keys=True)
+        handle.write("\n")
 
 
 def audit_training_overlap(
@@ -126,9 +137,7 @@ def audit_training_overlap(
             raise CheMeleonInputError("accepted training structure has no hash")
         training_hashes.add(record.standardized_structure_hash)
 
-    input_rows = _read_csv(
-        input_path, required=CHEMELEON_INPUT_COLUMNS, exact=True
-    )
+    input_rows = _read_csv(input_path, required=CHEMELEON_INPUT_COLUMNS, exact=True)
     overlap_rows: list[dict[str, str]] = []
     counts: Counter[str] = Counter()
     for row in input_rows:
@@ -141,9 +150,7 @@ def audit_training_overlap(
                 "benchmark": row["benchmark"],
                 "task": task,
                 "molecule_id": row["molecule_id"],
-                "standardized_structure_hash": row[
-                    "standardized_structure_hash"
-                ],
+                "standardized_structure_hash": row["standardized_structure_hash"],
                 "exact_training_structure_overlap": str(overlap).lower(),
             }
         )
@@ -161,9 +168,7 @@ def audit_training_overlap(
             "package_version": metadata.version("cypshift"),
             "contract_sha256": _file_hash(contract_path),
             "input_sha256": input_validation["file_sha256"],
-            "population_key_sha256": input_validation[
-                "population_key_sha256"
-            ],
+            "population_key_sha256": input_validation["population_key_sha256"],
             "training_structure_file_sha256": _file_hash(training_path),
             "training_rows": len(training_rows),
             "accepted_training_rows": len(training_rows) - invalid,
@@ -198,9 +203,7 @@ def canonicalize_predictions(
     _require_new(output_directory)
     contract = _read_json(contract_path)
     input_validation = _validate_input(input_path, contract)
-    input_rows = _read_csv(
-        input_path, required=CHEMELEON_INPUT_COLUMNS, exact=True
-    )
+    input_rows = _read_csv(input_path, required=CHEMELEON_INPUT_COLUMNS, exact=True)
     raw_rows = _read_csv(
         raw_prediction_path, required=CHEMELEON_INPUT_COLUMNS, exact=False
     )
@@ -208,6 +211,13 @@ def canonicalize_predictions(
         raise CheMeleonInputError("raw prediction row count mismatch")
     overlap_manifest = _verify_manifest(
         overlap_root / "chemeleon_overlap_manifest.json", overlap_root
+    )
+    _verify_overlap_provenance(
+        overlap_manifest,
+        contract,
+        contract_path,
+        input_validation,
+        source_revision=source_revision,
     )
     overlap_rows = _read_csv(
         overlap_root / "chemeleon_training_overlap.csv",
@@ -249,9 +259,7 @@ def canonicalize_predictions(
                 "task": task,
                 "molecule_id": input_row["molecule_id"],
                 "prediction": format(prediction, ".17g"),
-                "standardized_structure_hash": input_row[
-                    "standardized_structure_hash"
-                ],
+                "standardized_structure_hash": input_row["standardized_structure_hash"],
                 "exact_training_structure_overlap": overlap_row[
                     "exact_training_structure_overlap"
                 ],
@@ -271,9 +279,7 @@ def canonicalize_predictions(
             "package_version": metadata.version("cypshift"),
             "contract_sha256": _file_hash(contract_path),
             "input_sha256": input_validation["file_sha256"],
-            "population_key_sha256": input_validation[
-                "population_key_sha256"
-            ],
+            "population_key_sha256": input_validation["population_key_sha256"],
             "raw_prediction_sha256": _file_hash(raw_prediction_path),
             "overlap_manifest_sha256": _file_hash(
                 overlap_root / "chemeleon_overlap_manifest.json"
@@ -291,6 +297,33 @@ def canonicalize_predictions(
         },
     )
     return manifest_path
+
+
+def _verify_overlap_provenance(
+    manifest: Mapping[str, Any],
+    contract: Mapping[str, Any],
+    contract_path: Path,
+    input_validation: Mapping[str, Any],
+    *,
+    source_revision: str,
+) -> None:
+    model = _mapping(contract, "model")
+    required_files = _mapping(model, "required_files")
+    expected = {
+        "schema_version": OVERLAP_SCHEMA_VERSION,
+        "source_revision": source_revision,
+        "package_version": metadata.version("cypshift"),
+        "contract_sha256": _file_hash(contract_path),
+        "input_sha256": input_validation["file_sha256"],
+        "population_key_sha256": input_validation["population_key_sha256"],
+        "training_structure_file_sha256": _text(
+            required_files, "anvil_training/data/X_train.csv"
+        ),
+        "standardization_version": STANDARDIZATION_VERSION,
+    }
+    for field, value in expected.items():
+        if manifest.get(field) != value:
+            raise CheMeleonInputError(f"overlap manifest provenance mismatch: {field}")
 
 
 def docker_prediction_command(
@@ -385,9 +418,7 @@ def _validate_input(input_path: Path, contract: Mapping[str, Any]) -> dict[str, 
         expected_rows=sum(counts.values()),
         expected_task_counts=counts,
         expected_file_sha256=_text(projection, "expected_output_sha256"),
-        expected_key_sha256=_text(
-            projection, "expected_population_key_sha256"
-        ),
+        expected_key_sha256=_text(projection, "expected_population_key_sha256"),
     )
 
 
@@ -429,9 +460,7 @@ def _read_csv(
             rows = list(reader)
     except OSError as exc:
         raise CheMeleonInputError(f"cannot read {path}: {exc}") from exc
-    if any(
-        None in row or any(value is None for value in row.values()) for row in rows
-    ):
+    if any(None in row or any(value is None for value in row.values()) for row in rows):
         raise CheMeleonInputError(f"malformed row width in {path}")
     return rows
 
@@ -515,6 +544,7 @@ __all__ = [
     "PREDICTION_SCHEMA_VERSION",
     "audit_training_overlap",
     "canonicalize_predictions",
+    "claim_single_attempt",
     "docker_prediction_command",
     "require_docker_ready",
     "require_identical_predictions",

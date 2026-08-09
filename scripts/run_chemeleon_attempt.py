@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 import csv
 import json
 import math
@@ -23,6 +22,7 @@ from cypshift.chemeleon import CHEMELEON_INPUT_COLUMNS, CheMeleonInputError
 from cypshift.chemeleon_attempt import (
     audit_training_overlap,
     canonicalize_predictions,
+    claim_single_attempt,
     docker_prediction_command,
     require_docker_ready,
     require_identical_predictions,
@@ -32,6 +32,8 @@ from cypshift.chemeleon_attempt import (
 )
 
 ATTEMPT_SCHEMA_VERSION = "cypshift.chemeleon_attempt.v1"
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+CONTRACT_PATH = REPOSITORY_ROOT / "benchmarks" / "chemeleon_inference_contract.json"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
     "characters, without a trailing newline"
@@ -39,60 +41,70 @@ AGGREGATE_RECIPE = (
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", type=Path, required=True)
-    parser.add_argument("--contract", type=Path, required=True)
-    parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--source-revision", required=True)
-    args = parser.parse_args()
-    if args.out.exists():
-        parser.error(f"output path already exists: {args.out}")
-    validate_task_mapping(args.input, args.contract)
+    contract = _read_json(CONTRACT_PATH)
+    attempt = _mapping(contract, "attempt")
+    input_path = _repository_path(_text(attempt, "input_path"))
+    output_root = _repository_path(_text(attempt, "output_path"))
+    sentinel_path = _repository_path(_text(attempt, "sentinel_path"))
+    if sentinel_path.parent != output_root.parent:
+        raise CheMeleonInputError("attempt root and sentinel must share a parent")
+    validate_task_mapping(input_path, CONTRACT_PATH)
+    source_revision = _clean_source_revision()
+    if output_root.exists() or sentinel_path.exists():
+        raise CheMeleonInputError("the single CheMeleon attempt is already claimed")
     require_docker_ready()
 
-    contract = _read_json(args.contract)
-    attempt = _mapping(contract, "attempt")
     runtime_limit = _integer(attempt, "runtime_limit_minutes") * 60.0
     disk_limit = _integer(attempt, "temporary_disk_limit_gib") * 1024**3
-    if shutil.disk_usage(args.out.parent).free < disk_limit:
-        parser.error("free disk is below the frozen CheMeleon attempt limit")
+    if shutil.disk_usage(output_root.parent).free < disk_limit:
+        raise CheMeleonInputError("free disk is below the frozen attempt limit")
     start = time.monotonic()
     deadline = start + runtime_limit
     step = "initialize"
-    args.out.mkdir(parents=True)
+    claim_single_attempt(
+        output_root,
+        sentinel_path,
+        {
+            "schema_version": ATTEMPT_SCHEMA_VERSION,
+            "status": "started",
+            "source_revision": source_revision,
+            "contract_sha256": _file_hash(CONTRACT_PATH),
+            "input_sha256": _file_hash(input_path),
+        },
+    )
     try:
         step = "download_model"
-        source_root = args.out / "source"
-        _download_model(contract, args.contract, source_root, deadline=deadline)
-        verified = verify_model_files(source_root, args.contract)
-        _require_disk_limit(args.out, disk_limit)
+        source_root = output_root / "source"
+        _download_model(contract, CONTRACT_PATH, source_root, deadline=deadline)
+        verified = verify_model_files(source_root, CONTRACT_PATH)
+        _require_disk_limit(output_root, disk_limit)
 
         step = "audit_overlap"
-        overlap_root = args.out / "overlap"
+        overlap_root = output_root / "overlap"
         audit_training_overlap(
-            args.input,
+            input_path,
             source_root,
-            args.contract,
+            CONTRACT_PATH,
             overlap_root,
-            source_revision=args.source_revision,
+            source_revision=source_revision,
         )
 
         image = _text(_mapping(contract, "execution_environment"), "image")
         step = "pull_environment"
         _run_logged(
             ["docker", "pull", "--platform", "linux/amd64", image],
-            args.out / "docker_pull.log",
+            output_root / "docker_pull.log",
             timeout=_remaining(start, runtime_limit),
         )
         _require_disk_limit(
-            args.out, disk_limit, image_size=_docker_image_size(image)
+            output_root, disk_limit, image_size=_docker_image_size(image)
         )
 
         model_directory = source_root / "anvil_training"
         step = "smoke_probe"
-        smoke_input = args.out / "smoke_input.csv"
-        _write_smoke_input(args.input, smoke_input)
-        smoke_root = args.out / "smoke"
+        smoke_input = output_root / "smoke_input.csv"
+        _write_smoke_input(input_path, smoke_input)
+        smoke_root = output_root / "smoke"
         smoke_root.mkdir()
         smoke_raw = smoke_root / "raw_predictions.csv"
         _run_logged(
@@ -113,14 +125,14 @@ def main() -> None:
         run_runtimes: list[float] = []
         for run_number in (1, 2):
             step = f"full_inference_{run_number}"
-            run_root = args.out / f"run{run_number}"
+            run_root = output_root / f"run{run_number}"
             run_root.mkdir()
             raw_path = run_root / "raw_predictions.csv"
             run_start = time.monotonic()
             _run_logged(
                 docker_prediction_command(
                     image=image,
-                    input_path=args.input,
+                    input_path=input_path,
                     model_directory=model_directory,
                     output_directory=run_root,
                     output_name=raw_path.name,
@@ -131,19 +143,19 @@ def main() -> None:
             run_runtime = time.monotonic() - run_start
             canonical_root = run_root / "canonical"
             manifest_path = canonicalize_predictions(
-                args.input,
+                input_path,
                 raw_path,
                 overlap_root,
-                args.contract,
+                CONTRACT_PATH,
                 canonical_root,
-                source_revision=args.source_revision,
+                source_revision=source_revision,
                 runtime_seconds=run_runtime,
             )
             canonical_paths.append(canonical_root / "chemeleon_predictions.csv")
             run_manifests.append(manifest_path)
             run_runtimes.append(run_runtime)
             _require_disk_limit(
-                args.out, disk_limit, image_size=_docker_image_size(image)
+                output_root, disk_limit, image_size=_docker_image_size(image)
             )
 
         step = "repeat_check"
@@ -159,26 +171,27 @@ def main() -> None:
             overlap_root / "chemeleon_overlap_manifest.json",
             smoke_input,
             smoke_raw,
-            args.out / "docker_pull.log",
+            output_root / "docker_pull.log",
             smoke_root / "container.log",
-            args.out / "run1" / "raw_predictions.csv",
-            args.out / "run1" / "container.log",
-            args.out / "run2" / "raw_predictions.csv",
-            args.out / "run2" / "container.log",
+            output_root / "run1" / "raw_predictions.csv",
+            output_root / "run1" / "container.log",
+            output_root / "run2" / "raw_predictions.csv",
+            output_root / "run2" / "container.log",
             *canonical_paths,
             *run_manifests,
         ]
         outputs = {
-            str(path.relative_to(args.out)): _file_hash(path) for path in retained
+            str(path.relative_to(output_root)): _file_hash(path) for path in retained
         }
         _write_json(
-            args.out / "chemeleon_attempt_manifest.json",
+            output_root / "chemeleon_attempt_manifest.json",
             {
                 "schema_version": ATTEMPT_SCHEMA_VERSION,
                 "status": "complete",
-                "source_revision": args.source_revision,
-                "contract_sha256": _file_hash(args.contract),
-                "input_sha256": _file_hash(args.input),
+                "source_revision": source_revision,
+                "contract_sha256": _file_hash(CONTRACT_PATH),
+                "input_sha256": _file_hash(input_path),
+                "attempt_sentinel_sha256": _file_hash(sentinel_path),
                 "image": image,
                 "verified_model_files": verified,
                 "smoke_rows": 4,
@@ -200,21 +213,22 @@ def main() -> None:
         )
     except Exception as exc:
         retained_files = {
-            str(path.relative_to(args.out)): _file_hash(path)
-            for path in sorted(args.out.rglob("*"))
+            str(path.relative_to(output_root)): _file_hash(path)
+            for path in sorted(output_root.rglob("*"))
             if path.is_file() and path.name != "chemeleon_attempt_failure.json"
         }
         _write_json(
-            args.out / "chemeleon_attempt_failure.json",
+            output_root / "chemeleon_attempt_failure.json",
             {
                 "schema_version": ATTEMPT_SCHEMA_VERSION,
                 "status": "failed",
                 "failed_step": step,
                 "error_type": type(exc).__name__,
                 "error": str(exc),
-                "source_revision": args.source_revision,
-                "contract_sha256": _file_hash(args.contract),
-                "input_sha256": _file_hash(args.input),
+                "source_revision": source_revision,
+                "contract_sha256": _file_hash(CONTRACT_PATH),
+                "input_sha256": _file_hash(input_path),
+                "attempt_sentinel_sha256": _file_hash(sentinel_path),
                 "elapsed_seconds": time.monotonic() - start,
                 "heldout_labels_parsed": 0,
                 "model_evaluations": 0,
@@ -223,7 +237,46 @@ def main() -> None:
             },
         )
         raise
-    print(f"CheMeleon attempt complete: {args.out}")
+    print(f"CheMeleon attempt complete: {output_root}")
+
+
+def _repository_path(value: str) -> Path:
+    relative = Path(value)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise CheMeleonInputError("attempt path must stay inside the repository")
+    return REPOSITORY_ROOT / relative
+
+
+def _clean_source_revision() -> str:
+    revision = subprocess.run(
+        ["git", "-C", str(REPOSITORY_ROOT), "rev-parse", "HEAD"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    status = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(REPOSITORY_ROOT),
+            "status",
+            "--porcelain",
+            "--untracked-files=no",
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    source_revision = revision.stdout.strip()
+    if (
+        revision.returncode != 0
+        or len(source_revision) != 40
+        or any(character not in "0123456789abcdef" for character in source_revision)
+        or status.returncode != 0
+        or status.stdout
+    ):
+        raise CheMeleonInputError("attempt requires a clean Git source revision")
+    return source_revision
 
 
 def _download_model(
