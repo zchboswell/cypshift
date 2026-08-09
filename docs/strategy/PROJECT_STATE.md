@@ -295,12 +295,11 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Before reading another held-out result, freeze the OOF-only simple-combination
-protocol: best single, unweighted mean, median, and a nonnegative linear stack
-whose meta-weights are themselves cross-fitted by the existing grouped inner
-folds. Select and fit combinations only from complete OOF predictions; freeze
-the final all-OOF weights and label-absent held-out combination predictions in a
-separate receipt before any new scoring. In the same train/validation-only
-milestone, quantify molecule-random versus grouped optimism without using the
-random result for selection. Predeclare exact formulas, tie breaks, evaluation
-counts, and acceptance/reversal conditions before implementation or fitting.
+Merge the signed D-019 protocol before fitting, then implement its exact
+train/validation-only combination and random-optimism receipts. Compare only
+best single, unweighted mean, median, and nested grouped-cross-fitted
+nonnegative stack; use the predefined stack complexity margin and no held-out
+labels. Quantify exact-structure-grouped random-fold optimism without using it
+for selection. Reproduce the complete receipt byte-for-byte and review its
+alignment, nested-fit isolation, counts, and hashes before generating one
+label-absent retained-combination prediction per task.

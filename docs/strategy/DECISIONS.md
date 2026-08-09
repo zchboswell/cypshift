@@ -375,3 +375,56 @@
   byte-for-byte before narrow independent re-review.
 - Reversal condition: A new versioned strict-exclusion receipt changes the
   task-specific counts.
+
+## D-019 — Freeze OOF-only combinations and random-optimism analysis
+
+- Date: 2026-08-09
+- Status: accepted
+- Inputs: Use only the four retained-family OOF predictions and grouped inner
+  folds bound by native-selection aggregate
+  `33ba1f6481048c9f620223f9a0e6c85d2a40bece620ffe9b0c44117c0c7775fa`.
+  The selection stage must not open Octant outer or TDC public-test labels.
+- Candidates: Compare exactly (1) the best retained single family by grouped
+  OOF primary metric with lexical family tie break, (2) the row-wise unweighted
+  mean of all four families, (3) the row-wise median, and (4) a nonnegative
+  linear stack in fixed family order `prior`, `ecfp_linear`, `similarity_knn`,
+  `extra_trees`. Add no calibration, intercept, feature, candidate, or task-
+  specific exception after results exist.
+- Stack fitting: For each grouped outer meta-fold, create stack-training
+  features by refitting the already retained base configurations in nested
+  grouped folds that exclude both the meta-test fold and each meta-training
+  fold. Fit `scipy.optimize.nnls` to those nested OOF features and targets; if
+  all weights are zero, use equal weights. Apply the weights to base OOF
+  predictions from models trained without the meta-test fold. Clip only binary
+  predictions to `[0, 1]`. For later held-out prediction, fit final NNLS weights
+  on the complete frozen base OOF table and freeze them before reading another
+  held-out result.
+- Retention rule: Score complete candidate OOF predictions by AUPRC for TDC and
+  MAE for Octant. Among the three nonlearned candidates, choose the exact best
+  with lexical candidate tie break. Retain the learned stack only if it exceeds
+  that nonlearned winner by at least `0.005` AUPRC or reduces MAE by at least
+  `0.01`; otherwise reject it and retain the nonlearned winner. These are
+  complexity gates, not uncertainty or superiority thresholds.
+- Held-out boundary: After selection, emit exactly one label-absent retained
+  combination prediction per task from the frozen base predictions and final
+  weights. A later scorer may add at most three TDC official evaluations, three
+  strict companion analyses, and one Octant outer evaluation. Score no rejected
+  combination on held-out labels and do not alter base predictions.
+- Random-optimism analysis: Quantify, but never select from, one deterministic
+  random-fold companion. Keep every exact standardized-structure group intact;
+  order groups by SHA-256 of `20260809|benchmark|task|structure_hash`, then
+  assign each group to the currently smallest of four row-count folds with fold
+  index as the tie break. Evaluate only the retained base configurations. Report
+  optimism as `random AUPRC - grouped AUPRC` for TDC and
+  `grouped MAE - random MAE` for Octant; positive means the random view looks
+  better. Parse no held-out label and use no random result for retention.
+- Required receipts: Store complete combination OOF predictions, nested stack
+  weights, all candidate scores, retained combinations and final weights,
+  random-fold assignments and OOF predictions, per-family optimism, package and
+  source versions, configuration/data/split hashes, fit/evaluation counts, and
+  a deterministic aggregate. Reproduce the full train/validation-only root
+  byte-for-byte before held-out combination prediction.
+- Reversal condition: Before fitting, reverse only for a demonstrated
+  mathematical, leakage, alignment, or bounded-resource defect. After fitting,
+  do not change formulas, margins, candidates, folds, or weights in response to
+  performance; record a failed experiment instead.
