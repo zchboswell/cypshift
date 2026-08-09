@@ -1,0 +1,9 @@
+molecule_id,structure,structure_format,source,provenance
+syn-001,CCO,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-002,OCC,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-003,CC[NH+](C)C.[Cl-],smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-004,C[C@H](O)Cl,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-005,CC(O)Cl,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-006,not-a-smiles,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-007,c1ccccc1.O,smiles,cypshift_synthetic_fixture,hand_authored_phase0
+syn-008,CCN,smiles,cypshift_synthetic_fixture,hand_authored_phase0

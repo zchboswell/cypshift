@@ -1,0 +1,12 @@
+measurement_id,molecule_id,endpoint,isoform,nadph_condition,probe,readout,value,lower_bound,upper_bound,censoring,unit,quality,source,provenance
+measure-001,syn-001,direct_inhibition,synthetic_isoform_a,absent,synthetic_probe_a,p_activity,5.2,5.0,5.4,none,synthetic_log_unit,synthetic_high,cypshift_synthetic_fixture,hand_authored_phase0
+measure-002,syn-001,direct_inhibition,synthetic_isoform_a,present,synthetic_probe_a,p_activity,5.6,5.4,5.8,none,synthetic_log_unit,synthetic_high,cypshift_synthetic_fixture,hand_authored_phase0
+measure-003,syn-002,direct_inhibition,synthetic_isoform_a,absent,synthetic_probe_a,p_activity,5.1,4.9,5.3,none,synthetic_log_unit,synthetic_medium,cypshift_synthetic_fixture,hand_authored_phase0
+measure-004,syn-003,direct_inhibition,synthetic_isoform_a,absent,synthetic_probe_a,p_activity,6.4,6.1,6.7,none,synthetic_log_unit,synthetic_high,cypshift_synthetic_fixture,hand_authored_phase0
+measure-005,syn-004,direct_inhibition,synthetic_isoform_b,absent,synthetic_probe_b,p_activity,6.0,5.8,6.2,none,synthetic_log_unit,synthetic_high,cypshift_synthetic_fixture,hand_authored_phase0
+measure-006,syn-005,direct_inhibition,synthetic_isoform_b,absent,synthetic_probe_b,p_activity,5.7,5.5,5.9,none,synthetic_log_unit,synthetic_medium,cypshift_synthetic_fixture,hand_authored_phase0
+measure-007,syn-006,direct_inhibition,synthetic_isoform_b,absent,synthetic_probe_b,p_activity,4.8,4.6,5.0,none,synthetic_log_unit,synthetic_low,cypshift_synthetic_fixture,hand_authored_phase0
+measure-008,syn-007,direct_inhibition,synthetic_isoform_a,absent,synthetic_probe_a,p_activity,,,4.2,left,synthetic_log_unit,synthetic_medium,cypshift_synthetic_fixture,hand_authored_phase0
+measure-009,syn-007,direct_inhibition,synthetic_isoform_a,present,synthetic_probe_a,p_activity,,6.5,,right,synthetic_log_unit,synthetic_medium,cypshift_synthetic_fixture,hand_authored_phase0
+measure-010,syn-008,direct_inhibition,synthetic_isoform_b,absent,synthetic_probe_b,p_activity,,5.0,5.6,interval,synthetic_log_unit,synthetic_medium,cypshift_synthetic_fixture,hand_authored_phase0
+measure-011,syn-008,direct_inhibition,synthetic_isoform_b,present,synthetic_probe_b,p_activity,5.9,5.7,6.1,none,synthetic_log_unit,synthetic_high,cypshift_synthetic_fixture,hand_authored_phase0

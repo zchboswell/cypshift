@@ -8,9 +8,10 @@ Phase 0 — vertical-slice implementation.
 
 ## Best validated system
 
-No predictive system yet. The minimal Python 3.12 package bootstrap is
-validated: the package and RDKit import, Ruff and mypy pass, and wheel plus
-source distributions build successfully from the locked environment.
+No predictive system yet. The installed `cypshift audit` command validates the
+CC0 synthetic fixture, preserves raw structures and assay context, writes
+deterministic canonical CSV and JSON artifacts, and refuses silent overwrite.
+The locked package passes 15 tests, Ruff, strict mypy, and distribution builds.
 
 ## Strongest evidence
 
@@ -23,6 +24,9 @@ source distributions build successfully from the locked environment.
   complete rules are not frozen until the 2026-08-17 launch.
 - The locked Phase 0 toolchain builds with RDKit as the sole runtime dependency;
   pandas, Pydantic, and a CLI framework remain absent.
+- The synthetic audit detects and records invalid chemistry, fragment-parent
+  changes, assigned and unassigned stereochemistry, and standardized
+  duplicates without using official challenge data.
 
 ## Active hypotheses
 
@@ -38,6 +42,8 @@ None has been tested.
 ## Unresolved risks
 
 - Launch-day schema and scoring details may invalidate provisional assumptions.
+- The provisional RDKit fragment-parent policy must be re-evaluated against
+  official structure semantics before it is used on challenge data.
 - Series inference may be ambiguous without explicit parent identifiers.
 - Low-activity interval handling may dominate regression behavior.
 - TDI labels may be unstable near potency and shift thresholds.
@@ -50,6 +56,5 @@ None has been tested.
 
 ## Exact next action
 
-Establish the minimal installable package, then implement the synthetic fixture,
-canonical schemas, and chemistry audit without introducing another runtime
-dependency.
+Implement the deterministic fixture split and endpoint-context median baseline,
+then write prediction artifacts and their reproducible run manifest.
