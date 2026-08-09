@@ -226,6 +226,8 @@ artifacts remain outside Git.
   available, explicit applicability availability, scaffold support, measurement
   quality, and observation-level configuration/data/split hashes. Its aggregate
   is `5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.
+  Independent same-input repeats of the prediction view, corrected prediction,
+  OOF artifact, and v2 scorecard are byte-identical across all 16 retained files.
 
 ## Active hypotheses
 
