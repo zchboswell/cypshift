@@ -282,3 +282,27 @@ The receipt binds combination v3 and held-out prediction v2. It records 30,896
 base predictions averaged, zero fits, zero measurement tables opened, zero
 labels parsed, and zero evaluations. These predictions remain unscored until
 independent review passes.
+
+After independent scorer review, the one authorized real scoring attempt used
+the audited source split explicitly:
+
+```console
+uv run python scripts/score_retained_mean_heldout.py \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --tdc-official-split artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --combinations artifacts/benchmarks/native-combinations-v3 \
+  --predictions artifacts/benchmarks/native-retained-mean-predictions-v1 \
+  --public-sources benchmarks/public_sources.json \
+  --out artifacts/benchmarks/native-retained-mean-scores-v1 \
+  --source-revision 925dccfa0f1c4966886a68af7c5c80a069ca6ca4 \
+  --attempt 1
+```
+
+The raw score aggregate is
+`e91329cca76159b42d9f539850420ecf1b960aafe66592148788001864064db0`.
+The mean improves every prior native best: Octant MAE falls from 0.5489 to
+0.5434; TDC AUPRC rises from 0.7340/0.6474/0.8431 to
+0.7484/0.6547/0.8500. It still trails the Chemprop-RDKit public anchors by
+0.0286/0.0183/0.0260 AUPRC. No superiority claim is made.

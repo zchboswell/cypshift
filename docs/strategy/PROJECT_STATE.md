@@ -288,8 +288,16 @@ artifacts remain outside Git.
   retained-mean scores remain unknown.
 - Remediation `925dccf` makes the audited source official split an explicit
   scorer input. The regression test removes the fixture copy from the
-  validation root, and all 64 tests pass. No metric, threshold, candidate,
-  population, or evaluation count changed. Independent re-review is pending.
+  validation root. Independent review passed on exact head `27c11ae`, and PR
+  26 merged by exact fast-forward. No metric, threshold, candidate, population,
+  or evaluation count changed.
+- The one authorized real scoring attempt completed in 2.94 seconds. The
+  retained mean improves every native held-out result: Octant MAE is 0.5434,
+  and TDC AUPRC is 0.7484/0.6547/0.8500. The gains over the prior native best
+  are 0.0055 lower MAE and +0.0144/+0.0073/+0.0068 AUPRC. It still trails the
+  Chemprop-RDKit anchors by 0.0286/0.0183/0.0260 AUPRC. The raw score aggregate
+  is `e91329cca76159b42d9f539850420ecf1b960aafe66592148788001864064db0`.
+  No superiority claim is supported; independent score review is pending.
 
 ## Active hypotheses
 
@@ -345,8 +353,7 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain independent re-review of the explicit official-split input on the exact
-signed head. Verify its audit binding and the real nonduplicated layout. Confirm
-that preflight ordering, populations, metrics, thresholds, candidates, and
-counts are unchanged. Do not invoke the real scorer again before that review
-passes and the exact head merges.
+Independently reproduce the seven raw retained-mean score rows, receipt chain,
+populations, grouped-OOF thresholds, metrics, deltas, and evaluation counts.
+Then materialize a complete seven-row canonical scorecard from the frozen
+scored receipt without opening another label or adding an evaluation.
