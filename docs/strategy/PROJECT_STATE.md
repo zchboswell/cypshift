@@ -233,7 +233,13 @@ artifacts remain outside Git.
   quality, and observation-level configuration/data/split hashes. Its aggregate
   is `5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.
   Independent same-input repeats of the prediction view, corrected prediction,
-  OOF artifact, and v2 scorecard are byte-identical across all 16 retained files.
+  OOF artifact, and v4 scorecard are byte-identical across all 16 retained files.
+- Final independent re-review passed on exact signed head `dd7960c`. It verified
+  the structural firewall, every receipt chain and repeat, all OOF enrichment,
+  every allowed-seed analysis, exact preservation of the 28 original point
+  rows, accurate 4/2/1 task warnings, signatures, sole `zchboswell` authorship,
+  local checks, and hosted Python 3.11/3.14 CI. PR 18 merged by exact
+  fast-forward with the reviewed GitHub-verified signature intact.
 
 ## Active hypotheses
 
@@ -289,9 +295,12 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Return the narrow task-specific warning correction and scorecard v4 receipts to
-the same fresh independent reviewer. Do not merge
-or start the stack/external ladder until it passes. Remediate material findings
-without changing observed point results. Only after review may complete OOF
-predictions support the predeclared single-model, mean, median, and
-nonnegative-stack comparison or the isolated CheMeleon attempt.
+Before reading another held-out result, freeze the OOF-only simple-combination
+protocol: best single, unweighted mean, median, and a nonnegative linear stack
+whose meta-weights are themselves cross-fitted by the existing grouped inner
+folds. Select and fit combinations only from complete OOF predictions; freeze
+the final all-OOF weights and label-absent held-out combination predictions in a
+separate receipt before any new scoring. In the same train/validation-only
+milestone, quantify molecule-random versus grouped optimism without using the
+random result for selection. Predeclare exact formulas, tie breaks, evaluation
+counts, and acceptance/reversal conditions before implementation or fitting.
