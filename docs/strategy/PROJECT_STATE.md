@@ -307,7 +307,12 @@ artifacts remain outside Git.
   exact hash checks. It has seven rows, 51 columns, byte-identical repeats,
   unchanged point results, and aggregate
   `d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa`.
-  Independent scorecard re-review is pending.
+  Independent re-review passed on exact signed head `d34ba02`. It verified the
+  two scoring-receipt bindings and tamper tests, exact v3/v4 scorecard
+  invariance, byte-identical roots, all 51 fields, zero added label access,
+  evaluations, fits, point changes, or selection changes, repository checks,
+  signatures, hosted Python 3.11/3.14 CI, and Occam's Razor. PR 28 merged by
+  exact fast-forward with the reviewed signature intact.
 
 ## Active hypotheses
 
@@ -363,8 +368,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently re-review retained-mean scorecard v4. Verify exact raw-score
-invariance, all 51 fields, runtime-component semantics, revisions, split and
-population hashes, public-source and Octant-split receipt binding, reference
-uncertainty and deltas, warnings, byte-identical repeat, and zero additional
-label access or evaluations. Apply Occam's Razor before merge or external work.
+Freeze the smallest isolated OpenADMET CheMeleon attempt before inference.
+Pin its exact source and model revisions, license, required environment, task
+and output semantics, and accessible training structures. Define the overlap
+audit, apples-to-apples population, one-attempt failure boundary, acceptance
+criterion, runtime budget, and artifact receipts. Add no core dependency,
+public CLI surface, adapter framework, or result-informed choice.
