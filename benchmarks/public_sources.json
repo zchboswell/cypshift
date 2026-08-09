@@ -1,0 +1,257 @@
+{
+  "schema_version": "cypshift.public_sources.v1",
+  "captured_at_utc": "2026-08-09T17:54:29Z",
+  "sources": {
+    "octant_cyp": {
+      "kind": "huggingface_dataset",
+      "dataset_id": "openadmet/Octant_CYP_inhibition_reactivity_blog_release",
+      "revision": "96dc1cceaa545a22041d1e16a9c2524a658403f8",
+      "revision_last_modified_utc": "2026-08-06T10:50:25Z",
+      "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release",
+      "citation_url": "https://openadmet.org/Octant_CYP_blog_post/",
+      "linked_repository": {
+        "url": "https://github.com/OpenADMET/Octant_CYP_blog_post",
+        "revision": "58b3d6a63d25b18bee0b68af07cf1a5b30e6cf0d",
+        "license": "Apache-2.0"
+      },
+      "license": {
+        "dataset_card_metadata": "CC-BY-4.0",
+        "dataset_card_body": "Apache-2.0",
+        "policy": "Treat the data as CC-BY-4.0, retain attribution, keep raw files out of Git, and disclose the conflicting body text."
+      },
+      "assay_context": {
+        "core_endpoint": "CYP3A4 pIC50",
+        "preincubation": "30 minutes with active CYP3A4",
+        "probe": "DBOMF",
+        "readout": "fluorescence",
+        "warning": "Active-enzyme preincubation may combine reversible inhibition with metabolism-dependent effects; this is not the challenge minus-NADPH direct-inhibition endpoint."
+      },
+      "files": [
+        {
+          "path": "README.md",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/README.md",
+          "size_bytes": 9621,
+          "sha256": "1859f335ccd9bee9407282b66bc4a690bc8bbf74abbf80d0c5fae27120cadce4"
+        },
+        {
+          "path": "inhibition.tsv",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/inhibition.tsv",
+          "size_bytes": 251930,
+          "sha256": "19e537166a17a42dd50cc262dd6eb0a963c181830fdc52db0fba98533e01c9c6",
+          "rows": 1340,
+          "columns": 16
+        },
+        {
+          "path": "inhibition_wells.tsv",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/inhibition_wells.tsv",
+          "size_bytes": 2584780,
+          "sha256": "531a3dc8d175a9bf0be69cc8594ad310cd64e0997ed4fcd0da2067057737175c",
+          "rows": 16931,
+          "columns": 10
+        },
+        {
+          "path": "reactivity.tsv",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/reactivity.tsv",
+          "size_bytes": 336928,
+          "sha256": "efca9d85202f215edeb929d3786693359589ea83071a3ebcbe1de79318e24834",
+          "rows": 2446,
+          "columns": 9
+        },
+        {
+          "path": "reactivity_wells.tsv",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/reactivity_wells.tsv",
+          "size_bytes": 3417381,
+          "sha256": "967c9589e19bc91d8a731adaa8feae038419d57bffe560be8242db87108d008f",
+          "rows": 19344,
+          "columns": 12
+        },
+        {
+          "path": "will_it_fly_in_mass_spec.tsv",
+          "url": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release/resolve/96dc1cceaa545a22041d1e16a9c2524a658403f8/will_it_fly_in_mass_spec.tsv",
+          "size_bytes": 951935,
+          "sha256": "afb8482cad6910fce18c14661810b2c3342797fd60833e6daba9065f5cb18d37",
+          "rows": 11353,
+          "columns": 4
+        }
+      ],
+      "source_discrepancies": [
+        "The dataset-card metadata declares CC-BY-4.0 while the card body says Apache 2.0.",
+        "The card describes 2442 reactivity rows; the immutable TSV contains 2446.",
+        "The linked blog describes 1343 inhibition compounds; the immutable TSV and dataset card contain 1340."
+      ]
+    },
+    "tdc_admet": {
+      "kind": "tdc_benchmark_archive",
+      "benchmark_group": "ADMET_Group",
+      "package": {
+        "name": "PyTDC",
+        "version": "1.1.15",
+        "sdist_sha256": "cd6164859af7b9b6f60e0c6d6e50679eacaffd09cfdea1acfc8bb7360e8e2205",
+        "license": "MIT",
+        "repository_revision": "c310c35f27e3f506411018ac43d97b8ba23ca652"
+      },
+      "data_license": "CC-BY-4.0",
+      "data_license_url": "https://tdcommons.ai/single_pred_tasks/adme/",
+      "archive": {
+        "dataverse_file_id": 4426004,
+        "url": "https://dataverse.harvard.edu/api/access/datafile/4426004",
+        "path": "admet_group.zip",
+        "size_bytes": 1472501,
+        "sha256": "bd0005246cb6f1672333c28ad202112a8bf071ab65d847848715030308faf1f1"
+      },
+      "split_contract": "Preserve the archive train_val.csv and test.csv files exactly. Select candidates only inside train_val and record every evaluation on test.",
+      "tasks": {
+        "cyp2c9_veith": {
+          "metric": "AUPRC",
+          "train_val": {
+            "path": "admet_group/cyp2c9_veith/train_val.csv",
+            "size_bytes": 576176,
+            "sha256": "f7d1cb85adac9b1c4bca33936c7ecde2d0e3c127258846786ca7bf6418ddb1a4",
+            "rows": 9673,
+            "negative": 6398,
+            "positive": 3275
+          },
+          "test": {
+            "path": "admet_group/cyp2c9_veith/test.csv",
+            "size_bytes": 139376,
+            "sha256": "e62409b62d6adc69c25eb47d83bfb88379878d70656e0191a8f555ef733e2519",
+            "rows": 2419,
+            "negative": 1649,
+            "positive": 770
+          }
+        },
+        "cyp2d6_veith": {
+          "metric": "AUPRC",
+          "train_val": {
+            "path": "admet_group/cyp2d6_veith/train_val.csv",
+            "size_bytes": 630120,
+            "sha256": "e9e65ba87e09d23aa49fa068bdbb6a16dc686d7916d15f1028569bf6fc3bc5c8",
+            "rows": 10504,
+            "negative": 8433,
+            "positive": 2071
+          },
+          "test": {
+            "path": "admet_group/cyp2d6_veith/test.csv",
+            "size_bytes": 143144,
+            "sha256": "8e8f9ec13df932e38b6467051a1ac496d498bd87ef9d893fde3490757e676c16",
+            "rows": 2626,
+            "negative": 2183,
+            "positive": 443
+          }
+        },
+        "cyp3a4_veith": {
+          "metric": "AUPRC",
+          "train_val": {
+            "path": "admet_group/cyp3a4_veith/train_val.csv",
+            "size_bytes": 573412,
+            "sha256": "df6944a7a01cf8ba0a56b87214ea9e25ac40a8f8a64d92da454f12fbc50d179f",
+            "rows": 9861,
+            "negative": 5833,
+            "positive": 4028
+          },
+          "test": {
+            "path": "admet_group/cyp3a4_veith/test.csv",
+            "size_bytes": 148130,
+            "sha256": "5b7d31656dd28ad48e2a1c9ee9b59cce39b6dfa268f5f285f939629a339ec9bc",
+            "rows": 2467,
+            "negative": 1385,
+            "positive": 1082
+          }
+        }
+      }
+    },
+    "tdc_leaderboards": {
+      "kind": "dated_web_reference",
+      "captured_at_utc": "2026-08-09T17:54:29Z",
+      "metric_direction": "higher_is_better",
+      "metric_direction_warning": "The CYP2D6 and CYP3A4 pages incorrectly say lower is better below rankings ordered by decreasing AUPRC. Use TDC's pr-auc evaluator and higher-is-better metric definition.",
+      "pages": {
+        "overview": {
+          "url": "https://tdcommons.ai/benchmark/admet_group/overview/",
+          "snapshot_sha256": "5abc20ec6ab590a8d1392fc650437dcf9d1bf80b62415cc91ce1a3cfd0ae6695"
+        },
+        "cyp2c9_veith": {
+          "url": "https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/",
+          "snapshot_sha256": "38612faa6cdb958912828d45e4e075a69e5c3b096bf83a3943e37ab0fedadca0",
+          "dataset_size": 12092,
+          "split": "Scaffold",
+          "metric": "AUPRC",
+          "anchors": {
+            "MapLight + GNN": {"mean": 0.859, "std": 0.001},
+            "Chemprop-RDKit": {"mean": 0.777, "std": 0.003},
+            "Chemprop": {"mean": 0.754, "std": 0.002}
+          }
+        },
+        "cyp2d6_veith": {
+          "url": "https://tdcommons.ai/benchmark/admet_group/11cyp2d6i/",
+          "snapshot_sha256": "3e563293e130ec8f0ff25388a77ac2ad427be476c0e6ee5d03797e775dc61994",
+          "dataset_size": 13130,
+          "split": "Scaffold",
+          "metric": "AUPRC",
+          "anchors": {
+            "MapLight + GNN": {"mean": 0.790, "std": 0.001},
+            "Chemprop-RDKit": {"mean": 0.673, "std": 0.007},
+            "Chemprop": {"mean": 0.649, "std": 0.016}
+          }
+        },
+        "cyp3a4_veith": {
+          "url": "https://tdcommons.ai/benchmark/admet_group/12cyp3a4i/",
+          "snapshot_sha256": "0208801c930b099446edf654c0c7f1d6b781f8150af908aa88b5f90f4a1885eb",
+          "dataset_size": 12328,
+          "split": "Scaffold",
+          "metric": "AUPRC",
+          "anchors": {
+            "MapLight + GNN": {"mean": 0.916, "std": 0.000},
+            "Chemprop-RDKit": {"mean": 0.876, "std": 0.003},
+            "Chemprop": {"mean": 0.862, "std": 0.003}
+          }
+        }
+      }
+    },
+    "chemeleon_cyp": {
+      "kind": "huggingface_model",
+      "model_id": "openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1",
+      "revision": "ef24cf941ae21c7d7a64df378a846bd2066eceda",
+      "revision_last_modified_utc": "2026-06-16T19:17:19Z",
+      "url": "https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1",
+      "license": "Apache-2.0",
+      "training_contract": {
+        "source": "ChEMBL 37",
+        "split": "none; all curated rows used for training",
+        "rows": 8068,
+        "input_column": "OPENADMET_CANONICAL_SMILES",
+        "targets": [
+          "OPENADMET_LOGAC50_CYP3A4",
+          "OPENADMET_LOGAC50_CYP2D6",
+          "OPENADMET_LOGAC50_CYP2C9",
+          "OPENADMET_LOGAC50_CYP1A2"
+        ],
+        "overlap_policy": "Audit exact standardized-structure overlap using the published X_train.csv before calling any result zero-shot."
+      },
+      "framework": {
+        "repository": "https://github.com/OpenADMET/openadmet-models",
+        "stable_version": "v0.2.0",
+        "revision": "cdf3e9f7de9ae6b30d13a28c68e20d3b2e651498",
+        "license_discrepancy": "GitHub detects Apache-2.0 while pyproject.toml declares MIT.",
+        "container_warning": "The model card references mutable image ghcr.io/openadmet/openadmet-models:main; do not use it without resolving a digest."
+      },
+      "inference": {
+        "command": "openadmet predict --input-path INPUT.csv --input-col SMILES_COLUMN --model-dir anvil_training/ --output-csv predictions.csv --accelerator cpu",
+        "output_prefixes": ["OADMET_PRED_", "OADMET_STD_"]
+      },
+      "files": [
+        {"path": "README.md", "size_bytes": 4852, "sha256": "a540281e3319af82f547b146de932e00f8b2985c2928a715211158e870c5d4bb"},
+        {"path": "anvil_training/anvil_recipe.yaml", "size_bytes": 1830, "sha256": "4249da7e536755bd6668ef04b3796512d4b00dc591b993a66898bac4e589473d"},
+        {"path": "anvil_training/data/X_train.csv", "size_bytes": 527901, "sha256": "208d3662cdf3221c9ef7e4adc138fd48e1ae03ef9edb3e984f8344c8c26d35dd"},
+        {"path": "anvil_training/data/y_train.csv", "size_bytes": 77940, "sha256": "9f5b06ad99a1982b85d48e8b885a0c52bcc6c3655f1c03465c5141cb0eb483be"},
+        {"path": "anvil_training/model.json", "size_bytes": 311, "sha256": "ccb04ca4ed5b529aa1ed813abc72b05bebc6f51849ed6269b3910fa139000904"},
+        {"path": "anvil_training/model.pth", "size_bytes": 51669359, "sha256": "81d15cc43a3608f1aab465b1e690d86fd41c420615094cca1439c2e52f3b4e7b"},
+        {"path": "run_model_inference.sh", "size_bytes": 442, "sha256": "5a897d0524b4726e94085399777559f0924fb8422e9c8d395130cd4d3fcfff93"}
+      ],
+      "source_discrepancies": [
+        "The model card recommends mutable framework source and container references rather than an inference environment digest.",
+        "The training recipe metadata lists CYP2D9 while the target column and model scope are CYP2C9."
+      ]
+    }
+  }
+}

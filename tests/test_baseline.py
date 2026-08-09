@@ -94,8 +94,8 @@ def test_prediction_artifacts_and_manifest_are_reproducible(tmp_path: Path) -> N
     ).hexdigest()
     assert manifest["output_hashes"]["predictions.csv"] == prediction_hash
     assert manifest["resolved_configuration"]["llm_adjudication_used"] is False
-    assert manifest["software"]["cypshift"] == "0.1.0"
-    assert manifest["software"]["source_revision"] == "v0.1.0"
+    assert manifest["software"]["cypshift"] == "0.2.0.dev0"
+    assert manifest["software"]["source_revision"] == "unreleased"
     assert manifest["summary"] == {
         "contexts_supported": 3,
         "contexts_unsupported": 1,
