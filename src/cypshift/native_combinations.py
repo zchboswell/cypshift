@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import math
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
@@ -14,6 +15,7 @@ from typing import Any
 from cypshift.native_evaluation import (
     _retained_configurations,
     _verify_prediction_inputs,
+    _verify_prediction_receipt,
     _verify_selection_receipt,
 )
 from cypshift.native_selection import (
@@ -36,10 +38,14 @@ from cypshift.native_selection import (
     _primary_metric,
     _primary_score,
     _read_csv,
+    _read_json,
     _write_json,
 )
 
 COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v3"
+RETAINED_MEAN_PREDICTION_SCHEMA_VERSION = (
+    "cypshift.retained_mean_heldout_prediction.v1"
+)
 COMBINATION_CANDIDATES = (
     "best_single",
     "unweighted_mean",
@@ -111,6 +117,16 @@ OPTIMISM_COLUMNS = (
     "optimism",
     "interpretation",
 )
+RETAINED_MEAN_COLUMNS = (
+    "benchmark",
+    "task",
+    "problem_type",
+    "molecule_id",
+    "candidate",
+    "prediction",
+    "standardized_structure_hash",
+    "base_family_count",
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,6 +138,15 @@ class CombinationResult:
     combination_rows: int
     base_model_fits: int
     total_fit_operations: int
+
+
+@dataclass(frozen=True, slots=True)
+class RetainedMeanPredictionResult:
+    """One immutable label-free mean prediction per held-out molecule."""
+
+    manifest_path: Path
+    predictions_path: Path
+    prediction_rows: int
 
 
 def run_native_combinations(
@@ -395,6 +420,219 @@ def run_native_combinations(
         base_model_fits=base_model_fits,
         total_fit_operations=total_fit_operations,
     )
+
+
+def run_retained_mean_prediction(
+    combination_root: Path,
+    base_prediction_root: Path,
+    output_directory: Path,
+    *,
+    source_revision: str,
+) -> RetainedMeanPredictionResult:
+    """Apply the reviewed unweighted mean without fitting or reading labels."""
+
+    if output_directory.exists():
+        raise NativeSelectionError(
+            f"output path already exists: {output_directory}. "
+            "Retained-mean prediction artifacts are immutable."
+        )
+    if not source_revision.strip():
+        raise NativeSelectionError("source revision must not be empty")
+    combination_manifest, retained = _verify_combination_receipt(combination_root)
+    base_manifest = _verify_prediction_receipt(base_prediction_root)
+    _verify_mean_receipt_binding(combination_manifest, retained, base_manifest)
+
+    grouped: dict[tuple[str, str, str], dict[str, Mapping[str, str]]] = {}
+    for row in _read_csv(base_prediction_root / "heldout_predictions.csv"):
+        key = (row["benchmark"], row["task"], row["molecule_id"])
+        family = row["family"]
+        if family not in FAMILIES or family in grouped.setdefault(key, {}):
+            raise NativeSelectionError("held-out base family or molecule is invalid")
+        grouped[key][family] = row
+    if len(grouped) != base_manifest.get("heldout_structures"):
+        raise NativeSelectionError("held-out molecule count does not match receipt")
+    expected_rows = len(grouped) * len(FAMILIES)
+    if expected_rows != base_manifest.get("prediction_rows"):
+        raise NativeSelectionError("held-out base prediction count does not match receipt")
+
+    retained_tasks = {
+        (str(item["benchmark"]), str(item["task"])): str(item["problem_type"])
+        for item in retained["datasets"]
+    }
+    output_rows: list[dict[str, str]] = []
+    observed_tasks: set[tuple[str, str]] = set()
+    for key, families in grouped.items():
+        if set(families) != set(FAMILIES):
+            raise NativeSelectionError("held-out molecule lacks four base families")
+        benchmark, task, molecule_id = key
+        task_key = (benchmark, task)
+        observed_tasks.add(task_key)
+        problem_type = retained_tasks.get(task_key)
+        row_metadata = {
+            (
+                row["benchmark"],
+                row["task"],
+                row["problem_type"],
+                row["molecule_id"],
+                row["standardized_structure_hash"],
+            )
+            for row in families.values()
+        }
+        if len(row_metadata) != 1 or problem_type is None:
+            raise NativeSelectionError("held-out base metadata alignment failed")
+        (_, _, row_problem_type, _, structure_hash) = row_metadata.pop()
+        if row_problem_type != problem_type:
+            raise NativeSelectionError("held-out problem type does not match receipt")
+        try:
+            values = [float(families[family]["prediction"]) for family in FAMILIES]
+        except ValueError as exc:
+            raise NativeSelectionError(
+                "held-out base prediction must be numeric"
+            ) from exc
+        if not all(math.isfinite(value) for value in values):
+            raise NativeSelectionError("held-out base prediction must be finite")
+        if problem_type == "classification" and any(
+            value < 0.0 or value > 1.0 for value in values
+        ):
+            raise NativeSelectionError(
+                "held-out classification prediction must be within [0, 1]"
+            )
+        output_rows.append(
+            {
+                "benchmark": benchmark,
+                "task": task,
+                "problem_type": problem_type,
+                "molecule_id": molecule_id,
+                "candidate": "unweighted_mean",
+                "prediction": _number(sum(values) / len(FAMILIES)),
+                "standardized_structure_hash": structure_hash,
+                "base_family_count": str(len(FAMILIES)),
+            }
+        )
+    if observed_tasks != set(retained_tasks):
+        raise NativeSelectionError("held-out task population does not match receipt")
+
+    output_directory.mkdir(parents=True)
+    predictions_path = output_directory / "retained_mean_heldout_predictions.csv"
+    _write_csv(predictions_path, RETAINED_MEAN_COLUMNS, output_rows)
+    rows_written = len(output_rows)
+    outputs = {predictions_path.name: _file_hash(predictions_path)}
+    manifest_path = output_directory / "retained_mean_prediction_manifest.json"
+    _write_json(
+        manifest_path,
+        {
+            "schema_version": RETAINED_MEAN_PREDICTION_SCHEMA_VERSION,
+            "source_revision": source_revision,
+            "package_version": metadata.version("cypshift"),
+            "combination_schema_version": combination_manifest["schema_version"],
+            "combination_manifest_sha256": _file_hash(
+                combination_root / "combination_manifest.json"
+            ),
+            "combination_aggregate_sha256": combination_manifest["aggregate_sha256"],
+            "base_prediction_schema_version": base_manifest["schema_version"],
+            "base_prediction_manifest_sha256": _file_hash(
+                base_prediction_root / "heldout_prediction_manifest.json"
+            ),
+            "base_prediction_aggregate_sha256": base_manifest["aggregate_sha256"],
+            "selection_aggregate_sha256": base_manifest[
+                "selection_aggregate_sha256"
+            ],
+            "prediction_input_aggregate_sha256": base_manifest[
+                "prediction_input_aggregate_sha256"
+            ],
+            "candidate": "unweighted_mean",
+            "family_order": list(FAMILIES),
+            "outputs": outputs,
+            "aggregate_recipe": AGGREGATE_RECIPE,
+            "aggregate_sha256": _hash_mapping(outputs),
+            "tasks": len(observed_tasks),
+            "heldout_structures": rows_written,
+            "prediction_rows": rows_written,
+            "base_predictions_averaged": rows_written * len(FAMILIES),
+            "model_fits": 0,
+            "heldout_measurement_tables_opened": 0,
+            "heldout_labels_parsed": 0,
+            "tdc_public_test_evaluations": 0,
+            "octant_outer_evaluations": 0,
+        },
+    )
+    return RetainedMeanPredictionResult(
+        manifest_path=manifest_path,
+        predictions_path=predictions_path,
+        prediction_rows=rows_written,
+    )
+
+
+def _verify_combination_receipt(
+    root: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    manifest = _read_json(root / "combination_manifest.json")
+    if manifest.get("schema_version") != COMBINATION_SCHEMA_VERSION:
+        raise NativeSelectionError("unsupported native-combination schema")
+    if any(
+        manifest.get(field) != 0
+        for field in (
+            "heldout_labels_parsed",
+            "tdc_public_test_evaluations",
+            "octant_outer_evaluations",
+        )
+    ):
+        raise NativeSelectionError("native-combination receipt is not label clean")
+    outputs = manifest.get("outputs")
+    if not isinstance(outputs, dict):
+        raise NativeSelectionError("native-combination outputs must be an object")
+    for name, expected in outputs.items():
+        if (
+            not isinstance(name, str)
+            or not isinstance(expected, str)
+            or Path(name).is_absolute()
+            or ".." in Path(name).parts
+        ):
+            raise NativeSelectionError("native-combination output entry is invalid")
+        if _file_hash(root / name) != expected:
+            raise NativeSelectionError(f"native-combination output hash mismatch: {name}")
+    if _hash_mapping(outputs) != manifest.get("aggregate_sha256"):
+        raise NativeSelectionError("native-combination aggregate hash mismatch")
+    retained = _read_json(root / "retained_combinations.json")
+    return manifest, retained
+
+
+def _verify_mean_receipt_binding(
+    combination: Mapping[str, Any],
+    retained: Mapping[str, Any],
+    base_prediction: Mapping[str, Any],
+) -> None:
+    datasets = retained.get("datasets")
+    if (
+        retained.get("schema_version") != COMBINATION_SCHEMA_VERSION
+        or not isinstance(datasets, list)
+        or len(datasets) != combination.get("datasets")
+    ):
+        raise NativeSelectionError("retained-combination receipt is invalid")
+    keys: set[tuple[str, str]] = set()
+    for item in datasets:
+        if (
+            not isinstance(item, dict)
+            or item.get("retained_candidate") != "unweighted_mean"
+        ):
+            raise NativeSelectionError("unweighted mean was not retained for every task")
+        key = (str(item.get("benchmark")), str(item.get("task")))
+        if key in keys or item.get("problem_type") not in {
+            "classification",
+            "regression",
+        }:
+            raise NativeSelectionError("retained-combination task is invalid")
+        keys.add(key)
+    for field in (
+        "selection_aggregate_sha256",
+        "prediction_input_aggregate_sha256",
+    ):
+        if combination.get(field) != base_prediction.get(field):
+            raise NativeSelectionError(f"combination and base prediction {field} differ")
+    if retained.get("selection_aggregate_sha256") != combination.get(
+        "selection_aggregate_sha256"
+    ):
+        raise NativeSelectionError("retained combination is not bound to selection")
 
 
 def _aligned_base_predictions(

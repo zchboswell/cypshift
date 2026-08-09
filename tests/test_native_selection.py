@@ -7,7 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from cypshift.native_combinations import run_native_combinations
+from cypshift.native_combinations import (
+    run_native_combinations,
+    run_retained_mean_prediction,
+)
 from cypshift.native_evaluation import (
     prepare_prediction_inputs,
     run_heldout_prediction,
@@ -46,6 +49,27 @@ def _file_hash(path: Path) -> str:
 def _read_rows(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8", newline="") as handle:
         return list(csv.DictReader(handle))
+
+
+def _force_all_combinations_to_mean(root: Path) -> None:
+    retained_path = root / "retained_combinations.json"
+    retained = json.loads(retained_path.read_text(encoding="utf-8"))
+    for dataset in retained["datasets"]:
+        dataset["retained_candidate"] = "unweighted_mean"
+        dataset["retention_reason"] = "test fixture"
+    retained_path.write_text(
+        json.dumps(retained, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    manifest_path = root / "combination_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["outputs"][retained_path.name] = _file_hash(retained_path)
+    material = "\n".join(
+        f"{name}={manifest['outputs'][name]}" for name in sorted(manifest["outputs"])
+    )
+    manifest["aggregate_sha256"] = hashlib.sha256(material.encode()).hexdigest()
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
 
 def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
@@ -678,5 +702,89 @@ def test_native_combinations_are_nested_label_clean_and_deterministic(
             prediction_inputs,
             selection,
             tmp_path / "combinations-one",
+            source_revision="test-revision",
+        )
+
+
+def test_retained_mean_prediction_is_label_free_receipt_bound_and_deterministic(
+    tmp_path: Path,
+) -> None:
+    octant, tdc, validation, _ = _fixture(tmp_path / "fixture")
+    selection = tmp_path / "selection"
+    run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
+    prediction_inputs = tmp_path / "prediction-inputs"
+    prepare_prediction_inputs(
+        octant,
+        tdc,
+        validation / "tdc" / "official_split.csv",
+        validation,
+        prediction_inputs,
+    )
+    base_predictions = tmp_path / "base-predictions"
+    run_heldout_prediction(prediction_inputs, selection, base_predictions)
+    combinations = tmp_path / "combinations"
+    run_native_combinations(
+        prediction_inputs,
+        selection,
+        combinations,
+        source_revision="test-revision",
+    )
+    with pytest.raises(NativeSelectionError, match="unweighted mean was not retained"):
+        run_retained_mean_prediction(
+            combinations,
+            base_predictions,
+            tmp_path / "rejected",
+            source_revision="test-revision",
+        )
+    _force_all_combinations_to_mean(combinations)
+    (octant / "measurements.csv").unlink()
+    (tdc / "measurements.csv").unlink()
+
+    first = run_retained_mean_prediction(
+        combinations,
+        base_predictions,
+        tmp_path / "mean-one",
+        source_revision="test-revision",
+    )
+    run_retained_mean_prediction(
+        combinations,
+        base_predictions,
+        tmp_path / "mean-two",
+        source_revision="test-revision",
+    )
+    for path in sorted((tmp_path / "mean-one").iterdir()):
+        assert path.read_bytes() == (tmp_path / "mean-two" / path.name).read_bytes()
+
+    base_rows = _read_rows(base_predictions / "heldout_predictions.csv")
+    mean_rows = _read_rows(first.predictions_path)
+    grouped: dict[tuple[str, str, str], list[float]] = {}
+    for row in base_rows:
+        key = (row["benchmark"], row["task"], row["molecule_id"])
+        grouped.setdefault(key, []).append(float(row["prediction"]))
+    assert first.prediction_rows == len(grouped)
+    assert len(base_rows) == first.prediction_rows * len(FAMILIES)
+    for row in mean_rows:
+        key = (row["benchmark"], row["task"], row["molecule_id"])
+        assert float(row["prediction"]) == pytest.approx(
+            sum(grouped[key]) / len(FAMILIES)
+        )
+        assert row["candidate"] == "unweighted_mean"
+        assert row["base_family_count"] == str(len(FAMILIES))
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    assert manifest["prediction_rows"] == first.prediction_rows
+    assert manifest["base_predictions_averaged"] == len(base_rows)
+    assert manifest["model_fits"] == 0
+    assert manifest["heldout_measurement_tables_opened"] == 0
+    assert manifest["heldout_labels_parsed"] == 0
+    assert manifest["tdc_public_test_evaluations"] == 0
+    assert manifest["octant_outer_evaluations"] == 0
+
+    base_path = base_predictions / "heldout_predictions.csv"
+    base_path.write_bytes(base_path.read_bytes() + b"\n")
+    with pytest.raises(NativeSelectionError, match="prediction output hash mismatch"):
+        run_retained_mean_prediction(
+            combinations,
+            base_predictions,
+            tmp_path / "tampered",
             source_revision="test-revision",
         )

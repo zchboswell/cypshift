@@ -491,7 +491,14 @@ def _verify_prediction_receipt(root: Path) -> dict[str, Any]:
     if not isinstance(outputs, dict):
         raise NativeSelectionError("prediction outputs must be an object")
     for name, expected in outputs.items():
-        if not isinstance(name, str) or _file_hash(root / name) != expected:
+        if (
+            not isinstance(name, str)
+            or not isinstance(expected, str)
+            or Path(name).is_absolute()
+            or ".." in Path(name).parts
+        ):
+            raise NativeSelectionError("prediction output entry is invalid")
+        if _file_hash(root / name) != expected:
             raise NativeSelectionError(f"prediction output hash mismatch: {name}")
     material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
     if sha256(material.encode()).hexdigest() != manifest.get("aggregate_sha256"):
