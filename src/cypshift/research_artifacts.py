@@ -25,6 +25,7 @@ from cypshift.native_selection import (
 
 RESEARCH_OBSERVATION_SCHEMA_VERSION = "cypshift.research_observations.v1"
 SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v4"
+RETAINED_MEAN_SCORECARD_SCHEMA_VERSION = "cypshift.retained_mean_scorecard.v1"
 METRIC_SCHEMA_VERSION = "cypshift.native_metrics.v1"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
@@ -374,6 +375,155 @@ def complete_first_scorecard(
                 "ExtraTrees seed predictions. The retained point score remains "
                 "the metric of their mean prediction. Deterministic families "
                 "have a one-value interval. No result selected a seed."
+            ),
+        },
+    )
+    return manifest_path
+
+
+def complete_retained_mean_scorecard(
+    scoring_root: Path,
+    validation_root: Path,
+    public_sources_path: Path,
+    output_directory: Path,
+    *,
+    source_revision: str,
+    selection_runtime_seconds: float,
+    prediction_runtime_seconds: float,
+    scoring_runtime_seconds: float,
+    hardware: str,
+) -> Path:
+    """Complete the retained-mean scorecard without reopening held-out labels."""
+
+    _require_new_directory(output_directory)
+    scoring_manifest = _verify_manifest_outputs(
+        scoring_root / "retained_mean_scoring_manifest.json", scoring_root
+    )
+    expected_counts = {
+        "tdc_public_test_evaluations": 3,
+        "tdc_strict_companion_analyses": 3,
+        "octant_outer_evaluations": 1,
+        "rejected_candidate_evaluations": 0,
+        "model_fits": 0,
+        "model_selection_changes": 0,
+    }
+    if (
+        scoring_manifest.get("schema_version")
+        != "cypshift.retained_mean_heldout_scoring.v1"
+        or any(scoring_manifest.get(key) != value for key, value in expected_counts.items())
+    ):
+        raise NativeSelectionError("retained-mean scoring receipt is invalid")
+    rows, original_columns = _read_csv_columns(scoring_root / "heldout_scores.csv")
+    scored = _read_csv(scoring_root / "scored_retained_mean_predictions.csv")
+    if (
+        len(rows) != 7
+        or len(scored) != scoring_manifest.get("heldout_labels_parsed")
+        or {row.get("family") for row in rows} != {"unweighted_mean"}
+    ):
+        raise NativeSelectionError("retained-mean score population is invalid")
+    sources = _read_json(public_sources_path)
+    dataset_revisions = _dataset_revisions(sources)
+    anchors = _anchor_statistics(sources)
+    population_hashes = _population_hashes(scored)
+    split_hashes = {
+        "octant_cyp": _file_hash(
+            validation_root / "octant" / "octant_grouped_split.csv"
+        ),
+        "tdc_admet_group": str(scoring_manifest["official_split_sha256"]),
+    }
+    completed_rows: list[dict[str, str]] = []
+    for row in rows:
+        benchmark = row["benchmark"]
+        task = row["task"]
+        population = row["population"]
+        point = float(row["primary_value"])
+        reference = anchors.get(task, {}) if population == "official" else {}
+        completed = dict(row)
+        completed.update(
+            {
+                "dataset_revision": dataset_revisions[benchmark],
+                "split_sha256": split_hashes[benchmark],
+                "population_sha256": population_hashes[
+                    (benchmark, task, population)
+                ],
+                "native_seed_policy": (
+                    "fixed_unweighted_mean_of_four_frozen_family_predictions"
+                ),
+                "native_seed_count": "1",
+                "native_seed_primary_values": _number(point),
+                "native_seed_primary_min": _number(point),
+                "native_seed_primary_max": _number(point),
+                "native_seed_primary_std": "0",
+                "maplight_gnn_std": _reference_std(reference, "MapLight + GNN"),
+                "chemprop_rdkit_std": _reference_std(
+                    reference, "Chemprop-RDKit"
+                ),
+                "chemprop_std": _reference_std(reference, "Chemprop"),
+                "delta_vs_chemprop_rdkit": _delta(
+                    point, reference, "Chemprop-RDKit"
+                ),
+                "delta_vs_chemprop": _delta(point, reference, "Chemprop"),
+                "selection_runtime_seconds": _number(selection_runtime_seconds),
+                "heldout_prediction_runtime_seconds": _number(
+                    prediction_runtime_seconds
+                ),
+                "scoring_runtime_seconds": _number(scoring_runtime_seconds),
+                "hardware": hardware,
+                "comparison_status": _comparison_status(benchmark, population),
+                "contamination_warning": _contamination_warning(
+                    benchmark, task, population
+                ),
+                "aggregation_warning": (
+                    "The fixed cypshift mean is compared with published "
+                    "leaderboard mean+/-SD values; aggregation differs."
+                    if population == "official"
+                    else "No public leaderboard delta is asserted."
+                ),
+            }
+        )
+        completed_rows.append(completed)
+
+    output_directory.mkdir(parents=True)
+    columns = (*original_columns, *SCORECARD_ADDITIONAL_COLUMNS)
+    csv_path = output_directory / "scorecard.csv"
+    _write_csv(csv_path, columns, completed_rows)
+    json_path = output_directory / "scorecard.json"
+    _write_json(
+        json_path,
+        {
+            "schema_version": RETAINED_MEAN_SCORECARD_SCHEMA_VERSION,
+            "metric_schema_version": METRIC_SCHEMA_VERSION,
+            "rows": completed_rows,
+        },
+    )
+    outputs = {
+        csv_path.name: _file_hash(csv_path),
+        json_path.name: _file_hash(json_path),
+    }
+    manifest_path = output_directory / "scorecard_manifest.json"
+    _write_json(
+        manifest_path,
+        {
+            "schema_version": RETAINED_MEAN_SCORECARD_SCHEMA_VERSION,
+            "metric_schema_version": METRIC_SCHEMA_VERSION,
+            "source_revision": source_revision,
+            "package_version": metadata.version("cypshift"),
+            "scoring_manifest_sha256": _file_hash(
+                scoring_root / "retained_mean_scoring_manifest.json"
+            ),
+            "scoring_aggregate_sha256": scoring_manifest["aggregate_sha256"],
+            "public_sources_sha256": _file_hash(public_sources_path),
+            "outputs": outputs,
+            "aggregate_recipe": AGGREGATE_RECIPE,
+            "aggregate_sha256": _hash_mapping(outputs),
+            "rows": len(completed_rows),
+            "point_score_changes": 0,
+            "model_selection_changes": 0,
+            "additional_heldout_label_access": 0,
+            "additional_heldout_evaluations": 0,
+            "runtime_boundary": (
+                "Selection and base held-out prediction runtimes reuse the "
+                "frozen native run records; scoring runtime is the retained-mean run."
             ),
         },
     )

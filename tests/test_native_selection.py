@@ -25,6 +25,7 @@ from cypshift.native_selection import (
 from cypshift.research_artifacts import (
     complete_first_scorecard,
     complete_oof_research_artifact,
+    complete_retained_mean_scorecard,
 )
 from cypshift.tdc import TDC_TASKS
 
@@ -885,6 +886,38 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
             tmp_path / "scores-one",
             source_revision="test-revision",
         )
+
+    first_scorecard = complete_retained_mean_scorecard(
+        tmp_path / "scores-one",
+        validation,
+        public_sources,
+        tmp_path / "mean-scorecard-one",
+        source_revision="test-revision",
+        selection_runtime_seconds=1.0,
+        prediction_runtime_seconds=2.0,
+        scoring_runtime_seconds=3.0,
+        hardware="test CPU",
+    )
+    complete_retained_mean_scorecard(
+        tmp_path / "scores-one",
+        validation,
+        public_sources,
+        tmp_path / "mean-scorecard-two",
+        source_revision="test-revision",
+        selection_runtime_seconds=1.0,
+        prediction_runtime_seconds=2.0,
+        scoring_runtime_seconds=3.0,
+        hardware="test CPU",
+    )
+    for path in sorted((tmp_path / "mean-scorecard-one").iterdir()):
+        assert path.read_bytes() == (
+            tmp_path / "mean-scorecard-two" / path.name
+        ).read_bytes()
+    scorecard_manifest = json.loads(first_scorecard.read_text(encoding="utf-8"))
+    assert scorecard_manifest["rows"] == 7
+    assert scorecard_manifest["point_score_changes"] == 0
+    assert scorecard_manifest["additional_heldout_label_access"] == 0
+    assert scorecard_manifest["additional_heldout_evaluations"] == 0
 
     def reject_label_load(*args: object, **kwargs: object) -> object:
         raise AssertionError("label loader must not run before preflight completes")
