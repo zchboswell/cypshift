@@ -261,6 +261,11 @@ artifacts remain outside Git.
   better: Octant MAE optimism is 0.0247-0.0347 and TDC AUPRC optimism is
   0.0100-0.0376. These results quantify split optimism only and were not used
   for configuration or combination retention.
+- Independent re-review passed on exact signed head `d02dc9b`. It verified the
+  structural label firewall, 384+16+4 fit accounting, all eight repeat files,
+  full scientific invariance, nested isolation, random grouping, zero held-out
+  access, repository checks, and Occam's Razor. It found no actionable excess
+  complexity. PR 21 merged by exact fast-forward with the reviewed signature.
 
 ## Active hypotheses
 
@@ -316,10 +321,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Return the exact D-020 remediation head and both byte-identical v3 roots to
-independent review. Verify the
-label-absent interface, 384+16+4 fit accounting, unchanged scientific payload,
-candidate arithmetic, nested isolation, complexity gate, random group
-integrity, hashes, and code simplicity. Only after PASS may the retained mean
-be applied to frozen base held-out predictions; scoring remains a later,
-explicitly counted milestone.
+Implement one receipt-bound, label-absent prediction stage that applies the
+retained unweighted mean to the four frozen base held-out predictions for each
+task. It must accept only the reviewed combination-v3 and heldout-prediction-v2
+receipts, write exactly one prediction per held-out molecule, perform no fit,
+open no measurement table, and record zero evaluations. Reproduce its complete
+root byte-for-byte before any scorer is implemented or run.
