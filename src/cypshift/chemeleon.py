@@ -155,6 +155,24 @@ def prepare_chemeleon_inference_input(
         expected_task_counts=expected_counts,
     )
     outputs = {input_path.name: _file_hash(input_path)}
+    projection_contract = _mapping(
+        contract, "model_facing_projection", contract_path
+    )
+    expected_output = _text(
+        projection_contract, "expected_output_sha256", contract_path
+    )
+    expected_key = _text(
+        projection_contract, "expected_population_key_sha256", contract_path
+    )
+    expected_aggregate = _text(
+        projection_contract, "expected_aggregate_sha256", contract_path
+    )
+    if outputs[input_path.name] != expected_output:
+        raise CheMeleonInputError("projected output hash does not match contract")
+    if validation["population_key_sha256"] != expected_key:
+        raise CheMeleonInputError("projected population-key hash does not match contract")
+    if _hash_mapping(outputs) != expected_aggregate:
+        raise CheMeleonInputError("projected aggregate does not match contract")
     manifest_path = output_directory / "chemeleon_input_manifest.json"
     _write_json(
         manifest_path,

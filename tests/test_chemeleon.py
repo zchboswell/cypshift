@@ -237,6 +237,34 @@ def _fixture(
     retained_manifest_path = retained_root / "retained_mean_prediction_manifest.json"
     _write_json(retained_manifest_path, retained_manifest)
 
+    expected_path = tmp_path / "expected.csv"
+    expected_rows = [
+        {
+            "benchmark": "octant_cyp",
+            "task": "cyp3a4_active_preincubation_pIC50",
+            "molecule_id": "oct-1",
+            "standardized_structure": "CC",
+            "standardized_structure_hash": sha256(b"CC").hexdigest(),
+        },
+        {
+            "benchmark": "tdc_admet_group",
+            "task": "cyp2c9_veith",
+            "molecule_id": "tdc-1",
+            "standardized_structure": "CCC",
+            "standardized_structure_hash": sha256(b"CCC").hexdigest(),
+        },
+    ]
+    _write_csv(expected_path, CHEMELEON_INPUT_COLUMNS, expected_rows)
+    expected_output_hash = _hash(expected_path)
+    expected_key_material = "\n".join(
+        "|".join(row[field] for field in CHEMELEON_INPUT_COLUMNS[:3])
+        for row in expected_rows
+    )
+    expected_key_hash = sha256(expected_key_material.encode()).hexdigest()
+    expected_aggregate = _mapping_hash(
+        {"chemeleon_inference_input.csv": expected_output_hash}
+    )
+
     contract = tmp_path / "contract.json"
     _write_json(
         contract,
@@ -257,6 +285,11 @@ def _fixture(
             "expected_task_counts": {
                 "cyp2c9_veith": 2 if duplicate_key else 1,
                 "cyp3a4_active_preincubation_pIC50": 1,
+            },
+            "model_facing_projection": {
+                "expected_output_sha256": expected_output_hash,
+                "expected_population_key_sha256": expected_key_hash,
+                "expected_aggregate_sha256": expected_aggregate,
             },
         },
     )
