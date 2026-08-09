@@ -231,6 +231,8 @@ def run_heldout_scoring(
     prediction_root: Path,
     public_sources_path: Path,
     output_directory: Path,
+    *,
+    attempt: int = 1,
 ) -> HeldoutScoringResult:
     """Parse held-out labels once and score the frozen prediction receipt."""
 
@@ -238,6 +240,8 @@ def run_heldout_scoring(
         raise NativeSelectionError(
             f"output path already exists: {output_directory}. Scoring is immutable."
         )
+    if attempt < 1:
+        raise NativeSelectionError("scoring attempt must be positive")
     verified = _verify_input_receipts(octant_canonical, tdc_canonical, validation_root)
     selection_manifest, _ = _verify_selection_receipt(selection_root, verified)
     prediction_manifest = _verify_prediction_receipt(prediction_root)
@@ -333,7 +337,7 @@ def run_heldout_scoring(
             "tdc_public_test_evaluations": 12,
             "tdc_strict_companion_analyses": 12,
             "octant_outer_evaluations": 4,
-            "scoring_attempt": 1,
+            "scoring_attempt": attempt,
         },
     )
     return HeldoutScoringResult(manifest_path, scorecard_path, 12, 4)

@@ -483,6 +483,21 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
     assert manifest["octant_outer_evaluations"] == 4
     assert manifest["scoring_attempt"] == 1
 
+    attempt_two = run_heldout_scoring(
+        octant,
+        tdc,
+        validation,
+        selection,
+        predictions,
+        public_sources,
+        tmp_path / "scores-attempt-two",
+        attempt=2,
+    )
+    attempt_two_manifest = json.loads(
+        attempt_two.manifest_path.read_text(encoding="utf-8")
+    )
+    assert attempt_two_manifest["scoring_attempt"] == 2
+
     prediction_path = predictions / "heldout_predictions.csv"
     original_predictions = prediction_path.read_bytes()
     prediction_path.write_bytes(original_predictions + b"\n")
