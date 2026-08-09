@@ -342,6 +342,15 @@ artifacts remain outside Git.
   predictions, and requires two byte-identical canonical runs. Six new focused
   tests bring the suite to 76. No model has been downloaded or run and no
   benchmark label has been opened. This code awaits pre-attempt review.
+- Independent code review rejected head `7d0b9ea` before external action: the
+  reviewed input uses literal task values while contract v1 used prefixed
+  mapping keys, so the smoke probe would have failed after download and pull.
+  Remediation `0936323` introduces contract v2, validates exact task-set
+  equality before output creation, strengthens runtime and image-plus-file disk
+  enforcement, and binds raw outputs, logs, and failure-state files. Input v3
+  reproduces all five columns, 7,724 rows, task counts, key hash, CSV hash, and
+  aggregate exactly; only its contract receipt changes. No external action has
+  occurred.
 
 ## Active hypotheses
 
@@ -397,9 +406,10 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently review prediction-path revision `a9c6b41` before the single real
-attempt. Verify source download and hashes, overlap standardization, safe mount
-set, disabled container network, smoke selection, task-column resolution,
-finite row alignment, repeat enforcement, failure receipt, runtime and storage
-limits, zero label access, tests, and Occam simplicity. Do not download or run
-the model until this exact gate passes and merges.
+Independently re-review prediction-path remediation `0936323` before the single
+real attempt. Verify the real contract/input task preflight occurs before every
+external action, source download and hashes, overlap standardization, safe
+mount set, disabled network, smoke selection, task-column resolution, finite
+alignment, repeat enforcement, complete success and failure receipts, runtime
+and image-plus-file storage limits, zero label access, tests, and Occam
+simplicity. Do not download or run the model until this exact gate passes.

@@ -22,7 +22,7 @@ uv run python scripts/prepare_chemeleon_inference.py \
   --prediction-inputs artifacts/benchmarks/native-prediction-inputs-v1 \
   --population-keys artifacts/benchmarks/native-retained-mean-predictions-v1 \
   --contract benchmarks/chemeleon_inference_contract.json \
-  --out artifacts/benchmarks/chemeleon-input-v2 \
+  --out artifacts/benchmarks/chemeleon-input-v3 \
   --source-revision fc0bc842dd4bd75cb725bef4810431eb16a89edb
 ```
 
@@ -35,6 +35,12 @@ and the output aggregate is
 The receipt records zero measurement tables opened, outcome values parsed,
 held-out labels parsed, native predictions consumed, model fits, or model
 evaluations. Only `chemeleon_inference_input.csv` may be mounted read-only.
+V2 remains a valid firewall artifact but is not inference-authorized because
+contract v1 used prefixed task-mapping keys that did not match its exact task
+values. Contract v2 and input v3 correct only that preflight mapping; all five
+columns, 7,724 rows, task counts, key hash, CSV hash, and aggregate are
+unchanged. V3 contract SHA-256 is
+`d81fe7471777776331ed597534d54c56abcc3d343056409672518be07598607f`.
 
 ## Octant compound-level ingestion
 

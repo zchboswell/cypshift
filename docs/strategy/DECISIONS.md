@@ -487,6 +487,11 @@
   repeatability, runtime, storage, or scoring preconditions fail. Make no
   second checkpoint or environment attempt in Phase 0.5.
 - Contract: `benchmarks/chemeleon_inference_contract.json` is authoritative.
+- Compatibility remediation: Contract v1 is rejected for inference because its
+  mapping keys prefixed benchmark names that are not present in the exact
+  five-column task field. V2 keys all four mappings by their literal input task
+  values and requires this equality before output creation, model download, or
+  container access. The five-column scientific payload is unchanged.
 - Reversal condition: Reverse before inference only if a pinned primary source
   contradicts the contract or the authoritative challenge release supersedes
   Phase 0.5. After inference begins, preserve the attempt and its outcome.
