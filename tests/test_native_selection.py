@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from cypshift.native_evaluation import run_heldout_prediction
+from cypshift.native_evaluation import run_heldout_prediction, run_heldout_scoring
 from cypshift.native_selection import (
     FAMILIES,
     NativeSelectionError,
@@ -70,6 +70,9 @@ def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
         "octant/split_manifest.json": validation / "octant" / "split_manifest.json",
         "tdc/tdc_inner_folds.csv": validation / "tdc" / "tdc_inner_folds.csv",
         "tdc/tdc_split_audit.json": validation / "tdc" / "tdc_split_audit.json",
+        "tdc/strict_test_exclusions.csv": (
+            validation / "tdc" / "strict_test_exclusions.csv"
+        ),
     }
     output_hashes = {
         name: _file_hash(path) for name, path in sorted(output_paths.items())
@@ -93,7 +96,9 @@ def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
     )
 
 
-def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
+def _fixture(
+    root: Path, *, valid_heldout_labels: bool = False
+) -> tuple[Path, Path, Path, set[str]]:
     structures = (
         "CCO",
         "CCN",
@@ -114,7 +119,7 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
         "standardized_structure",
         "standardized_structure_hash",
     )
-    measurement_columns = ("molecule_id", "value")
+    measurement_columns = ("molecule_id", "value", "lower_bound", "upper_bound")
 
     octant = root / "octant"
     octant_molecules = []
@@ -133,7 +138,12 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
             }
         )
         octant_measurements.append(
-            {"molecule_id": molecule_id, "value": str(3.0 + index / 4)}
+            {
+                "molecule_id": molecule_id,
+                "value": str(3.0 + index / 4),
+                "lower_bound": "",
+                "upper_bound": "",
+            }
         )
         octant_splits.append(
             {
@@ -143,25 +153,34 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
                 "has_measurement": "true",
             }
         )
-    octant_molecules.append(
-        {
-            "molecule_id": "octant-outer",
-            "status": "accepted",
-            "standardized_structure": "CC=O",
-            "standardized_structure_hash": _structure_hash("CC=O"),
-        }
-    )
-    octant_measurements.append(
-        {"molecule_id": "octant-outer", "value": "DO_NOT_PARSE"}
-    )
-    octant_splits.append(
-        {
-            "molecule_id": "octant-outer",
-            "outer_partition": "validation",
-            "inner_fold": "",
-            "has_measurement": "true",
-        }
-    )
+    for outer_index, (structure, value) in enumerate(
+        (("CC=O", 4.5), ("CC#N", 6.5)), start=1
+    ):
+        molecule_id = f"octant-outer-{outer_index}"
+        octant_molecules.append(
+            {
+                "molecule_id": molecule_id,
+                "status": "accepted",
+                "standardized_structure": structure,
+                "standardized_structure_hash": _structure_hash(structure),
+            }
+        )
+        octant_measurements.append(
+            {
+                "molecule_id": molecule_id,
+                "value": str(value) if valid_heldout_labels else "DO_NOT_PARSE",
+                "lower_bound": str(value - 0.25) if valid_heldout_labels else "",
+                "upper_bound": str(value + 0.25) if valid_heldout_labels else "",
+            }
+        )
+        octant_splits.append(
+            {
+                "molecule_id": molecule_id,
+                "outer_partition": "validation",
+                "inner_fold": "",
+                "has_measurement": "true",
+            }
+        )
     _write_csv(octant / "molecules.csv", molecule_columns, octant_molecules)
     _write_csv(
         octant / "measurements.csv", measurement_columns, octant_measurements
@@ -186,7 +205,12 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
                 }
             )
             tdc_measurements.append(
-                {"molecule_id": molecule_id, "value": str(index % 2)}
+                {
+                    "molecule_id": molecule_id,
+                    "value": str(index % 2),
+                    "lower_bound": "",
+                    "upper_bound": "",
+                }
             )
             tdc_folds.append(
                 {
@@ -195,26 +219,36 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
                     "inner_fold": str(index % 4),
                 }
             )
-        test_id = f"tdc:{task}:test:00001"
-        tdc_molecules.append(
-            {
-                "molecule_id": test_id,
-                "status": "accepted",
-                "standardized_structure": "CC#N",
-                "standardized_structure_hash": _structure_hash("CC#N"),
-            }
-        )
-        tdc_measurements.append(
-            {"molecule_id": test_id, "value": "DO_NOT_PARSE"}
-        )
-        tdc_official.append(
-            {
-                "molecule_id": test_id,
-                "task": task,
-                "partition": "test",
-                "source_row": "2",
-            }
-        )
+        for test_index, test_structure in enumerate(("CC#N", "CC=O"), start=1):
+            test_id = f"tdc:{task}:test:{test_index:05d}"
+            tdc_molecules.append(
+                {
+                    "molecule_id": test_id,
+                    "status": "accepted",
+                    "standardized_structure": test_structure,
+                    "standardized_structure_hash": _structure_hash(test_structure),
+                }
+            )
+            tdc_measurements.append(
+                {
+                    "molecule_id": test_id,
+                    "value": (
+                        str(test_index - 1)
+                        if valid_heldout_labels
+                        else "DO_NOT_PARSE"
+                    ),
+                    "lower_bound": "",
+                    "upper_bound": "",
+                }
+            )
+            tdc_official.append(
+                {
+                    "molecule_id": test_id,
+                    "task": task,
+                    "partition": "test",
+                    "source_row": str(test_index + 1),
+                }
+            )
     _write_csv(tdc / "molecules.csv", molecule_columns, tdc_molecules)
     _write_csv(tdc / "measurements.csv", measurement_columns, tdc_measurements)
 
@@ -233,6 +267,11 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
         validation / "tdc" / "official_split.csv",
         ("molecule_id", "task", "partition", "source_row"),
         tdc_official,
+    )
+    _write_csv(
+        validation / "tdc" / "strict_test_exclusions.csv",
+        ("task", "molecule_id", "standardized_structure_hash", "reason"),
+        [],
     )
     _write_receipts(octant, tdc, validation)
     return octant, tdc, validation, selected_ids
@@ -323,7 +362,7 @@ def test_native_selection_refuses_overwrite_and_missing_selected_target(
         rows = list(csv.DictReader(handle))
     _write_csv(
         octant / "measurements-missing.csv",
-        ("molecule_id", "value"),
+        ("molecule_id", "value", "lower_bound", "upper_bound"),
         rows[1:],
     )
     (octant / "measurements.csv").replace(octant / "measurements-original.csv")
@@ -369,9 +408,93 @@ def test_heldout_prediction_is_label_blind_and_deterministic(tmp_path: Path) -> 
             tmp_path / "predictions-two" / path.name
         ).read_bytes()
     manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
-    assert manifest["heldout_structures"] == 4
-    assert manifest["prediction_rows"] == 16
+    assert manifest["heldout_structures"] == 8
+    assert manifest["prediction_rows"] == 32
     assert manifest["model_fits"] == 24
     assert manifest["heldout_labels_parsed"] == 0
     assert manifest["tdc_public_test_evaluations"] == 0
     assert manifest["octant_outer_evaluations"] == 0
+
+
+def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> None:
+    octant, tdc, validation, _ = _fixture(
+        tmp_path / "fixture", valid_heldout_labels=True
+    )
+    selection = tmp_path / "selection"
+    predictions = tmp_path / "predictions"
+    run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
+    run_heldout_prediction(
+        octant,
+        tdc,
+        validation / "tdc" / "official_split.csv",
+        validation,
+        selection,
+        predictions,
+    )
+    public_sources = tmp_path / "public_sources.json"
+    public_sources.write_text(
+        json.dumps(
+            {
+                "sources": {
+                    "tdc_admet": {
+                        "tdc_leaderboards": {
+                            "pages": {
+                                task: {
+                                    "anchors": {
+                                        "MapLight + GNN": {"mean": 0.8},
+                                        "Chemprop-RDKit": {"mean": 0.7},
+                                        "Chemprop": {"mean": 0.6},
+                                    }
+                                }
+                                for task in TDC_TASKS
+                            }
+                        }
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    first = run_heldout_scoring(
+        octant,
+        tdc,
+        validation,
+        selection,
+        predictions,
+        public_sources,
+        tmp_path / "scores-one",
+    )
+    run_heldout_scoring(
+        octant,
+        tdc,
+        validation,
+        selection,
+        predictions,
+        public_sources,
+        tmp_path / "scores-two",
+    )
+    for path in sorted((tmp_path / "scores-one").iterdir()):
+        assert path.read_bytes() == (tmp_path / "scores-two" / path.name).read_bytes()
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    with first.scorecard_path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) == 28
+    assert manifest["heldout_labels_parsed"] == 8
+    assert manifest["tdc_public_test_evaluations"] == 12
+    assert manifest["tdc_strict_companion_analyses"] == 12
+    assert manifest["octant_outer_evaluations"] == 4
+    assert manifest["scoring_attempt"] == 1
+
+    prediction_path = predictions / "heldout_predictions.csv"
+    original_predictions = prediction_path.read_bytes()
+    prediction_path.write_bytes(original_predictions + b"\n")
+    with pytest.raises(NativeSelectionError, match="prediction output hash mismatch"):
+        run_heldout_scoring(
+            octant,
+            tdc,
+            validation,
+            selection,
+            predictions,
+            public_sources,
+            tmp_path / "tampered-scores",
+        )

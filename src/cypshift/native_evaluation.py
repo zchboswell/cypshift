@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import math
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
@@ -13,6 +14,7 @@ from typing import Any, Literal
 
 from rdkit import DataStructs
 
+from cypshift.metrics import average_precision
 from cypshift.native_selection import (
     FAMILIES,
     SEED,
@@ -49,6 +51,15 @@ HELDOUT_COLUMNS = (
     "local_support_count",
     "local_label_variance",
 )
+SCORECARD_COLUMNS = (
+    "benchmark", "task", "population", "family", "configuration_id", "rows",
+    "prevalence", "threshold", "primary_metric", "primary_value",
+    "average_precision", "auroc", "balanced_accuracy", "mcc", "brier",
+    "ece_10_equal_width", "sensitivity", "specificity", "mae",
+    "median_absolute_error", "rmse", "spearman", "interval_aware_mae",
+    "potent_count", "potent_mae", "maplight_gnn", "chemprop_rdkit",
+    "chemprop", "delta_vs_maplight_gnn", "comparability",
+)
 ProblemType = Literal["classification", "regression"]
 
 
@@ -72,6 +83,16 @@ class HeldoutPredictionResult:
     predictions_path: Path
     prediction_rows: int
     model_fits: int
+
+
+@dataclass(frozen=True, slots=True)
+class HeldoutScoringResult:
+    """One immutable held-out scoring pass."""
+
+    manifest_path: Path
+    scorecard_path: Path
+    tdc_evaluations: int
+    octant_evaluations: int
 
 
 def run_heldout_prediction(
@@ -200,6 +221,345 @@ def run_heldout_prediction(
         prediction_rows=prediction_rows,
         model_fits=model_fits,
     )
+
+
+def run_heldout_scoring(
+    octant_canonical: Path,
+    tdc_canonical: Path,
+    validation_root: Path,
+    selection_root: Path,
+    prediction_root: Path,
+    public_sources_path: Path,
+    output_directory: Path,
+) -> HeldoutScoringResult:
+    """Parse held-out labels once and score the frozen prediction receipt."""
+
+    if output_directory.exists():
+        raise NativeSelectionError(
+            f"output path already exists: {output_directory}. Scoring is immutable."
+        )
+    verified = _verify_input_receipts(octant_canonical, tdc_canonical, validation_root)
+    selection_manifest, _ = _verify_selection_receipt(selection_root, verified)
+    prediction_manifest = _verify_prediction_receipt(prediction_root)
+    selection_hash_differs = prediction_manifest.get(
+        "selection_manifest_sha256"
+    ) != _file_hash(selection_root / "selection_manifest.json")
+    aggregate_differs = prediction_manifest.get(
+        "selection_aggregate_sha256"
+    ) != selection_manifest.get("aggregate_sha256")
+    if selection_hash_differs or aggregate_differs:
+        raise NativeSelectionError("prediction receipt does not bind current selection")
+    predictions = _read_csv(prediction_root / "heldout_predictions.csv")
+    groups = _prediction_groups(predictions)
+    octant_ids = {
+        row["molecule_id"] for row in predictions if row["benchmark"] == "octant_cyp"
+    }
+    tdc_ids = {
+        row["molecule_id"] for row in predictions if row["benchmark"] == "tdc_admet_group"
+    }
+    octant_labels = _load_scoring_labels(
+        octant_canonical / "measurements.csv", octant_ids, regression=True
+    )
+    tdc_labels = _load_scoring_labels(
+        tdc_canonical / "measurements.csv", tdc_ids, regression=False
+    )
+    if set(octant_labels) != octant_ids or set(tdc_labels) != tdc_ids:
+        raise NativeSelectionError("held-out label alignment is incomplete")
+    thresholds = _oof_thresholds(selection_root / "retained_oof_predictions.csv")
+    exclusions = {
+        row["molecule_id"]
+        for row in _read_csv(validation_root / "tdc" / "strict_test_exclusions.csv")
+    }
+    sources = _read_json(public_sources_path)
+    anchors = _tdc_anchors(sources)
+
+    output_directory.mkdir(parents=True)
+    scored_path = output_directory / "scored_predictions.csv"
+    scorecard_path = output_directory / "scorecard.csv"
+    scored_columns = (*HELDOUT_COLUMNS, "target", "strict_excluded")
+    with scored_path.open("x", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=scored_columns, lineterminator="\n")
+        writer.writeheader()
+        for row in predictions:
+            labels = octant_labels if row["benchmark"] == "octant_cyp" else tdc_labels
+            label = labels[row["molecule_id"]]
+            writer.writerow(
+                {
+                    **row,
+                    "target": _number(label[0]),
+                    "strict_excluded": str(row["molecule_id"] in exclusions).lower(),
+                }
+            )
+
+    score_rows = []
+    for key in sorted(groups):
+        benchmark, task, family = key
+        rows = groups[key]
+        labels = octant_labels if benchmark == "octant_cyp" else tdc_labels
+        if benchmark == "octant_cyp":
+            score_rows.append(_octant_score_row(task, family, rows, labels))
+        else:
+            threshold = thresholds[(task, family)]
+            score_rows.append(
+                _tdc_score_row(
+                    task, family, "official", rows, labels, threshold, anchors[task]
+                )
+            )
+            strict_rows = [row for row in rows if row["molecule_id"] not in exclusions]
+            score_rows.append(
+                _tdc_score_row(
+                    task, family, "strict", strict_rows, labels, threshold, None
+                )
+            )
+    _write_csv_rows(scorecard_path, SCORECARD_COLUMNS, score_rows)
+    outputs = {
+        scored_path.name: _file_hash(scored_path),
+        scorecard_path.name: _file_hash(scorecard_path),
+    }
+    material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
+    manifest_path = output_directory / "heldout_scoring_manifest.json"
+    _write_json(
+        manifest_path,
+        {
+            "schema_version": "cypshift.heldout_scoring.v1",
+            "prediction_aggregate_sha256": prediction_manifest["aggregate_sha256"],
+            "prediction_manifest_sha256": _file_hash(
+                prediction_root / "heldout_prediction_manifest.json"
+            ),
+            "public_sources_sha256": _file_hash(public_sources_path),
+            "outputs": outputs,
+            "aggregate_sha256": sha256(material.encode()).hexdigest(),
+            "heldout_labels_parsed": len(octant_labels) + len(tdc_labels),
+            "tdc_public_test_evaluations": 12,
+            "tdc_strict_companion_analyses": 12,
+            "octant_outer_evaluations": 4,
+            "scoring_attempt": 1,
+        },
+    )
+    return HeldoutScoringResult(manifest_path, scorecard_path, 12, 4)
+
+
+def _verify_prediction_receipt(root: Path) -> dict[str, Any]:
+    manifest = _read_json(root / "heldout_prediction_manifest.json")
+    if manifest.get("schema_version") != HELDOUT_PREDICTION_SCHEMA_VERSION:
+        raise NativeSelectionError("unsupported held-out prediction schema")
+    if any(
+        manifest.get(field) != 0
+        for field in (
+            "heldout_labels_parsed",
+            "tdc_public_test_evaluations",
+            "octant_outer_evaluations",
+        )
+    ):
+        raise NativeSelectionError("prediction receipt is not label clean")
+    outputs = manifest.get("outputs")
+    if not isinstance(outputs, dict):
+        raise NativeSelectionError("prediction outputs must be an object")
+    for name, expected in outputs.items():
+        if not isinstance(name, str) or _file_hash(root / name) != expected:
+            raise NativeSelectionError(f"prediction output hash mismatch: {name}")
+    material = "\n".join(f"{name}={outputs[name]}" for name in sorted(outputs))
+    if sha256(material.encode()).hexdigest() != manifest.get("aggregate_sha256"):
+        raise NativeSelectionError("prediction aggregate hash mismatch")
+    return manifest
+
+
+def _prediction_groups(
+    rows: Sequence[Mapping[str, str]],
+) -> dict[tuple[str, str, str], list[Mapping[str, str]]]:
+    result: dict[tuple[str, str, str], list[Mapping[str, str]]] = {}
+    seen = set()
+    for row in rows:
+        key = (row["benchmark"], row["task"], row["family"])
+        identity = (*key, row["molecule_id"])
+        if identity in seen:
+            raise NativeSelectionError("duplicate held-out prediction")
+        seen.add(identity)
+        result.setdefault(key, []).append(row)
+    if len(result) != 16:
+        raise NativeSelectionError("held-out predictions must contain 16 task families")
+    by_task: dict[tuple[str, str], list[set[str]]] = {}
+    for (benchmark, task, _), items in result.items():
+        by_task.setdefault((benchmark, task), []).append(
+            {item["molecule_id"] for item in items}
+        )
+    if any(
+        len(families) != 4
+        or len({frozenset(ids) for ids in families}) != 1
+        for families in by_task.values()
+    ):
+        raise NativeSelectionError("held-out family populations are not identical")
+    return result
+
+
+def _load_scoring_labels(
+    path: Path, ids: set[str], *, regression: bool
+) -> dict[str, tuple[float, float | None, float | None]]:
+    result = {}
+    for row in _read_csv(path):
+        molecule_id = row.get("molecule_id", "")
+        if molecule_id not in ids:
+            continue
+        if molecule_id in result:
+            raise NativeSelectionError("duplicate held-out label")
+        value = float(row["value"])
+        if not math.isfinite(value):
+            raise NativeSelectionError("held-out label is not finite")
+        if not regression and value not in {0.0, 1.0}:
+            raise NativeSelectionError("held-out classification label is not binary")
+        lower = float(row["lower_bound"]) if row.get("lower_bound") else None
+        upper = float(row["upper_bound"]) if row.get("upper_bound") else None
+        result[molecule_id] = (value, lower, upper)
+    return result
+
+
+def _oof_thresholds(path: Path) -> dict[tuple[str, str], float]:
+    groups: dict[tuple[str, str], list[tuple[int, float]]] = {}
+    for row in _read_csv(path):
+        if row["problem_type"] != "classification":
+            continue
+        groups.setdefault((row["task"], row["family"]), []).append(
+            (int(float(row["target"])), float(row["prediction"]))
+        )
+    return {key: _mcc_threshold(values) for key, values in groups.items()}
+
+
+def _mcc_threshold(values: Sequence[tuple[int, float]]) -> float:
+    ordered = sorted(values, key=lambda item: item[1], reverse=True)
+    positives = sum(label for label, _ in ordered)
+    negatives = len(ordered) - positives
+    tp = fp = 0
+    best_score = -1.0
+    best_threshold = ordered[0][1]
+    index = 0
+    while index < len(ordered):
+        threshold = ordered[index][1]
+        while index < len(ordered) and ordered[index][1] == threshold:
+            if ordered[index][0] == 1:
+                tp += 1
+            else:
+                fp += 1
+            index += 1
+        fn = positives - tp
+        tn = negatives - fp
+        denominator = ((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)) ** 0.5
+        score = (tp * tn - fp * fn) / denominator if denominator else 0.0
+        if score > best_score or (score == best_score and threshold < best_threshold):
+            best_score = score
+            best_threshold = threshold
+    return best_threshold
+
+
+def _tdc_score_row(
+    task: str,
+    family: str,
+    population: str,
+    rows: Sequence[Mapping[str, str]],
+    labels: Mapping[str, tuple[float, float | None, float | None]],
+    threshold: float,
+    anchors: Mapping[str, float] | None,
+) -> dict[str, str]:
+    metrics = import_module("sklearn.metrics")
+    y = [int(labels[row["molecule_id"]][0]) for row in rows]
+    p = [float(row["prediction"]) for row in rows]
+    classified = [int(value >= threshold) for value in p]
+    tn, fp, fn, tp = metrics.confusion_matrix(y, classified, labels=[0, 1]).ravel()
+    ap = average_precision(y, p)
+    maplight = anchors.get("MapLight + GNN") if anchors else None
+    return _blank_score_row() | {
+        "benchmark": "tdc_admet_group", "task": task, "population": population,
+        "family": family, "configuration_id": rows[0]["configuration_id"],
+        "rows": str(len(rows)), "prevalence": _number(sum(y) / len(y)),
+        "threshold": _number(threshold), "primary_metric": "average_precision",
+        "primary_value": _number(ap), "average_precision": _number(ap),
+        "auroc": _number(float(metrics.roc_auc_score(y, p))),
+        "balanced_accuracy": _number(float(metrics.balanced_accuracy_score(y, classified))),
+        "mcc": _number(float(metrics.matthews_corrcoef(y, classified))),
+        "brier": _number(sum((label - pred) ** 2 for label, pred in zip(y, p, strict=True)) / len(y)),
+        "ece_10_equal_width": _number(_ece(y, p)),
+        "sensitivity": _number(tp / (tp + fn)), "specificity": _number(tn / (tn + fp)),
+        "maplight_gnn": "" if maplight is None else _number(maplight),
+        "chemprop_rdkit": "" if not anchors else _number(anchors["Chemprop-RDKit"]),
+        "chemprop": "" if not anchors else _number(anchors["Chemprop"]),
+        "delta_vs_maplight_gnn": "" if maplight is None else _number(ap - maplight),
+        "comparability": (
+            "official fixed TDC test; cypshift standardization and chiral ECFP "
+            "disclosed"
+            if population == "official"
+            else "strict leakage companion; not leaderboard population"
+        ),
+    }
+
+
+def _octant_score_row(
+    task: str,
+    family: str,
+    rows: Sequence[Mapping[str, str]],
+    labels: Mapping[str, tuple[float, float | None, float | None]],
+) -> dict[str, str]:
+    stats = import_module("scipy.stats")
+    y = [labels[row["molecule_id"]][0] for row in rows]
+    p = [float(row["prediction"]) for row in rows]
+    errors = [abs(a - b) for a, b in zip(y, p, strict=True)]
+    interval_errors = []
+    for row, prediction in zip(rows, p, strict=True):
+        _, lower, upper = labels[row["molecule_id"]]
+        if lower is None or upper is None:
+            continue
+        interval_errors.append(max(lower - prediction, 0.0, prediction - upper))
+    potent = [error for error, target in zip(errors, y, strict=True) if target >= 6.0]
+    mae = sum(errors) / len(errors)
+    spearman = (
+        math.nan
+        if len(set(y)) < 2 or len(set(p)) < 2
+        else float(stats.spearmanr(y, p).statistic)
+    )
+    return _blank_score_row() | {
+        "benchmark": "octant_cyp", "task": task, "population": "outer_validation",
+        "family": family, "configuration_id": rows[0]["configuration_id"],
+        "rows": str(len(rows)), "primary_metric": "mae", "primary_value": _number(mae),
+        "mae": _number(mae), "median_absolute_error": _number(median(errors)),
+        "rmse": _number((sum((a - b) ** 2 for a, b in zip(y, p, strict=True)) / len(y)) ** 0.5),
+        "spearman": "" if not math.isfinite(spearman) else _number(spearman),
+        "interval_aware_mae": _number(sum(interval_errors) / len(interval_errors)),
+        "potent_count": str(len(potent)), "potent_mae": "" if not potent else _number(sum(potent) / len(potent)),
+        "comparability": "Octant grouped outer validation; active preincubation assay",
+    }
+
+
+def _ece(labels: Sequence[int], predictions: Sequence[float]) -> float:
+    total = len(labels)
+    result = 0.0
+    for index in range(10):
+        lower, upper = index / 10, (index + 1) / 10
+        members = [i for i, value in enumerate(predictions) if lower <= value < upper or (index == 9 and value == 1.0)]
+        if members:
+            confidence = sum(predictions[i] for i in members) / len(members)
+            observed = sum(labels[i] for i in members) / len(members)
+            result += len(members) / total * abs(confidence - observed)
+    return result
+
+
+def _tdc_anchors(sources: Mapping[str, Any]) -> dict[str, dict[str, float]]:
+    try:
+        pages = sources["sources"]["tdc_admet"]["tdc_leaderboards"]["pages"]
+        return {
+            task: {name: float(value["mean"]) for name, value in pages[task]["anchors"].items()}
+            for task in TDC_TASKS
+        }
+    except (KeyError, TypeError, ValueError) as exc:
+        raise NativeSelectionError("public source anchors are invalid") from exc
+
+
+def _blank_score_row() -> dict[str, str]:
+    return {column: "" for column in SCORECARD_COLUMNS}
+
+
+def _write_csv_rows(path: Path, columns: Sequence[str], rows: Sequence[Mapping[str, str]]) -> None:
+    with path.open("x", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def _verify_selection_receipt(
@@ -545,5 +905,7 @@ def _write_rows(
 __all__ = [
     "HELDOUT_PREDICTION_SCHEMA_VERSION",
     "HeldoutPredictionResult",
+    "HeldoutScoringResult",
     "run_heldout_prediction",
+    "run_heldout_scoring",
 ]
