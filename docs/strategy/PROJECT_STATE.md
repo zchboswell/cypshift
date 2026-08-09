@@ -147,7 +147,8 @@ artifacts remain outside Git.
 - TDC has no raw-SMILES train/test overlap, but standardization exposes 4, 2,
   and 1 test rows overlapping `train_val` for CYP2C9, CYP2D6, and CYP3A4.
   Official test populations remain unchanged; a hashed 7-row strict companion
-  exclusion set is frozen separately. No public-test score has been computed.
+  exclusion set is frozen separately. The later official scorecard preserves
+  all rows and reports the strict population as a separate companion analysis.
 - Independent review showed that split-audit v1 accepted coordinated task,
   partition, and source-row tampering. Split-audit v2 binds official split bytes
   to the adapter manifest and validates every row against canonical provenance,
@@ -184,16 +185,24 @@ artifacts remain outside Git.
   0.7527/0.7081/0.7417 for CYP2C9, 0.6513/0.6042/0.6607 for CYP2D6, and
   0.8293/0.7828/0.8187 for CYP3A4. These values are not comparable to the dated
   fixed-public-test anchors.
-- Held-out prediction is frozen separately and reproduces byte-for-byte across
-  two label-blind runs: 7,724 structures, 30,896 retained prediction rows,
-  23,172 stochastic-seed rows, 24 fits, aggregate
+- Held-out prediction v1 is frozen separately and reproduces byte-for-byte
+  across two runs: 7,724 structures, 30,896 retained prediction rows, 23,172
+  stochastic-seed rows, 24 fits, aggregate
   `d9ca7e6d236a11fa031f485d68d05af5521b3a91e439ca154b9d08d9e4168b0d`,
-  and zero labels parsed or evaluations.
+  and zero numeric held-out labels parsed or evaluations. Independent review
+  rejected the stronger structural label-blind claim because v1 still opened
+  and hashed complete measurement tables before filtering.
+- The corrected source/split boundary materializes 30,910 training
+  measurements and zero held-out measurements. Prediction v2 accepts only this
+  label-absent view and reproduces both frozen prediction CSVs byte-for-byte;
+  no canonical measurement path exists in the model-facing interface.
 - Real scoring attempt 1 parsed the 7,724 frozen held-out labels, then failed
   before writing a score because the anchor loader expected
   `tdc_leaderboards` beneath `tdc_admet` rather than at its actual sibling
   source-manifest path. No score or partial output exists; models,
   configurations, thresholds, predictions, and populations remain unchanged.
+  A retrospective durable receipt records the supported facts and explicitly
+  discloses that the exact raw traceback was not retained.
 - After a signed path-only remediation and an explicit attempt-number fix,
   scoring attempt 2 completed: 12 official TDC evaluations, 12 strict companion
   analyses, and 4 Octant outer evaluations. Scorecard aggregate is
@@ -205,6 +214,18 @@ artifacts remain outside Git.
 - Removing the seven standardized-overlap test rows changes AUPRC by no more
   than 0.0006 for any retained native family. Best Octant grouped-outer MAE is
   0.5489 from ExtraTrees versus 0.6663 for the training-median prior.
+- Independent scorecard review reproduced all selection and held-out scores,
+  populations, thresholds, seed means, and hashes, but blocked PR 18 on the
+  firewall and artifact-contract gaps above. Scorecard v2 preserves every v1
+  point field while adding revisions, split/population hashes, public-reference
+  standard deviations and deltas, runtime/hardware, comparison status, and
+  aggregation warnings. It records 21 additional label-dependent evaluations
+  of the three already frozen ExtraTrees seeds and no seed/model selection;
+  aggregate is `6f240e3db0f709f3ad19d39cc60c4a51a9dea304e57e21e5e13be841aab1d74f`.
+- The completed 123,640-row OOF observation artifact carries uncertainty when
+  available, explicit applicability availability, scaffold support, measurement
+  quality, and observation-level configuration/data/split hashes. Its aggregate
+  is `5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.
 
 ## Active hypotheses
 
@@ -260,8 +281,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain a fresh independent review of the first complete scorecard and its exact
-selection, prediction, scoring, comparison, strict-population, and failed-attempt
-receipts. Remediate material findings without changing observed results. Only
-after review may complete OOF predictions support the predeclared single-model,
-mean, median, and nonnegative-stack comparison or the isolated CheMeleon attempt.
+Return exact remediation head and the v2 firewall, scorecard, OOF, uncertainty,
+and failed-attempt receipts to the same fresh independent reviewer. Do not merge
+or start the stack/external ladder until it passes. Remediate material findings
+without changing observed point results. Only after review may complete OOF
+predictions support the predeclared single-model, mean, median, and
+nonnegative-stack comparison or the isolated CheMeleon attempt.

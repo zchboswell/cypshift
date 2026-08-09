@@ -337,3 +337,26 @@
 - Reversal condition: A receipt mismatch, incomplete prediction population, or
   scorer defect blocks scoring. Once any held-out label is parsed, record the
   attempt and never silently restart or change the frozen candidates.
+
+## D-017 — Version the first-scorecard audit remediation
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Preserve prediction/scoring v1 as historical evidence, but reject
+  its claim to a structurally label-blind model interface and its incomplete
+  scorecard contract. Materialize a receipt-bound training-measurement view at
+  the source/split boundary, remove canonical measurement paths from held-out
+  prediction v2, and require byte-identical prediction CSVs. Complete rather
+  than rerun the observed v1 point scorecard.
+- Evidence boundary: Scorecard v2 must preserve every v1 point field, bind the
+  corrected prediction receipt, and add revisions, split/population hashes,
+  reference standard deviations and deltas, runtime/hardware, comparison
+  status, and aggregation warnings. Allowed-seed ranges may score only the
+  three already declared ExtraTrees seeds; record all 21 additional
+  label-dependent analyses and select no seed, model, or configuration.
+- Audit boundary: Retain a retrospective attempt-1 receipt but explicitly state
+  that the exact raw traceback was not preserved. Complete OOF observation
+  metadata in a versioned sidecar instead of mutating frozen selection v1.
+  Independent re-review is required before merge or any stack/external work.
+- Reversal condition: Revert if corrected predictions differ from v1, any point
+  score changes, or independent review finds the new receipt chain incomplete.

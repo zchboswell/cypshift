@@ -137,33 +137,42 @@ The receipts still record zero held-out label parses and evaluations.
 
 ## Held-out prediction firewall
 
-Held-out prediction and scoring are separate milestones. After the native
-selection receipt is frozen, generate predictions without reading any held-out
-measurement table:
+Held-out prediction and scoring are separate milestones. Independent review
+found that prediction v1 never parsed or used a held-out numeric value but did
+open and hash the complete canonical measurement tables before row filtering.
+That interface did not satisfy the stronger structural claim. Preserve v1 as
+rejected evidence; first materialize the source/split-authorized view:
 
 ```console
-uv run python scripts/predict_native_heldout.py \
+uv run python scripts/prepare_native_prediction_inputs.py \
   --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
   --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
   --tdc-official-split artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv \
   --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --out artifacts/benchmarks/native-prediction-inputs-v1
+
+uv run python scripts/predict_native_heldout.py \
+  --prediction-inputs artifacts/benchmarks/native-prediction-inputs-v1 \
   --selection artifacts/benchmarks/native-selection-v1 \
-  --out artifacts/benchmarks/native-heldout-predictions-v1
+  --out artifacts/benchmarks/native-heldout-predictions-v2
 ```
 
-The predictor verifies the validation, canonical-data, official-split, and
-selection receipt chain; retrains only the frozen family configurations; and
-writes label-free predictions plus three declared ExtraTrees seed predictions.
-It records zero held-out labels parsed and zero evaluations. A later scorer may
-consume the immutable prediction receipt exactly once.
+The preparation stage transparently scans 38,634 canonical measurement rows
+and materializes exactly 30,910 authorized training rows plus all required
+structures; it materializes zero held-out measurements. The model-facing
+predictor accepts only that view and the frozen selection receipt. Prediction
+v2 reproduces both v1 prediction CSVs byte-for-byte, including aggregate
+`d9ca7e6d236a11fa031f485d68d05af5521b3a91e439ca154b9d08d9e4168b0d`.
 
 ## First held-out scorecard
 
 Scoring attempt 1 parsed the 7,724 held-out labels but failed before calculating
 or writing a score because of an incorrect leaderboard-manifest access path.
-The failed attempt is retained in the experiment ledger. A signed, CI-verified
-path-only remediation preceded attempt 2; no model, prediction, threshold,
-population, or metric changed.
+The ledger and
+`benchmarks/receipts/heldout_scoring_attempt_1.json` retain the supported facts.
+The latter is explicitly retrospective: the exact raw traceback was not
+durably retained. A signed, CI-verified path-only remediation preceded attempt
+2; no model, prediction, threshold, population, or metric changed.
 
 Attempt 2 produced the first scorecard with aggregate
 `2cc47a1600b5809a4317b8c8ec719bc702e43d6e6f9b335d0f189c3546720a1a`:
@@ -179,3 +188,35 @@ The best Octant grouped-outer result is ExtraTrees MAE 0.5489. These results
 validate the benchmark path and strong classical baselines; they do not support
 a superiority claim. Public reference comparisons retain the disclosed
 standardization and fingerprint differences.
+
+Independent review reproduced every point estimate but found scorecard v1 and
+the retained OOF rows incomplete against the Phase 0.5 research-artifact
+contract. Complete them without rerunning point scoring:
+
+```console
+uv run python scripts/complete_native_research_artifacts.py \
+  --selection artifacts/benchmarks/native-selection-v1 \
+  --predictions-v2 artifacts/benchmarks/native-heldout-predictions-v2 \
+  --scores-v1 artifacts/benchmarks/native-heldout-scores-v1 \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --public-sources benchmarks/public_sources.json \
+  --oof-out artifacts/benchmarks/native-oof-research-v1 \
+  --scorecard-out artifacts/benchmarks/native-heldout-scorecard-v2 \
+  --source-revision 93ed5876f2431209933795de27c5b608305c7361 \
+  --selection-runtime-seconds 215 \
+  --prediction-runtime-seconds 62 \
+  --scoring-runtime-seconds 3.29 \
+  --hardware "local Apple CPU (model unspecified)"
+```
+
+Scorecard v2 preserves all 28 v1 point rows and fields exactly. It adds dataset
+revision, split and population hashes, runtime/hardware, explicit comparison
+status, all public-reference standard deviations and deltas, and aggregation
+warnings. Its allowed-seed ranges add 21 declared label-dependent analyses of
+the already frozen three ExtraTrees seeds; they select no seed or model. The
+scorecard aggregate is
+`6f240e3db0f709f3ad19d39cc60c4a51a9dea304e57e21e5e13be841aab1d74f`.
+The 123,640-row OOF research artifact has aggregate
+`5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.
