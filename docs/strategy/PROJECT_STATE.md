@@ -276,6 +276,13 @@ artifacts remain outside Git.
   arithmetic and receipts, exercised malformed-input rejection, found no
   actionable complexity, and confirmed hosted CI. PR 23 merged by exact
   fast-forward. The prediction remains unscored.
+- A scorer candidate exists at signed commit `a2fd485`. It verifies source,
+  split, combination, and retained-mean receipts before label access; scores
+  only the retained mean; derives binary thresholds from its grouped OOF rows;
+  and records three TDC official, three strict companion, and one Octant outer
+  evaluation. Two synthetic runs are byte-identical and all 64 tests pass. No
+  real held-out label has been opened by this scorer. Independent review is
+  pending.
 
 ## Active hypotheses
 
@@ -331,9 +338,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Implement the smallest separate retained-mean scorer under D-016 and D-019.
-Reuse the frozen populations and metrics. Score no rejected candidate. Test it
-only on the synthetic fixture first, then obtain signed CI and independent
-review before any real held-out label is opened. The later real run may add at
-most three TDC official evaluations, three strict companion analyses, and one
-Octant outer evaluation.
+Obtain independent review of the exact signed scorer candidate. Verify receipt
+ordering, population identity, grouped-OOF thresholds, metric equivalence,
+seven explicit evaluation counts, deterministic synthetic outputs, and
+Occam's Razor. Do not run it on real held-out labels before that review passes
+and the exact head merges.
