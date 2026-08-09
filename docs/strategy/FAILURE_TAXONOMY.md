@@ -73,3 +73,36 @@ reference. Add a class only when evidence does not fit an existing one.
 - A4: adjustment exceeds configured bound
 - A5: shuffled-evidence or deterministic control performs equivalently
 - A6: deterministic fallback failure
+
+## Phase 0.5 public-benchmark applications
+
+The following named risks must be checked explicitly even when an existing
+class already captures the underlying failure:
+
+- **Cross-dataset metric comparison (V6):** scores from different revisions,
+  targets, labels, splits, metrics, preprocessing policies, or evaluation
+  populations are presented as one ranking.
+- **Assay-context mismatch (M3):** active-preincubation, direct-inhibition,
+  reactivity, turnover, or substrate measurements are treated as equivalent.
+- **Public benchmark test-set overfitting (V5):** accessible test labels or
+  repeated public-test evaluations influence candidate selection.
+- **Train/test standardized-structure leakage (V1):** exact structures become
+  duplicates only after the audited standardization policy.
+- **External-model training overlap (V1/V5):** an external predictor is called
+  zero-shot without excluding benchmark structures from its training data.
+- **Public leaderboard version drift (P6/V6):** current pages, local benchmark
+  packages, data revisions, or splits no longer describe the same benchmark.
+- **Hidden preprocessing differences (C6/V6):** structure or label processing
+  changes comparability without being recorded.
+- **Class-prevalence effects on AUPRC (V6):** AUPRC values are compared without
+  the associated evaluation prevalence and population.
+- **Inferred-series instability (S1/S6):** conclusions depend on an unsupported
+  or unstable chemistry grouping.
+- **Substrate behavior mislabeled as TDI (M3/T1):** turnover or depletion is
+  treated as proof of time-dependent inhibition.
+- **Active-preincubation inhibition mislabeled as direct inhibition (M3):** an
+  assay that permits metabolism-dependent effects is represented as the
+  challenge's minus-NADPH endpoint.
+- **Benchmark framework expansion (P3/P6):** generalized infrastructure,
+  dependencies, or abstractions displace the two required concrete adapters
+  and the core product.

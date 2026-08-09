@@ -63,6 +63,34 @@ Rejection condition: controls perform equivalently, outputs are unstable, or
 prediction adjustments do not improve blind-like validation. In that case the
 component is limited to explanation or removed.
 
+## Phase 0.5 public-benchmark evidence boundary
+
+Phase 0.5 may support only claims tied to an immutable, named public benchmark.
+
+Allowed when the supporting artifacts are available:
+
+- exact performance on a named, hashed dataset revision and split;
+- comparison with a public reference only when dataset, target, label, split,
+  metric, preprocessing or disclosed difference, and evaluation population
+  match;
+- reproducibility, runtime, calibration, applicability, and error-stratification
+  findings for the frozen run;
+- a controlled keep/reject result for a series-aware residual on a frozen
+  public simulation with supported sample counts;
+- evidence that a simple model is competitive with a named complex baseline on
+  the same benchmark contract.
+
+Not allowed from Phase 0.5 evidence:
+
+- expected challenge rank or blind challenge performance;
+- direct-inhibition performance inferred from active-preincubation data;
+- TDI performance inferred from substrate, turnover, depletion, or reactivity
+  status;
+- state-of-the-art claims across different datasets, splits, metrics, or
+  evaluation populations;
+- clean zero-shot claims when external-model training overlap is unknown;
+- mechanistic or causal claims inferred from predictive correlations.
+
 ## Claims that are out of scope
 
 Do not claim:

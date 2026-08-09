@@ -148,3 +148,42 @@
   unlicensed until public release.
 - Reversal condition: A dependency, asset, employer, journal, or legal review
   identifies an incompatibility before public release.
+
+## D-011 — Bounded public-data Phase 0.5
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Resume bounded pre-launch development using named, versioned public
+  CYP datasets while preserving the 2026-08-17 authoritative
+  challenge-contract freeze.
+- Evidence: A complete pause protected against guessed challenge contracts but
+  was too conservative after the synthetic vertical slice was proven. Public
+  Octant and TDC data can expose real ingestion, assay-context, leakage,
+  validation, modeling, reporting, and usability failures before launch without
+  defining the official competition adapter or metric.
+- Authorized work: immutable public-source manifests; license, provenance,
+  chemistry, duplicate, and overlap audits; two concrete benchmark adapters;
+  frozen TDC and grouped Octant validation; a four-family classical model
+  ladder; complete out-of-fold predictions; simple stacking; at most two
+  external references; one controlled series-residual test when topology
+  supports it; static reporting, documentation, and evidence-driven UX work.
+- Prohibited work: guessed official schemas, metrics, submissions, series
+  definitions, or transductive permissions; custom GNNs; broad deep-learning or
+  hyperparameter frameworks; production competence gating; LLM adjudication;
+  services, databases, dashboards, generalized benchmark plugins, and broad
+  external web-predictor integrations.
+- Comparison boundary: Public benchmark evidence is scientifically useful only
+  for the named, hashed data, label, split, preprocessing policy, metric, and
+  evaluation population. It is not a proxy for blind challenge performance,
+  expected challenge rank, or assay-independent CYP inhibition.
+- Operating constraint: The current orchestrator continues through Phase 0.5,
+  with fresh independent review after source/split freeze, the first complete
+  scorecard, and the release candidate. Prefer three or four focused PRs and no
+  more than three active experimental branches.
+- Alternatives: Remain fully paused until launch; begin speculative Phase 1;
+  build a generalized benchmarking platform.
+- Reversal conditions: The authoritative challenge release supersedes a public
+  assumption; a license or provenance restriction prevents reproducible use;
+  the public topology cannot support the planned analysis; benchmark work
+  begins expanding into prohibited architecture; or a component fails its
+  predefined ablation or clean-reproduction check.
