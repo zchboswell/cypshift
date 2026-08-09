@@ -796,7 +796,7 @@ def test_retained_mean_prediction_is_label_free_receipt_bound_and_deterministic(
 
 
 def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
-    tmp_path: Path,
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     octant, tdc, validation, _ = _fixture(
         tmp_path / "fixture", valid_heldout_labels=True
@@ -875,5 +875,39 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
             predictions,
             public_sources,
             tmp_path / "scores-one",
+            source_revision="test-revision",
+        )
+
+    def reject_label_load(*args: object, **kwargs: object) -> object:
+        raise AssertionError("label loader must not run before preflight completes")
+
+    monkeypatch.setattr(
+        "cypshift.native_combinations._load_scoring_labels", reject_label_load
+    )
+    malformed_sources = tmp_path / "malformed_sources.json"
+    malformed_sources.write_text("{}\n", encoding="utf-8")
+    with pytest.raises(NativeSelectionError, match="public source anchors"):
+        run_retained_mean_scoring(
+            octant,
+            tdc,
+            validation,
+            combinations,
+            predictions,
+            malformed_sources,
+            tmp_path / "malformed-anchor-scores",
+            source_revision="test-revision",
+        )
+
+    exclusions = validation / "tdc" / "strict_test_exclusions.csv"
+    exclusions.write_bytes(exclusions.read_bytes() + b"\n")
+    with pytest.raises(NativeSelectionError):
+        run_retained_mean_scoring(
+            octant,
+            tdc,
+            validation,
+            combinations,
+            predictions,
+            public_sources,
+            tmp_path / "malformed-exclusion-scores",
             source_revision="test-revision",
         )

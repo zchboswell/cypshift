@@ -617,6 +617,8 @@ def run_retained_mean_scoring(
     predictions = _validated_mean_predictions(prediction_root, prediction_manifest, retained)
     _verify_scoring_populations(predictions, validation_root)
     thresholds = _mean_oof_thresholds(combination_root)
+    exclusions = _strict_exclusions(predictions, validation_root)
+    anchors = _tdc_anchors(_read_json(public_sources_path))
 
     octant_ids = {
         row["molecule_id"] for row in predictions if row["benchmark"] == "octant_cyp"
@@ -634,11 +636,6 @@ def run_retained_mean_scoring(
     )
     if set(octant_labels) != octant_ids or set(tdc_labels) != tdc_ids:
         raise NativeSelectionError("held-out label alignment is incomplete")
-    exclusions = {
-        row["molecule_id"]
-        for row in _read_csv(validation_root / "tdc" / "strict_test_exclusions.csv")
-    }
-    anchors = _tdc_anchors(_read_json(public_sources_path))
 
     groups: dict[tuple[str, str], list[dict[str, str]]] = {}
     scored_rows: list[dict[str, str]] = []
@@ -886,6 +883,28 @@ def _mean_oof_thresholds(root: Path) -> dict[str, float]:
     if set(groups) != set(TDC_TASKS):
         raise NativeSelectionError("retained-mean OOF thresholds are incomplete")
     return {task: _mcc_threshold(values) for task, values in groups.items()}
+
+
+def _strict_exclusions(
+    predictions: Sequence[Mapping[str, str]], validation_root: Path
+) -> set[str]:
+    expected = {
+        (row["task"], row["molecule_id"]): row["standardized_structure_hash"]
+        for row in predictions
+        if row["benchmark"] == "tdc_admet_group"
+    }
+    result: set[str] = set()
+    for row in _read_csv(validation_root / "tdc" / "strict_test_exclusions.csv"):
+        key = (row.get("task", ""), row.get("molecule_id", ""))
+        if (
+            key not in expected
+            or row.get("standardized_structure_hash") != expected[key]
+            or row.get("reason") != "standardized_structure_in_train_val"
+            or key[1] in result
+        ):
+            raise NativeSelectionError("strict exclusion row is invalid")
+        result.add(key[1])
+    return result
 
 
 def _verify_combination_receipt(
