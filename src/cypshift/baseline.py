@@ -31,11 +31,11 @@ from cypshift.schema import (
 
 DEFAULT_SEED = 20260809
 DEFAULT_VALIDATION_FRACTION = 0.25
-MODEL_SCHEMA_VERSION = "cypshift.endpoint_context_median.v1"
+MODEL_SCHEMA_VERSION = "cypshift.endpoint_context_median.v2"
 SPLIT_SCHEMA_VERSION = "cypshift.fixture_split.v1"
 PREDICTION_SCHEMA_VERSION = "cypshift.predictions.v1"
 PREDICTION_CARD_SCHEMA_VERSION = "cypshift.prediction_card.v1"
-RUN_MANIFEST_SCHEMA_VERSION = "cypshift.run_manifest.v1"
+RUN_MANIFEST_SCHEMA_VERSION = "cypshift.run_manifest.v2"
 
 SPLIT_COLUMNS = (
     "molecule_id",

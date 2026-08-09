@@ -44,6 +44,7 @@ def test_model_uses_only_uncensored_training_measurements(tmp_path: Path) -> Non
     result = train_baseline(run, run)
 
     assert result.model["method"] == "endpoint_context_median"
+    assert result.model["schema_version"] == "cypshift.endpoint_context_median.v2"
     assert result.model["fit_summary"] == {
         "contexts_observed": 4,
         "contexts_supported": 3,
@@ -87,6 +88,7 @@ def test_prediction_artifacts_and_manifest_are_reproducible(tmp_path: Path) -> N
         assert (first / name).read_bytes() == (second / name).read_bytes()
 
     manifest = json.loads(first_result.manifest_path.read_text(encoding="utf-8"))
+    assert manifest["schema_version"] == "cypshift.run_manifest.v2"
     prediction_hash = hashlib.sha256(
         first_result.predictions_path.read_bytes()
     ).hexdigest()
