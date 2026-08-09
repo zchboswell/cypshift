@@ -302,10 +302,12 @@ artifacts remain outside Git.
 - Offline scorecard completion opens no canonical measurement path and adds no
   evaluation. V1 is rejected because it combined base and combination
   selection runtime in one row field. V2 separates the components but encodes
-  manifest seconds as text. V3 is the first complete candidate: seven rows, 51
-  columns, byte-identical repeats, unchanged point results, and aggregate
-  `16369cfd2c2e2ce8372260c66cc3efa7aad719666fd66f6ab2d9c20ab334d89f`.
-  Independent scorecard review is pending.
+  manifest seconds as text. V3 corrects runtime types but does not bind the
+  public-source file and Octant split back to the scoring receipt. V4 adds both
+  exact hash checks. It has seven rows, 51 columns, byte-identical repeats,
+  unchanged point results, and aggregate
+  `d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa`.
+  Independent scorecard re-review is pending.
 
 ## Active hypotheses
 
@@ -361,8 +363,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently review retained-mean scorecard v3. Verify exact raw-score
+Independently re-review retained-mean scorecard v4. Verify exact raw-score
 invariance, all 51 fields, runtime-component semantics, revisions, split and
-population hashes, public reference uncertainty and deltas, warnings, receipt
-chain, byte-identical repeat, and zero additional label access or evaluations.
-Apply Occam's Razor before merge or external-model work.
+population hashes, public-source and Octant-split receipt binding, reference
+uncertainty and deltas, warnings, byte-identical repeat, and zero additional
+label access or evaluations. Apply Occam's Razor before merge or external work.

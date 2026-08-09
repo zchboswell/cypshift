@@ -314,8 +314,8 @@ uv run python scripts/complete_retained_mean_scorecard.py \
   --scores artifacts/benchmarks/native-retained-mean-scores-v1 \
   --validation artifacts/benchmarks/public-validation-freeze-v2 \
   --public-sources benchmarks/public_sources.json \
-  --out artifacts/benchmarks/native-retained-mean-scorecard-v3 \
-  --source-revision ebc89af8defe8aa2419ae2d6a3807a60e60246c6 \
+  --out artifacts/benchmarks/native-retained-mean-scorecard-v4 \
+  --source-revision bd8024c202f6d14fb3cadca565641839cb1ad4f0 \
   --selection-runtime-seconds 215 \
   --combination-runtime-seconds 470.2 \
   --prediction-runtime-seconds 62 \
@@ -324,8 +324,8 @@ uv run python scripts/complete_retained_mean_scorecard.py \
   --hardware "local Apple CPU (model unspecified)"
 ```
 
-V1 and V2 are retained rejected candidates for runtime-provenance clarity. V3
-has seven rows and 51 columns. Its two roots are byte-identical with aggregate
-`16369cfd2c2e2ce8372260c66cc3efa7aad719666fd66f6ab2d9c20ab334d89f`.
+V1-V3 remain rejected candidates for runtime and receipt-provenance clarity.
+V4 has seven rows and 51 columns. Its two roots are byte-identical with
+aggregate `d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa`.
 Completion records zero additional label access, evaluations, point changes,
 or selection changes.
