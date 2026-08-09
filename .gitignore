@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Non-redistributable or immutable source data
+data/raw/
+data/official/
+data/external/
+
+# Generated models and run artifacts
+models/
+artifacts/
+results/
+runs/*
+!runs/experiment_ledger.csv
+
+# Local tooling and operating-system files
+.codex-log/
+.DS_Store
