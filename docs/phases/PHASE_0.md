@@ -1,6 +1,6 @@
 # Phase 0 — ground truth and working vertical slice
 
-Status: in progress
+Status: complete — 2026-08-09
 
 Plan frozen: 2026-08-09
 
@@ -155,10 +155,66 @@ This checklist is a Phase 1 input, not permission to expand Phase 0.
 
 ## Phase completion record
 
-To be appended at exit:
+### What worked
 
-- what worked;
-- what failed;
-- what was removed;
-- retained artifacts;
-- exact Phase 1 handoff.
+- A locked CPU-only package installs from its wheel with RDKit as the sole
+  runtime dependency.
+- The public `audit -> train -> predict -> report` path completes on the CC0
+  synthetic fixture and emits every required artifact.
+- Raw structure text remains exact; derived parsing and standardization are
+  versioned, warned, and auditable. Invalid chemistry is quarantined.
+- The fixture split is deterministic, keeps standardized duplicates together,
+  and is labeled as a pipeline test rather than scientific validation.
+- The endpoint-context median records three supported contexts and the fourth
+  observed but unsupported context instead of silently omitting it.
+- Two same-seed runs are byte-identical. Manifests bind configuration, package
+  release, software versions, inputs, split, model, and outputs by hash.
+- Hosted CI passes Python 3.11 and 3.14 with 34 tests, Ruff, strict mypy,
+  distribution builds, and two complete installed-wheel reproductions.
+- A read-only independent review found no remaining technical blocker after
+  its data-contract and schema-version findings were remediated.
+
+### What failed or remained unavailable
+
+- The first chemistry implementation silently trimmed raw structure text,
+  accepted non-finite numeric values and malformed row widths, and failed to
+  report one unsupported assay context. Independent review blocked closeout;
+  all four behaviors were then corrected and re-verified.
+- Revised model and manifest shapes initially retained their provisional v1
+  schema labels. Re-review caught the incompatibility; both are now v2.
+- GitHub's hosted rebase procedure stripped an SSH commit signature during the
+  repository bootstrap. The retained procedure fast-forwards signed commits
+  locally and pushes the exact objects.
+- Browser-rendered visual QA of `report.html` could not run because the preview
+  runtime was unavailable. Deterministic HTML generation, escaping, content,
+  and hash validation are tested; visual QA remains a release follow-up.
+- Windows installation was not tested in Phase 0. Linux CI and a local macOS
+  installed-wheel run passed.
+
+### What was removed or rejected
+
+- Silent raw-text normalization, non-finite measurements, malformed CSV rows,
+  ambiguous v1 artifact schemas, and unreported unsupported contexts were
+  removed from the retained path.
+- pandas, Pydantic, Click, Typer, configuration frameworks, services,
+  databases, dashboards, graph models, LLMs, and placeholder subsystems were
+  rejected because the vertical slice did not require them.
+
+### Retained artifacts
+
+- package version `0.1.0`, bound to signed source tag `v0.1.0`;
+- BSD-3-Clause code license and CC0-1.0 synthetic fixture;
+- canonical molecule and measurement records plus chemistry audit;
+- fixture-only split and endpoint-context median;
+- predictions, prediction cards, run manifest, and static report;
+- 34 local tests and the minimal locked GitHub Actions workflow;
+- four Phase 0 verification records in `runs/experiment_ledger.csv`.
+
+### Exact Phase 1 handoff
+
+Remain on a pre-launch hold through 2026-08-16. On or after 2026-08-17, first
+capture and hash the authoritative OpenADMET release, licenses, rules, schema,
+metric code, submission validator, censoring semantics, and external/transductive
+permissions. Then write the concise Phase 1 plan and freeze challenge-faithful
+splits before any serious model selection. Do not treat the Phase 0 fixture
+adapter, split, model, or schema labels as official challenge contracts.

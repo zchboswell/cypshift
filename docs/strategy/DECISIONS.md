@@ -70,7 +70,7 @@
 ## D-006 — Defer license selection
 
 - Date: 2026-08-09
-- Status: accepted
+- Status: superseded by D-010
 - Decision: Do not select the final permissive license until Phase 0 production
   dependencies and redistributed assets are known.
 - Evidence: License compatibility must be checked against actual retained
@@ -133,3 +133,18 @@
   version plugins; retain package version alone without a source mapping.
 - Reversal condition: Begin post-Phase-0 development, which must advance the
   development version before producing new run manifests.
+
+## D-010 — Permissive code and fixture licenses
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: License `cypshift` code under BSD-3-Clause. Keep the independently
+  hand-authored synthetic fixture under its existing CC0-1.0 dedication.
+- Evidence: Phase 0 retains RDKit as its only runtime dependency; RDKit is
+  BSD-3-Clause. The development tools use compatible permissive licenses and
+  are not runtime dependencies. The fixture contains invented data intended
+  for unrestricted redistribution in CI and examples.
+- Alternatives: MIT for code; Apache-2.0 for code; keep the repository
+  unlicensed until public release.
+- Reversal condition: A dependency, asset, employer, journal, or legal review
+  identifies an incompatibility before public release.

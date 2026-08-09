@@ -4,17 +4,18 @@ Last updated: 2026-08-09
 
 ## Current phase
 
-Phase 0 — independent-review remediation.
+Phase 0 complete — pre-launch hold through 2026-08-16.
 
 ## Best validated system
 
-The Phase 0 `v0.1.0` release candidate is the best validated system. On the CC0
-synthetic fixture, `audit -> train -> predict -> report` produces canonical
+Phase 0 `v0.1.0` is the best validated system. On the CC0 synthetic fixture,
+`audit -> train -> predict -> report` produces canonical
 data, a duplicate-safe fixture split, an endpoint-context median, 21
 predictions, cards, a hashed manifest, and a static report. Independent
-same-seed runs are byte-identical. Independent review findings have been
-remediated locally; the locked package passes 34 tests, Ruff, strict mypy, and
-distribution builds. Hosted and reviewer re-verification remain pending.
+same-seed runs are byte-identical. The locked package passes 34 tests, Ruff,
+strict mypy, distribution builds, Linux CI on Python 3.11/3.14, and a local
+macOS installed-wheel run. Independent review findings are remediated and
+re-verified.
 
 ## Strongest evidence
 
@@ -66,14 +67,15 @@ None has been tested.
 - Series inference may be ambiguous without explicit parent identifiers.
 - Low-activity interval handling may dominate regression behavior.
 - TDI labels may be unstable near potency and shift thresholds.
-- The final project license remains deferred until retained dependencies and
-  redistributed assets are frozen. RDKit's BSD-3-Clause license is compatible
-  with the intended permissive release.
+- Browser-rendered visual QA of the static report remains unperformed; its
+  deterministic content, escaping, and artifact validation are tested.
+- Windows installation remains untested.
 - GitHub cannot enforce branch protection while the personal repository is
   private on the current account plan; branch and pull-request discipline is
   procedural until publication or a plan change.
 
 ## Exact next action
 
-Run hosted CI and independent re-verification on the review remediations, then
-complete the Phase 0 ledger, closeout record, state handoff, and signed tag.
+On or after 2026-08-17, capture and hash the authoritative challenge release,
+then write the Phase 1 plan and freeze the official contracts and
+challenge-faithful validation before model selection.

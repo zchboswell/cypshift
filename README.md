@@ -37,6 +37,12 @@ uv run cypshift report --run results --out results
 Open `results/report.html` in a browser. Each command refuses to overwrite its
 own artifacts, so use a new output directory for a repeated run.
 
+## License
+
+The `cypshift` source code is available under the BSD-3-Clause license. The
+invented fixture under `examples/synthetic/` is separately dedicated to the
+public domain under CC0-1.0.
+
 ## Project record
 
 - [Project charter](docs/strategy/PROJECT_CHARTER.md)

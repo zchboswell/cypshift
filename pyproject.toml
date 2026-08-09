@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Series-first, competence-aware CYP inhibition prediction"
 readme = "README.md"
 authors = [{ name = "zchboswell" }]
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = [
     "rdkit>=2026.3.4,<2027",
