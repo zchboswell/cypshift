@@ -203,20 +203,24 @@ uv run python scripts/complete_native_research_artifacts.py \
   --validation artifacts/benchmarks/public-validation-freeze-v2 \
   --public-sources benchmarks/public_sources.json \
   --oof-out artifacts/benchmarks/native-oof-research-v1 \
-  --scorecard-out artifacts/benchmarks/native-heldout-scorecard-v2 \
-  --source-revision 93ed5876f2431209933795de27c5b608305c7361 \
+  --scorecard-out artifacts/benchmarks/native-heldout-scorecard-v4 \
+  --source-revision bb4527c6f4d85363b26996b18d9386f0cfa16df7 \
   --selection-runtime-seconds 215 \
   --prediction-runtime-seconds 62 \
   --scoring-runtime-seconds 3.29 \
   --hardware "local Apple CPU (model unspecified)"
 ```
 
-Scorecard v2 preserves all 28 v1 point rows and fields exactly. It adds dataset
+Scorecard v4 preserves all 28 v1 point rows and fields exactly. It adds dataset
 revision, split and population hashes, runtime/hardware, explicit comparison
 status, all public-reference standard deviations and deltas, and aggregation
 warnings. Its allowed-seed ranges add 21 declared label-dependent analyses of
 the already frozen three ExtraTrees seeds; they select no seed or model. The
 scorecard aggregate is
-`6f240e3db0f709f3ad19d39cc60c4a51a9dea304e57e21e5e13be841aab1d74f`.
+`03a3ee6c1dc14b57c1c6cff47abf1d3e2f1b093e6aed7783b03cf984deb436bc`.
+Scorecard v2 remains a rejected local candidate because its row-level warning
+used the seven-row cross-task total on every task. V3 corrected the counts but
+pluralized the one-row CYP3A4 case; v4 is the first accurate canonical
+candidate and states both the task count (4/2/1) and seven-row total.
 The 123,640-row OOF research artifact has aggregate
 `5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.

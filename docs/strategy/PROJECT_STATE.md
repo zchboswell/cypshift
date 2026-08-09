@@ -216,12 +216,18 @@ artifacts remain outside Git.
   0.5489 from ExtraTrees versus 0.6663 for the training-median prior.
 - Independent scorecard review reproduced all selection and held-out scores,
   populations, thresholds, seed means, and hashes, but blocked PR 18 on the
-  firewall and artifact-contract gaps above. Scorecard v2 preserves every v1
+  firewall and artifact-contract gaps above. Scorecard v4 preserves every v1
   point field while adding revisions, split/population hashes, public-reference
   standard deviations and deltas, runtime/hardware, comparison status, and
   aggregation warnings. It records 21 additional label-dependent evaluations
   of the three already frozen ExtraTrees seeds and no seed/model selection;
-  aggregate is `6f240e3db0f709f3ad19d39cc60c4a51a9dea304e57e21e5e13be841aab1d74f`.
+  aggregate is `03a3ee6c1dc14b57c1c6cff47abf1d3e2f1b093e6aed7783b03cf984deb436bc`.
+- Re-review validated every remediation mechanic but found that scorecard v2
+  repeated the seven-row cross-task contamination total on each task row.
+  V3 corrected 4/2/1 counts but used plural wording for CYP3A4. Both remain
+  rejected local candidates. V4 reports four CYP2C9, two CYP2D6, and one
+  CYP3A4 overlap row while explicitly identifying seven across all tasks; its
+  two completed artifact roots are byte-identical.
 - The completed 123,640-row OOF observation artifact carries uncertainty when
   available, explicit applicability availability, scaffold support, measurement
   quality, and observation-level configuration/data/split hashes. Its aggregate
@@ -283,8 +289,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Return exact remediation head and the v2 firewall, scorecard, OOF, uncertainty,
-and failed-attempt receipts to the same fresh independent reviewer. Do not merge
+Return the narrow task-specific warning correction and scorecard v4 receipts to
+the same fresh independent reviewer. Do not merge
 or start the stack/external ladder until it passes. Remediate material findings
 without changing observed point results. Only after review may complete OOF
 predictions support the predeclared single-model, mean, median, and

@@ -348,7 +348,7 @@
   the source/split boundary, remove canonical measurement paths from held-out
   prediction v2, and require byte-identical prediction CSVs. Complete rather
   than rerun the observed v1 point scorecard.
-- Evidence boundary: Scorecard v2 must preserve every v1 point field, bind the
+- Evidence boundary: The completed scorecard must preserve every v1 point field, bind the
   corrected prediction receipt, and add revisions, split/population hashes,
   reference standard deviations and deltas, runtime/hardware, comparison
   status, and aggregation warnings. Allowed-seed ranges may score only the
@@ -360,3 +360,18 @@
   Independent re-review is required before merge or any stack/external work.
 - Reversal condition: Revert if corrected predictions differ from v1, any point
   score changes, or independent review finds the new receipt chain incomplete.
+
+## D-018 — Make contamination warnings task-specific
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Reject scorecard v2 because every TDC row used the seven-row
+  cross-task overlap total. Report four CYP2C9, two CYP2D6, and one CYP3A4
+  standardized overlap row, plus the explicit seven-row total, without changing
+  populations or metrics. Preserve the immediately rejected v3 grammar
+  candidate and retain scorecard v4 as the first accurate candidate.
+- Evidence boundary: All 28 original point fields must remain exact; the only
+  semantic change is the row-level warning. Two v4 roots must reproduce
+  byte-for-byte before narrow independent re-review.
+- Reversal condition: A new versioned strict-exclusion receipt changes the
+  task-specific counts.
