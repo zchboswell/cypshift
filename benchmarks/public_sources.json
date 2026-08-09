@@ -95,20 +95,47 @@
       "package": {
         "name": "PyTDC",
         "version": "1.1.15",
-        "sdist_sha256": "cd6164859af7b9b6f60e0c6d6e50679eacaffd09cfdea1acfc8bb7360e8e2205",
         "license": "MIT",
-        "repository_revision": "c310c35f27e3f506411018ac43d97b8ba23ca652"
+        "authoritative_sdist": {
+          "filename": "pytdc-1.1.15.tar.gz",
+          "url": "https://files.pythonhosted.org/packages/db/bf/db7525f0e9c48d340a66ae11ed46bbb1966234660a6882ce47d1e1d52824/pytdc-1.1.15.tar.gz",
+          "size_bytes": 154168,
+          "sha256": "cd6164859af7b9b6f60e0c6d6e50679eacaffd09cfdea1acfc8bb7360e8e2205",
+          "uploaded_at_utc": "2025-03-31T15:20:14.993356Z"
+        },
+        "inspected_evaluator_source": {
+          "repository": "https://github.com/mims-harvard/TDC",
+          "revision": "c310c35f27e3f506411018ac43d97b8ba23ca652",
+          "declared_version": "1.1.14",
+          "purpose": "This revision confirms pr-auc maps to sklearn.metrics.average_precision_score; it is not asserted as the PyTDC 1.1.15 release source."
+        }
       },
-      "data_license": "CC-BY-4.0",
-      "data_license_url": "https://tdcommons.ai/single_pred_tasks/adme/",
+      "data_license": {
+        "dataverse_version": "CC0-1.0",
+        "tdc_task_pages": "CC-BY-4.0",
+        "policy": "Retain TDC and Veith attribution and apply the conservative CC-BY-4.0 policy while disclosing that Dataverse version 105.0 declares CC0-1.0."
+      },
+      "data_license_urls": {
+        "dataverse_version": "https://dataverse.harvard.edu/api/datasets/:persistentId/versions/105.0?persistentId=doi:10.7910/DVN/21LKWG",
+        "tdc_task_pages": "https://tdcommons.ai/single_pred_tasks/adme/"
+      },
       "archive": {
+        "dataset_persistent_id": "doi:10.7910/DVN/21LKWG",
+        "dataset_version": "105.0",
+        "dataset_version_state": "RELEASED",
+        "dataset_version_released_at_utc": "2025-08-27T12:05:20Z",
         "dataverse_file_id": 4426004,
         "url": "https://dataverse.harvard.edu/api/access/datafile/4426004",
         "path": "admet_group.zip",
         "size_bytes": 1472501,
+        "dataverse_md5": "e3e4dda2f7f62268448fc813ceefccd5",
         "sha256": "bd0005246cb6f1672333c28ad202112a8bf071ab65d847848715030308faf1f1"
       },
       "split_contract": "Preserve the archive train_val.csv and test.csv files exactly. Select candidates only inside train_val and record every evaluation on test.",
+      "source_discrepancies": [
+        "Harvard Dataverse dataset version 105.0 declares CC0-1.0 while the TDC Veith task pages declare CC-BY-4.0; cypshift retains attribution and follows the conservative CC-BY-4.0 policy.",
+        "PyTDC 1.1.15 is authoritative at the pinned PyPI sdist; inspected repository revision c310c35f declares 1.1.14 and is used only as evaluator-source evidence."
+      ],
       "tasks": {
         "cyp2c9_veith": {
           "metric": "AUPRC",
