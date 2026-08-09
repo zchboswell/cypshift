@@ -542,7 +542,7 @@ def _ece(labels: Sequence[int], predictions: Sequence[float]) -> float:
 
 def _tdc_anchors(sources: Mapping[str, Any]) -> dict[str, dict[str, float]]:
     try:
-        pages = sources["sources"]["tdc_admet"]["tdc_leaderboards"]["pages"]
+        pages = sources["sources"]["tdc_leaderboards"]["pages"]
         return {
             task: {name: float(value["mean"]) for name, value in pages[task]["anchors"].items()}
             for task in TDC_TASKS

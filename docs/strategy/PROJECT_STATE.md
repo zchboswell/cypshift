@@ -184,6 +184,16 @@ artifacts remain outside Git.
   0.7527/0.7081/0.7417 for CYP2C9, 0.6513/0.6042/0.6607 for CYP2D6, and
   0.8293/0.7828/0.8187 for CYP3A4. These values are not comparable to the dated
   fixed-public-test anchors.
+- Held-out prediction is frozen separately and reproduces byte-for-byte across
+  two label-blind runs: 7,724 structures, 30,896 retained prediction rows,
+  23,172 stochastic-seed rows, 24 fits, aggregate
+  `d9ca7e6d236a11fa031f485d68d05af5521b3a91e439ca154b9d08d9e4168b0d`,
+  and zero labels parsed or evaluations.
+- Real scoring attempt 1 parsed the 7,724 frozen held-out labels, then failed
+  before writing a score because the anchor loader expected
+  `tdc_leaderboards` beneath `tdc_admet` rather than at its actual sibling
+  source-manifest path. No score or partial output exists; models,
+  configurations, thresholds, predictions, and populations remain unchanged.
 
 ## Active hypotheses
 
@@ -239,9 +249,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Merge the signed native-selection milestone with retained configurations and
-artifact hashes unchanged. Then implement a separate receipt-bound evaluator
-that retrains each frozen family on all authorized training rows and performs
-exactly one Octant outer and one TDC public-test evaluation per retained family.
-Record official and strict TDC results separately; do not expose held-out labels
-to any configuration, feature, calibration, threshold, or stack decision.
+Merge the narrow scoring-attempt-1 remediation after hosted CI verifies the
+exact signed head. The change may correct only the frozen leaderboard JSON
+path and its regression fixture; do not change models, configurations,
+thresholds, predictions, populations, or metrics. Then run and record scoring
+attempt 2 explicitly, whether it passes or fails.

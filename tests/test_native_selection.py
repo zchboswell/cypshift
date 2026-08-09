@@ -436,18 +436,16 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
         json.dumps(
             {
                 "sources": {
-                    "tdc_admet": {
-                        "tdc_leaderboards": {
-                            "pages": {
-                                task: {
-                                    "anchors": {
-                                        "MapLight + GNN": {"mean": 0.8},
-                                        "Chemprop-RDKit": {"mean": 0.7},
-                                        "Chemprop": {"mean": 0.6},
-                                    }
+                    "tdc_leaderboards": {
+                        "pages": {
+                            task: {
+                                "anchors": {
+                                    "MapLight + GNN": {"mean": 0.8},
+                                    "Chemprop-RDKit": {"mean": 0.7},
+                                    "Chemprop": {"mean": 0.6},
                                 }
-                                for task in TDC_TASKS
                             }
+                            for task in TDC_TASKS
                         }
                     }
                 }
