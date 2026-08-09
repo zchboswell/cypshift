@@ -25,7 +25,7 @@ from cypshift.native_selection import (
 
 RESEARCH_OBSERVATION_SCHEMA_VERSION = "cypshift.research_observations.v1"
 SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v4"
-RETAINED_MEAN_SCORECARD_SCHEMA_VERSION = "cypshift.retained_mean_scorecard.v3"
+RETAINED_MEAN_SCORECARD_SCHEMA_VERSION = "cypshift.retained_mean_scorecard.v4"
 METRIC_SCHEMA_VERSION = "cypshift.native_metrics.v1"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
@@ -415,6 +415,18 @@ def complete_retained_mean_scorecard(
         or any(scoring_manifest.get(key) != value for key, value in expected_counts.items())
     ):
         raise NativeSelectionError("retained-mean scoring receipt is invalid")
+    input_hashes = scoring_manifest.get("input_hashes")
+    octant_split_path = validation_root / "octant" / "octant_grouped_split.csv"
+    if _file_hash(public_sources_path) != scoring_manifest.get(
+        "public_sources_sha256"
+    ):
+        raise NativeSelectionError("public source hash differs from scoring receipt")
+    if (
+        not isinstance(input_hashes, dict)
+        or _file_hash(octant_split_path)
+        != input_hashes.get("validation/octant/octant_grouped_split.csv")
+    ):
+        raise NativeSelectionError("Octant split hash differs from scoring receipt")
     rows, original_columns = _read_csv_columns(scoring_root / "heldout_scores.csv")
     scored = _read_csv(scoring_root / "scored_retained_mean_predictions.csv")
     if (
@@ -428,9 +440,7 @@ def complete_retained_mean_scorecard(
     anchors = _anchor_statistics(sources)
     population_hashes = _population_hashes(scored)
     split_hashes = {
-        "octant_cyp": _file_hash(
-            validation_root / "octant" / "octant_grouped_split.csv"
-        ),
+        "octant_cyp": _file_hash(octant_split_path),
         "tdc_admet_group": str(scoring_manifest["official_split_sha256"]),
     }
     completed_rows: list[dict[str, str]] = []

@@ -963,3 +963,36 @@ def test_retained_mean_scoring_is_isolated_counted_and_deterministic(
             tmp_path / "malformed-exclusion-scores",
             source_revision="test-revision",
         )
+
+    tampered_sources = tmp_path / "tampered_public_sources.json"
+    tampered_sources.write_text("{}\n", encoding="utf-8")
+    with pytest.raises(NativeSelectionError, match="public source hash"):
+        complete_retained_mean_scorecard(
+            tmp_path / "scores-one",
+            validation,
+            tampered_sources,
+            tmp_path / "tampered-source-scorecard",
+            source_revision="test-revision",
+            selection_runtime_seconds=1.0,
+            combination_runtime_seconds=0.5,
+            prediction_runtime_seconds=2.0,
+            mean_prediction_runtime_upper_bound_seconds=1.0,
+            scoring_runtime_seconds=3.0,
+            hardware="test CPU",
+        )
+    octant_split = validation / "octant" / "octant_grouped_split.csv"
+    octant_split.write_bytes(octant_split.read_bytes() + b"\n")
+    with pytest.raises(NativeSelectionError, match="Octant split hash"):
+        complete_retained_mean_scorecard(
+            tmp_path / "scores-one",
+            validation,
+            public_sources,
+            tmp_path / "tampered-split-scorecard",
+            source_revision="test-revision",
+            selection_runtime_seconds=1.0,
+            combination_runtime_seconds=0.5,
+            prediction_runtime_seconds=2.0,
+            mean_prediction_runtime_upper_bound_seconds=1.0,
+            scoring_runtime_seconds=3.0,
+            hardware="test CPU",
+        )
