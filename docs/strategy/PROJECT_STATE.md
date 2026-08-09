@@ -30,8 +30,10 @@ strict mypy, distribution builds, Linux CI on Python 3.11/3.14, and a local
 macOS installed-wheel run. Independent review findings are remediated and
 re-verified.
 
-The remediated real-data Phase 0.5 ingestion candidate passes local frozen
-checks and awaits independent re-review.
+The Phase 0.5 public-data and split foundation is independently validated and
+merged at signed commit `58b0661`. The reviewer repeated the full empty-root
+reconstruction, matched all 24 retained files and both aggregate receipts, and
+found no remaining scientific, code, or documentation issues.
 The exact Octant compound-level release maps deterministically into 1,340
 accepted molecules and 1,084 numeric measurements; 256 rows without source
 pIC50 values remain explicit molecule records and do not become fabricated
@@ -155,6 +157,12 @@ artifacts remain outside Git.
   byte-for-byte, and emitted deterministic aggregate
   `0dc587c61b02f90df04e599deff771117ad52b5cfe16f10d606359bc8548d8d4`.
   Average precision tests enforce the TDC higher-is-better metric polarity.
+- Independent re-review passed on exact signed head `58b0661` after a separate
+  live reconstruction. It verified source and receipt hashes, row and group
+  integrity, adversarial tamper rejection, 24/24 byte-identical retained files,
+  zero model fits and public-test evaluations, 57 tests, static checks, builds,
+  signatures, and hosted Python 3.11/3.14 CI. PR 11 merged by fast-forward with
+  the reviewed signature intact.
 
 ## Active hypotheses
 
@@ -210,8 +218,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Complete independent re-review of the signed remediation head, including
-Octant protocol semantics, TDC row/manifest binding, all grouped inner folds,
-the aggregate receipt, clean-cache reconstruction, PR evidence, and zero
-public-test evaluation count. Remediate any remaining material finding before
-merging or beginning the minimum native model ladder.
+Implement the minimum native selection ladder in declared order: prior, ECFP
+linear, similarity-weighted kNN, and one nonlinear fixed-feature estimator.
+Keep benchmark-only dependencies isolated, predeclare at most 12 configurations
+per family and task, and produce complete grouped out-of-fold predictions. Do
+not evaluate any TDC public-test label until retained configurations and their
+artifact hashes are frozen from `train_val` evidence alone.
