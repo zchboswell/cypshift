@@ -356,11 +356,16 @@ artifacts remain outside Git.
   but prediction did not verify the overlap receipt against the current
   contract and input. The runner also accepted caller-selected output paths and
   source revisions. Remediation `d613116` and input v4 remove those freedoms:
-  one fixed
-  repository input, output, and adjacent exclusive start sentinel are bound to
+  one fixed repository input, output, and adjacent exclusive start sentinel are bound to
   a clean Git revision, and all overlap provenance is checked before canonical
   prediction. Input bytes and scientific hashes remain unchanged. Eight new
   focused checks bring the suite to 86. No external action has occurred.
+- Final review passed exact signed head `e324d11`: 8/8 provenance tamper cases,
+  all 86 tests, repository checks, hosted Python 3.11/3.14 CI, signatures,
+  authorship, input-v4 repeat, zero external action, and Occam simplicity pass.
+  PR 32 merged by exact fast-forward. The 25-GiB rule is checkpoint accounting
+  over retained apparent files plus Docker's reported image size. It is not an
+  OS quota and does not measure transient pull storage or Docker metadata.
 
 ## Active hypotheses
 
@@ -416,11 +421,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently re-review contract-v3 prediction-path remediation `d613116`
-before the
-single real attempt. Verify the exact task preflight, fixed input/output/start
-sentinel, clean Git revision, complete overlap provenance, source hashes, safe
-mount set, disabled network, smoke selection, finite alignment, repeat
-enforcement, complete receipts, runtime and storage limits, zero label access,
-tests, and Occam simplicity. Do not download or run the model until this exact
-gate passes.
+From clean reviewed `main`, invoke the argument-free fixed runner once with
+`uv run python scripts/run_chemeleon_attempt.py`. Preserve its exclusive start
+sentinel and complete success or failure receipt. Do not retry, change the
+checkpoint or container, open labels, score, fit, or evaluate during this
+attempt.
