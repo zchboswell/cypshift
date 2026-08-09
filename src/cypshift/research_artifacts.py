@@ -24,7 +24,7 @@ from cypshift.native_selection import (
 )
 
 RESEARCH_OBSERVATION_SCHEMA_VERSION = "cypshift.research_observations.v1"
-SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v2"
+SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v3"
 METRIC_SCHEMA_VERSION = "cypshift.native_metrics.v1"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
@@ -306,14 +306,8 @@ def complete_first_scorecard(
                 "scoring_runtime_seconds": _number(scoring_runtime_seconds),
                 "hardware": hardware,
                 "comparison_status": _comparison_status(benchmark, population),
-                "contamination_warning": (
-                    "seven standardized train/test overlaps retained"
-                    if benchmark == "tdc_admet_group" and population == "official"
-                    else (
-                        "seven standardized overlaps excluded"
-                        if benchmark == "tdc_admet_group"
-                        else "no official leaderboard comparison"
-                    )
+                "contamination_warning": _contamination_warning(
+                    benchmark, task, population
                 ),
                 "aggregation_warning": (
                     "Local deterministic scores and the score of a three-seed "
@@ -614,6 +608,24 @@ def _comparison_status(benchmark: str, population: str) -> str:
         "official_fixed_public_test_comparison"
         if population == "official"
         else "unofficial_strict_companion"
+    )
+
+
+def _contamination_warning(benchmark: str, task: str, population: str) -> str:
+    if benchmark != "tdc_admet_group":
+        return "no official leaderboard comparison"
+    task_counts = {
+        "cyp2c9_veith": 4,
+        "cyp2d6_veith": 2,
+        "cyp3a4_veith": 1,
+    }
+    count = task_counts.get(task)
+    if count is None:
+        raise NativeSelectionError(f"unknown TDC task for contamination warning: {task}")
+    disposition = "retained" if population == "official" else "excluded"
+    return (
+        f"{count} task-specific standardized overlap rows {disposition}; "
+        "seven across all three tasks"
     )
 
 

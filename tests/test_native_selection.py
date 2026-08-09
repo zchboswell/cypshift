@@ -555,6 +555,16 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
         "unofficial_strict_companion",
         "internally_reproduced_same_split_unofficial",
     }
+    task_warning_counts = {
+        "cyp2c9_veith": "4 task-specific",
+        "cyp2d6_veith": "2 task-specific",
+        "cyp3a4_veith": "1 task-specific",
+    }
+    for row in completed_rows:
+        if row["benchmark"] == "tdc_admet_group":
+            assert row["contamination_warning"].startswith(
+                task_warning_counts[row["task"]]
+            )
 
     attempt_two = run_heldout_scoring(
         octant,
