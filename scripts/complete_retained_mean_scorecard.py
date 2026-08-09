@@ -16,7 +16,11 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--source-revision", required=True)
     parser.add_argument("--selection-runtime-seconds", type=float, required=True)
+    parser.add_argument("--combination-runtime-seconds", type=float, required=True)
     parser.add_argument("--prediction-runtime-seconds", type=float, required=True)
+    parser.add_argument(
+        "--mean-prediction-runtime-upper-bound-seconds", type=float, required=True
+    )
     parser.add_argument("--scoring-runtime-seconds", type=float, required=True)
     parser.add_argument("--hardware", required=True)
     args = parser.parse_args()
@@ -27,7 +31,11 @@ def main() -> None:
         args.out,
         source_revision=args.source_revision,
         selection_runtime_seconds=args.selection_runtime_seconds,
+        combination_runtime_seconds=args.combination_runtime_seconds,
         prediction_runtime_seconds=args.prediction_runtime_seconds,
+        mean_prediction_runtime_upper_bound_seconds=(
+            args.mean_prediction_runtime_upper_bound_seconds
+        ),
         scoring_runtime_seconds=args.scoring_runtime_seconds,
         hardware=args.hardware,
     )

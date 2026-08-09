@@ -25,7 +25,7 @@ from cypshift.native_selection import (
 
 RESEARCH_OBSERVATION_SCHEMA_VERSION = "cypshift.research_observations.v1"
 SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v4"
-RETAINED_MEAN_SCORECARD_SCHEMA_VERSION = "cypshift.retained_mean_scorecard.v1"
+RETAINED_MEAN_SCORECARD_SCHEMA_VERSION = "cypshift.retained_mean_scorecard.v2"
 METRIC_SCHEMA_VERSION = "cypshift.native_metrics.v1"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
@@ -389,7 +389,9 @@ def complete_retained_mean_scorecard(
     *,
     source_revision: str,
     selection_runtime_seconds: float,
+    combination_runtime_seconds: float,
     prediction_runtime_seconds: float,
+    mean_prediction_runtime_upper_bound_seconds: float,
     scoring_runtime_seconds: float,
     hardware: str,
 ) -> Path:
@@ -521,9 +523,16 @@ def complete_retained_mean_scorecard(
             "model_selection_changes": 0,
             "additional_heldout_label_access": 0,
             "additional_heldout_evaluations": 0,
+            "combination_selection_runtime_seconds": _number(
+                combination_runtime_seconds
+            ),
+            "retained_mean_prediction_runtime_upper_bound_seconds": _number(
+                mean_prediction_runtime_upper_bound_seconds
+            ),
             "runtime_boundary": (
-                "Selection and base held-out prediction runtimes reuse the "
-                "frozen native run records; scoring runtime is the retained-mean run."
+                "Scorecard row selection and prediction runtimes are the frozen "
+                "base-family stages. The manifest separately records combination "
+                "selection and retained-mean arithmetic."
             ),
         },
     )
