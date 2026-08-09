@@ -123,3 +123,14 @@ precision; regression uses pooled grouped-OOF MAE. The retained stochastic
 configuration is rerun with exactly three declared seeds. Generated selection
 artifacts remain outside Git; their hashes and keep/reject decision enter the
 experiment ledger after the first run.
+
+Two real runs from signed commit `42ffaf1` are byte-identical. Each completes
+240 grouped fits in about 216 seconds on a local Apple CPU and emits 401,830
+candidate OOF rows, 123,640 retained OOF rows, and 92,730 stochastic-seed rows.
+The retained linear configurations are Octant ridge alpha 10 and TDC logistic
+`C=0.1`; all tasks retain Tanimoto kNN with `k=50`, power 2 and ExtraTrees leaf
+size 3. Root aggregate
+`33ba1f6481048c9f620223f9a0e6c85d2a40bece620ffe9b0c44117c0c7775fa`
+binds the exact configuration and prediction artifacts. These grouped-inner
+scores select candidates; they are not comparable to TDC public-test anchors.
+The receipts still record zero held-out label parses and evaluations.

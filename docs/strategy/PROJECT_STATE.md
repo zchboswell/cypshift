@@ -40,6 +40,12 @@ pIC50 values remain explicit molecule records and do not become fabricated
 measurements. This establishes data-contract evidence, not model-performance
 evidence, so Phase 0 `v0.1.0` remains the best validated predictive system.
 
+The first real-data native selection ladder is frozen at signed commit
+`42ffaf1`. Two real grouped-OOF runs are byte-identical with aggregate
+`33ba1f6481048c9f620223f9a0e6c85d2a40bece620ffe9b0c44117c0c7775fa`.
+This is train/validation selection evidence only: no TDC public-test or Octant
+outer label was parsed or evaluated, so it is not yet a public benchmark result.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the
@@ -163,6 +169,21 @@ artifacts remain outside Git.
   zero model fits and public-test evaluations, 57 tests, static checks, builds,
   signatures, and hosted Python 3.11/3.14 CI. PR 11 merged by fast-forward with
   the reviewed signature intact.
+- The native selection contract freezes 1 prior, 3 ECFP-linear, 6 Tanimoto-kNN,
+  and 3 ExtraTrees candidates per task. It verifies the full validation receipt
+  chain before fitting and keeps NumPy, SciPy, and scikit-learn 1.9 outside the
+  core wheel in a benchmark-only dependency group.
+- Two real selection runs each complete 240 grouped fits in about 216 seconds
+  on a local Apple CPU and produce byte-identical outputs: 401,830 candidate
+  OOF rows, 123,640 retained OOF rows, and 92,730 retained stochastic-seed
+  rows. A separate scikit-learn recomputation matches all 16 retained
+  task-family scores and every receipt hash.
+- Octant inner-selection MAE is 0.7270 for the median prior, 0.6818 for ECFP
+  ridge, 0.6565 for kNN, and 0.6496 for three-seed ExtraTrees. TDC grouped-inner
+  AUPRC for the retained linear, kNN, and ExtraTrees models is respectively
+  0.7527/0.7081/0.7417 for CYP2C9, 0.6513/0.6042/0.6607 for CYP2D6, and
+  0.8293/0.7828/0.8187 for CYP3A4. These values are not comparable to the dated
+  fixed-public-test anchors.
 
 ## Active hypotheses
 
@@ -218,9 +239,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Implement the minimum native selection ladder in declared order: prior, ECFP
-linear, similarity-weighted kNN, and one nonlinear fixed-feature estimator.
-Keep benchmark-only dependencies isolated, predeclare at most 12 configurations
-per family and task, and produce complete grouped out-of-fold predictions. Do
-not evaluate any TDC public-test label until retained configurations and their
-artifact hashes are frozen from `train_val` evidence alone.
+Merge the signed native-selection milestone with retained configurations and
+artifact hashes unchanged. Then implement a separate receipt-bound evaluator
+that retrains each frozen family on all authorized training rows and performs
+exactly one Octant outer and one TDC public-test evaluation per retained family.
+Record official and strict TDC results separately; do not expose held-out labels
+to any configuration, feature, calibration, threshold, or stack decision.
