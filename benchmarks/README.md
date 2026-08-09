@@ -232,18 +232,21 @@ random-fold assignment, and later evaluation budget before this command runs:
 
 ```console
 uv run python scripts/select_native_combinations.py \
-  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
-  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
-  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --prediction-inputs artifacts/benchmarks/native-prediction-inputs-v1 \
   --selection artifacts/benchmarks/native-selection-v1 \
-  --out artifacts/benchmarks/native-combinations-v1 \
-  --source-revision 2fd2f79d5dc496cf9392187aaf66178417db1a53
+  --out artifacts/benchmarks/native-combinations-v3 \
+  --source-revision 06884441411c0eb274c47ec2688799b573dc24ba
 ```
 
-The two complete 384-fit runs are byte-identical across all eight files with
-aggregate `b4959f2a4088208c0dee4bbac8b5424d1a8c7b252994a05eac48f8025d6015a1`.
-They contain 123,640 candidate OOF rows, 30,910 random assignments, and 123,640
-random OOF rows, while recording zero held-out labels or evaluations.
+Independent review rejected v1 because it opened complete canonical measurement
+tables before row filtering. V2 fixed that interface but omitted the 20 NNLS
+solves from its fit count. Both remain immutable rejected evidence. V3 accepts
+only the label-absent prediction-input view and reports 384 base-model fits, 16
+nested NNLS fits, 4 final NNLS fits, and 404 total operations. Its aggregate is
+`c63b40b2c80981a437fdc2baa48d4ece5ecdc8b7e50594e75578cf04e8503b12`.
+Two v3 roots are byte-identical across all eight files. Each contains 123,640
+candidate OOF rows, 30,910 random assignments, and 123,640 random OOF rows,
+while recording zero held-out label access or evaluations.
 
 The unweighted mean is retained on all four tasks. Grouped OOF performance
 changes from the best single family as follows:

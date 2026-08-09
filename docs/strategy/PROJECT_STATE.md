@@ -240,11 +240,18 @@ artifacts remain outside Git.
   rows, accurate 4/2/1 task warnings, signatures, sole `zchboswell` authorship,
   local checks, and hosted Python 3.11/3.14 CI. PR 18 merged by exact
   fast-forward with the reviewed GitHub-verified signature intact.
-- D-019 was signed and merged before fitting. Two train/validation-only
-  combination runs each complete 384 nested/random fit operations in about 469
-  seconds and reproduce all eight files byte-for-byte. Aggregate is
-  `b4959f2a4088208c0dee4bbac8b5424d1a8c7b252994a05eac48f8025d6015a1`;
-  held-out label parses and evaluations remain zero.
+- D-019 was signed and merged before fitting. Independent review rejected
+  combination v1 because it opened full canonical measurement tables before
+  filtering, despite using no held-out numeric value. V2 corrected the
+  interface but omitted 20 NNLS solves from its fit count. Both remain rejected
+  immutable evidence.
+- Combination v3 accepts only the receipt-bound label-absent training view. It
+  reports 384 base-model fits, 16 nested NNLS fits, 4 final NNLS fits, and 404
+  total operations. Its two complete runs took 470 and 471 seconds, reproduce
+  all eight files byte-for-byte and every v1 scientific payload exactly, and
+  have aggregate
+  `c63b40b2c80981a437fdc2baa48d4ece5ecdc8b7e50594e75578cf04e8503b12`.
+  Held-out label access and evaluations are structurally zero.
 - The unweighted mean is retained for all four tasks. Versus the grouped-OOF
   best single family, it lowers Octant MAE from 0.6496 to 0.6344 and raises TDC
   AUPRC from 0.7527/0.6607/0.8293 to 0.7665/0.6723/0.8370. The nested NNLS
@@ -309,10 +316,10 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain independent review of the exact D-019 implementation and both
-byte-identical train/validation-only roots. Verify candidate arithmetic,
-nested-fit isolation, NNLS weights, complexity-gate decisions, random group
-integrity, optimism signs, receipt hashes, and zero held-out access. Only after
-PASS may the already retained unweighted mean be applied to the frozen base
-held-out predictions to emit one label-absent combination prediction per task;
-scoring remains a later, explicitly counted milestone.
+Return the exact D-020 remediation head and both byte-identical v3 roots to
+independent review. Verify the
+label-absent interface, 384+16+4 fit accounting, unchanged scientific payload,
+candidate arithmetic, nested isolation, complexity gate, random group
+integrity, hashes, and code simplicity. Only after PASS may the retained mean
+be applied to frozen base held-out predictions; scoring remains a later,
+explicitly counted milestone.

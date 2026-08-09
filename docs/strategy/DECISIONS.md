@@ -428,3 +428,22 @@
   mathematical, leakage, alignment, or bounded-resource defect. After fitting,
   do not change formulas, margins, candidates, folds, or weights in response to
   performance; record a failed experiment instead.
+
+## D-020 — Enforce the combination firewall and complete fit accounting
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Reject combination v1 because its loader opened canonical held-out
+  measurement rows before filtering. Require the model-facing combination stage
+  to accept only the existing label-absent prediction-input view and bind that
+  receipt. Reject v2 because its `384` fit count omitted NNLS solves. V3 must
+  report 384 base-model fits, 16 nested NNLS fits, 4 final NNLS fits, and 404
+  total fit operations.
+- Invariance: The six numeric CSV files and the retained-combination payload
+  must match v1 exactly. Only the schema, receipt binding, and fit accounting may
+  change. No new candidate, formula, margin, result, or evaluation is allowed.
+- Simplicity boundary: Keep the direct procedural implementation. Add no
+  framework, dependency, public CLI command, or abstraction to remediate these
+  two audit defects.
+- Reversal condition: Revert if v3 cannot reproduce the scientific payload or
+  if its model-facing interface can resolve a canonical measurement table.
