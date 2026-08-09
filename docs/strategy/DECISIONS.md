@@ -309,3 +309,31 @@
   After results exist, do not opportunistically expand or retune the grid;
   diagnose predefined split, label, polarity, preprocessing, prevalence,
   leakage, metric, and feature checks first.
+
+## D-016 — Separate held-out prediction from one-time scoring
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Freeze held-out predictions in a label-blind stage before any
+  score exists. Verify the complete validation, canonical-data, official-split,
+  and native-selection receipt chain; retrain the frozen configurations on all
+  authorized training rows; and emit predictions without opening a held-out
+  measurement value. Permit a separate receipt-bound scorer exactly once after
+  prediction artifacts reproduce byte-for-byte.
+- Evaluation count: One scoring pass comprises 4 Octant family evaluations and
+  12 TDC family/task public-test evaluations. The strict TDC companion reuses
+  the same predictions and is an analysis of a second declared population, not
+  another model-selection opportunity. Record all counts explicitly.
+- Metric boundary: TDC primary metric is average precision, with AUROC, Brier,
+  ten-bin equal-width calibration error, and sensitivity/specificity,
+  balanced accuracy, and MCC at an OOF-selected MCC-maximizing threshold;
+  threshold ties favor the smaller value. Octant primary metrics are MAE,
+  median absolute error, Spearman correlation, and RMSE, accompanied by
+  interval-aware absolute error and pIC50-at-least-6 potent-subset MAE.
+- Comparison boundary: Only official TDC AUPRC is compared with dated TDC
+  anchors. Strict-population and Octant results remain separately labeled.
+  Scoring must not alter a configuration, feature, seed, calibration,
+  threshold, or stack.
+- Reversal condition: A receipt mismatch, incomplete prediction population, or
+  scorer defect blocks scoring. Once any held-out label is parsed, record the
+  attempt and never silently restart or change the frozen candidates.

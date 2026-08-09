@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from cypshift.native_evaluation import run_heldout_prediction
 from cypshift.native_selection import (
     FAMILIES,
     NativeSelectionError,
@@ -47,14 +48,16 @@ def _write_receipts(octant: Path, tdc: Path, validation: Path) -> None:
         + "\n",
         encoding="utf-8",
     )
+    tdc_inputs = {
+        "molecules.csv": _file_hash(tdc / "molecules.csv"),
+        "measurements.csv": _file_hash(tdc / "measurements.csv"),
+    }
+    official_split = validation / "tdc" / "official_split.csv"
+    if official_split.exists():
+        tdc_inputs["official_split.csv"] = _file_hash(official_split)
     (validation / "tdc" / "tdc_split_audit.json").write_text(
         json.dumps(
-            {
-                "input_hashes": {
-                    "molecules.csv": _file_hash(tdc / "molecules.csv"),
-                    "measurements.csv": _file_hash(tdc / "measurements.csv"),
-                }
-            },
+            {"input_hashes": tdc_inputs},
             sort_keys=True,
         )
         + "\n",
@@ -168,6 +171,7 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
     tdc_molecules = []
     tdc_measurements = []
     tdc_folds = []
+    tdc_official = []
     for task_index, task in enumerate(TDC_TASKS):
         for index, structure in enumerate(structures):
             molecule_id = f"tdc:{task}:train_val:{index:05d}"
@@ -203,6 +207,14 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
         tdc_measurements.append(
             {"molecule_id": test_id, "value": "DO_NOT_PARSE"}
         )
+        tdc_official.append(
+            {
+                "molecule_id": test_id,
+                "task": task,
+                "partition": "test",
+                "source_row": "2",
+            }
+        )
     _write_csv(tdc / "molecules.csv", molecule_columns, tdc_molecules)
     _write_csv(tdc / "measurements.csv", measurement_columns, tdc_measurements)
 
@@ -216,6 +228,11 @@ def _fixture(root: Path) -> tuple[Path, Path, Path, set[str]]:
         validation / "tdc" / "tdc_inner_folds.csv",
         ("task", "molecule_id", "inner_fold"),
         tdc_folds,
+    )
+    _write_csv(
+        validation / "tdc" / "official_split.csv",
+        ("molecule_id", "task", "partition", "source_row"),
+        tdc_official,
     )
     _write_receipts(octant, tdc, validation)
     return octant, tdc, validation, selected_ids
@@ -320,3 +337,41 @@ def test_native_selection_refuses_overwrite_and_missing_selected_target(
             tmp_path / "misaligned",
             nonlinear_trees=2,
         )
+
+
+def test_heldout_prediction_is_label_blind_and_deterministic(tmp_path: Path) -> None:
+    octant, tdc, validation, _ = _fixture(tmp_path / "fixture")
+    selection = tmp_path / "selection"
+    run_native_selection(
+        octant, tdc, validation, selection, nonlinear_trees=4
+    )
+    official_split = validation / "tdc" / "official_split.csv"
+
+    first = run_heldout_prediction(
+        octant,
+        tdc,
+        official_split,
+        validation,
+        selection,
+        tmp_path / "predictions-one",
+    )
+    run_heldout_prediction(
+        octant,
+        tdc,
+        official_split,
+        validation,
+        selection,
+        tmp_path / "predictions-two",
+    )
+
+    for path in sorted((tmp_path / "predictions-one").iterdir()):
+        assert path.read_bytes() == (
+            tmp_path / "predictions-two" / path.name
+        ).read_bytes()
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    assert manifest["heldout_structures"] == 4
+    assert manifest["prediction_rows"] == 16
+    assert manifest["model_fits"] == 24
+    assert manifest["heldout_labels_parsed"] == 0
+    assert manifest["tdc_public_test_evaluations"] == 0
+    assert manifest["octant_outer_evaluations"] == 0

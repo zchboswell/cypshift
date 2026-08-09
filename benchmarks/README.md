@@ -134,3 +134,25 @@ size 3. Root aggregate
 binds the exact configuration and prediction artifacts. These grouped-inner
 scores select candidates; they are not comparable to TDC public-test anchors.
 The receipts still record zero held-out label parses and evaluations.
+
+## Held-out prediction firewall
+
+Held-out prediction and scoring are separate milestones. After the native
+selection receipt is frozen, generate predictions without reading any held-out
+measurement table:
+
+```console
+uv run python scripts/predict_native_heldout.py \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --tdc-official-split artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --selection artifacts/benchmarks/native-selection-v1 \
+  --out artifacts/benchmarks/native-heldout-predictions-v1
+```
+
+The predictor verifies the validation, canonical-data, official-split, and
+selection receipt chain; retrains only the frozen family configurations; and
+writes label-free predictions plus three declared ExtraTrees seed predictions.
+It records zero held-out labels parsed and zero evaluations. A later scorer may
+consume the immutable prediction receipt exactly once.
