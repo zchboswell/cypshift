@@ -271,8 +271,11 @@ artifacts remain outside Git.
   aggregate
   `b6e6db44f7436655cd978f181b326ef445fe39057430dae68ccb51afb2c5c873`.
   The receipt records 30,896 base predictions averaged, zero fits, zero
-  measurement tables opened, zero labels parsed, and zero evaluations. The
-  result is frozen but not scored or independently reviewed.
+  measurement tables opened, zero labels parsed, and zero evaluations.
+  Independent review passed on exact signed head `725d162`; it reproduced all
+  arithmetic and receipts, exercised malformed-input rejection, found no
+  actionable complexity, and confirmed hosted CI. PR 23 merged by exact
+  fast-forward. The prediction remains unscored.
 
 ## Active hypotheses
 
@@ -328,7 +331,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain independent review of the exact retained-mean prediction implementation,
-receipt chain, 7,724-row arithmetic, byte-identical repeat, test coverage, and
-Occam's Razor. Do not implement or run its held-out scorer before that review
-passes and the exact signed head merges.
+Implement the smallest separate retained-mean scorer under D-016 and D-019.
+Reuse the frozen populations and metrics. Score no rejected candidate. Test it
+only on the synthetic fixture first, then obtain signed CI and independent
+review before any real held-out label is opened. The later real run may add at
+most three TDC official evaluations, three strict companion analyses, and one
+Octant outer evaluation.
