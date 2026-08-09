@@ -565,6 +565,10 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
             assert row["contamination_warning"].startswith(
                 task_warning_counts[row["task"]]
             )
+            if row["task"] == "cyp3a4_veith":
+                assert "1 task-specific standardized overlap row " in row[
+                    "contamination_warning"
+                ]
 
     attempt_two = run_heldout_scoring(
         octant,

@@ -24,7 +24,7 @@ from cypshift.native_selection import (
 )
 
 RESEARCH_OBSERVATION_SCHEMA_VERSION = "cypshift.research_observations.v1"
-SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v3"
+SCORECARD_SCHEMA_VERSION = "cypshift.public_scorecard.v4"
 METRIC_SCHEMA_VERSION = "cypshift.native_metrics.v1"
 AGGREGATE_RECIPE = (
     "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline "
@@ -623,8 +623,9 @@ def _contamination_warning(benchmark: str, task: str, population: str) -> str:
     if count is None:
         raise NativeSelectionError(f"unknown TDC task for contamination warning: {task}")
     disposition = "retained" if population == "official" else "excluded"
+    row_word = "row" if count == 1 else "rows"
     return (
-        f"{count} task-specific standardized overlap rows {disposition}; "
+        f"{count} task-specific standardized overlap {row_word} {disposition}; "
         "seven across all three tasks"
     )
 
