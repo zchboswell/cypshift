@@ -202,10 +202,18 @@
   exposes documented discrepancies: 1,340 rather than the blog's 1,343
   inhibition compounds, 2,446 rather than the card's 2,442 reactivity rows,
   and 256 compound rows without numeric pIC50 values.
+- Provenance discrepancies: The exact Harvard Dataverse release 105.0 declares
+  CC0-1.0 while the TDC task pages declare CC-BY-4.0; retain attribution and
+  apply the conservative CC-BY-4.0 policy. Treat the hashed PyPI sdist as the
+  authoritative PyTDC 1.1.15 package source. The inspected Git revision
+  declares 1.1.14 and is evidence only for the evaluator implementation, not a
+  claimed mapping to the 1.1.15 release.
 - Assay boundary: Represent Octant inhibition as 30-minute active-CYP3A4
-  preincubation with DBOMF fluorescence readout and unreported NADPH state. It
-  may combine reversible and metabolism-dependent effects and is not the
-  challenge minus-NADPH direct-inhibition endpoint.
+  preincubation with DBOMF fluorescence readout. The pinned protocol supplies
+  100 uM NADP+ with a G6P/G6PD regeneration system, creating NADPH-generating
+  metabolic conditions without directly adding exogenous NADPH. The assay may
+  combine reversible and metabolism-dependent effects and is not the challenge
+  minus-NADPH direct-inhibition endpoint.
 - Alternatives: Follow mutable latest releases; infer a direct-inhibition
   label; track redistributed raw files; omit public-page capture hashes.
 - Reversal condition: An upstream correction, licensing clarification, or
@@ -219,9 +227,10 @@
 - Decision: Freeze Octant as five deterministic, row-balanced Bemis-Murcko
   scaffold folds without label-informed assignment. Reserve fold 0 as outer
   validation and use folds 1-4 as training and four inner selection folds.
-  Preserve TDC's official train/test populations exactly and report a separate
-  strict companion that excludes test rows whose standardized structure occurs
-  in `train_val`.
+  Within each TDC task, assign `train_val` scaffold groups without labels to
+  four row-balanced inner folds. Preserve TDC's official train/test populations
+  exactly and report a separate strict companion that excludes test rows whose
+  standardized structure occurs in `train_val`.
 - Evidence: Octant yields 937 scaffold groups and exactly 268 rows per fold.
   TDC raw SMILES have no cross-partition overlap, while the frozen Phase 0
   standardizer reveals 7 affected test rows: 4 for CYP2C9, 2 for CYP2D6, and 1
@@ -241,3 +250,31 @@
 - Reversal condition: A verified upstream split correction, a changed
   standardization policy, or the authoritative challenge contract requires a
   new versioned split. Existing official and strict results remain reported.
+
+## D-014 — Independent source/split review remediation
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Reject the provisional Octant adapter v1 assay label and incomplete
+  public-validation v1 freeze. Replace them with public-source schema v2,
+  Octant adapter v2, TDC split-audit v2, a root validation receipt, and frozen
+  TDC grouped inner folds before any model fit.
+- Evidence: Independent review found that the pinned Octant protocol explicitly
+  reports NADP+ plus G6P/G6PD regeneration although v1 said the condition was
+  unreported. It also demonstrated that coordinated TDC task, partition, and
+  source-row tampering passed the v1 split audit, found no frozen TDC inner
+  selection folds, and found an aggregate ledger hash without a retained
+  recipe. It also found incomplete license/version provenance and no documented
+  end-to-end reconstruction from an empty root.
+- Remediation: Pin the exact 5,251-byte inhibition protocol with Git blob SHA-1
+  `53f55aa8333bd6d64671b71589e874d3a0a29f53` and SHA-256
+  `5077b362330a505a7ecb703a1fac8858e0487af712d0ad51438570edbef77265`;
+  represent NADPH-generating conditions precisely; bind official split bytes to
+  the TDC adapter manifest; validate every row against canonical provenance and
+  isoform; freeze all 30,038 TDC `train_val` rows in grouped inner folds; and
+  retain deterministic validation and empty-root reproduction receipts. Record
+  the Dataverse/TDC license conflict and the PyPI/Git version mismatch without
+  weakening the conservative attribution policy.
+- Reversal condition: New pinned primary evidence contradicts the assay
+  protocol, or an upstream split correction requires another explicit schema
+  version. Never reinterpret an existing artifact version in place.

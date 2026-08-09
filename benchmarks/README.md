@@ -11,15 +11,18 @@ The Octant adapter treats the 30-minute active-CYP3A4 preincubation assay as
 its own endpoint. It does not relabel it as the challenge minus-NADPH direct
 inhibition endpoint. The adapter preserves the source structure text, all
 source values and QC fields in provenance, the DBOMF fluorescence context, and
-the immutable dataset revision and file digest.
+the immutable dataset revision and file digest. The pinned protocol states that
+100 uM NADP+ and a G6P/G6PD regeneration system are present during active
+preincubation. This creates NADPH-generating metabolic conditions; it does not
+mean that exogenous NADPH was directly added.
 
-After downloading the exact `inhibition.tsv` URL from
-`public_sources.json`, reproduce the retained ingestion with:
+For component-level debugging after fetching the frozen inputs, reproduce the
+retained Octant ingestion with:
 
 ```console
 uv run python scripts/prepare_octant_benchmark.py \
   --source data/external/octant_cyp/96dc1cceaa545a22041d1e16a9c2524a658403f8/inhibition.tsv \
-  --out artifacts/benchmarks/octant-source-freeze-v1
+  --out artifacts/benchmarks/octant-source-freeze-v2
 ```
 
 The frozen table has 1,340 unique molecule rows. All 1,340 pass the canonical
@@ -30,34 +33,40 @@ measurements or silently discarded. Two clean runs produce byte-identical
 adapter and audit artifacts.
 
 This is an ingestion result, not a predictive-performance result. Model
-selection, grouped Octant validation, and every TDC evaluation remain pending.
+selection and every TDC test evaluation remain pending.
 
-## Required-source reconstruction
+## Empty-root reproduction
 
-Reconstruct the two required inputs in an empty cache with:
+From the repository root, reproduce the complete source, ingestion, audit, and
+validation freeze in one new output directory:
 
 ```console
-uv run python scripts/fetch_required_benchmarks.py \
-  --out artifacts/benchmarks/clean-cache-v1
+uv run python scripts/reproduce_public_data_freeze.py \
+  --out artifacts/benchmarks/public-data-reproduction-v1
 ```
 
-The downloader is deliberately concrete: it fetches only the frozen Octant
-compound-level inhibition table and TDC ADMET archive, checks both sizes and
-SHA-256 digests while streaming, refuses overwrite, and writes a deterministic
-receipt. On 2026-08-09, a clean download reproduced byte-identical inputs and
-adapter artifacts.
+The focused orchestrator fetches only the frozen Octant compound-level table,
+its exact protocol, and the TDC ADMET archive; verifies every size and SHA-256
+digest; prepares and audits both canonical datasets; freezes validation; and
+writes a deterministic root receipt. It refuses an existing output directory.
+On 2026-08-09, this command completed from an absent root in 61 seconds on a
+local Apple CPU and reproduced the retained artifacts byte-for-byte. Its root
+aggregate is
+`0dc587c61b02f90df04e599deff771117ad52b5cfe16f10d606359bc8548d8d4`.
+The receipt records zero model fits and zero public-test evaluations.
 
 ## Frozen public validation
 
-After preparing both canonical datasets, freeze validation without fitting or
-scoring a model:
+For component-level debugging after preparing both canonical datasets, freeze
+validation without fitting or scoring a model:
 
 ```console
 uv run python scripts/freeze_public_validation.py \
-  --octant-canonical artifacts/benchmarks/octant-source-freeze-v1/canonical \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
   --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
   --tdc-official-split artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv \
-  --out artifacts/benchmarks/public-validation-freeze-v1
+  --tdc-adapter-manifest artifacts/benchmarks/tdc-source-freeze-v2/adapter/adapter_manifest.json \
+  --out artifacts/benchmarks/public-validation-freeze-v2
 ```
 
 The Octant contract assigns 1,340 rows in 937 Bemis-Murcko scaffold groups to
@@ -73,3 +82,15 @@ Official scores will remain unchanged and will be accompanied by a separately
 labeled strict score excluding those 7 hashed rows. The frozen audit records
 zero public-test evaluations. TDC AUPRC is average precision and higher is
 better; polarity tests guard against the contradictory lower-is-better footer.
+
+Within each TDC `train_val`, scaffold groups are assigned without labels to
+four row-balanced inner folds. All 30,038 `train_val` rows are assigned; no
+public-test row, standardized duplicate, or scaffold group crosses an inner
+fold. The audit validates every official split row against canonical task,
+partition, source-row, source, and isoform provenance, and binds the split hash
+to the adapter manifest.
+
+`public_validation_manifest.json` hashes every retained split artifact and
+records the exact aggregate-hash recipe. The frozen aggregate is
+`b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12`.
+The freeze performs zero model fits and zero public-test evaluations.

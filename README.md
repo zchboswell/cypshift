@@ -3,21 +3,26 @@
 `cypshift` is a series-first, competence-aware system for predicting cytochrome
 P450 inhibition under analog-family distribution shift.
 
-The repository is in private, pre-launch Phase 0 development. No validated
-model or competition result exists yet. The official OpenADMET CYP inhibition
-challenge launches on 2026-08-17; its released data, schema, metric code,
-submission contract, and rules will supersede all provisional assumptions.
+The repository is in private, pre-launch Phase 0.5 development. Phase 0 is
+complete as signed release `v0.1.0`; its synthetic vertical slice validates
+pipeline mechanics, not biological performance. Phase 0.5 is rehearsing the
+real-data benchmark, leakage, modeling, and reporting path on frozen public CYP
+data. No competition-performance result exists yet. The official OpenADMET CYP
+inhibition challenge launches on 2026-08-17; its released data, schema, metric
+code, submission contract, and rules supersede all provisional assumptions.
 
 ## Current objective
 
-Build the smallest reproducible vertical slice on a synthetic fixture:
+Produce leakage-safe, apples-to-apples public CYP evidence with the smallest
+defensible classical model ladder, while preserving the proven public workflow:
 
 ```text
 audit -> standardize -> split -> train -> predict -> report
 ```
 
 The production interface will remain limited to `audit`, `train`, `predict`,
-and `report`.
+and `report`. Public-data reproduction uses focused research scripts documented
+in [the benchmark record](benchmarks/README.md).
 
 ## Phase 0 quickstart
 
@@ -51,6 +56,8 @@ public domain under CC0-1.0.
 - [Failure taxonomy](docs/strategy/FAILURE_TAXONOMY.md)
 - [Publication claims](docs/strategy/PUBLICATION_CLAIMS.md)
 - [Phase 0 plan](docs/phases/PHASE_0.md)
+- [Phase 0.5 directive](docs/phases/PHASE_0_5.md)
+- [Public benchmark record](benchmarks/README.md)
 - [Experiment ledger](runs/experiment_ledger.csv)
 
 ## Authoritative challenge source

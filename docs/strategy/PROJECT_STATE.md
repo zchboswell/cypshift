@@ -30,7 +30,8 @@ strict mypy, distribution builds, Linux CI on Python 3.11/3.14, and a local
 macOS installed-wheel run. Independent review findings are remediated and
 re-verified.
 
-The first real-data Phase 0.5 ingestion milestone passes its frozen checks.
+The remediated real-data Phase 0.5 ingestion candidate passes local frozen
+checks and awaits independent re-review.
 The exact Octant compound-level release maps deterministically into 1,340
 accepted molecules and 1,084 numeric measurements; 256 rows without source
 pIC50 values remain explicit molecule records and do not become fabricated
@@ -107,10 +108,15 @@ artifacts remain outside Git.
 - The Octant source contract pins dataset revision
   `96dc1cceaa545a22041d1e16a9c2524a658403f8` and compound-level file SHA-256
   `19e537166a17a42dd50cc262dd6eb0a963c181830fdc52db0fba98533e01c9c6`.
-- The concrete adapter preserves raw structure text, source QC values, assay
-  context, revision, and hash. Its full-data rehearsal retains all 1,340
-  molecules, maps the 1,084 numeric pIC50 rows, and explicitly records 256
-  missing-pIC50 omissions. Two runs are byte-identical.
+- Independent source review found that Octant adapter v1 incorrectly labeled
+  the NADPH condition as unreported. The pinned protocol actually supplies
+  100 uM NADP+ with G6P/G6PD regeneration during active preincubation. Adapter
+  v1 is rejected; v2 pins the protocol and represents NADPH-generating
+  metabolic conditions without claiming exogenous NADPH was directly added.
+- The remediated adapter preserves raw structure text, source QC values, assay
+  context, revision, data hash, and protocol hashes. Its full-data rehearsal
+  retains all 1,340 molecules, maps the 1,084 numeric pIC50 rows, and explicitly
+  records 256 missing-pIC50 omissions. Two v2 runs are byte-identical.
 - All 1,340 Octant structures pass the Phase 0 chemistry audit; 424 carry an
   unspecified-stereochemistry warning. No molecule is quarantined, silently
   standardized, or linked to a quarantined measurement.
@@ -120,6 +126,12 @@ artifacts remain outside Git.
   all molecules are accepted. The canonical audit records 1,731
   standardization changes and 21,492 repeated standardized structures across
   task and partition rows. Adapter artifacts reproduce byte-for-byte.
+- The TDC source record binds Harvard Dataverse DOI `10.7910/DVN/21LKWG`
+  version 105.0 and discloses that its CC0-1.0 declaration conflicts with the
+  TDC task pages' CC-BY-4.0 declaration. The more conservative CC-BY attribution
+  policy remains in force. The hashed PyPI sdist is authoritative for PyTDC
+  1.1.15; inspected evaluator-source revision `c310c35f` declares 1.1.14 and is
+  cited only as evidence that `pr-auc` maps to average precision.
 - The frozen Octant split contains 937 Bemis-Murcko scaffold groups and five
   exactly balanced 268-row folds. Fold 0 is outer validation; the other folds
   are training and four grouped inner folds. Assignment is deterministic and
@@ -128,8 +140,20 @@ artifacts remain outside Git.
   and 1 test rows overlapping `train_val` for CYP2C9, CYP2D6, and CYP3A4.
   Official test populations remain unchanged; a hashed 7-row strict companion
   exclusion set is frozen separately. No public-test score has been computed.
-- A clean-cache reconstruction fetched both required public inputs, verified
-  exact sizes and hashes, and reproduced byte-identical adapter artifacts.
+- Independent review showed that split-audit v1 accepted coordinated task,
+  partition, and source-row tampering. Split-audit v2 binds official split bytes
+  to the adapter manifest and validates every row against canonical provenance,
+  source, and expected isoform; adversarial tampering now fails.
+- All 30,038 TDC `train_val` rows are frozen in four label-independent,
+  row-balanced scaffold folds per task. No test row, standardized duplicate, or
+  scaffold group crosses an inner fold. The retained root receipt documents and
+  hashes every split artifact with aggregate
+  `b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12`.
+- One focused command rebuilt the entire public-data freeze from an absent
+  root: fetch, Octant and TDC preparation/audit, and validation. It verified
+  exact source sizes and hashes, reproduced every retained artifact
+  byte-for-byte, and emitted deterministic aggregate
+  `0dc587c61b02f90df04e599deff771117ad52b5cfe16f10d606359bc8548d8d4`.
   Average precision tests enforce the TDC higher-is-better metric polarity.
 
 ## Active hypotheses
@@ -186,8 +210,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Obtain fresh independent review of the immutable source and split freeze,
-including assay labels, license/provenance handling, clean-cache reconstruction,
-group integrity, leakage evidence, metric polarity, and zero public-test
-evaluation count. Remediate all material findings before beginning the minimum
-native model ladder on grouped inner validation.
+Complete independent re-review of the signed remediation head, including
+Octant protocol semantics, TDC row/manifest binding, all grouped inner folds,
+the aggregate receipt, clean-cache reconstruction, PR evidence, and zero
+public-test evaluation count. Remediate any remaining material finding before
+merging or beginning the minimum native model ladder.
