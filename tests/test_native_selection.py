@@ -612,19 +612,25 @@ def test_native_combinations_are_nested_label_clean_and_deterministic(
     octant, tdc, validation, _ = _fixture(tmp_path / "fixture")
     selection = tmp_path / "selection"
     run_native_selection(octant, tdc, validation, selection, nonlinear_trees=4)
-
-    first = run_native_combinations(
+    prediction_inputs = tmp_path / "prediction-inputs"
+    prepare_prediction_inputs(
         octant,
         tdc,
+        validation / "tdc" / "official_split.csv",
         validation,
+        prediction_inputs,
+    )
+    (octant / "measurements.csv").unlink()
+    (tdc / "measurements.csv").unlink()
+
+    first = run_native_combinations(
+        prediction_inputs,
         selection,
         tmp_path / "combinations-one",
         source_revision="test-revision",
     )
     run_native_combinations(
-        octant,
-        tdc,
-        validation,
+        prediction_inputs,
         selection,
         tmp_path / "combinations-two",
         source_revision="test-revision",
@@ -666,9 +672,7 @@ def test_native_combinations_are_nested_label_clean_and_deterministic(
 
     with pytest.raises(NativeSelectionError, match="already exists"):
         run_native_combinations(
-            octant,
-            tdc,
-            validation,
+            prediction_inputs,
             selection,
             tmp_path / "combinations-one",
             source_revision="test-revision",

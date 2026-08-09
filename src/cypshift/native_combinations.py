@@ -13,6 +13,7 @@ from typing import Any
 
 from cypshift.native_evaluation import (
     _retained_configurations,
+    _verify_prediction_inputs,
     _verify_selection_receipt,
 )
 from cypshift.native_selection import (
@@ -35,11 +36,10 @@ from cypshift.native_selection import (
     _primary_metric,
     _primary_score,
     _read_csv,
-    _verify_input_receipts,
     _write_json,
 )
 
-COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v1"
+COMBINATION_SCHEMA_VERSION = "cypshift.native_combinations.v2"
 COMBINATION_CANDIDATES = (
     "best_single",
     "unweighted_mean",
@@ -124,9 +124,7 @@ class CombinationResult:
 
 
 def run_native_combinations(
-    octant_canonical: Path,
-    tdc_canonical: Path,
-    validation_root: Path,
+    prediction_inputs: Path,
     selection_root: Path,
     output_directory: Path,
     *,
@@ -141,20 +139,19 @@ def run_native_combinations(
         )
     if not source_revision.strip():
         raise NativeSelectionError("source revision must not be empty")
-    verified_inputs = _verify_input_receipts(
-        octant_canonical, tdc_canonical, validation_root
-    )
+    input_manifest = _verify_prediction_inputs(prediction_inputs)
+    verified_inputs = input_manifest["source_input_hashes"]
     selection_manifest, retained_models = _verify_selection_receipt(
         selection_root, verified_inputs
     )
     datasets = [
         _load_octant_selection(
-            octant_canonical,
-            validation_root / "octant" / "octant_grouped_split.csv",
+            prediction_inputs / "octant",
+            prediction_inputs / "octant" / "grouped_split.csv",
         ),
         *_load_tdc_selections(
-            tdc_canonical,
-            validation_root / "tdc" / "tdc_inner_folds.csv",
+            prediction_inputs / "tdc",
+            prediction_inputs / "tdc" / "inner_folds.csv",
         ),
     ]
     configurations = _retained_configurations(retained_models)
@@ -359,6 +356,10 @@ def run_native_combinations(
                 selection_root / "selection_manifest.json"
             ),
             "selection_aggregate_sha256": selection_manifest["aggregate_sha256"],
+            "prediction_input_manifest_sha256": _file_hash(
+                prediction_inputs / "prediction_input_manifest.json"
+            ),
+            "prediction_input_aggregate_sha256": input_manifest["aggregate_sha256"],
             "input_hashes": verified_inputs,
             "outputs": outputs,
             "aggregate_recipe": AGGREGATE_RECIPE,
