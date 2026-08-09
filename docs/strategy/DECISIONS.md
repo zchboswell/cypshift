@@ -211,3 +211,33 @@
 - Reversal condition: An upstream correction, licensing clarification, or
   authoritative challenge contract requires a new explicitly versioned source
   manifest. Existing manifests and results remain immutable evidence.
+
+## D-013 — Frozen public validation and leakage companion
+
+- Date: 2026-08-09
+- Status: accepted
+- Decision: Freeze Octant as five deterministic, row-balanced Bemis-Murcko
+  scaffold folds without label-informed assignment. Reserve fold 0 as outer
+  validation and use folds 1-4 as training and four inner selection folds.
+  Preserve TDC's official train/test populations exactly and report a separate
+  strict companion that excludes test rows whose standardized structure occurs
+  in `train_val`.
+- Evidence: Octant yields 937 scaffold groups and exactly 268 rows per fold.
+  TDC raw SMILES have no cross-partition overlap, while the frozen Phase 0
+  standardizer reveals 7 affected test rows: 4 for CYP2C9, 2 for CYP2D6, and 1
+  for CYP3A4. None has a conflicting binary label. Excluding them from the
+  official score would break comparability, while ignoring them would hide
+  optimistic leakage.
+- Metric boundary: TDC `pr-auc` calls sklearn average precision. Implement and
+  test the equivalent statistic locally with direction `higher_is_better`.
+  Dated page footer text claiming lower is better is treated as an upstream
+  documentation error, not a metric definition.
+- Selection boundary: Candidate selection uses only grouped inner folds.
+  Octant outer validation and all TDC public-test labels remain outside model
+  fitting and selection. The freeze records zero public-test evaluations.
+- Alternatives: Random molecule splits; label-stratified group assignment;
+  silently remove standardized overlaps from official TDC results; treat raw
+  SMILES inequality as sufficient leakage control.
+- Reversal condition: A verified upstream split correction, a changed
+  standardization policy, or the authoritative challenge contract requires a
+  new versioned split. Existing official and strict results remain reported.

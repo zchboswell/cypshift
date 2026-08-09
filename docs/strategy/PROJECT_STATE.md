@@ -116,6 +116,21 @@ artifacts remain outside Git.
   standardized, or linked to a quarantined measurement.
 - Development metadata advances to `0.2.0.dev0` with source state
   `unreleased`; signed Phase 0 tag `v0.1.0` remains immutable.
+- The exact TDC archive maps all 37,550 rows across the three required tasks;
+  all molecules are accepted. The canonical audit records 1,731
+  standardization changes and 21,492 repeated standardized structures across
+  task and partition rows. Adapter artifacts reproduce byte-for-byte.
+- The frozen Octant split contains 937 Bemis-Murcko scaffold groups and five
+  exactly balanced 268-row folds. Fold 0 is outer validation; the other folds
+  are training and four grouped inner folds. Assignment is deterministic and
+  label-independent.
+- TDC has no raw-SMILES train/test overlap, but standardization exposes 4, 2,
+  and 1 test rows overlapping `train_val` for CYP2C9, CYP2D6, and CYP3A4.
+  Official test populations remain unchanged; a hashed 7-row strict companion
+  exclusion set is frozen separately. No public-test score has been computed.
+- A clean-cache reconstruction fetched both required public inputs, verified
+  exact sizes and hashes, and reproduced byte-identical adapter artifacts.
+  Average precision tests enforce the TDC higher-is-better metric polarity.
 
 ## Active hypotheses
 
@@ -171,7 +186,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Implement the exact TDC fixed-split adapter and freeze grouped Octant inner
-validation, including split hashes, standardized-structure leakage audits,
-metric-polarity tests, and reconstruction from a clean cache. Do not evaluate
-TDC public-test labels or begin model selection yet.
+Obtain fresh independent review of the immutable source and split freeze,
+including assay labels, license/provenance handling, clean-cache reconstruction,
+group integrity, leakage evidence, metric polarity, and zero public-test
+evaluation count. Remediate all material findings before beginning the minimum
+native model ladder on grouped inner validation.

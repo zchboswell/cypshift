@@ -31,3 +31,45 @@ adapter and audit artifacts.
 
 This is an ingestion result, not a predictive-performance result. Model
 selection, grouped Octant validation, and every TDC evaluation remain pending.
+
+## Required-source reconstruction
+
+Reconstruct the two required inputs in an empty cache with:
+
+```console
+uv run python scripts/fetch_required_benchmarks.py \
+  --out artifacts/benchmarks/clean-cache-v1
+```
+
+The downloader is deliberately concrete: it fetches only the frozen Octant
+compound-level inhibition table and TDC ADMET archive, checks both sizes and
+SHA-256 digests while streaming, refuses overwrite, and writes a deterministic
+receipt. On 2026-08-09, a clean download reproduced byte-identical inputs and
+adapter artifacts.
+
+## Frozen public validation
+
+After preparing both canonical datasets, freeze validation without fitting or
+scoring a model:
+
+```console
+uv run python scripts/freeze_public_validation.py \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v1/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --tdc-official-split artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv \
+  --out artifacts/benchmarks/public-validation-freeze-v1
+```
+
+The Octant contract assigns 1,340 rows in 937 Bemis-Murcko scaffold groups to
+five exactly balanced 268-row folds. Fold 0 is the untouched outer validation
+population; folds 1-4 are training and the four inner selection folds. Group
+assignment does not use labels.
+
+The TDC audit preserves all official train/test rows. Raw SMILES do not cross
+train/test within any task, but canonical standardization reveals 3 structures
+covering 4 test rows for CYP2C9, 2 covering 2 for CYP2D6, and 1 covering 1 for
+CYP3A4.
+Official scores will remain unchanged and will be accompanied by a separately
+labeled strict score excluding those 7 hashed rows. The frozen audit records
+zero public-test evaluations. TDC AUPRC is average precision and higher is
+better; polarity tests guard against the contradictory lower-is-better footer.
