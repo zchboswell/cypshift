@@ -1,0 +1,31 @@
+{
+  "artifact_status": "retrospective_failure_receipt",
+  "commit_sha": "688a8a36e882519380a2504c6ed34e8dbe0ad24a",
+  "exact_traceback_retained": false,
+  "experiment_id": "p05-c6-heldout-scoring-attempt-1",
+  "failure": {
+    "exception_message": "public source anchors are invalid",
+    "root_cause": "The scorer expected sources.tdc_admet.tdc_leaderboards, but the frozen manifest stores sources.tdc_leaderboards as a sibling.",
+    "stage": "anchor_manifest_loading_before_metric_calculation"
+  },
+  "invocation": {
+    "attempt": 1,
+    "octant_canonical": "artifacts/benchmarks/octant-source-freeze-v2/canonical",
+    "output": "artifacts/benchmarks/native-heldout-scores-v1",
+    "predictions": "artifacts/benchmarks/native-heldout-predictions-v1",
+    "public_sources": "benchmarks/public_sources.json",
+    "selection": "artifacts/benchmarks/native-selection-v1",
+    "tdc_canonical": "artifacts/benchmarks/tdc-source-freeze-v2/canonical",
+    "validation": "artifacts/benchmarks/public-validation-freeze-v2"
+  },
+  "observed": {
+    "heldout_labels_parsed": 7724,
+    "octant_outer_scores_written": 0,
+    "partial_outputs": 0,
+    "runtime_seconds": 1.24,
+    "tdc_public_test_scores_written": 0
+  },
+  "recorded_at_utc": "2026-08-09T19:32:31Z",
+  "schema_version": "cypshift.failure_receipt.v1",
+  "traceability_limit": "The orchestration task displayed the traceback, but its exact text was not durably retained. This receipt records only facts supported by the ledger, signed code path, absent output root, and signed path-only remediation; it is not represented as a contemporaneous raw log."
+}

@@ -17,6 +17,10 @@ from cypshift.native_selection import (
     NativeSelectionError,
     run_native_selection,
 )
+from cypshift.research_artifacts import (
+    complete_first_scorecard,
+    complete_oof_research_artifact,
+)
 from cypshift.tdc import TDC_TASKS
 
 
@@ -454,13 +458,21 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
         json.dumps(
             {
                 "sources": {
+                    "octant_cyp": {"revision": "octant-test-revision"},
+                    "tdc_admet": {
+                        "archive": {
+                            "dataset_persistent_id": "doi:test",
+                            "dataset_version": "1.0",
+                            "sha256": "archive-hash",
+                        }
+                    },
                     "tdc_leaderboards": {
                         "pages": {
                             task: {
                                 "anchors": {
-                                    "MapLight + GNN": {"mean": 0.8},
-                                    "Chemprop-RDKit": {"mean": 0.7},
-                                    "Chemprop": {"mean": 0.6},
+                                    "MapLight + GNN": {"mean": 0.8, "std": 0.01},
+                                    "Chemprop-RDKit": {"mean": 0.7, "std": 0.02},
+                                    "Chemprop": {"mean": 0.6, "std": 0.03},
                                 }
                             }
                             for task in TDC_TASKS
@@ -500,6 +512,49 @@ def test_heldout_scoring_is_receipt_bound_and_deterministic(tmp_path: Path) -> N
     assert manifest["tdc_strict_companion_analyses"] == 12
     assert manifest["octant_outer_evaluations"] == 4
     assert manifest["scoring_attempt"] == 1
+
+    oof_manifest = complete_oof_research_artifact(
+        selection,
+        octant,
+        tdc,
+        validation,
+        tmp_path / "research-oof",
+        source_revision="test-revision",
+    )
+    scorecard_manifest = complete_first_scorecard(
+        tmp_path / "scores-one",
+        predictions,
+        selection,
+        validation,
+        public_sources,
+        tmp_path / "scorecard-v2",
+        source_revision="test-revision",
+        selection_runtime_seconds=1.0,
+        prediction_runtime_seconds=2.0,
+        scoring_runtime_seconds=3.0,
+        hardware="test CPU",
+    )
+    oof_receipt = json.loads(oof_manifest.read_text(encoding="utf-8"))
+    scorecard_receipt = json.loads(scorecard_manifest.read_text(encoding="utf-8"))
+    assert oof_receipt["rows"] == 192
+    assert scorecard_receipt["point_score_changes"] == 0
+    assert scorecard_receipt["additional_label_dependent_analyses"][
+        "total_allowed_seed_evaluations"
+    ] == 21
+    with (tmp_path / "scorecard-v2" / "scorecard.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        completed_rows = list(csv.DictReader(handle))
+    assert [row["primary_value"] for row in completed_rows] == [
+        row["primary_value"] for row in rows
+    ]
+    assert {
+        row["comparison_status"] for row in completed_rows
+    } == {
+        "official_fixed_public_test_comparison",
+        "unofficial_strict_companion",
+        "internally_reproduced_same_split_unofficial",
+    }
 
     attempt_two = run_heldout_scoring(
         octant,
