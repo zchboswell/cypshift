@@ -224,3 +224,40 @@ pluralized the one-row CYP3A4 case; v4 is the first accurate canonical
 candidate and states both the task count (4/2/1) and seven-row total.
 The 123,640-row OOF research artifact has aggregate
 `5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6`.
+
+## OOF-only combinations and random optimism
+
+D-019 freezes the formulas, nested-fit isolation, stack complexity margin,
+random-fold assignment, and later evaluation budget before this command runs:
+
+```console
+uv run python scripts/select_native_combinations.py \
+  --octant-canonical artifacts/benchmarks/octant-source-freeze-v2/canonical \
+  --tdc-canonical artifacts/benchmarks/tdc-source-freeze-v2/canonical \
+  --validation artifacts/benchmarks/public-validation-freeze-v2 \
+  --selection artifacts/benchmarks/native-selection-v1 \
+  --out artifacts/benchmarks/native-combinations-v1 \
+  --source-revision 2fd2f79d5dc496cf9392187aaf66178417db1a53
+```
+
+The two complete 384-fit runs are byte-identical across all eight files with
+aggregate `b4959f2a4088208c0dee4bbac8b5424d1a8c7b252994a05eac48f8025d6015a1`.
+They contain 123,640 candidate OOF rows, 30,910 random assignments, and 123,640
+random OOF rows, while recording zero held-out labels or evaluations.
+
+The unweighted mean is retained on all four tasks. Grouped OOF performance
+changes from the best single family as follows:
+
+| Task | Best single | Unweighted mean | Directional gain |
+| --- | ---: | ---: | ---: |
+| Octant CYP3A4 MAE | 0.6496 | 0.6344 | 0.0151 lower |
+| TDC CYP2C9 AUPRC | 0.7527 | 0.7665 | +0.0137 |
+| TDC CYP2D6 AUPRC | 0.6607 | 0.6723 | +0.0116 |
+| TDC CYP3A4 AUPRC | 0.8293 | 0.8370 | +0.0078 |
+
+The nested nonnegative stack is rejected on every task because it trails the
+unweighted mean and therefore cannot clear the predeclared complexity margin.
+The exact-structure-grouped random companion looks better for every learned
+family: 0.0247-0.0347 lower MAE on Octant and 0.0100-0.0376 higher AUPRC on
+TDC. These are validation-optimism diagnostics, not selection evidence or
+public-test results.

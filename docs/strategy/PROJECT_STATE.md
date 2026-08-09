@@ -240,6 +240,20 @@ artifacts remain outside Git.
   rows, accurate 4/2/1 task warnings, signatures, sole `zchboswell` authorship,
   local checks, and hosted Python 3.11/3.14 CI. PR 18 merged by exact
   fast-forward with the reviewed GitHub-verified signature intact.
+- D-019 was signed and merged before fitting. Two train/validation-only
+  combination runs each complete 384 nested/random fit operations in about 469
+  seconds and reproduce all eight files byte-for-byte. Aggregate is
+  `b4959f2a4088208c0dee4bbac8b5424d1a8c7b252994a05eac48f8025d6015a1`;
+  held-out label parses and evaluations remain zero.
+- The unweighted mean is retained for all four tasks. Versus the grouped-OOF
+  best single family, it lowers Octant MAE from 0.6496 to 0.6344 and raises TDC
+  AUPRC from 0.7527/0.6607/0.8293 to 0.7665/0.6723/0.8370. The nested NNLS
+  stack trails the mean on every task and is rejected by the frozen complexity
+  gate; no learned stack survives.
+- The exact-structure-grouped random companion makes every learned family look
+  better: Octant MAE optimism is 0.0247-0.0347 and TDC AUPRC optimism is
+  0.0100-0.0376. These results quantify split optimism only and were not used
+  for configuration or combination retention.
 
 ## Active hypotheses
 
@@ -295,11 +309,10 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Merge the signed D-019 protocol before fitting, then implement its exact
-train/validation-only combination and random-optimism receipts. Compare only
-best single, unweighted mean, median, and nested grouped-cross-fitted
-nonnegative stack; use the predefined stack complexity margin and no held-out
-labels. Quantify exact-structure-grouped random-fold optimism without using it
-for selection. Reproduce the complete receipt byte-for-byte and review its
-alignment, nested-fit isolation, counts, and hashes before generating one
-label-absent retained-combination prediction per task.
+Obtain independent review of the exact D-019 implementation and both
+byte-identical train/validation-only roots. Verify candidate arithmetic,
+nested-fit isolation, NNLS weights, complexity-gate decisions, random group
+integrity, optimism signs, receipt hashes, and zero held-out access. Only after
+PASS may the already retained unweighted mean be applied to the frozen base
+held-out predictions to emit one label-absent combination prediction per task;
+scoring remains a later, explicitly counted milestone.
