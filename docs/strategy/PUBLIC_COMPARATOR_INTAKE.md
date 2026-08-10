@@ -4,6 +4,8 @@ Status: pre-freeze research note; no execution authority
 
 Captured: 2026-08-10T02:25:51Z
 
+Last extended: 2026-08-10T02:43:06Z
+
 ## Purpose and boundary
 
 Identify the smallest reproducible reference that could support a future claim
@@ -112,6 +114,31 @@ A future superiority claim requires more than a leaderboard point estimate:
 
 Published means and standard deviations may provide context. They cannot prove
 a paired gain when the underlying predictions are unavailable.
+
+## Transfer evidence from a prior blind challenge
+
+OpenADMET's official
+[ExpansionRx postmortem](https://doi.org/10.5281/zenodo.21784568) is a useful
+method prior, but it is not a CYP comparator. The immutable CC-BY-4.0 Zenodo
+record contains a 26,071-byte Markdown source with SHA-256
+`c7c328a07e66933e2837de1add40c964e1fa0038675aa4148a484e5c3fe33220`.
+
+The postmortem reports that:
+
+- pretrained, multitask 2D graph models dominated the leading entries;
+- the three highest-ranked entries that declared no proprietary data, ranks 5
+  through 7, all used pretrained models and multitask learning;
+- descriptor and fingerprint models remained useful in hybrid ensembles;
+- almost all leading entries used external public data;
+- four of the top five entries used proprietary data.
+
+These findings support the existing small ladder: broad fixed features, one
+pretrained graph representation, assay-compatible multitask learning, and only
+then a cross-fitted combination. They do not prove that any component will
+improve a CYP endpoint. The ExpansionRx endpoints, data, splits, and metrics
+are different, and the postmortem does not publish the row predictions needed
+for a paired comparison. Do not copy its architecture, ranking, or validation
+choices into Phase 1.
 
 ## Smallest useful lesson
 

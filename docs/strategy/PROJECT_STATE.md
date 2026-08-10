@@ -488,6 +488,10 @@ reproducibility gaps, eligibility gate, and paired significance requirements
 are recorded in
 [`PUBLIC_COMPARATOR_INTAKE.md`](PUBLIC_COMPARATOR_INTAKE.md). This research adds
 no model, dependency, fit, evaluation, or authority to bypass the launch freeze.
+The same note records the official ExpansionRx postmortem as transfer evidence:
+pretrained multitask graph models led that different blind challenge, while
+four of its top five entries used proprietary data. It is a method prior, not a
+CYP score or permission to copy an architecture.
 
 The official announcement now links to the public
 `openadmet/cyp-challenge` Space. Its captured revision remains explicitly in
