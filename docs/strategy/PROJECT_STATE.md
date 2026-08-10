@@ -396,6 +396,17 @@ artifacts remain outside Git.
   interpolation, directional formulas, all-row fold consistency, and strict
   tie failure. It also discloses 476 threshold-equality rows that are supported
   but receive zero correction. No candidate result has been computed.
+- Final pre-result review passed exact signed head `b16967e` and contract hash
+  `824bff16`. It independently verified all receipt, join, topology, control,
+  bootstrap, retention, chronology, signature, CI, and Occam checks. PR 35
+  merged by exact fast-forward. Candidate outcomes, held-out access, fits, and
+  implementation code were zero at this gate.
+- Signed implementation commit `8a4f351` adds one package module, one research
+  script, and six focused synthetic tests. Two synthetic runs reproduce all five files
+  byte-for-byte across 96 rows. Receipt-first failure, exact join, topology,
+  fixed contract hash, remote abstention, and immutable output are covered.
+  All 92 tests, Ruff, and strict mypy pass. No real grouped-OOF target has been
+  parsed and no candidate result exists; implementation review remains open.
 
 ## Active hypotheses
 
@@ -406,7 +417,8 @@ artifacts remain outside Git.
 3. Local support and disagreement can predict expert error well enough to
    improve a simple cross-fitted stack.
 
-None has been tested.
+The first hypothesis has supporting random-versus-grouped evidence. The second
+now has a frozen test but no candidate outcome. The third remains untested.
 
 ## Unresolved risks
 
@@ -451,9 +463,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently re-review D-022 and contract v2 in
-`benchmarks/series_residual_contract.json` before implementing or scoring the
-one grouped-OOF residual. Verify input hashes, topology counts, fit-free formula,
-abstention, deterministic controls, paired bootstrap, strict retention rule,
-zero held-out scope, and Occam simplicity. Do not compute a candidate result
-until this exact gate passes.
+Independently review the fixture-tested D-022 implementation before any real
+grouped-OOF invocation. Verify receipt-first failure, exact selectors and join,
+topology enforcement, formula and clipping, hash-derived controls, paired
+scaffold bootstrap, metric and decision semantics, deterministic artifacts,
+zero held-out interface, zero fits, and Occam simplicity. Do not compute a real
+candidate result until the exact signed implementation head passes.

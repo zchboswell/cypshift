@@ -322,6 +322,33 @@ family: 0.0247-0.0347 lower MAE on Octant and 0.0100-0.0376 higher AUPRC on
 TDC. These are validation-optimism diagnostics, not selection evidence or
 public-test results.
 
+## One grouped-OOF series residual
+
+D-022 and `series_residual_contract.json` v2 permit one fit-free correction
+from the retained unweighted mean toward the retained kNN estimate. Contract
+v1 was rejected before scoring. Exact signed head `b16967e` and contract hash
+`824bff1608c01fbf1d86dc2269a258bd0ec61af298ee450e113460c88e4df4cf`
+passed independent pre-result and Occam review, then merged by fast-forward.
+
+`scripts/run_series_residual.py` verifies both complete OOF receipt chains
+before parsing a target. It then enforces the exact join, topology, formula,
+controls, bootstrap, and all-or-nothing decision. Its synthetic tests reproduce
+five files byte-for-byte and exercise receipt, alignment, topology, contract,
+and immutable-output failures. The implementation must pass independent review
+before this real-data command runs twice from the same clean merged revision:
+
+```console
+uv run python scripts/run_series_residual.py \
+  --combinations artifacts/benchmarks/native-combinations-v3 \
+  --research artifacts/benchmarks/native-oof-research-v1 \
+  --contract benchmarks/series_residual_contract.json \
+  --out artifacts/benchmarks/series-residual-v1 \
+  --source-revision <reviewed-merged-commit>
+```
+
+The command accepts no held-out path, fits no model, adds no dependency, and
+does not authorize another residual if the candidate fails.
+
 The retained mean is applied in a separate label-free step:
 
 ```console

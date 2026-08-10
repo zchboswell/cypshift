@@ -537,6 +537,12 @@
   scaffold-group paired bootstrap with an explicit percentile method, exact
   directional gains, all-row fold consistency, and strict tie failure. No
   candidate outcome was computed under v1.
+- Review and implementation gate: Independent review passed contract v2 at
+  exact signed head `b16967e`, including the target-blind topology disclosure,
+  chronology, and Occam check. Implement it as one direct module and one
+  research script with synthetic receipt, alignment, topology, repeatability,
+  and abstention tests. Do not run either real OOF root until the exact
+  implementation passes a second independent review.
 - Reversal condition: Reverse only before candidate scoring if an independent
   review finds a contract, alignment, leakage, or control defect. Do not alter
   the formula or rule after any candidate result is visible.
