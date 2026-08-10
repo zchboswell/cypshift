@@ -1,0 +1,132 @@
+{
+  "schema_version": "cypshift.phase_0_75_evaluation_budget.v1",
+  "frozen_at_utc": "2026-08-10T16:26:18Z",
+  "scope": "Exactly three new TDC public-test prediction families per task for Phase 0.75. This budget does not authorize a challenge evaluation or public-test-informed repair.",
+  "source_contract": {
+    "path": "benchmarks/maplight_source_contract.json",
+    "sha256": "6e109eddbccf8e7f5022c3b034d0efa5b668e558cdb6f4d430555a0e3fa529f0"
+  },
+  "tasks": [
+    "cyp2c9_veith",
+    "cyp2d6_veith",
+    "cyp3a4_veith"
+  ],
+  "primary_metric": {
+    "name": "average_precision",
+    "public_name": "AUPRC",
+    "higher_is_better": true,
+    "auroc_role": "diagnostic_only_and_not_authorized_by_this_freeze"
+  },
+  "historical_disclosure": "Phase 0.5 already evaluated these public-test labels. The Phase 0.75 test is not pristine. Every new complete prediction artifact therefore consumes its reserved family before scoring, and no result-driven replacement is allowed.",
+  "family_count_per_task": 3,
+  "families": [
+    {
+      "slot": 1,
+      "family_id": "maplight_fixed",
+      "purpose": "Exact fixed-feature MapLight reproduction",
+      "configuration_state": "must be frozen before prediction",
+      "declared_seeds": [1, 2, 3, 4, 5],
+      "prediction_columns": [
+        "prediction_seed_1",
+        "prediction_seed_2",
+        "prediction_seed_3",
+        "prediction_seed_4",
+        "prediction_seed_5",
+        "prediction_probability_mean"
+      ],
+      "authorized_primary_metric_evaluations_per_task": 6,
+      "authorized_primary_metric_evaluations_total": 18,
+      "status_by_task": {
+        "cyp2c9_veith": "reserved_unconsumed",
+        "cyp2d6_veith": "reserved_unconsumed",
+        "cyp3a4_veith": "reserved_unconsumed"
+      }
+    },
+    {
+      "slot": 2,
+      "family_id": "maplight_gin",
+      "purpose": "Exact MapLight plus GIN reproduction attempt",
+      "configuration_state": "must be frozen after Gate 2 and before prediction",
+      "declared_seeds": [1, 2, 3, 4, 5],
+      "prediction_columns": [
+        "prediction_seed_1",
+        "prediction_seed_2",
+        "prediction_seed_3",
+        "prediction_seed_4",
+        "prediction_seed_5",
+        "prediction_probability_mean"
+      ],
+      "authorized_primary_metric_evaluations_per_task": 6,
+      "authorized_primary_metric_evaluations_total": 18,
+      "status_by_task": {
+        "cyp2c9_veith": "reserved_unconsumed",
+        "cyp2d6_veith": "reserved_unconsumed",
+        "cyp3a4_veith": "reserved_unconsumed"
+      }
+    },
+    {
+      "slot": 3,
+      "family_id": "final_locked_cypshift",
+      "purpose": "At most one final contender selected only from sealed shadow evidence",
+      "configuration_state": "unselected; Gate 4 must freeze all seeds, columns, and metric counts before prediction",
+      "declared_seeds": "pending Gate 4; no result-informed seed selection",
+      "prediction_columns": "pending Gate 4",
+      "authorized_primary_metric_evaluations_per_task": "pending Gate 4",
+      "authorized_primary_metric_evaluations_total": "pending Gate 4",
+      "status_by_task": {
+        "cyp2c9_veith": "reserved_unconsumed",
+        "cyp2d6_veith": "reserved_unconsumed",
+        "cyp3a4_veith": "reserved_unconsumed"
+      }
+    }
+  ],
+  "family_consumption_rule": {
+    "consumed_when": "A complete finite row-aligned canonical prediction artifact exists for one task, even if it has not been scored.",
+    "partial_task_rule": "A complete valid task artifact consumes that task's slot. Remaining tasks may resume only from the identical frozen source, environment, and configuration. A completed task must not be regenerated.",
+    "failed_infrastructure_rule": "A run consumes no task slot only when it creates no complete task prediction artifact and accesses no Phase 0.75 public-test label. Record the failure and exact boundary.",
+    "repeatability_rule": "One pre-score repeat is permitted only from the identical frozen state, with public-test labels unavailable, to verify byte identity. A non-identical repeat stops the family and cannot be selected or averaged as a repair.",
+    "scored_family_rule": "After any task score is visible, make no code, environment, feature, preprocessing, estimator, seed, or averaging change within that family."
+  },
+  "prediction_preflight": [
+    "signed cypshift source commit frozen",
+    "isolated environment and all dependency hashes frozen",
+    "complete configuration and declared seeds frozen",
+    "exact public-test task row identities and raw input hashes frozen",
+    "model-facing input contains no label or label-bearing provenance field",
+    "prediction process cannot resolve a measurement or score file",
+    "all rows are present once, ordered, finite, and receipt-bound",
+    "canonical and repeat prediction artifacts are byte-identical",
+    "independent review passes the applicable Gate 1, Gate 2, or Gate 4"
+  ],
+  "scoring_boundary": {
+    "official_population_only": true,
+    "strict_companion_evaluations_authorized": 0,
+    "auroc_evaluations_authorized": 0,
+    "bootstrap_evaluations_authorized": 0,
+    "other_diagnostic_metric_evaluations_authorized": 0,
+    "future_paired_inference": "A separate pre-result contract may authorize paired scaffold or family inference from already frozen comparator and contender predictions. It must count every metric evaluation and cannot generate or change predictions.",
+    "fixed_and_gin_exact_reproduction": "For each task, score the five seed columns separately to reproduce the upstream seed-metric mean and population standard deviation. Score the predeclared arithmetic probability mean once as a separately labeled local ensemble comparator.",
+    "rounding": "Retain full-precision AUPRC. Also reproduce PyTDC 1.1.15 behavior by rounding each seed AUPRC to three decimals before computing and rounding the five-value population mean and population standard deviation."
+  },
+  "forbidden": [
+    "public-test feature ablation",
+    "public-test hyperparameter or dependency selection",
+    "best-seed selection",
+    "score-driven repair or replacement",
+    "prediction regeneration after a visible score",
+    "claiming the local probability-mean ensemble is the exact published statistic",
+    "using AUROC as the primary TDC CYP metric"
+  ],
+  "forensic_gate": {
+    "trigger": "Any seed, ensemble, intermediate, or final AUPRC greater than or equal to 0.95",
+    "action": "Stop performance work and obtain an independent audit of raw and standardized duplicates, external and pretrained overlap, cross-isoform labels, grouping, row alignment, provenance fields, chronology, scaffold concentration, label polarity, and metric code before treating the value as evidence."
+  },
+  "initial_accounting": {
+    "reserved_task_slots": 9,
+    "consumed_task_slots": 0,
+    "complete_prediction_artifacts": 0,
+    "phase_0_75_public_test_labels_parsed": 0,
+    "phase_0_75_public_test_primary_metric_evaluations": 0,
+    "phase_0_75_public_test_diagnostic_metric_evaluations": 0
+  }
+}

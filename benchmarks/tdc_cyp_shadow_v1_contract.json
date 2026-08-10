@@ -1,0 +1,259 @@
+{
+  "schema_version": "cypshift.tdc_cyp_shadow_contract.v1",
+  "benchmark_id": "TDC-CYP-shadow-v1",
+  "frozen_at_utc": "2026-08-10T16:26:18Z",
+  "scope": "One global, label-independent split assignment for the three frozen TDC Veith train_val tasks. This contract authorizes split generation and train_val-only validation, not a model fit, feature result, public-test prediction, or challenge mapping.",
+  "source_contracts": {
+    "public_sources": {
+      "path": "benchmarks/public_sources.json",
+      "sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074"
+    },
+    "tdc_adapter_manifest": {
+      "expected_local_path": "artifacts/benchmarks/tdc-source-freeze-v2/adapter/adapter_manifest.json",
+      "sha256": "12163297017bf61c74b97a4c648474db10a93b526372ed10a5c2f0192f7751c5"
+    },
+    "official_split": {
+      "expected_local_path": "artifacts/benchmarks/tdc-source-freeze-v2/adapter/official_split.csv",
+      "sha256": "69ae4d7afd01e5b665e4c476731adc792e402b0fd39a20fe4e17d67aca2083e9"
+    },
+    "canonical_molecules": {
+      "expected_local_path": "artifacts/benchmarks/tdc-source-freeze-v2/canonical/molecules.csv",
+      "sha256": "14382a9171a8b096bd8c271e949f0f2ddaf259312e3f315d4d5920c5a2b69981"
+    },
+    "canonical_measurements_for_post_assignment_summary_only": {
+      "expected_local_path": "artifacts/benchmarks/tdc-source-freeze-v2/canonical/measurements.csv",
+      "sha256": "6d9e50bf114256d72ef9efcbeeed31af80aaedc2e7a7676be4d21a094525c53b"
+    },
+    "canonical_audit": {
+      "expected_local_path": "artifacts/benchmarks/tdc-source-freeze-v2/canonical/audit.json",
+      "sha256": "7b0c7dc037652228cc7798051d366ed1ffa83e89ab5490b41171c8374a928229"
+    },
+    "prior_split_audit": {
+      "expected_local_path": "artifacts/benchmarks/public-validation-freeze-v2/tdc/tdc_split_audit.json",
+      "sha256": "405e5f5f7f906ab522ceccc4c83f2f8cff1db8f2a89dbd847a9bb8988b6cf3d2"
+    }
+  },
+  "environment": {
+    "role": "Split generation only; no MapLight dependency enters the core environment.",
+    "lock_path": "uv.lock",
+    "lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+    "rdkit_version": "2026.03.5",
+    "standardization_version": "rdkit-cleanup-fragment-parent-v1",
+    "community_dependency_additions": 0
+  },
+  "population": {
+    "allowed_partition": "train_val",
+    "tasks": [
+      "cyp2c9_veith",
+      "cyp2d6_veith",
+      "cyp3a4_veith"
+    ],
+    "source_rows": 30038,
+    "task_rows": {
+      "cyp2c9_veith": 9673,
+      "cyp2d6_veith": 10504,
+      "cyp3a4_veith": 9861
+    },
+    "unique_standardized_structures": 15354,
+    "task_unique_standardized_structures": {
+      "cyp2c9_veith": 9646,
+      "cyp2d6_veith": 10475,
+      "cyp3a4_veith": 9840
+    },
+    "task_membership_by_unique_structure": {
+      "one_task": 4544,
+      "two_tasks": 7013,
+      "three_tasks": 3797
+    },
+    "global_scaffold_groups": 9114,
+    "structure_task_cells": 29961,
+    "structure_task_cells_with_duplicate_rows": 70,
+    "duplicate_excess_source_rows": 77,
+    "structure_task_cells_with_conflicting_labels": 11,
+    "unique_structures_in_conflicting_label_cells": 9,
+    "standardized_hashes_with_multiple_distinct_raw_smiles": 41,
+    "excess_distinct_raw_smiles_for_those_hashes": 45,
+    "maximum_raw_smiles_per_standardized_hash": 4,
+    "row_policy": "Preserve every official source row. Never collapse a structure-task cell or resolve a conflicting label. Group identical standardized structures together and evaluate row-level AUPRC on all retained rows."
+  },
+  "assignment_firewall": {
+    "allowed_inputs": [
+      "official_split task, partition, molecule_id, and source_row",
+      "canonical molecule_id, raw_structure, standardized_structure, standardized_structure_hash, status, and standardization_version"
+    ],
+    "forbidden_inputs": [
+      "canonical measurements",
+      "source_label_raw provenance value",
+      "any test label",
+      "any model prediction or feature value"
+    ],
+    "implementation_rule": "Read the official split first, retain only train_val identities, then project only the named molecule columns. Do not call load_audited_dataset because it opens measurements. Do not parse or copy the label-bearing provenance column.",
+    "model_facing_rule": "Feature processes receive only the stripped shadow row projection or a further label-absent feature projection. Canonical, adapter, measurement, score, and public-test roots are not mounted or resolvable.",
+    "label_summary_rule": "After the label-independent shadow_rows.csv hash is frozen, a separate summary step may join only matching train_val measurement rows to report prevalence and validate nondegenerate cells. It must reject any public-test identity before parsing a target."
+  },
+  "global_identity": {
+    "node_key": "standardized_structure_hash",
+    "node_order": "standardized_structure_hash ascending",
+    "duplicate_rule": "Every source row with the same standardized_structure_hash inherits one global node and identical assignments across every task.",
+    "raw_input_rule": "Grouping uses standardized structure. Exact MapLight feature parity uses each official raw Drug string. Because one standardized hash can have multiple raw strings, exact raw-row features must bind molecule_id, raw_structure_sha256, and standardized_structure_hash; they must not silently cache only by standardized hash."
+  },
+  "protocols": {
+    "scaffold": {
+      "grouping": "Bemis-Murcko scaffold without chirality",
+      "implementation": "rdkit.Chem.Scaffolds.MurckoScaffold.MurckoScaffoldSmiles",
+      "parameters": {
+        "includeChirality": false
+      },
+      "acyclic_fallback": "exact standardized structure",
+      "group_material": "bemis_murcko_scaffold:<scaffold> or acyclic_exact_structure:<standardized_structure>",
+      "group_hash": "SHA-256 of UTF-8 group material",
+      "boundary_claim": "Exact standardized duplicates and scaffold groups are indivisible in this protocol."
+    },
+    "community": {
+      "algorithm": "Taylor-Butina clustering",
+      "implementation": "rdkit.ML.Cluster.Butina.ClusterData",
+      "unique_structure_order": "standardized_structure_hash ascending",
+      "fingerprint": {
+        "implementation": "rdkit.Chem.rdFingerprintGenerator.GetMorganGenerator",
+        "radius": 2,
+        "fpSize": 2048,
+        "includeChirality": true,
+        "kind": "binary_bit_vector"
+      },
+      "distance_input_order": "For unique-structure index i from 1 through N-1, append 1 minus BulkTanimotoSimilarity(fingerprint[i], fingerprints[0:i]) in ascending prior index order.",
+      "pair_distances": 117864981,
+      "distance_cutoff": 0.4,
+      "similarity_threshold_inclusive": 0.6,
+      "isDistData": true,
+      "reordering": true,
+      "community_hash": "SHA-256 of UTF-8 community-v1 followed by a vertical bar and the member standardized_structure_hash values sorted ascending and joined by vertical bars.",
+      "duplicate_rule": "Duplicate source rows inherit the community of their one global standardized-structure node.",
+      "boundary_claim": "Exact standardized duplicates and complete Taylor-Butina communities are indivisible in this protocol. This is a chemistry-cluster holdout; it does not claim that every pair above the threshold is in one cluster.",
+      "resource_cap": {
+        "runtime_minutes": 240,
+        "peak_rss_gib": 12,
+        "failure_rule": "If the exact clustering exceeds either cap, record a precise pre-model blocker. Do not switch algorithm, threshold, fingerprint, or ordering after inspecting labels or model results."
+      }
+    }
+  },
+  "protocol_interpretation": "Do not union scaffold and community group constraints. Scaffold groups are indivisible in the scaffold protocol; communities are indivisible in the community protocol. Unioning both systems would coarsen two intended stress tests into one different protocol.",
+  "repeats": [
+    {
+      "repeat": 0,
+      "seed": 20260810
+    },
+    {
+      "repeat": 1,
+      "seed": 20260811
+    },
+    {
+      "repeat": 2,
+      "seed": 20260812
+    }
+  ],
+  "fold_assignment": {
+    "fold_count": 5,
+    "group_weight": "Number of official train_val source rows across all three tasks that belong to the group.",
+    "group_order": "Sort by descending group weight, then SHA-256 hex of UTF-8 seed|protocol|group-order-v1|group_hash, then group_hash ascending.",
+    "assignment": "For each group, choose the fold minimizing the tuple (current assigned global source-row count, SHA-256 hex of UTF-8 seed|protocol|fold-tie-v1|group_hash|fold, fold). Assign the complete group once globally.",
+    "outer_validation_fold": 0,
+    "outer_training_folds": [1, 2, 3, 4],
+    "inner_fold_mapping": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "task_rule": "Join the same global assignment unchanged to every source row and task. Never rebalance, reseed, or regroup per task."
+  },
+  "output_contract": {
+    "directory": "artifacts/benchmarks/tdc-cyp-shadow-v1",
+    "immutability": "The output directory must not exist before generation and is never overwritten.",
+    "shadow_rows": {
+      "path": "shadow_rows.csv",
+      "columns": [
+        "task",
+        "molecule_id",
+        "source_row",
+        "raw_structure",
+        "raw_structure_sha256",
+        "standardized_structure",
+        "standardized_structure_hash",
+        "scaffold_group_hash",
+        "community_group_hash",
+        "scaffold_repeat_0_outer_fold",
+        "scaffold_repeat_0_inner_fold",
+        "scaffold_repeat_1_outer_fold",
+        "scaffold_repeat_1_inner_fold",
+        "scaffold_repeat_2_outer_fold",
+        "scaffold_repeat_2_inner_fold",
+        "community_repeat_0_outer_fold",
+        "community_repeat_0_inner_fold",
+        "community_repeat_1_outer_fold",
+        "community_repeat_1_inner_fold",
+        "community_repeat_2_outer_fold",
+        "community_repeat_2_inner_fold"
+      ],
+      "row_order": "task ascending, source_row ascending, molecule_id ascending",
+      "target_columns": 0,
+      "provenance_columns": 0,
+      "expected_rows": 30038
+    },
+    "manifest": {
+      "path": "shadow_manifest.json",
+      "required_receipts": [
+        "contract path and SHA-256",
+        "implementation source revision and file SHA-256",
+        "environment lock SHA-256 and RDKit version",
+        "every input path and SHA-256",
+        "every output path and SHA-256",
+        "aggregate SHA-256 recipe",
+        "population and grouping counts",
+        "per-task protocol-repeat-fold row, group, positive, negative, and prevalence counts",
+        "raw-input multiplicity and conflicting-label counts",
+        "runtime, peak RSS, fit, prediction, label-access, and evaluation counts"
+      ]
+    }
+  },
+  "post_assignment_validation": {
+    "validation_order": "Hash shadow_rows.csv before opening the train_val measurement projection. Then validate labels without changing any assignment.",
+    "required": [
+      "exactly 30,038 allowed train_val rows and zero public-test rows",
+      "every official train_val identity appears exactly once and no extra identity appears",
+      "raw and standardized structure hashes recompute exactly",
+      "one scaffold group assignment per standardized structure",
+      "one community assignment per standardized structure",
+      "no scaffold group crosses a scaffold protocol fold",
+      "no community crosses a community protocol fold",
+      "all three tasks reuse the same global node assignments",
+      "fold values are complete and in 0 through 4",
+      "outer fold 0 and each inner validation fold contain both classes for every task, protocol, and repeat",
+      "each corresponding training population contains both classes",
+      "all duplicate and conflicting-label source rows remain present"
+    ],
+    "failure_rule": "Reject the shadow freeze without reseeding, task-specific regrouping, row deletion, threshold change, or label-informed repair. Preserve a compact blocker receipt and revise the contract only through a new reviewed pre-result milestone."
+  },
+  "nested_evaluation_policy": {
+    "selection_metric": "pooled inner out-of-fold average precision within one task, protocol, and repeat",
+    "configuration_tie_break": "configuration_id ascending",
+    "selection_scope": "four grouped inner folds inside outer training only",
+    "outer_operation": "Refit the retained configuration on the complete outer training population and score outer fold 0 once.",
+    "repeat_reporting": "Report each of three outer AUPRC values and their arithmetic mean. Do not concatenate repeated appearances of a row and treat them as independent.",
+    "fit_formula": "For H configurations and S declared stochastic seeds: 18 * S * (4 * H + 1) fits across 2 protocols, 3 repeats, and 3 tasks.",
+    "occam_budget": "Use one declared seed for representation ablations. Use all five MapLight seeds only for the retained exact comparator configuration. Freeze the exact estimator attached to every feature ablation before any fit."
+  },
+  "known_rejected_reuse": {
+    "current_task_specific_inner_folds": "forbidden because 8,442 standardized structures and 5,537 scaffold groups receive conflicting fold IDs across tasks",
+    "random_split_selection": "forbidden",
+    "phase_0_5_candidate_rescoring": "forbidden"
+  },
+  "initial_accounting": {
+    "target_values_used_for_assignment": 0,
+    "public_test_rows_emitted": 0,
+    "public_test_labels_parsed": 0,
+    "feature_matrices_generated": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "metric_evaluations": 0
+  }
+}

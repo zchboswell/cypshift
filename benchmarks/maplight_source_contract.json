@@ -1,0 +1,274 @@
+{
+  "schema_version": "cypshift.maplight_source_contract.v1",
+  "frozen_at_utc": "2026-08-10T16:26:18Z",
+  "scope": "Phase 0.75 public TDC comparator source freeze only. This contract authorizes no model fit, feature result, public-test prediction, score, challenge mapping, or dependency substitution.",
+  "public_source_manifest": {
+    "path": "benchmarks/public_sources.json",
+    "sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074"
+  },
+  "repository": {
+    "url": "https://github.com/maplightrx/MapLight-TDC",
+    "revision": "c249378c63232354d17083c83fe94fe728960a27",
+    "tree": "5778a248a9fb00e345174837f2c5b4acc3c15921",
+    "committed_at_utc": "2023-11-06T23:59:23Z",
+    "commit_message": "Update README",
+    "commit_signature": "unsigned",
+    "release_tags": 0,
+    "releases": 0,
+    "license": "MIT",
+    "license_copyright": "Copyright (c) 2023 MapLight Therapeutics",
+    "files": {
+      "LICENSE": {
+        "size_bytes": 1078,
+        "sha256": "281afcf01d4df616e2f8065ca100f0de6b8740c2f5865008a538368ea75e4334"
+      },
+      "README.md": {
+        "size_bytes": 2476,
+        "sha256": "eb0e2fb544353153095bf2253b4b76d1d18309aa6082e6237de4df91cbd17315"
+      },
+      "maplight.py": {
+        "size_bytes": 6341,
+        "sha256": "6dcb40fa43d39221259e03406f34be554fc138782c099894004549f7a8c24863"
+      },
+      "maplight_gnn.py": {
+        "size_bytes": 6634,
+        "sha256": "74fbd1c98d9afa7fa4bda1add21efd429e20dee0a4b0fb8fa7e9b3825c21fe13"
+      },
+      "submission.ipynb": {
+        "size_bytes": 4743,
+        "sha256": "26393242dcc7bd5509a8836f36a270106a1484af2abd0e90497aadad1a1e7754"
+      },
+      "submission_gnn.ipynb": {
+        "size_bytes": 4990,
+        "sha256": "95dc471338e8ca69a85a0c3c162cca3f5a1b220f3cd6a8d14f726adf5f7e1546"
+      }
+    }
+  },
+  "paper": {
+    "title": "ADMET property prediction through combinations of molecular fingerprints",
+    "authors": [
+      "James H. Notwell",
+      "Michael W. Wood"
+    ],
+    "arxiv_id": "2310.00174v1",
+    "doi": "10.48550/arXiv.2310.00174",
+    "submitted_at_utc": "2023-09-29T22:39:18Z",
+    "versions": 1,
+    "license": "CC-BY-4.0",
+    "abstract_url": "https://arxiv.org/abs/2310.00174v1",
+    "pdf": {
+      "url": "https://arxiv.org/pdf/2310.00174v1",
+      "size_bytes": 588406,
+      "sha256": "751f929788c655d21ca81458f968d5d8a7a6be4d01aca6bdccbc8d3fc371f89b"
+    },
+    "source": {
+      "url": "https://export.arxiv.org/e-print/2310.00174v1",
+      "size_bytes": 432063,
+      "sha256": "38d05961fdfe064bbdbdfa38c20136ac7224c2f0eaa653f25926368c3b9a6c98"
+    }
+  },
+  "exact_feature_method": {
+    "input": {
+      "field": "TDC train_val/test Drug string",
+      "parser": "rdkit.Chem.MolFromSmiles with defaults",
+      "standardization": "none beyond MolFromSmiles",
+      "invalid_structure_policy": "not_defined_upstream",
+      "nonfinite_policy": "not_defined_upstream",
+      "warning_policy": "RDLogger.DisableLog('rdApp.*')"
+    },
+    "blocks_in_order": [
+      {
+        "name": "morgan_count",
+        "implementation": "rdkit.Chem.rdMolDescriptors.GetHashedMorganFingerprint",
+        "parameters": {
+          "radius": 2,
+          "nBits": 1024,
+          "useChirality": false,
+          "useChirality_source": "RDKit default; argument omitted upstream"
+        },
+        "dimensions": 1024,
+        "conversion_buffer_dtype": "numpy.int8",
+        "count_not_binary": true
+      },
+      {
+        "name": "avalon_count",
+        "implementation": "rdkit.Avalon.pyAvalonTools.GetAvalonCountFP",
+        "parameters": {
+          "nBits": 1024
+        },
+        "dimensions": 1024,
+        "conversion_buffer_dtype": "numpy.int8",
+        "count_not_binary": true
+      },
+      {
+        "name": "erg",
+        "implementation": "rdkit.Chem.rdReducedGraphs.GetErGFingerprint",
+        "parameters": "all upstream defaults",
+        "dimensions": 315
+      },
+      {
+        "name": "rdkit_descriptors",
+        "implementation": "rdkit.ML.Descriptors.MoleculeDescriptors.MolecularDescriptorCalculator",
+        "dimensions": 200,
+        "ordered_unique_names": 200,
+        "ordered_names_compact_json_sha256": "76ed228002c5cd229e4cbd8d62c3b3a49d698425a5216884c5c7b1b337f4293a",
+        "scaling": "none",
+        "imputation": "none"
+      }
+    ],
+    "fixed_dimensions": 2563,
+    "gin": {
+      "append_position": 5,
+      "api": "molfeat.trans.pretrained.PretrainedDGLTransformer",
+      "arguments": {
+        "kind": "gin_supervised_masking",
+        "dtype": "float"
+      },
+      "dimensions_from_paper": 300,
+      "combined_dimensions": 2863,
+      "upstream_weight_hash": "not_recorded"
+    }
+  },
+  "exact_estimator_method": {
+    "library": "catboost",
+    "class": "CatBoostClassifier",
+    "task_parameters": {
+      "loss_function": "Logloss",
+      "random_strength": 2,
+      "verbose": 0
+    },
+    "seeds": [1, 2, 3, 4, 5],
+    "other_parameters": "version-defined CatBoost defaults",
+    "training_population": "complete task train_val",
+    "prediction_population": "complete matching task test",
+    "tuning_against_public_test": false
+  },
+  "published_scoring_semantics": {
+    "primary_metric": "average_precision",
+    "public_name": "AUPRC",
+    "higher_is_better": true,
+    "upstream_operation": "TDC evaluates each of five seed-specific prediction vectors, rounds each metric to three decimals, then reports the rounded population mean and population standard deviation of those five rounded metrics.",
+    "prediction_averaging_upstream": false,
+    "required_local_outputs": [
+      "five seed-specific row-level prediction columns",
+      "five full-precision seed-specific AUPRC values",
+      "the exact TDC-compatible rounded mean and population standard deviation",
+      "one predeclared arithmetic mean-probability column for later paired comparison"
+    ],
+    "claim_boundary": "The seed-metric mean and standard deviation reproduce the public method. AUPRC of the arithmetic mean-probability column is a separately labeled local five-seed ensemble result and is not the exact published statistic."
+  },
+  "dated_tdc_anchors": {
+    "captured_at_utc": "2026-08-10T02:25:51Z",
+    "tasks": {
+      "cyp2c9_veith": {
+        "url": "https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/",
+        "snapshot_sha256": "38612faa6cdb958912828d45e4e075a69e5c3b096bf83a3943e37ab0fedadca0",
+        "maplight": {
+          "mean": 0.783,
+          "std": 0.002
+        },
+        "maplight_gnn": {
+          "mean": 0.859,
+          "std": 0.001
+        }
+      },
+      "cyp2d6_veith": {
+        "url": "https://tdcommons.ai/benchmark/admet_group/11cyp2d6i/",
+        "snapshot_sha256": "3e563293e130ec8f0ff25388a77ac2ad427be476c0e6ee5d03797e775dc61994",
+        "maplight": {
+          "mean": 0.723,
+          "std": 0.003
+        },
+        "maplight_gnn": {
+          "mean": 0.79,
+          "std": 0.001
+        }
+      },
+      "cyp3a4_veith": {
+        "url": "https://tdcommons.ai/benchmark/admet_group/12cyp3a4i/",
+        "snapshot_sha256": "0208801c930b099446edf654c0c7f1d6b781f8150af908aa88b5f90f4a1885eb",
+        "maplight": {
+          "mean": 0.881,
+          "std": 0.001
+        },
+        "maplight_gnn": {
+          "mean": 0.916,
+          "std": 0.0
+        }
+      }
+    }
+  },
+  "notebook_execution_audit": {
+    "execution_counts_present": 0,
+    "retained_outputs": 0,
+    "source_download": "moving GitHub main branch",
+    "dependency_install": "unversioned pip install",
+    "active_benchmark_expression": "list(benchmark_config.keys())[7]",
+    "active_benchmark": "ppbr_az",
+    "unchanged_notebook_cyp_runs": 0,
+    "correction": "The prior intake called index 7 VDss. Index 7 is PPBR; VDss is index 8."
+  },
+  "environment_evidence": {
+    "historical_environment_recoverable": false,
+    "upstream_lockfiles": 0,
+    "upstream_containers": 0,
+    "upstream_requirement_files": 0,
+    "python_from_readme": "3.10",
+    "rdkit_from_paper_citation": "2023.03.3",
+    "molfeat_from_paper_citation": "0.9.2",
+    "catboost_version": "not_disclosed",
+    "pytdc_version": "not_disclosed",
+    "other_unpinned_behavior": [
+      "numpy int8 fingerprint conversion",
+      "pandas Series application and row order",
+      "scikit-learn metric and scaler behavior",
+      "CatBoost defaults and CPU/GPU behavior",
+      "Avalon, ErG, and descriptor version behavior"
+    ],
+    "required_reproduction_environment": "Create one new isolated, hash-locked compatible environment. Record it as a compatible reproduction environment, not the unrecoverable exact historical environment. Freeze it before feature implementation or any public-test prediction."
+  },
+  "gin_provenance": {
+    "molfeat_version_evidence": "0.9.2",
+    "model_store_name": "gin_supervised_masking",
+    "model_store_version": 0,
+    "model_store_created_at": "2023-07-20T17:44:58.066581",
+    "model_store_metadata_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json",
+    "metadata_size_reported_model_bytes": 7467310,
+    "metadata_declared_model_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
+    "metadata_bytes_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
+    "weight_bytes_downloaded_by_cypshift": false,
+    "weight_hash_verified_by_cypshift": false,
+    "pretraining": "Node-level attribute masking on approximately two million ZINC15 molecules followed by graph-level supervised pretraining on approximately 456,000 ChEMBL molecules and 1,310 assays.",
+    "tdc_veith_overlap_status": "unknown",
+    "claim_boundary": "Until direct structure and assay overlap audits pass, call this pretrained representation transfer, not clean zero-shot generalization."
+  },
+  "implementation_gates": {
+    "before_fixed_features": [
+      "freeze the compatible isolated environment and package hashes",
+      "freeze raw-row versus standardized-structure input policy",
+      "define invalid and nonfinite failure behavior",
+      "test direct fixture parity against this exact pinned source"
+    ],
+    "before_gin_features": [
+      "pass or precisely close the fixed-feature reproduction",
+      "download the single authorized artifact in an isolated environment",
+      "verify the model bytes against both independently computed and metadata-declared hashes",
+      "freeze pooling, batch, device, failed-row, and cache behavior",
+      "record contamination status"
+    ],
+    "reproduction_tolerance": {
+      "preferred_max_absolute_auprc_difference": 0.005,
+      "mandatory_stop_above_absolute_auprc_difference": 0.01,
+      "response": "Audit dataset version, split identity, raw inputs, count conversion, Avalon support, descriptor order, CatBoost defaults, invalid rows, seed metrics, and rounding. Do not tune toward an anchor."
+    }
+  },
+  "frozen_boundaries": {
+    "model_fits": 0,
+    "feature_matrices_generated": 0,
+    "model_weights_downloaded": 0,
+    "public_test_predictions": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_metric_evaluations": 0,
+    "challenge_assumptions_added": 0
+  }
+}

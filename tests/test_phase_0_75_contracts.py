@@ -1,0 +1,127 @@
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+BENCHMARKS = ROOT / "benchmarks"
+SOURCE_CONTRACT = BENCHMARKS / "maplight_source_contract.json"
+EVALUATION_BUDGET = BENCHMARKS / "phase_0_75_evaluation_budget.json"
+SHADOW_CONTRACT = BENCHMARKS / "tdc_cyp_shadow_v1_contract.json"
+
+
+def _load(path: Path) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    assert isinstance(value, dict)
+    return value
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_maplight_source_contract_separates_exact_and_local_scoring() -> None:
+    contract = _load(SOURCE_CONTRACT)
+
+    assert contract["schema_version"] == "cypshift.maplight_source_contract.v1"
+    blocks = contract["exact_feature_method"]["blocks_in_order"]
+    assert [block["name"] for block in blocks] == [
+        "morgan_count",
+        "avalon_count",
+        "erg",
+        "rdkit_descriptors",
+    ]
+    assert sum(block["dimensions"] for block in blocks) == 2563
+    assert contract["exact_feature_method"]["gin"]["combined_dimensions"] == (
+        2563 + 300
+    )
+    assert contract["exact_estimator_method"]["seeds"] == [1, 2, 3, 4, 5]
+
+    scoring = contract["published_scoring_semantics"]
+    assert scoring["prediction_averaging_upstream"] is False
+    assert "seed-specific" in scoring["upstream_operation"]
+    assert "separately labeled" in scoring["claim_boundary"]
+
+    notebook = contract["notebook_execution_audit"]
+    assert notebook["active_benchmark"] == "ppbr_az"
+    assert notebook["unchanged_notebook_cyp_runs"] == 0
+    assert contract["gin_provenance"]["tdc_veith_overlap_status"] == "unknown"
+    assert all(value == 0 for value in contract["frozen_boundaries"].values())
+
+
+def test_public_test_budget_has_exactly_three_unconsumed_families() -> None:
+    budget = _load(EVALUATION_BUDGET)
+
+    assert budget["schema_version"] == "cypshift.phase_0_75_evaluation_budget.v1"
+    assert budget["source_contract"]["sha256"] == _sha256(SOURCE_CONTRACT)
+    assert budget["family_count_per_task"] == 3
+    assert [family["family_id"] for family in budget["families"]] == [
+        "maplight_fixed",
+        "maplight_gin",
+        "final_locked_cypshift",
+    ]
+    for family in budget["families"]:
+        assert set(family["status_by_task"]) == set(budget["tasks"])
+        assert set(family["status_by_task"].values()) == {"reserved_unconsumed"}
+
+    for family in budget["families"][:2]:
+        assert family["declared_seeds"] == [1, 2, 3, 4, 5]
+        assert family["authorized_primary_metric_evaluations_total"] == 18
+        assert family["prediction_columns"][-1] == "prediction_probability_mean"
+
+    assert budget["scoring_boundary"]["auroc_evaluations_authorized"] == 0
+    assert budget["scoring_boundary"]["bootstrap_evaluations_authorized"] == 0
+    assert budget["initial_accounting"]["consumed_task_slots"] == 0
+    assert budget["initial_accounting"]["phase_0_75_public_test_labels_parsed"] == 0
+
+
+def test_shadow_contract_is_global_label_independent_and_row_preserving() -> None:
+    contract = _load(SHADOW_CONTRACT)
+
+    assert contract["schema_version"] == "cypshift.tdc_cyp_shadow_contract.v1"
+    population = contract["population"]
+    assert sum(population["task_rows"].values()) == population["source_rows"]
+    assert sum(population["task_membership_by_unique_structure"].values()) == (
+        population["unique_standardized_structures"]
+    )
+    assert population["source_rows"] == 30038
+    assert population["unique_standardized_structures"] == 15354
+    assert population["row_policy"].startswith("Preserve every official source row")
+
+    assert set(contract["protocols"]) == {"scaffold", "community"}
+    community = contract["protocols"]["community"]
+    assert community["similarity_threshold_inclusive"] == 0.6
+    assert community["pair_distances"] == 15354 * 15353 // 2
+    assert community["reordering"] is True
+
+    assert [repeat["seed"] for repeat in contract["repeats"]] == [
+        20260810,
+        20260811,
+        20260812,
+    ]
+    assert contract["fold_assignment"]["task_rule"].startswith(
+        "Join the same global assignment"
+    )
+    assert contract["output_contract"]["shadow_rows"]["target_columns"] == 0
+    assert contract["initial_accounting"] == {
+        "target_values_used_for_assignment": 0,
+        "public_test_rows_emitted": 0,
+        "public_test_labels_parsed": 0,
+        "feature_matrices_generated": 0,
+        "model_fits": 0,
+        "predictions": 0,
+        "metric_evaluations": 0,
+    }
+
+
+def test_phase_0_75_contracts_bind_unchanged_public_source_manifest() -> None:
+    public_sources = BENCHMARKS / "public_sources.json"
+    expected = _sha256(public_sources)
+
+    assert _load(SOURCE_CONTRACT)["public_source_manifest"]["sha256"] == expected
+    assert (
+        _load(SHADOW_CONTRACT)["source_contracts"]["public_sources"]["sha256"]
+        == expected
+    )

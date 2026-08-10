@@ -5,6 +5,35 @@ It pins source revisions, URLs, licenses, file sizes, SHA-256 digests, row
 counts, fixed TDC splits, dated leaderboard anchors, and external-model files.
 Raw public data and generated benchmark artifacts stay out of Git.
 
+## Phase 0.75 pre-result contracts
+
+`maplight_source_contract.json` freezes the exact six-file MapLight repository
+at revision `c249378c`, arXiv paper v1, licenses, declared feature dimensions,
+CatBoost parameters, dated TDC anchors, and unrecoverable environment gaps. It
+also records two source corrections. The unchanged notebook runs `ppbr_az`, not
+a CYP task. Its public result is the mean and population standard deviation of
+five seed-specific AUPRC values, not AUPRC from averaged probabilities.
+
+`phase_0_75_evaluation_budget.json` reserves exactly three new public-test
+prediction families per task: fixed MapLight, MapLight plus GIN, and at most one
+final locked `cypshift` contender. All nine family-task slots begin unconsumed.
+A complete row-aligned task prediction consumes its slot before scoring. The
+fixed and GIN artifacts retain all five seed columns and one separately labeled
+probability-mean column. No AUROC, strict companion, bootstrap, or score-driven
+repair is authorized by the initial budget.
+
+`tdc_cyp_shadow_v1_contract.json` freezes a single global grouping assignment
+for all 30,038 TDC `train_val` rows. It keeps all duplicated and conflicting
+official rows, groups 15,354 standardized structures once across all three
+tasks, and defines three repeats for a Bemis-Murcko scaffold protocol and a
+Taylor-Butina chemistry-community protocol. The generated label-free rows and
+manifest remain outside Git. Exact MapLight features use raw official strings;
+grouping uses standardized identity. Do not silently deduplicate the 41
+standardized hashes that map to multiple raw strings.
+
+These three files are pre-result controls. Together they record zero feature
+matrices, fits, predictions, public-test label parses, and metric evaluations.
+
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved
 container digest, a stripped five-column model-facing projection, task

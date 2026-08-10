@@ -1,10 +1,10 @@
 # Public comparator intake
 
-Status: pre-freeze research note; no execution authority
+Status: Phase 0.75 source frozen; execution remains gated
 
 Captured: 2026-08-10T02:25:51Z
 
-Last extended: 2026-08-10T02:43:06Z
+Last extended: 2026-08-10T16:26:18Z
 
 ## Purpose and boundary
 
@@ -39,20 +39,32 @@ The associated paper is
 [Notwell and Wood, *ADMET property prediction through combinations of molecular
 fingerprints*](https://arxiv.org/abs/2310.00174).
 
+The authoritative Phase 0.75 source, paper, method, anchor, environment-gap,
+and claim freeze is
+[`benchmarks/maplight_source_contract.json`](../../benchmarks/maplight_source_contract.json).
+It records zero features, fits, predictions, label parses, and evaluations.
+
 ## Exact published method
 
-The repository constructs one 2,863-value molecular representation:
+The repository constructs one 2,563-value fixed molecular representation:
 
 - 1,024 hashed Morgan count values at radius 2;
 - 1,024 Avalon count values;
 - 315 ErG values;
 - 200 named RDKit physicochemical descriptors;
-- 300 GIN supervised-masking values from `molfeat`.
+
+The GNN variant appends 300 GIN supervised-masking values from `molfeat` for a
+2,863-value representation.
 
 It trains five CatBoost classifiers per task, one for each seed from 1 through
 5, with `loss_function=Logloss`, `random_strength=2`, and `verbose=0`.
 Remaining CatBoost settings use library defaults. It fits on the complete TDC
-`train_val` population and predicts the fixed test population. The published
+`train_val` population and predicts the fixed test population. The notebook
+passes five seed-specific prediction dictionaries to TDC. TDC scores each seed,
+rounds each metric to three decimals, and reports the mean and population
+standard deviation of those five rounded metrics. The upstream code does not
+average the five probability vectors. A local mean-probability comparator must
+therefore be labeled as a separate five-seed ensemble result. The published
 paper attributes the main gain to richer fixed representations; the GIN output
 is an added feature block, not an end-to-end predictor.
 
@@ -63,9 +75,9 @@ auditor-grade comparison:
 
 - dependencies are installed without versions or hashes;
 - the notebook downloads source from the moving `main` branch;
-- the checked-in active loop runs only the eighth configured task, VDss; its
-  all-benchmark loop is commented out, so an unchanged run executes no CYP
-  task;
+- the checked-in active loop runs only index 7, the eighth configured task,
+  `ppbr_az`; `vdss_lombardo` is index 8, and the all-benchmark loop is
+  commented out, so an unchanged run executes no CYP task;
 - the repository has no lock file, release, or retained environment receipt;
 - the GNN notebook documents an unresolved `molfeat` execution issue;
 - the source commit is not GitHub-verified;
@@ -73,6 +85,17 @@ auditor-grade comparison:
   are published;
 - the reported five-seed mean and standard deviation do not permit a paired
   family-level significance test against a new system.
+
+The paper cites Python 3.10-era RDKit 2023.03.3 and MolFeat 0.9.2. It does not
+identify CatBoost, PyTDC, NumPy, pandas, scikit-learn, DGL, PyTorch, or the
+transitive environment. The exact historical environment cannot be recovered.
+Phase 0.75 must freeze a new compatible reproduction environment and describe
+it as such.
+
+The GIN alias resolves to a two-stage pretrained model: node masking on ZINC15
+followed by supervised graph pretraining on ChEMBL assays. Direct overlap with
+the TDC Veith structures and targets is unknown. Until an overlap audit passes,
+use `pretrained representation transfer`, not `clean zero-shot`, in claims.
 
 These gaps do not invalidate the leaderboard entry. They define the work needed
 before it can serve as an apples-to-apples statistical comparator.

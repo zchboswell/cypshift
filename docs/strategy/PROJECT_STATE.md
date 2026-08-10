@@ -84,6 +84,49 @@ launch unless separately authorized as trivial after Tier 1 closes early.
 The complete contract is
 [`PHASE_0_75.md`](../phases/PHASE_0_75.md).
 
+## Phase 0.75 pre-result freeze
+
+The exact MapLight source, paper, method, dated anchors, environment gaps, and
+claim boundaries are frozen in
+[`maplight_source_contract.json`](../../benchmarks/maplight_source_contract.json).
+The six-file source tree remains at revision `c249378c`; the paper is
+`arXiv:2310.00174v1`. The fixed representation declares 2,563 values and the
+GIN variant 2,863. No historical environment can be recovered because the
+upstream notebooks install unversioned dependencies.
+
+Two source corrections now control reproduction. The unchanged notebook runs
+`ppbr_az`, not VDss or a CYP task. TDC reports the mean and population standard
+deviation of five seed-specific rounded metrics; upstream does not average the
+five probability vectors. Exact reproduction therefore uses the five seed
+metrics. A predeclared arithmetic probability mean is retained separately as
+the local paired comparator.
+
+The three-family public-test budget is frozen in
+[`phase_0_75_evaluation_budget.json`](../../benchmarks/phase_0_75_evaluation_budget.json).
+All nine family-task slots remain reserved and unconsumed. The public test was
+already observed in Phase 0.5, so a new complete task prediction consumes its
+slot before scoring. The fixed and GIN families each retain five seed columns
+plus one separately labeled probability-mean column. No AUROC, strict companion,
+bootstrap, or other diagnostic score is authorized by this initial budget.
+
+The global split algorithm is frozen in
+[`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
+It preserves all 30,038 `train_val` rows, 15,354 global standardized structures,
+and 9,114 scaffold groups. It uses one global assignment for all tasks, three
+predeclared repeats, a nonchiral Bemis-Murcko protocol, and a chiral Morgan
+Taylor-Butina community protocol at Tanimoto 0.60. Exact duplicates are always
+global. Scaffold and community groups are indivisible in their respective
+protocols; the two systems are not unioned.
+
+The topology contains 70 duplicated structure-task cells and 11 cells with
+conflicting labels. Every official row remains. Forty-one standardized hashes
+also map to more than one raw SMILES. Grouping uses standardized identity, but
+exact MapLight features must remain keyed to each raw official input rather
+than silently deduplicating by standardized hash.
+
+This freeze generated no feature matrix, model fit, prediction, public-test
+label parse, or metric evaluation.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the
@@ -515,6 +558,9 @@ measured-parent transformation model.
   it as private and understates the public benchmark record.
 - MapLight has no frozen upstream environment, so RDKit, CatBoost, MolFeat,
   DGL, and pretrained-weight drift may prevent exact reproduction.
+- Exact MapLight featurization uses raw TDC `Drug` strings, while leakage groups
+  use standardized structures. Forty-one standardized hashes have multiple raw
+  forms; a standardized-only feature cache would silently change the comparator.
 - The TDC public test is already observed. Any new prediction family or repair
   after scoring could turn comparator reproduction into public-test-aware
   model selection.
@@ -550,11 +596,11 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Freeze the exact MapLight repository, paper, source files, license, method,
-dependency behavior, and dated fixed-feature anchors. In the same pre-result
-milestone, freeze the three-family public-test budget and the exact global
-shadow-split contract. Do not write representation code or generate a public-
-test prediction until those records are signed, reviewed, and merged.
+Implement only the reviewed `TDC-CYP-shadow-v1` generator and its stripped
+label-free output. Validate global row identity, grouping, repeat assignments,
+class support, determinism, resource use, and zero public-test access. Do not
+write MapLight feature code, fit a model, or generate a public-test prediction
+until the shadow artifact and its independent review are complete.
 
 The following pre-freeze research already supports that action.
 

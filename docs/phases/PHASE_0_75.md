@@ -92,9 +92,17 @@ The published method appears to use:
 - five CatBoost classifiers with seeds 1 through 5, `Logloss`, and
   `random_strength=2`.
 
-The fixed representation is expected to contain 2,563 values. The GIN variant
-is expected to contain 2,863. These are intake expectations, not canonical
-facts, until the frozen source and fixture parity tests verify them.
+The fixed representation contains 2,563 declared values. The GIN variant
+contains 2,863. Runtime fixture parity must still verify the generated arrays
+under the new compatible environment.
+
+The exact source freeze verifies those dimensions and corrects two intake
+details. The checked-in notebook's active index is `ppbr_az`, so it runs no CYP
+task unchanged. It also reports the mean and population standard deviation of
+five seed-specific metrics; it does not score an averaged prediction vector.
+Retain all five prediction columns. Use their metric distribution for exact
+reproduction, and label the predeclared arithmetic probability mean as a
+separate local five-seed ensemble comparator.
 
 The dated fixed-feature AUPRC anchors to verify are approximately 0.783,
 0.723, and 0.881 for CYP2C9, CYP2D6, and CYP3A4. The dated MapLight + GNN
@@ -144,17 +152,21 @@ three CYP tasks. It must bind:
 - task membership and source row identity;
 - deterministic split and repeat assignments.
 
-The same structure, standardized duplicate, scaffold group, and chemistry
-community must not cross a boundary. The global assignments are reused across
-all CYP tasks. No task-specific regrouping is allowed. Report molecule counts,
-group counts, class prevalence, and empty or degenerate fold conditions by task.
+The same standardized structure must always receive the same assignment across
+all tasks. Scaffold groups are indivisible in the scaffold protocol. Chemistry
+communities are indivisible in the community protocol. Do not union both group
+systems, because that would collapse two intended stress tests into one
+coarsened protocol. The global assignments are reused across all CYP tasks. No
+task-specific regrouping is allowed. Report molecule counts, group counts,
+class prevalence, and empty or degenerate fold conditions by task.
 
-Freeze one scaffold-held-out protocol and one close-series or
-chemistry-community-held-out protocol. Use three deterministic outer repeats
-where task populations permit them, with grouped inner selection inside each
-outer training population. The exact grouping, balancing, tie, seed, nesting,
-and failure rules must be receipt-bound before execution. Random splits remain
-diagnostic only and cannot select a candidate.
+Freeze one scaffold-held-out protocol and one chemistry-community-held-out
+protocol. Use three deterministic outer repeats where task populations permit
+them, with grouped inner selection inside each outer training population. The
+exact grouping, balancing, tie, seed, nesting, and failure rules must be
+receipt-bound before execution. Random splits remain diagnostic only and cannot
+select a candidate. The exact pre-result split contract is
+[`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
 
 ## Minimal research-code boundary
 
