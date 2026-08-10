@@ -128,7 +128,8 @@ The postmortem reports that:
 - pretrained, multitask 2D graph models dominated the leading entries;
 - the three highest-ranked entries that declared no proprietary data, ranks 5
   through 7, all used pretrained models and multitask learning;
-- descriptor and fingerprint models remained useful in hybrid ensembles;
+- descriptors and fingerprints were common engineered features, including
+  among leading hybrid entries;
 - almost all leading entries used external public data;
 - four of the top five entries used proprietary data.
 
