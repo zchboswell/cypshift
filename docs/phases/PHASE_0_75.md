@@ -175,6 +175,18 @@ exact grouping, balancing, tie, seed, nesting, and failure rules must be
 receipt-bound before execution. Random splits remain diagnostic only and cannot
 select a candidate. The exact pre-result split contract is
 [`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
+The companion
+[`tdc_cyp_shadow_v1_implementation_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_implementation_contract.json)
+freezes the exact join, numeric ordering, provenance-access boundary, artifact
+schemas, serialization, runtime environment, and synthetic mechanics fixtures.
+It permits no real generation until the implementation passes independent
+review.
+
+Use separate entrypoints for the trusted projection, label-free assignment,
+and train-only summary. The assignment process accepts only the stripped input,
+its receipt, the parent and implementation contracts, and the pinned lock. The
+summary first verifies the hashed assignment and both contract hashes, then
+validates the complete train-only identity set before reading any target value.
 
 ## Minimal research-code boundary
 

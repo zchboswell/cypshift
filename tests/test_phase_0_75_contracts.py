@@ -10,6 +10,9 @@ BENCHMARKS = ROOT / "benchmarks"
 SOURCE_CONTRACT = BENCHMARKS / "maplight_source_contract.json"
 EVALUATION_BUDGET = BENCHMARKS / "phase_0_75_evaluation_budget.json"
 SHADOW_CONTRACT = BENCHMARKS / "tdc_cyp_shadow_v1_contract.json"
+SHADOW_IMPLEMENTATION_CONTRACT = (
+    BENCHMARKS / "tdc_cyp_shadow_v1_implementation_contract.json"
+)
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -159,3 +162,40 @@ def test_phase_0_75_contracts_bind_unchanged_public_source_manifest() -> None:
         _load(SHADOW_CONTRACT)["source_contracts"]["public_sources"]["sha256"]
         == expected
     )
+
+
+def test_shadow_implementation_contract_extends_the_reviewed_parent() -> None:
+    contract = _load(SHADOW_IMPLEMENTATION_CONTRACT)
+
+    assert contract["schema_version"] == (
+        "cypshift.tdc_cyp_shadow_implementation_contract.v1"
+    )
+    assert contract["parent_contract"] == {
+        "path": "benchmarks/tdc_cyp_shadow_v1_contract.json",
+        "sha256": _sha256(SHADOW_CONTRACT),
+    }
+    assert contract["trusted_projection"]["raw_count_definitions"] == {
+        "unique_raw_structures": (
+            "Number of distinct exact decoded raw_structure strings across retained "
+            "rows."
+        ),
+        "unique_standardized_hash_raw_pairs": (
+            "Number of distinct (standardized_structure_hash, exact raw_structure) "
+            "pairs across retained rows."
+        ),
+        "expected_unique_raw_structures": 15399,
+        "expected_unique_standardized_hash_raw_pairs": 15399,
+    }
+    assert contract["assignment_environment"] == {
+        "python": "3.11",
+        "rdkit": "2026.03.5",
+        "numpy": "2.4.6",
+        "lock_sha256": _sha256(ROOT / "uv.lock"),
+        "full_run_rule": (
+            "Run the Taylor-Butina assignment alone on the host. Stop if runtime "
+            "exceeds 240 minutes or process peak RSS exceeds 12 GiB. Do not change "
+            "dtype, threshold, fingerprint, ordering, or algorithm."
+        ),
+    }
+    for path in contract["implementation_paths"].values():
+        assert (ROOT / path).is_file()

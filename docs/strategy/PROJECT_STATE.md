@@ -130,6 +130,19 @@ than silently deduplicating by standardized hash.
 This freeze generated no feature matrix, model fit, prediction, public-test
 label parse, or metric evaluation.
 
+The reviewed parent contract left six byte-level implementation choices open.
+The pre-result implementation contract now fixes the full one-to-one identity
+join, numeric source-row sorting, semantic non-use of canonical provenance,
+raw-form counts, logical receipt paths, and exact artifact schemas. One focused
+research module implements three process boundaries: trusted train-only
+projection, label-free global assignment, and post-hash train-only summary.
+Three thin scripts expose only those paths. Six synthetic tests cover
+determinism, immutability, raw-string preservation, scaffold fallback, chiral
+Morgan community mechanics, inclusive distance 0.40, exact fold hashes,
+duplicate rows, class support, identity-first label access, and fail-closed
+tampering. No real source projection, full clustering, model feature, fit,
+prediction, public-test label parse, or metric evaluation has run.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the
@@ -599,13 +612,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Implement only the reviewed `TDC-CYP-shadow-v1` two-stage freeze. First create
-and verify the stripped train_val-only identity and structure projection. Then
-generate the global assignments from that file alone and validate row identity,
-grouping, repeat assignments, class support, determinism, resource use, and zero
-public-test access. Do not write MapLight feature code, fit a model, or generate
-a public-test prediction until the shadow artifact and its independent review
-are complete.
+Independently review the `TDC-CYP-shadow-v1` implementation and its companion
+byte contract. After exact fast-forward integration, run the trusted projection
+twice from the reviewed revision and require byte-identical rows and manifests.
+Only then run the full label-free assignment alone under Python 3.11 and the
+12 GiB peak-RSS cap. Validate train-only class support in the separate summary
+process. Do not write MapLight feature code, fit a model, or generate a
+public-test prediction until the real shadow artifact passes independent review.
 
 The following pre-freeze research already supports that action.
 

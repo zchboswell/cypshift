@@ -1,0 +1,173 @@
+{
+  "schema_version": "cypshift.tdc_cyp_shadow_implementation_contract.v1",
+  "benchmark_id": "TDC-CYP-shadow-v1",
+  "parent_contract": {
+    "path": "benchmarks/tdc_cyp_shadow_v1_contract.json",
+    "sha256": "9f0909dbc96672f49f9e7d0a9f802c268d33c3174470e08dc4a3f1846bf3cf0b"
+  },
+  "purpose": "Freeze the byte, join, provenance, process, and receipt details required to implement the reviewed parent contract without result-dependent invention.",
+  "authorization": "Synthetic implementation tests only until this implementation and contract pass independent review. No real full-population assignment, feature generation, model fit, prediction, public-test label parse, or metric evaluation is authorized by this file.",
+  "implementation_paths": {
+    "module": "src/cypshift/shadow.py",
+    "trusted_projection_entrypoint": "scripts/prepare_tdc_shadow_input.py",
+    "assignment_entrypoint": "scripts/assign_tdc_shadow.py",
+    "summary_entrypoint": "scripts/summarize_tdc_shadow.py"
+  },
+  "source_identity": {
+    "revision": "A full 40-character lowercase Git commit SHA supplied explicitly to each process.",
+    "file_receipt": "Each artifact records src/cypshift/shadow.py and its SHA-256. The Git revision binds the thin entrypoints and the complete reviewed tree.",
+    "same_source_rule": "Preparation, assignment, and summary must use the same revision and module SHA-256. A changed implementation requires a new artifact root."
+  },
+  "trusted_projection": {
+    "exact_split_header": [
+      "molecule_id",
+      "task",
+      "partition",
+      "source_row"
+    ],
+    "exact_canonical_header": [
+      "molecule_id",
+      "raw_structure",
+      "structure_format",
+      "standardized_structure",
+      "standardized_structure_hash",
+      "status",
+      "stereochemistry_status",
+      "input_fragments",
+      "standardization_changed",
+      "duplicate_of",
+      "warnings",
+      "standardization_version",
+      "source",
+      "provenance"
+    ],
+    "join": {
+      "key": "molecule_id",
+      "cardinality": "one_to_one",
+      "full_identity_check": "Require the complete 37,550-identity split and canonical sets to be equal before partition filtering.",
+      "filter": "Retain exactly partition=train_val after the full identity check.",
+      "field_sources": {
+        "task": "official_split",
+        "molecule_id": "official_split and canonical equality",
+        "source_row": "official_split",
+        "raw_structure": "canonical_molecules",
+        "standardized_structure": "canonical_molecules",
+        "standardized_structure_hash": "canonical_molecules",
+        "standardization_version": "canonical_molecules"
+      }
+    },
+    "source_row": {
+      "parse": "positive base-10 integer",
+      "canonical_text": "str(parsed_integer), with no sign, leading zero, or surrounding whitespace",
+      "sort": "task text ascending, source_row numeric ascending, molecule_id text ascending"
+    },
+    "provenance_boundary": "The CSV tokenizer necessarily traverses every cell. Projection code may identify the provenance header but must never select, index, decode, retain, compare, branch on, separately hash, log, or copy a provenance value.",
+    "opaque_receipts": "adapter_manifest.json and canonical/audit.json are hash-verified only. Their result counts are not parsed.",
+    "raw_count_definitions": {
+      "unique_raw_structures": "Number of distinct exact decoded raw_structure strings across retained rows.",
+      "unique_standardized_hash_raw_pairs": "Number of distinct (standardized_structure_hash, exact raw_structure) pairs across retained rows.",
+      "expected_unique_raw_structures": 15399,
+      "expected_unique_standardized_hash_raw_pairs": 15399
+    }
+  },
+  "serialization": {
+    "csv": "UTF-8, csv.DictWriter minimal quoting, exact declared header order, LF line terminators, and no blank lines.",
+    "json": "UTF-8, json.dumps with indent=2 and sort_keys=true, followed by one LF.",
+    "manifest_paths": "Use parent-contract logical repository paths and relative artifact names. Do not record absolute or temporary roots.",
+    "aggregate_recipe": "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined with newline characters, without a trailing newline."
+  },
+  "artifact_schemas": {
+    "shadow_input_manifest": {
+      "schema_version": "cypshift.tdc_cyp_shadow_input.v1",
+      "top_level_fields": [
+        "contract",
+        "deterministic",
+        "implementation_contract",
+        "inputs",
+        "output",
+        "population",
+        "preparation_source",
+        "provenance_columns",
+        "public_test_rows",
+        "schema_version",
+        "target_columns"
+      ],
+      "nondeterministic_fields": [],
+      "repeat_rule": "Two independent output roots from one reviewed revision must produce byte-identical CSV and manifest bytes."
+    },
+    "shadow_assignment_receipt": {
+      "schema_version": "cypshift.tdc_cyp_shadow_assignment.v1",
+      "top_level_fields": [
+        "accounting",
+        "community_distance_count",
+        "community_distance_dtype",
+        "contract",
+        "environment",
+        "groups",
+        "implementation_contract",
+        "implementation_source",
+        "inputs",
+        "outputs",
+        "peak_rss_gib",
+        "population",
+        "runtime_seconds",
+        "schema_version"
+      ],
+      "nondeterministic_fields": [
+        "peak_rss_gib",
+        "runtime_seconds"
+      ],
+      "repeat_rule": "Independent runs must produce byte-identical shadow_rows.csv. Receipts may differ only in declared nondeterministic fields."
+    },
+    "shadow_manifest": {
+      "schema_version": "cypshift.tdc_cyp_shadow_manifest.v1",
+      "top_level_fields": [
+        "accounting",
+        "aggregate_recipe",
+        "aggregate_sha256",
+        "assignment_inputs",
+        "benchmark_id",
+        "contract",
+        "deterministic_assignments",
+        "duplicate_and_conflicting_labels",
+        "environment",
+        "groups",
+        "implementation_contract",
+        "implementation_source",
+        "outputs",
+        "peak_rss_gib",
+        "population",
+        "runtime_seconds",
+        "schema_version",
+        "summary_inputs",
+        "validation"
+      ],
+      "label_boundary": "Hash and verify shadow_rows.csv and its assignment receipt before opening the train_val measurement file. Validate the complete identity set before selecting value."
+    }
+  },
+  "assignment_environment": {
+    "python": "3.11",
+    "rdkit": "2026.03.5",
+    "numpy": "2.4.6",
+    "lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+    "full_run_rule": "Run the Taylor-Butina assignment alone on the host. Stop if runtime exceeds 240 minutes or process peak RSS exceeds 12 GiB. Do not change dtype, threshold, fingerprint, ordering, or algorithm."
+  },
+  "mechanics_fixtures": {
+    "condensed_order": "(1,0),(2,0),(2,1),(3,0),(3,1),(3,2), continuing by ascending row then column",
+    "distance_threshold": "0.4 inclusive",
+    "scaffold_acyclic_hash": "6b2bf8ea0f7ce115540b173aacddf5fc6f967a2f24e77b8da17773d72c821801",
+    "scaffold_benzene_hash": "fe16f6c446879019e97cdf45c9b911b81e24416bf4d2b50b72816171198e132f",
+    "inner_fold_sentinel": "Empty CSV field exactly when outer_fold is 0; otherwise outer 1 through 4 maps to inner 0 through 3.",
+    "group_assignment_fixture": "For group hashes a through f repeated to 64 hex characters with weights 5,4,3,2,1,1, seed 20260810, and protocol scaffold, assign a:3,b:4,c:1,d:2,e:0,f:0."
+  },
+  "initial_accounting": {
+    "real_projection_runs": 0,
+    "real_assignment_runs": 0,
+    "real_summary_runs": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "public_test_labels_parsed": 0,
+    "metric_evaluations": 0
+  },
+  "reversal_condition": "Supersede before the first real projection only for a demonstrated byte, provenance, API, feasibility, or leakage defect. After artifact generation, preserve the old receipts and create a newly named reviewed contract rather than rewriting them."
+}

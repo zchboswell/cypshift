@@ -37,7 +37,16 @@ input. The assignment process can resolve only that projection. Post-assignment
 prevalence checks can resolve only the already frozen train-only measurement
 file, never canonical or public-test measurement roots.
 
-These three files are pre-result controls. Together they record zero feature
+`tdc_cyp_shadow_v1_implementation_contract.json` closes the remaining byte and
+process details before real generation. It fixes the one-to-one identity join,
+numeric source-row ordering, exact CSV and JSON bytes, provenance-access rule,
+artifact schemas, Python 3.11 environment, and deterministic mechanics
+fixtures. The implementation uses one focused research module and three thin
+scripts so the trusted projection, label-free assignment, and train-only
+summary remain separate processes. Synthetic tests exercise these paths. No
+real 30,038-row projection or 15,354-structure clustering has run yet.
+
+These four files are pre-result controls. Together they record zero feature
 matrices, fits, predictions, public-test label parses, and metric evaluations.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
