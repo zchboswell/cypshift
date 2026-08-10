@@ -82,7 +82,7 @@
   },
   "compatible_environment": {
     "claim": "Hash-locked compatible reproduction environment; not the unrecoverable historical MapLight environment.",
-    "selection_rule": "Use the paper-cited RDKit 2023.03.3 and the latest CatBoost release available before the paper submission. Freeze direct versions without feature, label, model, prediction, metric, or public-test evidence. Restrict every transitive release to no later than the end of the CatBoost 1.2.1 upload day.",
+    "selection_rule": "Use the paper-cited RDKit 2023.03.3. Choose CatBoost 1.2.1 as the first CatBoost release uploaded after the cited RDKit wheel and before the paper submission. Freeze that single compatible point and all direct versions without feature, label, model, prediction, metric, or public-test evidence. Restrict every transitive release to no later than the end of the CatBoost 1.2.1 upload day. This is not a claim that MapLight used CatBoost 1.2.1 or that it was the last release before submission.",
     "result_blind_cutoff_utc": "2023-08-29T00:00:00Z",
     "resolution_note": "The first lock solve used the timestamp of the first CatBoost wheel and failed before installation because later files in the same release were excluded. Moving the cutoff to the end of that upload day resolved the same preselected versions. No scientific result informed the change.",
     "project_path": "research/maplight-fixed/pyproject.toml",
