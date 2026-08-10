@@ -205,6 +205,14 @@ freeze generated no synthetic or real feature array, target projection, model
 fit, prediction, metric evaluation, public-test use, GIN weight, or challenge
 assumption. All nine public-test family-task slots remain unconsumed.
 
+Three independent reviews passed exact signed source head `63a3c8c`. They
+verified the source and environment receipts, six-candidate design, fit and
+metric arithmetic, process firewalls, claim limits, zero scientific accounting,
+and Occam scope. Hosted CI passed Python 3.11 and 3.14. The tracked contract
+test file contains four test functions. An immediate pull-request comment
+corrects one earlier commit body that said five; reviewed history was not
+rewritten.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the

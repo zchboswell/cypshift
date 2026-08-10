@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — shadow benchmark frozen; Stage A next
+Status: active — Stage A contract reviewed; synthetic parity implementation next
 
 Authorized: 2026-08-10
 
