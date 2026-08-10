@@ -60,13 +60,15 @@ It trains five CatBoost classifiers per task, one for each seed from 1 through
 5, with `loss_function=Logloss`, `random_strength=2`, and `verbose=0`.
 Remaining CatBoost settings use library defaults. It fits on the complete TDC
 `train_val` population and predicts the fixed test population. The notebook
-passes five seed-specific prediction dictionaries to TDC. TDC scores each seed,
-rounds each metric to three decimals, and reports the mean and population
-standard deviation of those five rounded metrics. The upstream code does not
-average the five probability vectors. A local mean-probability comparator must
-therefore be labeled as a separate five-seed ensemble result. The published
-paper attributes the main gain to richer fixed representations; the GIN output
-is an added feature block, not an end-to-end predictor.
+passes five seed-specific prediction dictionaries to TDC. The upstream code
+does not average the five probability vectors. The historical PyTDC version is
+not pinned; the frozen local PyTDC 1.1.15 rule scores each seed, rounds each
+metric to three decimals, and reports the mean and population standard
+deviation of those five rounded metrics. A local mean-probability comparator
+must therefore be labeled as a separate five-seed ensemble result, and the
+historical rounding gap must remain disclosed. The published paper attributes
+the main gain to richer fixed representations; the GIN output is an added
+feature block, not an end-to-end predictor.
 
 ## Reproducibility limits
 
@@ -86,16 +88,18 @@ auditor-grade comparison:
 - the reported five-seed mean and standard deviation do not permit a paired
   family-level significance test against a new system.
 
-The paper cites Python 3.10-era RDKit 2023.03.3 and MolFeat 0.9.2. It does not
-identify CatBoost, PyTDC, NumPy, pandas, scikit-learn, DGL, PyTorch, or the
-transitive environment. The exact historical environment cannot be recovered.
-Phase 0.75 must freeze a new compatible reproduction environment and describe
-it as such.
+The README specifies Python 3.10. The paper cites RDKit 2023.03.3 and MolFeat
+0.9.2. Neither source identifies CatBoost, PyTDC, NumPy, pandas, scikit-learn,
+DGL, PyTorch, or the transitive environment. The exact historical environment
+cannot be recovered from the pinned public evidence. Phase 0.75 must freeze a
+new compatible reproduction environment and describe it as such.
 
 The GIN alias resolves to a two-stage pretrained model: node masking on ZINC15
 followed by supervised graph pretraining on ChEMBL assays. Direct overlap with
 the TDC Veith structures and targets is unknown. Until an overlap audit passes,
 use `pretrained representation transfer`, not `clean zero-shot`, in claims.
+The artifact and pretraining-data licenses are also not disclosed or established
+by the source-code licenses. Eligibility must pass before the GIN bytes are used.
 
 These gaps do not invalidate the leaderboard entry. They define the work needed
 before it can serve as an apples-to-apples statistical comparator.

@@ -4,7 +4,7 @@
   "scope": "Exactly three new TDC public-test prediction families per task for Phase 0.75. This budget does not authorize a challenge evaluation or public-test-informed repair.",
   "source_contract": {
     "path": "benchmarks/maplight_source_contract.json",
-    "sha256": "6e109eddbccf8e7f5022c3b034d0efa5b668e558cdb6f4d430555a0e3fa529f0"
+    "sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8"
   },
   "tasks": [
     "cyp2c9_veith",

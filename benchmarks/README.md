@@ -22,14 +22,20 @@ fixed and GIN artifacts retain all five seed columns and one separately labeled
 probability-mean column. No AUROC, strict companion, bootstrap, or score-driven
 repair is authorized by the initial budget.
 
-`tdc_cyp_shadow_v1_contract.json` freezes a single global grouping assignment
-for all 30,038 TDC `train_val` rows. It keeps all duplicated and conflicting
-official rows, groups 15,354 standardized structures once across all three
-tasks, and defines three repeats for a Bemis-Murcko scaffold protocol and a
-Taylor-Butina chemistry-community protocol. The generated label-free rows and
-manifest remain outside Git. Exact MapLight features use raw official strings;
-grouping uses standardized identity. Do not silently deduplicate the 41
-standardized hashes that map to multiple raw strings.
+`tdc_cyp_shadow_v1_contract.json` freezes the deterministic inputs and global
+assignment algorithm for all 30,038 TDC `train_val` rows. It requires all
+duplicated and conflicting official rows to remain, groups 15,354 standardized
+structures once across all three tasks, and defines three repeats for a
+Bemis-Murcko scaffold protocol and a Taylor-Butina chemistry-community
+protocol. The assignment does not exist until generated `shadow_rows.csv` bytes
+are validated and hashed. Those label-free rows and their manifest remain
+outside Git. Exact MapLight features use raw official strings; grouping uses
+standardized identity. Do not silently deduplicate the 41 standardized hashes
+that map to multiple raw strings. A trusted preparation step first strips the
+30,038 `train_val` identities and structures into a receipt-bound label-free
+input. The assignment process can resolve only that projection. Post-assignment
+prevalence checks can resolve only the already frozen train-only measurement
+file, never canonical or public-test measurement roots.
 
 These three files are pre-result controls. Together they record zero feature
 matrices, fits, predictions, public-test label parses, and metric evaluations.

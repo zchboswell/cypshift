@@ -160,6 +160,14 @@ coarsened protocol. The global assignments are reused across all CYP tasks. No
 task-specific regrouping is allowed. Report molecule counts, group counts,
 class prevalence, and empty or degenerate fold conditions by task.
 
+The canonical TDC molecule provenance embeds source labels. A trusted
+preparation step must first emit and receipt-bind a train_val-only projection
+containing identities and structures but no target or provenance. The split and
+feature processes may resolve only that stripped projection. A separate summary
+process may resolve only the frozen train_val measurement projection after the
+label-independent assignment bytes are hashed; it may not resolve canonical or
+public-test measurement roots.
+
 Freeze one scaffold-held-out protocol and one chemistry-community-held-out
 protocol. Use three deterministic outer repeats where task populations permit
 them, with grouped inner selection inside each outer training population. The

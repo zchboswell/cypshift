@@ -141,13 +141,15 @@
     "other_parameters": "version-defined CatBoost defaults",
     "training_population": "complete task train_val",
     "prediction_population": "complete matching task test",
-    "tuning_against_public_test": false
+    "public_test_tuning_evidence": "No tuning is reported and no tuning code is present in the pinned repository. The public evidence cannot prove that no tuning occurred outside the repository."
   },
   "published_scoring_semantics": {
     "primary_metric": "average_precision",
     "public_name": "AUPRC",
     "higher_is_better": true,
-    "upstream_operation": "TDC evaluates each of five seed-specific prediction vectors, rounds each metric to three decimals, then reports the rounded population mean and population standard deviation of those five rounded metrics.",
+    "notebook_operation": "The pinned notebook passes five seed-specific prediction dictionaries separately to TDC evaluate_many and never averages their probability vectors.",
+    "historical_published_rounding": "The original PyTDC version is not pinned. The published mean and standard deviation are consistent with TDC's seed-metric aggregation, but the exact historical rounding implementation cannot be independently recovered.",
+    "frozen_local_rounding": "PyTDC 1.1.15 evaluates each seed-specific prediction vector, rounds each metric to three decimals, then reports the rounded population mean and population standard deviation of those five rounded metrics.",
     "prediction_averaging_upstream": false,
     "required_local_outputs": [
       "five seed-specific row-level prediction columns",
@@ -155,7 +157,7 @@
       "the exact TDC-compatible rounded mean and population standard deviation",
       "one predeclared arithmetic mean-probability column for later paired comparison"
     ],
-    "claim_boundary": "The seed-metric mean and standard deviation reproduce the public method. AUPRC of the arithmetic mean-probability column is a separately labeled local five-seed ensemble result and is not the exact published statistic."
+    "claim_boundary": "Use the five seed metrics and frozen PyTDC 1.1.15-compatible aggregation to assess reproduction against the published anchor, while disclosing that historical PyTDC rounding is unpinned. AUPRC of the arithmetic mean-probability column is a separately labeled local five-seed ensemble result and is not the published statistic."
   },
   "dated_tdc_anchors": {
     "captured_at_utc": "2026-08-10T02:25:51Z",
@@ -209,7 +211,7 @@
     "correction": "The prior intake called index 7 VDss. Index 7 is PPBR; VDss is index 8."
   },
   "environment_evidence": {
-    "historical_environment_recoverable": false,
+    "historical_environment_from_pinned_public_evidence": "not_recoverable",
     "upstream_lockfiles": 0,
     "upstream_containers": 0,
     "upstream_requirement_files": 0,
@@ -225,7 +227,7 @@
       "CatBoost defaults and CPU/GPU behavior",
       "Avalon, ErG, and descriptor version behavior"
     ],
-    "required_reproduction_environment": "Create one new isolated, hash-locked compatible environment. Record it as a compatible reproduction environment, not the unrecoverable exact historical environment. Freeze it before feature implementation or any public-test prediction."
+    "required_reproduction_environment": "Create one new isolated, hash-locked compatible environment. Record it as a compatible reproduction environment, not an exact historical environment that cannot be recovered from the pinned public evidence. Freeze it before feature implementation or any public-test prediction."
   },
   "gin_provenance": {
     "molfeat_version_evidence": "0.9.2",
@@ -233,11 +235,15 @@
     "model_store_version": 0,
     "model_store_created_at": "2023-07-20T17:44:58.066581",
     "model_store_metadata_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json",
-    "metadata_size_reported_model_bytes": 7467310,
+    "model_response_content_length_bytes": 7467310,
     "metadata_declared_model_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
     "metadata_bytes_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
-    "weight_bytes_downloaded_by_cypshift": false,
+    "transport_probe": "A one-byte HTTP Range request made during the independent source audit was ignored by the server and streamed the 7,467,310-byte model response to /dev/null. No model file or cache was retained, and the model was not loaded or hashed.",
+    "discarded_transport_bytes": 7467310,
+    "persisted_weight_bytes": 0,
     "weight_hash_verified_by_cypshift": false,
+    "artifact_license_status": "not_disclosed_or_established",
+    "pretraining_data_license_status": "not_disclosed_or_established",
     "pretraining": "Node-level attribute masking on approximately two million ZINC15 molecules followed by graph-level supervised pretraining on approximately 456,000 ChEMBL molecules and 1,310 assays.",
     "tdc_veith_overlap_status": "unknown",
     "claim_boundary": "Until direct structure and assay overlap audits pass, call this pretrained representation transfer, not clean zero-shot generalization."
@@ -253,6 +259,7 @@
       "pass or precisely close the fixed-feature reproduction",
       "download the single authorized artifact in an isolated environment",
       "verify the model bytes against both independently computed and metadata-declared hashes",
+      "establish that the artifact and its pretraining-data terms permit the intended benchmark use and publication",
       "freeze pooling, batch, device, failed-row, and cache behavior",
       "record contamination status"
     ],
@@ -265,7 +272,8 @@
   "frozen_boundaries": {
     "model_fits": 0,
     "feature_matrices_generated": 0,
-    "model_weights_downloaded": 0,
+    "model_weight_files_persisted": 0,
+    "model_weights_loaded": 0,
     "public_test_predictions": 0,
     "public_test_labels_parsed": 0,
     "public_test_metric_evaluations": 0,

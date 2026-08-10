@@ -13,7 +13,16 @@ SHADOW_CONTRACT = BENCHMARKS / "tdc_cyp_shadow_v1_contract.json"
 
 
 def _load(path: Path) -> dict[str, Any]:
-    value = json.loads(path.read_text(encoding="utf-8"))
+    def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        value: dict[str, Any] = {}
+        for key, item in pairs:
+            assert key not in value, f"duplicate JSON key {key!r} in {path}"
+            value[key] = item
+        return value
+
+    value = json.loads(
+        path.read_text(encoding="utf-8"), object_pairs_hook=reject_duplicate_keys
+    )
     assert isinstance(value, dict)
     return value
 
@@ -41,13 +50,22 @@ def test_maplight_source_contract_separates_exact_and_local_scoring() -> None:
 
     scoring = contract["published_scoring_semantics"]
     assert scoring["prediction_averaging_upstream"] is False
-    assert "seed-specific" in scoring["upstream_operation"]
+    assert "seed-specific" in scoring["notebook_operation"]
+    assert "PyTDC 1.1.15" in scoring["frozen_local_rounding"]
+    assert "cannot be independently recovered" in scoring[
+        "historical_published_rounding"
+    ]
     assert "separately labeled" in scoring["claim_boundary"]
 
     notebook = contract["notebook_execution_audit"]
     assert notebook["active_benchmark"] == "ppbr_az"
     assert notebook["unchanged_notebook_cyp_runs"] == 0
     assert contract["gin_provenance"]["tdc_veith_overlap_status"] == "unknown"
+    assert contract["gin_provenance"]["discarded_transport_bytes"] == 7467310
+    assert contract["gin_provenance"]["persisted_weight_bytes"] == 0
+    assert contract["gin_provenance"]["artifact_license_status"] == (
+        "not_disclosed_or_established"
+    )
     assert all(value == 0 for value in contract["frozen_boundaries"].values())
 
 
@@ -94,6 +112,9 @@ def test_shadow_contract_is_global_label_independent_and_row_preserving() -> Non
     community = contract["protocols"]["community"]
     assert community["similarity_threshold_inclusive"] == 0.6
     assert community["pair_distances"] == 15354 * 15353 // 2
+    assert community["distance_storage"] == (
+        "contiguous numpy.float64 one-dimensional array"
+    )
     assert community["reordering"] is True
 
     assert [repeat["seed"] for repeat in contract["repeats"]] == [
@@ -104,6 +125,19 @@ def test_shadow_contract_is_global_label_independent_and_row_preserving() -> Non
     assert contract["fold_assignment"]["task_rule"].startswith(
         "Join the same global assignment"
     )
+    assert contract["fold_assignment"]["outer_validation_inner_fold_sentinel"] == (
+        ""
+    )
+    assert contract["input_projection_contract"]["rows"]["target_columns"] == 0
+    assert contract["input_projection_contract"]["rows"]["public_test_rows"] == 0
+    assert contract["assignment_firewall"]["assignment_allowed_inputs"] == [
+        "the receipt-bound shadow_input_rows.csv projection",
+        "this tracked contract",
+        "the pinned core environment",
+    ]
+    assert "canonical molecule or provenance roots" in contract[
+        "assignment_firewall"
+    ]["forbidden_inputs"]
     assert contract["output_contract"]["shadow_rows"]["target_columns"] == 0
     assert contract["initial_accounting"] == {
         "target_values_used_for_assignment": 0,

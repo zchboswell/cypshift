@@ -63,11 +63,12 @@ contender. Each family requires frozen code, environment, configuration,
 label-free prediction hashes, and independent review before scoring. There is
 no score-driven repair cycle and no public-test feature ablation.
 
-The shadow benchmark uses one label-independent global molecule grouping table
-across CYP2C9, CYP2D6, and CYP3A4. Standardized structures, duplicates,
-scaffolds, and frozen chemistry communities cannot cross a boundary or receive
-task-specific regrouping. All representation, dependency, model, and
-combination choices use shadow evidence only.
+The shadow benchmark uses one label-independent global molecule table across
+CYP2C9, CYP2D6, and CYP3A4. Standardized duplicates always share an assignment.
+Scaffolds are indivisible in the scaffold protocol, and frozen chemistry
+communities are indivisible in the community protocol. No task-specific
+regrouping is allowed. All representation, dependency, model, and combination
+choices use shadow evidence only.
 
 Heavy MapLight and GIN dependencies remain in separately locked research
 environments or digest-pinned containers. They do not enter the core install or
@@ -91,15 +92,17 @@ claim boundaries are frozen in
 [`maplight_source_contract.json`](../../benchmarks/maplight_source_contract.json).
 The six-file source tree remains at revision `c249378c`; the paper is
 `arXiv:2310.00174v1`. The fixed representation declares 2,563 values and the
-GIN variant 2,863. No historical environment can be recovered because the
-upstream notebooks install unversioned dependencies.
+GIN variant 2,863. No exact historical environment can be recovered from the
+pinned public evidence because the upstream notebooks install unversioned
+dependencies.
 
 Two source corrections now control reproduction. The unchanged notebook runs
-`ppbr_az`, not VDss or a CYP task. TDC reports the mean and population standard
-deviation of five seed-specific rounded metrics; upstream does not average the
-five probability vectors. Exact reproduction therefore uses the five seed
-metrics. A predeclared arithmetic probability mean is retained separately as
-the local paired comparator.
+`ppbr_az`, not VDss or a CYP task. The notebook sends five seed-specific
+prediction vectors separately and does not average their probabilities. The
+historical PyTDC version is unpinned; local reproduction therefore uses the
+frozen PyTDC 1.1.15 seed-metric rounding rule with that gap disclosed. A
+predeclared arithmetic probability mean is retained separately as the local
+paired comparator.
 
 The three-family public-test budget is frozen in
 [`phase_0_75_evaluation_budget.json`](../../benchmarks/phase_0_75_evaluation_budget.json).
@@ -109,14 +112,14 @@ slot before scoring. The fixed and GIN families each retain five seed columns
 plus one separately labeled probability-mean column. No AUROC, strict companion,
 bootstrap, or other diagnostic score is authorized by this initial budget.
 
-The global split algorithm is frozen in
+The global split input and deterministic assignment algorithm are frozen in
 [`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
-It preserves all 30,038 `train_val` rows, 15,354 global standardized structures,
-and 9,114 scaffold groups. It uses one global assignment for all tasks, three
-predeclared repeats, a nonchiral Bemis-Murcko protocol, and a chiral Morgan
-Taylor-Butina community protocol at Tanimoto 0.60. Exact duplicates are always
-global. Scaffold and community groups are indivisible in their respective
-protocols; the two systems are not unioned.
+The future generated artifact must preserve all 30,038 `train_val` rows, 15,354
+global standardized structures, and 9,114 scaffold groups. It will use one
+global assignment for all tasks, three predeclared repeats, a nonchiral
+Bemis-Murcko protocol, and a chiral Morgan Taylor-Butina community protocol at
+Tanimoto 0.60. Exact duplicates are always global. Scaffold and community groups
+are indivisible in their respective protocols; the two systems are not unioned.
 
 The topology contains 70 duplicated structure-task cells and 11 cells with
 conflicting labels. Every official row remains. Forty-one standardized hashes
@@ -596,11 +599,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Implement only the reviewed `TDC-CYP-shadow-v1` generator and its stripped
-label-free output. Validate global row identity, grouping, repeat assignments,
-class support, determinism, resource use, and zero public-test access. Do not
-write MapLight feature code, fit a model, or generate a public-test prediction
-until the shadow artifact and its independent review are complete.
+Implement only the reviewed `TDC-CYP-shadow-v1` two-stage freeze. First create
+and verify the stripped train_val-only identity and structure projection. Then
+generate the global assignments from that file alone and validate row identity,
+grouping, repeat assignments, class support, determinism, resource use, and zero
+public-test access. Do not write MapLight feature code, fit a model, or generate
+a public-test prediction until the shadow artifact and its independent review
+are complete.
 
 The following pre-freeze research already supports that action.
 
