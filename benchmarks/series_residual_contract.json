@@ -1,6 +1,6 @@
 {
   "schema_version": "cypshift.series_residual_contract.v2",
-  "frozen_at_utc": "2026-08-10T00:49:17Z",
+  "frozen_at_utc": "2026-08-10T01:03:47Z",
   "scope": "One grouped-OOF-only Phase 0.5 keep/reject test. This contract does not authorize held-out label access, held-out prediction, another residual design, or challenge-data use.",
   "inputs": {
     "native_combinations": {
@@ -40,7 +40,7 @@
   },
   "topology_audit": {
     "target_values_used": 0,
-    "source_disclosure": "The research CSV contains authorized grouped-OOF training targets. The topology audit consumed only task, fold, family, and nearest-neighbor similarity fields.",
+    "source_disclosure": "The research CSV contains authorized grouped-OOF training targets. The topology audit consumed only task, fold, family, nearest-neighbor similarity, and scaffold-group-hash fields.",
     "support_field": "nearest_neighbor_similarity",
     "support_threshold_inclusive": 0.5,
     "threshold_equality_disclosure": "Rows at exactly 0.50 are in the supported population but receive weight 0 and exactly reproduce the base prediction.",
