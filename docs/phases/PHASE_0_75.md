@@ -185,8 +185,14 @@ review.
 Use separate entrypoints for the trusted projection, label-free assignment,
 and train-only summary. The assignment process accepts only the stripped input,
 its receipt, the parent and implementation contracts, and the pinned lock. The
-summary first verifies the hashed assignment and both contract hashes, then
-validates the complete train-only identity set before reading any target value.
+assignment runs below an active wall-time and RSS watchdog and is promoted from
+a staging root only after completion. The summary resolves the original
+stripped input chain and fully verifies the hashed assignment, environment,
+population, grouping counts, resource observations, and zero-use accounting.
+It then validates the complete train-only identity set before reading any target
+value. Resource and summary-validation failures preserve compact blocker
+receipts. All real inputs must be stable read-only files for the process
+lifetime.
 
 ## Minimal research-code boundary
 

@@ -5,7 +5,9 @@ from __future__ import annotations
 import csv
 import io
 import json
+import math
 import resource
+import subprocess
 import sys
 import time
 from collections import Counter, defaultdict
@@ -18,8 +20,9 @@ from typing import Any
 
 from rdkit import Chem, DataStructs, rdBase
 from rdkit.Chem import rdFingerprintGenerator
-from rdkit.Chem.Scaffolds import MurckoScaffold
-from rdkit.ML.Cluster import Butina
+
+Butina = import_module("rdkit.ML.Cluster.Butina")
+MurckoScaffold = import_module("rdkit.Chem.Scaffolds.MurckoScaffold")
 
 SHADOW_CONTRACT_SCHEMA = "cypshift.tdc_cyp_shadow_contract.v1"
 SHADOW_IMPLEMENTATION_CONTRACT_SCHEMA = (
@@ -27,7 +30,13 @@ SHADOW_IMPLEMENTATION_CONTRACT_SCHEMA = (
 )
 SHADOW_INPUT_SCHEMA = "cypshift.tdc_cyp_shadow_input.v1"
 SHADOW_ASSIGNMENT_SCHEMA = "cypshift.tdc_cyp_shadow_assignment.v1"
+SHADOW_ASSIGNMENT_FAILURE_SCHEMA = (
+    "cypshift.tdc_cyp_shadow_assignment_failure.v1"
+)
 SHADOW_MANIFEST_SCHEMA = "cypshift.tdc_cyp_shadow_manifest.v1"
+SHADOW_VALIDATION_FAILURE_SCHEMA = (
+    "cypshift.tdc_cyp_shadow_validation_failure.v1"
+)
 INPUT_COLUMNS = (
     "task",
     "molecule_id",
@@ -62,6 +71,7 @@ SHADOW_COLUMNS = (
     "community_repeat_2_inner_fold",
 )
 _SOURCE = "src/cypshift/shadow.py"
+_REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 _SPLIT_COLUMNS = ("molecule_id", "task", "partition", "source_row")
 _CANONICAL_COLUMNS = (
     "molecule_id",
@@ -83,6 +93,21 @@ _CANONICAL_COLUMNS = (
 
 class ShadowContractError(ValueError):
     """Raised when a shadow artifact would violate the frozen contract."""
+
+
+class ShadowResourceLimitError(ShadowContractError):
+    """Raised with exact observations when the worker detects a resource overrun."""
+
+    def __init__(
+        self,
+        failure_kind: str,
+        elapsed_seconds: float,
+        peak_rss_gib: float,
+    ) -> None:
+        self.failure_kind = failure_kind
+        self.elapsed_seconds = elapsed_seconds
+        self.peak_rss_gib = peak_rss_gib
+        super().__init__(failure_kind)
 
 
 @dataclass(frozen=True, slots=True)
@@ -109,6 +134,14 @@ class ShadowSummaryResult:
     label_count: int
 
 
+@dataclass(frozen=True, slots=True)
+class _InputChain:
+    rows: list[dict[str, str]]
+    rows_sha256: str
+    manifest_sha256: str
+    population: dict[str, Any]
+
+
 def prepare_shadow_input(
     contract_path: Path,
     implementation_contract_path: Path,
@@ -118,7 +151,7 @@ def prepare_shadow_input(
     canonical_audit_path: Path,
     output_directory: Path,
     *,
-    source_revision: str,
+    source_revision: str | None = None,
 ) -> ShadowInputResult:
     """Project exact train_val identities without retaining provenance or labels."""
 
@@ -250,12 +283,7 @@ def prepare_shadow_input(
     rows.sort(key=_row_key)
     population = _population(rows, tasks)
     _check_population(contract, population)
-    raw_counts = _obj(
-        _obj(implementation, "trusted_projection"), "raw_count_definitions"
-    )
-    for name in ("unique_raw_structures", "unique_standardized_hash_raw_pairs"):
-        if population[name] != _int(raw_counts, f"expected_{name}"):
-            raise ShadowContractError(f"{name} differs from implementation contract")
+    _check_raw_population(implementation, population)
     input_rows_contract = _obj(_obj(contract, "input_projection_contract"), "rows")
     if tuple(_text_list(input_rows_contract, "columns")) != INPUT_COLUMNS:
         raise ShadowContractError("input column contract differs from implementation")
@@ -282,6 +310,7 @@ def prepare_shadow_input(
         },
         "deterministic": True,
     }
+    _revision(revision)
     output_directory.mkdir(parents=True)
     rows_path = output_directory / "shadow_input_rows.csv"
     manifest_path = output_directory / "shadow_input_manifest.json"
@@ -295,6 +324,80 @@ def prepare_shadow_input(
     )
 
 
+def _validate_input_chain(
+    contract: Mapping[str, Any],
+    implementation: Mapping[str, Any],
+    contract_path: Path,
+    implementation_contract_path: Path,
+    input_rows_path: Path,
+    input_manifest_path: Path,
+    revision: str,
+) -> _InputChain:
+    if (
+        input_rows_path.name != "shadow_input_rows.csv"
+        or input_manifest_path.name != "shadow_input_manifest.json"
+        or input_rows_path.parent != input_manifest_path.parent
+    ):
+        raise ShadowContractError("shadow input artifacts must share their exact root")
+    manifest = _read_json(input_manifest_path)
+    _check_artifact_fields(
+        implementation, "shadow_input_manifest", manifest, "shadow input manifest"
+    )
+    if manifest.get("schema_version") != SHADOW_INPUT_SCHEMA:
+        raise ShadowContractError("unsupported shadow input manifest")
+    if _obj(manifest, "contract") != _contract_receipt(contract_path):
+        raise ShadowContractError("input manifest contract receipt differs")
+    if _obj(manifest, "implementation_contract") != _contract_receipt(
+        implementation_contract_path
+    ):
+        raise ShadowContractError("input manifest implementation receipt differs")
+    if _obj(manifest, "preparation_source") != _source_receipt(revision):
+        raise ShadowContractError("input preparation source receipt differs")
+
+    frozen_sources = _obj(
+        _obj(contract, "source_contracts"), "trusted_input_projection_sources"
+    )
+    expected_inputs = {
+        name: {
+            "path": _text(_obj(frozen_sources, name), "expected_local_path"),
+            "sha256": _sha(_text(_obj(frozen_sources, name), "sha256"), name),
+        }
+        for name in (
+            "adapter_manifest",
+            "official_split",
+            "canonical_molecules",
+            "canonical_audit",
+        )
+    }
+    if _obj(manifest, "inputs") != expected_inputs:
+        raise ShadowContractError("input manifest source receipts differ")
+    for name in ("target_columns", "provenance_columns", "public_test_rows"):
+        if manifest.get(name) != 0 or isinstance(manifest.get(name), bool):
+            raise ShadowContractError(f"input manifest {name} must be integer zero")
+    if manifest.get("deterministic") is not True:
+        raise ShadowContractError("input manifest must declare deterministic bytes")
+
+    rows_hash = _file_hash(input_rows_path)
+    if _obj(manifest, "output") != {
+        "path": "shadow_input_rows.csv",
+        "sha256": rows_hash,
+    }:
+        raise ShadowContractError("input rows do not match their manifest")
+    rows = _read_csv(input_rows_path, INPUT_COLUMNS, exact_header=INPUT_COLUMNS)
+    tasks = _tasks(contract)
+    _check_projection_rows(contract, rows, tasks)
+    population = _population(rows, tasks)
+    _check_raw_population(implementation, population)
+    if _obj(manifest, "population") != population:
+        raise ShadowContractError("input manifest population differs from rows")
+    return _InputChain(
+        rows=rows,
+        rows_sha256=rows_hash,
+        manifest_sha256=_file_hash(input_manifest_path),
+        population=population,
+    )
+
+
 def assign_shadow_rows(
     contract_path: Path,
     implementation_contract_path: Path,
@@ -303,7 +406,7 @@ def assign_shadow_rows(
     lock_path: Path,
     output_directory: Path,
     *,
-    source_revision: str,
+    source_revision: str | None = None,
 ) -> ShadowAssignmentResult:
     """Assign folds using only the stripped projection, contract, and lock."""
 
@@ -314,32 +417,18 @@ def assign_shadow_rows(
         implementation_contract_path, contract_path
     )
     contract_hash = _file_hash(contract_path)
-    implementation_hash = _file_hash(implementation_contract_path)
     environment = _check_environment(contract, implementation, lock_path)
-    input_manifest = _read_json(input_manifest_path)
-    if input_manifest.get("schema_version") != SHADOW_INPUT_SCHEMA:
-        raise ShadowContractError("unsupported shadow input manifest")
-    if _obj(input_manifest, "contract").get("sha256") != contract_hash:
-        raise ShadowContractError("input manifest uses another contract")
-    if (
-        _obj(input_manifest, "implementation_contract").get("sha256")
-        != implementation_hash
-    ):
-        raise ShadowContractError("input manifest uses another implementation contract")
-    preparation_source = _obj(input_manifest, "preparation_source")
-    if (
-        preparation_source.get("revision") != revision
-        or preparation_source.get("sha256") != _file_hash(Path(__file__))
-    ):
-        raise ShadowContractError("input preparation and assignment source differ")
-    if _obj(input_manifest, "output").get("path") != "shadow_input_rows.csv":
-        raise ShadowContractError("input manifest names an unexpected row artifact")
-    rows_hash = _file_hash(input_rows_path)
-    if _obj(input_manifest, "output").get("sha256") != rows_hash:
-        raise ShadowContractError("input rows do not match their manifest")
-    rows = _read_csv(input_rows_path, INPUT_COLUMNS, exact_header=INPUT_COLUMNS)
-    tasks = _tasks(contract)
-    _check_projection_rows(contract, rows, tasks)
+    chain = _validate_input_chain(
+        contract,
+        implementation,
+        contract_path,
+        implementation_contract_path,
+        input_rows_path,
+        input_manifest_path,
+        revision,
+    )
+    rows = chain.rows
+    rows_hash = chain.rows_sha256
     start = time.perf_counter()
 
     structure_by_hash: dict[str, str] = {}
@@ -357,7 +446,7 @@ def assign_shadow_rows(
             if molecule is None:
                 raise ShadowContractError(f"cannot parse structure: {key}")
             molecules[key] = molecule
-            scaffold = MurckoScaffold.MurckoScaffoldSmiles(  # type: ignore[no-untyped-call]
+            scaffold = MurckoScaffold.MurckoScaffoldSmiles(
                 mol=molecule, includeChirality=False
             )
             material = (
@@ -422,7 +511,7 @@ def assign_shadow_rows(
             "shadow_input_rows.csv": rows_hash,
             "shadow_input_manifest.json": _file_hash(input_manifest_path),
         },
-        "population": _population(rows, tasks),
+        "population": chain.population,
         "groups": {
             "scaffold": len(set(scaffolds.values())),
             "community": len(set(communities.values())),
@@ -434,6 +523,7 @@ def assign_shadow_rows(
         "outputs": {"shadow_rows.csv": sha256(row_bytes).hexdigest()},
         "accounting": _zero_assignment_accounting(),
     }
+    _revision(revision)
     output_directory.mkdir(parents=True)
     rows_path = output_directory / "shadow_rows.csv"
     receipt_path = output_directory / "shadow_assignment_receipt.json"
@@ -451,100 +541,158 @@ def assign_shadow_rows(
 def summarize_shadow_rows(
     contract_path: Path,
     implementation_contract_path: Path,
+    input_rows_path: Path,
+    input_manifest_path: Path,
     shadow_rows_path: Path,
     assignment_receipt_path: Path,
+    lock_path: Path,
     train_val_measurements_path: Path,
     measurement_parent_manifest_path: Path,
     *,
-    source_revision: str,
+    source_revision: str | None = None,
 ) -> ShadowSummaryResult:
     """Join the sole train-only label projection after assignment is hashed."""
 
     revision = _revision(source_revision)
     manifest_path = shadow_rows_path.parent / "shadow_manifest.json"
-    if manifest_path.exists():
-        raise ShadowContractError(f"refusing to overwrite {manifest_path}")
+    failure_path = shadow_rows_path.parent / "shadow_validation_failure.json"
+    for path in (manifest_path, failure_path):
+        if path.exists():
+            raise ShadowContractError(f"refusing to overwrite {path}")
     contract = _contract(contract_path)
-    _implementation_contract(implementation_contract_path, contract_path)
-    contract_hash = _file_hash(contract_path)
-    implementation_hash = _file_hash(implementation_contract_path)
-    receipt = _read_json(assignment_receipt_path)
-    if receipt.get("schema_version") != SHADOW_ASSIGNMENT_SCHEMA:
-        raise ShadowContractError("unsupported assignment receipt")
-    if _obj(receipt, "contract").get("sha256") != contract_hash:
-        raise ShadowContractError("assignment receipt uses another contract")
-    if (
-        _obj(receipt, "implementation_contract").get("sha256")
-        != implementation_hash
-    ):
-        raise ShadowContractError("assignment uses another implementation contract")
-    source = _obj(receipt, "implementation_source")
-    if (
-        source.get("revision") != revision
-        or source.get("sha256") != _file_hash(Path(__file__))
-    ):
-        raise ShadowContractError("assignment and summary source differ")
-    shadow_hash = _file_hash(shadow_rows_path)
-    if _obj(receipt, "outputs").get("shadow_rows.csv") != shadow_hash:
-        raise ShadowContractError("shadow rows do not match assignment receipt")
-
-    measurement_contract = _obj(
-        _obj(contract, "source_contracts"),
-        "train_val_measurements_for_post_assignment_summary_only",
+    implementation = _implementation_contract(
+        implementation_contract_path, contract_path
     )
-    measurement_hash = _file_hash(train_val_measurements_path)
-    if measurement_hash != _sha(
-        _text(measurement_contract, "sha256"), "train_val measurements"
+    contract_hash = _file_hash(contract_path)
+    environment = _check_environment(contract, implementation, lock_path)
+    chain = _validate_input_chain(
+        contract,
+        implementation,
+        contract_path,
+        implementation_contract_path,
+        input_rows_path,
+        input_manifest_path,
+        revision,
+    )
+    if (
+        shadow_rows_path.name != "shadow_rows.csv"
+        or assignment_receipt_path.name != "shadow_assignment_receipt.json"
+        or shadow_rows_path.parent != assignment_receipt_path.parent
     ):
-        raise ShadowContractError("train_val measurement hash mismatch")
-    parent_hash = _file_hash(measurement_parent_manifest_path)
-    parent_contract = _obj(measurement_contract, "parent_manifest")
-    if parent_hash != _sha(_text(parent_contract, "sha256"), "parent manifest"):
-        raise ShadowContractError("measurement parent manifest hash mismatch")
-    parent = _read_json(measurement_parent_manifest_path)
-    if _obj(parent, "outputs").get("tdc/measurements.csv") != measurement_hash:
-        raise ShadowContractError("parent manifest does not bind measurements")
-
+        raise ShadowContractError(
+            "shadow assignment artifacts must share their exact root"
+        )
+    shadow_hash = _file_hash(shadow_rows_path)
     rows = _read_csv(shadow_rows_path, SHADOW_COLUMNS, exact_header=SHADOW_COLUMNS)
     _check_shadow_rows(contract, rows)
-    shadow_ids = [row["molecule_id"] for row in rows]
-    if len(shadow_ids) != len(set(shadow_ids)):
-        raise ShadowContractError("duplicate shadow identity")
-    # Identity validation is a complete first pass. Values are not selected yet.
-    identity_rows = _read_csv(train_val_measurements_path, ("molecule_id",))
-    measurement_ids = [row["molecule_id"] for row in identity_rows]
-    if len(measurement_ids) != len(set(measurement_ids)):
-        raise ShadowContractError("duplicate measurement identity")
-    unknown = sorted(set(measurement_ids) - set(shadow_ids))
-    missing = sorted(set(shadow_ids) - set(measurement_ids))
-    if unknown:
-        raise ShadowContractError(
-            f"measurement identity absent from frozen shadow rows: {unknown[0]}"
-        )
-    if missing:
-        raise ShadowContractError(f"shadow identity lacks measurement: {missing[0]}")
-    if len(measurement_ids) != _int(measurement_contract, "rows"):
-        raise ShadowContractError("measurement row count differs from contract")
+    _check_shadow_projection(chain.rows, rows)
+    receipt = _read_json(assignment_receipt_path)
+    runtime, peak, groups = _validate_assignment_receipt(
+        contract,
+        implementation,
+        contract_path,
+        implementation_contract_path,
+        receipt,
+        revision,
+        environment,
+        chain,
+        rows,
+        shadow_hash,
+    )
+    _revision(revision)
 
+    measurement_hash: str | None = None
+    parent_hash: str | None = None
     labels: dict[str, int] = {}
-    for row in _read_csv(train_val_measurements_path, ("molecule_id", "value")):
-        molecule_id = row["molecule_id"]
-        try:
-            value = float(row["value"])
-        except ValueError as exc:
-            raise ShadowContractError(
-                f"non-numeric shadow label for {molecule_id}"
-            ) from exc
-        if value not in {0.0, 1.0}:
-            raise ShadowContractError(f"non-binary shadow label for {molecule_id}")
-        labels[molecule_id] = int(value)
+    failed_step = "measurement_receipt_validation"
+    try:
+        measurement_contract = _obj(
+            _obj(contract, "source_contracts"),
+            "train_val_measurements_for_post_assignment_summary_only",
+        )
+        measurement_hash = _file_hash(train_val_measurements_path)
+        if measurement_hash != _sha(
+            _text(measurement_contract, "sha256"), "train_val measurements"
+        ):
+            raise ShadowContractError("train_val measurement hash mismatch")
+        parent_hash = _file_hash(measurement_parent_manifest_path)
+        parent_contract = _obj(measurement_contract, "parent_manifest")
+        if parent_hash != _sha(
+            _text(parent_contract, "sha256"), "parent manifest"
+        ):
+            raise ShadowContractError("measurement parent manifest hash mismatch")
+        parent = _read_json(measurement_parent_manifest_path)
+        if _obj(parent, "outputs").get("tdc/measurements.csv") != measurement_hash:
+            raise ShadowContractError("parent manifest does not bind measurements")
 
-    summaries = _label_summaries(contract, rows, labels)
-    duplicate_counts = _duplicate_counts(rows, labels)
-    population_contract = _obj(contract, "population")
-    for name, actual in duplicate_counts.items():
-        if actual != _int(population_contract, name):
-            raise ShadowContractError(f"{name} differs from frozen population")
+        failed_step = "measurement_identity_validation"
+        shadow_ids = [row["molecule_id"] for row in rows]
+        # This complete first pass selects identities only, never target values.
+        identity_rows = _read_csv(train_val_measurements_path, ("molecule_id",))
+        measurement_ids = [row["molecule_id"] for row in identity_rows]
+        if len(measurement_ids) != len(set(measurement_ids)):
+            raise ShadowContractError("duplicate measurement identity")
+        unknown = sorted(set(measurement_ids) - set(shadow_ids))
+        missing = sorted(set(shadow_ids) - set(measurement_ids))
+        if unknown:
+            raise ShadowContractError(
+                f"measurement identity absent from frozen shadow rows: {unknown[0]}"
+            )
+        if missing:
+            raise ShadowContractError(
+                f"shadow identity lacks measurement: {missing[0]}"
+            )
+        if len(measurement_ids) != _int(measurement_contract, "rows"):
+            raise ShadowContractError("measurement row count differs from contract")
+
+        failed_step = "train_val_label_validation"
+        for measurement in _read_csv(
+            train_val_measurements_path, ("molecule_id", "value")
+        ):
+            molecule_id = measurement["molecule_id"]
+            try:
+                value = float(measurement["value"])
+            except ValueError as exc:
+                raise ShadowContractError(
+                    f"non-numeric shadow label for {molecule_id}"
+                ) from exc
+            if value not in {0.0, 1.0}:
+                raise ShadowContractError(
+                    f"non-binary shadow label for {molecule_id}"
+                )
+            labels[molecule_id] = int(value)
+
+        failed_step = "class_support_validation"
+        summaries = _label_summaries(contract, rows, labels)
+        failed_step = "duplicate_conflict_validation"
+        duplicate_counts = _duplicate_counts(rows, labels)
+        population_contract = _obj(contract, "population")
+        for name, actual in duplicate_counts.items():
+            if actual != _int(population_contract, name):
+                raise ShadowContractError(f"{name} differs from frozen population")
+    except ShadowContractError as exc:
+        _write_validation_failure(
+            failure_path,
+            contract_path,
+            implementation_contract_path,
+            revision,
+            chain,
+            measurement_hash,
+            parent_hash,
+            environment,
+            groups,
+            runtime,
+            peak,
+            assignment_receipt_path,
+            shadow_hash,
+            failed_step,
+            exc,
+            len(labels),
+        )
+        raise
+
+    assert measurement_hash is not None
+    assert parent_hash is not None
     outputs = {
         "shadow_assignment_receipt.json": _file_hash(assignment_receipt_path),
         "shadow_rows.csv": shadow_hash,
@@ -563,18 +711,21 @@ def summarize_shadow_rows(
             implementation_contract_path
         ),
         "implementation_source": _source_receipt(revision),
-        "assignment_inputs": _obj(receipt, "inputs"),
+        "assignment_inputs": {
+            "shadow_input_rows.csv": chain.rows_sha256,
+            "shadow_input_manifest.json": chain.manifest_sha256,
+        },
         "summary_inputs": {
             "train_val_measurements.csv": measurement_hash,
             "measurement_parent_manifest.json": parent_hash,
         },
-        "environment": _obj(receipt, "environment"),
-        "population": _obj(receipt, "population"),
-        "groups": _obj(receipt, "groups"),
+        "environment": environment,
+        "population": chain.population,
+        "groups": groups,
         "duplicate_and_conflicting_labels": duplicate_counts,
         "validation": summaries,
-        "runtime_seconds": receipt.get("runtime_seconds"),
-        "peak_rss_gib": receipt.get("peak_rss_gib"),
+        "runtime_seconds": runtime,
+        "peak_rss_gib": peak,
         "outputs": outputs,
         "aggregate_recipe": (
             "SHA-256 of UTF-8 path=sha256 lines sorted by path and joined "
@@ -591,8 +742,247 @@ def summarize_shadow_rows(
         },
         "deterministic_assignments": True,
     }
+    _revision(revision)
     _write(manifest_path, _json_bytes(manifest))
     return ShadowSummaryResult(manifest_path, len(rows), len(labels))
+
+
+def _validate_assignment_receipt(
+    contract: Mapping[str, Any],
+    implementation: Mapping[str, Any],
+    contract_path: Path,
+    implementation_contract_path: Path,
+    receipt: Mapping[str, Any],
+    revision: str,
+    environment: Mapping[str, str],
+    chain: _InputChain,
+    rows: Sequence[Mapping[str, str]],
+    shadow_hash: str,
+) -> tuple[float, float, dict[str, int]]:
+    _check_artifact_fields(
+        implementation,
+        "shadow_assignment_receipt",
+        receipt,
+        "shadow assignment receipt",
+    )
+    if receipt.get("schema_version") != SHADOW_ASSIGNMENT_SCHEMA:
+        raise ShadowContractError("unsupported assignment receipt")
+    if _obj(receipt, "contract") != _contract_receipt(contract_path):
+        raise ShadowContractError("assignment contract receipt differs")
+    if _obj(receipt, "implementation_contract") != _contract_receipt(
+        implementation_contract_path
+    ):
+        raise ShadowContractError("assignment implementation receipt differs")
+    if _obj(receipt, "implementation_source") != _source_receipt(revision):
+        raise ShadowContractError("assignment source receipt differs")
+    if _obj(receipt, "environment") != dict(environment):
+        raise ShadowContractError("assignment environment receipt differs")
+    expected_inputs = {
+        "shadow_input_rows.csv": chain.rows_sha256,
+        "shadow_input_manifest.json": chain.manifest_sha256,
+    }
+    if _obj(receipt, "inputs") != expected_inputs:
+        raise ShadowContractError("assignment input receipts differ")
+    if _obj(receipt, "population") != chain.population:
+        raise ShadowContractError("assignment population receipt differs")
+
+    groups = {
+        "scaffold": len({row["scaffold_group_hash"] for row in rows}),
+        "community": len({row["community_group_hash"] for row in rows}),
+    }
+    if _obj(receipt, "groups") != groups:
+        raise ShadowContractError("assignment group counts differ from rows")
+    if groups["scaffold"] != _int(
+        _obj(contract, "population"), "global_scaffold_groups"
+    ):
+        raise ShadowContractError("assignment scaffold count differs from contract")
+    distance_count = receipt.get("community_distance_count")
+    expected_distance_count = _int(
+        _obj(_obj(contract, "protocols"), "community"), "pair_distances"
+    )
+    if (
+        not isinstance(distance_count, int)
+        or isinstance(distance_count, bool)
+        or distance_count != expected_distance_count
+    ):
+        raise ShadowContractError("assignment distance count differs from contract")
+    if receipt.get("community_distance_dtype") != "numpy.float64":
+        raise ShadowContractError("assignment distance dtype differs")
+    runtime = _finite_nonnegative(receipt.get("runtime_seconds"), "runtime_seconds")
+    peak = _finite_nonnegative(receipt.get("peak_rss_gib"), "peak_rss_gib")
+    _check_cap(contract, runtime, peak)
+    if _obj(receipt, "outputs") != {"shadow_rows.csv": shadow_hash}:
+        raise ShadowContractError("shadow rows do not match assignment receipt")
+    if _obj(receipt, "accounting") != _zero_assignment_accounting():
+        raise ShadowContractError("assignment accounting is not exactly zero")
+    return runtime, peak, groups
+
+
+def _check_shadow_projection(
+    input_rows: Sequence[Mapping[str, str]],
+    shadow_rows: Sequence[Mapping[str, str]],
+) -> None:
+    if len(input_rows) != len(shadow_rows):
+        raise ShadowContractError("shadow rows differ from stripped input rows")
+    carried = INPUT_COLUMNS[:-1]
+    for source, output in zip(input_rows, shadow_rows, strict=True):
+        if any(source[name] != output[name] for name in carried):
+            raise ShadowContractError(
+                f"shadow row changes stripped input identity {source['molecule_id']}"
+            )
+
+
+def _write_validation_failure(
+    path: Path,
+    contract_path: Path,
+    implementation_contract_path: Path,
+    revision: str,
+    chain: _InputChain,
+    measurement_hash: str | None,
+    parent_hash: str | None,
+    environment: Mapping[str, str],
+    groups: Mapping[str, int],
+    runtime: float,
+    peak: float,
+    assignment_receipt_path: Path,
+    shadow_hash: str,
+    failed_step: str,
+    error: ShadowContractError,
+    labels_parsed: int,
+) -> None:
+    receipt = {
+        "schema_version": SHADOW_VALIDATION_FAILURE_SCHEMA,
+        "status": "blocked",
+        "failed_step": failed_step,
+        "error_type": type(error).__name__,
+        "error": str(error),
+        "contract": _contract_receipt(contract_path),
+        "implementation_contract": _contract_receipt(
+            implementation_contract_path
+        ),
+        "implementation_source": _source_receipt(revision),
+        "assignment_inputs": {
+            "shadow_input_rows.csv": chain.rows_sha256,
+            "shadow_input_manifest.json": chain.manifest_sha256,
+        },
+        "summary_inputs": {
+            "train_val_measurements.csv": measurement_hash,
+            "measurement_parent_manifest.json": parent_hash,
+        },
+        "environment": dict(environment),
+        "population": chain.population,
+        "groups": dict(groups),
+        "runtime_seconds": runtime,
+        "peak_rss_gib": peak,
+        "outputs": {
+            "shadow_assignment_receipt.json": _file_hash(
+                assignment_receipt_path
+            ),
+            "shadow_rows.csv": shadow_hash,
+        },
+        "accounting": {
+            "train_val_labels_parsed": labels_parsed,
+            "public_test_labels_parsed": 0,
+            "feature_matrices_generated": 0,
+            "model_fits": 0,
+            "predictions": 0,
+            "metric_evaluations": 0,
+        },
+        "repair_attempted": False,
+    }
+    _revision(revision)
+    _write(path, _json_bytes(receipt))
+
+
+def write_assignment_failure_receipt(
+    contract_path: Path,
+    implementation_contract_path: Path,
+    input_rows_path: Path,
+    input_manifest_path: Path,
+    lock_path: Path,
+    output_directory: Path,
+    *,
+    source_revision: str,
+    failure_kind: str,
+    elapsed_seconds: float,
+    peak_rss_gib: float | None,
+) -> Path:
+    """Preserve a zero-label blocker when the outer resource watchdog stops."""
+
+    _require_new(output_directory)
+    revision = _revision(source_revision)
+    contract = _contract(contract_path)
+    implementation = _implementation_contract(
+        implementation_contract_path, contract_path
+    )
+    environment = _check_environment(contract, implementation, lock_path)
+    chain = _validate_input_chain(
+        contract,
+        implementation,
+        contract_path,
+        implementation_contract_path,
+        input_rows_path,
+        input_manifest_path,
+        revision,
+    )
+    allowed = {
+        "runtime_limit_exceeded",
+        "peak_rss_limit_exceeded",
+        "rss_monitor_unavailable",
+    }
+    if failure_kind not in allowed:
+        raise ShadowContractError("unknown assignment resource failure kind")
+    elapsed = _finite_nonnegative(elapsed_seconds, "elapsed_seconds")
+    peak = (
+        None
+        if peak_rss_gib is None
+        else _finite_nonnegative(peak_rss_gib, "peak_rss_gib")
+    )
+    cap = _obj(_obj(_obj(contract, "protocols"), "community"), "resource_cap")
+    runtime_limit = 60 * _number(cap, "runtime_minutes")
+    peak_limit = _number(cap, "peak_rss_gib")
+    if failure_kind == "runtime_limit_exceeded" and elapsed <= runtime_limit:
+        raise ShadowContractError("runtime failure does not exceed its limit")
+    if (
+        failure_kind == "peak_rss_limit_exceeded"
+        and (peak is None or peak <= peak_limit)
+    ):
+        raise ShadowContractError("RSS failure does not exceed its limit")
+    if failure_kind == "rss_monitor_unavailable" and peak is not None:
+        raise ShadowContractError("unavailable RSS monitor must record null RSS")
+    receipt = {
+        "schema_version": SHADOW_ASSIGNMENT_FAILURE_SCHEMA,
+        "status": "blocked",
+        "failure_kind": failure_kind,
+        "contract": _contract_receipt(contract_path),
+        "implementation_contract": _contract_receipt(
+            implementation_contract_path
+        ),
+        "implementation_source": _source_receipt(revision),
+        "environment": environment,
+        "inputs": {
+            "shadow_input_rows.csv": chain.rows_sha256,
+            "shadow_input_manifest.json": chain.manifest_sha256,
+        },
+        "limits": {
+            "runtime_seconds": runtime_limit,
+            "peak_rss_gib": peak_limit,
+        },
+        "observed": {
+            "elapsed_seconds": elapsed,
+            "peak_rss_gib": peak,
+        },
+        "outputs": {},
+        "accounting": {
+            **_zero_assignment_accounting(),
+            "shadow_rows_written": 0,
+        },
+    }
+    _revision(revision)
+    output_directory.mkdir(parents=True)
+    path = output_directory / "shadow_assignment_failure.json"
+    _write(path, _json_bytes(receipt))
+    return path
 
 
 def _communities(
@@ -624,7 +1014,7 @@ def _communities(
         offset += index
     if offset != count or not distances.flags.c_contiguous:
         raise ShadowContractError("distance vector is not exact contiguous float64")
-    clusters = Butina.ClusterData(  # type: ignore[no-untyped-call]
+    clusters = Butina.ClusterData(
         distances,
         len(fps),
         _number(community, "distance_cutoff"),
@@ -922,6 +1312,17 @@ def _check_population(contract: Mapping[str, Any], actual: Mapping[str, Any]) ->
             raise ShadowContractError(f"{name} differs from frozen population")
 
 
+def _check_raw_population(
+    implementation: Mapping[str, Any], actual: Mapping[str, Any]
+) -> None:
+    raw_counts = _obj(
+        _obj(implementation, "trusted_projection"), "raw_count_definitions"
+    )
+    for name in ("unique_raw_structures", "unique_standardized_hash_raw_pairs"):
+        if actual[name] != _int(raw_counts, f"expected_{name}"):
+            raise ShadowContractError(f"{name} differs from implementation contract")
+
+
 def _check_structure_hashes(row: Mapping[str, str]) -> None:
     molecule_id = row["molecule_id"]
     if sha256(row["raw_structure"].encode()).hexdigest() != row[
@@ -976,9 +1377,24 @@ def _check_environment(
 def _check_cap(contract: Mapping[str, Any], elapsed: float, peak: float) -> None:
     cap = _obj(_obj(_obj(contract, "protocols"), "community"), "resource_cap")
     if elapsed > 60 * _number(cap, "runtime_minutes"):
-        raise ShadowContractError("community clustering exceeded runtime cap")
+        raise ShadowResourceLimitError(
+            "runtime_limit_exceeded", elapsed, peak
+        )
     if peak > _number(cap, "peak_rss_gib"):
-        raise ShadowContractError("community clustering exceeded peak RSS cap")
+        raise ShadowResourceLimitError(
+            "peak_rss_limit_exceeded", elapsed, peak
+        )
+
+
+def _finite_nonnegative(value: Any, name: str) -> float:
+    if (
+        not isinstance(value, (int, float))
+        or isinstance(value, bool)
+        or not math.isfinite(float(value))
+        or float(value) < 0
+    ):
+        raise ShadowContractError(f"{name} must be finite and nonnegative")
+    return float(value)
 
 
 def _peak_rss_gib() -> float:
@@ -1019,8 +1435,57 @@ def _zero_assignment_accounting() -> dict[str, int]:
     }
 
 
+def _check_artifact_fields(
+    implementation: Mapping[str, Any],
+    artifact: str,
+    value: Mapping[str, Any],
+    name: str,
+) -> None:
+    schema = _obj(_obj(implementation, "artifact_schemas"), artifact)
+    expected = sorted(_text_list(schema, "top_level_fields"))
+    if sorted(value) != expected:
+        raise ShadowContractError(f"{name} has unexpected top-level fields")
+
+
 def _source_receipt(revision: str) -> dict[str, str]:
     return {"path": _SOURCE, "revision": revision, "sha256": _file_hash(Path(__file__))}
+
+
+def clean_source_revision(repository_root: Path = _REPOSITORY_ROOT) -> str:
+    """Return HEAD only when it identifies this complete, clean checkout."""
+
+    root = repository_root.resolve()
+
+    def git(*arguments: str) -> subprocess.CompletedProcess[str]:
+        try:
+            return subprocess.run(
+                ["git", "-C", str(root), *arguments],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        except OSError as exc:
+            raise ShadowContractError(f"cannot inspect Git source: {exc}") from exc
+
+    top = git("rev-parse", "--show-toplevel")
+    revision = git("rev-parse", "HEAD")
+    status = git("status", "--porcelain=v1", "--untracked-files=all")
+    source_revision = revision.stdout.strip()
+    if (
+        top.returncode != 0
+        or Path(top.stdout.strip()).resolve() != root
+        or revision.returncode != 0
+        or len(source_revision) != 40
+        or any(
+            character not in "0123456789abcdef" for character in source_revision
+        )
+        or status.returncode != 0
+        or bool(status.stdout)
+    ):
+        raise ShadowContractError(
+            "shadow artifacts require the exact clean Git source revision"
+        )
+    return source_revision
 
 
 def _contract_receipt(path: Path) -> dict[str, str]:
@@ -1161,13 +1626,19 @@ def _nonempty(value: str, name: str) -> str:
     return checked
 
 
-def _revision(value: str) -> str:
-    checked = _nonempty(value, "source revision")
-    if len(checked) != 40 or any(
-        character not in "0123456789abcdef" for character in checked
-    ):
-        raise ShadowContractError("source revision must be a full lowercase Git SHA")
-    return checked
+def _revision(value: str | None) -> str:
+    if value is not None:
+        checked = _nonempty(value, "source revision")
+        if len(checked) != 40 or any(
+            character not in "0123456789abcdef" for character in checked
+        ):
+            raise ShadowContractError(
+                "source revision must be a full lowercase Git SHA"
+            )
+    actual = clean_source_revision()
+    if value is not None and value != actual:
+        raise ShadowContractError("source revision differs from clean Git HEAD")
+    return actual
 
 
 def _logical_contract_path(path: Path) -> str:
@@ -1229,17 +1700,22 @@ def _write(path: Path, content: bytes) -> None:
 
 __all__ = [
     "INPUT_COLUMNS",
+    "SHADOW_ASSIGNMENT_FAILURE_SCHEMA",
     "SHADOW_ASSIGNMENT_SCHEMA",
     "SHADOW_COLUMNS",
     "SHADOW_CONTRACT_SCHEMA",
     "SHADOW_INPUT_SCHEMA",
     "SHADOW_IMPLEMENTATION_CONTRACT_SCHEMA",
     "SHADOW_MANIFEST_SCHEMA",
+    "SHADOW_VALIDATION_FAILURE_SCHEMA",
     "ShadowAssignmentResult",
     "ShadowContractError",
     "ShadowInputResult",
+    "ShadowResourceLimitError",
     "ShadowSummaryResult",
     "assign_shadow_rows",
+    "clean_source_revision",
     "prepare_shadow_input",
     "summarize_shadow_rows",
+    "write_assignment_failure_receipt",
 ]

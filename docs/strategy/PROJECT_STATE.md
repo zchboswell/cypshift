@@ -133,15 +133,18 @@ label parse, or metric evaluation.
 The reviewed parent contract left six byte-level implementation choices open.
 The pre-result implementation contract now fixes the full one-to-one identity
 join, numeric source-row sorting, semantic non-use of canonical provenance,
-raw-form counts, logical receipt paths, and exact artifact schemas. One focused
-research module implements three process boundaries: trusted train-only
+raw-form counts, logical receipt paths, and exact artifact schemas. Focused
+research code implements three process boundaries: trusted train-only
 projection, label-free global assignment, and post-hash train-only summary.
-Three thin scripts expose only those paths. Six synthetic tests cover
-determinism, immutability, raw-string preservation, scaffold fallback, chiral
-Morgan community mechanics, inclusive distance 0.40, exact fold hashes,
-duplicate rows, class support, identity-first label access, and fail-closed
-tampering. No real source projection, full clustering, model feature, fit,
-prediction, public-test label parse, or metric evaluation has run.
+Three thin scripts expose only those paths. Synthetic tests cover determinism,
+immutability, raw-string preservation, scaffold fallback, chiral Morgan
+community mechanics, the real inclusive distance-0.40 API boundary, exact fold
+hashes, duplicate rows, class support, identity-first label access, clean source
+binding, active resource caps, complete receipt-chain validation, and retained
+blocker evidence. Assignment output is promoted atomically from a staging root.
+All real inputs must remain stable and read-only for a process lifetime. No real
+source projection, full clustering, model feature, fit, prediction, public-test
+label parse, or metric evaluation has run.
 
 ## Phase 0.5 benchmark contract
 

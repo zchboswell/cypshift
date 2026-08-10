@@ -4,12 +4,14 @@ import copy
 import csv
 import hashlib
 import json
+import subprocess
 import sys
 from dataclasses import dataclass
 from importlib.metadata import version
 from pathlib import Path
 from typing import Any
 
+import numpy
 import pytest
 from rdkit import Chem, rdBase
 
@@ -32,6 +34,12 @@ LOCK_PATH = ROOT / "uv.lock"
 TASKS = ("cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith")
 STRUCTURES = ("CCO", "N", "O", "F", "c1ccccc1")
 REVISION = "a" * 40
+REAL_CLEAN_SOURCE_REVISION = shadow.clean_source_revision
+
+
+@pytest.fixture(autouse=True)
+def _frozen_test_revision(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(shadow, "clean_source_revision", lambda: REVISION)
 
 
 @dataclass(frozen=True, slots=True)
@@ -451,7 +459,9 @@ def test_shadow_assignment_is_global_deterministic_and_label_free(
     assert b",0,," in first.rows_path.read_bytes()
 
     tampered_rows = _read_csv(tmp_path / "input" / "shadow_input_rows.csv")
-    tampered_path = tmp_path / "input-with-target.csv"
+    tampered_root = tmp_path / "input-with-target"
+    tampered_root.mkdir()
+    tampered_path = tampered_root / "shadow_input_rows.csv"
     _write_csv(
         tampered_path,
         (*INPUT_COLUMNS, "target"),
@@ -463,7 +473,7 @@ def test_shadow_assignment_is_global_deterministic_and_label_free(
         )
     )
     tampered_manifest["output"]["sha256"] = _hash(tampered_path)
-    tampered_manifest_path = tmp_path / "input-with-target-manifest.json"
+    tampered_manifest_path = tampered_root / "shadow_input_manifest.json"
     _write_json(tampered_manifest_path, tampered_manifest)
     with pytest.raises(ShadowContractError, match="unexpected CSV columns"):
         assign_shadow_rows(
@@ -474,6 +484,93 @@ def test_shadow_assignment_is_global_deterministic_and_label_free(
             LOCK_PATH,
             tmp_path / "forbidden-target-assignment",
             source_revision=REVISION,
+        )
+
+
+def test_assignment_rejects_tampered_input_receipt_claims(tmp_path: Path) -> None:
+    fixture = _fixture(tmp_path / "fixture")
+    prepared = _prepare(fixture, tmp_path / "input")
+    original = json.loads(prepared.manifest_path.read_text(encoding="utf-8"))
+
+    mutations: list[tuple[str, dict[str, Any]]] = []
+    wrong_source = copy.deepcopy(original)
+    wrong_source["inputs"]["canonical_molecules"]["sha256"] = "0" * 64
+    mutations.append(("source", wrong_source))
+    public_rows = copy.deepcopy(original)
+    public_rows["public_test_rows"] = 999
+    mutations.append(("public", public_rows))
+    wrong_population = copy.deepcopy(original)
+    wrong_population["population"]["source_rows"] = 999
+    mutations.append(("population", wrong_population))
+    nondeterministic = copy.deepcopy(original)
+    nondeterministic["deterministic"] = False
+    mutations.append(("deterministic", nondeterministic))
+    extra_field = copy.deepcopy(original)
+    extra_field["unfrozen"] = True
+    mutations.append(("field", extra_field))
+
+    for name, manifest in mutations:
+        root = tmp_path / f"tampered-{name}"
+        root.mkdir()
+        rows_path = root / "shadow_input_rows.csv"
+        rows_path.write_bytes(prepared.rows_path.read_bytes())
+        manifest_path = root / "shadow_input_manifest.json"
+        _write_json(manifest_path, manifest)
+        output = tmp_path / f"assignment-{name}"
+        with pytest.raises(ShadowContractError):
+            assign_shadow_rows(
+                fixture.contract,
+                fixture.implementation_contract,
+                rows_path,
+                manifest_path,
+                LOCK_PATH,
+                output,
+                source_revision=REVISION,
+            )
+        assert not output.exists()
+
+
+def test_assignment_resource_failure_receipt_is_immutable_and_zero_use(
+    tmp_path: Path,
+) -> None:
+    fixture = _fixture(tmp_path / "fixture")
+    prepared = _prepare(fixture, tmp_path / "input")
+    output = tmp_path / "resource-blocker"
+    path = shadow.write_assignment_failure_receipt(
+        fixture.contract,
+        fixture.implementation_contract,
+        prepared.rows_path,
+        prepared.manifest_path,
+        LOCK_PATH,
+        output,
+        source_revision=REVISION,
+        failure_kind="runtime_limit_exceeded",
+        elapsed_seconds=7200.01,
+        peak_rss_gib=1.0,
+    )
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    implementation = json.loads(IMPLEMENTATION_CONTRACT.read_text(encoding="utf-8"))
+    assert sorted(receipt) == implementation["artifact_schemas"][
+        "shadow_assignment_failure"
+    ]["top_level_fields"]
+    assert receipt["status"] == "blocked"
+    assert receipt["failure_kind"] == "runtime_limit_exceeded"
+    assert receipt["outputs"] == {}
+    assert receipt["accounting"]["shadow_rows_written"] == 0
+    assert receipt["accounting"]["public_test_labels_parsed"] == 0
+    assert receipt["accounting"]["model_fits"] == 0
+    with pytest.raises(ShadowContractError, match="already exists"):
+        shadow.write_assignment_failure_receipt(
+            fixture.contract,
+            fixture.implementation_contract,
+            prepared.rows_path,
+            prepared.manifest_path,
+            LOCK_PATH,
+            output,
+            source_revision=REVISION,
+            failure_kind="runtime_limit_exceeded",
+            elapsed_seconds=7200.02,
+            peak_rss_gib=1.0,
         )
 
 
@@ -561,6 +658,20 @@ def test_shadow_mechanics_freeze_distance_order_chirality_and_folds(
     }
 
 
+def test_real_butina_boundary_is_inclusive() -> None:
+    at_cutoff = numpy.asarray([0.4], dtype=numpy.float64)
+    above_cutoff = numpy.asarray(
+        [numpy.nextafter(0.4, numpy.inf)], dtype=numpy.float64
+    )
+
+    assert shadow.Butina.ClusterData(
+        at_cutoff, 2, 0.4, isDistData=True, reordering=True
+    ) == ((1, 0),)
+    assert shadow.Butina.ClusterData(
+        above_cutoff, 2, 0.4, isDistData=True, reordering=True
+    ) == ((1,), (0,))
+
+
 def test_projection_rejects_noncanonical_rows_headers_and_identity_sets(
     tmp_path: Path,
 ) -> None:
@@ -625,6 +736,50 @@ def test_projection_rejects_noncanonical_rows_headers_and_identity_sets(
         _prepare(reordered, tmp_path / "reordered-output")
 
 
+def test_source_revision_must_match_a_clean_git_head(tmp_path: Path) -> None:
+    fixture = _fixture(tmp_path / "fixture")
+    with pytest.raises(ShadowContractError, match="differs from clean Git HEAD"):
+        prepare_shadow_input(
+            fixture.contract,
+            fixture.implementation_contract,
+            fixture.adapter_manifest,
+            fixture.official_split,
+            fixture.canonical_molecules,
+            fixture.canonical_audit,
+            tmp_path / "wrong-revision",
+            source_revision="b" * 40,
+        )
+
+    repository = tmp_path / "git-source"
+    repository.mkdir()
+    subprocess.run(["git", "init", "-q", str(repository)], check=True)
+    tracked = repository / "tracked.txt"
+    tracked.write_text("frozen\n", encoding="utf-8")
+    subprocess.run(["git", "-C", str(repository), "add", "tracked.txt"], check=True)
+    subprocess.run(
+        [
+            "git",
+            "-C",
+            str(repository),
+            "-c",
+            "user.name=zchboswell",
+            "-c",
+            "user.email=261114960+zchboswell@users.noreply.github.com",
+            "commit",
+            "-q",
+            "--no-gpg-sign",
+            "-m",
+            "fixture",
+        ],
+        check=True,
+    )
+    revision = REAL_CLEAN_SOURCE_REVISION(repository)
+    assert len(revision) == 40
+    tracked.write_text("dirty\n", encoding="utf-8")
+    with pytest.raises(ShadowContractError, match="exact clean Git"):
+        REAL_CLEAN_SOURCE_REVISION(repository)
+
+
 def test_shadow_summary_validates_support_and_preserves_duplicate_rows(
     tmp_path: Path,
 ) -> None:
@@ -634,8 +789,11 @@ def test_shadow_summary_validates_support_and_preserves_duplicate_rows(
     result = summarize_shadow_rows(
         fixture.contract,
         fixture.implementation_contract,
+        tmp_path / "input" / "shadow_input_rows.csv",
+        tmp_path / "input" / "shadow_input_manifest.json",
         assignment.rows_path,
         assignment.receipt_path,
+        LOCK_PATH,
         fixture.measurements,
         fixture.measurement_manifest,
         source_revision=REVISION,
@@ -674,81 +832,183 @@ def test_shadow_summary_validates_support_and_preserves_duplicate_rows(
         summarize_shadow_rows(
             fixture.contract,
             fixture.implementation_contract,
+            tmp_path / "input" / "shadow_input_rows.csv",
+            tmp_path / "input" / "shadow_input_manifest.json",
             assignment.rows_path,
             assignment.receipt_path,
+            LOCK_PATH,
             fixture.measurements,
             fixture.measurement_manifest,
             source_revision=REVISION,
         )
 
 
+def test_summary_rejects_tampered_assignment_receipt_claims(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    fixture = _fixture(tmp_path / "fixture")
+    prepared = _prepare(fixture, tmp_path / "input")
+    assignment = _assign(fixture, tmp_path / "input", tmp_path / "assignment")
+    original = json.loads(assignment.receipt_path.read_text(encoding="utf-8"))
+
+    mutations: list[tuple[str, dict[str, Any]]] = []
+    wrong_input = copy.deepcopy(original)
+    wrong_input["inputs"]["shadow_input_rows.csv"] = "1" * 64
+    mutations.append(("input", wrong_input))
+    wrong_environment = copy.deepcopy(original)
+    wrong_environment["environment"]["lock_sha256"] = "2" * 64
+    mutations.append(("environment", wrong_environment))
+    wrong_population = copy.deepcopy(original)
+    wrong_population["population"]["source_rows"] = 999
+    mutations.append(("population", wrong_population))
+    wrong_groups = copy.deepcopy(original)
+    wrong_groups["groups"]["scaffold"] = 999
+    mutations.append(("groups", wrong_groups))
+    wrong_distance = copy.deepcopy(original)
+    wrong_distance["community_distance_count"] = 999
+    mutations.append(("distance", wrong_distance))
+    wrong_accounting = copy.deepcopy(original)
+    wrong_accounting["accounting"]["target_values_used_for_assignment"] = 1
+    mutations.append(("accounting", wrong_accounting))
+    wrong_runtime = copy.deepcopy(original)
+    wrong_runtime["runtime_seconds"] = -1
+    mutations.append(("runtime", wrong_runtime))
+
+    real_file_hash = shadow._file_hash
+
+    def prelabel_hash_guard(path: Path) -> str:
+        if path == fixture.measurements:
+            pytest.fail("summary opened labels before validating the receipt chain")
+        return real_file_hash(path)
+
+    monkeypatch.setattr(shadow, "_file_hash", prelabel_hash_guard)
+
+    for name, receipt in mutations:
+        root = tmp_path / f"assignment-{name}"
+        root.mkdir()
+        rows_path = root / "shadow_rows.csv"
+        rows_path.write_bytes(assignment.rows_path.read_bytes())
+        receipt_path = root / "shadow_assignment_receipt.json"
+        receipt["outputs"]["shadow_rows.csv"] = _hash(rows_path)
+        _write_json(receipt_path, receipt)
+        with pytest.raises(ShadowContractError):
+            summarize_shadow_rows(
+                fixture.contract,
+                fixture.implementation_contract,
+                prepared.rows_path,
+                prepared.manifest_path,
+                rows_path,
+                receipt_path,
+                LOCK_PATH,
+                fixture.measurements,
+                fixture.measurement_manifest,
+                source_revision=REVISION,
+            )
+        assert not (root / "shadow_manifest.json").exists()
+        assert not (root / "shadow_validation_failure.json").exists()
+
+
 def test_summary_rejects_unknown_identity_before_parsing_target_and_no_repair(
     tmp_path: Path,
 ) -> None:
-    fixture = _fixture(tmp_path / "fixture")
-    _prepare(fixture, tmp_path / "input")
-    assignment = _assign(fixture, tmp_path / "input", tmp_path / "assignment")
-    original_contract = json.loads(fixture.contract.read_text(encoding="utf-8"))
-    original_rows = _read_csv(fixture.measurements)
-
-    def rebind(
-        rows: list[dict[str, str]], name: str
-    ) -> tuple[Path, Path, Path, Path]:
-        measurements = tmp_path / f"{name}-measurements.csv"
-        parent = tmp_path / f"{name}-parent.json"
-        contract_path = tmp_path / f"{name}-contract.json"
-        implementation_path = tmp_path / f"{name}-implementation.json"
-        _write_csv(measurements, ("molecule_id", "value"), rows)
-        _write_json(parent, {"outputs": {"tdc/measurements.csv": _hash(measurements)}})
-        contract = copy.deepcopy(original_contract)
+    def run_case(
+        name: str,
+        mutate: Any,
+        error_match: str,
+        expected_labels_parsed: int,
+    ) -> None:
+        root = tmp_path / name
+        fixture = _fixture(root / "fixture")
+        rows = _read_csv(fixture.measurements)
+        mutate(rows)
+        _write_csv(fixture.measurements, ("molecule_id", "value"), rows)
+        _write_json(
+            fixture.measurement_manifest,
+            {"outputs": {"tdc/measurements.csv": _hash(fixture.measurements)}},
+        )
+        contract = json.loads(fixture.contract.read_text(encoding="utf-8"))
         source = contract["source_contracts"][
             "train_val_measurements_for_post_assignment_summary_only"
         ]
-        source["sha256"] = _hash(measurements)
-        source["parent_manifest"]["sha256"] = _hash(parent)
-        _write_json(contract_path, contract)
+        source["sha256"] = _hash(fixture.measurements)
+        source["parent_manifest"]["sha256"] = _hash(
+            fixture.measurement_manifest
+        )
+        _write_json(fixture.contract, contract)
+        _rebind_implementation_parent(fixture)
+
+        prepared = _prepare(fixture, root / "input")
+        assignment = _assign(fixture, root / "input", root / "assignment")
+        with pytest.raises(ShadowContractError, match=error_match):
+            summarize_shadow_rows(
+                fixture.contract,
+                fixture.implementation_contract,
+                prepared.rows_path,
+                prepared.manifest_path,
+                assignment.rows_path,
+                assignment.receipt_path,
+                LOCK_PATH,
+                fixture.measurements,
+                fixture.measurement_manifest,
+                source_revision=REVISION,
+            )
+        assert not (assignment.rows_path.parent / "shadow_manifest.json").exists()
+        failure_path = assignment.rows_path.parent / "shadow_validation_failure.json"
+        failure = json.loads(failure_path.read_text(encoding="utf-8"))
         implementation = json.loads(
-            fixture.implementation_contract.read_text(encoding="utf-8")
+            IMPLEMENTATION_CONTRACT.read_text(encoding="utf-8")
         )
-        implementation["parent_contract"]["sha256"] = _hash(contract_path)
-        _write_json(implementation_path, implementation)
-        receipt = json.loads(assignment.receipt_path.read_text(encoding="utf-8"))
-        receipt["contract"]["sha256"] = _hash(contract_path)
-        receipt["implementation_contract"]["sha256"] = _hash(implementation_path)
-        _write_json(assignment.receipt_path, receipt)
-        return contract_path, implementation_path, measurements, parent
+        assert sorted(failure) == implementation["artifact_schemas"][
+            "shadow_validation_failure"
+        ]["top_level_fields"]
+        assert failure["repair_attempted"] is False
+        assert failure["accounting"]["train_val_labels_parsed"] == (
+            expected_labels_parsed
+        )
+        assert failure["accounting"]["public_test_labels_parsed"] == 0
+        assert failure["accounting"]["model_fits"] == 0
 
-    unknown_rows = copy.deepcopy(original_rows)
-    unknown_rows[-1] = {"molecule_id": "unknown:test:identity", "value": "invalid"}
-    contract_path, implementation_path, measurements, parent = rebind(
-        unknown_rows, "unknown"
+    def unknown(rows: list[dict[str, str]]) -> None:
+        rows[-1] = {"molecule_id": "unknown:test:identity", "value": "invalid"}
+
+    def degenerate(rows: list[dict[str, str]]) -> None:
+        for row in rows:
+            row["value"] = "0.0"
+
+    run_case("unknown", unknown, "identity absent", 0)
+    run_case("degenerate", degenerate, "degenerate class support", 30)
+
+
+def test_summary_preserves_measurement_receipt_blocker(tmp_path: Path) -> None:
+    fixture = _fixture(tmp_path / "fixture")
+    prepared = _prepare(fixture, tmp_path / "input")
+    assignment = _assign(fixture, tmp_path / "input", tmp_path / "assignment")
+    fixture.measurements.write_text(
+        fixture.measurements.read_text(encoding="utf-8") + "tamper\n",
+        encoding="utf-8",
     )
-    with pytest.raises(ShadowContractError, match="identity absent"):
+
+    with pytest.raises(ShadowContractError, match="measurement hash mismatch"):
         summarize_shadow_rows(
-            contract_path,
-            implementation_path,
+            fixture.contract,
+            fixture.implementation_contract,
+            prepared.rows_path,
+            prepared.manifest_path,
             assignment.rows_path,
             assignment.receipt_path,
-            measurements,
-            parent,
+            LOCK_PATH,
+            fixture.measurements,
+            fixture.measurement_manifest,
             source_revision=REVISION,
         )
-    assert not (assignment.rows_path.parent / "shadow_manifest.json").exists()
 
-    zero_rows = [
-        {"molecule_id": row["molecule_id"], "value": "0.0"} for row in original_rows
-    ]
-    contract_path, implementation_path, measurements, parent = rebind(
-        zero_rows, "degenerate"
-    )
-    with pytest.raises(ShadowContractError, match="degenerate class support"):
-        summarize_shadow_rows(
-            contract_path,
-            implementation_path,
-            assignment.rows_path,
-            assignment.receipt_path,
-            measurements,
-            parent,
-            source_revision=REVISION,
+    failure = json.loads(
+        (assignment.rows_path.parent / "shadow_validation_failure.json").read_text(
+            encoding="utf-8"
         )
-    assert not (assignment.rows_path.parent / "shadow_manifest.json").exists()
+    )
+    assert failure["failed_step"] == "measurement_receipt_validation"
+    assert failure["accounting"]["train_val_labels_parsed"] == 0
+    assert failure["summary_inputs"]["train_val_measurements.csv"] == _hash(
+        fixture.measurements
+    )

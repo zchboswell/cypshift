@@ -192,9 +192,16 @@ def test_shadow_implementation_contract_extends_the_reviewed_parent() -> None:
         "numpy": "2.4.6",
         "lock_sha256": _sha256(ROOT / "uv.lock"),
         "full_run_rule": (
-            "Run the Taylor-Butina assignment alone on the host. Stop if runtime "
-            "exceeds 240 minutes or process peak RSS exceeds 12 GiB. Do not change "
-            "dtype, threshold, fingerprint, ordering, or algorithm."
+            "Run the Taylor-Butina assignment alone in one child process. A parent "
+            "watchdog polls child RSS once per second, kills the worker if wall time "
+            "exceeds 240 minutes or observed RSS exceeds 12 GiB, and writes the "
+            "frozen blocker receipt. Fail closed if RSS cannot be observed. Do not "
+            "change dtype, threshold, fingerprint, ordering, or algorithm."
+        ),
+        "watchdog_poll_seconds": 1.0,
+        "rss_source": (
+            "ps -o rss= -p <worker_pid>, interpreted as KiB on the pinned macOS "
+            "host, with a one-second command timeout"
         ),
     }
     for path in contract["implementation_paths"].values():

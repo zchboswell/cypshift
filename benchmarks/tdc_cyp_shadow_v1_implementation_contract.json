@@ -9,14 +9,16 @@
   "authorization": "Synthetic implementation tests only until this implementation and contract pass independent review. No real full-population assignment, feature generation, model fit, prediction, public-test label parse, or metric evaluation is authorized by this file.",
   "implementation_paths": {
     "module": "src/cypshift/shadow.py",
+    "watchdog_module": "src/cypshift/shadow_watchdog.py",
     "trusted_projection_entrypoint": "scripts/prepare_tdc_shadow_input.py",
     "assignment_entrypoint": "scripts/assign_tdc_shadow.py",
     "summary_entrypoint": "scripts/summarize_tdc_shadow.py"
   },
   "source_identity": {
-    "revision": "A full 40-character lowercase Git commit SHA supplied explicitly to each process.",
+    "revision": "Each process derives the full 40-character lowercase Git HEAD from the repository and refuses a dirty checkout or a caller value that differs.",
     "file_receipt": "Each artifact records src/cypshift/shadow.py and its SHA-256. The Git revision binds the thin entrypoints and the complete reviewed tree.",
-    "same_source_rule": "Preparation, assignment, and summary must use the same revision and module SHA-256. A changed implementation requires a new artifact root."
+    "same_source_rule": "Preparation, assignment, and summary must use the same clean revision and module SHA-256. The clean revision is rechecked before every artifact write. A changed implementation requires a new artifact root.",
+    "stable_input_rule": "Every real input must be a stable read-only artifact or a single immutable run-root copy for the complete process lifetime. Concurrent mutation is outside the receipt threat model and invalidates the run."
   },
   "trusted_projection": {
     "exact_split_header": [
@@ -119,6 +121,29 @@
       ],
       "repeat_rule": "Independent runs must produce byte-identical shadow_rows.csv. Receipts may differ only in declared nondeterministic fields."
     },
+    "shadow_assignment_failure": {
+      "schema_version": "cypshift.tdc_cyp_shadow_assignment_failure.v1",
+      "top_level_fields": [
+        "accounting",
+        "contract",
+        "environment",
+        "failure_kind",
+        "implementation_contract",
+        "implementation_source",
+        "inputs",
+        "limits",
+        "observed",
+        "outputs",
+        "schema_version",
+        "status"
+      ],
+      "failure_kinds": [
+        "runtime_limit_exceeded",
+        "peak_rss_limit_exceeded",
+        "rss_monitor_unavailable"
+      ],
+      "rule": "The outer watchdog or the worker's structured final cap check stops assignment, the staging root is discarded, and the parent writes this immutable zero-label, zero-model blocker receipt. No shadow_rows.csv is retained."
+    },
     "shadow_manifest": {
       "schema_version": "cypshift.tdc_cyp_shadow_manifest.v1",
       "top_level_fields": [
@@ -142,7 +167,31 @@
         "summary_inputs",
         "validation"
       ],
-      "label_boundary": "Hash and verify shadow_rows.csv and its assignment receipt before opening the train_val measurement file. Validate the complete identity set before selecting value."
+      "label_boundary": "Resolve and verify the stripped input rows and manifest, then hash and fully verify shadow_rows.csv and its assignment receipt before opening the train_val measurement file. Validate the complete identity set before selecting value."
+    },
+    "shadow_validation_failure": {
+      "schema_version": "cypshift.tdc_cyp_shadow_validation_failure.v1",
+      "top_level_fields": [
+        "accounting",
+        "assignment_inputs",
+        "contract",
+        "environment",
+        "error",
+        "error_type",
+        "failed_step",
+        "groups",
+        "implementation_contract",
+        "implementation_source",
+        "outputs",
+        "peak_rss_gib",
+        "population",
+        "repair_attempted",
+        "runtime_seconds",
+        "schema_version",
+        "status",
+        "summary_inputs"
+      ],
+      "rule": "A post-assignment measurement-receipt, identity, label, class-support, or duplicate/conflict rejection writes this immutable blocker before raising. It records the exact number of train_val labels parsed and zero public-test or model operations."
     }
   },
   "assignment_environment": {
@@ -150,11 +199,13 @@
     "rdkit": "2026.03.5",
     "numpy": "2.4.6",
     "lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
-    "full_run_rule": "Run the Taylor-Butina assignment alone on the host. Stop if runtime exceeds 240 minutes or process peak RSS exceeds 12 GiB. Do not change dtype, threshold, fingerprint, ordering, or algorithm."
+    "full_run_rule": "Run the Taylor-Butina assignment alone in one child process. A parent watchdog polls child RSS once per second, kills the worker if wall time exceeds 240 minutes or observed RSS exceeds 12 GiB, and writes the frozen blocker receipt. Fail closed if RSS cannot be observed. Do not change dtype, threshold, fingerprint, ordering, or algorithm.",
+    "watchdog_poll_seconds": 1.0,
+    "rss_source": "ps -o rss= -p <worker_pid>, interpreted as KiB on the pinned macOS host, with a one-second command timeout"
   },
   "mechanics_fixtures": {
     "condensed_order": "(1,0),(2,0),(2,1),(3,0),(3,1),(3,2), continuing by ascending row then column",
-    "distance_threshold": "0.4 inclusive",
+    "distance_threshold": "0.4 inclusive, proved with the real pinned Butina API at 0.4 and numpy.nextafter(0.4, +infinity)",
     "scaffold_acyclic_hash": "6b2bf8ea0f7ce115540b173aacddf5fc6f967a2f24e77b8da17773d72c821801",
     "scaffold_benzene_hash": "fe16f6c446879019e97cdf45c9b911b81e24416bf4d2b50b72816171198e132f",
     "inner_fold_sentinel": "Empty CSV field exactly when outer_fold is 0; otherwise outer 1 through 4 maps to inner 0 through 3.",

@@ -16,7 +16,6 @@ def main() -> None:
     parser.add_argument("--official-split", type=Path, required=True)
     parser.add_argument("--canonical-molecules", type=Path, required=True)
     parser.add_argument("--canonical-audit", type=Path, required=True)
-    parser.add_argument("--source-revision", required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     result = prepare_shadow_input(
@@ -27,7 +26,6 @@ def main() -> None:
         args.canonical_molecules,
         args.canonical_audit,
         args.out,
-        source_revision=args.source_revision,
     )
     print(
         f"Shadow input complete: {result.row_count} rows and "

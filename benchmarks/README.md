@@ -41,10 +41,14 @@ file, never canonical or public-test measurement roots.
 process details before real generation. It fixes the one-to-one identity join,
 numeric source-row ordering, exact CSV and JSON bytes, provenance-access rule,
 artifact schemas, Python 3.11 environment, and deterministic mechanics
-fixtures. The implementation uses one focused research module and three thin
-scripts so the trusted projection, label-free assignment, and train-only
-summary remain separate processes. Synthetic tests exercise these paths. No
-real 30,038-row projection or 15,354-structure clustering has run yet.
+fixtures. The implementation uses focused research code and three thin scripts
+so the trusted projection, label-free assignment, and train-only summary remain
+separate processes. Assignment runs in an atomically promoted staging root
+under an active 240-minute and 12-GiB watchdog. Receipt consumers recompute all
+deterministic claims, and resource or summary-validation failures retain a
+compact zero-model blocker receipt. Real inputs must remain stable and read-only
+for each process lifetime. Synthetic tests exercise these paths. No real
+30,038-row projection or 15,354-structure clustering has run yet.
 
 These four files are pre-result controls. Together they record zero feature
 matrices, fits, predictions, public-test label parses, and metric evaluations.
