@@ -166,6 +166,45 @@ freeze generated no feature matrix, model fit, prediction, public-test label
 parse, or metric evaluation. All nine public-test family-task slots remain
 unconsumed.
 
+## Phase 0.75 Stage A contract freeze
+
+The fixed-feature execution contract is frozen in
+[`maplight_fixed_stage_a_contract.json`](../../benchmarks/maplight_fixed_stage_a_contract.json).
+It uses exact raw TDC strings for every representation so preprocessing cannot
+explain a feature-block contrast. Raw rows remain bound to task, molecule ID,
+numeric source row, raw-string hash, and standardized hash. Exact-raw caching
+is allowed; standardized-hash caching is forbidden.
+
+The compatible environment is separate from the core install and locked under
+`research/maplight-fixed/`. It uses Python 3.10.13, RDKit 2023.03.3, CatBoost
+1.2.1, NumPy 1.25.2, pandas 2.0.3, scikit-learn 1.3.0, and SciPy 1.11.2. The
+transitive release cutoff is 2023-08-29 UTC. This is a new result-blind
+compatible environment, not the unrecoverable historical MapLight environment.
+The pinned source's six files are preserved in one read-only ignored root.
+
+Stage A has six unique candidates. Five CatBoost representation states move
+from binary chiral Morgan through the complete 2,563-value MapLight matrix.
+The sixth candidate applies one frozen ExtraTrees diagnostic to the complete
+matrix. The complete CatBoost state is also the predesignated five-seed
+comparator, so it is not fitted twice. Across three tasks, two protocols, and
+three repeats, the contract authorizes exactly 162 CatBoost fits and 18
+ExtraTrees fits. There is no inner selection and no Stage A winner selection.
+
+Only two contrasts are confirmatory: complete MapLight versus binary Morgan at
+CatBoost seed 1, and CatBoost versus ExtraTrees on the complete representation.
+Each protocol uses 2,000 synchronized global-group bootstrap replicates. The
+full budget is 198 point AUPRC evaluations plus 108,000 bootstrap AUPRC
+evaluations. Scaffold and community intervals remain separate. Any point
+AUPRC at or above 0.95 stops work for an independent forensic audit.
+
+The contract requires synthetic byte-level parity before real features, two
+byte-identical label-free feature roots before fitting, cell-specific
+outer-training target files, model predictions hashed before scoring labels can
+be opened, and independent review at every irreversible boundary. Contract
+freeze generated no synthetic or real feature array, target projection, model
+fit, prediction, metric evaluation, public-test use, GIN weight, or challenge
+assumption. All nine public-test family-task slots remain unconsumed.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the
@@ -635,13 +674,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Freeze the minimal Stage A execution contract before a feature result exists.
-It must bind raw-row MapLight input semantics, the isolated environment, exact
-feature-array parity fixtures, non-finite handling, the shadow ablation designs,
-fit counts, and stopping rules. Then add only the smallest fixed-feature seam
-needed for Morgan counts, Avalon counts, ErG values, and the ordered descriptor
-block. Do not fit a model or generate a public-test prediction before that
-contract and implementation pass independent review.
+Add only the smallest Stage A feature seam under the isolated MapLight
+environment. Implement raw-row alignment, binary Morgan, Morgan counts, Avalon
+counts, ErG values, the ordered descriptor block, exact upstream fixture
+parity, fail-closed count and non-finite checks, and immutable receipts. Do not
+parse a real feature row until the synthetic implementation passes independent
+review. Do not project targets, fit a model, score a result, or generate a
+public-test prediction before the corresponding contract gates pass.
 
 The following pre-freeze research already supports that action.
 

@@ -1,0 +1,632 @@
+{
+  "schema_version": "cypshift.maplight_fixed_stage_a_contract.v1",
+  "frozen_at_utc": "2026-08-10T18:47:06Z",
+  "authorization": {
+    "phase": "0.75",
+    "purpose": "Freeze one result-blind fixed-MapLight representation ablation on TDC-CYP-shadow-v1 before feature implementation or any model fit.",
+    "authorizes": [
+      "one synthetic fixture-parity implementation",
+      "two byte-identical label-free real feature builds",
+      "one trusted train-only target projection",
+      "180 fixed outer model fits",
+      "198 model or derived prediction vectors",
+      "108198 declared average-precision evaluations",
+      "one reviewed shadow-only result"
+    ],
+    "does_not_authorize": [
+      "any TDC public-test row, label, feature, prediction, or metric",
+      "any challenge data, field, rule, metric, split, or model assumption",
+      "any result-driven dependency, feature, estimator, seed, or parameter change",
+      "any GIN weight download, embedding, model, or claim",
+      "any Phase 0.5 artifact change or rescore",
+      "any public CLI change"
+    ],
+    "goal_boundary": "AUPRC above 0.95 is a long-term stretch goal, not a tuning target or Phase 0.75 acceptance threshold. Any point AUPRC at or above 0.95 stops work for the independent forensic audit defined below."
+  },
+  "scientific_hypothesis": {
+    "primary": "The complete fixed MapLight representation adds ranking information beyond binary chiral Morgan features when the estimator, raw-input policy, outer rows, and CatBoost seed are held fixed.",
+    "secondary": "CatBoost extracts more ranking value than the frozen ExtraTrees diagnostic from the same complete fixed representation.",
+    "non_hypotheses": [
+      "The fixed representation is a final cypshift contender.",
+      "A shadow result predicts challenge performance.",
+      "The raw-input binary Morgan control reproduces the Phase 0.5 standardized pipeline."
+    ]
+  },
+  "frozen_sources": {
+    "maplight_source_contract": {
+      "path": "benchmarks/maplight_source_contract.json",
+      "sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8"
+    },
+    "maplight_repository": {
+      "url": "https://github.com/maplightrx/MapLight-TDC",
+      "revision": "c249378c63232354d17083c83fe94fe728960a27",
+      "tree": "5778a248a9fb00e345174837f2c5b4acc3c15921",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2023 MapLight Therapeutics",
+      "stable_ignored_root": "data/external/maplight_tdc/c249378c63232354d17083c83fe94fe728960a27",
+      "execution_condition": "The root and its six regular files must be read-only and must rehash exactly before every parity or feature process.",
+      "files": {
+        "LICENSE": "281afcf01d4df616e2f8065ca100f0de6b8740c2f5865008a538368ea75e4334",
+        "README.md": "eb0e2fb544353153095bf2253b4b76d1d18309aa6082e6237de4df91cbd17315",
+        "maplight.py": "6dcb40fa43d39221259e03406f34be554fc138782c099894004549f7a8c24863",
+        "maplight_gnn.py": "74fbd1c98d9afa7fa4bda1add21efd429e20dee0a4b0fb8fa7e9b3825c21fe13",
+        "submission.ipynb": "26393242dcc7bd5509a8836f36a270106a1484af2abd0e90497aadad1a1e7754",
+        "submission_gnn.ipynb": "95dc471338e8ca69a85a0c3c162cca3f5a1b220f3cd6a8d14f726adf5f7e1546"
+      }
+    },
+    "paper": {
+      "id": "arXiv:2310.00174v1",
+      "license": "CC-BY-4.0",
+      "pdf_sha256": "751f929788c655d21ca81458f968d5d8a7a6be4d01aca6bdccbc8d3fc371f89b"
+    },
+    "shadow_benchmark": {
+      "benchmark_id": "TDC-CYP-shadow-v1",
+      "manifest_path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_manifest.json",
+      "manifest_sha256": "3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656",
+      "rows_path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_rows.csv",
+      "rows_sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f",
+      "rows": 30038,
+      "unique_standardized_structures": 15354,
+      "scaffold_groups": 9114,
+      "community_groups": 9902
+    },
+    "train_only_measurements": {
+      "role": "Trusted target-projection input only. Feature and model-prediction processes cannot resolve this file or its parent root.",
+      "path": "artifacts/benchmarks/native-prediction-inputs-v1/tdc/measurements.csv",
+      "sha256": "b3bfe56d660affcfe13c74b82721179a8e1322b6dc938c10137da5615ce62e75",
+      "parent_manifest_path": "artifacts/benchmarks/native-prediction-inputs-v1/prediction_input_manifest.json",
+      "parent_manifest_sha256": "9e5350490dfc4674b96960644e3e49c4887ec37d3fbb62de22d47dc6481444a1",
+      "rows": 30038,
+      "public_test_rows": 0
+    }
+  },
+  "compatible_environment": {
+    "claim": "Hash-locked compatible reproduction environment; not the unrecoverable historical MapLight environment.",
+    "selection_rule": "Use the paper-cited RDKit 2023.03.3 and the latest CatBoost release available before the paper submission. Freeze direct versions without feature, label, model, prediction, metric, or public-test evidence. Restrict every transitive release to no later than the end of the CatBoost 1.2.1 upload day.",
+    "result_blind_cutoff_utc": "2023-08-29T00:00:00Z",
+    "resolution_note": "The first lock solve used the timestamp of the first CatBoost wheel and failed before installation because later files in the same release were excluded. Moving the cutoff to the end of that upload day resolved the same preselected versions. No scientific result informed the change.",
+    "project_path": "research/maplight-fixed/pyproject.toml",
+    "project_sha256": "20addcbfa3d7dbfa5d3a9f24f3090c22f11b556166213b2649c6c55e58556234",
+    "lock_path": "research/maplight-fixed/uv.lock",
+    "lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+    "python_version_path": "research/maplight-fixed/.python-version",
+    "python_version_sha256": "3817f125779f46c574b17c4adbdd0975ef8c32ae92509fed295212797d314d6a",
+    "uv": {
+      "version": "0.9.18",
+      "binary_sha256": "00bfc5ba2eb99c5e74a448df28656c644e4dd62df0d847ee07081c48b41cd8bc",
+      "license": "Apache-2.0 OR MIT"
+    },
+    "interpreter": {
+      "implementation": "CPython",
+      "version": "3.10.13",
+      "python_build_standalone_release": "20240224",
+      "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-aarch64-apple-darwin-install_only.tar.gz",
+      "archive_size_bytes": 17298908,
+      "archive_sha256": "5fdc0f6a5b5a90fd3c528e8b1da8e3aac931ea8690126c2fdb4254c84a3ff04a",
+      "installed_executable_sha256": "bdca214c1a74129f24da4e4b45fd00f2d650b0634c916643130a817b96069e33",
+      "python_license": "Python Software Foundation License Version 2",
+      "distribution_boundary": "Execution-only compatible interpreter artifact. This contract does not authorize redistributing the python-build-standalone archive or its bundled libraries."
+    },
+    "execution_platform": {
+      "operating_system": "macOS 26.6",
+      "darwin_release": "25.6.0",
+      "architecture": "arm64",
+      "cpu": "Apple M1",
+      "device": "CPU only",
+      "catboost_thread_count_argument": "omitted exactly as upstream; CatBoost 1.2.1 default on this frozen host",
+      "gpu_visibility": "No GPU execution is allowed. A detected GPU task type or GPU-backed fit is a blocker."
+    },
+    "direct_packages": {
+      "catboost": "1.2.1",
+      "numpy": "1.25.2",
+      "pandas": "2.0.3",
+      "rdkit": "2023.3.3",
+      "scikit-learn": "1.3.0",
+      "scipy": "1.11.2"
+    },
+    "resolved_package_licenses": {
+      "catboost@1.2.1": "Apache License, Version 2.0",
+      "contourpy@1.1.0": "BSD 3-Clause",
+      "cycler@0.11.0": "BSD",
+      "fonttools@4.42.1": "MIT",
+      "graphviz@0.20.1": "MIT",
+      "joblib@1.3.2": "BSD 3-Clause",
+      "kiwisolver@1.4.5": "Modified BSD",
+      "matplotlib@3.7.2": "PSF",
+      "numpy@1.25.2": "BSD-3-Clause",
+      "packaging@23.1": "Apache and BSD license classifiers",
+      "pandas@2.0.3": "BSD 3-Clause",
+      "pillow@10.0.0": "HPND",
+      "plotly@5.16.1": "MIT",
+      "pyparsing@3.0.9": "MIT classifier",
+      "python-dateutil@2.8.2": "Dual License; BSD and Apache classifiers",
+      "pytz@2023.3": "MIT",
+      "rdkit@2023.3.3": "BSD-3-Clause",
+      "scikit-learn@1.3.0": "BSD",
+      "scipy@1.11.2": "BSD",
+      "six@1.16.0": "MIT",
+      "tenacity@8.2.3": "Apache 2.0",
+      "threadpoolctl@3.2.0": "BSD-3-Clause",
+      "tzdata@2023.3": "Apache-2.0"
+    },
+    "license_evidence_rule": "Values are the installed wheel METADATA License field or license classifiers. The wheel URLs and hashes are bound in uv.lock. This contract authorizes local benchmark execution, not redistribution of the environment.",
+    "compatibility_probe": {
+      "package_count": 23,
+      "dependency_check": "pass",
+      "maplight_module_import": "pass",
+      "ordered_descriptor_names": 200,
+      "required_rdkit_symbols": "pass",
+      "scientific_operations": 0
+    },
+    "core_boundary": "No Stage A package enters the repository-root pyproject.toml, uv.lock, wheel, ordinary CI environment, or public CLI."
+  },
+  "process_firewall": {
+    "trusted_target_projection": {
+      "may_resolve": [
+        "the exact frozen shadow rows and manifest",
+        "the exact train-only measurement file and its parent manifest",
+        "this contract and the reviewed implementation source"
+      ],
+      "must_emit": "One immutable manifest, one scoring-target file, and 18 outer-training target files containing only task, protocol, repeat, molecule_id, source_row, and binary target.",
+      "must_not_emit": "measurement provenance, raw source labels, source paths, public-test identity, assay metadata, or any non-target measurement field",
+      "raw_label_parses": 30038,
+      "public_test_label_parses": 0
+    },
+    "parity_process": {
+      "may_resolve": [
+        "the stable pinned MapLight source root",
+        "the tracked synthetic parity fixture",
+        "the compatible environment",
+        "this contract"
+      ],
+      "must_not_resolve": "shadow rows, measurements, targets, public-test data, predictions, or scores"
+    },
+    "feature_process": {
+      "may_resolve": [
+        "the exact frozen shadow rows and manifest",
+        "the stable pinned MapLight source root",
+        "the compatible environment",
+        "the reviewed parity receipt",
+        "this contract and reviewed implementation source"
+      ],
+      "must_not_resolve": "any measurement, target, provenance, canonical data, public-test, prediction, or score root"
+    },
+    "model_cell_process": {
+      "unit": "one task, one protocol, and one repeat",
+      "may_resolve": [
+        "the immutable feature rows and block arrays",
+        "the exact shadow assignment rows",
+        "only that cell's outer-training target file",
+        "this contract and reviewed implementation source"
+      ],
+      "must_not_resolve": "that cell's validation target, any other target file, the source measurement root, canonical data, or public-test data",
+      "fits_per_cell": 10,
+      "cell_count": 18
+    },
+    "score_process": {
+      "chronology": "Open the scoring-target projection only after every model prediction artifact is complete, hashed, immutable, and independently reviewable.",
+      "may_resolve": [
+        "immutable label-free predictions",
+        "the scoring-target projection",
+        "the exact shadow rows and manifest",
+        "this contract and reviewed scoring source"
+      ],
+      "must_not_resolve": "canonical data, raw measurements, or public-test data"
+    }
+  },
+  "raw_input_policy": {
+    "source_field": "raw_structure from shadow_rows.csv; this is the exact TDC Drug string preserved by the source freeze",
+    "parser": "rdkit.Chem.MolFromSmiles with all RDKit 2023.03.3 defaults",
+    "forbidden_preprocessing": [
+      "strip or whitespace normalization",
+      "standardization or canonicalization",
+      "fragment or salt removal",
+      "tautomer or charge normalization",
+      "deduplication",
+      "filtering",
+      "row reordering"
+    ],
+    "row_binding": [
+      "task",
+      "molecule_id",
+      "numeric source_row",
+      "SHA-256 of the exact UTF-8 raw string",
+      "standardized_structure_hash"
+    ],
+    "caching": "Cache by exact raw UTF-8 bytes and raw_structure_sha256 only. Standardized-structure caching is forbidden because 41 standardized hashes have multiple raw forms.",
+    "failure_policy": "Reject the complete artifact on a missing, empty, unparsable, or zero-atom input. Never drop, repair, replace, or reorder a row.",
+    "claim_boundary": "R1 uses the Phase 0.5 binary-chiral-Morgan feature semantics under this shared raw-input policy. It is not an end-to-end reproduction or rescore of the standardized Phase 0.5 pipeline."
+  },
+  "feature_contract": {
+    "block_order": [
+      "binary_morgan",
+      "morgan_count",
+      "avalon_count",
+      "erg",
+      "rdkit_descriptors"
+    ],
+    "blocks": {
+      "binary_morgan": {
+        "role": "R1 control only; not part of the 2,563-value MapLight matrix",
+        "implementation": "rdkit.Chem.rdFingerprintGenerator.GetMorganGenerator(...).GetFingerprint",
+        "parameters": {
+          "radius": 2,
+          "fpSize": 2048,
+          "includeChirality": true,
+          "countSimulation": false
+        },
+        "dimensions": 2048,
+        "artifact_dtype": "numpy.uint8"
+      },
+      "morgan_count": {
+        "implementation": "rdkit.Chem.rdMolDescriptors.GetHashedMorganFingerprint",
+        "parameters": {
+          "radius": 2,
+          "nBits": 1024,
+          "useChirality": false,
+          "useChirality_source": "argument omitted upstream"
+        },
+        "dimensions": 1024,
+        "artifact_dtype": "numpy.int8",
+        "conversion": "Pass a zero-length numpy.int8 buffer to rdkit.DataStructs.ConvertToNumpyArray exactly as upstream."
+      },
+      "avalon_count": {
+        "implementation": "rdkit.Avalon.pyAvalonTools.GetAvalonCountFP",
+        "parameters": {
+          "nBits": 1024,
+          "isQuery": false,
+          "bitFlags": 15761407
+        },
+        "dimensions": 1024,
+        "artifact_dtype": "numpy.int8",
+        "conversion": "Pass a zero-length numpy.int8 buffer to rdkit.DataStructs.ConvertToNumpyArray exactly as upstream."
+      },
+      "erg": {
+        "implementation": "rdkit.Chem.rdReducedGraphs.GetErGFingerprint",
+        "parameters": {
+          "atomTypes": 0,
+          "fuzzIncrement": 0.3,
+          "minPath": 1,
+          "maxPath": 15
+        },
+        "dimensions": 315,
+        "artifact_dtype_expected": "numpy.float64; fixture parity must confirm before real use"
+      },
+      "rdkit_descriptors": {
+        "implementation": "rdkit.ML.Descriptors.MoleculeDescriptors.MolecularDescriptorCalculator",
+        "ordered_names_source": "get_chosen_descriptors in the pinned maplight.py",
+        "ordered_names": 200,
+        "ordered_names_compact_json_sha256": "76ed228002c5cd229e4cbd8d62c3b3a49d698425a5216884c5c7b1b337f4293a",
+        "dimensions": 200,
+        "scaling": "none",
+        "imputation": "none",
+        "artifact_dtype_expected": "numpy.float64; fixture parity must confirm before real use"
+      }
+    },
+    "maplight_fixed_slices": {
+      "morgan_count": "0:1024",
+      "avalon_count": "1024:2048",
+      "erg": "2048:2363",
+      "rdkit_descriptors": "2363:2563"
+    },
+    "complete_dimensions": 2563,
+    "model_matrix_dtype": "C-contiguous numpy.float64 for every R1-R5 and E1 fit; construct in declared block order without scaling or imputation",
+    "count_safety": "Before int8 conversion, inspect every sparse Morgan and Avalon nonzero count. Require a non-boolean integer in 0 through 127. Stop before any real matrix is retained if a count exceeds 127. Never wrap, widen, clip, or binarize.",
+    "nonfinite_policy": "Reject the complete feature artifact on any NaN or positive or negative infinity in any block. Upstream defines no policy; this is a disclosed fail-closed safeguard, not claimed upstream behavior.",
+    "exception_policy": "Reject the complete artifact on a feature exception or missing or raising descriptor. Preserve a compact failure receipt with row identity, block, exception class, environment hashes, and zero fit/prediction/metric/public-test accounting. Do not preserve an unrestricted structure in tracked evidence.",
+    "real_artifact_serialization": {
+      "arrays": "C-contiguous non-pickle .npy format version 1.0, written with allow_pickle=false",
+      "integer_byte_order": "not applicable to one-byte integer blocks",
+      "float_byte_order": "little-endian float64",
+      "rows_csv": "UTF-8, LF, csv.DictWriter minimal quoting, fixed declared columns, numeric source-row ordering",
+      "manifests": "UTF-8 canonical JSON with sorted keys, comma and colon separators, ensure_ascii=false, and one trailing LF"
+    }
+  },
+  "parity_fixture": {
+    "path": "benchmarks/fixtures/maplight_fixed_parity_v1.csv",
+    "sha256": "70ae570bbdbb5c8a225cfd20ab72f0d8f8b43dc1a3a6b2d3356bc52f4f4a513c",
+    "size_bytes": 267,
+    "rows": 8,
+    "pandas_index_in_file_order": [13, 2, 21, 5, 8, 3, 34, 1],
+    "coverage": [
+      "repetitive aliphatic chemistry",
+      "aromatic chemistry",
+      "heteroaromatic chemistry",
+      "charged disconnected salt",
+      "stereoisomer pair",
+      "equivalent molecules written with distinct raw SMILES",
+      "nonmonotonic pandas index"
+    ],
+    "upstream_process": "Import the exact pinned maplight.py in an isolated subprocess because get_fingerprints globally disables RDKit logging. Call its block functions and get_fingerprints on a pandas Series whose values and index come from the exact fixture bytes.",
+    "required_comparisons": [
+      "exact row order and raw-string hashes",
+      "exact block shapes (8,1024), (8,1024), (8,315), and (8,200)",
+      "exact complete shape (8,2563)",
+      "exact block and combined dtypes",
+      "exact block slices and descriptor order",
+      "element-by-element equality",
+      "C-order element-byte SHA-256 equality",
+      "non-pickle .npy v1.0 byte equality",
+      "two fresh-process local runs are byte-identical"
+    ],
+    "expected_array_hash_status": "Not generated at contract freeze. The reviewed implementation must generate and freeze them in a synthetic-only parity receipt before any real shadow feature row is parsed.",
+    "adversarial_tests": [
+      "missing, empty, invalid, and zero-atom input rejection",
+      "injected NaN and infinity rejection",
+      "missing and raising descriptor rejection",
+      "synthetic sparse counts at 127 accepted and 128 rejected",
+      "raw-row reorder, duplicate loss, standardized-hash deduplication, and wrong source hash rejection"
+    ],
+    "parity_failure_rule": "Stop. Record the exact block, index, dtype, and first differing element or byte. Do not change a package, feature rule, input, or source to repair parity after seeing a benchmark result."
+  },
+  "fixed_estimators": {
+    "catboost": {
+      "library": "catboost 1.2.1",
+      "class": "CatBoostClassifier",
+      "constructor_arguments": {
+        "random_strength": 2,
+        "random_seed": "the declared seed",
+        "verbose": 0,
+        "loss_function": "Logloss"
+      },
+      "forbidden_arguments": [
+        "eval_set",
+        "class_weights",
+        "auto_class_weights",
+        "early_stopping_rounds",
+        "use_best_model",
+        "task_type",
+        "thread_count",
+        "iterations or any other override"
+      ],
+      "other_parameters": "CatBoost 1.2.1 defaults bound by the environment lock",
+      "fit_call": "fit(X_outer_train, y_outer_train) with no additional arguments",
+      "prediction_call": "predict_proba(X_outer_validation)[:, positive-class index]",
+      "seeds": [1, 2, 3, 4, 5],
+      "post_fit_receipt": "Record get_all_params, class order, feature count, train rows, validation rows, runtime, peak RSS, and prediction hash for every fit without using those values to change another fit."
+    },
+    "extra_trees": {
+      "role": "Diagnostic estimator control only; no tuning or Phase 0.5 rescore.",
+      "library": "scikit-learn 1.3.0",
+      "class": "ExtraTreesClassifier",
+      "constructor_arguments": {
+        "n_estimators": 128,
+        "min_samples_leaf": 3,
+        "max_features": "sqrt",
+        "class_weight": "balanced",
+        "n_jobs": 1,
+        "random_state": 20260809
+      },
+      "fit_call": "fit(X_outer_train, y_outer_train)",
+      "prediction_call": "predict_proba(X_outer_validation)[:, positive-class index]",
+      "claim_boundary": "This reuses the retained Phase 0.5 configuration values in the Stage A environment and raw-input policy. It is not the Phase 0.5 fitted model or end-to-end pipeline."
+    }
+  },
+  "candidate_ladder": {
+    "selection": "none; all six unique candidates and the five R5 seeds are fixed by identity before any result",
+    "candidates": [
+      {
+        "configuration_id": "r1_binary_morgan_catboost",
+        "feature_blocks": ["binary_morgan"],
+        "estimator": "catboost",
+        "seeds": [1],
+        "fits": 18,
+        "role": "binary-representation control"
+      },
+      {
+        "configuration_id": "r2_morgan_count_catboost",
+        "feature_blocks": ["morgan_count"],
+        "estimator": "catboost",
+        "seeds": [1],
+        "fits": 18,
+        "role": "count-versus-binary attribution"
+      },
+      {
+        "configuration_id": "r3_morgan_avalon_catboost",
+        "feature_blocks": ["morgan_count", "avalon_count"],
+        "estimator": "catboost",
+        "seeds": [1],
+        "fits": 18,
+        "role": "Avalon attribution"
+      },
+      {
+        "configuration_id": "r4_morgan_avalon_erg_catboost",
+        "feature_blocks": ["morgan_count", "avalon_count", "erg"],
+        "estimator": "catboost",
+        "seeds": [1],
+        "fits": 18,
+        "role": "ErG attribution"
+      },
+      {
+        "configuration_id": "r5_maplight_fixed_catboost",
+        "feature_blocks": ["morgan_count", "avalon_count", "erg", "rdkit_descriptors"],
+        "estimator": "catboost",
+        "seeds": [1, 2, 3, 4, 5],
+        "fits": 90,
+        "role": "predesignated exact fixed-MapLight comparator"
+      },
+      {
+        "configuration_id": "e1_maplight_fixed_extra_trees",
+        "feature_blocks": ["morgan_count", "avalon_count", "erg", "rdkit_descriptors"],
+        "estimator": "extra_trees",
+        "seeds": [20260809],
+        "fits": 18,
+        "role": "same-representation estimator control"
+      }
+    ],
+    "duplicate_resolution": "The Phase directive's complete-representation item and complete-representation-with-CatBoost item are one R5 artifact and fit set. Do not manufacture 18 duplicate fits.",
+    "total_unique_candidates": 6,
+    "total_catboost_fits": 162,
+    "total_extra_trees_fits": 18,
+    "total_model_fits": 180,
+    "inner_fits": 0
+  },
+  "shadow_evaluation": {
+    "tasks": ["cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith"],
+    "protocols": ["scaffold", "community"],
+    "repeats": [0, 1, 2],
+    "outer_cells": 18,
+    "outer_train_folds": [1, 2, 3, 4],
+    "outer_validation_fold": 0,
+    "inner_folds_used": 0,
+    "reason_no_inner_selection": "There is no unresolved label-dependent choice. Every representation, estimator, seed, contrast, and aggregation is fixed before results.",
+    "outer_training_target_rows_across_cells": 144183,
+    "outer_validation_rows_across_cells": 36045,
+    "duplicate_policy": "Retain every official source row. A standardized duplicate shares its global group and fold. Conflicting duplicate labels remain separate row-level observations.",
+    "point_metric": {
+      "name": "average_precision",
+      "public_name": "AUPRC",
+      "implementation": "sklearn.metrics.average_precision_score from scikit-learn 1.3.0",
+      "positive_label": 1,
+      "precision": "full floating-point precision; no TDC three-decimal rounding",
+      "higher_is_better": true
+    },
+    "model_prediction_vectors": 180,
+    "model_prediction_rows": 360450,
+    "derived_r5_mean_probability_vectors": 18,
+    "derived_r5_mean_probability_rows": 36045,
+    "derived_r5_mean_probability": "Arithmetic float64 row mean of the five complete R5 seed predictions. It is a separately labeled local ensemble, not upstream's published statistic.",
+    "point_metric_evaluations": 198,
+    "r5_seed_reporting": "Retain all five seed columns and full-precision cell metrics. Also report their arithmetic mean and population standard deviation without selecting a seed.",
+    "incremental_block_results": "R2-R1, R3-R2, R4-R3, and R5-R4 point deltas are descriptive only.",
+    "ties": "Do not break metric ties into a winner. Stable presentation order is configuration_id ascending."
+  },
+  "paired_uncertainty": {
+    "confirmatory_contrasts": [
+      {
+        "contrast_id": "complete_representation_effect",
+        "candidate": "r5_maplight_fixed_catboost seed 1",
+        "reference": "r1_binary_morgan_catboost seed 1",
+        "direction": "candidate minus reference"
+      },
+      {
+        "contrast_id": "catboost_estimator_effect",
+        "candidate": "r5_maplight_fixed_catboost seed 1",
+        "reference": "e1_maplight_fixed_extra_trees seed 20260809",
+        "direction": "candidate minus reference"
+      }
+    ],
+    "replicates_accepted_per_protocol": 2000,
+    "maximum_attempts_per_protocol": 20000,
+    "random_generator": "numpy.random.Generator with PCG64",
+    "protocol_seeds": {
+      "scaffold": 20260813,
+      "community": 20260814
+    },
+    "sampling_unit": "The full global protocol group universe: 9,114 scaffold groups or 9,902 community groups.",
+    "synchronization": "For one attempted replicate, sample the protocol's full global group universe with replacement to its original group count. Apply the same integer group multiplicities to every task, repeat, and confirmatory configuration occurrence.",
+    "row_weighting": "Every source row inherits its group's sampled multiplicity. Duplicate and conflicting rows remain together and retain separate row weights.",
+    "metric_implementation": "sklearn.metrics.average_precision_score with integer sample_weight under the frozen environment. Synthetic tests must match explicit row expansion exactly, including tied scores.",
+    "degenerate_draw": "Reject the entire synchronized protocol replicate before scoring if any of its nine task-repeat validation cells has zero weighted positives or zero weighted negatives. Continue the same PCG64 stream. Record attempted and rejected draws. Stop if 2,000 accepted draws are not obtained within 20,000 attempts.",
+    "aggregation": {
+      "cell_delta": "paired candidate AUPRC minus reference AUPRC",
+      "task_delta": "arithmetic mean of the three repeat cell deltas for one task and protocol",
+      "protocol_macro_delta": "arithmetic mean of the three task deltas",
+      "forbidden": "Do not concatenate repeated validation rows or combine scaffold and community draws into one interval."
+    },
+    "interval": {
+      "confidence": 0.95,
+      "method": "percentile",
+      "quantiles": [0.025, 0.975],
+      "numpy_quantile_method": "linear"
+    },
+    "bootstrap_configurations_scored": 3,
+    "bootstrap_cells": 18,
+    "bootstrap_metric_evaluations": 108000,
+    "total_metric_evaluations_including_points": 108198,
+    "claim_rule": "A representation or estimator gain may be claimed only when the protocol macro lower bound is strictly positive in both protocols, at least two task point deltas are positive in each protocol, and the remaining task point delta is no less than -0.005. Otherwise report the result without a gain claim.",
+    "superiority_boundary": "This Stage A contrast does not establish superiority over MapLight + GIN or qualify a final cypshift contender."
+  },
+  "artifact_contract": {
+    "all_generated_roots": "Ignored by Git, immutable after success, relative logical paths in receipts, no unrestricted raw row or label in tracked evidence.",
+    "parity_receipt": "Bind the contract, source files, fixture, environment, implementation revision and files, every block shape/dtype/hash, combined-array hash, two-run identity, adversarial checks, and exact zero real-data/model/public-test accounting.",
+    "feature_artifact": "Bind row identities and hashes, five block arrays, block names/order/dimensions/dtypes, .npy bytes, source/environment/implementation hashes, parse and count maxima, nonfinite count, failures, runtime, RSS, and exact zero label/fit/prediction/metric/public-test accounting.",
+    "target_projection": "Bind the shadow and train-only measurement receipts, exact 30,038 source identities, the 18 outer-training populations, one scoring population, schemas, bytes, raw-label parses, zero public-test rows/labels, and zero fit/prediction/metric counts.",
+    "prediction_artifact": "Bind every fit configuration and receipt, exact validation row identities, all 180 model prediction vectors and 360,450 rows, finite probability range, class order, source/environment/feature/target/split hashes, and zero validation/public-test label access.",
+    "result_artifact": "Bind immutable predictions before opening scoring targets; include all 198 point scores, both 2,000-replicate protocol bootstraps, every count and rejection, task and macro intervals, worst groups, decisions, resource observations, and exact public-test zero use.",
+    "failure_receipt": "For any stop condition, preserve the last verified input and stage, exact hashes, exception or mismatch class, observed resource/accounting values, and no unsupported claim. Do not alter a successful immutable root."
+  },
+  "resource_budgets": {
+    "feature_build": {
+      "wall_seconds": 3600,
+      "peak_rss_gib": 8
+    },
+    "target_projection": {
+      "wall_seconds": 600,
+      "peak_rss_gib": 2
+    },
+    "all_model_cells": {
+      "wall_seconds": 28800,
+      "peak_rss_gib_per_cell": 12,
+      "parallel_cells": 1,
+      "failure_rule": "Run alone. Stop rather than change features, versions, defaults, seeds, or hardware after any limit is exceeded."
+    },
+    "scoring_and_bootstrap": {
+      "wall_seconds": 14400,
+      "peak_rss_gib": 8
+    }
+  },
+  "stop_rules": [
+    "Any tracked, ignored source, environment, shadow, measurement, fixture, or implementation hash differs.",
+    "The clean signed source revision or sole-author requirement fails.",
+    "A required package or RDKit symbol is absent or its license is unsuitable for public benchmark use.",
+    "Fixture parity differs in any row, shape, dtype, feature name, value, slice, element byte, or .npy byte.",
+    "A real raw string is missing, empty, unparsable, zero-atom, repaired, standardized, deduplicated, dropped, or reordered.",
+    "A Morgan or Avalon sparse count is outside 0 through 127 before int8 conversion.",
+    "Any block or prediction is non-finite or any probability is outside 0 through 1.",
+    "Any standardized duplicate crosses its protocol group or fold, or any model cell can resolve a validation label.",
+    "Any fit, feature, score, seed, dependency, or default would change in response to a shadow or public-test result.",
+    "Any declared fit, prediction, label parse, or metric count is inaccurate.",
+    "Any resource cap is exceeded.",
+    "Any TDC public-test or challenge row, label, feature, prediction, or score enters the process.",
+    "Any point AUPRC is at or above 0.95 before the forensic gate passes."
+  ],
+  "forensic_gate_at_or_above_0_95": [
+    "raw and standardized duplicates",
+    "global scaffold and community boundaries",
+    "feature-row and target-row alignment",
+    "label polarity and average-precision implementation",
+    "target or provenance leakage into feature generation",
+    "validation labels visible to model workers",
+    "pretrained or external information use",
+    "architecture and evaluation chronology",
+    "gain concentration by scaffold or chemistry community",
+    "independent exact-result recomputation"
+  ],
+  "review_gates": {
+    "before_feature_implementation": "Independent review must pass this exact contract, source root, environment selection, lock, fixture, fit/evaluation arithmetic, firewalls, claim limits, and Occam scope.",
+    "before_real_feature_build": "Independent review must pass the implementation, synthetic parity receipt, adversarial tests, environment reconstruction, clean source binding, artifact schemas, and zero scientific accounting.",
+    "before_model_fits": "Independent review must pass two byte-identical real feature roots, one trusted target projection, row alignment, counts, dtypes, nonfinite/overflow checks, and cell-level held-out-label isolation.",
+    "before_scoring": "Independent review must pass all 180 fit receipts and label-free prediction hashes before the scoring-target projection is opened.",
+    "before_public_test": "A separate Gate 1 prediction contract and independent budget review are required. This contract consumes no public-test family-task slot."
+  },
+  "initial_accounting": {
+    "maplight_source_files_downloaded_and_persisted": 6,
+    "environment_lock_resolution_attempts": 2,
+    "environment_lock_resolutions_succeeded": 1,
+    "compatible_environments_synced": 1,
+    "interpreter_archive_downloads": 2,
+    "interpreter_archive_transport_bytes": 34597816,
+    "interpreter_archives_retained": 0,
+    "interpreters_installed": 1,
+    "installed_environment_packages": 23,
+    "synthetic_feature_arrays_generated": 0,
+    "real_feature_rows_parsed": 0,
+    "real_feature_matrices_generated": 0,
+    "raw_measurement_labels_parsed": 0,
+    "training_target_values_parsed": 0,
+    "scoring_target_values_parsed": 0,
+    "model_fits": 0,
+    "model_prediction_vectors": 0,
+    "derived_prediction_vectors": 0,
+    "metric_evaluations": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_predictions": 0,
+    "public_test_metric_evaluations": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "gin_weight_bytes_downloaded": 0,
+    "challenge_assumptions_added": 0
+  },
+  "reversal_condition": "Replace this contract only before a feature result and only through a new signed, independently reviewed pre-result milestone when a factual source, environment, arithmetic, leakage, or feasibility defect is demonstrated. After any feature or model result exists, preserve this contract and record a precise blocker or a separately authorized new experiment; do not rewrite the evidence."
+}

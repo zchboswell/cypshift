@@ -56,9 +56,20 @@ public-test labels after the assignment was hashed. Final manifest SHA-256 is
 `3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656`.
 All declared fold populations contain both classes.
 
-These four tracked files control the frozen shadow artifact and future
-public-test use. The completed shadow run records zero feature matrices, fits,
-predictions, public-test label parses, and metric evaluations.
+`maplight_fixed_stage_a_contract.json` freezes the first shadow experiment
+before feature code or results. It binds the raw official-string input policy,
+the exact MapLight block semantics, a dated compatible Python 3.10 environment,
+one eight-row parity fixture, fail-closed count and non-finite rules, six unique
+fixed candidates, 180 outer fits, two synchronized grouped bootstrap contrasts,
+and 108,198 total AUPRC evaluations. The complete CatBoost representation is
+one candidate extended to five seeds; it is not fitted twice. Model workers
+receive only their cell's outer-training targets. This contract authorizes no
+public-test use. The heavy environment remains isolated under
+`research/maplight-fixed/` and does not change the core package.
+
+These five tracked contracts control the frozen shadow artifact, Stage A, and
+future public-test use. The completed shadow run records zero feature matrices,
+fits, predictions, public-test label parses, and metric evaluations.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved

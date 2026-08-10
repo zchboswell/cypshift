@@ -1,0 +1,9 @@
+fixture_id,pandas_index,raw_smiles
+repetitive_aliphatic,13,CCCCCCCCCCCC
+aromatic,2,c1ccccc1
+heteroaromatic,21,c1ncccc1
+charged_salt,5,[Na+].[O-]C(=O)C
+stereoisomer_r,8,F[C@H](Cl)Br
+stereoisomer_s,3,F[C@@H](Cl)Br
+equivalent_ethanol_a,34,CCO
+equivalent_ethanol_b,1,OCC

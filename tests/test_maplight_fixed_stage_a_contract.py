@@ -1,0 +1,243 @@
+from __future__ import annotations
+
+import csv
+import hashlib
+import json
+import tomllib
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT_PATH = ROOT / "benchmarks" / "maplight_fixed_stage_a_contract.json"
+SOURCE_CONTRACT_PATH = ROOT / "benchmarks" / "maplight_source_contract.json"
+
+
+def _load_json(path: Path) -> dict[str, Any]:
+    def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            assert key not in result, f"duplicate JSON key {key!r} in {path}"
+            result[key] = value
+        return result
+
+    value = json.loads(
+        path.read_text(encoding="utf-8"), object_pairs_hook=reject_duplicate_keys
+    )
+    assert isinstance(value, dict)
+    return value
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_stage_a_contract_binds_source_shadow_and_compatible_environment() -> None:
+    contract = _load_json(CONTRACT_PATH)
+    source = _load_json(SOURCE_CONTRACT_PATH)
+
+    assert contract["schema_version"] == ("cypshift.maplight_fixed_stage_a_contract.v1")
+    frozen = contract["frozen_sources"]
+    assert frozen["maplight_source_contract"]["sha256"] == _sha256(SOURCE_CONTRACT_PATH)
+    assert frozen["maplight_repository"]["revision"] == source["repository"]["revision"]
+    assert frozen["maplight_repository"]["tree"] == source["repository"]["tree"]
+    assert frozen["maplight_repository"]["files"] == {
+        name: item["sha256"] for name, item in source["repository"]["files"].items()
+    }
+    assert frozen["paper"]["pdf_sha256"] == source["paper"]["pdf"]["sha256"]
+    assert frozen["shadow_benchmark"]["rows"] == 30038
+    assert frozen["shadow_benchmark"]["rows_sha256"] == (
+        "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f"
+    )
+    assert frozen["train_only_measurements"]["public_test_rows"] == 0
+
+    environment = contract["compatible_environment"]
+    for path_key, hash_key in (
+        ("project_path", "project_sha256"),
+        ("lock_path", "lock_sha256"),
+        ("python_version_path", "python_version_sha256"),
+    ):
+        assert environment[hash_key] == _sha256(ROOT / environment[path_key])
+
+    project = tomllib.loads((ROOT / environment["project_path"]).read_text())
+    assert project["project"]["requires-python"] == "==3.10.*"
+    assert project["project"]["dependencies"] == [
+        "catboost==1.2.1",
+        "numpy==1.25.2",
+        "pandas==2.0.3",
+        "rdkit==2023.3.3",
+        "scikit-learn==1.3.0",
+        "scipy==1.11.2",
+    ]
+    assert project["tool"]["uv"] == {
+        "exclude-newer": "2023-08-29T00:00:00Z",
+        "package": False,
+    }
+
+    lock = tomllib.loads((ROOT / environment["lock_path"]).read_text())
+    assert lock["options"]["exclude-newer"] == environment["result_blind_cutoff_utc"]
+    package_versions = {
+        item["name"]: item["version"]
+        for item in lock["package"]
+        if "version" in item and item["name"] != "cypshift-maplight-fixed-reproduction"
+    }
+    for name, version in environment["direct_packages"].items():
+        assert package_versions[name] == version
+    license_packages = {
+        item.rsplit("@", 1)[0] for item in environment["resolved_package_licenses"]
+    }
+    assert license_packages == set(package_versions)
+
+    cutoff = datetime.fromisoformat(environment["result_blind_cutoff_utc"])
+    for package in lock["package"]:
+        artifacts = ([package["sdist"]] if "sdist" in package else []) + package.get(
+            "wheels", []
+        )
+        for artifact in artifacts:
+            uploaded = artifact.get("upload-time")
+            if uploaded is not None:
+                assert datetime.fromisoformat(uploaded.replace("Z", "+00:00")) <= cutoff
+
+
+def test_stage_a_fixture_and_feature_contract_are_exact_and_fail_closed() -> None:
+    contract = _load_json(CONTRACT_PATH)
+    fixture = contract["parity_fixture"]
+    fixture_path = ROOT / fixture["path"]
+
+    assert _sha256(fixture_path) == fixture["sha256"]
+    assert len(fixture_path.read_bytes()) == fixture["size_bytes"]
+    with fixture_path.open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    assert len(rows) == fixture["rows"] == 8
+    assert list(rows[0]) == ["fixture_id", "pandas_index", "raw_smiles"]
+    assert [int(row["pandas_index"]) for row in rows] == fixture[
+        "pandas_index_in_file_order"
+    ]
+    assert rows[-2]["raw_smiles"] != rows[-1]["raw_smiles"]
+
+    features = contract["feature_contract"]
+    blocks = features["blocks"]
+    assert features["complete_dimensions"] == sum(
+        blocks[name]["dimensions"]
+        for name in ("morgan_count", "avalon_count", "erg", "rdkit_descriptors")
+    )
+    assert features["maplight_fixed_slices"] == {
+        "morgan_count": "0:1024",
+        "avalon_count": "1024:2048",
+        "erg": "2048:2363",
+        "rdkit_descriptors": "2363:2563",
+    }
+    assert blocks["morgan_count"]["artifact_dtype"] == "numpy.int8"
+    assert blocks["avalon_count"]["artifact_dtype"] == "numpy.int8"
+    assert blocks["binary_morgan"]["parameters"]["includeChirality"] is True
+    assert "0 through 127" in features["count_safety"]
+    assert "Never wrap" in features["count_safety"]
+    assert "Reject the complete" in features["nonfinite_policy"]
+    assert fixture["expected_array_hash_status"].startswith(
+        "Not generated at contract freeze"
+    )
+
+
+def test_stage_a_ladder_has_six_unique_candidates_and_exact_accounting() -> None:
+    contract = _load_json(CONTRACT_PATH)
+    ladder = contract["candidate_ladder"]
+    evaluation = contract["shadow_evaluation"]
+    bootstrap = contract["paired_uncertainty"]
+
+    outer_cells = (
+        len(evaluation["tasks"])
+        * len(evaluation["protocols"])
+        * len(evaluation["repeats"])
+    )
+    assert outer_cells == evaluation["outer_cells"] == 18
+    candidates = ladder["candidates"]
+    assert len(candidates) == ladder["total_unique_candidates"] == 6
+    assert len({item["configuration_id"] for item in candidates}) == 6
+    assert all(item["fits"] == outer_cells * len(item["seeds"]) for item in candidates)
+    assert sum(item["fits"] for item in candidates) == ladder["total_model_fits"]
+    assert ladder["total_model_fits"] == 180
+    assert ladder["total_catboost_fits"] == 162
+    assert ladder["total_extra_trees_fits"] == 18
+    assert ladder["inner_fits"] == evaluation["inner_folds_used"] == 0
+
+    full_blocks = ["morgan_count", "avalon_count", "erg", "rdkit_descriptors"]
+    full_catboost = [
+        item
+        for item in candidates
+        if item["feature_blocks"] == full_blocks and item["estimator"] == "catboost"
+    ]
+    assert len(full_catboost) == 1
+    assert full_catboost[0]["seeds"] == [1, 2, 3, 4, 5]
+
+    assert evaluation["model_prediction_rows"] == (
+        evaluation["outer_validation_rows_across_cells"] * 10
+    )
+    assert (
+        evaluation["derived_r5_mean_probability_rows"]
+        == evaluation["outer_validation_rows_across_cells"]
+    )
+    assert evaluation["point_metric_evaluations"] == (
+        evaluation["model_prediction_vectors"]
+        + evaluation["derived_r5_mean_probability_vectors"]
+    )
+    assert bootstrap["bootstrap_metric_evaluations"] == (
+        bootstrap["bootstrap_configurations_scored"]
+        * bootstrap["bootstrap_cells"]
+        * bootstrap["replicates_accepted_per_protocol"]
+    )
+    assert bootstrap["total_metric_evaluations_including_points"] == (
+        bootstrap["bootstrap_metric_evaluations"]
+        + evaluation["point_metric_evaluations"]
+    )
+    assert bootstrap["total_metric_evaluations_including_points"] == 108198
+
+
+def test_stage_a_firewalls_public_test_and_keeps_core_lightweight() -> None:
+    contract = _load_json(CONTRACT_PATH)
+    accounting = contract["initial_accounting"]
+
+    scientific_zero_keys = {
+        "synthetic_feature_arrays_generated",
+        "real_feature_rows_parsed",
+        "real_feature_matrices_generated",
+        "raw_measurement_labels_parsed",
+        "training_target_values_parsed",
+        "scoring_target_values_parsed",
+        "model_fits",
+        "model_prediction_vectors",
+        "derived_prediction_vectors",
+        "metric_evaluations",
+        "public_test_rows_used",
+        "public_test_labels_parsed",
+        "public_test_predictions",
+        "public_test_metric_evaluations",
+        "public_test_family_task_slots_consumed",
+        "gin_weight_bytes_downloaded",
+        "challenge_assumptions_added",
+    }
+    assert all(accounting[key] == 0 for key in scientific_zero_keys)
+    assert (
+        contract["process_firewall"]["trusted_target_projection"][
+            "public_test_label_parses"
+        ]
+        == 0
+    )
+    assert (
+        "public-test"
+        in contract["process_firewall"]["feature_process"]["must_not_resolve"]
+    )
+    assert (
+        "validation target"
+        in contract["process_firewall"]["model_cell_process"]["must_not_resolve"]
+    )
+    assert contract["review_gates"]["before_public_test"].endswith(
+        "This contract consumes no public-test family-task slot."
+    )
+
+    core = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    core_dependencies = " ".join(core["project"]["dependencies"]).lower()
+    assert "catboost" not in core_dependencies
+    assert "pandas" not in core_dependencies
+    assert "torch" not in core_dependencies
+    assert "molfeat" not in core_dependencies
+    assert "dgl" not in core_dependencies

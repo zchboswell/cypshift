@@ -234,21 +234,41 @@ The public CLI remains exactly `audit`, `train`, `predict`, and `report`.
 
 ## Stage A — fixed MapLight reproduction
 
-Implement the exact four feature blocks only after the source freeze. Compare
+The pre-result Stage A contract is
+[`maplight_fixed_stage_a_contract.json`](../../benchmarks/maplight_fixed_stage_a_contract.json).
+It freezes a result-blind compatible environment under
+`research/maplight-fixed/`: Python 3.10.13, RDKit 2023.03.3, CatBoost 1.2.1,
+NumPy 1.25.2, pandas 2.0.3, scikit-learn 1.3.0, and SciPy 1.11.2. All
+transitive releases are restricted to no later than 2023-08-29 UTC. This is
+not the unrecoverable historical MapLight environment.
+
+Implement the exact four MapLight feature blocks only after the contract
+passes independent review. Compare
 fixture arrays directly with the pinned public implementation and verify count
 versus binary behavior, descriptor order, dimensions, dtype, failed structures,
 non-finite handling, and RDKit drift.
 
-Reproduce the five-seed CatBoost method on exact TDC rows without tuning. On
-the shadow benchmark only, compare:
+Reproduce the five-seed CatBoost method on exact raw TDC strings without
+tuning. On the shadow benchmark only, compare six unique candidates:
 
-1. current binary ECFP;
-2. Morgan counts;
-3. Morgan plus Avalon;
-4. Morgan plus Avalon plus ErG;
-5. the complete fixed representation;
-6. the complete fixed representation with ExtraTrees;
-7. the complete fixed representation with CatBoost.
+1. binary chiral Morgan plus CatBoost seed 1;
+2. Morgan counts plus CatBoost seed 1;
+3. Morgan plus Avalon counts plus CatBoost seed 1;
+4. Morgan plus Avalon plus ErG plus CatBoost seed 1;
+5. the complete fixed representation plus CatBoost seeds 1 through 5;
+6. the complete fixed representation plus the frozen ExtraTrees diagnostic.
+
+The complete fixed CatBoost entry is one artifact, not two candidates. Use
+three tasks, two protocols, and three repeats with outer fold 0 held out. No
+inner fit is needed because no choice remains. The exact budget is 162
+CatBoost fits plus 18 ExtraTrees fits, for 180 total. Retain all seed
+predictions. Use paired synchronized scaffold and community bootstraps only for
+the complete-representation effect and the CatBoost-versus-ExtraTrees effect.
+Incremental block deltas are descriptive.
+
+R1 shares the raw-input policy needed for a fair representation contrast. It
+has Phase 0.5 binary-Morgan feature semantics, but it is not a rescore of the
+standardized Phase 0.5 pipeline. Stage A consumes no public-test budget.
 
 Gate 1 must pass before public scoring: representation parity, frozen
 environment, complete row alignment, label-free predictions, accurate fit and
@@ -384,17 +404,19 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 3. Freeze the public-test budget and exact shadow-split contract. **Complete.**
 4. Create the global shadow grouping and validate it before model work.
    **Complete.**
-5. Add the smallest feature-block seam.
-6. Implement and parity-test the four fixed feature blocks.
-7. Run the shadow representation ablation.
-8. Pass Gate 1 and consume the fixed-MapLight public-test family once.
-9. Build the isolated GIN embedding path and shadow controls.
-10. Pass Gate 2 and consume the GIN public-test family once.
-11. Freeze row-level comparator predictions and the honest scorecard.
-12. Perform Tier 2 audits only if Tier 1 is early and clean.
-13. Lock and evaluate one final contender only if shadow evidence and Gate 4
+5. Freeze the Stage A environment, parity, ablation, accounting, and stopping
+   contract. **Complete.**
+6. Add the smallest feature-block seam.
+7. Implement and parity-test the four fixed feature blocks.
+8. Run the shadow representation ablation.
+9. Pass Gate 1 and consume the fixed-MapLight public-test family once.
+10. Build the isolated GIN embedding path and shadow controls.
+11. Pass Gate 2 and consume the GIN public-test family once.
+12. Freeze row-level comparator predictions and the honest scorecard.
+13. Perform Tier 2 audits only if Tier 1 is early and clean.
+14. Lock and evaluate one final contender only if shadow evidence and Gate 4
     support it.
-14. Update public documentation, obtain closeout review, and hand off on
+15. Update public documentation, obtain closeout review, and hand off on
     August 17.
 
 The first scientific milestone is a locally reproduced row-level MapLight
