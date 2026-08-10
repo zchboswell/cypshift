@@ -45,7 +45,8 @@ Do not reopen:
 
 Complete these items before the August 17 handoff:
 
-1. freeze the exact MapLight source, paper, method, licenses, and environment;
+1. freeze the exact MapLight source, paper, method, and licenses, plus one
+   hash-locked compatible environment;
 2. freeze a new public-test evaluation budget;
 3. create a leakage-safe shadow benchmark from TDC `train_val` only;
 4. reproduce the fixed MapLight representation or diagnose version drift;
