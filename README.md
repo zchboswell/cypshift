@@ -3,18 +3,18 @@
 `cypshift` is a series-first, competence-aware system for predicting cytochrome
 P450 inhibition under analog-family distribution shift.
 
-The repository is in private, pre-launch Phase 0.5 development. Phase 0 is
-complete as signed release `v0.1.0`; its synthetic vertical slice validates
-pipeline mechanics, not biological performance. Phase 0.5 is rehearsing the
-real-data benchmark, leakage, modeling, and reporting path on frozen public CYP
-data. No competition-performance result exists yet. The official OpenADMET CYP
-inhibition challenge launches on 2026-08-17; its released data, schema, metric
-code, submission contract, and rules supersede all provisional assumptions.
+The repository is private and pre-launch. Phase 0 is complete as signed release
+`v0.1.0`; its synthetic vertical slice validates pipeline mechanics, not
+biological performance. Phase 0.5 is also complete. It validates the public CYP
+data, leakage, modeling, comparison, and reporting path, but it does not provide
+a competition-performance result. The official OpenADMET CYP inhibition
+challenge launches on 2026-08-17; its released data, schema, metric code,
+submission contract, and rules supersede all provisional assumptions.
 
 ## Current objective
 
-Produce leakage-safe, apples-to-apples public CYP evidence with the smallest
-defensible classical model ladder, while preserving the proven public workflow:
+Preserve the completed benchmark evidence. On 2026-08-17, freeze the official
+challenge release before adapting the proven public workflow:
 
 ```text
 audit -> standardize -> split -> train -> predict -> report

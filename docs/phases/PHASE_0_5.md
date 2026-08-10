@@ -1,10 +1,12 @@
 # Phase 0.5 — public CYP benchmark and real-data rehearsal
 
-Status: active — 2026-08-09
+Status: complete — 2026-08-10
 
 Plan frozen: 2026-08-09
 
 Completion deadline: 2026-08-16
+
+Completed: 2026-08-10
 
 ## Objective
 
@@ -336,3 +338,18 @@ rules, freeze official schema and metric, write the Phase 1 plan, and construct
 challenge-faithful validation before model selection. Treat every Phase 0.5
 model as a candidate, never an incumbent, and do not force official data through
 Octant or TDC assumptions.
+
+## Closeout evidence
+
+All 15 exit criteria pass. The final independent review passed exact signed
+commit `9150e93fc8a48f8791feddb2952d9305332f9ae1`. It verified the clean-clone
+report reconstruction, aggregate evidence, no-raw-data boundary, 90 tests,
+Ruff, strict mypy, locked builds, GitHub rendering, signatures, sole
+`zchboswell` authorship, hosted Python 3.11/3.14 CI, and Occam scope. PR 38 was
+integrated by exact fast-forward with both reviewed signatures intact.
+
+The retained native model is the fixed unweighted mean. The learned stack,
+fit-free series residual, and CheMeleon environment are rejected. The report,
+compact receipts, source and validation contracts, research artifacts, and
+negative results transfer to launch. No Phase 0.5 model transfers as an
+automatic Phase 1 incumbent.

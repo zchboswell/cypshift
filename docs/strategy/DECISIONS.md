@@ -577,3 +577,28 @@
 - Reversal condition: Correct a factual, provenance, or rendering defect before
   closeout. Do not reopen modeling or change a result in response to report
   presentation.
+
+## D-024 — Close Phase 0.5 and restore the launch freeze
+
+- Date: 2026-08-10
+- Status: accepted
+- Decision: Close Phase 0.5 after independent review passed exact signed commit
+  `9150e93fc8a48f8791feddb2952d9305332f9ae1` and all 15 exit criteria. Freeze
+  its source, split, scorecard, report, negative-result, and experiment records.
+  Preserve Phase 0 `v0.1.0` as the installable product baseline and the fixed
+  Phase 0.5 mean as a public-data research candidate, not a launch incumbent.
+- Evidence: A no-local-artifact clone verified receipt v2 and every report table
+  without repeating held-out scoring. All 90 tests, static checks, locked
+  builds, GitHub rendering, signatures, sole authorship, hosted CI, and Occam
+  review pass. PR 38 merged by exact signed fast-forward.
+- Launch boundary: Before any Phase 1 fit or candidate score, capture the
+  authoritative 2026-08-17 release and freeze its original bytes, provenance,
+  license, rules, schema, assay semantics, metric, submission contract, and
+  label-independent challenge-faithful validation groups. Phase 0.5 mappings
+  and models have no automatic authority over the released challenge.
+- Superiority boundary: Reproduce the strongest relevant public comparator on
+  identical rows. Require paired family-safe uncertainty and a positive lower
+  confidence bound before claiming a statistically significant gain.
+- Reversal condition: Reopen Phase 0.5 only for a demonstrated factual or
+  provenance defect. The authoritative release may supersede any provisional
+  assumption, but it does not erase the Phase 0.5 record.

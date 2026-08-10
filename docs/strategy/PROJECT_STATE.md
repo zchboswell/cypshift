@@ -1,50 +1,46 @@
 # Project state
 
-Last updated: 2026-08-09
+Last updated: 2026-08-10
 
 ## Current phase
 
-Phase 0.5 active — public-data benchmark and launch rehearsal.
+Phase 0.5 complete — pre-launch hold for the authoritative challenge release.
 
 ## Active operating goal
 
-By 2026-08-16, build and benchmark the smallest real-data version of
-`cypshift`, producing apples-to-apples public CYP performance comparisons,
-exercising the critical ETL, validation, out-of-fold prediction, and reporting
-path, and polishing the user experience without freezing any provisional
-competition-specific contract.
+Preserve the independently reviewed Phase 0.5 evidence without further public-
+test tuning. On 2026-08-17, capture and hash the authoritative challenge
+release, then freeze its license, rules, data snapshot, schema, assay semantics,
+metric implementation, submission contract, and challenge-faithful validation
+groups before model selection or adaptation.
 
-The 2026-08-17 authoritative freeze remains in force. Phase 0.5 may use named,
-versioned public data to rehearse the scientific and product machinery, but it
-must not guess the official challenge adapter, schema, metric, submission
-contract, series definition, or external/transductive-use rules.
+After that freeze, reproduce the strongest relevant public comparator on the
+same rows and run the smallest predeclared model ladder that can test fixed
+chemical features, one pretrained graph representation, assay-conditioned
+multitask learning, and family-safe combination. Claim superiority only from
+paired, leakage-safe evidence with a positive lower confidence bound.
 
 ## Best validated system
 
-Phase 0 `v0.1.0` is the best validated system. On the CC0 synthetic fixture,
-`audit -> train -> predict -> report` produces canonical
+Phase 0 `v0.1.0` remains the best validated installable product workflow. On the
+CC0 synthetic fixture, `audit -> train -> predict -> report` produces canonical
 data, a duplicate-safe fixture split, an endpoint-context median, 21
 predictions, cards, a hashed manifest, and a static report. Independent
-same-seed runs are byte-identical. The locked package passes 34 tests, Ruff,
-strict mypy, distribution builds, Linux CI on Python 3.11/3.14, and a local
-macOS installed-wheel run. Independent review findings are remediated and
-re-verified.
+same-seed runs are byte-identical.
 
-The Phase 0.5 public-data and split foundation is independently validated and
-merged at signed commit `58b0661`. The reviewer repeated the full empty-root
-reconstruction, matched all 24 retained files and both aggregate receipts, and
-found no remaining scientific, code, or documentation issues.
-The exact Octant compound-level release maps deterministically into 1,340
-accepted molecules and 1,084 numeric measurements; 256 rows without source
-pIC50 values remain explicit molecule records and do not become fabricated
-measurements. This establishes data-contract evidence, not model-performance
-evidence, so Phase 0 `v0.1.0` remains the best validated predictive system.
+The Phase 0.5 fixed unweighted mean is the best validated public-data research
+model. It combines prior, ECFP linear, similarity kNN, and ExtraTrees families.
+On frozen TDC public tests it reaches AUPRC 0.7484, 0.6547, and 0.8500 for
+CYP2C9, CYP2D6, and CYP3A4. It trails the matching Chemprop-RDKit anchors by
+0.0286, 0.0183, and 0.0260, and the dated MapLight + GNN anchors by 0.1106,
+0.1353, and 0.0660. On the Octant grouped outer population its MAE is 0.5434.
+No superiority or challenge-performance claim is supported.
 
-The first real-data native selection ladder is frozen at signed commit
-`42ffaf1`. Two real grouped-OOF runs are byte-identical with aggregate
-`33ba1f6481048c9f620223f9a0e6c85d2a40bece620ffe9b0c44117c0c7775fa`.
-This is train/validation selection evidence only: no TDC public-test or Octant
-outer label was parsed or evaluated, so it is not yet a public benchmark result.
+The final Phase 0.5 review passed exact signed commit `9150e93`. A clean clone
+verified the tracked report from aggregate-only evidence and passed all 90
+tests. The public source reconstruction, grouped splits, prediction firewall,
+scorecards, negative results, signatures, hosted CI, and minimal codebase all
+passed independent review.
 
 ## Phase 0.5 benchmark contract
 
@@ -424,7 +420,12 @@ artifacts remain outside Git.
   `06af9e6e`. Receipt v2 preserves every aggregate table input so a clean clone
   can verify the report without repeating a held-out evaluation. It tracks no
   raw row, label, structure, or prediction and adds zero fit, score, or
-  held-out access. Independent closeout review remains open.
+  held-out access.
+- Final closeout review passed exact signed head `9150e93`. The reviewer used a
+  clone without local artifacts, verified every receipt and canonical origin,
+  passed the four focused report tests before benchmark dependencies and all 90
+  tests after locked installation, and confirmed zero new scoring or held-out
+  access. PR 38 merged by exact fast-forward with both reviewed signatures.
 
 ## Active hypotheses
 
@@ -475,16 +476,24 @@ reproduction improvements. Benchmark dependencies remain optional, the core
 installation remains lightweight, and the public CLI remains exactly
 `audit`, `train`, `predict`, and `report`.
 
-Phase 0.5 closes no later than 2026-08-16. It returns to the official launch
-workflow when its required tracks, scorecard, report, clean reproduction,
-independent review, and KB closeout are complete, or immediately when the
-authoritative challenge release requires the launch-day freeze procedure.
+Phase 0.5 completed on 2026-08-10. Its scope is frozen. Reopen a Phase 0.5
+artifact only for a demonstrated factual or provenance defect, not for model
+tuning.
 
 ## Exact next action
 
-Independently audit the tracked Phase 0.5 report and receipt against the source,
-validation, retained-mean, family-scorecard, CheMeleon, and series evidence.
-Verify every table value, assay and license warning, claim boundary, clean-cache
-instructions, no-new-evaluation counts, GitHub rendering, 90-test minimal tree,
-signatures, CI, and Occam simplicity. Remediate only factual or presentation
-defects, then close Phase 0.5 and hand off the August 17 freeze action.
+On 2026-08-17, perform the launch freeze before model work:
+
+1. acquire the authoritative release and preserve original bytes;
+2. record URLs, timestamps, licenses, citations, file sizes, and SHA-256 hashes;
+3. freeze the released schema, assay and censoring semantics, metric code,
+   submission validator, rules, and external or transductive-data permissions;
+4. audit structures and measurements without silently applying Phase 0.5
+   assumptions;
+5. construct label-independent analog-family and duplicate-safe validation
+   groups before inspecting candidate results;
+6. reproduce the strongest relevant public comparator on the exact evaluation
+   rows before running the predeclared breakthrough ladder.
+
+Do not map Octant or TDC fields automatically. Do not fit, select, or score a
+challenge model until items 1–5 are frozen and independently reviewable.
