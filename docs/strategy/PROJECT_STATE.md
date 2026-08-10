@@ -489,6 +489,12 @@ are recorded in
 [`PUBLIC_COMPARATOR_INTAKE.md`](PUBLIC_COMPARATOR_INTAKE.md). This research adds
 no model, dependency, fit, evaluation, or authority to bypass the launch freeze.
 
+The official announcement now links to the public
+`openadmet/cyp-challenge` Space. Its captured revision remains explicitly in
+pre-challenge state with no dataset or tutorial link and TODO-marked values.
+[`LAUNCH_INTAKE.md`](LAUNCH_INTAKE.md) records the official entry points,
+current non-authoritative state, release-detection gate, and exact capture order.
+
 On 2026-08-17, perform the launch freeze before model work:
 
 1. acquire the authoritative release and preserve original bytes;
