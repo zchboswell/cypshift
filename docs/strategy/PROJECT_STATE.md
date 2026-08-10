@@ -482,6 +482,13 @@ tuning.
 
 ## Exact next action
 
+Selective pre-freeze source inspection identifies MapLight + GNN as the first
+conditional comparator candidate. Its exact public method, source hashes,
+reproducibility gaps, eligibility gate, and paired significance requirements
+are recorded in
+[`PUBLIC_COMPARATOR_INTAKE.md`](PUBLIC_COMPARATOR_INTAKE.md). This research adds
+no model, dependency, fit, evaluation, or authority to bypass the launch freeze.
+
 On 2026-08-17, perform the launch freeze before model work:
 
 1. acquire the authoritative release and preserve original bytes;
