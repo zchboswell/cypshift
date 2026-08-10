@@ -106,3 +106,46 @@ class already captures the underlying failure:
 - **Benchmark framework expansion (P3/P6):** generalized infrastructure,
   dependencies, or abstractions displace the two required concrete adapters
   and the core product.
+
+## Phase 0.75 comparator and representation applications
+
+The following named risks govern exact comparator reproduction and any richer
+public representation work:
+
+- **Representation monoculture (E1/E3):** estimator diversity over one feature
+  channel is described as molecular evidence diversity.
+- **Descriptor-version drift (C6/P1/P6):** RDKit versions, descriptor ordering,
+  count semantics, defaults, non-finite handling, or failed-row policies change
+  the comparator representation.
+- **Comparator implementation drift (P1/P6/V6):** local code, environment,
+  CatBoost defaults, seed aggregation, split identity, or row policy no longer
+  reproduces the pinned public method.
+- **Pretrained-weight drift (P1/P6):** a moving model identifier, dependency,
+  cache, or weight file changes the GIN representation without a new contract.
+- **Pretrained-data overlap (V1/V5):** benchmark or source structures occur in
+  pretraining and the result is described as clean zero-shot transfer.
+- **Cross-isoform same-structure leakage (V1/V2):** a held-out molecule for one
+  CYP contributes a label, identity shortcut, fold assignment, or close-family
+  signal through another CYP task.
+- **PubChem/TDC target leakage (V1/V5):** AID 1851 outcomes for a TDC public-
+  test structure enter training directly or through another isoform.
+- **Public-test-aware architecture selection (V5):** public predictions or
+  scores influence a feature block, dependency choice, model, seed,
+  hyperparameter, ablation, or repair cycle.
+- **Multi-assay source mixing (M3/M5):** heterogeneous assay outcomes are
+  pooled or called assay-conditioned without preserving and using verified
+  condition fields.
+- **Inconclusive-as-negative collapse (M2/M4):** unresolved, qualifier-bearing,
+  missing, or inconclusive source outcomes become inactive labels.
+- **Activity-cliff oversmoothing (S3/S4):** a richer global or pretrained
+  representation improves average rank by erasing high-similarity outcome
+  discontinuities.
+- **One-scaffold rank gain (V2/E1):** an apparent AUPRC improvement is driven by
+  one large scaffold or chemistry community rather than repeated paired value.
+- **False 0.95 breakthrough (V1/V2/V5/V6):** AUPRC at or above 0.95 is accepted
+  before duplicate, cross-task, external-data, pretrained-overlap, row-
+  alignment, chronology, scaffold-concentration, polarity, and metric audits.
+- **Heavy dependency contamination (P3):** CatBoost, PyTorch, DGL, MolFeat, or
+  model weights enter the core install or ordinary all-groups CI environment.
+- **Task-specific shadow grouping (V1/V2/V4):** the same molecule, scaffold, or
+  chemistry community receives incompatible fold assignments across CYP tasks.

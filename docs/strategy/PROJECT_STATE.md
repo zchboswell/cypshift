@@ -4,21 +4,21 @@ Last updated: 2026-08-10
 
 ## Current phase
 
-Phase 0.5 complete — pre-launch hold for the authoritative challenge release.
+Phase 0.75 active — exact comparator reproduction and representation
+breakthrough.
 
 ## Active operating goal
 
-Preserve the independently reviewed Phase 0.5 evidence without further public-
-test tuning. On 2026-08-17, capture and hash the authoritative challenge
-release, then freeze its license, rules, data snapshot, schema, assay semantics,
-metric implementation, submission contract, and challenge-faithful validation
-groups before model selection or adaptation.
+Complete a tightly scoped public benchmark breakthrough sprint: reproduce the
+strongest available CYP comparator, identify the true representation gap, and
+establish whether richer molecular representations can produce reproducible
+gains under leakage-safe validation without compromising `cypshift`'s
+scientific rigor.
 
-After that freeze, reproduce the strongest relevant public comparator on the
-same rows and run the smallest predeclared model ladder that can test fixed
-chemical features, one pretrained graph representation, assay-conditioned
-multitask learning, and family-safe combination. Claim superiority only from
-paired, leakage-safe evidence with a positive lower confidence bound.
+Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
+research only. Phase 0.5 remains immutable. D-024's authoritative challenge
+freeze remains in force: no Phase 0.75 assumption, feature, split, score, or
+model automatically transfers to the released challenge.
 
 ## Best validated system
 
@@ -41,6 +41,48 @@ verified the tracked report from aggregate-only evidence and passed all 90
 tests. The public source reconstruction, grouped splits, prediction firewall,
 scorecards, negative results, signatures, hosted CI, and minimal codebase all
 passed independent review.
+
+No Phase 0.75 model result exists yet. The Phase 0.5 fixed mean remains the best
+validated public-data research model until a new frozen result passes its
+declared gates.
+
+## Phase 0.75 operating contract
+
+Phase 0.75 closes no later than 2026-08-17. Required Tier 1 work is limited to:
+
+- exact MapLight fixed-feature reproduction;
+- one isolated MapLight + GIN reproduction attempt;
+- one global leakage-safe TDC `train_val` shadow benchmark;
+- representation ablations on the shadow benchmark only;
+- a row-level comparator scorecard, accurate public documentation, and launch
+  handoff.
+
+The new TDC public-test budget contains exactly three prediction families per
+task: fixed MapLight, MapLight + GIN, and at most one final locked `cypshift`
+contender. Each family requires frozen code, environment, configuration,
+label-free prediction hashes, and independent review before scoring. There is
+no score-driven repair cycle and no public-test feature ablation.
+
+The shadow benchmark uses one label-independent global molecule grouping table
+across CYP2C9, CYP2D6, and CYP3A4. Standardized structures, duplicates,
+scaffolds, and frozen chemistry communities cannot cross a boundary or receive
+task-specific regrouping. All representation, dependency, model, and
+combination choices use shadow evidence only.
+
+Heavy MapLight and GIN dependencies remain in separately locked research
+environments or digest-pinned containers. They do not enter the core install or
+ordinary all-groups CI environment. The public CLI remains exactly `audit`,
+`train`, `predict`, and `report`.
+
+Conditional Tier 2 work is limited to an AID 1851 source and leakage audit, a
+cross-isoform panel feasibility assessment, and a parent/analog topology audit.
+No AID label may enter training before primary field semantics and the strict
+cross-task structure firewall pass independent review. Full multitask,
+parent-relative, Chemprop, additional encoder, and LLM work is deferred beyond
+launch unless separately authorized as trivial after Tier 1 closes early.
+
+The complete contract is
+[`PHASE_0_75.md`](../phases/PHASE_0_75.md).
 
 ## Phase 0.5 benchmark contract
 
@@ -429,16 +471,19 @@ artifacts remain outside Git.
 
 ## Active hypotheses
 
-1. Parent-expansion validation will better predict blind performance than
-   molecule-random validation.
-2. Simple series residuals or shrinkage will improve predictions for close
-   analog campaigns.
-3. Local support and disagreement can predict expert error well enough to
-   improve a simple cross-fitted stack.
+1. The fixed MapLight method can be reproduced on exact TDC rows within a
+   declared tolerance or its version drift can be diagnosed precisely.
+2. Count fingerprints, pharmacophore features, and ordered physicochemical
+   descriptors add shadow-benchmark information beyond binary ECFP estimator
+   diversity.
+3. A frozen pretrained GIN representation adds real shadow-benchmark value
+   beyond the fixed representation and does not pass shuffled-row or
+   same-dimensional-noise controls.
 
-The first hypothesis has supporting random-versus-grouped evidence. This one
-predeclared test rejects the second hypothesis in its tested form; it does not
-prove that every future series method must fail. The third remains untested.
+The broader parent-relative and cross-isoform hypotheses remain scientifically
+important but are not active Tier 1 model experiments. The rejected Phase 0.5
+similarity residual remains closed; it is not evidence for or against a future
+measured-parent transformation model.
 
 ## Unresolved risks
 
@@ -466,6 +511,19 @@ prove that every future series method must fail. The third remains untested.
   not clean zero-shot unless overlap is excluded with evidence.
 - Public benchmark plumbing could expand into a framework and displace the
   product. Only two concrete required adapters are authorized.
+- The repository is now intentionally public, but the README still describes
+  it as private and understates the public benchmark record.
+- MapLight has no frozen upstream environment, so RDKit, CatBoost, MolFeat,
+  DGL, and pretrained-weight drift may prevent exact reproduction.
+- The TDC public test is already observed. Any new prediction family or repair
+  after scoring could turn comparator reproduction into public-test-aware
+  model selection.
+- Task-specific shadow folds could leak the same molecule or chemistry family
+  across isoforms. One global grouping assignment is mandatory.
+- Pretrained GIN training overlap may be known, present, or unknowable. Unknown
+  provenance forbids a clean zero-shot claim.
+- Heavy research dependencies could enter the all-groups core CI path unless
+  environments remain isolated.
 
 ## Maximum Phase 0.5 scope
 
@@ -480,7 +538,25 @@ Phase 0.5 completed on 2026-08-10. Its scope is frozen. Reopen a Phase 0.5
 artifact only for a demonstrated factual or provenance defect, not for model
 tuning.
 
+## Maximum Phase 0.75 scope
+
+Tier 1 is one exact fixed comparator, one exact pretrained-GIN comparator
+attempt, two frozen global shadow protocols, fixed representation ablations,
+three possible TDC public-test prediction families, one scorecard, public
+documentation, and the August 17 handoff. Tier 2 may audit AID 1851 and public
+parent/analog topology but may not displace Tier 1. Add no challenge adapter,
+foundation-model tournament, full multitask system, parent-relative model,
+LLM adjudicator, service, database, dashboard, or general research framework.
+
 ## Exact next action
+
+Freeze the exact MapLight repository, paper, source files, license, method,
+dependency behavior, and dated fixed-feature anchors. In the same pre-result
+milestone, freeze the three-family public-test budget and the exact global
+shadow-split contract. Do not write representation code or generate a public-
+test prediction until those records are signed, reviewed, and merged.
+
+The following pre-freeze research already supports that action.
 
 Selective pre-freeze source inspection identifies MapLight + GNN as the first
 conditional comparator candidate. Its exact public method, source hashes,

@@ -602,3 +602,84 @@
 - Reversal condition: Reopen Phase 0.5 only for a demonstrated factual or
   provenance defect. The authoritative release may supersede any provisional
   assumption, but it does not erase the Phase 0.5 record.
+
+## D-025 — Authorize bounded Phase 0.75 public comparator research
+
+- Date: 2026-08-10
+- Status: accepted
+- Decision: Preserve Phase 0.5 as immutable evidence and begin a separate
+  Phase 0.75 that reproduces the strongest eligible public CYP comparator,
+  freezes a new leakage-safe TDC shadow benchmark, and tests whether richer
+  molecular representations add value before the 2026-08-17 challenge launch.
+- Rationale: Phase 0.5 deliberately tested estimator diversity over one
+  binary, chiral, radius-2 Morgan representation. Its fixed mean improved the
+  correlated native estimators, while its NNLS stack and same-representation
+  kNN residual failed. It did not reproduce the public MapLight method or test
+  its count fingerprints, Avalon, ErG, ordered descriptor, or pretrained GIN
+  information. The observed native ceiling is therefore a representation-
+  limited Phase 0.5 result, not evidence that public CYP modeling is exhausted.
+- D-024 boundary: D-024 is not reversed. Its Phase 0.5 artifacts, scores,
+  evaluations, negative results, and launch-day authority remain unchanged.
+  Phase 0.75 uses only named public benchmarks and grants no authority to guess
+  a challenge field, assay mapping, metric, split, rule, or model. No Phase
+  0.75 component transfers automatically after launch.
+- Required scope: Complete Tier 1 by August 17: freeze MapLight, freeze one
+  global TDC `train_val` shadow benchmark, reproduce fixed MapLight, attempt
+  one isolated MapLight + GIN reproduction, run shadow-only representation
+  ablations, publish an honest scorecard, correct public documentation, and
+  create the launch handoff. A precise reproduction blocker is acceptable.
+- Conditional scope: Only after Tier 1 is early and clean, audit PubChem AID
+  1851, assess cross-isoform panel feasibility, and audit parent/analog
+  topology. Do not train from AID labels before primary field semantics and a
+  strict union test-structure firewall pass independent review. Full panel,
+  parent-relative, Chemprop, additional encoder, and LLM work is deferred
+  unless separately authorized.
+- Public-test budget: Authorize exactly three new prediction families per TDC
+  task: fixed MapLight, MapLight + GIN, and at most one final locked
+  `cypshift` contender. A family is one frozen row-level prediction artifact
+  from one frozen source, environment, and configuration state. All declared
+  seeds belong to the family. Predictions are generated and hashed without
+  labels, then independently reviewed before scoring. A no-prediction,
+  no-label infrastructure failure consumes no family but is recorded. Any
+  prediction generated after label access consumes the family. No score-driven
+  repair, feature ablation, or hyperparameter selection is permitted.
+- Shadow boundary: All new choices use TDC `train_val` only. One global,
+  label-independent table binds standardized structures, Bemis-Murcko
+  scaffolds, and one frozen chemistry community across all three CYP tasks.
+  Task-specific regrouping is forbidden. Freeze one scaffold-held-out and one
+  chemistry-community-held-out protocol with three deterministic outer repeats
+  where populations permit, plus grouped inner selection.
+- Comparator boundary: Pin the MapLight repository, files, paper, MIT license,
+  feature semantics, dependency behavior, CatBoost seeds and configuration,
+  and dated anchors. Verify fixture arrays before scoring. A mismatch beyond
+  0.010 AUPRC triggers a version and implementation audit, not tuning. If exact
+  GIN reproduction is blocked or drifts, retain the precise blocker or frozen
+  local implementation as the comparator with clear language.
+- Pretraining boundary: Pin GIN identifiers, weights, environment, dimensions,
+  device behavior, and failed-row policy. Classify training overlap as known
+  clean, known overlap, or unknown. Unknown provenance permits a pretrained-
+  transfer benchmark, not a clean zero-shot claim.
+- Dependency boundary: CatBoost, PyTorch, DGL, MolFeat, and model weights stay
+  in separately locked research environments or digest-pinned containers.
+  They do not enter the core install or current all-groups CI environment. The
+  public CLI remains exactly `audit`, `train`, `predict`, and `report`.
+- Review gates: Require independent approval before fixed-MapLight scoring,
+  GIN scoring, any AID label enters training, and final-contender scoring. Each
+  gate verifies the exact signed source, environment, configuration, row
+  alignment, firewall, prediction hash, evaluation budget, and claim boundary
+  relevant to that stage.
+- Success criterion: Compare a final contender with the locally reproduced
+  MapLight + GIN predictions on identical rows. Require positive paired 95%
+  lower confidence bounds on at least two of CYP2C9, CYP2D6, and CYP3A4, no
+  loss greater than 0.005 AUPRC on the remaining task, and a positive paired
+  macro-average lower bound. Report all tasks. Any AUPRC at or above 0.95
+  triggers an independent leakage and contamination audit before use as
+  evidence.
+- Alternatives: Remain fully paused; reopen Phase 0.5; begin speculative
+  challenge development; run a broad encoder or architecture search.
+- Reversal conditions: Stop or narrow Phase 0.75 if Tier 1 cannot close by
+  launch, public-test iteration begins, exact-row comparison fails, source or
+  pretrained provenance is inadequate, the global cross-task firewall cannot
+  be demonstrated, dependencies burden the core, or the work expands beyond
+  one comparator and one representation question. The authoritative release
+  ends Phase 0.75 and restores launch-day intake priority.

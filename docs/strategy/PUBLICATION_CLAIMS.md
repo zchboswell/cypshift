@@ -91,6 +91,109 @@ Not allowed from Phase 0.5 evidence:
 - clean zero-shot claims when external-model training overlap is unknown;
 - mechanistic or causal claims inferred from predictive correlations.
 
+## Phase 0.75 comparator and representation claims
+
+Phase 0.75 may support only claims tied to its frozen public sources, global
+shadow benchmark, row-level predictions, and declared evaluation budget.
+
+### Exact reproduction claim
+
+Proposed claim:
+
+> A locally reproduced MapLight comparator matches the pinned public method on
+> identical TDC rows within the declared tolerance.
+
+Required evidence:
+
+- immutable source, paper, license, environment, feature, seed, and split
+  records;
+- fixture-level array parity for count fingerprints, ErG values, and the exact
+  ordered descriptor block;
+- identical TDC rows and label-free row-aligned predictions;
+- five declared seeds with no post-result selection;
+- preferred AUPRC agreement within 0.005 per task, with 0.010 as the maximum
+  diagnostic tolerance;
+- a precise version-drift record when tolerance is not met.
+
+Rejection condition: agreement requires score-driven tuning, row changes,
+unfrozen defaults, or unverifiable dependencies.
+
+### Representation-value claim
+
+Proposed claim:
+
+> Richer complementary molecular representations improve CYP ranking beyond
+> estimator diversity over binary ECFP under leakage-safe grouped validation.
+
+Required evidence:
+
+- one frozen global grouping assignment across all three CYP tasks;
+- repeated scaffold-held-out and chemistry-community-held-out shadow results;
+- predefined fixed-feature ablations on identical rows;
+- complete paired OOF predictions and declared stochastic seeds;
+- GIN shuffled-row and same-dimensional-noise controls when GIN is claimed;
+- task-level, macro-average, worst-group, prevalence, runtime, and sample-count
+  reporting;
+- no architecture or dependency choice from public-test evidence.
+
+Rejection condition: gain is absent on the shadow benchmark, isolated to one
+group, reproduced by a control, or explained by a simpler feature block.
+
+### Final public-comparator superiority claim
+
+Proposed claim:
+
+> The final locked `cypshift` contender improves on the locally reproduced
+> MapLight + GIN comparator on identical frozen TDC rows.
+
+Required evidence:
+
+- the final contender is selected entirely from frozen shadow evidence;
+- local comparator and contender predictions exist for identical molecules;
+- paired bootstrap units are the frozen scaffold or chemistry-family groups;
+- the 95% lower confidence bound for AUPRC improvement is positive on at least
+  two of CYP2C9, CYP2D6, and CYP3A4;
+- the remaining task loses no more than 0.005 absolute AUPRC;
+- the paired macro-average improvement has a positive 95% lower confidence
+  bound;
+- every task is reported and any score at or above 0.95 passes the independent
+  forensic gate.
+
+Rejection condition: the claim relies on a published point estimate rather
+than the local paired comparator, fails any task or aggregate rule, or follows
+public-test-aware iteration.
+
+### Conditional future claims
+
+Cross-isoform panel claim:
+
+> Cross-isoform panel supervision improves CYP prediction beyond molecule-only
+> single-task learning under strict same-structure and family masking.
+
+Parent-relative claim:
+
+> Predicting an analog relative to an explicit measured parent improves
+> parent-expansion performance beyond global, nearest-neighbor, parent-copy,
+> shuffled-parent, and incorrect-anchor controls.
+
+Neither claim is active Tier 1 work. The panel claim requires verified primary
+field semantics, a strict union exclusion of every TDC public-test structure,
+global cross-task folds, and independent firewall review. Call the method
+assay-conditioned only when verified assay variables are retained and used.
+The parent-relative claim requires a frozen topology audit with measured
+parents, supported analog families, target spread, transformation controls, and
+family-level uncertainty.
+
+Phase 0.75 evidence does not permit:
+
+- a challenge-performance or expected-rank claim;
+- a clean zero-shot claim when GIN pretraining overlap is unknown;
+- an assay-conditioned claim from isoform identity alone;
+- an AID 1851 training claim before source and firewall review;
+- a representation claim based only on the already observed public test;
+- a state-of-the-art claim without the local paired comparator and confidence
+  rule.
+
 ## Claims that are out of scope
 
 Do not claim:
