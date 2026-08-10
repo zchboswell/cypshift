@@ -167,7 +167,9 @@
         "the exact train-only measurement file and its parent manifest",
         "this contract and the reviewed implementation source"
       ],
-      "must_emit": "One immutable manifest, one scoring-target file, and 18 outer-training target files containing only task, protocol, repeat, molecule_id, source_row, and binary target.",
+      "must_emit": "One immutable manifest, one 30,038-row scoring-target file, and 18 cell-specific outer-training target files.",
+      "scoring_target_columns": ["task", "molecule_id", "source_row", "target"],
+      "outer_training_target_columns": ["task", "protocol", "repeat", "molecule_id", "source_row", "target"],
       "must_not_emit": "measurement provenance, raw source labels, source paths, public-test identity, assay metadata, or any non-target measurement field",
       "raw_label_parses": 30038,
       "public_test_label_parses": 0
@@ -344,6 +346,7 @@
       "exact complete shape (8,2563)",
       "exact block and combined dtypes",
       "exact block slices and descriptor order",
+      "at least one sparse count is greater than 1 and every sparse count is at most 127 before conversion",
       "element-by-element equality",
       "C-order element-byte SHA-256 equality",
       "non-pickle .npy v1.0 byte equality",
@@ -530,6 +533,7 @@
       "quantiles": [0.025, 0.975],
       "numpy_quantile_method": "linear"
     },
+    "group_concentration_check": "For each task and protocol, preselect the ten groups with the most outer-validation source-row occurrences across all three repeats, breaking row-count ties by group hash. For every selected group, reuse only accepted bootstrap replicates in which that group's sampled multiplicity is zero. Require at least 500 such replicates, recompute the same task and protocol-macro percentile intervals from already cached replicate scores, and report the group hash, row count, prevalence, and absent-group intervals. A confirmatory gain claim fails if removing any selected group makes its protocol-macro lower bound nonpositive. This adds no metric evaluation.",
     "bootstrap_configurations_scored": 3,
     "bootstrap_cells": 18,
     "bootstrap_metric_evaluations": 108000,

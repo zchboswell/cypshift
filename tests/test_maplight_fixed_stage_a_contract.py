@@ -136,6 +136,7 @@ def test_stage_a_fixture_and_feature_contract_are_exact_and_fail_closed() -> Non
     assert fixture["expected_array_hash_status"].startswith(
         "Not generated at contract freeze"
     )
+    assert "greater than 1" in " ".join(fixture["required_comparisons"])
 
 
 def test_stage_a_ladder_has_six_unique_candidates_and_exact_accounting() -> None:
@@ -190,6 +191,7 @@ def test_stage_a_ladder_has_six_unique_candidates_and_exact_accounting() -> None
         + evaluation["point_metric_evaluations"]
     )
     assert bootstrap["total_metric_evaluations_including_points"] == 108198
+    assert "adds no metric evaluation" in bootstrap["group_concentration_check"]
 
 
 def test_stage_a_firewalls_public_test_and_keeps_core_lightweight() -> None:
@@ -222,6 +224,12 @@ def test_stage_a_firewalls_public_test_and_keeps_core_lightweight() -> None:
         ]
         == 0
     )
+    assert contract["process_firewall"]["trusted_target_projection"][
+        "scoring_target_columns"
+    ] == ["task", "molecule_id", "source_row", "target"]
+    assert contract["process_firewall"]["trusted_target_projection"][
+        "outer_training_target_columns"
+    ] == ["task", "protocol", "repeat", "molecule_id", "source_row", "target"]
     assert (
         "public-test"
         in contract["process_firewall"]["feature_process"]["must_not_resolve"]
