@@ -564,10 +564,10 @@
   final evidence in one tracked, GitHub-renderable Markdown report with tables
   only. Add no figure, renderer, dependency, public CLI command, fit, score, or
   held-out access.
-- Evidence binding: A compact JSON receipt binds the report to the exact public
-  source and validation records, retained-mean and family scorecard manifests,
-  CheMeleon failure receipt, and series rejection receipt. Track no raw row,
-  structure, label, or prediction.
+- Evidence binding: A compact JSON receipt preserves every aggregate report
+  input and binds the report to the exact public source and validation records,
+  retained-mean and family scorecard manifests, CheMeleon failure receipt, and
+  series rejection receipt. Track no raw row, structure, label, or prediction.
 - Reproduction boundary: Preserve the audited one-command empty-root source and
   split reconstruction. Reproduce the final report from tracked evidence; do
   not repeat consumed public-test evaluations merely to rebuild presentation.

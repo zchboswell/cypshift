@@ -1,8 +1,8 @@
 # `cypshift` Phase 0.5 benchmark report
 
-Status: final candidate for independent closeout review  
-Evidence date: 2026-08-10  
-Software version: `0.2.0.dev0`
+- Status: Phase 0.5 evidence report
+- Evidence date: 2026-08-10
+- Software version: `0.2.0.dev0`
 
 ## Executive summary
 
@@ -216,7 +216,7 @@ was not patched or retried. The failure receipt is
 
 The source freeze has a one-command empty-root reconstruction documented in
 [`README.md`](README.md). An independent live rerun reproduced 24 of 24 files,
-source aggregate `0dc587c6`, and validation aggregate `b7f2d0f7`, with zero
+root reconstruction aggregate `0dc587c6`, and validation aggregate `b7f2d0f7`, with zero
 model fits or public-test evaluations.
 
 The final retained-mean scorecard has seven rows, 51 columns, and aggregate
@@ -226,7 +226,10 @@ byte-identical repeats. The tracked experiment ledger records every public-test
 analysis, failed attempt, remediation, and negative result.
 
 The report contains no raw structures, labels, predictions, or licensed source
-rows. It can be reviewed from a clean clone using tracked records and hashes.
+rows. Every aggregate table input is preserved in the tracked
+[`phase_0_5_report.json`](receipts/phase_0_5_report.json) receipt. A clean clone
+can verify this report without rebuilding a held-out scorecard or repeating a
+public-test evaluation.
 
 ## Next decision
 

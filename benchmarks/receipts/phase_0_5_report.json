@@ -1,20 +1,247 @@
 {
-  "schema_version": "cypshift.phase_0_5_report_receipt.v1",
+  "schema_version": "cypshift.phase_0_5_report_receipt.v2",
   "evidence_revision": "8990ddcc65a9c5333639508156fec2039caf9e9c",
   "report": {
     "path": "benchmarks/PHASE_0_5_REPORT.md",
-    "sha256": "5633d1c9ee31df3493c962d99641eeebda610ea69623ad0f94a15d74605de8fa"
+    "sha256": "3a70e9f3b03d66c31671d6e4cf3dd8420869bc84476617b68dc7137ea1883d2c"
   },
-  "inputs": {
-    "chemeleon_failure_receipt_sha256": "1b766624d5364224392bd670ee0540fa4ddd2743314d8719912acef2d9357752",
-    "family_scorecard_aggregate_sha256": "03a3ee6c1dc14b57c1c6cff47abf1d3e2f1b093e6aed7783b03cf984deb436bc",
-    "family_scorecard_manifest_sha256": "9f3ea56f8b3a07b0c37d777f297fc16945f54e9a80ae584873bce5d26d82340a",
-    "public_sources_sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074",
-    "public_validation_aggregate_sha256": "b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12",
-    "public_validation_manifest_sha256": "d6bc5d9ad43851d467d22e6c2288f09deb7009f2a92ee50df59eb5b66a56c4d2",
-    "retained_mean_scorecard_aggregate_sha256": "d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa",
-    "retained_mean_scorecard_manifest_sha256": "f2478f59862c96fc1ce59b6ed8da46000a44683563abf7d35181d9b5335d4b46",
-    "series_rejection_receipt_sha256": "4def7727f0a233bf4545b87580b6ac9ae6098779c355d1994271683134cb27a8"
+  "canonical_origins": {
+    "family_scorecard": {
+      "local_path": "artifacts/benchmarks/native-heldout-scorecard-v4",
+      "aggregate_sha256": "03a3ee6c1dc14b57c1c6cff47abf1d3e2f1b093e6aed7783b03cf984deb436bc",
+      "manifest_sha256": "9f3ea56f8b3a07b0c37d777f297fc16945f54e9a80ae584873bce5d26d82340a"
+    },
+    "public_validation": {
+      "local_path": "artifacts/benchmarks/public-validation-freeze-v2",
+      "aggregate_sha256": "b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12",
+      "manifest_sha256": "d6bc5d9ad43851d467d22e6c2288f09deb7009f2a92ee50df59eb5b66a56c4d2"
+    },
+    "retained_mean_scorecard": {
+      "local_path": "artifacts/benchmarks/native-retained-mean-scorecard-v4",
+      "aggregate_sha256": "d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa",
+      "manifest_sha256": "f2478f59862c96fc1ce59b6ed8da46000a44683563abf7d35181d9b5335d4b46",
+      "scorecard_csv_sha256": "988a21a0454ea1fd76024bab77a4c58401a39d27449e9d4c90b213c525d94823",
+      "scorecard_json_sha256": "46f7456ca8edeb53272962c9cbed31586b8bb9661bed33f1089b53f534e1babc"
+    }
+  },
+  "tracked_inputs": {
+    "public_sources": {
+      "path": "benchmarks/public_sources.json",
+      "sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074"
+    },
+    "chemeleon_failure": {
+      "path": "benchmarks/receipts/chemeleon_attempt_v1_failure.json",
+      "sha256": "1b766624d5364224392bd670ee0540fa4ddd2743314d8719912acef2d9357752"
+    },
+    "series_rejection": {
+      "path": "benchmarks/receipts/series_residual_v1_rejection.json",
+      "sha256": "4def7727f0a233bf4545b87580b6ac9ae6098779c355d1994271683134cb27a8"
+    }
+  },
+  "report_inputs": {
+    "assay_tracks": [
+      {
+        "track": "OpenADMET Octant",
+        "endpoint": "CYP3A4 pIC50 regression",
+        "primary_metric": "MAE",
+        "assay_warning": "Active CYP3A4 preincubation used NADP+ with G6P/G6PD regeneration. This creates NADPH-generating metabolic conditions and is not the challenge minus-NADPH direct-inhibition endpoint."
+      },
+      {
+        "track": "TDC ADMET group",
+        "endpoint": "CYP2C9, CYP2D6, CYP3A4 Veith classification",
+        "primary_metric": "Average precision",
+        "assay_warning": "Fixed public benchmark labels and splits; results do not establish challenge performance."
+      }
+    ],
+    "data_cards": {
+      "octant": {
+        "revision": "96dc1cceaa545a22041d1e16a9c2524a658403f8",
+        "compound_table_sha256": "19e537166a17a42dd50cc262dd6eb0a963c181830fdc52db0fba98533e01c9c6",
+        "molecule_rows": 1340,
+        "numeric_measurements": 1084,
+        "missing_measurements": 256,
+        "accepted_structures": 1340,
+        "quarantined_structures": 0,
+        "unspecified_stereochemistry_warnings": 424,
+        "scaffold_groups": 937,
+        "fold_rows": 268,
+        "folds": 5,
+        "outer_evaluation_rows": 212,
+        "license_policy": "conservative CC-BY-4.0 attribution because the dataset metadata and body disagree"
+      },
+      "tdc": {
+        "dataset_revision": "doi:10.7910/DVN/21LKWG@105.0",
+        "archive_sha256": "bd0005246cb6f1672333c28ad202112a8bf071ab65d847848715030308faf1f1",
+        "accepted_rows": 37550,
+        "train_val_rows": 30038,
+        "public_test_rows": 7512,
+        "inner_folds_per_task": 4,
+        "standardized_structure_crossings": 0,
+        "scaffold_group_crossings": 0,
+        "official_test_overlaps": {
+          "cyp2c9_veith": 4,
+          "cyp2d6_veith": 2,
+          "cyp3a4_veith": 1
+        },
+        "license_policy": "conservative CC-BY-4.0 attribution while disclosing that Dataverse version 105.0 declares CC0-1.0"
+      }
+    },
+    "validation": {
+      "selection_split": "grouped inner validation",
+      "random_companion": "exact-structure-grouped",
+      "random_optimism": {
+        "octant_mae_min": 0.0247,
+        "octant_mae_max": 0.0347,
+        "tdc_auprc_min": 0.01,
+        "tdc_auprc_max": 0.0376
+      }
+    },
+    "retained_model": {
+      "combination": "unweighted_mean",
+      "families": [
+        "prior",
+        "ecfp_linear",
+        "similarity_knn",
+        "extra_trees"
+      ],
+      "nonnegative_stack": "rejected_because_it_trailed_the_mean_on_all_four_tasks"
+    },
+    "component_disposition": [
+      {
+        "component": "Public source adapters and audit",
+        "outcome": "Exact clean reconstruction passed",
+        "disposition": "Retain"
+      },
+      {
+        "component": "Grouped/scaffold validation",
+        "outcome": "Leakage-safe inner folds and strict companion passed",
+        "disposition": "Retain"
+      },
+      {
+        "component": "Four-family native ladder",
+        "outcome": "Reproducible public results",
+        "disposition": "Retain"
+      },
+      {
+        "component": "Unweighted mean",
+        "outcome": "Best simple native combination on all tasks",
+        "disposition": "Retain"
+      },
+      {
+        "component": "Nonnegative stack",
+        "outcome": "Trailed the mean",
+        "disposition": "Reject; no learned stack retained"
+      },
+      {
+        "component": "Random validation",
+        "outcome": "Optimistic for every learned family",
+        "disposition": "Diagnostic only"
+      },
+      {
+        "component": "Series residual",
+        "outcome": "Worsened all four tasks",
+        "disposition": "Reject; implementation removed"
+      },
+      {
+        "component": "CheMeleon transfer",
+        "outcome": "Upstream environment failed before prediction",
+        "disposition": "Reject; no retry"
+      }
+    ],
+    "scorecard": [
+      {
+        "task": "cyp3a4_active_preincubation_pIC50",
+        "population": "outer_validation",
+        "rows": 212,
+        "primary_metric": "mae",
+        "primary_value": 0.5433507359412543,
+        "median_absolute_error": 0.35596496505726227,
+        "rmse": 0.8008670842625426,
+        "spearman": 0.668215169471039,
+        "interval_aware_mae": 0.4286914698709881,
+        "potent_count": 37,
+        "potent_mae": 0.7520329838973594
+      },
+      {
+        "task": "cyp2c9_veith",
+        "population": "official",
+        "rows": 2419,
+        "primary_metric": "average_precision",
+        "primary_value": 0.7484075298089593,
+        "auroc": 0.8747765272932041,
+        "mcc": 0.57535969405565,
+        "brier": 0.1471419890909261,
+        "ece_10_equal_width": 0.11869751735330047,
+        "maplight_gnn": 0.859,
+        "chemprop_rdkit": 0.777,
+        "delta_vs_maplight_gnn": -0.11059247019104068,
+        "delta_vs_chemprop_rdkit": -0.02859247019104072
+      },
+      {
+        "task": "cyp2c9_veith",
+        "population": "strict",
+        "rows": 2415,
+        "primary_metric": "average_precision",
+        "primary_value": 0.7484435740722769,
+        "overlap_rows_removed": 4
+      },
+      {
+        "task": "cyp2d6_veith",
+        "population": "official",
+        "rows": 2626,
+        "primary_metric": "average_precision",
+        "primary_value": 0.654672131497262,
+        "auroc": 0.8651481952166804,
+        "mcc": 0.5273097690014568,
+        "brier": 0.10178870123878819,
+        "ece_10_equal_width": 0.0952071609151869,
+        "maplight_gnn": 0.79,
+        "chemprop_rdkit": 0.673,
+        "delta_vs_maplight_gnn": -0.13532786850273804,
+        "delta_vs_chemprop_rdkit": -0.018327868502738043
+      },
+      {
+        "task": "cyp2d6_veith",
+        "population": "strict",
+        "rows": 2624,
+        "primary_metric": "average_precision",
+        "primary_value": 0.6547848671236887,
+        "overlap_rows_removed": 2
+      },
+      {
+        "task": "cyp3a4_veith",
+        "population": "official",
+        "rows": 2467,
+        "primary_metric": "average_precision",
+        "primary_value": 0.8499656691309566,
+        "auroc": 0.8747352476027147,
+        "mcc": 0.5659116683946545,
+        "brier": 0.16027032123944693,
+        "ece_10_equal_width": 0.11626284030578124,
+        "maplight_gnn": 0.916,
+        "chemprop_rdkit": 0.876,
+        "delta_vs_maplight_gnn": -0.06603433086904342,
+        "delta_vs_chemprop_rdkit": -0.026034330869043387
+      },
+      {
+        "task": "cyp3a4_veith",
+        "population": "strict",
+        "rows": 2466,
+        "primary_metric": "average_precision",
+        "primary_value": 0.8499656691309566,
+        "overlap_rows_removed": 1
+      }
+    ],
+    "reproduction": {
+      "empty_root_files": 24,
+      "empty_root_aggregate_sha256": "0dc587c61b02f90df04e599deff771117ad52b5cfe16f10d606359bc8548d8d4",
+      "validation_aggregate_sha256": "b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12",
+      "retained_scorecard_rows": 7,
+      "retained_scorecard_columns": 51,
+      "byte_identical_repeats": true,
+      "model_fits": 0,
+      "public_test_evaluations": 0
+    }
   },
   "evidence_boundaries": {
     "heldout_evaluations_added": 0,

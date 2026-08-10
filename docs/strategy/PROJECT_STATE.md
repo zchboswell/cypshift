@@ -420,9 +420,11 @@ artifacts remain outside Git.
   SHA-256 is `4def7727`. No retry is permitted.
 - The final tracked Phase 0.5 report synthesizes the exact retained-mean and
   family scorecards, source/split evidence, CheMeleon blocker, and series
-  rejection in tables only. Report SHA-256 is `5633d1c9`; receipt SHA-256 is
-  `9849fc03`. It tracks no raw row, label, structure, or prediction and adds
-  zero fit, score, or held-out access. Independent closeout review remains open.
+  rejection in tables only. Report SHA-256 is `3a70e9f3`; receipt SHA-256 is
+  `06af9e6e`. Receipt v2 preserves every aggregate table input so a clean clone
+  can verify the report without repeating a held-out evaluation. It tracks no
+  raw row, label, structure, or prediction and adds zero fit, score, or
+  held-out access. Independent closeout review remains open.
 
 ## Active hypotheses
 
@@ -483,6 +485,6 @@ authoritative challenge release requires the launch-day freeze procedure.
 Independently audit the tracked Phase 0.5 report and receipt against the source,
 validation, retained-mean, family-scorecard, CheMeleon, and series evidence.
 Verify every table value, assay and license warning, claim boundary, clean-cache
-instructions, no-new-evaluation counts, GitHub rendering, 86-test minimal tree,
+instructions, no-new-evaluation counts, GitHub rendering, 90-test minimal tree,
 signatures, CI, and Occam simplicity. Remediate only factual or presentation
 defects, then close Phase 0.5 and hand off the August 17 freeze action.
