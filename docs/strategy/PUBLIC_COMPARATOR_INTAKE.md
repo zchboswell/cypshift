@@ -47,11 +47,12 @@ The repository constructs one 2,863-value molecular representation:
 - 200 named RDKit physicochemical descriptors;
 - 300 GIN supervised-masking values from `molfeat`.
 
-It trains one CatBoost classifier per task with log loss, `random_strength=2`,
-and seeds 1 through 5. Other CatBoost settings use library defaults. It fits on
-the complete TDC `train_val` population and predicts the fixed test population.
-The published paper attributes the main gain to richer fixed representations;
-the GIN output is an added feature block, not an end-to-end predictor.
+It trains five CatBoost classifiers per task, one for each seed from 1 through
+5, with `loss_function=Logloss`, `random_strength=2`, and `verbose=0`.
+Remaining CatBoost settings use library defaults. It fits on the complete TDC
+`train_val` population and predicts the fixed test population. The published
+paper attributes the main gain to richer fixed representations; the GIN output
+is an added feature block, not an end-to-end predictor.
 
 ## Reproducibility limits
 
@@ -60,6 +61,9 @@ auditor-grade comparison:
 
 - dependencies are installed without versions or hashes;
 - the notebook downloads source from the moving `main` branch;
+- the checked-in active loop runs only the eighth configured task, VDss; its
+  all-benchmark loop is commented out, so an unchanged run executes no CYP
+  task;
 - the repository has no lock file, release, or retained environment receipt;
 - the GNN notebook documents an unresolved `molfeat` execution issue;
 - the source commit is not GitHub-verified;
