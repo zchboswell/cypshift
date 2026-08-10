@@ -58,6 +58,7 @@ public domain under CC0-1.0.
 - [Phase 0 plan](docs/phases/PHASE_0.md)
 - [Phase 0.5 directive](docs/phases/PHASE_0_5.md)
 - [Public benchmark record](benchmarks/README.md)
+- [Phase 0.5 benchmark report](benchmarks/PHASE_0_5_REPORT.md)
 - [Experiment ledger](runs/experiment_ledger.csv)
 
 ## Authoritative challenge source

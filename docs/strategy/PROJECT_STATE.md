@@ -418,6 +418,11 @@ artifacts remain outside Git.
   and tests are removed; the compact contract, ledger, Git history, and ignored
   local result roots preserve the negative evidence. Tracked rejection receipt
   SHA-256 is `4def7727`. No retry is permitted.
+- The final tracked Phase 0.5 report synthesizes the exact retained-mean and
+  family scorecards, source/split evidence, CheMeleon blocker, and series
+  rejection in tables only. Report SHA-256 is `5633d1c9`; receipt SHA-256 is
+  `9849fc03`. It tracks no raw row, label, structure, or prediction and adds
+  zero fit, score, or held-out access. Independent closeout review remains open.
 
 ## Active hypotheses
 
@@ -475,8 +480,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Record and independently review the D-022 negative-result closeout after the
-failed implementation is removed. Verify the exact evidence hashes, gains,
-intervals, remote abstention, evaluation counts, no-retry boundary, restored
-86-test minimal codebase, signatures, CI, and Occam simplicity. Then advance to
-the smallest remaining Phase 0.5 report and clean-reproduction closeout work.
+Independently audit the tracked Phase 0.5 report and receipt against the source,
+validation, retained-mean, family-scorecard, CheMeleon, and series evidence.
+Verify every table value, assay and license warning, claim boundary, clean-cache
+instructions, no-new-evaluation counts, GitHub rendering, 86-test minimal tree,
+signatures, CI, and Occam simplicity. Remediate only factual or presentation
+defects, then close Phase 0.5 and hand off the August 17 freeze action.

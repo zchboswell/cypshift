@@ -62,6 +62,13 @@ not authorize held-out access or a second residual design. V1 was rejected
 before scoring because join, control, bootstrap, and strict tie semantics were
 not fully specified; v2 closes those choices without changing the formula.
 
+The final evidence synthesis is the tracked
+[`Phase 0.5 benchmark report`](PHASE_0_5_REPORT.md). It contains no raw rows,
+labels, structures, or predictions. Receipt
+`receipts/phase_0_5_report.json` binds it to the canonical scorecards, public
+source and validation records, and both negative-result receipts without adding
+a fit, score, or held-out access.
+
 ## Octant compound-level ingestion
 
 The Octant adapter treats the 30-minute active-CYP3A4 preincubation assay as

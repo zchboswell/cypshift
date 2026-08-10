@@ -1,0 +1,29 @@
+{
+  "schema_version": "cypshift.phase_0_5_report_receipt.v1",
+  "evidence_revision": "8990ddcc65a9c5333639508156fec2039caf9e9c",
+  "report": {
+    "path": "benchmarks/PHASE_0_5_REPORT.md",
+    "sha256": "5633d1c9ee31df3493c962d99641eeebda610ea69623ad0f94a15d74605de8fa"
+  },
+  "inputs": {
+    "chemeleon_failure_receipt_sha256": "1b766624d5364224392bd670ee0540fa4ddd2743314d8719912acef2d9357752",
+    "family_scorecard_aggregate_sha256": "03a3ee6c1dc14b57c1c6cff47abf1d3e2f1b093e6aed7783b03cf984deb436bc",
+    "family_scorecard_manifest_sha256": "9f3ea56f8b3a07b0c37d777f297fc16945f54e9a80ae584873bce5d26d82340a",
+    "public_sources_sha256": "755ca7496678169109aaa646d638f1b3c9fa3e153ce291ba617edfa50bde7074",
+    "public_validation_aggregate_sha256": "b7f2d0f7d18bcc7d5815cdc3919a9681523ccf380246449c32e54b7c80465b12",
+    "public_validation_manifest_sha256": "d6bc5d9ad43851d467d22e6c2288f09deb7009f2a92ee50df59eb5b66a56c4d2",
+    "retained_mean_scorecard_aggregate_sha256": "d07d52e6b826c0f01e498c60330d163d747a09b4f4c5ba6a0e507b53bbd58afa",
+    "retained_mean_scorecard_manifest_sha256": "f2478f59862c96fc1ce59b6ed8da46000a44683563abf7d35181d9b5335d4b46",
+    "series_rejection_receipt_sha256": "4def7727f0a233bf4545b87580b6ac9ae6098779c355d1994271683134cb27a8"
+  },
+  "evidence_boundaries": {
+    "heldout_evaluations_added": 0,
+    "heldout_labels_parsed": 0,
+    "model_fits": 0,
+    "raw_rows_tracked": 0,
+    "report_figures": 0,
+    "score_changes": 0
+  },
+  "format": "tracked GitHub-renderable Markdown with tables only",
+  "decision": "Stop Phase 0.5 modeling and submit the report for independent closeout review."
+}

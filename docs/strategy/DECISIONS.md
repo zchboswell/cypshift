@@ -554,3 +554,26 @@
 - Reversal condition: Reverse only before candidate scoring if an independent
   review finds a contract, alignment, leakage, or control defect. Do not alter
   the formula or rule after any candidate result is visible.
+
+## D-023 — Stop modeling and freeze the Phase 0.5 report
+
+- Date: 2026-08-10
+- Status: accepted
+- Decision: Stop Phase 0.5 model work after the retained native mean, rejected
+  stack, precise CheMeleon blocker, and rejected series residual. Synthesize the
+  final evidence in one tracked, GitHub-renderable Markdown report with tables
+  only. Add no figure, renderer, dependency, public CLI command, fit, score, or
+  held-out access.
+- Evidence binding: A compact JSON receipt binds the report to the exact public
+  source and validation records, retained-mean and family scorecard manifests,
+  CheMeleon failure receipt, and series rejection receipt. Track no raw row,
+  structure, label, or prediction.
+- Reproduction boundary: Preserve the audited one-command empty-root source and
+  split reconstruction. Reproduce the final report from tracked evidence; do
+  not repeat consumed public-test evaluations merely to rebuild presentation.
+- Review gate: A fresh independent closeout reviewer must verify every number,
+  warning, link, evidence hash, claim boundary, rendering, minimal codebase,
+  signature, and hosted CI before Phase 0.5 closes.
+- Reversal condition: Correct a factual, provenance, or rendering defect before
+  closeout. Do not reopen modeling or change a result in response to report
+  presentation.
