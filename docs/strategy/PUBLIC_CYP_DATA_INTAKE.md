@@ -4,6 +4,8 @@ Status: pre-freeze source receipt; no training-data authority
 
 Captured: 2026-08-10T02:51:06Z
 
+Last extended: 2026-08-10T03:00:33Z
+
 ## Purpose and boundary
 
 Identify one public source that could add assay-relevant supervision after the
@@ -68,6 +70,23 @@ Do not treat a `1` as the unreleased challenge TDI label. Do not convert this
 database to pIC50 or merge its records with challenge measurements by endpoint
 name alone.
 
+## Structural-alert triage
+
+Supplementary Table S2 was rendered and visually reviewed across all five
+pages. It lists 58 mechanism-based-inhibition alert names. Fifty-six rows
+contain representative drawings; the cells for `Piperazines (tertiary)` and
+`Thiazoles` are blank. The public document does not provide machine-readable
+substructure queries, exact matching semantics, weights, or isoform-specific
+mappings. Some drawings use symbolic groups, and several alert categories
+overlap.
+
+Do not translate the drawings into a `cypshift` feature block. Such a
+translation would create a new, unvalidated alert model rather than reproduce
+the published Leadscope profiler. Retain the table only as qualitative
+mechanism context. A future executable alert source must publish exact queries,
+versioned semantics, and a license that permits implementation; it must also
+pass an isolated grouped ablation after the launch freeze.
+
 ## Post-freeze eligibility gate
 
 Use this source only if the released rules permit external public data and an
@@ -87,5 +106,6 @@ independent source audit establishes all of the following:
 8. the source is removed if its predeclared ablation does not improve the
    primary validation target.
 
-The smallest valid use is auxiliary multitask supervision. It is not a new
-model family, a comparator, or evidence of a gain.
+The smallest valid use is reconstructed auxiliary multitask supervision. The
+structural-alert feature path is rejected. Neither the database nor the alert
+table is a new model family, a comparator, or evidence of a gain.

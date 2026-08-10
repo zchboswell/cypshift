@@ -498,7 +498,9 @@ One FDA-led public database is recorded in
 auxiliary-data source. It separates 623 CYP3A4 TDI labels from reversible CYP
 labels, but combines heterogeneous evidence types and has no automatic mapping
 to the challenge. External-data permission, assay compatibility, source terms,
-overlap, and a grouped ablation must all pass after the launch freeze.
+overlap, and a grouped ablation must all pass after the launch freeze. Its
+58-alert supplement is qualitative only: it lacks executable substructure
+definitions, so the structural-alert feature path is rejected.
 
 The official announcement now links to the public
 `openadmet/cyp-challenge` Space. Its captured revision remains explicitly in
