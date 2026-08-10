@@ -813,7 +813,14 @@ def _validate_assignment_receipt(
     _check_cap(contract, runtime, peak)
     if _obj(receipt, "outputs") != {"shadow_rows.csv": shadow_hash}:
         raise ShadowContractError("shadow rows do not match assignment receipt")
-    if _obj(receipt, "accounting") != _zero_assignment_accounting():
+    accounting = _obj(receipt, "accounting")
+    expected_accounting = _zero_assignment_accounting()
+    if sorted(accounting) != sorted(expected_accounting) or any(
+        not isinstance(accounting[name], int)
+        or isinstance(accounting[name], bool)
+        or accounting[name] != 0
+        for name in expected_accounting
+    ):
         raise ShadowContractError("assignment accounting is not exactly zero")
     return runtime, peak, groups
 

@@ -870,6 +870,9 @@ def test_summary_rejects_tampered_assignment_receipt_claims(
     wrong_accounting = copy.deepcopy(original)
     wrong_accounting["accounting"]["target_values_used_for_assignment"] = 1
     mutations.append(("accounting", wrong_accounting))
+    boolean_accounting = copy.deepcopy(original)
+    boolean_accounting["accounting"]["model_fits"] = False
+    mutations.append(("boolean-accounting", boolean_accounting))
     wrong_runtime = copy.deepcopy(original)
     wrong_runtime["runtime_seconds"] = -1
     mutations.append(("runtime", wrong_runtime))
