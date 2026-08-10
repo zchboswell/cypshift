@@ -401,12 +401,23 @@ artifacts remain outside Git.
   bootstrap, retention, chronology, signature, CI, and Occam checks. PR 35
   merged by exact fast-forward. Candidate outcomes, held-out access, fits, and
   implementation code were zero at this gate.
-- Signed implementation commit `8a4f351` adds one package module, one research
-  script, and six focused synthetic tests. Two synthetic runs reproduce all five files
-  byte-for-byte across 96 rows. Receipt-first failure, exact join, topology,
-  fixed contract hash, remote abstention, and immutable output are covered.
-  All 92 tests, Ruff, and strict mypy pass. No real grouped-OOF target has been
-  parsed and no candidate result exists; implementation review remains open.
+- Signed implementation commit `8a4f351` added one direct package module, one
+  research script, and six focused synthetic tests. Independent review passed
+  exact head `129af20`: receipt ordering, alignment, formula, controls,
+  bootstrap, decision logic, 92 tests, CI, signatures, and Occam all passed.
+- Two real grouped-OOF runs from `129af20` each process 30,910 rows in about
+  325 seconds and produce five byte-identical files with aggregate `a6248c4e`.
+  The residual worsens full and supported performance on all four tasks, has
+  zero positive folds on every task, and fails both control requirements.
+  Supported lower 95% bounds are all negative. All 17,561 remote rows abstain
+  exactly. Fits and held-out parses, predictions, and evaluations are zero.
+- Independent post-result audit regenerated every formula/control row, all 300
+  point evaluations, all 80,000 bootstrap evaluations, all 32 intervals, and
+  the decision. Maximum metric and interval differences were 2.6e-15 and
+  4.3e-15. D-022 therefore rejects the candidate. The implementation, script,
+  and tests are removed; the compact contract, ledger, Git history, and ignored
+  local result roots preserve the negative evidence. Tracked rejection receipt
+  SHA-256 is `4def7727`. No retry is permitted.
 
 ## Active hypotheses
 
@@ -417,8 +428,9 @@ artifacts remain outside Git.
 3. Local support and disagreement can predict expert error well enough to
    improve a simple cross-fitted stack.
 
-The first hypothesis has supporting random-versus-grouped evidence. The second
-now has a frozen test but no candidate outcome. The third remains untested.
+The first hypothesis has supporting random-versus-grouped evidence. This one
+predeclared test rejects the second hypothesis in its tested form; it does not
+prove that every future series method must fail. The third remains untested.
 
 ## Unresolved risks
 
@@ -463,9 +475,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently review the fixture-tested D-022 implementation before any real
-grouped-OOF invocation. Verify receipt-first failure, exact selectors and join,
-topology enforcement, formula and clipping, hash-derived controls, paired
-scaffold bootstrap, metric and decision semantics, deterministic artifacts,
-zero held-out interface, zero fits, and Occam simplicity. Do not compute a real
-candidate result until the exact signed implementation head passes.
+Record and independently review the D-022 negative-result closeout after the
+failed implementation is removed. Verify the exact evidence hashes, gains,
+intervals, remote abstention, evaluation counts, no-retry boundary, restored
+86-test minimal codebase, signatures, CI, and Occam simplicity. Then advance to
+the smallest remaining Phase 0.5 report and clean-reproduction closeout work.

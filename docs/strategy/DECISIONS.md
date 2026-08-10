@@ -543,6 +543,14 @@
   research script with synthetic receipt, alignment, topology, repeatability,
   and abstention tests. Do not run either real OOF root until the exact
   implementation passes a second independent review.
+- Outcome: Independent implementation review passed exact signed head
+  `129af20`. Two real grouped-OOF roots are byte-identical with aggregate
+  `a6248c4e`. Full and supported gains are negative on all four tasks, every
+  task has zero of four positive folds, and both control requirements fail.
+  Remote abstention is exact. Independent audit reproduced all 30,910 rows,
+  300 point evaluations, 80,000 bootstrap evaluations, 32 intervals, and the
+  reject decision. Preserve the compact evidence and remove the implementation.
+  Do not adjust, replace, retry, or evaluate this residual on held-out data.
 - Reversal condition: Reverse only before candidate scoring if an independent
   review finds a contract, alignment, leakage, or control defect. Do not alter
   the formula or rule after any candidate result is visible.

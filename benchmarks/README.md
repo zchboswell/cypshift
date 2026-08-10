@@ -324,30 +324,30 @@ public-test results.
 
 ## One grouped-OOF series residual
 
-D-022 and `series_residual_contract.json` v2 permit one fit-free correction
-from the retained unweighted mean toward the retained kNN estimate. Contract
-v1 was rejected before scoring. Exact signed head `b16967e` and contract hash
-`824bff1608c01fbf1d86dc2269a258bd0ec61af298ee450e113460c88e4df4cf`
-passed independent pre-result and Occam review, then merged by fast-forward.
+D-022 tested one fit-free correction from the retained unweighted mean toward
+the retained kNN estimate. Contract v1 was rejected before scoring. Contract v2
+hash `824bff16` and the direct implementation passed separate pre-result,
+implementation, CI, and Occam gates before the real grouped-OOF run.
 
-`scripts/run_series_residual.py` verifies both complete OOF receipt chains
-before parsing a target. It then enforces the exact join, topology, formula,
-controls, bootstrap, and all-or-nothing decision. Its synthetic tests reproduce
-five files byte-for-byte and exercise receipt, alignment, topology, contract,
-and immutable-output failures. The implementation must pass independent review
-before this real-data command runs twice from the same clean merged revision:
+Two 30,910-row runs from exact signed source `129af20` completed in 325.38 and
+325.34 seconds on an Apple M1 CPU. All five files are byte-identical; output
+aggregate is `a6248c4e9ea89678f9ec3457342fedb1da066a14c413a12e2d86d31b3af206c2`.
+The candidate failed every retention condition that depends on improvement:
 
-```console
-uv run python scripts/run_series_residual.py \
-  --combinations artifacts/benchmarks/native-combinations-v3 \
-  --research artifacts/benchmarks/native-oof-research-v1 \
-  --contract benchmarks/series_residual_contract.json \
-  --out artifacts/benchmarks/series-residual-v1 \
-  --source-revision <reviewed-merged-commit>
-```
+| Task | Full gain | Supported gain | Supported 95% CI | Positive folds |
+| --- | ---: | ---: | ---: | ---: |
+| Octant CYP3A4 MAE | -0.003413 | -0.007895 | [-0.013694, -0.002567] | 0/4 |
+| TDC CYP2C9 AUPRC | -0.005058 | -0.011519 | [-0.017135, -0.006226] | 0/4 |
+| TDC CYP2D6 AUPRC | -0.007165 | -0.012577 | [-0.018014, -0.007804] | 0/4 |
+| TDC CYP3A4 AUPRC | -0.005982 | -0.006895 | [-0.010489, -0.003895] | 0/4 |
 
-The command accepts no held-out path, fits no model, adds no dependency, and
-does not authorize another residual if the candidate fails.
+All 17,561 remote rows abstain exactly, but both negative-control requirements
+also fail. Independent audit reconstructed all formula and control rows, 300
+point evaluations, 80,000 bootstrap evaluations, 32 intervals, and the final
+decision. The candidate is rejected. Its implementation and tests are removed;
+the contract, Git history, ledger, and ignored local evidence roots preserve
+the negative result. The tracked rejection receipt has SHA-256 `4def7727`.
+D-022 forbids adjustment, replacement, held-out use, or retry in Phase 0.5.
 
 The retained mean is applied in a separate label-free step:
 
@@ -364,8 +364,8 @@ each of 7,724 held-out molecules and has aggregate
 `b6e6db44f7436655cd978f181b326ef445fe39057430dae68ccb51afb2c5c873`.
 The receipt binds combination v3 and held-out prediction v2. It records 30,896
 base predictions averaged, zero fits, zero measurement tables opened, zero
-labels parsed, and zero evaluations. These predictions remain unscored until
-independent review passes.
+labels parsed, and zero evaluations. They remained unscored until independent
+review passed.
 
 After independent scorer review, the one authorized real scoring attempt used
 the audited source split explicitly:

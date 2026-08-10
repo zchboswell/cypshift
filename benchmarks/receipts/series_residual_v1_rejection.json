@@ -1,0 +1,92 @@
+{
+  "schema_version": "cypshift.series_residual_rejection.v1",
+  "source_revision": "129af20a62bd4687cb2543ceb716449edfebd739",
+  "contract_sha256": "824bff1608c01fbf1d86dc2269a258bd0ec61af298ee450e113460c88e4df4cf",
+  "input_receipts": {
+    "combination_aggregate_sha256": "c63b40b2c80981a437fdc2baa48d4ece5ecdc8b7e50594e75578cf04e8503b12",
+    "combination_manifest_sha256": "6784ff97047de31dec8293aeb35c4f679dc5a7d03f19576595b5bf556b5bd064",
+    "research_aggregate_sha256": "5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6",
+    "research_manifest_sha256": "4a3d8381d8186e946a9c95c5ee350bc61b1b737d562c584a3ce75102fa701993"
+  },
+  "retained_local_roots": [
+    "artifacts/benchmarks/series-residual-v1",
+    "artifacts/benchmarks/series-residual-v1-repeat"
+  ],
+  "repeat": {
+    "byte_identical_files": 5,
+    "first_runtime_seconds": 325.38,
+    "hardware": "Apple M1 CPU",
+    "second_runtime_seconds": 325.34
+  },
+  "manifest": {
+    "aggregate_sha256": "a6248c4e9ea89678f9ec3457342fedb1da066a14c413a12e2d86d31b3af206c2",
+    "manifest_sha256": "44ac27cdacf23067dff881a2d53ff358aa66c6b0a718ae51a460c681585f10fc",
+    "outputs": {
+      "series_residual_bootstrap.csv": "c42b00e37946ee3ee8eef70568e03022f86e4916d15da985d52a01f8ea6cefde",
+      "series_residual_decision.json": "74ba3a0ac841988d1b1b229a557733da652ff08e72b20050c030c757c286ba0b",
+      "series_residual_predictions.csv": "b29e8768a5755f43f4e4b7fb937b3e656284e07e6553c146e1fbe9f2aefb7f51",
+      "series_residual_scores.csv": "984228cbef63899958fca8255fc4b307c1ca83c82e2685854b8fbb0fbe623f4c"
+    }
+  },
+  "counts": {
+    "bootstrap_metric_evaluations": 80000,
+    "bootstrap_records": 32,
+    "heldout_evaluations": 0,
+    "heldout_labels_parsed": 0,
+    "heldout_predictions_consumed": 0,
+    "model_fits": 0,
+    "point_metric_evaluations": 300,
+    "remote_rows": 17561,
+    "residual_candidates": 1,
+    "rows": 30910,
+    "threshold_equality_rows": 476
+  },
+  "tasks": [
+    {
+      "full_gain": -0.0034134126074590876,
+      "positive_folds": 0,
+      "supported_gain": -0.007895214306907983,
+      "supported_lower_95": -0.013694175495237878,
+      "supported_upper_95": -0.0025673454647009244,
+      "task": "cyp3a4_active_preincubation_pIC50"
+    },
+    {
+      "full_gain": -0.005058277137196421,
+      "positive_folds": 0,
+      "supported_gain": -0.011518950015402374,
+      "supported_lower_95": -0.017135004543138287,
+      "supported_upper_95": -0.006225595011355842,
+      "task": "cyp2c9_veith"
+    },
+    {
+      "full_gain": -0.007164870884405206,
+      "positive_folds": 0,
+      "supported_gain": -0.012576609961573504,
+      "supported_lower_95": -0.018013966682377217,
+      "supported_upper_95": -0.00780402330917886,
+      "task": "cyp2d6_veith"
+    },
+    {
+      "full_gain": -0.005982033994709757,
+      "positive_folds": 0,
+      "supported_gain": -0.006894770480015078,
+      "supported_lower_95": -0.010488761643791464,
+      "supported_upper_95": -0.003895061230443302,
+      "task": "cyp3a4_veith"
+    }
+  ],
+  "checks": {
+    "all_supported_lower_bounds_positive": false,
+    "all_tasks_full_gain_positive": false,
+    "all_tasks_supported_gain_positive": false,
+    "controls_pass": false,
+    "independent_audit_pass": true,
+    "max_independent_interval_difference": 4.3e-15,
+    "max_independent_metric_difference": 2.6e-15,
+    "remote_metrics_tie": true,
+    "remote_predictions_exact": true
+  },
+  "decision": "reject_and_remove_implementation",
+  "implementation_removed": true,
+  "retry_or_replacement_authorized": false
+}
