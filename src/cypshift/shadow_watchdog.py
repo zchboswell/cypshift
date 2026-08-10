@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+import platform
 import subprocess
-import sys
 import time
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -86,7 +86,7 @@ def supervise_assignment(command: Sequence[str]) -> WatchdogResult:
 
 
 def _rss_gib(pid: int) -> float:
-    if sys.platform != "darwin":
+    if platform.system() != "Darwin":
         raise ResourceMonitorError("RSS monitoring requires the pinned macOS host")
     try:
         completed = subprocess.run(

@@ -179,7 +179,7 @@ def test_missing_rss_after_child_exit_is_not_a_monitor_failure(
 
 
 def test_rss_uses_macos_ps_kib(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(sys, "platform", "darwin")
+    monkeypatch.setattr(watchdog.platform, "system", lambda: "Darwin")
     observed: list[list[str]] = []
 
     def run(command: list[str], **kwargs: Any) -> subprocess.CompletedProcess[str]:
@@ -199,13 +199,13 @@ def test_rss_uses_macos_ps_kib(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_rss_rejects_unpinned_host(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(sys, "platform", "linux")
+    monkeypatch.setattr(watchdog.platform, "system", lambda: "Linux")
     with pytest.raises(ResourceMonitorError, match="pinned macOS"):
         watchdog._rss_gib(321)
 
 
 def test_rss_timeout_fails_closed(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(sys, "platform", "darwin")
+    monkeypatch.setattr(watchdog.platform, "system", lambda: "Darwin")
 
     def run(command: list[str], **kwargs: Any) -> subprocess.CompletedProcess[str]:
         del kwargs
