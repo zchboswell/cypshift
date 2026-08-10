@@ -53,12 +53,14 @@ The source is scientifically relevant but not challenge-matched by default:
 - reversible inhibition combines IC50, Ki, and R1 evidence into one binary
   label;
 - TDI combines IC50 fold shift, change in inhibition, kobs, and R2 evidence;
-- its frozen thresholds are 10 micromolar for reversible IC50 or Ki, 1.5 for
-  TDI IC50 fold shift, 20 percent for change in inhibition, 0.01 per minute for
-  kobs, and 1.25 for R2;
+- its frozen thresholds are 10 micromolar for reversible IC50 or Ki, 1.02 for
+  R1, 1.5 for TDI IC50 fold shift, 20 percent for change in inhibition, 0.01
+  per minute for kobs, and 1.25 for R2;
 - only CYP3A4 has a released TDI field;
 - assay system, probe substrate, preincubation, and source quality vary across
   the collected literature, approval packages, patents, ChEMBL, and BindingDB;
+- the released SDF does not identify each row's measurement type and contains
+  no assay, probe-substrate, preincubation, or continuous-result field;
 - article-level CC BY does not remove the need to audit upstream source terms,
   attribution, and redistribution conditions.
 
@@ -75,11 +77,11 @@ independent source audit establishes all of the following:
 2. license and attribution terms permit the intended use and redistribution;
 3. external-source copies of challenge structures are removed before auxiliary
    source selection, and overlap is reported separately;
-4. reversible and TDI records remain separate auxiliary tasks with their
-   original evidence type;
+4. cited originals reconstruct each retained row's measurement type and assay
+   provenance; reject the source if this cannot be established;
 5. no mixed-source label replaces a challenge measurement;
-6. inclusion is decided from assay metadata and frozen validation only, before
-   any challenge test or leaderboard result;
+6. inclusion is decided from reconstructed assay evidence and frozen validation
+   only, before any challenge test or leaderboard result;
 7. the same grouped validation rows compare the model with and without this
    source;
 8. the source is removed if its predeclared ablation does not improve the
