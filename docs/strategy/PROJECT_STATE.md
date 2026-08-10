@@ -493,6 +493,13 @@ pretrained multitask graph models led that different blind challenge, while
 four of its top five entries used proprietary data. It is a method prior, not a
 CYP score or permission to copy an architecture.
 
+One FDA-led public database is recorded in
+[`PUBLIC_CYP_DATA_INTAKE.md`](PUBLIC_CYP_DATA_INTAKE.md) as a conditional
+auxiliary-data source. It separates 623 CYP3A4 TDI labels from reversible CYP
+labels, but combines heterogeneous evidence types and has no automatic mapping
+to the challenge. External-data permission, assay compatibility, source terms,
+overlap, and a grouped ablation must all pass after the launch freeze.
+
 The official announcement now links to the public
 `openadmet/cyp-challenge` Space. Its captured revision remains explicitly in
 pre-challenge state with no dataset or tutorial link and TODO-marked values.
