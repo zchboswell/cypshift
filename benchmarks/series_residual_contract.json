@@ -1,5 +1,5 @@
 {
-  "schema_version": "cypshift.series_residual_contract.v1",
+  "schema_version": "cypshift.series_residual_contract.v2",
   "frozen_at_utc": "2026-08-10T00:49:17Z",
   "scope": "One grouped-OOF-only Phase 0.5 keep/reject test. This contract does not authorize held-out label access, held-out prediction, another residual design, or challenge-data use.",
   "inputs": {
@@ -19,32 +19,66 @@
       "local_configuration": "tanimoto-k50-p2"
     }
   },
+  "join_and_preflight": {
+    "verification_order": "Before parsing a target as numeric or computing any score, verify both manifest file hashes, schemas, declared output hashes, and aggregate hashes against this contract and the retained files.",
+    "base_selection": "Select candidate=unweighted_mean from combination_oof_predictions.csv.",
+    "local_selection": "Select family=similarity_knn and configuration_id=tanimoto-k50-p2 from retained_oof_observations.csv.",
+    "expected_base_rows": 30910,
+    "expected_local_rows": 30910,
+    "unique_key": ["benchmark", "task", "molecule_id"],
+    "required_equal_fields": [
+      "benchmark",
+      "task",
+      "problem_type",
+      "molecule_id",
+      "inner_fold",
+      "target",
+      "standardized_structure_hash"
+    ],
+    "canonical_row_order": ["benchmark", "task", "inner_fold", "molecule_id"],
+    "failure_rule": "Reject missing, duplicate, extra, non-1:1, misaligned, nonfinite, or provenance-mismatched rows before scoring."
+  },
   "topology_audit": {
     "target_values_used": 0,
     "source_disclosure": "The research CSV contains authorized grouped-OOF training targets. The topology audit consumed only task, fold, family, and nearest-neighbor similarity fields.",
     "support_field": "nearest_neighbor_similarity",
     "support_threshold_inclusive": 0.5,
+    "threshold_equality_disclosure": "Rows at exactly 0.50 are in the supported population but receive weight 0 and exactly reproduce the base prediction.",
+    "rows_at_exact_threshold": {
+      "cyp3a4_active_preincubation_pIC50": 10,
+      "cyp2c9_veith": 149,
+      "cyp2d6_veith": 176,
+      "cyp3a4_veith": 141
+    },
     "selection_rows": 30910,
     "task_counts": {
       "cyp3a4_active_preincubation_pIC50": {
         "rows": 872,
         "supported_rows": 377,
-        "supported_by_fold": [82, 81, 97, 117]
+        "supported_by_fold": [82, 81, 97, 117],
+        "all_scaffold_groups_by_fold": [149, 158, 159, 167],
+        "supported_scaffold_groups_by_fold": [64, 59, 66, 75]
       },
       "cyp2c9_veith": {
         "rows": 9673,
         "supported_rows": 4208,
-        "supported_by_fold": [811, 1022, 1211, 1164]
+        "supported_by_fold": [811, 1022, 1211, 1164],
+        "all_scaffold_groups_by_fold": [1407, 1432, 1433, 1433],
+        "supported_scaffold_groups_by_fold": [526, 513, 573, 574]
       },
       "cyp2d6_veith": {
         "rows": 10504,
         "supported_rows": 4678,
-        "supported_by_fold": [1163, 1133, 1168, 1214]
+        "supported_by_fold": [1163, 1133, 1168, 1214],
+        "all_scaffold_groups_by_fold": [1651, 1653, 1653, 1653],
+        "supported_scaffold_groups_by_fold": [648, 683, 674, 674]
       },
       "cyp3a4_veith": {
         "rows": 9861,
         "supported_rows": 4086,
-        "supported_by_fold": [863, 1068, 1091, 1064]
+        "supported_by_fold": [863, 1068, 1091, 1064],
+        "all_scaffold_groups_by_fold": [1489, 1523, 1525, 1525],
+        "supported_scaffold_groups_by_fold": [582, 588, 609, 590]
       }
     }
   },
@@ -70,8 +104,15 @@
   ],
   "controls": {
     "seed": 20260809,
-    "shuffled_residual": "Within each benchmark/task/fold, deterministically permute local-minus-base residuals while preserving each row's similarity weight.",
-    "randomized_family_label": "Within each benchmark/task/fold, deterministically permute similarity weights while preserving each row's local-minus-base residual.",
+    "grouping": ["benchmark", "task", "inner_fold"],
+    "row_order_within_group": "molecule_id ascending",
+    "permutation_algorithm": "For each namespace and group, sort source row indexes by the tuple (SHA-256 hex of UTF-8 seed|namespace|benchmark|task|inner_fold|molecule_id, molecule_id). Map the source values in that order to target rows in canonical molecule_id order.",
+    "shuffled_residual_namespace": "shuffled_residual_v1",
+    "shuffled_residual": "Permute local-minus-base residuals by the frozen algorithm while preserving each target row's similarity weight.",
+    "randomized_family_label_namespace": "randomized_family_label_v1",
+    "randomized_family_label": "Permute similarity weights by the frozen algorithm while preserving each target row's local-minus-base residual.",
+    "classification_boundary": "Clip both constructed control predictions to [0, 1] after applying the permuted correction.",
+    "regression_boundary": "Do not clip either control.",
     "permutation_count": 1,
     "selection_rule": "Controls are diagnostics only and cannot be selected or retained."
   },
@@ -80,16 +121,34 @@
     "tdc_primary": "average_precision",
     "populations": ["all_grouped_oof_rows", "predeclared_analog_supported_rows", "remote_abstained_rows"],
     "fold_reporting": true,
+    "implementation": "Use cypshift.metrics.average_precision for TDC and arithmetic mean absolute error for Octant.",
+    "directional_gain": {
+      "octant": "global-only MAE minus comparator MAE",
+      "tdc": "comparator average precision minus global-only average precision"
+    },
     "paired_bootstrap_replicates": 2000,
     "paired_bootstrap_seed": 20260809,
-    "interval": "two-sided percentile 95% interval for the directional gain over global-only, resampling paired rows within each fold"
+    "bootstrap_unit": "scaffold_group_hash",
+    "bootstrap_populations": ["all_grouped_oof_rows", "predeclared_analog_supported_rows"],
+    "bootstrap_comparators": [
+      "retained_similarity_knn",
+      "similarity_shrunk_knn_residual",
+      "within_fold_shuffled_residual",
+      "within_fold_randomized_family_label"
+    ],
+    "bootstrap_group_order": "Within each task/population/fold, scaffold_group_hash ascending; members within each group use molecule_id ascending.",
+    "bootstrap_draw_algorithm": "For each replicate 0..1999, fold 0..3, and draw position 0..G-1 where G is the number of groups in that fold, SHA-256 UTF-8 seed|scaffold_bootstrap_v1|population|benchmark|task|replicate|fold|draw; interpret the first 8 digest bytes as an unsigned big-endian integer modulo G. Select that group and all of its population rows. Draw independently within each fold with replacement.",
+    "bootstrap_metric_aggregation": "Concatenate selected paired rows in fold, draw, then member order and compute one task-level metric per replicate; do not average fold metrics.",
+    "percentile_method": "Sort 2,000 directional gains. For probability p, use h=(n-1)*p and linear interpolation between floor(h) and ceil(h). Report p=0.025 and p=0.975.",
+    "dependence_disclosure": "Intervals resample scaffold groups within folds and are paired across base, comparator, and target."
   },
   "retention_rule": {
-    "full_population": "Positive directional point gain over global-only on all four tasks.",
-    "analog_supported_population": "Positive directional point gain and positive paired-bootstrap 95% lower bound over global-only on all four tasks.",
-    "fold_consistency": "Positive directional gain in at least three of four grouped folds for every task.",
-    "remote_population": "Predictions and metrics must be exactly unchanged because the candidate abstains.",
-    "negative_controls": "The valid residual must beat both controls on the full and analog-supported populations for every task.",
+    "direction_and_ties": "Every required gain is strict >0 in the declared direction. Zero, equality, or a missing metric fails.",
+    "full_population": "The valid residual directional point gain over global-only must be strict >0 on all four tasks.",
+    "analog_supported_population": "The valid residual directional point gain and its scaffold-bootstrap 95% lower bound over global-only must both be strict >0 on all four tasks.",
+    "fold_consistency": "On all rows in each grouped fold, the valid residual directional point gain over global-only must be strict >0 in at least three of four folds for every task.",
+    "remote_population": "For similarity <0.50, every valid residual prediction must equal the base float exactly and the remote-population metric must tie exactly.",
+    "negative_controls": "For each control and each task on both full and supported populations, valid residual minus control directional point performance must be strict >0: control MAE minus valid MAE for Octant, valid AP minus control AP for TDC. A tie fails.",
     "decision": "Retain only if every condition passes. Otherwise record the negative result and remove the residual implementation."
   },
   "boundaries": {

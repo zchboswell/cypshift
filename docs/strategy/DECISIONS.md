@@ -531,6 +531,12 @@
 - Boundary: Use grouped OOF artifacts only. Parse no held-out label, consume no
   held-out prediction, run no held-out evaluation, and test no second residual.
 - Contract: `benchmarks/series_residual_contract.json` is authoritative.
+- Contract remediation: V1 froze the scientific formula but not every
+  result-affecting implementation detail. V2 requires exact 1:1 OOF joins,
+  hash-derived within-fold controls, clipping for both classification controls,
+  scaffold-group paired bootstrap with an explicit percentile method, exact
+  directional gains, all-row fold consistency, and strict tie failure. No
+  candidate outcome was computed under v1.
 - Reversal condition: Reverse only before candidate scoring if an independent
   review finds a contract, alignment, leakage, or control defect. Do not alter
   the formula or rule after any candidate result is visible.

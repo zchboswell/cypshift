@@ -53,12 +53,14 @@ or retry. The tracked failure record is
 `benchmarks/receipts/chemeleon_attempt_v1_failure.json`; the complete local
 root remains `artifacts/benchmarks/chemeleon-attempt-v1`.
 
-`series_residual_contract.json` freezes the final Phase 0.5 native experiment
+`series_residual_contract.json` v2 freezes the final Phase 0.5 native experiment
 before any candidate score exists. It permits one fit-free grouped-OOF
 correction from the retained unweighted mean toward the retained kNN estimate
 when nearest-neighbor Tanimoto is at least 0.50. It also fixes exact abstention,
 negative controls, uncertainty, and an all-or-nothing keep/reject rule. It does
-not authorize held-out access or a second residual design.
+not authorize held-out access or a second residual design. V1 was rejected
+before scoring because join, control, bootstrap, and strict tie semantics were
+not fully specified; v2 closes those choices without changing the formula.
 
 ## Octant compound-level ingestion
 

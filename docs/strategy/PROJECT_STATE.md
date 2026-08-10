@@ -389,6 +389,13 @@ artifacts remain outside Git.
   existing cross-fitted kNN prediction. The formula, abstention, two controls,
   paired bootstrap, and all-or-nothing retention rule are fixed before any new
   candidate score is computed. No held-out artifact is in scope.
+- Independent pre-result review rejected contract v1 because it left OOF join,
+  control permutation, bootstrap, clipping, direction, tie, and fold-population
+  details open. Contract v2 fixes exact 30,910-row alignment, SHA-256-derived
+  permutations, paired scaffold-group resampling within folds, percentile
+  interpolation, directional formulas, all-row fold consistency, and strict
+  tie failure. It also discloses 476 threshold-equality rows that are supported
+  but receive zero correction. No candidate result has been computed.
 
 ## Active hypotheses
 
@@ -444,7 +451,7 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Independently review D-022 and
+Independently re-review D-022 and contract v2 in
 `benchmarks/series_residual_contract.json` before implementing or scoring the
 one grouped-OOF residual. Verify input hashes, topology counts, fit-free formula,
 abstention, deterministic controls, paired bootstrap, strict retention rule,
