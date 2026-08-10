@@ -158,9 +158,10 @@ repeat, outer fold, inner fold, and corresponding training population contains
 both classes. Total positives and negatives are 3,275/6,398 for CYP2C9,
 2,071/8,433 for CYP2D6, and 4,028/5,833 for CYP3A4.
 
-Three independent artifact reviews recomputed the receipt chain, deterministic
-group and fold assignments, class-support arithmetic, duplicate counts, and
-zero-use accounting. Generated roots are ignored by Git and read-only. The
+Three independent artifact reviews verified projection and assignment bytes,
+global group and fold assignments, class-support arithmetic, frozen duplicate
+and conflict counts, receipt hashes, and exact accounting. Generated roots are
+ignored by Git and read-only. The
 freeze generated no feature matrix, model fit, prediction, public-test label
 parse, or metric evaluation. All nine public-test family-task slots remain
 unconsumed.
