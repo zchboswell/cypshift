@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — KB-only authorization
+Status: active — shadow benchmark frozen; Stage A next
 
 Authorized: 2026-08-10
 
@@ -194,6 +194,24 @@ value. Resource and summary-validation failures preserve compact blocker
 receipts. All real inputs must be stable read-only files for the process
 lifetime.
 
+### Frozen shadow outcome
+
+The implementation passed independent review and generated the real benchmark
+from signed source revision `8a2e227`. Two trusted projections are
+byte-identical. Two label-free assignments are byte-identical. The canonical
+assignment contains 30,038 rows, 15,354 standardized structures, 9,114 scaffold
+groups, and 9,902 chemistry communities. Its `shadow_rows.csv` SHA-256 is
+`b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f`.
+
+The separate summary parsed 30,038 frozen `train_val` labels and zero
+public-test labels after verifying the assignment bytes. All task, protocol,
+repeat, outer, inner, and training populations contain both classes. The final
+manifest SHA-256 is
+`3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656`.
+It records zero feature matrices, fits, predictions, and metric evaluations.
+Three independent reviews passed the artifacts and arithmetic. Generated roots
+remain outside Git and read-only.
+
 ## Minimal research-code boundary
 
 Do not rewrite the frozen Phase 0.5 modules and do not add a registry, plugin
@@ -326,7 +344,7 @@ unpublished challenge strategy. Add no dashboard.
 
 Phase 0.75 passes when:
 
-1. this KB-only authorization merges before modeling work;
+1. the signed Phase 0.75 authorization merges before modeling work;
 2. Phase 0.5 remains byte-for-byte immutable;
 3. MapLight source, method, license, and environment are pinned;
 4. the public-test budget and shadow benchmark are frozen;
@@ -360,10 +378,12 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 
 ## Implementation order
 
-1. Merge this signed KB-only milestone.
+1. Merge the signed Phase 0.75 authorization. **Complete.**
 2. Freeze the MapLight source, paper, method, license, and environment.
-3. Freeze the public-test budget and exact shadow-split contract.
+   **Complete for the available public evidence.**
+3. Freeze the public-test budget and exact shadow-split contract. **Complete.**
 4. Create the global shadow grouping and validate it before model work.
+   **Complete.**
 5. Add the smallest feature-block seam.
 6. Implement and parity-test the four fixed feature blocks.
 7. Run the shadow representation ablation.

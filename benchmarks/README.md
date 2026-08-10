@@ -27,15 +27,17 @@ assignment algorithm for all 30,038 TDC `train_val` rows. It requires all
 duplicated and conflicting official rows to remain, groups 15,354 standardized
 structures once across all three tasks, and defines three repeats for a
 Bemis-Murcko scaffold protocol and a Taylor-Butina chemistry-community
-protocol. The assignment does not exist until generated `shadow_rows.csv` bytes
-are validated and hashed. Those label-free rows and their manifest remain
-outside Git. Exact MapLight features use raw official strings; grouping uses
-standardized identity. Do not silently deduplicate the 41 standardized hashes
-that map to multiple raw strings. A trusted preparation step first strips the
-30,038 `train_val` identities and structures into a receipt-bound label-free
-input. The assignment process can resolve only that projection. Post-assignment
-prevalence checks can resolve only the already frozen train-only measurement
-file, never canonical or public-test measurement roots.
+protocol. The generated assignment contains 9,114 scaffold groups and 9,902
+chemistry communities. Its label-free `shadow_rows.csv` SHA-256 is
+`b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f`.
+Those rows and their manifest remain outside Git and read-only. Exact MapLight
+features use raw official strings; grouping uses standardized identity. Do not
+silently deduplicate the 41 standardized hashes that map to multiple raw
+strings. A trusted preparation step strips the 30,038 `train_val` identities
+and structures into a receipt-bound label-free input. The assignment process
+can resolve only that projection. Post-assignment prevalence checks resolve
+only the frozen train-only measurement file, never canonical or public-test
+measurement roots.
 
 `tdc_cyp_shadow_v1_implementation_contract.json` closes the remaining byte and
 process details before real generation. It fixes the one-to-one identity join,
@@ -46,12 +48,17 @@ so the trusted projection, label-free assignment, and train-only summary remain
 separate processes. Assignment runs in an atomically promoted staging root
 under an active 240-minute and 12-GiB watchdog. Receipt consumers recompute all
 deterministic claims, and resource or summary-validation failures retain a
-compact zero-model blocker receipt. Real inputs must remain stable and read-only
-for each process lifetime. Synthetic tests exercise these paths. No real
-30,038-row projection or 15,354-structure clustering has run yet.
+compact zero-model blocker receipt. Real inputs remain stable and read-only for
+each process lifetime. Synthetic tests exercise these paths. The reviewed
+implementation generated two byte-identical projections and two byte-identical
+assignments. One separate summary parsed 30,038 train-only labels and zero
+public-test labels after the assignment was hashed. Final manifest SHA-256 is
+`3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656`.
+All declared fold populations contain both classes.
 
-These four files are pre-result controls. Together they record zero feature
-matrices, fits, predictions, public-test label parses, and metric evaluations.
+These four tracked files control the frozen shadow artifact and future
+public-test use. The completed shadow run records zero feature matrices, fits,
+predictions, public-test label parses, and metric evaluations.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved

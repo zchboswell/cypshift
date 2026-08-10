@@ -85,7 +85,7 @@ launch unless separately authorized as trivial after Tier 1 closes early.
 The complete contract is
 [`PHASE_0_75.md`](../phases/PHASE_0_75.md).
 
-## Phase 0.75 pre-result freeze
+## Phase 0.75 source, budget, and shadow freeze
 
 The exact MapLight source, paper, method, dated anchors, environment gaps, and
 claim boundaries are frozen in
@@ -114,12 +114,13 @@ bootstrap, or other diagnostic score is authorized by this initial budget.
 
 The global split input and deterministic assignment algorithm are frozen in
 [`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
-The future generated artifact must preserve all 30,038 `train_val` rows, 15,354
-global standardized structures, and 9,114 scaffold groups. It will use one
-global assignment for all tasks, three predeclared repeats, a nonchiral
-Bemis-Murcko protocol, and a chiral Morgan Taylor-Butina community protocol at
-Tanimoto 0.60. Exact duplicates are always global. Scaffold and community groups
-are indivisible in their respective protocols; the two systems are not unioned.
+The generated artifact preserves all 30,038 `train_val` rows and 15,354 global
+standardized structures. It contains 9,114 scaffold groups and 9,902 chemistry
+communities. It uses one global assignment for all tasks, three predeclared
+repeats, a nonchiral Bemis-Murcko protocol, and a chiral Morgan Taylor-Butina
+community protocol at Tanimoto 0.60. Exact duplicates are always global.
+Scaffold and community groups are indivisible in their respective protocols;
+the two systems are not unioned.
 
 The topology contains 70 duplicated structure-task cells and 11 cells with
 conflicting labels. Every official row remains. Forty-one standardized hashes
@@ -127,8 +128,12 @@ also map to more than one raw SMILES. Grouping uses standardized identity, but
 exact MapLight features must remain keyed to each raw official input rather
 than silently deduplicating by standardized hash.
 
-This freeze generated no feature matrix, model fit, prediction, public-test
-label parse, or metric evaluation.
+Two independent trusted projections produced byte-identical row and manifest
+files. Their SHA-256 values are `924deea0` and `35ef619f`. Two independent
+label-free assignments produced byte-identical `shadow_rows.csv` bytes with
+SHA-256 `b633af0c`. The assignment receipts differ only in runtime and peak RSS:
+27.95 seconds and 3.91 GiB for the canonical run, and 31.17 seconds and 3.58 GiB
+for the repeat. Both remain below the 240-minute and 12-GiB caps.
 
 The reviewed parent contract left six byte-level implementation choices open.
 The pre-result implementation contract now fixes the full one-to-one identity
@@ -142,9 +147,23 @@ community mechanics, the real inclusive distance-0.40 API boundary, exact fold
 hashes, duplicate rows, class support, identity-first label access, clean source
 binding, active resource caps, complete receipt-chain validation, and retained
 blocker evidence. Assignment output is promoted atomically from a staging root.
-All real inputs must remain stable and read-only for a process lifetime. No real
-source projection, full clustering, model feature, fit, prediction, public-test
-label parse, or metric evaluation has run.
+All real inputs remained stable and read-only for each process lifetime.
+
+The separate summary verified the complete assignment chain before parsing
+exactly 30,038 frozen `train_val` labels. It parsed zero public-test labels.
+The final manifest SHA-256 is `3eb97271`; its output aggregate is `20b00bf7`.
+It confirms 29,961 structure-task cells, 70 duplicated cells, 77 excess rows,
+11 conflicting-label cells, and 9 affected structures. Every task, protocol,
+repeat, outer fold, inner fold, and corresponding training population contains
+both classes. Total positives and negatives are 3,275/6,398 for CYP2C9,
+2,071/8,433 for CYP2D6, and 4,028/5,833 for CYP3A4.
+
+Three independent artifact reviews recomputed the receipt chain, deterministic
+group and fold assignments, class-support arithmetic, duplicate counts, and
+zero-use accounting. Generated roots are ignored by Git and read-only. The
+freeze generated no feature matrix, model fit, prediction, public-test label
+parse, or metric evaluation. All nine public-test family-task slots remain
+unconsumed.
 
 ## Phase 0.5 benchmark contract
 
@@ -583,8 +602,8 @@ measured-parent transformation model.
 - The TDC public test is already observed. Any new prediction family or repair
   after scoring could turn comparator reproduction into public-test-aware
   model selection.
-- Task-specific shadow folds could leak the same molecule or chemistry family
-  across isoforms. One global grouping assignment is mandatory.
+- A feature or model consumer that ignores the frozen global shadow assignment
+  could reintroduce cross-isoform molecule or chemistry-family leakage.
 - Pretrained GIN training overlap may be known, present, or unknowable. Unknown
   provenance forbids a clean zero-shot claim.
 - Heavy research dependencies could enter the all-groups core CI path unless
@@ -615,13 +634,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Independently review the `TDC-CYP-shadow-v1` implementation and its companion
-byte contract. After exact fast-forward integration, run the trusted projection
-twice from the reviewed revision and require byte-identical rows and manifests.
-Only then run the full label-free assignment alone under Python 3.11 and the
-12 GiB peak-RSS cap. Validate train-only class support in the separate summary
-process. Do not write MapLight feature code, fit a model, or generate a
-public-test prediction until the real shadow artifact passes independent review.
+Freeze the minimal Stage A execution contract before a feature result exists.
+It must bind raw-row MapLight input semantics, the isolated environment, exact
+feature-array parity fixtures, non-finite handling, the shadow ablation designs,
+fit counts, and stopping rules. Then add only the smallest fixed-feature seam
+needed for Morgan counts, Avalon counts, ErG values, and the ordered descriptor
+block. Do not fit a model or generate a public-test prediction before that
+contract and implementation pass independent review.
 
 The following pre-freeze research already supports that action.
 
