@@ -382,6 +382,13 @@ artifacts remain outside Git.
   scientific counts, 4,079.06-second runtime, 7.771-GB checkpoint accounting,
   clean source revision, and permanent no-retry sentinel match. No CheMeleon
   scoring or replacement external model is permitted in Phase 0.5.
+- A label-agnostic topology audit supports one minimal residual test at frozen
+  nearest-neighbor Tanimoto >=0.50: 377 Octant rows and 4,208/4,678/4,086 TDC
+  CYP2C9/2D6/3A4 rows, with at least 81 supported rows per grouped fold. D-022
+  freezes one fit-free correction from the retained unweighted mean toward the
+  existing cross-fitted kNN prediction. The formula, abstention, two controls,
+  paired bootstrap, and all-or-nothing retention rule are fixed before any new
+  candidate score is computed. No held-out artifact is in scope.
 
 ## Active hypotheses
 
@@ -437,8 +444,9 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-Using only the frozen grouped OOF research artifacts, perform a label-safe
-topology support audit for the one permitted series residual. Predeclare one
-minimal shrinkage residual, its support/abstention rule, and the shuffled and
-randomized-family controls before fitting. Do not open held-out labels or add a
-second residual design.
+Independently review D-022 and
+`benchmarks/series_residual_contract.json` before implementing or scoring the
+one grouped-OOF residual. Verify input hashes, topology counts, fit-free formula,
+abstention, deterministic controls, paired bootstrap, strict retention rule,
+zero held-out scope, and Occam simplicity. Do not compute a candidate result
+until this exact gate passes.

@@ -53,6 +53,13 @@ or retry. The tracked failure record is
 `benchmarks/receipts/chemeleon_attempt_v1_failure.json`; the complete local
 root remains `artifacts/benchmarks/chemeleon-attempt-v1`.
 
+`series_residual_contract.json` freezes the final Phase 0.5 native experiment
+before any candidate score exists. It permits one fit-free grouped-OOF
+correction from the retained unweighted mean toward the retained kNN estimate
+when nearest-neighbor Tanimoto is at least 0.50. It also fixes exact abstention,
+negative controls, uncertainty, and an all-or-nothing keep/reject rule. It does
+not authorize held-out access or a second residual design.
+
 ## Octant compound-level ingestion
 
 The Octant adapter treats the 30-minute active-CYP3A4 preincubation assay as

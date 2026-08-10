@@ -507,3 +507,30 @@
 - Reversal condition: Reverse before inference only if a pinned primary source
   contradicts the contract or the authoritative challenge release supersedes
   Phase 0.5. After inference begins, preserve the attempt and its outcome.
+
+## D-022 — Freeze one fit-free local residual test
+
+- Date: 2026-08-10
+- Status: accepted
+- Decision: Test exactly one grouped-OOF local correction. Use the retained
+  unweighted mean as the base and the retained `tanimoto-k50-p2` prediction as
+  the local estimate. Apply the difference only when nearest-neighbor Tanimoto
+  is at least 0.50, with linear weight `(similarity - 0.50) / 0.50` clipped to
+  `[0, 1]`. Unsupported predictions remain exactly equal to the base.
+- Topology evidence: The predeclared supported subsets contain 377 Octant rows
+  and 4,208/4,678/4,086 TDC CYP2C9/2D6/3A4 rows, with at least 81 supported
+  rows in every grouped fold. No candidate outcome was computed first.
+- Controls: Compare the base, retained kNN, valid correction, one within-fold
+  residual shuffle, and one within-fold randomized support/family-label
+  assignment. Use seed 20260809. Fit no model and tune no parameter.
+- Retention: Require positive full-task gain on all four tasks; positive and
+  bootstrap-supported analog-subset gain on all four; gain in at least three
+  of four folds per task; exact remote abstention; and superiority to both
+  negative controls. If any condition fails, record rejection and remove the
+  implementation.
+- Boundary: Use grouped OOF artifacts only. Parse no held-out label, consume no
+  held-out prediction, run no held-out evaluation, and test no second residual.
+- Contract: `benchmarks/series_residual_contract.json` is authoritative.
+- Reversal condition: Reverse only before candidate scoring if an independent
+  review finds a contract, alignment, leakage, or control defect. Do not alter
+  the formula or rule after any candidate result is visible.

@@ -1,0 +1,104 @@
+{
+  "schema_version": "cypshift.series_residual_contract.v1",
+  "frozen_at_utc": "2026-08-10T00:49:17Z",
+  "scope": "One grouped-OOF-only Phase 0.5 keep/reject test. This contract does not authorize held-out label access, held-out prediction, another residual design, or challenge-data use.",
+  "inputs": {
+    "native_combinations": {
+      "schema_version": "cypshift.native_combinations.v3",
+      "manifest_sha256": "6784ff97047de31dec8293aeb35c4f679dc5a7d03f19576595b5bf556b5bd064",
+      "aggregate_sha256": "c63b40b2c80981a437fdc2baa48d4ece5ecdc8b7e50594e75578cf04e8503b12",
+      "prediction_sha256": "c5cb3de8c0e51f5ea81d032393a1f9f5c743ada5f87a8e091c60b99be6b5e788",
+      "base_candidate": "unweighted_mean"
+    },
+    "research_observations": {
+      "schema_version": "cypshift.research_observations.v1",
+      "manifest_sha256": "4a3d8381d8186e946a9c95c5ee350bc61b1b737d562c584a3ce75102fa701993",
+      "aggregate_sha256": "5b9262fa2e178c1ea08d0660904f08f211dc297b72ef8b9f4eb95e79272844e6",
+      "observation_sha256": "c646474e33a7fc312d1e4da02d6cd1dcf09138a2f8aecdf4673600592716f5eb",
+      "local_family": "similarity_knn",
+      "local_configuration": "tanimoto-k50-p2"
+    }
+  },
+  "topology_audit": {
+    "target_values_used": 0,
+    "source_disclosure": "The research CSV contains authorized grouped-OOF training targets. The topology audit consumed only task, fold, family, and nearest-neighbor similarity fields.",
+    "support_field": "nearest_neighbor_similarity",
+    "support_threshold_inclusive": 0.5,
+    "selection_rows": 30910,
+    "task_counts": {
+      "cyp3a4_active_preincubation_pIC50": {
+        "rows": 872,
+        "supported_rows": 377,
+        "supported_by_fold": [82, 81, 97, 117]
+      },
+      "cyp2c9_veith": {
+        "rows": 9673,
+        "supported_rows": 4208,
+        "supported_by_fold": [811, 1022, 1211, 1164]
+      },
+      "cyp2d6_veith": {
+        "rows": 10504,
+        "supported_rows": 4678,
+        "supported_by_fold": [1163, 1133, 1168, 1214]
+      },
+      "cyp3a4_veith": {
+        "rows": 9861,
+        "supported_rows": 4086,
+        "supported_by_fold": [863, 1068, 1091, 1064]
+      }
+    }
+  },
+  "candidate": {
+    "name": "similarity_shrunk_knn_residual",
+    "base_prediction": "unweighted_mean grouped OOF prediction",
+    "local_prediction": "retained similarity_knn grouped OOF prediction",
+    "residual": "local_prediction - base_prediction",
+    "weight": "clip((nearest_neighbor_similarity - 0.5) / 0.5, 0, 1)",
+    "prediction": "base_prediction + weight * residual",
+    "classification_boundary": "clip final prediction to [0, 1]",
+    "regression_boundary": "no clipping",
+    "abstention": "Rows with nearest_neighbor_similarity < 0.5 receive weight 0 and exactly reproduce the base prediction.",
+    "model_fits": 0,
+    "tuned_parameters": 0
+  },
+  "comparators": [
+    "global_only_unweighted_mean",
+    "retained_similarity_knn",
+    "similarity_shrunk_knn_residual",
+    "within_fold_shuffled_residual",
+    "within_fold_randomized_family_label"
+  ],
+  "controls": {
+    "seed": 20260809,
+    "shuffled_residual": "Within each benchmark/task/fold, deterministically permute local-minus-base residuals while preserving each row's similarity weight.",
+    "randomized_family_label": "Within each benchmark/task/fold, deterministically permute similarity weights while preserving each row's local-minus-base residual.",
+    "permutation_count": 1,
+    "selection_rule": "Controls are diagnostics only and cannot be selected or retained."
+  },
+  "metrics": {
+    "octant_primary": "mean_absolute_error",
+    "tdc_primary": "average_precision",
+    "populations": ["all_grouped_oof_rows", "predeclared_analog_supported_rows", "remote_abstained_rows"],
+    "fold_reporting": true,
+    "paired_bootstrap_replicates": 2000,
+    "paired_bootstrap_seed": 20260809,
+    "interval": "two-sided percentile 95% interval for the directional gain over global-only, resampling paired rows within each fold"
+  },
+  "retention_rule": {
+    "full_population": "Positive directional point gain over global-only on all four tasks.",
+    "analog_supported_population": "Positive directional point gain and positive paired-bootstrap 95% lower bound over global-only on all four tasks.",
+    "fold_consistency": "Positive directional gain in at least three of four grouped folds for every task.",
+    "remote_population": "Predictions and metrics must be exactly unchanged because the candidate abstains.",
+    "negative_controls": "The valid residual must beat both controls on the full and analog-supported populations for every task.",
+    "decision": "Retain only if every condition passes. Otherwise record the negative result and remove the residual implementation."
+  },
+  "boundaries": {
+    "heldout_labels_parsed": 0,
+    "heldout_predictions_consumed": 0,
+    "heldout_evaluations": 0,
+    "new_model_fits": 0,
+    "new_dependencies": 0,
+    "additional_residual_candidates": 0,
+    "result_informed_changes": "forbidden"
+  }
+}
