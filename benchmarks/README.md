@@ -44,6 +44,15 @@ and full overlap provenance. All five columns, 7,724 rows, task counts, key
 hash, CSV hash, and aggregate remain unchanged. V4 contract SHA-256 is
 `029d8f13135845629009bceffe365fd0d162f11c92a792b72b61def97712b472`.
 
+The single contract-v3 attempt ran on 2026-08-09/10. The exact image pull and
+all model hashes completed, but the four-row smoke failed before prediction.
+The upstream CLI imports `boto3`, whose installed dependency imports a missing
+`DocumentModifiedShape` symbol from `botocore`. No smoke or full prediction,
+label access, fit, model evaluation, or score occurred. D-021 forbids a patch
+or retry. The tracked failure record is
+`benchmarks/receipts/chemeleon_attempt_v1_failure.json`; the complete local
+root remains `artifacts/benchmarks/chemeleon-attempt-v1`.
+
 ## Octant compound-level ingestion
 
 The Octant adapter treats the 30-minute active-CYP3A4 preincubation assay as

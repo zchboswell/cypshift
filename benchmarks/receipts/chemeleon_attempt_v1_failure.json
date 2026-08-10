@@ -1,0 +1,63 @@
+{
+  "schema_version": "cypshift.chemeleon_attempt_failure_record.v1",
+  "recorded_at_utc": "2026-08-10T00:37:30Z",
+  "experiment_id": "p05-c26-chemeleon-attempt-v1",
+  "status": "upstream_environment_smoke_failure",
+  "source_revision": "7f631c1649e7d0c9e513b9b9fc5822924544e750",
+  "contract": {
+    "schema_version": "cypshift.chemeleon_inference_contract.v3",
+    "sha256": "029d8f13135845629009bceffe365fd0d162f11c92a792b72b61def97712b472",
+    "input_sha256": "9829a8adaa667419cccba78a9201dea3d08d0b68af3b0e4c08129d5a037dc7e4",
+    "attempt_sentinel_sha256": "01e88804b186b1a6bb7e1ec46d598211c10f09ede844e5bd257813c131c1ce3e"
+  },
+  "environment": {
+    "image": "ghcr.io/openadmet/openadmet-models@sha256:e2b18fff9987c7fe4738289f9dad57edf9c3fa6793be739187b24743d4247191",
+    "platform": "linux/amd64",
+    "reported_image_bytes": 7717983123,
+    "pull_completed": true,
+    "pull_log_sha256": "7974ec7ad835ca129dab43c1b57061480dc3f14095269129f63860ed9987575d"
+  },
+  "model": {
+    "id": "openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1",
+    "revision": "ef24cf941ae21c7d7a64df378a846bd2066eceda",
+    "checkpoint_sha256": "81d15cc43a3608f1aab465b1e690d86fd41c420615094cca1439c2e52f3b4e7b",
+    "source_receipt_sha256": "7f3dd0ab719d5fc6c12dc75a2791616f519eb19a30880dcdd1ed3f180fd2f030"
+  },
+  "failure": {
+    "failed_step": "smoke_probe",
+    "elapsed_seconds": 4079.056689416,
+    "container_returncode": 1,
+    "exception_type": "ImportError",
+    "exception_message": "cannot import name 'DocumentModifiedShape' from 'botocore.docs.utils'",
+    "root_cause": "The exact upstream image contains incompatible boto3 and botocore imports. The OpenADMET CLI fails during module import before prediction.",
+    "smoke_log_sha256": "2ddb34519faa7e51efae9753f1f3c3b37111d09fc7616fafbca62914aefd749b",
+    "local_failure_receipt_sha256": "0997037587ed1a3ca3fdcf3fac01bd763ce6b05500e4409cf09c5fb2b126342c",
+    "retained_files_aggregate_sha256": "374f46222e5ce75d93e7e578133ab1c352d6084b77e056a7e89693161e76f4c6"
+  },
+  "smoke_molecule_ids": [
+    "OCNT-0022119-AA-003",
+    "tdc:cyp2c9_veith:test:00001",
+    "tdc:cyp2d6_veith:test:00001",
+    "tdc:cyp3a4_veith:test:00001"
+  ],
+  "overlap": {
+    "rows": 7724,
+    "manifest_sha256": "9b548e5f747fcfe581e778b2d5dce78c464e932ec42c961be4d4fdd970d927ef",
+    "csv_sha256": "3c9ace5bd2d5e60b18decc4efa6f2e464f47b325675d309d1742958cc4859d65",
+    "task_counts": {
+      "cyp2c9_veith": 8,
+      "cyp2d6_veith": 13,
+      "cyp3a4_active_preincubation_pIC50": 4,
+      "cyp3a4_veith": 8
+    }
+  },
+  "scientific_counts": {
+    "smoke_predictions_completed": 0,
+    "full_inference_runs_completed": 0,
+    "heldout_labels_parsed": 0,
+    "model_fits": 0,
+    "model_evaluations": 0
+  },
+  "retained_local_root": "artifacts/benchmarks/chemeleon-attempt-v1",
+  "decision": "Reject the CheMeleon transfer attempt as an upstream environment blocker. Do not patch, retry, change the checkpoint, change the image, or score it in Phase 0.5."
+}

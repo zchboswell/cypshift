@@ -366,6 +366,22 @@ artifacts remain outside Git.
   PR 32 merged by exact fast-forward. The 25-GiB rule is checkpoint accounting
   over retained apparent files plus Docker's reported image size. It is not an
   OS quota and does not measure transient pull storage or Docker metadata.
+- The single fixed CheMeleon attempt ran from clean merged revision `7f631c1`.
+  The exact model download, all file hashes, 7,724-row overlap audit, and exact
+  image pull passed. The four-row smoke then failed before prediction: the
+  upstream image's `boto3` import requests `DocumentModifiedShape` from its
+  incompatible installed `botocore`. Elapsed time was 4,079.057 seconds.
+  Exact training-structure overlaps were 8/13/8 for TDC CYP2C9/2D6/3A4 and 4
+  for Octant. Smoke predictions, full runs, label parses, fits, evaluations,
+  and scores are all zero. The retained-files aggregate is
+  `374f46222e5ce75d93e7e578133ab1c352d6084b77e056a7e89693161e76f4c6`.
+  D-021 forbids a patch or retry; CheMeleon is rejected as upstream environment
+  evidence for Phase 0.5.
+- Independent audit passed the failure evidence: all 15 retained hashes, nine
+  model files, exact image/platform, 33 overlaps, four smoke identities, zero
+  scientific counts, 4,079.06-second runtime, 7.771-GB checkpoint accounting,
+  clean source revision, and permanent no-retry sentinel match. No CheMeleon
+  scoring or replacement external model is permitted in Phase 0.5.
 
 ## Active hypotheses
 
@@ -421,8 +437,8 @@ authoritative challenge release requires the launch-day freeze procedure.
 
 ## Exact next action
 
-From clean reviewed `main`, invoke the argument-free fixed runner once with
-`uv run python scripts/run_chemeleon_attempt.py`. Preserve its exclusive start
-sentinel and complete success or failure receipt. Do not retry, change the
-checkpoint or container, open labels, score, fit, or evaluate during this
-attempt.
+Using only the frozen grouped OOF research artifacts, perform a label-safe
+topology support audit for the one permitted series residual. Predeclare one
+minimal shrinkage residual, its support/abstention rule, and the shuffled and
+randomized-family controls before fitting. Do not open held-out labels or add a
+second residual design.

@@ -498,6 +498,12 @@
   start sentinel, and clean Git revision. It validates the overlap contract,
   input, population key, training file, source, package, and standardizer before
   canonical prediction. The five-column scientific payload remains unchanged.
+- Outcome: The one contract-v3 attempt consumed the fixed input and exact
+  image. Model download, hashing, overlap audit, and image pull passed. The
+  four-row smoke failed before prediction because the upstream image's `boto3`
+  import requests `DocumentModifiedShape` from an incompatible installed
+  `botocore`. Retain the failure and overlap evidence. Do not patch, retry,
+  change the image or checkpoint, or score CheMeleon in Phase 0.5.
 - Reversal condition: Reverse before inference only if a pinned primary source
   contradicts the contract or the authoritative challenge release supersedes
   Phase 0.5. After inference begins, preserve the attempt and its outcome.
