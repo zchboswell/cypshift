@@ -104,6 +104,12 @@ def test_signed_int8_container_policy_is_explicit_and_safe_default_is_unchanged(
     None
 ):
     features = _load_module("maplight_int8_container_test", FEATURE_PATH)
+    with pytest.raises(features.MapLightFeatureError):
+        features._validate_sparse_counts({0: 128}, dimensions=1)
+    assert (
+        features._validate_sparse_counts({0: 128}, dimensions=1, upper_bound=None)
+        == 128
+    )
     common = {
         "raw_structure_sha256": (hashlib.sha256(b"CCO").hexdigest(),),
         "binary_morgan": np.zeros((1, 2048), dtype=np.uint8),
@@ -234,7 +240,7 @@ def test_signed_int8_feature_progress_is_exact_and_stops_at_failure(
     assert completed == ["binary_morgan", "morgan_count"]
 
 
-def test_worker_accounting_is_merged_before_array_validation(
+def test_worker_accounting_is_recorded_before_receipt_validation(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     research_root = str(COMPAT_PATH.parent)
@@ -244,32 +250,43 @@ def test_worker_accounting_is_merged_before_array_validation(
     finally:
         sys.path.remove(research_root)
     revision = "a" * 40
-    receipt = {
-        "schema_version": "cypshift.maplight_int8_compat_worker.v1",
-        "worker": "upstream",
-        "source_revision": revision,
-        "fixture_rows": 8,
-        "descriptor_names": list(runner.features.descriptor_names()),
-        "arrays": list(runner.UPSTREAM_ARRAYS),
-        "boundaries": {str(key): value for key, value in runner.BOUNDARIES.items()},
-        "accounting": {
-            "fixture_arrays_generated": 5,
-            "fixture_row_loads": 8,
-            "boundary_conversions_attempted": 3,
-            "boundary_conversions_completed": 3,
-        },
-    }
-    (tmp_path / "worker_receipt.json").write_text(json.dumps(receipt))
-    for name in runner.UPSTREAM_ARRAYS:
-        (tmp_path / f"{name}.npy").write_bytes(b"not-an-array")
     total = {key: 0 for key in runner.PARITY_ACCOUNTING_KEYS}
-
-    def fail_array(*_args: object) -> None:
-        raise runner.CompatError("array rejected")
-
-    monkeypatch.setattr(runner, "_array_record", fail_array)
+    monkeypatch.setattr(
+        runner.subprocess,
+        "run",
+        lambda *_args, **_kwargs: SimpleNamespace(returncode=0),
+    )
+    worker_root = runner._run_worker("upstream", tmp_path, revision, total)
+    worker_root.mkdir()
+    wrong_boundaries = {str(key): value for key, value in runner.BOUNDARIES.items()}
+    wrong_boundaries["144"] = -111
+    (worker_root / "worker_receipt.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "cypshift.maplight_int8_compat_worker.v1",
+                "worker": "upstream",
+                "source_revision": revision,
+                "fixture_rows": 8,
+                "descriptor_names": list(runner.features.descriptor_names()),
+                "arrays": list(runner.UPSTREAM_ARRAYS),
+                "boundaries": wrong_boundaries,
+                "accounting": {
+                    "fixture_arrays_generated": 5,
+                    "fixture_row_loads": 8,
+                    "boundary_conversions_attempted": 3,
+                    "boundary_conversions_completed": 3,
+                },
+            }
+        )
+    )
+    assert total["upstream_fixture_processes_attempted"] == 1
+    assert total["upstream_fixture_processes_completed"] == 1
+    assert total["fixture_arrays_generated"] == 5
+    assert total["fixture_row_loads"] == 8
+    assert total["boundary_conversions_attempted"] == 3
+    assert total["boundary_conversions_completed"] == 3
     with pytest.raises(runner.CompatError):
-        runner._load_worker(tmp_path, "upstream", revision, total)
+        runner._load_worker(worker_root, "upstream", revision)
     assert total["fixture_arrays_generated"] == 5
     assert total["fixture_row_loads"] == 8
     assert total["boundary_conversions_attempted"] == 3

@@ -579,6 +579,13 @@ def _merge_worker_accounting(
 def _run_worker(
     worker: str, root: Path, revision: str, accounting: dict[str, int]
 ) -> Path:
+    attempted_key = (
+        "upstream_fixture_processes_attempted"
+        if worker == "upstream"
+        else "compatible_fixture_processes_attempted"
+    )
+    completed_key = attempted_key.replace("attempted", "completed")
+    accounting[attempted_key] += 1
     output = root / worker
     process = subprocess.run(
         [
@@ -610,11 +617,22 @@ def _run_worker(
                 str(failure["block"]) if failure.get("block") is not None else worker
             ),
         )
+    accounting[completed_key] += 1
+    names = UPSTREAM_ARRAYS if worker == "upstream" else LOCAL_ARRAYS
+    _merge_worker_accounting(
+        accounting,
+        {
+            "fixture_arrays_generated": len(names),
+            "fixture_row_loads": 8,
+            "boundary_conversions_attempted": 3,
+            "boundary_conversions_completed": 3,
+        },
+    )
     return output
 
 
 def _load_worker(
-    root: Path, worker: str, revision: str, total: dict[str, int]
+    root: Path, worker: str, revision: str
 ) -> tuple[dict[str, Path], dict[str, Any]]:
     receipt = _load_json(root / "worker_receipt.json")
     _exact_keys(
@@ -662,7 +680,6 @@ def _load_worker(
         },
         "worker success accounting differs",
     )
-    _merge_worker_accounting(total, receipt["accounting"])
     paths = {name: root / f"{name}.npy" for name in names}
     _require(
         {path.name for path in root.iterdir()}
@@ -850,20 +867,11 @@ def run_compatibility_parity() -> Path:
         work = Path(tempfile.mkdtemp(prefix=".int8-parity-", dir=PARITY_ROOT.parent))
         results: dict[str, tuple[dict[str, Path], dict[str, Any]]] = {}
         for worker in WORKERS:
-            attempted_key = (
-                "upstream_fixture_processes_attempted"
-                if worker == "upstream"
-                else "compatible_fixture_processes_attempted"
-            )
-            completed_key = attempted_key.replace("attempted", "completed")
-            accounting[attempted_key] += 1
             results[worker] = _load_worker(
                 _run_worker(worker, work, revision, accounting),
                 worker,
                 revision,
-                accounting,
             )
-            accounting[completed_key] += 1
         upstream_paths, upstream_receipt = results["upstream"]
         local_a, receipt_a = results["compatible_a"]
         local_b, receipt_b = results["compatible_b"]
