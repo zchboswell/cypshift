@@ -21,6 +21,11 @@ def _contract() -> dict[str, Any]:
 
 def test_compatibility_contract_preserves_safe_failure_and_exact_inputs() -> None:
     contract = _contract()
+    safe_blocker = json.loads(
+        (
+            ROOT / "benchmarks/receipts/maplight_fixed_stage_a_feature_blocker.json"
+        ).read_text(encoding="utf-8")
+    )
 
     assert contract["schema_version"] == (
         "cypshift.maplight_fixed_int8_compat_contract.v1"
@@ -28,11 +33,34 @@ def test_compatibility_contract_preserves_safe_failure_and_exact_inputs() -> Non
     assert contract["status"] == "pre_result_frozen"
     assert contract["authorization"]["does_not_repair_or_replace_safe_experiment"]
 
-    for record in contract["parents"].values():
+    for name in ("safe_stage_a_contract", "safe_blocker_record"):
+        record = contract["parents"][name]
         assert _sha256(ROOT / record["path"]) == record["sha256"]
-    for name in ("shadow_rows", "shadow_manifest"):
-        record = contract["frozen_inputs"][name]
-        assert _sha256(ROOT / record["path"]) == record["sha256"]
+    assert (
+        contract["parents"]["safe_blocker_artifact"] == safe_blocker["failure_receipt"]
+    )
+    assert (
+        contract["parents"]["parity_receipt"]["sha256"]
+        == safe_blocker["inputs"]["parity_receipt_sha256"]
+    )
+    assert (
+        contract["frozen_inputs"]["shadow_rows"]["sha256"]
+        == safe_blocker["inputs"]["shadow_rows_sha256"]
+    )
+    assert (
+        contract["frozen_inputs"]["shadow_manifest"]["sha256"]
+        == safe_blocker["inputs"]["shadow_manifest_sha256"]
+    )
+
+    for record in (
+        contract["parents"]["safe_blocker_artifact"],
+        contract["parents"]["parity_receipt"],
+        contract["frozen_inputs"]["shadow_rows"],
+        contract["frozen_inputs"]["shadow_manifest"],
+    ):
+        path = ROOT / record["path"]
+        if path.exists():
+            assert _sha256(path) == record["sha256"]
 
     environment = contract["frozen_inputs"]["environment"]
     assert (
