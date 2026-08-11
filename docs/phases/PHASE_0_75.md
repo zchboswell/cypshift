@@ -560,3 +560,12 @@ infinity or other non-finite value is present. Manifest SHA-256 values are
 finite probabilities and resolved `nan_mode=Min`. No target, scientific fit,
 prediction, metric, GIN, challenge, or public-test operation occurred. This
 passes only the label-free feature gate and makes no predictive-value claim.
+
+The trusted target projection then passed at signed source `1275cbc`. It emits
+one immutable 30,038-row scoring target and 18 immutable outer-training target
+files totaling 144,183 rows. Every cell file contains only its task's outer
+folds 1 through 4; validation fold 0 is absent. The scoring file remains sealed
+until all Stage A predictions are hashed. Two preserved infrastructure-only
+preflight receipts record zero label parses; the successful projection parsed
+exactly 30,038 train-only labels and zero public-test labels. No model,
+prediction, or metric operation occurred at this gate.

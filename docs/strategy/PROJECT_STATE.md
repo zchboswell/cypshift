@@ -4,8 +4,9 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 fixed-feature gate passed under D-027. Two independent label-free
-feature roots are byte-identical and reviewed locally. The prior safe and
+Phase 0.75 fixed-feature and train-only target gates passed. Two independent
+label-free feature roots are byte-identical, and the scoring labels are sealed
+from 18 cell-specific outer-training target files. The prior safe and
 signed-`int8` experiments remain closed negative and immutable. D-024 remains
 active for the August 17 release.
 
@@ -169,6 +170,18 @@ non-finite values. The synthetic CatBoost probe produced finite probabilities
 with resolved `nan_mode=Min`. Build runtimes were 110.15 and 90.48 seconds;
 peak RSS was 1.49 and 1.64 GiB. Targets, scientific fits, predictions, metrics,
 GIN, challenge assumptions, and public-test use remain zero.
+
+The Stage A target projection passed at signed source `1275cbc`. Its immutable
+manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
+cell-specific outer-training files totaling 144,183 rows. Independent
+post-generation checks confirmed every cell file contains exactly folds 1
+through 4 for its task, protocol, and repeat, with zero validation identities.
+The scoring target hash is `73a4ee15`; its 9,374 positive and 20,664 negative
+rows remain sealed until all predictions are immutable. Two preflight-only
+failure receipts (`892a3afa` and `057a52cd`) are preserved; both record zero
+label parses. The successful projection parsed 30,038 train-only labels once,
+used zero public-test rows or labels, and performed zero feature, fit,
+prediction, or metric operations.
 
 ## Phase 0.75 source, budget, and shadow freeze
 
