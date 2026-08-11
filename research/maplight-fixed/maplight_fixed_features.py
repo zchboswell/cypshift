@@ -8,7 +8,7 @@ representation contract; it is not a feature registry.
 from __future__ import annotations
 
 import json
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
 from importlib import import_module
@@ -268,7 +268,9 @@ _verify_descriptor_names()
 
 
 def _validate_sparse_counts(
-    counts: Mapping[object, object], dimensions: int | None = None
+    counts: Mapping[object, object],
+    dimensions: int | None = None,
+    upper_bound: int | None = 127,
 ) -> int:
     """Validate sparse indices and counts, then return the maximum count."""
 
@@ -286,7 +288,7 @@ def _validate_sparse_counts(
                 "a sparse fingerprint count is not a non-boolean integer"
             )
         integer = int(value)
-        if integer < 0 or integer > 127:
+        if integer < 0 or (upper_bound is not None and integer > upper_bound):
             raise MapLightFeatureError(
                 "a sparse fingerprint count is outside 0 through 127"
             )
@@ -313,11 +315,14 @@ def _parse_raw_structure(raw_structure: str) -> Any:
     return molecule
 
 
-def _safe_count_array(fingerprint: Any, dimensions: int) -> NDArray[np.int8]:
+def _count_array(
+    fingerprint: Any, dimensions: int, *, upper_bound: int | None
+) -> tuple[NDArray[np.int8], int, int]:
     counts = fingerprint.GetNonzeroElements()
     if not isinstance(counts, Mapping):
         raise MapLightFeatureError("sparse fingerprint counts are unavailable")
-    _validate_sparse_counts(counts, dimensions)
+    maximum = _validate_sparse_counts(counts, dimensions, upper_bound)
+    bins_above_127 = sum(int(int(value) > 127) for value in counts.values())
     array: NDArray[np.int8] = np.zeros((0,), dtype=np.int8)
     data_structs = import_module("rdkit.DataStructs")
     data_structs.ConvertToNumpyArray(fingerprint, array)
@@ -325,7 +330,18 @@ def _safe_count_array(fingerprint: Any, dimensions: int) -> NDArray[np.int8]:
         raise MapLightFeatureError("sparse fingerprint conversion drifted")
     if not array.flags.c_contiguous:
         raise MapLightFeatureError("sparse fingerprint is not C-contiguous")
-    return array
+    return array, maximum, bins_above_127
+
+
+def _safe_count_array(fingerprint: Any, dimensions: int) -> NDArray[np.int8]:
+    return _count_array(fingerprint, dimensions, upper_bound=127)[0]
+
+
+def _upstream_count_array(
+    fingerprint: Any, dimensions: int
+) -> tuple[NDArray[np.int8], int, int]:
+    """Apply the pinned upstream signed-int8 conversion without an upper bound."""
+    return _count_array(fingerprint, dimensions, upper_bound=None)
 
 
 def _binary_morgan(molecules: Sequence[Any]) -> NDArray[np.uint8]:
@@ -389,6 +405,73 @@ def _avalon_counts(molecules: Sequence[Any]) -> NDArray[np.int8]:
                 row_index=row_index,
             ) from error
     return np.stack(rows)
+
+
+@dataclass(frozen=True, slots=True)
+class CountOverflowStats:
+    """Aggregate evidence for one exact upstream signed-int8 count block."""
+
+    maximum_preconversion_count: int
+    unique_raw_rows_with_counts_above_127: int
+    bins_above_127: int
+    minimum_converted_int8_value: int
+    maximum_converted_int8_value: int
+
+
+def _upstream_count_block(
+    molecules: Sequence[Any], *, block: str
+) -> tuple[NDArray[np.int8], CountOverflowStats]:
+    fingerprint_for: Callable[[Any], Any]
+    if block == "morgan_count":
+        descriptors = import_module("rdkit.Chem.rdMolDescriptors")
+        dimensions = MORGAN_COUNT_DIMENSIONS
+
+        def morgan_fingerprint(molecule: Any) -> Any:
+            return descriptors.GetHashedMorganFingerprint(
+                molecule, nBits=MORGAN_COUNT_DIMENSIONS, radius=2
+            )
+
+        fingerprint_for = morgan_fingerprint
+
+    elif block == "avalon_count":
+        avalon = import_module("rdkit.Avalon.pyAvalonTools")
+        dimensions = AVALON_COUNT_DIMENSIONS
+
+        def avalon_fingerprint(molecule: Any) -> Any:
+            return avalon.GetAvalonCountFP(molecule, nBits=AVALON_COUNT_DIMENSIONS)
+
+        fingerprint_for = avalon_fingerprint
+
+    else:
+        raise MapLightFeatureError("unsupported upstream count block")
+    rows: list[NDArray[np.int8]] = []
+    maximum = 0
+    rows_above = 0
+    bins_above = 0
+    for row_index, molecule in enumerate(molecules):
+        try:
+            fingerprint = fingerprint_for(molecule)
+            row, row_maximum, row_bins_above = _upstream_count_array(
+                fingerprint, dimensions
+            )
+        except Exception as error:
+            raise MapLightFeatureError(
+                f"{block} generation failed",
+                block=block,
+                row_index=row_index,
+            ) from error
+        rows.append(row)
+        maximum = max(maximum, row_maximum)
+        rows_above += int(row_bins_above > 0)
+        bins_above += row_bins_above
+    array = np.stack(rows)
+    return array, CountOverflowStats(
+        maximum_preconversion_count=maximum,
+        unique_raw_rows_with_counts_above_127=rows_above,
+        bins_above_127=bins_above,
+        minimum_converted_int8_value=int(array.min()),
+        maximum_converted_int8_value=int(array.max()),
+    )
 
 
 def _erg(molecules: Sequence[Any]) -> NDArray[np.float64]:
@@ -482,6 +565,7 @@ class FixedFeatureArrays:
     avalon_count: NDArray[np.int8]
     erg: NDArray[np.float64]
     rdkit_descriptors: NDArray[np.float64]
+    count_policy: str = "safe_nonnegative"
 
     def __post_init__(self) -> None:
         if not isinstance(self.binary_morgan, np.ndarray):
@@ -541,7 +625,11 @@ class FixedFeatureArrays:
                 block="binary_morgan",
                 row_index=row_index,
             )
-        if bool((self.morgan_count < 0).any()) or bool((self.avalon_count < 0).any()):
+        if self.count_policy not in {"safe_nonnegative", "upstream_signed_int8"}:
+            raise MapLightFeatureError("count policy is invalid")
+        if self.count_policy == "safe_nonnegative" and (
+            bool((self.morgan_count < 0).any()) or bool((self.avalon_count < 0).any())
+        ):
             block = (
                 "morgan_count"
                 if bool((self.morgan_count < 0).any())
@@ -589,12 +677,10 @@ def descriptor_names() -> tuple[str, ...]:
     return DESCRIPTOR_NAMES
 
 
-def featurize_raw_structures(
+def _validated_molecules(
     raw_structures: tuple[str, ...],
     expected_raw_sha256: tuple[str, ...],
-) -> FixedFeatureArrays:
-    """Build all frozen Stage A blocks in exact input order."""
-
+) -> tuple[tuple[str, ...], list[Any]]:
     if len(raw_structures) == 0:
         raise MapLightFeatureError("feature input must contain a row")
     if len(raw_structures) != len(expected_raw_sha256):
@@ -627,19 +713,87 @@ def featurize_raw_structures(
                 block="raw_structure",
                 row_index=row_index,
             ) from error
+    return tuple(observed_raw_sha256), molecules
+
+
+def featurize_raw_structures(
+    raw_structures: tuple[str, ...],
+    expected_raw_sha256: tuple[str, ...],
+) -> FixedFeatureArrays:
+    """Build all frozen Stage A blocks in exact input order."""
+
+    observed_raw_sha256, molecules = _validated_molecules(
+        raw_structures, expected_raw_sha256
+    )
     binary_morgan = _binary_morgan(molecules)
     morgan_count = _morgan_counts(molecules)
     avalon_count = _avalon_counts(molecules)
     erg = _erg(molecules)
     rdkit_descriptors = _rdkit_descriptors(molecules)
     return FixedFeatureArrays(
-        raw_structure_sha256=tuple(observed_raw_sha256),
+        raw_structure_sha256=observed_raw_sha256,
         binary_morgan=binary_morgan,
         morgan_count=morgan_count,
         avalon_count=avalon_count,
         erg=erg,
         rdkit_descriptors=rdkit_descriptors,
     )
+
+
+def featurize_raw_structures_upstream_int8(
+    raw_structures: tuple[str, ...],
+    expected_raw_sha256: tuple[str, ...],
+    *,
+    block_completed: Callable[[str], None] | None = None,
+) -> tuple[FixedFeatureArrays, dict[str, CountOverflowStats]]:
+    """Build the same blocks with the pinned upstream signed-int8 count bytes."""
+
+    observed_raw_sha256, molecules = _validated_molecules(
+        raw_structures, expected_raw_sha256
+    )
+    binary_morgan = _binary_morgan(molecules)
+    if block_completed is not None:
+        block_completed("binary_morgan")
+    morgan_count, morgan_stats = _upstream_count_block(molecules, block="morgan_count")
+    if block_completed is not None:
+        block_completed("morgan_count")
+    avalon_count, avalon_stats = _upstream_count_block(molecules, block="avalon_count")
+    if block_completed is not None:
+        block_completed("avalon_count")
+    erg = _erg(molecules)
+    if block_completed is not None:
+        block_completed("erg")
+    rdkit_descriptors = _rdkit_descriptors(molecules)
+    if block_completed is not None:
+        block_completed("rdkit_descriptors")
+    arrays = FixedFeatureArrays(
+        raw_structure_sha256=observed_raw_sha256,
+        binary_morgan=binary_morgan,
+        morgan_count=morgan_count,
+        avalon_count=avalon_count,
+        erg=erg,
+        rdkit_descriptors=rdkit_descriptors,
+        count_policy="upstream_signed_int8",
+    )
+    return arrays, {
+        "morgan_count": morgan_stats,
+        "avalon_count": avalon_stats,
+    }
+
+
+def signed_int8_count_witness(count: int) -> int:
+    """Convert one synthetic sparse count through the compatibility boundary."""
+
+    if type(count) is not int:
+        raise MapLightFeatureError("witness count is not a non-boolean integer")
+    integer = count
+    if integer < 0:
+        raise MapLightFeatureError("witness count is negative")
+    data_structs = import_module("rdkit.DataStructs")
+    fingerprint = data_structs.UIntSparseIntVect(4)
+    fingerprint[1] = integer
+    array, _, _ = _upstream_count_array(fingerprint, 4)
+    return int(array[1])
 
 
 def write_npy_v1(path: Path, array: NDArray[Any]) -> None:

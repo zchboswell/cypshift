@@ -7,15 +7,18 @@ import inspect
 import json
 import sys
 from pathlib import Path
-from types import ModuleType
+from types import ModuleType, SimpleNamespace
 from typing import Any
 
 import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURE_PATH = ROOT / "research/maplight-fixed/maplight_fixed_features.py"
 VERIFIER_PATH = ROOT / "research/maplight-fixed/verify_parity.py"
 BUILDER_PATH = ROOT / "research/maplight-fixed/build_features.py"
+COMPAT_PATH = ROOT / "research/maplight-fixed/run_int8_compat.py"
+COMPAT_CONTRACT_PATH = ROOT / "benchmarks/maplight_fixed_int8_compat_contract.json"
 BLOCKER_RECEIPT_PATH = (
     ROOT / "benchmarks/receipts/maplight_fixed_stage_a_feature_blocker.json"
 )
@@ -95,6 +98,232 @@ def test_fixed_feature_container_is_fail_closed_and_writes_npy_v1(
     features.write_npy_v1(output, complete)
     assert output.read_bytes()[6:8] == bytes((1, 0))
     assert np.array_equal(np.load(output, allow_pickle=False), complete)
+
+
+def test_signed_int8_container_policy_is_explicit_and_safe_default_is_unchanged() -> (
+    None
+):
+    features = _load_module("maplight_int8_container_test", FEATURE_PATH)
+    common = {
+        "raw_structure_sha256": (hashlib.sha256(b"CCO").hexdigest(),),
+        "binary_morgan": np.zeros((1, 2048), dtype=np.uint8),
+        "morgan_count": np.zeros((1, 1024), dtype=np.int8),
+        "avalon_count": np.zeros((1, 1024), dtype=np.int8),
+        "erg": np.zeros((1, 315), dtype="<f8"),
+        "rdkit_descriptors": np.zeros((1, 200), dtype="<f8"),
+    }
+    common["avalon_count"][0, 0] = -112
+
+    with np.testing.assert_raises(features.MapLightFeatureError):
+        features.FixedFeatureArrays(**common)
+    compatible = features.FixedFeatureArrays(
+        **common, count_policy="upstream_signed_int8"
+    )
+    assert int(compatible.avalon_count[0, 0]) == -112
+    assert not compatible.avalon_count.flags.writeable
+
+
+def test_int8_compat_runner_is_direct_label_free_and_contract_bound() -> None:
+    tree = ast.parse(COMPAT_PATH.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)
+    }
+    assert set(functions) >= {
+        "run_compatibility_parity",
+        "build_compatibility_features",
+        "_worker_main",
+        "_validate_build_root",
+    }
+    assert [
+        argument.arg for argument in functions["build_compatibility_features"].args.args
+    ] == ["build_id"]
+    assert (
+        _assignment_literal(tree, "CONTRACT_SHA256")
+        == hashlib.sha256(COMPAT_CONTRACT_PATH.read_bytes()).hexdigest()
+    )
+    assert _assignment_literal(tree, "PERSISTED_BLOCKS") == (
+        "binary_morgan",
+        "morgan_count",
+        "avalon_count",
+        "erg",
+        "rdkit_descriptors",
+    )
+    literals = {
+        node.value
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Constant) and isinstance(node.value, str)
+    }
+    assert not any("measurements.csv" in value for value in literals)
+    assert not any("CatBoost" in value for value in literals)
+    assert not any("http://" in value or "https://" in value for value in literals)
+
+
+def test_int8_compat_runner_imports_without_rdkit_and_freezes_accounting_shape() -> (
+    None
+):
+    before = set(sys.modules)
+    research_root = str(COMPAT_PATH.parent)
+    sys.path.insert(0, research_root)
+    try:
+        runner = _load_module("maplight_int8_compat_import_test", COMPAT_PATH)
+    finally:
+        sys.path.remove(research_root)
+    imported = set(sys.modules) - before
+
+    assert not imported & {"rdkit", "pandas", "catboost", "torch", "dgl", "molfeat"}
+    values = [1, 1, 30038, 15399, 5, 5, 0]
+    assert list(runner._operation_accounting(values).values()) == values
+    assert runner._arguments(["--build-id", "1"]).build_id == 1
+    assert runner._arguments(["--parity"]).parity is True
+
+
+def test_signed_int8_feature_progress_is_exact_and_stops_at_failure(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    feature_module = _load_module("maplight_int8_progress_test", FEATURE_PATH)
+    raw_hash = hashlib.sha256(b"CCO").hexdigest()
+    stats = feature_module.CountOverflowStats(0, 0, 0, 0, 0)
+    monkeypatch.setattr(
+        feature_module,
+        "_validated_molecules",
+        lambda _raw, _hashes: ((raw_hash,), [object()]),
+    )
+    monkeypatch.setattr(
+        feature_module,
+        "_binary_morgan",
+        lambda _molecules: np.zeros((1, 2048), dtype=np.uint8),
+    )
+    monkeypatch.setattr(
+        feature_module,
+        "_erg",
+        lambda _molecules: np.zeros((1, 315), dtype="<f8"),
+    )
+    monkeypatch.setattr(
+        feature_module,
+        "_rdkit_descriptors",
+        lambda _molecules: np.zeros((1, 200), dtype="<f8"),
+    )
+
+    def count_block(_molecules: object, *, block: str) -> tuple[object, object]:
+        return np.zeros((1, 1024), dtype=np.int8), stats
+
+    monkeypatch.setattr(feature_module, "_upstream_count_block", count_block)
+    completed: list[str] = []
+    feature_module.featurize_raw_structures_upstream_int8(
+        ("CCO",), (raw_hash,), block_completed=completed.append
+    )
+    assert completed == [
+        "binary_morgan",
+        "morgan_count",
+        "avalon_count",
+        "erg",
+        "rdkit_descriptors",
+    ]
+
+    def fail_at_avalon(_molecules: object, *, block: str) -> tuple[object, object]:
+        if block == "avalon_count":
+            raise feature_module.MapLightFeatureError("stop", block=block, row_index=0)
+        return np.zeros((1, 1024), dtype=np.int8), stats
+
+    monkeypatch.setattr(feature_module, "_upstream_count_block", fail_at_avalon)
+    completed.clear()
+    with pytest.raises(feature_module.MapLightFeatureError):
+        feature_module.featurize_raw_structures_upstream_int8(
+            ("CCO",), (raw_hash,), block_completed=completed.append
+        )
+    assert completed == ["binary_morgan", "morgan_count"]
+
+
+def test_worker_accounting_is_merged_before_array_validation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    research_root = str(COMPAT_PATH.parent)
+    sys.path.insert(0, research_root)
+    try:
+        runner = _load_module("maplight_int8_worker_accounting_test", COMPAT_PATH)
+    finally:
+        sys.path.remove(research_root)
+    revision = "a" * 40
+    receipt = {
+        "schema_version": "cypshift.maplight_int8_compat_worker.v1",
+        "worker": "upstream",
+        "source_revision": revision,
+        "fixture_rows": 8,
+        "descriptor_names": list(runner.features.descriptor_names()),
+        "arrays": list(runner.UPSTREAM_ARRAYS),
+        "boundaries": {str(key): value for key, value in runner.BOUNDARIES.items()},
+        "accounting": {
+            "fixture_arrays_generated": 5,
+            "fixture_row_loads": 8,
+            "boundary_conversions_attempted": 3,
+            "boundary_conversions_completed": 3,
+        },
+    }
+    (tmp_path / "worker_receipt.json").write_text(json.dumps(receipt))
+    for name in runner.UPSTREAM_ARRAYS:
+        (tmp_path / f"{name}.npy").write_bytes(b"not-an-array")
+    total = {key: 0 for key in runner.PARITY_ACCOUNTING_KEYS}
+
+    def fail_array(*_args: object) -> None:
+        raise runner.CompatError("array rejected")
+
+    monkeypatch.setattr(runner, "_array_record", fail_array)
+    with pytest.raises(runner.CompatError):
+        runner._load_worker(tmp_path, "upstream", revision, total)
+    assert total["fixture_arrays_generated"] == 5
+    assert total["fixture_row_loads"] == 8
+    assert total["boundary_conversions_attempted"] == 3
+    assert total["boundary_conversions_completed"] == 3
+
+
+def test_compat_runner_enforces_platform_and_npy_v1(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    research_root = str(COMPAT_PATH.parent)
+    sys.path.insert(0, research_root)
+    try:
+        runner = _load_module("maplight_int8_platform_test", COMPAT_PATH)
+    finally:
+        sys.path.remove(research_root)
+
+    executable_sha256 = runner._sha256(Path(sys.executable).resolve())
+    parent = {
+        "compatible_environment": {
+            "resolved_package_licenses": {"fixture-package@1.0": "test"},
+            "interpreter": {"installed_executable_sha256": executable_sha256},
+            "execution_platform": {
+                "operating_system": "macOS 26.6",
+                "darwin_release": "25.6.0",
+                "architecture": "arm64",
+                "cpu": "Apple M1",
+            },
+        }
+    }
+    distribution = SimpleNamespace(metadata={"Name": "fixture-package"}, version="1.0")
+    monkeypatch.setattr(
+        runner.importlib.metadata, "distributions", lambda: [distribution]
+    )
+    monkeypatch.setattr(runner.platform, "python_version", lambda: "3.10.13")
+    monkeypatch.setattr(runner.platform, "system", lambda: "Darwin")
+    monkeypatch.setattr(runner.platform, "machine", lambda: "arm64")
+    monkeypatch.setattr(runner.platform, "mac_ver", lambda: ("26.6", (), ""))
+    monkeypatch.setattr(runner.platform, "release", lambda: "25.6.0")
+    monkeypatch.setattr(
+        runner.subprocess,
+        "run",
+        lambda *_args, **_kwargs: SimpleNamespace(stdout="Apple M1\n"),
+    )
+    runner._verify_environment(parent)
+    monkeypatch.setattr(runner.platform, "release", lambda: "25.5.0")
+    with pytest.raises(runner.CompatError):
+        runner._verify_environment(parent)
+
+    array = np.zeros((8, 2048), dtype=np.uint8)
+    version_two = tmp_path / "binary_morgan.npy"
+    with version_two.open("wb") as handle:
+        np.lib.format.write_array(handle, array, version=(2, 0), allow_pickle=False)
+    with pytest.raises(runner.CompatError):
+        runner._array_record(version_two, array.shape, array.dtype)
 
 
 def test_parity_verifier_has_one_bounded_supervisor_and_no_model_surface() -> None:
