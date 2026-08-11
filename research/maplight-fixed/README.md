@@ -16,17 +16,12 @@ synthetic-only processes. The verifier has no model or benchmark-label path.
 It does not read, and is not authorized to read, shadow rows, measurements,
 public-test data, GIN weights, predictions, or scores.
 
-Run the reviewed verifier only with the exact isolated Python 3.10 environment:
+The completed verifier wrote one immutable parity receipt on attempt 2. Attempt
+1 remains as an immutable infrastructure blocker. Do not rerun either attempt.
+The operation downloaded no data or dependencies.
 
-```text
-artifacts/environments/maplight-fixed-stage-a-v1/venv/bin/python \
-  research/maplight-fixed/verify_parity.py --attempt 1
-```
-
-The command writes one immutable success receipt or one immutable blocker. It
-does not download data or dependencies.
-
-After parity passes, `build_features.py --build-id 1` and `--build-id 2`
-create two independent label-free feature roots. The builder caches only exact
-raw strings, expands the five blocks back to all frozen shadow row identities,
-and has no measurement, target, model, prediction, or public-test argument.
+The frozen plan allowed two independent label-free feature roots. Build 1
+stopped before retaining a matrix because one Avalon sparse count exceeded the
+predeclared safe range. Do not rerun build 1 or start build 2. The builder now
+enforces that stop before build 2 can resolve any scientific input. It has no
+measurement, target, model, prediction, or public-test argument.

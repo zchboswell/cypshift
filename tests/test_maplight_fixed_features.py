@@ -184,6 +184,12 @@ def test_real_feature_builder_is_one_bounded_label_free_operation() -> None:
     keywords = {keyword.arg: keyword.value for keyword in build_argument.keywords}
     assert ast.literal_eval(keywords["required"]) is True
     assert ast.literal_eval(keywords["choices"]) == (1, 2)
+    assert "BUILD_ONE_BLOCKER_NAME" in {
+        node.id
+        for node in ast.walk(functions["build_label_free_features"])
+        if isinstance(node, ast.Name)
+    }
+    assert "maplight-fixed-stage-a-features-v1-build-1-blocker" in string_literals
 
 
 def test_research_modules_import_without_rdkit_or_heavy_model_dependencies() -> None:

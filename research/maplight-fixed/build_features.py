@@ -39,6 +39,7 @@ SOURCE_ROOT = (
 )
 OUTPUT_PARENT = ROOT / "artifacts/benchmarks"
 BLOCKER_PARENT = ROOT / "artifacts/blockers"
+BUILD_ONE_BLOCKER_NAME = "maplight-fixed-stage-a-features-v1-build-1-blocker"
 
 CONTRACT_SHA256 = "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
 SHADOW_ROWS_SHA256 = "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f"
@@ -445,6 +446,13 @@ def build_label_free_features(build_id: int) -> Path:
     _require(build_id in (1, 2), "build ID must be 1 or 2")
     _require(not output.exists(), "feature output already exists")
     _require(not blocker.exists(), "feature blocker already exists")
+    if build_id == 2:
+        _require(
+            not (BLOCKER_PARENT / BUILD_ONE_BLOCKER_NAME).exists(),
+            "build 1 blocker forbids build 2",
+            kind="prior_build_blocker",
+            stage="preflight",
+        )
     start = time.perf_counter()
     staging: Path | None = None
     signal.signal(signal.SIGALRM, _timeout)
