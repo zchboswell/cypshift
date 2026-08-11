@@ -380,6 +380,20 @@ This gate parsed zero targets and performed zero model fits, predictions,
 metrics, public-test operations, or challenge assumptions. It authorizes only
 the five already declared shadow controls.
 
+The direct control execution contract is
+[`maplight_gin_stage_b_contract.json`](../../benchmarks/maplight_gin_stage_b_contract.json).
+It reuses the immutable fixed MapLight predictions and authorizes exactly 144
+new fits: GIN alone at seed 1; fixed plus GIN at seeds 1 through 5; fixed plus
+one deterministic exact-raw-vector shuffle at seed `20260816`; and fixed plus
+one seeded 300-dimensional noise matrix at seed `20260817`, across all 18
+cells. The five-seed fixed-plus-GIN probability mean is one separately retained
+derived vector per cell. The contract adds no model or score by itself.
+
+Each model worker can read only its cell-specific outer-training targets,
+receipt-bound fixed and GIN matrices, and label-free shadow rows. Validation
+targets remain sealed until every prediction cell is immutable. Any later
+scoring uses the existing Stage A fixed predictions without refitting them.
+
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match
 the dated point result, it becomes the frozen local comparator with the drift

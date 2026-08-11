@@ -1,0 +1,227 @@
+{
+  "schema_version": "cypshift.maplight_gin_stage_b_contract.v1",
+  "phase": "0.75",
+  "objective": "Test whether the one frozen GIN representation adds CYP ranking value beyond fixed MapLight features on the existing 18 shadow cells.",
+  "non_goals": [
+    "no public-test prediction or scoring",
+    "no model or representation selection",
+    "no hyperparameter tuning",
+    "no calibration or ensemble search",
+    "no second encoder",
+    "no challenge assumption"
+  ],
+  "inputs": {
+    "gin_contract": {
+      "path": "benchmarks/maplight_gin_contract.json",
+      "sha256": "d88c3b42c09f200939759e021fc15163da3ba501360079eea29a0139df11e55e"
+    },
+    "stage_a_contract": {
+      "path": "benchmarks/maplight_fixed_stage_a_contract.json",
+      "sha256": "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
+    },
+    "nan_contract": {
+      "path": "benchmarks/maplight_fixed_nan_compat_contract.json",
+      "sha256": "52f01f93470cfe461e7ee9fed0ff3a06d7362aceaef343da0c5840d2a74bea09"
+    },
+    "fixed_feature_manifest": {
+      "path": "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-1/feature_manifest.json",
+      "sha256": "5a3b038e26f790e5bcd164c11c810cbc4d7ce12f9369cd92b8bb503cfeb7f32c"
+    },
+    "fixed_feature_repeat_manifest": {
+      "path": "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-2/feature_manifest.json",
+      "sha256": "0afd641c5802e6f3b40e3808c4a99fc546a9de1e5ce2595e68a22f6d9cbe6300"
+    },
+    "gin_feature_manifest": {
+      "path": "artifacts/benchmarks/maplight-gin-features-v3-build-1/gin_manifest.json",
+      "sha256": "7053c623369b4ee0f0215720033378df9214e428eab1ce0040b6cedb406f2fa3"
+    },
+    "gin_feature_repeat_manifest": {
+      "path": "artifacts/benchmarks/maplight-gin-features-v3-build-2/gin_manifest.json",
+      "sha256": "cf6badc48fbe527074ac17c09e02ef8788fb63bd16757a84a53f2078f9157a18"
+    },
+    "target_manifest": {
+      "path": "artifacts/benchmarks/maplight-fixed-stage-a-targets-v1/target_manifest.json",
+      "sha256": "716ffd20d169b305e5014e368b222cf15b347f48ff216ef9cfebfafc0791705a"
+    },
+    "stage_a_prediction_manifest": {
+      "path": "artifacts/benchmarks/maplight-fixed-stage-a-predictions-v1/prediction_manifest.json",
+      "sha256": "f7c4f711f22ce53a8b3ce7889a2104d4f9b59715afef825aff2f32cc87499182"
+    },
+    "shadow_rows": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_rows.csv",
+      "sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f"
+    }
+  },
+  "feature_contract": {
+    "fixed_blocks": [
+      "morgan_count",
+      "avalon_count",
+      "erg",
+      "rdkit_descriptors"
+    ],
+    "fixed_dimensions": 2563,
+    "gin_dimensions": 300,
+    "combined_dimensions": 2863,
+    "row_key": [
+      "task",
+      "molecule_id",
+      "source_row",
+      "raw_structure_sha256",
+      "standardized_structure_hash"
+    ],
+    "cache_key": "exact raw_structure_sha256",
+    "fixed_nan_rule": "Preserve only the D-027 charge-descriptor NaNs unchanged; CatBoost resolves nan_mode=Min.",
+    "gin_finiteness": "All GIN values must be finite.",
+    "repeat_gate": "Both fixed roots and both GIN roots must have byte-identical row and array payloads before fitting."
+  },
+  "controls": {
+    "shuffle_seed": 20260816,
+    "noise_seed": 20260817,
+    "unique_raw_order": "raw_structure_sha256 ascending",
+    "shuffle": "Use one NumPy default_rng permutation of the 15399 unique exact-raw GIN vectors, then expand the permuted mapping to every official row. Exact-raw duplicates receive the same shuffled vector.",
+    "noise": "Use one NumPy default_rng standard-normal float64 matrix with shape 15399 by 300 in the same sorted exact-raw order, then expand it to every official row. Exact-raw duplicates receive the same noise vector.",
+    "invariants": [
+      "the unshuffled GIN matrix is never modified",
+      "the shuffle is a whole-vector permutation without replacement",
+      "noise is generated independently of structures and targets",
+      "controls are generated before any validation target is available"
+    ]
+  },
+  "model_contract": {
+    "learner": "catboost.CatBoostClassifier",
+    "explicit_parameters": {
+      "loss_function": "Logloss",
+      "random_strength": 2,
+      "verbose": 0
+    },
+    "other_parameters": "Pinned CatBoost 1.2.1 defaults, including resolved nan_mode=Min.",
+    "configurations": [
+      {
+        "configuration_id": "b1_gin_alone_catboost_seed_1",
+        "blocks": [
+          "gin"
+        ],
+        "seed": 1
+      },
+      {
+        "configuration_id_pattern": "b2_maplight_fixed_plus_gin_catboost_seed_{seed}",
+        "blocks": [
+          "fixed",
+          "gin"
+        ],
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "configuration_id": "b3_maplight_fixed_plus_shuffled_gin_catboost_seed_1",
+        "blocks": [
+          "fixed",
+          "shuffled_gin"
+        ],
+        "seed": 1
+      },
+      {
+        "configuration_id": "b4_maplight_fixed_plus_noise_catboost_seed_1",
+        "blocks": [
+          "fixed",
+          "noise"
+        ],
+        "seed": 1
+      }
+    ],
+    "derived_prediction": "Arithmetic mean of the five b2 probability vectors, retained separately from the five seed vectors.",
+    "cells": 18,
+    "fits_per_cell": 8,
+    "total_model_fits": 144,
+    "model_prediction_vectors": 144,
+    "derived_prediction_vectors": 18,
+    "validation_rows_across_cells": 36045,
+    "model_prediction_rows": 288360,
+    "derived_prediction_rows": 36045,
+    "retained_probability_values": 324405
+  },
+  "prediction_firewall": {
+    "model_cell_process_may_read": [
+      "the two reviewed fixed feature roots",
+      "the two reviewed GIN feature roots",
+      "one cell-specific outer-training target file",
+      "label-free shadow rows",
+      "this contract and its parent contracts"
+    ],
+    "model_cell_process_must_not_read": [
+      "the 30038-row scoring target",
+      "any outer-validation target",
+      "any public-test row or label",
+      "any challenge row or assumption",
+      "any prior score"
+    ],
+    "chronology": "All 18 prediction cells and their receipts must be immutable and reviewed before the scoring target is opened."
+  },
+  "evaluation_contract": {
+    "fixed_predictions": "Reuse the immutable Stage A R5 seed-1 and five-seed mean probabilities; do not refit fixed MapLight.",
+    "primary_contrast": "b2 seed 1 minus Stage A R5 seed 1",
+    "control_contrasts": [
+      "b2 seed 1 minus b3 shuffled GIN seed 1",
+      "b2 seed 1 minus b4 random-noise seed 1"
+    ],
+    "descriptive": [
+      "GIN alone seed 1",
+      "five b2 seed-specific metrics",
+      "b2 mean-probability metric"
+    ],
+    "point_metric": "full-precision average precision on each frozen outer-validation cell",
+    "point_metric_evaluations": 198,
+    "sensitivity_point_metric_evaluations": 108,
+    "bootstrap": {
+      "accepted_replicates_per_protocol": 2000,
+      "same synchronized global group weights across tasks repeats and configurations": true,
+      "unique_cached_configurations_per_cell": 4,
+      "metric_evaluations": 144000,
+      "influential_group_absence_uses_cached_scores": true,
+      "protocols_reported_separately": true
+    },
+    "total_metric_evaluations": 144306,
+    "sensitivity_populations": [
+      "official row weighted",
+      "unique structure-task cell",
+      "conflict excluded",
+      "validation rows with no training neighbor at or above 0.60",
+      "predeclared influential-group absence"
+    ],
+    "keep_gate": [
+      "paired macro lower 95 percent bound above zero in both protocols",
+      "at least two CYP tasks improve",
+      "the remaining task loses no more than 0.005 AUPRC",
+      "shuffled GIN and random noise do not reproduce the gain",
+      "direction survives every declared sensitivity population",
+      "no single scaffold or community explains the result"
+    ]
+  },
+  "resource_limits": {
+    "per_cell_wall_seconds": 28800,
+    "per_cell_peak_rss_gib": 12,
+    "total_wall_seconds": 144000
+  },
+  "stop_rules": [
+    "stop before fitting on any hash row alignment dimension dtype finiteness environment or firewall mismatch",
+    "stop after a prediction failure and retain one blocker; do not repair after a score",
+    "stop performance work for the mandatory forensic audit if any point AUPRC is at least 0.95",
+    "do not score before an independent prediction-artifact review",
+    "do not consume a public-test family-task slot"
+  ],
+  "pre_execution_accounting": {
+    "model_fits": 0,
+    "predictions": 0,
+    "metric_evaluations": 0,
+    "validation_target_values_parsed": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "challenge_assumptions_added": 0
+  }
+}

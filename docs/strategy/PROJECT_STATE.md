@@ -203,6 +203,15 @@ path supports only local non-redistributed pretrained-transfer benchmarking,
 not a clean zero-shot or challenge-eligibility claim. No target, model, metric,
 public-test, or challenge operation occurred at this gate.
 
+The direct Stage B control contract freezes eight new CatBoost fits per shadow
+cell: GIN alone at seed 1, fixed plus GIN at seeds 1 through 5, fixed plus one
+exact-raw-vector shuffle at seed `20260816`, and fixed plus one
+same-dimensional noise control at seed `20260817`. Across 18 cells this is 144
+new fits. The immutable Stage A fixed predictions are reused rather than
+refitted. Model processes remain limited to cell-specific outer-training
+targets; scoring remains sealed until all predictions are immutable. The
+contract and direct runner add no result yet.
+
 The Stage A target projection passed at signed source `1275cbc`. Its immutable
 manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
 cell-specific outer-training files totaling 144,183 rows. Independent
@@ -806,16 +815,16 @@ artifacts remain outside Git.
 
 ## Active hypotheses
 
-1. **Active bounded compatibility:** exact fixed MapLight fixture bytes and
-   signed-`int8` boundaries are reproducible. A new result-blind addendum tests
-   whether preserving only the four diagnosed charge-descriptor `NaN` columns
-   yields two byte-identical real feature roots for pinned CatBoost.
-2. **Closed negative:** the prior safe and signed-`int8` contracts remain
-   stopped on their exact blockers and are not repaired or reinterpreted.
-3. **Unanswered:** the representation-value hypothesis was not tested because
-   no complete matrix, fit, prediction, or metric was produced.
-4. **Not started:** GIN requires fixed-MapLight shadow predictions and therefore
-   remained outside the permitted execution path.
+1. **Closed positive:** the fixed MapLight representation adds reproducible,
+   group-robust shadow AUPRC value beyond raw-input binary Morgan.
+2. **Feature gate passed:** the single frozen GIN encoder produces exact
+   fixture parity and two byte-identical 30,038-by-300 real feature roots.
+3. **Active bounded experiment:** test only GIN alone, fixed plus GIN, and the
+   two predeclared shuffled-vector and random-noise controls on the same 18
+   cells without opening validation labels during fitting.
+4. **Closed negative evidence preserved:** the original safe and signed-`int8`
+   fixed-feature contracts remain stopped on their exact blockers and are not
+   repaired or reinterpreted.
 
 The broader parent-relative and cross-isoform hypotheses remain scientifically
 important but are not active Tier 1 model experiments. The rejected Phase 0.5
