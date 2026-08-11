@@ -1,0 +1,165 @@
+{
+  "schema_version": "cypshift.maplight_gin_contract.v1",
+  "objective": "Reproduce the single MapLight GIN representation on exact raw rows, then authorize only its frozen shadow controls if parity and two independent embedding roots pass.",
+  "parents": {
+    "maplight_source_contract": {
+      "path": "benchmarks/maplight_source_contract.json",
+      "sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8"
+    },
+    "shadow_rows": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_rows.csv",
+      "sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f",
+      "rows": 30038,
+      "unique_exact_raw_structures": 15399
+    },
+    "shadow_manifest": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_manifest.json",
+      "sha256": "3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656"
+    },
+    "fixed_feature_rows": {
+      "path": "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-1/feature_rows.csv",
+      "sha256": "39e302a8980ff056f80074dc23a5af14465a0892b3a022abbbb9d8345300e9a6"
+    },
+    "fixed_feature_manifest": {
+      "path": "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-1/feature_manifest.json",
+      "sha256": "5a3b038e26f790e5bcd164c11c810cbc4d7ce12f9369cd92b8bb503cfeb7f32c"
+    },
+    "fixture": {
+      "path": "benchmarks/fixtures/maplight_fixed_parity_v1.csv",
+      "sha256": "70ae570bbdbb5c8a225cfd20ab72f0d8f8b43dc1a3a6b2d3356bc52f4f4a513c",
+      "rows": 8
+    }
+  },
+  "source": {
+    "repository": "https://github.com/maplightrx/MapLight-TDC",
+    "revision": "c249378c63232354d17083c83fe94fe728960a27",
+    "root": "data/external/maplight_tdc/c249378c63232354d17083c83fe94fe728960a27",
+    "maplight_gnn_sha256": "74fbd1c98d9afa7fa4bda1add21efd429e20dee0a4b0fb8fa7e9b3825c21fe13",
+    "license": "MIT"
+  },
+  "environment": {
+    "python": "3.10.13",
+    "python_version_path": "research/maplight-gin/.python-version",
+    "python_version_sha256": "3817f125779f46c574b17c4adbdd0975ef8c32ae92509fed295212797d314d6a",
+    "project_path": "research/maplight-gin/pyproject.toml",
+    "project_sha256": "274ff23b867508f675e632128a3c9f3f50ed1d9ce3476fae8b68568164ca80a5",
+    "lock_path": "research/maplight-gin/uv.lock",
+    "lock_sha256": "0370a3f805950d79f5112d96458ae5f8e7d9ca1b668669fd9afe91d63819bed0",
+    "required_versions": {
+      "catboost": "1.2.1",
+      "dgl": "1.1.2",
+      "dgllife": "0.3.2",
+      "molfeat": "0.9.2",
+      "numpy": "1.25.2",
+      "pandas": "2.0.3",
+      "rdkit": "2023.3.3",
+      "scikit-learn": "1.3.0",
+      "scipy": "1.11.2",
+      "torch": "2.0.1"
+    },
+    "platform": "Apple arm64 CPU",
+    "dgl_backend": "pytorch",
+    "torch_device": "cpu",
+    "mps_forbidden": true
+  },
+  "weight": {
+    "name": "gin_supervised_masking",
+    "store_group": "dgllife",
+    "store_version": 0,
+    "metadata_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json",
+    "metadata_size_bytes": 606,
+    "metadata_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
+    "model_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/model.save",
+    "model_size_bytes": 7467310,
+    "model_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
+    "persisted_location": "artifacts/benchmarks/maplight-gin-weight-v1/dgllife/gin_supervised_masking/0/model.save",
+    "redistribution": "forbidden_by_this_contract"
+  },
+  "rights_and_provenance": {
+    "maplight_code_license": "MIT",
+    "molfeat_code_license": "Apache-2.0",
+    "dgl_lifesci_code_license": "Apache-2.0",
+    "original_pretrain_gnns_code_license": "MIT",
+    "artifact_specific_license": "not_disclosed_in_metadata",
+    "pretraining_data_license": "not_established_from_artifact_metadata",
+    "bounded_eligibility": "local non-redistributed engineering benchmark and publication of aggregate results only",
+    "pretraining_lineage": "attribute masking on about two million ZINC15 molecules followed by supervised pretraining on about 456000 ChEMBL molecules and 1310 assays",
+    "tdc_structure_overlap": "unknown",
+    "tdc_target_overlap": "unknown",
+    "allowed_claim": "pretrained representation transfer",
+    "forbidden_claims": [
+      "clean zero-shot generalization",
+      "uncontaminated external validation",
+      "automatic OpenADMET eligibility"
+    ]
+  },
+  "representation": {
+    "upstream_call": "PretrainedDGLTransformer(kind='gin_supervised_masking', dtype=float)",
+    "dimensions": 300,
+    "dtype": "numpy.float64",
+    "pooling": "mean",
+    "batch_size": 32,
+    "graph": {
+      "add_self_loop": true,
+      "atom_featurizer": "PretrainAtomFeaturizer",
+      "bond_featurizer": "PretrainBondFeaturizer",
+      "canonical_atom_order": false
+    },
+    "input_policy": "Parse every exact raw TDC string with pinned RDKit as MapLight does; MolFeat then converts the parsed molecule to its SMILES input. Cache only by exact raw UTF-8 SHA-256.",
+    "failed_row_policy": "stop on parse failure, missing embedding, wrong dimension, or any non-finite value",
+    "row_policy": "retain every official row and expand exact-raw cached embeddings back in frozen feature_rows.csv order"
+  },
+  "operations": {
+    "weight_freeze": "download exactly one metadata file and one model file, verify bytes, retain no alternate weight",
+    "fixture_parity": "one pinned MapLight source worker and two direct MolFeat workers in fresh CPU processes must produce byte-identical 8x300 NPY v1.0 arrays",
+    "real_builds": 2,
+    "real_build_independence": "each build featurizes all 15399 exact raw inputs in a fresh process and may not reuse another build's array or cache",
+    "repeat_gate": "feature_rows.csv and gin.npy must be byte-identical between builds",
+    "multi_raw_audit": "report exact equality and maximum absolute difference for every standardized hash associated with more than one raw form"
+  },
+  "outputs": {
+    "weight_root": "artifacts/benchmarks/maplight-gin-weight-v1",
+    "parity_root": "artifacts/benchmarks/maplight-gin-parity-v1",
+    "build_1_root": "artifacts/benchmarks/maplight-gin-features-v1-build-1",
+    "build_2_root": "artifacts/benchmarks/maplight-gin-features-v1-build-2",
+    "success_files_per_build": [
+      "feature_rows.csv",
+      "gin.npy",
+      "gin_manifest.json"
+    ]
+  },
+  "resource_limits": {
+    "wall_seconds_per_operation": 3600,
+    "peak_rss_gib": 8.0
+  },
+  "stage_b_authority_after_repeat_gate": {
+    "controls": [
+      "fixed_maplight",
+      "gin_alone",
+      "fixed_plus_gin",
+      "fixed_plus_deterministically_row_shuffled_gin",
+      "fixed_plus_same_dimensional_seeded_random_noise"
+    ],
+    "public_test": false,
+    "additional_encoder": false,
+    "hyperparameter_tuning": false
+  },
+  "scientific_zeros_before_stage_b_models": {
+    "target_values_parsed": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "metric_evaluations": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "challenge_assumptions_added": 0
+  },
+  "stop_rules": [
+    "weight or metadata hash mismatch",
+    "environment or source drift",
+    "fixture parity or repeat mismatch",
+    "row loss, reordering, invalid molecule, wrong dimension, or non-finite embedding",
+    "need for weight redistribution or a second encoder",
+    "need to inspect any target or public-test label"
+  ]
+}
