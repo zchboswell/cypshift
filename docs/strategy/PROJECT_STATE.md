@@ -870,10 +870,10 @@ Preserve the topology report, both parity roots, both real-feature blockers,
 their reviews, both byte-identical D-027 feature roots, the target firewall,
 and the immutable Stage A prediction root. Freeze one direct scoring boundary
 that opens the already sealed train-only scoring target only after revalidating
-all 18 cell artifacts. Compute only the predeclared point AUPRC values before
-deciding whether the more expensive grouped inference is warranted. Add no
-candidate, hyperparameter, framework, ExtraTrees repair, GIN path, or
-public-test action.
+all 18 cell artifacts. The point result warrants the already predeclared paired
+grouped inference and sensitivity populations; execute only those analyses for
+the R5-versus-R1 representation contrast. Add no candidate, hyperparameter,
+framework, ExtraTrees repair, GIN path, or public-test action.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

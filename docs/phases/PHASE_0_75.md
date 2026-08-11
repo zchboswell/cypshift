@@ -581,3 +581,15 @@ configuration order, seed means, file hashes, and receipts. Runtime was
 model processes parsed zero validation or public-test labels and performed
 zero metric evaluations. This passes the prediction gate only and makes no
 predictive-value claim until the separately sealed scoring step.
+
+The point-scoring gate then passed at signed source `92fba45`. After all 18
+prediction cells were revalidated, the evaluator parsed the frozen 30,038
+train-only scoring labels and computed exactly 180 predeclared point AUPRC
+values. Full MapLight seed 1 beat binary Morgan seed 1 on all three CYP tasks
+under both protocols. The macro improvement was +0.04808 for scaffold holdout
+and +0.04430 for community holdout; the five-seed mean-probability macros were
+0.79048 and 0.80194 respectively. The maximum cell AUPRC was 0.90175, so the
+0.95 forensic trigger did not fire. Manifest SHA-256 is `3ca372e9...`. No model
+fit, new prediction, bootstrap, public-test, GIN, or challenge operation
+occurred in scoring. This is meaningful point evidence, not yet a superiority
+claim; the predeclared paired grouped uncertainty and sensitivity gates remain.
