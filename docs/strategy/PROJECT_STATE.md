@@ -295,7 +295,7 @@ signed-`int8` wrapping exactly, but that would be a new experiment with a
 different safety rule. The project owner granted that authority on 2026-08-10.
 D-026 and `benchmarks/maplight_fixed_int8_compat_contract.json` preserve the
 safe failure and freeze the sole change before any compatibility execution.
-The contract SHA-256 is `a4542937`. It authorizes zero feature builds, labels,
+The contract SHA-256 is `c99b024b`. It authorizes zero feature builds, labels,
 fits, predictions, metrics, GIN operations, challenge assumptions, or
 public-test uses until pre-result review passes.
 

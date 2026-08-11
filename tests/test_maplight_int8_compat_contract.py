@@ -83,9 +83,28 @@ def test_compatibility_contract_has_one_scientific_change_and_two_builds() -> No
     assert change["blocks"] == ["morgan_count", "avalon_count"]
     assert "zero-length" in change["conversion"]
     assert "Do not impose an upper count bound" in change["preconversion_validation"]
-    assert change["required_witness"]["expected_int8_value_at_bin_1"] == -112
+    assert contract["inheritance"]["model_authority"].startswith(
+        "The compatible roots may feed only the already frozen Stage A"
+    )
+    assert set(contract["inheritance"]["overrides"]) == {
+        "/feature_contract/count_safety",
+        "/parity_fixture/required_comparisons/5",
+        "/parity_fixture/adversarial_tests/3",
+        "/stop_rules/5",
+    }
+    assert [
+        row["expected_converted_int8"]
+        for row in contract["compatibility_parity"]["count_boundaries"]
+    ] == [127, -128, -112]
+    assert contract["compatibility_parity"]["required_before_real_rows"] is True
 
     assert contract["execution"]["build_ids"] == [1, 2]
+    assert contract["execution"]["fresh_process_per_build"] is True
+    assert contract["execution"]["copy_or_reuse_build_1_arrays_forbidden"] is True
+    assert (
+        "Before build 2 resolves shadow rows"
+        in contract["execution"]["build_2_precondition"]
+    )
     assert len(contract["execution"]["output_roots"]) == 2
     assert len(contract["execution"]["failure_roots"]) == 2
     assert contract["execution"]["success_files_per_root"] == [
@@ -105,6 +124,14 @@ def test_compatibility_contract_has_one_scientific_change_and_two_builds() -> No
         "rdkit_descriptors": 200,
         "maplight_fixed_derived": 2563,
     }
+    assert contract["artifact_schemas"]["success_manifest"][
+        "per_build_accounting_fields"
+    ]
+    assert contract["artifact_schemas"]["success_manifest"]["build_2_cumulative_fields"]
+    assert (
+        "Remove every partial staging root"
+        in contract["artifact_schemas"]["failure_receipt"]["rules"]
+    )
 
 
 def test_compatibility_contract_is_scientifically_zero_before_execution() -> None:

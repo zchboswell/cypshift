@@ -9,7 +9,7 @@
     "does_not_repair_or_replace_safe_experiment": true
   },
   "objective": "Determine whether the pinned MapLight fixed representation can be generated on all frozen shadow rows when Morgan and Avalon counts use the pinned upstream zero-length numpy.int8 conversion exactly.",
-  "hypothesis": "Exact upstream signed-int8 conversion yields two byte-identical, row-aligned, label-free 2,563-value feature roots without changing any other Stage A input or feature rule.",
+  "hypothesis": "Exact upstream signed-int8 conversion yields two builds with byte-identical row and array payloads for the row-aligned, label-free 2,563-value representation without changing any other Stage A input or feature rule.",
   "targeted_failure_mode": "The exact upstream conversion may drift, fail, or produce nondeterministic wrapped count arrays on real rows.",
   "parents": {
     "safe_stage_a_contract": {
@@ -28,6 +28,16 @@
       "path": "artifacts/benchmarks/maplight-fixed-stage-a-parity-v1/parity_receipt.json",
       "sha256": "68ee584ac87c53cdc896db6b593f3d84376e8b59573252bd6859192dfa0e94d4"
     }
+  },
+  "inheritance": {
+    "rule": "Every clause in the hash-bound safe Stage A contract remains normative unless its exact JSON pointer appears in overrides. Child clauses extend rather than replace inherited clauses unless named as a replacement.",
+    "overrides": {
+      "/feature_contract/count_safety": "Replaced by /sole_scientific_change.",
+      "/parity_fixture/required_comparisons/5": "Replaced by /compatibility_parity/count_boundaries.",
+      "/parity_fixture/adversarial_tests/3": "Replaced by /compatibility_parity/count_boundaries.",
+      "/stop_rules/5": "Replaced by /stopping_rules/1 and /stopping_rules/2."
+    },
+    "model_authority": "The compatible roots may feed only the already frozen Stage A candidate ladder after both roots and their repeat gate pass independent review. They grant no new candidate, fit, seed, target, scoring, or public-test authority."
   },
   "frozen_inputs": {
     "shadow_rows": {
@@ -58,12 +68,77 @@
     ],
     "conversion": "Pass each pinned RDKit sparse count fingerprint to rdkit.DataStructs.ConvertToNumpyArray with a zero-length C-contiguous numpy.int8 buffer, exactly as the pinned MapLight source does.",
     "preconversion_validation": "Require sparse indices and counts to be non-boolean integers, indices to be within the declared 1,024 dimensions, and counts to be nonnegative. Do not impose an upper count bound.",
-    "overflow_semantics": "Values above 127 use the pinned RDKit and NumPy signed-int8 conversion result. Do not widen, clip, binarize, post-correct, or reinterpret the resulting bytes.",
-    "required_witness": {
-      "operation": "Convert a four-dimensional RDKit UIntSparseIntVect with bin 1 set to 144 through a zero-length numpy.int8 buffer.",
-      "expected_int8_value_at_bin_1": -112,
-      "purpose": "Prove the exact overflow boundary before any real-row compatibility build."
-    }
+    "overflow_semantics": "Values above 127 use the pinned RDKit and NumPy signed-int8 conversion result. Do not widen, clip, binarize, post-correct, or reinterpret the resulting bytes."
+  },
+  "compatibility_parity": {
+    "required_before_real_rows": true,
+    "fresh_processes": 2,
+    "fixture": "Reuse the exact eight-row parent fixture. For every fixture value within the safe range, require exact upstream-versus-compatible-implementation equality for all five blocks, the complete matrix, C-order element bytes, and non-pickle numpy v1.0 bytes.",
+    "count_boundaries": [
+      {
+        "preconversion_count": 127,
+        "expected_converted_int8": 127
+      },
+      {
+        "preconversion_count": 128,
+        "expected_converted_int8": -128
+      },
+      {
+        "preconversion_count": 144,
+        "expected_converted_int8": -112
+      }
+    ],
+    "boundary_operation": "For each count, create a four-dimensional RDKit UIntSparseIntVect with bin 1 set to that value and convert it through a zero-length C-contiguous numpy.int8 buffer. Require both fresh compatible processes and one direct pinned-upstream operation to emit the declared bytes.",
+    "success_root": "artifacts/benchmarks/maplight-fixed-upstream-int8-parity-v1",
+    "failure_root": "artifacts/blockers/maplight-fixed-upstream-int8-parity-v1-blocker",
+    "success_files": [
+      "binary_morgan.npy",
+      "morgan_count.npy",
+      "avalon_count.npy",
+      "erg.npy",
+      "rdkit_descriptors.npy",
+      "maplight_fixed.npy",
+      "compatibility_parity_receipt.json"
+    ],
+    "receipt_required_fields": {
+      "top_level": [
+        "schema_version",
+        "source_revision",
+        "contracts",
+        "inputs",
+        "implementation",
+        "fixture",
+        "count_boundaries",
+        "arrays",
+        "accounting",
+        "claim_boundary"
+      ],
+      "implementation": [
+        "feature_module_path",
+        "feature_module_sha256",
+        "builder_path",
+        "builder_sha256"
+      ],
+      "count_boundary_record": [
+        "preconversion_count",
+        "dtype",
+        "upstream_value",
+        "compatible_process_1_value",
+        "compatible_process_2_value"
+      ]
+    },
+    "failure_required_fields": [
+      "schema_version",
+      "source_revision",
+      "contracts",
+      "inputs",
+      "implementation",
+      "failure",
+      "completed_operations",
+      "accounting",
+      "claim_boundary"
+    ],
+    "scientific_accounting": "No real row, label, fit, prediction, metric, GIN, challenge, or public-test operation."
   },
   "unchanged_rules": {
     "raw_input_policy": "Use each exact frozen raw TDC Drug string with Chem.MolFromSmiles defaults. Cache only by the exact raw UTF-8 bytes and raw SHA-256; never by standardized hash.",
@@ -96,6 +171,9 @@
       2
     ],
     "sequential": true,
+    "fresh_process_per_build": true,
+    "copy_or_reuse_build_1_arrays_forbidden": true,
+    "build_2_precondition": "Before build 2 resolves shadow rows, require the complete immutable build-1 success root, validate every manifest field and output hash against this contract, require the compatibility parity success root, and require both build-1 and compatibility-parity blocker roots to be absent. Otherwise stop before resolving scientific input and preserve one immutable build-2 failure receipt with zero completed feature operations.",
     "output_roots": [
       "artifacts/benchmarks/maplight-fixed-upstream-int8-features-v1-build-1",
       "artifacts/benchmarks/maplight-fixed-upstream-int8-features-v1-build-2"
@@ -113,7 +191,7 @@
       "rdkit_descriptors.npy",
       "feature_manifest.json"
     ],
-    "repeat_gate": "Before any model work, require identical feature_rows.csv bytes and identical bytes for all five block arrays. Manifests may differ only in build_id, runtime_seconds, and peak_rss_gib.",
+    "repeat_gate": "Before any model work, require identical feature_rows.csv bytes and identical bytes for all five block arrays. Require identical contracts, inputs, implementation, compatibility parity, overflow statistics, population, environment, and scientific-zero accounting. Manifest differences are limited to build_id, prior_build, runtime_seconds, peak_rss_gib, and per-build versus cumulative feature-operation counts.",
     "atomic_read_only_outputs": true
   },
   "overflow_receipt": {
@@ -124,7 +202,84 @@
       "minimum_converted_int8_value",
       "maximum_converted_int8_value"
     ],
+    "statistic_population": "All 15,399 unique exact-raw inputs before expansion to 30,038 source rows.",
     "record_no_raw_structure": true
+  },
+  "artifact_schemas": {
+    "success_manifest": {
+      "top_level_fields": [
+        "schema_version",
+        "experiment",
+        "build_id",
+        "prior_build",
+        "source_revision",
+        "contracts",
+        "inputs",
+        "implementation",
+        "compatibility_parity",
+        "rows",
+        "arrays",
+        "overflow",
+        "population",
+        "environment",
+        "runtime_seconds",
+        "peak_rss_gib",
+        "accounting",
+        "claim_boundary"
+      ],
+      "per_build_accounting_fields": [
+        "attempted_feature_builds",
+        "completed_feature_builds",
+        "source_rows_parsed",
+        "exact_raw_featurizations",
+        "persisted_block_arrays",
+        "target_values_parsed",
+        "model_fits",
+        "predictions",
+        "metric_evaluations",
+        "public_test_rows_used",
+        "public_test_labels_parsed",
+        "public_test_family_task_slots_consumed",
+        "gin_weight_bytes_downloaded",
+        "challenge_assumptions_added"
+      ],
+      "build_2_cumulative_fields": [
+        "attempted_feature_builds",
+        "completed_feature_builds",
+        "source_rows_parsed",
+        "exact_raw_featurizations",
+        "persisted_block_arrays"
+      ]
+    },
+    "failure_receipt": {
+      "top_level_fields": [
+        "schema_version",
+        "experiment",
+        "build_id",
+        "source_revision",
+        "contracts",
+        "inputs",
+        "implementation",
+        "compatibility_parity",
+        "failure",
+        "completed_operations",
+        "runtime_seconds",
+        "peak_rss_gib",
+        "accounting",
+        "claim_boundary"
+      ],
+      "failure_fields": [
+        "kind",
+        "stage",
+        "exception_class",
+        "block",
+        "unique_raw_index",
+        "raw_structure_sha256",
+        "expected",
+        "observed"
+      ],
+      "rules": "Use null only for inapplicable safe fields. Record no raw structure. Remove every partial staging root before writing one immutable failure receipt. Count attempted and fully completed operations separately."
+    }
   },
   "firewall": {
     "allowed_scientific_inputs": [
@@ -158,7 +313,7 @@
     "challenge_assumptions_added": 0
   },
   "acceptance": [
-    "The exact signed-int8 witness passes under the frozen compatible environment.",
+    "The fresh compatibility parity receipt passes the eight-row fixture and exact 127, 128, and 144 signed-int8 boundaries under the frozen environment.",
     "Both real builds complete with 30,038 row-aligned rows and five block arrays of the declared dimensions and dtypes.",
     "The two row files and ten corresponding array files are byte-identical across builds.",
     "Both manifests bind the same contract, source, environment, parity, shadow, code, and output hashes.",
@@ -167,7 +322,7 @@
   ],
   "stopping_rules": [
     "Stop on any contract, source, environment, parity, shadow, revision, row, hash, schema, dimension, dtype, finiteness, resource, or repeat mismatch.",
-    "Stop if the signed-int8 witness does not equal -112 at bin 1.",
+    "Stop if signed-int8 boundary values 127, -128, and -112 are not exact at bin 1 for preconversion counts 127, 128, and 144.",
     "Stop if any rule other than the declared count upper-bound behavior must change.",
     "Preserve a compact immutable failure receipt and do not repair after seeing any model or metric result."
   ],
