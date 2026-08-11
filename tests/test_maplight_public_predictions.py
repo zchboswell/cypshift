@@ -59,8 +59,9 @@ def test_public_prediction_budget_and_families_are_exact() -> None:
     assert sum(module.TASK_ROWS.values()) == module.TOTAL_ROWS == 7512
     assert module.FIXED_WIDTHS == (1024, 1024, 315, 200)
     assert set(module.INPUT_ROOTS) == {3, 4}
-    assert set(module.PREDICTION_ROOTS) == {1, 2}
+    assert set(module.PREDICTION_ROOTS) == {3, 4}
     assert set(module.PRESERVED_INPUT_BLOCKERS) == {1, 2}
+    assert set(module.PRESERVED_PREDICTION_BLOCKERS) == {1}
 
 
 def test_prediction_path_has_no_public_label_or_source_projection_access() -> None:
@@ -123,6 +124,7 @@ def test_public_runner_does_not_change_core_cli_or_dependencies() -> None:
     text = ast.unparse(scripts)
     for command in ("audit", "train", "predict", "report"):
         assert command in text
+    assert "catboost_info/" in (ROOT / ".gitignore").read_text(encoding="utf-8")
 
 
 def test_repeat_manifest_ignores_only_declared_attempt_observations() -> None:

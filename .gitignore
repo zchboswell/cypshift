@@ -25,6 +25,7 @@ data/external/
 models/
 artifacts/
 results/
+catboost_info/
 runs/*
 !runs/experiment_ledger.csv
 

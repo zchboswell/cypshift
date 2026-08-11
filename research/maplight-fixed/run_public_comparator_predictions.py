@@ -67,13 +67,20 @@ PRESERVED_INPUT_BLOCKERS = {
     },
 }
 PREDICTION_ROOTS = {
-    1: ROOT / "artifacts/benchmarks/maplight-public-predictions-v1-attempt-1",
-    2: ROOT / "artifacts/benchmarks/maplight-public-predictions-v1-attempt-2",
+    3: ROOT / "artifacts/benchmarks/maplight-public-predictions-v1-attempt-3",
+    4: ROOT / "artifacts/benchmarks/maplight-public-predictions-v1-attempt-4",
 }
 PREDICTION_BLOCKERS = {
     attempt: ROOT
     / f"artifacts/blockers/maplight-public-predictions-v1-attempt-{attempt}-blocker"
-    for attempt in (1, 2)
+    for attempt in (3, 4)
+}
+PRESERVED_PREDICTION_BLOCKERS = {
+    1: {
+        "path": ROOT
+        / "artifacts/blockers/maplight-public-predictions-v1-attempt-1-blocker/failure_receipt.json",
+        "sha256": "980778ee25b56783fbedd60e46c21fa3eb643b1273a6e3bb648b74bf3acdfe4e",
+    }
 }
 
 TRAIN_TARGETS = (
@@ -695,16 +702,23 @@ def _repeat_comparable_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
 
 
 def run_predictions(attempt: int) -> Path:
+    _require(attempt in (3, 4), "prediction attempt differs")
     output = PREDICTION_ROOTS[attempt]
     blocker = PREDICTION_BLOCKERS[attempt]
     _require(
         not output.exists() and not blocker.exists(),
         "prediction attempt already exists",
     )
-    if attempt == 2:
+    for record in PRESERVED_PREDICTION_BLOCKERS.values():
+        path = cast(Path, record["path"])
         _require(
-            _readonly_root(PREDICTION_ROOTS[1]) and not PREDICTION_BLOCKERS[1].exists(),
-            "prediction attempt 1 gate failed",
+            _readonly_file(path) and _sha256(path) == record["sha256"],
+            "preserved prediction blocker differs",
+        )
+    if attempt == 4:
+        _require(
+            _readonly_root(PREDICTION_ROOTS[3]) and not PREDICTION_BLOCKERS[3].exists(),
+            "prediction attempt 3 gate failed",
         )
     accounting = {
         "train_val_labels_parsed": 0,
@@ -843,7 +857,7 @@ def run_predictions(attempt: int) -> Path:
         accounting["canonical_family_task_artifacts"] = 6
         accounting["public_test_family_task_slots_consumed"] = 6
         accounting["additional_family_task_slots_consumed_this_attempt"] = (
-            6 if attempt == 1 else 0
+            6 if attempt == 3 else 0
         )
         elapsed = time.perf_counter() - start
         peak = _peak_rss_gib()
@@ -880,8 +894,8 @@ def run_predictions(attempt: int) -> Path:
             "claim_boundary": CLAIM,
         }
         (staging / "prediction_manifest.json").write_bytes(_json_bytes(manifest))
-        if attempt == 2:
-            prior = PREDICTION_ROOTS[1]
+        if attempt == 4:
+            prior = PREDICTION_ROOTS[3]
             payload = {path.name for path in staging.iterdir()} - {
                 "prediction_manifest.json"
             }
@@ -925,7 +939,7 @@ def _arguments(argv: Sequence[str] | None = None) -> argparse.Namespace:
     modes.add_argument("--prepare", action="store_true")
     modes.add_argument("--predict", action="store_true")
     modes.add_argument("--_gin-worker", action="store_true", help=argparse.SUPPRESS)
-    parser.add_argument("--attempt", type=int, choices=(1, 2, 3, 4))
+    parser.add_argument("--attempt", type=int, choices=(3, 4))
     parser.add_argument("--_input", type=Path, help=argparse.SUPPRESS)
     parser.add_argument("--_output", type=Path, help=argparse.SUPPRESS)
     return parser.parse_args(argv)
@@ -941,8 +955,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _gin_worker(args._input, args._output)
     _require(args.attempt is not None, "attempt is required")
     _require(
-        (args.prepare and args.attempt in (3, 4))
-        or (args.predict and args.attempt in (1, 2)),
+        (args.prepare or args.predict) and args.attempt in (3, 4),
         "attempt does not match operation",
     )
     path = (
