@@ -13,9 +13,10 @@ rules supersede all provisional assumptions.
 
 ## Current objective
 
-Reproduce the strongest eligible public CYP comparator on the frozen shadow
-benchmark. Keep this public-benchmark evidence separate from the challenge.
-On 2026-08-17, freeze the official challenge release before adapting the proven
+The exact MapLight reproduction attempt is closed. Fixture parity passed, but
+real-row generation stopped before fitting on a frozen non-finite descriptor
+boundary. Keep this public-benchmark evidence separate from the challenge. On
+2026-08-17, freeze the official challenge release before adapting the proven
 workflow:
 
 ```text
@@ -61,6 +62,7 @@ public domain under CC0-1.0.
 - [Phase 0.5 directive](docs/phases/PHASE_0_5.md)
 - [Public benchmark record](benchmarks/README.md)
 - [Phase 0.5 benchmark report](benchmarks/PHASE_0_5_REPORT.md)
+- [Phase 0.75 comparator report](benchmarks/PHASE_0_75_REPORT.md)
 - [Experiment ledger](runs/experiment_ledger.csv)
 
 ## Authoritative challenge source

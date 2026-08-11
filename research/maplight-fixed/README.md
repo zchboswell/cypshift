@@ -28,6 +28,11 @@ measurement, target, model, prediction, or public-test argument.
 
 The project owner separately authorized an exact-upstream signed-`int8`
 compatibility experiment. Its contract is
-`benchmarks/maplight_fixed_int8_compat_contract.json`. This does not reopen the
-safe build. Compatibility execution remains forbidden until the new contract
-and minimal implementation pass independent pre-result review.
+`benchmarks/maplight_fixed_int8_compat_contract.json`. This did not reopen the
+safe build. Fresh compatibility parity passed, including the exact 127, 128,
+and 144 boundaries. Real build 1 then stopped before persistence because the
+frozen validator found a non-finite RDKit descriptor at exact-raw index 1,563.
+Its blocker is immutable under
+`artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-1-blocker`.
+Do not rerun parity or build 1. Do not start build 2, fit a model, start GIN, or
+inspect a public-test label under this contract.

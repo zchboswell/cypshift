@@ -687,7 +687,7 @@
 ## D-026 — Authorize one exact-upstream signed-int8 compatibility experiment
 
 - Date: 2026-08-10
-- Status: accepted
+- Status: accepted; execution closed on 2026-08-11
 - Decision: Preserve the failed safe Stage A feature experiment and run one
   separate, pre-result compatibility experiment that reproduces MapLight's
   pinned zero-length `numpy.int8` count conversion exactly. The project owner
@@ -711,3 +711,11 @@
   scientific rule must change, its exact bytes are not reproducible, or any
   label, prediction, metric, GIN, challenge, or public-test path is required.
   Never alter or delete the original safe blocker.
+- Outcome: Fresh fixture parity passed across one pinned upstream and two local
+  processes, including 127 to 127, 128 to -128, and 144 to -112. Real build 1
+  then computed all five blocks in memory but failed the inherited finiteness
+  rule because the RDKit descriptor matrix contained at least one non-finite
+  value; the first affected exact-raw row was index 1,563. It persisted no array.
+  This is the reversal condition: another scientific rule would have to change.
+  Preserve blocker receipt SHA-256 `b337f965...`; do not retry, start build 2,
+  fit Stage A, start GIN, or use the public test.

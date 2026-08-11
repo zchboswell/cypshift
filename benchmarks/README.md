@@ -82,12 +82,22 @@ action occurred.
 `maplight_fixed_int8_compat_contract.json` freezes the separately authorized
 exact-upstream compatibility experiment. It permits only the pinned
 zero-length signed-`int8` conversion for Morgan and Avalon counts. The failed
-safe experiment remains immutable. No compatibility feature row may be
-generated until independent pre-result review passes.
+safe experiment remains immutable. Fresh compatibility parity passed across
+one upstream and two local processes. The exact boundary values are 127, -128,
+and -112 for preconversion counts 127, 128, and 144. Parity receipt SHA-256 is
+`a5d1c000...`.
+
+Compatibility build 1 then parsed the 30,038 label-free rows and completed all
+five blocks in memory. It retained no array because the frozen validator found
+a non-finite RDKit descriptor at exact-raw index 1,563. Failure receipt SHA-256
+is `b337f965...`; runtime was 88.95 seconds and peak RSS was 0.8955 GiB. Two
+independent reviews verified the failure and exact zero label, fit, prediction,
+metric, public-test, GIN, and challenge accounting. The contract requires a
+stop. Do not retry, start build 2, fit Stage A, or start GIN.
 
 These six tracked contracts control the frozen shadow artifact, Stage A, and
-future public-test use. The completed shadow run records zero feature matrices,
-fits, predictions, public-test label parses, and metric evaluations.
+future public-test use. No Phase 0.75 model fit, prediction, public-test label
+parse, or metric evaluation occurred.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved

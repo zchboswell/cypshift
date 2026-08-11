@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — exact-upstream signed-int8 compatibility experiment authorized
+Status: closed negative — exact fixed comparator blocked before fitting
 
 Authorized: 2026-08-10
 
@@ -442,6 +442,14 @@ Phase 0.75 passes when:
 Tier 2 is not required for closeout. A final `cypshift` contender is not
 required if shadow evidence does not justify one.
 
+Closeout is a stopped negative under D-025 and D-026, not a pass of every
+original acceptance criterion. Criteria 6 through 10 were not reached: no
+official fixed score, GIN result, row-level prediction, representation
+ablation, or public prediction family exists. Fixture parity satisfies
+criterion 5. The real-feature blocker prevents criterion 6 and is also the
+prerequisite blocker for GIN. The project stops instead of changing a second
+scientific rule after results.
+
 ## Stopping rules and non-goals
 
 Stop an experiment when it requires public-test iteration, cannot compare
@@ -470,27 +478,39 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 7. Implement and parity-test the four fixed feature blocks with direct research
    code; generate two matching label-free feature roots. **Parity passed. The
    first real build stopped before retaining a matrix because one Avalon sparse
-   count is 144 and the frozen safe maximum is 127. Build 2 is not authorized.**
+   count is 144 and the frozen safe maximum is 127. A separately authorized
+   exact signed-`int8` parity then passed, but its first real build stopped on a
+   RDKit descriptor matrix containing at least one non-finite value; the first
+   affected exact-raw row was index 1,563. Build 2 is authorized under neither
+   contract.**
 8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
+   **Not reached; no complete feature matrix exists.**
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
-   do not score them yet.
-10. Build the isolated GIN embedding path and shadow controls.
+   do not score them yet. **Not reached.**
+10. Build the isolated GIN embedding path and shadow controls. **Not started;
+    fixed-MapLight shadow predictions are a prerequisite.**
 11. Pass Gate 2 and freeze the label-free GIN public predictions, but do not
-    score them yet.
+    score them yet. **Not reached.**
 12. Lock a final contender only if the complete shadow gate supports it;
-    otherwise record that its public family remains unused.
+    otherwise record that its public family remains unused. **Not reached; the
+    final-contender public family remains unused.**
 13. Independently review and freeze all completed public prediction families
-    together, then score them together once.
-14. Freeze row-level comparator evidence and the honest scorecard.
-15. Perform Tier 2 audits only if Tier 1 is early and clean.
+    together, then score them together once. **Not reached; no public prediction
+    family was produced or scored.**
+14. Freeze row-level comparator evidence and the honest scorecard. **Not
+    reached; the blocker report replaces a predictive scorecard.**
+15. Perform Tier 2 audits only if Tier 1 is early and clean. **Not started.**
 16. Update public documentation, obtain closeout review, and hand off on
-    August 17.
+    August 17. **Closeout documentation is complete; authoritative release
+    intake remains pending under D-024.**
 
 The first scientific milestone produced exact parity and a precise real-row
-blocker rather than a comparator. The current contract cannot reach Stage A
-predictions without violating its count-safety rule. Any exact-upstream
-signed-`int8` compatibility run is a separately authorized experiment, not a
-repair of this one. The project owner authorized that separate experiment on
-2026-08-10. D-026 and
-`benchmarks/maplight_fixed_int8_compat_contract.json` now control it. No result
-is a challenge-performance claim.
+blocker rather than a comparator. The safe contract cannot reach Stage A
+predictions without violating its count-safety rule. The separately authorized
+exact-upstream signed-`int8` experiment reproduced the overflow bytes exactly,
+then stopped on a second frozen boundary: the RDKit descriptor matrix contained
+at least one non-finite value after all five blocks were computed in memory;
+the first affected exact-raw row was index 1,563. It retained no feature
+matrix. D-026
+forbids another scientific change, retry, build 2, fitting, GIN, or public
+scoring. No result is a challenge-performance claim.

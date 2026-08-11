@@ -1,19 +1,19 @@
 # Project state
 
-Last updated: 2026-08-10
+Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 active — evidence execution for exact comparator reproduction and
-representation value.
+Phase 0.75 closed negative — exact fixed-comparator reproduction stopped on a
+frozen non-finite descriptor boundary. D-024 is active for the August 17
+release.
 
 ## Active operating goal
 
-Produce row-aligned local MapLight evidence. Measure the frozen shadow
-topology, reproduce the exact fixed representation, and determine whether the
-fixed and GIN representations improve CYP ranking on chemistry-aware grouped
-validation. Add no research framework, source adapter, dataset, encoder, or
-ensemble before comparator evidence exists.
+Wait under D-024 and execute the authoritative launch intake on August 17.
+Preserve the successful topology and fixture-parity evidence plus both
+real-feature blockers. Do not repair, retry, fit, start GIN, or use the TDC
+public test under the closed Phase 0.75 contracts.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -48,9 +48,9 @@ tests. The public source reconstruction, grouped splits, prediction firewall,
 scorecards, negative results, signatures, hosted CI, and minimal codebase all
 passed independent review.
 
-No Phase 0.75 model result exists yet. The Phase 0.5 fixed mean remains the best
-validated public-data research model until a new frozen result passes its
-declared gates.
+No Phase 0.75 model result exists. The Phase 0.5 fixed mean remains the best
+validated public-data research model. Exact fixed MapLight reproduction stopped
+before any model fit or prediction.
 
 ## Phase 0.75 operating contract
 
@@ -78,12 +78,11 @@ communities are indivisible in the community protocol. No task-specific
 regrouping is allowed. All representation, dependency, model, and combination
 choices use shadow evidence only.
 
-The frozen assignment is currently a chemistry-cluster-held-out shadow
-benchmark. It is not yet proven to be a strict analog firewall. That language
-is allowed only after a label-independent topology audit measures maximum
-train-validation Morgan similarity and the declared similarity strata for
-every validation structure. The assignment must not be rebuilt, tuned, or
-reseeded in response to that audit.
+The frozen assignment is a chemistry-cluster-held-out shadow benchmark. The
+completed label-independent topology audit found maximum train-validation
+Morgan similarity of 1.0 in some cells. It therefore does not prove a strict
+analog firewall. The assignment was not rebuilt, tuned, or reseeded in response
+to that result.
 
 Heavy MapLight and GIN dependencies remain in separately locked research
 environments or digest-pinned containers. They do not enter the core install or
@@ -126,6 +125,16 @@ first real feature build found an Avalon sparse count of 144 where the frozen
 safe range ends at 127. No retry, second build, fit, prediction, metric, or
 public-test action is authorized under this contract. This is the precise
 reproducible blocker permitted by the evidence-execution packet.
+
+The separately authorized exact-upstream signed-`int8` experiment also closed.
+Its fresh parity passed across one upstream and two local processes, including
+the exact boundaries 127 to 127, 128 to -128, and 144 to -112. Its first real
+build then computed all five blocks in memory but stopped before persistence
+because the RDKit descriptor matrix contained at least one non-finite value;
+the first affected exact-raw row was index 1,563. The
+frozen contract stops on any finiteness mismatch and permits no second
+scientific change. Build 2, Stage A fitting, GIN, and public scoring therefore
+remain forbidden.
 
 ## Phase 0.75 source, budget, and shadow freeze
 
@@ -304,8 +313,24 @@ verified the sole scientific change, exhaustive parent overrides, fresh
 compatibility parity, independent no-copy builds, exact success and failure
 accounting, label and public-test firewalls, safe-blocker preservation, and
 Occam scope. Hosted CI run `31453804658` passes 136 tests on Python 3.11 and
-3.14. Compatibility execution remains zero until this reviewed freeze is
-fast-forwarded to `main`.
+3.14.
+
+The minimal compatibility implementation was integrated at exact signed source
+`fa479f5` after two independent reviews and hosted CI run `31456926954`. Fresh
+synthetic parity then passed. Its immutable receipt SHA-256 is `a5d1c000`. One
+upstream and two compatible processes generated 17 arrays across 24 fixture-row
+loads and completed nine signed-`int8` boundary conversions. The retained six
+arrays are exact non-pickle NPY v1.0 files. All real-row, target, fit,
+prediction, metric, public-test, GIN, and challenge counters are zero.
+
+Compatibility build 1 parsed 30,038 label-free source rows and computed all
+five blocks in memory. `FixedFeatureArrays` then rejected a non-finite value in
+the RDKit descriptor matrix at unique exact-raw index 1,563, structure hash
+`6911fe92...`. No complete raw featurization or array persistence occurred.
+The blocker receipt SHA-256 is `b337f965`; runtime was 88.95 seconds and peak
+RSS was 0.8955 GiB. Two independent reviews verified that code plus accounting
+uniquely identifies the non-finite check, and that the contract forbids repair,
+retry, build 2, fitting, GIN, or public scoring.
 
 Independent artifact and Occam review passed the blocker milestone. A second
 exact-head review required and then verified two remediations: build 2 now
@@ -702,14 +727,13 @@ artifacts remain outside Git.
 
 ## Active hypotheses
 
-1. The fixed MapLight method can be reproduced on exact TDC rows within a
-   declared tolerance or its version drift can be diagnosed precisely.
-2. Count fingerprints, pharmacophore features, and ordered physicochemical
-   descriptors add shadow-benchmark information beyond binary ECFP estimator
-   diversity.
-3. A frozen pretrained GIN representation adds real shadow-benchmark value
-   beyond the fixed representation and does not pass shuffled-row or
-   same-dimensional-noise controls.
+1. **Closed negative:** exact fixed MapLight fixture bytes are reproducible, but
+   exact real-row generation cannot satisfy both pinned upstream signed-`int8`
+   behavior and the frozen non-finite rule without another scientific change.
+2. **Unanswered:** the representation-value hypothesis was not tested because
+   no complete matrix, fit, prediction, or metric was produced.
+3. **Not started:** GIN required fixed-MapLight shadow predictions and therefore
+   remained outside the permitted execution path.
 
 The broader parent-relative and cross-isoform hypotheses remain scientifically
 important but are not active Tier 1 model experiments. The rejected Phase 0.5
@@ -727,9 +751,9 @@ measured-parent transformation model.
 - Browser-rendered visual QA of the static report remains unperformed; its
   deterministic content, escaping, and artifact validation are tested.
 - Windows installation remains untested.
-- GitHub cannot enforce branch protection while the personal repository is
-  private on the current account plan; branch and pull-request discipline is
-  procedural until publication or a plan change.
+- Branch protection is not part of the recorded evidence boundary. Signed
+  commits, pull-request review, hosted CI, and fast-forward integration remain
+  mandatory procedural controls.
 - Public benchmark scores can be misleading when dataset revisions, splits,
   assay contexts, preprocessing, class prevalence, or evaluation populations
   differ.
@@ -742,8 +766,9 @@ measured-parent transformation model.
   not clean zero-shot unless overlap is excluded with evidence.
 - Public benchmark plumbing could expand into a framework and displace the
   product. Only two concrete required adapters are authorized.
-- The repository is now intentionally public, but the README still describes
-  it as private and understates the public benchmark record.
+- Public documentation must state that exact MapLight fixture parity passed
+  but row-aligned comparator generation stopped before fitting; fixture parity
+  is not a benchmark score.
 - MapLight has no frozen upstream environment, so RDKit, CatBoost, MolFeat,
   DGL, and pretrained-weight drift may prevent exact reproduction.
 - Exact MapLight featurization uses raw TDC `Drug` strings, while leakage groups
@@ -754,10 +779,9 @@ measured-parent transformation model.
   model selection.
 - A feature or model consumer that ignores the frozen global shadow assignment
   could reintroduce cross-isoform molecule or chemistry-family leakage.
-- The frozen Butina/community protocol has not yet been shown to exclude every
-  close analog across train and validation. Until maximum cross-fold
-  similarities are measured, call it chemistry-cluster-held-out rather than a
-  strict analog firewall.
+- The measured Butina/community topology does not exclude every close analog:
+  maximum cross-fold similarity reaches 1.0 in some cells. Call it
+  chemistry-cluster-held-out rather than a strict analog firewall.
 - Pretrained GIN training overlap may be known, present, or unknowable. Unknown
   provenance forbids a clean zero-shot claim.
 - Heavy research dependencies could enter the all-groups core CI path unless
@@ -788,19 +812,16 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Preserve the topology, parity, infrastructure-failure, and safe real-feature
-blocker artifacts. Do not retry the failed safe build or start its build 2.
-Independently review and merge the separate signed-`int8` compatibility
-contract and minimal implementation. Then prove the exact overflow witness and
-generate two label-free compatibility feature roots. Do not fit Stage A, start
-GIN, or consume a public-test slot until both roots match and pass independent
-review.
+Preserve the topology report, both parity roots, both real-feature blockers,
+and their reviews. Do not retry either build, start build 2, fit Stage A, start
+GIN, or consume a public-test slot. Review and merge this closeout, then wait
+under D-024 for the authoritative August 17 release intake.
 
-Do not parse a real feature row until the synthetic implementation passes its
-existing review gate. Do not inspect a new public-test label until fixed
-MapLight, MapLight + GIN, and any eligible final contender prediction families
-are all complete, hashed, reviewed, and frozen together. It is valid to leave
-the final-contender family unused.
+At launch, preserve the original released bytes and independently freeze the
+official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label
+implementations, validator, submission rules, external-data permissions, and
+challenge-faithful family splits before any fit or score. No TDC representation,
+split, model, or threshold transfers automatically.
 
 The following pre-freeze research already supports that action.
 
