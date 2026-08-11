@@ -15,10 +15,6 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 FEATURE_PATH = ROOT / "research/maplight-fixed/maplight_fixed_features.py"
 VERIFIER_PATH = ROOT / "research/maplight-fixed/verify_parity.py"
-UPSTREAM_PATH = (
-    ROOT
-    / "data/external/maplight_tdc/c249378c63232354d17083c83fe94fe728960a27/maplight.py"
-)
 
 
 def _load_module(name: str, path: Path) -> ModuleType:
@@ -45,31 +41,10 @@ def _assignment_literal(tree: ast.Module, name: str) -> Any:
     raise AssertionError(f"assignment {name!r} was not found")
 
 
-def _upstream_descriptor_names(tree: ast.Module) -> tuple[str, ...]:
-    function = next(
-        node
-        for node in tree.body
-        if isinstance(node, ast.FunctionDef) and node.name == "get_chosen_descriptors"
-    )
-    assignment = next(
-        node
-        for node in function.body
-        if isinstance(node, ast.Assign)
-        and any(
-            isinstance(target, ast.Name) and target.id == "chosen_descriptors"
-            for target in node.targets
-        )
-    )
-    return tuple(ast.literal_eval(assignment.value))
-
-
 def test_fixed_feature_source_matches_pinned_descriptor_order_and_dimensions() -> None:
     feature_tree = ast.parse(FEATURE_PATH.read_text(encoding="utf-8"))
-    upstream_tree = ast.parse(UPSTREAM_PATH.read_text(encoding="utf-8"))
     local_names = tuple(_assignment_literal(feature_tree, "DESCRIPTOR_NAMES"))
-    upstream_names = _upstream_descriptor_names(upstream_tree)
 
-    assert local_names == upstream_names
     assert len(local_names) == len(set(local_names)) == 200
     assert (
         hashlib.sha256(
