@@ -580,6 +580,30 @@ def run_scoring() -> Path:
                 "prediction_column": error.column,
                 "auprc": error.score,
             }
+            measurement_observed: str | None = None
+            measurement_error: str | None = None
+            try:
+                measurement_observed = _sha256(MEASUREMENTS_PATH)
+            except Exception as integrity_error:
+                measurement_error = type(integrity_error).__name__
+            source_observed: str | None = None
+            source_error: str | None = None
+            try:
+                source_observed = _clean_revision()
+            except Exception as integrity_error:
+                source_error = type(integrity_error).__name__
+            failure["post_trigger_integrity"] = {
+                "measurement_expected_sha256": MEASUREMENTS_SHA256,
+                "measurement_observed_sha256": measurement_observed,
+                "measurement_unchanged": measurement_observed == MEASUREMENTS_SHA256,
+                "measurement_check_error": measurement_error,
+                "source_revision_expected": revision,
+                "source_revision_observed": source_observed,
+                "source_clean_and_unchanged": (
+                    revision is not None and source_observed == revision
+                ),
+                "source_check_error": source_error,
+            }
         receipt = {
             "schema_version": "cypshift.maplight_public_scoring_failure.v1",
             "source_revision": revision,

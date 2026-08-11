@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import csv
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -208,6 +209,47 @@ def test_public_scorer_counts_only_completed_metrics_on_failure(
         module._score(targets, accounting)
     assert calls == 2
     assert accounting["public_test_primary_metric_evaluations"] == 1
+
+
+def test_forensic_receipt_revalidates_source_and_measurement(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = _module()
+    output = tmp_path / "score"
+    blocker = tmp_path / "blocker"
+    measurement = tmp_path / "measurements.csv"
+    measurement.write_text("fixture\n", encoding="utf-8")
+    revision = "a" * 40
+    monkeypatch.setattr(module, "OUTPUT_ROOT", output)
+    monkeypatch.setattr(module, "BLOCKER_ROOT", blocker)
+    monkeypatch.setattr(module, "MEASUREMENTS_PATH", measurement)
+    monkeypatch.setattr(module, "MEASUREMENTS_SHA256", module._sha256(measurement))
+    monkeypatch.setattr(module, "_clean_revision", lambda: revision)
+    monkeypatch.setattr(module, "_verify_prediction_roots", lambda: ([{}], {}))
+
+    def targets(_rows, accounting):  # type: ignore[no-untyped-def]
+        accounting["measurement_rows_traversed"] = 1
+        accounting["public_test_labels_parsed"] = 1
+        return {"molecule": 1}, 1
+
+    def trigger(_targets, accounting):  # type: ignore[no-untyped-def]
+        accounting["public_test_primary_metric_evaluations"] = 1
+        raise module.ForensicGateTriggered(
+            "maplight_fixed", "cyp2c9_veith", "prediction_seed_1", 0.95
+        )
+
+    monkeypatch.setattr(module, "_load_public_targets", targets)
+    monkeypatch.setattr(module, "_score", trigger)
+    with pytest.raises(module.ForensicGateTriggered):
+        module.run_scoring()
+    receipt = json.loads((blocker / "failure_receipt.json").read_bytes())
+    assert receipt["accounting"]["public_test_labels_parsed"] == 1
+    assert receipt["accounting"]["public_test_primary_metric_evaluations"] == 1
+    integrity = receipt["failure"]["post_trigger_integrity"]
+    assert integrity["measurement_unchanged"] is True
+    assert integrity["source_clean_and_unchanged"] is True
+    assert integrity["measurement_check_error"] is None
+    assert integrity["source_check_error"] is None
 
 
 def test_public_scorer_has_one_metric_and_no_model_surface() -> None:
