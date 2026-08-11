@@ -12,7 +12,7 @@ import stat
 import subprocess
 import tempfile
 import time
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any, cast
 
@@ -139,6 +139,17 @@ CLAIM = (
 
 class PublicScoringError(RuntimeError):
     """Fail-closed public comparator scoring error."""
+
+
+class ForensicGateTriggered(PublicScoringError):
+    """Stop immediately when a completed public AUPRC reaches 0.95."""
+
+    def __init__(self, family: str, task: str, column: str, score: float) -> None:
+        self.family = family
+        self.task = task
+        self.column = column
+        self.score = score
+        super().__init__(f"0.95 forensic gate: {family}/{task}/{column}")
 
 
 def _require(condition: bool, message: str) -> None:
@@ -344,10 +355,7 @@ def _load_public_targets(
     public_rows: Sequence[Mapping[str, str]], accounting: dict[str, int]
 ) -> tuple[dict[str, int], int]:
     _require(_sha256(MEASUREMENTS_PATH) == MEASUREMENTS_SHA256, "measurements differ")
-    _require(
-        _readonly(MEASUREMENTS_PATH) and _readonly(MEASUREMENTS_PATH.parent),
-        "measurement source is writable",
-    )
+    _require(_readonly(MEASUREMENTS_PATH), "measurement source is writable")
     expected = {row["molecule_id"]: row["task"] for row in public_rows}
     _require(len(expected) == len(public_rows), "public molecule identities differ")
     targets: dict[str, int] = {}
@@ -393,15 +401,30 @@ def _reproduction_status(delta: float) -> str:
     if difference <= 0.005:
         return "reproduced_within_0.005"
     if difference <= 0.010:
-        return "documented_version_or_environment_drift"
+        return "outside_preferred_tolerance_0.005_to_0.010"
     return "reproduction_blocker_over_0.010"
+
+
+def _average_precision() -> Callable[[np.ndarray, np.ndarray], float]:
+    module = __import__("sklearn.metrics", fromlist=["average_precision_score"])
+    return cast(
+        Callable[[np.ndarray, np.ndarray], float], module.average_precision_score
+    )
+
+
+def _seed_summary(values: Sequence[float]) -> tuple[float, float]:
+    _require(len(values) == 5, "seed metric count differs")
+    rounded = np.asarray([round(value, 3) for value in values], dtype=np.float64)
+    return (
+        round(float(np.mean(rounded, dtype=np.float64)), 3),
+        round(float(np.std(rounded, ddof=0, dtype=np.float64)), 3),
+    )
 
 
 def _score(
     targets: Mapping[str, int], accounting: dict[str, int]
 ) -> tuple[list[dict[str, object]], list[dict[str, object]], float]:
-    module = __import__("sklearn.metrics", fromlist=["average_precision_score"])
-    average_precision_score = module.average_precision_score
+    average_precision_score = _average_precision()
     metric_rows: list[dict[str, object]] = []
     scorecard: list[dict[str, object]] = []
     maximum = 0.0
@@ -419,6 +442,8 @@ def _score(
                 score = float(average_precision_score(y, probability))
                 accounting["public_test_primary_metric_evaluations"] += 1
                 _require(np.isfinite(score) and 0 <= score <= 1, "public AUPRC differs")
+                if score >= 0.95:
+                    raise ForensicGateTriggered(family, task, column, score)
                 maximum = max(maximum, score)
                 values[column] = score
                 metric_rows.append(
@@ -433,12 +458,9 @@ def _score(
                         "auprc_rounded_3": repr(round(score, 3)),
                     }
                 )
-            rounded_seeds = np.asarray(
-                [round(values[f"prediction_seed_{seed}"], 3) for seed in range(1, 6)],
-                dtype=np.float64,
+            seed_mean, seed_std = _seed_summary(
+                [values[f"prediction_seed_{seed}"] for seed in range(1, 6)]
             )
-            seed_mean = round(float(np.mean(rounded_seeds, dtype=np.float64)), 3)
-            seed_std = round(float(np.std(rounded_seeds, ddof=0, dtype=np.float64)), 3)
             published_mean, published_std = ANCHORS[family][task]
             delta = seed_mean - published_mean
             scorecard.append(
@@ -535,6 +557,10 @@ def run_scoring() -> Path:
             "claim_boundary": CLAIM,
         }
         (staging / "score_manifest.json").write_bytes(_json_bytes(manifest))
+        _require(
+            _sha256(MEASUREMENTS_PATH) == MEASUREMENTS_SHA256,
+            "measurements changed during scoring",
+        )
         _require(_clean_revision() == revision, "source changed during scoring")
         _make_readonly(staging)
         staging.rename(OUTPUT_ROOT)
@@ -543,13 +569,24 @@ def run_scoring() -> Path:
         if staging is not None:
             _remove(staging)
         BLOCKER_ROOT.mkdir(parents=True, exist_ok=False)
+        failure: dict[str, object] = {
+            "kind": type(error).__name__,
+            "message": str(error),
+        }
+        if isinstance(error, ForensicGateTriggered):
+            failure["forensic_gate"] = {
+                "family": error.family,
+                "task": error.task,
+                "prediction_column": error.column,
+                "auprc": error.score,
+            }
         receipt = {
             "schema_version": "cypshift.maplight_public_scoring_failure.v1",
             "source_revision": revision,
             "implementation_sha256": _sha256(SCRIPT_PATH),
             "prediction_manifests": PREDICTION_MANIFEST_SHA256,
             "measurements_sha256": MEASUREMENTS_SHA256,
-            "failure": {"kind": type(error).__name__, "message": str(error)},
+            "failure": failure,
             "accounting": {
                 "measurement_rows_traversed": accounting["measurement_rows_traversed"],
                 "public_test_labels_parsed": accounting["public_test_labels_parsed"],
