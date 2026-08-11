@@ -3,11 +3,16 @@ from __future__ import annotations
 import ast
 import csv
 import hashlib
+import importlib.util
 import json
+import sys
 import tomllib
 from datetime import datetime
 from pathlib import Path
+from types import ModuleType
 from typing import Any
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "benchmarks" / "maplight_fixed_stage_a_contract.json"
@@ -32,6 +37,15 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _load_module(name: str, path: Path) -> ModuleType:
+    spec = importlib.util.spec_from_file_location(name, path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_stage_a_contract_binds_source_shadow_and_compatible_environment() -> None:
@@ -302,3 +316,51 @@ def test_stage_a_target_projection_is_one_direct_train_only_process() -> None:
         for alias in node.names
     }
     assert not imports & {"catboost", "sklearn", "rdkit", "torch", "dgl", "molfeat"}
+
+
+def test_target_projection_treats_tracked_contract_and_ignored_inputs_differently(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = _load_module("stage_a_target_projection_mode_test", TARGET_PROJECTION_PATH)
+    shadow_root = tmp_path / "shadow"
+    measurement_root = tmp_path / "measurements"
+    shadow_root.mkdir()
+    measurement_root.mkdir()
+    contract = tmp_path / "contract.json"
+    shadow_rows = shadow_root / "rows.csv"
+    shadow_manifest = shadow_root / "manifest.json"
+    measurements = measurement_root / "measurements.csv"
+    measurement_manifest = measurement_root / "manifest.json"
+    contract.write_text(
+        '{"schema_version":"cypshift.maplight_fixed_stage_a_contract.v1"}',
+        encoding="utf-8",
+    )
+    for path in (shadow_rows, shadow_manifest, measurements, measurement_manifest):
+        path.write_text("fixture\n", encoding="utf-8")
+        path.chmod(0o444)
+    shadow_root.chmod(0o555)
+    measurement_root.chmod(0o555)
+    for name, value in (
+        ("CONTRACT_PATH", contract),
+        ("SHADOW_ROOT", shadow_root),
+        ("SHADOW_ROWS_PATH", shadow_rows),
+        ("SHADOW_MANIFEST_PATH", shadow_manifest),
+        ("MEASUREMENT_ROOT", measurement_root),
+        ("MEASUREMENT_PATH", measurements),
+        ("MEASUREMENT_MANIFEST_PATH", measurement_manifest),
+    ):
+        monkeypatch.setattr(module, name, value)
+    for name, path in (
+        ("CONTRACT_SHA256", contract),
+        ("SHADOW_ROWS_SHA256", shadow_rows),
+        ("SHADOW_MANIFEST_SHA256", shadow_manifest),
+        ("MEASUREMENT_SHA256", measurements),
+        ("MEASUREMENT_MANIFEST_SHA256", measurement_manifest),
+    ):
+        monkeypatch.setattr(module, name, _sha256(path))
+    monkeypatch.setattr(module, "_clean_revision", lambda: "a" * 40)
+    try:
+        assert module._verify_inputs() == "a" * 40
+    finally:
+        shadow_root.chmod(0o755)
+        measurement_root.chmod(0o755)

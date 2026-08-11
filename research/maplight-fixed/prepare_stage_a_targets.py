@@ -32,7 +32,12 @@ MEASUREMENT_ROOT = ROOT / "artifacts/benchmarks/native-prediction-inputs-v1"
 MEASUREMENT_PATH = MEASUREMENT_ROOT / "tdc/measurements.csv"
 MEASUREMENT_MANIFEST_PATH = MEASUREMENT_ROOT / "prediction_input_manifest.json"
 OUTPUT_ROOT = ROOT / "artifacts/benchmarks/maplight-fixed-stage-a-targets-v1"
-BLOCKER_ROOT = ROOT / "artifacts/blockers/maplight-fixed-stage-a-targets-v1-blocker"
+FIRST_BLOCKER_ROOT = (
+    ROOT / "artifacts/blockers/maplight-fixed-stage-a-targets-v1-blocker"
+)
+RETRY_BLOCKER_ROOT = (
+    ROOT / "artifacts/blockers/maplight-fixed-stage-a-targets-v1-attempt-2-blocker"
+)
 
 CONTRACT_SHA256 = "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
 SHADOW_ROWS_SHA256 = "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f"
@@ -42,6 +47,9 @@ SHADOW_MANIFEST_SHA256 = (
 MEASUREMENT_SHA256 = "b3bfe56d660affcfe13c74b82721179a8e1322b6dc938c10137da5615ce62e75"
 MEASUREMENT_MANIFEST_SHA256 = (
     "9e5350490dfc4674b96960644e3e49c4887ec37d3fbb62de22d47dc6481444a1"
+)
+FIRST_BLOCKER_SHA256 = (
+    "892a3afa755e13fb11cd82ef2d95c3f15cc802a84a42041b8277b305f4eeb9ee"
 )
 
 TASKS = ("cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith")
@@ -190,13 +198,19 @@ def _verify_inputs() -> str:
         (MEASUREMENT_MANIFEST_PATH, MEASUREMENT_MANIFEST_SHA256),
     ):
         _require(path.is_file() and not path.is_symlink(), f"input is invalid: {path}")
+        _require(_sha256(path) == expected, f"input hash differs: {path}")
+    for path in (
+        SHADOW_ROWS_PATH,
+        SHADOW_MANIFEST_PATH,
+        MEASUREMENT_PATH,
+        MEASUREMENT_MANIFEST_PATH,
+    ):
         _require(
             not bool(
                 os.stat(path).st_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH)
             ),
-            f"input is writable: {path}",
+            f"ignored input is writable: {path}",
         )
-        _require(_sha256(path) == expected, f"input hash differs: {path}")
     _require(
         not bool(
             os.stat(SHADOW_ROOT).st_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH)
@@ -213,6 +227,33 @@ def _verify_inputs() -> str:
         "contract identity differs",
     )
     return _clean_revision()
+
+
+def _verify_prior_failure() -> None:
+    if not FIRST_BLOCKER_ROOT.exists():
+        return
+    receipt = FIRST_BLOCKER_ROOT / "failure_receipt.json"
+    _require(
+        FIRST_BLOCKER_ROOT.is_dir()
+        and not FIRST_BLOCKER_ROOT.is_symlink()
+        and {path.name for path in FIRST_BLOCKER_ROOT.iterdir()}
+        == {"failure_receipt.json"}
+        and receipt.is_file()
+        and not receipt.is_symlink()
+        and _sha256(receipt) == FIRST_BLOCKER_SHA256,
+        "prior infrastructure blocker differs",
+    )
+    record = json.loads(receipt.read_text(encoding="utf-8"))
+    _require(
+        record["failure"]
+        == {
+            "kind": "TargetProjectionError",
+            "message": f"input is writable: {CONTRACT_PATH}",
+        }
+        and record["source_revision"] is None
+        and all(value == 0 for value in record["accounting"].values()),
+        "prior infrastructure blocker content differs",
+    )
 
 
 def _read_csv(path: Path, columns: tuple[str, ...]) -> list[dict[str, str]]:
@@ -304,12 +345,13 @@ def _remove(root: Path) -> None:
         shutil.rmtree(root)
 
 
-def _write_failure(error: Exception, revision: str | None, elapsed: float) -> Path:
-    _require(
-        not OUTPUT_ROOT.exists() and not BLOCKER_ROOT.exists(), "output already exists"
-    )
+def _write_failure(
+    error: Exception, revision: str | None, elapsed: float, labels_parsed: int
+) -> Path:
+    blocker = RETRY_BLOCKER_ROOT if FIRST_BLOCKER_ROOT.exists() else FIRST_BLOCKER_ROOT
+    _require(not OUTPUT_ROOT.exists() and not blocker.exists(), "output already exists")
     staging = Path(
-        tempfile.mkdtemp(prefix=".stage-a-target-blocker-", dir=BLOCKER_ROOT.parent)
+        tempfile.mkdtemp(prefix=".stage-a-target-blocker-", dir=blocker.parent)
     )
     receipt = {
         "schema_version": "cypshift.maplight_stage_a_target_failure.v1",
@@ -326,6 +368,7 @@ def _write_failure(error: Exception, revision: str | None, elapsed: float) -> Pa
         "runtime_seconds": elapsed,
         "peak_rss_gib": _peak_rss_gib(),
         "accounting": {
+            "train_val_labels_parsed": labels_parsed,
             "public_test_rows_used": 0,
             "public_test_labels_parsed": 0,
             "feature_arrays_opened": 0,
@@ -337,20 +380,24 @@ def _write_failure(error: Exception, revision: str | None, elapsed: float) -> Pa
     }
     (staging / "failure_receipt.json").write_bytes(_json_bytes(receipt))
     _readonly(staging)
-    staging.rename(BLOCKER_ROOT)
-    return BLOCKER_ROOT
+    staging.rename(blocker)
+    return blocker
 
 
 def prepare_targets() -> Path:
     _require(
-        not OUTPUT_ROOT.exists() and not BLOCKER_ROOT.exists(), "output already exists"
+        not OUTPUT_ROOT.exists() and not RETRY_BLOCKER_ROOT.exists(),
+        "output already exists",
     )
+    _verify_prior_failure()
     revision: str | None = None
     staging: Path | None = None
     start = time.perf_counter()
+    labels_parsed = 0
     try:
         revision = _verify_inputs()
         shadow, labels = _targets()
+        labels_parsed = len(labels)
         staging = Path(
             tempfile.mkdtemp(prefix=".stage-a-targets-", dir=OUTPUT_ROOT.parent)
         )
@@ -455,7 +502,9 @@ def prepare_targets() -> Path:
     except Exception as error:
         if staging is not None:
             _remove(staging)
-        blocker = _write_failure(error, revision, time.perf_counter() - start)
+        blocker = _write_failure(
+            error, revision, time.perf_counter() - start, labels_parsed
+        )
         raise TargetProjectionError(
             f"target projection failed; blocker at {blocker}"
         ) from error
