@@ -346,6 +346,7 @@ def test_target_projection_treats_tracked_contract_and_ignored_inputs_differentl
         ("SHADOW_ROWS_PATH", shadow_rows),
         ("SHADOW_MANIFEST_PATH", shadow_manifest),
         ("MEASUREMENT_ROOT", measurement_root),
+        ("MEASUREMENT_TDC_ROOT", measurement_root),
         ("MEASUREMENT_PATH", measurements),
         ("MEASUREMENT_MANIFEST_PATH", measurement_manifest),
     ):

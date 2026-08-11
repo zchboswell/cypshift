@@ -30,6 +30,7 @@ SHADOW_ROWS_PATH = SHADOW_ROOT / "shadow_rows.csv"
 SHADOW_MANIFEST_PATH = SHADOW_ROOT / "shadow_manifest.json"
 MEASUREMENT_ROOT = ROOT / "artifacts/benchmarks/native-prediction-inputs-v1"
 MEASUREMENT_PATH = MEASUREMENT_ROOT / "tdc/measurements.csv"
+MEASUREMENT_TDC_ROOT = MEASUREMENT_PATH.parent
 MEASUREMENT_MANIFEST_PATH = MEASUREMENT_ROOT / "prediction_input_manifest.json"
 OUTPUT_ROOT = ROOT / "artifacts/benchmarks/maplight-fixed-stage-a-targets-v1"
 FIRST_BLOCKER_ROOT = (
@@ -37,6 +38,9 @@ FIRST_BLOCKER_ROOT = (
 )
 RETRY_BLOCKER_ROOT = (
     ROOT / "artifacts/blockers/maplight-fixed-stage-a-targets-v1-attempt-2-blocker"
+)
+FINAL_BLOCKER_ROOT = (
+    ROOT / "artifacts/blockers/maplight-fixed-stage-a-targets-v1-attempt-3-blocker"
 )
 
 CONTRACT_SHA256 = "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
@@ -50,6 +54,9 @@ MEASUREMENT_MANIFEST_SHA256 = (
 )
 FIRST_BLOCKER_SHA256 = (
     "892a3afa755e13fb11cd82ef2d95c3f15cc802a84a42041b8277b305f4eeb9ee"
+)
+RETRY_BLOCKER_SHA256 = (
+    "057a52cd2f6bbccfa3a3f6728d9bc6c0d3eb0a653c07c42d36d6973490dd4c1e"
 )
 
 TASKS = ("cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith")
@@ -221,6 +228,13 @@ def _verify_inputs() -> str:
         ),
         "input root is writable",
     )
+    _require(
+        not bool(
+            os.stat(MEASUREMENT_TDC_ROOT).st_mode
+            & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH)
+        ),
+        "measurement task root is writable",
+    )
     contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
     _require(
         contract["schema_version"] == "cypshift.maplight_fixed_stage_a_contract.v1",
@@ -253,6 +267,27 @@ def _verify_prior_failure() -> None:
         and record["source_revision"] is None
         and all(value == 0 for value in record["accounting"].values()),
         "prior infrastructure blocker content differs",
+    )
+    if not RETRY_BLOCKER_ROOT.exists():
+        return
+    retry_receipt = RETRY_BLOCKER_ROOT / "failure_receipt.json"
+    _require(
+        RETRY_BLOCKER_ROOT.is_dir()
+        and not RETRY_BLOCKER_ROOT.is_symlink()
+        and {path.name for path in RETRY_BLOCKER_ROOT.iterdir()}
+        == {"failure_receipt.json"}
+        and retry_receipt.is_file()
+        and not retry_receipt.is_symlink()
+        and _sha256(retry_receipt) == RETRY_BLOCKER_SHA256,
+        "retry infrastructure blocker differs",
+    )
+    retry = json.loads(retry_receipt.read_text(encoding="utf-8"))
+    _require(
+        retry["failure"]
+        == {"kind": "TargetProjectionError", "message": "input root is writable"}
+        and retry["source_revision"] is None
+        and all(value == 0 for value in retry["accounting"].values()),
+        "retry infrastructure blocker content differs",
     )
 
 
@@ -348,7 +383,13 @@ def _remove(root: Path) -> None:
 def _write_failure(
     error: Exception, revision: str | None, elapsed: float, labels_parsed: int
 ) -> Path:
-    blocker = RETRY_BLOCKER_ROOT if FIRST_BLOCKER_ROOT.exists() else FIRST_BLOCKER_ROOT
+    blocker = (
+        FINAL_BLOCKER_ROOT
+        if RETRY_BLOCKER_ROOT.exists()
+        else RETRY_BLOCKER_ROOT
+        if FIRST_BLOCKER_ROOT.exists()
+        else FIRST_BLOCKER_ROOT
+    )
     _require(not OUTPUT_ROOT.exists() and not blocker.exists(), "output already exists")
     staging = Path(
         tempfile.mkdtemp(prefix=".stage-a-target-blocker-", dir=blocker.parent)
@@ -386,7 +427,7 @@ def _write_failure(
 
 def prepare_targets() -> Path:
     _require(
-        not OUTPUT_ROOT.exists() and not RETRY_BLOCKER_ROOT.exists(),
+        not OUTPUT_ROOT.exists() and not FINAL_BLOCKER_ROOT.exists(),
         "output already exists",
     )
     _verify_prior_failure()
