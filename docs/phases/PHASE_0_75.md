@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — Stage A contract reviewed; synthetic parity implementation next
+Status: active — evidence execution; shadow topology and fixed comparator next
 
 Authorized: 2026-08-10
 
@@ -11,8 +11,14 @@ Close no later than: 2026-08-17
 Complete a tightly scoped public benchmark breakthrough sprint: reproduce the
 strongest available CYP comparator, identify the true representation gap, and
 establish whether richer molecular representations can produce reproducible
-gains under leakage-safe validation without compromising `cypshift`'s
+gains under chemistry-aware grouped validation without compromising `cypshift`'s
 scientific rigor.
+
+The active question is narrower: can the fixed MapLight and pretrained GIN
+representations materially improve CYP ranking on the frozen
+chemistry-cluster-held-out shadow benchmark? TDC AUPRC is a representation
+benchmark only. It is not the OpenADMET direct-inhibition regression metric,
+the TDI MCC metric, or a challenge-performance proxy.
 
 Phase 0.75 is public-benchmark research. It does not reverse D-024, weaken the
 authoritative challenge freeze, or authorize a guessed challenge adapter,
@@ -124,7 +130,12 @@ A family is one frozen prediction artifact per task generated from one frozen
 code, environment, and configuration state. All declared seeds belong to that
 one family and must be retained without post-result selection.
 
-Before each prediction family:
+Before any new public-test label is inspected, complete every permitted
+label-free prediction family that will be used. The third family may be left
+unused. Freeze all completed families together, then score them together. Do
+not score fixed MapLight and continue developing GIN afterward.
+
+For every completed prediction family:
 
 - freeze the signed source commit;
 - freeze the environment and configuration;
@@ -141,8 +152,9 @@ feature, model, dependency, or hyperparameter selection.
 
 ## Shadow benchmark
 
-All new choices use TDC `train_val` only. Freeze `TDC-CYP-shadow-v1` before a
-feature or model result is inspected.
+All new choices use TDC `train_val` only. `TDC-CYP-shadow-v1` is frozen. It is
+currently a chemistry-cluster-held-out benchmark, not a demonstrated strict
+analog firewall. Do not rebuild, tune, or reseed it.
 
 Construct one global, label-independent molecule grouping table across all
 three CYP tasks. It must bind:
@@ -213,12 +225,30 @@ It records zero feature matrices, fits, predictions, and metric evaluations.
 Three independent reviews passed the artifacts and arithmetic. Generated roots
 remain outside Git and read-only.
 
+### Evidence-execution topology audit
+
+Measure the frozen assignment before interpreting a representation result. Do
+not change its groups or folds. For every validation structure, report the
+maximum train-validation binary-Morgan Tanimoto similarity and the count and
+proportion at or above 0.60, 0.70, 0.80, and 0.90. Also verify exact and
+standardized duplicate crossing, scaffold and community group sizes, fold
+sizes and prevalence, raw-SMILES multiplicity per standardized hash, duplicate
+structure-task cells, and conflicting structure-task cells.
+
+Prepare fixed reporting populations for the Stage A result: official
+row-weighted rows, unique structure-task cells, conflict-isolated rows,
+validation rows with no training neighbor at or above 0.60, and
+leave-one-scaffold-or-community-out influence. These are sensitivity analyses,
+not new candidates or split-selection inputs. Until this report supports
+stronger language, describe the artifact as a chemistry-cluster-held-out
+shadow benchmark.
+
 ## Minimal research-code boundary
 
 Do not rewrite the frozen Phase 0.5 modules and do not add a registry, plugin
-system, benchmark framework, or second public CLI path. Add only the smallest
-internal seam needed to construct, bind, align, and consume more than one
-feature block.
+system, benchmark framework, source adapter, feature store, workflow engine, or
+second public CLI path. Use direct Stage A research scripts and the already
+frozen contracts. No new research layer may precede comparator evidence.
 
 Every feature artifact must record its name, version, dimensions, dtype,
 feature names or ordering, standardized-structure row hashes, generator source,
@@ -271,17 +301,36 @@ R1 shares the raw-input policy needed for a fair representation contrast. It
 has Phase 0.5 binary-Morgan feature semantics, but it is not a rescore of the
 standardized Phase 0.5 pipeline. Stage A consumes no public-test budget.
 
+The next durable scientific milestone must contain exact fixture parity, two
+independently generated and byte-identical feature roots, row-alignment and
+environment receipts, all frozen shadow predictions, fold and aggregate
+metrics, topology-stratified metrics, runtime and hardware evidence, or one
+precise reproducible blocker. Another contract without those results is not a
+milestone.
+
+Call the complete fixed representation meaningful beyond binary Morgan only
+when its paired macro-AUPRC lower confidence bound is above zero in both shadow
+protocols, at least two of three CYP tasks improve, and the remaining task
+loses no more than 0.005 AUPRC. The direction must also survive unique-cell
+weighting, conflict isolation, the below-0.60-neighbor population, and removal
+of the most influential group. If a simpler frozen block explains the gain,
+retain the simpler block. A failed gate still leaves fixed MapLight as the
+required comparator.
+
 Gate 1 must pass before public scoring: representation parity, frozen
 environment, complete row alignment, label-free predictions, accurate fit and
 prediction counts, and independent review.
 
 ## Stage B — MapLight + GIN reproduction
 
-Begin only after Stage A passes or has a precise accepted blocker. Freeze the
+Begin only after fixed-MapLight parity and shadow predictions exist. Freeze the
 exact pretrained encoder identifier, package versions, weight bytes and hashes,
-embedding dimension, device behavior, and failed-structure policy. Precompute
-label-free embeddings keyed by standardized structure hash. The predictor may
-consume only the cached, receipt-bound matrix.
+embedding dimension, device behavior, and failed-structure policy. For exact
+reproduction, key label-free embeddings by exact raw-row identity. Do not cache
+solely by standardized structure hash unless numerical invariance is
+demonstrated for every standardized hash with multiple raw SMILES. The fixed
+and GIN blocks for a row must use the same raw-molecule interpretation. The
+predictor may consume only the cached, receipt-bound matrix.
 
 Record the available pretraining corpus and audit structure overlap against TDC
 and the Veith/PubChem source when possible. Classify contamination as known
@@ -292,6 +341,13 @@ revisited after the official release.
 On shadow validation only, compare fixed features, GIN alone, fixed plus GIN,
 fixed plus deterministically shuffled GIN rows, and fixed plus same-dimensional
 random noise. Controls must not reproduce a claimed GIN gain.
+
+Retain GIN as a scientific ingredient only when embeddings reproduce, row
+alignment is exact, shuffled and random controls do not reproduce the gain,
+the paired macro lower bound is positive, at least two tasks improve, and the
+remaining task loses no more than 0.005 AUPRC. The direction must survive the
+unique-cell, conflict-isolated, below-0.60-neighbor, and most-influential-group
+analyses. Otherwise retain only the exact engineering comparator or blocker.
 
 Gate 2 must pass before public scoring: embeddings and environment frozen,
 contamination status recorded, alignment and finiteness verified, label-free
@@ -375,7 +431,8 @@ Phase 0.75 passes when:
 7. GIN reproduction completes once or has a precise blocker;
 8. row-level local comparator predictions exist for each completed family;
 9. all ablations and choices use shadow evidence only;
-10. new public-test use stays within the three-family budget;
+10. all completed public prediction families were frozen together before new
+    public-label inspection, and use stays within the three-family budget;
 11. dependencies remain isolated and the core installation stays lightweight;
 12. the four-command public CLI remains unchanged;
 13. the scorecard and public documentation are accurate;
@@ -407,17 +464,22 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
    **Complete.**
 5. Freeze the Stage A environment, parity, ablation, accounting, and stopping
    contract. **Complete.**
-6. Add the smallest feature-block seam.
-7. Implement and parity-test the four fixed feature blocks.
-8. Run the shadow representation ablation.
-9. Pass Gate 1 and consume the fixed-MapLight public-test family once.
+6. Measure the frozen shadow topology without changing an assignment.
+7. Implement and parity-test the four fixed feature blocks with direct research
+   code; generate two matching label-free feature roots.
+8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
+9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
+   do not score them yet.
 10. Build the isolated GIN embedding path and shadow controls.
-11. Pass Gate 2 and consume the GIN public-test family once.
-12. Freeze row-level comparator predictions and the honest scorecard.
-13. Perform Tier 2 audits only if Tier 1 is early and clean.
-14. Lock and evaluate one final contender only if shadow evidence and Gate 4
-    support it.
-15. Update public documentation, obtain closeout review, and hand off on
+11. Pass Gate 2 and freeze the label-free GIN public predictions, but do not
+    score them yet.
+12. Lock a final contender only if the complete shadow gate supports it;
+    otherwise record that its public family remains unused.
+13. Independently review and freeze all completed public prediction families
+    together, then score them together once.
+14. Freeze row-level comparator evidence and the honest scorecard.
+15. Perform Tier 2 audits only if Tier 1 is early and clean.
+16. Update public documentation, obtain closeout review, and hand off on
     August 17.
 
 The first scientific milestone is a locally reproduced row-level MapLight
