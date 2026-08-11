@@ -4,18 +4,21 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 fixed-feature and train-only target gates passed. Two independent
-label-free feature roots are byte-identical, and the scoring labels are sealed
-from 18 cell-specific outer-training target files. The prior safe and
+Phase 0.75 Stage A passed its fixed-representation value gate. Two independent
+label-free feature roots are byte-identical; 18 cell-specific model processes
+produced immutable predictions without validation-label access; and the
+separate scorer and paired grouped analysis found a reproducible MapLight
+fixed-feature gain over raw-input binary Morgan. The prior safe and
 signed-`int8` experiments remain closed negative and immutable. D-024 remains
 active for the August 17 release.
 
 ## Active operating goal
 
-Execute the already frozen Stage A CatBoost shadow ladder against the reviewed
-fixed-feature roots. Preserve both prior blockers and the two matching D-027
-roots. Use only R1 through R5, the existing global shadow folds, and the
-cell-specific target firewall. Do not run ExtraTrees, GIN, or the public test.
+Preserve the passed Stage A artifact chain and begin only the Stage B GIN
+eligibility and reproducibility gate. Resolve weight/data rights, exact bytes,
+environment, raw-row semantics, and contamination status before any embedding
+is generated. Do not run a model, public test, new encoder, candidate, ensemble,
+or challenge-specific path until that gate passes.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -50,9 +53,14 @@ tests. The public source reconstruction, grouped splits, prediction firewall,
 scorecards, negative results, signatures, hosted CI, and minimal codebase all
 passed independent review.
 
-No Phase 0.75 model result exists. The Phase 0.5 fixed mean remains the best
-validated public-data research model. Exact fixed MapLight reproduction stopped
-before any model fit or prediction.
+Phase 0.75 now contains the strongest locally validated representation result.
+Against raw-input binary Morgan with the same pinned CatBoost seed and rows,
+fixed MapLight improves macro AUPRC by 0.0481 on scaffold holdout and 0.0443 on
+community holdout. Paired 95% intervals are [0.0372, 0.0583] and [0.0354,
+0.0540]. Every CYP task improves, and the gain survives unique-cell weighting,
+conflict exclusion, the below-0.60-neighbor subset, and all predeclared
+influential-group checks. This is a fixed-representation shadow result, not
+MapLight+GIN superiority, a TDC public-test result, or challenge evidence.
 
 ## Phase 0.75 operating contract
 
@@ -870,10 +878,11 @@ Preserve the topology report, both parity roots, both real-feature blockers,
 their reviews, both byte-identical D-027 feature roots, the target firewall,
 and the immutable Stage A prediction root. Freeze one direct scoring boundary
 that opens the already sealed train-only scoring target only after revalidating
-all 18 cell artifacts. The point result warrants the already predeclared paired
-grouped inference and sensitivity populations; execute only those analyses for
-the R5-versus-R1 representation contrast. Add no candidate, hyperparameter,
-framework, ExtraTrees repair, GIN path, or public-test action.
+all 18 cell artifacts. The paired and sensitivity gates passed. Preserve their
+immutable outputs and begin only the Stage B GIN eligibility/reproducibility
+gate: resolve rights, exact weight bytes, environment, raw-row semantics, and
+contamination status before any embedding. Add no candidate, hyperparameter,
+framework, ExtraTrees repair, public-test action, or challenge assumption.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

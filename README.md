@@ -13,11 +13,13 @@ rules supersede all provisional assumptions.
 
 ## Current objective
 
-The exact MapLight reproduction attempt is closed. Fixture parity passed, but
-real-row generation stopped before fitting on a frozen non-finite descriptor
-boundary. Keep this public-benchmark evidence separate from the challenge. On
-2026-08-17, freeze the official challenge release before adapting the proven
-workflow:
+The fixed MapLight shadow reproduction now passes. Relative to raw-input binary
+Morgan with the same CatBoost seed and validation rows, it improves macro AUPRC
+by 0.0481 on scaffold holdout and 0.0443 on chemistry-community holdout; both
+paired 95% lower bounds are positive. This is a public representation benchmark,
+not a challenge score or MapLight+GIN result. The next research gate is exact
+GIN provenance and reproducibility. On 2026-08-17, the official challenge
+release must still be frozen before adapting the proven workflow:
 
 ```text
 audit -> standardize -> split -> train -> predict -> report

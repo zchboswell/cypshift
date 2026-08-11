@@ -593,3 +593,14 @@ and +0.04430 for community holdout; the five-seed mean-probability macros were
 fit, new prediction, bootstrap, public-test, GIN, or challenge operation
 occurred in scoring. This is meaningful point evidence, not yet a superiority
 claim; the predeclared paired grouped uncertainty and sensitivity gates remain.
+
+Those gates subsequently passed at signed source `32a5788`. Two deterministic
+PCG64 streams produced 2,000 accepted synchronized global-group replicates per
+protocol with zero rejected draws. The scaffold macro delta interval is
+[0.03722, 0.05831]; the community interval is [0.03543, 0.05402]. Every task's
+paired lower bound is positive. Macro deltas remain positive under unique-cell
+weighting, conflict exclusion, and the below-0.60-neighbor subset. All 60
+predeclared influential-group absence checks retain a positive macro lower
+bound; the minimum is 0.03474. Manifest SHA-256 is `e90248e0...`. The fixed
+representation-value gate passes. This authorizes only the separate Stage B
+GIN eligibility/reproduction gate, not public scoring or challenge transfer.

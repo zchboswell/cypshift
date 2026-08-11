@@ -147,6 +147,14 @@ Required evidence:
 Rejection condition: gain is absent on the shadow benchmark, isolated to one
 group, reproduced by a control, or explained by a simpler feature block.
 
+Current evidence supports the fixed-representation portion of this claim. R5
+seed 1 improves macro AUPRC over R1 seed 1 by 0.0481 on scaffold holdout and
+0.0443 on community holdout, with paired 95% intervals [0.0372, 0.0583] and
+[0.0354, 0.0540]. Every task improves under both protocols, and the direction
+survives unique-cell weighting, conflict exclusion, the below-0.60-neighbor
+subset, and all predeclared influential-group checks. Do not extend this claim
+to GIN, a public test, state of the art, or the OpenADMET challenge.
+
 ### Final public-comparator superiority claim
 
 Proposed claim:

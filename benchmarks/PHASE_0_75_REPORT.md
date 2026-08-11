@@ -4,22 +4,26 @@ Date: 2026-08-11
 
 ## Result
 
-Phase 0.75 did not produce a new predictor or score. It produced a frozen,
-chemistry-cluster-held-out shadow benchmark, exact MapLight fixture parity, and
-two precise real-row blockers.
+Phase 0.75 produced a positive fixed-representation result on the frozen
+chemistry-cluster-held-out shadow benchmark. With identical rows, CatBoost
+seed, and validation cells, the complete fixed MapLight representation improves
+macro AUPRC over raw-input binary Morgan by 0.0481 on scaffold holdout and
+0.0443 on community holdout. Paired grouped 95% intervals are [0.0372, 0.0583]
+and [0.0354, 0.0540]. All three CYP tasks improve under both protocols.
 
-The public fixed MapLight representation could not be generated on every
-frozen shadow row without changing a second scientific rule. The safe
-implementation stopped on an Avalon sparse count of 144 because its frozen
-range ended at 127. The separately authorized exact-upstream signed-`int8`
-implementation reproduced that overflow behavior, then stopped because the
-RDKit descriptor matrix contained at least one non-finite value. No complete
-feature matrix, model fit, prediction, metric, or public-test evaluation was
-produced.
+The result required two preserved negative experiments and one narrowly
+authorized compatibility path. The safe implementation stopped on an Avalon
+count of 144. Exact upstream signed-`int8` behavior then stopped on rare-element
+charge-descriptor `NaN`. D-027 preserved `NaN` unchanged only in the four
+diagnosed charge columns for pinned CatBoost; two independent full feature
+roots then matched byte-for-byte.
 
-The Phase 0.5 fixed mean therefore remains the best validated public-data
-research model. No superiority, representation-gain, GIN, or challenge claim
-is supported.
+The gain survives unique structure-task weighting, conflict exclusion,
+validation structures with no training neighbor at or above 0.60, and every
+predeclared influential-group absence check. This supports a fixed MapLight
+representation-value claim on the shadow benchmark. It does not establish
+MapLight+GIN superiority, public-test performance, clean external validation,
+or challenge transfer.
 
 ## Frozen shadow benchmark
 
@@ -82,6 +86,45 @@ was 0.8955 GiB. The immutable failure receipt is `b337f965...`. The contract
 stops on any finiteness mismatch and permits no further scientific change.
 Build 2 was not started.
 
+## D-027 fixed-feature result
+
+The owner-authorized D-027 experiment changed only the non-finite policy. It
+preserves `NaN` in descriptor indices 39, 41, 43, and 45 and rejects every
+infinity and every other `NaN`. Two independent builds processed all 30,038
+rows from 15,399 exact raw inputs. Their row files and five NPY payloads are
+byte-identical. The matrices contain exactly 328 expanded `NaN` cells across
+82 rows, all in the four permitted columns.
+
+Eighteen isolated cell processes then fitted R1 through R5 from outer-training
+targets only. They retained 162 model vectors and 18 five-seed mean vectors over
+36,045 validation rows. Model processes parsed zero validation labels. A
+separate scorer revalidated every prediction artifact before parsing the
+30,038 frozen train-only scoring labels.
+
+Point macro AUPRC was:
+
+| Protocol | Binary Morgan R1 | Fixed MapLight R5 seed 1 | Delta | R5 five-seed mean |
+| --- | ---: | ---: | ---: | ---: |
+| Scaffold | 0.7395 | 0.7876 | +0.0481 | 0.7905 |
+| Community | 0.7560 | 0.8003 | +0.0443 | 0.8019 |
+
+Task-level R5-minus-R1 deltas were positive for CYP2C9, CYP2D6, and CYP3A4 in
+both protocols. The maximum cell AUPRC was 0.9017, below the 0.95 forensic
+trigger.
+
+Paired synchronized global-group bootstrap results were:
+
+| Protocol | Point macro delta | Paired 95% interval |
+| --- | ---: | ---: |
+| Scaffold | +0.0481 | [0.0372, 0.0583] |
+| Community | +0.0443 | [0.0354, 0.0540] |
+
+All six task-protocol lower bounds are also positive. The macro deltas remain
+positive under unique-cell weighting (0.0482/0.0442), conflict exclusion
+(0.0491/0.0447), and the below-0.60-neighbor subset (0.0661/0.0585). Across the
+60 predeclared task/protocol influential-group checks, the smallest absent-group
+macro lower bound is 0.0347. The representation-value gate passes.
+
 ## Accounting
 
 Across the compatibility execution:
@@ -104,24 +147,27 @@ Across the compatibility execution:
 - GIN weight bytes downloaded: 0;
 - challenge assumptions added: 0.
 
-Two independent reviews passed the compatibility parity artifact and the real
-blocker. The blocker prevents retry and build 2.
+The final D-027 accounting adds two completed full feature builds, 162
+scientific model fits, 180 point prediction vectors, 180 initial point AUPRC
+evaluations, and 72,182 confirmatory/sensitivity metric evaluations. It uses
+zero public-test rows or labels, zero GIN weights, and zero challenge
+assumptions. The prior blockers remain immutable negative evidence.
 
 ## Scientific conclusion
 
-The richer-representation hypothesis remains unanswered. Exact fixture parity
-is implementation evidence, not predictive evidence. No MapLight or GIN shadow
-score exists, and the published leaderboard anchors remain unpaired external
-references.
+The fixed-representation hypothesis is supported: complementary MapLight blocks
+materially improve CYP ranking beyond binary Morgan under both frozen shadow
+protocols. The result is not explained by duplicate weighting, conflicting
+cells, close neighbors, or one large chemistry group.
 
-The smallest defensible action is to preserve the negative evidence and stop.
-Imputing the non-finite value, removing a descriptor, changing RDKit, or
-continuing with a partial ladder would create a new result-aware experiment.
-That work is not authorized in Phase 0.75.
+The next permissible step is the separately gated MapLight+GIN reproduction.
+GIN weight rights, exact bytes, environment, raw-row behavior, and contamination
+status must be resolved before embeddings. The fixed result itself authorizes
+no public-test scoring and no challenge model.
 
 ## Handoff
 
-Phase 0.75 returns the project to D-024. On the authoritative OpenADMET release,
+Phase 0.75 remains bounded by D-024. On the authoritative OpenADMET release,
 freeze the original bytes, rules, endpoint semantics, MA-ST-RAE, MCC and TDI
 label implementations, censoring, validator, submission contract, external-data
 permissions, and challenge-faithful family splits before any model fit or

@@ -723,7 +723,7 @@
 ## D-027 — Authorize one exact-upstream missing-value compatibility experiment
 
 - Date: 2026-08-11
-- Status: accepted; pre-result freeze active
+- Status: accepted; execution passed on 2026-08-11
 - Decision: Preserve both prior Phase 0.75 blockers and authorize one separate
   missing-value compatibility experiment. Permit float64 `NaN` only in the
   four frozen Gasteiger charge-extrema descriptor columns and preserve those
@@ -757,3 +757,11 @@
   outside the four exact columns, mask/count drift, byte mismatch, CatBoost
   capability mismatch, or need for another scientific change. Do not start GIN
   or use the public test before the fixed comparator completes its shadow gate.
+- Outcome: Both full feature roots are byte-identical. The fixed MapLight R5
+  seed-1 representation improves macro AUPRC over binary Morgan R1 seed 1 by
+  0.0481 under scaffold holdout and 0.0443 under community holdout. Paired
+  global-group 95% lower bounds are 0.0372 and 0.0354; every CYP task improves;
+  unique-cell, conflict-excluded, low-neighbor, and influential-group gates all
+  pass. Retain the fixed representation for the local comparator. This outcome
+  authorizes only the separate GIN eligibility/reproduction gate, not public
+  scoring or challenge transfer.
