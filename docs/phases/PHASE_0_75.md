@@ -1,7 +1,7 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: Stage B GIN feature gate passed; shadow controls pending; prior
-blockers remain immutable
+Status: Stage B shadow predictions immutable; scoring review gate pending;
+prior blockers remain immutable
 
 Authorized: 2026-08-10
 
@@ -394,6 +394,28 @@ receipt-bound fixed and GIN matrices, and label-free shadow rows. Validation
 targets remain sealed until every prediction cell is immutable. Any later
 scoring uses the existing Stage A fixed predictions without refitting them.
 
+### Frozen Stage B prediction outcome
+
+The prediction runner completed at signed source `a7a3dad`. Immutable manifest
+SHA-256 is `a9b78b382ecf1cf4bb78843ec22edca04a7d516c6597443f59a8712ecd23f418`.
+Eighteen cell roots retain 144 predeclared model vectors over 288,360 model
+prediction rows plus 18 arithmetic five-seed mean vectors over 36,045 rows.
+The resulting 324,405 probability values are finite and within `[0, 1]`.
+
+Post-promotion validation confirmed exact prediction and receipt hashes, fold-0
+row alignment against both the frozen shadow rows and immutable Stage A
+predictions, exact five-seed means, resolved CatBoost `Logloss`,
+`random_strength=2`, seed, and `nan_mode=Min` fields, and one invariant pair of
+shuffle/noise matrix hashes across all cells. Model processes parsed 144,183
+outer-training targets. Validation targets parsed, metric evaluations,
+public-test rows or labels used, public-test slots consumed, and challenge
+assumptions added are all zero.
+
+This artifact is prediction-only. It does not establish that GIN adds value or
+that either control fails. The scoring target remains sealed until the
+prediction-review gate passes; the next operation is only the already frozen
+point, sensitivity, and paired grouped-bootstrap evaluation.
+
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match
 the dated point result, it becomes the frozen local comparator with the drift
@@ -518,20 +540,16 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
    **Complete. The result supports chemistry-cluster-held-out language, not a
    strict analog-firewall claim.**
 7. Implement and parity-test the four fixed feature blocks with direct research
-   code; generate two matching label-free feature roots. **Parity passed. The
-   first real build stopped before retaining a matrix because one Avalon sparse
-   count is 144 and the frozen safe maximum is 127. A separately authorized
-   exact signed-`int8` parity then passed, but its first real build stopped on a
-   RDKit descriptor matrix containing at least one non-finite value; the first
-   affected exact-raw row was index 1,563. Build 2 is authorized under neither
-   prior contract. D-027 now authorizes two fresh roots under the exact
-   four-column `NaN` rule; neither has run.**
+   code; generate two matching label-free feature roots. **Complete under
+   D-027. The earlier safe and signed-`int8` blockers remain immutable; two
+   fresh roots passed the exact four-column `NaN` rule and match byte-for-byte.**
 8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
-   **Not reached; D-027 feature parity is the prerequisite.**
+   **Complete. Fixed MapLight passed the representation-value gate.**
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
    do not score them yet. **Not reached.**
-10. Build the isolated GIN embedding path and shadow controls. **Not started;
-    fixed-MapLight shadow predictions are a prerequisite.**
+10. Build the isolated GIN embedding path and shadow controls. **GIN parity,
+    two feature roots, and all 18 label-isolated prediction cells are complete.
+    Scoring remains sealed pending prediction review.**
 11. Pass Gate 2 and freeze the label-free GIN public predictions, but do not
     score them yet. **Not reached.**
 12. Lock a final contender only if the complete shadow gate supports it;

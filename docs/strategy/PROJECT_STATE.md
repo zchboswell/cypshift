@@ -4,24 +4,23 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 Stage A passed its fixed-representation value gate, and the Stage B
-GIN feature gate has passed. The two D-027 fixed-feature roots and the two GIN
-feature roots are independently byte-identical; 18 cell-specific model
-processes produced immutable Stage A predictions without validation-label
-access; and the separate scorer and paired grouped analysis found a
-reproducible MapLight
-fixed-feature gain over raw-input binary Morgan. The prior safe and
-signed-`int8` experiments remain closed negative and immutable. D-024 remains
-active for the August 17 release.
+Phase 0.75 Stage A passed its fixed-representation value gate, the Stage B GIN
+feature gate passed, and all 18 Stage B shadow prediction cells are now
+immutable. The two D-027 fixed-feature roots and the two GIN feature roots are
+independently byte-identical. Stage B completed its 144 predeclared CatBoost
+fits and retained 324,405 finite probabilities without validation-label,
+metric, public-test, or challenge access. The prior safe and signed-`int8`
+experiments remain closed negative and immutable. D-024 remains active for the
+August 17 release.
 
 ## Active operating goal
 
-Preserve the passed Stage A and GIN feature artifact chains. Execute only the
-five predeclared Stage B controls on the frozen shadow cells: fixed MapLight,
-GIN alone, fixed plus GIN, fixed plus deterministically shuffled GIN, and fixed
-plus same-dimensional seeded noise. Do not add an undeclared model family,
-representation, hyperparameter, ensemble, public-test action, or
-challenge-specific path.
+Preserve the passed Stage A, GIN feature, and Stage B prediction artifact
+chains. Keep the immutable scoring target sealed until the Stage B prediction
+root passes the declared review gate. Then run only the frozen point,
+sensitivity, and synchronized grouped-bootstrap evaluator. Do not add an
+undeclared model family, representation, hyperparameter, ensemble, public-test
+action, or challenge-specific path.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -203,14 +202,24 @@ path supports only local non-redistributed pretrained-transfer benchmarking,
 not a clean zero-shot or challenge-eligibility claim. No target, model, metric,
 public-test, or challenge operation occurred at this gate.
 
-The direct Stage B control contract freezes eight new CatBoost fits per shadow
+The direct Stage B control contract froze eight new CatBoost fits per shadow
 cell: GIN alone at seed 1, fixed plus GIN at seeds 1 through 5, fixed plus one
 exact-raw-vector shuffle at seed `20260816`, and fixed plus one
 same-dimensional noise control at seed `20260817`. Across 18 cells this is 144
 new fits. The immutable Stage A fixed predictions are reused rather than
 refitted. Model processes remain limited to cell-specific outer-training
 targets; scoring remains sealed until all predictions are immutable. The
-contract and direct runner add no result yet.
+contract and direct runner produced immutable predictions at signed source
+`a7a3dad`. Manifest SHA-256 is `a9b78b38...`. The root contains 18 cell
+receipts and 18 aligned CSV files totaling 36,045 validation rows. It records
+144 fits, 288,360 model-prediction rows, 18 derived five-seed mean vectors, and
+324,405 retained finite probability values. The exact five-seed means,
+prediction hashes, Stage A row identities, frozen shadow fold-zero identities,
+resolved CatBoost parameters, and single shared shuffle/noise control hashes
+were revalidated after promotion. Validation labels parsed, metric evaluations,
+public-test rows or labels used, public-test slots consumed, and challenge
+assumptions added are all zero. This is prediction evidence only; it makes no
+GIN-value claim before the separate scorer opens the sealed shadow targets.
 
 The Stage A target projection passed at signed source `1275cbc`. Its immutable
 manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
@@ -908,12 +917,11 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 ## Exact next action
 
 Preserve the topology, Stage A, weight, both GIN import blockers, fixture
-parity, and both byte-identical real GIN roots. Freeze and execute only the
-predeclared Stage B controls on the same 18 shadow cells. Reuse the immutable
-fixed MapLight predictions. Use one deterministic exact-raw shuffle and one
-seeded 300-dimensional noise control; fit no undeclared configuration. Keep
-all scoring sealed until predictions are immutable. Add no candidate,
-hyperparameter, framework, public-test action, or challenge assumption.
+parity, both byte-identical real GIN roots, and immutable Stage B predictions.
+Review the prediction root without opening scoring labels. After that gate,
+run only the predeclared Stage B point scores, sensitivity populations, and
+synchronized scaffold/community bootstrap. Add no candidate, hyperparameter,
+framework, public-test action, or challenge assumption.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label
