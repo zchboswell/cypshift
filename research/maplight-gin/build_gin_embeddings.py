@@ -122,7 +122,7 @@ def _clean_revision() -> str:
 def _contract() -> dict[str, Any]:
     contract = _load_json(CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "cypshift.maplight_gin_contract.v1",
+        contract.get("schema_version") == "cypshift.maplight_gin_contract.v2",
         "unexpected contract schema",
     )
     return contract
@@ -359,11 +359,14 @@ def _verify_weight(contract: dict[str, Any], weight_root: Path) -> dict[str, Any
         receipt.get("schema_version") == "cypshift.maplight_gin_weight.v1",
         "weight receipt schema",
     )
-    _require(
-        receipt.get("contract_sha256") == _sha256(CONTRACT_PATH),
-        "weight contract drift",
-    )
     weight = contract["weight"]
+    _require(
+        _sha256(receipt_path) == weight["frozen_receipt_sha256"], "weight receipt drift"
+    )
+    _require(
+        receipt.get("contract_sha256") == weight["origin_contract_sha256"],
+        "weight origin contract drift",
+    )
     artifact = (
         weight_root
         / weight["store_group"]

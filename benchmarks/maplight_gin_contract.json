@@ -1,5 +1,5 @@
 {
-  "schema_version": "cypshift.maplight_gin_contract.v1",
+  "schema_version": "cypshift.maplight_gin_contract.v2",
   "objective": "Reproduce the single MapLight GIN representation on exact raw rows, then authorize only its frozen shadow controls if parity and two independent embedding roots pass.",
   "parents": {
     "maplight_source_contract": {
@@ -28,6 +28,11 @@
       "path": "benchmarks/fixtures/maplight_fixed_parity_v1.csv",
       "sha256": "70ae570bbdbb5c8a225cfd20ab72f0d8f8b43dc1a3a6b2d3356bc52f4f4a513c",
       "rows": 8
+    },
+    "v1_parity_blocker": {
+      "path": "artifacts/benchmarks/maplight-gin-parity-v1-blocker/failure_receipt.json",
+      "sha256": "3ae7d2db847b0e4af08d4778b9dbd1be96b5f462cb7f47f9cf74e0cea562d3e1",
+      "cause": "MolFeat 0.9.2 imports python-dotenv but omits it from published runtime dependencies; failure occurred before any embedding array was generated."
     }
   },
   "source": {
@@ -42,9 +47,9 @@
     "python_version_path": "research/maplight-gin/.python-version",
     "python_version_sha256": "3817f125779f46c574b17c4adbdd0975ef8c32ae92509fed295212797d314d6a",
     "project_path": "research/maplight-gin/pyproject.toml",
-    "project_sha256": "274ff23b867508f675e632128a3c9f3f50ed1d9ce3476fae8b68568164ca80a5",
+    "project_sha256": "3aa292d6e8b45c764c21201181cd3584709ebf7c88dc793c641f7a9e779092ef",
     "lock_path": "research/maplight-gin/uv.lock",
-    "lock_sha256": "0370a3f805950d79f5112d96458ae5f8e7d9ca1b668669fd9afe91d63819bed0",
+    "lock_sha256": "c0b359c7b8bb836cc1eb997aade73543ff96b2c5f3dcc26d3759bd7d77b318a2",
     "required_versions": {
       "catboost": "1.2.1",
       "dgl": "1.1.2",
@@ -52,6 +57,7 @@
       "molfeat": "0.9.2",
       "numpy": "1.25.2",
       "pandas": "2.0.3",
+      "python-dotenv": "1.0.0",
       "rdkit": "2023.3.3",
       "scikit-learn": "1.3.0",
       "scipy": "1.11.2",
@@ -73,6 +79,8 @@
     "model_size_bytes": 7467310,
     "model_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
     "persisted_location": "artifacts/benchmarks/maplight-gin-weight-v1/dgllife/gin_supervised_masking/0/model.save",
+    "frozen_receipt_sha256": "b40e1ebb7cfc00a7d6bc72d41c27e1751f2ded3650c7816cd862557ae28bb331",
+    "origin_contract_sha256": "018a976c63ffbd85fe027d59e02350a986315be5bb4e68b6f8f9b55e78f7a727",
     "redistribution": "forbidden_by_this_contract"
   },
   "rights_and_provenance": {
@@ -110,7 +118,7 @@
     "row_policy": "retain every official row and expand exact-raw cached embeddings back in frozen feature_rows.csv order"
   },
   "operations": {
-    "weight_freeze": "download exactly one metadata file and one model file, verify bytes, retain no alternate weight",
+    "weight_freeze": "reuse the already verified read-only v1 weight root; do not redownload or alter its bytes",
     "fixture_parity": "one pinned MapLight source worker and two direct MolFeat workers in fresh CPU processes must produce byte-identical 8x300 NPY v1.0 arrays",
     "real_builds": 2,
     "real_build_independence": "each build featurizes all 15399 exact raw inputs in a fresh process and may not reuse another build's array or cache",
@@ -119,9 +127,9 @@
   },
   "outputs": {
     "weight_root": "artifacts/benchmarks/maplight-gin-weight-v1",
-    "parity_root": "artifacts/benchmarks/maplight-gin-parity-v1",
-    "build_1_root": "artifacts/benchmarks/maplight-gin-features-v1-build-1",
-    "build_2_root": "artifacts/benchmarks/maplight-gin-features-v1-build-2",
+    "parity_root": "artifacts/benchmarks/maplight-gin-parity-v2",
+    "build_1_root": "artifacts/benchmarks/maplight-gin-features-v2-build-1",
+    "build_2_root": "artifacts/benchmarks/maplight-gin-features-v2-build-2",
     "success_files_per_build": [
       "feature_rows.csv",
       "gin.npy",

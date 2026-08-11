@@ -12,3 +12,8 @@ reproduction; it is not redistributed.
 The artifact and pretraining overlap status remain unknown. Results from this
 path may be described only as pretrained-representation transfer, not clean
 zero-shot generalization or automatic OpenADMET eligibility.
+
+The first fixture attempt is preserved as a pre-embedding blocker: MolFeat
+0.9.2 imports `python-dotenv` but omits it from its published runtime
+dependencies. The v2 environment adds pinned `python-dotenv==1.0.0`; this is
+an infrastructure repair only and changes no representation rule.

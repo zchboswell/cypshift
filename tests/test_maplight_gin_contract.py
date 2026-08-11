@@ -21,7 +21,7 @@ def _contract() -> dict[str, object]:
 
 def test_gin_contract_binds_tracked_sources_and_one_representation() -> None:
     contract = _contract()
-    assert contract["schema_version"] == "cypshift.maplight_gin_contract.v1"
+    assert contract["schema_version"] == "cypshift.maplight_gin_contract.v2"
     parents = contract["parents"]
     for name in ("maplight_source_contract", "fixture"):
         record = parents[name]
@@ -63,6 +63,7 @@ def test_gin_environment_is_isolated_and_fully_locked() -> None:
         for dependency in root_project["project"]["dependencies"]
     }
     assert heavy <= research_names
+    assert "python-dotenv" in research_names
     assert heavy.isdisjoint(root_names)
     assert research_project["project"]["requires-python"] == "==3.10.*"
     assert research_project["tool"]["uv"]["package"] is False
