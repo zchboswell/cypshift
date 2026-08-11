@@ -421,7 +421,10 @@ any scoring target. The direct evaluator freezes bootstrap seeds `20260818`
 and `20260819` and exactly the contracted 198 point, 108 sensitivity, and
 144,000 bootstrap metric calls. It introduces no candidate, fit, dependency,
 or public-test path. If any point AUPRC reaches 0.95, it stops before
-sensitivity or bootstrap work and retains the forensic blocker.
+sensitivity or bootstrap work and retains the completed point evidence in the
+forensic blocker. Signed remediation source `bb49c0a` rehashes all 36 frozen
+prediction CSVs and receipts before label access and binds the exact Python,
+NumPy, scikit-learn, research project, lock, and interpreter pins.
 
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match

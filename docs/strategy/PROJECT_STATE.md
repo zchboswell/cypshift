@@ -228,8 +228,13 @@ control hash, resource bound, and zero-use counter. The direct Stage B
 evaluator is now frozen before scoring. It uses bootstrap seeds `20260818` and
 `20260819`, exposes one `--run` operation, adds no dependency or framework, and
 implements exactly 198 point, 108 sensitivity, and 144,000 synchronized grouped
-bootstrap metric evaluations. Its 0.95 AUPRC gate stops before bootstrap and
-retains a forensic blocker rather than continuing performance work.
+bootstrap metric evaluations. Signed remediation source `bb49c0a` and
+implementation SHA-256 `1b953810...` rehash every Stage A and Stage B
+prediction CSV and receipt before label access, bind Python 3.10.13, NumPy
+1.25.2 and scikit-learn 1.3.0, preserve truthful partial accounting, and bind
+failure receipts to every frozen input. Its 0.95 AUPRC gate stops before
+bootstrap and retains the completed point evidence rather than requiring
+forbidden rescoring.
 
 The Stage A target projection passed at signed source `1275cbc`. Its immutable
 manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
