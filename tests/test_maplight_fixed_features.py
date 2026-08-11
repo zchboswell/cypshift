@@ -110,7 +110,7 @@ def test_parity_verifier_has_one_bounded_supervisor_and_no_model_surface() -> No
     assert [
         argument.arg for argument in functions["verify_synthetic_parity"].args.args
     ] == ["attempt"]
-    assert len(VERIFIER_PATH.read_text(encoding="utf-8").splitlines()) <= 1100
+    assert len(VERIFIER_PATH.read_text(encoding="utf-8").splitlines()) <= 1125
 
     imports = {
         alias.name
@@ -141,4 +141,8 @@ def test_research_modules_import_without_rdkit_or_heavy_model_dependencies() -> 
         "expected_raw_sha256",
     }
     assert callable(verifier_module.verify_synthetic_parity)
+    loaded_by_verifier = verifier_module._import_path(
+        "maplight_fixed_features_verifier_loader_test", FEATURE_PATH
+    )
+    assert loaded_by_verifier.FixedFeatureArrays.__module__ in sys.modules
     assert not imported & {"rdkit", "pandas", "catboost", "torch", "dgl", "molfeat"}

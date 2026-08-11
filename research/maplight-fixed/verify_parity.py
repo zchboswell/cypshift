@@ -160,7 +160,17 @@ def _import_path(name: str, path: Path) -> ModuleType:
             stage="module_import",
         )
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception as error:
+        sys.modules.pop(name, None)
+        raise ParityError(
+            "module import failed",
+            kind=type(error).__name__,
+            stage="module_import",
+            block=name,
+        ) from error
     return module
 
 
