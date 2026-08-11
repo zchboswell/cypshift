@@ -13,13 +13,14 @@ rules supersede all provisional assumptions.
 
 ## Current objective
 
-The fixed MapLight shadow reproduction now passes. Relative to raw-input binary
-Morgan with the same CatBoost seed and validation rows, it improves macro AUPRC
-by 0.0481 on scaffold holdout and 0.0443 on chemistry-community holdout; both
-paired 95% lower bounds are positive. This is a public representation benchmark,
-not a challenge score or MapLight+GIN result. The next research gate is exact
-GIN provenance and reproducibility. On 2026-08-17, the official challenge
-release must still be frozen before adapting the proven workflow:
+The fixed MapLight and pretrained GIN shadow reproductions now pass. Relative
+to fixed MapLight with the same CatBoost seed and validation rows, fixed plus
+GIN improves macro AUPRC by 0.0614 on scaffold holdout and 0.0574 on
+chemistry-community holdout. Paired 95% lower bounds are +0.0526 and +0.0472;
+shuffled-GIN and random-noise controls do not reproduce the gain. This is a
+public pretrained-transfer benchmark, not a clean zero-shot, public-test, or
+challenge score. On 2026-08-17, the official challenge release must still be
+frozen before adapting the proven workflow:
 
 ```text
 audit -> standardize -> split -> train -> predict -> report

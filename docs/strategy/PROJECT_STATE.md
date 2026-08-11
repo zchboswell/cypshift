@@ -4,23 +4,22 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 Stage A passed its fixed-representation value gate, the Stage B GIN
-feature gate passed, and all 18 Stage B shadow prediction cells are now
-immutable. The two D-027 fixed-feature roots and the two GIN feature roots are
-independently byte-identical. Stage B completed its 144 predeclared CatBoost
-fits and retained 324,405 finite probabilities without validation-label,
-metric, public-test, or challenge access. The prior safe and signed-`int8`
-experiments remain closed negative and immutable. D-024 remains active for the
-August 17 release.
+Phase 0.75 Stage A passed its fixed-representation value gate, and Stage B
+passed its complete pretrained-GIN shadow keep gate. Fixed plus GIN improves
+macro AUPRC over fixed MapLight by 0.0614 on scaffold holdout and 0.0574 on
+community holdout; paired lower 95% bounds are +0.0526 and +0.0472. All tasks,
+sensitivity populations, shuffled/noise controls, and influential-group checks
+pass. The prior safe and signed-`int8` experiments remain closed negative and
+immutable. D-024 remains active for the August 17 release.
 
 ## Active operating goal
 
-Preserve the passed Stage A, GIN feature, and Stage B prediction artifact
-chains. Keep the immutable scoring target sealed until the Stage B prediction
-root passes the declared review gate. Then run only the frozen point,
-sensitivity, and synchronized grouped-bootstrap evaluator. Do not add an
-undeclared model family, representation, hyperparameter, ensemble, public-test
-action, or challenge-specific path.
+Preserve the passed Stage A and Stage B artifact chains. Freeze the fixed
+MapLight and fixed-plus-GIN label-free TDC public prediction families together
+before any new public label is inspected. Leave the final-contender family
+unused unless a separately frozen shadow result beats local MapLight+GIN. Do
+not add an undeclared model family, representation, hyperparameter, ensemble,
+public-test repair cycle, or challenge-specific path.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -63,6 +62,16 @@ community holdout. Paired 95% intervals are [0.0372, 0.0583] and [0.0354,
 conflict exclusion, the below-0.60-neighbor subset, and all predeclared
 influential-group checks. This is a fixed-representation shadow result, not
 MapLight+GIN superiority, a TDC public-test result, or challenge evidence.
+
+Stage B is now the strongest local shadow result. Fixed plus GIN seed 1 reaches
+macro AUPRC 0.8489 on scaffold holdout and 0.8577 on community holdout; the
+five-seed means reach 0.8512 and 0.8589. Relative to fixed seed 1, task deltas
+are positive for all three CYPs under both protocols. Primary paired intervals
+are [0.0526, 0.0703] and [0.0472, 0.0694]. Shuffled-GIN and random-noise
+controls are significantly worse, every declared sensitivity and influence
+gate passes, and maximum cell AUPRC is 0.9319. This is local pretrained-transfer
+evidence with unknown overlap and rights, not clean external or challenge
+evidence.
 
 ## Phase 0.75 operating contract
 
@@ -932,11 +941,12 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 ## Exact next action
 
 Preserve the topology, Stage A, weight, both GIN import blockers, fixture
-parity, both byte-identical real GIN roots, and immutable Stage B predictions.
-Review the prediction root without opening scoring labels. After that gate,
-run only the predeclared Stage B point scores, sensitivity populations, and
-synchronized scaffold/community bootstrap. Add no candidate, hyperparameter,
-framework, public-test action, or challenge assumption.
+parity, both byte-identical real GIN roots, Stage B predictions, and inference
+manifest `83f4575b...`. Produce the fixed and fixed-plus-GIN label-free public
+prediction families from one frozen source state, review and hash them together,
+and only then perform their bounded public confirmation together. Leave the
+third family unused. Add no candidate, hyperparameter, framework, public-test
+repair cycle, or challenge assumption.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

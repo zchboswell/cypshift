@@ -5,7 +5,7 @@ It pins source revisions, URLs, licenses, file sizes, SHA-256 digests, row
 counts, fixed TDC splits, dated leaderboard anchors, and external-model files.
 Raw public data and generated benchmark artifacts stay out of Git.
 
-## Phase 0.75 pre-result contracts
+## Phase 0.75 comparator evidence
 
 `maplight_source_contract.json` freezes the exact six-file MapLight repository
 at revision `c249378c`, arXiv paper v1, licenses, declared feature dimensions,
@@ -92,12 +92,22 @@ five blocks in memory. It retained no array because the frozen validator found
 a non-finite RDKit descriptor at exact-raw index 1,563. Failure receipt SHA-256
 is `b337f965...`; runtime was 88.95 seconds and peak RSS was 0.8955 GiB. Two
 independent reviews verified the failure and exact zero label, fit, prediction,
-metric, public-test, GIN, and challenge accounting. The contract requires a
-stop. Do not retry, start build 2, fit Stage A, or start GIN.
+metric, public-test, GIN, and challenge accounting. The contract required a
+stop. That blocker remains immutable; later work used the separately authorized
+D-027 four-column `NaN` compatibility rule rather than mutating either failed
+experiment.
 
-These six tracked contracts control the frozen shadow artifact, Stage A, and
-future public-test use. No Phase 0.75 model fit, prediction, public-test label
-parse, or metric evaluation occurred.
+D-027 produced two byte-identical 30,038-row fixed-feature roots. Stage A then
+showed a paired macro AUPRC gain of +0.0481/+0.0443 over binary Morgan on the
+scaffold/community protocols. The separately pinned 300-dimensional GIN path
+also passed parity and two independent real builds. Stage B fixed plus GIN adds
+another +0.0614/+0.0574 over fixed MapLight, with paired lower 95% bounds of
++0.0526/+0.0472. Shuffled embeddings, random noise, unique-cell weighting,
+conflict exclusion, low-neighbor subsets, and influential-group checks all
+pass. Inference manifest SHA-256 is `83f4575b...`; maximum cell AUPRC is
+0.9319, below the forensic trigger. No public-test row, label, or family slot
+has been used. See [`PHASE_0_75_REPORT.md`](PHASE_0_75_REPORT.md) for the exact
+scorecard and claim limits.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved

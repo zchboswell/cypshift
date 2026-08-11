@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: Stage B shadow predictions immutable; scoring review gate pending;
+Status: Stage B GIN keep gate passed; bounded public prediction freeze pending;
 prior blockers remain immutable
 
 Authorized: 2026-08-10
@@ -426,6 +426,16 @@ forensic blocker. Signed remediation source `bb49c0a` rehashes all 36 frozen
 prediction CSVs and receipts before label access and binds the exact Python,
 NumPy, scikit-learn, research project, lock, and interpreter pins.
 
+The one authorized inference run passed. Immutable manifest SHA-256 is
+`83f4575b16486062999c73c00683c262f916257b945da49aa39c6823fe3a28bd`.
+Fixed plus GIN seed 1 improves macro AUPRC over fixed seed 1 by 0.0614 on
+scaffold holdout and 0.0574 on community holdout. Paired 95% intervals are
+[0.0526, 0.0703] and [0.0472, 0.0694]. All three tasks improve under both
+protocols; shuffled GIN, random noise, unique-cell, conflict-excluded,
+below-0.60-neighbor, and influential-group gates all pass. Maximum point AUPRC
+is 0.9319, below the forensic threshold. This retains GIN for the local
+engineering comparator while its overlap and rights remain unknown.
+
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match
 the dated point result, it becomes the frozen local comparator with the drift
@@ -558,18 +568,19 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
    do not score them yet. **Not reached.**
 10. Build the isolated GIN embedding path and shadow controls. **GIN parity,
-    two feature roots, and all 18 label-isolated prediction cells are complete.
-    Scoring remains sealed pending prediction review.**
+    two feature roots, all 18 label-isolated prediction cells, and the complete
+    grouped inference are complete. GIN passed every shadow keep gate.**
 11. Pass Gate 2 and freeze the label-free GIN public predictions, but do not
     score them yet. **Not reached.**
 12. Lock a final contender only if the complete shadow gate supports it;
-    otherwise record that its public family remains unused. **Not reached; the
-    final-contender public family remains unused.**
+    otherwise record that its public family remains unused. **No separate
+    contender beats the retained local MapLight+GIN comparator; the third
+    public family remains unused.**
 13. Independently review and freeze all completed public prediction families
     together, then score them together once. **Not reached; no public prediction
     family was produced or scored.**
-14. Freeze row-level comparator evidence and the honest scorecard. **Not
-    reached; the blocker report replaces a predictive scorecard.**
+14. Freeze row-level comparator evidence and the honest scorecard. **Local
+    shadow evidence is complete; bounded public confirmation remains pending.**
 15. Perform Tier 2 audits only if Tier 1 is early and clean. **Not started.**
 16. Update public documentation, obtain closeout review, and hand off on
     August 17. **Closeout documentation is complete; authoritative release

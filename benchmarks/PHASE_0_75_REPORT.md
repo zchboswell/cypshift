@@ -4,12 +4,13 @@ Date: 2026-08-11
 
 ## Result
 
-Phase 0.75 produced a positive fixed-representation result on the frozen
-chemistry-cluster-held-out shadow benchmark. With identical rows, CatBoost
-seed, and validation cells, the complete fixed MapLight representation improves
-macro AUPRC over raw-input binary Morgan by 0.0481 on scaffold holdout and
-0.0443 on community holdout. Paired grouped 95% intervals are [0.0372, 0.0583]
-and [0.0354, 0.0540]. All three CYP tasks improve under both protocols.
+Phase 0.75 produced positive fixed-representation and pretrained-GIN results on
+the frozen chemistry-cluster-held-out shadow benchmark. Fixed MapLight first
+improves macro AUPRC over raw-input binary Morgan by 0.0481 on scaffold holdout
+and 0.0443 on community holdout. Fixed MapLight plus GIN then improves over
+fixed MapLight by another 0.0614 and 0.0574. The paired GIN 95% intervals are
+[0.0526, 0.0703] and [0.0472, 0.0694]. All three CYP tasks improve under both
+protocols, and shuffled-GIN and random-noise controls do not reproduce the gain.
 
 The result required two preserved negative experiments and one narrowly
 authorized compatibility path. The safe implementation stopped on an Avalon
@@ -18,13 +19,12 @@ charge-descriptor `NaN`. D-027 preserved `NaN` unchanged only in the four
 diagnosed charge columns for pinned CatBoost; two independent full feature
 roots then matched byte-for-byte.
 
-The gain survives unique structure-task weighting, conflict exclusion,
+Both gains survive unique structure-task weighting, conflict exclusion,
 validation structures with no training neighbor at or above 0.60, and every
 predeclared influential-group absence check. This supports a fixed MapLight
-representation-value claim on the shadow benchmark. It does not establish
-MapLight+GIN superiority, public-test performance, clean external validation,
-or challenge transfer. The subsequent label-free GIN feature gate also passed,
-but no GIN predictive result exists yet.
+representation-value and pretrained-transfer claims on the shadow benchmark.
+They do not establish public-test performance, clean external validation, or
+challenge transfer.
 
 ## Stage B GIN feature gate
 
@@ -49,6 +49,45 @@ The raw-row audit validates the cache policy. Forty-one standardized hashes
 have multiple raw forms, but only two groups have identical GIN values. The
 largest absolute difference is 0.7140. Caching by standardized hash would
 silently substitute representations and is rejected.
+
+## Stage B GIN shadow result
+
+Eighteen isolated model cells completed the eight predeclared new fits per
+cell: GIN alone, fixed plus GIN at five seeds, fixed plus shuffled GIN, and
+fixed plus seeded noise. The immutable prediction manifest is `a9b78b38...`.
+It binds 144 fits, 36,045 validation rows, 324,405 finite probabilities, exact
+five-seed means, and zero validation-label or metric access during fitting.
+
+Macro point AUPRC was:
+
+| Protocol | Fixed seed 1 | GIN alone | Fixed + GIN seed 1 | Fixed + GIN mean | Shuffled GIN | Random noise |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Scaffold | 0.7876 | 0.8440 | 0.8489 | 0.8512 | 0.7784 | 0.7775 |
+| Community | 0.8003 | 0.8553 | 0.8577 | 0.8589 | 0.7896 | 0.7894 |
+
+Task-level fixed-plus-GIN seed-1 deltas for CYP2C9, CYP2D6, and CYP3A4 are
+`+0.0658`, `+0.0780`, and `+0.0402` on scaffold holdout and `+0.0697`,
+`+0.0645`, and `+0.0379` on community holdout. The maximum cell AUPRC is
+0.9319, below the mandatory 0.95 forensic trigger.
+
+Synchronized global-group bootstrap results are:
+
+| Protocol | Contrast | Point macro delta | Paired 95% interval |
+| --- | --- | ---: | ---: |
+| Scaffold | Fixed + GIN minus fixed | +0.0614 | [0.0526, 0.0703] |
+| Community | Fixed + GIN minus fixed | +0.0574 | [0.0472, 0.0694] |
+| Scaffold | Fixed + GIN minus shuffled GIN | +0.0705 | [0.0613, 0.0797] |
+| Community | Fixed + GIN minus shuffled GIN | +0.0681 | [0.0566, 0.0815] |
+| Scaffold | Fixed + GIN minus random noise | +0.0714 | [0.0620, 0.0813] |
+| Community | Fixed + GIN minus random noise | +0.0683 | [0.0570, 0.0811] |
+
+Primary macro deltas remain positive under unique-cell weighting
+(0.0613/0.0574), conflict exclusion (0.0612/0.0573), and the below-0.60-neighbor
+subset (0.0827/0.0738). The smallest predeclared absent-group macro lower bound
+is 0.0463. Every frozen keep-gate component passes. Because weight and
+pretraining-data licenses and exact TDC overlap remain unknown, the defensible
+claim is reproducible local pretrained-representation transfer—not clean
+zero-shot generalization or automatic challenge eligibility.
 
 ## Frozen shadow benchmark
 
@@ -184,17 +223,21 @@ builds, 30,798 exact-raw featurizations, and two retained 30,038-by-300 arrays.
 It parsed zero targets and performed zero model fits, predictions, metrics,
 public-test operations, Hugging Face model loads, or challenge assumptions.
 
+Stage B prediction and inference add 144 model fits, 144 model vectors, 18
+five-seed mean vectors, 198 point AUPRC calls, 108 sensitivity calls, and
+144,000 grouped-bootstrap calls. The scorer parsed 30,038 frozen train-only
+labels and generated no new fit or prediction. Public-test rows, labels, and
+family-task slots remain zero; challenge assumptions remain zero.
+
 ## Scientific conclusion
 
-The fixed-representation hypothesis is supported: complementary MapLight blocks
-materially improve CYP ranking beyond binary Morgan under both frozen shadow
-protocols. The result is not explained by duplicate weighting, conflicting
-cells, close neighbors, or one large chemistry group.
-
-The next permissible step is only the predeclared Stage B shadow controls.
-The weight, environment, exact-raw behavior, parity, and repeat gates pass;
-rights and contamination remain explicitly unknown. The fixed and GIN feature
-results authorize no public-test scoring and no challenge model.
+Both hypotheses are supported: complementary fixed MapLight blocks materially
+improve ranking beyond binary Morgan, and the pinned GIN representation adds a
+second orthogonal gain. Neither result is explained by duplicate weighting,
+conflicting cells, close neighbors, shuffled vectors, random noise, or one
+large chemistry group. Rights and contamination remain explicitly unknown.
+The result authorizes only jointly frozen label-free public prediction families;
+it does not authorize sequential public-test tuning or a challenge model.
 
 ## Handoff
 
