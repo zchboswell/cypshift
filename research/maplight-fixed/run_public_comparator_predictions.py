@@ -567,13 +567,17 @@ def _public_fixed(
         raw_by_hash[key] = row["raw_structure"]
         inverse_hashes.append(key)
     hashes = sorted(raw_by_hash)
+
+    def block_completed(_name: str) -> None:
+        accounting["public_fixed_block_arrays_generated"] += 1
+
     unique, overflow = features.featurize_raw_structures_upstream_int8(
         tuple(raw_by_hash[key] for key in hashes),
         tuple(hashes),
+        block_completed=block_completed,
         nonfinite_policy="allow_gasteiger_charge_nan",
     )
     accounting["public_fixed_exact_raw_featurizations"] = len(hashes)
-    accounting["public_fixed_block_arrays_generated"] = 5
     index = {key: position for position, key in enumerate(hashes)}
     inverse = np.asarray([index[key] for key in inverse_hashes], dtype=np.int64)
     arrays: list[np.ndarray[Any, Any]] = []
@@ -593,8 +597,8 @@ def _public_fixed(
             _require(bool(np.isfinite(array).all()), f"public nonfinite block: {name}")
         path = staging / f"{name}.npy"
         _write_npy(path, array)
-        records[name] = _array_record(path, array)
         accounting["public_fixed_block_arrays_persisted"] += 1
+        records[name] = _array_record(path, array)
         arrays.append(array)
     fixed = np.ascontiguousarray(np.concatenate(arrays, axis=1))
     _require(fixed.shape == (TOTAL_ROWS, 2563), "public fixed dimensions differ")
@@ -631,12 +635,12 @@ def _public_gin(
     )
     target = staging / "gin.npy"
     shutil.copyfile(worker / "gin.npy", target)
+    accounting["public_gin_arrays_persisted"] = 1
     worker_receipt = staging / "gin_worker_receipt.json"
     shutil.copyfile(worker / "gin_worker_receipt.json", worker_receipt)
     record = _array_record(target, np.asarray(array))
     record["worker_receipt_path"] = worker_receipt.name
     record["worker_receipt_sha256"] = _sha256(worker_receipt)
-    accounting["public_gin_arrays_persisted"] = 1
     shutil.rmtree(worker)
     return np.asarray(array), record
 

@@ -6,9 +6,11 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, cast
 
 import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNNER = ROOT / "research/maplight-fixed/run_public_comparator_predictions.py"
@@ -146,3 +148,97 @@ def test_repeat_manifest_ignores_only_declared_attempt_observations() -> None:
     assert module._repeat_comparable_manifest(
         first
     ) != module._repeat_comparable_manifest(second)
+
+
+def test_fixed_feature_failure_counts_completed_blocks(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    module = _module()
+
+    def fail_after_two_blocks(
+        _raw: tuple[str, ...],
+        _hashes: tuple[str, ...],
+        *,
+        block_completed: Any,
+        nonfinite_policy: str,
+    ) -> None:
+        assert nonfinite_policy == "allow_gasteiger_charge_nan"
+        block_completed("binary_morgan")
+        block_completed("morgan_count")
+        raise RuntimeError("synthetic feature boundary")
+
+    monkeypatch.setattr(
+        module,
+        "_features",
+        lambda: SimpleNamespace(
+            featurize_raw_structures_upstream_int8=fail_after_two_blocks
+        ),
+    )
+    raw = "CC"
+    rows = [
+        {
+            "raw_structure": raw,
+            "raw_structure_sha256": hashlib.sha256(raw.encode()).hexdigest(),
+        }
+    ]
+    accounting = {"public_fixed_block_arrays_generated": 0}
+    with pytest.raises(RuntimeError, match="synthetic feature boundary"):
+        module._public_fixed(rows, tmp_path, accounting)
+    assert accounting["public_fixed_block_arrays_generated"] == 2
+
+
+def test_fixed_persistence_is_counted_before_receipt_validation(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    module = _module()
+    monkeypatch.setattr(module, "TOTAL_ROWS", 1)
+    arrays = {
+        name: np.zeros(
+            (1, width),
+            dtype=np.float64 if name in {"erg", "rdkit_descriptors"} else np.int8,
+        )
+        for name, width in zip(module.FIXED_BLOCKS, module.FIXED_WIDTHS, strict=True)
+    }
+
+    def feature_result(
+        _raw: tuple[str, ...],
+        _hashes: tuple[str, ...],
+        *,
+        block_completed: Any,
+        nonfinite_policy: str,
+    ) -> tuple[Any, dict[str, Any]]:
+        assert nonfinite_policy == "allow_gasteiger_charge_nan"
+        for name in ("binary_morgan", *module.FIXED_BLOCKS):
+            block_completed(name)
+        return SimpleNamespace(**arrays), {}
+
+    monkeypatch.setattr(
+        module,
+        "_features",
+        lambda: SimpleNamespace(featurize_raw_structures_upstream_int8=feature_result),
+    )
+    monkeypatch.setattr(
+        module, "_write_npy", lambda path, _array: path.write_bytes(b"npy")
+    )
+
+    def fail_receipt(_path: Path, _array: np.ndarray[Any, Any]) -> None:
+        raise RuntimeError("bad receipt")
+
+    monkeypatch.setattr(module, "_array_record", fail_receipt)
+    raw = "CC"
+    rows = [
+        {
+            "raw_structure": raw,
+            "raw_structure_sha256": hashlib.sha256(raw.encode()).hexdigest(),
+        }
+    ]
+    accounting = {
+        "public_fixed_block_arrays_generated": 0,
+        "public_fixed_block_arrays_persisted": 0,
+        "public_fixed_exact_raw_featurizations": 0,
+    }
+    with pytest.raises(RuntimeError, match="bad receipt"):
+        module._public_fixed(rows, tmp_path, accounting)
+    assert accounting["public_fixed_block_arrays_generated"] == 5
+    assert accounting["public_fixed_exact_raw_featurizations"] == 1
+    assert accounting["public_fixed_block_arrays_persisted"] == 1
