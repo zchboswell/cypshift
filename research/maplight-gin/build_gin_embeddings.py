@@ -122,7 +122,7 @@ def _clean_revision() -> str:
 def _contract() -> dict[str, Any]:
     contract = _load_json(CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "cypshift.maplight_gin_contract.v2",
+        contract.get("schema_version") == "cypshift.maplight_gin_contract.v3",
         "unexpected contract schema",
     )
     return contract
@@ -193,6 +193,9 @@ def _verify_environment(contract: dict[str, Any]) -> dict[str, str]:
         _require(version == expected, f"version drift: {distribution}")
         observed[name] = version
     os.environ["DGLBACKEND"] = "pytorch"
+    os.environ["HF_HUB_OFFLINE"] = "1"
+    os.environ["TRANSFORMERS_OFFLINE"] = "1"
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
     return observed
 
 

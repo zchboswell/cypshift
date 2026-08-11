@@ -17,3 +17,9 @@ The first fixture attempt is preserved as a pre-embedding blocker: MolFeat
 0.9.2 imports `python-dotenv` but omits it from its published runtime
 dependencies. The v2 environment adds pinned `python-dotenv==1.0.0`; this is
 an infrastructure repair only and changes no representation rule.
+
+The v2 attempt is also preserved before embedding: MolFeat's package
+initializer imports its optional Hugging Face module even on the DGL-only
+path. The v3 environment therefore installs MolFeat's own declared
+`transformer` extra solely to make the package importable. No Hugging Face
+model, tokenizer, weight, network request, or representation is used.

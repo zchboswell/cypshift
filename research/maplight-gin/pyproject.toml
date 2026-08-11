@@ -6,7 +6,7 @@ dependencies = [
     "catboost==1.2.1",
     "dgl==1.1.2",
     "dgllife==0.3.2",
-    "molfeat==0.9.2",
+    "molfeat[dgl,transformer]==0.9.2",
     "numpy==1.25.2",
     "pandas==2.0.3",
     "python-dotenv==1.0.0",

@@ -21,7 +21,7 @@ def _contract() -> dict[str, object]:
 
 def test_gin_contract_binds_tracked_sources_and_one_representation() -> None:
     contract = _contract()
-    assert contract["schema_version"] == "cypshift.maplight_gin_contract.v2"
+    assert contract["schema_version"] == "cypshift.maplight_gin_contract.v3"
     parents = contract["parents"]
     for name in ("maplight_source_contract", "fixture"):
         record = parents[name]
@@ -53,7 +53,7 @@ def test_gin_environment_is_isolated_and_fully_locked() -> None:
     root_project = tomllib.loads((ROOT / "pyproject.toml").read_text())
     heavy = {"catboost", "dgl", "dgllife", "molfeat", "torch"}
     research_names = {
-        dependency.split("==", maxsplit=1)[0]
+        dependency.split("[", maxsplit=1)[0].split("==", maxsplit=1)[0]
         for dependency in research_project["project"]["dependencies"]
     }
     root_names = {
@@ -64,6 +64,11 @@ def test_gin_environment_is_isolated_and_fully_locked() -> None:
     }
     assert heavy <= research_names
     assert "python-dotenv" in research_names
+    assert "transformers" not in root_names
+    assert any(
+        dependency.startswith("molfeat[dgl,transformer]")
+        for dependency in research_project["project"]["dependencies"]
+    )
     assert heavy.isdisjoint(root_names)
     assert research_project["project"]["requires-python"] == "==3.10.*"
     assert research_project["tool"]["uv"]["package"] is False
