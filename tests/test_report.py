@@ -29,8 +29,8 @@ def test_report_is_deterministic_and_states_limitations(tmp_path: Path) -> None:
 
     assert first_report.read_bytes() == second_report.read_bytes()
     content = first_report.read_text(encoding="utf-8")
-    assert "Synthetic vertical-slice report" in content
-    assert "no competition score" in content
+    assert "CYP prediction run report" in content
+    assert "not evidence of biological performance" in content
     assert "endpoint_context_median" in content
     assert "no_uncensored_numeric_training_measurement" in content
     assert "Unsupported model contexts" in content

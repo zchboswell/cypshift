@@ -5,13 +5,16 @@
 Before changing the repository, read in order:
 
 1. `docs/strategy/PROJECT_STATE.md`
-2. the active file in `docs/phases/`
+2. `docs/phases/README.md` and the active phase file, when one exists
 3. `docs/strategy/PROJECT_CHARTER.md`
 4. relevant entries in `docs/strategy/DECISIONS.md`
 
 Treat `PROJECT_STATE.md` as the concise current truth. Update it whenever a
 milestone changes the phase, best validated system, evidence, risks, or next
 action.
+
+Completed plans under `docs/archive/` are historical evidence, not active
+instructions.
 
 ## Work contract
 

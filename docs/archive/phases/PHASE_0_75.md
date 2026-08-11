@@ -188,9 +188,9 @@ them, with grouped inner selection inside each outer training population. The
 exact grouping, balancing, tie, seed, nesting, and failure rules must be
 receipt-bound before execution. Random splits remain diagnostic only and cannot
 select a candidate. The exact pre-result split contract is
-[`tdc_cyp_shadow_v1_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_contract.json).
+[`tdc_cyp_shadow_v1_contract.json`](../../../benchmarks/tdc_cyp_shadow_v1_contract.json).
 The companion
-[`tdc_cyp_shadow_v1_implementation_contract.json`](../../benchmarks/tdc_cyp_shadow_v1_implementation_contract.json)
+[`tdc_cyp_shadow_v1_implementation_contract.json`](../../../benchmarks/tdc_cyp_shadow_v1_implementation_contract.json)
 freezes the exact join, numeric ordering, provenance-access boundary, artifact
 schemas, serialization, runtime environment, and synthetic mechanics fixtures.
 It permits no real generation until the implementation passes independent
@@ -267,7 +267,7 @@ The public CLI remains exactly `audit`, `train`, `predict`, and `report`.
 ## Stage A — fixed MapLight reproduction
 
 The pre-result Stage A contract is
-[`maplight_fixed_stage_a_contract.json`](../../benchmarks/maplight_fixed_stage_a_contract.json).
+[`maplight_fixed_stage_a_contract.json`](../../../benchmarks/maplight_fixed_stage_a_contract.json).
 It freezes a result-blind compatible environment under
 `research/maplight-fixed/`: Python 3.10.13, RDKit 2023.03.3, CatBoost 1.2.1,
 NumPy 1.25.2, pandas 2.0.3, scikit-learn 1.3.0, and SciPy 1.11.2. All
@@ -381,7 +381,7 @@ metrics, public-test operations, or challenge assumptions. It authorizes only
 the five already declared shadow controls.
 
 The direct control execution contract is
-[`maplight_gin_stage_b_contract.json`](../../benchmarks/maplight_gin_stage_b_contract.json).
+[`maplight_gin_stage_b_contract.json`](../../../benchmarks/maplight_gin_stage_b_contract.json).
 It reuses the immutable fixed MapLight predictions and authorizes exactly 144
 new fits: GIN alone at seed 1; fixed plus GIN at seeds 1 through 5; fixed plus
 one deterministic exact-raw-vector shuffle at seed `20260816`; and fixed plus
@@ -624,9 +624,9 @@ ExtraTrees E1 is not authorized on the exact missing-value matrix and supports
 no estimator-effect claim.
 
 The tracked diagnostic receipt is
-[`maplight_fixed_nan_diagnosis.json`](../../benchmarks/receipts/maplight_fixed_nan_diagnosis.json).
+[`maplight_fixed_nan_diagnosis.json`](../../../benchmarks/receipts/maplight_fixed_nan_diagnosis.json).
 The result-blind execution contract is
-[`maplight_fixed_nan_compat_contract.json`](../../benchmarks/maplight_fixed_nan_compat_contract.json).
+[`maplight_fixed_nan_compat_contract.json`](../../../benchmarks/maplight_fixed_nan_compat_contract.json).
 
 The D-027 feature gate passed at signed source `9d6b719`. Two fresh builds
 processed all 30,038 rows from 15,399 exact raw inputs and retained five arrays

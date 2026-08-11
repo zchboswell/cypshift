@@ -1,4 +1,15 @@
-# Public benchmark contracts
+# Benchmark evidence
+
+This directory is the detailed evidence index, not the user guide. For a short
+scientific reading path, begin with
+[`docs/VALIDATION.md`](../docs/VALIDATION.md), then read the
+[Phase 0.75 representation report](PHASE_0_75_REPORT.md). The sections below
+preserve exact contracts, source revisions, hashes, blockers, and reproduction
+commands for audit.
+
+The retained result is a locally reproduced fixed MapLight plus GIN comparator.
+It is a global molecular reference for the future series-first experiment, not
+an original `cypshift` architecture or a clinical model.
 
 `public_sources.json` is the tracked source-of-truth for Phase 0.5 public data.
 It pins source revisions, URLs, licenses, file sizes, SHA-256 digests, row

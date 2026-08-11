@@ -1,4 +1,4 @@
-"""Deterministic Phase 0 split, median baseline, and prediction artifacts."""
+"""Deterministic reference split, median baseline, and prediction artifacts."""
 
 from __future__ import annotations
 

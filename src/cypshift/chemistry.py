@@ -1,4 +1,4 @@
-"""Small, explicit molecule standardization used by the Phase 0 audit."""
+"""Small, explicit molecule standardization used by the core audit."""
 
 from __future__ import annotations
 

@@ -18,7 +18,7 @@ and validation groups must be frozen first.
 
 The dated TDC leader is MapLight + GNN at AUPRC 0.859, 0.790, and 0.916 for
 CYP2C9, CYP2D6, and CYP3A4 Veith. The exact pages and captured anchors are in
-[`benchmarks/public_sources.json`](../../benchmarks/public_sources.json).
+[`benchmarks/public_sources.json`](../../../benchmarks/public_sources.json).
 
 The public implementation is
 [`maplightrx/MapLight-TDC`](https://github.com/maplightrx/MapLight-TDC). The
@@ -41,7 +41,7 @@ fingerprints*](https://arxiv.org/abs/2310.00174).
 
 The authoritative Phase 0.75 source, paper, method, anchor, environment-gap,
 and claim freeze is
-[`benchmarks/maplight_source_contract.json`](../../benchmarks/maplight_source_contract.json).
+[`benchmarks/maplight_source_contract.json`](../../../benchmarks/maplight_source_contract.json).
 It records zero features, fits, predictions, label parses, and evaluations.
 
 ## Exact published method

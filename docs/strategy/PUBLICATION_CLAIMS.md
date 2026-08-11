@@ -104,9 +104,9 @@ not establish the historical MapLight environment, predictive value,
 superiority, or challenge relevance. A later comparator claim requires two
 matching real feature roots and the complete frozen shadow evaluation.
 
-### Exact reproduction claim
+### Exact reproduction claim — supported
 
-Proposed claim:
+Supported claim:
 
 > A locally reproduced MapLight comparator matches the pinned public method on
 > identical TDC rows within the declared tolerance.
@@ -123,12 +123,16 @@ Required evidence:
   diagnostic tolerance;
 - a precise version-drift record when tolerance is not met.
 
-Rejection condition: agreement requires score-driven tuning, row changes,
-unfrozen defaults, or unverifiable dependencies.
+Evidence: fixed MapLight reaches five-seed AUPRC 0.786, 0.720, and 0.881, and
+fixed plus GIN reaches 0.858, 0.791, and 0.916 on CYP2C9, CYP2D6, and CYP3A4.
+All six values are within 0.003 of their dated anchors. Two label-free public
+prediction roots are byte-identical, and the bounded scorer opened labels only
+after independent review. Historical environment and PyTDC gaps remain
+disclosed.
 
-### Representation-value claim
+### Representation-value claim — supported on the frozen shadow benchmark
 
-Proposed claim:
+Supported claim:
 
 > Richer complementary molecular representations improve CYP ranking beyond
 > estimator diversity over binary ECFP under leakage-safe grouped validation.
@@ -147,15 +151,17 @@ Required evidence:
 Rejection condition: gain is absent on the shadow benchmark, isolated to one
 group, reproduced by a control, or explained by a simpler feature block.
 
-Current evidence supports the fixed-representation portion of this claim. R5
-seed 1 improves macro AUPRC over R1 seed 1 by 0.0481 on scaffold holdout and
+R5 seed 1 improves macro AUPRC over R1 seed 1 by 0.0481 on scaffold holdout and
 0.0443 on community holdout, with paired 95% intervals [0.0372, 0.0583] and
-[0.0354, 0.0540]. Every task improves under both protocols, and the direction
-survives unique-cell weighting, conflict exclusion, the below-0.60-neighbor
-subset, and all predeclared influential-group checks. Do not extend this claim
-to GIN, a public test, state of the art, or the OpenADMET challenge.
+[0.0354, 0.0540]. Fixed plus GIN then improves over fixed by 0.0614 and 0.0574,
+with paired intervals [0.0526, 0.0703] and [0.0472, 0.0694]. Every task
+improves under both protocols. Unique-cell weighting, conflict exclusion,
+below-0.60-neighbor subsets, influential-group checks, shuffled GIN, and random
+noise preserve the conclusion. The supported statement is local
+pretrained-representation transfer; exact pretraining overlap and rights remain
+unknown.
 
-### Final public-comparator superiority claim
+### Final `cypshift` superiority claim — not yet tested
 
 Proposed claim:
 

@@ -8,9 +8,9 @@ Build `cypshift`, an open-source Python package that makes competitive,
 scientifically defensible, reproducible CYP inhibition predictions while
 remaining useful to chemists after the competition.
 
-In one sentence:
+In one sentence, the project aims to build a system that:
 
-> The system reconstructs hidden analog campaigns, predicts where each model is
+> reconstructs hidden analog campaigns, predicts where each model is
 > likely to fail, and makes the simplest defensible CYP prediction.
 
 ## Primary scientific thesis
@@ -30,6 +30,13 @@ The intended contributions are, in priority order:
 
 These are hypotheses, not established claims. `PUBLICATION_CLAIMS.md` defines
 their evidence requirements.
+
+## Current implementation boundary
+
+The repository currently contains the audited data-to-report product path and a
+reproduced strong global molecular comparator. It does not yet contain a
+validated measured-parent predictor or competence gate. Those remain the
+primary scientific tests, not implied capabilities of the present CLI.
 
 ## Endpoint scope
 

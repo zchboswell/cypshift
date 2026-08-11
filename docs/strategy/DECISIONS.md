@@ -34,23 +34,22 @@
 - Reversal condition: OpenADMET publishes an earlier resource explicitly marked
   final and authoritative.
 
-## D-004 — Private, signed, milestone-based development
+## D-004 — Signed, milestone-based development
 
 - Date: 2026-08-09
-- Status: accepted
-- Decision: Develop in a private personal repository using signed commits,
-  short-lived branches, focused pull requests, and frequent passing milestone
-  pushes.
-- Evidence: This provides a clean timecourse without exposing provisional work
-  or restricted data.
+- Status: accepted; repository is now public
+- Decision: Develop using signed commits, short-lived branches, focused pull
+  requests, and frequent passing milestone pushes. The repository began as a
+  private personal repository and was made public after the Phase 0 licensing
+  and disclosure checks passed.
+- Evidence: Signed milestone commits and focused reviews provide a clean
+  timecourse. Restricted data and generated artifacts remain outside Git.
 - Alternatives: Public-from-start development; direct pushes to `main`.
-- Reversal condition: Make the repository public after Phase 0, data licensing,
-  and disclosure checks pass.
-- Implementation note: GitHub returned a plan restriction when branch
-  protection was requested for the private personal repository. Until the
-  repository becomes public or the account plan changes, every post-bootstrap
-  change must still use a branch and pull request by procedure; force-pushes and
-  unreviewed direct `main` updates remain prohibited by project policy.
+- Reversal condition: None for public status; move sensitive work to separately
+  controlled storage if a future data license requires it.
+- Implementation note: Every post-bootstrap change uses a branch and pull
+  request by procedure; force-pushes and unreviewed direct `main` updates remain
+  prohibited by project policy.
 - Merge procedure: GitHub's hosted rebase merge was tested on PR 1 and rewrote
   the SSH-signed branch commit as unsigned. Future pull requests are integrated
   only after review by fast-forwarding the signed branch commit locally and
@@ -828,3 +827,25 @@
   permissions, validator, and challenge-faithful family split before any fit or
   score. No TDC representation, model, threshold, or result transfers
   automatically.
+
+## D-030 — Separate the public product narrative from historical execution
+
+- Date: 2026-08-11
+- Status: accepted
+- Decision: Make the root README a pragmatic description of the tool, current
+  capabilities, evidence, limitations, and series-first direction. Keep current
+  usage, science, validation, and state documents short and purpose-specific.
+  Move completed phase plans and superseded intake notes into a clearly labeled
+  archive without deleting their evidence or chronology.
+- Evidence: The prior README read as a phase handoff, all completed plans
+  appeared active, and `PROJECT_STATE.md` exceeded 1,000 lines despite being the
+  designated concise source of truth. An external reader could not readily
+  distinguish the installable product, validated comparator, untested thesis,
+  and historical process.
+- Boundary: Benchmark reports, contracts, receipts, the experiment ledger, and
+  negative results remain intact. Archival changes navigation, not scientific
+  interpretation. The README must state that the public CLI is a reference
+  baseline and that parent-relative prediction is not yet validated.
+- Reversal condition: Restore or split a document only if an external reader
+  cannot recover the current guidance or the archived evidence through stable
+  links.

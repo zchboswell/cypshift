@@ -70,7 +70,7 @@ class MoleculeInput:
         values["structure"] = _required_raw_text(row, "structure")
         if values["structure_format"].lower() != "smiles":
             raise RecordError(
-                "structure_format must be 'smiles' in the Phase 0 adapter; "
+                "structure_format must be 'smiles' in the current adapter; "
                 f"got {values['structure_format']!r}"
             )
         values["structure_format"] = "smiles"

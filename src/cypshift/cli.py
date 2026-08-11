@@ -44,7 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     train_parser = commands.add_parser(
-        "train", help="fit the Phase 0 endpoint-context median"
+        "train", help="fit the reference endpoint-context median"
     )
     train_parser.add_argument(
         "--data", required=True, type=Path, help="audited data directory"
@@ -60,7 +60,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     predict_parser = commands.add_parser(
-        "predict", help="generate Phase 0 median predictions"
+        "predict", help="generate reference median predictions"
     )
     predict_parser.add_argument(
         "--data", required=True, type=Path, help="audited data directory"

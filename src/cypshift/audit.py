@@ -155,7 +155,7 @@ def _read_csv(path: Path, expected_columns: Sequence[str]) -> list[dict[str, str
             actual_columns = tuple(reader.fieldnames or ())
             if actual_columns != tuple(expected_columns):
                 raise AuditError(
-                    f"{path.name} columns do not match the Phase 0 adapter. "
+                    f"{path.name} columns do not match the current adapter. "
                     f"Expected {list(expected_columns)!r}; got {list(actual_columns)!r}."
                 )
             rows = []

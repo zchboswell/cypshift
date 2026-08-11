@@ -1,4 +1,4 @@
-"""Deterministic static report for a completed Phase 0 run."""
+"""Deterministic static report for a completed reference run."""
 
 from __future__ import annotations
 
@@ -52,7 +52,7 @@ def render_report(
     model: Mapping[str, Any],
     manifest: Mapping[str, Any],
 ) -> str:
-    """Render validated Phase 0 records into deterministic standalone HTML."""
+    """Render validated reference records into deterministic standalone HTML."""
 
     audit_summary = _mapping(audit, "summary")
     model_summary = _mapping(model, "fit_summary")
@@ -146,17 +146,18 @@ def render_report(
             "<head>",
             '<meta charset="utf-8">',
             '<meta name="viewport" content="width=device-width, initial-scale=1">',
-            "<title>cypshift Phase 0 run report</title>",
+            "<title>cypshift reference run report</title>",
             f"<style>{_STYLE}</style>",
             "</head>",
             "<body>",
             "<main>",
-            '<p class="eyebrow">cypshift / Phase 0</p>',
-            "<h1>Synthetic vertical-slice report</h1>",
+            '<p class="eyebrow">cypshift / auditable reference</p>',
+            "<h1>CYP prediction run report</h1>",
             (
-                '<p class="lede">This report verifies pipeline and provenance '
-                "mechanics on invented data. It contains no competition score, "
-                "biological performance claim, or challenge-faithful validation.</p>"
+                '<p class="lede">This report verifies a deterministic reference '
+                "run and its provenance. The endpoint-context median is a baseline, "
+                "not evidence of biological performance; use it only with validated "
+                "data, endpoints, and evaluation.</p>"
             ),
             _section("Run summary", _table(("Field", "Value"), facts)),
             _section(
