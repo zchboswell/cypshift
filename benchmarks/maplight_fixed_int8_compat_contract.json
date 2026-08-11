@@ -1,0 +1,176 @@
+{
+  "schema_version": "cypshift.maplight_fixed_int8_compat_contract.v1",
+  "phase": "0.75",
+  "status": "pre_result_frozen",
+  "authorization": {
+    "authorized_by": "project_owner",
+    "authorized_at_utc": "2026-08-11T02:27:58Z",
+    "scope": "One separate exact-upstream signed-int8 compatibility experiment.",
+    "does_not_repair_or_replace_safe_experiment": true
+  },
+  "objective": "Determine whether the pinned MapLight fixed representation can be generated on all frozen shadow rows when Morgan and Avalon counts use the pinned upstream zero-length numpy.int8 conversion exactly.",
+  "hypothesis": "Exact upstream signed-int8 conversion yields two byte-identical, row-aligned, label-free 2,563-value feature roots without changing any other Stage A input or feature rule.",
+  "targeted_failure_mode": "The exact upstream conversion may drift, fail, or produce nondeterministic wrapped count arrays on real rows.",
+  "parents": {
+    "safe_stage_a_contract": {
+      "path": "benchmarks/maplight_fixed_stage_a_contract.json",
+      "sha256": "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
+    },
+    "safe_blocker_record": {
+      "path": "benchmarks/receipts/maplight_fixed_stage_a_feature_blocker.json",
+      "sha256": "c69bd826dabb986cd7bcc084513f1782144f916b871cde2717e5c8f41cf601a7"
+    },
+    "safe_blocker_artifact": {
+      "path": "artifacts/blockers/maplight-fixed-stage-a-features-v1-build-1-blocker/failure_receipt.json",
+      "sha256": "f52762005d152ea5d1bce241dca7428429368220648bf60af583325b45696009"
+    },
+    "parity_receipt": {
+      "path": "artifacts/benchmarks/maplight-fixed-stage-a-parity-v1/parity_receipt.json",
+      "sha256": "68ee584ac87c53cdc896db6b593f3d84376e8b59573252bd6859192dfa0e94d4"
+    }
+  },
+  "frozen_inputs": {
+    "shadow_rows": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_rows.csv",
+      "sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f",
+      "rows": 30038,
+      "unique_exact_raw_inputs": 15399
+    },
+    "shadow_manifest": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_manifest.json",
+      "sha256": "3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656"
+    },
+    "maplight_source_revision": "c249378c63232354d17083c83fe94fe728960a27",
+    "environment": {
+      "python": "3.10.13",
+      "rdkit": "2023.3.3",
+      "numpy": "1.25.2",
+      "platform": "Darwin arm64 CPU",
+      "project_sha256": "20addcbfa3d7dbfa5d3a9f24f3090c22f11b556166213b2649c6c55e58556234",
+      "lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+      "python_pin_sha256": "3817f125779f46c574b17c4adbdd0975ef8c32ae92509fed295212797d314d6a"
+    }
+  },
+  "sole_scientific_change": {
+    "blocks": [
+      "morgan_count",
+      "avalon_count"
+    ],
+    "conversion": "Pass each pinned RDKit sparse count fingerprint to rdkit.DataStructs.ConvertToNumpyArray with a zero-length C-contiguous numpy.int8 buffer, exactly as the pinned MapLight source does.",
+    "preconversion_validation": "Require sparse indices and counts to be non-boolean integers, indices to be within the declared 1,024 dimensions, and counts to be nonnegative. Do not impose an upper count bound.",
+    "overflow_semantics": "Values above 127 use the pinned RDKit and NumPy signed-int8 conversion result. Do not widen, clip, binarize, post-correct, or reinterpret the resulting bytes.",
+    "required_witness": {
+      "operation": "Convert a four-dimensional RDKit UIntSparseIntVect with bin 1 set to 144 through a zero-length numpy.int8 buffer.",
+      "expected_int8_value_at_bin_1": -112,
+      "purpose": "Prove the exact overflow boundary before any real-row compatibility build."
+    }
+  },
+  "unchanged_rules": {
+    "raw_input_policy": "Use each exact frozen raw TDC Drug string with Chem.MolFromSmiles defaults. Cache only by the exact raw UTF-8 bytes and raw SHA-256; never by standardized hash.",
+    "blocks": [
+      "binary_morgan",
+      "morgan_count",
+      "avalon_count",
+      "erg",
+      "rdkit_descriptors"
+    ],
+    "persisted_dimensions": {
+      "binary_morgan": 2048,
+      "morgan_count": 1024,
+      "avalon_count": 1024,
+      "erg": 315,
+      "rdkit_descriptors": 200,
+      "maplight_fixed_derived": 2563
+    },
+    "descriptor_order_sha256": "76ed228002c5cd229e4cbd8d62c3b3a49d698425a5216884c5c7b1b337f4293a",
+    "nonfinite_policy": "Reject any NaN or infinity.",
+    "row_policy": "Preserve all 30,038 official train_val rows, including duplicates and conflicting structure-task cells, in frozen row order.",
+    "resource_limit": {
+      "wall_seconds_per_build": 3600,
+      "peak_rss_gib_per_build": 8
+    }
+  },
+  "execution": {
+    "build_ids": [
+      1,
+      2
+    ],
+    "sequential": true,
+    "output_roots": [
+      "artifacts/benchmarks/maplight-fixed-upstream-int8-features-v1-build-1",
+      "artifacts/benchmarks/maplight-fixed-upstream-int8-features-v1-build-2"
+    ],
+    "failure_roots": [
+      "artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-1-blocker",
+      "artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-2-blocker"
+    ],
+    "success_files_per_root": [
+      "feature_rows.csv",
+      "binary_morgan.npy",
+      "morgan_count.npy",
+      "avalon_count.npy",
+      "erg.npy",
+      "rdkit_descriptors.npy",
+      "feature_manifest.json"
+    ],
+    "repeat_gate": "Before any model work, require identical feature_rows.csv bytes and identical bytes for all five block arrays. Manifests may differ only in build_id, runtime_seconds, and peak_rss_gib.",
+    "atomic_read_only_outputs": true
+  },
+  "overflow_receipt": {
+    "record_for_each_count_block": [
+      "maximum_preconversion_count",
+      "unique_raw_rows_with_counts_above_127",
+      "bins_above_127",
+      "minimum_converted_int8_value",
+      "maximum_converted_int8_value"
+    ],
+    "record_no_raw_structure": true
+  },
+  "firewall": {
+    "allowed_scientific_inputs": [
+      "frozen label-free shadow_rows.csv",
+      "frozen shadow manifest",
+      "frozen parity receipt",
+      "frozen MapLight source",
+      "frozen compatible environment"
+    ],
+    "forbidden": [
+      "measurement or target files",
+      "public-test rows or labels",
+      "model fitting",
+      "predictions",
+      "metric evaluation",
+      "GIN weights",
+      "challenge assumptions"
+    ]
+  },
+  "accounting_before_execution": {
+    "compatibility_feature_builds": 0,
+    "persisted_block_arrays": 0,
+    "target_values_parsed": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "metric_evaluations": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "gin_weight_bytes_downloaded": 0,
+    "challenge_assumptions_added": 0
+  },
+  "acceptance": [
+    "The exact signed-int8 witness passes under the frozen compatible environment.",
+    "Both real builds complete with 30,038 row-aligned rows and five block arrays of the declared dimensions and dtypes.",
+    "The two row files and ten corresponding array files are byte-identical across builds.",
+    "Both manifests bind the same contract, source, environment, parity, shadow, code, and output hashes.",
+    "Every overflow statistic is recorded and agrees across builds.",
+    "No label, model, prediction, metric, GIN, challenge, or public-test operation occurs."
+  ],
+  "stopping_rules": [
+    "Stop on any contract, source, environment, parity, shadow, revision, row, hash, schema, dimension, dtype, finiteness, resource, or repeat mismatch.",
+    "Stop if the signed-int8 witness does not equal -112 at bin 1.",
+    "Stop if any rule other than the declared count upper-bound behavior must change.",
+    "Preserve a compact immutable failure receipt and do not repair after seeing any model or metric result."
+  ],
+  "next_gate": "Independent review of this pre-result contract and its implementation is required before the signed-int8 witness or any real compatibility feature row is generated. Independent review of both completed feature roots is required before any Stage A model fit.",
+  "reversal_condition": "Reject this experiment if it cannot reproduce the exact upstream signed-int8 bytes without another scientific change. Never rewrite or delete the safe experiment or its blocker."
+}

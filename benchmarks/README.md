@@ -79,7 +79,13 @@ conversion and explicitly forbids wrapping. The parity receipt is
 `c69bd826...`). No second build, model fit, prediction, metric, or public-test
 action occurred.
 
-These five tracked contracts control the frozen shadow artifact, Stage A, and
+`maplight_fixed_int8_compat_contract.json` freezes the separately authorized
+exact-upstream compatibility experiment. It permits only the pinned
+zero-length signed-`int8` conversion for Morgan and Avalon counts. The failed
+safe experiment remains immutable. No compatibility feature row may be
+generated until independent pre-result review passes.
+
+These six tracked contracts control the frozen shadow artifact, Stage A, and
 future public-test use. The completed shadow run records zero feature matrices,
 fits, predictions, public-test label parses, and metric evaluations.
 

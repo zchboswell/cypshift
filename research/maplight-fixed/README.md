@@ -25,3 +25,9 @@ stopped before retaining a matrix because one Avalon sparse count exceeded the
 predeclared safe range. Do not rerun build 1 or start build 2. The builder now
 enforces that stop before build 2 can resolve any scientific input. It has no
 measurement, target, model, prediction, or public-test argument.
+
+The project owner separately authorized an exact-upstream signed-`int8`
+compatibility experiment. Its contract is
+`benchmarks/maplight_fixed_int8_compat_contract.json`. This does not reopen the
+safe build. Compatibility execution remains forbidden until the new contract
+and minimal implementation pass independent pre-result review.

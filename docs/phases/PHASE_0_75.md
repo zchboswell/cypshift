@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — fixed comparator blocked by frozen Avalon count-safety rule
+Status: active — exact-upstream signed-int8 compatibility experiment authorized
 
 Authorized: 2026-08-10
 
@@ -490,4 +490,7 @@ The first scientific milestone produced exact parity and a precise real-row
 blocker rather than a comparator. The current contract cannot reach Stage A
 predictions without violating its count-safety rule. Any exact-upstream
 signed-`int8` compatibility run is a separately authorized experiment, not a
-repair of this one. No result is a challenge-performance claim.
+repair of this one. The project owner authorized that separate experiment on
+2026-08-10. D-026 and
+`benchmarks/maplight_fixed_int8_compat_contract.json` now control it. No result
+is a challenge-performance claim.

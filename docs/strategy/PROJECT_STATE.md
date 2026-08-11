@@ -292,8 +292,12 @@ This contract cannot produce the row-aligned fixed comparator. Stage B cannot
 start because it requires fixed-MapLight shadow predictions. A separately
 authorized, pre-result compatibility experiment could reproduce upstream
 signed-`int8` wrapping exactly, but that would be a new experiment with a
-different safety rule. Do not infer that authority or silently alter the
-frozen contract.
+different safety rule. The project owner granted that authority on 2026-08-10.
+D-026 and `benchmarks/maplight_fixed_int8_compat_contract.json` preserve the
+safe failure and freeze the sole change before any compatibility execution.
+The contract SHA-256 is `a4542937`. It authorizes zero feature builds, labels,
+fits, predictions, metrics, GIN operations, challenge assumptions, or
+public-test uses until pre-result review passes.
 
 Independent artifact and Occam review passed the blocker milestone. A second
 exact-head review required and then verified two remediations: build 2 now
@@ -776,13 +780,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Preserve the topology, parity, infrastructure-failure, and real-feature blocker
-artifacts. Do not retry the failed feature build, start build 2, fit Stage A,
-start GIN, or consume a public-test slot under the current contract. Obtain
-explicit authority either to close Phase 0.75 with this precise blocker or to
-freeze one separate upstream-compatibility experiment that permits the exact
-signed-`int8` count conversion while keeping all other rows, features, seeds,
-and public-test boundaries unchanged.
+Preserve the topology, parity, infrastructure-failure, and safe real-feature
+blocker artifacts. Do not retry the failed safe build or start its build 2.
+Independently review and merge the separate signed-`int8` compatibility
+contract and minimal implementation. Then prove the exact overflow witness and
+generate two label-free compatibility feature roots. Do not fit Stage A, start
+GIN, or consume a public-test slot until both roots match and pass independent
+review.
 
 Do not parse a real feature row until the synthetic implementation passes its
 existing review gate. Do not inspect a new public-test label until fixed

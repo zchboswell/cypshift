@@ -683,3 +683,31 @@
   be demonstrated, dependencies burden the core, or the work expands beyond
   one comparator and one representation question. The authoritative release
   ends Phase 0.75 and restores launch-day intake priority.
+
+## D-026 — Authorize one exact-upstream signed-int8 compatibility experiment
+
+- Date: 2026-08-10
+- Status: accepted
+- Decision: Preserve the failed safe Stage A feature experiment and run one
+  separate, pre-result compatibility experiment that reproduces MapLight's
+  pinned zero-length `numpy.int8` count conversion exactly. The project owner
+  granted explicit authority after the safe experiment stopped on an Avalon
+  sparse count of 144.
+- Sole scientific change: Remove only the safe experiment's upper count bound
+  for Morgan and Avalon. Keep nonnegative integer sparse-count validation, then
+  accept the exact signed-`int8` bytes emitted by pinned RDKit and NumPy. Do not
+  widen, clip, binarize, post-correct, or reinterpret them.
+- Preserved boundaries: Keep exact raw rows, row order, all five fixed blocks,
+  descriptor order, environment, folds, seeds, resource caps, label firewall,
+  public-test budget, and failure evidence unchanged. Generate two independent
+  label-free roots and require byte-identical rows and arrays before fitting.
+- Claim boundary: This is upstream implementation compatibility, not a safe
+  count representation and not evidence that wrapped negative values are
+  chemically preferable. Preserve and report the discrepancy.
+- Review gate: Independently review the signed contract and implementation
+  before the overflow witness or any real compatibility row is generated.
+  Independently review both feature roots before any model fit.
+- Reversal condition: Reject the compatibility experiment if another
+  scientific rule must change, its exact bytes are not reproducible, or any
+  label, prediction, metric, GIN, challenge, or public-test path is required.
+  Never alter or delete the original safe blocker.
