@@ -257,7 +257,14 @@ def _verify_preflight() -> tuple[dict[str, Any], str, list[dict[str, str]]]:
         _sha256(ROOT / "research/maplight-fixed/.python-version") == PYTHON_PIN_SHA256,
         "Python pin hash drift",
     )
-    _require(SOURCE_ROOT.is_dir(), "pinned source root is missing")
+    _require(
+        SOURCE_ROOT.is_dir() and not SOURCE_ROOT.is_symlink(),
+        "pinned source root is missing or invalid",
+    )
+    _require(
+        SOURCE_ROOT.stat().st_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH) == 0,
+        "pinned source root is writable",
+    )
     _require(
         {path.name for path in SOURCE_ROOT.iterdir()} == set(SOURCE_FILES),
         "pinned source file set drift",
@@ -984,6 +991,12 @@ def verify_synthetic_parity(attempt: int) -> Path:
         )
         features = _import_path("maplight_features_supervisor", FEATURE_MODULE_PATH)
         adversarial = _adversarial_checks(features, local_a_paths, fixture)
+        _, final_revision, final_rows = _verify_preflight()
+        _require(
+            final_revision == revision and _fixture_receipt(final_rows) == fixture,
+            "inputs changed during parity execution",
+            stage="final_rehash",
+        )
         receipt = {
             "schema_version": "cypshift.maplight_fixed_parity.v1",
             "attempt": attempt,
