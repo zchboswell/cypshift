@@ -1,6 +1,6 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: active — evidence execution; shadow topology and fixed comparator next
+Status: active — fixed comparator blocked by frozen Avalon count-safety rule
 
 Authorized: 2026-08-10
 
@@ -465,8 +465,12 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 5. Freeze the Stage A environment, parity, ablation, accounting, and stopping
    contract. **Complete.**
 6. Measure the frozen shadow topology without changing an assignment.
+   **Complete. The result supports chemistry-cluster-held-out language, not a
+   strict analog-firewall claim.**
 7. Implement and parity-test the four fixed feature blocks with direct research
-   code; generate two matching label-free feature roots.
+   code; generate two matching label-free feature roots. **Parity passed. The
+   first real build stopped before retaining a matrix because one Avalon sparse
+   count is 144 and the frozen safe maximum is 127. Build 2 is not authorized.**
 8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
    do not score them yet.
@@ -482,7 +486,8 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 16. Update public documentation, obtain closeout review, and hand off on
     August 17.
 
-The first scientific milestone is a locally reproduced row-level MapLight
-comparator. The first possible breakthrough is evidence that richer molecular
-representation improves the sealed shadow benchmark. Neither result is a
-challenge-performance claim.
+The first scientific milestone produced exact parity and a precise real-row
+blocker rather than a comparator. The current contract cannot reach Stage A
+predictions without violating its count-safety rule. Any exact-upstream
+signed-`int8` compatibility run is a separately authorized experiment, not a
+repair of this one. No result is a challenge-performance claim.

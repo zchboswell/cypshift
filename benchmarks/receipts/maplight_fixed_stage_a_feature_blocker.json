@@ -1,0 +1,63 @@
+{
+  "schema_version": "cypshift.maplight_fixed_stage_a_feature_blocker.v1",
+  "recorded_at_utc": "2026-08-11T01:55:44Z",
+  "phase": "0.75",
+  "contract": {
+    "path": "benchmarks/maplight_fixed_stage_a_contract.json",
+    "sha256": "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710"
+  },
+  "source_revision": "d69a3b41359bf0f0b7ac91e6604590730eebcfb1",
+  "inputs": {
+    "shadow_rows_sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f",
+    "shadow_manifest_sha256": "3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656",
+    "parity_receipt_sha256": "68ee584ac87c53cdc896db6b593f3d84376e8b59573252bd6859192dfa0e94d4",
+    "feature_module_sha256": "16ba562d9ba99cbf3742bc0a89460ec3a5da89074b4a4a82afee68efb28f5ae6",
+    "feature_builder_sha256": "29795db2cba410289b8e030a328368f44600862479c95141d4b78e250dd0f4a7",
+    "environment_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+  },
+  "failure_receipt": {
+    "path": "artifacts/blockers/maplight-fixed-stage-a-features-v1-build-1-blocker/failure_receipt.json",
+    "sha256": "f52762005d152ea5d1bce241dca7428429368220648bf60af583325b45696009"
+  },
+  "failure": {
+    "build_id": 1,
+    "block": "avalon_count",
+    "unique_raw_index": 66,
+    "raw_structure_sha256": "ad830254cb6e5ab45fbcd786a76eb71def998120dbbd794e719e53c6ddaacd1f",
+    "persisted_block_arrays": 0
+  },
+  "diagnosis": {
+    "environment": {
+      "python": "3.10.13",
+      "rdkit": "2023.3.3",
+      "numpy": "1.25.2",
+      "platform": "macOS arm64 CPU"
+    },
+    "raw_input_selection": "Deduplicate shadow rows by first occurrence of the exact (raw_structure_sha256, raw_structure) pair without standardization; select zero-based unique index 66; verify its SHA-256 before parsing.",
+    "operation": "Chem.MolFromSmiles(raw_structure), then rdkit.Avalon.pyAvalonTools.GetAvalonCountFP(molecule, nBits=1024).GetNonzeroElements()",
+    "atom_count": 28,
+    "nonzero_bins": 105,
+    "maximum_sparse_count": 144,
+    "bins_above_127": 1,
+    "frozen_maximum_sparse_count": 127,
+    "upstream_effect": "The pinned MapLight source converts the sparse fingerprint through a zero-length numpy.int8 buffer. Count 144 cannot be represented in signed int8 and would wrap.",
+    "contract_effect": "Stop before retaining any real feature matrix. The frozen count-safety rule forbids wrapping, widening, clipping, or binarizing."
+  },
+  "decision": {
+    "result": "fail",
+    "action": "Preserve this blocker. Do not retry build 1, start build 2, fit Stage A, start GIN, or score public data under this contract.",
+    "possible_next_experiment": "Only with explicit authority, freeze a separate result-blind upstream-compatibility experiment that permits the exact signed-int8 conversion."
+  },
+  "accounting": {
+    "feature_build_attempts": 1,
+    "diagnostic_raw_rows_parsed": 1,
+    "persisted_block_arrays": 0,
+    "target_values_parsed": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "metric_evaluations": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_family_task_slots_consumed": 0
+  }
+}

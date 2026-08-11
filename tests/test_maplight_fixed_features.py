@@ -16,6 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FEATURE_PATH = ROOT / "research/maplight-fixed/maplight_fixed_features.py"
 VERIFIER_PATH = ROOT / "research/maplight-fixed/verify_parity.py"
 BUILDER_PATH = ROOT / "research/maplight-fixed/build_features.py"
+BLOCKER_RECEIPT_PATH = (
+    ROOT / "benchmarks/receipts/maplight_fixed_stage_a_feature_blocker.json"
+)
 
 
 def _load_module(name: str, path: Path) -> ModuleType:
@@ -202,3 +205,37 @@ def test_research_modules_import_without_rdkit_or_heavy_model_dependencies() -> 
     )
     assert loaded_by_verifier.FixedFeatureArrays.__module__ in sys.modules
     assert not imported & {"rdkit", "pandas", "catboost", "torch", "dgl", "molfeat"}
+
+
+def test_real_feature_blocker_is_precise_and_scientifically_zero() -> None:
+    receipt = json.loads(BLOCKER_RECEIPT_PATH.read_text(encoding="utf-8"))
+
+    assert receipt["schema_version"] == (
+        "cypshift.maplight_fixed_stage_a_feature_blocker.v1"
+    )
+    assert receipt["failure"] == {
+        "build_id": 1,
+        "block": "avalon_count",
+        "unique_raw_index": 66,
+        "raw_structure_sha256": (
+            "ad830254cb6e5ab45fbcd786a76eb71def998120dbbd794e719e53c6ddaacd1f"
+        ),
+        "persisted_block_arrays": 0,
+    }
+    diagnosis = receipt["diagnosis"]
+    assert diagnosis["maximum_sparse_count"] == 144
+    assert diagnosis["bins_above_127"] == 1
+    assert diagnosis["frozen_maximum_sparse_count"] == 127
+    assert receipt["decision"]["result"] == "fail"
+    assert receipt["accounting"] == {
+        "feature_build_attempts": 1,
+        "diagnostic_raw_rows_parsed": 1,
+        "persisted_block_arrays": 0,
+        "target_values_parsed": 0,
+        "model_fits": 0,
+        "predictions": 0,
+        "metric_evaluations": 0,
+        "public_test_rows_used": 0,
+        "public_test_labels_parsed": 0,
+        "public_test_family_task_slots_consumed": 0,
+    }

@@ -120,11 +120,12 @@ The complete contract is
   encoder, ensemble, calibration, threshold optimization, feature family, or
   challenge-specific model.
 
-Only one scientific experiment is active: the frozen Stage A comparator. The
-topology measurement is its sole supporting engineering task. Phase 0.75 closes
-by 2026-08-17 regardless of score. The next durable scientific artifact must be
-exact fixed-MapLight parity plus shadow predictions, or a precise reproducible
-blocker; planning progress is not scientific progress.
+The frozen Stage A comparator reached its predeclared stop rule before a real
+matrix was retained. Synthetic fixed-feature parity passed exactly, but the
+first real feature build found an Avalon sparse count of 144 where the frozen
+safe range ends at 127. No retry, second build, fit, prediction, metric, or
+public-test action is authorized under this contract. This is the precise
+reproducible blocker permitted by the evidence-execution packet.
 
 ## Phase 0.75 source, budget, and shadow freeze
 
@@ -253,6 +254,46 @@ and Occam scope. Hosted CI passed Python 3.11 and 3.14. The tracked contract
 test file contains four test functions. An immediate pull-request comment
 corrects one earlier commit body that said five; reviewed history was not
 rewritten.
+
+## Phase 0.75 topology, parity, and feature-build outcome
+
+The label-independent topology report is frozen under
+`artifacts/benchmarks/tdc-cyp-shadow-topology-v1`. It covers 35,963 validation
+structure records and 287,433,973 pair comparisons. Exact-raw and standardized
+duplicate crossing are zero in every task, protocol, and repeat. The maximum
+train-validation Morgan similarity nevertheless reaches 1.0 in some cells,
+and the proportion with a training neighbor at or above 0.60 ranges from about
+0.198 to 0.346. The correct claim remains chemistry-cluster-held-out; the
+shadow is not a demonstrated strict analog firewall. The manifest SHA-256 is
+`cf4d4bb7`; the detailed validation topology SHA-256 is `0f575a2d`.
+
+The exact eight-row fixed-feature parity passed in the frozen Python 3.10
+environment. Five upstream arrays matched both independent local processes
+element-for-element and byte-for-byte. The complete matrix has 2,563 columns;
+the retained parity receipt SHA-256 is `68ee584a`. Morgan and Avalon fixture
+maxima are 10 and 24, so the fixture proves count rather than binary behavior.
+An initial infrastructure attempt stopped before local feature generation
+because the dynamic loader did not register the dataclass module. Its immutable
+receipt is preserved with SHA-256 `bd5a580b`; the signed loader fix introduced
+no feature-rule change.
+
+The first real label-free feature build then stopped at exact-raw input index
+66, hash `ad830254...`, in the Avalon block. Independent diagnosis under the
+same pinned RDKit found one sparse bin with count 144. Upstream's zero-length
+`numpy.int8` conversion would wrap that value. The frozen Stage A contract
+explicitly requires counts in 0 through 127 and forbids wrapping, widening,
+clipping, binarizing, or retaining any matrix after a violation. The blocker
+receipt SHA-256 is `f5276200`. The compact tracked diagnosis receipt is
+[`maplight_fixed_stage_a_feature_blocker.json`](../../benchmarks/receipts/maplight_fixed_stage_a_feature_blocker.json),
+SHA-256 `c69bd826`. It records 0 persisted arrays, targets, fits, predictions,
+metrics, public-test rows, labels, or consumed family-task slots.
+
+This contract cannot produce the row-aligned fixed comparator. Stage B cannot
+start because it requires fixed-MapLight shadow predictions. A separately
+authorized, pre-result compatibility experiment could reproduce upstream
+signed-`int8` wrapping exactly, but that would be a new experiment with a
+different safety rule. Do not infer that authority or silently alter the
+frozen contract.
 
 ## Phase 0.5 benchmark contract
 
@@ -727,15 +768,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Measure the frozen shadow topology without rebuilding or tuning it, then use
-the smallest direct Stage A code path under the isolated MapLight environment
-to produce exact upstream fixture parity, two byte-identical real feature
-roots, and row-aligned shadow predictions. Implement only raw-row alignment,
-binary Morgan, Morgan counts, Avalon counts, ErG values, the ordered descriptor
-block, fail-closed count and non-finite checks, CatBoost, and the frozen
-ExtraTrees diagnostic. Reuse the existing contracts and artifacts; add no
-feature store, registry, generic benchmark layer, workflow engine, or source
-adapter.
+Preserve the topology, parity, infrastructure-failure, and real-feature blocker
+artifacts. Do not retry the failed feature build, start build 2, fit Stage A,
+start GIN, or consume a public-test slot under the current contract. Obtain
+explicit authority either to close Phase 0.75 with this precise blocker or to
+freeze one separate upstream-compatibility experiment that permits the exact
+signed-`int8` count conversion while keeping all other rows, features, seeds,
+and public-test boundaries unchanged.
 
 Do not parse a real feature row until the synthetic implementation passes its
 existing review gate. Do not inspect a new public-test label until fixed

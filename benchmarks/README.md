@@ -67,6 +67,18 @@ receive only their cell's outer-training targets. This contract authorizes no
 public-test use. The heavy environment remains isolated under
 `research/maplight-fixed/` and does not change the core package.
 
+Execution produced exact eight-row upstream/local parity, then stopped on the
+first real feature build before retaining a matrix. One Avalon sparse count is
+144; the contract permits only 0 through 127 before the upstream `int8`
+conversion and explicitly forbids wrapping. The parity receipt is
+`artifacts/benchmarks/maplight-fixed-stage-a-parity-v1/parity_receipt.json`
+(SHA-256 `68ee584a...`). The real-row blocker is
+`artifacts/blockers/maplight-fixed-stage-a-features-v1-build-1-blocker/failure_receipt.json`
+(SHA-256 `f5276200...`). The tracked compact diagnosis is
+`receipts/maplight_fixed_stage_a_feature_blocker.json` (SHA-256
+`c69bd826...`). No second build, model fit, prediction, metric, or public-test
+action occurred.
+
 These five tracked contracts control the frozen shadow artifact, Stage A, and
 future public-test use. The completed shadow run records zero feature matrices,
 fits, predictions, public-test label parses, and metric evaluations.
