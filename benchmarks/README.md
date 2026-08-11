@@ -105,9 +105,13 @@ another +0.0614/+0.0574 over fixed MapLight, with paired lower 95% bounds of
 +0.0526/+0.0472. Shuffled embeddings, random noise, unique-cell weighting,
 conflict exclusion, low-neighbor subsets, and influential-group checks all
 pass. Inference manifest SHA-256 is `83f4575b...`; maximum cell AUPRC is
-0.9319, below the forensic trigger. No public-test row, label, or family slot
-has been used. See [`PHASE_0_75_REPORT.md`](PHASE_0_75_REPORT.md) for the exact
-scorecard and claim limits.
+0.9319, below the forensic trigger. The two label-free public prediction roots
+then matched byte-for-byte. A separately reviewed scorer reproduced all six
+fixed/GIN seed-metric anchors within 0.003 AUPRC using exactly 7,512 public
+labels and 36 primary metric calls. Scorecard manifest SHA-256 is
+`7ce51526...`; no diagnostic metric or third family was used. See
+[`PHASE_0_75_REPORT.md`](PHASE_0_75_REPORT.md) for the exact scorecard and claim
+limits.
 
 `chemeleon_inference_contract.json` freezes the single allowed external-model
 attempt. It binds the checkpoint, all required model files, the resolved

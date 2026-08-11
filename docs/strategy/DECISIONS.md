@@ -796,3 +796,35 @@
   alignment, finiteness, control, significance, influence, or claim-boundary
   failure. The August 17 official rules may disallow pretrained weights even
   if the TDC engineering comparator succeeds.
+
+## D-029 — Close Phase 0.75 after bounded public comparator reproduction
+
+- Date: 2026-08-11
+- Status: accepted; execution passed
+- Decision: Close Phase 0.75 after the fixed MapLight and fixed-plus-GIN
+  families reproduce all six dated public anchors within 0.003 AUPRC. Preserve
+  the byte-identical prediction roots and scorecard; do not rescore, repair,
+  regenerate, or use the reserved third family.
+- Prediction boundary: Attempts 3 and 4 independently produced 13
+  byte-identical non-manifest payloads from the same signed source. Both
+  families retain five seeds and one separately labeled arithmetic
+  mean-probability column. No Phase 0.75 public label was opened before
+  independent review passed.
+- Scoring boundary: The sole successful scorer interpreted 7,512 public labels
+  and performed exactly 36 AUPRC calls. It performed zero diagnostic metrics,
+  new fits, new predictions, third-family operations, or challenge assumptions.
+  The first scoring attempt remains an immutable zero-row, zero-label,
+  zero-metric file-mode blocker.
+- Outcome: Fixed MapLight reaches 0.786, 0.720, and 0.881; fixed plus GIN
+  reaches 0.858, 0.791, and 0.916 on CYP2C9, CYP2D6, and CYP3A4. The maximum
+  probability-mean AUPRC is 0.9165, below the 0.95 forensic trigger.
+- Claim boundary: This is a successful reproduction on an already-observed TDC
+  test. It is not blind external validation, paired public-test superiority,
+  clean zero-shot evidence, challenge evidence, or authority for score-driven
+  repair. Historical PyTDC remains unpinned; the local aggregation is the
+  frozen PyTDC 1.1.15-compatible reconstruction.
+- Next boundary: Wait under D-024. On August 17, freeze the authoritative
+  OpenADMET bytes, rules, endpoints, MA-ST-RAE, MCC, label derivation, censoring,
+  permissions, validator, and challenge-faithful family split before any fit or
+  score. No TDC representation, model, threshold, or result transfers
+  automatically.

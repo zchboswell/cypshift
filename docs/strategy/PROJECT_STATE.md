@@ -4,8 +4,10 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 Stage A passed its fixed-representation value gate, and Stage B
-passed its complete pretrained-GIN shadow keep gate. Fixed plus GIN improves
+Phase 0.75 is complete. Stage A passed its fixed-representation value gate,
+Stage B passed its complete pretrained-GIN shadow keep gate, and both public
+comparator families reproduced their dated anchors within 0.003 AUPRC. Fixed
+plus GIN improves
 macro AUPRC over fixed MapLight by 0.0614 on scaffold holdout and 0.0574 on
 community holdout; paired lower 95% bounds are +0.0526 and +0.0472. All tasks,
 sensitivity populations, shuffled/noise controls, and influential-group checks
@@ -14,12 +16,11 @@ immutable. D-024 remains active for the August 17 release.
 
 ## Active operating goal
 
-Preserve the passed Stage A and Stage B artifact chains. Freeze the fixed
-MapLight and fixed-plus-GIN label-free TDC public prediction families together
-before any new public label is inspected. Leave the final-contender family
-unused unless a separately frozen shadow result beats local MapLight+GIN. Do
-not add an undeclared model family, representation, hyperparameter, ensemble,
-public-test repair cycle, or challenge-specific path.
+Preserve the passed Stage A, Stage B, byte-identical public-prediction, and
+bounded scorecard artifact chains. The final-contender family remains unused.
+Wait under D-024 for the August 17 authoritative release; add no undeclared
+model family, representation, hyperparameter, ensemble, public-test repair
+cycle, or challenge-specific path.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -40,13 +41,22 @@ data, a duplicate-safe fixture split, an endpoint-context median, 21
 predictions, cards, a hashed manifest, and a static report. Independent
 same-seed runs are byte-identical.
 
-The Phase 0.5 fixed unweighted mean is the best validated public-data research
-model. It combines prior, ECFP linear, similarity kNN, and ExtraTrees families.
+The Phase 0.5 fixed unweighted mean remains the frozen native baseline. It
+combines prior, ECFP linear, similarity kNN, and ExtraTrees families.
 On frozen TDC public tests it reaches AUPRC 0.7484, 0.6547, and 0.8500 for
 CYP2C9, CYP2D6, and CYP3A4. It trails the matching Chemprop-RDKit anchors by
 0.0286, 0.0183, and 0.0260, and the dated MapLight + GNN anchors by 0.1106,
 0.1353, and 0.0660. On the Octant grouped outer population its MAE is 0.5434.
 No superiority or challenge-performance claim is supported.
+
+The strongest reproduced public comparator is fixed MapLight plus GIN. Its
+five-seed AUPRC is 0.858, 0.791, and 0.916 for CYP2C9, CYP2D6, and CYP3A4;
+fixed MapLight reaches 0.786, 0.720, and 0.881. All six values are within 0.003
+of the dated published anchors. The local arithmetic mean-probability results
+are separately labeled and are not the published statistic. Because Phase 0.5
+already observed the TDC test and GIN overlap/rights remain unknown, this is a
+bounded public-benchmark confirmation, not blind external or challenge
+evidence.
 
 The final Phase 0.5 review passed exact signed commit `9150e93`. A clean clone
 verified the tracked report from aggregate-only evidence and passed all 90
@@ -941,24 +951,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Preserve the topology, Stage A, weight, both GIN import blockers, fixture
-parity, both byte-identical real GIN roots, Stage B predictions, and inference
-manifest `83f4575b...`. Two independent label-free public-input projections now
-match byte-for-byte at rows hash `5b892811...` across 7,512 rows. Public
-prediction attempt 1 completed all 30 model fits and six staging artifacts but
-stopped before promotion because CatBoost created its default local
-`catboost_info/` log directory and the final clean-tree check failed. The
-immutable blocker is `980778ee...`; it records zero public labels, metrics,
-canonical prediction artifacts, and consumed family-task slots. Operator
-evidence identifies the local log directory as the dirty path; the receipt
-itself proves only the clean-tree failure.
-
-Preserve that blocker, ignore only CatBoost's local log directory, and generate
-the unchanged fixed and fixed-plus-GIN prediction payloads as attempts 3 and 4
-from one reviewed signed source state. Review and hash both families together
-before their bounded public confirmation. Leave the third family unused. Add no
-candidate, hyperparameter, model parameter, framework, public-test repair
-cycle, or challenge assumption.
+Preserve the complete Phase 0.75 chain. Public prediction attempts 3 and 4 are
+byte-identical, with manifests `014ebbea...` and `e8e65e7d...`. The bounded
+scorecard manifest is `7ce51526...`; it records 7,512 public labels, exactly 36
+AUPRC calls, zero diagnostics, zero new fits or predictions, six consumed
+family-task slots, and zero use of the third family. All six comparator results
+reproduce within 0.003 and the maximum AUPRC is 0.9165, so the forensic gate did
+not trigger. Do not rescore, repair, regenerate, or fill the unused family.
 
 Commit `59b1776...`, which preserves the two zero-row public-input projection
 blockers and advances their attempts, was pushed directly to `main` before the

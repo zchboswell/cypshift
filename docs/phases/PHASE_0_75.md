@@ -1,7 +1,7 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: Stage B GIN keep gate passed; bounded public prediction freeze pending;
-prior blockers remain immutable
+Status: complete; fixed and GIN shadow gates passed; bounded public comparator
+reproduction passed; prior blockers remain immutable
 
 Authorized: 2026-08-10
 
@@ -525,14 +525,12 @@ Phase 0.75 passes when:
 Tier 2 is not required for closeout. A final `cypshift` contender is not
 required if shadow evidence does not justify one.
 
-The original closeout remains a stopped negative under D-025 and D-026, not a
-pass of every acceptance criterion. At that boundary criteria 6 through 10 had
-not been reached. The project owner later authorized D-027 as a separate,
-result-blind compatibility addendum after a label-free causal diagnosis. D-027
-does not repair either prior experiment or erase the stopped-negative record.
-It subsequently satisfied the local GIN-result, row-level prediction, and
-shadow-ablation portions of criteria 7 through 9. Official-test criterion 6 and
-the jointly frozen public-family criterion 10 remain unreached.
+The original D-025/D-026 closeout remains an immutable stopped negative. The
+owner-authorized D-027 addendum did not repair or erase it; D-027 independently
+passed the fixed and GIN shadow gates, froze both public families together, and
+reproduced every dated public anchor within 0.003 AUPRC. The completed Phase
+0.75 evidence chain now satisfies all reached Tier 1 acceptance criteria. The
+optional third family and Tier 2 work remain deliberately unused.
 
 ## Stopping rules and non-goals
 
@@ -566,25 +564,26 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
 8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
    **Complete. Fixed MapLight passed the representation-value gate.**
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
-   do not score them yet. **Not reached.**
+   do not score them yet. **Complete in byte-identical attempts 3 and 4.**
 10. Build the isolated GIN embedding path and shadow controls. **GIN parity,
     two feature roots, all 18 label-isolated prediction cells, and the complete
     grouped inference are complete. GIN passed every shadow keep gate.**
 11. Pass Gate 2 and freeze the label-free GIN public predictions, but do not
-    score them yet. **Not reached.**
+    score them yet. **Complete in the same jointly frozen attempts.**
 12. Lock a final contender only if the complete shadow gate supports it;
     otherwise record that its public family remains unused. **No separate
     contender was developed or qualified; the third public family remains
     unused.**
 13. Independently review and freeze all completed public prediction families
-    together, then score them together once. **Not reached; no public prediction
-    family was produced or scored.**
-14. Freeze row-level comparator evidence and the honest scorecard. **Local
-    shadow evidence is complete; bounded public confirmation remains pending.**
+    together, then score them together once. **Complete. The first scoring
+    attempt stopped before label access on a file-mode gate; attempt 2 completed
+    exactly 36 AUPRC calls with no repair or diagnostic metric.**
+14. Freeze row-level comparator evidence and the honest scorecard. **Complete;
+    all six local seed aggregates reproduce within 0.003 of published anchors.**
 15. Perform Tier 2 audits only if Tier 1 is early and clean. **Not started.**
 16. Update public documentation, obtain closeout review, and hand off on
-    August 17. **Closeout documentation is complete; authoritative release
-    intake remains pending under D-024.**
+    August 17. **Complete; authoritative release intake remains pending under
+    D-024.**
 
 The first scientific milestone produced exact parity and a precise real-row
 blocker rather than a comparator. The safe contract cannot reach Stage A

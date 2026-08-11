@@ -13,14 +13,16 @@ rules supersede all provisional assumptions.
 
 ## Current objective
 
-The fixed MapLight and pretrained GIN shadow reproductions now pass. Relative
-to fixed MapLight with the same CatBoost seed and validation rows, fixed plus
-GIN improves macro AUPRC by 0.0614 on scaffold holdout and 0.0574 on
-chemistry-community holdout. Paired 95% lower bounds are +0.0526 and +0.0472;
-shuffled-GIN and random-noise controls do not reproduce the gain. This is a
-public pretrained-transfer benchmark, not a clean zero-shot, public-test, or
-challenge score. On 2026-08-17, the official challenge release must still be
-frozen before adapting the proven workflow:
+Phase 0.75 now reproduces the published MapLight public benchmark. Local
+five-seed AUPRC is 0.786/0.720/0.881 for fixed MapLight and
+0.858/0.791/0.916 for fixed plus GIN on CYP2C9/CYP2D6/CYP3A4; every value is
+within 0.003 of its dated published anchor. On sealed chemistry-aware shadow
+validation, GIN also adds +0.0614 macro AUPRC on scaffold holdout and +0.0574
+on chemistry-community holdout, with positive paired lower bounds and failed
+shuffle/noise controls. This is a bounded confirmation on an already-observed
+TDC benchmark, not clean external validation or challenge evidence. On
+2026-08-17, the official challenge release must still be frozen before adapting
+the proven workflow:
 
 ```text
 audit -> standardize -> split -> train -> predict -> report

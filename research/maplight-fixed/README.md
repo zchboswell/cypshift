@@ -48,6 +48,8 @@ The reviewed implementation at `9d6b719` generated both authorized roots in
 the exact locked environment. Their row CSV and all five NPY payloads are
 byte-identical, including the permitted NaN bytes. Both roots are immutable.
 Do not rerun either build. Neither build accepted a target, measurement,
-scientific prediction, metric, GIN, or public-test path. The next boundary is
-the already frozen R1-through-R5 CatBoost shadow ladder; ExtraTrees remains
-unauthorized on this matrix.
+scientific prediction, metric, GIN, or public-test path. The frozen Stage A and
+Stage B ladders subsequently passed. Public prediction attempts 3 and 4 are
+byte-identical, and the bounded scorecard reproduced all six dated anchors
+within 0.003 AUPRC. Do not rerun, repair, add a third family, or reuse this TDC
+score as challenge evidence. ExtraTrees remains unauthorized on this matrix.
