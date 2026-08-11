@@ -246,6 +246,7 @@ def _write_failure(
     attempt: int,
     error: Exception,
     accounting: dict[str, int],
+    source_revision: str | None,
 ) -> None:
     if root.exists():
         return
@@ -255,8 +256,22 @@ def _write_failure(
         "schema_version": "cypshift.maplight_public_prediction_failure.v1",
         "operation": operation,
         "attempt": attempt,
-        "source_revision": None,
+        "source_revision": source_revision,
         "implementation_sha256": _sha256(SCRIPT_PATH),
+        "bindings": {
+            "evaluation_budget_sha256": (
+                _sha256(EVALUATION_BUDGET) if EVALUATION_BUDGET.is_file() else None
+            ),
+            "trusted_source_sha256": SOURCE_HASHES,
+            "public_input_rows_sha256": (
+                _sha256(INPUT_ROOTS[1] / "public_rows.csv")
+                if (INPUT_ROOTS[1] / "public_rows.csv").is_file()
+                else None
+            ),
+            "train_val_targets_sha256": (
+                _sha256(TRAIN_TARGETS) if TRAIN_TARGETS.is_file() else None
+            ),
+        },
         "failure": {"kind": type(error).__name__, "message": str(error)[:400]},
         "accounting": accounting,
         "claim_boundary": CLAIM,
@@ -357,6 +372,7 @@ def prepare_public_input(attempt: int) -> Path:
         "metric_evaluations": 0,
     }
     staging: Path | None = None
+    revision: str | None = None
     try:
         revision = _clean_revision()
         rows = _source_rows()
@@ -409,7 +425,7 @@ def prepare_public_input(attempt: int) -> Path:
     except Exception as error:
         if staging is not None and staging.exists():
             shutil.rmtree(staging)
-        _write_failure(blocker, "prepare", attempt, error, accounting)
+        _write_failure(blocker, "prepare", attempt, error, accounting, revision)
         raise
 
 
@@ -505,6 +521,7 @@ def _verify_public_inputs() -> tuple[list[dict[str, str]], dict[str, Any]]:
 
 def _load_training(
     stage_b: ModuleType,
+    accounting: dict[str, int],
 ) -> tuple[
     list[dict[str, str]], np.ndarray[Any, Any], np.ndarray[Any, Any], dict[str, int]
 ]:
@@ -520,7 +537,10 @@ def _load_training(
         tuple(targets[0]) == ("task", "molecule_id", "source_row", "target"),
         "training target columns differ",
     )
-    target_by_id = {row["molecule_id"]: int(row["target"]) for row in targets}
+    target_by_id: dict[str, int] = {}
+    for row in targets:
+        target_by_id[row["molecule_id"]] = int(row["target"])
+        accounting["train_val_labels_parsed"] += 1
     _require(
         len(target_by_id) == 30038
         and [row["molecule_id"] for row in rows]
@@ -531,7 +551,7 @@ def _load_training(
 
 
 def _public_fixed(
-    rows: list[dict[str, str]], staging: Path
+    rows: list[dict[str, str]], staging: Path, accounting: dict[str, int]
 ) -> tuple[np.ndarray[Any, Any], dict[str, Any]]:
     features = _features()
     raw_by_hash: dict[str, str] = {}
@@ -552,6 +572,8 @@ def _public_fixed(
         tuple(hashes),
         nonfinite_policy="allow_gasteiger_charge_nan",
     )
+    accounting["public_fixed_exact_raw_featurizations"] = len(hashes)
+    accounting["public_fixed_block_arrays_generated"] = 5
     index = {key: position for position, key in enumerate(hashes)}
     inverse = np.asarray([index[key] for key in inverse_hashes], dtype=np.int64)
     arrays: list[np.ndarray[Any, Any]] = []
@@ -572,6 +594,7 @@ def _public_fixed(
         path = staging / f"{name}.npy"
         _write_npy(path, array)
         records[name] = _array_record(path, array)
+        accounting["public_fixed_block_arrays_persisted"] += 1
         arrays.append(array)
     fixed = np.ascontiguousarray(np.concatenate(arrays, axis=1))
     _require(fixed.shape == (TOTAL_ROWS, 2563), "public fixed dimensions differ")
@@ -581,7 +604,7 @@ def _public_fixed(
 
 
 def _public_gin(
-    rows_path: Path, staging: Path
+    rows_path: Path, staging: Path, accounting: dict[str, int]
 ) -> tuple[np.ndarray[Any, Any], dict[str, Any]]:
     worker = staging / "gin-worker"
     result = subprocess.run(
@@ -599,6 +622,8 @@ def _public_gin(
         env={**os.environ, "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"},
     )
     _require(result.returncode == 0, "public GIN worker failed")
+    accounting["public_gin_rows_featurized"] = TOTAL_ROWS
+    accounting["public_gin_arrays_generated"] = 1
     array = np.load(worker / "gin.npy", allow_pickle=False)
     _require(
         array.shape == (TOTAL_ROWS, 300) and bool(np.isfinite(array).all()),
@@ -611,6 +636,7 @@ def _public_gin(
     record = _array_record(target, np.asarray(array))
     record["worker_receipt_path"] = worker_receipt.name
     record["worker_receipt_sha256"] = _sha256(worker_receipt)
+    accounting["public_gin_arrays_persisted"] = 1
     shutil.rmtree(worker)
     return np.asarray(array), record
 
@@ -661,6 +687,12 @@ def run_predictions(attempt: int) -> Path:
         "train_val_labels_parsed": 0,
         "public_test_rows_used": 0,
         "public_test_labels_parsed": 0,
+        "public_fixed_exact_raw_featurizations": 0,
+        "public_fixed_block_arrays_generated": 0,
+        "public_fixed_block_arrays_persisted": 0,
+        "public_gin_rows_featurized": 0,
+        "public_gin_arrays_generated": 0,
+        "public_gin_arrays_persisted": 0,
         "model_fits": 0,
         "model_prediction_vectors": 0,
         "derived_prediction_vectors": 0,
@@ -672,6 +704,7 @@ def run_predictions(attempt: int) -> Path:
         "challenge_assumptions_added": 0,
     }
     staging: Path | None = None
+    revision: str | None = None
     start = time.perf_counter()
     try:
         revision = _clean_revision()
@@ -681,14 +714,17 @@ def run_predictions(attempt: int) -> Path:
         )
         _require(_sha256(GIN_BUILDER) == GIN_BUILDER_SHA256, "GIN builder differs")
         rows, input_manifest = _verify_public_inputs()
-        stage_b = _stage_b()
-        train_rows, train_fixed, train_gin, targets = _load_training(stage_b)
-        accounting["train_val_labels_parsed"] = len(targets)
         accounting["public_test_rows_used"] = len(rows)
+        stage_b = _stage_b()
+        train_rows, train_fixed, train_gin, targets = _load_training(
+            stage_b, accounting
+        )
         staging = Path(tempfile.mkdtemp(prefix=f".{output.name}-", dir=output.parent))
         shutil.copyfile(INPUT_ROOTS[1] / "public_rows.csv", staging / "public_rows.csv")
-        test_fixed, fixed_records = _public_fixed(rows, staging)
-        test_gin, gin_record = _public_gin(staging / "public_rows.csv", staging)
+        test_fixed, fixed_records = _public_fixed(rows, staging, accounting)
+        test_gin, gin_record = _public_gin(
+            staging / "public_rows.csv", staging, accounting
+        )
         catboost = __import__("catboost")
         fits: list[dict[str, object]] = []
         prediction_records: dict[str, Any] = {}
@@ -735,6 +771,7 @@ def run_predictions(attempt: int) -> Path:
                         loss_function="Logloss",
                     )
                     model.fit(train_matrix[train_index], y)
+                    accounting["model_fits"] += 1
                     _require(
                         [int(value) for value in model.classes_] == [0, 1],
                         "CatBoost class order differs",
@@ -743,14 +780,13 @@ def run_predictions(attempt: int) -> Path:
                         model.predict_proba(test_matrix[test_index])[:, 1],
                         dtype=np.float64,
                     )
+                    accounting["model_prediction_vectors"] += 1
                     _require(
                         bool(np.isfinite(probability).all())
                         and bool(((probability >= 0) & (probability <= 1)).all()),
                         "public probability differs",
                     )
                     probabilities[seed] = probability
-                    accounting["model_fits"] += 1
-                    accounting["model_prediction_vectors"] += 1
                     fits.append(
                         {
                             "family": family,
@@ -856,7 +892,7 @@ def run_predictions(attempt: int) -> Path:
         accounting["additional_family_task_slots_consumed_this_attempt"] = 0
         if staging is not None and staging.exists():
             shutil.rmtree(staging)
-        _write_failure(blocker, "predict", attempt, error, accounting)
+        _write_failure(blocker, "predict", attempt, error, accounting, revision)
         raise
 
 
