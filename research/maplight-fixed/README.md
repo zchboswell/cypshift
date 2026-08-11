@@ -9,3 +9,19 @@ core install and ordinary CI environment.
 
 Create it only through the reviewed Stage A contract. Do not add GIN, PyTDC,
 notebook, development, or core-package dependencies here.
+
+`maplight_fixed_features.py` implements the one frozen fixed representation.
+`verify_parity.py` compares it with the pinned MapLight source in three fresh
+synthetic-only processes. The verifier has no model or benchmark-label path.
+It does not read, and is not authorized to read, shadow rows, measurements,
+public-test data, GIN weights, predictions, or scores.
+
+Run the reviewed verifier only with the exact isolated Python 3.10 environment:
+
+```text
+artifacts/environments/maplight-fixed-stage-a-v1/venv/bin/python \
+  research/maplight-fixed/verify_parity.py --attempt 1
+```
+
+The command writes one immutable success receipt or one immutable blocker. It
+does not download data or dependencies.
