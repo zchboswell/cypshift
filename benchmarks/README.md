@@ -51,7 +51,7 @@ deterministic claims, and resource or summary-validation failures retain a
 compact zero-model blocker receipt. Real inputs remain stable and read-only for
 each process lifetime. Synthetic tests exercise these paths. The reviewed
 implementation generated two byte-identical projections and two byte-identical
-assignments. One separate summary parsed 30,038 train-only labels and zero
+assignments. One separate summary parsed 30,038 frozen `train_val` labels and zero
 public-test labels after the assignment was hashed. Final manifest SHA-256 is
 `3eb972713d88e08420134e7776755d4e62510a5250edf99edc2021272c112656`.
 All declared fold populations contain both classes.
