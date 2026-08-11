@@ -159,6 +159,13 @@ charge parameter is allowed. Only the pre-existing CatBoost candidates R1
 through R5 may proceed after two independent feature roots pass review;
 ExtraTrees E1 remains unexecuted.
 
+The D-027 freeze is signed at `e8d66de`; hosted CI run `31474960886` passes
+Python 3.11 and 3.14 with 145 tests, formatting, strict core types, builds, and
+the installed vertical slice. The diagnosis receipt SHA-256 is `9832efb2`; the
+contract SHA-256 is `52f01f93`. No compatibility feature build, target,
+scientific fit, prediction, metric, GIN, challenge, or public-test operation
+occurred at this gate.
+
 ## Phase 0.75 source, budget, and shadow freeze
 
 The exact MapLight source, paper, method, dated anchors, environment gaps, and
