@@ -299,6 +299,14 @@ The contract SHA-256 is `ace395a1`. It authorizes zero feature builds, labels,
 fits, predictions, metrics, GIN operations, challenge assumptions, or
 public-test uses until pre-result review passes.
 
+Two independent pre-result reviews passed exact signed head `4bffd20`. They
+verified the sole scientific change, exhaustive parent overrides, fresh
+compatibility parity, independent no-copy builds, exact success and failure
+accounting, label and public-test firewalls, safe-blocker preservation, and
+Occam scope. Hosted CI run `31453804658` passes 136 tests on Python 3.11 and
+3.14. Compatibility execution remains zero until this reviewed freeze is
+fast-forwarded to `main`.
+
 Independent artifact and Occam review passed the blocker milestone. A second
 exact-head review required and then verified two remediations: build 2 now
 fails before scientific input resolution when the build-1 blocker exists, and
