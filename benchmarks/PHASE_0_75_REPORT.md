@@ -23,7 +23,32 @@ validation structures with no training neighbor at or above 0.60, and every
 predeclared influential-group absence check. This supports a fixed MapLight
 representation-value claim on the shadow benchmark. It does not establish
 MapLight+GIN superiority, public-test performance, clean external validation,
-or challenge transfer.
+or challenge transfer. The subsequent label-free GIN feature gate also passed,
+but no GIN predictive result exists yet.
+
+## Stage B GIN feature gate
+
+The exact MolFeat `gin_supervised_masking` model is 7,467,310 bytes and matches
+SHA-256 `6d0f8feb...`. The artifact remains outside Git and is not redistributed.
+Artifact-specific and pretraining-data licenses and exact TDC overlap are
+unknown, so this path is limited to local pretrained-transfer benchmarking.
+
+Two packaging blockers are preserved from before embedding: MolFeat 0.9.2
+omits `python-dotenv` from its dependencies and imports its optional Hugging
+Face module on the DGL path. A final compatible environment pins those import
+dependencies and forces Hugging Face offline; no Hugging Face model or feature
+is used.
+
+Fixture parity then passed exactly across one pinned MapLight process and two
+fresh direct MolFeat processes. Their 8-by-300 float64 NPY bytes match. Two
+real builds independently featurized 15,399 exact raw inputs and expanded them
+to all 30,038 rows. The GIN arrays are finite and byte-identical with SHA-256
+`9bd56931...`.
+
+The raw-row audit validates the cache policy. Forty-one standardized hashes
+have multiple raw forms, but only two groups have identical GIN values. The
+largest absolute difference is 0.7140. Caching by standardized hash would
+silently substitute representations and is rejected.
 
 ## Frozen shadow benchmark
 
@@ -153,6 +178,12 @@ evaluations, and 72,182 confirmatory/sensitivity metric evaluations. It uses
 zero public-test rows or labels, zero GIN weights, and zero challenge
 assumptions. The prior blockers remain immutable negative evidence.
 
+The Stage B feature gate adds one verified 7,467,310-byte model artifact,
+three successful fixture embedding processes, two completed real embedding
+builds, 30,798 exact-raw featurizations, and two retained 30,038-by-300 arrays.
+It parsed zero targets and performed zero model fits, predictions, metrics,
+public-test operations, Hugging Face model loads, or challenge assumptions.
+
 ## Scientific conclusion
 
 The fixed-representation hypothesis is supported: complementary MapLight blocks
@@ -160,10 +191,10 @@ materially improve CYP ranking beyond binary Morgan under both frozen shadow
 protocols. The result is not explained by duplicate weighting, conflicting
 cells, close neighbors, or one large chemistry group.
 
-The next permissible step is the separately gated MapLight+GIN reproduction.
-GIN weight rights, exact bytes, environment, raw-row behavior, and contamination
-status must be resolved before embeddings. The fixed result itself authorizes
-no public-test scoring and no challenge model.
+The next permissible step is only the predeclared Stage B shadow controls.
+The weight, environment, exact-raw behavior, parity, and repeat gates pass;
+rights and contamination remain explicitly unknown. The fixed and GIN feature
+results authorize no public-test scoring and no challenge model.
 
 ## Handoff
 

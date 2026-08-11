@@ -1,7 +1,7 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: missing-value compatibility addendum active under D-027; prior
-experiments remain closed negative
+Status: Stage B GIN feature gate passed; shadow controls pending; prior
+blockers remain immutable
 
 Authorized: 2026-08-10
 
@@ -353,6 +353,32 @@ analyses. Otherwise retain only the exact engineering comparator or blocker.
 Gate 2 must pass before public scoring: embeddings and environment frozen,
 contamination status recorded, alignment and finiteness verified, label-free
 predictions hashed, and independent review.
+
+### Frozen Stage B feature outcome
+
+The GIN feature gate passed at signed source `92ce60e`. The retained MolFeat
+artifact is exactly 7,467,310 bytes with SHA-256 `6d0f8feb...`; it is used
+locally and is not redistributed. Its artifact-specific license,
+pretraining-data license, and exact TDC structure and target overlap remain
+unknown. The only permitted claim is pretrained-representation transfer.
+
+Two preserved parity blockers occurred before any embedding. MolFeat 0.9.2
+imports `python-dotenv` without declaring it, then imports its optional Hugging
+Face module even on the DGL-only path. The final compatible environment pins
+those import dependencies and forces Hugging Face offline. It does not load or
+authorize another encoder.
+
+One pinned MapLight source process and two fresh direct MolFeat processes
+produced identical 8-by-300 float64 fixture arrays. Two independent real builds
+then processed all 15,399 exact raw inputs and expanded them to all 30,038
+rows. Both retained row files and GIN NPY files are byte-identical; NPY SHA-256
+is `9bd56931...`, and every value is finite. Among 41 standardized hashes with
+multiple raw forms, only two groups are embedding-identical and the maximum
+absolute difference is 0.7140. Exact-raw caching is therefore mandatory.
+
+This gate parsed zero targets and performed zero model fits, predictions,
+metrics, public-test operations, or challenge assumptions. It authorizes only
+the five already declared shadow controls.
 
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match

@@ -4,21 +4,24 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 Stage A passed its fixed-representation value gate. Two independent
-label-free feature roots are byte-identical; 18 cell-specific model processes
-produced immutable predictions without validation-label access; and the
-separate scorer and paired grouped analysis found a reproducible MapLight
+Phase 0.75 Stage A passed its fixed-representation value gate, and the Stage B
+GIN feature gate has passed. The two D-027 fixed-feature roots and the two GIN
+feature roots are independently byte-identical; 18 cell-specific model
+processes produced immutable Stage A predictions without validation-label
+access; and the separate scorer and paired grouped analysis found a
+reproducible MapLight
 fixed-feature gain over raw-input binary Morgan. The prior safe and
 signed-`int8` experiments remain closed negative and immutable. D-024 remains
 active for the August 17 release.
 
 ## Active operating goal
 
-Preserve the passed Stage A artifact chain and begin only the Stage B GIN
-eligibility and reproducibility gate. Resolve weight/data rights, exact bytes,
-environment, raw-row semantics, and contamination status before any embedding
-is generated. Do not run a model, public test, new encoder, candidate, ensemble,
-or challenge-specific path until that gate passes.
+Preserve the passed Stage A and GIN feature artifact chains. Execute only the
+five predeclared Stage B controls on the frozen shadow cells: fixed MapLight,
+GIN alone, fixed plus GIN, fixed plus deterministically shuffled GIN, and fixed
+plus same-dimensional seeded noise. Do not add an undeclared model family,
+representation, hyperparameter, ensemble, public-test action, or
+challenge-specific path.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -178,6 +181,27 @@ non-finite values. The synthetic CatBoost probe produced finite probabilities
 with resolved `nan_mode=Min`. Build runtimes were 110.15 and 90.48 seconds;
 peak RSS was 1.49 and 1.64 GiB. Targets, scientific fits, predictions, metrics,
 GIN, challenge assumptions, and public-test use remain zero.
+
+The Stage B GIN feature gate passed at signed source `92ce60e`. The exact
+7,467,310-byte `gin_supervised_masking` artifact matches SHA-256 `6d0f8feb...`
+and remains outside Git without redistribution. Two pre-embedding blockers are
+preserved: MolFeat 0.9.2 omits `python-dotenv` from its runtime dependencies and
+imports its optional Hugging Face module even on the DGL path. The final
+compatible environment adds only those import dependencies, forces Hugging
+Face offline, and authorizes no alternate encoder.
+
+One pinned MapLight worker and two fresh direct MolFeat workers produced the
+same 8-by-300 float64 fixture bytes; parity receipt SHA-256 is `863f0980...`.
+Two real label-free roots then independently featurized all 15,399 exact raw
+inputs and expanded them to every 30,038 frozen row. Their `feature_rows.csv`
+and `gin.npy` payloads are byte-identical; the GIN NPY SHA-256 is `9bd56931...`
+and contains no non-finite value. Only two of the 41 standardized hashes with
+multiple raw forms have identical embeddings; the maximum raw-form difference
+is 0.7140. This proves standardized-hash caching would change the representation.
+Artifact and pretraining-data licenses and TDC overlap remain unknown, so the
+path supports only local non-redistributed pretrained-transfer benchmarking,
+not a clean zero-shot or challenge-eligibility claim. No target, model, metric,
+public-test, or challenge operation occurred at this gate.
 
 The Stage A target projection passed at signed source `1275cbc`. Its immutable
 manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
@@ -874,15 +898,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 
 ## Exact next action
 
-Preserve the topology report, both parity roots, both real-feature blockers,
-their reviews, both byte-identical D-027 feature roots, the target firewall,
-and the immutable Stage A prediction root. Freeze one direct scoring boundary
-that opens the already sealed train-only scoring target only after revalidating
-all 18 cell artifacts. The paired and sensitivity gates passed. Preserve their
-immutable outputs and begin only the Stage B GIN eligibility/reproducibility
-gate: resolve rights, exact weight bytes, environment, raw-row semantics, and
-contamination status before any embedding. Add no candidate, hyperparameter,
-framework, ExtraTrees repair, public-test action, or challenge assumption.
+Preserve the topology, Stage A, weight, both GIN import blockers, fixture
+parity, and both byte-identical real GIN roots. Freeze and execute only the
+predeclared Stage B controls on the same 18 shadow cells. Reuse the immutable
+fixed MapLight predictions. Use one deterministic exact-raw shuffle and one
+seeded 300-dimensional noise control; fit no undeclared configuration. Keep
+all scoring sealed until predictions are immutable. Add no candidate,
+hyperparameter, framework, public-test action, or challenge assumption.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

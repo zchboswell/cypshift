@@ -765,3 +765,34 @@
   pass. Retain the fixed representation for the local comparator. This outcome
   authorizes only the separate GIN eligibility/reproduction gate, not public
   scoring or challenge transfer.
+
+## D-028 — Retain one bounded local GIN engineering comparator
+
+- Date: 2026-08-11
+- Status: accepted; feature gate passed
+- Decision: Retain the single MapLight `gin_supervised_masking` representation
+  for local, non-redistributed shadow benchmarking after exact weight, fixture,
+  environment, row-alignment, and repeat gates pass. Do not add another encoder.
+- Rights boundary: MapLight is MIT; MolFeat and DGL-LifeSci are Apache-2.0; the
+  original pretraining code is MIT. The model metadata provides no separate
+  artifact or pretraining-data license. Do not redistribute the weight. Publish
+  only aggregate local benchmark evidence and preserve this uncertainty.
+- Provenance boundary: Exact TDC structure and CYP-target overlap are unknown.
+  Call the result pretrained-representation transfer, not clean zero-shot,
+  uncontaminated external validation, or automatic challenge eligibility.
+- Environment evidence: Preserve two pre-embedding blockers. MolFeat 0.9.2
+  omits `python-dotenv` from its runtime dependencies and imports its optional
+  Hugging Face module on the DGL path. The compatible environment pins only the
+  required import dependencies, forces Hugging Face offline, and authorizes no
+  Hugging Face model or representation.
+- Feature outcome: One upstream and two local fixture processes match exactly.
+  Two real roots are byte-identical over all 30,038 rows. Thirty-nine of 41
+  standardized multi-raw groups produce different embeddings, proving that
+  exact-raw rather than standardized-hash caching is required.
+- Next boundary: Run only fixed MapLight, GIN alone, fixed plus GIN, fixed plus
+  deterministically shuffled GIN, and fixed plus seeded 300-dimensional noise
+  on the frozen shadow cells. Public scoring remains forbidden.
+- Reversal condition: Preserve a blocker and reject GIN on any repeat,
+  alignment, finiteness, control, significance, influence, or claim-boundary
+  failure. The August 17 official rules may disallow pretrained weights even
+  if the TDC engineering comparator succeeds.
