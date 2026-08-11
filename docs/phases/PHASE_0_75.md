@@ -569,3 +569,15 @@ until all Stage A predictions are hashed. Two preserved infrastructure-only
 preflight receipts record zero label parses; the successful projection parsed
 exactly 30,038 train-only labels and zero public-test labels. No model,
 prediction, or metric operation occurred at this gate.
+
+The sealed Stage A prediction gate passed at signed source `16d7c2e`. Eighteen
+fresh cell processes fitted the predeclared R1-through-R5 CatBoost ladder from
+cell-specific outer-training targets only. The immutable result contains 162
+model prediction vectors plus 18 derived five-seed R5 mean vectors over 36,045
+outer-validation rows. Its manifest SHA-256 is `f7c4f711...`. An independent
+read-only audit revalidated all 360,450 retained probabilities, row order,
+configuration order, seed means, file hashes, and receipts. Runtime was
+3,314.93 seconds on Apple M1 CPU; maximum cell peak RSS was 2.2941 GiB. The
+model processes parsed zero validation or public-test labels and performed
+zero metric evaluations. This passes the prediction gate only and makes no
+predictive-value claim until the separately sealed scoring step.

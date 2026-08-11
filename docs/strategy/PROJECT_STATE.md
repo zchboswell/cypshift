@@ -867,12 +867,13 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 ## Exact next action
 
 Preserve the topology report, both parity roots, both real-feature blockers,
-their reviews, and both byte-identical D-027 feature roots. Record and review
-the passed feature gate, then implement the smallest direct executor for the
-already frozen R1-through-R5 CatBoost shadow ladder. Keep training targets
-cell-specific and validation targets unavailable until prediction artifacts
-are hashed. Add no candidate, hyperparameter, framework, ExtraTrees repair,
-GIN path, or public-test action.
+their reviews, both byte-identical D-027 feature roots, the target firewall,
+and the immutable Stage A prediction root. Freeze one direct scoring boundary
+that opens the already sealed train-only scoring target only after revalidating
+all 18 cell artifacts. Compute only the predeclared point AUPRC values before
+deciding whether the more expensive grouped inference is warranted. Add no
+candidate, hyperparameter, framework, ExtraTrees repair, GIN path, or
+public-test action.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label
