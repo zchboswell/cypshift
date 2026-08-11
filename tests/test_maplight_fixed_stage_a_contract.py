@@ -20,6 +20,7 @@ SOURCE_CONTRACT_PATH = ROOT / "benchmarks" / "maplight_source_contract.json"
 TARGET_PROJECTION_PATH = ROOT / "research/maplight-fixed/prepare_stage_a_targets.py"
 CATBOOST_RUNNER_PATH = ROOT / "research/maplight-fixed/run_stage_a_catboost.py"
 POINT_SCORER_PATH = ROOT / "research/maplight-fixed/score_stage_a_predictions.py"
+INFERENCE_PATH = ROOT / "research/maplight-fixed/run_stage_a_inference.py"
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -429,5 +430,31 @@ def test_stage_a_point_scorer_has_one_metric_and_no_model_or_public_surface() ->
     assert "CatBoostClassifier" not in source
     assert "ExtraTrees" not in source
     assert 'bootstrap_metric_evaluations": 0' in source
+    assert 'public_test_rows_used": 0' in source
+    assert 'public_test_labels_parsed": 0' in source
+
+
+def test_stage_a_inference_is_bounded_to_the_frozen_representation_contrast() -> None:
+    tree = ast.parse(INFERENCE_PATH.read_text(encoding="utf-8"))
+    source = INFERENCE_PATH.read_text(encoding="utf-8")
+    assignments = {
+        node.targets[0].id: ast.literal_eval(node.value)
+        for node in tree.body
+        if isinstance(node, ast.Assign)
+        and len(node.targets) == 1
+        and isinstance(node.targets[0], ast.Name)
+        and node.targets[0].id
+        in {"R1", "R5", "ACCEPTED_REPLICATES", "MAXIMUM_ATTEMPTS", "SEEDS"}
+    }
+    assert assignments == {
+        "R1": "r1_binary_morgan_catboost_seed_1",
+        "R5": "r5_maplight_fixed_catboost_seed_1",
+        "ACCEPTED_REPLICATES": 2000,
+        "MAXIMUM_ATTEMPTS": 20000,
+        "SEEDS": {"scaffold": 20260813, "community": 20260814},
+    }
+    assert "CatBoostClassifier" not in source
+    assert "ExtraTrees" not in source
+    assert 'bootstrap_metric_evaluations": 72000' in source
     assert 'public_test_rows_used": 0' in source
     assert 'public_test_labels_parsed": 0' in source
