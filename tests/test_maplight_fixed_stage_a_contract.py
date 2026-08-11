@@ -19,6 +19,7 @@ CONTRACT_PATH = ROOT / "benchmarks" / "maplight_fixed_stage_a_contract.json"
 SOURCE_CONTRACT_PATH = ROOT / "benchmarks" / "maplight_source_contract.json"
 TARGET_PROJECTION_PATH = ROOT / "research/maplight-fixed/prepare_stage_a_targets.py"
 CATBOOST_RUNNER_PATH = ROOT / "research/maplight-fixed/run_stage_a_catboost.py"
+POINT_SCORER_PATH = ROOT / "research/maplight-fixed/score_stage_a_predictions.py"
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -404,3 +405,29 @@ def test_stage_a_catboost_runner_has_only_the_frozen_prediction_surface() -> Non
     assert "average_precision" not in source
     assert "ExtraTrees" not in source
     assert 'metric_evaluations": 0' in source
+
+
+def test_stage_a_point_scorer_has_one_metric_and_no_model_or_public_surface() -> None:
+    tree = ast.parse(POINT_SCORER_PATH.read_text(encoding="utf-8"))
+    source = POINT_SCORER_PATH.read_text(encoding="utf-8")
+    calls = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and (
+            (
+                isinstance(node.func, ast.Name)
+                and node.func.id == "average_precision_score"
+            )
+            or (
+                isinstance(node.func, ast.Attribute)
+                and node.func.attr == "average_precision_score"
+            )
+        )
+    ]
+    assert len(calls) == 1
+    assert "CatBoostClassifier" not in source
+    assert "ExtraTrees" not in source
+    assert 'bootstrap_metric_evaluations": 0' in source
+    assert 'public_test_rows_used": 0' in source
+    assert 'public_test_labels_parsed": 0' in source
