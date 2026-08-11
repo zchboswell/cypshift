@@ -58,6 +58,9 @@ def test_public_prediction_budget_and_families_are_exact() -> None:
     }
     assert sum(module.TASK_ROWS.values()) == module.TOTAL_ROWS == 7512
     assert module.FIXED_WIDTHS == (1024, 1024, 315, 200)
+    assert set(module.INPUT_ROOTS) == {3, 4}
+    assert set(module.PREDICTION_ROOTS) == {1, 2}
+    assert set(module.PRESERVED_INPUT_BLOCKERS) == {1, 2}
 
 
 def test_prediction_path_has_no_public_label_or_source_projection_access() -> None:

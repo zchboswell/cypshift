@@ -46,13 +46,25 @@ SOURCE_HASHES = {
 }
 
 INPUT_ROOTS = {
-    1: ROOT / "artifacts/benchmarks/maplight-public-input-v1-attempt-1",
-    2: ROOT / "artifacts/benchmarks/maplight-public-input-v1-attempt-2",
+    3: ROOT / "artifacts/benchmarks/maplight-public-input-v1-attempt-3",
+    4: ROOT / "artifacts/benchmarks/maplight-public-input-v1-attempt-4",
 }
 INPUT_BLOCKERS = {
     attempt: ROOT
     / f"artifacts/blockers/maplight-public-input-v1-attempt-{attempt}-blocker"
-    for attempt in (1, 2)
+    for attempt in (3, 4)
+}
+PRESERVED_INPUT_BLOCKERS = {
+    1: {
+        "path": ROOT
+        / "artifacts/blockers/maplight-public-input-v1-attempt-1-blocker/failure_receipt.json",
+        "sha256": "7bcdbb5ebf331bf2340a6a4d288e24252f48e5ffcfc22a58610fac1116f0d1af",
+    },
+    2: {
+        "path": ROOT
+        / "artifacts/blockers/maplight-public-input-v1-attempt-2-blocker/failure_receipt.json",
+        "sha256": "f592048b39d3cd04e9f80846cb9bb59e178bc2cd35bb0ee920bd961dd00dbef8",
+    },
 }
 PREDICTION_ROOTS = {
     1: ROOT / "artifacts/benchmarks/maplight-public-predictions-v1-attempt-1",
@@ -264,8 +276,8 @@ def _write_failure(
             ),
             "trusted_source_sha256": SOURCE_HASHES,
             "public_input_rows_sha256": (
-                _sha256(INPUT_ROOTS[1] / "public_rows.csv")
-                if (INPUT_ROOTS[1] / "public_rows.csv").is_file()
+                _sha256(INPUT_ROOTS[3] / "public_rows.csv")
+                if (INPUT_ROOTS[3] / "public_rows.csv").is_file()
                 else None
             ),
             "train_val_targets_sha256": (
@@ -358,6 +370,7 @@ def _source_rows() -> list[dict[str, str]]:
 
 
 def prepare_public_input(attempt: int) -> Path:
+    _require(attempt in (3, 4), "input attempt differs")
     output = INPUT_ROOTS[attempt]
     blocker = INPUT_BLOCKERS[attempt]
     _require(
@@ -375,6 +388,12 @@ def prepare_public_input(attempt: int) -> Path:
     revision: str | None = None
     try:
         revision = _clean_revision()
+        for record in PRESERVED_INPUT_BLOCKERS.values():
+            path = cast(Path, record["path"])
+            _require(
+                _readonly_file(path) and _sha256(path) == record["sha256"],
+                "preserved input blocker differs",
+            )
         rows = _source_rows()
         staging = Path(tempfile.mkdtemp(prefix=f".{output.name}-", dir=output.parent))
         row_path = staging / "public_rows.csv"
@@ -402,8 +421,8 @@ def prepare_public_input(attempt: int) -> Path:
             "claim_boundary": "Label-absent TDC public identity projection; no public-test label or metric access.",
         }
         (staging / "input_manifest.json").write_bytes(_json_bytes(manifest))
-        if attempt == 2:
-            prior = INPUT_ROOTS[1]
+        if attempt == 4:
+            prior = INPUT_ROOTS[3]
             _require(_readonly_root(prior), "input attempt 1 is not immutable")
             for name in ("public_rows.csv", "input_manifest.json"):
                 if name == "input_manifest.json":
@@ -488,7 +507,7 @@ def _gin_worker(input_rows: Path, output: Path) -> int:
 
 
 def _verify_public_inputs() -> tuple[list[dict[str, str]], dict[str, Any]]:
-    for attempt in (1, 2):
+    for attempt in (3, 4):
         root = INPUT_ROOTS[attempt]
         _require(_readonly_root(root), f"public input {attempt} is not immutable")
         _require(
@@ -497,12 +516,12 @@ def _verify_public_inputs() -> tuple[list[dict[str, str]], dict[str, Any]]:
             "public input files differ",
         )
     _require(
-        (INPUT_ROOTS[1] / "public_rows.csv").read_bytes()
-        == (INPUT_ROOTS[2] / "public_rows.csv").read_bytes(),
+        (INPUT_ROOTS[3] / "public_rows.csv").read_bytes()
+        == (INPUT_ROOTS[4] / "public_rows.csv").read_bytes(),
         "public input repeats differ",
     )
-    first = _read_json(INPUT_ROOTS[1] / "input_manifest.json")
-    second = _read_json(INPUT_ROOTS[2] / "input_manifest.json")
+    first = _read_json(INPUT_ROOTS[3] / "input_manifest.json")
+    second = _read_json(INPUT_ROOTS[4] / "input_manifest.json")
     first_compare = dict(first)
     second_compare = dict(second)
     first_compare["attempt"] = second_compare["attempt"]
@@ -511,7 +530,7 @@ def _verify_public_inputs() -> tuple[list[dict[str, str]], dict[str, Any]]:
         first["accounting"]["public_test_labels_parsed"] == 0,
         "public input label boundary differs",
     )
-    rows = _read_csv(INPUT_ROOTS[1] / "public_rows.csv")
+    rows = _read_csv(INPUT_ROOTS[3] / "public_rows.csv")
     _require(
         len(rows) == TOTAL_ROWS and tuple(rows[0]) == PUBLIC_COLUMNS,
         "public input population differs",
@@ -724,7 +743,7 @@ def run_predictions(attempt: int) -> Path:
             stage_b, accounting
         )
         staging = Path(tempfile.mkdtemp(prefix=f".{output.name}-", dir=output.parent))
-        shutil.copyfile(INPUT_ROOTS[1] / "public_rows.csv", staging / "public_rows.csv")
+        shutil.copyfile(INPUT_ROOTS[3] / "public_rows.csv", staging / "public_rows.csv")
         test_fixed, fixed_records = _public_fixed(rows, staging, accounting)
         test_gin, gin_record = _public_gin(
             staging / "public_rows.csv", staging, accounting
@@ -836,8 +855,8 @@ def run_predictions(attempt: int) -> Path:
             "implementation_sha256": _sha256(SCRIPT_PATH),
             "evaluation_budget_sha256": EVALUATION_BUDGET_SHA256,
             "public_input": {
-                "manifest_sha256": _sha256(INPUT_ROOTS[1] / "input_manifest.json"),
-                "rows_sha256": _sha256(INPUT_ROOTS[1] / "public_rows.csv"),
+                "manifest_sha256": _sha256(INPUT_ROOTS[3] / "input_manifest.json"),
+                "rows_sha256": _sha256(INPUT_ROOTS[3] / "public_rows.csv"),
                 "verified_repeat": True,
                 "source_manifest": input_manifest,
             },
@@ -906,7 +925,7 @@ def _arguments(argv: Sequence[str] | None = None) -> argparse.Namespace:
     modes.add_argument("--prepare", action="store_true")
     modes.add_argument("--predict", action="store_true")
     modes.add_argument("--_gin-worker", action="store_true", help=argparse.SUPPRESS)
-    parser.add_argument("--attempt", type=int, choices=(1, 2))
+    parser.add_argument("--attempt", type=int, choices=(1, 2, 3, 4))
     parser.add_argument("--_input", type=Path, help=argparse.SUPPRESS)
     parser.add_argument("--_output", type=Path, help=argparse.SUPPRESS)
     return parser.parse_args(argv)
@@ -920,7 +939,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             "GIN worker arguments missing",
         )
         return _gin_worker(args._input, args._output)
-    _require(args.attempt in (1, 2), "attempt is required")
+    _require(args.attempt is not None, "attempt is required")
+    _require(
+        (args.prepare and args.attempt in (3, 4))
+        or (args.predict and args.attempt in (1, 2)),
+        "attempt does not match operation",
+    )
     path = (
         prepare_public_input(args.attempt)
         if args.prepare
