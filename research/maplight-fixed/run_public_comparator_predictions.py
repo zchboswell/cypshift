@@ -403,8 +403,8 @@ def prepare_public_input(attempt: int) -> Path:
         _require(
             _clean_revision() == revision, "source changed during input preparation"
         )
+        _make_readonly(staging)
         staging.rename(output)
-        _make_readonly(output)
         return output
     except Exception as error:
         if staging is not None and staging.exists():
@@ -653,8 +653,10 @@ def run_predictions(attempt: int) -> Path:
         "model_fits": 0,
         "model_prediction_vectors": 0,
         "derived_prediction_vectors": 0,
-        "complete_family_task_artifacts": 0,
+        "staging_family_task_artifacts_completed": 0,
+        "canonical_family_task_artifacts": 0,
         "public_test_family_task_slots_consumed": 0,
+        "additional_family_task_slots_consumed_this_attempt": 0,
         "metric_evaluations": 0,
         "challenge_assumptions_added": 0,
     }
@@ -756,8 +758,7 @@ def run_predictions(attempt: int) -> Path:
                 path = staging / f"{family}__{task}.csv"
                 _write_predictions(path, task_rows, probabilities)
                 accounting["derived_prediction_vectors"] += 1
-                accounting["complete_family_task_artifacts"] += 1
-                accounting["public_test_family_task_slots_consumed"] += 1
+                accounting["staging_family_task_artifacts_completed"] += 1
                 prediction_records[f"{family}__{task}"] = {
                     "path": path.name,
                     "sha256": _sha256(path),
@@ -766,8 +767,13 @@ def run_predictions(attempt: int) -> Path:
                 }
         _require(
             accounting["model_fits"] == 30
-            and accounting["complete_family_task_artifacts"] == 6,
+            and accounting["staging_family_task_artifacts_completed"] == 6,
             "prediction accounting differs",
+        )
+        accounting["canonical_family_task_artifacts"] = 6
+        accounting["public_test_family_task_slots_consumed"] = 6
+        accounting["additional_family_task_slots_consumed_this_attempt"] = (
+            6 if attempt == 1 else 0
         )
         elapsed = time.perf_counter() - start
         peak = _peak_rss_gib()
@@ -834,10 +840,13 @@ def run_predictions(attempt: int) -> Path:
                 "prediction repeat receipt differs",
             )
         _require(_clean_revision() == revision, "source changed during prediction")
+        _make_readonly(staging)
         staging.rename(output)
-        _make_readonly(output)
         return output
     except Exception as error:
+        accounting["canonical_family_task_artifacts"] = 0
+        accounting["public_test_family_task_slots_consumed"] = 0
+        accounting["additional_family_task_slots_consumed_this_attempt"] = 0
         if staging is not None and staging.exists():
             shutil.rmtree(staging)
         _write_failure(blocker, "predict", attempt, error, accounting)
