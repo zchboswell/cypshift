@@ -197,13 +197,13 @@ It permits no real generation until the implementation passes independent
 review.
 
 Use separate entrypoints for the trusted projection, label-free assignment,
-and train-only summary. The assignment process accepts only the stripped input,
+and `train_val` summary. The assignment process accepts only the stripped input,
 its receipt, the parent and implementation contracts, and the pinned lock. The
 assignment runs below an active wall-time and RSS watchdog and is promoted from
 a staging root only after completion. The summary resolves the original
 stripped input chain and fully verifies the hashed assignment, environment,
 population, grouping counts, resource observations, and zero-use accounting.
-It then validates the complete train-only identity set before reading any target
+It then validates the complete `train_val` identity set before reading any target
 value. Resource and summary-validation failures preserve compact blocker
 receipts. All real inputs must be stable read-only files for the process
 lifetime.
@@ -646,7 +646,7 @@ files totaling 144,183 rows. Every cell file contains only its task's outer
 folds 1 through 4; validation fold 0 is absent. The scoring file remains sealed
 until all Stage A predictions are hashed. Two preserved infrastructure-only
 preflight receipts record zero label parses; the successful projection parsed
-exactly 30,038 train-only labels and zero public-test labels. No model,
+exactly 30,038 frozen `train_val` labels and zero public-test labels. No model,
 prediction, or metric operation occurred at this gate.
 
 The sealed Stage A prediction gate passed at signed source `16d7c2e`. Eighteen
@@ -663,7 +663,7 @@ predictive-value claim until the separately sealed scoring step.
 
 The point-scoring gate then passed at signed source `92fba45`. After all 18
 prediction cells were revalidated, the evaluator parsed the frozen 30,038
-train-only scoring labels and computed exactly 180 predeclared point AUPRC
+frozen `train_val` scoring labels and computed exactly 180 predeclared point AUPRC
 values. Full MapLight seed 1 beat binary Morgan seed 1 on all three CYP tasks
 under both protocols. The macro improvement was +0.04808 for scaffold holdout
 and +0.04430 for community holdout; the five-seed mean-probability macros were

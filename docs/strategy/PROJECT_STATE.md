@@ -253,7 +253,8 @@ through 4 for its task, protocol, and repeat, with zero validation identities.
 The scoring target hash is `73a4ee15`; its 9,374 positive and 20,664 negative
 rows remain sealed until all predictions are immutable. Two preflight-only
 failure receipts (`892a3afa` and `057a52cd`) are preserved; both record zero
-label parses. The successful projection parsed 30,038 train-only labels once,
+label parses. The successful projection parsed 30,038 frozen `train_val`
+labels once,
 used zero public-test rows or labels, and performed zero feature, fit,
 prediction, or metric operations.
 
@@ -312,7 +313,7 @@ The pre-result implementation contract now fixes the full one-to-one identity
 join, numeric source-row sorting, semantic non-use of canonical provenance,
 raw-form counts, logical receipt paths, and exact artifact schemas. Focused
 research code implements three process boundaries: trusted train-only
-projection, label-free global assignment, and post-hash train-only summary.
+projection, label-free global assignment, and post-hash `train_val` summary.
 Three thin scripts expose only those paths. Synthetic tests cover determinism,
 immutability, raw-string preservation, scaffold fallback, chiral Morgan
 community mechanics, the real inclusive distance-0.40 API boundary, exact fold
