@@ -25,3 +25,8 @@ artifacts/environments/maplight-fixed-stage-a-v1/venv/bin/python \
 
 The command writes one immutable success receipt or one immutable blocker. It
 does not download data or dependencies.
+
+After parity passes, `build_features.py --build-id 1` and `--build-id 2`
+create two independent label-free feature roots. The builder caches only exact
+raw strings, expands the five blocks back to all frozen shadow row identities,
+and has no measurement, target, model, prediction, or public-test argument.

@@ -15,6 +15,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 FEATURE_PATH = ROOT / "research/maplight-fixed/maplight_fixed_features.py"
 VERIFIER_PATH = ROOT / "research/maplight-fixed/verify_parity.py"
+BUILDER_PATH = ROOT / "research/maplight-fixed/build_features.py"
 
 
 def _load_module(name: str, path: Path) -> ModuleType:
@@ -125,6 +126,61 @@ def test_parity_verifier_has_one_bounded_supervisor_and_no_model_surface() -> No
     assert "CatBoost" not in source
     assert "subprocess.run" in source
     assert "timeout=600" in source
+
+
+def test_real_feature_builder_is_one_bounded_label_free_operation() -> None:
+    tree = ast.parse(BUILDER_PATH.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)
+    }
+    assert set(functions) >= {
+        "build_label_free_features",
+        "_read_shadow_rows",
+        "_unique_raw_inputs",
+        "_write_arrays",
+        "_write_failure",
+    }
+    assert [
+        argument.arg for argument in functions["build_label_free_features"].args.args
+    ] == ["build_id"]
+    assert len(BUILDER_PATH.read_text(encoding="utf-8").splitlines()) <= 650
+
+    string_literals = {
+        node.value
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Constant) and isinstance(node.value, str)
+    }
+    assert not any("measurements.csv" in value for value in string_literals)
+    assert not any("CatBoost" in value for value in string_literals)
+    assert _assignment_literal(tree, "BLOCKS") == (
+        "binary_morgan",
+        "morgan_count",
+        "avalon_count",
+        "erg",
+        "rdkit_descriptors",
+    )
+    assert _assignment_literal(tree, "SCIENTIFIC_ZEROS") == {
+        "target_values_parsed": 0,
+        "model_fits": 0,
+        "predictions": 0,
+        "metric_evaluations": 0,
+        "public_test_rows_used": 0,
+        "public_test_labels_parsed": 0,
+        "public_test_family_task_slots_consumed": 0,
+        "gin_weight_bytes_downloaded": 0,
+        "challenge_assumptions_added": 0,
+    }
+    build_argument = next(
+        node
+        for node in ast.walk(functions["_arguments"])
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "add_argument"
+        and ast.literal_eval(node.args[0]) == "--build-id"
+    )
+    keywords = {keyword.arg: keyword.value for keyword in build_argument.keywords}
+    assert ast.literal_eval(keywords["required"]) is True
+    assert ast.literal_eval(keywords["choices"]) == (1, 2)
 
 
 def test_research_modules_import_without_rdkit_or_heavy_model_dependencies() -> None:
