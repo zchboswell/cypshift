@@ -221,6 +221,16 @@ public-test rows or labels used, public-test slots consumed, and challenge
 assumptions added are all zero. This is prediction evidence only; it makes no
 GIN-value claim before the separate scorer opens the sealed shadow targets.
 
+An independent prediction-only review passed exact integrated head `c68d566`
+without opening scoring targets. It revalidated every immutable row, hash,
+probability, mean, fit receipt, resolved explicit CatBoost parameter, shared
+control hash, resource bound, and zero-use counter. The direct Stage B
+evaluator is now frozen before scoring. It uses bootstrap seeds `20260818` and
+`20260819`, exposes one `--run` operation, adds no dependency or framework, and
+implements exactly 198 point, 108 sensitivity, and 144,000 synchronized grouped
+bootstrap metric evaluations. Its 0.95 AUPRC gate stops before bootstrap and
+retains a forensic blocker rather than continuing performance work.
+
 The Stage A target projection passed at signed source `1275cbc`. Its immutable
 manifest hashes to `716ffd20`; it binds one 30,038-row scoring file and 18
 cell-specific outer-training files totaling 144,183 rows. Independent

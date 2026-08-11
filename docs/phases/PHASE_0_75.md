@@ -416,6 +416,13 @@ that either control fails. The scoring target remains sealed until the
 prediction-review gate passes; the next operation is only the already frozen
 point, sensitivity, and paired grouped-bootstrap evaluation.
 
+The prediction-review gate passed at integrated head `c68d566` without opening
+any scoring target. The direct evaluator freezes bootstrap seeds `20260818`
+and `20260819` and exactly the contracted 198 point, 108 sensitivity, and
+144,000 bootstrap metric calls. It introduces no candidate, fit, dependency,
+or public-test path. If any point AUPRC reaches 0.95, it stops before
+sensitivity or bootstrap work and retains the forensic blocker.
+
 If dependency or pretrained-weight drift prevents exact reproduction, retain a
 precise blocker. If a local implementation is reproducible but does not match
 the dated point result, it becomes the frozen local comparator with the drift
