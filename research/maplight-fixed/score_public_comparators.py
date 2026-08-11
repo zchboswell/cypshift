@@ -40,7 +40,14 @@ MEASUREMENTS_SHA256 = "6d9e50bf114256d72ef9efcbeeed31af80aaedc2e7a7676be4d21a094
 BUDGET_PATH = ROOT / "benchmarks/phase_0_75_evaluation_budget.json"
 BUDGET_SHA256 = "fa5463b7fcc5aabecf786f42757f60ba6509aa3ce144c6a2ab4a8c1883408750"
 OUTPUT_ROOT = ROOT / "artifacts/benchmarks/maplight-public-scorecard-v1"
-BLOCKER_ROOT = ROOT / "artifacts/blockers/maplight-public-scorecard-v1-blocker"
+BLOCKER_ROOT = (
+    ROOT / "artifacts/blockers/maplight-public-scorecard-v1-attempt-2-blocker"
+)
+PRESERVED_SCORING_BLOCKER = {
+    "path": ROOT
+    / "artifacts/blockers/maplight-public-scorecard-v1-blocker/failure_receipt.json",
+    "sha256": "18581bab0567df82797e5b3004857909ea87ac8f258685500393c990724adc6b",
+}
 
 TASKS = ("cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith")
 TASK_ROWS = {"cyp2c9_veith": 2419, "cyp2d6_veith": 2626, "cyp3a4_veith": 2467}
@@ -483,6 +490,13 @@ def _score(
 
 
 def run_scoring() -> Path:
+    preserved = cast(Path, PRESERVED_SCORING_BLOCKER["path"])
+    _require(
+        preserved.is_file()
+        and _readonly(preserved)
+        and _sha256(preserved) == PRESERVED_SCORING_BLOCKER["sha256"],
+        "preserved zero-label scoring blocker differs",
+    )
     _require(
         not OUTPUT_ROOT.exists() and not BLOCKER_ROOT.exists(), "score output exists"
     )
@@ -524,6 +538,7 @@ def run_scoring() -> Path:
         )
         manifest = {
             "schema_version": "cypshift.maplight_public_scorecard.v1",
+            "attempt": 2,
             "source_revision": revision,
             "implementation_sha256": _sha256(SCRIPT_PATH),
             "inputs": {
@@ -606,6 +621,7 @@ def run_scoring() -> Path:
             }
         receipt = {
             "schema_version": "cypshift.maplight_public_scoring_failure.v1",
+            "attempt": 2,
             "source_revision": revision,
             "implementation_sha256": _sha256(SCRIPT_PATH),
             "prediction_manifests": PREDICTION_MANIFEST_SHA256,

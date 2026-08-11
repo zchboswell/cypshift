@@ -29,6 +29,10 @@ def test_public_scoring_budget_is_exact() -> None:
     assert sum(len(tasks) for tasks in module.ANCHORS.values()) == 6
     assert set(module.PREDICTION_ROOTS) == {3, 4}
     assert len(module.EXPECTED_PREDICTION_FILES) == 14
+    assert module.PRESERVED_SCORING_BLOCKER["sha256"] == (
+        "18581bab0567df82797e5b3004857909ea87ac8f258685500393c990724adc6b"
+    )
+    assert "attempt-2-blocker" in str(module.BLOCKER_ROOT)
 
 
 def test_public_scoring_tolerance_boundaries_are_frozen() -> None:
@@ -218,12 +222,20 @@ def test_forensic_receipt_revalidates_source_and_measurement(
     output = tmp_path / "score"
     blocker = tmp_path / "blocker"
     measurement = tmp_path / "measurements.csv"
+    preserved = tmp_path / "preserved_failure_receipt.json"
     measurement.write_text("fixture\n", encoding="utf-8")
+    preserved.write_text("{}\n", encoding="utf-8")
+    preserved.chmod(0o444)
     revision = "a" * 40
     monkeypatch.setattr(module, "OUTPUT_ROOT", output)
     monkeypatch.setattr(module, "BLOCKER_ROOT", blocker)
     monkeypatch.setattr(module, "MEASUREMENTS_PATH", measurement)
     monkeypatch.setattr(module, "MEASUREMENTS_SHA256", module._sha256(measurement))
+    monkeypatch.setattr(
+        module,
+        "PRESERVED_SCORING_BLOCKER",
+        {"path": preserved, "sha256": module._sha256(preserved)},
+    )
     monkeypatch.setattr(module, "_clean_revision", lambda: revision)
     monkeypatch.setattr(module, "_verify_prediction_roots", lambda: ([{}], {}))
 
