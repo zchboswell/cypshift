@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import csv
 import hashlib
 import json
@@ -11,6 +12,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "benchmarks" / "maplight_fixed_stage_a_contract.json"
 SOURCE_CONTRACT_PATH = ROOT / "benchmarks" / "maplight_source_contract.json"
+TARGET_PROJECTION_PATH = ROOT / "research/maplight-fixed/prepare_stage_a_targets.py"
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -249,3 +251,54 @@ def test_stage_a_firewalls_public_test_and_keeps_core_lightweight() -> None:
     assert "torch" not in core_dependencies
     assert "molfeat" not in core_dependencies
     assert "dgl" not in core_dependencies
+
+
+def test_stage_a_target_projection_is_one_direct_train_only_process() -> None:
+    tree = ast.parse(TARGET_PROJECTION_PATH.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)
+    }
+    assert set(functions) >= {
+        "prepare_targets",
+        "_targets",
+        "_write_csv",
+        "_write_failure",
+    }
+    assert functions["prepare_targets"].args.args == []
+
+    assignments = {
+        target.id: ast.literal_eval(node.value)
+        for node in tree.body
+        if isinstance(node, ast.Assign)
+        and len(node.targets) == 1
+        and isinstance((target := node.targets[0]), ast.Name)
+        and target.id in {"SCORING_COLUMNS", "TRAINING_COLUMNS", "ACCOUNTING"}
+    }
+    contract = _load_json(CONTRACT_PATH)
+    firewall = contract["process_firewall"]["trusted_target_projection"]
+    assert list(assignments["SCORING_COLUMNS"]) == firewall["scoring_target_columns"]
+    assert (
+        list(assignments["TRAINING_COLUMNS"])
+        == firewall["outer_training_target_columns"]
+    )
+    assert assignments["ACCOUNTING"] == {
+        "train_val_labels_parsed": 30038,
+        "training_target_values_emitted": 144183,
+        "scoring_target_values_emitted": 30038,
+        "cell_target_files_emitted": 18,
+        "public_test_rows_used": 0,
+        "public_test_labels_parsed": 0,
+        "feature_arrays_opened": 0,
+        "model_fits": 0,
+        "predictions": 0,
+        "metric_evaluations": 0,
+        "gin_weight_bytes_downloaded": 0,
+        "challenge_assumptions_added": 0,
+    }
+    imports = {
+        alias.name
+        for node in tree.body
+        if isinstance(node, ast.Import)
+        for alias in node.names
+    }
+    assert not imports & {"catboost", "sklearn", "rdkit", "torch", "dgl", "molfeat"}
