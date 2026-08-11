@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "benchmarks" / "maplight_fixed_stage_a_contract.json"
 SOURCE_CONTRACT_PATH = ROOT / "benchmarks" / "maplight_source_contract.json"
 TARGET_PROJECTION_PATH = ROOT / "research/maplight-fixed/prepare_stage_a_targets.py"
+CATBOOST_RUNNER_PATH = ROOT / "research/maplight-fixed/run_stage_a_catboost.py"
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -365,3 +366,41 @@ def test_target_projection_treats_tracked_contract_and_ignored_inputs_differentl
     finally:
         shadow_root.chmod(0o755)
         measurement_root.chmod(0o755)
+
+
+def test_stage_a_catboost_runner_has_only_the_frozen_prediction_surface() -> None:
+    tree = ast.parse(CATBOOST_RUNNER_PATH.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)
+    }
+    assert set(functions) >= {"run_predictions", "_worker", "_feature_matrix"}
+    research_root = str(CATBOOST_RUNNER_PATH.parent)
+    sys.path.insert(0, research_root)
+    try:
+        runner = _load_module("stage_a_catboost_runner_test", CATBOOST_RUNNER_PATH)
+    finally:
+        sys.path.remove(research_root)
+    candidates = runner.CANDIDATES
+    assert len(candidates) == 9
+    assert [item[2] for item in candidates] == [1, 1, 1, 1, 1, 2, 3, 4, 5]
+    assert all("extra" not in item[0] for item in candidates)
+
+    constructors = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "CatBoostClassifier"
+    ]
+    assert len(constructors) == 1
+    assert {keyword.arg for keyword in constructors[0].keywords} == {
+        "random_strength",
+        "random_seed",
+        "verbose",
+        "loss_function",
+    }
+    source = CATBOOST_RUNNER_PATH.read_text(encoding="utf-8")
+    assert "scoring_targets.csv" not in source
+    assert "average_precision" not in source
+    assert "ExtraTrees" not in source
+    assert 'metric_evaluations": 0' in source
