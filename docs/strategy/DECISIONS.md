@@ -719,3 +719,41 @@
   This is the reversal condition: another scientific rule would have to change.
   Preserve blocker receipt SHA-256 `b337f965...`; do not retry, start build 2,
   fit Stage A, start GIN, or use the public test.
+
+## D-027 — Authorize one exact-upstream missing-value compatibility experiment
+
+- Date: 2026-08-11
+- Status: accepted; pre-result freeze active
+- Decision: Preserve both prior Phase 0.75 blockers and authorize one separate
+  missing-value compatibility experiment. Permit float64 `NaN` only in the
+  four frozen Gasteiger charge-extrema descriptor columns and preserve those
+  values unchanged for pinned CatBoost 1.2.1. Continue to reject every
+  infinity and every other `NaN`.
+- Evidence: A project-owner-authorized, label-free diagnosis examined all
+  15,399 unique exact-raw shadow structures. Forty-one structures, expanding
+  to 82 rows, have 164 unique and 328 expanded `NaN` cells, all confined to
+  descriptor indices 39, 41, 43, and 45. The affected elements are As, Hg, Sb,
+  Se, and Sn. The first organoarsenic molecule parses normally; phosphorus
+  controls are finite. Pinned CatBoost accepts synthetic `NaN`, produces finite
+  probabilities, and resolves `nan_mode=Min`; frozen ExtraTrees rejects it.
+- Sole scientific change: Replace only D-026's inherited reject-all-nonfinite
+  rule with the exact four-column `NaN` allowance. Do not impute, replace, add
+  missingness indicators, delete rows or descriptors, edit structures, add
+  element parameters, or permit another non-finite value.
+- Execution boundary: Retain exact signed-`int8` bytes, raw rows, ordering,
+  blocks, descriptor list, environment, folds, seeds, resource limits, label
+  firewall, and public-test budget. Generate two fresh label-free feature roots
+  and require byte-identical row and NPY payloads, including NaN bytes. Build 2
+  requires reviewed build 1.
+- Model boundary: After both feature roots pass review, only the already frozen
+  CatBoost R1-through-R5 candidates may fit. Leave CatBoost `nan_mode`
+  unspecified as upstream does, but receipt its resolved pinned value `Min`.
+  ExtraTrees E1 remains unexecuted; no imputed control or replacement learner
+  is authorized.
+- Claim boundary: This is pinned local upstream-compatibility evidence, not
+  proof of the historical runtime, a predictive gain, a public score, clean
+  external validation, or challenge transfer.
+- Reversal condition: Stop and preserve a blocker on any infinity, `NaN`
+  outside the four exact columns, mask/count drift, byte mismatch, CatBoost
+  capability mismatch, or need for another scientific change. Do not start GIN
+  or use the public test before the fixed comparator completes its shadow gate.

@@ -117,6 +117,10 @@ public representation work:
 - **Descriptor-version drift (C6/P1/P6):** RDKit versions, descriptor ordering,
   count semantics, defaults, non-finite handling, or failed-row policies change
   the comparator representation.
+- **Rare-element descriptor coverage (C4/P1):** an otherwise parseable molecule
+  contains an element without supported descriptor parameters, producing an
+  undefined value that must be preserved or rejected under a predeclared
+  learner-compatible policy rather than silently imputed or filtered.
 - **Comparator implementation drift (P1/P6/V6):** local code, environment,
   CatBoost defaults, seed aggregation, split identity, or row policy no longer
   reproduces the pinned public method.

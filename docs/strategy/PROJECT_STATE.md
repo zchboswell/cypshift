@@ -4,16 +4,18 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 closed negative — exact fixed-comparator reproduction stopped on a
-frozen non-finite descriptor boundary. D-024 is active for the August 17
-release.
+Phase 0.75 missing-value compatibility addendum active under D-027. The prior
+safe and signed-`int8` experiments remain closed negative and immutable. D-024
+remains active for the August 17 release.
 
 ## Active operating goal
 
-Wait under D-024 and execute the authoritative launch intake on August 17.
-Preserve the successful topology and fixture-parity evidence plus both
-real-feature blockers. Do not repair, retry, fit, start GIN, or use the TDC
-public test under the closed Phase 0.75 contracts.
+Execute one Occam-small, result-blind MapLight missing-value compatibility
+experiment. Preserve both prior blockers. Permit `NaN` only in the four frozen
+Gasteiger charge-extrema descriptor columns, preserve those values unchanged,
+and reject every infinity or other `NaN`. Produce two matching label-free
+feature roots before any target, scientific fit, prediction, metric, GIN, or
+public-test action.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -135,6 +137,27 @@ the first affected exact-raw row was index 1,563. The
 frozen contract stops on any finiteness mismatch and permits no second
 scientific change. Build 2, Stage A fitting, GIN, and public scoring therefore
 remain forbidden.
+
+The project owner subsequently authorized one separate missing-value
+compatibility experiment after a label-free diagnosis established the narrower
+failure mechanism. Across all 15,399 unique exact-raw shadow structures,
+exactly 41 structures and 82 expanded rows contain `NaN` only in descriptor
+indices 39, 41, 43, and 45: `MaxAbsPartialCharge`, `MaxPartialCharge`,
+`MinAbsPartialCharge`, and `MinPartialCharge`. The affected structures contain
+rare elements As, Hg, Sb, Se, or Sn. No infinity and no non-finite value in any
+other frozen descriptor was observed. The first affected molecule is a valid
+RDKit-parsed organoarsenic structure; replacing As with P makes its charge
+descriptors finite. Pinned CatBoost 1.2.1 accepts `NaN` with resolved default
+`nan_mode=Min`, while the frozen ExtraTrees diagnostic rejects it.
+
+D-027 and
+[`maplight_fixed_nan_compat_contract.json`](../../benchmarks/maplight_fixed_nan_compat_contract.json)
+freeze the only new rule before compatibility feature execution. The four
+permitted `NaN` columns remain byte-preserved; no imputation, missingness
+indicator, row deletion, descriptor deletion, structure edit, or invented
+charge parameter is allowed. Only the pre-existing CatBoost candidates R1
+through R5 may proceed after two independent feature roots pass review;
+ExtraTrees E1 remains unexecuted.
 
 ## Phase 0.75 source, budget, and shadow freeze
 
@@ -727,12 +750,15 @@ artifacts remain outside Git.
 
 ## Active hypotheses
 
-1. **Closed negative:** exact fixed MapLight fixture bytes are reproducible, but
-   exact real-row generation cannot satisfy both pinned upstream signed-`int8`
-   behavior and the frozen non-finite rule without another scientific change.
-2. **Unanswered:** the representation-value hypothesis was not tested because
+1. **Active bounded compatibility:** exact fixed MapLight fixture bytes and
+   signed-`int8` boundaries are reproducible. A new result-blind addendum tests
+   whether preserving only the four diagnosed charge-descriptor `NaN` columns
+   yields two byte-identical real feature roots for pinned CatBoost.
+2. **Closed negative:** the prior safe and signed-`int8` contracts remain
+   stopped on their exact blockers and are not repaired or reinterpreted.
+3. **Unanswered:** the representation-value hypothesis was not tested because
    no complete matrix, fit, prediction, or metric was produced.
-3. **Not started:** GIN required fixed-MapLight shadow predictions and therefore
+4. **Not started:** GIN requires fixed-MapLight shadow predictions and therefore
    remained outside the permitted execution path.
 
 The broader parent-relative and cross-isoform hypotheses remain scientifically
@@ -786,6 +812,10 @@ measured-parent transformation model.
   provenance forbids a clean zero-shot claim.
 - Heavy research dependencies could enter the all-groups core CI path unless
   environments remain isolated.
+- Rare-element Gasteiger parameter gaps can create `NaN` in four charge
+  descriptors. The D-027 path must preserve only the diagnosed values and fail
+  closed on every other non-finite value; otherwise an undocumented imputation
+  or row filter could change the comparator population.
 
 ## Maximum Phase 0.5 scope
 
@@ -813,9 +843,11 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 ## Exact next action
 
 Preserve the topology report, both parity roots, both real-feature blockers,
-and their reviews. Do not retry either build, start build 2, fit Stage A, start
-GIN, or consume a public-test slot. Review and merge this closeout, then wait
-under D-024 for the authoritative August 17 release intake.
+and their reviews. Review and merge the D-027 diagnosis and result-blind
+missing-value contract. Then implement only the direct four-column `NaN`
+allowance, obtain code review, generate build 1, review it, generate build 2,
+and require byte-identical row and array payloads before any Stage A CatBoost
+fit. Do not run ExtraTrees, GIN, or the public test during this feature gate.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

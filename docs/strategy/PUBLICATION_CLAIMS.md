@@ -96,6 +96,14 @@ Not allowed from Phase 0.5 evidence:
 Phase 0.75 may support only claims tied to its frozen public sources, global
 shadow benchmark, row-level predictions, and declared evaluation budget.
 
+The D-027 diagnostic supports one narrower implementation claim: in the pinned
+shadow population, 41 unique exact-raw structures produce `NaN` only in the
+four frozen Gasteiger charge-extrema descriptors, and pinned CatBoost 1.2.1 can
+consume synthetic numerical `NaN` with resolved default `nan_mode=Min`. It does
+not establish the historical MapLight environment, predictive value,
+superiority, or challenge relevance. A later comparator claim requires two
+matching real feature roots and the complete frozen shadow evaluation.
+
 ### Exact reproduction claim
 
 Proposed claim:

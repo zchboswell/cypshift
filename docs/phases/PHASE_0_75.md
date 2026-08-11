@@ -1,6 +1,7 @@
 # Phase 0.75 — exact comparator reproduction and representation breakthrough
 
-Status: closed negative — exact fixed comparator blocked before fitting
+Status: missing-value compatibility addendum active under D-027; prior
+experiments remain closed negative
 
 Authorized: 2026-08-10
 
@@ -442,13 +443,14 @@ Phase 0.75 passes when:
 Tier 2 is not required for closeout. A final `cypshift` contender is not
 required if shadow evidence does not justify one.
 
-Closeout is a stopped negative under D-025 and D-026, not a pass of every
-original acceptance criterion. Criteria 6 through 10 were not reached: no
-official fixed score, GIN result, row-level prediction, representation
+The original closeout remains a stopped negative under D-025 and D-026, not a
+pass of every acceptance criterion. Criteria 6 through 10 were not reached:
+no official fixed score, GIN result, row-level prediction, representation
 ablation, or public prediction family exists. Fixture parity satisfies
-criterion 5. The real-feature blocker prevents criterion 6 and is also the
-prerequisite blocker for GIN. The project stops instead of changing a second
-scientific rule after results.
+criterion 5. The project owner later authorized D-027 as a separate,
+result-blind compatibility addendum after a label-free causal diagnosis. D-027
+does not repair either prior experiment and does not erase the stopped-negative
+record.
 
 ## Stopping rules and non-goals
 
@@ -482,9 +484,10 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
    exact signed-`int8` parity then passed, but its first real build stopped on a
    RDKit descriptor matrix containing at least one non-finite value; the first
    affected exact-raw row was index 1,563. Build 2 is authorized under neither
-   contract.**
+   prior contract. D-027 now authorizes two fresh roots under the exact
+   four-column `NaN` rule; neither has run.**
 8. Run the frozen Stage A shadow candidates and sensitivity analyses once.
-   **Not reached; no complete feature matrix exists.**
+   **Not reached; D-027 feature parity is the prerequisite.**
 9. Pass Gate 1 and freeze the label-free fixed-MapLight public predictions, but
    do not score them yet. **Not reached.**
 10. Build the isolated GIN embedding path and shadow controls. **Not started;
@@ -514,3 +517,35 @@ the first affected exact-raw row was index 1,563. It retained no feature
 matrix. D-026
 forbids another scientific change, retry, build 2, fitting, GIN, or public
 scoring. No result is a challenge-performance claim.
+
+### D-027 missing-value compatibility addendum
+
+The post-blocker diagnostic examined only the frozen label-free shadow rows in
+the pinned research environment. Exactly 41 of 15,399 unique exact-raw
+structures, expanding to 82 of 30,038 rows, contain `NaN` in all four and only
+the four frozen Gasteiger charge-extrema descriptors. The affected rare
+elements are As, Hg, Sb, Se, and Sn. No infinity or non-finite value in another
+frozen descriptor was observed. The first affected exact-raw row is index
+1,563, hash `6911fe92...`. Its molecule parses normally; phosphorus controls
+make the same charge descriptors finite. RDKit 2026.03.5 reproduces the first
+failure, so ordinary version drift is not the best explanation.
+
+The exact pinned MapLight source does not reject, impute, filter, or delete
+these values before CatBoost. A synthetic probe in pinned CatBoost 1.2.1
+accepts float64 `NaN`, produces finite probabilities, and resolves the default
+`nan_mode` to `Min`. The frozen scikit-learn 1.3.0 ExtraTrees diagnostic rejects
+the same input.
+
+D-027 therefore permits one rule only: preserve `NaN` unchanged in descriptor
+indices 39, 41, 43, and 45, while rejecting every infinity and every `NaN`
+outside those columns. Imputation, row deletion, descriptor deletion,
+missingness indicators, structure edits, and custom rare-element charge
+parameters remain forbidden. Two independent full feature roots must be
+byte-identical before the existing CatBoost R1-through-R5 ladder can fit.
+ExtraTrees E1 is not authorized on the exact missing-value matrix and supports
+no estimator-effect claim.
+
+The tracked diagnostic receipt is
+[`maplight_fixed_nan_diagnosis.json`](../../benchmarks/receipts/maplight_fixed_nan_diagnosis.json).
+The result-blind execution contract is
+[`maplight_fixed_nan_compat_contract.json`](../../benchmarks/maplight_fixed_nan_compat_contract.json).

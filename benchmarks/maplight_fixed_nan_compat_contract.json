@@ -1,0 +1,180 @@
+{
+  "schema_version": "cypshift.maplight_fixed_nan_compat_contract.v1",
+  "phase": "0.75",
+  "status": "pre_result_frozen",
+  "authorization": {
+    "authorized_by": "project_owner",
+    "authorized_at_utc": "2026-08-11T08:40:39Z",
+    "scope": "One separate exact-upstream missing-value compatibility experiment.",
+    "preserves_prior_experiments_and_blockers": true
+  },
+  "objective": "Complete two reproducible label-free MapLight fixed-feature roots by preserving the narrowly diagnosed RDKit charge-descriptor NaNs exactly for pinned CatBoost while retaining every other signed-int8, row, feature, environment, and firewall rule.",
+  "hypothesis": "The exact upstream fixed representation is reproducible on every frozen shadow row when NaN is allowed only in the four Gasteiger charge-extrema descriptor columns and is passed unchanged to CatBoost 1.2.1, whose pinned default missing-value mode is Min.",
+  "parents": {
+    "int8_compat_contract": {
+      "path": "benchmarks/maplight_fixed_int8_compat_contract.json",
+      "sha256": "ace395a195016854f81c96777921a2fad4c2f638927d2ad15c452b5ecd915ea8"
+    },
+    "int8_compatibility_parity": {
+      "path": "artifacts/benchmarks/maplight-fixed-upstream-int8-parity-v1/compatibility_parity_receipt.json",
+      "sha256": "a5d1c0004efdc9f35b15ebadf87b77c3ccfbf09454efe7aede58b6355c257ecb"
+    },
+    "int8_real_feature_blocker": {
+      "path": "artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-1-blocker/failure_receipt.json",
+      "sha256": "b337f9653c95c0f7a7b6881e4e77378f877020d9766d04c73250d15091f4ba73"
+    },
+    "nan_diagnosis": {
+      "path": "benchmarks/receipts/maplight_fixed_nan_diagnosis.json",
+      "sha256": "9832efb282ff965b8234a178ea9f79db3df6e6b9e6499268afaac46fb4905230"
+    }
+  },
+  "inheritance": {
+    "rule": "Every clause in the hash-bound signed-int8 compatibility contract remains normative unless its exact JSON pointer appears below.",
+    "overrides": {
+      "/unchanged_rules/nonfinite_policy": "Replaced by /sole_scientific_change.",
+      "/acceptance/1": "Replaced by /acceptance/1 and /acceptance/2.",
+      "/stopping_rules/0": "Replaced by /stopping_rules/0 through /stopping_rules/3.",
+      "/stopping_rules/2": "Replaced by /stopping_rules/4."
+    },
+    "model_authority": "After two matching roots pass review, only the already frozen CatBoost representation candidates R1 through R5 may fit. The ExtraTrees E1 diagnostic remains unexecuted because scikit-learn 1.3.0 rejects NaN. No imputed estimator control or replacement candidate is authorized."
+  },
+  "sole_scientific_change": {
+    "block": "rdkit_descriptors",
+    "allowed_nonfinite_kind": "NaN",
+    "allowed_columns": [
+      {
+        "index": 39,
+        "name": "MaxAbsPartialCharge"
+      },
+      {
+        "index": 41,
+        "name": "MaxPartialCharge"
+      },
+      {
+        "index": 43,
+        "name": "MinAbsPartialCharge"
+      },
+      {
+        "index": 45,
+        "name": "MinPartialCharge"
+      }
+    ],
+    "preservation_rule": "Retain each permitted NaN byte-for-byte in float64 arrays. Do not impute, replace, add a missingness indicator, delete a descriptor, delete a row, alter a structure, or add element parameters.",
+    "rejection_rule": "Reject every infinity, every NaN outside the four exact columns, and every non-finite value in binary Morgan, Morgan count, Avalon count, or ErG.",
+    "expected_label_free_diagnostic": {
+      "unique_exact_raw_structures_with_allowed_nan": 41,
+      "expanded_rows_with_allowed_nan": 82,
+      "unique_nan_cells": 164,
+      "expanded_nan_cells": 328,
+      "first_unique_exact_raw_index": 1563,
+      "first_raw_structure_sha256": "6911fe92c06813b83b17a3d974db2dce21df47361283acf185d91d5468a7966a"
+    }
+  },
+  "consumer_rule": {
+    "learner": "CatBoostClassifier 1.2.1",
+    "upstream_parameters": {
+      "loss_function": "Logloss",
+      "random_strength": 2,
+      "random_seed": "1 through 5",
+      "verbose": 0
+    },
+    "nan_mode_parameter": "Do not set nan_mode explicitly; bind and receipt the resolved pinned default Min to preserve upstream parameter behavior.",
+    "required_pre_fit_probe": "A synthetic, label-independent capability probe must show that the exact environment accepts float64 NaN and emits finite probabilities with resolved nan_mode Min.",
+    "extra_trees": "Not authorized on this exact matrix; no imputation or feature deletion may be introduced to make it run."
+  },
+  "execution": {
+    "build_ids": [
+      1,
+      2
+    ],
+    "fresh_process_per_build": true,
+    "process_local_cache_only": true,
+    "build_2_requires_reviewed_build_1": true,
+    "output_roots": [
+      "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-1",
+      "artifacts/benchmarks/maplight-fixed-upstream-int8-nan-features-v1-build-2"
+    ],
+    "failure_roots": [
+      "artifacts/blockers/maplight-fixed-upstream-int8-nan-features-v1-build-1-blocker",
+      "artifacts/blockers/maplight-fixed-upstream-int8-nan-features-v1-build-2-blocker"
+    ],
+    "success_files_per_root": [
+      "feature_rows.csv",
+      "binary_morgan.npy",
+      "morgan_count.npy",
+      "avalon_count.npy",
+      "erg.npy",
+      "rdkit_descriptors.npy",
+      "feature_manifest.json"
+    ],
+    "repeat_gate": "Require feature_rows.csv and all five NPY files to be byte-identical across builds, including NaN payload bytes. Validate exact logical filenames, NPY v1.0, dimensions, dtypes, C order, signed-int8 overflow statistics, allowed-NaN masks and counts, source hashes, and row alignment before any target path is available.",
+    "resource_limit": {
+      "wall_seconds_per_build": 3600,
+      "peak_rss_gib_per_build": 8
+    }
+  },
+  "receipt_additions": {
+    "manifest_nonfinite_record": [
+      "allowed_kind",
+      "allowed_descriptor_indices",
+      "allowed_descriptor_names",
+      "unique_exact_raw_structures_with_nan",
+      "expanded_rows_with_nan",
+      "unique_nan_cells",
+      "expanded_nan_cells",
+      "positive_infinity_cells",
+      "negative_infinity_cells",
+      "nan_cells_outside_allowed_columns",
+      "first_unique_exact_raw_index",
+      "first_raw_structure_sha256"
+    ],
+    "failure_rule": "Record the safe block, row index, raw hash, descriptor index and name when applicable; never record raw structure text. Remove staging before one immutable failure receipt.",
+    "scientific_zeros": [
+      "target_values_parsed",
+      "scientific_model_fits",
+      "scientific_predictions",
+      "metric_evaluations",
+      "public_test_rows_used",
+      "public_test_labels_parsed",
+      "public_test_family_task_slots_consumed",
+      "gin_weight_bytes_downloaded",
+      "challenge_assumptions_added"
+    ]
+  },
+  "firewall": {
+    "allowed_inputs": "The inherited frozen label-free shadow rows, shadow manifest, MapLight source, compatible environment, signed-int8 parity, prior blockers, this contract, and its tracked diagnosis receipt only.",
+    "forbidden": "Measurement or target files, public-test rows or labels, scientific model fitting, predictions, metrics, GIN weights, challenge assumptions, imputation, row deletion, descriptor deletion, or custom charge parameters."
+  },
+  "acceptance": [
+    "The signed-int8 compatibility parity remains exact and unchanged.",
+    "Both real builds contain all 30,038 row-aligned rows and five declared arrays, with permitted NaN only in the exact four descriptor columns and exact diagnosed counts.",
+    "Both row files and all ten corresponding array files are byte-identical across builds.",
+    "The synthetic CatBoost capability probe passes with finite probabilities and resolved nan_mode Min.",
+    "Every source, environment, row, array, overflow, non-finite, resource, accounting, and output receipt passes review.",
+    "No target, scientific fit, prediction, metric, GIN, challenge, or public-test operation occurs before the feature gate."
+  ],
+  "stopping_rules": [
+    "Stop on any source, environment, revision, row, hash, schema, dimension, dtype, order, resource, or repeat mismatch.",
+    "Stop on any infinity.",
+    "Stop on any NaN outside descriptor indices 39, 41, 43, and 45.",
+    "Stop if the permitted NaN mask or counts differ across independent builds.",
+    "Stop if any scientific change beyond exact preservation of the diagnosed NaNs is required.",
+    "Stop after feature review if pinned CatBoost does not accept the unchanged matrix with resolved nan_mode Min.",
+    "Preserve a precise blocker; do not repair after any model or metric result."
+  ],
+  "accounting_before_execution": {
+    "compatibility_feature_builds": 0,
+    "persisted_block_arrays": 0,
+    "target_values_parsed": 0,
+    "scientific_model_fits": 0,
+    "scientific_predictions": 0,
+    "metric_evaluations": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "gin_weight_bytes_downloaded": 0,
+    "challenge_assumptions_added": 0
+  },
+  "next_gate": "Review and merge this result-blind authorization, then implement the smallest direct overlay on the frozen signed-int8 runner. Generate build 1 only after code review; generate build 2 only after build-1 artifact review; fit no scientific model until both roots pass the byte gate.",
+  "claim_boundary": "This experiment tests exact upstream missing-value compatibility in a pinned local environment. It does not establish the undocumented historical runtime, predictive value, public-test performance, challenge transfer, or superiority."
+}

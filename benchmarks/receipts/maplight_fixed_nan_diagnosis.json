@@ -1,0 +1,121 @@
+{
+  "schema_version": "cypshift.maplight_fixed_nan_diagnosis.v1",
+  "phase": "0.75",
+  "diagnosed_at_utc": "2026-08-11T08:40:39Z",
+  "authorization": "Project-owner-authorized, label-free post-blocker diagnosis.",
+  "inputs": {
+    "shadow_rows": {
+      "path": "artifacts/benchmarks/tdc-cyp-shadow-v1/shadow_rows.csv",
+      "sha256": "b633af0cbd5aa98a03ae77eb3e021eb32b441ae8133e24a2c9eb85394e41bc5f",
+      "rows": 30038,
+      "unique_exact_raw_structures": 15399
+    },
+    "blocked_feature_receipt": {
+      "path": "artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-1-blocker/failure_receipt.json",
+      "sha256": "b337f9653c95c0f7a7b6881e4e77378f877020d9766d04c73250d15091f4ba73"
+    },
+    "descriptor_order_sha256": "76ed228002c5cd229e4cbd8d62c3b3a49d698425a5216884c5c7b1b337f4293a"
+  },
+  "environment": {
+    "python": "3.10.13",
+    "rdkit": "2023.3.3",
+    "numpy": "1.25.2",
+    "catboost": "1.2.1",
+    "scikit_learn": "1.3.0",
+    "project_sha256": "20addcbfa3d7dbfa5d3a9f24f3090c22f11b556166213b2649c6c55e58556234",
+    "lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+  },
+  "first_affected_structure": {
+    "unique_exact_raw_index": 1563,
+    "raw_structure_sha256": "6911fe92c06813b83b17a3d974db2dce21df47361283acf185d91d5468a7966a",
+    "pubchem_cid": 135470148,
+    "pubchem_name": "Antineoplastic-80923",
+    "formula": "C11H10AsN7O4",
+    "element_trigger": "As",
+    "source_row_occurrences": 2,
+    "tasks": [
+      "cyp2c9_veith",
+      "cyp3a4_veith"
+    ]
+  },
+  "nonfinite_descriptor_policy_evidence": {
+    "descriptor_indices": [
+      39,
+      41,
+      43,
+      45
+    ],
+    "descriptor_names": [
+      "MaxAbsPartialCharge",
+      "MaxPartialCharge",
+      "MinAbsPartialCharge",
+      "MinPartialCharge"
+    ],
+    "nonfinite_kind": "NaN",
+    "infinities_observed": 0,
+    "unique_exact_raw_structures_affected": 41,
+    "expanded_shadow_rows_affected": 82,
+    "unique_nonfinite_cells": 164,
+    "expanded_nonfinite_cells": 328,
+    "affected_rows_by_task": {
+      "cyp2c9_veith": 31,
+      "cyp2d6_veith": 19,
+      "cyp3a4_veith": 32
+    },
+    "rare_element_counts": {
+      "As": 28,
+      "Hg": 2,
+      "Sb": 6,
+      "Se": 3,
+      "Sn": 2
+    },
+    "other_frozen_rdkit_descriptors_with_nonfinite_values": 0
+  },
+  "causal_controls": {
+    "all_atoms_in_first_affected_structure_have_nan_gasteiger_charge": true,
+    "phosphorus_analog_charge_descriptors_are_finite": true,
+    "phenylarsonic_acid_charge_descriptors_are_nonfinite": true,
+    "phenylphosphonic_acid_charge_descriptors_are_finite": true,
+    "rdkit_2026_03_5_reproduces_first_structure_failure": true,
+    "rdkit_2023_03_3_gasteiger_parameter_table_has_no_explicit_arsenic_entry": true
+  },
+  "consumer_probes": {
+    "catboost": {
+      "synthetic_rows": 6,
+      "fits_attempted": 1,
+      "fits_completed": 1,
+      "nan_input_accepted": true,
+      "predictions_finite": true,
+      "resolved_nan_mode": "Min"
+    },
+    "extra_trees": {
+      "synthetic_rows": 4,
+      "fits_attempted": 1,
+      "fits_completed": 0,
+      "nan_input_accepted": false,
+      "exception_class": "ValueError"
+    }
+  },
+  "interpretation": {
+    "molecule_is_unparsable": false,
+    "publication_error_established": false,
+    "best_supported_cause": "Rare-element coverage gap in RDKit Gasteiger charge parameters, with NaN propagated into four charge-extrema descriptors.",
+    "maplight_source_nonfinite_policy": "No explicit rejection, imputation, row deletion, or descriptor deletion is present; the descriptor matrix is passed to CatBoost.",
+    "exact_comparator_implication": "Preserving the four NaN descriptor values for pinned CatBoost is closer to the pinned upstream execution path than imputation, deletion, or invented charge parameters."
+  },
+  "accounting": {
+    "train_val_structure_rows_parsed": 30038,
+    "unique_exact_raw_structures_examined": 15399,
+    "full_descriptor_values_examined": 3079800,
+    "target_values_parsed": 0,
+    "public_test_rows_used": 0,
+    "public_test_labels_parsed": 0,
+    "scientific_model_fits": 0,
+    "scientific_predictions": 0,
+    "metric_evaluations": 0,
+    "public_test_family_task_slots_consumed": 0,
+    "synthetic_catboost_capability_fits": 1,
+    "synthetic_extra_trees_fit_attempts": 1
+  },
+  "claim_boundary": "This receipt diagnoses a label-free feature-generation edge case. It is not predictive evidence, a benchmark score, proof of the historical MapLight runtime, or authority to impute, delete rows, add charge parameters, fit ExtraTrees, start GIN, or use the public test."
+}
