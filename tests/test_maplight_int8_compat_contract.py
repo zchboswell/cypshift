@@ -118,6 +118,9 @@ def test_compatibility_contract_has_one_scientific_change_and_two_builds() -> No
         "gin_weight_bytes_downloaded": 0,
         "challenge_assumptions_added": 0,
     }
+    assert set(contract["compatibility_parity"]["failure_accounting"]["fields"]) == set(
+        contract["compatibility_parity"]["success_accounting"]
+    )
 
     assert contract["execution"]["build_ids"] == [1, 2]
     assert contract["execution"]["fresh_process_per_build"] is True
@@ -146,34 +149,41 @@ def test_compatibility_contract_has_one_scientific_change_and_two_builds() -> No
         "rdkit_descriptors": 200,
         "maplight_fixed_derived": 2563,
     }
-    assert contract["artifact_schemas"]["success_manifest"][
-        "per_build_accounting_fields"
+    success_schema = contract["artifact_schemas"]["success_manifest"]
+    assert success_schema["operation_accounting_fields"] == [
+        "attempted_feature_builds",
+        "completed_feature_builds",
+        "source_rows_parsed",
+        "exact_raw_featurizations",
+        "in_memory_block_arrays_completed",
+        "persisted_block_arrays",
+        "staging_roots_removed",
     ]
-    assert contract["artifact_schemas"]["success_manifest"]["build_2_cumulative_fields"]
-    assert contract["artifact_schemas"]["success_manifest"][
-        "build_1_expected_accounting"
-    ] == {
-        "attempted_feature_builds": 1,
-        "completed_feature_builds": 1,
-        "source_rows_parsed": 30038,
-        "exact_raw_featurizations": 15399,
-        "persisted_block_arrays": 5,
+    assert success_schema["build_1_expected_accounting"] == {
+        "current_attempt": [1, 1, 30038, 15399, 5, 5, 0],
+        "cumulative": [1, 1, 30038, 15399, 5, 5, 0],
     }
-    assert contract["artifact_schemas"]["success_manifest"][
-        "build_2_expected_cumulative_accounting"
-    ] == {
-        "attempted_feature_builds": 2,
-        "completed_feature_builds": 2,
-        "source_rows_parsed": 60076,
-        "exact_raw_featurizations": 30798,
-        "persisted_block_arrays": 10,
+    assert success_schema["build_2_expected_accounting"] == {
+        "current_attempt": [1, 1, 30038, 15399, 5, 5, 0],
+        "cumulative": [2, 2, 60076, 30798, 10, 10, 0],
     }
+    assert contract["artifact_schemas"]["failure_receipt"][
+        "build_2_preflight_failure_accounting"
+    ]["current_attempt"] == [1, 0, 0, 0, 0, 0, 0]
     assert (
         "Remove every partial staging root"
         in contract["artifact_schemas"]["failure_receipt"]["rules"]
     )
     assert contract["firewall"]["scope"].endswith("feature builds only.")
     assert "model_cell_process" in contract["firewall"]["downstream_handoff"]
+    assert (
+        "hash-bound safe parity receipt"
+        in contract["firewall"]["allowed_scientific_inputs"]
+    )
+    assert (
+        "fresh compatibility parity success receipt and root"
+        in contract["firewall"]["allowed_scientific_inputs"]
+    )
 
 
 def test_compatibility_contract_is_scientifically_zero_before_execution() -> None:
