@@ -73,7 +73,7 @@
   "compatibility_parity": {
     "required_before_real_rows": true,
     "fresh_processes": 2,
-    "fixture": "Reuse the exact eight-row parent fixture. For every fixture value within the safe range, require exact upstream-versus-compatible-implementation equality for all five blocks, the complete matrix, C-order element bytes, and non-pickle numpy v1.0 bytes.",
+    "fixture": "Reuse the exact eight-row parent fixture. For every fixture value within the safe range, require exact upstream-versus-compatible-implementation equality for the four MapLight fixed blocks, the complete matrix, C-order element bytes, and non-pickle numpy v1.0 bytes. Binary Morgan is local-only: require it to match the prior safe parity receipt and both fresh compatible processes exactly; do not call it upstream parity.",
     "count_boundaries": [
       {
         "preconversion_count": 127,
@@ -138,6 +138,28 @@
       "accounting",
       "claim_boundary"
     ],
+    "success_accounting": {
+      "upstream_fixture_processes_attempted": 1,
+      "upstream_fixture_processes_completed": 1,
+      "compatible_fixture_processes_attempted": 2,
+      "compatible_fixture_processes_completed": 2,
+      "boundary_conversions_attempted": 9,
+      "boundary_conversions_completed": 9,
+      "fixture_arrays_generated": 17,
+      "fixture_row_loads": 24,
+      "retained_arrays": 6,
+      "real_feature_rows_parsed": 0,
+      "target_values_parsed": 0,
+      "model_fits": 0,
+      "predictions": 0,
+      "metric_evaluations": 0,
+      "public_test_rows_used": 0,
+      "public_test_labels_parsed": 0,
+      "public_test_family_task_slots_consumed": 0,
+      "gin_weight_bytes_downloaded": 0,
+      "challenge_assumptions_added": 0
+    },
+    "failure_accounting": "Use the same attempted and completed counter names as success. Record only observed completed operations, zero retained arrays unless a complete success is atomically promoted, zero real rows, and all scientific-zero counters.",
     "scientific_accounting": "No real row, label, fit, prediction, metric, GIN, challenge, or public-test operation."
   },
   "unchanged_rules": {
@@ -173,6 +195,7 @@
     "sequential": true,
     "fresh_process_per_build": true,
     "copy_or_reuse_build_1_arrays_forbidden": true,
+    "cache_scope": "Each build independently featurizes all 15,399 exact-raw inputs. Any feature cache is process-local and dies with that build. Build 2 may inspect build 1 only during preflight validation and final byte comparison, never during feature generation.",
     "build_2_precondition": "Before build 2 resolves shadow rows, require the complete immutable build-1 success root, validate every manifest field and output hash against this contract, require the compatibility parity success root, and require both build-1 and compatibility-parity blocker roots to be absent. Otherwise stop before resolving scientific input and preserve one immutable build-2 failure receipt with zero completed feature operations.",
     "output_roots": [
       "artifacts/benchmarks/maplight-fixed-upstream-int8-features-v1-build-1",
@@ -249,7 +272,29 @@
         "source_rows_parsed",
         "exact_raw_featurizations",
         "persisted_block_arrays"
-      ]
+      ],
+      "build_1_expected_accounting": {
+        "attempted_feature_builds": 1,
+        "completed_feature_builds": 1,
+        "source_rows_parsed": 30038,
+        "exact_raw_featurizations": 15399,
+        "persisted_block_arrays": 5
+      },
+      "build_2_expected_per_build_accounting": {
+        "attempted_feature_builds": 1,
+        "completed_feature_builds": 1,
+        "source_rows_parsed": 30038,
+        "exact_raw_featurizations": 15399,
+        "persisted_block_arrays": 5
+      },
+      "build_2_expected_cumulative_accounting": {
+        "attempted_feature_builds": 2,
+        "completed_feature_builds": 2,
+        "source_rows_parsed": 60076,
+        "exact_raw_featurizations": 30798,
+        "persisted_block_arrays": 10
+      },
+      "scientific_zero_value": 0
     },
     "failure_receipt": {
       "top_level_fields": [
@@ -278,10 +323,30 @@
         "expected",
         "observed"
       ],
-      "rules": "Use null only for inapplicable safe fields. Record no raw structure. Remove every partial staging root before writing one immutable failure receipt. Count attempted and fully completed operations separately."
+      "rules": "Use null only for inapplicable safe fields. Record no raw structure. Remove every partial staging root before writing one immutable failure receipt. Count attempted and fully completed operations separately.",
+      "accounting_fields": [
+        "attempted_feature_builds",
+        "completed_feature_builds",
+        "source_rows_parsed",
+        "exact_raw_featurizations",
+        "in_memory_block_arrays_completed",
+        "persisted_block_arrays",
+        "staging_roots_removed",
+        "target_values_parsed",
+        "model_fits",
+        "predictions",
+        "metric_evaluations",
+        "public_test_rows_used",
+        "public_test_labels_parsed",
+        "public_test_family_task_slots_consumed",
+        "gin_weight_bytes_downloaded",
+        "challenge_assumptions_added"
+      ],
+      "semantics": "Failure counts are observed rather than predeclared. Scientific counters remain zero. A build-2 preflight failure records current-attempt builds 1 attempted and 0 completed, cumulative builds 2 attempted and 1 completed, prior-success source rows 30,038, exact-raw featurizations 15,399, and persisted arrays 5, with zero current scientific input resolution."
     }
   },
   "firewall": {
+    "scope": "This child firewall governs compatibility parity and the two feature builds only.",
     "allowed_scientific_inputs": [
       "frozen label-free shadow_rows.csv",
       "frozen shadow manifest",
@@ -297,7 +362,8 @@
       "metric evaluation",
       "GIN weights",
       "challenge assumptions"
-    ]
+    ],
+    "downstream_handoff": "After both compatible roots and their repeat gate pass independent review, the inherited parent process_firewall.model_cell_process and process_firewall.score_process govern Stage A model and scoring work."
   },
   "accounting_before_execution": {
     "compatibility_feature_builds": 0,
