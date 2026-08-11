@@ -526,13 +526,13 @@ Tier 2 is not required for closeout. A final `cypshift` contender is not
 required if shadow evidence does not justify one.
 
 The original closeout remains a stopped negative under D-025 and D-026, not a
-pass of every acceptance criterion. Criteria 6 through 10 were not reached:
-no official fixed score, GIN result, row-level prediction, representation
-ablation, or public prediction family exists. Fixture parity satisfies
-criterion 5. The project owner later authorized D-027 as a separate,
+pass of every acceptance criterion. At that boundary criteria 6 through 10 had
+not been reached. The project owner later authorized D-027 as a separate,
 result-blind compatibility addendum after a label-free causal diagnosis. D-027
-does not repair either prior experiment and does not erase the stopped-negative
-record.
+does not repair either prior experiment or erase the stopped-negative record.
+It subsequently satisfied the local GIN-result, row-level prediction, and
+shadow-ablation portions of criteria 7 through 9. Official-test criterion 6 and
+the jointly frozen public-family criterion 10 remain unreached.
 
 ## Stopping rules and non-goals
 
@@ -574,8 +574,8 @@ foundation-model zoo, challenge-specific code, or guessed launch fields.
     score them yet. **Not reached.**
 12. Lock a final contender only if the complete shadow gate supports it;
     otherwise record that its public family remains unused. **No separate
-    contender beats the retained local MapLight+GIN comparator; the third
-    public family remains unused.**
+    contender was developed or qualified; the third public family remains
+    unused.**
 13. Independently review and freeze all completed public prediction families
     together, then score them together once. **Not reached; no public prediction
     family was produced or scored.**

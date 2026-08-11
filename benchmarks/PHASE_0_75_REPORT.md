@@ -163,7 +163,7 @@ Eighteen isolated cell processes then fitted R1 through R5 from outer-training
 targets only. They retained 162 model vectors and 18 five-seed mean vectors over
 36,045 validation rows. Model processes parsed zero validation labels. A
 separate scorer revalidated every prediction artifact before parsing the
-30,038 frozen train-only scoring labels.
+30,038 frozen `train_val` scoring labels.
 
 Point macro AUPRC was:
 
@@ -225,17 +225,18 @@ public-test operations, Hugging Face model loads, or challenge assumptions.
 
 Stage B prediction and inference add 144 model fits, 144 model vectors, 18
 five-seed mean vectors, 198 point AUPRC calls, 108 sensitivity calls, and
-144,000 grouped-bootstrap calls. The scorer parsed 30,038 frozen train-only
-labels and generated no new fit or prediction. Public-test rows, labels, and
-family-task slots remain zero; challenge assumptions remain zero.
+144,000 grouped-bootstrap calls. The scorer parsed 30,038 frozen `train_val`
+scoring labels and generated no new fit or prediction. Public-test rows,
+labels, and family-task slots remain zero; challenge assumptions remain zero.
 
 ## Scientific conclusion
 
 Both hypotheses are supported: complementary fixed MapLight blocks materially
-improve ranking beyond binary Morgan, and the pinned GIN representation adds a
-second orthogonal gain. Neither result is explained by duplicate weighting,
-conflicting cells, close neighbors, shuffled vectors, random noise, or one
-large chemistry group. Rights and contamination remain explicitly unknown.
+improve ranking beyond binary Morgan, and the pinned GIN representation adds an
+additional distinct-representation gain. Neither result is explained by
+duplicate weighting, conflicting cells, close neighbors, shuffled vectors,
+random noise, or one large chemistry group. Rights and contamination remain
+explicitly unknown.
 The result authorizes only jointly frozen label-free public prediction families;
 it does not authorize sequential public-test tuning or a challenge model.
 
