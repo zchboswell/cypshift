@@ -4,18 +4,17 @@ Last updated: 2026-08-11
 
 ## Current phase
 
-Phase 0.75 missing-value compatibility addendum active under D-027. The prior
-safe and signed-`int8` experiments remain closed negative and immutable. D-024
-remains active for the August 17 release.
+Phase 0.75 fixed-feature gate passed under D-027. Two independent label-free
+feature roots are byte-identical and reviewed locally. The prior safe and
+signed-`int8` experiments remain closed negative and immutable. D-024 remains
+active for the August 17 release.
 
 ## Active operating goal
 
-Execute one Occam-small, result-blind MapLight missing-value compatibility
-experiment. Preserve both prior blockers. Permit `NaN` only in the four frozen
-Gasteiger charge-extrema descriptor columns, preserve those values unchanged,
-and reject every infinity or other `NaN`. Produce two matching label-free
-feature roots before any target, scientific fit, prediction, metric, GIN, or
-public-test action.
+Execute the already frozen Stage A CatBoost shadow ladder against the reviewed
+fixed-feature roots. Preserve both prior blockers and the two matching D-027
+roots. Use only R1 through R5, the existing global shadow folds, and the
+cell-specific target firewall. Do not run ExtraTrees, GIN, or the public test.
 
 Phase 0.75 is explicitly authorized before 2026-08-17 for public-benchmark
 research only. Phase 0.5 remains immutable. D-024's authoritative challenge
@@ -159,12 +158,17 @@ charge parameter is allowed. Only the pre-existing CatBoost candidates R1
 through R5 may proceed after two independent feature roots pass review;
 ExtraTrees E1 remains unexecuted.
 
-The D-027 freeze is signed at `e8d66de`; hosted CI run `31474960886` passes
-Python 3.11 and 3.14 with 145 tests, formatting, strict core types, builds, and
-the installed vertical slice. The diagnosis receipt SHA-256 is `9832efb2`; the
-contract SHA-256 is `52f01f93`. No compatibility feature build, target,
-scientific fit, prediction, metric, GIN, challenge, or public-test operation
-occurred at this gate.
+The D-027 implementation is signed at `9d6b719`; hosted CI run `31476381039`
+passes Python 3.11 and 3.14 with 148 tests, formatting, strict core types,
+builds, and the installed vertical slice. Build manifests hash to `5a3b038e`
+and `0afd641c`. Their row CSV and five NPY payloads are byte-identical. Each
+root contains 30,038 rows and five arrays generated from 15,399 exact raw
+structures. The descriptor arrays preserve exactly 328 expanded `NaN` cells
+across 82 rows in only indices 39, 41, 43, and 45; every other block has zero
+non-finite values. The synthetic CatBoost probe produced finite probabilities
+with resolved `nan_mode=Min`. Build runtimes were 110.15 and 90.48 seconds;
+peak RSS was 1.49 and 1.64 GiB. Targets, scientific fits, predictions, metrics,
+GIN, challenge assumptions, and public-test use remain zero.
 
 ## Phase 0.75 source, budget, and shadow freeze
 
@@ -850,11 +854,12 @@ LLM adjudicator, service, database, dashboard, or general research framework.
 ## Exact next action
 
 Preserve the topology report, both parity roots, both real-feature blockers,
-and their reviews. Review and merge the D-027 diagnosis and result-blind
-missing-value contract. Then implement only the direct four-column `NaN`
-allowance, obtain code review, generate build 1, review it, generate build 2,
-and require byte-identical row and array payloads before any Stage A CatBoost
-fit. Do not run ExtraTrees, GIN, or the public test during this feature gate.
+their reviews, and both byte-identical D-027 feature roots. Record and review
+the passed feature gate, then implement the smallest direct executor for the
+already frozen R1-through-R5 CatBoost shadow ladder. Keep training targets
+cell-specific and validation targets unavailable until prediction artifacts
+are hashed. Add no candidate, hyperparameter, framework, ExtraTrees repair,
+GIN path, or public-test action.
 
 At launch, preserve the original released bytes and independently freeze the
 official schemas, assay definitions, censoring, MA-ST-RAE, MCC and TDI-label

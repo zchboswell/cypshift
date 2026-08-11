@@ -549,3 +549,14 @@ The tracked diagnostic receipt is
 [`maplight_fixed_nan_diagnosis.json`](../../benchmarks/receipts/maplight_fixed_nan_diagnosis.json).
 The result-blind execution contract is
 [`maplight_fixed_nan_compat_contract.json`](../../benchmarks/maplight_fixed_nan_compat_contract.json).
+
+The D-027 feature gate passed at signed source `9d6b719`. Two fresh builds
+processed all 30,038 rows from 15,399 exact raw inputs and retained five arrays
+each. `feature_rows.csv` and every corresponding NPY payload are byte-identical
+across builds. The descriptor matrix contains exactly the predeclared 328
+expanded `NaN` cells across 82 rows and only the four permitted columns; no
+infinity or other non-finite value is present. Manifest SHA-256 values are
+`5a3b038e...` and `0afd641c...`. The synthetic CatBoost probe passed with
+finite probabilities and resolved `nan_mode=Min`. No target, scientific fit,
+prediction, metric, GIN, challenge, or public-test operation occurred. This
+passes only the label-free feature gate and makes no predictive-value claim.

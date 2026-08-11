@@ -44,8 +44,10 @@ descriptor columns 39, 41, 43, and 45, rejects every infinity and every other
 `NaN`, and preserves the permitted float64 bytes unchanged. It also runs the
 contracted synthetic CatBoost capability probe; this is not a scientific fit.
 
-After the implementation commit is reviewed and integrated, generate build 1
-with `python run_nan_compat.py --build-id 1` in the exact locked environment.
-Build 2 remains forbidden until build 1 is immutable and independently
-reviewed. Neither build accepts a target, measurement, prediction, metric,
-GIN, or public-test path.
+The reviewed implementation at `9d6b719` generated both authorized roots in
+the exact locked environment. Their row CSV and all five NPY payloads are
+byte-identical, including the permitted NaN bytes. Both roots are immutable.
+Do not rerun either build. Neither build accepted a target, measurement,
+scientific prediction, metric, GIN, or public-test path. The next boundary is
+the already frozen R1-through-R5 CatBoost shadow ladder; ExtraTrees remains
+unauthorized on this matrix.
