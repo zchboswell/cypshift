@@ -46,6 +46,10 @@ def test_stage_b_inference_exposes_one_direct_operation() -> None:
     assert 'public_test_rows_used": 0' in source
     assert 'public_test_labels_parsed": 0' in source
     assert 'challenge_assumptions_added": 0' in source
+    assert "_verify_prediction_files(PREDICTION_ROOT, prediction)" in source
+    assert "_verify_prediction_files(STAGE_A_ROOT, stage_a)" in source
+    assert 'importlib.metadata.version("scikit-learn")' in source
+    assert 'versions == {"numpy": "1.25.2", "scikit-learn": "1.3.0"}' in source
 
 
 def test_stage_b_inference_freezes_only_declared_configurations_and_stops_at_point_95() -> (
@@ -67,6 +71,24 @@ def test_stage_b_inference_freezes_only_declared_configurations_and_stops_at_poi
         "noise_control",
     }
     source = SCORER.read_text(encoding="utf-8")
-    assert '_require(maximum < 0.95, "AUPRC forensic threshold reached")' in source
+    assert "if maximum >= 0.95:" in source
+    assert "raise StageBForensicStop(trigger, point, aggregate)" in source
+    assert '"point_scores.csv": _sha256(point_path)' in source
+    assert '"aggregate_scores.csv": _sha256(aggregate_path)' in source
     assert "Chemprop" not in source
     assert "tdc-public" not in source.lower()
+
+
+def test_stage_b_inference_failure_evidence_and_accounting_are_bound() -> None:
+    source = SCORER.read_text(encoding="utf-8")
+    assert source.index("on_labels_parsed(len(target_rows))") < source.index(
+        "conflicts = {key for key, values in labels.items()"
+    )
+    assert source.index("value = float(raw_metric(*args, **kwargs))") < source.index(
+        "metrics += 1"
+    )
+    failure = source[source.index("except Exception as error:") :]
+    assert '"contract_sha256": CONTRACT_SHA256' in failure
+    assert '"prediction_manifest_sha256": PREDICTION_MANIFEST_SHA256' in failure
+    assert '"target_manifest_sha256": TARGET_MANIFEST_SHA256' in failure
+    assert '"topology_rows_sha256": TOPOLOGY_ROWS_SHA256' in failure

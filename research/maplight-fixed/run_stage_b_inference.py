@@ -5,12 +5,15 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import importlib.metadata
 import json
 import os
+import platform
 import resource
 import shutil
 import stat
 import subprocess
+import sys
 import tempfile
 import time
 from collections import Counter, defaultdict
@@ -54,6 +57,15 @@ TOPOLOGY_MANIFEST_SHA256 = (
 TOPOLOGY_ROWS_SHA256 = (
     "0f575a2d9c230db3e83026f44c2a3f17cdf2fe942d9eb167f487aa3d892d0c63"
 )
+RESEARCH_PROJECT_SHA256 = (
+    "20addcbfa3d7dbfa5d3a9f24f3090c22f11b556166213b2649c6c55e58556234"
+)
+RESEARCH_LOCK_SHA256 = (
+    "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+)
+RESEARCH_PYTHON_SHA256 = (
+    "3817f125779f46c574b17c4adbdd0975ef8c32ae92509fed295212797d314d6a"
+)
 
 TASKS = ("cyp2c9_veith", "cyp2d6_veith", "cyp3a4_veith")
 PROTOCOLS = ("scaffold", "community")
@@ -88,6 +100,21 @@ CONTRASTS = {
 
 class StageBInferenceError(RuntimeError):
     """Fail-closed Stage B inference error."""
+
+
+class StageBForensicStop(StageBInferenceError):
+    """Stop after retaining point evidence that reached the forensic gate."""
+
+    def __init__(
+        self,
+        trigger: Mapping[str, object],
+        point: list[dict[str, object]],
+        aggregate: list[dict[str, object]],
+    ) -> None:
+        super().__init__("AUPRC forensic threshold reached")
+        self.trigger = dict(trigger)
+        self.point = point
+        self.aggregate = aggregate
 
 
 def _require(condition: bool, message: str) -> None:
@@ -185,7 +212,50 @@ def _metric() -> Callable[..., float]:
     return cast(Callable[..., float], module.average_precision_score)
 
 
-def _verify_inputs() -> tuple[dict[str, Any], dict[str, Any]]:
+def _verify_environment() -> dict[str, str]:
+    _require(sys.version_info[:3] == (3, 10, 13), "Python version differs")
+    _require(platform.system() == "Darwin", "platform differs")
+    _require(platform.machine() == "arm64", "architecture differs")
+    versions = {
+        "numpy": importlib.metadata.version("numpy"),
+        "scikit-learn": importlib.metadata.version("scikit-learn"),
+    }
+    _require(
+        versions == {"numpy": "1.25.2", "scikit-learn": "1.3.0"},
+        "metric package versions differ",
+    )
+    for path, expected in (
+        (ROOT / "research/maplight-fixed/pyproject.toml", RESEARCH_PROJECT_SHA256),
+        (ROOT / "research/maplight-fixed/uv.lock", RESEARCH_LOCK_SHA256),
+        (ROOT / "research/maplight-fixed/.python-version", RESEARCH_PYTHON_SHA256),
+    ):
+        _require(_sha256(path) == expected, f"environment input differs: {path}")
+    return {"python": platform.python_version(), **versions}
+
+
+def _verify_prediction_files(root: Path, manifest: Mapping[str, Any]) -> None:
+    cells = cast(Mapping[str, Mapping[str, Any]], manifest["cells"])
+    _require(len(cells) == 18, "prediction cell count differs")
+    for cell, record in cells.items():
+        cell_root = root / "cells" / cell
+        _require(
+            {path.name for path in cell_root.iterdir()}
+            == {"predictions.csv", "cell_receipt.json"},
+            "prediction cell files differ",
+        )
+        _require(
+            all(_readonly(path) for path in cell_root.iterdir()),
+            "prediction cell file is writable",
+        )
+        _require(
+            _sha256(cell_root / "predictions.csv") == record["prediction_sha256"]
+            and _sha256(cell_root / "cell_receipt.json") == record["receipt_sha256"],
+            "prediction cell hash differs",
+        )
+
+
+def _verify_inputs() -> tuple[dict[str, Any], dict[str, Any], dict[str, str]]:
+    environment = _verify_environment()
     for path, expected in (
         (CONTRACT_PATH, CONTRACT_SHA256),
         (PREDICTION_MANIFEST, PREDICTION_MANIFEST_SHA256),
@@ -211,17 +281,22 @@ def _verify_inputs() -> tuple[dict[str, Any], dict[str, Any]]:
         and prediction["accounting"]["validation_target_values_parsed"] == 0,
         "prediction chronology differs",
     )
+    stage_a = _json(STAGE_A_MANIFEST)
+    _verify_prediction_files(PREDICTION_ROOT, prediction)
+    _verify_prediction_files(STAGE_A_ROOT, stage_a)
     target = _json(TARGET_MANIFEST)
-    return prediction, target
+    return prediction, target, environment
 
 
 def _load_cells(
     target: Mapping[str, Any],
+    on_labels_parsed: Callable[[int], None],
 ) -> tuple[list[dict[str, Any]], set[tuple[str, str]]]:
     scoring = cast(Mapping[str, Any], target["scoring_targets"])
     scoring_path = TARGET_ROOT / str(scoring["path"])
     _require(_sha256(scoring_path) == scoring["sha256"], "scoring target differs")
     target_rows = _read_csv(scoring_path)
+    on_labels_parsed(len(target_rows))
     shadow_rows = _read_csv(SHADOW_ROWS)
     _require(len(target_rows) == len(shadow_rows) == 30038, "source row count differs")
     shadow = {row["molecule_id"]: row for row in shadow_rows}
@@ -272,6 +347,18 @@ def _load_cells(
             scores[FIXED_MEAN].append(float(old[FIXED_MEAN]))
             for name in NEW_CONFIGS:
                 scores[name].append(float(new[name]))
+        score_arrays = {
+            name: np.asarray(values, dtype=np.float64)
+            for name, values in scores.items()
+        }
+        _require(
+            all(
+                bool(np.isfinite(values).all())
+                and bool(((values >= 0) & (values <= 1)).all())
+                for values in score_arrays.values()
+            ),
+            "prediction probability differs",
+        )
         cells.append(
             {
                 "cell": cell,
@@ -282,10 +369,7 @@ def _load_cells(
                 "structures": np.asarray(structures),
                 "groups": np.asarray(groups),
                 "similarities": np.asarray(similarities, dtype=np.float64),
-                "scores": {
-                    name: np.asarray(values, dtype=np.float64)
-                    for name, values in scores.items()
-                },
+                "scores": score_arrays,
             }
         )
     return cells, conflicts
@@ -569,24 +653,32 @@ def run_inference() -> Path:
     )
     start = time.perf_counter()
     revision: str | None = None
+    environment: dict[str, str] | None = None
     labels = metrics = 0
     staging: Path | None = None
     try:
         revision = _clean_revision()
-        prediction, target = _verify_inputs()
+        _, target, environment = _verify_inputs()
         raw_metric = _metric()
 
         def metric(*args: object, **kwargs: object) -> float:
             nonlocal metrics
+            value = float(raw_metric(*args, **kwargs))
             metrics += 1
-            return float(raw_metric(*args, **kwargs))
+            return value
 
-        cells, conflicts = _load_cells(target)
-        labels = 30038
+        def labels_parsed(value: int) -> None:
+            nonlocal labels
+            labels = value
+
+        cells, conflicts = _load_cells(target, labels_parsed)
+        _require(labels == 30038, "label accounting differs")
         point, aggregate = _point(cells, metric)
         _require(metrics == 198, "point metric accounting differs")
-        maximum = max(float(row["auprc"]) for row in point)
-        _require(maximum < 0.95, "AUPRC forensic threshold reached")
+        trigger = max(point, key=lambda row: float(row["auprc"]))
+        maximum = float(trigger["auprc"])
+        if maximum >= 0.95:
+            raise StageBForensicStop(trigger, point, aggregate)
         sensitivity = _sensitivity(cells, conflicts, metric)
         _require(metrics == 306, "sensitivity metric accounting differs")
         replicates: list[dict[str, object]] = []
@@ -758,6 +850,7 @@ def run_inference() -> Path:
                 "topology_rows_sha256": TOPOLOGY_ROWS_SHA256,
             },
             "outputs": outputs,
+            "environment": environment,
             "protocols": protocols,
             "maximum_point_auprc": maximum,
             "forensic_trigger": False,
@@ -793,11 +886,45 @@ def run_inference() -> Path:
                 prefix=".stage-b-inference-blocker-", dir=BLOCKER_ROOT.parent
             )
         )
+        outputs: dict[str, str] = {}
+        failure: dict[str, object] = {
+            "kind": type(error).__name__,
+            "message": str(error),
+        }
+        if isinstance(error, StageBForensicStop):
+            point_path = blocker / "point_scores.csv"
+            aggregate_path = blocker / "aggregate_scores.csv"
+            _write_csv(
+                point_path,
+                ("cell", "task", "protocol", "repeat", "configuration", "auprc"),
+                error.point,
+            )
+            _write_csv(
+                aggregate_path,
+                ("protocol", "level", "task", "configuration", "auprc"),
+                error.aggregate,
+            )
+            outputs = {
+                "point_scores.csv": _sha256(point_path),
+                "aggregate_scores.csv": _sha256(aggregate_path),
+            }
+            failure["forensic_trigger"] = error.trigger
         receipt = {
             "schema_version": "cypshift.maplight_gin_stage_b_inference_failure.v1",
             "source_revision": revision,
             "implementation_sha256": _sha256(SCRIPT_PATH),
-            "failure": {"kind": type(error).__name__, "message": str(error)},
+            "contract_sha256": CONTRACT_SHA256,
+            "inputs": {
+                "prediction_manifest_sha256": PREDICTION_MANIFEST_SHA256,
+                "stage_a_prediction_manifest_sha256": STAGE_A_MANIFEST_SHA256,
+                "target_manifest_sha256": TARGET_MANIFEST_SHA256,
+                "shadow_rows_sha256": SHADOW_ROWS_SHA256,
+                "topology_manifest_sha256": TOPOLOGY_MANIFEST_SHA256,
+                "topology_rows_sha256": TOPOLOGY_ROWS_SHA256,
+            },
+            "environment": environment,
+            "failure": failure,
+            "outputs": outputs,
             "runtime_seconds": time.perf_counter() - start,
             "accounting": {
                 "train_val_scoring_labels_parsed": labels,
