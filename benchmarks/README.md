@@ -204,8 +204,8 @@ measurements. The other 256 remain in the molecule table with an explicit
 measurements or silently discarded. Two clean runs produce byte-identical
 adapter and audit artifacts.
 
-This is an ingestion result, not a predictive-performance result. Model
-selection and every TDC test evaluation remain pending.
+This subsection records ingestion only. Current predictive results are reported
+above.
 
 ## Empty-root reproduction
 
