@@ -1,13 +1,21 @@
 from __future__ import annotations
 
+import ast
 import hashlib
+import importlib.util
 import json
+import sys
 from pathlib import Path
+from types import ModuleType
 from typing import Any
+
+import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "benchmarks/maplight_fixed_nan_compat_contract.json"
 DIAGNOSIS_PATH = ROOT / "benchmarks/receipts/maplight_fixed_nan_diagnosis.json"
+RUNNER_PATH = ROOT / "research/maplight-fixed/run_nan_compat.py"
 
 
 def _sha256(path: Path) -> str:
@@ -18,6 +26,15 @@ def _json(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     assert isinstance(value, dict)
     return value
+
+
+def _load_module(name: str, path: Path) -> ModuleType:
+    spec = importlib.util.spec_from_file_location(name, path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_nan_contract_binds_prior_evidence_without_replacing_it() -> None:
@@ -108,3 +125,74 @@ def test_nan_diagnosis_arithmetic_and_claim_boundary_are_exact() -> None:
         "public_test_family_task_slots_consumed",
     ):
         assert type(accounting[name]) is int and accounting[name] == 0
+
+
+def test_nan_runner_is_one_direct_label_free_overlay() -> None:
+    tree = ast.parse(RUNNER_PATH.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)
+    }
+    assert set(functions) >= {
+        "build_nan_compat_features",
+        "_verify_frozen_parity",
+        "_nonfinite_record",
+        "_catboost_probe",
+        "_validate_build",
+    }
+    assert [
+        argument.arg for argument in functions["build_nan_compat_features"].args.args
+    ] == ["build_id"]
+    literals = {
+        node.value
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Constant) and isinstance(node.value, str)
+    }
+    assert not any("measurements.csv" in value for value in literals)
+    assert not any("http://" in value or "https://" in value for value in literals)
+
+
+def test_nan_runner_array_gate_allows_only_exact_columns_and_no_infinity(
+    tmp_path: Path,
+) -> None:
+    research_root = str(RUNNER_PATH.parent)
+    sys.path.insert(0, research_root)
+    try:
+        runner = _load_module("maplight_nan_runner_test", RUNNER_PATH)
+    finally:
+        sys.path.remove(research_root)
+
+    descriptors = np.zeros((2, 200), dtype="<f8")
+    descriptors[0, list(runner.ALLOWED_INDICES)] = np.nan
+    path = tmp_path / "rdkit_descriptors.npy"
+    runner.features.write_npy_v1(path, descriptors)
+    record = runner._array_record(
+        path,
+        descriptors.shape,
+        descriptors.dtype,
+        allowed_nan_columns=runner.ALLOWED_INDICES,
+    )
+    assert record["nonfinite_count"] == 4
+
+    outside = descriptors.copy()
+    outside[0, 40] = np.nan
+    outside_path = tmp_path / "outside.npy"
+    runner.features.write_npy_v1(outside_path, outside)
+    with pytest.raises(runner.base.CompatError):
+        runner._array_record(
+            outside_path,
+            outside.shape,
+            outside.dtype,
+            allowed_nan_columns=runner.ALLOWED_INDICES,
+        )
+
+    infinity = descriptors.copy()
+    infinity[0, 39] = np.inf
+    infinity_path = tmp_path / "infinity.npy"
+    runner.features.write_npy_v1(infinity_path, infinity)
+    with pytest.raises(runner.base.CompatError):
+        runner._array_record(
+            infinity_path,
+            infinity.shape,
+            infinity.dtype,
+            allowed_nan_columns=runner.ALLOWED_INDICES,
+        )

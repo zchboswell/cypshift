@@ -129,6 +129,57 @@ def test_signed_int8_container_policy_is_explicit_and_safe_default_is_unchanged(
     assert not compatible.avalon_count.flags.writeable
 
 
+def test_gasteiger_nan_policy_is_exact_and_rejects_every_other_nonfinite() -> None:
+    features = _load_module("maplight_nan_container_test", FEATURE_PATH)
+
+    def arrays() -> dict[str, object]:
+        descriptors = np.zeros((1, 200), dtype="<f8")
+        descriptors[0, list(features.ALLOWED_GASTEIGER_NAN_DESCRIPTOR_INDICES)] = np.nan
+        return {
+            "raw_structure_sha256": (hashlib.sha256(b"[As]").hexdigest(),),
+            "binary_morgan": np.zeros((1, 2048), dtype=np.uint8),
+            "morgan_count": np.zeros((1, 1024), dtype=np.int8),
+            "avalon_count": np.zeros((1, 1024), dtype=np.int8),
+            "erg": np.zeros((1, 315), dtype="<f8"),
+            "rdkit_descriptors": descriptors,
+            "count_policy": "upstream_signed_int8",
+        }
+
+    assert (
+        tuple(
+            features.DESCRIPTOR_NAMES[index]
+            for index in features.ALLOWED_GASTEIGER_NAN_DESCRIPTOR_INDICES
+        )
+        == features.ALLOWED_GASTEIGER_NAN_DESCRIPTOR_NAMES
+    )
+    with pytest.raises(features.MapLightFeatureError):
+        features.FixedFeatureArrays(**arrays())
+
+    compatible = features.FixedFeatureArrays(
+        **arrays(), nonfinite_policy="allow_gasteiger_charge_nan"
+    )
+    complete = compatible.maplight_fixed()
+    assert np.isnan(
+        complete[0, list(features.ALLOWED_GASTEIGER_NAN_MAPLIGHT_INDICES)]
+    ).all()
+    assert int(np.isnan(complete).sum()) == 4
+    assert not complete.flags.writeable
+
+    outside = arrays()
+    outside["rdkit_descriptors"][0, 40] = np.nan
+    with pytest.raises(features.MapLightFeatureError):
+        features.FixedFeatureArrays(
+            **outside, nonfinite_policy="allow_gasteiger_charge_nan"
+        )
+
+    infinity = arrays()
+    infinity["rdkit_descriptors"][0, 39] = np.inf
+    with pytest.raises(features.MapLightFeatureError):
+        features.FixedFeatureArrays(
+            **infinity, nonfinite_policy="allow_gasteiger_charge_nan"
+        )
+
+
 def test_int8_compat_runner_is_direct_label_free_and_contract_bound() -> None:
     tree = ast.parse(COMPAT_PATH.read_text(encoding="utf-8"))
     functions = {

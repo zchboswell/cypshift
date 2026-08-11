@@ -25,6 +25,20 @@ AVALON_COUNT_DIMENSIONS = 1024
 ERG_DIMENSIONS = 315
 RDKIT_DESCRIPTOR_DIMENSIONS = 200
 MAPLIGHT_FIXED_DIMENSIONS = 2563
+ALLOWED_GASTEIGER_NAN_DESCRIPTOR_INDICES = (39, 41, 43, 45)
+ALLOWED_GASTEIGER_NAN_DESCRIPTOR_NAMES = (
+    "MaxAbsPartialCharge",
+    "MaxPartialCharge",
+    "MinAbsPartialCharge",
+    "MinPartialCharge",
+)
+_MAPLIGHT_DESCRIPTOR_OFFSET = (
+    MORGAN_COUNT_DIMENSIONS + AVALON_COUNT_DIMENSIONS + ERG_DIMENSIONS
+)
+ALLOWED_GASTEIGER_NAN_MAPLIGHT_INDICES = tuple(
+    _MAPLIGHT_DESCRIPTOR_OFFSET + index
+    for index in ALLOWED_GASTEIGER_NAN_DESCRIPTOR_INDICES
+)
 
 DESCRIPTOR_NAMES: tuple[str, ...] = (
     "BalabanJ",
@@ -242,10 +256,12 @@ class MapLightFeatureError(ValueError):
         *,
         block: str | None = None,
         row_index: int | None = None,
+        column_index: int | None = None,
     ) -> None:
         super().__init__(message)
         self.block = block
         self.row_index = row_index
+        self.column_index = column_index
 
 
 def _descriptor_names_sha256(names: Sequence[str]) -> str:
@@ -537,6 +553,7 @@ def _require_array(
     rows: int,
     columns: int,
     dtype: np.dtype[Any],
+    allowed_nan_columns: tuple[int, ...] = (),
 ) -> None:
     if not isinstance(array, np.ndarray):
         raise MapLightFeatureError(f"{name} is not a NumPy array", block=name)
@@ -546,13 +563,28 @@ def _require_array(
         raise MapLightFeatureError(f"{name} dtype is invalid", block=name)
     if not array.flags.c_contiguous:
         raise MapLightFeatureError(f"{name} is not C-contiguous", block=name)
-    if not bool(np.isfinite(array).all()):
-        first = np.argwhere(~np.isfinite(array))[0]
+    infinity = np.isinf(array)
+    if bool(infinity.any()):
+        first = np.argwhere(infinity)[0]
         raise MapLightFeatureError(
-            f"{name} contains a non-finite value",
+            f"{name} contains an infinity",
             block=name,
             row_index=int(first[0]),
+            column_index=int(first[1]),
         )
+    nan = np.isnan(array)
+    if bool(nan.any()):
+        allowed = np.zeros(columns, dtype=np.bool_)
+        allowed[list(allowed_nan_columns)] = True
+        rejected = np.logical_and(nan, ~allowed[np.newaxis, :])
+        if bool(rejected.any()):
+            first = np.argwhere(rejected)[0]
+            raise MapLightFeatureError(
+                f"{name} contains a NaN outside the compatibility columns",
+                block=name,
+                row_index=int(first[0]),
+                column_index=int(first[1]),
+            )
 
 
 @dataclass(frozen=True, slots=True, eq=False)
@@ -566,6 +598,7 @@ class FixedFeatureArrays:
     erg: NDArray[np.float64]
     rdkit_descriptors: NDArray[np.float64]
     count_policy: str = "safe_nonnegative"
+    nonfinite_policy: str = "reject_all"
 
     def __post_init__(self) -> None:
         if not isinstance(self.binary_morgan, np.ndarray):
@@ -615,8 +648,26 @@ class FixedFeatureArrays:
                 np.dtype("<f8"),
             ),
         )
+        if self.nonfinite_policy not in {
+            "reject_all",
+            "allow_gasteiger_charge_nan",
+        }:
+            raise MapLightFeatureError("non-finite policy is invalid")
         for name, array, columns, dtype in specifications:
-            _require_array(name, array, rows=rows, columns=columns, dtype=dtype)
+            allowed_nan_columns = (
+                ALLOWED_GASTEIGER_NAN_DESCRIPTOR_INDICES
+                if self.nonfinite_policy == "allow_gasteiger_charge_nan"
+                and name == "rdkit_descriptors"
+                else ()
+            )
+            _require_array(
+                name,
+                array,
+                rows=rows,
+                columns=columns,
+                dtype=dtype,
+                allowed_nan_columns=allowed_nan_columns,
+            )
         is_binary = np.logical_or(self.binary_morgan == 0, self.binary_morgan == 1)
         if not bool(is_binary.all()):
             row_index = int(np.argwhere(~is_binary)[0][0])
@@ -666,6 +717,11 @@ class FixedFeatureArrays:
             rows=len(self.raw_structure_sha256),
             columns=MAPLIGHT_FIXED_DIMENSIONS,
             dtype=np.dtype("<f8"),
+            allowed_nan_columns=(
+                ALLOWED_GASTEIGER_NAN_MAPLIGHT_INDICES
+                if self.nonfinite_policy == "allow_gasteiger_charge_nan"
+                else ()
+            ),
         )
         result.setflags(write=False)
         return result
@@ -745,6 +801,7 @@ def featurize_raw_structures_upstream_int8(
     expected_raw_sha256: tuple[str, ...],
     *,
     block_completed: Callable[[str], None] | None = None,
+    nonfinite_policy: str = "reject_all",
 ) -> tuple[FixedFeatureArrays, dict[str, CountOverflowStats]]:
     """Build the same blocks with the pinned upstream signed-int8 count bytes."""
 
@@ -774,6 +831,7 @@ def featurize_raw_structures_upstream_int8(
         erg=erg,
         rdkit_descriptors=rdkit_descriptors,
         count_policy="upstream_signed_int8",
+        nonfinite_policy=nonfinite_policy,
     )
     return arrays, {
         "morgan_count": morgan_stats,

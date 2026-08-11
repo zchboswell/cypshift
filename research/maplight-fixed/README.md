@@ -36,3 +36,16 @@ Its blocker is immutable under
 `artifacts/blockers/maplight-fixed-upstream-int8-features-v1-build-1-blocker`.
 Do not rerun parity or build 1. Do not start build 2, fit a model, start GIN, or
 inspect a public-test label under this contract.
+
+D-027 authorizes one separate missing-value compatibility path without changing
+either prior result. `run_nan_compat.py` reuses the signed-`int8` runner's
+source, environment, row, and serialization checks. It permits `NaN` only in
+descriptor columns 39, 41, 43, and 45, rejects every infinity and every other
+`NaN`, and preserves the permitted float64 bytes unchanged. It also runs the
+contracted synthetic CatBoost capability probe; this is not a scientific fit.
+
+After the implementation commit is reviewed and integrated, generate build 1
+with `python run_nan_compat.py --build-id 1` in the exact locked environment.
+Build 2 remains forbidden until build 1 is immutable and independently
+reviewed. Neither build accepts a target, measurement, prediction, metric,
+GIN, or public-test path.
