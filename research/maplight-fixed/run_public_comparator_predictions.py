@@ -634,6 +634,17 @@ def _write_predictions(
             writer.writerow(record)
 
 
+def _repeat_comparable_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
+    comparable = cast(dict[str, Any], json.loads(json.dumps(manifest)))
+    comparable.pop("attempt")
+    comparable.pop("runtime_seconds")
+    comparable.pop("peak_rss_gib")
+    comparable["accounting"].pop("additional_family_task_slots_consumed_this_attempt")
+    for fit in comparable["fits"]:
+        fit.pop("runtime_seconds")
+    return comparable
+
+
 def run_predictions(attempt: int) -> Path:
     output = PREDICTION_ROOTS[attempt]
     blocker = PREDICTION_BLOCKERS[attempt]
@@ -826,17 +837,13 @@ def run_predictions(attempt: int) -> Path:
                     (staging / name).read_bytes() == (prior / name).read_bytes(),
                     f"prediction repeat differs: {name}",
                 )
-            prior_manifest = _read_json(prior / "prediction_manifest.json")
-            current_manifest = _read_json(staging / "prediction_manifest.json")
-            prior_manifest["attempt"] = current_manifest["attempt"]
-            prior_manifest["runtime_seconds"] = current_manifest["runtime_seconds"]
-            prior_manifest["peak_rss_gib"] = current_manifest["peak_rss_gib"]
-            for prior_fit, current_fit in zip(
-                prior_manifest["fits"], current_manifest["fits"], strict=True
-            ):
-                prior_fit["runtime_seconds"] = current_fit["runtime_seconds"]
             _require(
-                prior_manifest == current_manifest,
+                _repeat_comparable_manifest(
+                    _read_json(prior / "prediction_manifest.json")
+                )
+                == _repeat_comparable_manifest(
+                    _read_json(staging / "prediction_manifest.json")
+                ),
                 "prediction repeat receipt differs",
             )
         _require(_clean_revision() == revision, "source changed during prediction")

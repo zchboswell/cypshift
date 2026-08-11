@@ -118,3 +118,31 @@ def test_public_runner_does_not_change_core_cli_or_dependencies() -> None:
     text = ast.unparse(scripts)
     for command in ("audit", "train", "predict", "report"):
         assert command in text
+
+
+def test_repeat_manifest_ignores_only_declared_attempt_observations() -> None:
+    module = _module()
+    first = {
+        "attempt": 1,
+        "runtime_seconds": 10.0,
+        "peak_rss_gib": 1.0,
+        "fits": [{"runtime_seconds": 2.0, "prediction_element_sha256": "a" * 64}],
+        "accounting": {
+            "additional_family_task_slots_consumed_this_attempt": 6,
+            "public_test_family_task_slots_consumed": 6,
+        },
+        "predictions": {"maplight_fixed__cyp2c9_veith": {"sha256": "b" * 64}},
+    }
+    second = json.loads(json.dumps(first))
+    second["attempt"] = 2
+    second["runtime_seconds"] = 11.0
+    second["peak_rss_gib"] = 2.0
+    second["fits"][0]["runtime_seconds"] = 3.0
+    second["accounting"]["additional_family_task_slots_consumed_this_attempt"] = 0
+    assert module._repeat_comparable_manifest(
+        first
+    ) == module._repeat_comparable_manifest(second)
+    second["predictions"]["maplight_fixed__cyp2c9_veith"]["sha256"] = "c" * 64
+    assert module._repeat_comparable_manifest(
+        first
+    ) != module._repeat_comparable_manifest(second)
