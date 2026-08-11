@@ -295,6 +295,14 @@ signed-`int8` wrapping exactly, but that would be a new experiment with a
 different safety rule. Do not infer that authority or silently alter the
 frozen contract.
 
+Independent artifact and Occam review passed the blocker milestone. A second
+exact-head review required and then verified two remediations: build 2 now
+fails before scientific input resolution when the build-1 blocker exists, and
+the ledger distinguishes successful-attempt parity counts from cumulative
+two-attempt counts. Reviewed head `7df37c2` and hosted CI run `31451795950`
+pass with 133 tests on Python 3.11 and 3.14. No scientific algorithm, contract,
+artifact, core dependency, or public CLI changed during remediation.
+
 ## Phase 0.5 benchmark contract
 
 - Required Track A uses the compound-level CYP3A4 inhibition table from the
