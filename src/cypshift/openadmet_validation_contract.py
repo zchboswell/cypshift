@@ -1,12 +1,12 @@
-"""Exact executable policy checks for OpenADMET validation-contract v3."""
+"""Exact executable policy checks for OpenADMET validation-contract v4."""
 
 from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, cast
 
-CONTRACT_SCHEMA_VERSION = "cypshift.openadmet_cyp_2026.validation_contract.v3"
-CONTRACT_GATE = "R2_VALIDATION_CONTRACT_V3_FROZEN"
+CONTRACT_SCHEMA_VERSION = "cypshift.openadmet_cyp_2026.validation_contract.v4"
+CONTRACT_GATE = "R2_VALIDATION_CONTRACT_V4_FROZEN"
 DIRECT_SOURCE_FILE = "cyp-challenge-TRAIN_inhibition.csv"
 ENDPOINTS = ("CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4")
 SEEDS = (20260810, 20260811, 20260812)
@@ -77,7 +77,7 @@ class ValidationContractError(ValueError):
 
 
 def verify_r2a_contract(contract: Mapping[str, Any], source_revision: str) -> None:
-    """Verify every v3 declaration implemented by the R2A compiler."""
+    """Verify every v4 declaration implemented by the R2A compiler."""
 
     if contract.get("schema_version") != CONTRACT_SCHEMA_VERSION:
         raise ValidationContractError("unsupported validation contract schema")

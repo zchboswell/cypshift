@@ -14,17 +14,21 @@ The pinned read-only source clones were verified at:
 headers, and TDI order discrepancy; [`challenge_contract.json`](challenge_contract.json)
 has the R0 gate, endpoint states, validation, claims, and V6/P6 items; see
 [`submission_contract.json`](submission_contract.json) for required columns.
-[`validation_contract.json`](validation_contract.json) freezes the corrected R2 v3
+[`validation_contract.json`](validation_contract.json) freezes the corrected R2 v4
 label-aware topology-viability, campaign-episode, firewall, and fold contract.
-V2 was rejected before R2B after a read-only audit identified public
-membership-based anchor inference and unfrozen episode-ID determinism; zero R2B
-artifacts were created. It is not `VALIDATION_FROZEN`. The R2A implementation
-emits only direct observations, deterministic component-fold records, and a
-scope-limiting manifest; those fold records are inputs without validation
-authority. Episodes, topology viability, models, metrics, submissions, TDI,
-and transductive use remain unimplemented and unauthorized.
-V3 supersedes the pre-implementation v2 while preserving its chemistry,
-eligibility, pair, anchor, query, fold, scorecard, and no-model policies.
+V3 was rejected before R2B after a post-merge Sol audit found incomplete
+episode policy/hash output, incomplete public query-field typing, and an
+incomplete topology-viability schema/acceptance contract; zero R2B artifacts
+were created. PR89's claimed independent audit is separately recorded as
+unsupported because its assigned read-only auditor self-integrated; that
+governance breach does not invalidate valid R2A evidence. It is not
+`VALIDATION_FROZEN`. The R2A implementation emits only direct observations,
+deterministic component-fold records, and a scope-limiting manifest; those fold
+records are inputs without validation authority. Episodes, topology viability,
+models, metrics, submissions, TDI, and transductive use remain unimplemented
+and unauthorized. V4 preserves v3's chemistry, eligibility, pair, anchor,
+query, fold, scorecard, firewall, and no-model policies while freezing the
+missing R2B schemas and semantic types.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
@@ -71,6 +75,14 @@ The command opens only the direct-training CSV and receipt-bound R1/topology
 artifacts. It does not create episodes, decide endpoint viability, fit or score
 a model, read TDI or blinded test data, or authorize its fold records as a
 validated split. The next gate is the episode/firewall/viability slice.
+
+V4 freezes the future R2B semantic episode CSV types, lowercase SHA256 episode
+and component IDs, selected/stress policy tokens, unique-ID and join counts, and
+the exact receipt-bound `topology_viability.v1` schema. Its topology artifact
+must contain all four endpoint global counts and fifteen sorted fold-support
+cells per endpoint, with no predictions, learned/fitted weights, metrics, TDI,
+blinded-test, or transductive content. These declarations are static-only until
+root reviews and independently replays R2B.
 
 Released TDI labels conflict with launch prose. Among non-null labels, all
 arm-missing rows are `False` (CYP2D6: 4; CYP3A4: 1,250), including 1,055

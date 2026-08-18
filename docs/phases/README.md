@@ -1,7 +1,7 @@
 # Active phase
 
 Phase 1 TRACE is active at the corrected-contract gate
-`R2_VALIDATION_CONTRACT_V3_FROZEN`. The launch-day OpenADMET source revisions, file
+`R2_VALIDATION_CONTRACT_V4_FROZEN`. The launch-day OpenADMET source revisions, file
 receipts, submission names/types, endpoint-state notes, and unresolved
 metric/permission items are frozen in
 [`PHASE_1_OPENADMET_TRACE.md`](PHASE_1_OPENADMET_TRACE.md) and
@@ -10,9 +10,12 @@ metric/permission items are frozen in
 No modeling or scoring is authorized. The receipt-bound checker, canonical
 source-row adapter, and topology audit have passed their synthetic and official
 gates. The separate label-aware topology-viability and campaign-episode
-contract v3 is frozen after a read-only audit rejected v2 before R2B because
-public group/query membership can permit anchor identity inference and v2
-episode-ID determinism was incomplete. Zero R2B artifacts were created. Its
+contract v4 is frozen after a post-merge Sol audit rejected v3 before R2B for
+incomplete episode policy/hash output, incomplete public query-field typing, and
+an incomplete topology-viability schema/acceptance contract. Zero R2B artifacts
+were created. PR89's claimed independent audit is separately recorded as
+unsupported because its assigned read-only auditor self-integrated; this
+governance breach does not invalidate the accepted R2A evidence. The
 receipt-bound direct-observation and component-fold slice remains accepted;
 episode firewalls, restricted anchor masks, and viability remain the next
 implementation gate;

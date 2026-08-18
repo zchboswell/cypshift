@@ -1,12 +1,18 @@
 {
-  "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v3",
+  "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
   "freeze_date": "2026-08-18",
-  "gate": "R2_VALIDATION_CONTRACT_V3_FROZEN",
+  "gate": "R2_VALIDATION_CONTRACT_V4_FROZEN",
   "status": "contract_only_not_validation_frozen",
   "supersedes": {
-    "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v2",
-    "commit": "1e424c520c383690b8f0d2754a14ffc93f32561f",
-    "reason": "Independent read-only audit found that public outer_group_id plus query_molecule_ids uniquely inferred the omitted anchor in 124 of 187 primary-selected and 126 of 187 stress-base episodes, contradicting v2's information-theoretic anchor-anonymity claim; episode ID determinism was also unfrozen. V2 was rejected before R2B, and zero R2B artifacts were created."
+    "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v3",
+    "commit": "c314a35c1028a1ddafc769dcba3c941d30e1ff21",
+    "reason": "Independent post-merge read-only Sol audit found three R2B blockers: the episode policy/hash output was incomplete, the public query field semantic type was incomplete, and the topology_viability schema/acceptance contract was incomplete. V3 was rejected before R2B and zero R2B artifacts were created."
+  },
+  "review_governance": {
+    "post_merge_audit": "Independent Sol audit was valid for identifying the three v3 R2B blockers.",
+    "pr89_claim": "PR89's claim of an independent audit was unsupported because its assigned read-only auditor self-integrated the change.",
+    "governance_breach": "The self-integration is recorded as a governance breach and is distinct from the valid R2A observation/fold evidence and its independent scientific review.",
+    "r2a_evidence": "R2A remains valid and preserved; v4 changes contract-only declarations and does not invalidate accepted direct_observations.csv or group_folds.csv bytes."
   },
   "challenge_contract": "benchmarks/openadmet_cyp_2026/challenge_contract.json",
   "input_chain": {
@@ -85,17 +91,196 @@
     "experiment_order": "The first local experiment is CYP3A4 only. Never tune topology or criteria to rescue another endpoint."
   },
   "topology_viability": {
-    "official_diagnostics": {
-      "CYP3A4": {
-        "minimum_components_per_outer_validation_fold": 14,
-        "minimum_pairs_per_outer_validation_fold": 74,
-        "status": "LOCAL_SUPPORTED"
-      },
-      "CYP1A2": {"status": "LOCAL_UNDERPOWERED"},
-      "CYP2C9": {"status": "LOCAL_UNDERPOWERED"},
-      "CYP2D6": {"status": "LOCAL_UNDERPOWERED"}
+    "schema_version": "cypshift.openadmet_cyp_2026.topology_viability.v1",
+    "source_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "validation_contract": {
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
+      "sha256": "lowercase SHA256 hex of the exact validation_contract.json bytes, recorded at artifact build"
     },
-    "interpretation": "These are read-only official diagnostic expectations for the future viability artifact, not emitted artifacts, fit results, or prediction evidence."
+    "input_receipts": {
+      "direct_source": {
+        "path": "cyp-challenge-TRAIN_inhibition.csv",
+        "sha256": "b8f79addd266fb6f9f4c222c5e4e73d926362328b6a8d2841871a54e46bd2278",
+        "rows": 4905
+      },
+      "r1_source_row_adapter": {
+        "manifest_sha256": "331b4d439fb655a5e73a92238095e0519e8c3c9d62230fffda9ba22824cd6d08",
+        "source_rows_sha256": "f9b058b32d24dd6af7d2f46dd77869cc3868e30d523fe5b52529acb465c03608",
+        "molecules_sha256": "0291f961970c3c2ca032ab96651dd1395bd408834a6284f3bb01805e4321e5eb"
+      },
+      "r1_topology": {
+        "manifest_sha256": "4df499a0c483835ea0eb23dfcaec6a7cf1b9b52d410b67c32a03636c6250e0dc",
+        "molecule_audit_sha256": "5053fde0e34de221a7ea4c48a09674bf1227bc79f02235b4527d00567768174a",
+        "training_topology_sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a"
+      },
+      "r2a_validation_inputs": {
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_inputs.v1",
+        "manifest_sha256": "lowercase SHA256 hex of the exact receipt-bound R2A manifest bytes, recorded at artifact build",
+        "direct_observations.csv": {"sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7", "rows": 19620},
+        "group_folds.csv": {"sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774", "rows": 73575}
+      }
+    },
+    "chemistry_policy": {
+      "standardized_smiles": "Recompute the frozen standardized SMILES from each raw structure, then assert equality with the receipt-bound standardized_structure_hash before fingerprinting.",
+      "assert_standardized_structure_hash": true,
+      "fingerprint": {
+        "family": "Morgan/ECFP4",
+        "radius": 2,
+        "n_bits": 4096,
+        "use_chirality": true,
+        "similarity": "inclusive Tanimoto >= 0.60"
+      },
+      "component_policy": "Use the unchanged D-032 connected-component hashes; recomputation is label-free and training-only."
+    },
+    "fold_support_schema": {
+      "count": 15,
+      "ordering": ["repeat ascending", "outer_fold ascending"],
+      "fields": {
+        "repeat": "integer in [0, 2]",
+        "seed": "integer in [20260810, 20260811, 20260812] bound to repeat",
+        "outer_fold": "integer in [0, 4]",
+        "component_count": "nonnegative integer",
+        "pair_count": "nonnegative integer",
+        "meets_minimum": "boolean"
+      }
+    },
+    "endpoint_map": {
+      "CYP1A2": {
+        "eligible_components": 18,
+        "eligible_pairs": 28,
+        "fold_support_cells": [
+          {"repeat": 0, "seed": 20260810, "outer_fold": 0, "component_count": 5, "pair_count": 6, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 1, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 2, "component_count": 4, "pair_count": 12, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 3, "component_count": 4, "pair_count": 5, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 4, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 0, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 1, "component_count": 6, "pair_count": 7, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 2, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 3, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 4, "component_count": 5, "pair_count": 14, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 0, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 1, "component_count": 4, "pair_count": 6, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 2, "component_count": 4, "pair_count": 12, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 3, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 4, "component_count": 4, "pair_count": 4, "meets_minimum": false}
+        ],
+        "status": "LOCAL_UNDERPOWERED",
+        "fusion_weight": 0.0
+      },
+      "CYP2C9": {
+        "eligible_components": 13,
+        "eligible_pairs": 13,
+        "fold_support_cells": [
+          {"repeat": 0, "seed": 20260810, "outer_fold": 0, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 1, "component_count": 1, "pair_count": 1, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 2, "component_count": 4, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 3, "component_count": 5, "pair_count": 5, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 4, "component_count": 0, "pair_count": 0, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 0, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 1, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 2, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 3, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 4, "component_count": 4, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 0, "component_count": 1, "pair_count": 1, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 1, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 2, "component_count": 4, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 3, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 4, "component_count": 3, "pair_count": 3, "meets_minimum": false}
+        ],
+        "status": "LOCAL_UNDERPOWERED",
+        "fusion_weight": 0.0
+      },
+      "CYP2D6": {
+        "eligible_components": 14,
+        "eligible_pairs": 28,
+        "fold_support_cells": [
+          {"repeat": 0, "seed": 20260810, "outer_fold": 0, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 1, "component_count": 3, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 2, "component_count": 5, "pair_count": 18, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 3, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 4, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 0, "component_count": 2, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 1, "component_count": 3, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 2, "component_count": 4, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 3, "component_count": 1, "pair_count": 1, "meets_minimum": false},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 4, "component_count": 4, "pair_count": 15, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 0, "component_count": 3, "pair_count": 3, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 1, "component_count": 3, "pair_count": 4, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 2, "component_count": 3, "pair_count": 14, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 3, "component_count": 2, "pair_count": 2, "meets_minimum": false},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 4, "component_count": 3, "pair_count": 5, "meets_minimum": false}
+        ],
+        "status": "LOCAL_UNDERPOWERED",
+        "fusion_weight": 0.0
+      },
+      "CYP3A4": {
+        "eligible_components": 95,
+        "eligible_pairs": 473,
+        "fold_support_cells": [
+          {"repeat": 0, "seed": 20260810, "outer_fold": 0, "component_count": 20, "pair_count": 100, "meets_minimum": true},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 1, "component_count": 21, "pair_count": 90, "meets_minimum": true},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 2, "component_count": 17, "pair_count": 81, "meets_minimum": true},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 3, "component_count": 15, "pair_count": 112, "meets_minimum": true},
+          {"repeat": 0, "seed": 20260810, "outer_fold": 4, "component_count": 22, "pair_count": 90, "meets_minimum": true},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 0, "component_count": 22, "pair_count": 105, "meets_minimum": true},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 1, "component_count": 17, "pair_count": 92, "meets_minimum": true},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 2, "component_count": 19, "pair_count": 91, "meets_minimum": true},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 3, "component_count": 23, "pair_count": 111, "meets_minimum": true},
+          {"repeat": 1, "seed": 20260811, "outer_fold": 4, "component_count": 14, "pair_count": 74, "meets_minimum": true},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 0, "component_count": 22, "pair_count": 90, "meets_minimum": true},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 1, "component_count": 17, "pair_count": 104, "meets_minimum": true},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 2, "component_count": 16, "pair_count": 90, "meets_minimum": true},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 3, "component_count": 24, "pair_count": 92, "meets_minimum": true},
+          {"repeat": 2, "seed": 20260812, "outer_fold": 4, "component_count": 16, "pair_count": 97, "meets_minimum": true}
+        ],
+        "status": "LOCAL_SUPPORTED",
+        "fusion_weight": null
+      }
+    },
+    "minimum_fold_counts": {
+      "eligible_components": 5,
+      "eligible_pairs": 20,
+      "status_rule": "supported iff eligible_components >= 50, eligible_pairs >= 200, and every one of the exactly 15 fold-support cells meets both minima; otherwise a clean audit is LOCAL_UNDERPOWERED.",
+      "supported_fusion_weight": null,
+      "underpowered_fusion_weight": 0.0
+    },
+    "activity_cliff_counts": {
+      "CYP1A2": {"pairs": 6, "components": 6},
+      "CYP2C9": {"pairs": 4, "components": 4},
+      "CYP2D6": {"pairs": 4, "components": 4},
+      "CYP3A4": {"pairs": 96, "components": 38}
+    },
+    "episode_diagnostics": {
+      "primary_base": {"selected_episodes": 187, "queries": 301},
+      "stress_base": {"selected_episodes": 187, "queries": 305},
+      "expanded_artifact_rows_each": 1122,
+      "total_expanded_queries": 1818,
+      "anchor_observation_references": 4488,
+      "query_observation_references": 7272,
+      "primary_anchor_inference": "124/187",
+      "stress_anchor_inference": "126/187"
+    },
+    "artifact_authority": {
+      "topology_viability": true,
+      "fold_assignments": true,
+      "episodes": true,
+      "episode_labels": true,
+      "validation": false,
+      "models": false,
+      "metrics": false,
+      "tdi": false,
+      "predictions": false,
+      "submissions": false,
+      "transduction": false
+    },
+    "serialization": {
+      "json": "top-level JSON object with sort_keys=True, indent=2, and exactly one trailing newline",
+      "fold_support_cells": "array sorted by repeat ascending then outer_fold ascending"
+    },
+    "forbidden": ["predictions", "learned or fitted weights", "metrics", "TDI", "blinded test", "transductive relationships"],
+    "failure_policy": "Any receipt, raw-to-standardized chemistry, identity, fold, count, determinism, or authority defect aborts before creating the output directory and is recorded as LOCAL_FAILED in the experiment ledger; it is never emitted as authoritative topology_viability.json.",
+    "interpretation": "The v4 topology viability schema and aggregate diagnostics are frozen, but no R2B artifact or prediction evidence exists until root independently reviews and replays the implementation."
   },
   "campaign_episodes": {
     "protocol": "ANCHOR_EXPANSION_HOLDOUT",
@@ -118,6 +303,10 @@
     },
     "isolation": "A component may produce up to three selector episodes. Each episode receives only its own anchor projection; no episode may read another episode's anchor identity, labels, or cache.",
     "anchor_policies": ["selected_anchor", "deterministic_random_anchor_stress"],
+    "episode_policy_tokens": {
+      "selected_anchor": "selected_anchor",
+      "deterministic_random_anchor_stress": "deterministic_random_anchor_stress"
+    },
     "random_anchor_stress": {
       "purpose": "stress control only; never candidate selection, tuning, or fusion evidence",
       "seed": 20260818,
@@ -132,7 +321,9 @@
       "policy_id": "openadmet-campaign-episode-sha256-v1",
       "material": "source_revision|protocol|repeat|outer_group_id|selector_cyp_truth|episode_policy_id",
       "digest": "SHA256",
-      "meaning": "deterministic join pseudonym, not secrecy"
+      "encoding": "lowercase hexadecimal, exactly 64 characters, matching ^[0-9a-f]{64}$",
+      "meaning": "deterministic join pseudonym, not secrecy",
+      "token_distinction": "The selected_anchor and deterministic_random_anchor_stress tokens are distinct, so their IDs are distinct even when stress and selected anchors are the same molecule."
     },
     "serialization": {
       "policy_id": "openadmet-campaign-json-cell-v1",
@@ -140,7 +331,8 @@
       "arrays": "Preserve query rank and array order; do not sort arrays.",
       "csv_rows": "Sort campaign_episodes_public.csv, campaign_episodes_truth.csv, and episode_label_masks.csv by episode_id ascending; corresponding rows must form exact one-to-one joins.",
       "fold_indices": "Encode repeat as the zero-based integer 0 through 2 and outer_fold as the zero-based integer 0 through 4.",
-      "json_artifacts": "Serialize JSON artifacts with indent=2, sort_keys=True, and one trailing newline."
+      "json_artifacts": "Serialize JSON artifacts with indent=2, sort_keys=True, and one trailing newline.",
+      "episode_id_uniqueness": "All 1,122 expanded rows across selected_anchor and deterministic_random_anchor_stress must have unique episode_id values; duplicate IDs abort before output."
     },
     "preliminary_diagnostics": {
       "CYP1A2": {"selected_episodes": 33, "queries": 54, "selector_labeled_query_cells": 21},
@@ -167,6 +359,19 @@
   },
   "public_truth_firewall": {
     "public_episode_fields": ["episode_id", "protocol", "repeat", "outer_fold", "outer_group_id", "query_molecule_ids", "candidate_pool_id", "episode_policy_id"],
+    "public_csv_semantic_schema": {
+      "storage": "CSV cells are text; a narrow parser validates these semantic types before any episode output is accepted.",
+      "columns": {
+        "episode_id": {"type": "string", "format": "lowercase SHA256 hex, exactly 64 characters"},
+        "protocol": {"type": "string", "const": "ANCHOR_EXPANSION_HOLDOUT"},
+        "repeat": {"type": "integer", "minimum": 0, "maximum": 2},
+        "outer_fold": {"type": "integer", "minimum": 0, "maximum": 4},
+        "outer_group_id": {"type": "string", "format": "lowercase SHA256 hex, exactly 64 characters"},
+        "query_molecule_ids": {"type": "compact JSON array", "items": "nonempty molecule-ID strings in query-rank order"},
+        "candidate_pool_id": {"type": "string", "const": "DEFERRED_NO_INFERRED_POOL_V1"},
+        "episode_policy_id": {"type": "string", "enum": ["selected_anchor", "deterministic_random_anchor_stress"]}
+      }
+    },
     "public_exclusions": ["selector_cyp_truth", "selector values", "anchor identity", "anchor values", "truth values", "query labels", "label masks"],
     "disclosure_model": "Exact-column/value nondisclosure and privilege separation, not information-theoretic identity anonymity.",
     "identity_inference": "outer_group_id and query_molecule_ids may permit selector or anchor identity inference from public membership; this is acknowledged and is not treated as secrecy.",
@@ -252,7 +457,36 @@
     "required": ["input receipts verify before parse", "raw direct strings and finite parsed values are preserved", "all four state classes are represented and retained", "identity and duplicate checks fail closed", "no component crosses a fold boundary", "public/truth firewall is mechanically tested", "repeat outputs are byte-identical", "official acceptance is run only after implementation review"],
     "leakage_invariants": ["GLOBAL_FAMILY_HOLDOUT exposes zero labels from its outer-validation reconstructed-family proxy component", "ANCHOR_EXPANSION_HOLDOUT exposes exactly the designated anchor under anchor_global_fit_policy while every other component identity stays held out", "after anchor selection, non-anchor measurement magnitudes cannot affect query eligibility or rank", "all learned choices use cross-fitted predictions only", "availability cannot reassign folds", "non-anchor component labels cannot reach an episode"],
     "not_yet_authorized": ["model fitting", "prediction", "metric evaluation", "submission generation", "leaderboard iteration", "TDI label derivation", "TDI-TRACE", "transductive test relationships"],
-    "next_gate": "R2B_EPISODES_MASKS_VIABILITY_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
+    "next_gate": "R2B_EPISODES_MASKS_VIABILITY_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED",
+    "r2b_success": {
+      "exact_artifact_counts": {
+        "campaign_episodes_public_rows": 1122,
+        "campaign_episodes_truth_rows": 1122,
+        "episode_label_masks_rows": 1122,
+        "unique_episode_ids": 1122,
+        "expanded_queries": 1818,
+        "anchor_observation_references": 4488,
+        "query_observation_references": 7272
+      },
+      "joins": "The three episode CSVs join one-to-one on unique episode_id sorted ascending; public query_molecule_ids are ordered compact JSON arrays and every truth query array preserves that exact order.",
+      "mask_schema": {
+        "columns": ["episode_id", "anchor_molecule_id_truth", "anchor_observation_references", "anchor_value_availability_mask"],
+        "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+        "value_fields": ["point", "low", "high", "std"]
+      },
+      "firewall": "Public exclusions remain selector_cyp_truth, selector values, anchor identity, anchor values, truth values, query labels, and label masks. The trusted runner resolves only the four anchor observations from episode_label_masks.csv; every non-anchor family label is excluded from global labels, delta support, candidate pools, feature selection, calibration, and fusion.",
+      "topology_fold_cliff_diagnostics": "The emitted topology_viability.json contains the exact four endpoint global eligible component/pair counts, all exactly 15 sorted fold-support cells per endpoint with their counts and minimum booleans, exact activity-cliff counts, and exact selected/stress/repeat/inference diagnostics frozen in this contract.",
+      "repeat_reproducibility": "Two independent builds with identical verified bytes are byte-identical for every R2B artifact; output hashes are recorded in the manifest.",
+      "accounting": {
+        "tdi_files_opened": 0,
+        "blinded_test_files_opened": 0,
+        "model_fits": 0,
+        "predictions": 0,
+        "metric_evaluations": 0,
+        "submissions": 0
+      },
+      "authority": "The manifest matches authority_after_successful_r2b exactly; this remains below VALIDATION_FROZEN and grants no prediction, learned or fitted weight, metric, TDI, submission, or transductive authority."
+    }
   },
   "authority": {
     "validation": false,
@@ -266,7 +500,7 @@
     "tdi": false,
     "predictions": false,
     "transduction": false,
-    "status_note": "R2 v3 freezes the corrected contract only. It is not VALIDATION_FROZEN and cannot support scientific or competition claims. Contract-only authority remains denied until a successful R2B artifact build."
+    "status_note": "R2 v4 freezes the corrected contract only. It is not VALIDATION_FROZEN and cannot support scientific or competition claims. Contract-only authority remains denied until a successful R2B artifact build."
   },
   "authority_after_successful_r2b": {
     "fold_assignments": true,

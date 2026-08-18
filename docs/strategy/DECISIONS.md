@@ -1014,3 +1014,32 @@
 - Reversal condition: v3 implementation finds a receipt, identity, chemistry,
   state, determinism, projection, family-leakage, or authority defect.
   Preserve the blocker and issue another versioned contract before modeling.
+
+## D-037 — Reject v3 R2B boundary and freeze corrected v4
+
+- Date: 2026-08-18
+- Status: accepted; corrected contract-only gate
+- Decision: Supersede v3 with
+  `cypshift.openadmet_cyp_2026.validation_contract.v4` at
+  `R2_VALIDATION_CONTRACT_V4_FROZEN`. Preserve v3 and R2A evidence, then
+  freeze the selected/stress episode policy tokens, lowercase 64-character
+  SHA256 IDs and uniqueness rule, exact public CSV semantic types, and the
+  complete topology-viability schema with receipt-bound Morgan recomputation,
+  endpoint/global/fold/cliff diagnostics, clean underpowered semantics, and
+  post-R2B artifact authority. Keep validation, models, metrics, TDI,
+  predictions, submissions, and transduction unauthorized.
+- Evidence: Independent post-merge Sol audit identified three R2B blockers in
+  v3: episode policy/hash output was incomplete, the public query field type
+  was incomplete, and topology_viability schema/acceptance was incomplete.
+  V3 was rejected before R2B and zero R2B artifacts were created. PR89's
+  claimed independent audit was unsupported because its assigned read-only
+  auditor self-integrated the change; record this as a governance breach,
+  distinct from valid R2A observation/fold outputs and their independent
+  scientific review. Two receipt-bound R2A official replays under v4 were
+  byte-identical and preserved the accepted observation and fold hashes.
+- Alternatives: Start R2B against v3; infer semantic types from CSV bytes;
+  or emit a partial topology_viability artifact and upgrade it later.
+- Reversal condition: Root's independent R2B review/replay finds a receipt,
+  identity, chemistry, fold, schema, serialization, projection, determinism,
+  family-leakage, or authority defect. Preserve the blocker and issue another
+  versioned contract before modeling.

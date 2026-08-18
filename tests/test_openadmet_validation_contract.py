@@ -15,23 +15,28 @@ def load_contract() -> dict[str, object]:
 def test_r2_input_chain_and_direct_compiler_are_receipt_bound() -> None:
     contract = load_contract()
     assert contract["schema_version"] == (
+        "cypshift.openadmet_cyp_2026.validation_contract.v4"
+    )
+    assert contract["gate"] == "R2_VALIDATION_CONTRACT_V4_FROZEN"
+    assert contract["supersedes"]["schema_version"] == (
         "cypshift.openadmet_cyp_2026.validation_contract.v3"
     )
-    assert contract["gate"] == "R2_VALIDATION_CONTRACT_V3_FROZEN"
-    assert contract["supersedes"]["schema_version"] == (
-        "cypshift.openadmet_cyp_2026.validation_contract.v2"
-    )
     assert contract["supersedes"]["commit"] == (
-        "1e424c520c383690b8f0d2754a14ffc93f32561f"
+        "c314a35c1028a1ddafc769dcba3c941d30e1ff21"
     )
     assert contract["supersedes"]["reason"] == (
-        "Independent read-only audit found that public outer_group_id plus "
-        "query_molecule_ids uniquely inferred the omitted anchor in 124 of 187 "
-        "primary-selected and 126 of 187 stress-base episodes, contradicting "
-        "v2's information-theoretic anchor-anonymity claim; episode ID "
-        "determinism was also unfrozen. V2 was rejected before R2B, and zero "
-        "R2B artifacts were created."
+        "Independent post-merge read-only Sol audit found three R2B blockers: "
+        "the episode policy/hash output was incomplete, the public query field "
+        "semantic type was incomplete, and the topology_viability schema/"
+        "acceptance contract was incomplete. V3 was rejected before R2B and "
+        "zero R2B artifacts were created."
     )
+    assert contract["review_governance"] == {
+        "post_merge_audit": "Independent Sol audit was valid for identifying the three v3 R2B blockers.",
+        "pr89_claim": "PR89's claim of an independent audit was unsupported because its assigned read-only auditor self-integrated the change.",
+        "governance_breach": "The self-integration is recorded as a governance breach and is distinct from the valid R2A observation/fold evidence and its independent scientific review.",
+        "r2a_evidence": "R2A remains valid and preserved; v4 changes contract-only declarations and does not invalidate accepted direct_observations.csv or group_folds.csv bytes.",
+    }
     inputs = contract["input_chain"]
     assert inputs["dataset_revision"] == "85f8b358d0a2056a98b990dd75d3b3ec9247862b"
     assert inputs["direct_source"] == {
@@ -164,7 +169,13 @@ def test_local_statuses_episodes_and_cliffs_are_frozen_without_rescue() -> None:
         "policy_id": "openadmet-campaign-episode-sha256-v1",
         "material": "source_revision|protocol|repeat|outer_group_id|selector_cyp_truth|episode_policy_id",
         "digest": "SHA256",
+        "encoding": "lowercase hexadecimal, exactly 64 characters, matching ^[0-9a-f]{64}$",
         "meaning": "deterministic join pseudonym, not secrecy",
+        "token_distinction": "The selected_anchor and deterministic_random_anchor_stress tokens are distinct, so their IDs are distinct even when stress and selected anchors are the same molecule.",
+    }
+    assert episodes["episode_policy_tokens"] == {
+        "selected_anchor": "selected_anchor",
+        "deterministic_random_anchor_stress": "deterministic_random_anchor_stress",
     }
     assert episodes["serialization"] == {
         "policy_id": "openadmet-campaign-json-cell-v1",
@@ -173,6 +184,7 @@ def test_local_statuses_episodes_and_cliffs_are_frozen_without_rescue() -> None:
         "csv_rows": "Sort campaign_episodes_public.csv, campaign_episodes_truth.csv, and episode_label_masks.csv by episode_id ascending; corresponding rows must form exact one-to-one joins.",
         "fold_indices": "Encode repeat as the zero-based integer 0 through 2 and outer_fold as the zero-based integer 0 through 4.",
         "json_artifacts": "Serialize JSON artifacts with indent=2, sort_keys=True, and one trailing newline.",
+        "episode_id_uniqueness": "All 1,122 expanded rows across selected_anchor and deterministic_random_anchor_stress must have unique episode_id values; duplicate IDs abort before output.",
     }
     assert episodes["official_diagnostics"] == {
         "primary_base": {"selected_episodes": 187, "queries": 301},
@@ -190,16 +202,117 @@ def test_local_statuses_episodes_and_cliffs_are_frozen_without_rescue() -> None:
             "interpretation": "Public membership can permit identity inference; this is acknowledged and is not a secrecy or prediction-evidence claim.",
         },
     }
-    assert contract["topology_viability"]["official_diagnostics"] == {
-        "CYP3A4": {
-            "minimum_components_per_outer_validation_fold": 14,
-            "minimum_pairs_per_outer_validation_fold": 74,
-            "status": "LOCAL_SUPPORTED",
-        },
-        "CYP1A2": {"status": "LOCAL_UNDERPOWERED"},
-        "CYP2C9": {"status": "LOCAL_UNDERPOWERED"},
-        "CYP2D6": {"status": "LOCAL_UNDERPOWERED"},
+    viability = contract["topology_viability"]
+    assert viability["schema_version"] == (
+        "cypshift.openadmet_cyp_2026.topology_viability.v1"
+    )
+    assert viability["source_revision"] == ("85f8b358d0a2056a98b990dd75d3b3ec9247862b")
+    assert viability["validation_contract"] == {
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
+        "sha256": "lowercase SHA256 hex of the exact validation_contract.json bytes, recorded at artifact build",
     }
+    assert viability["chemistry_policy"] == {
+        "standardized_smiles": "Recompute the frozen standardized SMILES from each raw structure, then assert equality with the receipt-bound standardized_structure_hash before fingerprinting.",
+        "assert_standardized_structure_hash": True,
+        "fingerprint": {
+            "family": "Morgan/ECFP4",
+            "radius": 2,
+            "n_bits": 4096,
+            "use_chirality": True,
+            "similarity": "inclusive Tanimoto >= 0.60",
+        },
+        "component_policy": "Use the unchanged D-032 connected-component hashes; recomputation is label-free and training-only.",
+    }
+    assert viability["input_receipts"]["r2a_validation_inputs"] == {
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_inputs.v1",
+        "manifest_sha256": "lowercase SHA256 hex of the exact receipt-bound R2A manifest bytes, recorded at artifact build",
+        "direct_observations.csv": {
+            "sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+            "rows": 19620,
+        },
+        "group_folds.csv": {
+            "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+            "rows": 73575,
+        },
+    }
+    assert viability["fold_support_schema"] == {
+        "count": 15,
+        "ordering": ["repeat ascending", "outer_fold ascending"],
+        "fields": {
+            "repeat": "integer in [0, 2]",
+            "seed": "integer in [20260810, 20260811, 20260812] bound to repeat",
+            "outer_fold": "integer in [0, 4]",
+            "component_count": "nonnegative integer",
+            "pair_count": "nonnegative integer",
+            "meets_minimum": "boolean",
+        },
+    }
+    for endpoint, expected in {
+        "CYP1A2": (18, 28, "LOCAL_UNDERPOWERED", 0.0),
+        "CYP2C9": (13, 13, "LOCAL_UNDERPOWERED", 0.0),
+        "CYP2D6": (14, 28, "LOCAL_UNDERPOWERED", 0.0),
+        "CYP3A4": (95, 473, "LOCAL_SUPPORTED", None),
+    }.items():
+        result = viability["endpoint_map"][endpoint]
+        assert (
+            result["eligible_components"],
+            result["eligible_pairs"],
+            result["status"],
+            result["fusion_weight"],
+        ) == expected
+        cells = result["fold_support_cells"]
+        assert len(cells) == 15
+        assert [(cell["repeat"], cell["outer_fold"]) for cell in cells] == [
+            (repeat, outer_fold) for repeat in range(3) for outer_fold in range(5)
+        ]
+        assert all(
+            set(cell)
+            == {
+                "repeat",
+                "seed",
+                "outer_fold",
+                "component_count",
+                "pair_count",
+                "meets_minimum",
+            }
+            for cell in cells
+        )
+        assert all(
+            cell["meets_minimum"]
+            is (cell["component_count"] >= 5 and cell["pair_count"] >= 20)
+            for cell in cells
+        )
+    assert viability["minimum_fold_counts"] == {
+        "eligible_components": 5,
+        "eligible_pairs": 20,
+        "status_rule": "supported iff eligible_components >= 50, eligible_pairs >= 200, and every one of the exactly 15 fold-support cells meets both minima; otherwise a clean audit is LOCAL_UNDERPOWERED.",
+        "supported_fusion_weight": None,
+        "underpowered_fusion_weight": 0.0,
+    }
+    assert viability["forbidden"] == [
+        "predictions",
+        "learned or fitted weights",
+        "metrics",
+        "TDI",
+        "blinded test",
+        "transductive relationships",
+    ]
+    assert "before creating the output directory" in viability["failure_policy"]
+    assert (
+        viability["activity_cliff_counts"]
+        == contract["activity_cliff"]["official_diagnostics"]
+    )
+    assert viability["episode_diagnostics"] == {
+        "primary_base": {"selected_episodes": 187, "queries": 301},
+        "stress_base": {"selected_episodes": 187, "queries": 305},
+        "expanded_artifact_rows_each": 1122,
+        "total_expanded_queries": 1818,
+        "anchor_observation_references": 4488,
+        "query_observation_references": 7272,
+        "primary_anchor_inference": "124/187",
+        "stress_anchor_inference": "126/187",
+    }
+    assert "recorded as LOCAL_FAILED" in viability["failure_policy"]
 
 
 def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> None:
@@ -215,6 +328,34 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
         "candidate_pool_id",
         "episode_policy_id",
     ]
+    assert firewall["public_csv_semantic_schema"] == {
+        "storage": "CSV cells are text; a narrow parser validates these semantic types before any episode output is accepted.",
+        "columns": {
+            "episode_id": {
+                "type": "string",
+                "format": "lowercase SHA256 hex, exactly 64 characters",
+            },
+            "protocol": {"type": "string", "const": "ANCHOR_EXPANSION_HOLDOUT"},
+            "repeat": {"type": "integer", "minimum": 0, "maximum": 2},
+            "outer_fold": {"type": "integer", "minimum": 0, "maximum": 4},
+            "outer_group_id": {
+                "type": "string",
+                "format": "lowercase SHA256 hex, exactly 64 characters",
+            },
+            "query_molecule_ids": {
+                "type": "compact JSON array",
+                "items": "nonempty molecule-ID strings in query-rank order",
+            },
+            "candidate_pool_id": {
+                "type": "string",
+                "const": "DEFERRED_NO_INFERRED_POOL_V1",
+            },
+            "episode_policy_id": {
+                "type": "string",
+                "enum": ["selected_anchor", "deterministic_random_anchor_stress"],
+            },
+        },
+    }
     assert firewall["truth_fields"] == [
         "episode_id",
         "selector_cyp_truth",
@@ -311,7 +452,7 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
     assert all(
         value is False for value in authority.values() if isinstance(value, bool)
     )
-    assert "R2 v3 freezes the corrected contract only" in authority["status_note"]
+    assert "R2 v4 freezes the corrected contract only" in authority["status_note"]
     assert contract["authority_after_successful_r2b"] == {
         "fold_assignments": True,
         "episodes": True,
@@ -339,3 +480,22 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
         contract["acceptance"]["next_gate"]
         == "R2B_EPISODES_MASKS_VIABILITY_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
     )
+    assert contract["acceptance"]["r2b_success"]["exact_artifact_counts"] == {
+        "campaign_episodes_public_rows": 1122,
+        "campaign_episodes_truth_rows": 1122,
+        "episode_label_masks_rows": 1122,
+        "unique_episode_ids": 1122,
+        "expanded_queries": 1818,
+        "anchor_observation_references": 4488,
+        "query_observation_references": 7272,
+    }
+    assert contract["acceptance"]["r2b_success"]["mask_schema"] == {
+        "columns": [
+            "episode_id",
+            "anchor_molecule_id_truth",
+            "anchor_observation_references",
+            "anchor_value_availability_mask",
+        ],
+        "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+        "value_fields": ["point", "low", "high", "std"],
+    }
