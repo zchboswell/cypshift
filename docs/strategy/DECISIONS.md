@@ -1469,3 +1469,31 @@
   chemistry invariants, directional IDs, row partitions, support arithmetic,
   byte schemas, or authority boundary. Preserve the blocker, issue a versioned
   repair, and do not open official coverage inputs or fit TRACE.
+
+## D-051 — Supersede R4 v2 with exact stereo and graph-map semantics
+
+- Date: 2026-08-18
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`
+- Decision: Preserve v1/v2 as immutable history, but use the self-contained v3
+  contract as the sole R4 implementation authority. Freeze exact RDKit
+  potential-stereo discovery, CIP vocabulary, enhanced/unsupported-stereo
+  rejection, isotope-preserving reference graphs, automorphism consensus, and
+  full-graph map attributes/direction before implementing the extractor.
+- Evidence: Implementation design found that v2 defined stereo record shapes
+  but not unique record bytes. Equivalent atom orders can invert raw RDKit
+  orientation descriptors, unspecified potential double bonds can disappear
+  under weaker discovery, enhanced stereo can collapse under plain SMILES, and
+  incomplete map filters can accept atom-map, implicit-H, or dative-direction
+  mismatches. V3's contract SHA-256 is
+  `f5e1862682c1d2a3e34fcf530c9aad42cbd4e4538488eca1a4c5508443f61db5`;
+  its extraction-spec receipt is
+  `3d0b097602008457ffcefd4a0cf93673b5522112f91637634d162f5e619ff202`.
+  Twenty-seven focused v1/v2/v3 tests, strict receipt recomputation, the full
+  repository suite, and independent scientific re-audit pass. No official
+  input, target, model, prediction, metric, test, TDI, submission, or
+  transductive operation occurred.
+- Alternatives: Encode raw CW/CCW descriptors; ignore enhanced or potential
+  stereo; choose one graph map by atom order; or defer ambiguity to extraction.
+- Reversal condition: Synthetic extraction cannot reproduce v3's exact stereo
+  records, graph maps, IDs, reversal invariants, or receipt. Preserve the
+  blocker, version the contract, and keep official coverage inputs closed.

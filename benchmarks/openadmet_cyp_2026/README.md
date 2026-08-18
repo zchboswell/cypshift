@@ -79,15 +79,16 @@ This is internal surrogate evidence only: official ST-RAE, a deployable model,
 submission, TDI, anchors, transformations, and transduction remain outside its
 authority.
 
-[`transformation_coverage_contract_v2.json`](transformation_coverage_contract_v2.json)
+[`transformation_coverage_contract_v3.json`](transformation_coverage_contract_v3.json)
 is the implementation authority for R4 before any transformation fit or score.
 Its SHA-256 is
-`a13adee526575b4dc22c414c08cbcb9cf3ff8cc69c8eb10ad9c078e5eb4ae73e`
+`f5e1862682c1d2a3e34fcf530c9aad42cbd4e4538488eca1a4c5508443f61db5`
 and its extraction-spec receipt is
-`c7fb3a6a905d4265a174cdcde4e5f391c3d7f154a8cc2ed126a3830796c41e74`.
-It preserves the v1 contract (`d4c999e6...`) as immutable history while
-repairing the unreachable double-cut path, pair-specific exact IDs, and
-remaining executable chemistry/support/schema details.
+`3d0b097602008457ffcefd4a0cf93673b5522112f91637634d162f5e619ff202`.
+It preserves the v1 (`d4c999e6...`) and v2 (`a13adee5...`) contracts as
+immutable history. V2 repaired the unreachable double-cut path and pair-
+specific exact IDs; v3 closes the remaining stereo-discovery, CIP,
+automorphism, implicit-hydrogen, atom-map, and directed-bond ambiguity.
 The contract binds the accepted R2/R3 receipts, parses only direct availability
 state, uses public episode membership plus the mask anchor prefix, and keeps
 campaign truth, selectors, query availability, target magnitudes, blinded test,
@@ -95,7 +96,8 @@ TDI, predictions, and metrics closed. It specifies deterministic RDKit
 single/double-cut extraction, ambiguity and invariance policy, structural-only
 outputs, and valid-only CYP3A4/local and selected-episode structural support.
 Supported coverage may authorize a separate oracle contract only; R4 itself
-authorizes no fit. Nine focused v2 tests and independent scientific review pass.
+authorizes no fit. Twenty-seven focused v1/v2/v3 tests and independent
+scientific review pass.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

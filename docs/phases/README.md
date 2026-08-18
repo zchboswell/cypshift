@@ -41,10 +41,11 @@ component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
 evidence, not official ST-RAE, a deployable model, or a submission. Additive R4
-v2 now supersedes v1 for implementation while preserving it as immutable
+v3 now supersedes v1/v2 for implementation while preserving both as immutable
 history. It freezes label-safe direct-state and structural projections, joint
-single/double-cut chemistry, reusable transformation IDs, ambiguity/invariance
-rules, structural-only row outputs, and valid-only support thresholds. It opens
+single/double-cut chemistry, reusable transformation IDs, exact CIP/automorphism
+stereo records, ambiguity/invariance rules, structural-only row outputs, and
+valid-only support thresholds. It opens
 no campaign truth, selector/scorable state, target magnitude, test, TDI,
 prediction, or metric.
 The next gate is synthetic implementation and one independently audited

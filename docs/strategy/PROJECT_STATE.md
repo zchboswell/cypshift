@@ -228,13 +228,16 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The additive R4 v2 transformation-coverage contract is now frozen in
-[`transformation_coverage_contract_v2.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v2.json)
-at SHA-256 `a13adee5...`; it preserves v1 (`d4c999e6...`) as immutable history
-but supersedes it for implementation. V2 jointly ranks single- and double-cut
-MMP candidates, makes exact transformation IDs reusable across families, and
-fully binds virtual-hydrogen, stereo, environment, ambiguity, output, support,
-and failure semantics. Its extraction-spec receipt is `c7fb3a6a...`. The
+The additive R4 v3 transformation-coverage contract is now frozen in
+[`transformation_coverage_contract_v3.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v3.json)
+at SHA-256 `f5e18626...`; it preserves v1 (`d4c999e6...`) and v2
+(`a13adee5...`) as immutable history but supersedes both for implementation.
+V2 repaired joint single/double-cut ranking and reusable transformation IDs.
+V3 additionally makes stereo extraction executable: it freezes potential-
+stereo discovery, CIP values, enhanced/unsupported-stereo rejection, exact
+full-graph maps, automorphism consensus, isotope/atom-map/implicit-hydrogen
+state, and directional dative bonds. Its extraction-spec receipt is
+`3d0b0976...`. The
 label-safe boundary is unchanged: campaign truth, selector identity, query
 availability, target magnitudes, blinded test chemistry, TDI, predictions, and
 metrics remain unopened and unauthorized. Independent scientific review passes.

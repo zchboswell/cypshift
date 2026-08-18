@@ -231,15 +231,17 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
-Additive R4 v2 now freezes the pre-fit transformation-coverage boundary in
-[`transformation_coverage_contract_v2.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v2.json).
+Additive R4 v3 now freezes the pre-fit transformation-coverage boundary in
+[`transformation_coverage_contract_v3.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v3.json).
 Its exact SHA-256 is
-`a13adee526575b4dc22c414c08cbcb9cf3ff8cc69c8eb10ad9c078e5eb4ae73e`;
-v1 remains immutable history but is superseded for implementation. V2 jointly
-ranks single and double cuts, makes exact transformation IDs reusable across
-families, and binds the remaining chemistry, support, schema, and failure
-semantics. Its extraction-spec receipt is
-`c7fb3a6a905d4265a174cdcde4e5f391c3d7f154a8cc2ed126a3830796c41e74`.
+`f5e1862682c1d2a3e34fcf530c9aad42cbd4e4538488eca1a4c5508443f61db5`;
+v1 and v2 remain immutable history but are superseded for implementation. V2
+jointly ranked single and double cuts and made exact transformation IDs reusable
+across families. V3 additionally freezes executable potential-stereo discovery,
+CIP records, enhanced/unsupported-stereo rejection, exact automorphism-aware
+full-graph maps, isotope and atom-map preservation, implicit hydrogens, and
+directional dative bonds. Its extraction-spec receipt is
+`3d0b097602008457ffcefd4a0cf93673b5522112f91637634d162f5e619ff202`.
 It uses only receipt-bound structures, direct measurement availability state,
 public episode membership, and a mask prefix containing anchor identity. It
 never opens campaign truth or selector/scorable fields and parses or retains
