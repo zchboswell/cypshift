@@ -4,6 +4,7 @@ import csv
 import hashlib
 import io
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -23,6 +24,11 @@ from cypshift.openadmet_global_projection import (
     project_openadmet_global_targets,
 )
 from cypshift.openadmet_validation import FOLD_COLUMNS, OBSERVATION_COLUMNS
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3),
+    reason="R3B projection runtime is frozen to Python 3.12.3",
+)
 
 ENDPOINTS = ("CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4")
 
