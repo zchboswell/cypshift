@@ -64,15 +64,22 @@ Targeted failure: a stale/contradictory contract causes metric mismatch, family
 leakage, or unsupported claims (`V2`, `V6`, `P6`).
 
 Acceptance: receipts verify; source names/types and order discrepancies are
-recorded; unresolved items are named; no raw source is tracked; adapter fails closed.
+recorded; unresolved items are named; no raw source is tracked; the checker
+fails closed and any later adapter must do the same.
+
+Gate evidence: `scripts/check_openadmet_cyp_contract.py` passes the current
+official roots and freshly fetched launch HTML, while focused synthetic tests
+cover exact pass, hash, CSV header/row, revision, prose, and submission
+contract drift.
 
 Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-Exact next action: implement a thin receipt-bound drift checker comparing
-revisions, hashes, headers, row counts, and submission names/types; stop on
-drift. The canonical adapter follows only after that check passes review.
+Exact next action: implement the canonical OpenADMET observation adapter for
+direct and TDI source states; stop on contract drift. Preserve unresolved
+scorer, TDI-order, and permission behavior; `global_TDI` remains the permanent
+fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.

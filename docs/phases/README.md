@@ -7,10 +7,11 @@ items are frozen in
 [`PHASE_1_OPENADMET_TRACE.md`](PHASE_1_OPENADMET_TRACE.md) and
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/).
 
-No modeling or scoring is authorized. The exact next action is a thin
-receipt-bound drift checker/canonical adapter; it must fail closed on source,
-schema, row-count, or hash drift. `TDI-TRACE` is deferred; `global_TDI` is the
-permanent fallback after the direct and global contracts are frozen.
+No modeling or scoring is authorized. The receipt-bound checker has passed its
+official-source and synthetic drift gates; the exact next action is the
+canonical OpenADMET observation adapter, which must preserve unresolved schema,
+metric, TDI-order, and permission behavior. `TDI-TRACE` is deferred;
+`global_TDI` is the permanent fallback.
 
 Completed plans are historical evidence and live under
 [`docs/archive/phases/`](../archive/phases/).

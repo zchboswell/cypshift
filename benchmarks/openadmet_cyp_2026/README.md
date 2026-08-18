@@ -24,7 +24,23 @@ metric/validator evidence.
 R0 leaves exact live ST-RAE implementation, denominator, masks, interval bounds,
 TDI derivation, backend parity, and transductive permission unresolved. No
 metric-specific optimization or leaderboard iteration is authorized; next is a
-thin receipt-bound drift checker/canonical adapter, not modeling.
+canonical OpenADMET observation adapter, not modeling. The checker is
+read-only and does not download sources or write artifacts. With the three
+read-only clones and two HTML files fetched outside Git, run:
+
+```console
+uv run python scripts/check_openadmet_cyp_contract.py \
+  --dataset-root /path/to/dataset \
+  --tutorial-root /path/to/tutorial \
+  --space-root /path/to/space \
+  --announcement-html /tmp/announcement.html \
+  --launch-post-html /tmp/launch_post.html
+```
+
+Exit 0 means all receipt and internal-contract checks pass; exit 1 means
+source, prose, schema, row-count, or hash drift; malformed invocation or
+tracked contract JSON exits 2. The next implementation step is the canonical
+observation adapter only after this check remains passing in review.
 
 Released TDI labels conflict with launch prose. Among non-null labels, all
 arm-missing rows are `False` (CYP2D6: 4; CYP3A4: 1,250), including 1,055

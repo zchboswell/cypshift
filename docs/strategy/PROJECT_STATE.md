@@ -18,6 +18,9 @@ denominator, scored masks, credible-interval bounds, TDI derivation, backend
 parity, and transductive test-test permissions remain unresolved (`V6/P6`).
 External and pretrained use is publicly allowed, while component rights and
 training overlap remain artifact-specific and unresolved.
+The read-only R0 checker passes against the three frozen source revisions,
+selected bytes, and freshly retrieved launch prose; its synthetic drift tests
+also fail closed.
 
 `cypshift` currently provides:
 
@@ -204,13 +207,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. Implement only a thin
-receipt-bound drift checker for the frozen OpenADMET sources.
-It must verify revisions, selected-file hashes, CSV headers, row counts, and
-submission names/types, then stop on drift. Build the canonical adapter only
-after this check passes review. Do not fit, score, submit, or use transductive
-test relationships. After direct TRACE and global TDI contracts are executable
-and reviewed, audit family topology before any parent-relative experiment.
+Do not add another global representation or ensemble. The receipt-bound R0
+checker has passed its official-source and synthetic drift gates. Implement only
+the canonical OpenADMET observation adapter next, preserving direct, TDI,
+single-concentration, and Emax source states plus unresolved metric, validator,
+TDI-order, and permission behavior. Do not fit, score, submit, or use
+transductive test relationships. After the adapter is executable and reviewed,
+audit family topology before any parent-relative experiment.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under
