@@ -175,6 +175,19 @@ It preserves v4's model, systems, folds, metrics, budgets, status logic, and
 authority denials. Its exact SHA-256 is `596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2`.
 R3B remains synthetic-only and grants no predictive evidence.
 
+The R3B v5 target projector and preflight are now synthetically accepted. The
+implementation verifies the V5→V4→V3 chain and accepted composite source
+receipts before input access, emits exactly 60 outer and 240 inner target files
+including header-only zero-support contexts, keeps model-public targets and
+sealed truth disjoint, and reopens every staged artifact before atomic read-only
+publication. Canonical fold/component semantics, exact nested accounting,
+strict JSON/CSV/path handling, and clean one-molecule underpowered behavior are
+covered by adversarial tests. Independent audit passed after repairs for
+ineligible structural truth retention, source acceptance, fold serialization,
+staged membership verification, and exact staged authority bytes. This grants
+projection/preflight implementation evidence only; cells, freezers, scoring,
+models, and metrics remain unaccepted.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
@@ -352,9 +365,9 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. R0 through R3A and the
-R3B v5 repair contract have passed their applicable gates. Implement and independently
-review only R3B: the receipt-bound target projector, preflight, model-cell
-runner, prediction freezers, bounded surrogate scorers, and adversarial
+R3B v5 repair contract and target projection/preflight have passed their
+applicable gates. Implement and independently review only the remaining R3B
+model-cell runner, prediction freezers, bounded surrogate scorers, and adversarial
 synthetic determinism/leakage tests. Do not run
 an official scientific fit; only R3C may execute the frozen official experiment
 after R3B passes as a signed milestone. Do not

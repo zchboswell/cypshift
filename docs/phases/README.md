@@ -29,6 +29,9 @@ cardinality, truthful preflight accounting, artifact/source binding, and
 freezer receipts; it does not change the experiment or authorize modeling.
 The next gate is its synthetic implementation and adversarial replay; no
 official target projection or scientific fit is authorized there.
+The v5 target projector/preflight slice has passed adversarial synthetic replay
+and independent review; cell, freezer, scoring, and terminal publication remain
+unaccepted.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.
