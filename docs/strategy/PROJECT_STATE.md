@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`; no modeling or
+TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`; no modeling or
 scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -163,6 +163,17 @@ negative outer evidence remains authoritative, while no status claims a
 deployable model. Two independent audits pass. This is a contract-only gate:
 official targets, fits, predictions, and surrogate metrics remain unopened and
 unauthorized until R3B implementation passes on synthetic data.
+
+Implementation review exposed contradictions in v4 before any official target
+or fit was opened: preflight needed to inspect 300 target projections while its
+terminal accounting required zero opens, zero-training inner contexts could not
+emit their required header-only files, several accounting and freezer-receipt
+schemas were unnamed, and split/source bindings were incomplete. Additive R3B
+v5 freezes only those mechanical repairs in
+[`global_experiment_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract_v5.json).
+It preserves v4's model, systems, folds, metrics, budgets, status logic, and
+authority denials. Its exact SHA-256 is `596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2`.
+R3B remains synthetic-only and grants no predictive evidence.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -341,7 +352,7 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. R0 through R3A and the
-R3B v4 contract have passed their applicable gates. Implement and independently
+R3B v5 repair contract have passed their applicable gates. Implement and independently
 review only R3B: the receipt-bound target projector, preflight, model-cell
 runner, prediction freezers, bounded surrogate scorers, and adversarial
 synthetic determinism/leakage tests. Do not run

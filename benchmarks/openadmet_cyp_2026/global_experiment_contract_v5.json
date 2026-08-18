@@ -1,0 +1,236 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v5",
+  "freeze_date": "2026-08-18",
+  "gate": "R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN",
+  "status": "contract_only_repair_not_implemented",
+  "parent": {
+    "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v4.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v4",
+    "sha256": "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254",
+    "immutable": true
+  },
+  "artifact_binding": {
+    "active_contract": {"schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v5", "sha256": "sha256 of these exact V5 bytes, pinned by the static test"},
+    "parent_contract": {"schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v4", "sha256": "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254"},
+    "historical_r3a": {"schema_version": "cypshift.openadmet_cyp_2026.r3a_feature_manifest.v1", "manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b"},
+    "model_public": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_model_public.v5", "contract_sha256": "active V5 contract SHA256"},
+    "cell_receipts": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_cell.v5", "contract_sha256": "active V5 contract SHA256"},
+    "sealed_truth": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_sealed_truth.v5", "contract_sha256": "active V5 contract SHA256", "parent_contract_sha256": "V4 parent SHA256"},
+    "projection_audit": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_projection_audit.v5", "contract_sha256": "active V5 contract SHA256", "parent_contract_sha256": "V4 parent SHA256"},
+    "preflight_receipt": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_preflight.v5", "contract_sha256": "active V5 contract SHA256"},
+    "authority": "parent.authority.INHERITED_ONLY",
+    "split": {"schema_version": "cypshift.openadmet_cyp_2026.r3b_group_folds.v3", "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774", "group_hash_formula": "model_rows.similarity_component_hash equals the accepted group_folds.csv value for that molecule; no recomputation or alternate hash is permitted.", "split_id_formula": "Lowercase SHA256 of group_folds_sha256|repeat|outer_fold|inner_fold_or_none|scope.", "unchanged": true},
+    "permitted_contract_versions": ["cypshift.openadmet_cyp_2026.global_experiment_contract.v5", "cypshift.openadmet_cyp_2026.global_experiment_contract.v4", "cypshift.openadmet_cyp_2026.global_experiment_contract.v3"]
+  },
+  "supersedes": "Only ambiguous v4 receipt, accounting, and projection/preflight mechanics; no v4 science, model, split, metric, authority, or synthetic-boundary decision.",
+  "preserves": {
+    "rule": "For every path below, canonical JSON in v5's immutable parent is unchanged and authoritative.",
+    "paths": [
+      "scope", "fixed_system", "serialization", "runtime_and_models.model_and_scorer",
+      "runtime_and_models.catboost_constructor_arguments", "runtime_and_models.fit_call",
+      "runtime_and_models.fit_budget", "scoring", "completion", "forbidden"
+    ],
+    "science": "Endpoints, population, complete-only eligibility, repeats, folds, systems, features, CatBoost parameters, fit budgets, metrics, q90, completion arithmetic, and official-data prohibition are unchanged."
+  },
+  "amendments": {
+    "projection_input_receipts": {
+      "fields": {
+        "parent_contract_sha256": "sha256", "direct_observations_sha256": "sha256",
+        "direct_rows": "nonnegative integer", "group_folds_sha256": "sha256",
+        "fold_rows": "nonnegative integer"
+      },
+      "production": {
+        "parent_contract_sha256": "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254",
+        "direct_rows": 19620, "fold_rows": 73575
+      },
+      "rule": "fold_rows exists only in this receipt object; it is not an eligibility-count, accounting, target, or terminal field."
+    },
+    "eligibility_counts": {
+      "fields": [
+        "direct_rows", "eligible", "ineligible", "complete", "partial", "missing",
+        "orphan_auxiliary", "outer_target_files", "inner_target_files", "outer_target_rows",
+        "inner_target_rows", "outer_truth_rows", "inner_truth_rows", "outer_truth_eligible",
+        "inner_truth_eligible"
+      ],
+      "production": {
+        "direct_rows": 19620, "eligible": 6525, "ineligible": 13095, "complete": 6525,
+        "partial": 0, "missing": 13095, "orphan_auxiliary": 0, "outer_target_files": 60,
+        "inner_target_files": 240, "outer_target_rows": 78300, "inner_target_rows": 234900,
+        "outer_truth_rows": 58860, "inner_truth_rows": 235440, "outer_truth_eligible": 19575,
+        "inner_truth_eligible": 78300
+      },
+      "private_only": true,
+      "rule": "The private audit emits exactly these keys and values for production; synthetic fixtures may relax payload counts and receipts only."
+    },
+    "accounting_schemas": {
+      "projector_accounting": {
+        "fields": {"outer_target_files_written": "const 60", "inner_target_files_written": "const 240", "sealed_truth_files_written": "const 2", "direct_observation_rows_parsed": "fixture-dependent nonnegative integer", "target_rows_written": "fixture-dependent nonnegative integer", "truth_rows_written": "fixture-dependent nonnegative integer", "tdi_files_opened": "const 0", "blinded_test_rows_opened": "const 0", "episode_or_anchor_files_opened": "const 0", "transductive_operations": "const 0"},
+        "production_constants": {"outer_target_files_written": 60, "inner_target_files_written": 240, "sealed_truth_files_written": 2, "tdi_files_opened": 0, "blinded_test_rows_opened": 0, "episode_or_anchor_files_opened": 0, "transductive_operations": 0},
+        "production_equations": ["target_rows_written = sum(rows in all 60 outer and 240 inner target receipts)", "truth_rows_written = outer_truth_rows + inner_truth_rows", "direct_observation_rows_parsed = len(receipt-verified direct observations)"],
+        "official_reference_counts": {"direct_observation_rows_parsed": 19620, "target_rows_written": 313200, "truth_rows_written": 294300},
+        "authority": "exact INHERITED_ONLY authority",
+        "rule": "File-count constants are production-fixed; row counts are measured from receipts and may be fixture-dependent. No fold-row count is duplicated here."
+      },
+      "sealed_accounting": {
+        "fields": ["sealed_truth_files_written", "outer_truth_rows", "inner_truth_rows", "truth_metadata_public", "tdi_files_opened", "blinded_test_rows_opened", "episode_or_anchor_files_opened", "transductive_operations"],
+        "production": {"sealed_truth_files_written": 2, "outer_truth_rows": 58860, "inner_truth_rows": 235440, "truth_metadata_public": 0, "tdi_files_opened": 0, "blinded_test_rows_opened": 0, "episode_or_anchor_files_opened": 0, "transductive_operations": 0},
+        "authority": "exact INHERITED_ONLY authority",
+        "rule": "Truth metadata is confined to scorer-sealed; no target or public-root access."
+      },
+      "preflight_accounting": {
+        "fields": ["preflight_target_files_opened", "outer_model_target_files_opened", "inner_model_target_files_opened", "sealed_truth_files_opened", "outer_model_fits", "inner_model_fits", "prediction_rows", "provisional_metric_rows", "tdi_files_opened", "blinded_test_files_opened", "episode_or_anchor_files_opened", "official_metric_calls", "submission_rows_opened", "leaderboard_submissions", "transductive_operations", "gpu_fits"],
+        "production": {"preflight_target_files_opened": 300, "outer_model_target_files_opened": 0, "inner_model_target_files_opened": 0, "sealed_truth_files_opened": 0, "outer_model_fits": 0, "inner_model_fits": 0, "prediction_rows": 0, "provisional_metric_rows": 0, "tdi_files_opened": 0, "blinded_test_files_opened": 0, "episode_or_anchor_files_opened": 0, "official_metric_calls": 0, "submission_rows_opened": 0, "leaderboard_submissions": 0, "transductive_operations": 0, "gpu_fits": 0},
+        "authority": "exact INHERITED_ONLY authority",
+        "rule": "Open and receipt-validate all 300 model-public target files before parsing; spawn no fit or prediction."
+      },
+      "cell_accounting": {
+        "fields": ["target_files_opened", "truth_files_opened", "private_audit_files_opened", "other_target_files_opened", "feature_arrays_opened", "score_files_opened", "tdi_files_opened", "blinded_test_files_opened", "episode_or_anchor_files_opened", "submission_files_opened", "transductive_operations"],
+        "production": {"target_files_opened": 1, "truth_files_opened": 0, "private_audit_files_opened": 0, "other_target_files_opened": 0, "feature_arrays_opened": 5, "score_files_opened": 0, "tdi_files_opened": 0, "blinded_test_files_opened": 0, "episode_or_anchor_files_opened": 0, "submission_files_opened": 0, "transductive_operations": 0},
+        "authority": "exact INHERITED_ONLY authority"
+      },
+      "outer_freezer_accounting": {
+        "fields": ["cell_fragments_opened", "target_files_opened", "truth_files_opened", "private_audit_files_opened", "score_files_opened", "tdi_files_opened", "blinded_test_files_opened", "episode_or_anchor_files_opened", "submission_files_opened", "transductive_operations"],
+        "production": {"cell_fragments_opened": 60, "target_files_opened": 0, "truth_files_opened": 0, "private_audit_files_opened": 0, "score_files_opened": 0, "tdi_files_opened": 0, "blinded_test_files_opened": 0, "episode_or_anchor_files_opened": 0, "submission_files_opened": 0, "transductive_operations": 0},
+        "authority": "exact INHERITED_ONLY authority"
+      },
+      "inner_freezer_accounting": {
+        "fields": ["cell_fragments_opened", "target_files_opened", "truth_files_opened", "private_audit_files_opened", "score_files_opened", "tdi_files_opened", "blinded_test_files_opened", "episode_or_anchor_files_opened", "submission_files_opened", "transductive_operations"],
+        "production": {"cell_fragments_opened": 240, "target_files_opened": 0, "truth_files_opened": 0, "private_audit_files_opened": 0, "score_files_opened": 0, "tdi_files_opened": 0, "blinded_test_files_opened": 0, "episode_or_anchor_files_opened": 0, "submission_files_opened": 0, "transductive_operations": 0},
+        "authority": "exact INHERITED_ONLY authority"
+      },
+      "scorer_accounting": {
+        "fields": ["prediction_files_opened", "sealed_truth_files_opened", "target_files_opened", "tdi_files_opened", "blinded_test_rows_opened", "episode_or_anchor_files_opened", "submission_files_opened", "transductive_operations"],
+        "production": {"prediction_files_opened": 1, "sealed_truth_files_opened": 1, "target_files_opened": 0, "tdi_files_opened": 0, "blinded_test_rows_opened": 0, "episode_or_anchor_files_opened": 0, "submission_files_opened": 0, "transductive_operations": 0},
+        "authority": "exact INHERITED_ONLY authority"
+      },
+      "public_accounting": {
+        "fields": ["truth_paths", "truth_hashes", "scores", "metrics"],
+        "production": {"truth_paths": 0, "truth_hashes": 0, "scores": 0, "metrics": 0},
+        "authority": "exact INHERITED_ONLY authority"
+      }
+    },
+    "target_and_truth_schemas": {
+      "model_rows": ["molecule_id", "similarity_component_hash", "repeat", "seed", "outer_fold", "outer_validation_fold", "inner_fold"],
+      "target_rows": ["observation_id", "molecule_id", "point"],
+      "truth_rows": ["observation_id", "molecule_id", "endpoint", "component_id", "repeat", "outer_fold", "inner_fold", "scope", "value_state", "point_eligible", "point", "low", "high", "std"],
+      "public_forbidden_recursive": ["truth path", "truth SHA256", "truth row count", "private audit path", "private audit SHA256", "score", "metric"],
+      "public_authority": "exact INHERITED_ONLY authority",
+      "sealed_authority": "exact INHERITED_ONLY authority",
+      "audit_authority": "exact INHERITED_ONLY authority",
+      "preflight_authority": "exact INHERITED_ONLY authority"
+    },
+    "target_file_set": {
+      "outer": {"files": 60, "path": "outer_targets/<endpoint>/repeat-<repeat>/outer-<outer_fold>.csv", "header": ["observation_id", "molecule_id", "point"]},
+      "inner": {"files": 240, "path": "inner_targets/<endpoint>/repeat-<repeat>/outer-<outer_fold>/inner-<inner_fold>.csv", "header": ["observation_id", "molecule_id", "point"]},
+      "total_files": 300, "header_only_zero_row_allowed": true, "every_declared_path_requires_receipt": true,
+      "receipt_schema": {"fields": ["stage", "cell_id", "endpoint", "repeat", "outer_fold", "inner_fold", "relative_path", "sha256", "rows", "identity_sha256"]},
+      "outer_receipts": {"count": 60, "header_only_receipt": {"rows": 0, "sha256": "required", "identity_sha256": "required"}},
+      "inner_receipts": {"count": 240, "header_only_receipt": {"rows": 0, "sha256": "required", "identity_sha256": "required"}},
+      "hash_before_parse": {"receipt_count": 300, "order": "hash every declared receipt and verify every path before parsing any target payload"},
+      "production_rows": {"outer": 78300, "inner": 234900},
+      "synthetic_relaxation": "Only payload row counts and file receipts may differ; cardinality, headers, schemas, firewalls, and accounting remain exact."
+    },
+    "runtime_receipt_gate": {
+      "python_version": "3.12.3", "uv_lock_path": "uv.lock", "receipt_before_parse": true, "load_once": true,
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "order": ["read root uv.lock read-only", "verify lock SHA256 and exact Python 3.12.3", "verify mandatory projector source SHA256 receipt", "only then open or parse direct observations and group folds once"],
+      "source_receipt": "A mandatory projector source SHA256 is verified before any input payload opens; the later synthetic acceptance freezes this exact value and official execution compares it before inputs.",
+      "failure": "Any runtime or receipt mismatch fails before an input payload is opened or parsed."
+    },
+    "fold_lookup_index": {
+      "schema_version": "cypshift.openadmet_cyp_2026.r3b_fold_lookup_index.v1",
+      "key": ["molecule_id", "repeat", "outer_validation_fold"],
+      "fields": ["molecule_id", "similarity_component_hash", "repeat", "seed", "outer_fold", "outer_validation_fold", "inner_fold"],
+      "validation": ["exactly one row per molecule/repeat/outer context", "one immutable component hash per molecule across all repeats and contexts", "one outer assignment per component/repeat", "inner_fold blank iff outer_fold equals the outer context, otherwise integer 0..3", "each nonblank inner component is contained in one inner fold"],
+      "use": "Build and validate once from receipt-verified folds, then use indexed lookup for every cell; repeated linear scans are forbidden.",
+      "authority": "exact INHERITED_ONLY authority"
+    },
+    "split_semantics": {
+      "outer_training": "Assigned row.outer_fold != context; outer truth/heldout rows are assigned row.outer_fold == context.",
+      "inner_training": "Only outer-training rows; assigned nonblank row.inner_fold != requested fold.",
+      "inner_truth": "Only outer-training rows; assigned row.inner_fold == requested fold.",
+      "outer_scope": "openadmet-direct-outer-v1",
+      "inner_scope": "openadmet-direct-inner-v1|outer=<context>",
+      "component_id": "Exactly the indexed similarity_component_hash, unchanged across repeats and contexts."
+    },
+    "source_provenance": {
+      "composite_material": "Sorted UTF-8 lines of exact relative_path|lowercase_file_sha256, one line per source file, with one terminal newline.",
+      "composite_sha256": "Lowercase SHA256 of composite_material; required in the cell/freezer/terminal source receipt.",
+      "cell_runner_bundle": ["research/maplight-fixed/run_r3b_cells.py", "research/maplight-fixed/r3b_cell_io.py", "research/maplight-fixed/r3b_cell_freezer.py"],
+      "freezer_bundle": ["research/maplight-fixed/r3b_cell_freezer.py", "research/maplight-fixed/r3b_cell_io.py"],
+      "terminal_source_receipts": {"cell_runner": "exact cell_runner_bundle composite_sha256", "freezer": "exact freezer_bundle composite_sha256"},
+      "rule": "Readable source files are hashed before use; every receipt binds the complete sorted bundle, not a single entry-point file."
+    },
+    "feature_access": {
+      "outer_arrays": ["morgan_binary.npy", "maplight_morgan_count.npy", "maplight_avalon_count.npy", "maplight_erg.npy", "maplight_rdkit_descriptors.npy"],
+      "inner_arrays_opened": ["morgan_binary.npy", "maplight_morgan_count.npy", "maplight_avalon_count.npy", "maplight_erg.npy", "maplight_rdkit_descriptors.npy"],
+      "inner_fit_arrays": ["maplight_morgan_count.npy", "maplight_avalon_count.npy", "maplight_erg.npy", "maplight_rdkit_descriptors.npy"],
+      "inner_applicability_only": ["morgan_binary.npy"],
+      "inner_forbidden_model_features": ["morgan_binary.npy"],
+      "rule": "Inner fixed MapLight is the only fitted model; morgan_binary.npy is opened, receipt-bound, and used solely for the universally required applicability score."
+    },
+    "preflight": {
+      "timing": "After projection and before any fit or prediction; all 300 target receipts are opened and validated first.",
+      "arrays": {
+        "outer_score_support_cells": {"records": 60, "record_fields": ["endpoint", "repeat", "outer_fold", "component_count", "minimum_components", "passes"], "minimum_components": 10, "definition": "Point-eligible heldout components per endpoint/cell: union endpoint target identities across contexts minus that cell's outer-training target IDs, mapped through indexed model rows."},
+        "outer_training_populations": {"records": 60, "record_fields": ["stage", "endpoint", "repeat", "outer_fold", "inner_fold", "eligible_targets", "minimum_eligible_targets", "passes"], "minimum_eligible_targets": 1},
+        "inner_training_populations": {"records": 240, "record_fields": ["stage", "endpoint", "repeat", "outer_fold", "inner_fold", "eligible_targets", "minimum_eligible_targets", "passes"], "minimum_eligible_targets": 1},
+        "q90_residual_eligibility_populations": {"records": 60, "record_fields": ["endpoint", "repeat", "outer_fold", "eligible_residuals", "minimum_eligible_targets", "passes"], "minimum_eligible_targets": 1, "definition": "Point-eligible outer-training population for the same context; eligible_residuals equals its outer target-file eligible row count."}
+      },
+      "underpowered_before_fit": true,
+      "failure_reasons": ["OUTER_COMPONENT_SUPPORT", "OUTER_TRAINING_EMPTY", "INNER_TRAINING_EMPTY", "Q90_RESIDUAL_ELIGIBILITY_EMPTY"],
+      "receipt_accounting": "exact preflight_accounting"
+    },
+    "freezer_binding": {
+      "outer_manifest_accounting": "exact outer_freezer_accounting",
+      "inner_manifest_accounting": "exact inner_freezer_accounting",
+      "outer_manifest_schema_version": "cypshift.openadmet_cyp_2026.r3b_outer_freeze.v2",
+      "inner_manifest_schema_version": "cypshift.openadmet_cyp_2026.r3b_inner_freeze.v2",
+      "outer_manifest_fields": ["schema_version", "contract_sha256", "freezer_source_sha256", "preflight_receipt_sha256", "model_public_manifest_sha256", "feature_manifest_sha256", "cell_receipts", "prediction_artifact", "counts", "resolved_catboost_parameters", "accounting", "authority"],
+      "inner_manifest_fields": ["schema_version", "contract_sha256", "freezer_source_sha256", "preflight_receipt_sha256", "model_public_manifest_sha256", "feature_manifest_sha256", "inner_selection_token_sha256", "cell_receipts", "prediction_artifact", "counts", "resolved_catboost_parameters", "accounting", "authority"],
+      "resolved_catboost_parameters": {"field": "resolved_catboost_parameters", "record_schema": {"fields": ["system_id", "canonical_get_all_params_json", "canonical_get_all_params_sha256"], "name": "catboost_resolved_parameter"}, "outer": {"records": 2, "order": ["TRACE-C1-MORGAN-CATBOOST", "TRACE-G0-MAPL-FIXED"]}, "inner": {"records": 1, "order": ["TRACE-G0-MAPL-FIXED"]}},
+      "parameter_equality": "Every aggregate record equals its source cell record; MapLight outer and inner canonical parameters and SHA256 are identical.",
+      "terminal_recovery": "Terminal manifest recovery reads the aggregate parameter array; it does not depend on cleaned cell fragments.",
+      "authority": "exact INHERITED_ONLY authority"
+    },
+    "vague_reference_bindings": {
+      "model_cell_runner.accounting": "exact cell_accounting",
+      "prediction_freezers.outer.manifest_schema.accounting": "exact outer_freezer_accounting",
+      "prediction_freezers.inner.manifest_schema.accounting": "exact inner_freezer_accounting",
+      "score_artifacts.global_outer_assessment.accounting": "exact scorer_accounting",
+      "target_projection.private_audit_receipt.accounting": "exact projector_accounting",
+      "target_projection.scorer_sealed_root.manifest_schema.accounting": "exact sealed_accounting",
+      "preflight.receipt_schema.accounting": "exact preflight_accounting",
+      "target_projection.model_public_root.manifest_schema.accounting": "exact public_accounting",
+      "terminal_schemas.*.accounting": "exact v4 terminal_objects.accounting_fields"
+    },
+    "post_projection_verification": {
+      "timing": "After all target and truth receipts are staged and before preflight publication.",
+      "exact_totals": {"target_files": 300, "outer_target_files": 60, "inner_target_files": 240, "outer_target_rows": 78300, "inner_target_rows": 234900, "outer_truth_rows": 58860, "inner_truth_rows": 235440, "outer_truth_eligible": 19575, "inner_truth_eligible": 78300},
+      "rule": "Recompute file, row, eligible, schema, identity, and membership totals from every receipt; initial direct/state counts alone are insufficient."
+    },
+    "terminal_accounting": {
+      "preflight_target_files_opened": {"GLOBAL_UNDERPOWERED": 300, "GLOBAL_NO_ADVANTAGE": 300, "GLOBAL_EXPERT_FROZEN": 300},
+      "GLOBAL_FAILED_preflight_target_files_opened": {"minimum": 0, "maximum": 300, "rule": "Count is the validated number opened before the failure; no target payload is opened after failure."},
+      "terminal_other_fields": "Exact v4 accounting_fields and final_accounting_zeros remain unchanged."
+    }
+  },
+  "authority": {
+    "source": "parent.authority",
+    "object": "INHERITED_ONLY",
+    "required_exact": true,
+    "amendment_allowlist": ["artifact_binding.contract_sha256", "artifact_binding.parent_contract_sha256", "receipt contract_sha256 fields", "V5 schema-version fields"],
+    "rule": "Resolve the complete parent authority.INHERITED_ONLY boolean object. V5 adds no authority keys and grants no status, target, truth, model, or scorer authority."
+  },
+  "synthetic_boundary": {
+    "private_api": "Fixtures may substitute receipts and payload counts only; schemas, strict eligibility, systems, parameters, identifiers, firewalls, cardinalities, and authority remain exact. Production exposes no relaxation.",
+    "official_files_opened": 0, "official_feature_roots_opened": 0, "official_target_projections": 0,
+    "scientific_fits": 0, "scientific_metrics": 0, "authority": "INHERITED_ONLY"
+  },
+  "acceptance": {
+    "gate": "R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5",
+    "status": "not_authorized_for_official_execution",
+    "requirements": ["strict duplicate-key JSON", "v4 parent hash", "receipt-before-parse and load-once", "300-file preflight accounting", "exact support/training/q90 arrays before fit", "indexed fold lookup and scoped inner membership", "recursive public truth-metadata rejection", "resolved CatBoost parameter propagation", "determinism and no-overwrite controls"],
+    "next": "Only a later signed V5 synthetic acceptance may authorize one official R3C execution outside Git."
+  }
+}

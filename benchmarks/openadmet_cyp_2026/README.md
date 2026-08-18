@@ -56,6 +56,13 @@ independent audits pass. The gate is contract-only: R3B must still implement and
 replay it entirely on synthetic data before any official target or fit is
 authorized.
 
+[`global_experiment_contract_v5.json`](global_experiment_contract_v5.json)
+supersedes only v4's implementation mechanics. It repairs target-file
+cardinality, truthful preflight accounting, accounting-schema completeness,
+artifact/source binding, and freezer parameter receipts. It preserves v4's
+scientific choices and remains synthetic-only; no target, model, prediction,
+metric, or validation authority is granted.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

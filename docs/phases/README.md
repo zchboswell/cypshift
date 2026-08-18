@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`. The
+Phase 1 TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -24,6 +24,9 @@ arrays; full independent Morgan and MapLight recomputation passes. R3A grants
 feature-payload compatibility only. Additive R3B v4 now predesignates MapLight,
 separates model-public targets from scorer-sealed truth, preflights support,
 and freezes exact synthetic runner, terminal, metric, and authority schemas.
+Additive v5 repairs only implementation contradictions in target-file
+cardinality, truthful preflight accounting, artifact/source binding, and
+freezer receipts; it does not change the experiment or authorize modeling.
 The next gate is its synthetic implementation and adversarial replay; no
 official target projection or scientific fit is authorized there.
 Unresolved metric,

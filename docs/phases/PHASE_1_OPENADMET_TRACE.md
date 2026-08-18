@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R3B synthetic runner contract frozen; gate `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`; freeze date 2026-08-18.
+Status: active; R3B synthetic runner repair contract frozen; gate `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`; freeze date 2026-08-18.
 
 ## Context capsule
 
@@ -181,7 +181,17 @@ support is preflighted before fitting, inner cells receive no outer scores, and
 all intermediate work stays in one unpublished run root until a single exact
 terminal result is promoted. Independent scientific and mechanical audits pass.
 
-Exact next action: implement and independently review v4's receipt-bound target
+Additive R3B v5 supersedes only the v4 implementation mechanics after code
+review found contradictions before official execution. It requires all 60
+outer and 240 inner target projections, including header-only zero-row files;
+truthful 300-file preflight accounting; exact accounting schemas; explicit
+V5/V4/V3 artifact and identifier bindings; composite source receipts; and
+recoverable freezer parameter records. The frozen systems, folds, metrics,
+budgets, terminal decisions, and authority denials do not change. V5 is still a
+contract-only synthetic gate and its SHA-256 is
+`596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2`.
+
+Exact next action: implement and independently review v5's receipt-bound target
 projector, preflight, model-cell runner, prediction freezers, bounded surrogate
 scorers, and synthetic determinism/leakage tests. No official scientific fit
 may run. R3C alone may execute the frozen official fits and internal surrogate-score

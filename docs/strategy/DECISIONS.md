@@ -1267,3 +1267,32 @@
   process isolation, deterministic arithmetic, status outputs, or authority
   boundary on adversarial synthetic fixtures. Preserve the blocker and issue a
   versioned repair before any official target projection or fit.
+
+## D-045 — Repair the R3B execution contract before implementation
+
+- Date: 2026-08-18
+- Status: accepted; contract-only repair
+- Decision: Supersede only v4's implementation mechanics with additive v5 at
+  `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`. Preserve the frozen MapLight
+  expert, three controls, group folds, provisional metrics, budgets, terminal
+  decisions, and authority denials. Require all 60 outer and 240 inner target
+  files, including header-only zero-row contexts; hash all 300 before parsing;
+  report truthful preflight accounting; bind every new artifact and model/cell
+  identifier to v5 while preserving split IDs; define all accounting schemas;
+  record composite implementation receipts; and make resolved CatBoost
+  parameters recoverable from versioned freezer manifests.
+- Evidence: Implementation and adversarial review found four pre-execution
+  blockers in v4: its clean terminal accounting contradicted the required
+  300-file preflight, zero-training inner contexts could omit required files,
+  accounting/freezer schemas were incomplete, and source/split bindings could
+  drift without detection. No official target, feature root, fit, prediction,
+  metric, or submission was opened. The repaired v5 SHA-256 is
+  `596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2`;
+  nineteen combined v4/v5 static tests, strict JSON, Ruff, and deep independent
+  review pass.
+- Alternatives: Relax the receipt firewall; treat malformed zero-support cells
+  as integrity failures; record false zero-open accounting; silently reinterpret
+  v4 in code; or begin official fitting before the contract is executable.
+- Reversal condition: The synthetic implementation cannot reproduce v5's exact
+  cardinalities, receipts, arithmetic, process isolation, or no-authority
+  boundary. Preserve the blocker and repair it before any official execution.
