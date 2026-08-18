@@ -1114,7 +1114,7 @@
 ## D-040 — Reject R3 v1 before execution and freeze corrected v2
 
 - Date: 2026-08-18
-- Status: accepted; corrected contract-only R3 gate
+- Status: superseded by D-041 before R3A
 - Decision: Supersede v1 at commit `c10980f...` with
   `cypshift.openadmet_cyp_2026.global_experiment_contract.v2` at
   `R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN`. Preserve the four global systems,
@@ -1143,3 +1143,39 @@
 - Reversal condition: R3A or R3B finds receipt, environment, feature, split,
   serialization, firewall, arithmetic, determinism, or authority drift.
   Preserve the blocker and supersede v2 before any scientific fit.
+
+## D-041 — Repair the R3A chemistry-input firewall in v3
+
+- Date: 2026-08-18
+- Status: accepted; corrected contract-only R3 gate
+- Decision: Supersede v2 at commit `e897738...` with
+  `cypshift.openadmet_cyp_2026.global_experiment_contract.v3` at
+  `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`. Preserve all v2 systems, folds,
+  metrics, arithmetic, budgets, staged execution, and exclusions. Add exactly
+  one trusted R3A chemistry projector: verify the accepted direct-observation
+  bytes, decode only the first eight fields through raw SMILES, keep each
+  target-bearing suffix opaque, join the train-only topology and label-free
+  fold artifacts, recompute the frozen standardized structure, and assert its
+  accepted hash. Emit 4,905 direct-only raw/standardized chemistry rows plus a
+  receipt that binds inputs, code, environment, output, accounting, and denied
+  authority. Exact raw SMILES feed MapLight; standardized SMILES feed D-032
+  Morgan. The feature process may see only the receipt-bound projection.
+  Target values parsed/retained and blinded-test rows opened are exactly zero.
+- Evidence: Pre-implementation audit found no accepted artifact satisfying v2:
+  direct-only sources contain targets, while label-free R1/topology artifacts
+  also contain 750 blinded-test structures. `group_folds.csv` provides the
+  correct 4,905 identities but no structures. The prefix projector is the
+  smallest boundary that preserves both direct-only chemistry and target/test
+  isolation. No R3A projection, feature, target, fit, prediction, or metric
+  artifact existed when the contradiction was found. A final specification
+  audit additionally required the accepted train-only topology receipt and a
+  projection manifest so Morgan chemistry and the consumer boundary are
+  mechanical rather than implicit.
+- Alternatives: Let the feature process open target-bearing observations; use
+  mixed R1 artifacts and silently traverse test chemistry; defer the trusted
+  projection to R3B despite requiring R3A features; or copy chemistry by hand.
+- Reversal condition: Synthetic prefix parsing cannot preserve RFC4180 quoting,
+  receipt-before-parse, exact four-endpoint identity, opaque suffixes, or zero
+  target/test accounting; standardization cannot reproduce all 4,905 topology
+  hashes; or the consumer cannot verify the projection receipt before parsing.
+  Preserve the blocker and supersede v3 before feature generation.

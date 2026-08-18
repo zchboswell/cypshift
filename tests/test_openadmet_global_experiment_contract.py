@@ -17,16 +17,16 @@ def load_contract() -> dict[str, object]:
 def test_r3_contract_identity_and_receipts_are_frozen() -> None:
     contract = load_contract()
     assert contract["schema_version"] == (
-        "cypshift.openadmet_cyp_2026.global_experiment_contract.v2"
+        "cypshift.openadmet_cyp_2026.global_experiment_contract.v3"
     )
     assert contract["freeze_date"] == "2026-08-18"
-    assert contract["gate"] == "R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN"
+    assert contract["gate"] == "R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN"
     assert contract["status"] == "contract_only_not_implemented"
-    assert contract["base_commit"] == "c10980fcae0e8e80503f2b12d9c4c6c8706e635d"
+    assert contract["base_commit"] == "e8977380a4510297e8763fe60f7ffc499e5b4743"
     assert contract["supersedes"]["commit"] == (
-        "c10980fcae0e8e80503f2b12d9c4c6c8706e635d"
+        "e8977380a4510297e8763fe60f7ffc499e5b4743"
     )
-    assert "five implementation blockers" in contract["supersedes"]["reason"]
+    assert "could satisfy all three clauses" in contract["supersedes"]["reason"]
     assert "violated scope" in contract["review_governance"]
     inputs = contract["inputs"]
     assert inputs["validation_contract"] == {
@@ -44,6 +44,21 @@ def test_r3_contract_identity_and_receipts_are_frozen() -> None:
     assert inputs["group_folds"]["sha256"] == (
         "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774"
     )
+    assert inputs["training_topology"]["sha256"] == (
+        "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a"
+    )
+    assert inputs["core_chemistry"] == {
+        "standardization_policy_id": "rdkit-cleanup-fragment-parent-v1",
+        "standardizer_path": "src/cypshift/chemistry.py",
+        "standardizer_source_sha256": (
+            "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a"
+        ),
+        "uv_lock_sha256": (
+            "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
+        ),
+        "python_version": "3.12.3",
+        "rdkit_version": "2026.03.5",
+    }
     assert inputs["maplight_method"] == {
         "source_contract_sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8",
         "stage_a_contract_sha256": "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710",
@@ -145,6 +160,101 @@ def test_r3_systems_and_cpu_maplight_gate_are_exact() -> None:
     assert "old macOS/TDC" in linux["claim_boundary"]
     assert "stop R3 before any scientific fit" in linux["failure"]
     assert "two independently invoked byte-identical" in linux["acceptance"][1]
+    feature_root = contract["r3a_feature_root"]
+    assert feature_root["feature_rows"] == {
+        "path": "feature_rows.csv",
+        "columns": [
+            "molecule_id", "raw_structure_sha256",
+            "standardized_structure_hash", "similarity_component_hash",
+        ],
+        "rows": 4905,
+    }
+    assert feature_root["arrays"] == [
+        {
+            "path": "morgan_binary.npy", "chemistry": "standardized_smiles",
+            "shape": [4905, 4096], "dtype": "uint8",
+            "consumer": "TRACE-C1-MORGAN-CATBOOST and TRACE-C2-MORGAN-1NN",
+        },
+        {
+            "path": "maplight_morgan_count.npy", "chemistry": "raw_smiles",
+            "shape": [4905, 1024], "dtype": "int8",
+            "consumer": "TRACE-G0-MAPL-FIXED columns 0:1024",
+        },
+        {
+            "path": "maplight_avalon_count.npy", "chemistry": "raw_smiles",
+            "shape": [4905, 1024], "dtype": "int8",
+            "consumer": "TRACE-G0-MAPL-FIXED columns 1024:2048",
+        },
+        {
+            "path": "maplight_erg.npy", "chemistry": "raw_smiles",
+            "shape": [4905, 315], "dtype": "<f8",
+            "consumer": "TRACE-G0-MAPL-FIXED columns 2048:2363",
+        },
+        {
+            "path": "maplight_rdkit_descriptors.npy",
+            "chemistry": "raw_smiles", "shape": [4905, 200],
+            "dtype": "<f8",
+            "consumer": "TRACE-G0-MAPL-FIXED columns 2363:2563",
+        },
+    ]
+    assert "indices 39, 41, 43, and 45" in feature_root["nan_policy"]
+    assert "manifests need not be byte-identical" in feature_root["replay_rule"]
+
+
+def test_r3a_chemistry_projection_is_direct_only_and_target_opaque() -> None:
+    projection = load_contract()["r3a_chemistry_projection"]
+    assert projection["direct_observation_prefix"] == [
+        "observation_id", "molecule_id", "source_row_id", "source_file",
+        "source_row", "source_sha256", "endpoint", "raw_smiles",
+    ]
+    assert "decode exactly the first eight" in projection["opaque_suffix_rule"]
+    assert projection["output"] == {
+        "path": "feature_input.csv",
+        "columns": [
+            "molecule_id", "raw_smiles", "raw_structure_sha256",
+            "standardized_smiles", "standardized_structure_hash",
+            "similarity_component_hash",
+        ],
+        "rows": 4905,
+        "order": "molecule_id ascending",
+        "serialization": "RFC4180 CSV with LF line endings and one terminal newline",
+    }
+    assert projection["accounting"] == {
+        "direct_observation_records_scanned": 19620,
+        "decoded_prefix_fields": 156960,
+        "opaque_suffixes_discarded": 19620,
+        "target_values_parsed": 0,
+        "target_values_retained": 0,
+        "blinded_test_rows_opened": 0,
+    }
+    assert "D-032 Morgan features use exact standardized_smiles" in (
+        projection["standardization_rule"]
+    )
+    assert projection["inputs"]["training_topology_sha256"] == (
+        "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a"
+    )
+    manifest = projection["manifest"]
+    assert manifest["path"] == "feature_input_manifest.json"
+    assert manifest["schema_version"] == (
+        "cypshift.openadmet_cyp_2026.feature_input.v1"
+    )
+    assert set(manifest["required_fields"]) >= {
+        "contract_sha256", "training_topology_sha256",
+        "projector_source_sha256", "standardizer_source_sha256",
+        "core_uv_lock_sha256", "feature_input_sha256", "accounting", "authority",
+    }
+    assert manifest["authority"] == {
+        "targets": False,
+        "features": False,
+        "models": False,
+        "predictions": False,
+        "metrics": False,
+        "fold_assignments": False,
+        "submissions": False,
+    }
+    assert "expected manifest SHA256 out of band" in manifest["consumer_rule"]
+    assert "cyp-challenge-TEST-BLINDED.csv" in projection["forbidden_inputs"]
+    assert "separate trusted process" in projection["process_boundary"]
 
 
 def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
@@ -171,10 +281,12 @@ def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
     assert oof["outer"]["row_count"] == 235440
     assert oof["inner"]["row_count"] == 235440
     assert contract["required_outputs_after_implementation"] == [
+        "feature_input.csv",
+        "feature_input_manifest.json",
         "linux_compatibility_receipt.json",
         "feature_rows.csv",
         "feature_manifest.json",
-        "maplight feature arrays",
+        "Morgan and MapLight feature arrays",
         "target_projection_manifest.json",
         "global_oof_predictions.csv",
         "global_inner_oof_predictions.csv",

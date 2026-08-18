@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; corrected R3 v2 global experiment contract frozen; gate `R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN`; acceptance date 2026-08-18.
+Status: active; corrected R3 v3 global experiment contract frozen; gate `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -140,7 +140,7 @@ anchors were rejected, and fold scopes were made explicit. CYP3A4 is supported
 at 95 components/473 pairs; 1A2, 2C9, and 2D6 are underpowered with zero local
 weight. This is artifact authority, not validation or prediction evidence.
 
-Corrected R3 v2 now freezes the global-only direct fallback contract in
+Corrected R3 v3 now freezes the global-only direct fallback contract in
 [`global_experiment_contract.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract.json).
 It preserves the R2B exclusions and family proxy, limits targets to finite
 reported central direct points, freezes endpoint median, Morgan 1-NN, Morgan
@@ -154,8 +154,21 @@ blockers; its assigned read-only auditor also bypassed the required branch/PR
 workflow and pushed it directly to main. V2 preserves that history and fixes
 the boundary before any feature or prediction evidence exists.
 
-Exact next action: implement R3A only—the receipt-bound Linux overlay, fixture
-parity, and two byte-identical label-free feature roots. R3B separately accepts
+V2 is rejected before R3A because its firewall required direct-only raw SMILES
+while forbidding both target-bearing direct inputs and mixed inputs containing
+blinded-test chemistry. V3 adds only a chemistry prefix projector over the
+accepted direct-observation bytes: it decodes eight identity/endpoint/
+raw-SMILES fields, treats the remaining record bytes as opaque, parses and
+retains zero target values, and joins only the train-only topology and
+label-free fold artifacts. It recomputes and receipt-checks the frozen
+standardized structure so MapLight uses exact raw SMILES and D-032 Morgan uses
+standardized SMILES. The feature process can open only the projected CSV and
+its manifest, not the source observations, topology, folds, or any test
+artifact.
+
+Exact next action: implement R3A only—the receipt-bound chemistry projection,
+Linux overlay, fixture parity, and two byte-identical label-free feature roots.
+R3B separately accepts
 the synthetic projector/runner firewall; R3C alone may execute the frozen
 official fits and internal surrogate-score diagnostics. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`

@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN`; no modeling or
+TRACE is active at `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`; no modeling or
 scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -104,7 +104,7 @@ anchor rows, and recording exact fold scopes. Artifact authority is limited to
 folds, episodes, episode labels, and topology viability; validation, models,
 metrics, TDI, predictions, submissions, and transduction remain unauthorized.
 
-The corrected R3 v2 global direct experiment contract is now frozen in
+The corrected R3 v3 global direct experiment contract is now frozen in
 [`global_experiment_contract.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract.json).
 It splits the mandatory direct global fallback from later oracle and
 transformation work, keeps `GLOBAL_FAMILY_HOLDOUT` on the unchanged D-032
@@ -126,6 +126,19 @@ non-mechanical promotion rules. Its assigned read-only GPT-5.4 auditor also
 violated scope by signing and pushing v1 directly to `main` without a pull
 request. The history is preserved; v2 corrects the scientific and governance
 boundary before any features, targets, fits, predictions, or metrics.
+
+R3 v2 at commit `e897738...` is also rejected before R3A. It required a
+direct-only raw-SMILES population while denying both available input classes:
+target-bearing direct artifacts and mixed artifacts containing blinded-test
+chemistry. V3 authorizes one narrow chemistry-only process to verify the
+accepted direct-observation bytes, decode only the first eight identity/
+endpoint/raw-SMILES fields, discard every target-bearing suffix as opaque, and
+join the train-only topology and label-free fold artifacts. It recomputes the
+frozen standardized structure and verifies its accepted hash: MapLight uses
+the exact raw SMILES, while D-032 Morgan uses the standardized SMILES. The
+resulting 4,905-row CSV and its receipt are the only chemistry inputs visible
+to the feature process; target values parsed and retained remain exactly zero
+and no blinded-test artifact is opened.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -304,10 +317,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. R0, R1, topology, R2A,
-R2B, and the corrected R3 v2 contract freeze have passed their applicable
+R2B, and the corrected R3 v3 contract freeze have passed their applicable
 gates. Implement only R3A: verify the Linux CatBoost/MapLight overlay, replay
-the frozen fixture, and build two byte-identical label-free feature roots over
-the 4,905 accepted raw SMILES. Do not expose targets or fit a scientific model
+the frozen fixture, build the receipt-bound chemistry-only opaque-suffix
+projection, and build two byte-identical label-free feature roots over the
+4,905 accepted raw and standardized structures. Parse or retain no target
+value and do not fit a scientific model
 until R3A is independently reviewed; R3B then implements the synthetic
 firewall/runner, and only R3C may execute the frozen official experiment. Do not
 expose anchors, fit transformation logic, derive TDI labels, score with

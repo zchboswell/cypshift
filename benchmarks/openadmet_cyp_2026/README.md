@@ -28,7 +28,7 @@ topology viability under v4. Fold, episode, episode-label, and viability
 artifact authority is accepted; models, validation, metrics, submissions, TDI,
 predictions, and transductive use remain unauthorized.
 [`global_experiment_contract.json`](global_experiment_contract.json) now freezes
-the corrected R3 v2 global-only direct fallback: endpoint median, Morgan 1-NN, Morgan
+the corrected R3 v3 global-only direct fallback: endpoint median, Morgan 1-NN, Morgan
 CatBoost, and fixed MapLight under `GLOBAL_FAMILY_HOLDOUT` with provisional
 component-macro MAE only. It explicitly separates the mandatory global fallback
 from later oracle/transformation work. The Linux MapLight overlay is mandatory;
@@ -37,6 +37,13 @@ two label-free feature roots, R3B is synthetic runner/firewall acceptance, and
 R3C alone may run the frozen experiment. V1 was rejected before execution for
 five mechanical blockers after its assigned read-only auditor improperly
 pushed it directly to main; v2 preserves that history and corrects the boundary.
+V2 was then rejected before R3A because it did not authorize any source from
+which the direct-only raw-SMILES population could truthfully be projected. V3
+adds one receipt-bound chemistry prefix process that parses or retains zero
+target values and opens no blinded-test artifact; the feature process sees only
+its 4,905-row label-free CSV and manifest. The projector also verifies the
+train-only topology receipt and frozen standardization: exact raw SMILES feed
+MapLight, while standardized SMILES feed D-032 Morgan.
 R3 still grants no official metric, TDI, submission, or transductive authority.
 
 The July 29 announcement and August 17 launch post are official prose receipts

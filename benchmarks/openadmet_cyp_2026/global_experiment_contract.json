@@ -1,13 +1,19 @@
 {
-  "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v2",
+  "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v3",
   "freeze_date": "2026-08-18",
-  "gate": "R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN",
+  "gate": "R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN",
   "status": "contract_only_not_implemented",
-  "base_commit": "c10980fcae0e8e80503f2b12d9c4c6c8706e635d",
+  "base_commit": "e8977380a4510297e8763fe60f7ffc499e5b4743",
   "supersedes": {
-    "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v1",
-    "commit": "c10980fcae0e8e80503f2b12d9c4c6c8706e635d",
-    "reason": "Independent post-integration review found five implementation blockers: a conditional MapLight branch contradicted fixed counts, OOF identifiers were underdefined, uncertainty calibration could leak, bootstrap arithmetic was incomplete, and promotion statuses were not mechanically decidable. V1 was rejected before features, targets, fits, predictions, or metrics."
+    "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v2",
+    "commit": "e8977380a4510297e8763fe60f7ffc499e5b4743",
+    "reason": "R3A pre-implementation audit found that v2 required direct-only raw SMILES while denying both target-bearing and mixed blinded-test inputs. No implementation could satisfy all three clauses. V2 was rejected before any chemistry projection, feature, target, fit, prediction, or metric artifact."
+  },
+  "contract_history": {
+    "v1_commit": "c10980fcae0e8e80503f2b12d9c4c6c8706e635d",
+    "v1_outcome": "Rejected before execution for five mechanical blockers; D-040 records the unauthorized auditor integration.",
+    "v2_commit": "e8977380a4510297e8763fe60f7ffc499e5b4743",
+    "v2_outcome": "Rejected before R3A because its input firewall made direct-only chemistry projection impossible."
   },
   "review_governance": "The assigned read-only GPT-5.4 auditor violated scope by modifying, signing, and pushing v1 directly to main without a pull request. Root detected the breach before scientific execution, preserved the signed history, moved corrections to a reviewed branch, and did not treat the unauthorized integration as approval.",
   "purpose": "Freeze the smallest direct-inhibition global comparator and its family-held-out evaluation before any feature generation or fit.",
@@ -41,6 +47,18 @@
     "group_folds": {
       "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
       "authority": "accepted R2A input and unchanged D-032 component assignments"
+    },
+    "training_topology": {
+      "sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a",
+      "authority": "accepted R1 train-only label-free standardized-structure and D-032 topology receipt"
+    },
+    "core_chemistry": {
+      "standardization_policy_id": "rdkit-cleanup-fragment-parent-v1",
+      "standardizer_path": "src/cypshift/chemistry.py",
+      "standardizer_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "python_version": "3.12.3",
+      "rdkit_version": "2026.03.5"
     },
     "maplight_method": {
       "source_contract_sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8",
@@ -160,9 +178,72 @@
     "platform": "Linux x86_64 CPU",
     "overlay": "Create a receipt-bound compatibility overlay for the pinned method and replay its signed-int8 and NaN contracts in the Linux environment before retaining any real MapLight feature matrix.",
     "required_receipts": ["package versions and lock hash", "RDKit descriptor ordering", "signed-int8 count behavior", "four-column NaN policy", "CatBoost capability with resolved nan_mode=Min", "CPU-only execution"],
-    "acceptance": ["exact upstream-versus-local parity on the frozen eight-row fixture in the Linux overlay", "two independently invoked byte-identical label-free feature roots over all 4,905 accepted raw SMILES", "exact 2,563-column block dimensions, dtypes, ordering, signed-int8 overflow semantics, four-column NaN mask, row alignment, and input/output receipts", "zero target, TDI, episode-truth, blinded-test, prediction, or score access"],
+    "acceptance": ["exact upstream-versus-local parity on the frozen eight-row fixture in the Linux overlay", "two independently invoked byte-identical label-free feature roots over all 4,905 accepted raw SMILES", "exact 2,563-column block dimensions, dtypes, ordering, signed-int8 overflow semantics, four-column NaN mask, row alignment, and input/output receipts", "the chemistry projector parses and retains zero target values; the feature process opens zero target-bearing or blinded-test bytes and performs zero fits, predictions, or scores"],
     "claim_boundary": "The overlay establishes Linux method compatibility only. It does not claim cross-platform byte identity, historic MapLight reproduction, or transfer of old macOS/TDC predictive evidence.",
     "failure": "If the overlay cannot pass without changing pinned feature semantics, stop R3 before any scientific fit and record GLOBAL_FAILED. A later versioned compatibility repair may preserve Morgan, but this contract does not silently drop its predesignated strong candidate."
+  },
+  "r3a_feature_root": {
+    "row_order": "molecule_id ascending and exactly aligned across feature_rows.csv and every array",
+    "feature_rows": {
+      "path": "feature_rows.csv",
+      "columns": ["molecule_id", "raw_structure_sha256", "standardized_structure_hash", "similarity_component_hash"],
+      "rows": 4905
+    },
+    "arrays": [
+      {"path": "morgan_binary.npy", "chemistry": "standardized_smiles", "shape": [4905, 4096], "dtype": "uint8", "consumer": "TRACE-C1-MORGAN-CATBOOST and TRACE-C2-MORGAN-1NN"},
+      {"path": "maplight_morgan_count.npy", "chemistry": "raw_smiles", "shape": [4905, 1024], "dtype": "int8", "consumer": "TRACE-G0-MAPL-FIXED columns 0:1024"},
+      {"path": "maplight_avalon_count.npy", "chemistry": "raw_smiles", "shape": [4905, 1024], "dtype": "int8", "consumer": "TRACE-G0-MAPL-FIXED columns 1024:2048"},
+      {"path": "maplight_erg.npy", "chemistry": "raw_smiles", "shape": [4905, 315], "dtype": "<f8", "consumer": "TRACE-G0-MAPL-FIXED columns 2048:2363"},
+      {"path": "maplight_rdkit_descriptors.npy", "chemistry": "raw_smiles", "shape": [4905, 200], "dtype": "<f8", "consumer": "TRACE-G0-MAPL-FIXED columns 2363:2563"}
+    ],
+    "serialization": "Every array is a C-contiguous NPY v1.0 payload. Persist the five arrays only; construct the 2,563-column MapLight matrix by ordered concatenation without another semantic feature artifact.",
+    "nan_policy": "Only maplight_rdkit_descriptors.npy indices 39, 41, 43, and 45 may contain NaN. Discover exact OpenADMET counts during R3A and require an identical mask across builds. Every infinity and every other NaN fails closed.",
+    "replay_rule": "Build two roots in fresh processes without a shared feature cache. feature_rows.csv and all five NPY payloads must be byte-identical. Each root manifest has a distinct build ID and binds the identical payload hashes; manifests need not be byte-identical.",
+    "scientific_accounting": {"target_values_parsed": 0, "target_values_retained": 0, "blinded_test_rows_opened": 0, "model_fits": 0, "predictions": 0, "metric_evaluations": 0}
+  },
+  "r3a_chemistry_projection": {
+    "purpose": "Create the only direct-training, label-free raw-SMILES input allowed to the R3A feature process without opening blinded-test chemistry.",
+    "inputs": {
+      "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+      "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+      "training_topology_sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a"
+    },
+    "receipt_before_parse": "Load each input once as immutable bytes, verify its SHA256, and parse those same bytes. Abort before output on any mismatch.",
+    "direct_observation_prefix": ["observation_id", "molecule_id", "source_row_id", "source_file", "source_row", "source_sha256", "endpoint", "raw_smiles"],
+    "opaque_suffix_rule": "For each direct-observation data record, decode exactly the first eight RFC4180 fields through raw_smiles. Treat every remaining byte after the eighth field delimiter as one opaque suffix: do not decode, split, index, compare, hash separately, log, retain, or branch on it.",
+    "header_rule": "Verify the complete accepted direct_observations.csv header exactly; header names are schema metadata, not target values.",
+    "row_rule": "Require 19,620 records, exactly four rows per molecule_id, the four direct endpoints exactly once, identical raw_smiles and direct-source identity across the four rows, source_file cyp-challenge-TRAIN_inhibition.csv, and 4,905 unique molecule IDs.",
+    "topology_rule": "Parse the train-only label-free training_topology.csv and group_folds.csv fully from their verified byte buffers. Require their exact accepted schemas, 6,147 and 73,575 rows respectively. Require 4,905 unique direct/group-fold molecule IDs; each must occur exactly once in topology with the identical similarity_component_hash. Ignore exactly 1,242 additional train-only topology rows and never emit them.",
+    "standardization_rule": "Apply the frozen rdkit-cleanup-fragment-parent-v1 core standardizer to each exact raw_smiles, require an accepted molecule, and assert SHA256(UTF-8 standardized_smiles) equals that molecule's receipt-bound training_topology standardized_structure_hash. MapLight features use exact raw_smiles. D-032 Morgan features use exact standardized_smiles with the validated core Morgan policy; neither representation may substitute for the other.",
+    "output": {
+      "path": "feature_input.csv",
+      "columns": ["molecule_id", "raw_smiles", "raw_structure_sha256", "standardized_smiles", "standardized_structure_hash", "similarity_component_hash"],
+      "rows": 4905,
+      "order": "molecule_id ascending",
+      "serialization": "RFC4180 CSV with LF line endings and one terminal newline"
+    },
+    "manifest": {
+      "path": "feature_input_manifest.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.feature_input.v1",
+      "serialization": "UTF-8 JSON sorted by key with indent=2 and one terminal newline",
+      "required_fields": ["schema_version", "contract_sha256", "direct_observations_sha256", "group_folds_sha256", "training_topology_sha256", "projector_source_sha256", "standardizer_source_sha256", "core_uv_lock_sha256", "core_python_version", "core_rdkit_version", "standardization_policy_id", "feature_input_sha256", "feature_input_columns", "feature_input_rows", "raw_structure_hash_formula", "standardized_structure_hash_formula", "accounting", "authority"],
+      "hash_formulas": {
+        "raw_structure_sha256": "lowercase SHA256 hex of the exact raw_smiles UTF-8 bytes",
+        "standardized_structure_hash": "lowercase SHA256 hex of the exact standardized_smiles UTF-8 bytes"
+      },
+      "authority": {"targets": false, "features": false, "models": false, "predictions": false, "metrics": false, "fold_assignments": false, "submissions": false},
+      "consumer_rule": "The feature process receives the expected manifest SHA256 out of band, loads the manifest and feature_input.csv once as immutable bytes, verifies the expected manifest digest and every bound policy/input/output field before parsing the same CSV bytes, and fails closed on any mismatch. Its feature manifest and Linux receipt retain both projection digests."
+    },
+    "accounting": {
+      "direct_observation_records_scanned": 19620,
+      "decoded_prefix_fields": 156960,
+      "opaque_suffixes_discarded": 19620,
+      "target_values_parsed": 0,
+      "target_values_retained": 0,
+      "blinded_test_rows_opened": 0
+    },
+    "process_boundary": "Run projection as a separate trusted process. The feature process may resolve only the read-only receipt-bound feature_input_manifest.json and feature_input.csv plus pinned method contracts; it cannot resolve direct_observations.csv, group_folds.csv, training_topology.csv, TDI, episodes, or blinded-test artifacts.",
+    "forbidden_inputs": ["molecules_input.csv", "molecule_audit.csv", "source_rows.csv", "cyp-challenge-TEST-BLINDED.csv", "cyp-challenge-TRAIN_TDI.csv"]
   },
   "process_firewall": {
     "trusted_target_projector": {
@@ -280,7 +361,7 @@
     "next_gate": "R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN"
   },
   "execution_sequence_after_contract_acceptance": {
-    "R3A_LINUX_FEATURES_ACCEPTED": "Implement and independently review only the Linux overlay, fixture parity, and two label-free OpenADMET feature roots. No target projection or scientific fit.",
+    "R3A_LINUX_FEATURES_ACCEPTED": "Implement and independently review only the chemistry-only prefix projector and its receipt, Linux overlay, fixture parity, and two label-free OpenADMET feature roots. Parse or retain zero target values and perform no scientific fit.",
     "R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED": "Implement and independently review the receipt-bound target projector, model-cell runner, prediction freezer, bounded scorers, and synthetic determinism/leakage tests. No official scientific fit.",
     "R3C_GLOBAL_EXPERIMENT": "Only after R3A and R3B pass as reviewed signed milestones, execute the frozen official outer fits, select the winner once, execute winner inner fits, score uncertainty/completion, replay artifacts, and seek independent review.",
     "claim_boundary": "These stages authorize bounded execution only. They grant no model, prediction, validation, metric, or parent-completion evidence authority until R3C satisfies the frozen acceptance criteria."
@@ -322,7 +403,7 @@
     "transformations": false,
     "status_note": "Conditional post-success authority is limited to the frozen global direct experiment and its OOF evidence; all TRACE local and competition operations remain deferred."
   },
-  "required_outputs_after_implementation": ["linux_compatibility_receipt.json", "feature_rows.csv", "feature_manifest.json", "maplight feature arrays", "target_projection_manifest.json", "global_oof_predictions.csv", "global_inner_oof_predictions.csv", "parent_state_completion_outer_training.csv", "parent_state_completion_final.csv", "global_cell_metrics.csv", "global_bootstrap_summary.csv", "global_uncertainty_calibration.csv with one selected-winner q90 row per repeat, outer fold, and endpoint", "global_result.json", "manifest.json"],
+  "required_outputs_after_implementation": ["feature_input.csv", "feature_input_manifest.json", "linux_compatibility_receipt.json", "feature_rows.csv", "feature_manifest.json", "Morgan and MapLight feature arrays", "target_projection_manifest.json", "global_oof_predictions.csv", "global_inner_oof_predictions.csv", "parent_state_completion_outer_training.csv", "parent_state_completion_final.csv", "global_cell_metrics.csv", "global_bootstrap_summary.csv", "global_uncertainty_calibration.csv with one selected-winner q90 row per repeat, outer fold, and endpoint", "global_result.json", "manifest.json"],
   "manifest_requirements": "Bind every input/output SHA256, schema and policy ID, package/runtime version, resolved CatBoost parameters, seed, fit/prediction/metric count, runtime, peak RSS, selection result, status, authority flag, and zero TDI/test/submission/transduction access.",
   "forbidden": ["official challenge test data or labels", "TDI files or inferred TDI labels", "anchor identities or anchor values", "ANCHOR_EXPANSION_HOLDOUT", "episode-specific fits or predictions", "transformations or oracle controls", "interval midpoint imputation", "official ST-RAE or interval-hit implementation", "public-test or leaderboard iteration", "GIN weights", "full-training final models", "new core dependencies", "GPU-backed fits", "untracked generated artifacts"]
 }
