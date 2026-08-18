@@ -14,10 +14,12 @@ The pinned read-only source clones were verified at:
 headers, and TDI order discrepancy; [`challenge_contract.json`](challenge_contract.json)
 has the R0 gate, endpoint states, validation, claims, and V6/P6 items; see
 [`submission_contract.json`](submission_contract.json) for required columns.
-[`validation_contract.json`](validation_contract.json) freezes the separate R2
+[`validation_contract.json`](validation_contract.json) freezes the corrected R2 v2
 label-aware topology-viability, campaign-episode, firewall, and fold contract.
 It is contract-only: it is not `VALIDATION_FROZEN`, does not implement folds or
 episodes, and grants no model, metric, submission, TDI, or transductive authority.
+V2 supersedes the pre-implementation v1 after independent review found selector
+leakage and ambiguous authority, oracle, support-status, and determinism rules.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

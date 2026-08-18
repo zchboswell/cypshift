@@ -908,7 +908,7 @@
 ## D-033 — Freeze the R2 label-aware TRACE validation contract
 
 - Date: 2026-08-18
-- Status: accepted; contract-only gate
+- Status: superseded by D-034 before implementation
 - Decision: Freeze the label-aware topology-viability, direct-observation
   eligibility, campaign-episode, public/truth firewall, grouped-fold, and
   scorecard contract in
@@ -924,11 +924,39 @@
   and CYP2D6 are underpowered at 18/28, 13/13, and 14/28. Selector episode
   diagnostics are 33/54, 37/42, and 117/205 for CYP1A2, CYP2C9, and CYP3A4;
   activity-cliff diagnostics are 6/6, 4/4, 4/4, and 96/38 pairs/components.
-  Static tests validate the receipt chain, source firewall, exact policies,
-  seeds, fold minimum, artifact list, and denied authority.
+  Static tests asserted the declared JSON fields only; they did not behaviorally
+  validate a compiler, fold assignment, or firewall implementation.
 - Alternatives: Implement folds and episodes immediately; reuse TDI/Emax
   fields in direct validation; or reinterpret the label-aware diagnostics as
   prediction evidence.
 - Reversal condition: A receipt, identity, chemistry, state-preservation,
   family-leakage, or contract-consistency defect is found. Create a new
   versioned contract; do not silently reinterpret R2.
+
+## D-034 — Supersede the rejected R2 v1 contract with v2
+
+- Date: 2026-08-18
+- Status: accepted; corrected contract-only gate
+- Decision: Supersede validation-contract v1 before implementation with
+  `cypshift.openadmet_cyp_2026.validation_contract.v2` at
+  `R2_VALIDATION_CONTRACT_V2_FROZEN`. Remove selector CYP from public episode
+  artifacts; split oracle-runner and scorer-only projections; expose the
+  designated anchor to the episode-specific global fit under cross-fitted
+  configuration; classify all clean but insufficient support as
+  `LOCAL_UNDERPOWERED`; and freeze exact random-anchor and component-fold hash
+  policies. Preserve D-032's topology bytes, but grant its components limited
+  authority as a conservative reconstructed-family proxy for R2 grouping,
+  folds, and episodes only. Do not claim semantic lineage or mechanism.
+- Evidence: Independent pre-implementation review found seven contract defects:
+  selector leakage, low-support misclassification, contradictory topology
+  authority, an unsafe truth interface, ambiguous anchor exposure,
+  underspecified determinism, and behavioral evidence overclaim. No validation
+  artifact, model, metric, prediction, or submission had been produced, so v1
+  has no downstream scientific evidence to invalidate. Static v2 tests pin the
+  corrected declarations and authority denials only.
+- Alternatives: Quietly edit v1; call low support failure; publish selector CYP
+  in public episodes; pass full truth rows to the oracle runner; or defer the
+  named family protocols without a fixed proxy.
+- Reversal condition: Implementation review finds a receipt, identity,
+  chemistry, determinism, state, projection, or leakage defect. Create v3 and
+  preserve the failure record; do not reinterpret v2.

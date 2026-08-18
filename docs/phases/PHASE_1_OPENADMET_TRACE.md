@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R2 validation contract frozen, implementation not yet accepted; gate `R2_VALIDATION_CONTRACT_FROZEN`; freeze date 2026-08-18.
+Status: active; corrected R2 validation contract frozen, implementation not yet accepted; gate `R2_VALIDATION_CONTRACT_V2_FROZEN`; freeze date 2026-08-18.
 
 ## Context capsule
 
@@ -27,6 +27,11 @@ invented.
 2. **ANCHOR_EXPANSION_HOLDOUT:** expose exactly one measured anchor in a held-
    out family; exclude every other family member from global labels, delta
    support, and candidate pools. All learned choices remain cross-fitted.
+
+For R2 these protocol names use the unchanged D-032 similarity components as a
+conservative reconstructed-family proxy. D-034 grants only grouping, fold, and
+episode authority; it does not establish semantic lineage, mechanism, or
+complete analog-family recovery.
 
 `TDI-TRACE` is deferred/optional after `direct_TRACE` and `global_TDI` are frozen;
 `global_TDI` remains the permanent fallback.
@@ -94,15 +99,18 @@ Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-The R2 label-aware topology-viability and campaign-episode contract is frozen in
+The corrected R2 v2 label-aware topology-viability and campaign-episode contract is frozen in
 [`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
-It keeps D-032 unchanged; restricts direct compilation to the four direct
-endpoints; requires complete observations for anchors and local pairs; freezes
-selector/query rules, public/truth separation, component-grouped repeats and
-inner folds, scorecard slices, and activity-cliff diagnostics. Preliminary
-label-aware counts are diagnostics only. R2 is not `VALIDATION_FROZEN` and does
-not authorize implementation outputs, modeling, scoring, submissions, TDI, or
-transductive test relationships.
+It keeps D-032 topology bytes unchanged while using its components only as the
+declared reconstructed-family proxy; restricts direct compilation to the four
+direct endpoints; requires complete observations for anchors and local pairs;
+freezes selector/query rules, separate oracle-runner and scorer projections,
+anchor exposure, deterministic component-grouped repeats and inner folds,
+scorecard slices, and activity-cliff diagnostics. Insufficient evidence is
+`LOCAL_UNDERPOWERED`, never `LOCAL_FAILED`. Preliminary label-aware counts are
+diagnostics only. R2 is not `VALIDATION_FROZEN` and does not authorize
+implementation outputs, modeling, scoring, submissions, TDI, or transductive
+test relationships.
 
 Exact next action: implement the contract artifacts against synthetic fixtures,
 then run official acceptance after independent review. Stop on contract drift,

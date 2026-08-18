@@ -5,7 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the validation-contract gate `R2_VALIDATION_CONTRACT_FROZEN`;
+TRACE is active at the corrected validation-contract gate
+`R2_VALIDATION_CONTRACT_V2_FROZEN`;
 no modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -53,12 +54,17 @@ candidate similarity components; 1,241 molecules occur in multi-member
 components, the largest contains 21, and 146 components contain at least two
 direct-training source identities. Repeated official runs were byte-identical.
 
-The label-aware R2 validation contract is now frozen in
+The label-aware R2 validation contract v2 is now frozen in
 [`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
 It binds the direct-only compiler, complete-observation eligibility, local-pair
 status thresholds, selector/query episodes, public/truth firewall, grouped
-repeated folds, scorecard slices, and future artifact schemas. It preserves
-D-032 unchanged and records preliminary counts as diagnostics only. R2 is not
+repeated folds, scorecard slices, and future artifact requirements. Independent
+review rejected v1 before implementation for selector leakage, ambiguous oracle
+projections, incorrect low-support failure semantics, contradictory topology
+authority, and underspecified deterministic policies. V2 preserves D-032's
+topology bytes while promoting its components only to a conservative
+reconstructed-family proxy for R2 grouping; no semantic-family claim is made.
+Preliminary counts remain diagnostics only. R2 is not
 `VALIDATION_FROZEN`; no implementation artifacts, model, metric, submission,
 TDI label derivation, or transductive relationship is authorized yet.
 
