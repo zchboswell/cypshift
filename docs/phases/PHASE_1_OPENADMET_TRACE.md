@@ -166,9 +166,15 @@ standardized SMILES. The feature process can open only the projected CSV and
 its manifest, not the source observations, topology, folds, or any test
 artifact.
 
-Exact next action: implement R3A only—the receipt-bound chemistry projection,
-Linux overlay, fixture parity, and two byte-identical label-free feature roots.
-R3B separately accepts
+R3A's trusted projector, core Morgan worker, and isolated MapLight runner now
+pass synthetic tests, direct pinned-Linux compatibility, a two-build synthetic
+replay, and independent review. No official challenge input or feature root
+was opened, so this is implementation acceptance rather than
+\`R3A_LINUX_FEATURES_ACCEPTED\`.
+
+Exact next action: run the receipt-bound official chemistry projection, core
+Morgan worker, and two fresh byte-identical label-free feature roots outside
+Git, then independently audit their receipts and payloads. R3B separately accepts
 the synthetic projector/runner firewall; R3C alone may execute the frozen
 official fits and internal surrogate-score diagnostics. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`

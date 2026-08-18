@@ -140,6 +140,22 @@ resulting 4,905-row CSV and its receipt are the only chemistry inputs visible
 to the feature process; target values parsed and retained remain exactly zero
 and no blinded-test artifact is opened.
 
+The R3A implementation now passes synthetic and pinned-Linux acceptance. The
+trusted projector, core RDKit 2026 Morgan worker, and isolated RDKit 2023
+MapLight runner verify the complete v3 receipt chain before parsing payloads,
+refuse non-atomic overwrite, and keep every promoted file read-only. Exact
+eight-row MapLight parity, signed-int8 witnesses \`127/-128/-112\`, CatBoost
+\`nan_mode=Min\`, and two fresh byte-identical two-molecule feature builds pass
+in the frozen Linux environment. Independent scientific review passes after
+closing receipt, accounting, array-schema, and promotion-race defects. The
+full suite passes with 275 tests and three root-environment skips covered by
+the direct pinned-environment checks. No official challenge input or feature
+root was opened, so \`R3A_LINUX_FEATURES_ACCEPTED\` is not yet granted and no
+feature, model, prediction, validation, metric, or submission authority exists.
+The exact next action is the receipt-bound official chemistry projection,
+core Morgan build, two fresh MapLight feature roots, and independent replay
+audit outside Git.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.

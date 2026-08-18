@@ -18,7 +18,10 @@ label-free features, R3B synthetic firewall/runner acceptance, then R3C frozen
 scientific fits. R3A includes one trusted chemistry-only prefix projector that
 parses or retains zero target values; its feature process sees only the
 resulting receipt-bound 4,905-row raw/standardized chemistry projection. The
-next gate is R3A; no target-value or model access is authorized there.
+R3A's implementation and synthetic Linux replay now pass independent review,
+but the official 4,905-row projection and two feature roots have not run. The
+next gate is official R3A feature acceptance outside Git; no target-value or
+model access is authorized there.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

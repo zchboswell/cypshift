@@ -1179,3 +1179,31 @@
   target/test accounting; standardization cannot reproduce all 4,905 topology
   hashes; or the consumer cannot verify the projection receipt before parsing.
   Preserve the blocker and supersede v3 before feature generation.
+
+## D-042 — Accept the R3A implementation boundary before official execution
+
+- Date: 2026-08-18
+- Status: accepted; implementation and synthetic replay only
+- Decision: Accept the trusted prefix projector, core RDKit 2026 Morgan worker,
+  and isolated RDKit 2023 MapLight runner for the official R3A feature gate.
+  Keep \`R3A_LINUX_FEATURES_ACCEPTED\` ungranted until the receipt-bound 4,905-row
+  projection and two fresh full feature roots are byte-identical and
+  independently reviewed. Grant no feature, target, model, prediction,
+  validation, metric, TDI, submission, or transductive authority here.
+- Evidence: All consumers verify the complete v3 receipt, policy, runtime,
+  formula, accounting, and authority boundary before parsing payloads. Linux
+  \`renameat2(RENAME_NOREPLACE)\` is the only promotion path; read-only staging
+  precedes promotion. The frozen environment reproduces all four MapLight
+  blocks on the eight-row fixture, signed-int8 witnesses \`127/-128/-112\`, and
+  CatBoost \`nan_mode=Min\`. Two fresh two-molecule feature builds are
+  byte-identical. The full 275-test suite, Ruff, mypy, build, and independent
+  scientific review pass. Official challenge inputs and generated official
+  artifacts opened remain zero.
+- Alternatives: Combine implementation and official evidence in one opaque
+  milestone; let the feature process open target-bearing observations; permit
+  check-then-rename overwrite races; or begin scientific fitting before full
+  feature replay.
+- Reversal condition: Official projection or replay finds any receipt,
+  chemistry, row alignment, environment, payload, NaN, determinism, resource,
+  isolation, or authority defect. Preserve the failed artifacts outside Git,
+  record \`GLOBAL_FAILED\`, and stop before R3B or any fit.
