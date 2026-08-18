@@ -14,13 +14,124 @@ from typing import Any, cast
 import numpy as np
 from r3b_scoring_artifacts import (
     MAPLIGHT,
+    PREFLIGHT_SOURCE_SHA256,
+    PROJECTOR_SOURCE_SHA256,
     SYSTEMS,
     _authority,
+    _cell_runner_source_sha,
+    _freezer_source_sha,
+    _is_sha,
     _json_bytes,
     _loads_unique,
     _require,
     _sha,
 )
+
+_SOURCE_KEYS = (
+    "projector",
+    "preflight",
+    "cell_runner",
+    "freezer",
+    "outer_scorer",
+    "token_writer",
+    "final_scorer",
+    "terminal_writer",
+)
+_VERIFIED_KEYS = (
+    "parent_contract_sha256",
+    "direct_observations_sha256",
+    "group_folds_sha256",
+    "r3a_feature_manifest_sha256",
+    "model_public_manifest_sha256",
+    "sealed_truth_manifest_sha256",
+    "private_projection_audit_sha256",
+    "preflight_receipt_sha256",
+)
+_DIRECT_OBSERVATIONS_SHA256 = (
+    "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7"
+)
+_GROUP_FOLDS_SHA256 = "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774"
+
+
+def _validate_verified_receipts(
+    values: Mapping[str, str], *, status: str, synthetic: bool
+) -> dict[str, str]:
+    _require(tuple(values) == _VERIFIED_KEYS, "verified input receipt order differs")
+    result = dict(values)
+    for key, value in result.items():
+        _require(
+            isinstance(value, str) and (value == "" or _is_sha(value)),
+            f"{key} input receipt differs",
+        )
+    if synthetic:
+        return result
+    _require(
+        result["direct_observations_sha256"] == _DIRECT_OBSERVATIONS_SHA256
+        and result["group_folds_sha256"] == _GROUP_FOLDS_SHA256,
+        "frozen v3 input receipt provenance differs",
+    )
+    required = {
+        "parent_contract_sha256",
+        "direct_observations_sha256",
+        "group_folds_sha256",
+    }
+    if status != "GLOBAL_UNDERPOWERED":
+        required.update(
+            {
+                "r3a_feature_manifest_sha256",
+                "model_public_manifest_sha256",
+                "sealed_truth_manifest_sha256",
+                "private_projection_audit_sha256",
+                "preflight_receipt_sha256",
+            }
+        )
+    _require(all(result[key] for key in required), "verified input receipt missing")
+    return result
+
+
+def _validate_source_receipts(
+    values: Mapping[str, str], *, status: str, synthetic: bool
+) -> dict[str, str]:
+    _require(
+        tuple(values) == _SOURCE_KEYS, "implementation source receipt order differs"
+    )
+    result = dict(values)
+    for key, value in result.items():
+        _require(
+            isinstance(value, str) and (value == "" or _is_sha(value)),
+            f"{key} source receipt differs",
+        )
+    if synthetic:
+        return result
+    scorer_sha = _scorer_bundle_sha()
+    _require(
+        result["projector"] == PROJECTOR_SOURCE_SHA256
+        and result["preflight"] == PREFLIGHT_SOURCE_SHA256
+        and result["terminal_writer"] == scorer_sha,
+        "accepted source receipt provenance differs",
+    )
+    required = {"projector", "preflight", "terminal_writer"}
+    if status != "GLOBAL_UNDERPOWERED":
+        required.update(("cell_runner", "freezer", "outer_scorer"))
+    if status == "GLOBAL_EXPERT_FROZEN":
+        required.update(("token_writer", "final_scorer"))
+    _require(
+        all(result[key] for key in required), "implementation source receipt missing"
+    )
+    if status != "GLOBAL_UNDERPOWERED":
+        _require(
+            result["cell_runner"] == _cell_runner_source_sha()
+            and result["freezer"] == _freezer_source_sha()
+            and result["outer_scorer"] == scorer_sha,
+            "accepted model source receipt provenance differs",
+        )
+    if status == "GLOBAL_EXPERT_FROZEN":
+        _require(
+            result["token_writer"] == scorer_sha
+            and result["final_scorer"] == scorer_sha,
+            "accepted final source receipt provenance differs",
+        )
+    return result
 
 
 def _bundle_sha(paths: tuple[str, ...]) -> str:
@@ -92,21 +203,9 @@ def _terminal_files(
     completion: Mapping[str, bytes],
     completion_counts: Mapping[str, int],
     synthetic: bool,
+    implementation_source_receipts: Mapping[str, str] | None = None,
 ) -> dict[str, bytes]:
-    _require(
-        set(verified)
-        == {
-            "parent_contract_sha256",
-            "direct_observations_sha256",
-            "group_folds_sha256",
-            "r3a_feature_manifest_sha256",
-            "model_public_manifest_sha256",
-            "sealed_truth_manifest_sha256",
-            "private_projection_audit_sha256",
-            "preflight_receipt_sha256",
-        },
-        "terminal verified receipts differ",
-    )
+    verified = _validate_verified_receipts(verified, status=status, synthetic=synthetic)
     files = dict(source)
     files.update(score)
     files.update(completion)
@@ -250,40 +349,15 @@ def _terminal_files(
         },
         "global result fields differ",
     )
-    implementation = {
-        key: ""
-        for key in (
-            "projector",
-            "preflight",
-            "cell_runner",
-            "freezer",
-            "outer_scorer",
-            "token_writer",
-            "final_scorer",
-            "terminal_writer",
+    if implementation_source_receipts is None:
+        implementation = {key: "" for key in _SOURCE_KEYS}
+        scorer_bundle_sha = _scorer_bundle_sha()
+        implementation["preflight"] = scorer_bundle_sha
+        implementation["terminal_writer"] = scorer_bundle_sha
+    else:
+        implementation = _validate_source_receipts(
+            implementation_source_receipts, status=status, synthetic=synthetic
         )
-    }
-    scorer_bundle_sha = _scorer_bundle_sha()
-    implementation["preflight"] = scorer_bundle_sha
-    implementation["terminal_writer"] = scorer_bundle_sha
-    if status != "GLOBAL_UNDERPOWERED":
-        implementation["cell_runner"] = _bundle_sha(
-            (
-                "research/maplight-fixed/run_r3b_cells.py",
-                "research/maplight-fixed/r3b_cell_io.py",
-                "research/maplight-fixed/r3b_cell_freezer.py",
-            )
-        )
-        implementation["freezer"] = _bundle_sha(
-            (
-                "research/maplight-fixed/r3b_cell_freezer.py",
-                "research/maplight-fixed/r3b_cell_io.py",
-            )
-        )
-        implementation["outer_scorer"] = scorer_bundle_sha
-    if status == "GLOBAL_EXPERT_FROZEN":
-        implementation["final_scorer"] = scorer_bundle_sha
-        implementation["token_writer"] = scorer_bundle_sha
     accepted = cast(dict[str, Any], contract["accepted_r3a_feature_root"])
     try:
         catboost_module = __import__("catboost")

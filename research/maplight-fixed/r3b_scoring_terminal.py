@@ -10,15 +10,20 @@ from typing import Any, TypeVar, cast
 
 from r3b_scoring_artifacts import (
     MAPLIGHT,
+    PREFLIGHT_SOURCE_SHA256,
+    PROJECTOR_SOURCE_SHA256,
+    RESEARCH_UV_LOCK_SHA256,
     V5_SHA256,
     OuterStage,
     R3BScoringError,
     R3BStageFailure,
     R3BUnderpowered,
     _authority,
+    _cell_runner_source_sha,
     _contracts,
     _forbidden,
     _freezer_source_sha,
+    _is_sha,
     _json,
     _json_bytes,
     _load_freeze,
@@ -36,10 +41,30 @@ from r3b_scoring_preflight import _validate_preflight
 from r3b_scoring_publish import _private_stage, _publish
 
 
-def _runtime_gate(synthetic: bool) -> None:
-    _require(bool(_scorer_bundle_sha()), "scorer source bundle unavailable")
+def _runtime_gate(
+    synthetic: bool, expected_source_bundle_sha256: str | None = None
+) -> None:
+    observed_source_sha = _scorer_bundle_sha()
+    _require(bool(observed_source_sha), "scorer source bundle unavailable")
+    if not (synthetic and expected_source_bundle_sha256 is None):
+        _require(
+            _is_sha(expected_source_bundle_sha256),
+            "scorer source receipt is required",
+        )
+        _require(
+            expected_source_bundle_sha256 == observed_source_sha,
+            "scorer source receipt differs",
+        )
     if synthetic:
         return
+    lock = Path(__file__).with_name("uv.lock")
+    _require(
+        lock.is_file() and not lock.is_symlink(), "research uv.lock is unavailable"
+    )
+    _require(
+        _sha(lock.read_bytes()) == RESEARCH_UV_LOCK_SHA256,
+        "research uv.lock receipt differs",
+    )
     _require(
         platform.system() == "Linux"
         and platform.machine() == "x86_64"
@@ -70,11 +95,20 @@ _SOURCE_KEYS = (
 _T = TypeVar("_T")
 
 
+def _source_receipts(synthetic: bool) -> dict[str, str]:
+    values = {key: "" for key in _SOURCE_KEYS}
+    if not synthetic:
+        values["projector"] = PROJECTOR_SOURCE_SHA256
+        values["preflight"] = PREFLIGHT_SOURCE_SHA256
+    return values
+
+
 def _record_source(receipts: dict[str, str], stage: str) -> None:
     if stage == "preflight":
-        receipts["preflight"] = _scorer_bundle_sha()
+        receipts["preflight"] = PREFLIGHT_SOURCE_SHA256
     elif stage in {"outer_freeze", "inner_freeze"}:
         receipts["freezer"] = _freezer_source_sha()
+        receipts["cell_runner"] = _cell_runner_source_sha()
     elif stage == "outer_score":
         receipts["outer_scorer"] = _scorer_bundle_sha()
     elif stage == "inner_token":
@@ -83,6 +117,16 @@ def _record_source(receipts: dict[str, str], stage: str) -> None:
         receipts["final_scorer"] = _scorer_bundle_sha()
     elif stage == "terminal_publish":
         receipts["terminal_writer"] = _scorer_bundle_sha()
+
+
+def _record_contract_inputs(
+    receipts: dict[str, str], contract: Mapping[str, Any]
+) -> None:
+    inputs = cast(Mapping[str, Any], contract["target_projection"]["inputs"])
+    for key in ("direct_observations_sha256", "group_folds_sha256"):
+        value = inputs.get(key)
+        _require(isinstance(value, str) and len(value) == 64, f"{key} receipt differs")
+        receipts[key] = cast(str, value)
 
 
 def _stage_call(
@@ -257,10 +301,11 @@ def score_outer(
     preflight_receipt: Path | None = None,
     preflight_receipt_sha256: str | None = None,
     synthetic: bool = False,
+    expected_source_bundle_sha256: str | None = None,
 ) -> OuterStage:
     """Verify and score outer predictions; emit an unpublished token on PASS."""
     verified = _verified()
-    source_receipts = {key: "" for key in _SOURCE_KEYS}
+    source_receipts = _source_receipts(synthetic)
     contract, _v3, contract_sha, parent_sha = _stage_call(
         "preflight",
         lambda: _contracts(expected_contract_sha256),
@@ -269,9 +314,10 @@ def score_outer(
         {},
     )
     _record_source(source_receipts, "preflight")
+    _record_contract_inputs(verified, contract)
     _stage_call(
         "preflight",
-        lambda: _runtime_gate(synthetic),
+        lambda: _runtime_gate(synthetic, expected_source_bundle_sha256),
         verified,
         source_receipts,
         {},
@@ -489,6 +535,7 @@ def score_final(
     sealed_manifest_sha256: str,
     expected_contract_sha256: str = V5_SHA256,
     synthetic: bool = False,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Consume the prior PASS stage/token, then publish one terminal result."""
     _require(
@@ -496,7 +543,7 @@ def score_final(
         "output destination exists",
     )
     verified = _verified()
-    source_receipts = {key: "" for key in _SOURCE_KEYS}
+    source_receipts = _source_receipts(synthetic)
     _record_source(source_receipts, "final_score")
     contract, _v3, contract_sha, parent_sha = _stage_call(
         "final_score",
@@ -507,11 +554,12 @@ def score_final(
     )
     _stage_call(
         "final_score",
-        lambda: _runtime_gate(synthetic),
+        lambda: _runtime_gate(synthetic, expected_source_bundle_sha256),
         verified,
         source_receipts,
         {},
     )
+    _record_contract_inputs(verified, contract)
     accounting = {
         str(key): 0
         for key in cast(
@@ -539,6 +587,7 @@ def score_final(
         accounting,
     )
     _record_source(source_receipts, "inner_token")
+    source_receipts["outer_scorer"] = _scorer_bundle_sha()
     token, token_data = _stage_call(
         "inner_token",
         lambda: _json(
@@ -819,17 +868,21 @@ def score_final(
             completion,
             completion_counts,
             synthetic,
+            source_receipts,
         ),
         verified,
         source_receipts,
         accounting,
     )
-    return _stage_call(
-        "terminal_publish",
-        lambda: _publish(output_root, files),
-        verified,
-        source_receipts,
-        accounting,
+    return cast(
+        Path,
+        _stage_call(
+            "terminal_publish",
+            lambda: _publish(output_root, files),
+            verified,
+            source_receipts,
+            accounting,
+        ),
     )
 
 
@@ -839,6 +892,8 @@ def publish_no_advantage(
     output_root: Path,
     expected_contract_sha256: str = V5_SHA256,
     synthetic: bool = False,
+    source_receipts: Mapping[str, str] | None = None,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Promote the outer evidence after a clean fixed-MapLight failure."""
     _require(
@@ -846,6 +901,7 @@ def publish_no_advantage(
         "output destination exists",
     )
     contract, _v3, contract_sha, parent_sha = _contracts(expected_contract_sha256)
+    _runtime_gate(synthetic, expected_source_bundle_sha256)
     assessment, assessment_data = _json(
         outer_stage_root / "global_outer_assessment.json", None, "outer assessment"
     )
@@ -879,6 +935,11 @@ def publish_no_advantage(
     carried_receipts = _validated_private_receipts(
         outer_stage_root, contract, contract_sha, synthetic
     )
+    if source_receipts is None:
+        source_receipts = _source_receipts(synthetic)
+        _record_source(source_receipts, "outer_freeze")
+        _record_source(source_receipts, "outer_score")
+        _record_source(source_receipts, "terminal_publish")
     _require(
         carried_receipts["parent_contract_sha256"] == parent_sha
         and carried_receipts["preflight_receipt_sha256"]
@@ -933,8 +994,9 @@ def publish_no_advantage(
             "unavailable": 0,
         },
         synthetic,
+        source_receipts,
     )
-    return _publish(output_root, files)
+    return cast(Path, _publish(output_root, files))
 
 
 def publish_failure(
@@ -1016,7 +1078,9 @@ def publish_failure(
         },
         "failure receipt fields differ",
     )
-    return _publish(output_root, {"failure_receipt.json": _json_bytes(receipt)})
+    return cast(
+        Path, _publish(output_root, {"failure_receipt.json": _json_bytes(receipt)})
+    )
 
 
 def publish_underpowered(
@@ -1026,17 +1090,19 @@ def publish_underpowered(
     preflight_receipt_sha256: str,
     expected_contract_sha256: str = V5_SHA256,
     synthetic: bool = False,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Publish only the two exact clean-preflight sentinel files."""
     contract, _v3, contract_sha, parent_sha = _contracts(expected_contract_sha256)
+    _runtime_gate(synthetic, expected_source_bundle_sha256)
     preflight, preflight_data = _json(
         preflight_receipt, preflight_receipt_sha256, "preflight receipt"
     )
     _validate_preflight(preflight, contract, contract_sha, synthetic)
     _require(preflight.get("passed") is False, "underpowered preflight passed")
-    _runtime_gate(synthetic)
     receipts = _verified()
     receipts["parent_contract_sha256"] = parent_sha
+    _record_contract_inputs(receipts, contract)
     receipts["preflight_receipt_sha256"] = _sha(preflight_data)
     receipts["model_public_manifest_sha256"] = str(
         preflight["model_public_manifest_sha256"]
@@ -1044,6 +1110,8 @@ def publish_underpowered(
     receipts["private_projection_audit_sha256"] = str(
         preflight["private_projection_audit_sha256"]
     )
+    source_receipts = _source_receipts(synthetic)
+    _record_source(source_receipts, "terminal_publish")
     files = _terminal_files(
         contract,
         contract_sha,
@@ -1061,8 +1129,9 @@ def publish_underpowered(
             "unavailable": 0,
         },
         synthetic,
+        source_receipts,
     )
-    return _publish(output_root, files)
+    return cast(Path, _publish(output_root, files))
 
 
 def run_outer(
@@ -1077,6 +1146,7 @@ def run_outer(
     preflight_receipt: Path | None = None,
     preflight_receipt_sha256: str | None = None,
     synthetic: bool = False,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Run the outer stage and publish only outcomes known without inner fits."""
     _require(
@@ -1095,6 +1165,7 @@ def run_outer(
             preflight_receipt=preflight_receipt,
             preflight_receipt_sha256=preflight_receipt_sha256,
             synthetic=synthetic,
+            expected_source_bundle_sha256=expected_source_bundle_sha256,
         )
         if stage.status == "GLOBAL_NO_ADVANTAGE":
             source_receipts = dict(stage.source_receipts)
@@ -1106,6 +1177,8 @@ def run_outer(
                     output_root=output_root,
                     expected_contract_sha256=expected_contract_sha256,
                     synthetic=synthetic,
+                    source_receipts=source_receipts,
+                    expected_source_bundle_sha256=expected_source_bundle_sha256,
                 ),
                 stage.verified_receipts,
                 source_receipts,
@@ -1119,6 +1192,7 @@ def run_outer(
             preflight_receipt_sha256=error.preflight_receipt_sha256,
             expected_contract_sha256=expected_contract_sha256,
             synthetic=synthetic,
+            expected_source_bundle_sha256=expected_source_bundle_sha256,
         )
     except Exception as error:
         return publish_failure(
@@ -1148,6 +1222,7 @@ def run_final(
     sealed_manifest_sha256: str,
     expected_contract_sha256: str = V5_SHA256,
     synthetic: bool = False,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Consume the causal outer token and publish success or a failure receipt."""
     try:
@@ -1160,6 +1235,7 @@ def run_final(
             sealed_manifest_sha256=sealed_manifest_sha256,
             expected_contract_sha256=expected_contract_sha256,
             synthetic=synthetic,
+            expected_source_bundle_sha256=expected_source_bundle_sha256,
         )
     except Exception as error:
         return publish_failure(

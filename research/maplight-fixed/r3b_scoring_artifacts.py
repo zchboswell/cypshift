@@ -18,6 +18,15 @@ V4_PATH = ROOT / "benchmarks/openadmet_cyp_2026/global_experiment_contract_v4.js
 V5_SHA256 = "596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2"
 V4_SHA256 = "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254"
 V3_SHA256 = "d728684cc3794bbe01ea44342202944a378968f097cb8f5490852b63721a6285"
+RESEARCH_UV_LOCK_SHA256 = (
+    "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+)
+PROJECTOR_SOURCE_SHA256 = (
+    "455397869774d104144f0ca09c063f6c915046b4458da35040bf2c0dfaebfc18"
+)
+PREFLIGHT_SOURCE_SHA256 = (
+    "4ac5c35a293a6a0ec32426a602c0a55e5fab31155205bbff44b80b58c7cc35df"
+)
 ENDPOINTS = ("CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4")
 SYSTEMS = (
     "TRACE-C0-ENDPOINT-MEDIAN",
@@ -210,6 +219,28 @@ def _freezer_source_sha() -> str:
         for path in paths
     ]
     return _sha(("\n".join(sorted(entries)) + "\n").encode("utf-8"))
+
+
+def _cell_runner_source_sha() -> str:
+    paths = (
+        ROOT / "research/maplight-fixed/run_r3b_cells.py",
+        ROOT / "research/maplight-fixed/r3b_cell_io.py",
+        ROOT / "research/maplight-fixed/r3b_cell_freezer.py",
+    )
+    entries = [
+        f"{path.relative_to(ROOT).as_posix()}|{_sha(path.read_bytes())}"
+        for path in paths
+    ]
+    return _sha(("\n".join(sorted(entries)) + "\n").encode("utf-8"))
+
+
+def _is_sha(value: object) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and value == value.lower()
+        and all(char in "0123456789abcdef" for char in value)
+    )
 
 
 def _json_bytes(value: object) -> bytes:

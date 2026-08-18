@@ -1325,3 +1325,41 @@
 - Reversal condition: R3C finds source, runtime, receipt, split, isolation,
   determinism, arithmetic, or authority drift. Emit `GLOBAL_FAILED`, preserve
   the blocker outside Git, and stop before granting predictive evidence.
+
+## D-047 — Accept the hardened R3C official execution boundary
+
+- Date: 2026-08-18
+- Status: accepted; `R3C_OFFICIAL_EXECUTION_READY`
+- Decision: Accept the thin production-only R3C state machine and the repaired
+  R3B capability/provenance boundary. Supersede D-046's implementation source
+  receipts with the D-047 receipts below. Authorize exactly one frozen official
+  global experiment from immutable accepted inputs; do not authorize retries,
+  redesign, submissions, official-score claims, TDI, oracle anchors,
+  transformations, or transductive use.
+- Evidence: The wrapper verifies both locked runtimes, all contract and source
+  receipts, and the accepted R3A feature root before opening official targets.
+  Every model process receives a read-only view containing only the common
+  manifest, model rows, and its one selected target file; freezers receive no
+  target payloads. The causal path is exactly 60 outer cells, outer freeze and
+  score, then either a terminal result or a score-free token authorizing 240
+  inner cells. All work remains private until exact read-only terminal
+  publication after private cleanup with no-replace semantics. The repaired
+  cell, freezer, scorer, and wrapper SHA-256 receipts are respectively
+  `9934e267b09df763fb45071884415b5c8f6eeb10189edc30e862bc758c45a053`,
+  `535e84951279894f0c8245112a95218e67d8059fc6f6b88aea1372d18323e6bc`,
+  `2a3dec027efe46e0e6439a0280ce1df9182fe1a063d25143f7bd331b2d1ea8ac`,
+  and `436c95a808733d7144604fdd6d733cc1edba6320072f201374a6d331afa3eb8d`.
+  A new two-root
+  replay again used 600 isolated processes and 720 real CatBoost fits; both
+  roots reached `GLOBAL_EXPERT_FROZEN` with deterministic artifacts. Seventy-six
+  focused tests, all 384 collected repository tests with three expected skips,
+  Ruff, scoped mypy, and independent adversarial review pass. Official target
+  values opened remain zero.
+- Alternatives: Manually sequence the component CLIs; expose all 300 target
+  files to every cell; rely on in-band self-reporting; retain stale D-046 source
+  hashes; publish before private cleanup; or run official labels before the
+  repaired boundary passed.
+- Reversal condition: The one official R3C run finds any input, source, runtime,
+  capability, split, process, receipt, arithmetic, cleanup, or terminal defect.
+  Publish `GLOBAL_FAILED`, preserve the evidence outside Git, and stop without
+  retrying or granting predictive authority.

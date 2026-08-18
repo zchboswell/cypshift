@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R3B synthetic runner accepted; gate `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`; acceptance date 2026-08-18.
+Status: active; R3C official execution boundary accepted; gate `R3C_OFFICIAL_EXECUTION_READY`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -208,9 +208,21 @@ normalizing only validated runtime and peak-memory fields. The locked Linux
 runtime was checked before every fit. Independent adversarial review passes.
 No official target, predictive metric, or leaderboard evidence was opened.
 
-Exact next action: record and integrate this signed R3B milestone, then run the
-single frozen R3C official global experiment and internal surrogate diagnostics
-without redesign or outer-evidence tuning. Preserve
+R3C now has one accepted production-only state machine. It verifies immutable
+inputs, contracts, implementation bundles, both locked runtimes, and the R3A
+feature receipt before target access; gives each fresh cell only its one target
+projection; gives freezers no target payload; and enforces the exact causal
+60-outer then conditional-240-inner path. It removes all private artifacts
+before atomically publishing one exact read-only terminal. A second full
+two-root synthetic replay after these repairs again passed 600 isolated cell
+processes, 720 CatBoost fits, deterministic comparison, the full test suite,
+and independent adversarial review. No official target or score was opened.
+
+Exact next action: integrate the signed R3C execution milestone, copy the
+accepted R2A/R3A artifacts to a durable immutable outside-Git root with receipts
+reverified, then run the single frozen R3C official global experiment and
+internal surrogate diagnostics without redesign, retry, or outer-evidence
+tuning. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
 remains the permanent fallback and R4 must separately freeze the
 oracle/transformation controls.

@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`; no official model,
+TRACE is active at `R3C_OFFICIAL_EXECUTION_READY`; no official model,
 prediction-quality score, or submission is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -199,6 +199,19 @@ ordering, filesystem boundaries, scalar metadata, accounting, fresh-process
 causality, and terminal publication. This proves the execution boundary only:
 all official targets, predictive comparisons, submissions, TDI, anchors, and
 transformations remain unopened or unauthorized.
+
+The production-only R3C execution boundary is now accepted. A thin state
+machine gates the immutable contracts, source bundles, root and research
+runtimes, and accepted R3A feature manifest before target access. Each fresh
+model process sees only one target projection through a read-only view; the
+freezer sees target metadata but no target payload. The wrapper enforces the
+exact 60-outer, causal-score, conditional-240-inner sequence, keeps all work
+private, removes private artifacts before one atomic no-replace terminal
+publication, and records the complete input and implementation receipt chain.
+An additional two-root replay again passed 600 isolated cell processes and 720
+real CatBoost fits with deterministic artifacts, focused and full test suites,
+and independent adversarial review. This is still implementation evidence only:
+official targets and prediction-quality evidence remain unopened.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over

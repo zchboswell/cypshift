@@ -84,6 +84,18 @@ _COUNT_FIELDS = frozenset(
 )
 
 
+def _validate_source_bundle(
+    expected: str | None, observed: str, *, synthetic: bool, label: str
+) -> None:
+    if synthetic and expected is None:
+        return
+    _require(
+        isinstance(expected, str) and _is_sha(expected),
+        f"{label} source receipt is required",
+    )
+    _require(expected == observed, f"{label} source receipt differs")
+
+
 def _source_bundle_sha(paths: Sequence[Path]) -> str:
     root = _io.ROOT
     return cast(
@@ -482,6 +494,7 @@ def _freeze(
     synthetic: bool = False,
     contract_path: Path = V5,
     parent_contract_path: Path = V4,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     _require(stage in ("outer", "inner"), "freeze stage differs")
     _require(
@@ -490,6 +503,12 @@ def _freeze(
     )
     freezer_source_sha = _source_bundle_sha(
         [Path(__file__), Path(__file__).with_name("r3b_cell_io.py")]
+    )
+    _validate_source_bundle(
+        expected_source_bundle_sha256,
+        freezer_source_sha,
+        synthetic=synthetic,
+        label="freezer",
     )
     _active_contract, parent_contract, contract_sha, parent_sha = _contract_receipts(
         synthetic=synthetic,

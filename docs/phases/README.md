@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`. The
+Phase 1 TRACE is active at `R3C_OFFICIAL_EXECUTION_READY`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -30,9 +30,13 @@ freezer receipts; it does not change the experiment or authorize modeling.
 The full v5 implementation has passed adversarial synthetic replay and
 independent review: two fresh roots used 600 isolated cell processes for 720
 real CatBoost fits and reached the same frozen terminal status with deterministic
-artifacts. This grants implementation evidence only, not predictive evidence.
-The next gate is the single frozen R3C official global experiment; no redesign,
-submission, anchor, transformation, or TDI work is authorized there.
+artifacts. The production R3C wrapper additionally enforces one-target cell
+views, zero-target freezer views, accepted source/runtime receipts, exact causal
+stage order, private cleanup, and one no-replace terminal publication; a fresh
+two-root 720-fit replay and independent audit pass. This grants implementation
+evidence only, not predictive evidence. The next gate is the single frozen R3C
+official global experiment; no redesign, submission, anchor, transformation, or
+TDI work is authorized there.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

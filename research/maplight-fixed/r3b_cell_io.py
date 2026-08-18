@@ -804,7 +804,6 @@ def _validate_target_receipts(
         key = (stage, endpoint, repeat, outer, inner)
         _require(key not in seen, "duplicate target receipt context")
         seen.add(key)
-        path = _rooted_path(root, str(receipt["relative_path"]))
         _require(
             all(_is_sha(receipt[name]) for name in ("sha256", "identity_sha256")),
             "target receipt hash differs",
@@ -813,7 +812,13 @@ def _validate_target_receipts(
             type(receipt["rows"]) is int and receipt["rows"] >= 0,
             "target row count differs",
         )
-        paths.append((path, str(receipt["sha256"])))
+        if open_payload:
+            paths.append(
+                (
+                    _rooted_path(root, str(receipt["relative_path"])),
+                    str(receipt["sha256"]),
+                )
+            )
     _require(seen == TARGET_CONTEXTS, "target receipt contexts differ")
     if open_payload:
         for path, expected in paths:

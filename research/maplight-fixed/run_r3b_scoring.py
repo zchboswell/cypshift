@@ -83,6 +83,7 @@ def _main() -> int:
     outer.add_argument("--sealed-manifest-sha256", required=True)
     outer.add_argument("--preflight-receipt", type=Path, required=True)
     outer.add_argument("--preflight-receipt-sha256", required=True)
+    outer.add_argument("--expected-source-bundle-sha256", required=True)
     final = sub.add_parser("final")
     final.add_argument("--outer-stage-root", type=Path, required=True)
     final.add_argument("--inner-root", type=Path, required=True)
@@ -90,6 +91,7 @@ def _main() -> int:
     final.add_argument("--output-root", type=Path, required=True)
     final.add_argument("--inner-manifest-sha256", required=True)
     final.add_argument("--sealed-manifest-sha256", required=True)
+    final.add_argument("--expected-source-bundle-sha256", required=True)
     args = parser.parse_args()
     try:
         if args.stage == "outer":
@@ -102,6 +104,7 @@ def _main() -> int:
                 sealed_manifest_sha256=args.sealed_manifest_sha256,
                 preflight_receipt=args.preflight_receipt,
                 preflight_receipt_sha256=args.preflight_receipt_sha256,
+                expected_source_bundle_sha256=args.expected_source_bundle_sha256,
             )
         else:
             result = run_final(
@@ -111,6 +114,7 @@ def _main() -> int:
                 output_root=args.output_root,
                 inner_manifest_sha256=args.inner_manifest_sha256,
                 sealed_manifest_sha256=args.sealed_manifest_sha256,
+                expected_source_bundle_sha256=args.expected_source_bundle_sha256,
             )
     except R3BScoringError as error:
         print(f"R3B scoring rejected: {error}", file=sys.stderr)

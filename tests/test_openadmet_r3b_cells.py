@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import io
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -227,6 +228,92 @@ def test_target_receipt_happy_path_uses_named_model_rows(tmp_path: Path) -> None
         runner.V4_SHA256,
     )
     assert result == target_rows
+
+
+def test_cell_view_opens_only_selected_target(tmp_path: Path) -> None:
+    root, public_sha = _public_fixture(tmp_path)
+    keep = root / "outer_targets/CYP1A2/repeat-0/outer-0.csv"
+    for path in sorted((root / "outer_targets").rglob("*.csv")):
+        if path != keep:
+            path.unlink()
+    for path in sorted((root / "inner_targets").rglob("*.csv")):
+        path.unlink()
+    shutil.rmtree(root / "inner_targets")
+    _seal(root)
+    public, model_rows, receipts, loaded_sha = runner._load_public(
+        root, public_sha, synthetic=True, verify_target_payloads=False
+    )
+    assert public["model_rows"]["rows"] == len(model_rows)
+    assert len(receipts) == 300
+    assert loaded_sha == public_sha
+    target = receipts[0]
+    assert (
+        runner._verify_target(
+            root,
+            target,
+            str(target["endpoint"]),
+            str(target["stage"]),
+            int(target["repeat"]),
+            int(target["outer_fold"]),
+            None,
+            model_rows,
+            runner._group_sha(public, synthetic=True),
+            str(target["cell_id"]),
+            runner.V5_SHA256,
+            runner._fold_index(public_sha),
+        )
+        == []
+    )
+
+
+def test_freezer_metadata_view_does_not_open_target_payloads(tmp_path: Path) -> None:
+    root, public_sha = _public_fixture(tmp_path)
+    for path in sorted(root.rglob("*.csv")):
+        if "targets" in path.parts:
+            path.unlink()
+    shutil.rmtree(root / "outer_targets")
+    shutil.rmtree(root / "inner_targets")
+    _seal(root)
+    _public, model_rows, receipts, loaded_sha = runner._freezer._load_public(
+        root, public_sha, synthetic=True, verify_target_payloads=False
+    )
+    assert len(model_rows) == 45
+    assert len(receipts) == 300
+    assert loaded_sha == public_sha
+
+
+def test_selected_cell_target_still_requires_payload(tmp_path: Path) -> None:
+    root, public_sha = _public_fixture(tmp_path)
+    _seal(root)
+    _public, model_rows, receipts, _ = runner._load_public(
+        root, public_sha, synthetic=True, verify_target_payloads=False
+    )
+    target = receipts[0]
+    _unseal(root)
+    (root / str(target["relative_path"])).unlink()
+    _seal(root)
+    with pytest.raises(runner.R3BError, match="regular file"):
+        runner._verify_target(
+            root,
+            target,
+            str(target["endpoint"]),
+            str(target["stage"]),
+            int(target["repeat"]),
+            int(target["outer_fold"]),
+            None,
+            model_rows,
+            runner._group_sha(_public, synthetic=True),
+            str(target["cell_id"]),
+            runner.V5_SHA256,
+            runner._fold_index(public_sha),
+        )
+
+
+def test_production_source_receipt_is_required() -> None:
+    with pytest.raises(runner.R3BError, match="source receipt is required"):
+        runner._validate_source_bundle(
+            None, "a" * 64, synthetic=False, label="cell runner"
+        )
 
 
 def test_target_rows_must_be_sorted_and_receipt_path_exact(tmp_path: Path) -> None:

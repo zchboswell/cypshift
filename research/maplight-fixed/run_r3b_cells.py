@@ -274,6 +274,7 @@ _verify_target = _freezer._verify_target
 freeze_inner = _freezer.freeze_inner
 _group_sha = _freezer._group_sha
 _source_bundle_sha = _freezer._source_bundle_sha
+_validate_source_bundle = _freezer._validate_source_bundle
 _contains_forbidden = _freezer._contains_forbidden
 freeze_outer = _freezer.freeze_outer
 
@@ -357,6 +358,7 @@ def run_cell(
     synthetic: bool = False,
     contract_path: Path = V5,
     parent_contract_path: Path = V4,
+    expected_source_bundle_sha256: str | None = None,
 ) -> Path:
     """Run exactly one outer or inner model cell in the current fresh process."""
     _require(
@@ -382,6 +384,12 @@ def run_cell(
             Path(__file__).with_name("r3b_cell_io.py"),
             Path(__file__).with_name("r3b_cell_freezer.py"),
         ]
+    )
+    _validate_source_bundle(
+        expected_source_bundle_sha256,
+        runner_source_sha,
+        synthetic=synthetic,
+        label="cell runner",
     )
     scope = (
         OUTER_SCOPE
@@ -770,6 +778,7 @@ def _main() -> int:
     cell.add_argument("--model-public-manifest-sha256", required=True)
     cell.add_argument("--preflight-receipt", type=Path, required=True)
     cell.add_argument("--output-root", type=Path, required=True)
+    cell.add_argument("--expected-source-bundle-sha256", required=True)
     cell.add_argument("--inner-selection-token", type=Path)
     for name, stage in (("freeze-outer", "outer"), ("freeze-inner", "inner")):
         p = sub.add_parser(name)
@@ -779,6 +788,7 @@ def _main() -> int:
         p.add_argument("--model-public-manifest-sha256", required=True)
         p.add_argument("--preflight-receipt", type=Path, required=True)
         p.add_argument("--feature-manifest-sha256", required=True)
+        p.add_argument("--expected-source-bundle-sha256", required=True)
         p.add_argument("--inner-selection-token", type=Path, required=stage == "inner")
     args = parser.parse_args()
     if args.command == "cell":
@@ -795,6 +805,7 @@ def _main() -> int:
             preflight_receipt=args.preflight_receipt,
             output_root=args.output_root,
             inner_selection_token=args.inner_selection_token,
+            expected_source_bundle_sha256=args.expected_source_bundle_sha256,
         )
     elif args.command == "freeze-outer":
         freeze_outer(
@@ -804,6 +815,7 @@ def _main() -> int:
             model_public_manifest_sha256=args.model_public_manifest_sha256,
             preflight_receipt=args.preflight_receipt,
             feature_manifest_sha256=args.feature_manifest_sha256,
+            expected_source_bundle_sha256=args.expected_source_bundle_sha256,
         )
     else:
         freeze_inner(
@@ -814,6 +826,7 @@ def _main() -> int:
             preflight_receipt=args.preflight_receipt,
             feature_manifest_sha256=args.feature_manifest_sha256,
             inner_selection_token=args.inner_selection_token,
+            expected_source_bundle_sha256=args.expected_source_bundle_sha256,
         )
     return 0
 

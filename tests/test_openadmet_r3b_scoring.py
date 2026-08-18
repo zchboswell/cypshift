@@ -18,10 +18,70 @@ assert spec and spec.loader
 r3b = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = r3b
 spec.loader.exec_module(r3b)
+manifest = sys.modules["r3b_scoring_manifest"]
+terminal = sys.modules["r3b_scoring_terminal"]
 
 
 def _sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def test_production_receipt_maps_bind_values_and_order() -> None:
+    source = terminal._source_receipts(False)
+    for stage in (
+        "outer_freeze",
+        "outer_score",
+        "inner_token",
+        "final_score",
+        "terminal_publish",
+    ):
+        terminal._record_source(source, stage)
+    assert (
+        manifest._validate_source_receipts(
+            source, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+        == source
+    )
+    mutated = dict(source)
+    mutated["preflight"] = source["outer_scorer"]
+    with pytest.raises(r3b.R3BScoringError, match="provenance"):
+        manifest._validate_source_receipts(
+            mutated, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+    reordered = {key: source[key] for key in reversed(tuple(source))}
+    with pytest.raises(r3b.R3BScoringError, match="order"):
+        manifest._validate_source_receipts(
+            reordered, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+    nonhex = dict(source)
+    nonhex["cell_runner"] = "z" * 64
+    with pytest.raises(r3b.R3BScoringError, match="cell_runner"):
+        manifest._validate_source_receipts(
+            nonhex, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+    wrong_model = dict(source)
+    wrong_model["cell_runner"] = "0" * 64
+    with pytest.raises(r3b.R3BScoringError, match="model source"):
+        manifest._validate_source_receipts(
+            wrong_model, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+
+
+def test_production_verified_receipts_require_frozen_v3_inputs() -> None:
+    values = {key: "a" * 64 for key in manifest._VERIFIED_KEYS}
+    values["direct_observations_sha256"] = manifest._DIRECT_OBSERVATIONS_SHA256
+    values["group_folds_sha256"] = manifest._GROUP_FOLDS_SHA256
+    assert (
+        manifest._validate_verified_receipts(
+            values, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
+        == values
+    )
+    values["group_folds_sha256"] = "b" * 64
+    with pytest.raises(r3b.R3BScoringError, match="frozen v3"):
+        manifest._validate_verified_receipts(
+            values, status="GLOBAL_EXPERT_FROZEN", synthetic=False
+        )
 
 
 def _json(data: object) -> bytes:
