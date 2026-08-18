@@ -228,16 +228,21 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The additive R4 v3 transformation-coverage contract is now frozen in
-[`transformation_coverage_contract_v3.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v3.json)
-at SHA-256 `f5e18626...`; it preserves v1 (`d4c999e6...`) and v2
-(`a13adee5...`) as immutable history but supersedes both for implementation.
+The additive R4 v4 transformation-coverage contract is now frozen in
+[`transformation_coverage_contract_v4.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v4.json)
+at SHA-256 `cacd1f77...`; it preserves v1 (`d4c999e6...`), v2
+(`a13adee5...`), and v3 (`f5e18626...`) as immutable history but supersedes
+them for implementation.
 V2 repaired joint single/double-cut ranking and reusable transformation IDs.
 V3 additionally makes stereo extraction executable: it freezes potential-
 stereo discovery, CIP values, enhanced/unsupported-stereo rejection, exact
 full-graph maps, automorphism consensus, isotope/atom-map/implicit-hydrogen
-state, and directional dative bonds. Its extraction-spec receipt is
-`3d0b0976...`. The
+state, and directional dative bonds. V4 repairs the two contradictions exposed
+by synthetic implementation: the narrow tetrahedral hydrogen partition used
+only for reference maps and the no-candidate sentinel required when ordinary
+embedding enumeration hits its cap. It also freezes graph-first handling of
+unsupported stereo, complete bond-stereo reconstruction, query rank, and exact
+publication receipts. Its extraction-spec receipt is `59e3bd33...`. The
 label-safe boundary is unchanged: campaign truth, selector identity, query
 availability, target magnitudes, blinded test chemistry, TDI, predictions, and
 metrics remain unopened and unauthorized. Independent scientific review passes.

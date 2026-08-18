@@ -79,16 +79,20 @@ This is internal surrogate evidence only: official ST-RAE, a deployable model,
 submission, TDI, anchors, transformations, and transduction remain outside its
 authority.
 
-[`transformation_coverage_contract_v3.json`](transformation_coverage_contract_v3.json)
+[`transformation_coverage_contract_v4.json`](transformation_coverage_contract_v4.json)
 is the implementation authority for R4 before any transformation fit or score.
 Its SHA-256 is
-`f5e1862682c1d2a3e34fcf530c9aad42cbd4e4538488eca1a4c5508443f61db5`
+`cacd1f77215e36a17f03553680d71263425638c290a39d33c397e43b2c35550f`
 and its extraction-spec receipt is
-`3d0b097602008457ffcefd4a0cf93673b5522112f91637634d162f5e619ff202`.
-It preserves the v1 (`d4c999e6...`) and v2 (`a13adee5...`) contracts as
+`59e3bd3390658bab854be52f88ef7de0164aae6e99ad48b0b0feb04c68669950`.
+It preserves the v1 (`d4c999e6...`), v2 (`a13adee5...`), and v3
+(`f5e18626...`) contracts as
 immutable history. V2 repaired the unreachable double-cut path and pair-
 specific exact IDs; v3 closes the remaining stereo-discovery, CIP,
-automorphism, implicit-hydrogen, atom-map, and directed-bond ambiguity.
+automorphism, implicit-hydrogen, atom-map, and directed-bond ambiguity. V4
+resolves the narrow reference-H, embedding-cap, graph-first unsupported-stereo,
+bond-stereo reconstruction, query-rank, and publication mechanics found during
+synthetic implementation.
 The contract binds the accepted R2/R3 receipts, parses only direct availability
 state, uses public episode membership plus the mask anchor prefix, and keeps
 campaign truth, selectors, query availability, target magnitudes, blinded test,
@@ -96,8 +100,8 @@ TDI, predictions, and metrics closed. It specifies deterministic RDKit
 single/double-cut extraction, ambiguity and invariance policy, structural-only
 outputs, and valid-only CYP3A4/local and selected-episode structural support.
 Supported coverage may authorize a separate oracle contract only; R4 itself
-authorizes no fit. Twenty-seven focused v1/v2/v3 tests and independent
-scientific review pass.
+authorizes no fit. Twenty-seven focused v1/v2/v3 tests and 37 focused v1-v4
+contract tests pass with independent scientific review.
 
 The synthetic least-privilege projection implementation is accepted for its
 boundary only. It verifies five source receipts before parse, retains exactly
@@ -106,7 +110,7 @@ episode joins, and atomically publishes six canonical read-only files. Its I/O
 and projector source SHA-256 values are `820a83b3...` and `0e094712...`;
 thirty-seven focused tests plus independent correctness and minimality reviews
 pass. No official input was opened. Production use remains blocked until a
-separate gate binds R4 v3, the accepted R2B/R3A manifests and leaf receipts,
+separate gate binds R4 v4, the accepted R2B/R3A manifests and leaf receipts,
 and the exact implementation sources.
 
 The July 29 announcement and August 17 launch post are official prose receipts

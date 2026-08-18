@@ -41,11 +41,13 @@ component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
 evidence, not official ST-RAE, a deployable model, or a submission. Additive R4
-v3 now supersedes v1/v2 for implementation while preserving both as immutable
-history. It freezes label-safe direct-state and structural projections, joint
+v4 now supersedes v1/v2/v3 for implementation while preserving them as
+immutable history. It freezes label-safe direct-state and structural projections, joint
 single/double-cut chemistry, reusable transformation IDs, exact CIP/automorphism
 stereo records, ambiguity/invariance rules, structural-only row outputs, and
-valid-only support thresholds. It opens
+valid-only support thresholds. V4 additionally resolves the implementation-
+found tetrahedral reference-H, embedding-cap, graph-first unsupported-stereo,
+bond-stereo reconstruction, query-rank, and publication-receipt mechanics. It opens
 no campaign truth, selector/scorable state, target magnitude, test, TDI,
 prediction, or metric.
 The least-privilege projection implementation has independently passed 37

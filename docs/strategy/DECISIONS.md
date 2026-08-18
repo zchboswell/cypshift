@@ -1523,5 +1523,36 @@
   chemistry, coverage, and publication in one unreviewable milestone.
 - Reversal condition: Any receipt-before-parse, opaque-field, join,
   determinism, path, atomic-publication, or authority defect revokes this
-  implementation evidence. Before official use, separately bind R4 v3, the
+  implementation evidence. Before official use, separately bind R4 v4, the
   accepted R2B/R3A manifests and leaves, and exact implementation receipts.
+
+## D-053 — Supersede R4 v3 with the corrected v4 extraction contract
+
+- Date: 2026-08-18
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`
+- Decision: Preserve v1/v2/v3 as immutable history, but use the self-contained
+  v4 contract as the sole R4 implementation authority. Keep the scientific
+  populations, support gates, output authority, and label-safe boundary
+  unchanged while repairing only contradictions exposed by executable
+  synthetic witnesses.
+- Evidence: V4 narrowly permits the RDKit reference-round-trip hydrogen
+  partition only at supported tetrahedral centers, defines the no-candidate
+  S2 sentinel for a capped embedding search, makes unsupported stereo C3 only
+  after non-stereo graph identity, requires full bond direction/stereo remapping
+  during variable reconstruction, and freezes query-rank and publication
+  receipts. Its contract SHA-256 is
+  `cacd1f77215e36a17f03553680d71263425638c290a39d33c397e43b2c35550f`;
+  its extraction-spec receipt is
+  `59e3bd3390658bab854be52f88ef7de0164aae6e99ad48b0b0feb04c68669950`.
+  Thirty-seven focused v1-v4 contract tests, strict duplicate-key JSON,
+  extraction-receipt recomputation, Ruff, formatting, and independent
+  scientific review pass. No official input, target, fit, prediction, metric,
+  test, TDI, submission, or transductive operation occurred.
+- Alternatives: Silently weaken exact graph matching in code; serialize a
+  truncated embedding set as valid; discard graph-changing ordinary pairs that
+  carry unrelated unsupported stereo; lose E/Z state during reconstruction; or
+  open official coverage before these mechanics are exact.
+- Reversal condition: Synthetic extraction cannot reproduce the v4 receipt,
+  graph-first precedence, bond-stereo reconstruction, cap sentinel, IDs, or
+  reversal invariants. Preserve the blocker, issue a versioned repair, and keep
+  official coverage inputs closed.
