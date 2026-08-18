@@ -11,6 +11,26 @@ The retained result is a locally reproduced fixed MapLight plus GIN comparator.
 It is a global molecular reference for the future series-first experiment, not
 an original `cypshift` architecture or a clinical model.
 
+## OpenADMET TRACE source rows
+
+The receipt-bound R1 adapter validates the pinned dataset revision, all five
+CSV hashes, exact headers, and exact row counts before writing any output. It
+emits deterministic `molecules_input.csv`, lossless `source_rows.csv`, and a
+scope-limiting `manifest.json`; it preserves raw cells, missingness, repeated
+single-concentration rows, and source provenance without deriving assay labels
+or scientific semantics. Official CSVs remain outside Git.
+
+```console
+uv run python scripts/prepare_openadmet_cyp.py \
+  --dataset-root /path/to/openadmet-dataset \
+  --output-directory /path/to/openadmet-r1 \
+  --source-revision 85f8b358d0a2056a98b990dd75d3b3ec9247862b
+```
+
+The next authorized step is family-topology auditing from these records. The
+live scorer, TDI derivation/order, interval semantics, and transductive
+permissions remain unresolved.
+
 `public_sources.json` is the tracked source-of-truth for Phase 0.5 public data.
 It pins source revisions, URLs, licenses, file sizes, SHA-256 digests, row
 counts, fixed TDC splits, dated leaderboard anchors, and external-model files.

@@ -1,12 +1,12 @@
 # Project state
 
-Last updated: 2026-08-17
+Last updated: 2026-08-18
 
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the records-only gate `R0_CONTRACT_FROZEN`; no modeling or
-scoring is active.
+TRACE is active at the records-only gate `R1_SOURCE_ROWS_PREPARED`; no
+modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -30,6 +30,13 @@ also fail closed.
 - row-aligned predictions, evidence cards, manifests, and static reports;
 - a reproduced MapLight fixed-feature and pretrained-GIN comparator;
 - a complete record of positive, negative, and blocked experiments.
+
+The canonical OpenADMET source-row adapter is now implemented. It validates the
+pinned dataset revision, all five CSV receipts, exact headers and row counts
+before emitting deterministic `molecules_input.csv`, lossless `source_rows.csv`,
+and a scope-limiting manifest. It preserves every modality, missing string,
+repeated single-concentration row, raw structure, and source occurrence; it does
+not derive labels or assay semantics.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -208,12 +215,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. The receipt-bound R0
-checker has passed its official-source and synthetic drift gates. Implement only
-the canonical OpenADMET observation adapter next, preserving direct, TDI,
-single-concentration, and Emax source states plus unresolved metric, validator,
-TDI-order, and permission behavior. Do not fit, score, submit, or use
-transductive test relationships. After the adapter is executable and reviewed,
-audit family topology before any parent-relative experiment.
+checker and R1 source-row adapter gates have passed their synthetic checks; the
+adapter also preserved all 35,450 official source rows and 6,897 unique molecule
+names in a byte-identical repeat run.
+Audit family topology from the prepared source rows before any parent-relative
+experiment. Do not fit, score, submit, derive TDI labels, or use transductive
+test relationships; unresolved metric, validator, TDI-order, interval, and
+permission behavior remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under

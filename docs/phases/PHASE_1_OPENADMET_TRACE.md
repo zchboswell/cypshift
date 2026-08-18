@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active, records/contracts only; gate `R0_CONTRACT_FROZEN`; freeze date 2026-08-17.
+Status: active, records/contracts only; gate `R1_SOURCE_ROWS_PREPARED`; freeze date 2026-08-17.
 
 ## Context capsule
 
@@ -70,16 +70,21 @@ fails closed and any later adapter must do the same.
 Gate evidence: `scripts/check_openadmet_cyp_contract.py` passes the current
 official roots and freshly fetched launch HTML, while focused synthetic tests
 cover exact pass, hash, CSV header/row, revision, prose, and submission
-contract drift.
+contract drift. The canonical source-row adapter additionally validates all
+five CSV receipts before writing deterministic molecule and row artifacts;
+focused synthetic tests cover byte determinism, missing strings, repeated
+rows, output refusal, receipt drift, exact-SMILES conflicts, and test/training
+name overlap. Its official-source acceptance run preserved all 35,450 rows and
+6,897 unique molecule names, and a repeated run produced byte-identical outputs.
 
 Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-Exact next action: implement the canonical OpenADMET observation adapter for
-direct and TDI source states; stop on contract drift. Preserve unresolved
-scorer, TDI-order, and permission behavior; `global_TDI` remains the permanent
-fallback.
+Exact next action: audit family topology from the prepared source rows; stop on
+contract drift or any family/identity ambiguity. Preserve unresolved scorer,
+TDI-order, interval, and permission behavior; `global_TDI` remains the
+permanent fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.
