@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R2B episodes, masks, and viability accepted; gate `R2B_EPISODES_MASKS_VIABILITY_ACCEPTED`; acceptance date 2026-08-18.
+Status: active; R3 global experiment contract frozen; gate `R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -140,12 +140,23 @@ anchors were rejected, and fold scopes were made explicit. CYP3A4 is supported
 at 95 components/473 pairs; 1A2, 2C9, and 2D6 are underpowered with zero local
 weight. This is artifact authority, not validation or prediction evidence.
 
-Exact next action: freeze the smallest R3 experiment/evaluation contract for a
-strong global direct comparator and CYP3A4 oracle-anchor test. Preserve the R2B
-exclusions, cross-fit every learned choice, and predeclare global, copy-anchor,
-nearest-neighbor, generic-difference, wrong-anchor, and shuffled-transformation
-controls before fitting. Preserve unresolved scorer, TDI-order, interval, and
-permission behavior; `global_TDI` remains the permanent fallback.
+R3 now freezes the global-only direct fallback contract in
+[`global_experiment_contract.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract.json).
+It preserves the R2B exclusions and family proxy, limits targets to finite
+reported central direct points, freezes endpoint median, Morgan 1-NN, Morgan
+CatBoost, and fixed MapLight, and uses provisional component-macro MAE only for
+internal global selection. Oracle anchors, transformations, inferred anchors,
+TDI, submissions, and official ST-RAE remain outside R3 authority. If the
+Linux MapLight overlay cannot reproduce the pinned signed-int8 and four-column
+NaN behavior without semantic drift, MapLight is disqualified and Morgan
+remains the only eligible learned candidate.
+
+Exact next action: implement the reviewed R3 global-only comparator and its
+receipt-bound Linux overlay, projections, OOF artifacts, and internal
+surrogate-score diagnostics before any oracle or transformation work. Preserve
+unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
+remains the permanent fallback and R4 must separately freeze the
+oracle/transformation controls.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.

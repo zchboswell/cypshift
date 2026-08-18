@@ -1071,3 +1071,42 @@
   chemistry, family containment, projection, determinism, authority, or
   non-anchor label exposure drift. Preserve the blocker and stop before fitting
   or scoring.
+
+## D-039 — Freeze the R3 global direct experiment contract
+
+- Date: 2026-08-18
+- Status: accepted; contract-only R3 gate
+- Decision: Freeze
+  `cypshift.openadmet_cyp_2026.global_experiment_contract.v1` at
+  `R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN`. Split the mandatory direct global
+  fallback from later oracle/transformation work. Keep
+  `GLOBAL_FAMILY_HOLDOUT` on the unchanged D-032 component proxy, target only
+  finite reported central direct pIC50 points, and freeze four systems:
+  endpoint median, Morgan 1-NN, Morgan CatBoost, and fixed MapLight. Use a
+  CPU-only CatBoost 1.2.1 Linux overlay for both learned candidates, and if
+  the pinned MapLight overlay cannot replay the signed-int8 and four-column
+  NaN contracts without semantic drift, disqualify MapLight and retain Morgan
+  as the only eligible learned candidate. Keep official ST-RAE, TDI,
+  submissions, transduction, anchor exposure, and all transformation/oracle
+  logic unauthorized. A successful R3 implementation authorizes only the
+  frozen global direct OOF/model/parent-completion artifacts and internal
+  surrogate metrics. R4 must separately freeze oracle/transformation controls
+  before local TRACE work.
+- Evidence: R2B granted artifact authority only and left all modeling blocked.
+  The active phase text still bundled oracle work into R3, while the restored
+  blueprint and review feedback required a smaller, global-only gate first.
+  The accepted contract binds the R2A/R2B receipts, preserves D-032 as a
+  conservative reconstructed-family proxy, names the Linux MapLight
+  compatibility prerequisite, forbids GIN, generic-difference, and broad
+  search, and keeps the implementation below any official-metric or submission
+  boundary. Focused static tests freeze the receipt chain, target semantics,
+  frozen systems, firewall, outputs, budget, metrics, acceptance logic, and
+  inherited-R2B authority.
+- Alternatives: Bundle the CYP3A4 oracle contract into R3; inherit the old
+  macOS comparator environment claim on Linux; reintroduce GIN or generic
+  molecular-difference baselines before the global fallback is frozen; or use
+  official ST-RAE names before validator parity is established.
+- Reversal condition: A pre-implementation review, synthetic implementation,
+  or official replay finds receipt, runtime, feature-version, split, firewall,
+  metric, determinism, or authority drift. Preserve the blocker and issue a
+  versioned replacement before fitting.

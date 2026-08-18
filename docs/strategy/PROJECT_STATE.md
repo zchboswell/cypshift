@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R2B_EPISODES_MASKS_VIABILITY_ACCEPTED`; no modeling or
+TRACE is active at `R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN`; no modeling or
 scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -103,6 +103,20 @@ passed after binding oracle inputs to the manifest, rejecting out-of-component
 anchor rows, and recording exact fold scopes. Artifact authority is limited to
 folds, episodes, episode labels, and topology viability; validation, models,
 metrics, TDI, predictions, submissions, and transduction remain unauthorized.
+
+The R3 global direct experiment contract is now frozen in
+[`global_experiment_contract.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract.json).
+It splits the mandatory direct global fallback from later oracle and
+transformation work, keeps `GLOBAL_FAMILY_HOLDOUT` on the unchanged D-032
+component proxy, targets only finite reported central direct pIC50 values, and
+freezes four systems: endpoint median, Morgan 1-NN, Morgan CatBoost, and fixed
+MapLight. The contract keeps official ST-RAE, submissions, TDI, transduction,
+and all anchor/transform logic unauthorized; it uses provisional
+component-macro MAE only for internal global selection. The Linux x86_64
+MapLight overlay is a gated retained candidate, not inherited proof from the
+earlier macOS run: if the pinned overlay cannot pass without semantic drift,
+MapLight is disqualified and Morgan remains the only eligible learned
+candidate.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -281,14 +295,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. R0, R1, topology, R2A,
-and R2B have passed their applicable synthetic, official, and independent
-review gates. Freeze the smallest R3 experiment/evaluation contract for the
-global direct comparator and CYP3A4 oracle-anchor test before fitting anything;
-it must enforce the accepted episode exclusions, cross-fitting, fixed controls,
-and no-model authority boundary until approved. Do not score, submit, derive
-TDI labels, or use transductive test relationships; unresolved metric,
-validator, TDI-order, interval, and permission behavior remains unchanged.
-`TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
+R2B, and the R3 contract freeze have passed their applicable gates. Implement
+the frozen R3 global direct comparator only: verify the Linux CatBoost/MapLight
+overlay, build the label-free feature and target projections, generate frozen
+global OOF predictions for the four predeclared systems, and score only the
+provisional component-macro MAE diagnostics named in the contract. Do not
+expose anchors, fit transformation logic, derive TDI labels, score with
+official ST-RAE, submit, or use transductive test relationships. R4 must
+freeze oracle/transformation controls separately before any local TRACE
+experiment. `TDI-TRACE` remains deferred and `global_TDI` is the permanent
+fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

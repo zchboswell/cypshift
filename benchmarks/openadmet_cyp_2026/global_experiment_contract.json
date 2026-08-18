@@ -1,0 +1,300 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v1",
+  "freeze_date": "2026-08-18",
+  "gate": "R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN",
+  "status": "contract_only_not_implemented",
+  "base_commit": "291ad3274e0cb1188189d314f6063eac32429028",
+  "purpose": "Freeze the smallest direct-inhibition global comparator and its family-held-out evaluation before any feature generation or fit.",
+  "hypothesis": "A compact global molecular model can beat an endpoint median and a one-nearest-molecule control on reconstructed-family holdout, providing the mandatory fallback for TRACE.",
+  "targeted_failure_modes": [
+    "V1 molecule or duplicate leakage",
+    "V2 reconstructed-family leakage",
+    "V3 non-cross-fitted prediction use",
+    "V4 unstable split or nondeterministic fit",
+    "V6 metric mismatch",
+    "C6 feature/version drift",
+    "M2 interval or censoring misrepresentation",
+    "P1/P6 environment or artifact drift",
+    "E1 out-of-domain global model",
+    "S4 activity-cliff oversmoothing"
+  ],
+  "inputs": {
+    "validation_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3"
+    },
+    "r2b_manifest": {
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_artifacts.v1",
+      "sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8"
+    },
+    "direct_observations": {
+      "sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+      "authority": "accepted R2A input; values are opened only by the trusted target projector"
+    },
+    "group_folds": {
+      "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+      "authority": "accepted R2A input and unchanged D-032 component assignments"
+    },
+    "maplight_method": {
+      "source_contract_sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8",
+      "stage_a_contract_sha256": "e20985ecabb1aa9ceaeddc3f81ad15dc60b194e250e28de934c12a6bfb10f710",
+      "signed_int8_contract_sha256": "ace395a195016854f81c96777921a2fad4c2f638927d2ad15c452b5ecd915ea8",
+      "nan_contract_sha256": "52f01f93470cfe461e7ee9fed0ff3a06d7362aceaef343da0c5840d2a74bea09",
+      "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+    },
+    "raw_data_policy": "Official data and generated outputs remain outside Git. Every process verifies the receipt chain before reading a label or retaining a feature matrix."
+  },
+  "scope": {
+    "protocol": "GLOBAL_FAMILY_HOLDOUT",
+    "group_unit": "unchanged D-032 similarity component hash, used as a conservative reconstructed-family proxy",
+    "group_semantics": "The components have grouping and fold authority only; they are not asserted to be true lineage, mechanism families, or complete analog families.",
+    "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+    "target": "reported central direct pIC50 point",
+    "population": {
+      "molecules": 4905,
+      "molecule_endpoint_cells": 19620,
+      "finite_point_targets": 6525,
+      "missing_targets": 13095,
+      "partial_targets": 0,
+      "orphan_auxiliary_targets": 0,
+      "prediction_rule": "Predict all 19,620 molecule-endpoint cells in each repeat; score only the 6,525 finite point targets."
+    },
+    "target_eligibility": "Use a finite reported point only. Missing, interval-only, partial, non-finite, low, high, and std fields never become targets.",
+    "measurement_policy": "Preserve low/high/std and raw state for provenance and diagnostics, but do not call them confidence, credible, censoring, or scoring intervals and do not use interval midpoints.",
+    "folds": {
+      "repeats": 3,
+      "repeat_seeds": [20260810, 20260811, 20260812],
+      "outer_folds": 5,
+      "inner_folds": 4,
+      "outer_scope_pattern": "openadmet-direct-outer-v1",
+      "inner_scope_pattern": "openadmet-direct-inner-v1|outer=<outer_fold>",
+      "assignment": "Read the accepted R2B group_folds artifact; never regenerate topology, reassign a component, or use endpoint availability to choose a fold.",
+      "holdout_rule": "Every molecule, exact duplicate, and D-032 component remains wholly outside its outer validation fold; no anchor is exposed.",
+      "inner_rule": "Inner folds are created only inside each outer training population with the declared scoped seed and never read outer-validation labels.",
+      "shared_assignments": "The same component assignment is used for all four endpoints and every system."
+    },
+    "deferred_protocols": [
+      "ANCHOR_EXPANSION_HOLDOUT",
+      "episode-conditioned prediction",
+      "episode-specific anchor-inclusive global refits",
+      "inferred anchor prediction",
+      "all structural transformation and oracle experiments",
+      "TDI and TDI-TRACE",
+      "fusion, competence gating, and submission generation"
+    ]
+  },
+  "systems": {
+    "selection_policy": "Evaluate every listed system on identical outer rows. If TRACE-G0-MAPL-FIXED is disqualified by the Linux gate, TRACE-C1-MORGAN-CATBOOST becomes the sole eligible learned candidate. Otherwise compare the two learned candidates using synchronized component bootstrap. Select MapLight only when the 95% lower bound of (Morgan MAE - MapLight MAE) is positive; otherwise select Morgan. This learned-candidate selection is frozen before any R4+ work.",
+    "learned_runtime": "Both learned candidates run in the same Linux x86_64 CPU environment pinned by research/maplight-fixed/uv.lock with CatBoost 1.2.1; record the resolved defaults and package versions in the manifest.",
+    "systems": [
+      {
+        "id": "TRACE-C0-ENDPOINT-MEDIAN",
+        "role": "non-learned baseline",
+        "features": "none",
+        "fit": "For each outer training population and endpoint, predict the median of its finite central direct points; no tuning or learned parameters.",
+        "fallback": "The endpoint median is the deterministic fallback for an unavailable nearest neighbor."
+      },
+      {
+        "id": "TRACE-C1-MORGAN-CATBOOST",
+        "role": "learned candidate",
+        "features": "D-032 chiral binary Morgan/ECFP4 fingerprint, radius=2, n_bits=4096, inclusive Tanimoto similarity threshold=0.60 only for NN support diagnostics",
+        "feature_spec_id": "d032-morgan-ecfp4-chiral-binary-4096-v1",
+        "estimator": "catboost.CatBoostRegressor",
+        "constructor_arguments": {
+          "loss_function": "MAE",
+          "random_strength": 2,
+          "random_seed": 1,
+          "task_type": "CPU",
+          "thread_count": 16,
+          "verbose": 0,
+          "allow_writing_files": false
+        },
+        "omitted_arguments": ["eval_set", "early_stopping_rounds", "use_best_model", "iterations", "nan_mode"],
+        "fit_call": "fit(X_outer_train, y_outer_train) with no additional arguments",
+        "prediction_call": "predict(X_outer_validation)",
+        "role_boundary": "The architecture is a compact comparator; TRACE novelty is deferred to a separately contracted transformation unit."
+      },
+      {
+        "id": "TRACE-G0-MAPL-FIXED",
+        "role": "learned candidate and retained MapLight-compatible global fallback",
+        "features": "MapLight fixed 2563-column representation: Morgan count 1024, Avalon count 1024, ErG 315, and the frozen ordered 200-descriptor block",
+        "feature_spec_id": "maplight-fixed-stage-a-v1",
+        "estimator": "catboost.CatBoostRegressor",
+        "constructor_arguments": {
+          "loss_function": "MAE",
+          "random_strength": 2,
+          "random_seed": 1,
+          "task_type": "CPU",
+          "thread_count": 16,
+          "verbose": 0,
+          "allow_writing_files": false
+        },
+        "omitted_arguments": ["eval_set", "early_stopping_rounds", "use_best_model", "iterations", "nan_mode"],
+        "fit_call": "fit(X_outer_train, y_outer_train) with no additional arguments",
+        "prediction_call": "predict(X_outer_validation)",
+        "nan_policy": "Leave nan_mode unset; the Linux receipt must resolve CatBoost 1.2.1 nan_mode=Min. Preserve only the four contracted descriptor NaN columns and reject every other non-finite value.",
+        "rights_boundary": "Use only the pinned, receipt-bound MapLight source and method. GIN is not eligible."
+      },
+      {
+        "id": "TRACE-C2-MORGAN-1NN",
+        "role": "nearest-neighbor activity control",
+        "features": "D-032 chiral binary Morgan/ECFP4 fingerprint, radius=2, n_bits=4096",
+        "rule": "For each validation molecule and endpoint, select exactly one finite-point endpoint-labeled outer-training molecule with maximum Morgan/Tanimoto similarity; break ties by molecule_id ascending and copy its measured central point.",
+        "missing_neighbor": "If no eligible neighbor exists, emit the outer-training endpoint median and applicability=false; never inspect validation values.",
+        "support": "The similarity and molecule_id tie break are deterministic. No top-k averaging, learned weighting, or family-crossing candidate pool is permitted."
+      }
+    ],
+    "forbidden_candidates": ["Ridge", "generic fingerprint-difference model", "GIN or pretrained molecular weights", "broad hyperparameter search", "auxiliary assay targets", "ensemble or stack"]
+  },
+  "maplight_linux_gate": {
+    "required_before_features_or_fits": true,
+    "platform": "Linux x86_64 CPU",
+    "overlay": "Create a receipt-bound compatibility overlay for the pinned method and replay its signed-int8 and NaN contracts in the Linux environment before retaining any real MapLight feature matrix.",
+    "required_receipts": ["package versions and lock hash", "RDKit descriptor ordering", "signed-int8 count behavior", "four-column NaN policy", "CatBoost capability with resolved nan_mode=Min", "CPU-only execution"],
+    "claim_boundary": "The overlay establishes Linux method compatibility only. It does not claim cross-platform byte identity, historic MapLight reproduction, or transfer of old macOS/TDC predictive evidence.",
+    "failure": "If the overlay cannot pass without changing pinned feature semantics, disqualify TRACE-G0-MAPL-FIXED before retaining MapLight features or fitting it, record the blocker in the result and ledger, and continue with Morgan as the only eligible learned candidate. GLOBAL_FAILED applies only if the remaining frozen systems cannot be evaluated cleanly."
+  },
+  "process_firewall": {
+    "trusted_target_projector": {
+      "may_resolve": ["accepted direct_observations.csv", "accepted group_folds.csv", "this contract", "reviewed implementation source"],
+      "must_emit": ["label-free molecule/component/fold feature rows", "cell-specific outer-training target files", "cell-specific inner-training target files", "separately sealed outer and inner scoring truth with central points and reported low/high/std metadata", "receipt manifest"],
+      "must_not_emit_to_feature_or_model_process": ["low/high/std fields", "TDI or auxiliary assay fields", "blinded test rows", "query labels", "anchor identity or values", "measurement provenance beyond IDs and hashes"]
+    },
+    "feature_process": {
+      "may_resolve": ["label-free molecule and raw-structure projection", "D-032 component and fold identifiers", "pinned feature contracts and Linux overlay"],
+      "must_not_resolve": ["any target file", "direct point values", "low/high/std values", "TDI files", "blinded test files", "prediction or score artifacts"],
+      "output": "Rows remain aligned to molecule_id and feature_spec_id; feature generation is deterministic and label-independent."
+    },
+    "model_process": {
+      "may_resolve": ["one cell-specific training-target file", "one label-free feature root", "fold scope and system configuration"],
+      "must_not_resolve": ["outer-validation targets", "inner-held-out targets", "other endpoint labels", "episode truth or anchor masks", "test chemistry or scores"],
+      "prediction_freeze": "Write and hash all outer OOF predictions before the bounded outer scorer opens outer truth. After the outer scorer freezes the winner once, write and hash that winner's inner OOF predictions before the bounded residual scorer opens inner truth."
+    },
+    "scorer": "The evaluator receives row-aligned frozen predictions and only then opens the corresponding validation point projection. No score-driven repair, threshold, feature, or model change is allowed."
+  },
+  "oof_artifacts": {
+    "outer": {
+      "path": "global_oof_predictions.csv",
+      "purpose": "One cross-fitted prediction from every system for every molecule-endpoint cell under each repeat; outer_fold identifies the molecule's single held-out fold. Only finite-point cells are scored.",
+      "columns": ["molecule_id", "endpoint", "component_id", "repeat", "outer_fold", "inner_fold", "scope", "prediction", "applicability_score", "model_id", "feature_spec_id", "split_id"],
+      "inner_fold_value": null,
+      "scope": "openadmet-direct-outer-v1",
+      "row_count": 235440,
+      "row_count_basis": "4 systems x 4,905 molecules x 4 endpoints x 3 repeats; each molecule occurs in exactly one outer validation fold per repeat"
+    },
+    "inner": {
+      "path": "global_inner_oof_predictions.csv",
+      "purpose": "Cross-fitted predictions inside each outer training population for the selected winner's uncertainty and completion support.",
+      "columns": ["molecule_id", "endpoint", "component_id", "repeat", "outer_fold", "inner_fold", "scope", "prediction", "applicability_score", "model_id", "feature_spec_id", "split_id"],
+      "scope": "openadmet-direct-inner-v1|outer=<outer_fold>",
+      "row_count": 235440,
+      "row_count_basis": "4,905 molecules x 4 endpoints x 3 repeats x the four outer contexts in which each molecule is in outer training; one selected winner only"
+    },
+    "required_invariants": ["repeat and scope are explicit", "no fabricated inner_fold on outer rows", "one row identity per molecule_id/endpoint/repeat/outer_fold/model", "all predictions finite", "all applicability values are finite and in [0,1]", "prediction artifacts are byte-deterministic under identical receipts"]
+  },
+  "completion_and_uncertainty": {
+    "completion_states": ["measured_point", "global_oof_completed", "unavailable"],
+    "priority": ["finite measured central point", "matching frozen OOF global prediction", "unavailable"],
+    "outer_training_completion": "For each repeat and outer context, use a measured point when finite; otherwise use the selected winner's matching inner-OOF prediction from that outer-training context.",
+    "final_completion": "Use a measured point when finite; otherwise use the arithmetic mean of the selected winner's three outer-OOF predictions. Use the maximum of their three matched outer-context q90 values as a conservative diagnostic uncertainty.",
+    "interval_policy": "Never use a measured interval without a central point, never take an interval midpoint, and never use a full-training in-sample prediction as a completion.",
+    "uncertainty": {
+      "method": "q90 of absolute residuals from the selected winner's inner OOF predictions",
+      "grouping": "Compute separately within each repeat, outer context, and endpoint from that context's inner-OOF residuals using component-equal weighting; each component contributes equal total mass before q90 is taken.",
+      "conditioning": "No learned conditioning or deep ensemble. Applicability is reported separately.",
+      "fallback": "Use the endpoint q90 from the available inner OOF residuals; fail closed if no finite residual exists.",
+      "diagnostic_band": "prediction plus or minus q90 is a symmetric diagnostic band, never a confidence, credible, or official scoring interval.",
+      "calibration_rule": "Report component-weighted coverage and width. Coverage outside [0.80,0.98] sets UNCERTAINTY_DIAGNOSTIC_ONLY and forbids later uncertainty-driven gating without invalidating the point predictor."
+    }
+  },
+  "evaluation": {
+    "primary_metric": "provisional_component_macro_MAE",
+    "definition": "For each endpoint and repeat, compute each component's mean absolute error over its scored finite-point molecules and then average components equally. The selection statistic is the unweighted macro mean across all four endpoints and three repeats; no large component may dominate.",
+    "diagnostics": ["per-endpoint component-macro MAE", "molecule-macro MAE", "repeat-fold macro cells", "worst-component decile", "activity-cliff slice", "Morgan similarity bins", "applicability and support counts", "reported-bound distance diagnostic"],
+    "repeat_fold_cell_definition": "For each repeat and outer fold, compute the unweighted mean of the per-endpoint component-macro MAEs over the endpoints with at least one scored component in that cell.",
+    "blocked_names": ["official ST-RAE", "interval-hit", "credible interval", "challenge score"],
+    "reported_bound_distance": "A descriptive distance to reported low/high bounds only when a finite central point and both reported bounds exist; it is not official ST-RAE or interval-hit and cannot select a system.",
+    "bootstrap": {
+      "unit": "full D-032 component shared across endpoints and repeats",
+      "method": "paired synchronized component bootstrap with PCG64; draw one multiplicity for each component and reuse it across every method, endpoint, and repeat before recomputing the complete macro statistic",
+      "replicates": 2000,
+      "seed": 20260819,
+      "maximum_attempts": 20000,
+      "interval": "percentile 95% interval and its lower bound",
+      "comparisons": ["Morgan MAE minus MapLight MAE", "endpoint-median MAE minus selected-winner MAE", "one-nearest-neighbor MAE minus selected-winner MAE"],
+      "selection": "Use the bootstrap lower bound, not a point estimate, for candidate selection and acceptance."
+    }
+  },
+  "budget": {
+    "outer_learned_fits": 120,
+    "outer_fit_breakdown": {"Morgan": 60, "MapLight": 60},
+    "inner_winner_fits": 240,
+    "maximum_total_model_fits": 360,
+    "outer_prediction_rows": 235440,
+    "inner_prediction_rows": 235440,
+    "candidate_systems": 4,
+    "endpoints": 4,
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "gpu_fits": 0,
+    "cpu_policy": "CPU-only deterministic critical path; use at most 16 CatBoost threads and do not use the available AMD GPU for this contract.",
+    "forbidden_budget_expansion": ["additional seeds", "additional endpoints", "additional model families", "public-test evaluations", "leaderboard submissions", "TDI files"]
+  },
+  "acceptance": {
+    "pre_fit": ["all bound hashes verify", "Linux MapLight overlay passes before MapLight features or fits", "synthetic firewall and byte-determinism tests pass", "all four systems are frozen before any R3 target projection is provided to a feature, model, or scorer process", "no official scorer field or metric is implemented"],
+    "candidate_selection": "If TRACE-G0-MAPL-FIXED is still eligible after the Linux gate, select it only when the 95% lower bound for Morgan MAE minus MapLight MAE is positive; otherwise select TRACE-C1-MORGAN-CATBOOST. If MapLight is ineligible, TRACE-C1-MORGAN-CATBOOST is selected by default.",
+    "winner": ["positive bootstrap lower bound for endpoint-median MAE minus selected-winner MAE", "positive bootstrap lower bound for one-nearest-neighbor MAE minus selected-winner MAE", "positive control-MAE-minus-winner-MAE delta in at least 12 of 15 repeat-fold macro cells for each control", "no endpoint exceeds the predeclared loss cap of 0.05 pIC50 MAE versus the endpoint median", "top-10 component contribution leave-one-out stability preserves the winner and every required comparison direction", "complete finite outer predictions, inner predictions, and parent completion states"],
+    "statuses": {
+      "GLOBAL_FAILED": "Any receipt, split, chemistry, firewall, rights, non-finite, nondeterminism, or authority defect.",
+      "GLOBAL_UNDERPOWERED": "Clean implementation but insufficient component support for the frozen comparison.",
+      "GLOBAL_NO_ADVANTAGE": "Clean evidence fails one or more frozen predictive acceptance criteria.",
+      "GLOBAL_EXPERT_FROZEN": "Every integrity and predictive acceptance criterion passes."
+    },
+    "oracle_boundary": "No oracle or transformation work begins unless status is GLOBAL_EXPERT_FROZEN.",
+    "failure_policy": "Any receipt, split, chemistry, firewall, non-finite, nondeterminism, or authority defect stops before promotion and is recorded in the experiment ledger.",
+    "post_success_scope": "A successful R3 global result authorizes only the frozen global direct OOF/model/metric artifacts. It does not authorize anchor exposure, transformations, TDI, submissions, or transduction.",
+    "next_gate": "R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN"
+  },
+  "authority": {
+    "global_surrogate_validation": false,
+    "global_model": false,
+    "internal_surrogate_metrics": false,
+    "global_oof_predictions": false,
+    "parent_state_completion": false,
+    "official_st_rae": false,
+    "submissions": false,
+    "tdi": false,
+    "transduction": false,
+    "inherited_r2b_authority": {
+      "fold_assignments": true,
+      "episodes": true,
+      "episode_labels": true,
+      "topology_viability": true
+    },
+    "status_note": "All R3-added authority remains denied until reviewed implementation and evidence pass. Accepted R2B artifact authority is inherited unchanged, not revoked or expanded."
+  },
+  "authority_after_successful_r3": {
+    "global_surrogate_validation": true,
+    "global_model": true,
+    "internal_surrogate_metrics": true,
+    "global_oof_predictions": true,
+    "parent_state_completion": true,
+    "official_st_rae": false,
+    "validation_frozen": false,
+    "fold_assignments": "inherited from R2B, not newly granted by R3",
+    "episodes": "inherited from R2B, not newly granted by R3",
+    "episode_labels": "inherited from R2B, not newly granted by R3",
+    "topology_viability": "inherited from R2B, not newly granted by R3",
+    "submissions": false,
+    "tdi": false,
+    "transduction": false,
+    "anchor_expansion": false,
+    "transformations": false,
+    "status_note": "Conditional post-success authority is limited to the frozen global direct experiment and its OOF evidence; all TRACE local and competition operations remain deferred."
+  },
+  "required_outputs_after_implementation": ["linux_compatibility_receipt.json", "feature_rows.csv", "feature_manifest.json", "maplight feature arrays (only if TRACE-G0-MAPL-FIXED remains eligible)", "target_projection_manifest.json", "global_oof_predictions.csv", "global_inner_oof_predictions.csv", "parent_state_completion_outer_training.csv", "parent_state_completion_final.csv", "global_cell_metrics.csv", "global_bootstrap_summary.csv", "global_uncertainty_calibration.csv with one selected-winner q90 row per repeat, outer fold, and endpoint", "global_result.json", "manifest.json"],
+  "manifest_requirements": "Bind every input/output SHA256, schema and policy ID, package/runtime version, resolved CatBoost parameters, seed, fit/prediction/metric count, runtime, peak RSS, selection result, status, authority flag, and zero TDI/test/submission/transduction access.",
+  "forbidden": ["official challenge test data or labels", "TDI files or inferred TDI labels", "anchor identities or anchor values", "ANCHOR_EXPANSION_HOLDOUT", "episode-specific fits or predictions", "transformations or oracle controls", "interval midpoint imputation", "official ST-RAE or interval-hit implementation", "public-test or leaderboard iteration", "GIN weights", "full-training final models", "new core dependencies", "GPU-backed fits", "untracked generated artifacts"]
+}
