@@ -46,6 +46,16 @@ train-only topology receipt and frozen standardization: exact raw SMILES feed
 MapLight, while standardized SMILES feed D-032 Morgan.
 R3 still grants no official metric, TDI, submission, or transductive authority.
 
+[`global_experiment_contract_v4.json`](global_experiment_contract_v4.json) is
+the additive R3B implementation contract; v3 remains immutable because accepted
+R3A manifests bind its bytes. V4 removes evaluation-driven candidate selection
+by fixing MapLight before target access, keeps Morgan/median/1-NN as controls,
+splits model-public targets from scorer-sealed truth, and freezes preflight,
+cell, freezer, scoring, terminal-publication, and authority schemas. Both final
+independent audits pass. The gate is contract-only: R3B must still implement and
+replay it entirely on synthetic data before any official target or fit is
+authorized.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

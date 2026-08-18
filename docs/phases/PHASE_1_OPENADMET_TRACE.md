@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R3A Linux feature payloads accepted; gate `R3A_LINUX_FEATURES_ACCEPTED`; acceptance date 2026-08-18.
+Status: active; R3B synthetic runner contract frozen; gate `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`; freeze date 2026-08-18.
 
 ## Context capsule
 
@@ -173,10 +173,18 @@ full Morgan and MapLight recomputation found zero mismatches. Model, prediction,
 validation, metric, TDI, submission, official-score, and transductive authority
 remain denied.
 
-Exact next action: implement and independently review R3B's receipt-bound target
-projector, model-cell runner, prediction freezer, bounded surrogate scorers, and
-synthetic determinism/leakage tests. No official scientific fit may run. R3C
-alone may execute the frozen official fits and internal surrogate-score
+Additive R3B v4 preserves the immutable v3/R3A receipt chain and repairs the
+runner boundary before implementation. Fixed MapLight is chosen before target
+access; Morgan, median, and 1-NN are nonselecting falsification controls.
+Model-public targets and scorer-sealed truth are separate capabilities, all
+support is preflighted before fitting, inner cells receive no outer scores, and
+all intermediate work stays in one unpublished run root until a single exact
+terminal result is promoted. Independent scientific and mechanical audits pass.
+
+Exact next action: implement and independently review v4's receipt-bound target
+projector, preflight, model-cell runner, prediction freezers, bounded surrogate
+scorers, and synthetic determinism/leakage tests. No official scientific fit
+may run. R3C alone may execute the frozen official fits and internal surrogate-score
 diagnostics after R3B passes as a signed milestone. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
 remains the permanent fallback and R4 must separately freeze the

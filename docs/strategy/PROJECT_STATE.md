@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3A_LINUX_FEATURES_ACCEPTED`; no modeling or scoring is
-active.
+TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`; no modeling or
+scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -150,6 +150,19 @@ descriptor NaN mask is empty. Builds completed in 21.47 and 21.54 seconds below
 0.59 GiB RSS. Independent review grants `R3A_LINUX_FEATURES_ACCEPTED` only:
 model, target, prediction, validation, metric, TDI, submission, official-score,
 and transductive authority remains denied.
+
+The additive R3B v4 contract is now frozen in
+[`global_experiment_contract_v4.json`](../../benchmarks/openadmet_cyp_2026/global_experiment_contract_v4.json).
+It leaves the v3/R3A receipt chain immutable while making the synthetic runner
+boundary executable. MapLight is predesignated before target access; Morgan,
+the endpoint median, and 1-NN are falsification comparators only. Model-public
+targets and scorer-sealed truth have disjoint manifests, support is checked
+before every fit, inner processes receive a score-free token, and one private
+run staging root publishes exactly one status-specific terminal result. Clean
+negative outer evidence remains authoritative, while no status claims a
+deployable model. Two independent audits pass. This is a contract-only gate:
+official targets, fits, predictions, and surrogate metrics remain unopened and
+unauthorized until R3B implementation passes on synthetic data.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -327,10 +340,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. R0 through R3A have
-passed their applicable gates. Implement and independently review only R3B:
-the receipt-bound target projector, model-cell runner, prediction freezer,
-bounded surrogate scorers, and synthetic determinism/leakage tests. Do not run
+Do not add another global representation or ensemble. R0 through R3A and the
+R3B v4 contract have passed their applicable gates. Implement and independently
+review only R3B: the receipt-bound target projector, preflight, model-cell
+runner, prediction freezers, bounded surrogate scorers, and adversarial
+synthetic determinism/leakage tests. Do not run
 an official scientific fit; only R3C may execute the frozen official experiment
 after R3B passes as a signed milestone. Do not
 expose anchors, fit transformation logic, derive TDI labels, score with

@@ -1232,3 +1232,38 @@
 - Reversal condition: R3B or R3C finds any receipt, row, chemistry, environment,
   payload, determinism, rights, isolation, or authority defect. Preserve the
   evidence, record `GLOBAL_FAILED`, and stop before promotion or submission.
+
+## D-044 — Freeze the additive R3B synthetic runner contract
+
+- Date: 2026-08-18
+- Status: accepted; contract-only gate
+- Decision: Keep the accepted v3 contract and every R3A implementation byte
+  immutable, and add
+  `cypshift.openadmet_cyp_2026.global_experiment_contract.v4` at
+  `R3B_GLOBAL_RUNNER_CONTRACT_V4_FROZEN`. Predesignate fixed MapLight before
+  target access so outer OOF evidence validates one frozen expert rather than
+  selecting and validating on the same rows. Retain Morgan CatBoost, endpoint
+  median, and Morgan 1-NN only as falsification comparators. Require strict
+  complete-point targets, disjoint model-public and scorer-sealed projections,
+  pre-fit support checks, score-free inner tokens, exact bootstrap/q90 and
+  completion arithmetic, status-specific evidence authority, and one atomic
+  terminal publication from a private run root. A valid negative outer result
+  remains evidence; no R3 status claims a deployable full-training model.
+- Evidence: Pre-implementation review rejected the v3 R3B mechanics because
+  target/cell/scorer schemas were incomplete, candidate selection reused its
+  evaluation rows, model processes could receive truth or score receipts,
+  underpowered and late-failure publication was contradictory, and nested
+  terminal arithmetic was not mechanically frozen. V4 closes those blockers
+  without opening official targets or running a scientific fit. Its SHA-256 is
+  `a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254`.
+  Sixteen combined v3/v4 tests, strict duplicate-key JSON parsing, Ruff, and two
+  final independent audits pass.
+- Alternatives: Mutate v3 and invalidate accepted R3A receipts; select MapLight
+  or Morgan using the same outer rows later used for the success claim; add a
+  nested model-selection experiment and larger fit budget; expose full
+  score-bearing receipts to inner fits; or begin official execution before the
+  runner firewall is synthetically accepted.
+- Reversal condition: R3B implementation cannot reproduce the exact schemas,
+  process isolation, deterministic arithmetic, status outputs, or authority
+  boundary on adversarial synthetic fixtures. Preserve the blocker and issue a
+  versioned repair before any official target projection or fit.
