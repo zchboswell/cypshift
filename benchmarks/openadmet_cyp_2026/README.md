@@ -28,14 +28,16 @@ topology viability under v4. Fold, episode, episode-label, and viability
 artifact authority is accepted; models, validation, metrics, submissions, TDI,
 predictions, and transductive use remain unauthorized.
 [`global_experiment_contract.json`](global_experiment_contract.json) now freezes
-the R3 global-only direct fallback: endpoint median, Morgan 1-NN, Morgan
+the corrected R3 v2 global-only direct fallback: endpoint median, Morgan 1-NN, Morgan
 CatBoost, and fixed MapLight under `GLOBAL_FAMILY_HOLDOUT` with provisional
 component-macro MAE only. It explicitly separates the mandatory global fallback
-from later oracle/transformation work. If the pinned Linux MapLight overlay
-cannot replay the signed-int8 and four-column NaN contracts without semantic
-drift, MapLight is disqualified and Morgan remains the only eligible learned
-candidate. R3 still grants no official metric, TDI, submission, or
-transductive authority.
+from later oracle/transformation work. The Linux MapLight overlay is mandatory;
+failure stops R3 before scientific fitting. R3A permits only fixture parity and
+two label-free feature roots, R3B is synthetic runner/firewall acceptance, and
+R3C alone may run the frozen experiment. V1 was rejected before execution for
+five mechanical blockers after its assigned read-only auditor improperly
+pushed it directly to main; v2 preserves that history and corrects the boundary.
+R3 still grants no official metric, TDI, submission, or transductive authority.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

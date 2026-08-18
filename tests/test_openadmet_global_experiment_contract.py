@@ -17,12 +17,17 @@ def load_contract() -> dict[str, object]:
 def test_r3_contract_identity_and_receipts_are_frozen() -> None:
     contract = load_contract()
     assert contract["schema_version"] == (
-        "cypshift.openadmet_cyp_2026.global_experiment_contract.v1"
+        "cypshift.openadmet_cyp_2026.global_experiment_contract.v2"
     )
     assert contract["freeze_date"] == "2026-08-18"
-    assert contract["gate"] == "R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN"
+    assert contract["gate"] == "R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN"
     assert contract["status"] == "contract_only_not_implemented"
-    assert contract["base_commit"] == "291ad3274e0cb1188189d314f6063eac32429028"
+    assert contract["base_commit"] == "c10980fcae0e8e80503f2b12d9c4c6c8706e635d"
+    assert contract["supersedes"]["commit"] == (
+        "c10980fcae0e8e80503f2b12d9c4c6c8706e635d"
+    )
+    assert "five implementation blockers" in contract["supersedes"]["reason"]
+    assert "violated scope" in contract["review_governance"]
     inputs = contract["inputs"]
     assert inputs["validation_contract"] == {
         "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
@@ -87,7 +92,7 @@ def test_r3_is_global_only_and_target_semantics_are_central_points() -> None:
 
 def test_r3_systems_and_cpu_maplight_gate_are_exact() -> None:
     contract = load_contract()
-    assert "sole eligible learned candidate" in contract["systems"]["selection_policy"]
+    assert "failure stops R3" in contract["systems"]["selection_policy"]
     assert contract["systems"]["learned_runtime"] == (
         "Both learned candidates run in the same Linux x86_64 CPU "
         "environment pinned by research/maplight-fixed/uv.lock with "
@@ -132,15 +137,14 @@ def test_r3_systems_and_cpu_maplight_gate_are_exact() -> None:
         "ensemble or stack",
     ]
     linux = contract["maplight_linux_gate"]
-    assert linux["required_before_features_or_fits"] is True
+    assert linux["required_before_scientific_fits"] is True
     assert linux["platform"] == "Linux x86_64 CPU"
     assert "signed-int8" in linux["overlay"]
     assert "NaN" in linux["overlay"]
     assert "cross-platform byte identity" in linux["claim_boundary"]
     assert "old macOS/TDC" in linux["claim_boundary"]
-    assert "continue with Morgan as the only eligible learned candidate" in linux[
-        "failure"
-    ]
+    assert "stop R3 before any scientific fit" in linux["failure"]
+    assert "two independently invoked byte-identical" in linux["acceptance"][1]
 
 
 def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
@@ -156,8 +160,8 @@ def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
     oof = contract["oof_artifacts"]
     expected_columns = [
         "molecule_id", "endpoint", "component_id", "repeat", "outer_fold",
-        "inner_fold", "scope", "prediction", "applicability_score", "model_id",
-        "feature_spec_id", "split_id",
+        "inner_fold", "scope", "system_id", "prediction", "applicability_score",
+        "model_id", "feature_spec_id", "split_id",
     ]
     assert oof["outer"]["columns"] == expected_columns
     assert oof["inner"]["columns"] == expected_columns
@@ -170,7 +174,7 @@ def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
         "linux_compatibility_receipt.json",
         "feature_rows.csv",
         "feature_manifest.json",
-        "maplight feature arrays (only if TRACE-G0-MAPL-FIXED remains eligible)",
+        "maplight feature arrays",
         "target_projection_manifest.json",
         "global_oof_predictions.csv",
         "global_inner_oof_predictions.csv",
@@ -199,10 +203,12 @@ def test_r3_firewall_oof_completion_uncertainty_and_budget_are_pinned() -> None:
     assert completion["uncertainty"] == {
         "method": "q90 of absolute residuals from the selected winner's inner OOF predictions",
         "grouping": "Compute separately within each repeat, outer context, and endpoint from that context's inner-OOF residuals using component-equal weighting; each component contributes equal total mass before q90 is taken.",
+        "residual_population": "Open sealed inner truth only after matching inner predictions are frozen. Use point-eligible inner-validation rows from the current repeat, outer context, and endpoint; the predicted molecule's complete component was excluded from its fit.",
+        "weighted_order_statistic": "Give each residual weight 1/n where n is the number of eligible residual rows in its component for this context and endpoint. Sort by residual ascending, then component_id and molecule_id ascending; normalize weights and choose the first residual whose cumulative weight is at least 0.90. Do not interpolate.",
         "conditioning": "No learned conditioning or deep ensemble. Applicability is reported separately.",
         "fallback": "Use the endpoint q90 from the available inner OOF residuals; fail closed if no finite residual exists.",
         "diagnostic_band": "prediction plus or minus q90 is a symmetric diagnostic band, never a confidence, credible, or official scoring interval.",
-        "calibration_rule": "Report component-weighted coverage and width. Coverage outside [0.80,0.98] sets UNCERTAINTY_DIAGNOSTIC_ONLY and forbids later uncertainty-driven gating without invalidating the point predictor.",
+        "calibration_rule": "After q90 is frozen, evaluate inclusive-band coverage on the sealed point-eligible outer-validation rows for the same repeat, outer fold, and endpoint, with each component receiving equal total weight. Coverage outside [0.80,0.98] sets UNCERTAINTY_DIAGNOSTIC_ONLY and forbids later uncertainty-driven gating without invalidating the point predictor.",
     }
     budget = contract["budget"]
     assert budget["outer_learned_fits"] == 120
@@ -231,13 +237,13 @@ def test_r3_metric_bootstrap_acceptance_and_authority_are_frozen() -> None:
     assert bootstrap["maximum_attempts"] == 20000
     assert "Morgan MAE minus MapLight MAE" in bootstrap["comparisons"]
     acceptance = contract["acceptance"]
-    assert "Linux MapLight overlay passes" in acceptance["pre_fit"][1]
-    assert "MapLight is ineligible" in acceptance["candidate_selection"]
+    assert "full two-root Linux feature gate passes" in acceptance["pre_fit"][1]
+    assert "strictly positive" in acceptance["candidate_selection"]
     assert acceptance["winner"] == [
         "positive bootstrap lower bound for endpoint-median MAE minus selected-winner MAE",
         "positive bootstrap lower bound for one-nearest-neighbor MAE minus selected-winner MAE",
         "positive control-MAE-minus-winner-MAE delta in at least 12 of 15 repeat-fold macro cells for each control",
-        "no endpoint exceeds the predeclared loss cap of 0.05 pIC50 MAE versus the endpoint median",
+        "for each endpoint, the mean across three repeats of winner component-macro MAE minus median component-macro MAE is at most 0.05 pIC50",
         "top-10 component contribution leave-one-out stability preserves the winner and every required comparison direction",
         "complete finite outer predictions, inner predictions, and parent completion states",
     ]
@@ -245,7 +251,17 @@ def test_r3_metric_bootstrap_acceptance_and_authority_are_frozen() -> None:
         "GLOBAL_FAILED", "GLOBAL_UNDERPOWERED", "GLOBAL_NO_ADVANTAGE",
         "GLOBAL_EXPERT_FROZEN",
     }
+    assert "at least 10 scored components" in acceptance["support_rule"]
+    assert "Remove each of the top ten components separately" in acceptance["influence_rule"]
+    assert acceptance["status_precedence"][-1].startswith("GLOBAL_EXPERT_FROZEN")
     assert acceptance["next_gate"] == "R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN"
+    sequence = contract["execution_sequence_after_contract_acceptance"]
+    assert list(sequence)[:3] == [
+        "R3A_LINUX_FEATURES_ACCEPTED",
+        "R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED",
+        "R3C_GLOBAL_EXPERIMENT",
+    ]
+    assert "No official scientific fit" in sequence["R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED"]
     assert contract["authority"] == {
         "global_surrogate_validation": False,
         "global_model": False,

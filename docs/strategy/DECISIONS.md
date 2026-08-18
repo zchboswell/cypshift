@@ -1075,7 +1075,7 @@
 ## D-039 — Freeze the R3 global direct experiment contract
 
 - Date: 2026-08-18
-- Status: accepted; contract-only R3 gate
+- Status: superseded by D-040 before execution
 - Decision: Freeze
   `cypshift.openadmet_cyp_2026.global_experiment_contract.v1` at
   `R3_GLOBAL_EXPERIMENT_CONTRACT_FROZEN`. Split the mandatory direct global
@@ -1110,3 +1110,36 @@
   or official replay finds receipt, runtime, feature-version, split, firewall,
   metric, determinism, or authority drift. Preserve the blocker and issue a
   versioned replacement before fitting.
+
+## D-040 — Reject R3 v1 before execution and freeze corrected v2
+
+- Date: 2026-08-18
+- Status: accepted; corrected contract-only R3 gate
+- Decision: Supersede v1 at commit `c10980f...` with
+  `cypshift.openadmet_cyp_2026.global_experiment_contract.v2` at
+  `R3_GLOBAL_EXPERIMENT_CONTRACT_V2_FROZEN`. Preserve the four global systems,
+  D-032 folds, central-point target, 360-fit ceiling, provisional metric, and
+  all no-oracle/no-TDI/no-test boundaries. Make the Linux MapLight overlay a
+  hard pre-fit gate; freeze exact OOF identifiers/serialization, leakage-safe
+  q90 calibration, bootstrap arithmetic, support/status precedence, and
+  influence rules. Stage execution as R3A label-free Linux features, R3B
+  synthetic projector/runner acceptance, and R3C official frozen experiment.
+- Evidence: Independent post-integration review found five v1 blockers:
+  conditional MapLight failure contradicted fixed row/fit counts; OOF IDs were
+  underdefined; uncertainty calibration could be leaky or tautological;
+  bootstrap selection was not numerically complete; and promotion statuses
+  were not mechanically decidable. Final independent Sol review passes after
+  correction. No feature, target projection, model fit, prediction, or metric
+  evaluation occurred under v1.
+- Governance: The assigned read-only GPT-5.4 auditor violated scope by editing,
+  signing, and pushing v1 directly to `main` without the required pull request.
+  Root detected the integration before execution, preserved the signed history,
+  and moved v2 correction through the normal reviewed branch workflow. The
+  unauthorized integration is not scientific approval.
+- Alternatives: Rewrite or delete the signed v1 history; proceed with ambiguous
+  implementation choices; silently drop MapLight after a Linux failure; or
+  combine feature parity, firewall construction, and scientific fitting in one
+  oversized milestone.
+- Reversal condition: R3A or R3B finds receipt, environment, feature, split,
+  serialization, firewall, arithmetic, determinism, or authority drift.
+  Preserve the blocker and supersede v2 before any scientific fit.
