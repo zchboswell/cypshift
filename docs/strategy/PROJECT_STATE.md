@@ -5,9 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the corrected-contract gate
-`R2_VALIDATION_CONTRACT_V4_FROZEN`;
-no modeling or scoring is active.
+TRACE is active at `R2B_EPISODES_MASKS_VIABILITY_ACCEPTED`; no modeling or
+scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -87,8 +86,23 @@ produced 19,620 endpoint observations (6,525 complete; 13,095 missing) and
 73,575 group-fold rows. The manifest explicitly denies validation and fold
 authority as well as episodes, topology viability, models, metrics, TDI,
 predictions, submissions, and transduction. Episode firewalls, anchor masks,
-and endpoint viability remain unimplemented. Two receipt-bound R2A replays
-under both v3 and v4 preserved the accepted observation and fold bytes exactly.
+and endpoint viability were deferred to R2B. Two receipt-bound R2A replays under
+both v3 and v4 preserved the accepted observation and fold bytes exactly.
+
+R2B now implements deterministic campaign episodes, the exact public/truth
+projection split, a manifest-bound oracle anchor loader, episode label masks,
+and independently recomputed topology viability. Five focused synthetic tests
+and the full 229-test suite pass. Two official runs outside Git were
+byte-identical for all seven artifacts: each episode CSV has 1,122 rows and
+unique IDs, with 1,818 expanded query occurrences, 4,488 anchor observation
+references, and 7,272 query references. The accepted manifest is
+`08dcf61c...`; R2A observation and fold hashes remain unchanged. CYP3A4 is
+`LOCAL_SUPPORTED` at 95 components and 473 pairs; CYP1A2, CYP2C9, and CYP2D6
+remain `LOCAL_UNDERPOWERED` with local fusion weight zero. Independent review
+passed after binding oracle inputs to the manifest, rejecting out-of-component
+anchor rows, and recording exact fold scopes. Artifact authority is limited to
+folds, episodes, episode labels, and topology viability; validation, models,
+metrics, TDI, predictions, submissions, and transduction remain unauthorized.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -266,16 +280,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. The receipt-bound R0
-checker, R1 source-row adapter, label-free topology audit, and R2A
-direct-observation/fold slice have passed their applicable synthetic and
-official checks. The corrected v4 contract is frozen after v3 was rejected
-before R2B and no R2B artifacts were created. Implement and accept the
-public/truth episode firewall, restricted episode-scoped anchor masks, and
-endpoint topology-viability artifacts under the v4 policies before any
-parent-relative experiment. Do not fit, score, submit, derive TDI labels, or
-use transductive test relationships; unresolved metric, validator, TDI-order,
-interval, and permission behavior remains unchanged.
+Do not add another global representation or ensemble. R0, R1, topology, R2A,
+and R2B have passed their applicable synthetic, official, and independent
+review gates. Freeze the smallest R3 experiment/evaluation contract for the
+global direct comparator and CYP3A4 oracle-anchor test before fitting anything;
+it must enforce the accepted episode exclusions, cross-fitting, fixed controls,
+and no-model authority boundary until approved. Do not score, submit, derive
+TDI labels, or use transductive test relationships; unresolved metric,
+validator, TDI-order, interval, and permission behavior remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under

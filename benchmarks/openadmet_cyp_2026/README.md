@@ -22,13 +22,11 @@ incomplete topology-viability schema/acceptance contract; zero R2B artifacts
 were created. PR89's claimed independent audit is separately recorded as
 unsupported because its assigned read-only auditor self-integrated; that
 governance breach does not invalidate valid R2A evidence. It is not
-`VALIDATION_FROZEN`. The R2A implementation emits only direct observations,
-deterministic component-fold records, and a scope-limiting manifest; those fold
-records are inputs without validation authority. Episodes, topology viability,
-models, metrics, submissions, TDI, and transductive use remain unimplemented
-and unauthorized. V4 preserves v3's chemistry, eligibility, pair, anchor,
-query, fold, scorecard, firewall, and no-model policies while freezing the
-missing R2B schemas and semantic types.
+`VALIDATION_FROZEN`. R2A emits direct observations and component folds. R2B now
+emits the three episode projections, restricted anchor masks, and recomputed
+topology viability under v4. Fold, episode, episode-label, and viability
+artifact authority is accepted; models, validation, metrics, submissions, TDI,
+predictions, and transductive use remain unauthorized.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
@@ -74,15 +72,29 @@ uv run python scripts/build_openadmet_validation_inputs.py \
 The command opens only the direct-training CSV and receipt-bound R1/topology
 artifacts. It does not create episodes, decide endpoint viability, fit or score
 a model, read TDI or blinded test data, or authorize its fold records as a
-validated split. The next gate is the episode/firewall/viability slice.
+validated split. R2B consumes only these receipt-bound outputs.
 
-V4 freezes the future R2B semantic episode CSV types, lowercase SHA256 episode
+Build the accepted R2B slice from that directory with:
+
+```console
+uv run python scripts/build_openadmet_campaign_artifacts.py \
+  --validation-contract benchmarks/openadmet_cyp_2026/validation_contract.json \
+  --r2a-directory /path/to/r2a-output \
+  --output-directory /path/to/r2b-output \
+  --source-revision 85f8b358d0a2056a98b990dd75d3b3ec9247862b
+```
+
+V4 freezes the R2B semantic episode CSV types, lowercase SHA256 episode
 and component IDs, selected/stress policy tokens, unique-ID and join counts, and
 the exact receipt-bound `topology_viability.v1` schema. Its topology artifact
 must contain all four endpoint global counts and fifteen sorted fold-support
 cells per endpoint, with no predictions, learned/fitted weights, metrics, TDI,
-blinded-test, or transductive content. These declarations are static-only until
-root reviews and independently replays R2B.
+blinded-test, or transductive content. Root review and independent replay now
+accept the implementation. Two official R2B builds were
+byte-identical for all seven files. The accepted manifest is `08dcf61c...`;
+public/truth/mask hashes are `47180477...`, `f2ec3ca6...`, and `0b437aa5...`,
+and topology viability is `6c4e66ec...`. Independent scientific/code review
+passed.
 
 Released TDI labels conflict with launch prose. Among non-null labels, all
 arm-missing rows are `False` (CYP2D6: 4; CYP3A4: 1,250), including 1,055

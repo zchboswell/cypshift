@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; corrected R2 validation contract v4 frozen, direct observations and folds accepted; gate `R2_VALIDATION_CONTRACT_V4_FROZEN`; acceptance date 2026-08-18.
+Status: active; R2B episodes, masks, and viability accepted; gate `R2B_EPISODES_MASKS_VIABILITY_ACCEPTED`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -129,12 +129,23 @@ fold rows. Independent review passed after receipt-before-parse, same-byte parse
 contract-authority, and component-containment hardening. These are deterministic
 inputs, not accepted validation assignments or prediction evidence.
 
-Exact next action: implement and accept separate public/truth episode artifacts,
-the restricted oracle anchor projection, episode-scoped label masks, and
-topology viability under v4. Stop on contract drift, identity ambiguity, family
-leakage, state loss, or truth projection leakage. Preserve unresolved scorer,
-TDI-order, interval, and permission behavior; `global_TDI` remains the permanent
-fallback.
+R2B implements the three episode projections, manifest-bound oracle loader,
+episode label masks, and topology viability without fitting or scoring. Five
+focused synthetic tests and all 229 repository tests pass. Two official builds
+outside Git were byte-identical: 1,122 rows per episode CSV, 1,818 expanded
+queries, 4,488 anchor references, and 7,272 query references. The manifest is
+`08dcf61c...`; direct-observation and fold hashes are unchanged. Independent
+review passed after the loader was bound to artifact receipts, out-of-component
+anchors were rejected, and fold scopes were made explicit. CYP3A4 is supported
+at 95 components/473 pairs; 1A2, 2C9, and 2D6 are underpowered with zero local
+weight. This is artifact authority, not validation or prediction evidence.
+
+Exact next action: freeze the smallest R3 experiment/evaluation contract for a
+strong global direct comparator and CYP3A4 oracle-anchor test. Preserve the R2B
+exclusions, cross-fit every learned choice, and predeclare global, copy-anchor,
+nearest-neighbor, generic-difference, wrong-anchor, and shuffled-transformation
+controls before fitting. Preserve unresolved scorer, TDI-order, interval, and
+permission behavior; `global_TDI` remains the permanent fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.

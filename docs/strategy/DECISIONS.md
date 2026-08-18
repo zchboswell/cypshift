@@ -1043,3 +1043,31 @@
   identity, chemistry, fold, schema, serialization, projection, determinism,
   family-leakage, or authority defect. Preserve the blocker and issue another
   versioned contract before modeling.
+
+## D-038 — Accept R2B episodes, masks, and topology viability
+
+- Date: 2026-08-18
+- Status: accepted; artifact-only R2B gate
+- Decision: Accept the receipt-bound R2B implementation and grant only the v4
+  post-success authority for fold assignments, campaign episodes, episode
+  labels, and topology viability. Keep validation, models, metrics, TDI,
+  predictions, submissions, and transduction denied. Require the oracle loader
+  to verify the combined manifest receipts and reject anchor observations from
+  outside the public episode component.
+- Evidence: Five focused synthetic tests and all 229 repository tests pass;
+  Ruff, mypy, package build, and diff checks pass. Two official runs outside
+  Git were byte-identical for all seven artifacts. Each episode projection has
+  1,122 unique joined rows, with 1,818 expanded queries, 4,488 anchor
+  references, and 7,272 query references. The accepted manifest is
+  `08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8`;
+  R2A hashes remain unchanged. Independent review passed after closing
+  manifest-mixing, component-membership, and fold-scope traceability gaps.
+  CYP3A4 is supported at 95 components/473 pairs; CYP1A2, CYP2C9, and CYP2D6
+  are underpowered with zero local fusion weight.
+- Alternatives: Trust generated projections without a receipt-bound loader;
+  enable all direct endpoints despite inadequate support; or begin modeling
+  before the artifact boundary and controls are accepted.
+- Reversal condition: A replay or R3 implementation finds receipt, identity,
+  chemistry, family containment, projection, determinism, authority, or
+  non-anchor label exposure drift. Preserve the blocker and stop before fitting
+  or scoring.
