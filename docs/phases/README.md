@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R3C_GLOBAL_EXPERT_FROZEN`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -40,12 +40,15 @@ official experiment then passed: fixed MapLight beat Morgan CatBoost by 0.0646
 component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
-evidence, not official ST-RAE, a deployable model, or a submission. The next
-gate is `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`: label-safe extraction,
-invariance/ambiguity checks, and support reporting before any delta fit. A
-separate CYP3A4 oracle-anchor contract may follow only if coverage is
-supportable; inferred anchors, submission, and TDI remain unauthorized until
-their own gates.
+evidence, not official ST-RAE, a deployable model, or a submission. R4 now
+freezes label-safe direct-state and structural projections, exact
+single/double-cut chemistry, ambiguity/invariance rules, structural-only row
+outputs, and valid-only support thresholds. It opens no campaign truth,
+selector/scorable state, target magnitude, test, TDI, prediction, or metric.
+The next gate is synthetic implementation and one independently audited
+coverage run. A separate CYP3A4 oracle-anchor contract may follow only after
+`R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
+remain unauthorized until their own gates.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

@@ -1404,3 +1404,36 @@
   split, capability, or authority drift. Preserve the terminal, revoke only
   the affected R3C evidence, and stop dependent work; never repair the result
   by rerunning the frozen experiment.
+
+## D-049 — Freeze label-safe transformation coverage before TRACE fitting
+
+- Date: 2026-08-18
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`
+- Decision: Freeze deterministic transformation extraction and support
+  arithmetic before any parent-relative model fit. R4 may read accepted
+  structures, direct measurement availability state, public episode membership,
+  and the mask anchor-identity prefix only. It must not open campaign truth,
+  selector/scorable state, target magnitudes, blinded test chemistry, TDI,
+  predictions, metrics, or submissions. A supported coverage result authorizes
+  only a separate CYP3A4 oracle-contract freeze; underpowered coverage stops the
+  local path without weakening thresholds.
+- Evidence: The contract SHA-256 is
+  `d4c999e66309d27caab558f69cdba3fe1762aa9804053b0f1b86a2401297aec5`;
+  its extraction-spec receipt is
+  `d087207d0873c1c9861e34781a26d5ea8053469bc727a1f41b9ee190da3e1973`.
+  It binds exact RDKit single/double-cut normalization, virtual-H and stereo
+  handling, canonical indices and environments, six exhaustive row states,
+  self-versioned bidirectional IDs, structural-only terminal schemas, valid-only
+  local/episode support gates, cross-CYP sharing, and status-conditioned
+  authority. Seven focused tests, strict JSON, Ruff, formatting, diff checks,
+  and independent scientific and minimality audits pass. No official data was
+  opened during the contract milestone; model fits, predictions, and metric
+  evaluations are zero.
+- Alternatives: Begin oracle fitting before measuring usable transformation
+  support; expose campaign truth or held-out availability in R4; rescue complex
+  edits with MCS; count repeated pairs instead of independent proxy families;
+  or tune support thresholds after extraction.
+- Reversal condition: Synthetic implementation cannot reproduce the receipt,
+  chemistry invariants, firewall, row partitions, support arithmetic, or exact
+  terminal authority. Preserve the blocker, repair or version the contract, and
+  do not open the official coverage inputs or fit TRACE.

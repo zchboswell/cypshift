@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; frozen global expert accepted; gate `R3C_GLOBAL_EXPERT_FROZEN`; acceptance date 2026-08-18.
+Status: active; transformation coverage contract frozen; gate `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -231,11 +231,24 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
-Exact next action: record and integrate the frozen R3C result without rerunning
-or tuning it, then freeze `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN` before
-any delta-model fit. That gate must define label-safe transformation extraction,
-invariance and ambiguity checks, and a coverage/support report. Only supportable
-coverage permits a later CYP3A4 oracle-anchor contract. Preserve the global
+R4 now freezes the pre-fit transformation-coverage boundary in
+[`transformation_coverage_contract.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract.json).
+The exact contract SHA-256 is
+`d4c999e66309d27caab558f69cdba3fe1762aa9804053b0f1b86a2401297aec5`.
+It uses only receipt-bound structures, direct measurement availability state,
+public episode membership, and a mask prefix containing anchor identity. It
+never opens campaign truth or selector/scorable fields and parses or retains
+zero target magnitudes. Exact RDKit single/double-cut behavior, virtual-H and
+stereo handling, ambiguity, self-versioned IDs, structural-only terminal rows,
+valid-only support arithmetic, and status-conditioned authority are frozen.
+Independent scientific and minimality audits pass. No extraction code,
+coverage artifact, model, prediction, or metric is accepted by this milestone.
+
+Exact next action: implement the frozen R4 projector, deterministic extractor,
+coverage scorer, and atomic publisher; pass synthetic invariance/firewall
+acceptance and independent review before one official coverage run. Only
+`R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
+contract. Preserve the global
 expert as fallback and retain the complete blueprint systems, controls, and
 ablations: copy-anchor, nearest-neighbor, generic fingerprint-difference
 regression, delta without measured-anchor potency, true-anchor transformation

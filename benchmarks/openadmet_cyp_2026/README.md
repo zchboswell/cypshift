@@ -79,6 +79,18 @@ This is internal surrogate evidence only: official ST-RAE, a deployable model,
 submission, TDI, anchors, transformations, and transduction remain outside its
 authority.
 
+[`transformation_coverage_contract.json`](transformation_coverage_contract.json)
+freezes R4 before any transformation fit or score. Its SHA-256 is
+`d4c999e66309d27caab558f69cdba3fe1762aa9804053b0f1b86a2401297aec5`.
+The contract binds the accepted R2/R3 receipts, parses only direct availability
+state, uses public episode membership plus the mask anchor prefix, and keeps
+campaign truth, selectors, query availability, target magnitudes, blinded test,
+TDI, predictions, and metrics closed. It specifies deterministic RDKit
+single/double-cut extraction, ambiguity and invariance policy, structural-only
+outputs, and valid-only CYP3A4/local and selected-episode structural support.
+Supported coverage may authorize a separate oracle contract only; R4 itself
+authorizes no fit. Seven focused tests and two independent audits pass.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

@@ -5,9 +5,9 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3C_GLOBAL_EXPERT_FROZEN`. The single frozen official R3C
-global experiment passed its internal surrogate gate; no deployable model,
-official ST-RAE score, or submission is active.
+TRACE is active at `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`. The single
+frozen official R3C global experiment passed its internal surrogate gate; no
+deployable model, official ST-RAE score, or submission is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -228,6 +228,19 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
+The R4 transformation-coverage contract is now frozen in
+[`transformation_coverage_contract.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract.json)
+at SHA-256 `d4c999e6...`. It defines receipt-bound direct-state and structural
+projections, exact single/double-cut MMP normalization, virtual-hydrogen and
+stereo rules, self-versioned transformation IDs, ambiguity states, and
+valid-only CYP3A4/local and selected-episode structural support gates. It does
+not open campaign truth, selector identity, query availability, target
+magnitudes, blinded test chemistry, TDI, predictions, or metrics. Two
+independent audits pass after correcting an initially wrong RDKit single-cut
+normalization, removing the campaign-truth path, and binding double-cut,
+environment, status, and authority semantics. This is a contract-only gate;
+no transformation artifact or local predictive evidence exists yet.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
@@ -405,10 +418,10 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Record and integrate the frozen global result,
-then freeze `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`: label-safe
-transformation extraction, invariance and ambiguity checks, and a coverage and
-support report before any delta-model fit. Only if coverage is supportable may
+its positive outer evidence. Implement the frozen R4 label-safe projections,
+transformation extraction, invariance/ambiguity checks, and atomic coverage
+report; pass synthetic and independent review before one official coverage
+run. Only if the frozen result is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:
 frozen global, copy-anchor, nearest-neighbor, generic fingerprint-difference

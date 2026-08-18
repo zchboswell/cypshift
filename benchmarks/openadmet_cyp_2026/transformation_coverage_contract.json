@@ -1,0 +1,727 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage_contract.v1",
+  "freeze_date": "2026-08-18",
+  "gate": "R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN",
+  "status": "contract_only_not_implemented",
+  "base_commit": "df39bb64956b39067ff3834c444e56233ff083a3",
+  "purpose": "Compile receipt-bound, label-safe structural transformation coverage before any delta-model fit.",
+  "parent": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v5",
+    "status": "GLOBAL_EXPERT_FROZEN",
+    "manifest_sha256": "a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c",
+    "result_sha256": "d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94",
+    "immutable": true
+  },
+  "inputs": {
+    "validation_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3",
+      "immutable": true
+    },
+    "r2b_manifest": {
+      "path": "r2b/manifest.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_artifacts.v1",
+      "sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+      "immutable": true
+    },
+    "r2b_artifacts": {
+      "direct_observations": {
+        "path": "r2a/direct_observations.csv",
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_inputs.v1",
+        "sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+        "rows": 19620
+      },
+      "group_folds": {
+        "path": "r2a/group_folds.csv",
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_inputs.v1",
+        "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+        "rows": 73575
+      },
+      "public_episodes": {
+        "path": "r2b/campaign_episodes_public.csv",
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_artifacts.v1",
+        "sha256": "471804773631623235a7d554a1d8e297c5b098089f96390c85f622a82b619a7a",
+        "rows": 1122,
+        "expanded_queries": 1818
+      },
+      "masks": {
+        "path": "r2b/episode_label_masks.csv",
+        "schema_version": "cypshift.openadmet_cyp_2026.validation_artifacts.v1",
+        "sha256": "0b437aa5c43286833f4b2ccbf97c36afbfa6e940dcf20d1e2a2728a324fe3240",
+        "rows": 1122,
+        "access": "trusted_mask_projection_only"
+      },
+      "topology_viability": {
+        "path": "r2b/topology_viability.json",
+        "schema_version": "cypshift.openadmet_cyp_2026.topology_viability.v1",
+        "sha256": "6c4e66ecec4791ac5ddcdbb7bde44bd98e05456dbf27b80688550e6675b2aabf",
+        "fold_cells_per_endpoint": 15
+      }
+    },
+    "r3a_feature_input": {
+      "path": "r3a/feature_input.csv",
+      "schema_version": "cypshift.openadmet_cyp_2026.feature_input.v1",
+      "sha256": "3d54edc618eeca8414afc1a0180fec2f58299aa581cb7f427ac96d923ee37c36",
+      "rows": 4905,
+      "columns": [
+        "molecule_id",
+        "raw_smiles",
+        "raw_structure_sha256",
+        "standardized_smiles",
+        "standardized_structure_hash",
+        "similarity_component_hash"
+      ]
+    },
+    "r3a_feature_manifest": {
+      "path": "r3a/feature_input_manifest.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.feature_input.v1",
+      "sha256": "a472b6abf35a1bc3944e2a5baddafbf83ba4c3bb5f269c0993032f300eeb405b",
+      "immutable": true
+    },
+    "global_contract_chain": {
+      "v3": {
+        "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract.json",
+        "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v3",
+        "sha256": "d728684cc3794bbe01ea44342202944a378968f097cb8f5490852b63721a6285"
+      },
+      "v4": {
+        "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v4.json",
+        "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v4",
+        "sha256": "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254"
+      },
+      "v5": {
+        "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v5.json",
+        "schema_version": "cypshift.openadmet_cyp_2026.global_experiment_contract.v5",
+        "sha256": "596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2"
+      },
+      "immutable": true
+    },
+    "core_chemistry": {
+      "standardization_policy_id": "rdkit-cleanup-fragment-parent-v1",
+      "standardizer_path": "src/cypshift/chemistry.py",
+      "standardizer_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "python_version": "3.12.3",
+      "rdkit_version": "2026.03.5",
+      "device": "CPU"
+    }
+  },
+  "scope": {
+    "protocols": ["GLOBAL_FAMILY_HOLDOUT", "ANCHOR_EXPANSION_HOLDOUT"],
+    "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+    "group_unit": "frozen D-032 similarity-component proxy; not a semantic SAR-family identity",
+    "chemistry_and_direct_availability_state_only": true,
+    "numeric_target_access": false,
+    "test_query_access": "NOT_COMPUTED_TEST_ACCESS_FORBIDDEN",
+    "r4_authority_boundary": "Coverage evidence may authorize a separate oracle-contract freeze only; it never authorizes a fit, prediction, metric, scorer, submission, TDI, or transductive operation.",
+    "selected_anchor_gate": "Structural coverage applies to every public episode with episode_policy_id selected_anchor, independent of endpoint.",
+    "later_oracle_prerequisite": "A separate oracle contract must preflight trusted selector==CYP3A4 plus complete anchor/query validity before any fit; R4 does not access selector or scorable facts.",
+    "local_authoritative_gate": "CYP3A4 state-only aggregate gate from the frozen topology viability receipt; no endpoint availability is emitted per row."
+  },
+  "trusted_projections": {
+    "compiler_inputs": [
+      "r3a/feature_input.csv",
+      "r3a/feature_input_manifest.json",
+      "direct_projection",
+      "fold_projection",
+      "public_episode_projection",
+      "mask_projection"
+    ],
+    "direct_projection": {
+      "source": "r2a/direct_observations.csv",
+      "rows": 19620,
+      "columns": [
+        "observation_id",
+        "molecule_id",
+        "endpoint",
+        "raw_structure_sha256",
+        "standardized_structure_hash",
+        "similarity_component_hash",
+        "value_state"
+      ],
+      "retained_semantics": ["identity", "endpoint", "structure_hash", "component", "value_state"],
+      "retained_source_field_positions": [1, 2, 7, 17, 18, 19, 21],
+      "opaque_numeric_source_field_positions": [9, 10, 11, 12, 13, 14, 15, 16],
+      "opaque_eligibility_source_field_positions": [22, 23],
+      "numeric_magnitude_fields": ["raw_point", "raw_low", "raw_high", "raw_std", "point", "low", "high", "std"],
+      "numeric_magnitudes_parsed": 0,
+      "numeric_magnitudes_retained": 0,
+      "source_rows_scanned": 19620,
+      "header_validation_before_records": true,
+      "record_scanner": "RFC4180 quote-aware scan; validate the exact header before yielding any data record.",
+      "exact_unretained_source_fields_opaque": true
+    },
+    "fold_projection": {
+      "source": "r2a/group_folds.csv",
+      "rows": 73575,
+      "columns": [
+        "molecule_id",
+        "similarity_component_hash",
+        "repeat",
+        "seed",
+        "outer_fold",
+        "outer_validation_fold",
+        "inner_fold"
+      ],
+      "numeric_target_magnitudes_parsed": 0
+    },
+    "public_episode_projection": {
+      "source": "r2b/campaign_episodes_public.csv",
+      "rows": 1122,
+      "expanded_query_rows": 1818,
+      "columns": [
+        "episode_id",
+        "protocol",
+        "repeat",
+        "outer_fold",
+        "outer_group_id",
+        "query_molecule_ids",
+        "candidate_pool_id",
+        "episode_policy_id"
+      ],
+      "truth_fields": [],
+      "selector_fields": []
+    },
+    "mask_projection": {
+      "source": "r2b/episode_label_masks.csv",
+      "rows": 1122,
+      "decoded_prefix_columns": [
+        "episode_id",
+        "anchor_molecule_id_truth"
+      ],
+      "decoded_prefix_fields": 2,
+      "opaque_suffix_span": "anchor_observation_references and anchor_value_availability_mask remain one opaque byte span.",
+      "selector_fields": [],
+      "scorable_fields": [],
+      "numeric_target_magnitudes_parsed": 0,
+      "anchor_identity_usage": "structural anchor join only; no activity value, selector, or label is exposed",
+      "header_validation_before_records": true,
+      "record_scanner": "RFC4180 quote-aware scan; validate the exact header before yielding any data record."
+    },
+    "firewall": {
+      "extraction_compiler_sees_only_projections": true,
+      "must_not_resolve": [
+        "r2a/direct_observations.csv",
+        "r2b/episode_label_masks.csv",
+        "cyp-challenge-TEST-BLINDED.csv",
+        "TDI source files",
+        "submission files",
+        "official scorer or metric inputs"
+      ],
+      "forbidden_operations": [
+        "numeric target parsing",
+        "label derivation",
+        "selector access",
+        "model fitting",
+        "prediction generation",
+        "metric evaluation",
+        "threshold tuning",
+        "transductive relationship use"
+      ]
+    }
+  },
+    "extraction": {
+    "extraction_spec_id": "cypshift.trace.mmp.v1",
+    "extraction_spec_receipt": {
+      "receipt_subtrees": ["candidate_generation", "fragmentation", "canonicalization", "hazards", "ids", "classes", "status_values", "valid_statuses", "excluded_statuses", "invariants"],
+      "material_encoding": "UTF-8 canonical JSON object with sorted keys and compact separators; material includes extraction_spec_id plus the listed extraction subtrees.",
+      "sha256": "d087207d0873c1c9861e34781a26d5ea8053469bc727a1f41b9ee190da3e1973"
+    },
+    "candidate_generation": {
+      "fingerprint": "RDKit Morgan/ECFP4",
+      "radius": 2,
+      "fp_size": 4096,
+      "include_chirality": true,
+      "similarity_threshold": 0.6,
+      "threshold_inclusive": true,
+      "pair_identity": "one canonical unordered pair; derive directional views after extraction",
+      "candidate_order": "standardized_structure_hash ascending, then molecule_id ascending",
+      "candidate_cap": "none for the exact receipt-bound local-pair and episode populations",
+      "approximate_nearest_neighbor": false
+    },
+    "fragmentation": {
+      "algorithm": "rdkit.Chem.rdMMPA.FragmentMol",
+      "pattern": "[#6+0;!$(*=,#[!#6])]!@!=!#[*]",
+      "max_cut_bonds": 20,
+      "single_cut": {"min_cuts": 1, "max_cuts": 1},
+      "double_cut": {"min_cuts": 2, "max_cuts": 2},
+      "order": "Enumerate single cuts first; enumerate double cuts only when no valid single cut remains.",
+      "ring_cuts": false,
+      "mcs_predictive_fallback": false,
+      "hydrogen_side_token": "[*:1][H]",
+      "single_cut_normalization": "rdMMPA's returned core is empty for a single cut. Split the result into exactly two dot components, each carrying the same [*:1] attachment label; consider both orientations as conserved constant versus variable and match a pair only when the canonical labeled constants are identical.",
+      "double_cut_normalization": "For a double cut, rdMMPA's returned nonempty core is the variable component; the dot sidechains are the conserved constant. Normalize exactly two attachment-label permutations: identity (1,2) and swap (2,1).",
+      "double_cut_label_permutations": 2,
+      "virtual_hydrogen_generation": "For each eligible common-constant attachment atom with an implicit hydrogen, generate one variable [*:1][H] view and match it to an ordinary single-cut constant; hydrogen contributes zero heavy atoms and zero changed heavy-atom indices.",
+      "stereo_policy": "Ignore stereo only to test identical full heavy-atom graphs. Record a stereo change only when every changed stereo element is explicitly specified on both sides and there is a unique full-graph correspondence, or every valid graph map yields the same record; otherwise emit C3/AMBIGUOUS. Unspecified or mixed stereo blocks only stereo-specific records; ordinary non-stereo MMP records remain eligible."
+    },
+    "canonicalization": {
+      "standardized_input": true,
+      "dummy_permutation": "Enumerate equivalent dummy labels and retain the lexicographically minimal representation only to deduplicate isomorphic encodings.",
+      "core_matching": "Exact canonical labeled-constant matching for single cuts and exact canonical conserved-sidechain matching for double cuts; no fuzzy or learned matching.",
+      "canonical_atom_indices": "Reparse the exact canonical standardized SMILES and use its RDKit atom indices. If valid graph maps produce different changed-index sets or transformation records, mark the candidate AMBIGUOUS; molecule IDs never resolve the ambiguity.",
+      "heavy_atom_count": "Count atoms with atomic number >1 after canonical reparsing; dummies and virtual hydrogens are excluded.",
+      "changed_heavy_atom_fraction": "Reduced exact rational (removed_heavy_atoms + added_heavy_atoms) / (left_heavy_atoms + right_heavy_atoms), with heavy atoms excluding dummies and hydrogen; serialize numerator/denominator without floating-point rounding.",
+      "attachment_environment_order": ["radius_1", "radius_2"],
+      "attachment_environment_rule": "Serialize each attachment environment as an exact canonical rooted radius-1 or radius-2 fragment SMILES with a temporary root atom map 1. Compare exact strings; for two cuts sum the number of matching rooted strings at each radius.",
+      "attachment_environment_id_representation": "A compact JSON array of canonical rooted environment strings ordered by normalized attachment label; length is exactly one for single cuts and two for double cuts.",
+      "ranking": [
+        "maximum_conserved_heavy_atoms",
+        "minimum_cut_count",
+        "minimum_changed_heavy_atom_fraction",
+        "maximum_attachment_environment_agreement_radius_1",
+        "maximum_attachment_environment_agreement_radius_2"
+      ],
+      "canonical_representation_tiebreak": "Canonical representation may deduplicate isomorphic encodings but may never scientifically rank chemically distinct candidates.",
+      "ambiguity": "Chemically distinct decompositions tied after all ranks are ambiguous and excluded from valid v1 transformations.",
+      "unsupported": "No valid single- or double-cut decomposition is a row state UNSUPPORTED, not a deterministic terminal failure."
+    },
+    "hazards": {
+      "status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+      "standardization_changed": {"status": "STANDARDIZATION_HAZARD", "code": "C6", "policy": "exclude row; do not terminate the run"},
+      "multiple_fragments_input": {"status": "STANDARDIZATION_HAZARD", "code": "C2", "policy": "exclude row; do not terminate the run"},
+      "stereochemistry_unspecified_or_mixed": {"status": "AMBIGUOUS", "code": "C3", "policy": "block only stereo-specific records; ordinary non-stereo MMP records remain eligible"},
+      "prohibited_ring_cut": {"status": "STANDARDIZATION_HAZARD", "code": "S2", "policy": "exclude row; do not terminate the run"},
+      "ambiguous_decomposition": {"status": "AMBIGUOUS", "code": "S2", "policy": "exclude row; do not terminate the run"},
+      "stereo_specific_without_confident_exact_graph": {"status": "AMBIGUOUS", "code": "C3", "policy": "exclude row; do not terminate the run"},
+      "row_state_is_fail_closed": true,
+      "row_state_does_not_terminate_run": true
+    },
+    "ids": {
+      "hash_encoding": "Every ID is lowercase SHA256 hex of UTF-8 compact canonical JSON array bytes: json.dumps(array, ensure_ascii=False, separators=(',', ':')).",
+      "spec_hash_source": "extraction.extraction_spec_receipt.sha256",
+      "pair_id_material": ["spec_hash", "lower_standardized_structure_hash", "upper_standardized_structure_hash"],
+      "pair_id": "SHA256(compact JSON array [spec_hash, lower_standardized_structure_hash, upper_standardized_structure_hash])",
+      "direction_id_material": ["spec_hash", "transformation_pair_id", "anchor_standardized_structure_hash", "analog_standardized_structure_hash"],
+      "direction_id": "SHA256(compact JSON array [spec_hash, transformation_pair_id, anchor_standardized_structure_hash, analog_standardized_structure_hash])",
+      "exact_transformation_id_material": ["spec_hash", "removed_labeled_fragment", "added_labeled_fragment", "attachment_labels_array", "direction_id"],
+      "exact_transformation_id": "SHA256(compact JSON array [spec_hash, removed_labeled_fragment, added_labeled_fragment, attachment_labels_array, direction_id])",
+      "undirected_exchange_id_material": ["spec_hash", "sorted_fragment_pair", "attachment_arity"],
+      "undirected_exchange_id": "SHA256(compact JSON array [spec_hash, sorted_fragment_pair, attachment_arity]); identical for both directions",
+      "transformation_class_id_material": ["spec_hash", "class_token"],
+      "transformation_class_id": "SHA256(compact JSON array [spec_hash, class_token])",
+      "environment_level_1_id_material": ["spec_hash", "exact_transformation_id", "attachment_label_ordered_radius_1_environment_array"],
+      "environment_level_1_id": "SHA256(compact JSON array [spec_hash, exact_transformation_id, attachment_label_ordered_radius_1_environment_array])",
+      "environment_level_2_id_material": ["spec_hash", "exact_transformation_id", "attachment_label_ordered_radius_2_environment_array"],
+      "environment_level_2_id": "SHA256(compact JSON array [spec_hash, exact_transformation_id, attachment_label_ordered_radius_2_environment_array])",
+      "molecule_ids_in_id_material": false,
+      "all_ids_lowercase_sha256": true,
+      "stable_across_runs": true
+    },
+    "classes": [
+      "stereochemical_change",
+      "single_cut_growth",
+      "single_cut_contraction",
+      "single_cut_exchange",
+      "double_cut_exchange"
+    ],
+    "status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+    "valid_statuses": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+    "excluded_statuses": ["AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+    "invariants": {
+      "atom_order_invariance": true,
+      "pair_reversal_invariance": true,
+      "reversed_fragment_identity": true,
+      "reversed_direction_id_distinct": true,
+      "numeric_activity_delta_antisymmetry": false,
+      "numeric_activity_delta_antisymmetry_status": "deferred_and_forbidden_in_R4"
+    }
+  },
+  "populations": {
+    "pair_population": {
+      "source": "All distinct molecule pairs within a frozen similarity component with inclusive Tanimoto >=0.60, unioned with all expanded episode anchor-query pairs.",
+      "base_structural_candidates": "All within-component >=0.60 candidates; endpoint eligibility never filters transformation_pairs.csv.",
+      "episode_pair_rows": 1818,
+      "union_key": "transformation_pair_id from standardized structure hashes; extract each union pair once",
+      "local_endpoint_counts": "Retained only as aggregate diagnostics from the exact local-pair replay.",
+      "local_pair_semantics": "true only for a structural pair whose molecules share the same similarity component and whose inclusive Tanimoto similarity is >=0.60; endpoint state never defines local_pair.",
+      "episode_pair_semantics": "true only for a structural anchor-query pair expanded from a public episode; label state never defines episode_pair.",
+      "output_filter_is_endpoint_eligibility": false,
+      "union_extracted_once": true
+    },
+    "local_pairs": {
+      "source": "direct_projection plus topology_viability receipt",
+      "eligibility": "Replay exact complete eligible local-pair membership from the frozen topology artifact without parsing numeric magnitudes.",
+      "endpoints": {
+        "CYP1A2": {"eligible_components": 18, "eligible_pairs": 28, "fold_cells": 15},
+        "CYP2C9": {"eligible_components": 13, "eligible_pairs": 13, "fold_cells": 15},
+        "CYP2D6": {"eligible_components": 14, "eligible_pairs": 28, "fold_cells": 15},
+        "CYP3A4": {"eligible_components": 95, "eligible_pairs": 473, "fold_cells": 15}
+      },
+      "output_role": "aggregate diagnostic only; does not restrict the structural union pair population",
+      "local_pair_semantics": "same component and inclusive Tanimoto >=0.60 only; no endpoint availability is exposed",
+      "union_extracted_once": true
+    },
+    "episodes": {
+      "source": "public_episode_projection plus mask_projection",
+      "public_episode_rows": 1122,
+      "expanded_anchor_query_rows": 1818,
+      "selected_primary_and_stress_diagnostic": true,
+      "selected_anchor_policy": "All public rows with episode_policy_id selected_anchor receive endpoint-agnostic structural coverage.",
+      "selector_accessed": false,
+      "selector_in_episode_transformations_csv": false,
+      "union_extracted_once": true,
+      "arbitrary_episode_pair_threshold": false,
+      "episode_pair_semantics": "structural anchor-query membership only; no endpoint availability or scorable state"
+    }
+  },
+  "outputs": {
+    "success_files_exact": [
+      "transformation_pairs.csv",
+      "episode_transformations.csv",
+      "transformation_coverage.json",
+      "manifest.json"
+    ],
+    "failure_files_exact": ["failure_receipt.json"],
+    "schemas": {
+      "transformation_pairs.csv": {
+        "schema_version": "cypshift.openadmet_cyp_2026.transformation_pairs.v1",
+        "rows": "one canonical row per unique union structural candidate pair",
+        "columns": [
+          "transformation_pair_id",
+          "left_molecule_id",
+          "right_molecule_id",
+          "left_standardized_structure_hash",
+          "right_standardized_structure_hash",
+          "similarity_component_hash",
+          "similarity",
+          "local_pair",
+          "episode_pair",
+          "extraction_status",
+          "failure_code",
+          "cut_count",
+          "conserved_core_smiles",
+          "left_removed_fragment_smiles",
+          "right_removed_fragment_smiles",
+          "left_attachment_environment",
+          "right_attachment_environment",
+          "changed_left_atom_indices",
+          "changed_right_atom_indices",
+          "conserved_heavy_atoms",
+          "left_heavy_atoms",
+          "right_heavy_atoms",
+          "changed_heavy_atom_fraction",
+          "a_to_b_direction_id",
+          "b_to_a_direction_id",
+          "a_to_b_exact_transformation_id",
+          "b_to_a_exact_transformation_id",
+          "a_to_b_transformation_class_id",
+          "b_to_a_transformation_class_id",
+          "a_to_b_environment_level_1_id",
+          "b_to_a_environment_level_1_id",
+          "a_to_b_environment_level_2_id",
+          "b_to_a_environment_level_2_id",
+          "undirected_exchange_id",
+          "tie_count",
+          "tie_digest",
+          "ambiguous",
+          "warnings"
+        ],
+        "order": "transformation_pair_id ascending",
+        "status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+        "valid_statuses": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+        "invalid_statuses": ["AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+        "invalid_status_transform_fields_empty": true,
+        "transform_fields_empty_when_invalid": [
+          "cut_count",
+          "conserved_core_smiles",
+          "left_removed_fragment_smiles",
+          "right_removed_fragment_smiles",
+          "left_attachment_environment",
+          "right_attachment_environment",
+          "changed_left_atom_indices",
+          "changed_right_atom_indices",
+          "conserved_heavy_atoms",
+          "left_heavy_atoms",
+          "right_heavy_atoms",
+          "changed_heavy_atom_fraction",
+          "a_to_b_direction_id",
+          "b_to_a_direction_id",
+          "a_to_b_exact_transformation_id",
+          "b_to_a_exact_transformation_id",
+          "a_to_b_transformation_class_id",
+          "b_to_a_transformation_class_id",
+          "a_to_b_environment_level_1_id",
+          "b_to_a_environment_level_1_id",
+          "a_to_b_environment_level_2_id",
+          "b_to_a_environment_level_2_id",
+          "undirected_exchange_id"
+        ]
+      },
+      "episode_transformations.csv": {
+        "schema_version": "cypshift.openadmet_cyp_2026.episode_transformations.v1",
+        "rows": 1818,
+        "columns": [
+          "episode_id",
+          "episode_policy_id",
+          "repeat",
+          "outer_fold",
+          "outer_group_id",
+          "query_molecule_id",
+          "query_rank",
+          "anchor_molecule_id",
+          "transformation_pair_id",
+          "direction_id",
+          "extraction_status",
+          "failure_code",
+          "cut_count",
+          "exact_transformation_id",
+          "transformation_class_id",
+          "environment_level_1_id",
+          "environment_level_2_id",
+          "changed_heavy_atom_fraction",
+          "cyp3a4_training_family_exact_support_count",
+          "cyp3a4_training_family_class_support_count",
+          "ambiguous",
+          "warnings"
+        ],
+        "order": "episode_id ascending, query_rank ascending",
+        "status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+        "valid_statuses": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+        "invalid_statuses": ["AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+        "selector_column_present": false,
+        "endpoint_availability_columns": [],
+        "oracle_scorability_columns": [],
+        "allowed_nonstructural_columns": [
+          "episode_policy_id",
+          "repeat",
+          "outer_fold",
+          "outer_group_id",
+          "query_rank",
+          "cyp3a4_training_family_exact_support_count",
+          "cyp3a4_training_family_class_support_count"
+        ],
+        "support_semantics": "CYP3A4 exact and class support counts use only training-side families and exclude the held-out outer group; no endpoint availability, selector, or oracle/scorable state is emitted."
+      },
+      "transformation_coverage.json": {
+        "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage.v1",
+        "required_sections": [
+          "contract_sha256",
+          "status",
+          "counts",
+          "single_cut_fraction",
+          "double_cut_fraction",
+          "ambiguous_fraction",
+          "unsupported_fraction",
+          "exact_transformation_frequency",
+          "transformation_class_frequency",
+          "independent_group_support",
+          "status_partition",
+          "valid_changed_heavy_atom_fraction_distribution",
+          "cross_cyp_valid_transformation_sharing",
+          "test_query_coverage",
+          "selected_anchor_structural_coverage",
+          "local_cyp3a4_state",
+          "accounting",
+          "authority"
+        ],
+        "row_level_endpoint_availability": false,
+        "row_level_oracle_scorability": false,
+        "selector_facts": false,
+        "scorable_facts": false,
+        "local_cyp3a4_state_only": true,
+        "status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+        "valid_statuses_for_gates_frequencies_support": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+        "partitions": {
+          "union": {"denominator": "number of distinct union structural candidate rows", "status_counts": "count all six status values over the union denominator"},
+          "each_local_endpoint": {"keys": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"], "denominator": "number of structurally eligible local rows for that endpoint; status counts include all six values", "gates_use": "VALID_STEREO, VALID_SINGLE, VALID_DOUBLE only"},
+          "selected_primary": {"denominator": "number of expanded selected_anchor public episode rows in the primary diagnostic partition", "status_counts": "all six status values; gates/frequencies/support use valid statuses only"},
+          "stress": {"denominator": "number of expanded public episode rows in the stress diagnostic partition", "status_counts": "all six status values; gates/frequencies/support use valid statuses only"}
+        },
+        "fraction_denominator": "single_cut_fraction, double_cut_fraction, ambiguous_fraction, and unsupported_fraction use the corresponding union/local/selected_primary/stress partition denominator; status counts are mutually exhaustive.",
+        "changed_distribution_denominator": "valid transformation rows only: VALID_STEREO, VALID_SINGLE, VALID_DOUBLE",
+        "cross_cyp_valid_transformation_sharing": {
+          "id_unit": "undirected_exchange_id",
+          "minimum_endpoint_count": 2,
+          "eligibility": "share only transformation IDs with a valid status in at least two endpoint aggregate partitions",
+          "endpoint_state_source": "aggregate-only state-safe direct availability projection",
+          "row_endpoint_availability_emitted": false,
+          "gates_frequencies_support_use_valid_statuses_only": true
+        }
+      },
+      "manifest.json": {
+        "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage_manifest.v1",
+        "status_values": ["R4_TRANSFORMATION_COVERAGE_FAILED", "R4_TRANSFORMATION_COVERAGE_UNDERPOWERED", "R4_TRANSFORMATION_COVERAGE_SUPPORTED"],
+        "required_fields": [
+          "schema_version",
+          "status",
+          "contract_sha256",
+          "input_receipts",
+          "source_receipts",
+          "output_receipts",
+          "runtime",
+          "accounting",
+          "authority"
+        ]
+      },
+      "failure_receipt.json": {
+        "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage_failure.v1",
+        "required_fields": ["schema_version", "contract_sha256", "status", "terminal_integrity_failure_codes", "accounting", "authority"]
+      }
+    },
+    "serialization": "RFC4180 CSV with LF line endings and one terminal newline; canonical JSON with sorted keys, two-space indentation, and one terminal newline.",
+    "publication": "Stage, validate, make read-only, and atomically publish with Linux renameat2(RENAME_NOREPLACE); never overwrite or publish a partial root."
+  },
+  "support": {
+    "support_unit": "distinct frozen D-032 similarity-component proxy family, not raw pair count",
+    "local_cyp3a4": {
+      "authority": "local authoritative gate; CYP3A4 state-only",
+      "status_filter": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+      "minimum_proxy_families_overall": 50,
+      "minimum_pairs_overall": 200,
+      "minimum_proxy_families_each_fold_cell": 5,
+      "minimum_pairs_each_fold_cell": 20,
+      "fold_cells": 15
+    },
+    "selected_anchor_structural": {
+      "policy": "selected_anchor",
+      "endpoint_agnostic": true,
+      "status_filter": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+      "requires_structural_anchor_and_query_coverage": true,
+      "minimum_proxy_families_overall": 50,
+      "minimum_proxy_families_each_fold_cell": 5,
+      "fold_cells": 15,
+      "arbitrary_episode_pair_threshold": false
+    },
+    "test_query_coverage": "NOT_COMPUTED_TEST_ACCESS_FORBIDDEN",
+    "valid_statuses_for_gates_frequencies_support": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+    "status_values": ["R4_TRANSFORMATION_COVERAGE_FAILED", "R4_TRANSFORMATION_COVERAGE_UNDERPOWERED", "R4_TRANSFORMATION_COVERAGE_SUPPORTED"],
+    "status_precedence": ["R4_TRANSFORMATION_COVERAGE_FAILED", "R4_TRANSFORMATION_COVERAGE_UNDERPOWERED", "R4_TRANSFORMATION_COVERAGE_SUPPORTED"],
+    "precedence_rule": "Integrity failure outranks clean underpowered, which outranks supported.",
+    "supported_interpretation": "Geometry and coverage evidence only; permits freezing a separate oracle contract and nothing downstream.",
+    "anti_inflation_rules": [
+      "Count support by distinct frozen training proxy family, never raw pair or repeated episode count.",
+      "Exclude the held-out outer group from every training-family support count.",
+      "Count each union structural pair once even when it is both local and episode-derived.",
+      "Count both directions as views of one pair, never as two pairs.",
+      "Count repeated exact transformations and classes once per training family.",
+      "Episode repetition and query rank cannot increase training-family support."
+    ]
+  },
+  "accounting_zeros": {
+    "numeric_target_magnitudes_parsed": 0,
+    "numeric_target_magnitudes_retained": 0,
+    "tdi_rows_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "model_fits": 0,
+    "predictions_generated": 0,
+    "metric_evaluations": 0,
+    "official_scorer_calls": 0,
+    "leaderboard_submissions": 0,
+    "transductive_operations": 0
+  },
+  "authority": {
+    "contract_frozen": true,
+    "coverage_artifacts": false,
+    "geometry_coverage_after_success": true,
+    "oracle_contract_freeze_after_supported": true,
+    "model_fits": false,
+    "predictions": false,
+    "metrics": false,
+    "official_st_rae": false,
+    "test_access": false,
+    "tdi": false,
+    "submissions": false,
+    "transduction": false,
+    "label_derivation": false,
+    "status_note": "The contract is frozen but unimplemented. A supported run grants geometry/coverage evidence and permission to freeze a separate oracle contract only.",
+    "conditional_authority": {
+      "contract_only_not_implemented": {
+        "coverage_artifacts": false,
+        "geometry_coverage": false,
+        "oracle_contract_freeze": false,
+        "model_fits": false,
+        "predictions": false,
+        "metrics": false,
+        "official_st_rae": false,
+        "test_access": false,
+        "tdi": false,
+        "submissions": false,
+        "transduction": false
+      },
+      "R4_TRANSFORMATION_COVERAGE_FAILED": {
+        "coverage_artifacts": false,
+        "geometry_coverage": false,
+        "oracle_contract_freeze": false,
+        "model_fits": false,
+        "predictions": false,
+        "metrics": false,
+        "official_st_rae": false,
+        "test_access": false,
+        "tdi": false,
+        "submissions": false,
+        "transduction": false
+      },
+      "R4_TRANSFORMATION_COVERAGE_UNDERPOWERED": {
+        "coverage_artifacts": true,
+        "geometry_coverage": true,
+        "oracle_contract_freeze": false,
+        "model_fits": false,
+        "predictions": false,
+        "metrics": false,
+        "official_st_rae": false,
+        "test_access": false,
+        "tdi": false,
+        "submissions": false,
+        "transduction": false
+      },
+      "R4_TRANSFORMATION_COVERAGE_SUPPORTED": {
+        "coverage_artifacts": true,
+        "geometry_coverage": true,
+        "oracle_contract_freeze": true,
+        "model_fits": false,
+        "predictions": false,
+        "metrics": false,
+        "official_st_rae": false,
+        "test_access": false,
+        "tdi": false,
+        "submissions": false,
+        "transduction": false
+      }
+    }
+  },
+  "failure_policy": {
+    "integrity_failure": "Receipt, schema, firewall, runtime, atomic-publication, or other integrity failure emits only failure_receipt.json and does not emit coverage artifacts.",
+    "clean_underpowered": "Emit the four success artifacts with status R4_TRANSFORMATION_COVERAGE_UNDERPOWERED and preserve all coverage evidence.",
+    "supported": "Emit the four success artifacts with status R4_TRANSFORMATION_COVERAGE_SUPPORTED; do not fit or score anything.",
+    "status_precedence": ["R4_TRANSFORMATION_COVERAGE_FAILED", "R4_TRANSFORMATION_COVERAGE_UNDERPOWERED", "R4_TRANSFORMATION_COVERAGE_SUPPORTED"],
+    "row_exclusion_codes": ["C2", "C3", "C6", "S2", "S3", "S6"],
+    "terminal_integrity_failure_codes": ["C1", "V1", "V2", "V4", "P1", "P2", "P5", "P6"],
+    "row_failure_code_field_scope": "success-artifact failure_code fields may contain only row_exclusion_codes; terminal_integrity_failure_codes appear only in failure_receipt.json.",
+    "no_silent_repair": true,
+    "row_status_values": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE", "AMBIGUOUS", "UNSUPPORTED", "STANDARDIZATION_HAZARD"],
+    "valid_statuses_for_gates_frequencies_support": ["VALID_STEREO", "VALID_SINGLE", "VALID_DOUBLE"],
+    "row_status_policy": "AMBIGUOUS, UNSUPPORTED, and STANDARDIZATION_HAZARD are row states recorded in success artifacts and contribute to clean underpowered evidence; none is terminal integrity failure by itself.",
+    "terminal_integrity_conditions": [
+      "receipt mismatch",
+      "schema mismatch",
+      "firewall violation",
+      "runtime or dependency mismatch",
+      "non-deterministic or invariant failure",
+      "partial or non-atomic publication",
+      "distinct molecule identities sharing a standardized_structure_hash; fail closed and never use molecule ID as a rescue tiebreak"
+    ]
+  },
+  "required_outputs_after_implementation": [
+    "transformation_pairs.csv",
+    "episode_transformations.csv",
+    "transformation_coverage.json",
+    "manifest.json"
+  ],
+  "forbidden": [
+    "predictive MCS fallback",
+    "neural pair encoder",
+    "numeric target parsing",
+    "numeric activity/delta antisymmetry",
+    "delta-model fitting",
+    "anchor activity reconstruction",
+    "metric implementation",
+    "official ST-RAE scoring",
+    "test access",
+    "TDI label derivation",
+    "submission generation",
+    "transductive test relationships",
+    "new chemistry or MMP dependency"
+  ]
+}
