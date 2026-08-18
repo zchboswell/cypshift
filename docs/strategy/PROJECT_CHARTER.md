@@ -1,6 +1,6 @@
 # Project charter
 
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-17
 
 ## Mission
 
@@ -54,40 +54,36 @@ Time-dependent-inhibition classification:
 
 ## Competition contract
 
-### Confirmed in the 2026-07-29 announcement
+Launch-day truth supersedes the pre-launch announcement assumptions. The
+receipt-bound release is indexed in
+[`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/).
 
-- The challenge launches on 2026-08-17 and closes on 2026-11-03.
-- The test set contains 750 compounds: ten close analogs for each of 75 potent
-  hit compounds selected across CYP1A2, CYP2C9, and CYP3A4.
-- All 750 test compounds were assayed across four CYP isoforms; the training
-  dose-response matrix is sparse and the test matrix is dense.
-- The direct-inhibition task predicts four pIC50 targets.
-- TDI classification is scored for CYP3A4 and CYP2D6 using MCC.
-- The preliminary TDI definition is based on a two-fold IC50 shift with special
-  handling for values below the measurable direct-inhibition range.
-- The preliminary direct-inhibition metric is a macro-averaged
-  soft-threshold relative absolute error using credible intervals and reduced
-  influence from low-activity measurements.
-- Half of the test set is used for the live leaderboard, grouped so an analog
-  family remains wholly in the live or fully blinded subset.
-- A one-time intermediate full-test reveal follows the 2026-09-24 submission
-  deadline.
+Organizer-confirmed launch facts:
 
-### Frozen only on or after 2026-08-17
+- the challenge is live and closes on 2026-11-03;
+- the test set has 750 compounds and two independently scored tracks;
+- direct inhibition predicts four pIC50 targets: CYP1A2, CYP2C9, CYP2D6, and
+  CYP3A4;
+- TDI classification is evaluated for CYP3A4 and CYP2D6 with MCC;
+- the live leaderboard uses half of the test set and the final leaderboard uses
+  the full set;
+- one ranked account represents each cooperating team/lab; repeated per-track
+  uploads are accepted every 12 hours and only the latest valid entry counts;
+- external data and pretrained models are publicly allowed, with proprietary
+  training data disclosed. Component rights and overlap remain artifact-
+  specific.
 
-The launch-day official resources are authoritative for:
+Required public column names are frozen as `SMILES`, `Molecule_Name`, four
+direct targets, and two TDI targets. Official TDI column order disagrees across
+the Space and tutorial. The launch prose names MA-ST-RAE and a two-fold TDI
+shift with special low-activity rules, but R0 does not freeze executable
+ST-RAE, denominators, scored masks, interval-field meaning, TDI derivation,
+validator/backend parity, or transductive test-test permissions. Those remain
+unresolved V6/P6 blockers.
 
-- data files and licenses;
-- schema and field names;
-- endpoint and assay encodings;
-- censoring and interval semantics;
-- metric implementation;
-- TDI label implementation;
-- submission format and validation;
-- competition rules, including external and transductive data use;
-- leaderboard and submission limits.
-
-No pre-launch announcement overrides released code or rules.
+No pre-launch announcement overrides the released source receipts, and no
+pre-launch model, metric, schema, or permission assumption transfers
+automatically.
 
 ## Non-negotiable constraints
 

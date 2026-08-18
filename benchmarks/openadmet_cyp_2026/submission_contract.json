@@ -1,0 +1,49 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.submission_contract.v1",
+  "freeze_date": "2026-08-17",
+  "status_values": ["verified", "organizer_confirmed", "provisional", "unresolved", "not_applicable"],
+  "source_evidence": [
+    "benchmarks/openadmet_cyp_2026/source_receipts.json#/sources/tutorial/files",
+    "benchmarks/openadmet_cyp_2026/source_receipts.json#/sources/space/files",
+    "benchmarks/openadmet_cyp_2026/challenge_contract.json#/public_submission"
+  ],
+  "shared": {
+    "rows": 750,
+    "status": "verified",
+    "identifier_columns": ["SMILES", "Molecule_Name"],
+    "formats": ["csv", "parquet"],
+    "format_status": "verified",
+    "row_order": "unresolved",
+    "duplicate_identifier_behavior": "unresolved"
+  },
+  "direct_inhibition": {
+    "status": "verified",
+    "required_columns_ordered": [
+      "SMILES", "Molecule_Name", "CYP1A2_pIC50_direct_inhibition",
+      "CYP2C9_pIC50_direct_inhibition", "CYP2D6_pIC50_direct_inhibition",
+      "CYP3A4_pIC50_direct_inhibition"
+    ],
+    "prediction_type": "numeric",
+    "finite_values_required": true,
+    "finite_values_status": "verified",
+    "extra_columns": "unresolved"
+  },
+  "tdi": {
+    "status": "unresolved",
+    "required_column_names": ["SMILES", "Molecule_Name", "CYP2D6_is_TDI", "CYP3A4_is_TDI"],
+    "space_observed_order": ["SMILES", "Molecule_Name", "CYP2D6_is_TDI", "CYP3A4_is_TDI"],
+    "tutorial_observed_order": ["SMILES", "Molecule_Name", "CYP3A4_is_TDI", "CYP2D6_is_TDI"],
+    "column_names_status": "verified",
+    "order_status": "unresolved; tutorial observes CYP3A4 then CYP2D6 while Space observes CYP2D6 then CYP3A4",
+    "prediction_type": "boolean",
+    "accepted_encodings": ["True", "False", "1", "0", "1.0", "0.0"],
+    "accepted_encoding_status": "verified",
+    "extra_columns": "unresolved"
+  },
+  "validator_boundary": {
+    "tutorial_validator_behavior": "The pinned tutorial validators enforce required names, non-null identifiers, unique Molecule_Name values, row count when expected IDs are absent, and type/finiteness checks.",
+    "space_validator_conflict": "The public Space classification uploader drops null prediction rows before binary-value validation and does not establish identifier equality, duplicate, SMILES, or row-order behavior.",
+    "live_backend_parity": "unresolved",
+    "transductive_test_test_permissions": "unresolved"
+  }
+}

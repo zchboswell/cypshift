@@ -1,0 +1,123 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.source_receipts.v1",
+  "freeze_date": "2026-08-17",
+  "recorded_at_utc": "2026-08-18T02:31:33Z",
+  "status_values": ["verified", "organizer_confirmed", "provisional", "unresolved", "not_applicable"],
+  "sources": {
+    "dataset": {
+      "kind": "huggingface_dataset_repository",
+      "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test",
+      "revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+      "revision_status": "verified",
+      "declared_license": "Apache-2.0",
+      "license_status": "verified",
+      "license_evidence": "README.md front matter at the pinned revision",
+      "files": [
+        {
+          "path": "cyp-challenge-TEST-BLINDED.csv",
+          "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-TEST-BLINDED.csv",
+          "size_bytes": 44935,
+          "sha256": "a342f8444a8dcb531ca12f3685293f0bd6c36ae9073f491e44a9bc1cc4b741f9",
+          "rows": 750,
+          "header": ["Molecule_Name", "SMILES"]
+        },
+        {
+          "path": "cyp-challenge-TRAIN_Emax.csv",
+          "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-TRAIN_Emax.csv",
+          "size_bytes": 1131044,
+          "sha256": "70e9eb41f2401d8c79b684c42da3721a7aa4fd5c7f561636025c5b91cc29a3b9",
+          "rows": 6146,
+          "header": ["Molecule_Name", "SMILES", "CYP1A2_EmaxVsPosCtrl_TDI_condition", "CYP2C9_EmaxVsPosCtrl_TDI_condition", "CYP2D6_EmaxVsPosCtrl_TDI_condition", "CYP3A4_EmaxVsPosCtrl_TDI_condition", "CYP1A2_EmaxVsPosCtrl_TDI_condition_conf_high", "CYP2C9_EmaxVsPosCtrl_TDI_condition_conf_high", "CYP2D6_EmaxVsPosCtrl_TDI_condition_conf_high", "CYP3A4_EmaxVsPosCtrl_TDI_condition_conf_high", "CYP1A2_EmaxVsPosCtrl_TDI_condition_conf_low", "CYP2C9_EmaxVsPosCtrl_TDI_condition_conf_low", "CYP2D6_EmaxVsPosCtrl_TDI_condition_conf_low", "CYP3A4_EmaxVsPosCtrl_TDI_condition_conf_low", "CYP1A2_EmaxVsPosCtrl_direct_inhibition", "CYP2C9_EmaxVsPosCtrl_direct_inhibition", "CYP2D6_EmaxVsPosCtrl_direct_inhibition", "CYP3A4_EmaxVsPosCtrl_direct_inhibition", "CYP1A2_EmaxVsPosCtrl_direct_inhibition_conf_high", "CYP2C9_EmaxVsPosCtrl_direct_inhibition_conf_high", "CYP2D6_EmaxVsPosCtrl_direct_inhibition_conf_high", "CYP3A4_EmaxVsPosCtrl_direct_inhibition_conf_high", "CYP1A2_EmaxVsPosCtrl_direct_inhibition_conf_low", "CYP2C9_EmaxVsPosCtrl_direct_inhibition_conf_low", "CYP2D6_EmaxVsPosCtrl_direct_inhibition_conf_low", "CYP3A4_EmaxVsPosCtrl_direct_inhibition_conf_low", "CYP1A2_is_TDI", "CYP2C9_is_TDI", "CYP2D6_is_TDI", "CYP3A4_is_TDI"]
+        },
+        {
+          "path": "cyp-challenge-TRAIN_TDI.csv",
+          "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-TRAIN_TDI.csv",
+          "size_bytes": 1218524,
+          "sha256": "b458f599a792412292664386e8f18adc5d4a4129d6bd212ae80a60fb9b96bb60",
+          "rows": 6145,
+          "header": ["Molecule_Name", "SMILES", "CYP2D6_is_TDI", "CYP3A4_is_TDI", "CYP1A2_pIC50_TDI_condition", "CYP2C9_pIC50_TDI_condition", "CYP2D6_pIC50_TDI_condition", "CYP3A4_pIC50_TDI_condition", "CYP1A2_pIC50_TDI_condition_conf_high", "CYP2C9_pIC50_TDI_condition_conf_high", "CYP2D6_pIC50_TDI_condition_conf_high", "CYP3A4_pIC50_TDI_condition_conf_high", "CYP1A2_pIC50_TDI_condition_conf_low", "CYP2C9_pIC50_TDI_condition_conf_low", "CYP2D6_pIC50_TDI_condition_conf_low", "CYP3A4_pIC50_TDI_condition_conf_low", "CYP1A2_pIC50_TDI_condition_std", "CYP2C9_pIC50_TDI_condition_std", "CYP2D6_pIC50_TDI_condition_std", "CYP3A4_pIC50_TDI_condition_std", "CYP1A2_pIC50_direct_inhibition", "CYP2C9_pIC50_direct_inhibition", "CYP2D6_pIC50_direct_inhibition", "CYP3A4_pIC50_direct_inhibition", "CYP1A2_pIC50_direct_inhibition_conf_high", "CYP2C9_pIC50_direct_inhibition_conf_high", "CYP2D6_pIC50_direct_inhibition_conf_high", "CYP3A4_pIC50_direct_inhibition_conf_high", "CYP1A2_pIC50_direct_inhibition_conf_low", "CYP2C9_pIC50_direct_inhibition_conf_low", "CYP2D6_pIC50_direct_inhibition_conf_low", "CYP3A4_pIC50_direct_inhibition_conf_low", "CYP1A2_pIC50_direct_inhibition_std", "CYP2C9_pIC50_direct_inhibition_std", "CYP2D6_pIC50_direct_inhibition_std", "CYP3A4_pIC50_direct_inhibition_std"]
+        },
+        {
+          "path": "cyp-challenge-TRAIN_inhibition.csv",
+          "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-TRAIN_inhibition.csv",
+          "size_bytes": 653407,
+          "sha256": "b8f79addd266fb6f9f4c222c5e4e73d926362328b6a8d2841871a54e46bd2278",
+          "rows": 4905,
+          "header": ["Molecule_Name", "SMILES", "CYP1A2_pIC50_direct_inhibition", "CYP2C9_pIC50_direct_inhibition", "CYP2D6_pIC50_direct_inhibition", "CYP3A4_pIC50_direct_inhibition", "CYP1A2_pIC50_direct_inhibition_conf_high", "CYP2C9_pIC50_direct_inhibition_conf_high", "CYP2D6_pIC50_direct_inhibition_conf_high", "CYP3A4_pIC50_direct_inhibition_conf_high", "CYP1A2_pIC50_direct_inhibition_conf_low", "CYP2C9_pIC50_direct_inhibition_conf_low", "CYP2D6_pIC50_direct_inhibition_conf_low", "CYP3A4_pIC50_direct_inhibition_conf_low", "CYP1A2_pIC50_direct_inhibition_std", "CYP2C9_pIC50_direct_inhibition_std", "CYP2D6_pIC50_direct_inhibition_std", "CYP3A4_pIC50_direct_inhibition_std"]
+        },
+        {
+          "path": "cyp-challenge-single-concentration-TRAIN.csv",
+          "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-single-concentration-TRAIN.csv",
+          "size_bytes": 3619009,
+          "sha256": "cf275440aa33d10b16e7a3a19f1b196d59dc379052175ab79b47ca43db663c7a",
+          "rows": 17504,
+          "header": ["Molecule_Name", "SMILES", "OCNT_Batch", "enzyme", "plate_id", "concentration_M", "log2fc_estimate", "log2fc_std_error", "p_value", "log2fc_fdr", "log2fc_median", "cohens_d"]
+        }
+      ]
+    },
+    "tutorial": {
+      "kind": "github_repository",
+      "url": "https://github.com/OpenADMET/CYP-Challenge-Tutorial",
+      "revision": "9d4925eb4a0fb914256da1b27d110593bcbe3cf0",
+      "revision_status": "verified",
+      "declared_license": "Apache-2.0",
+      "license_status": "verified",
+      "schema_observations": {
+        "tdi_value_column_order": ["CYP3A4_is_TDI", "CYP2D6_is_TDI"],
+        "tdi_order_status": "unresolved; validators enforce names, not order"
+      },
+      "files": [
+        {"path": "LICENSE", "size_bytes": 11357, "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4", "role": "license declaration"},
+        {"path": "README.md", "size_bytes": 4377, "sha256": "de2ee4ef6096d187e09cdad8f1c50f491fa43f616e04a39868ee6209c001b461", "role": "public track and metric prose"},
+        {"path": "evaluation/config.py", "size_bytes": 2326, "sha256": "9493523b6d1408bdebad4feba701b77a85c1aa9bc72fde66e1c17d750f50569a", "role": "tutorial metric helper; not treated as live scorer"},
+        {"path": "evaluation/evaluate_predictions.py", "size_bytes": 7777, "sha256": "fc3e4bb0b6950b3aeb27266b81d375a29b8aa083e6529c2d350ee9c778227b6a", "role": "tutorial evaluator; incompatible with the released challenge scorer"},
+        {"path": "validation/activity_validation.py", "size_bytes": 3051, "sha256": "276a53d7f22ff973aaf567e64d977202995e91ba3cef2bbdc4de71c13bdebcb2", "role": "direct-submission validator"},
+        {"path": "validation/tdi_validation.py", "size_bytes": 4046, "sha256": "e343dc779076b9df302621b66bb1b5ca1a1a19b26e16614d674f4a174d4193ad", "role": "TDI-submission validator"}
+      ]
+    },
+    "space": {
+      "kind": "huggingface_space_repository",
+      "url": "https://huggingface.co/spaces/openadmet/cyp-challenge",
+      "revision": "13c5057b37d1e72b3f036dd0d59718b1823f8fdd",
+      "revision_status": "verified",
+      "declared_license": null,
+      "license_status": "unresolved",
+      "license_evidence": "No LICENSE file or declared license was present; do not infer one.",
+      "schema_observations": {
+        "tdi_value_column_order": ["CYP2D6_is_TDI", "CYP3A4_is_TDI"],
+        "tdi_order_status": "unresolved across official sources",
+        "classification_upload_null_behavior": "submission.py drops rows with null TDI predictions before validation; this conflicts with the tutorial/full-population prose and leaves live backend parity unresolved"
+      },
+      "files": [
+        {"path": "README.md", "size_bytes": 115, "sha256": "8e94a6f82ed3be212aba3266630cf35222bd5715b2b2291031e06fd59d384aaa", "role": "Space metadata"},
+        {"path": "config.py", "size_bytes": 26448, "sha256": "342cd287e63a79c61b8e18fa46e81950ebb7333b6e91ee427af18426e04ca52f", "role": "live schema, metric labels, cadence, and permission prose"},
+        {"path": "submission.py", "size_bytes": 24146, "sha256": "e79d709800b57c5c693223ddf0e5f630d5bd2d85563b96151346c93ed2c890b5", "role": "Space upload validation behavior"}
+      ]
+    },
+    "announcement": {
+      "kind": "official_blog_post",
+      "url": "https://openadmet.ghost.io/announcing-openadmets-cyp-inhibition-blind-challenge/",
+      "doi": "10.5281/zenodo.21789716",
+      "revision": null,
+      "revision_status": "provisional",
+      "declared_license": "CC-BY-4.0",
+      "license_status": "organizer_confirmed",
+      "retrieved_size_bytes": 66806,
+      "retrieved_sha256": "bc831ab7acc77edf8ae2a446e464c0e11e5f5771bc854b3a2a8d77d12b79d406",
+      "note": "Rendered HTML is retained as a retrieval receipt, not copied into the repository."
+    },
+    "launch_post": {
+      "kind": "official_blog_post",
+      "url": "https://openadmet.ghost.io/openadmets-cyp-challenge-is-underway/",
+      "doi": "10.5281/zenodo.21987121",
+      "revision": null,
+      "revision_status": "provisional",
+      "declared_license": "CC-BY-4.0",
+      "license_status": "organizer_confirmed",
+      "retrieved_size_bytes": 46730,
+      "retrieved_sha256": "6c8180aaee2e96c3baa4ce24af25ab7f0d17efe8410fdf9285441e911ea9ae9e",
+      "claims_bound_here": ["two independently scored tracks", "750-compound test set", "live half and final full leaderboard", "one ranked team identity with repeated uploads"],
+      "note": "The post says cross-task use is encouraged and warns that TDI label derivation needs care; it does not resolve the executable scorer semantics."
+    }
+  }
+}

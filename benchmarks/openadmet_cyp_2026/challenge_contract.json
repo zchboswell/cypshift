@@ -1,0 +1,123 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.challenge_contract.v1",
+  "freeze_date": "2026-08-17",
+  "recorded_at_utc": "2026-08-18T02:31:33Z",
+  "gate": "R0_CONTRACT_FROZEN",
+  "source_receipts": "benchmarks/openadmet_cyp_2026/source_receipts.json",
+  "authoritative_sources": ["dataset", "tutorial", "space", "announcement", "launch_post"],
+  "status_values": ["verified", "organizer_confirmed", "provisional", "unresolved", "not_applicable"],
+  "public_submission": {
+    "row_count": {"value": 750, "status": "verified", "evidence": "dataset test CSV and Space/tutorial validators"},
+    "direct_columns": {
+      "status": "verified",
+      "ordered": [
+        "SMILES", "Molecule_Name", "CYP1A2_pIC50_direct_inhibition",
+        "CYP2C9_pIC50_direct_inhibition", "CYP2D6_pIC50_direct_inhibition",
+        "CYP3A4_pIC50_direct_inhibition"
+      ],
+      "encoding": "numeric prediction for each direct-inhibition pIC50 target"
+    },
+    "tdi_columns": {
+      "status": "unresolved",
+      "ordered": ["SMILES", "Molecule_Name", "CYP2D6_is_TDI", "CYP3A4_is_TDI"],
+      "names_status": "verified",
+      "order_status": "unresolved; tutorial observes CYP3A4 then CYP2D6 while Space observes CYP2D6 then CYP3A4",
+      "encoding": "boolean prediction; tutorial validator accepts True/False, 1/0, or 1.0/0.0"
+    },
+    "file_formats": {"value": ["csv", "parquet"], "status": "verified"},
+    "identity_and_order": {
+      "identifier": "Molecule_Name plus SMILES",
+      "row_identity_status": "provisional",
+      "order_and_duplicate_rules_status": "unresolved"
+    }
+  },
+  "endpoint_state": {
+    "direct_inhibition": {
+      "status": "verified",
+      "targets": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+      "measurement": "direct-inhibition pIC50; released tables carry conf_low/conf_high bounds and standard deviations",
+      "interval_terminology": "unresolved; dataset/tutorial call the bounds 95% confidence intervals while Space/blog call them credible intervals",
+      "semantics": "Preserve raw values, available bounds, missingness, and source identity. No raw curves, censor qualifiers, per-row assay/probe state, QC, or label-origin fields are released; do not invent them.",
+      "test_labels": "withheld"
+    },
+    "tdi": {
+      "status": "organizer_confirmed",
+      "targets": ["CYP2D6", "CYP3A4"],
+      "measurement": "operational binary +NADPH versus -NADPH IC50-shift state; not proof of an irreversible mechanism",
+      "public_definition": "A positive is described as an IC50 shift exceeding two-fold after preincubation; low-activity cases include inferred-positive and assigned-negative rules.",
+      "exact_label_derivation": "unresolved",
+      "release_consistency_conflict": "Among non-null labels, every row missing either pIC50 arm is False (CYP2D6: 4; CYP3A4: 1,250, including 1,055 direct-missing rows with TDI pIC50 >= 4.301). All non-null both-arm rows match TDI > max(direct, 4) + log10(2). This observed relation is an M2/M6/P6 conflict, not a derivation rule to extrapolate.",
+      "semantics": "Keep direct-arm values, TDI-arm values, intervals, and unresolved label states separate; never infer a challenge label from a proxy assay."
+    }
+  },
+  "metrics": {
+    "direct": {
+      "name": "MA-ST-RAE",
+      "status": "organizer_confirmed",
+      "direction": "lower_is_better",
+      "public_prose": "Macro-averaged soft-threshold relative absolute error; predictions inside fitted bounds receive zero error and low-activity observations have reduced influence.",
+      "implementation": "unresolved",
+      "denominator": "unresolved",
+      "scored_masks": "unresolved",
+      "credible_interval_bounds": "unresolved",
+      "backend_parity": "unresolved"
+    },
+    "tdi": {
+      "name": "MCC",
+      "status": "organizer_confirmed",
+      "direction": "higher_is_better",
+      "evaluated_isoforms": ["CYP3A4", "CYP2D6"],
+      "endpoint_aggregation": "unresolved",
+      "scored_mask_and_degenerate_case_behavior": "unresolved",
+      "backend_parity": "unresolved"
+    }
+  },
+  "leaderboard_and_rules": {
+    "tracks": {"value": ["direct_inhibition_regression", "tdi_classification"], "status": "organizer_confirmed"},
+    "tracks_scored_independently": {"value": true, "status": "organizer_confirmed"},
+    "live_population": {"value": "half of the test set", "status": "organizer_confirmed"},
+    "final_population": {"value": "full test set", "status": "organizer_confirmed"},
+    "family_whole_in_one_population": {"value": true, "status": "organizer_confirmed", "note": "Exact parent IDs, family membership, overlap resolution, and live mask are unpublished."},
+    "submission_cadence_hours": {"value": 12, "status": "verified", "evidence": "Space config.py"},
+    "ranked_team_identity": {"value": "one account/entry per cooperating team or lab; repeated per-track uploads are allowed", "status": "organizer_confirmed"},
+    "latest_valid_submission_counts": {"value": true, "status": "organizer_confirmed"},
+    "timeline_utc": {"value": {"interim_cutoff": "2026-09-24T23:59:00Z", "full_test_performance_reveal": "2026-09-25", "final_close": "2026-11-03T23:59:00Z"}, "status": "organizer_confirmed", "note": "The interim reveal is performance, not ground-truth labels."},
+    "external_and_pretrained_use": {
+      "value": "publicly allowed",
+      "status": "organizer_confirmed",
+      "disclosure": "proprietary training data must be disclosed",
+      "component_rights_and_overlap": "unresolved"
+    },
+    "innovative_ml_recognition": {"value": "discretionary; public code and a reachable repository link are required by the Space FAQ", "status": "organizer_confirmed"},
+    "structure_track": {"value": "not live; size remains TODO in public Space", "status": "not_applicable"},
+    "transductive_test_test_permissions": {"value": null, "status": "unresolved"},
+    "project_policy": {"value": "No metric-specific optimization, threshold tuning, or score-driven repair is authorized while metric semantics remain unresolved.", "status": "not_applicable"}
+  },
+  "validation_protocols": {
+    "direct_TRACE": {
+      "status": "provisional",
+      "purpose": "Primary direct-inhibition evaluation under complete analog-family holdout.",
+      "invariants": ["no molecule, exact duplicate, or analog family crosses the evaluation boundary", "fit selection/calibration/thresholds/error models only from cross-fitted predictions", "preserve available bounds and missingness; do not invent censor states"],
+      "exact_grouping_and_validator": "unresolved"
+    },
+    "global_TDI": {
+      "status": "provisional",
+      "purpose": "Permanent fallback TDI evaluation with one global molecule/family assignment across CYP2D6 and CYP3A4.",
+      "invariants": ["same structure receives one assignment across TDI isoforms", "no label-derived family assignment", "thresholds, if needed, are selected only from grouped out-of-fold predictions"],
+      "exact_grouping_and_validator": "unresolved"
+    },
+    "TDI_TRACE": {
+      "status": "not_applicable",
+      "purpose": "Deferred optional research branch only after direct_TRACE and global_TDI are frozen; global_TDI remains the fallback.",
+      "authorization": "not authorized by R0"
+    }
+  },
+  "unresolved_boundary": [
+    "V6: exact live ST-RAE code, denominator, scored masks, interval bounds, and backend parity",
+    "V6: exact TDI label derivation and scorer masks",
+    "P6: TDI column order, null handling, identifier/duplicate behavior, backend parity, and transductive permissions",
+    "P6: exact parent-family identities, live mask, and interval-field terminology",
+    "P6: component-specific rights and training overlap for external or pretrained artifacts"
+  ],
+  "non_goals": ["modeling", "feature engineering", "metric implementation", "submission generation", "leaderboard iteration", "raw data or source-code redistribution"]
+}

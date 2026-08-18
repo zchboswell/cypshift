@@ -849,3 +849,34 @@
 - Reversal condition: Restore or split a document only if an external reader
   cannot recover the current guidance or the archived evidence through stable
   links.
+
+## D-031 — Freeze the OpenADMET launch intake as TRACE R0
+
+- Date: 2026-08-17
+- Status: accepted; records-only gate
+- Decision: Freeze the 2026-08-17 OpenADMET CYP release intake at
+  `R0_CONTRACT_FROZEN` using the exact dataset, tutorial, and Space revisions,
+  selected-file receipts, launch sources, public submission names/types, and
+  endpoint-state notes in `benchmarks/openadmet_cyp_2026/`. Treat direct
+  TRACE as the primary future family-held-out protocol and global TDI as the
+  permanent TDI fallback; defer optional TDI-TRACE until both are frozen.
+- Evidence: Dataset revision
+  `85f8b358d0a2056a98b990dd75d3b3ec9247862b`, tutorial revision
+  `9d4925eb4a0fb914256da1b27d110593bcbe3cf0`, and Space revision
+  `13c5057b37d1e72b3f036dd0d59718b1823f8fdd` were verified in the local
+  read-only clones. Dataset and tutorial declare Apache-2.0. The Space has no
+  declared license and is not assigned one. The launch sources confirm the
+  two tracks, 750-compound test set, live-half/full-final populations,
+  external/pretrained allowance, and public submission fields.
+- Unresolved boundary: Exact live MA-ST-RAE implementation, denominator,
+  scored masks, interval-field meaning, TDI derivation and column order,
+  validator/backend parity, family assignment, and transductive test-test
+  permission remain visible as V6/P6 blockers. External/pretrained component
+  rights and overlap remain artifact-specific. No metric-specific optimization
+  is authorized.
+- Next action: Implement only a thin receipt-bound drift checker; the canonical
+  adapter follows after review. Do not fit, score, submit, or add a dependency.
+- Reversal condition: A newer authoritative source revision, license
+  correction, schema/validator disagreement, or executable metric source
+  supersedes a recorded provisional field. Create a new versioned receipt;
+  never reinterpret these frozen bytes in place.

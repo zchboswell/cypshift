@@ -1,35 +1,37 @@
-## Objective
+## Context restored
 
-<!-- What concrete milestone does this complete? -->
+- [ ] Read state, active phase, charter, decisions, claims, failure taxonomy,
+      ledger, benchmark guidance; inspected worktree.
 
-## Rationale
+## Objective and rationale
+<!-- Milestone, smallest justification, targeted failure mode. -->
 
-<!-- Why is this the smallest justified change now? Which failure mode or requirement does it address? -->
+## Active hypothesis
+<!-- Hypothesis, or "None — records/tooling only." -->
 
-## Changes
+## Knowledge-base changes
+<!-- Receipts/contracts, phase/state/charter, claim changes. -->
 
-<!-- Summarize the reviewable changes. -->
+## Ledger entry / decision entry
+<!-- Experiment id/path and D-###, or explain why not applicable. -->
 
-## Non-goals
+## Claim status / failure classes
+<!-- Supported, provisional, unresolved, prohibited claims; C/M/V/S/E/T/P/A. -->
 
-<!-- State what this deliberately does not attempt. -->
+## Exact next action
+<!-- One action plus acceptance and kill criteria. -->
 
-## Scientific and data impact
-
-<!-- Note effects on chemistry, measurements, splits, metrics, claims, or data provenance. Write "None" when applicable. -->
+## Non-goals and scientific/data impact
+<!-- Non-goals and effects on chemistry, measurements, splits, metrics, claims,
+or provenance; write "None" when applicable. -->
 
 ## Validation evidence
-
-<!-- List exact checks and outcomes. Do not write only "tests pass". -->
+<!-- Exact commands and outcomes; not only "tests pass." -->
 
 ## Risks and reversal conditions
+<!-- What invalidates this and how to remove it safely. -->
 
-<!-- What could invalidate this decision, and how can the change be removed safely? -->
-
-## Record updates
-
-- [ ] `PROJECT_STATE.md` reflects any changed current truth.
-- [ ] `DECISIONS.md` records any consequential decision.
-- [ ] The experiment ledger records every experiment, including failures.
-- [ ] Generated, licensed, official, or private data are not committed.
-- [ ] No AI or automated tool is listed as an author or co-author.
+## Required record checks
+- [ ] State is current; decision and ledger records are updated.
+- [ ] No generated, licensed, official, or private data are committed.
+- [ ] No AI or automated tool is an author or co-author.

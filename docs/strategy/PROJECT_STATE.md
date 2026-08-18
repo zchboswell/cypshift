@@ -1,11 +1,23 @@
 # Project state
 
-Last updated: 2026-08-11
+Last updated: 2026-08-17
 
 ## Status
 
-The installable core and the public comparator program are complete. No
-modeling phase is active.
+The installable core and the public comparator program are complete. Phase 1
+TRACE is active at the records-only gate `R0_CONTRACT_FROZEN`; no modeling or
+scoring is active.
+
+The authoritative OpenADMET launch intake is recorded in
+[`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
+[`docs/phases/PHASE_1_OPENADMET_TRACE.md`](../phases/PHASE_1_OPENADMET_TRACE.md).
+The dataset, tutorial, and Space revisions are verified. Public required column
+names and types are frozen; official TDI column order disagrees. Exact live
+ST-RAE implementation,
+denominator, scored masks, credible-interval bounds, TDI derivation, backend
+parity, and transductive test-test permissions remain unresolved (`V6/P6`).
+External and pretrained use is publicly allowed, while component rights and
+training overlap remain artifact-specific and unresolved.
 
 `cypshift` currently provides:
 
@@ -192,21 +204,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. The next scientific
-packet begins only when authoritative endpoint, metric, data-use, and family
-semantics can be frozen without assumptions.
-
-Then:
-
-1. preserve original source bytes, licenses, schemas, metrics, and validation
-   behavior;
-2. construct label-independent duplicate and analog-family groups;
-3. reproduce the simplest eligible fixed-plus-GIN global comparator;
-4. audit whether measured parents and supported parent/analog families exist;
-5. run one minimal parent-relative experiment with the controls in
-   [the scientific rationale](../SCIENCE.md);
-6. stop the differentiated-model path if the data cannot support it or the
-   family-held-out gain is not credible.
+Do not add another global representation or ensemble. Implement only a thin
+receipt-bound drift checker for the frozen OpenADMET sources.
+It must verify revisions, selected-file hashes, CSV headers, row counts, and
+submission names/types, then stop on drift. Build the canonical adapter only
+after this check passes review. Do not fit, score, submit, or use transductive
+test relationships. After direct TRACE and global TDI contracts are executable
+and reviewed, audit family topology before any parent-relative experiment.
+`TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.
