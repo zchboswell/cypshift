@@ -1296,3 +1296,32 @@
 - Reversal condition: The synthetic implementation cannot reproduce v5's exact
   cardinalities, receipts, arithmetic, process isolation, or no-authority
   boundary. Preserve the blocker and repair it before any official execution.
+
+## D-046 — Accept the complete R3B synthetic global runner
+
+- Date: 2026-08-18
+- Status: accepted; `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`
+- Decision: Accept the v5 target projector, preflight, isolated model cells,
+  prediction freezers, bounded surrogate scorer, and single terminal publisher
+  as the complete synthetic R3B implementation. Authorize only one subsequent
+  frozen R3C official global experiment. Keep official score, submission, TDI,
+  oracle-anchor, transformation, transductive, and deployable-model authority
+  denied.
+- Evidence: Two fresh synthetic roots each ran all 60 outer and 240 inner cells
+  in separate processes: 600 unique cell processes and 720 real CatBoost fits
+  total. Both reached `GLOBAL_EXPERT_FROZEN`; deterministic projection,
+  preflight, feature, freezer, score, and terminal artifacts were byte-identical
+  after normalizing only validated nonnegative runtime and peak-memory fields.
+  Linux x86_64, Python 3.10.13, the research lock SHA, NumPy 1.25.2, and CatBoost
+  1.2.1 were verified before every fit. Seventy-seven focused integration tests
+  and the 363-test repository suite pass, with three expected skips; Ruff,
+  formatting, scoped mypy, and independent adversarial review pass. Official
+  targets, challenge feature roots, predictions, metrics, TDI, and test data
+  opened remain zero.
+- Alternatives: Run official targets before the firewall passed; share one
+  process across cells; weaken receipts or schema checks; redesign the frozen
+  systems after observing outer results; or split cohesive modules solely to
+  satisfy a line-count target.
+- Reversal condition: R3C finds source, runtime, receipt, split, isolation,
+  determinism, arithmetic, or authority drift. Emit `GLOBAL_FAILED`, preserve
+  the blocker outside Git, and stop before granting predictive evidence.

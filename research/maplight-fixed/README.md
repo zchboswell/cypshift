@@ -53,3 +53,23 @@ Stage B ladders subsequently passed. Public prediction attempts 3 and 4 are
 byte-identical, and the bounded scorecard reproduced all six dated anchors
 within 0.003 AUPRC. Do not rerun, repair, add a third family, or reuse this TDC
 score as challenge evidence. ExtraTrees remains unauthorized on this matrix.
+
+## R3B synthetic runner acceptance
+
+`run_r3b_synthetic_acceptance.py` exercises the complete v5 global runner on a
+generated 50-component fixture. It uses the core Python 3.12.3 environment for
+projection/preflight and the locked research Python 3.10.13 environment for
+every isolated model cell and scorer. One invocation builds two fresh roots,
+runs 60 outer plus 240 inner cell processes per root, performs 720 real CatBoost
+fits total, and requires byte-identical deterministic artifacts apart from
+validated runtime and peak-memory fields.
+
+Run from the repository root only after both locked environments exist:
+
+```console
+.venv/bin/python research/maplight-fixed/run_r3b_synthetic_acceptance.py
+```
+
+Success is `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`. This is an implementation
+and firewall test, not challenge prediction evidence; it opens no official
+target, feature root, test data, TDI data, or submission path.

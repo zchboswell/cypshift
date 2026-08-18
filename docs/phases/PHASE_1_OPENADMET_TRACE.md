@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R3B synthetic runner repair contract frozen; gate `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`; freeze date 2026-08-18.
+Status: active; R3B synthetic runner accepted; gate `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -200,11 +200,17 @@ passed after five substantive repairs and one final staged-authority byte check.
 This is an implementation slice only; no official target was projected and no
 fit, prediction, or metric authority is granted.
 
-Exact next action: implement and independently review v5's model-cell runner,
-prediction freezers, bounded surrogate
-scorers, and synthetic determinism/leakage tests. No official scientific fit
-may run. R3C alone may execute the frozen official fits and internal surrogate-score
-diagnostics after R3B passes as a signed milestone. Preserve
+The complete v5 model-cell, freezer, bounded scorer, and terminal path is also
+synthetically accepted. Two fresh roots each executed 60 outer and 240 inner
+cells in separate processes, totaling 600 processes and 720 real CatBoost fits.
+Both reached `GLOBAL_EXPERT_FROZEN`; deterministic artifacts matched after
+normalizing only validated runtime and peak-memory fields. The locked Linux
+runtime was checked before every fit. Independent adversarial review passes.
+No official target, predictive metric, or leaderboard evidence was opened.
+
+Exact next action: record and integrate this signed R3B milestone, then run the
+single frozen R3C official global experiment and internal surrogate diagnostics
+without redesign or outer-evidence tuning. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
 remains the permanent fallback and R4 must separately freeze the
 oracle/transformation controls.

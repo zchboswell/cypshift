@@ -52,9 +52,7 @@ R3A manifests bind its bytes. V4 removes evaluation-driven candidate selection
 by fixing MapLight before target access, keeps Morgan/median/1-NN as controls,
 splits model-public targets from scorer-sealed truth, and freezes preflight,
 cell, freezer, scoring, terminal-publication, and authority schemas. Both final
-independent audits pass. The gate is contract-only: R3B must still implement and
-replay it entirely on synthetic data before any official target or fit is
-authorized.
+independent audits pass.
 
 [`global_experiment_contract_v5.json`](global_experiment_contract_v5.json)
 supersedes only v4's implementation mechanics. It repairs target-file
@@ -62,6 +60,13 @@ cardinality, truthful preflight accounting, accounting-schema completeness,
 artifact/source binding, and freezer parameter receipts. It preserves v4's
 scientific choices and remains synthetic-only; no target, model, prediction,
 metric, or validation authority is granted.
+
+The complete v5 runner has now passed its synthetic gate. Two fresh roots ran
+all 60 outer and 240 inner contexts in separate processes, totaling 600 cell
+processes and 720 real CatBoost fits. Both reached `GLOBAL_EXPERT_FROZEN` with
+deterministic artifacts, and independent adversarial review passed. This
+accepts implementation mechanics only; R3C remains the sole authority for one
+frozen official global experiment and no submission authority is granted.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

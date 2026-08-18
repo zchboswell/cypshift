@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`; no modeling or
-scoring is active.
+TRACE is active at `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`; no official model,
+prediction-quality score, or submission is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -184,9 +184,21 @@ publication. Canonical fold/component semantics, exact nested accounting,
 strict JSON/CSV/path handling, and clean one-molecule underpowered behavior are
 covered by adversarial tests. Independent audit passed after repairs for
 ineligible structural truth retention, source acceptance, fold serialization,
-staged membership verification, and exact staged authority bytes. This grants
-projection/preflight implementation evidence only; cells, freezers, scoring,
-models, and metrics remain unaccepted.
+staged membership verification, and exact staged authority bytes. That
+intermediate gate granted projection/preflight implementation evidence only.
+
+The complete R3B v5 runner is now synthetically accepted. Two fresh roots each
+executed all 60 outer and 240 inner cells in separate processes: 600 isolated
+cell processes and 720 real CatBoost fits total. Both roots reached
+`GLOBAL_EXPERT_FROZEN` and produced byte-identical deterministic artifacts
+after normalizing only validated runtime and peak-memory fields. The Linux
+x86_64 gate verified Python 3.10.13, NumPy 1.25.2, CatBoost 1.2.1, and the
+research lock receipt before every fit. Independent adversarial review passed
+after hardening split identity, capability separation, receipts, schemas,
+ordering, filesystem boundaries, scalar metadata, accounting, fresh-process
+causality, and terminal publication. This proves the execution boundary only:
+all official targets, predictive comparisons, submissions, TDI, anchors, and
+transformations remain unopened or unauthorized.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -364,14 +376,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. R0 through R3A and the
-R3B v5 repair contract and target projection/preflight have passed their
-applicable gates. Implement and independently review only the remaining R3B
-model-cell runner, prediction freezers, bounded surrogate scorers, and adversarial
-synthetic determinism/leakage tests. Do not run
-an official scientific fit; only R3C may execute the frozen official experiment
-after R3B passes as a signed milestone. Do not
-expose anchors, fit transformation logic, derive TDI labels, score with
+Do not add another global representation or ensemble. R0 through R3B have
+passed their applicable gates. Record, review, and integrate the signed R3B
+implementation milestone, then execute exactly one frozen R3C official global
+experiment using the accepted receipts and systems. Do not redesign or tune
+from its outer evidence. Do not expose anchors, fit transformation logic,
+derive TDI labels, score with
 official ST-RAE, submit, or use transductive test relationships. R4 must
 freeze oracle/transformation controls separately before any local TRACE
 experiment. `TDI-TRACE` remains deferred and `global_TDI` is the permanent

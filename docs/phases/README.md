@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R3B_GLOBAL_RUNNER_CONTRACT_V5_REPAIR_FROZEN`. The
+Phase 1 TRACE is active at `R3B_GLOBAL_RUNNER_SYNTHETIC_ACCEPTED_V5`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -27,11 +27,12 @@ and freezes exact synthetic runner, terminal, metric, and authority schemas.
 Additive v5 repairs only implementation contradictions in target-file
 cardinality, truthful preflight accounting, artifact/source binding, and
 freezer receipts; it does not change the experiment or authorize modeling.
-The next gate is its synthetic implementation and adversarial replay; no
-official target projection or scientific fit is authorized there.
-The v5 target projector/preflight slice has passed adversarial synthetic replay
-and independent review; cell, freezer, scoring, and terminal publication remain
-unaccepted.
+The full v5 implementation has passed adversarial synthetic replay and
+independent review: two fresh roots used 600 isolated cell processes for 720
+real CatBoost fits and reached the same frozen terminal status with deterministic
+artifacts. This grants implementation evidence only, not predictive evidence.
+The next gate is the single frozen R3C official global experiment; no redesign,
+submission, anchor, transformation, or TDI work is authorized there.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.
