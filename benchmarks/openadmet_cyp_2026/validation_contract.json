@@ -1,12 +1,12 @@
 {
-  "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v2",
+  "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v3",
   "freeze_date": "2026-08-18",
-  "gate": "R2_VALIDATION_CONTRACT_V2_FROZEN",
+  "gate": "R2_VALIDATION_CONTRACT_V3_FROZEN",
   "status": "contract_only_not_validation_frozen",
   "supersedes": {
-    "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v1",
-    "commit": "2abcc107f36cc25f6bc1bb3277efe7e0158fe22e",
-    "reason": "Independent review found selector leakage, ambiguous oracle projections, low-support misclassification, topology-authority contradiction, and underspecified deterministic policies before implementation."
+    "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v2",
+    "commit": "1e424c520c383690b8f0d2754a14ffc93f32561f",
+    "reason": "Independent read-only audit found that public outer_group_id plus query_molecule_ids uniquely inferred the omitted anchor in 124 of 187 primary-selected and 126 of 187 stress-base episodes, contradicting v2's information-theoretic anchor-anonymity claim; episode ID determinism was also unfrozen. V2 was rejected before R2B, and zero R2B artifacts were created."
   },
   "challenge_contract": "benchmarks/openadmet_cyp_2026/challenge_contract.json",
   "input_chain": {
@@ -58,6 +58,7 @@
     },
     "invalid_input_policy": "Fail before writing any output if a non-empty numeric cell is non-finite, std is negative, a present bound excludes the point, low exceeds high, or any receipt, source-row identity, molecule identity, standardized-structure, topology, or source-hash check fails.",
     "eligibility": "Retain every state; only complete observations may serve as selector measurements, anchors, or direct local-pair support.",
+    "observation_cardinality": "Exactly one observation per molecule_id and endpoint is required after identity resolution; fail closed on zero or multiple observations.",
     "semantic_firewall": [
       "Call low/high/std reported fields only.",
       "Do not call them censoring, confidence, credible, or scoring intervals.",
@@ -83,7 +84,24 @@
     },
     "experiment_order": "The first local experiment is CYP3A4 only. Never tune topology or criteria to rescue another endpoint."
   },
+  "topology_viability": {
+    "official_diagnostics": {
+      "CYP3A4": {
+        "minimum_components_per_outer_validation_fold": 14,
+        "minimum_pairs_per_outer_validation_fold": 74,
+        "status": "LOCAL_SUPPORTED"
+      },
+      "CYP1A2": {"status": "LOCAL_UNDERPOWERED"},
+      "CYP2C9": {"status": "LOCAL_UNDERPOWERED"},
+      "CYP2D6": {"status": "LOCAL_UNDERPOWERED"}
+    },
+    "interpretation": "These are read-only official diagnostic expectations for the future viability artifact, not emitted artifacts, fit results, or prediction evidence."
+  },
   "campaign_episodes": {
+    "protocol": "ANCHOR_EXPANSION_HOLDOUT",
+    "candidate_pool_policy": "DEFERRED_NO_INFERRED_POOL_V1",
+    "outer_group_id": "frozen D-032 similarity component hash",
+    "repeat_expansion": "Expand exactly the three frozen repeats; do not represent the three repeats times five outer-validation folds as fifteen episode contexts.",
     "selector_endpoints": ["CYP1A2", "CYP2C9", "CYP3A4"],
     "excluded_selector_endpoints": ["CYP2D6"],
     "selector_reason": "Released test parents were selected only from CYP1A2, CYP2C9, and CYP3A4.",
@@ -108,24 +126,75 @@
       "episodes": "exactly one stress episode per primary-eligible component-selector cell, using the same query rule and cap"
     },
     "weighting": "Within each endpoint, every component-by-endpoint cell receives equal total weight; divide it equally across its selector episodes and then across scored queries.",
+    "stress_policy": "Stress-anchor duplication is allowed for the declared control, but stress episodes are separate from primary evidence and never enter primary selection, weighting, tuning, or fusion.",
+    "primary_weighting": "Weight selected primary episodes only; stress episodes receive no primary weight.",
+    "episode_id_policy": {
+      "policy_id": "openadmet-campaign-episode-sha256-v1",
+      "material": "source_revision|protocol|repeat|outer_group_id|selector_cyp_truth|episode_policy_id",
+      "digest": "SHA256",
+      "meaning": "deterministic join pseudonym, not secrecy"
+    },
+    "serialization": {
+      "policy_id": "openadmet-campaign-json-cell-v1",
+      "json": "compact JSON with sort_keys=True and separators=(',', ':')",
+      "arrays": "Preserve query rank and array order; do not sort arrays.",
+      "csv_rows": "Sort campaign_episodes_public.csv, campaign_episodes_truth.csv, and episode_label_masks.csv by episode_id ascending; corresponding rows must form exact one-to-one joins.",
+      "fold_indices": "Encode repeat as the zero-based integer 0 through 2 and outer_fold as the zero-based integer 0 through 4.",
+      "json_artifacts": "Serialize JSON artifacts with indent=2, sort_keys=True, and one trailing newline."
+    },
     "preliminary_diagnostics": {
       "CYP1A2": {"selected_episodes": 33, "queries": 54, "selector_labeled_query_cells": 21},
       "CYP2C9": {"selected_episodes": 37, "queries": 42, "selector_labeled_query_cells": 13},
       "CYP3A4": {"selected_episodes": 117, "queries": 205, "selector_labeled_query_cells": 175},
       "interpretation": "Counts are contract diagnostics, not prediction evidence."
+    },
+    "official_diagnostics": {
+      "primary_base": {"selected_episodes": 187, "queries": 301},
+      "stress_base": {"selected_episodes": 187, "queries": 305},
+      "repeat_expansion": {
+        "repeats": 3,
+        "expanded_artifact_rows_each": 1122,
+        "total_expanded_queries": 1818,
+        "anchor_observation_references": 4488,
+        "query_observation_references": 7272
+      },
+      "identity_inference_diagnostic": {
+        "primary_selected_episodes_with_anchor_inference": "124/187",
+        "stress_selected_episodes_with_anchor_inference": "126/187",
+        "interpretation": "Public membership can permit identity inference; this is acknowledged and is not a secrecy or prediction-evidence claim."
+      }
     }
   },
   "public_truth_firewall": {
     "public_episode_fields": ["episode_id", "protocol", "repeat", "outer_fold", "outer_group_id", "query_molecule_ids", "candidate_pool_id", "episode_policy_id"],
     "public_exclusions": ["selector_cyp_truth", "selector values", "anchor identity", "anchor values", "truth values", "query labels", "label masks"],
+    "disclosure_model": "Exact-column/value nondisclosure and privilege separation, not information-theoretic identity anonymity.",
+    "identity_inference": "outer_group_id and query_molecule_ids may permit selector or anchor identity inference from public membership; this is acknowledged and is not treated as secrecy.",
+    "public_artifact_role": "Public episodes and their membership are oracle-only artifacts and must not be reused for inferred-anchor evaluation.",
     "truth_fields": ["episode_id", "selector_cyp_truth", "anchor_molecule_id_truth", "query_truth_references", "query_truth_availability_masks"],
     "oracle_runner_fields": ["episode_id", "anchor_molecule_id_truth", "anchor_observation_references", "anchor_value_availability_mask"],
     "scorer_only_fields": ["episode_id", "selector_cyp_truth", "query_truth_references", "query_truth_availability_masks"],
+    "selector_truth_policy": "selector_cyp_truth remains scorer-only and is never a public or oracle-runner field.",
+    "campaign_episodes_truth": {
+      "columns": ["episode_id", "selector_cyp_truth", "anchor_molecule_id_truth", "query_truth_references", "query_truth_availability_masks"],
+      "query_truth_references": "Compact JSON array aligned exactly to public query_molecule_ids; each array element is an object mapping all four direct endpoints to that query molecule's exact observation IDs.",
+      "query_truth_availability_masks": "Compact JSON array aligned exactly to public query_molecule_ids and query_truth_references; each array element maps every direct endpoint to booleans for point, low, high, and std. A boolean is true exactly when that finite parsed field is present; references remain present when every mask value is false."
+    },
+    "episode_label_masks": {
+      "columns": ["episode_id", "anchor_molecule_id_truth", "anchor_observation_references", "anchor_value_availability_mask"],
+      "endpoint_keys": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+      "value_fields": ["point", "low", "high", "std"],
+      "anchor_observation_references": "Compact JSON object mapping all four direct endpoints to their exact observation IDs.",
+      "anchor_value_availability_mask": "Compact JSON object mapping each endpoint to booleans for point, low, high, and std.",
+      "projection": "The trusted runner receives public rows plus this mechanically restricted projection and never receives campaign_episodes_truth.csv.",
+      "loader": "A narrow loader resolves only the four declared anchor observations through direct_observations.csv."
+    },
+    "serialization": "Use campaign_episodes.serialization for every JSON-valued CSV cell.",
     "label_mask_rule": "episode_label_masks.csv exposes only the selected anchor's exact direct-observation references and available-value mask. The runner resolves those references through direct_observations.csv; no other component member label is exposed.",
     "episode_exclusion": "For each episode, every non-anchor component member is excluded from global labels, delta support, candidate pools, feature selection, calibration, and fusion.",
     "anchor_global_fit_policy": "Under ANCHOR_EXPANSION_HOLDOUT, the designated anchor's available direct observations enter the episode-specific global training set as ordinary training rows and are also available as local context. Every other component member stays excluded. Global configuration, feature selection, calibration, stacking, and thresholds are selected only from inner cross-fitted training-group evidence.",
-    "oracle_rule": "The oracle runner receives only oracle_runner_fields through a mechanically restricted projection and must never receive a complete truth row or any scorer_only_field. No public field may identify or encode the selector CYP or anchor.",
-    "inferred_candidate_pool": "Deferred. candidate_pool_id must explicitly identify a deferred/no-pool oracle policy; never fabricate an inferred pool."
+    "oracle_rule": "The trusted oracle runner receives public rows plus only the mechanically restricted episode_label_masks.csv projection; it must never receive campaign_episodes_truth.csv, a complete truth row, or any scorer_only_field. Public membership identity inference is acknowledged, while exact selector, anchor, measurement, truth, and mask columns remain privilege-separated.",
+    "inferred_candidate_pool": "Deferred. candidate_pool_id must explicitly identify DEFERRED_NO_INFERRED_POOL_V1; never fabricate an inferred pool."
   },
   "folds": {
     "group_unit": "frozen D-032 similarity component, shared globally across endpoints and protocols as a conservative reconstructed-family proxy",
@@ -157,7 +226,7 @@
     }
   },
   "activity_cliff": {
-    "eligibility": ["direct pair similarity >= 0.60", "absolute point delta >= 1.0", "reported bounds are directionally non-overlapping"],
+    "eligibility": ["direct pair similarity >= 0.60", "absolute point delta >= 1.0", "a.high < b.low OR b.high < a.low"],
     "purpose": "Diagnostic slice only; it does not alter pair eligibility, topology, folds, or fusion.",
     "official_diagnostics": {
       "CYP1A2": {"pairs": 6, "components": 6},
@@ -183,16 +252,34 @@
     "required": ["input receipts verify before parse", "raw direct strings and finite parsed values are preserved", "all four state classes are represented and retained", "identity and duplicate checks fail closed", "no component crosses a fold boundary", "public/truth firewall is mechanically tested", "repeat outputs are byte-identical", "official acceptance is run only after implementation review"],
     "leakage_invariants": ["GLOBAL_FAMILY_HOLDOUT exposes zero labels from its outer-validation reconstructed-family proxy component", "ANCHOR_EXPANSION_HOLDOUT exposes exactly the designated anchor under anchor_global_fit_policy while every other component identity stays held out", "after anchor selection, non-anchor measurement magnitudes cannot affect query eligibility or rank", "all learned choices use cross-fitted predictions only", "availability cannot reassign folds", "non-anchor component labels cannot reach an episode"],
     "not_yet_authorized": ["model fitting", "prediction", "metric evaluation", "submission generation", "leaderboard iteration", "TDI label derivation", "TDI-TRACE", "transductive test relationships"],
-    "next_gate": "R2_VALIDATION_ARTIFACTS_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
+    "next_gate": "R2B_EPISODES_MASKS_VIABILITY_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
   },
   "authority": {
+    "validation": false,
     "models": false,
     "metrics": false,
     "submissions": false,
     "fold_assignments": false,
+    "episodes": false,
     "episode_labels": false,
+    "topology_viability": false,
     "tdi": false,
+    "predictions": false,
     "transduction": false,
-    "status_note": "R2 v2 freezes the corrected contract only. It is not VALIDATION_FROZEN and cannot support scientific or competition claims."
+    "status_note": "R2 v3 freezes the corrected contract only. It is not VALIDATION_FROZEN and cannot support scientific or competition claims. Contract-only authority remains denied until a successful R2B artifact build."
+  },
+  "authority_after_successful_r2b": {
+    "fold_assignments": true,
+    "episodes": true,
+    "episode_labels": true,
+    "topology_viability": true,
+    "validation": false,
+    "models": false,
+    "metrics": false,
+    "tdi": false,
+    "predictions": false,
+    "submissions": false,
+    "transduction": false,
+    "status_note": "Successful R2B artifacts may carry fold, episode, episode-label, and topology-viability artifact authority only; this remains below VALIDATION_FROZEN and grants no model, metric, TDI, prediction, submission, or transductive authority."
   }
 }

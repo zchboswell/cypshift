@@ -14,15 +14,17 @@ The pinned read-only source clones were verified at:
 headers, and TDI order discrepancy; [`challenge_contract.json`](challenge_contract.json)
 has the R0 gate, endpoint states, validation, claims, and V6/P6 items; see
 [`submission_contract.json`](submission_contract.json) for required columns.
-[`validation_contract.json`](validation_contract.json) freezes the corrected R2 v2
+[`validation_contract.json`](validation_contract.json) freezes the corrected R2 v3
 label-aware topology-viability, campaign-episode, firewall, and fold contract.
-It is not `VALIDATION_FROZEN`. The R2A implementation now emits only direct
-observations, deterministic component-fold records, and a scope-limiting
-manifest; those fold records are inputs without validation authority. Episodes,
-topology viability, models, metrics, submissions, TDI, and transductive use
-remain unimplemented and unauthorized.
-V2 supersedes the pre-implementation v1 after independent review found selector
-leakage and ambiguous authority, oracle, support-status, and determinism rules.
+V2 was rejected before R2B after a read-only audit identified public
+membership-based anchor inference and unfrozen episode-ID determinism; zero R2B
+artifacts were created. It is not `VALIDATION_FROZEN`. The R2A implementation
+emits only direct observations, deterministic component-fold records, and a
+scope-limiting manifest; those fold records are inputs without validation
+authority. Episodes, topology viability, models, metrics, submissions, TDI,
+and transductive use remain unimplemented and unauthorized.
+V3 supersedes the pre-implementation v2 while preserving its chemistry,
+eligibility, pair, anchor, query, fold, scorecard, and no-model policies.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

@@ -14,10 +14,23 @@ def load_contract() -> dict[str, object]:
 
 def test_r2_input_chain_and_direct_compiler_are_receipt_bound() -> None:
     contract = load_contract()
-    assert contract["schema_version"].endswith(".v2")
-    assert contract["gate"] == "R2_VALIDATION_CONTRACT_V2_FROZEN"
+    assert contract["schema_version"] == (
+        "cypshift.openadmet_cyp_2026.validation_contract.v3"
+    )
+    assert contract["gate"] == "R2_VALIDATION_CONTRACT_V3_FROZEN"
+    assert contract["supersedes"]["schema_version"] == (
+        "cypshift.openadmet_cyp_2026.validation_contract.v2"
+    )
     assert contract["supersedes"]["commit"] == (
-        "2abcc107f36cc25f6bc1bb3277efe7e0158fe22e"
+        "1e424c520c383690b8f0d2754a14ffc93f32561f"
+    )
+    assert contract["supersedes"]["reason"] == (
+        "Independent read-only audit found that public outer_group_id plus "
+        "query_molecule_ids uniquely inferred the omitted anchor in 124 of 187 "
+        "primary-selected and 126 of 187 stress-base episodes, contradicting "
+        "v2's information-theoretic anchor-anonymity claim; episode ID "
+        "determinism was also unfrozen. V2 was rejected before R2B, and zero "
+        "R2B artifacts were created."
     )
     inputs = contract["input_chain"]
     assert inputs["dataset_revision"] == "85f8b358d0a2056a98b990dd75d3b3ec9247862b"
@@ -59,6 +72,10 @@ def test_r2_input_chain_and_direct_compiler_are_receipt_bound() -> None:
     }
     assert compiler["invalid_input_policy"].startswith("Fail before writing")
     assert "only complete" in compiler["eligibility"]
+    assert compiler["observation_cardinality"] == (
+        "Exactly one observation per molecule_id and endpoint is required after "
+        "identity resolution; fail closed on zero or multiple observations."
+    )
     assert compiler["semantic_firewall"][0] == "Call low/high/std reported fields only."
     assert (
         "Do not call them censoring, confidence, credible, or scoring intervals."
@@ -106,6 +123,13 @@ def test_local_statuses_episodes_and_cliffs_are_frozen_without_rescue() -> None:
         == "LOCAL_SUPPORTED_PROVISIONAL_PENDING_FOLD_AUDIT"
     )
     episodes = contract["campaign_episodes"]
+    assert episodes["protocol"] == "ANCHOR_EXPANSION_HOLDOUT"
+    assert episodes["candidate_pool_policy"] == "DEFERRED_NO_INFERRED_POOL_V1"
+    assert episodes["outer_group_id"] == "frozen D-032 similarity component hash"
+    assert episodes["repeat_expansion"] == (
+        "Expand exactly the three frozen repeats; do not represent the three "
+        "repeats times five outer-validation folds as fifteen episode contexts."
+    )
     assert episodes["selector_endpoints"] == ["CYP1A2", "CYP2C9", "CYP3A4"]
     assert episodes["excluded_selector_endpoints"] == ["CYP2D6"]
     assert episodes["absolute_potency_cutoff"] is None
@@ -128,9 +152,54 @@ def test_local_statuses_episodes_and_cliffs_are_frozen_without_rescue() -> None:
     assert cliffs["eligibility"] == [
         "direct pair similarity >= 0.60",
         "absolute point delta >= 1.0",
-        "reported bounds are directionally non-overlapping",
+        "a.high < b.low OR b.high < a.low",
     ]
     assert cliffs["official_diagnostics"]["CYP3A4"] == {"pairs": 96, "components": 38}
+    assert episodes["stress_policy"].startswith("Stress-anchor duplication is allowed")
+    assert (
+        episodes["primary_weighting"]
+        == "Weight selected primary episodes only; stress episodes receive no primary weight."
+    )
+    assert episodes["episode_id_policy"] == {
+        "policy_id": "openadmet-campaign-episode-sha256-v1",
+        "material": "source_revision|protocol|repeat|outer_group_id|selector_cyp_truth|episode_policy_id",
+        "digest": "SHA256",
+        "meaning": "deterministic join pseudonym, not secrecy",
+    }
+    assert episodes["serialization"] == {
+        "policy_id": "openadmet-campaign-json-cell-v1",
+        "json": "compact JSON with sort_keys=True and separators=(',', ':')",
+        "arrays": "Preserve query rank and array order; do not sort arrays.",
+        "csv_rows": "Sort campaign_episodes_public.csv, campaign_episodes_truth.csv, and episode_label_masks.csv by episode_id ascending; corresponding rows must form exact one-to-one joins.",
+        "fold_indices": "Encode repeat as the zero-based integer 0 through 2 and outer_fold as the zero-based integer 0 through 4.",
+        "json_artifacts": "Serialize JSON artifacts with indent=2, sort_keys=True, and one trailing newline.",
+    }
+    assert episodes["official_diagnostics"] == {
+        "primary_base": {"selected_episodes": 187, "queries": 301},
+        "stress_base": {"selected_episodes": 187, "queries": 305},
+        "repeat_expansion": {
+            "repeats": 3,
+            "expanded_artifact_rows_each": 1122,
+            "total_expanded_queries": 1818,
+            "anchor_observation_references": 4488,
+            "query_observation_references": 7272,
+        },
+        "identity_inference_diagnostic": {
+            "primary_selected_episodes_with_anchor_inference": "124/187",
+            "stress_selected_episodes_with_anchor_inference": "126/187",
+            "interpretation": "Public membership can permit identity inference; this is acknowledged and is not a secrecy or prediction-evidence claim.",
+        },
+    }
+    assert contract["topology_viability"]["official_diagnostics"] == {
+        "CYP3A4": {
+            "minimum_components_per_outer_validation_fold": 14,
+            "minimum_pairs_per_outer_validation_fold": 74,
+            "status": "LOCAL_SUPPORTED",
+        },
+        "CYP1A2": {"status": "LOCAL_UNDERPOWERED"},
+        "CYP2C9": {"status": "LOCAL_UNDERPOWERED"},
+        "CYP2D6": {"status": "LOCAL_UNDERPOWERED"},
+    }
 
 
 def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> None:
@@ -173,6 +242,46 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
         "episode-specific global training set" in firewall["anchor_global_fit_policy"]
     )
     assert firewall["inferred_candidate_pool"].startswith("Deferred")
+    assert firewall["disclosure_model"] == (
+        "Exact-column/value nondisclosure and privilege separation, not "
+        "information-theoretic identity anonymity."
+    )
+    assert (
+        "may permit selector or anchor identity inference"
+        in firewall["identity_inference"]
+    )
+    assert firewall["public_artifact_role"].startswith(
+        "Public episodes and their membership are oracle-only"
+    )
+    assert firewall["selector_truth_policy"].startswith(
+        "selector_cyp_truth remains scorer-only"
+    )
+    assert firewall["campaign_episodes_truth"] == {
+        "columns": [
+            "episode_id",
+            "selector_cyp_truth",
+            "anchor_molecule_id_truth",
+            "query_truth_references",
+            "query_truth_availability_masks",
+        ],
+        "query_truth_references": "Compact JSON array aligned exactly to public query_molecule_ids; each array element is an object mapping all four direct endpoints to that query molecule's exact observation IDs.",
+        "query_truth_availability_masks": "Compact JSON array aligned exactly to public query_molecule_ids and query_truth_references; each array element maps every direct endpoint to booleans for point, low, high, and std. A boolean is true exactly when that finite parsed field is present; references remain present when every mask value is false.",
+    }
+    assert firewall["episode_label_masks"] == {
+        "columns": [
+            "episode_id",
+            "anchor_molecule_id_truth",
+            "anchor_observation_references",
+            "anchor_value_availability_mask",
+        ],
+        "endpoint_keys": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+        "value_fields": ["point", "low", "high", "std"],
+        "anchor_observation_references": "Compact JSON object mapping all four direct endpoints to their exact observation IDs.",
+        "anchor_value_availability_mask": "Compact JSON object mapping each endpoint to booleans for point, low, high, and std.",
+        "projection": "The trusted runner receives public rows plus this mechanically restricted projection and never receives campaign_episodes_truth.csv.",
+        "loader": "A narrow loader resolves only the four declared anchor observations through direct_observations.csv.",
+    }
+    assert "must never receive campaign_episodes_truth.csv" in firewall["oracle_rule"]
     folds = contract["folds"]
     assert folds["seeds"] == [20260810, 20260811, 20260812]
     assert folds["outer_folds"] == 5 and folds["inner_folds"] == 4
@@ -202,7 +311,25 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
     assert all(
         value is False for value in authority.values() if isinstance(value, bool)
     )
-    assert "R2 v2 freezes the corrected contract only" in authority["status_note"]
+    assert "R2 v3 freezes the corrected contract only" in authority["status_note"]
+    assert contract["authority_after_successful_r2b"] == {
+        "fold_assignments": True,
+        "episodes": True,
+        "episode_labels": True,
+        "topology_viability": True,
+        "validation": False,
+        "models": False,
+        "metrics": False,
+        "tdi": False,
+        "predictions": False,
+        "submissions": False,
+        "transduction": False,
+        "status_note": contract["authority_after_successful_r2b"]["status_note"],
+    }
+    assert (
+        "below VALIDATION_FROZEN"
+        in contract["authority_after_successful_r2b"]["status_note"]
+    )
     leakage = contract["acceptance"]["leakage_invariants"]
     assert leakage[0].startswith("GLOBAL_FAMILY_HOLDOUT exposes zero labels")
     assert leakage[1].startswith(
@@ -210,5 +337,5 @@ def test_firewall_folds_scorecard_and_artifacts_have_no_model_authority() -> Non
     )
     assert (
         contract["acceptance"]["next_gate"]
-        == "R2_VALIDATION_ARTIFACTS_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
+        == "R2B_EPISODES_MASKS_VIABILITY_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
     )

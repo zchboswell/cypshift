@@ -99,17 +99,21 @@ Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-The corrected R2 v2 label-aware topology-viability and campaign-episode contract is frozen in
+The corrected R2 v3 label-aware topology-viability and campaign-episode contract is frozen in
 [`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
 It keeps D-032 topology bytes unchanged while using its components only as the
 declared reconstructed-family proxy; restricts direct compilation to the four
 direct endpoints; requires complete observations for anchors and local pairs;
 freezes selector/query rules, separate oracle-runner and scorer projections,
-anchor exposure, deterministic component-grouped repeats and inner folds,
-scorecard slices, and activity-cliff diagnostics. Insufficient evidence is
-`LOCAL_UNDERPOWERED`, never `LOCAL_FAILED`. Preliminary label-aware counts are
-diagnostics only. R2 is not `VALIDATION_FROZEN` and does not authorize
-modeling, scoring, submissions, TDI, or transductive test relationships.
+anchor exposure, exact-column/value firewall privilege separation, deterministic
+episode IDs, threefold episode expansion, component-grouped repeats and inner
+folds, scorecard slices, and strict activity-cliff disjointness. A read-only
+audit rejected v2 before R2B because public group/query membership can permit
+anchor identity inference and episode-ID determinism was incomplete; zero R2B
+artifacts were created. Insufficient evidence is `LOCAL_UNDERPOWERED`, never
+`LOCAL_FAILED`. Preliminary and future official counts are diagnostics only. R2
+is not `VALIDATION_FROZEN` and does not authorize modeling, scoring,
+submissions, TDI, or transductive test relationships.
 
 R2A implements only `direct_observations.csv`, `group_folds.csv`, and a
 scope-limiting manifest. Ten focused synthetic tests cover all four observation
@@ -124,9 +128,10 @@ inputs, not accepted validation assignments or prediction evidence.
 
 Exact next action: implement and accept separate public/truth episode artifacts,
 the restricted oracle anchor projection, episode-scoped label masks, and
-topology viability. Stop on contract drift, identity ambiguity, family leakage,
-state loss, or truth projection leakage. Preserve unresolved scorer, TDI-order,
-interval, and permission behavior; `global_TDI` remains the permanent fallback.
+topology viability under v3. Stop on contract drift, identity ambiguity, family
+leakage, state loss, or truth projection leakage. Preserve unresolved scorer,
+TDI-order, interval, and permission behavior; `global_TDI` remains the permanent
+fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.

@@ -985,3 +985,32 @@
   receipt, identity, chemistry, state, determinism, group-containment, or
   authority defect. Preserve the artifacts, stop modeling, and issue a
   versioned repair rather than reinterpret this gate.
+
+## D-036 — Reject v2 before R2B and freeze the corrected v3 contract
+
+- Date: 2026-08-18
+- Status: accepted; corrected contract-only gate
+- Decision: Supersede v2 with
+  `cypshift.openadmet_cyp_2026.validation_contract.v3` at
+  `R2_VALIDATION_CONTRACT_V3_FROZEN`. Preserve all v2 chemistry, eligibility,
+  pair, anchor, query, fold, scorecard, and no-model/no-TDI/no-test policies.
+  Redefine the firewall as exact-column/value nondisclosure and privilege
+  separation, acknowledge membership-based identity inference, freeze the
+  deterministic episode-ID join pseudonym and compact JSON cell policy, and
+  keep public episodes oracle-only. Permit fold, episode, episode-label, and
+  topology-viability artifact authority only after successful R2B, while
+  keeping validation, models, metrics, TDI, predictions, submissions, and
+  transduction unauthorized.
+- Evidence: Independent read-only audit found that `outer_group_id` plus
+  `query_molecule_ids` uniquely inferred the omitted anchor in 124/187 primary
+  and 126/187 stress-base episodes, contradicting v2's information-theoretic
+  anonymity claim. Episode ID determinism was also unfrozen. The rejection
+  occurred before R2B and zero R2B artifacts were created. Two receipt-bound
+  R2A official replays under v3 were byte-identical and retained the accepted
+  direct-observation and group-fold bytes exactly.
+- Alternatives: Quietly edit v2; claim public identity anonymity despite the
+  inference diagnostic; or begin episode implementation before freezing the
+  join and mask policies.
+- Reversal condition: v3 implementation finds a receipt, identity, chemistry,
+  state, determinism, projection, family-leakage, or authority defect.
+  Preserve the blocker and issue another versioned contract before modeling.

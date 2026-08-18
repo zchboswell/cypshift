@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the partial implementation gate
-`R2A_DIRECT_OBSERVATIONS_AND_FOLDS_ACCEPTED`;
+TRACE is active at the corrected-contract gate
+`R2_VALIDATION_CONTRACT_V3_FROZEN`;
 no modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -54,19 +54,25 @@ candidate similarity components; 1,241 molecules occur in multi-member
 components, the largest contains 21, and 146 components contain at least two
 direct-training source identities. Repeated official runs were byte-identical.
 
-The label-aware R2 validation contract v2 is now frozen in
+The label-aware R2 validation contract v3 is now frozen in
 [`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
 It binds the direct-only compiler, complete-observation eligibility, local-pair
 status thresholds, selector/query episodes, public/truth firewall, grouped
 repeated folds, scorecard slices, and future artifact requirements. Independent
 review rejected v1 before implementation for selector leakage, ambiguous oracle
 projections, incorrect low-support failure semantics, contradictory topology
-authority, and underspecified deterministic policies. V2 preserves D-032's
-topology bytes while promoting its components only to a conservative
-reconstructed-family proxy for R2 grouping; no semantic-family claim is made.
-Preliminary counts remain diagnostics only. R2 is not
-`VALIDATION_FROZEN`; no model, metric, submission, TDI label derivation, or
-transductive relationship is authorized yet.
+authority, and underspecified deterministic policies. A later read-only audit
+rejected v2 before R2B because public group/query membership inferred the
+omitted anchor in 124/187 primary and 126/187 stress-base episodes, while v2
+claimed information-theoretic anonymity; episode-ID determinism was also
+unfrozen. Zero R2B artifacts were created. V3 preserves D-032's topology bytes
+and all v2 chemistry, eligibility, pair, anchor, query, fold, and scorecard
+policies while redefining the firewall as exact-column/value nondisclosure and
+privilege separation. Public episodes are oracle-only; membership inference is
+acknowledged, and the trusted runner receives only the restricted anchor mask
+projection. Preliminary and future official counts remain diagnostics only. R2
+is not `VALIDATION_FROZEN`; no model, metric, submission, TDI label derivation,
+or transductive relationship is authorized yet.
 
 R2A now implements the receipt-bound direct-observation compiler and shared
 component folds only. It hashes every contracted input before parsing the same
@@ -77,7 +83,8 @@ produced 19,620 endpoint observations (6,525 complete; 13,095 missing) and
 73,575 group-fold rows. The manifest explicitly denies validation and fold
 authority as well as episodes, topology viability, models, metrics, TDI,
 predictions, submissions, and transduction. Episode firewalls, anchor masks,
-and endpoint viability remain unimplemented.
+and endpoint viability remain unimplemented. Two receipt-bound R2A replays
+under v3 preserved the accepted observation and fold bytes exactly.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -256,13 +263,15 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. The receipt-bound R0
-checker, R1 source-row adapter, label-free topology audit, corrected R2 v2
-contract, and R2A direct-observation/fold slice have passed their applicable
-synthetic and official checks. Implement and accept the public/truth episode
-firewall, episode-scoped anchor masks, and endpoint topology-viability artifacts
-before any parent-relative experiment. Do not fit, score, submit, derive TDI
-labels, or use transductive test relationships; unresolved metric, validator,
-TDI-order, interval, and permission behavior remains unchanged.
+checker, R1 source-row adapter, label-free topology audit, and R2A
+direct-observation/fold slice have passed their applicable synthetic and
+official checks. The corrected v3 contract is frozen after v2 was rejected
+before R2B and no R2B artifacts were created. Implement and accept the
+public/truth episode firewall, restricted episode-scoped anchor masks, and
+endpoint topology-viability artifacts under the v3 policies before any
+parent-relative experiment. Do not fit, score, submit, derive TDI labels, or
+use transductive test relationships; unresolved metric, validator, TDI-order,
+interval, and permission behavior remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under
