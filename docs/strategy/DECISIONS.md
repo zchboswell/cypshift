@@ -1556,3 +1556,36 @@
   graph-first precedence, bond-stereo reconstruction, cap sentinel, IDs, or
   reversal invariants. Preserve the blocker, issue a versioned repair, and keep
   official coverage inputs closed.
+
+## D-054 — Accept the pure synthetic R4 transformation extractor
+
+- Date: 2026-08-18
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`
+- Decision: Accept the receipt-bound shared types, ordinary MMP, stereo-only,
+  and thin precedence modules as the sole pure v4 pair extractor. Keep
+  projection binding, population construction, support arithmetic, publication,
+  official input access, and every model outside this milestone.
+- Evidence: The extractor implements joint single/double cuts, virtual-H
+  growth/contraction, exact stereo-only changes, canonical directions, reusable
+  exact/class IDs, environment IDs, cap/tie sentinels, and atom-order/pair-
+  reversal invariance. Independent review initially rejected loss of E/Z state
+  during variable reconstruction and C3 precedence on graph-changing pairs;
+  complete bond-stereo remapping and graph-first stereo scope repaired both
+  before acceptance. The types, MMP, stereo, and unified source SHA-256 values
+  are `d9fc616f25a4c6b6cc8b2bbd538920218ae51b116fd32c2f0c01ff395657b64b`,
+  `3e5a5079c096326656a82370d35288475921c53eebcef0e6a60df440b60936eb`,
+  `838d66f48bcdd75ccfb1fa5cd8de1654bdf7632e82f62f1252554f7483736ff1`,
+  and `2ac5ea0004402df82bbb26024089a1b0b2fe258346a71c7b89bd1512672eaaed`.
+  Sixty-nine focused contract/extractor tests and all 490 repository tests pass
+  with three expected skips; Ruff, formatting, strict mypy, package build, and
+  independent scientific/minimality review pass. Official input, target,
+  support evaluation, fit, prediction, metric, test, TDI, submission, and
+  transduction remain at zero.
+- Alternatives: Combine extraction with privileged projection or coverage;
+  use MCS fallback; discard stereo; ignore ambiguous decompositions; or split
+  the cohesive ordinary algorithm solely to meet a line target.
+- Reversal condition: Any receipt, exact-chemistry, graph-first precedence,
+  ambiguity, ID, or invariance defect revokes this implementation evidence.
+  Repair and repeat synthetic review before production binding; never repair an
+  official coverage result in place.

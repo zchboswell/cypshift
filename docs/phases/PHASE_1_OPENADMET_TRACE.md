@@ -1,6 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; transformation coverage contract frozen; gate `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`; acceptance date 2026-08-18.
+Status: active; synthetic transformation extraction accepted; gate
+`R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -266,9 +267,19 @@ synthetic only; a production gate must still bind the v4 contract, accepted
 R2B/R3A manifests and leaf receipts, and exact implementation sources before
 official input access or extractor consumption.
 
-Exact next action: bind the accepted synthetic projector to the production
-receipt chain, then implement the deterministic extractor, coverage scorer,
-and atomic publisher; pass synthetic invariance/firewall acceptance and
+The pure v4 pair extractor is synthetically accepted separately. It has no
+file, endpoint, fold, target, or model capability and deterministically emits
+ordinary single/double-cut, virtual-H, or exact stereo-only records with both
+directions, self-versioned IDs, ambiguity sentinels, and reversal/atom-order
+invariance. Independent review rejected two initial defects before acceptance:
+E/Z state was lost while reconstructing a variable fragment, and unsupported
+stereo incorrectly blocked graph-changing ordinary MMPs. Both now have exact
+regression witnesses. Sixty-nine focused contract/extractor tests and the full
+490-test suite pass with three expected skips. No official R4 input was opened.
+
+Exact next action: bind the accepted synthetic projector and extractor to the
+production receipt chain, then implement the coverage scorer and atomic
+publisher; pass synthetic firewall/support acceptance and
 independent review before one official coverage run. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global

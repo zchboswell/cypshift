@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`. The single
+TRACE is active at `R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -246,8 +246,8 @@ publication receipts. Its extraction-spec receipt is `59e3bd33...`. The
 label-safe boundary is unchanged: campaign truth, selector identity, query
 availability, target magnitudes, blinded test chemistry, TDI, predictions, and
 metrics remain unopened and unauthorized. Independent scientific review passes.
-This is still a contract-only gate; no transformation artifact or local
-predictive evidence exists yet.
+The contract itself grants no fit, coverage artifact, or local predictive
+evidence.
 
 The synthetic R4 projection boundary is now accepted as an implementation
 slice. It verifies all five source receipts before parsing the same in-memory
@@ -257,9 +257,21 @@ endpoint, component, 3-by-5 fold, public-query, and anchor joins. Canonical
 outputs are published as an exact six-file read-only directory through atomic
 no-replace promotion. Thirty-seven focused tests and independent correctness
 and minimality reviews pass. Its authority remains synthetic only: before any
-official input or extractor consumption, a production gate must bind R4 v3,
+official input or extractor consumption, a production gate must bind R4 v4,
 the accepted R2B/R3A manifests and leaf receipts, and the implementation source
 receipts.
+
+The pure R4 v4 pair extractor is now synthetically accepted. It consumes two
+audited molecule records and implements deterministic ordinary single- and
+double-cut MMPs, virtual-H growth/contraction, exact stereo-only changes,
+ambiguity sentinels, self-versioned directional IDs, and atom-order/pair-
+reversal invariance without any endpoint, fold, file, target, or model access.
+Independent review first rejected E/Z bond-state loss and over-broad C3 stereo
+precedence; both were repaired before acceptance. Sixty-nine focused contract
+and extraction tests and the full 490-test suite pass, with three expected
+skips. This remains synthetic implementation evidence only: no official
+coverage population was opened and no support, model, prediction, or metric
+authority is granted.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -438,10 +450,10 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Bind the accepted synthetic projection to the
-production receipt chain, then implement transformation extraction,
-invariance/ambiguity checks, and atomic coverage reporting; pass synthetic and
-independent review before one official coverage run. Only if the frozen result
+its positive outer evidence. Bind the accepted synthetic projection and pure
+extractor to the production receipt chain, then implement the coverage compiler
+and atomic publisher; pass synthetic firewall/support acceptance before one
+official coverage run. Only if the frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:

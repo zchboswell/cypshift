@@ -113,6 +113,17 @@ pass. No official input was opened. Production use remains blocked until a
 separate gate binds R4 v4, the accepted R2B/R3A manifests and leaf receipts,
 and the exact implementation sources.
 
+The pure v4 transformation-pair extractor is also synthetically accepted. It
+implements joint single/double-cut MMPs, virtual-H changes, exact stereo-only
+changes, full bond-stereo reconstruction, reusable and directional IDs,
+ambiguity sentinels, and reversal/atom-order invariance without I/O or label
+capability. Independent review found and closed E/Z reconstruction loss and
+over-broad unsupported-stereo C3 precedence before acceptance. Sixty-nine
+focused contract/extractor tests and the full 490-test suite pass with three
+expected skips. This grants no coverage, support, model, metric, or official-
+input authority; production binding and the coverage compiler/publisher remain
+the next gate.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

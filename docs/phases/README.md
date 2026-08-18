@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -42,18 +42,24 @@ with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
 evidence, not official ST-RAE, a deployable model, or a submission. Additive R4
 v4 now supersedes v1/v2/v3 for implementation while preserving them as
-immutable history. It freezes label-safe direct-state and structural projections, joint
+immutable history. It freezes label-safe direct-state and structural
+projections, joint
 single/double-cut chemistry, reusable transformation IDs, exact CIP/automorphism
 stereo records, ambiguity/invariance rules, structural-only row outputs, and
 valid-only support thresholds. V4 additionally resolves the implementation-
 found tetrahedral reference-H, embedding-cap, graph-first unsupported-stereo,
-bond-stereo reconstruction, query-rank, and publication-receipt mechanics. It opens
+bond-stereo reconstruction, query-rank, and publication-receipt mechanics. It
+opens
 no campaign truth, selector/scorable state, target magnitude, test, TDI,
 prediction, or metric.
 The least-privilege projection implementation has independently passed 37
 focused synthetic tests; it has not opened official inputs and carries zero
-coverage or model authority. The next gate is deterministic extraction,
-coverage publication, and one independently audited official coverage run. A
+coverage or model authority. The pure pair extractor has also passed synthetic
+acceptance and independent review after repairing E/Z reconstruction and
+graph-first stereo precedence. It implements ordinary single/double cuts,
+virtual-H changes, exact stereo-only changes, ambiguity, IDs, and invariance
+without I/O or label access. The next gate is the coverage compiler and
+publisher, followed by one independently audited official coverage run. A
 separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
 remain unauthorized until their own gates.
