@@ -1,4 +1,4 @@
-# OpenADMET CYP 2026 — TRACE R0 contract freeze
+# OpenADMET CYP 2026 — TRACE contract receipts
 
 This directory is the tracked launch receipt for the 2026-08-17 OpenADMET CYP
 release: immutable revisions and metadata only; no challenge CSV, prediction,
@@ -14,6 +14,10 @@ The pinned read-only source clones were verified at:
 headers, and TDI order discrepancy; [`challenge_contract.json`](challenge_contract.json)
 has the R0 gate, endpoint states, validation, claims, and V6/P6 items; see
 [`submission_contract.json`](submission_contract.json) for required columns.
+[`validation_contract.json`](validation_contract.json) freezes the separate R2
+label-aware topology-viability, campaign-episode, firewall, and fold contract.
+It is contract-only: it is not `VALIDATION_FROZEN`, does not implement folds or
+episodes, and grants no model, metric, submission, TDI, or transductive authority.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
@@ -23,8 +27,10 @@ metric/validator evidence.
 
 R0 leaves exact live ST-RAE implementation, denominator, masks, interval bounds,
 TDI derivation, backend parity, and transductive permission unresolved. No
-metric-specific optimization or leaderboard iteration is authorized; next is a
-canonical OpenADMET observation adapter, not modeling. The checker is
+metric-specific optimization or leaderboard iteration is authorized. R2 keeps
+the direct compiler restricted to `TRAIN_inhibition`, preserves all four
+measurement states, and keeps TDI labels and the blinded test outside the
+direct validation chain. The checker is
 read-only and does not download sources or write artifacts. With the three
 read-only clones and two HTML files fetched outside Git, run:
 
@@ -39,8 +45,9 @@ uv run python scripts/check_openadmet_cyp_contract.py \
 
 Exit 0 means all receipt and internal-contract checks pass; exit 1 means
 source, prose, schema, row-count, or hash drift; malformed invocation or
-tracked contract JSON exits 2. The next implementation step is the canonical
-observation adapter only after this check remains passing in review.
+tracked contract JSON exits 2. The next implementation gate is synthetic R2
+validation-artifact acceptance; official acceptance follows implementation
+review.
 
 Released TDI labels conflict with launch prose. Among non-null labels, all
 arm-missing rows are `False` (CYP2D6: 4; CYP3A4: 1,250), including 1,055

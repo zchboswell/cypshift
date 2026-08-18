@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the label-free topology gate `R1_TOPOLOGY_AUDITED`; no
-modeling or scoring is active.
+TRACE is active at the validation-contract gate `R2_VALIDATION_CONTRACT_FROZEN`;
+no modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -52,6 +52,15 @@ standardized train/test overlap. The 6,147 training molecules form 5,232
 candidate similarity components; 1,241 molecules occur in multi-member
 components, the largest contains 21, and 146 components contain at least two
 direct-training source identities. Repeated official runs were byte-identical.
+
+The label-aware R2 validation contract is now frozen in
+[`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
+It binds the direct-only compiler, complete-observation eligibility, local-pair
+status thresholds, selector/query episodes, public/truth firewall, grouped
+repeated folds, scorecard slices, and future artifact schemas. It preserves
+D-032 unchanged and records preliminary counts as diagnostics only. R2 is not
+`VALIDATION_FROZEN`; no implementation artifacts, model, metric, submission,
+TDI label derivation, or transductive relationship is authorized yet.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -231,11 +240,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 Do not add another global representation or ensemble. The receipt-bound R0
 checker, R1 source-row adapter, and label-free topology audit have passed their
-synthetic and official checks. Freeze a separate label-aware topology-viability
-and campaign-episode contract without changing the candidate topology before
-any parent-relative experiment. Do not fit, score, submit, derive TDI labels,
-or use transductive test relationships; unresolved metric, validator, TDI-order,
-interval, and permission behavior remains unchanged.
+synthetic and official checks, and the separate R2 validation contract is
+frozen without changing the candidate topology. Implement and synthetically
+accept the contract artifacts before any parent-relative experiment. Do not
+fit, score, submit, derive TDI labels, or use transductive test relationships;
+unresolved metric, validator, TDI-order, interval, and permission behavior
+remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under

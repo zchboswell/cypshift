@@ -904,3 +904,31 @@
 - Reversal condition: Official-source acceptance or the later label-aware
   topology gate finds receipt, identity, chemistry, or leakage defects. Preserve
   the diagnostic and do not reinterpret it as validation evidence.
+
+## D-033 — Freeze the R2 label-aware TRACE validation contract
+
+- Date: 2026-08-18
+- Status: accepted; contract-only gate
+- Decision: Freeze the label-aware topology-viability, direct-observation
+  eligibility, campaign-episode, public/truth firewall, grouped-fold, and
+  scorecard contract in
+  `benchmarks/openadmet_cyp_2026/validation_contract.json` as
+  `R2_VALIDATION_CONTRACT_FROZEN`. Keep D-032 unchanged. Restrict direct
+  compilation to `TRAIN_inhibition`; retain all four direct measurement states;
+  require complete observations for anchors and local pairs; and preserve the
+  global TDI fallback while TDI, models, metrics, submissions, and transductive
+  relationships remain outside scope.
+- Evidence: The preliminary label-aware diagnostic records exact local-pair,
+  episode, and activity-cliff counts without fitting or scoring. CYP3A4 has 95
+  eligible components and 473 eligible pairs provisionally; CYP1A2, CYP2C9,
+  and CYP2D6 are underpowered at 18/28, 13/13, and 14/28. Selector episode
+  diagnostics are 33/54, 37/42, and 117/205 for CYP1A2, CYP2C9, and CYP3A4;
+  activity-cliff diagnostics are 6/6, 4/4, 4/4, and 96/38 pairs/components.
+  Static tests validate the receipt chain, source firewall, exact policies,
+  seeds, fold minimum, artifact list, and denied authority.
+- Alternatives: Implement folds and episodes immediately; reuse TDI/Emax
+  fields in direct validation; or reinterpret the label-aware diagnostics as
+  prediction evidence.
+- Reversal condition: A receipt, identity, chemistry, state-preservation,
+  family-leakage, or contract-consistency defect is found. Create a new
+  versioned contract; do not silently reinterpret R2.

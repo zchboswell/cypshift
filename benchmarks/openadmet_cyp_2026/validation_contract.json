@@ -1,0 +1,171 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v1",
+  "freeze_date": "2026-08-18",
+  "gate": "R2_VALIDATION_CONTRACT_FROZEN",
+  "status": "contract_only_not_validation_frozen",
+  "challenge_contract": "benchmarks/openadmet_cyp_2026/challenge_contract.json",
+  "input_chain": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "direct_source": {
+      "path": "cyp-challenge-TRAIN_inhibition.csv",
+      "sha256": "b8f79addd266fb6f9f4c222c5e4e73d926362328b6a8d2841871a54e46bd2278",
+      "rows": 4905
+    },
+    "r1_source_row_adapter": {
+      "manifest_sha256": "331b4d439fb655a5e73a92238095e0519e8c3c9d62230fffda9ba22824cd6d08",
+      "source_rows_sha256": "f9b058b32d24dd6af7d2f46dd77869cc3868e30d523fe5b52529acb465c03608",
+      "molecules_sha256": "0291f961970c3c2ca032ab96651dd1395bd408834a6284f3bb01805e4321e5eb"
+    },
+    "r1_topology": {
+      "schema_version": "cypshift.openadmet_cyp_2026.topology_audit.v1",
+      "manifest_sha256": "4df499a0c483835ea0eb23dfcaec6a7cf1b9b52d410b67c32a03636c6250e0dc",
+      "molecule_audit_sha256": "5053fde0e34de221a7ea4c48a09674bf1227bc79f02235b4527d00567768174a",
+      "training_topology_sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a",
+      "decision": "D-032 topology is unchanged and remains a candidate diagnostic, not a family, fold, episode, label, or model authority"
+    },
+    "raw_data_policy": "Official data and generated outputs remain outside Git; every implementation must verify this input chain before reading labels."
+  },
+  "direct_compiler": {
+    "source_policy": {
+      "allowed_files": ["cyp-challenge-TRAIN_inhibition.csv"],
+      "forbidden_files": ["cyp-challenge-TRAIN_TDI.csv", "cyp-challenge-TRAIN_Emax.csv", "cyp-challenge-single-concentration-TRAIN.csv", "cyp-challenge-TEST-BLINDED.csv"],
+      "forbidden_fields": ["CYP1A2_is_TDI", "CYP2C9_is_TDI", "CYP2D6_is_TDI", "CYP3A4_is_TDI", "*_pIC50_TDI_condition", "*_EmaxVsPosCtrl_TDI_condition", "single_concentration.*"]
+    },
+    "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+    "row_contract": {
+      "source_identities": 4905,
+      "rows_per_identity": 4,
+      "expected_rows": 19620,
+      "identity": "source row identity, never a molecule-name-only aggregate",
+      "preserve": ["exact source strings", "finite parsed numbers", "source file", "source row", "missingness", "raw structure"]
+    },
+    "fields": {
+      "point": "reported point pIC50",
+      "low": "reported low bound",
+      "high": "reported high bound",
+      "std": "reported standard deviation"
+    },
+    "state_rules": {
+      "missing": "point, low, high, and std are all empty",
+      "complete": "point, low, high, and std are all present and finite, low <= point <= high, and std >= 0",
+      "orphan_auxiliary": "point is empty and at least one of low, high, or std is non-empty",
+      "partial": "not missing, complete, or orphan_auxiliary; retain the exact raw cells and parsed finite values only where valid"
+    },
+    "eligibility": "Retain every state; only complete observations may serve as selector measurements, anchors, or direct local-pair support.",
+    "semantic_firewall": [
+      "Call low/high/std reported fields only.",
+      "Do not call them censoring, confidence, credible, or scoring intervals.",
+      "Do not derive TDI labels or infer hidden assay states.",
+      "Do not aggregate source rows before identity and state auditing."
+    ]
+  },
+  "local_pairs": {
+    "relation": "unordered pair of distinct direct-training identities in the same frozen D-032 similarity component and endpoint",
+    "eligibility": ["both observations complete", "inclusive Morgan/Tanimoto similarity >= 0.60", "same endpoint", "same frozen component"],
+    "remote_pair_policy": "Do not use transitive remote pairs; an edge qualifies only from its exact pairwise similarity.",
+    "status_rules": {
+      "LOCAL_SUPPORTED": "at least 50 eligible components, at least 200 eligible pairs, and every frozen outer fold meets the declared fold minimum after implementation",
+      "LOCAL_UNDERPOWERED": "clean identity and leakage audit, at least 10 eligible components and at least 10 eligible pairs, but LOCAL_SUPPORTED thresholds are not met",
+      "LOCAL_FAILED": "any contract, identity, or leakage defect, or fewer than 10 eligible components or fewer than 10 eligible pairs",
+      "fusion_weight": "0 for LOCAL_UNDERPOWERED and LOCAL_FAILED"
+    },
+    "official_diagnostics": {
+      "CYP1A2": {"eligible_components": 18, "eligible_pairs": 28, "status": "LOCAL_UNDERPOWERED"},
+      "CYP2C9": {"eligible_components": 13, "eligible_pairs": 13, "status": "LOCAL_UNDERPOWERED"},
+      "CYP2D6": {"eligible_components": 14, "eligible_pairs": 28, "status": "LOCAL_UNDERPOWERED"},
+      "CYP3A4": {"eligible_components": 95, "eligible_pairs": 473, "status": "LOCAL_SUPPORTED_PROVISIONAL_PENDING_FOLD_AUDIT"}
+    },
+    "experiment_order": "The first local experiment is CYP3A4 only. Never tune topology or criteria to rescue another endpoint."
+  },
+  "campaign_episodes": {
+    "selector_endpoints": ["CYP1A2", "CYP2C9", "CYP3A4"],
+    "excluded_selector_endpoints": ["CYP2D6"],
+    "selector_reason": "Released test parents were selected only from CYP1A2, CYP2C9, and CYP3A4.",
+    "anchor_rule": "Within a selected component, choose the complete selector measurement with maximum point; tie-break by narrower reported span (high - low), then molecule_id.",
+    "absolute_potency_cutoff": null,
+    "query_rule": {
+      "identity": "other direct-training identity",
+      "measurement": "any direct point, regardless of completeness",
+      "similarity": ">= 0.60 to the selected anchor",
+      "ranking": ["similarity descending", "molecule_id ascending"],
+      "cap": 10,
+      "availability": "Availability may select or mask a query, but query values cannot affect pool membership or ranking."
+    },
+    "isolation": "A component may produce separate selector episodes; episode isolation and component weighting prevent repeated-family inflation.",
+    "anchor_policies": ["selected_anchor", "deterministic_random_anchor_stress"],
+    "preliminary_diagnostics": {
+      "CYP1A2": {"selected_episodes": 33, "queries": 54, "selector_labeled_query_cells": 21},
+      "CYP2C9": {"selected_episodes": 37, "queries": 42, "selector_labeled_query_cells": 13},
+      "CYP3A4": {"selected_episodes": 117, "queries": 205, "selector_labeled_query_cells": 175},
+      "interpretation": "Counts are contract diagnostics, not prediction evidence."
+    }
+  },
+  "public_truth_firewall": {
+    "public_episode_fields": ["episode_id", "protocol", "repeat", "outer_fold", "outer_group_id", "endpoint", "query_molecule_ids", "candidate_pool_id", "episode_policy_id"],
+    "public_exclusions": ["selector values", "anchor identity", "anchor values", "truth values", "query labels", "label masks"],
+    "truth_fields": ["anchor_molecule_id_truth", "query_truth_references", "query_truth_availability_masks"],
+    "label_mask_rule": "Expose exactly the selected anchor available vector through the truth interface; no other family member label is exposed.",
+    "episode_exclusion": "For each episode, every non-anchor family member is excluded from global labels, delta support, candidate pools, selection, calibration, and fusion.",
+    "oracle_rule": "An oracle runner may receive the anchor only through the truth interface; no public field may identify or encode it.",
+    "inferred_candidate_pool": "Deferred. candidate_pool_id must explicitly identify a deferred/no-pool oracle policy; never fabricate an inferred pool."
+  },
+  "folds": {
+    "group_unit": "frozen similarity component shared across endpoints and protocols",
+    "repeats": 3,
+    "seeds": [20260810, 20260811, 20260812],
+    "outer_folds": 5,
+    "assignment": "largest-group-first; assign to the smallest current fold; seeded SHA tie-break",
+    "outer_features_forbidden": ["endpoint values", "endpoint availability", "labels", "episode fields"],
+    "inner_folds": 4,
+    "inner_assignment": "Apply the same algorithm with the scoped deterministic repeat/outer-fold seed and policy; never use outer-validation information.",
+    "availability_policy": "Availability affects score masks and support reports only; it never reassigns a component.",
+    "protocols": {
+      "GLOBAL_FAMILY_HOLDOUT": "Hold each complete component wholly out of the evaluation boundary.",
+      "ANCHOR_EXPANSION_HOLDOUT": "Hold each component out while exposing exactly one episode anchor through the truth interface."
+    },
+    "fold_support_minimum": {
+      "eligible_components_per_outer_validation_fold": 5,
+      "eligible_pairs_per_outer_validation_fold": 20,
+      "purpose": "A simple predeclared minimum for endpoint downgrade; do not regenerate topology or tune the minimum after observing outcomes."
+    }
+  },
+  "activity_cliff": {
+    "eligibility": ["direct pair similarity >= 0.60", "absolute point delta >= 1.0", "reported bounds are directionally non-overlapping"],
+    "purpose": "Diagnostic slice only; it does not alter pair eligibility, topology, folds, or fusion.",
+    "official_diagnostics": {
+      "CYP1A2": {"pairs": 6, "components": 6},
+      "CYP2C9": {"pairs": 4, "components": 4},
+      "CYP2D6": {"pairs": 4, "components": 4},
+      "CYP3A4": {"pairs": 96, "components": 38}
+    }
+  },
+  "scorecard": {
+    "primary_resampling": "component_bootstrap",
+    "slices": ["molecule_macro", "episode_macro", "component_macro", "worst_component_decile", "activity_cliff", "similarity_[0.60,0.70)", "similarity_[0.70,0.80)", "similarity_[0.80,1.00]", "selector", "query_label_cardinality", "measured_anchor"],
+    "weighting": "Within each CYP, every component-by-endpoint cell receives equal total weight, divided across its episodes and then its scored queries; no large component may dominate.",
+    "inactive_until_artifacts": ["exact_transform", "completed_anchor", "posterior", "competence_gate"],
+    "blocked_naming": ["official ST-RAE", "interval-hit"],
+    "metric_authority": "No metric implementation or scorer claim is frozen by R2."
+  },
+  "future_artifacts": {
+    "required": ["direct_observations.csv", "group_folds.csv", "campaign_episodes_public.csv", "campaign_episodes_truth.csv", "episode_label_masks.csv", "topology_viability.json", "manifest.json"],
+    "manifest_requirements": ["schemas", "policy IDs", "input hashes", "output hashes", "source revisions", "seeds", "scope and authority flags"],
+    "transductive_policy": "No test-test relationships or transductive chemistry may enter any artifact."
+  },
+  "acceptance": {
+    "required": ["input receipts verify before parse", "raw direct strings and finite parsed values are preserved", "all four state classes are represented and retained", "identity and duplicate checks fail closed", "no component crosses a fold boundary", "public/truth firewall is mechanically tested", "repeat outputs are byte-identical", "official acceptance is run only after implementation review"],
+    "leakage_invariants": ["no molecule, exact duplicate, or frozen component crosses a claimed holdout boundary", "query values cannot affect candidate membership or rank", "all learned choices use cross-fitted predictions only", "availability cannot reassign folds", "non-anchor family labels cannot reach an episode"],
+    "not_yet_authorized": ["model fitting", "prediction", "metric evaluation", "submission generation", "leaderboard iteration", "TDI label derivation", "TDI-TRACE", "transductive test relationships"],
+    "next_gate": "R2_VALIDATION_ARTIFACTS_IMPLEMENTED_AND_SYNTHETICALLY_ACCEPTED"
+  },
+  "authority": {
+    "models": false,
+    "metrics": false,
+    "submissions": false,
+    "fold_assignments": false,
+    "episode_labels": false,
+    "tdi": false,
+    "transduction": false,
+    "status_note": "R2 freezes the contract only. It is not VALIDATION_FROZEN and cannot support scientific or competition claims."
+  }
+}

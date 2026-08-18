@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active, label-free topology only; gate `R1_TOPOLOGY_AUDITED`; freeze date 2026-08-17.
+Status: active; R2 validation contract frozen, implementation not yet accepted; gate `R2_VALIDATION_CONTRACT_FROZEN`; freeze date 2026-08-18.
 
 ## Context capsule
 
@@ -94,10 +94,21 @@ Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-Exact next action: freeze a separate label-aware topology-viability and campaign-
-episode contract without changing the candidate topology. Stop on contract
-drift or any family/identity ambiguity. Preserve unresolved scorer, TDI-order,
-interval, and permission behavior; `global_TDI` remains the permanent fallback.
+The R2 label-aware topology-viability and campaign-episode contract is frozen in
+[`validation_contract.json`](../../benchmarks/openadmet_cyp_2026/validation_contract.json).
+It keeps D-032 unchanged; restricts direct compilation to the four direct
+endpoints; requires complete observations for anchors and local pairs; freezes
+selector/query rules, public/truth separation, component-grouped repeats and
+inner folds, scorecard slices, and activity-cliff diagnostics. Preliminary
+label-aware counts are diagnostics only. R2 is not `VALIDATION_FROZEN` and does
+not authorize implementation outputs, modeling, scoring, submissions, TDI, or
+transductive test relationships.
+
+Exact next action: implement the contract artifacts against synthetic fixtures,
+then run official acceptance after independent review. Stop on contract drift,
+identity ambiguity, family leakage, or state loss. Preserve unresolved scorer,
+TDI-order, interval, and permission behavior; `global_TDI` remains the
+permanent fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.
