@@ -1196,7 +1196,7 @@
   precedes promotion. The frozen environment reproduces all four MapLight
   blocks on the eight-row fixture, signed-int8 witnesses \`127/-128/-112\`, and
   CatBoost \`nan_mode=Min\`. Two fresh two-molecule feature builds are
-  byte-identical. The full 275-test suite, Ruff, mypy, build, and independent
+  byte-identical. The full 276-test suite, Ruff, mypy, build, and independent
   scientific review pass. Official challenge inputs and generated official
   artifacts opened remain zero.
 - Alternatives: Combine implementation and official evidence in one opaque

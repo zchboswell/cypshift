@@ -148,7 +148,7 @@ eight-row MapLight parity, signed-int8 witnesses \`127/-128/-112\`, CatBoost
 \`nan_mode=Min\`, and two fresh byte-identical two-molecule feature builds pass
 in the frozen Linux environment. Independent scientific review passes after
 closing receipt, accounting, array-schema, and promotion-race defects. The
-full suite passes with 275 tests and three root-environment skips covered by
+full suite passes with 276 tests and three root-environment skips covered by
 the direct pinned-environment checks. No official challenge input or feature
 root was opened, so \`R3A_LINUX_FEATURES_ACCEPTED\` is not yet granted and no
 feature, model, prediction, validation, metric, or submission authority exists.

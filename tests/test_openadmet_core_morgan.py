@@ -5,14 +5,13 @@ import hashlib
 import importlib.util
 import io
 import json
-import platform
 import sys
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pytest
-from rdkit import Chem, rdBase
+from rdkit import Chem
 from rdkit.Chem import rdFingerprintGenerator
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +21,20 @@ assert SPEC is not None and SPEC.loader is not None
 worker = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = worker
 SPEC.loader.exec_module(worker)
+
+
+@pytest.fixture(autouse=True)
+def _frozen_core_runtime(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Exercise worker logic under its contract runtime in matrix CI.
+
+    The actual pinned Python/RDKit environment is checked separately; ordinary
+    CI deliberately spans the package's supported Python versions.
+    """
+
+    contract = json.loads(worker.GLOBAL_CONTRACT_PATH.read_text())
+    core = contract["inputs"]["core_chemistry"]
+    monkeypatch.setattr(worker.platform, "python_version", lambda: core["python_version"])
+    monkeypatch.setattr(worker.rdBase, "rdkitVersion", core["rdkit_version"])
 
 
 def _sha(value: bytes) -> str:
@@ -68,6 +81,7 @@ def _fixture(root: Path) -> tuple[Path, Path]:
     contract_hash = _sha(contract_data)
     contract = json.loads(contract_data)
     projection = contract["r3a_chemistry_projection"]
+    core = contract["inputs"]["core_chemistry"]
     projection_inputs = projection["inputs"]
     formulas = projection["manifest"]["hash_formulas"]
     manifest: dict[str, Any] = {
@@ -81,8 +95,8 @@ def _fixture(root: Path) -> tuple[Path, Path]:
         ),
         "standardizer_source_sha256": standardizer_hash,
         "core_uv_lock_sha256": lock_hash,
-        "core_python_version": platform.python_version(),
-        "core_rdkit_version": rdBase.rdkitVersion,
+        "core_python_version": core["python_version"],
+        "core_rdkit_version": core["rdkit_version"],
         "standardization_policy_id": worker.STANDARDIZATION_POLICY_ID,
         "feature_input_sha256": _sha(input_data),
         "feature_input_columns": list(worker.FEATURE_INPUT_COLUMNS),
@@ -222,6 +236,15 @@ def test_projection_core_runtime_receipt_drift_fails_closed(
     paths[0].write_bytes(worker._json_bytes(manifest))
     with pytest.raises(worker.CoreMorganError, match="receipt differs"):
         _build(paths, tmp_path / f"{field}-out")
+
+
+def test_worker_runtime_drift_fails_closed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = _fixture(tmp_path)
+    monkeypatch.setattr(worker.platform, "python_version", lambda: "0.0.0")
+    with pytest.raises(worker.CoreMorganError, match="core Python version mismatch"):
+        _build(paths, tmp_path / "runtime-drift")
 
 
 def test_array_exactness_npy_v1_and_read_only_outputs(tmp_path: Path) -> None:
