@@ -1186,16 +1186,16 @@
 - Status: accepted; implementation and synthetic replay only
 - Decision: Accept the trusted prefix projector, core RDKit 2026 Morgan worker,
   and isolated RDKit 2023 MapLight runner for the official R3A feature gate.
-  Keep \`R3A_LINUX_FEATURES_ACCEPTED\` ungranted until the receipt-bound 4,905-row
+  Keep `R3A_LINUX_FEATURES_ACCEPTED` ungranted until the receipt-bound 4,905-row
   projection and two fresh full feature roots are byte-identical and
   independently reviewed. Grant no feature, target, model, prediction,
   validation, metric, TDI, submission, or transductive authority here.
 - Evidence: All consumers verify the complete v3 receipt, policy, runtime,
   formula, accounting, and authority boundary before parsing payloads. Linux
-  \`renameat2(RENAME_NOREPLACE)\` is the only promotion path; read-only staging
+  `renameat2(RENAME_NOREPLACE)` is the only promotion path; read-only staging
   precedes promotion. The frozen environment reproduces all four MapLight
-  blocks on the eight-row fixture, signed-int8 witnesses \`127/-128/-112\`, and
-  CatBoost \`nan_mode=Min\`. Two fresh two-molecule feature builds are
+  blocks on the eight-row fixture, signed-int8 witnesses `127/-128/-112`, and
+  CatBoost `nan_mode=Min`. Two fresh two-molecule feature builds are
   byte-identical. The full 276-test suite, Ruff, mypy, build, and independent
   scientific review pass. Official challenge inputs and generated official
   artifacts opened remain zero.
@@ -1206,4 +1206,29 @@
 - Reversal condition: Official projection or replay finds any receipt,
   chemistry, row alignment, environment, payload, NaN, determinism, resource,
   isolation, or authority defect. Preserve the failed artifacts outside Git,
-  record \`GLOBAL_FAILED\`, and stop before R3B or any fit.
+  record `GLOBAL_FAILED`, and stop before R3B or any fit.
+
+## D-043 — Accept the official R3A Linux feature payloads
+
+- Date: 2026-08-18
+- Status: accepted; `R3A_LINUX_FEATURES_ACCEPTED`
+- Decision: Accept the receipt-bound 4,905-row chemistry projection, core
+  standardized Morgan array, and two byte-identical Linux feature roots for the
+  frozen R3 global experiment. This grants deterministic feature-payload and
+  Linux method-compatibility authority only. Keep official target projection,
+  models, OOF predictions, validation, metrics, TDI, submissions, official
+  scoring, and transduction unauthorized until their later gates pass.
+- Evidence: The projection manifest is `a472b6ab...`; target values parsed and
+  retained and blinded-test rows opened are zero. The core Morgan manifest is
+  `1b897f45...`. Feature manifests `32a95095...` and `832efbd1...` differ only
+  in build ID, runtime, and RSS; aligned rows, the compatibility receipt, and
+  all five arrays are byte-identical. Independent recomputation found zero
+  mismatches across all 4,905 standardized Morgan rows and all four raw-SMILES
+  MapLight blocks. Arrays have exact frozen shapes/dtypes, zero infinity, and
+  zero NaN cells. Builds took 21.47/21.54 seconds at 0.58/0.54 GiB RSS.
+- Alternatives: Trust one feature build; reuse the old macOS feature evidence;
+  mix raw and standardized chemistry; open target/test artifacts in the feature
+  process; or begin official fitting before independent replay.
+- Reversal condition: R3B or R3C finds any receipt, row, chemistry, environment,
+  payload, determinism, rights, isolation, or authority defect. Preserve the
+  evidence, record `GLOBAL_FAILED`, and stop before promotion or submission.

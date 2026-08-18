@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`. The launch-day OpenADMET source revisions, file
+Phase 1 TRACE is active at `R3A_LINUX_FEATURES_ACCEPTED`. The launch-day OpenADMET source revisions, file
 receipts, submission names/types, endpoint-state notes, and unresolved
 metric/permission items are frozen in
 [`PHASE_1_OPENADMET_TRACE.md`](PHASE_1_OPENADMET_TRACE.md) and
@@ -17,11 +17,12 @@ freezes the global-only experiment and stages execution as R3A Linux parity and
 label-free features, R3B synthetic firewall/runner acceptance, then R3C frozen
 scientific fits. R3A includes one trusted chemistry-only prefix projector that
 parses or retains zero target values; its feature process sees only the
-resulting receipt-bound 4,905-row raw/standardized chemistry projection. The
-R3A's implementation and synthetic Linux replay now pass independent review,
-but the official 4,905-row projection and two feature roots have not run. The
-next gate is official R3A feature acceptance outside Git; no target-value or
-model access is authorized there.
+resulting receipt-bound 4,905-row raw/standardized chemistry projection. Two
+fresh official feature roots are byte-identical for aligned rows and all five
+arrays; full independent Morgan and MapLight recomputation passes. R3A grants
+feature-payload compatibility only. The next gate is synthetic R3B global
+runner acceptance; no official target projection or scientific fit is
+authorized there.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

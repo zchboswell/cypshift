@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; corrected R3 v3 global experiment contract frozen; gate `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`; acceptance date 2026-08-18.
+Status: active; R3A Linux feature payloads accepted; gate `R3A_LINUX_FEATURES_ACCEPTED`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -166,17 +166,18 @@ standardized SMILES. The feature process can open only the projected CSV and
 its manifest, not the source observations, topology, folds, or any test
 artifact.
 
-R3A's trusted projector, core Morgan worker, and isolated MapLight runner now
-pass synthetic tests, direct pinned-Linux compatibility, a two-build synthetic
-replay, and independent review. No official challenge input or feature root
-was opened, so this is implementation acceptance rather than
-\`R3A_LINUX_FEATURES_ACCEPTED\`.
+R3A is accepted for label-free feature payloads only. The official projector
+emitted 4,905 rows with zero target parsing and no blinded-test access. Two
+fresh roots are byte-identical for feature rows and all five arrays; independent
+full Morgan and MapLight recomputation found zero mismatches. Model, prediction,
+validation, metric, TDI, submission, official-score, and transductive authority
+remain denied.
 
-Exact next action: run the receipt-bound official chemistry projection, core
-Morgan worker, and two fresh byte-identical label-free feature roots outside
-Git, then independently audit their receipts and payloads. R3B separately accepts
-the synthetic projector/runner firewall; R3C alone may execute the frozen
-official fits and internal surrogate-score diagnostics. Preserve
+Exact next action: implement and independently review R3B's receipt-bound target
+projector, model-cell runner, prediction freezer, bounded surrogate scorers, and
+synthetic determinism/leakage tests. No official scientific fit may run. R3C
+alone may execute the frozen official fits and internal surrogate-score
+diagnostics after R3B passes as a signed milestone. Preserve
 unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
 remains the permanent fallback and R4 must separately freeze the
 oracle/transformation controls.

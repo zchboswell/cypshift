@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3_GLOBAL_EXPERIMENT_CONTRACT_V3_FROZEN`; no modeling or
-scoring is active.
+TRACE is active at `R3A_LINUX_FEATURES_ACCEPTED`; no modeling or scoring is
+active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -140,21 +140,16 @@ resulting 4,905-row CSV and its receipt are the only chemistry inputs visible
 to the feature process; target values parsed and retained remain exactly zero
 and no blinded-test artifact is opened.
 
-The R3A implementation now passes synthetic and pinned-Linux acceptance. The
-trusted projector, core RDKit 2026 Morgan worker, and isolated RDKit 2023
-MapLight runner verify the complete v3 receipt chain before parsing payloads,
-refuse non-atomic overwrite, and keep every promoted file read-only. Exact
-eight-row MapLight parity, signed-int8 witnesses \`127/-128/-112\`, CatBoost
-\`nan_mode=Min\`, and two fresh byte-identical two-molecule feature builds pass
-in the frozen Linux environment. Independent scientific review passes after
-closing receipt, accounting, array-schema, and promotion-race defects. The
-full suite passes with 276 tests and three root-environment skips covered by
-the direct pinned-environment checks. No official challenge input or feature
-root was opened, so \`R3A_LINUX_FEATURES_ACCEPTED\` is not yet granted and no
-feature, model, prediction, validation, metric, or submission authority exists.
-The exact next action is the receipt-bound official chemistry projection,
-core Morgan build, two fresh MapLight feature roots, and independent replay
-audit outside Git.
+R3A Linux features are accepted. The receipt-bound official projection contains
+4,905 sorted direct-training molecules, parsed zero target values, and opened no
+blinded-test artifact. Two fresh feature roots are byte-identical for aligned
+rows and all five arrays; full independent recomputation found zero mismatches
+for standardized RDKit 2026 Morgan and the four exact-raw RDKit 2023 MapLight
+blocks. All arrays are finite, C-contiguous NPY v1.0 payloads; the permitted
+descriptor NaN mask is empty. Builds completed in 21.47 and 21.54 seconds below
+0.59 GiB RSS. Independent review grants `R3A_LINUX_FEATURES_ACCEPTED` only:
+model, target, prediction, validation, metric, TDI, submission, official-score,
+and transductive authority remains denied.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -332,15 +327,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. R0, R1, topology, R2A,
-R2B, and the corrected R3 v3 contract freeze have passed their applicable
-gates. Implement only R3A: verify the Linux CatBoost/MapLight overlay, replay
-the frozen fixture, build the receipt-bound chemistry-only opaque-suffix
-projection, and build two byte-identical label-free feature roots over the
-4,905 accepted raw and standardized structures. Parse or retain no target
-value and do not fit a scientific model
-until R3A is independently reviewed; R3B then implements the synthetic
-firewall/runner, and only R3C may execute the frozen official experiment. Do not
+Do not add another global representation or ensemble. R0 through R3A have
+passed their applicable gates. Implement and independently review only R3B:
+the receipt-bound target projector, model-cell runner, prediction freezer,
+bounded surrogate scorers, and synthetic determinism/leakage tests. Do not run
+an official scientific fit; only R3C may execute the frozen official experiment
+after R3B passes as a signed milestone. Do not
 expose anchors, fit transformation logic, derive TDI labels, score with
 official ST-RAE, submit, or use transductive test relationships. R4 must
 freeze oracle/transformation controls separately before any local TRACE
