@@ -5,8 +5,9 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R3C_OFFICIAL_EXECUTION_READY`; no official model,
-prediction-quality score, or submission is active.
+TRACE is active at `R3C_GLOBAL_EXPERT_FROZEN`. The single frozen official R3C
+global experiment passed its internal surrogate gate; no deployable model,
+official ST-RAE score, or submission is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -210,8 +211,22 @@ private, removes private artifacts before one atomic no-replace terminal
 publication, and records the complete input and implementation receipt chain.
 An additional two-root replay again passed 600 isolated cell processes and 720
 real CatBoost fits with deterministic artifacts, focused and full test suites,
-and independent adversarial review. This is still implementation evidence only:
-official targets and prediction-quality evidence remain unopened.
+and independent adversarial review. At the R3C readiness gate this was
+implementation evidence only; the later official result is recorded below.
+
+The one authorized official R3C experiment is complete and independently
+audited. Fixed MapLight reached an overall endpoint-macro component-MAE point
+estimate of 0.571 and beat
+Morgan CatBoost by 0.0646 (95% bootstrap interval 0.0569 to 0.0722), the
+endpoint median by 0.1411 (0.1306 to 0.1522), and Morgan 1-NN by 0.4389 (0.4222
+to 0.4555). MapLight improved over the median for every CYP and in all 60 outer
+cells; it beat Morgan in 56/60 cells, with four small reversals. All four
+endpoint loss caps, influence checks, 2,000 bootstrap replicates, 60 uncertainty
+contexts, and parent-state completion checks passed. The terminal is an exact
+15-file read-only package; manifest and result SHA-256 are `a2029e12...` and
+`d9aff555...`. This grants frozen global OOF, internal surrogate, and completion
+evidence only. It is not an official ST-RAE result, a full-training model, a
+submission, or evidence for TRACE anchors, transformations, or TDI.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -389,15 +404,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble. R0 through R3B have
-passed their applicable gates. Record, review, and integrate the signed R3B
-implementation milestone, then execute exactly one frozen R3C official global
-experiment using the accepted receipts and systems. Do not redesign or tune
-from its outer evidence. Do not expose anchors, fit transformation logic,
-derive TDI labels, score with
-official ST-RAE, submit, or use transductive test relationships. R4 must
-freeze oracle/transformation controls separately before any local TRACE
-experiment. `TDI-TRACE` remains deferred and `global_TDI` is the permanent
+Do not add another global representation or ensemble, rerun R3C, or tune from
+its positive outer evidence. Record and integrate the frozen global result,
+then freeze `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`: label-safe
+transformation extraction, invariance and ambiguity checks, and a coverage and
+support report before any delta-model fit. Only if coverage is supportable may
+the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
+contract must retain the complete blueprint systems, controls, and ablations:
+frozen global, copy-anchor, nearest-neighbor, generic fingerprint-difference
+regression, delta without measured-anchor potency, true-anchor transformation
+grammar, shuffled-anchor assignment, wrong anchor, shuffled transformation,
+transformation-class-only, hierarchy without context, and context without
+hierarchy. Do not fit inferred-anchor logic, derive TDI
+labels, score with official ST-RAE, submit, or use transductive test
+relationships. `TDI-TRACE` remains deferred and `global_TDI` is the permanent
 fallback.
 
 Completed phase plans and superseded intake notes are archived under

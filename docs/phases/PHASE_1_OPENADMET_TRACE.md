@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R3C official execution boundary accepted; gate `R3C_OFFICIAL_EXECUTION_READY`; acceptance date 2026-08-18.
+Status: active; frozen global expert accepted; gate `R3C_GLOBAL_EXPERT_FROZEN`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -216,16 +216,34 @@ projection; gives freezers no target payload; and enforces the exact causal
 before atomically publishing one exact read-only terminal. A second full
 two-root synthetic replay after these repairs again passed 600 isolated cell
 processes, 720 CatBoost fits, deterministic comparison, the full test suite,
-and independent adversarial review. No official target or score was opened.
+and independent adversarial review. At that readiness gate no official target
+or score had been opened; the later official result is recorded below.
 
-Exact next action: integrate the signed R3C execution milestone, copy the
-accepted R2A/R3A artifacts to a durable immutable outside-Git root with receipts
-reverified, then run the single frozen R3C official global experiment and
-internal surrogate diagnostics without redesign, retry, or outer-evidence
-tuning. Preserve
-unresolved scorer, TDI-order, interval, and permission behavior; `global_TDI`
-remains the permanent fallback and R4 must separately freeze the
-oracle/transformation controls.
+The single authorized official R3C run is complete. Its read-only 15-file
+terminal is `GLOBAL_EXPERT_FROZEN`: MapLight's overall endpoint-macro
+component-MAE point estimate is 0.571 and its paired loss advantages are 0.0646
+over Morgan CatBoost (95%
+bootstrap interval 0.0569 to 0.0722), 0.1411 over the endpoint median (0.1306 to
+0.1522), and 0.4389 over Morgan 1-NN (0.4222 to 0.4555). Every CYP improves over
+the median; MapLight beats Morgan in 56/60 outer cells. All endpoint caps,
+influence checks, uncertainty contexts, and completion checks pass. Independent
+receipt and arithmetic audits pass. This is internal surrogate evidence only,
+not official ST-RAE, a full-training model, a submission, or local TRACE
+evidence.
+
+Exact next action: record and integrate the frozen R3C result without rerunning
+or tuning it, then freeze `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN` before
+any delta-model fit. That gate must define label-safe transformation extraction,
+invariance and ambiguity checks, and a coverage/support report. Only supportable
+coverage permits a later CYP3A4 oracle-anchor contract. Preserve the global
+expert as fallback and retain the complete blueprint systems, controls, and
+ablations: copy-anchor, nearest-neighbor, generic fingerprint-difference
+regression, delta without measured-anchor potency, true-anchor transformation
+grammar, shuffled-anchor assignment, wrong anchor, shuffled transformation,
+transformation-class-only, hierarchy without context, and context without
+hierarchy. Keep inferred anchors, TDI, submissions, official
+scoring, and transduction deferred; `global_TDI` remains the permanent TDI
+fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
 submissions, transductive use, held-out tuning, broad adapters, services, or

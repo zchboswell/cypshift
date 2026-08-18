@@ -91,6 +91,26 @@ Not allowed from Phase 0.5 evidence:
 - clean zero-shot claims when external-model training overlap is unknown;
 - mechanistic or causal claims inferred from predictive correlations.
 
+## Phase 1 global direct claim — supported internally
+
+Supported claim:
+
+> On the frozen OpenADMET direct-training component holdout, fixed MapLight has
+> lower component-macro MAE than Morgan CatBoost, the endpoint median, and
+> Morgan 1-NN.
+
+Evidence: the single predeclared R3C run gives MapLight an overall endpoint-
+macro component-MAE point estimate of 0.571053 and paired advantages of
+0.064563, 0.141052, and 0.438851 over those controls. All three
+2,000-replicate global-component bootstrap intervals have positive lower
+bounds. Every CYP improves over the median; MapLight beats Morgan in 56/60
+outer cells. Exact receipts and limitations are frozen under D-048.
+
+This supports selection of MapLight as the internal global fallback. It does
+not support an official ST-RAE, leaderboard, deployable full-training model,
+state-of-the-art, TRACE transformation, inferred-anchor, TDI, or submission
+claim. Endpoint-specific deltas do not have separate confidence intervals.
+
 ## Phase 0.75 comparator and representation claims
 
 Phase 0.75 may support only claims tied to its frozen public sources, global

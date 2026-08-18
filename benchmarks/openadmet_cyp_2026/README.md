@@ -68,6 +68,17 @@ deterministic artifacts, and independent adversarial review passed. This
 accepts implementation mechanics only; R3C remains the sole authority for one
 frozen official global experiment and no submission authority is granted.
 
+The single frozen official R3C experiment subsequently reached
+`GLOBAL_EXPERT_FROZEN`. Fixed MapLight beat Morgan CatBoost, the endpoint
+median, and Morgan 1-NN by 0.0646, 0.1411, and 0.4389 component-macro MAE,
+respectively; all three 2,000-replicate bootstrap intervals have positive lower
+bounds. The exact outside-Git terminal manifest and result SHA-256 are
+`a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c` and
+`d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94`.
+This is internal surrogate evidence only: official ST-RAE, a deployable model,
+submission, TDI, anchors, transformations, and transduction remain outside its
+authority.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

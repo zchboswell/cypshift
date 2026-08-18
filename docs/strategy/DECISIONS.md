@@ -1363,3 +1363,44 @@
   capability, split, process, receipt, arithmetic, cleanup, or terminal defect.
   Publish `GLOBAL_FAILED`, preserve the evidence outside Git, and stop without
   retrying or granting predictive authority.
+
+## D-048 — Freeze the positive official R3C global result
+
+- Date: 2026-08-18
+- Status: accepted; `R3C_GLOBAL_EXPERT_FROZEN`
+- Decision: Accept fixed MapLight as the frozen direct global expert for the
+  next TRACE experiments. Do not rerun R3C, tune from its outer evidence, add
+  another global representation, or treat the result as a deployable model or
+  official challenge score. Authorize frozen global OOF predictions, internal
+  surrogate evidence, inner OOF predictions, and parent-state completion only.
+  R4 must first freeze a label-safe transformation coverage/support contract;
+  only a supportable result may advance to a separate CYP3A4 oracle-anchor
+  contract with the complete blueprint system, control, and ablation set.
+- Evidence: The single D-047-authorized official run reached
+  `GLOBAL_EXPERT_FROZEN` after 60 outer cells, 120 outer fits, a causal positive
+  outer gate, 240 fresh inner cells/fits, and exact completion. MapLight's
+  overall endpoint-macro component-MAE point estimate is 0.571053. Its paired
+  loss advantages are 0.064563 over
+  Morgan CatBoost (95% bootstrap interval 0.056854 to 0.072240), 0.141052 over
+  the endpoint median (0.130587 to 0.152246), and 0.438851 over Morgan 1-NN
+  (0.422225 to 0.455456). All 2,000 replicates were accepted with positive lower
+  bounds. MapLight improved over the median for all four CYPs and all 60 outer
+  cells; it beat Morgan in 56/60 cells, with the four reversals small. The
+  CYP1A2/2C9/2D6/3A4 MapLight MAEs are 0.657310/0.474675/0.583530/0.568697.
+  All endpoint caps, 30 influence deletions, 60 uncertainty contexts, and both
+  completion artifacts pass. The exact 15-file read-only terminal has manifest
+  SHA-256 `a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c`
+  and result SHA-256
+  `d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94`.
+  Two independent read-only audits reproduced receipts, schemas, counts,
+  metrics, bootstrap intervals, influence checks, uncertainty, and completion.
+  Blinded test, TDI, submission, official-metric, anchor, and transductive access
+  remained zero; private intermediates are absent.
+- Alternatives: Reject a predeclared expert despite a clean positive gate;
+  select Morgan from the same outer evidence; rerun to improve a result; tune
+  endpoint-specific systems after inspection; begin submission work before an
+  official scorer exists; or skip directly to inferred anchors.
+- Reversal condition: Independent replay later finds receipt, arithmetic,
+  split, capability, or authority drift. Preserve the terminal, revoke only
+  the affected R3C evidence, and stop dependent work; never repair the result
+  by rerunning the frozen experiment.
