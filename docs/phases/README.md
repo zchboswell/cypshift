@@ -48,8 +48,11 @@ stereo records, ambiguity/invariance rules, structural-only row outputs, and
 valid-only support thresholds. It opens
 no campaign truth, selector/scorable state, target magnitude, test, TDI,
 prediction, or metric.
-The next gate is synthetic implementation and one independently audited
-coverage run. A separate CYP3A4 oracle-anchor contract may follow only after
+The least-privilege projection implementation has independently passed 37
+focused synthetic tests; it has not opened official inputs and carries zero
+coverage or model authority. The next gate is deterministic extraction,
+coverage publication, and one independently audited official coverage run. A
+separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
 remain unauthorized until their own gates.
 Unresolved metric,

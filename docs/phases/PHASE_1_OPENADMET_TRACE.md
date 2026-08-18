@@ -251,9 +251,22 @@ valid-only support arithmetic, and status-conditioned authority are frozen.
 Independent scientific review passes. No extraction code, coverage artifact,
 model, prediction, or metric is accepted by this milestone.
 
-Exact next action: implement the frozen R4 projector, deterministic extractor,
-coverage scorer, and atomic publisher; pass synthetic invariance/firewall
-acceptance and independent review before one official coverage run. Only
+The synthetic trusted-projection slice is accepted separately. It verifies the
+five supplied receipts before parsing, never decodes direct numeric/eligibility
+fields or the mask suffix, validates exact direct/fold/public/mask/structure
+joins, and emits one canonical six-file read-only directory through Linux
+atomic no-replace promotion. Thirty-seven focused tests cover poisoned opaque
+bytes, malformed CSV, receipt precedence, row-order invariance, every join
+family, exact modes/file set, symlinks, mid-stage failure, and destination
+races. Independent correctness and minimality audits pass. This status is
+synthetic only; a production gate must still bind the v3 contract, accepted
+R2B/R3A manifests and leaf receipts, and exact implementation sources before
+official input access or extractor consumption.
+
+Exact next action: bind the accepted synthetic projector to the production
+receipt chain, then implement the deterministic extractor, coverage scorer,
+and atomic publisher; pass synthetic invariance/firewall acceptance and
+independent review before one official coverage run. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global
 expert as fallback and retain the complete blueprint systems, controls, and

@@ -244,6 +244,18 @@ metrics remain unopened and unauthorized. Independent scientific review passes.
 This is still a contract-only gate; no transformation artifact or local
 predictive evidence exists yet.
 
+The synthetic R4 projection boundary is now accepted as an implementation
+slice. It verifies all five source receipts before parsing the same in-memory
+bytes, decodes only the seven permitted direct fields and two-field mask
+prefix, treats target and mask suffix bytes as opaque, and validates the exact
+endpoint, component, 3-by-5 fold, public-query, and anchor joins. Canonical
+outputs are published as an exact six-file read-only directory through atomic
+no-replace promotion. Thirty-seven focused tests and independent correctness
+and minimality reviews pass. Its authority remains synthetic only: before any
+official input or extractor consumption, a production gate must bind R4 v3,
+the accepted R2B/R3A manifests and leaf receipts, and the implementation source
+receipts.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
@@ -421,10 +433,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Implement the frozen R4 label-safe projections,
-transformation extraction, invariance/ambiguity checks, and atomic coverage
-report; pass synthetic and independent review before one official coverage
-run. Only if the frozen result is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
+its positive outer evidence. Bind the accepted synthetic projection to the
+production receipt chain, then implement transformation extraction,
+invariance/ambiguity checks, and atomic coverage reporting; pass synthetic and
+independent review before one official coverage run. Only if the frozen result
+is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:
 frozen global, copy-anchor, nearest-neighbor, generic fingerprint-difference

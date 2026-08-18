@@ -99,6 +99,16 @@ Supported coverage may authorize a separate oracle contract only; R4 itself
 authorizes no fit. Twenty-seven focused v1/v2/v3 tests and independent
 scientific review pass.
 
+The synthetic least-privilege projection implementation is accepted for its
+boundary only. It verifies five source receipts before parse, retains exactly
+the permitted direct and mask-prefix fields, validates the complete fold and
+episode joins, and atomically publishes six canonical read-only files. Its I/O
+and projector source SHA-256 values are `820a83b3...` and `0e094712...`;
+thirty-seven focused tests plus independent correctness and minimality reviews
+pass. No official input was opened. Production use remains blocked until a
+separate gate binds R4 v3, the accepted R2B/R3A manifests and leaf receipts,
+and the exact implementation sources.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

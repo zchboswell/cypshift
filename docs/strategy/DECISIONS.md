@@ -1497,3 +1497,31 @@
 - Reversal condition: Synthetic extraction cannot reproduce v3's exact stereo
   records, graph maps, IDs, reversal invariants, or receipt. Preserve the
   blocker, version the contract, and keep official coverage inputs closed.
+
+## D-052 — Accept the synthetic R4 trusted-projection boundary
+
+- Date: 2026-08-18
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_PROJECTION_SYNTHETIC_ACCEPTED`
+- Decision: Accept the focused I/O and projection modules as the sole synthetic
+  R4 source-firewall implementation. Keep chemistry extraction, support,
+  coverage authority, and official input access outside this milestone.
+- Evidence: The implementation loads each of five receipt-bound byte streams
+  once, checks every receipt before parse, decodes only the frozen direct and
+  mask-prefix fields, and validates endpoint, structure, component, fold,
+  public-query, and anchor identity. It canonicalizes row order and atomically
+  promotes exactly six read-only files without overwrite. Its I/O, projector,
+  and focused-test SHA-256 values are `820a83b3563bc4f8dbb7de2b13ad0c8fdf9032db8d9bbcb75a6962ffc53a3ee9`,
+  `0e094712f4f7e10f878ea3ac6a1907f2ad42a25db3c70fbefec70b3ab2aca73a`,
+  and `5c2b2ecb649287275a9e2b8f5b939f4c0b4f927c79cc2eaf6d2d1d4d3106b8de`.
+  Thirty-seven focused tests, the full repository suite, Ruff, formatting,
+  mypy, and independent correctness/minimality audits pass. Official inputs,
+  target magnitudes, models, predictions, metrics, test, TDI, submissions, and
+  transduction remain at zero.
+- Alternatives: Let the extractor open target-bearing or mask source files;
+  decode forbidden fields and promise not to use them; or combine projection,
+  chemistry, coverage, and publication in one unreviewable milestone.
+- Reversal condition: Any receipt-before-parse, opaque-field, join,
+  determinism, path, atomic-publication, or authority defect revokes this
+  implementation evidence. Before official use, separately bind R4 v3, the
+  accepted R2B/R3A manifests and leaves, and exact implementation receipts.
