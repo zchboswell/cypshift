@@ -5,7 +5,7 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the records-only gate `R1_SOURCE_ROWS_PREPARED`; no
+TRACE is active at the label-free topology gate `R1_TOPOLOGY_AUDITED`; no
 modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -37,6 +37,21 @@ before emitting deterministic `molecules_input.csv`, lossless `source_rows.csv`,
 and a scope-limiting manifest. It preserves every modality, missing string,
 repeated single-concentration row, raw structure, and source occurrence; it does
 not derive labels or assay semantics.
+
+The candidate topology audit is now implemented. It verifies both R1 output
+receipts without parsing `source_rows.csv`, classifies train/test only from
+validated occurrence filenames, audits all molecules with the existing
+standardizer, and computes training-only Morgan connected components and
+separate Bemis-Murcko groups. Blinded test chemistry is excluded from topology;
+standardized train/test overlap and test quarantine are reported as downstream
+blocking evidence. The groups remain non-semantic diagnostics, not family
+assignments, folds, episodes, or model authority.
+
+Official acceptance audited all 6,897 molecules with zero quarantine and zero
+standardized train/test overlap. The 6,147 training molecules form 5,232
+candidate similarity components; 1,241 molecules occur in multi-member
+components, the largest contains 21, and 146 components contain at least two
+direct-training source identities. Repeated official runs were byte-identical.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -215,13 +230,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. The receipt-bound R0
-checker and R1 source-row adapter gates have passed their synthetic checks; the
-adapter also preserved all 35,450 official source rows and 6,897 unique molecule
-names in a byte-identical repeat run.
-Audit family topology from the prepared source rows before any parent-relative
-experiment. Do not fit, score, submit, derive TDI labels, or use transductive
-test relationships; unresolved metric, validator, TDI-order, interval, and
-permission behavior remains unchanged.
+checker, R1 source-row adapter, and label-free topology audit have passed their
+synthetic and official checks. Freeze a separate label-aware topology-viability
+and campaign-episode contract without changing the candidate topology before
+any parent-relative experiment. Do not fit, score, submit, derive TDI labels,
+or use transductive test relationships; unresolved metric, validator, TDI-order,
+interval, and permission behavior remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under

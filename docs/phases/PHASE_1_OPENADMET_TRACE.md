@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active, records/contracts only; gate `R1_SOURCE_ROWS_PREPARED`; freeze date 2026-08-17.
+Status: active, label-free topology only; gate `R1_TOPOLOGY_AUDITED`; freeze date 2026-08-17.
 
 ## Context capsule
 
@@ -77,14 +77,27 @@ rows, output refusal, receipt drift, exact-SMILES conflicts, and test/training
 name overlap. Its official-source acceptance run preserved all 35,450 rows and
 6,897 unique molecule names, and a repeated run produced byte-identical outputs.
 
+The label-free topology audit verifies both R1 output receipts without parsing
+`source_rows.csv`, audits every molecule with the existing chemistry path, and
+computes candidate training connected components from inclusive Morgan/Tanimoto
+0.60 edges plus separate Bemis-Murcko groups. Test chemistry is excluded from
+all topology construction. Synthetic repeat, drift, quarantine, overlap,
+partition, duplicate, transitivity, and test-exclusion checks pass. This is a
+candidate topology diagnostic, not a family assignment or validation split.
+The official run audited all 6,897 molecules with zero quarantine and zero
+standardized train/test overlap. Its 6,147 training molecules form 5,232
+candidate similarity components; 1,241 molecules occur in multi-member
+components, the largest has 21 members, and 146 components contain at least two
+direct-training source identities. A repeated run was byte-identical.
+
 Kill: source digest/revision mismatch, unresolvable schema disagreement,
 interval/state loss, family leakage, or metric-specific optimization. Preserve a
 blocker receipt and do not model.
 
-Exact next action: audit family topology from the prepared source rows; stop on
-contract drift or any family/identity ambiguity. Preserve unresolved scorer,
-TDI-order, interval, and permission behavior; `global_TDI` remains the
-permanent fallback.
+Exact next action: freeze a separate label-aware topology-viability and campaign-
+episode contract without changing the candidate topology. Stop on contract
+drift or any family/identity ambiguity. Preserve unresolved scorer, TDI-order,
+interval, and permission behavior; `global_TDI` remains the permanent fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.

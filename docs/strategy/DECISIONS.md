@@ -880,3 +880,27 @@
   correction, schema/validator disagreement, or executable metric source
   supersedes a recorded provisional field. Create a new versioned receipt;
   never reinterpret these frozen bytes in place.
+
+## D-032 — Use conservative connected components for candidate topology
+
+- Date: 2026-08-18
+- Status: accepted; label-free R1 audit passed
+- Decision: For the OpenADMET candidate topology audit, use exact binary
+  Morgan/ECFP4 radius-2 fingerprints with chirality, 4,096 bits, and inclusive
+  Tanimoto `>= 0.60`; union every qualifying pair into connected components.
+  Keep Bemis-Murcko scaffold groups as a separate diagnostic. Neither grouping
+  is a family definition, split, episode, label, or model authority.
+- Evidence: Connected components are the simplest deterministic closure of the
+  declared pairwise analog relation and preserve transitive chains without
+  introducing Butina's order-sensitive cluster policy. The preliminary
+  label-free probe produced 5,296 Butina groups with 198 cross edges, versus
+  5,232 connected components and 1,241 multi-member molecules; Murcko produced
+  5,378 groups with largest size 52. Official acceptance found zero quarantine,
+  zero standardized train/test overlap, a largest component of 21, and 146
+  components with at least two direct-training source identities. These are
+  topology diagnostics only.
+- Alternatives: Butina clustering, scaffold-only grouping, or a learned family
+  model before label-aware validation.
+- Reversal condition: Official-source acceptance or the later label-aware
+  topology gate finds receipt, identity, chemistry, or leakage defects. Preserve
+  the diagnostic and do not reinterpret it as validation evidence.

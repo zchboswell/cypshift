@@ -27,7 +27,12 @@ uv run python scripts/prepare_openadmet_cyp.py \
   --source-revision 85f8b358d0a2056a98b990dd75d3b3ec9247862b
 ```
 
-The next authorized step is family-topology auditing from these records. The
+The label-free topology audit passed official-source acceptance without parsing
+`source_rows.csv`. It excludes blinded test structures from topology
+construction and emits candidate Morgan connected components plus separate
+Bemis-Murcko groups. These groups are diagnostics only; they do not define
+families, folds, episodes, labels, or model authority. The next authorized step
+is a separate label-aware topology-viability and campaign-episode contract. The
 live scorer, TDI derivation/order, interval semantics, and transductive
 permissions remain unresolved.
 
