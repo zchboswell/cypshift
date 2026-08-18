@@ -5,8 +5,8 @@ Last updated: 2026-08-18
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at the corrected validation-contract gate
-`R2_VALIDATION_CONTRACT_V2_FROZEN`;
+TRACE is active at the partial implementation gate
+`R2A_DIRECT_OBSERVATIONS_AND_FOLDS_ACCEPTED`;
 no modeling or scoring is active.
 
 The authoritative OpenADMET launch intake is recorded in
@@ -65,8 +65,19 @@ authority, and underspecified deterministic policies. V2 preserves D-032's
 topology bytes while promoting its components only to a conservative
 reconstructed-family proxy for R2 grouping; no semantic-family claim is made.
 Preliminary counts remain diagnostics only. R2 is not
-`VALIDATION_FROZEN`; no implementation artifacts, model, metric, submission,
-TDI label derivation, or transductive relationship is authorized yet.
+`VALIDATION_FROZEN`; no model, metric, submission, TDI label derivation, or
+transductive relationship is authorized yet.
+
+R2A now implements the receipt-bound direct-observation compiler and shared
+component folds only. It hashes every contracted input before parsing the same
+in-memory bytes, preserves all raw direct strings and four declared states, and
+refuses receipt, identity, chemistry, state, or policy drift before output. Two
+official-data runs outside Git were byte-identical: 4,905 direct source rows
+produced 19,620 endpoint observations (6,525 complete; 13,095 missing) and
+73,575 group-fold rows. The manifest explicitly denies validation and fold
+authority as well as episodes, topology viability, models, metrics, TDI,
+predictions, submissions, and transduction. Episode firewalls, anchor masks,
+and endpoint viability remain unimplemented.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -245,13 +256,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble. The receipt-bound R0
-checker, R1 source-row adapter, and label-free topology audit have passed their
-synthetic and official checks, and the separate R2 validation contract is
-frozen without changing the candidate topology. Implement and synthetically
-accept the contract artifacts before any parent-relative experiment. Do not
-fit, score, submit, derive TDI labels, or use transductive test relationships;
-unresolved metric, validator, TDI-order, interval, and permission behavior
-remains unchanged.
+checker, R1 source-row adapter, label-free topology audit, corrected R2 v2
+contract, and R2A direct-observation/fold slice have passed their applicable
+synthetic and official checks. Implement and accept the public/truth episode
+firewall, episode-scoped anchor masks, and endpoint topology-viability artifacts
+before any parent-relative experiment. Do not fit, score, submit, derive TDI
+labels, or use transductive test relationships; unresolved metric, validator,
+TDI-order, interval, and permission behavior remains unchanged.
 `TDI-TRACE` remains deferred and `global_TDI` is the permanent fallback.
 
 Completed phase plans and superseded intake notes are archived under

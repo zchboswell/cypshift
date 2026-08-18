@@ -16,8 +16,11 @@ has the R0 gate, endpoint states, validation, claims, and V6/P6 items; see
 [`submission_contract.json`](submission_contract.json) for required columns.
 [`validation_contract.json`](validation_contract.json) freezes the corrected R2 v2
 label-aware topology-viability, campaign-episode, firewall, and fold contract.
-It is contract-only: it is not `VALIDATION_FROZEN`, does not implement folds or
-episodes, and grants no model, metric, submission, TDI, or transductive authority.
+It is not `VALIDATION_FROZEN`. The R2A implementation now emits only direct
+observations, deterministic component-fold records, and a scope-limiting
+manifest; those fold records are inputs without validation authority. Episodes,
+topology viability, models, metrics, submissions, TDI, and transductive use
+remain unimplemented and unauthorized.
 V2 supersedes the pre-implementation v1 after independent review found selector
 leakage and ambiguous authority, oracle, support-status, and determinism rules.
 
@@ -47,9 +50,25 @@ uv run python scripts/check_openadmet_cyp_contract.py \
 
 Exit 0 means all receipt and internal-contract checks pass; exit 1 means
 source, prose, schema, row-count, or hash drift; malformed invocation or
-tracked contract JSON exits 2. The next implementation gate is synthetic R2
-validation-artifact acceptance; official acceptance follows implementation
-review.
+tracked contract JSON exits 2.
+
+After accepted R1 and topology outputs exist outside Git, build the R2A slice
+into another untracked directory with:
+
+```console
+uv run python scripts/build_openadmet_validation_inputs.py \
+  --validation-contract benchmarks/openadmet_cyp_2026/validation_contract.json \
+  --direct-source /path/to/cyp-challenge-TRAIN_inhibition.csv \
+  --r1-directory /path/to/r1-output \
+  --topology-directory /path/to/topology-output \
+  --output-directory /path/to/r2a-output \
+  --source-revision 85f8b358d0a2056a98b990dd75d3b3ec9247862b
+```
+
+The command opens only the direct-training CSV and receipt-bound R1/topology
+artifacts. It does not create episodes, decide endpoint viability, fit or score
+a model, read TDI or blinded test data, or authorize its fold records as a
+validated split. The next gate is the episode/firewall/viability slice.
 
 Released TDI labels conflict with launch prose. Among non-null labels, all
 arm-missing rows are `False` (CYP2D6: 4; CYP3A4: 1,250), including 1,055

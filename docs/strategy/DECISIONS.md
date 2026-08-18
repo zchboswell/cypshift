@@ -960,3 +960,28 @@
 - Reversal condition: Implementation review finds a receipt, identity,
   chemistry, determinism, state, projection, or leakage defect. Create v3 and
   preserve the failure record; do not reinterpret v2.
+
+## D-035 — Accept receipt-bound R2A observations and component folds
+
+- Date: 2026-08-18
+- Status: accepted; partial R2 implementation gate
+- Decision: Accept the smallest R2 implementation slice: receipt-bound direct
+  observations, deterministic shared component-fold records, and a
+  scope-limiting manifest. Load every contracted input once, verify its hash
+  before parsing, parse the same bytes, and bind executable behavior to the
+  exact v2 declarations. Keep episodes, topology viability, validation and fold
+  authority, models, metrics, TDI, predictions, submissions, and transduction
+  explicitly denied.
+- Evidence: Ten focused synthetic tests and the full 224-test suite pass. Two
+  official runs outside Git were byte-identical and produced 19,620 observations
+  from 4,905 direct rows plus 73,575 fold records. The official observations are
+  6,525 complete and 13,095 missing, with no partial or orphan state. Independent
+  scientific review passed after receipt-before-parse, same-byte parsing,
+  policy-authority, and component-containment fixes.
+- Alternatives: Combine observations, folds, episodes, masks, and viability in
+  one oversized milestone; trust value-bearing R1 payloads; or balance folds
+  using label availability.
+- Reversal condition: An episode implementation or independent replay finds a
+  receipt, identity, chemistry, state, determinism, group-containment, or
+  authority defect. Preserve the artifacts, stop modeling, and issue a
+  versioned repair rather than reinterpret this gate.

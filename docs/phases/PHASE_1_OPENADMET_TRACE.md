@@ -1,6 +1,6 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; corrected R2 validation contract frozen, implementation not yet accepted; gate `R2_VALIDATION_CONTRACT_V2_FROZEN`; freeze date 2026-08-18.
+Status: active; corrected R2 validation contract frozen, direct observations and folds accepted; gate `R2A_DIRECT_OBSERVATIONS_AND_FOLDS_ACCEPTED`; acceptance date 2026-08-18.
 
 ## Context capsule
 
@@ -109,14 +109,24 @@ anchor exposure, deterministic component-grouped repeats and inner folds,
 scorecard slices, and activity-cliff diagnostics. Insufficient evidence is
 `LOCAL_UNDERPOWERED`, never `LOCAL_FAILED`. Preliminary label-aware counts are
 diagnostics only. R2 is not `VALIDATION_FROZEN` and does not authorize
-implementation outputs, modeling, scoring, submissions, TDI, or transductive
-test relationships.
+modeling, scoring, submissions, TDI, or transductive test relationships.
 
-Exact next action: implement the contract artifacts against synthetic fixtures,
-then run official acceptance after independent review. Stop on contract drift,
-identity ambiguity, family leakage, or state loss. Preserve unresolved scorer,
-TDI-order, interval, and permission behavior; `global_TDI` remains the
-permanent fallback.
+R2A implements only `direct_observations.csv`, `group_folds.csv`, and a
+scope-limiting manifest. Ten focused synthetic tests cover all four observation
+states, invalid numerics and bounds, receipt and policy drift, no partial output
+on rejected input, byte determinism, label-independent folds, and component
+containment. Two official runs outside Git were byte-identical: 4,905 direct
+rows produced 19,620
+observations (6,525 complete; 13,095 missing; zero partial/orphan) and 73,575
+fold rows. Independent review passed after receipt-before-parse, same-byte parse,
+contract-authority, and component-containment hardening. These are deterministic
+inputs, not accepted validation assignments or prediction evidence.
+
+Exact next action: implement and accept separate public/truth episode artifacts,
+the restricted oracle anchor projection, episode-scoped label masks, and
+topology viability. Stop on contract drift, identity ambiguity, family leakage,
+state loss, or truth projection leakage. Preserve unresolved scorer, TDI-order,
+interval, and permission behavior; `global_TDI` remains the permanent fallback.
 
 Non-goals: metric reimplementation, redistribution, features, modeling, submissions,
 transductive use, held-out threshold tuning, broad adapters, services, dependencies.
