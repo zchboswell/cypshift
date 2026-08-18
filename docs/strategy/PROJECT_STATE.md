@@ -228,18 +228,18 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The R4 transformation-coverage contract is now frozen in
-[`transformation_coverage_contract.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract.json)
-at SHA-256 `d4c999e6...`. It defines receipt-bound direct-state and structural
-projections, exact single/double-cut MMP normalization, virtual-hydrogen and
-stereo rules, self-versioned transformation IDs, ambiguity states, and
-valid-only CYP3A4/local and selected-episode structural support gates. It does
-not open campaign truth, selector identity, query availability, target
-magnitudes, blinded test chemistry, TDI, predictions, or metrics. Two
-independent audits pass after correcting an initially wrong RDKit single-cut
-normalization, removing the campaign-truth path, and binding double-cut,
-environment, status, and authority semantics. This is a contract-only gate;
-no transformation artifact or local predictive evidence exists yet.
+The additive R4 v2 transformation-coverage contract is now frozen in
+[`transformation_coverage_contract_v2.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v2.json)
+at SHA-256 `a13adee5...`; it preserves v1 (`d4c999e6...`) as immutable history
+but supersedes it for implementation. V2 jointly ranks single- and double-cut
+MMP candidates, makes exact transformation IDs reusable across families, and
+fully binds virtual-hydrogen, stereo, environment, ambiguity, output, support,
+and failure semantics. Its extraction-spec receipt is `c7fb3a6a...`. The
+label-safe boundary is unchanged: campaign truth, selector identity, query
+availability, target magnitudes, blinded test chemistry, TDI, predictions, and
+metrics remain unopened and unauthorized. Independent scientific review passes.
+This is still a contract-only gate; no transformation artifact or local
+predictive evidence exists yet.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over

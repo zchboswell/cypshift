@@ -1437,3 +1437,35 @@
   chemistry invariants, firewall, row partitions, support arithmetic, or exact
   terminal authority. Preserve the blocker, repair or version the contract, and
   do not open the official coverage inputs or fit TRACE.
+
+## D-050 — Supersede R4 v1 with the executable additive v2 contract
+
+- Date: 2026-08-18
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`
+- Decision: Preserve D-049 and its v1 bytes as immutable history, but use the
+  additive v2 contract as the sole R4 implementation authority. Enumerate and
+  rank single- and double-cut candidates together, make exact transformation
+  IDs reusable across proxy families, and freeze the remaining chemistry,
+  serialization, support, schema, and failure semantics without changing the
+  label-safe data boundary or granting model authority.
+- Evidence: Implementation review found that v1's single-first rule made valid
+  double cuts effectively unreachable and that its pair-specific exact ID could
+  not support cross-family frequency or support counts. V2 corrects those
+  blockers and mechanically binds virtual-H and stereo records, rooted
+  environments, reversal/class behavior, ambiguity, valid-only fold arithmetic,
+  nested coverage schemas, and deterministic failure handling. Its contract
+  SHA-256 is
+  `a13adee526575b4dc22c414c08cbcb9cf3ff8cc69c8eb10ad9c078e5eb4ae73e`;
+  its extraction-spec receipt is
+  `c7fb3a6a905d4265a174cdcde4e5f391c3d7f154a8cc2ed126a3830796c41e74`.
+  Nine focused v2 tests, the full repository suite, strict JSON, extraction-
+  receipt recomputation, Ruff, formatting, mypy, build, and independent
+  scientific review pass. No official input, target magnitude, model fit,
+  prediction, metric, test, TDI, submission, or transductive operation occurred.
+- Alternatives: Silently reinterpret v1 in implementation; drop double-cut
+  support; retain pair-specific IDs and make exact support vacuous; or open
+  official coverage inputs before the contract is executable.
+- Reversal condition: Synthetic implementation cannot reproduce v2's receipt,
+  chemistry invariants, directional IDs, row partitions, support arithmetic,
+  byte schemas, or authority boundary. Preserve the blocker, issue a versioned
+  repair, and do not open official coverage inputs or fit TRACE.

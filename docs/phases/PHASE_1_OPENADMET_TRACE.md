@@ -231,18 +231,23 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
-R4 now freezes the pre-fit transformation-coverage boundary in
-[`transformation_coverage_contract.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract.json).
-The exact contract SHA-256 is
-`d4c999e66309d27caab558f69cdba3fe1762aa9804053b0f1b86a2401297aec5`.
+Additive R4 v2 now freezes the pre-fit transformation-coverage boundary in
+[`transformation_coverage_contract_v2.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v2.json).
+Its exact SHA-256 is
+`a13adee526575b4dc22c414c08cbcb9cf3ff8cc69c8eb10ad9c078e5eb4ae73e`;
+v1 remains immutable history but is superseded for implementation. V2 jointly
+ranks single and double cuts, makes exact transformation IDs reusable across
+families, and binds the remaining chemistry, support, schema, and failure
+semantics. Its extraction-spec receipt is
+`c7fb3a6a905d4265a174cdcde4e5f391c3d7f154a8cc2ed126a3830796c41e74`.
 It uses only receipt-bound structures, direct measurement availability state,
 public episode membership, and a mask prefix containing anchor identity. It
 never opens campaign truth or selector/scorable fields and parses or retains
 zero target magnitudes. Exact RDKit single/double-cut behavior, virtual-H and
 stereo handling, ambiguity, self-versioned IDs, structural-only terminal rows,
 valid-only support arithmetic, and status-conditioned authority are frozen.
-Independent scientific and minimality audits pass. No extraction code,
-coverage artifact, model, prediction, or metric is accepted by this milestone.
+Independent scientific review passes. No extraction code, coverage artifact,
+model, prediction, or metric is accepted by this milestone.
 
 Exact next action: implement the frozen R4 projector, deterministic extractor,
 coverage scorer, and atomic publisher; pass synthetic invariance/firewall

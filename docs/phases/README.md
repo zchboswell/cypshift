@@ -40,11 +40,13 @@ official experiment then passed: fixed MapLight beat Morgan CatBoost by 0.0646
 component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
-evidence, not official ST-RAE, a deployable model, or a submission. R4 now
-freezes label-safe direct-state and structural projections, exact
-single/double-cut chemistry, ambiguity/invariance rules, structural-only row
-outputs, and valid-only support thresholds. It opens no campaign truth,
-selector/scorable state, target magnitude, test, TDI, prediction, or metric.
+evidence, not official ST-RAE, a deployable model, or a submission. Additive R4
+v2 now supersedes v1 for implementation while preserving it as immutable
+history. It freezes label-safe direct-state and structural projections, joint
+single/double-cut chemistry, reusable transformation IDs, ambiguity/invariance
+rules, structural-only row outputs, and valid-only support thresholds. It opens
+no campaign truth, selector/scorable state, target magnitude, test, TDI,
+prediction, or metric.
 The next gate is synthetic implementation and one independently audited
 coverage run. A separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
