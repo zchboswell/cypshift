@@ -1,0 +1,59 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v2",
+  "contract_id": "R5-CYP3A4-ORACLE-V2",
+  "gate": "R5_ORACLE_CONTRACT_V2_FROZEN",
+  "status": "R5_ORACLE_CONTRACT_ONLY",
+  "purpose": "Clarify the already-required random-anchor stress diagnostic without changing the frozen primary population, systems, fitting, selection, acceptance, safety, or authority.",
+  "parent": {
+    "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v1.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v1",
+    "contract_id": "R5-CYP3A4-ORACLE-V1",
+    "sha256": "c1d7a66c4f479339b30c2006e4250381cb213d665d4902c71d4c4edbd347e8bf"
+  },
+  "resolution": {
+    "algorithm": "Strictly parse the exact parent after receipt verification, resolve the RFC 6901 parent_object_pointer, require the member to be absent, add exactly the declared member/value pair, and reject any other operation or mutation.",
+    "operations": [
+      {
+        "op": "add_absent_object_member",
+        "parent_object_pointer": "/folds",
+        "member": "diagnostic_stress_scope",
+        "value": {
+          "inner_membership": "No deterministic_random_anchor_stress episode, anchor context, query truth, prediction, or loss enters any inner cell, hyperparameter selection, categorical vocabulary, scaler, hierarchy fit, or score-free token.",
+          "outer_membership": "For each repeat and outer fold, outer model and scorer capabilities include every query row of every deterministic_random_anchor_stress public episode whose frozen proxy family is assigned to that repeat and outer fold. Membership and order are derived only from public episodes, masks, structures, and folds; selector and query availability never determine row presence.",
+          "model_context": "Each outer stress episode exposes only its one R2 mask-designated anchor CYP3A4 context under the same measured-potency and C3 capability separation as selected-anchor episodes. Every non-anchor label in its held-out family remains excluded.",
+          "hyperparameters": "Every stress prediction reuses the already selected score-free hyperparameters for the matching system, repeat, and outer fold. Stress cannot fit, tune, select, calibrate, or alter a candidate.",
+          "sealed_scoring": "The outer sealed scorer may filter stress rows to selector_cyp_truth==CYP3A4 and finite query truth and may emit selected-versus-random-anchor diagnostic facts only.",
+          "non_authority": "Stress rows, predictions, losses, slices, and comparisons cannot enter primary support, required contrasts, cell-direction criteria, influence ranking, safety fusion, pass/fail criteria, status resolution, or rescue a failed selected-anchor result."
+        }
+      }
+    ],
+    "effective_contract": "The verified v1 parent plus the one ordered absent-member addition above. V1 remains immutable history and every unmentioned scientific, schema, runtime, firewall, output, accounting, and authority rule is unchanged.",
+    "failure": "Missing or changed parent bytes, a missing/non-object pointer target, a preexisting member, an unknown operation, or any additional mutation is a contract-integrity failure before R5B implementation acceptance."
+  },
+  "unchanged": {
+    "primary_selected_anchor_population": true,
+    "systems_features_targets_and_hyperparameters": true,
+    "inner_selection": true,
+    "outer_primary_scoring": true,
+    "support_thresholds": true,
+    "bootstrap_influence_and_safety": true,
+    "acceptance_and_statuses": true,
+    "output_schemas_and_publication": true,
+    "forbidden_operations": true,
+    "authority": true
+  },
+  "authority": {
+    "contract_only": true,
+    "oracle_evidence": false,
+    "inferred_anchor_contract": false,
+    "model_fits": false,
+    "predictions": false,
+    "internal_metrics": false,
+    "official_st_rae": false,
+    "test_access": false,
+    "tdi": false,
+    "submission": false,
+    "transduction": false
+  },
+  "reversal_condition": "Any stress-row influence on inner selection, primary support, required contrasts, safety fusion, acceptance, or status revokes this clarification and keeps numeric official targets closed."
+}

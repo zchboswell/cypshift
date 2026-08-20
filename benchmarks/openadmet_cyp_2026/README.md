@@ -123,6 +123,18 @@ only: no numeric target, fit, prediction, internal score, test, TDI, official
 metric, or submission is authorized until implementation passes its separate
 synthetic gate.
 
+[`oracle_experiment_contract_v2.json`](oracle_experiment_contract_v2.json) is
+the additive effective R5 contract at SHA-256
+`bfa00b7f1e9ec8ed8d450b5499011e165b50bbf633b897d24177aee6066ea623`.
+It adds exactly one absent member: selected-anchor episodes alone may enter
+inner selection, while deterministic-random-anchor stress is outer-diagnostic
+only and cannot tune, select, rescue, or change status. The trusted synthetic
+source compiler and manifest-bound splitter now implement that boundary and
+publish 226 disjoint capability roots. Compiler-to-splitter replay, 68 focused
+tests, the full suite, typing, and independent adversarial review pass. This
+grants synthetic firewall evidence only; official targets, fits, predictions,
+metrics, and TRACE performance remain unopened.
+
 The synthetic least-privilege projection implementation is accepted for its
 boundary only. It verifies five source receipts before parse, retains exactly
 the permitted direct and mask-prefix fields, validates the complete fold and

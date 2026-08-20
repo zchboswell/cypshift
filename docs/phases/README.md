@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R5_ORACLE_CONTRACT_FROZEN`. The
+Phase 1 TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -98,8 +98,12 @@ The separate R5 CYP3A4 oracle contract is now independently accepted at
 `c1d7a66c...`. It freezes the first honest TRACE predictive test, all required
 controls, nested component cross-fitting, support gates, family bootstrap,
 fixed safety fusion, and a hard `NO_SIGNAL` stop. No target value or predictive
-outcome has been opened; implementation and synthetic firewall acceptance are
-next.
+outcome has been opened. Its additive v2 clarification binds random-anchor
+stress to outer diagnostics only. The trusted synthetic source compiler and
+capability splitter now pass end-to-end replay and independent review, emitting
+226 disjoint roots while keeping C3 physically isolated from measured anchor
+potency. Model cells, sealed scoring, and runner acceptance remain next; no
+official target, fit, prediction, metric, or TRACE score is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

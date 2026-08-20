@@ -353,10 +353,19 @@ support gates, paired component bootstrap, influence checks, and fixed 0.5
 all-row safety fusion. A clean miss is permanent `R5_ORACLE_NO_SIGNAL`; only a
 full pass may authorize a separate inferred-anchor contract.
 
-Exact next action: implement R5's disjoint model-public, measured-target,
-no-potency, and sealed-scorer projections plus the compact signed-Morgan/MMP
-feature cells. Pass synthetic firewall and two-root determinism acceptance
-before opening official numeric targets. Keep inferred anchors, learned
+R5B's synthetic source compiler and capability splitter are now accepted. The
+compiler-to-splitter path authenticates the effective v2 contract, derives
+exact current-training points/pairs and pure-OOF C3 context, and publishes 226
+disjoint read-only roots. Inner cells contain selected-anchor rows only; outer
+cells also contain random-anchor stress rows that cannot influence selection or
+acceptance. Sixty-eight focused tests, the full suite, typing, deterministic
+publication checks, and independent adversarial review pass. No official
+numeric target, fit, prediction, or score was opened.
+
+Exact next action: implement the compact signed-Morgan/MMP model cells, sealed
+scorers, and deterministic synthetic runner against these accepted
+capabilities. Pass full synthetic fit/score acceptance before opening official
+numeric targets. Keep inferred anchors, learned
 competence, TDI, submissions, official scoring, and transduction deferred;
 `global_TDI` remains the permanent TDI fallback.
 

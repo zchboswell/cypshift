@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R5_ORACLE_CONTRACT_FROZEN`. The single
+TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -227,6 +227,18 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 `d9aff555...`. This grants frozen global OOF, internal surrogate, and completion
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
+
+R5B's trusted synthetic source compiler and capability splitter are now
+accepted. The compiler authenticates synthetic analogues of the frozen R2,
+R3, and R4 parents before deriving current-training points, exact
+two-direction transformation deltas, rational family weights, pure MapLight
+OOF anchor states, selected-anchor inner/outer rows, and outer-only random-
+anchor stress rows. The splitter then publishes 226 disjoint read-only model,
+measured-target, no-potency, and sealed-scorer roots. End-to-end compiler-to-
+splitter replay, 68 focused tests, the full suite, typing, formatting, and an
+independent adversarial audit pass. This is synthetic firewall evidence only:
+no official numeric target, fit, prediction, metric, test, TDI, submission, or
+TRACE performance result has been opened.
 
 The additive R4 v5 transformation-coverage contract and its narrow v6
 support-arithmetic clarification are now frozen in
@@ -549,9 +561,9 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
-from their positive evidence. Implement the frozen R5 CYP3A4 oracle contract's
-least-privilege projections and feature/model cells, then pass synthetic
-firewall acceptance before opening numeric official targets. The contract
+from their positive evidence. The R5 least-privilege source and capability
+firewall is accepted; implement the compact signed-Morgan/MMP model cells,
+sealed scorers, and deterministic synthetic end-to-end runner next. The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
 shuffled/wrong-anchor, shuffled-grammar, class-only, hierarchy-only, and

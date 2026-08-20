@@ -1953,3 +1953,35 @@
   driven threshold/model change, or test/TDI/official-metric access revokes
   D-066. `R5_ORACLE_NO_SIGNAL` or `R5_ORACLE_UNDERPOWERED` permanently stops
   inferred-anchor and learned-competence work on the critical path.
+
+## D-067 — Accept the R5B trusted source and capability firewall
+
+- Date: 2026-08-20
+- Status: accepted synthetic implementation; `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`
+- Decision: Accept the additive v2 clarification that makes random-anchor
+  stress outer-diagnostic-only, plus the trusted synthetic parent compiler and
+  manifest-bound capability splitter. Authorize implementation of model cells,
+  sealed scorers, and a synthetic runner only. Do not open official numeric
+  targets or claim TRACE performance yet.
+- Evidence: V2 is the single absent-member addition to v1 at SHA-256
+  `bfa00b7f1e9ec8ed8d450b5499011e165b50bbf633b897d24177aee6066ea623`.
+  The accepted path authenticates all synthetic parent bytes before parsing,
+  derives complete current-training points and exact two-direction deltas with
+  `1/(2P)` family weights, binds pure outer/inner MapLight OOF anchor states,
+  and publishes 226 disjoint read-only capability roots. C3 receives no
+  measured potency. Selected episodes alone enter inner selection; selected
+  plus deterministic-random-anchor episodes enter outer diagnostics. Sixty-
+  eight focused tests, the full suite with three expected skips, Ruff,
+  formatting, strict typing, compiler-to-splitter replay, and independent Sol
+  adversarial review pass. Test, TDI, official-metric, submission,
+  transductive, fit, prediction, and metric counts remain zero.
+- Alternatives: Let cells read one shared target/truth root; accept caller-
+  supplied prepared CSVs without parent manifests; omit stress diagnostics;
+  permit stress to influence tuning; serialize approximate family weights;
+  use measured anchor completion for C3; or open official targets before the
+  model/scorer runner is synthetically accepted.
+- Reversal condition: Any parent/leaf receipt drift, source-manifest forgery,
+  molecule/family fold crossing, feature-row misalignment, R4 direction drift,
+  asymmetric delta or weight defect, measured-potency access by C3, stress
+  influence on primary selection/status, sealed-truth exposure, non-atomic
+  publication, or test/TDI/official-metric access revokes D-067.
