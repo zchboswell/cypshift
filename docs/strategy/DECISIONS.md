@@ -2015,3 +2015,42 @@
   prediction-fallback, population, join, aggregation, bootstrap-multiplicity,
   stress, safety, evidence-cardinality, determinism, or authority drift revokes
   D-068 and blocks official R5 execution.
+
+## D-069 — Accept the first R5C execution foundations
+
+- Date: 2026-08-20
+- Status: accepted synthetic implementation foundations; no official execution
+  or predictive authority
+- Decision: Accept the exact cell capability loader, C0/C1/F0/F1 controls,
+  locked one-episode MapLight G0 subprocess, algebraically equivalent row-space
+  ridge, and additive R5 v3 execution-mechanics overlay. Authorize fresh
+  pair-system cell, immutable prediction-fragment, freezer, scorer-terminal,
+  and deterministic synthetic-runner implementation only. Do not open official
+  numeric oracle targets or claim TRACE uplift yet.
+- Evidence: The cell I/O and validation SHA-256 values are
+  `a4e1567f00d73037492659ea02090cc8554fbe28629374de8a97b69e8780062c`
+  and `1aa2130280b0326fc943dfcaad0d341e186cb25048d2f5789825e10bed77ec8b`;
+  all 75 measured and 75 C3 scopes replay and independent audit closes the
+  receipt, TOCTOU, fold, pair, episode, OOF, feature-alignment, and C3-potency
+  firewalls. The control source is `8bce9b92...`; independent witnesses cover
+  top-64 truncation, reversed direction, deterministic PCG64 selection, frozen
+  T0 reuse, and explicit G0 fallback. The G0 I/O and runner hashes are
+  `5e35fd20...` and `9ed74e57...`; two real locked Python 3.10.13,
+  NumPy 1.25.2, CatBoost 1.2.1 runs with 101 nonconstant fit rows are
+  byte-identical. The row-space ridge source is `9ac284ef...`; 100 adversarial
+  cases match the frozen primal/sklearn predictions within `2.3e-10`, and an
+  800-by-4,100 fit uses an 800-by-800 solve in about 1.5 seconds. The v3 overlay
+  and canonical resolved-contract SHA-256 values are
+  `275f1425d1a93805cb7d5b7dc1b63c67d6f02476eab9f77798cac6cc625a3d55`
+  and `9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50`;
+  it changes only execution mechanics and passes repeated independent review.
+- Alternatives: Let each model inspect shared target roots; serialize T0 model
+  state across capabilities; give C3 measured potency; accept molecule-only F0
+  seeds; run feature-square ridge systems hundreds of times; omit wrong-anchor
+  controls; or open official targets before the full runner is synthetically
+  accepted.
+- Reversal condition: Any source/manifest receipt drift, widened cell
+  capability, measured-potency access by C3, family or episode leakage, G0
+  runtime/parameter drift, control-causality defect, numerical-equivalence
+  failure, execution-overlay contradiction, or non-atomic publication revokes
+  D-069 and blocks pair-cell or official execution.

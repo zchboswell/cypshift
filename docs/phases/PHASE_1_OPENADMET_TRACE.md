@@ -369,12 +369,23 @@ transformation hierarchy, role-safe falsification, family-macro aggregation,
 one shared masked component bootstrap, inner selection, influence, safety, and
 outer-only stress diagnostics. They remain data-free implementation evidence.
 
-Exact next action: implement capability-isolated model cells and prediction
-freezing, the locked G0 subprocess, terminal publication, and the deterministic
-synthetic runner against these accepted capabilities. Pass full synthetic
-fit/score acceptance before opening official numeric targets. Keep inferred
-anchors, learned competence, TDI, submissions, official scoring, and
-transduction deferred;
+The first R5C execution foundations are now accepted. Exact externally bound
+cell capabilities replay all 75 measured and 75 C3 scopes while keeping C3
+physically unable to read measured anchor potency. The C0/C1/F0/F1 controls,
+one-episode locked MapLight G0 subprocess, and additive execution-mechanics
+overlay pass independent adversarial review. The weighted ridge uses the
+algebraically equivalent row-space solve when rows are fewer than features; an
+800-by-4,100 witness completes in about 1.5 seconds without allocating a
+feature-square system and matches the frozen primal predictions within
+2.3e-10. These are still synthetic implementation facts, not TRACE performance
+evidence or official execution authority.
+
+Exact next action: implement fresh pair-system cells and immutable prediction
+fragments, then inner selection, prediction freezing, terminal publication,
+and the deterministic synthetic runner against the accepted capabilities. Pass
+full synthetic fit/score acceptance before opening official numeric targets.
+Keep inferred anchors, learned competence, TDI, submissions, official scoring,
+and transduction deferred;
 `global_TDI` remains the permanent TDI fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
