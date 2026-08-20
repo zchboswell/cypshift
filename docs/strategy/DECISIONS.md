@@ -1985,3 +1985,33 @@
   asymmetric delta or weight defect, measured-potency access by C3, stress
   influence on primary selection/status, sealed-truth exposure, non-atomic
   publication, or test/TDI/official-metric access revokes D-067.
+
+## D-068 — Accept the pure R5C model and sealed-statistics kernels
+
+- Date: 2026-08-20
+- Status: accepted pure synthetic implementation; no execution authority
+- Decision: Accept the deterministic R5C model and scoring/statistics kernels
+  as the exact mathematical core of the frozen oracle experiment. Authorize
+  capability-isolated cell, freezer, locked-G0, terminal, and synthetic-runner
+  implementation only. Do not open official numeric targets or claim TRACE
+  performance until that complete execution boundary passes independently.
+- Evidence: The model, scoring, and statistics source SHA-256 values are
+  `38db4229df25c5e6e36712b3362fd5674cddb84160a7d992d74bd3bdc9f5c39a`,
+  `dc4db3b78ba7320085bfc5ad056f03935416825af509e2ba2db40d69b115b24f`,
+  and `07a42579b5da4e55d4954489f0d5614054befb6dfdf31b05bf94ec7fe5e50e3e`.
+  Thirty-three focused tests and the full suite with three expected skips pass,
+  as do Ruff, formatting, strict typing, diff checks, and repeated independent
+  Sol review. Adversarial witnesses cover feature nesting, hierarchy
+  recursion, C3 potency isolation, role-safe F2, fail-closed predictions,
+  reversal, exact joins and weights, one shared masked component bootstrap,
+  local-control availability, stress isolation, inner grids, influence,
+  safety, and status precedence. Both signed implementation commits preserve
+  zero filesystem or challenge-data access in these pure modules.
+- Alternatives: Combine all scoring and resampling into one oversized module;
+  use independent local-control bootstraps; silently fall back on model defects;
+  allow measured potency into C3; shuffle continuous F2 features; or proceed to
+  official fitting before capability-isolated synthetic execution passes.
+- Reversal condition: Any feature-order, hierarchy-parent, control-role,
+  prediction-fallback, population, join, aggregation, bootstrap-multiplicity,
+  stress, safety, evidence-cardinality, determinism, or authority drift revokes
+  D-068 and blocks official R5 execution.

@@ -362,11 +362,19 @@ acceptance. Sixty-eight focused tests, the full suite, typing, deterministic
 publication checks, and independent adversarial review pass. No official
 numeric target, fit, prediction, or score was opened.
 
-Exact next action: implement the compact signed-Morgan/MMP model cells, sealed
-scorers, and deterministic synthetic runner against these accepted
-capabilities. Pass full synthetic fit/score acceptance before opening official
-numeric targets. Keep inferred anchors, learned
-competence, TDI, submissions, official scoring, and transduction deferred;
+The pure R5C model and sealed-statistics kernels are also accepted after
+thirty-three focused tests, the full suite, strict typing, and repeated
+adversarial review. They bind exact nested feature semantics, the recursive
+transformation hierarchy, role-safe falsification, family-macro aggregation,
+one shared masked component bootstrap, inner selection, influence, safety, and
+outer-only stress diagnostics. They remain data-free implementation evidence.
+
+Exact next action: implement capability-isolated model cells and prediction
+freezing, the locked G0 subprocess, terminal publication, and the deterministic
+synthetic runner against these accepted capabilities. Pass full synthetic
+fit/score acceptance before opening official numeric targets. Keep inferred
+anchors, learned competence, TDI, submissions, official scoring, and
+transduction deferred;
 `global_TDI` remains the permanent TDI fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,

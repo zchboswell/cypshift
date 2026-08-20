@@ -5,7 +5,8 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`. The single
+TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`, with the R5C
+pure model and sealed-statistics kernels independently accepted. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -239,6 +240,19 @@ splitter replay, 68 focused tests, the full suite, typing, formatting, and an
 independent adversarial audit pass. This is synthetic firewall evidence only:
 no official numeric target, fit, prediction, metric, test, TDI, submission, or
 TRACE performance result has been opened.
+
+R5C's pure predictive and statistical kernels are now implemented and
+independently accepted. The model layer freezes the exact nested C2/T0/A2
+feature relationship, structure-only C3 fitting, recursive
+class-to-exact-to-environment hierarchy, categorical-only F2 falsification,
+and pre-anchor reversal diagnostics. The scorer freezes exact public/truth
+joins, query/episode/repeat/component aggregation, one shared component
+bootstrap across all ten comparisons with comparison-specific local masks,
+inner-grid selection, influence, safety, and outer-only stress diagnostics.
+Thirty-three focused tests, the full suite, Ruff, formatting, strict typing,
+and repeated adversarial review pass. This grants pure implementation evidence
+only: no cell capability, model fit, prediction, metric, official target,
+test, TDI, submission, or TRACE performance authority is active.
 
 The additive R4 v5 transformation-coverage contract and its narrow v6
 support-arithmetic clarification are now frozen in
@@ -562,8 +576,9 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
 from their positive evidence. The R5 least-privilege source and capability
-firewall is accepted; implement the compact signed-Morgan/MMP model cells,
-sealed scorers, and deterministic synthetic end-to-end runner next. The contract
+firewall plus pure model/statistics kernels are accepted; implement the
+capability-isolated cell/freezer boundary, locked G0 subprocess, terminal, and
+deterministic synthetic end-to-end runner next. The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
 shuffled/wrong-anchor, shuffled-grammar, class-only, hierarchy-only, and
