@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_SUPPORT_SYNTHETIC_ACCEPTED`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_SERIALIZATION_SYNTHETIC_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -66,8 +66,11 @@ review: it builds the local-plus-episode union, extracts each unique pair once,
 preserves direction, and emits canonical pair bytes without endpoint or fold
 access. Pure endpoint/fold-safe support arithmetic now also passes independent
 review, including held-out exclusions, valid-only gates, family deduplication,
-and exact rational distributions. The remaining synthetic gate is exact episode/
-coverage bytes and publication, followed by one independently audited official
+and exact rational distributions. Exact episode/coverage serialization now also
+passes independent review, including canonical 25-column episode bytes,
+complete coverage nesting, invalid sentinels, zero accounting, and conditional
+authority. The remaining synthetic gate is production receipt binding and
+atomic publication, followed by one independently audited official
 coverage run. A
 separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI

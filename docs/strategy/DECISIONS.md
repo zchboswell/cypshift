@@ -1729,3 +1729,33 @@
 - Reversal condition: Any availability, fold, family-deduplication, directional
   frequency, held-out exclusion, rational, threshold, determinism, or firewall
   defect revokes this slice and keeps official R4 inputs closed.
+
+## D-060 — Accept pure synthetic R4 result serialization
+
+- Date: 2026-08-20
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_SERIALIZATION_SYNTHETIC_ACCEPTED`
+- Decision: Accept deterministic in-memory serialization of the frozen
+  `episode_transformations.csv` and `transformation_coverage.json` schemas over
+  the accepted geometry and support facts. Keep production receipts, manifests,
+  filesystem publication, official inputs, and every model outside this
+  milestone.
+- Evidence: The serializer and focused-test SHA-256 values are
+  `460678f949267d8f711a833008f287750a8b63b89e729afdbc8913ce70b21e28`
+  and
+  `558e6270e1349483b6a7cb0a167b90377d0a83f1a903e918fb89b904802bdc0c`.
+  It emits the exact 25-column episode schema in episode/query order, joins
+  fold-safe exact/class family support, preserves invalid sentinels, and emits
+  the complete v5 aggregate schema with the v6 union-distribution invariant,
+  exact frequency units, zero accounting, and status-conditioned authority.
+  Twenty-nine focused integration tests, the full suite with three expected
+  skips, Ruff, strict mypy, canonical-byte checks, and independent scientific
+  review pass. Official inputs, models, predictions, metrics, submissions, and
+  publication operations remain zero.
+- Alternatives: Serialize ad hoc dictionaries in the production runner; mix
+  manifest and filesystem authority into the scientific byte compiler; expose
+  selector or endpoint availability in episode rows; or defer invalid-sentinel
+  validation until the official run.
+- Reversal condition: Any schema, ordering, support-join, sentinel, canonical
+  byte, firewall, accounting, or authority defect revokes this slice and keeps
+  official R4 inputs closed.

@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; synthetic support arithmetic accepted; gate
-`R4_TRANSFORMATION_SUPPORT_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
+Status: active; synthetic result serialization accepted; gate
+`R4_TRANSFORMATION_SERIALIZATION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
 
 ## Context capsule
 
@@ -304,8 +304,12 @@ selected/stress, frequency, independent-family, cross-CYP, episode-training,
 rational-distribution, and final status arithmetic without serializing or
 publishing an artifact.
 
-Exact next action: build exact episode/coverage bytes over the accepted
-synthetic support facts; then bind the
+The pure serialization slice is now accepted. It emits the exact 25-column
+episode CSV and complete v5 coverage JSON with the v6 union-distribution
+invariant, zero accounting, conditional authority, canonical bytes, and no
+official-input or publication capability. Independent review passes.
+
+Exact next action: bind the
 accepted projector/compiler to the production receipt chain and atomic
 publisher; pass synthetic firewall/support acceptance and
 independent review before one official coverage run. Only
