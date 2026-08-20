@@ -1788,3 +1788,33 @@
 - Reversal condition: Any source-causality, schema, receipt, status, authority,
   mode, file-set, cleanup, determinism, or no-replace defect revokes this slice
   and keeps official R4 inputs closed.
+
+## D-062 — Accept the production-only R4 official runner
+
+- Date: 2026-08-20
+- Status: accepted execution boundary;
+  `R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`
+- Decision: Accept the thin production-only runner that binds the accepted R4
+  projector, consumer, geometry, support, serializer, and publisher to the
+  exact contract, R2B/R3A manifest and leaf-receipt, source, runtime, clean-
+  checkout, destination, cleanup, and one-terminal rules. Keep official
+  execution and every oracle/model decision outside this milestone.
+- Evidence: The runner and focused-test SHA-256 values are
+  `1f9180a2e0a51d36ce2563fab1c9b4eb5363a84846e47e2ca84dd514cf404bd7`
+  and
+  `ef57945e7f652397c45275034be5ab8159037b4a8309cb67ef74a59d210fb1e7`.
+  It verifies exact accepted R2B/R3A manifests and official leaf receipts before
+  access, requires the frozen Python/RDKit/Linux environment and clean complete
+  checkout, and executes the private projection-to-publication path without
+  exposing original sources downstream. Nine focused tests, the full suite
+  with three expected skips, Ruff, strict mypy, and independent adversarial
+  review pass after repairing cleanup refusal, failure-code preservation,
+  post-gate drift attribution, and complete implementation-source binding.
+  Official R4 inputs, models, predictions, metrics, test, TDI, submissions, and
+  transduction remain zero.
+- Alternatives: Manually compose the accepted slices; allow a dirty or
+  partially authenticated run; publish after incomplete cleanup; collapse
+  multiple failure causes; or add a resumable orchestration framework.
+- Reversal condition: Any pre-input ordering, receipt, runtime, checkout, path,
+  cardinality, cleanup, failure-code, private-capability, or one-terminal defect
+  revokes runner acceptance and forbids the official coverage run.

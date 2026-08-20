@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_PUBLICATION_SYNTHETIC_ACCEPTED`. The single
+TRACE is active at `R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -313,9 +313,15 @@ episode structural coverage. Independent adversarial review passes. This still
 grants no serialized coverage artifact, production authentication, official
 input, oracle, model, prediction, or metric authority.
 
-The next implementation slice emits the exact episode CSV and coverage JSON,
-then adds production receipt binding and atomic publication before any official
-input access.
+The production-only R4 runner is now accepted. It binds the frozen contracts,
+accepted R2B/R3A manifests and exact leaf receipts, implementation sources,
+runtime, clean checkout, and fresh outside-Git destination before official input
+access. It then executes the accepted label-safe projection, geometry, support,
+serialization, cleanup, and one-terminal publication path. Independent review
+passes after hardening failure-code preservation, post-gate drift attribution,
+source-receipt closure, cleanup refusal, and no-overwrite behavior. This grants
+execution readiness only: no official R4 input has been opened, and TRACE still
+has no local predictive score.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -494,10 +500,10 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Bind the accepted exact episode/coverage
-serialization, projection/compiler, and atomic publisher to the production
-receipt chain; pass the official-runner preflight before
-one official coverage run. Only if the frozen result
+its positive outer evidence. Locate and authenticate the accepted external R2B
+and R3A roots without parsing target magnitudes, then execute the accepted
+runner exactly once for the official R4 coverage result and independently audit
+that immutable terminal. Only if the frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:

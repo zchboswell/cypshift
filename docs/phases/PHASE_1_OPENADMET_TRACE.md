@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; synthetic atomic publication accepted; gate
-`R4_TRANSFORMATION_PUBLICATION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
+Status: active; production-only R4 runner accepted; gate
+`R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`; acceptance date 2026-08-20.
 
 ## Context capsule
 
@@ -314,9 +314,17 @@ geometry and independently recomputed support, reopens exact bytes against
 manifest receipts, publishes only the four-file success or one-file failure
 terminal read-only through Linux no-replace, and cleans every rejected stage.
 
-Exact next action: bind the accepted projector/compiler/publisher to the
-production receipt and runtime chain; pass official-runner acceptance and
-independent review before one official coverage run. Only
+The production-only R4 runner is now accepted. It binds the exact R2B/R3A
+manifests and official leaf receipts, contract and source receipts, Linux/RDKit
+runtime, clean checkout, and fresh outside-Git destination before opening any
+official source. Post-gate failures preserve all applicable failure codes;
+cleanup failure refuses terminal publication. Nine focused tests, the full
+suite, Ruff, strict mypy, and independent review pass. No official R4 input has
+yet been opened.
+
+Exact next action: authenticate the accepted external R2B/R3A roots, execute
+the accepted runner once, and independently audit the immutable coverage
+terminal. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global
 expert as fallback and retain the complete blueprint systems, controls, and
