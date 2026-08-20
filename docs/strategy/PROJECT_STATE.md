@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_SERIALIZATION_SYNTHETIC_ACCEPTED`. The single
+TRACE is active at `R4_TRANSFORMATION_PUBLICATION_SYNTHETIC_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -495,8 +495,8 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
 its positive outer evidence. Bind the accepted exact episode/coverage
-serialization and projection/compiler to the production receipt
-chain and atomic publisher; pass synthetic firewall/support acceptance before
+serialization, projection/compiler, and atomic publisher to the production
+receipt chain; pass the official-runner preflight before
 one official coverage run. Only if the frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle

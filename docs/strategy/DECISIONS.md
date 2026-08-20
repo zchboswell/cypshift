@@ -1759,3 +1759,32 @@
 - Reversal condition: Any schema, ordering, support-join, sentinel, canonical
   byte, firewall, accounting, or authority defect revokes this slice and keeps
   official R4 inputs closed.
+
+## D-061 — Accept synthetic R4 atomic publication
+
+- Date: 2026-08-20
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_PUBLICATION_SYNTHETIC_ACCEPTED`
+- Decision: Accept the pure manifest, receipt, and atomic-terminal publisher
+  over accepted typed R4 inputs. Keep official source authentication and the
+  one-run orchestration boundary outside this milestone.
+- Evidence: The publisher and focused-test SHA-256 values are
+  `7f52bfbc06aa5f721d2d5493c03db3b3982e07946bc4817a412345644d9de3fa`
+  and
+  `02ea68c76ca79ab616ed8fa6f9a1ef9d8639bdd08bb3f035bf58c31799ba7294`.
+  The publisher regenerates exact payloads from typed geometry and independently
+  recomputed support, validates exact input/source receipt shapes, binds staged
+  bytes to output receipts, and publishes either four success files or one
+  failure receipt through read-only Linux no-replace promotion. Eleven focused
+  tests, the full suite with three expected skips, Ruff, strict mypy, and
+  independent adversarial review pass after rejecting malformed nested payloads,
+  stale late-stage receipts, forged inputs, extra failure files, fabricated
+  supported status, and destination races. Official inputs and all scientific
+  or leaderboard operations remain zero.
+- Alternatives: Trust arbitrary caller bytes; validate only headers and
+  top-level JSON keys; copy untyped upstream receipts; allow ordinary rename;
+  or combine publication with official-source access before atomic behavior was
+  independently accepted.
+- Reversal condition: Any source-causality, schema, receipt, status, authority,
+  mode, file-set, cleanup, determinism, or no-replace defect revokes this slice
+  and keeps official R4 inputs closed.

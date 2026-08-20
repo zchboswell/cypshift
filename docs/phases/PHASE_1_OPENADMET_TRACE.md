@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; synthetic result serialization accepted; gate
-`R4_TRANSFORMATION_SERIALIZATION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
+Status: active; synthetic atomic publication accepted; gate
+`R4_TRANSFORMATION_PUBLICATION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
 
 ## Context capsule
 
@@ -309,9 +309,13 @@ episode CSV and complete v5 coverage JSON with the v6 union-distribution
 invariant, zero accounting, conditional authority, canonical bytes, and no
 official-input or publication capability. Independent review passes.
 
-Exact next action: bind the
-accepted projector/compiler to the production receipt chain and atomic
-publisher; pass synthetic firewall/support acceptance and
+The atomic publisher is now accepted. It regenerates outputs from typed
+geometry and independently recomputed support, reopens exact bytes against
+manifest receipts, publishes only the four-file success or one-file failure
+terminal read-only through Linux no-replace, and cleans every rejected stage.
+
+Exact next action: bind the accepted projector/compiler/publisher to the
+production receipt and runtime chain; pass official-runner acceptance and
 independent review before one official coverage run. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global
