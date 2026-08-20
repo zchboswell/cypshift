@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_FAILED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -72,11 +72,17 @@ complete coverage nesting, invalid sentinels, zero accounting, and conditional
 authority. Atomic success/failure publication now also passes independent
 review, including typed source causality, exact manifests and receipts,
 read-only terminals, late-mutation rejection, cleanup, and no-replace races.
-The thin production-only runner now also passes independent review. It refuses
+The thin production-only runner passed pre-execution independent review. It refuses
 all official input access until exact contracts, manifests, leaf receipts,
 source bundles, runtime, checkout, and destination gates pass, then preserves
 the one-way projection-to-terminal capability boundary. The next scientific
-step is one independently audited official coverage run. A
+step was the official coverage run. It failed before any coverage artifact or
+support status was produced because one unrepresentable crossing-bond stereo
+embedding raised inside RDKit instead of being rejected as the frozen contract
+requires. The read-only V4 failure terminal is preserved; it generated no
+model, prediction, metric, or TRACE score. Extractor and runner acceptance are
+revoked until the narrow repair passes synthetic replay and independent review.
+A
 separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
 remain unauthorized until their own gates.

@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`. The single
+TRACE is active at `R4_TRANSFORMATION_COVERAGE_FAILED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -313,7 +313,7 @@ episode structural coverage. Independent adversarial review passes. This still
 grants no serialized coverage artifact, production authentication, official
 input, oracle, model, prediction, or metric authority.
 
-The production-only R4 runner is now accepted. It binds the frozen contracts,
+The production-only R4 runner passed pre-execution acceptance. It binds the frozen contracts,
 accepted R2B/R3A manifests and exact leaf receipts, implementation sources,
 runtime, clean checkout, and fresh outside-Git destination before official input
 access. It then executes the accepted label-safe projection, geometry, support,
@@ -322,6 +322,18 @@ passes after hardening failure-code preservation, post-gate drift attribution,
 source-receipt closure, cleanup refusal, and no-overwrite behavior. This grants
 execution readiness only: no official R4 input has been opened, and TRACE still
 has no local predictive score.
+
+The first official R4 coverage attempt failed before producing any geometry or
+support artifact. RDKit rejected an unrepresentable stereo reference while the
+ordinary MMP embedding recovery substituted an attachment dummy; the exact
+failure terminal is read-only at SHA-256 `1d232bc4...` with code `V4`. The
+failure opened no blinded test or TDI rows, parsed or retained zero numeric
+target magnitudes, and performed zero fits, predictions, metrics, or
+submissions. Therefore it provides no evidence that TRACE is supported or
+underpowered. The contract already requires this embedding to be rejected as a
+row candidate rather than terminate the run, so the extractor and production
+runner acceptance are revoked pending a synthetic repair and independent
+review. The failed terminal is permanent evidence and will not be modified.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
@@ -500,10 +512,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Locate and authenticate the accepted external R2B
-and R3A roots without parsing target magnitudes, then execute the accepted
-runner exactly once for the official R4 coverage result and independently audit
-that immutable terminal. Only if the frozen result
+its positive outer evidence. Preserve the failed R4 terminal; repair only the
+contract-mandated rejection of unrepresentable crossing-bond stereo, replay the
+synthetic extraction and production-runner gates, and obtain independent review
+before authorizing a distinct repaired coverage experiment. Do not rerun merely
+to improve a scientific result: the failed attempt exposed no coverage outcome.
+Only if a later frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:

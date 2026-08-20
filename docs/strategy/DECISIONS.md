@@ -1818,3 +1818,32 @@
 - Reversal condition: Any pre-input ordering, receipt, runtime, checkout, path,
   cardinality, cleanup, failure-code, private-capability, or one-terminal defect
   revokes runner acceptance and forbids the official coverage run.
+
+## D-063 — Preserve the failed first R4 coverage attempt
+
+- Date: 2026-08-20
+- Status: failed; `R4_TRANSFORMATION_COVERAGE_FAILED`
+- Decision: Preserve the exact one-file failure terminal and revoke D-054's
+  extractor implementation evidence plus D-062's runner execution authority.
+  Do not interpret the attempt as supported or underpowered, and do not modify
+  or replace its terminal. Permit only a narrow synthetic repair implementing
+  the already-frozen rule that an unrepresentable crossing-bond stereo state is
+  a rejected embedding, not a terminal exception.
+- Evidence: The failure-receipt SHA-256 is
+  `1d232bc43f6410b89f28fcb56cb723dfcdb508c3d09a19d2c17cc45a13b5d386`.
+  It records commit `c41895c...`, Linux x86_64 CPU, Python 3.12.3, RDKit
+  2026.03.5, status `R4_TRANSFORMATION_COVERAGE_FAILED`, and code `V4`.
+  RDKit raised `bgnIdx not connected to begin atom of bond` during ordinary MMP
+  variable reconstruction. A synthetic `CC/C=C/CC` witness reproduces the same
+  exception when an attachment-dummy substitution cannot retain both stereo-
+  atom references. Accounting is zero for numeric target magnitudes, blinded
+  test, TDI, fits, predictions, metrics, scorer calls, submissions, and
+  transduction. No success artifact or support fact exists.
+- Alternatives: Call the warnings normal and report underpowered; suppress all
+  RDKit errors; patch the immutable terminal; retry under the accepted source
+  receipt; or abandon the contract-mandated candidate rejection.
+- Reversal condition: None for the historical failure. A later experiment may
+  proceed only from a new reviewed source receipt after synthetic regression,
+  full validation, receipt rebinding, and an explicit determination that the
+  new run cannot tune against a scientific result that this failure never
+  produced.

@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; production-only R4 runner accepted; gate
-`R4_TRANSFORMATION_OFFICIAL_RUNNER_ACCEPTED`; acceptance date 2026-08-20.
+Status: active; first official R4 coverage attempt failed before a support
+result; gate `R4_TRANSFORMATION_COVERAGE_FAILED`; date 2026-08-20.
 
 ## Context capsule
 
@@ -314,7 +314,7 @@ geometry and independently recomputed support, reopens exact bytes against
 manifest receipts, publishes only the four-file success or one-file failure
 terminal read-only through Linux no-replace, and cleans every rejected stage.
 
-The production-only R4 runner is now accepted. It binds the exact R2B/R3A
+The production-only R4 runner passed pre-execution acceptance. It binds the exact R2B/R3A
 manifests and official leaf receipts, contract and source receipts, Linux/RDKit
 runtime, clean checkout, and fresh outside-Git destination before opening any
 official source. Post-gate failures preserve all applicable failure codes;
@@ -322,9 +322,18 @@ cleanup failure refuses terminal publication. Nine focused tests, the full
 suite, Ruff, strict mypy, and independent review pass. No official R4 input has
 yet been opened.
 
-Exact next action: authenticate the accepted external R2B/R3A roots, execute
-the accepted runner once, and independently audit the immutable coverage
-terminal. Only
+The first official coverage attempt produced only the frozen V4 failure
+terminal (`1d232bc4...`). An unrepresentable crossing-bond stereo reference
+raised inside RDKit during MMP embedding recovery; no geometry, coverage,
+model, prediction, metric, or TRACE score was produced. The v5 contract already
+requires that embedding to be rejected. Preserve the failed terminal unchanged
+and revoke extractor/runner acceptance until the narrow implementation repair
+passes synthetic replay and independent review.
+
+Exact next action: accept that contract-faithful synthetic repair and rebind all
+affected source receipts. A distinct repaired coverage experiment may be
+authorized only after governance review confirms it cannot tune or discard a
+scientific outcome, because the failed attempt exposed none. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global
 expert as fallback and retain the complete blueprint systems, controls, and
