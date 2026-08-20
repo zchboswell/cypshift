@@ -1,7 +1,8 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; first official R4 coverage attempt failed before a support
-result; gate `R4_TRANSFORMATION_COVERAGE_FAILED`; date 2026-08-20.
+Status: active; repaired production R4 runner accepted after the preserved first
+attempt failure; gate `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`; date
+2026-08-20.
 
 ## Context capsule
 
@@ -330,10 +331,16 @@ requires that embedding to be rejected. Preserve the failed terminal unchanged
 and revoke extractor/runner acceptance until the narrow implementation repair
 passes synthetic replay and independent review.
 
-Exact next action: accept that contract-faithful synthetic repair and rebind all
-affected source receipts. A distinct repaired coverage experiment may be
-authorized only after governance review confirms it cannot tune or discard a
-scientific outcome, because the failed attempt exposed none. Only
+The repaired embedding path is now reaccepted under new source receipts. It
+preserves crossing-bond begin/end order and rejects only stereo references that
+cannot remain attached to the corresponding rebuilt endpoints. Synthetic tests
+cover both the impossible and representable cases; the full suite, Ruff,
+strict mypy, and independent scientific review pass. No contract, input,
+population, threshold, or support rule changed.
+
+Exact next action: execute one repaired coverage experiment against the same
+accepted inputs and runtime at a new destination, then independently audit both
+the new terminal and its relationship to the immutable failed attempt. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
 contract. Preserve the global
 expert as fallback and retain the complete blueprint systems, controls, and

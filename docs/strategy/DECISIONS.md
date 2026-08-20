@@ -1847,3 +1847,34 @@
   full validation, receipt rebinding, and an explicit determination that the
   new run cannot tune against a scientific result that this failure never
   produced.
+
+## D-064 — Reaccept the contract-faithful R4 stereo-embedding repair
+
+- Date: 2026-08-20
+- Status: accepted repaired execution boundary;
+  `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`
+- Decision: Preserve D-063 and the failed attempt unchanged. Reaccept the MMP
+  extractor and production runner under new exact source receipts after
+  implementing only v5's predeclared variable-reconstruction rule: preserve
+  source bond endpoint order during dummy substitution and reject an embedding
+  when its remapped stereo references cannot remain adjacent to the matching
+  rebuilt endpoints. Authorize one repaired execution against identical inputs
+  and runtime at a fresh destination.
+- Evidence: Repaired MMP source, focused-test, and runner SHA-256 values are
+  `43fe5ff18ecf2f355f1dead9e8a8393cba2e384ee44ef3293f14773c2e956c43`,
+  `0a78fefae2c9d557d329e16cf39c03fcd764ba3586f72066bff039c4e996af89`,
+  and
+  `584fa98fe9cad11f038f8c54367bea25e4267c9f417a46729b858a3ce762e61d`.
+  `CC/C=C/CC` now supplies two exact regression witnesses: an impossible
+  crossing-stereo embedding returns no candidate, while a representable
+  crossing retains `CC/C=C/[*:1]`. Focused extraction/runner tests, the full
+  suite with three expected skips, Ruff, strict mypy, diff checks, and
+  independent Sol scientific review pass. No target magnitude, coverage fact,
+  prediction, metric, or model outcome informed the repair.
+- Alternatives: Suppress the exception broadly; reorder stereo references;
+  change the grammar or thresholds; mutate attempt 1; treat failure as
+  underpowered; or abandon R4 without implementing its frozen rejection rule.
+- Reversal condition: Any endpoint-order, stereo-reference adjacency, candidate
+  selection, receipt, runtime, input, or one-terminal drift revokes repaired
+  execution authority. Preserve every result; do not authorize another rerun
+  to improve a scientific outcome.

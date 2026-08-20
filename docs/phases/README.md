@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_FAILED`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -81,8 +81,10 @@ support status was produced because one unrepresentable crossing-bond stereo
 embedding raised inside RDKit instead of being rejected as the frozen contract
 requires. The read-only V4 failure terminal is preserved; it generated no
 model, prediction, metric, or TRACE score. Extractor and runner acceptance are
-revoked until the narrow repair passes synthetic replay and independent review.
-A
+revoked for attempt 1. The contract-exact repair now passes synthetic replay,
+the full suite, typing, and independent scientific review under new MMP and
+runner receipts. One repaired run against identical inputs/runtime at a fresh
+destination is authorized; the first failure remains immutable. A
 separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
 remain unauthorized until their own gates.

@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_COVERAGE_FAILED`. The single
+TRACE is active at `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -335,6 +335,17 @@ row candidate rather than terminate the run, so the extractor and production
 runner acceptance are revoked pending a synthetic repair and independent
 review. The failed terminal is permanent evidence and will not be modified.
 
+That narrow repair is now synthetically reaccepted. Crossing-bond dummy
+substitution preserves the source bond endpoint order, and an embedding is
+discarded when its stereo references cannot remain positionally adjacent to the
+rebuilt endpoints. Two synthetic witnesses lock both the rejected impossible
+case and the exact orientation of a representable case. The repaired MMP and
+runner SHA-256 values are `43fe5ff1...` and `584fa98f...`; the full suite, Ruff,
+strict mypy, and independent scientific review pass. Chemistry, populations,
+thresholds, inputs, and support logic are unchanged. This restores execution
+readiness under a new source receipt; it does not alter or reinterpret the
+failed attempt.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
@@ -512,12 +523,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Preserve the failed R4 terminal; repair only the
-contract-mandated rejection of unrepresentable crossing-bond stereo, replay the
-synthetic extraction and production-runner gates, and obtain independent review
-before authorizing a distinct repaired coverage experiment. Do not rerun merely
-to improve a scientific result: the failed attempt exposed no coverage outcome.
-Only if a later frozen result
+its positive outer evidence. Preserve the failed R4 terminal and execute one
+newly authorized repaired coverage experiment against the identical accepted
+inputs and runtime at a fresh destination. Do not overwrite, delete, or
+reinterpret attempt 1, and do not rerun again merely to improve a scientific
+result. Only if the repaired frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:

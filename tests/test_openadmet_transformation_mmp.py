@@ -11,6 +11,7 @@ from cypshift.chemistry import STANDARDIZATION_VERSION, standardize_molecule
 from cypshift.openadmet_transformation_mmp import (
     MMP_PATTERN,
     _environment,
+    _reconstruct_variable,
     extract_ordinary_transformation_pair,
 )
 from cypshift.openadmet_transformation_types import (
@@ -140,6 +141,41 @@ def test_double_exchange_preserves_stereo_and_is_order_invariant() -> None:
         "C(=C\\[*:2])/[*:1]",
         "C(O[*:2])[*:1]",
     }
+
+
+def test_unrepresentable_crossing_bond_stereo_rejects_embedding() -> None:
+    molecule = Chem.MolFromSmiles("CC/C=C/CC")
+    assert molecule is not None
+    mapped = {1, 2}
+    first = molecule.GetBondBetweenAtoms(0, 1)
+    stereo = molecule.GetBondBetweenAtoms(2, 3)
+    assert first is not None and stereo is not None
+
+    result = _reconstruct_variable(
+        molecule,
+        mapped,
+        {
+            1: (1, 0, first),
+            2: (2, 3, stereo),
+        },
+    )
+
+    assert result is None
+
+
+def test_representable_crossing_bond_preserves_endpoint_orientation() -> None:
+    molecule = Chem.MolFromSmiles("CC/C=C/CC")
+    assert molecule is not None
+    crossing = molecule.GetBondBetweenAtoms(1, 2)
+    assert crossing is not None
+
+    result = _reconstruct_variable(
+        molecule,
+        {0, 1},
+        {1: (1, 2, crossing)},
+    )
+
+    assert result == "CC/C=C/[*:1]"
 
 
 def test_joint_double_enumeration_reaches_double_candidate() -> None:

@@ -422,10 +422,16 @@ def _reconstruct_variable(
         dummy_idx = rw.AddAtom(dummy)
         if other not in old_to_new:
             return None
-        rw.AddBond(old_to_new[other], dummy_idx, bond.GetBondType())
+        if bond.GetBeginAtomIdx() == _root:
+            begin, end = dummy_idx, old_to_new[other]
+        elif bond.GetEndAtomIdx() == _root:
+            begin, end = old_to_new[other], dummy_idx
+        else:
+            return None
+        rw.AddBond(begin, end, bond.GetBondType())
         root_to_dummy[_root] = dummy_idx
         pending_bonds.append(
-            (bond, rw.GetBondBetweenAtoms(old_to_new[other], dummy_idx))
+            (bond, rw.GetBondBetweenAtoms(begin, end))
         )
     for source, target in pending_bonds:
         target.SetBondDir(source.GetBondDir())
@@ -436,6 +442,13 @@ def _reconstruct_variable(
         )
         if source.GetStereo() is not Chem.BondStereo.STEREONONE:
             if len(stereo_atoms) != 2 or any(atom < 0 for atom in stereo_atoms):
+                return None
+            if (
+                rw.GetBondBetweenAtoms(target.GetBeginAtomIdx(), stereo_atoms[0])
+                is None
+                or rw.GetBondBetweenAtoms(target.GetEndAtomIdx(), stereo_atoms[1])
+                is None
+            ):
                 return None
             target.SetStereoAtoms(*stereo_atoms)
     result = rw.GetMol()
