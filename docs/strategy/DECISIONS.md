@@ -1878,3 +1878,38 @@
   selection, receipt, runtime, input, or one-terminal drift revokes repaired
   execution authority. Preserve every result; do not authorize another rerun
   to improve a scientific outcome.
+
+## D-065 — Accept the repaired official R4 coverage result
+
+- Date: 2026-08-20
+- Status: accepted official coverage result;
+  `R4_TRANSFORMATION_COVERAGE_SUPPORTED`
+- Decision: Accept the one authorized repaired R4 terminal at
+  `/home/zbos/cypshift-private/openadmet-r4/coverage-terminal-repaired/` as
+  the exact successor to D-064's execution authority while preserving D-063's
+  failed terminal unchanged. Grant geometry/coverage authority and permission
+  to freeze a separate CYP3A4 oracle-anchor contract only. Continue denying
+  model-fit, prediction, metric, official-score, submission, TDI, test-access,
+  and transductive authority.
+- Evidence: The repaired terminal manifest and aggregate coverage SHA-256
+  values are `8166a89aee5137228a31085e21d36d6f0bf4a28d833cdc7bd1280feff4170043`
+  and
+  `b134d11c96526c8c3ed282cebfacaae25ce9bf49c324bfe28d8c4f1d4913a84e`.
+  Terminal output hashes are `8afc1b82...` for
+  `episode_transformations.csv`, `5eadb743...` for
+  `transformation_pairs.csv`, and `b134d11c...` for
+  `transformation_coverage.json`; all four files are read-only. A terminal
+  receipt audit found zero hash or row-count mismatches. The run used commit
+  `cdba779...` on CPU with Python 3.12.3 and RDKit 2026.03.5. CYP3A4 retains
+  384/473 valid local transformations across 86 independent families, every
+  one of the 15 local fold cells clears the frozen 20-pair/5-family minima,
+  selected-anchor coverage retains 738/903 rows across 118 families with every
+  cell passing, and the union contains 458 valid transformations across 564
+  unique structural pairs. No model fit, prediction, metric evaluation,
+  scorer call, submission, TDI row, or test access occurred.
+- Alternatives: Rerun again; relax support thresholds; reinterpret the failed
+  terminal; claim TRACE predictive success already; jump directly to inferred
+  anchors; or widen scope to TDI before direct TRACE is frozen.
+- Reversal condition: Any source-receipt mismatch, terminal-integrity drift,
+  unauthorized authority expansion, or result-driven contract change revokes
+  D-065 and preserves both R4 terminals as the complete evidence record.

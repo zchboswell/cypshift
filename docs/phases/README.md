@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_SUPPORTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -83,11 +83,17 @@ requires. The read-only V4 failure terminal is preserved; it generated no
 model, prediction, metric, or TRACE score. Extractor and runner acceptance are
 revoked for attempt 1. The contract-exact repair now passes synthetic replay,
 the full suite, typing, and independent scientific review under new MMP and
-runner receipts. One repaired run against identical inputs/runtime at a fresh
-destination is authorized; the first failure remains immutable. A
-separate CYP3A4 oracle-anchor contract may follow only after
-`R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
-remain unauthorized until their own gates.
+runner receipts. That repaired run is complete at a fresh destination; the
+first failure remains immutable. The supported result now permits a separate
+CYP3A4 oracle-anchor contract; inferred anchors, submission, and TDI remain
+unauthorized until their own gates.
+
+The repaired official terminal is now supported. It retains 384/473 valid
+CYP3A4 local transformations across 86 families, passes all 15 local cells, and
+retains 738/903 selected-anchor rows across 118 families with every selected
+cell passing. This is geometry/coverage evidence, not TRACE predictive
+performance. It authorizes drafting and independently freezing the CYP3A4
+oracle contract only; no fit, prediction, metric, or submission is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

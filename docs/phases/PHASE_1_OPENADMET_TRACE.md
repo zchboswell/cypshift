@@ -1,8 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; repaired production R4 runner accepted after the preserved first
-attempt failure; gate `R4_TRANSFORMATION_REPAIRED_RUNNER_ACCEPTED`; date
-2026-08-20.
+Status: active; official transformation coverage supported; gate
+`R4_TRANSFORMATION_COVERAGE_SUPPORTED`; date 2026-08-20.
 
 ## Context capsule
 
@@ -338,19 +337,23 @@ cover both the impossible and representable cases; the full suite, Ruff,
 strict mypy, and independent scientific review pass. No contract, input,
 population, threshold, or support rule changed.
 
-Exact next action: execute one repaired coverage experiment against the same
-accepted inputs and runtime at a new destination, then independently audit both
-the new terminal and its relationship to the immutable failed attempt. Only
-`R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
-contract. Preserve the global
-expert as fallback and retain the complete blueprint systems, controls, and
-ablations: copy-anchor, nearest-neighbor, generic fingerprint-difference
-regression, delta without measured-anchor potency, true-anchor transformation
-grammar, shuffled-anchor assignment, wrong anchor, shuffled transformation,
-transformation-class-only, hierarchy without context, and context without
-hierarchy. Keep inferred anchors, TDI, submissions, official
-scoring, and transduction deferred; `global_TDI` remains the permanent TDI
-fallback.
+The repaired official terminal is `R4_TRANSFORMATION_COVERAGE_SUPPORTED`.
+CYP3A4 retains 384/473 valid local transformations in 86 families; every local
+fold cell exceeds the frozen 20-pair/5-family minima. Selected-anchor coverage
+retains 738/903 rows across 118 families, and every selected cell exceeds five
+families. Manifest and coverage receipts are `8166a89a...` and `b134d11c...`.
+This grants geometry/coverage authority and eligibility to freeze a separate
+oracle contract, not model or metric authority.
+
+Exact next action: freeze and independently review the CYP3A4 oracle-anchor
+contract before any fit. Preserve the global expert as fallback and retain the
+complete blueprint systems, controls, and ablations: copy-anchor,
+nearest-neighbor, generic fingerprint-difference regression, delta without
+measured-anchor potency, true-anchor transformation grammar, shuffled-anchor
+assignment, wrong anchor, shuffled transformation, transformation-class-only,
+hierarchy without context, and context without hierarchy. Keep inferred
+anchors, TDI, submissions, official scoring, and transduction deferred;
+`global_TDI` remains the permanent TDI fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
 submissions, transductive use, held-out tuning, broad adapters, services, or
