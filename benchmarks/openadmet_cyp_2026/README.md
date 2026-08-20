@@ -143,12 +143,19 @@ accepted extractor once per unique structural pair, preserves canonical and
 episode direction, and emits the frozen 47-column pair CSV bytes. Fifty-three
 focused tests, Ruff, and strict mypy pass. This slice has no endpoint-support,
 status, production, official-input, model, prediction, metric, or publication
-authority; support arithmetic remains the next bounded block.
+authority; exact coverage serialization remains the next bounded block.
 
 The additive v6 clarification at `a0743c43...` binds the valid changed-fraction
 distribution to unique union structural-pair rows and requires its count to
 equal `counts.union.valid_rows`. It is a two-member exact overlay on the pinned
 v5 parent, changes no science or authority, and passes independent review.
+
+The pure synthetic support compiler at `9d08b5c0...` now passes independent
+adversarial review. It implements complete-state endpoint partitions, exact
+15-cell held-out counts, valid-only local/selected gates, component-deduplicated
+exact/class and cross-CYP support, held-out episode training support, and exact
+rational distributions. It carries no serialization, production, official-
+input, oracle, model, prediction, metric, or publication authority.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

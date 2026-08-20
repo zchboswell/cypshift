@@ -1700,3 +1700,32 @@
 - Reversal condition: Any parent-receipt, pointer-resolution, absent-member,
   union-deduplication, or count-invariant defect blocks support arithmetic and
   preserves v5 plus the defect as evidence.
+
+## D-059 — Accept pure synthetic R4 support arithmetic
+
+- Date: 2026-08-20
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_SUPPORT_SYNTHETIC_ACCEPTED`
+- Decision: Accept the pure typed support compiler over the accepted projection
+  bundle and structural geometry under effective v5 plus v6. Keep episode CSV,
+  coverage JSON, manifests, production authentication, publication, official
+  inputs, and every model outside this milestone.
+- Evidence: The support source and focused-test SHA-256 values are
+  `9d08b5c0e23d41958a2d1924a6b17b7ef1bb54dbd4ed74946d317e94c57f03ec`
+  and
+  `ab72761c7953adb993dbe7af05ce0793bf3f987c5ca3ab3ed27276f568afc172`.
+  It implements complete-state local populations, 15 held-out cells per
+  endpoint, valid-only local/selected gates, selected/stress isolation,
+  direction-aware exact and class-token frequencies, independent-component and
+  cross-CYP support, group-plus-fold episode exclusions, the v6 union rational
+  distribution, and the final local-and-selected status conjunction. Sixty-
+  seven focused integration tests, the full suite with three expected skips,
+  Ruff, strict mypy, build, and independent adversarial review pass. Official
+  inputs and all model/prediction/metric/submission operations remain zero.
+- Alternatives: Count pairs, directions, repeats, endpoints, or stress episodes
+  as families; use pair-specific class IDs as frequency keys; pool held-out
+  folds into training support; or combine arithmetic with publication before
+  review.
+- Reversal condition: Any availability, fold, family-deduplication, directional
+  frequency, held-out exclusion, rational, threshold, determinism, or firewall
+  defect revokes this slice and keeps official R4 inputs closed.

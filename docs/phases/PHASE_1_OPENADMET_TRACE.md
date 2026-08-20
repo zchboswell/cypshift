@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; synthetic structural geometry accepted; gate
-`R4_TRANSFORMATION_GEOMETRY_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
+Status: active; synthetic support arithmetic accepted; gate
+`R4_TRANSFORMATION_SUPPORT_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
 
 ## Context capsule
 
@@ -299,8 +299,13 @@ every public episode pair, extracts each union identity once, retains exact
 anchor-to-query direction, and emits the frozen 47-column pair bytes. It has no
 direct-availability, fold, target, model, or metric capability.
 
-Exact next action: build exact coverage/support arithmetic and episode/coverage
-bytes over the accepted synthetic geometry; then bind the
+The pure support slice is also accepted. It freezes all endpoint, fold,
+selected/stress, frequency, independent-family, cross-CYP, episode-training,
+rational-distribution, and final status arithmetic without serializing or
+publishing an artifact.
+
+Exact next action: build exact episode/coverage bytes over the accepted
+synthetic support facts; then bind the
 accepted projector/compiler to the production receipt chain and atomic
 publisher; pass synthetic firewall/support acceptance and
 independent review before one official coverage run. Only
