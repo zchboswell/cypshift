@@ -1589,3 +1589,33 @@
   ambiguity, ID, or invariance defect revokes this implementation evidence.
   Repair and repeat synthetic review before production binding; never repair an
   official coverage result in place.
+
+## D-055 — Supersede R4 v4 with the mechanically closed v5 contract
+
+- Date: 2026-08-20
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN`
+- Decision: Preserve v1 through v4 as immutable history, but use the
+  self-contained additive v5 contract as the sole R4 implementation authority.
+  Keep the extraction receipt, chemistry, populations, thresholds, columns,
+  firewall, and authority unchanged. Define the clean zero-valid distribution,
+  refuse runtime or dirty-checkout drift before official input access without a
+  contradictory terminal, and make canonical histogram bytes lexicographic
+  while evaluating all rational statistics numerically.
+- Evidence: V5 SHA-256 is
+  `63d12cb376760c65eabd3d94d3f3939b0591e4019e1332075df0a4c10a4b4954`;
+  its parent v4 SHA-256 is
+  `cacd1f77215e36a17f03553680d71263425638c290a39d33c397e43b2c35550f`.
+  The extraction-spec receipt independently remains
+  `59e3bd3390658bab854be52f88ef7de0164aae6e99ad48b0b0feb04c68669950`.
+  Forty-three focused v1-v5 tests, the full suite with three expected skips,
+  Ruff, mypy, build, strict JSON, receipt recomputation, and independent
+  scientific/mechanical review pass. Official inputs, target magnitudes, fits,
+  predictions, metrics, test, TDI, submissions, and transduction remain zero.
+- Alternatives: Let an underpowered clean run fail while serializing an empty
+  distribution; publish a failure receipt that falsely claims an accepted
+  runtime; let JSON object order change rational statistics; or silently choose
+  implementation semantics under v4.
+- Reversal condition: Synthetic coverage compilation cannot reproduce v5's
+  exact zero and positive distributions, pre-input refusal, canonical bytes,
+  support arithmetic, or authority boundary. Preserve the blocker and keep
+  official coverage inputs closed.

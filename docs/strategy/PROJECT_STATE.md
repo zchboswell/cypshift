@@ -228,11 +228,11 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The additive R4 v4 transformation-coverage contract is now frozen in
-[`transformation_coverage_contract_v4.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v4.json)
-at SHA-256 `cacd1f77...`; it preserves v1 (`d4c999e6...`), v2
-(`a13adee5...`), and v3 (`f5e18626...`) as immutable history but supersedes
-them for implementation.
+The additive R4 v5 transformation-coverage contract is now frozen in
+[`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json)
+at SHA-256 `63d12cb3...`; it preserves v1 (`d4c999e6...`), v2
+(`a13adee5...`), v3 (`f5e18626...`), and v4 (`cacd1f77...`) as immutable
+history but supersedes them for implementation.
 V2 repaired joint single/double-cut ranking and reusable transformation IDs.
 V3 additionally makes stereo extraction executable: it freezes potential-
 stereo discovery, CIP values, enhanced/unsupported-stereo rejection, exact
@@ -243,7 +243,11 @@ only for reference maps and the no-candidate sentinel required when ordinary
 embedding enumeration hits its cap. It also freezes graph-first handling of
 unsupported stereo, complete bond-stereo reconstruction, query rank, and exact
 publication receipts. Its extraction-spec receipt is `59e3bd33...`. The
-label-safe boundary is unchanged: campaign truth, selector identity, query
+v5 repair leaves that extraction science byte-identical while defining the
+zero-valid distribution, refusing runtime or dirty-checkout drift before input
+access, and separating lexicographic JSON key serialization from exact rational
+distribution arithmetic.
+The label-safe boundary is unchanged: campaign truth, selector identity, query
 availability, target magnitudes, blinded test chemistry, TDI, predictions, and
 metrics remain unopened and unauthorized. Independent scientific review passes.
 The contract itself grants no fit, coverage artifact, or local predictive
@@ -257,7 +261,7 @@ endpoint, component, 3-by-5 fold, public-query, and anchor joins. Canonical
 outputs are published as an exact six-file read-only directory through atomic
 no-replace promotion. Thirty-seven focused tests and independent correctness
 and minimality reviews pass. Its authority remains synthetic only: before any
-official input or extractor consumption, a production gate must bind R4 v4,
+official input or extractor consumption, a production gate must bind R4 v5,
 the accepted R2B/R3A manifests and leaf receipts, and the implementation source
 receipts.
 

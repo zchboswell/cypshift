@@ -232,11 +232,11 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
-Additive R4 v4 now freezes the pre-fit transformation-coverage boundary in
-[`transformation_coverage_contract_v4.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v4.json).
+Additive R4 v5 now freezes the pre-fit transformation-coverage boundary in
+[`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json).
 Its exact SHA-256 is
-`cacd1f77215e36a17f03553680d71263425638c290a39d33c397e43b2c35550f`;
-v1, v2, and v3 remain immutable history but are superseded for implementation. V2
+`63d12cb376760c65eabd3d94d3f3939b0591e4019e1332075df0a4c10a4b4954`;
+v1 through v4 remain immutable history but are superseded for implementation. V2
 jointly ranked single and double cuts and made exact transformation IDs reusable
 across families. V3 additionally freezes executable potential-stereo discovery,
 CIP records, enhanced/unsupported-stereo rejection, exact automorphism-aware
@@ -246,6 +246,9 @@ partitioning, embedding-cap serialization, graph-first unsupported-stereo,
 bond-stereo reconstruction, query-rank, and publication-receipt gaps. Its
 extraction-spec receipt is
 `59e3bd3390658bab854be52f88ef7de0164aae6e99ad48b0b0feb04c68669950`.
+V5 leaves that extraction receipt unchanged and repairs only the zero-valid
+distribution sentinel, pre-input runtime/checkout refusal, and the distinction
+between lexicographic JSON key serialization and numeric rational evaluation.
 It uses only receipt-bound structures, direct measurement availability state,
 public episode membership, and a mask prefix containing anchor identity. It
 never opens campaign truth or selector/scorable fields and parses or retains
@@ -263,7 +266,7 @@ atomic no-replace promotion. Thirty-seven focused tests cover poisoned opaque
 bytes, malformed CSV, receipt precedence, row-order invariance, every join
 family, exact modes/file set, symlinks, mid-stage failure, and destination
 races. Independent correctness and minimality audits pass. This status is
-synthetic only; a production gate must still bind the v4 contract, accepted
+synthetic only; a production gate must still bind the v5 contract, accepted
 R2B/R3A manifests and leaf receipts, and exact implementation sources before
 official input access or extractor consumption.
 
