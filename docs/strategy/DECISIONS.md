@@ -1913,3 +1913,43 @@
 - Reversal condition: Any source-receipt mismatch, terminal-integrity drift,
   unauthorized authority expansion, or result-driven contract change revokes
   D-065 and preserves both R4 terminals as the complete evidence record.
+
+## D-066 — Freeze the CYP3A4 oracle-anchor TRACE experiment
+
+- Date: 2026-08-20
+- Status: accepted contract; `R5_ORACLE_CONTRACT_FROZEN`
+- Decision: Freeze one CYP3A4-only `ANCHOR_EXPANSION_HOLDOUT` experiment that
+  asks whether the true selected campaign anchor and its measured CYP3A4 point
+  let a compact transformation hierarchy beat the episode-specific inherited
+  MapLight global expert. Retain the complete required control set and hard
+  `NO_SIGNAL` stopping rule. Authorize implementation and synthetic firewall
+  validation only; do not open numeric official targets or fit until that
+  implementation receives a separate reviewed execution gate.
+- Evidence: The contract and focused-test SHA-256 values are
+  `c1d7a66c4f479339b30c2006e4250381cb213d665d4902c71d4c4edbd347e8bf`
+  and
+  `e5bc2144ce3f9ffffd4a66f0ef3fc133cca8c1dc4341e8f43e91fb8f4f16322c`.
+  Eleven focused tests and independent Sol review pass. TRACE reuses the
+  generic signed-Morgan pair representation and adds only cut/fraction/class
+  features plus a family-shrunk class/exact/environment hierarchy. The
+  no-measured-anchor-potency control receives only delta targets and pure R3
+  outer/inner MapLight OOF anchor predictions. All models predict a fixed
+  public superset before sealed scorers apply selector/query masks. Label-safe
+  replay proves outer minima of 64 families/296 pairs and inner minima of 43
+  families/199 pairs; frozen gates are 50/200 and 40/150 respectively. The
+  contract binds disjoint capabilities, exact runtimes, nested selection,
+  wrong/shuffled anchors, shuffled grammar, paired component bootstraps,
+  influence checks, fixed 0.5 safety fusion, status-specific terminals, and
+  zero test/TDI/official-metric/submission/transduction operations.
+- Alternatives: Fit before contract review; compare against a pure-family
+  global model that ignores the permitted anchor; give TRACE a weaker pair
+  representation than its generic control; use measured completion in the
+  no-potency control; shuffle held-out anchor labels; tune from outer results;
+  build inferred-anchor or learned-gate machinery before the oracle signal is
+  known; or widen to TDI.
+- Reversal condition: Any parent/source/runtime receipt drift, query-membership
+  leak, non-anchor family label exposure, C3 measured-potency capability,
+  current-training-partition violation, support arithmetic defect, outcome-
+  driven threshold/model change, or test/TDI/official-metric access revokes
+  D-066. `R5_ORACLE_NO_SIGNAL` or `R5_ORACLE_UNDERPOWERED` permanently stops
+  inferred-anchor and learned-competence work on the critical path.

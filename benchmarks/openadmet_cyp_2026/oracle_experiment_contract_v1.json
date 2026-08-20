@@ -1,0 +1,438 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v1",
+  "contract_id": "R5-CYP3A4-ORACLE-V1",
+  "status": "R5_ORACLE_CONTRACT_ONLY",
+  "purpose": "Test whether true-anchor transformation-relative CYP3A4 prediction adds real signal beyond the frozen global expert and simpler pair controls under campaign-expansion family holdout.",
+  "scientific_question": "When the correct selected campaign anchor and its measured CYP3A4 point are known, does a compact transformation grammar improve reported-central-pIC50 prediction?",
+  "scope": {
+    "endpoint": "CYP3A4",
+    "protocol": "ANCHOR_EXPANSION_HOLDOUT",
+    "primary_episode_policy": "selected_anchor",
+    "diagnostic_episode_policy": "deterministic_random_anchor_stress",
+    "internal_metric": "absolute_error_on_reported_central_pIC50",
+    "official_st_rae": false,
+    "inferred_anchor": false,
+    "tdi": false,
+    "test_access": false,
+    "submission": false
+  },
+  "parent_receipts": {
+    "validation_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3"
+    },
+    "r2b_manifest": {
+      "sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+      "source_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b"
+    },
+    "r2b_direct_observations": {
+      "sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+      "rows": 19620
+    },
+    "r2b_group_folds": {
+      "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+      "rows": 73575
+    },
+    "r2b_public_episodes": {
+      "sha256": "471804773631623235a7d554a1d8e297c5b098089f96390c85f622a82b619a7a",
+      "rows": 1122
+    },
+    "r2b_truth": {
+      "sha256": "f2ec3ca6c3f48850cf6dedf1f129903d525ec72e8da55566eca66103745bd2a4",
+      "rows": 1122,
+      "consumer": "sealed scorers only"
+    },
+    "r2b_masks": {
+      "sha256": "0b437aa5c43286833f4b2ccbf97c36afbfa6e940dcf20d1e2a2728a324fe3240",
+      "rows": 1122
+    },
+    "global_contract_v5": {
+      "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v5.json",
+      "sha256": "596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2"
+    },
+    "r3c_manifest": {
+      "sha256": "a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c",
+      "required_status": "GLOBAL_EXPERT_FROZEN"
+    },
+    "r3c_result": {
+      "sha256": "d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94"
+    },
+    "r3a_feature_manifest": {
+      "sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+      "canonical_build": 1
+    },
+    "r3a_structure_projection_manifest": {
+      "sha256": "a472b6abf35a1bc3944e2a5baddafbf83ba4c3bb5f269c0993032f300eeb405b"
+    },
+    "r3a_structure_projection": {
+      "sha256": "3d54edc618eeca8414afc1a0180fec2f58299aa581cb7f427ac96d923ee37c36",
+      "rows": 4905
+    },
+    "r3_global_oof_predictions": {
+      "sha256": "1935b580ec779f2fc08d40e32e9669edae6e166ea70cd964e325df853527af80",
+      "rows": 235440,
+      "consumer": "C3 outer anchor state; filter exact TRACE-G0-MAPL-FIXED row"
+    },
+    "r3_global_inner_oof_predictions": {
+      "sha256": "17cc5aadf6e109efe13893e9d9364371043f1fc7b1e4e2faa20dae5ab5c3c332",
+      "rows": 235440,
+      "consumer": "C3 inner anchor state; filter exact TRACE-G0-MAPL-FIXED repeat/outer/inner row"
+    },
+    "r4_contract_v5": {
+      "path": "benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json",
+      "sha256": "63d12cb376760c65eabd3d94d3f3939b0591e4019e1332075df0a4c10a4b4954"
+    },
+    "r4_contract_v6": {
+      "path": "benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v6.json",
+      "sha256": "a0743c43cdafbcfd736cf94c57fe21488266d1f6df6ef73311c26ccda795f95d"
+    },
+    "r4_manifest": {
+      "sha256": "8166a89aee5137228a31085e21d36d6f0bf4a28d833cdc7bd1280feff4170043",
+      "required_status": "R4_TRANSFORMATION_COVERAGE_SUPPORTED"
+    },
+    "r4_pairs": {
+      "sha256": "5eadb743e748e50b07d3eb09648400647d5370a97d2d76579bb453ba66f01a76",
+      "rows": 564
+    },
+    "r4_episode_transformations": {
+      "sha256": "8afc1b82e573ede6cb9c52a14a2a21dd73fa561d7829b7faaeda298d7d70cc2a",
+      "rows": 1818
+    },
+    "r4_coverage": {
+      "sha256": "b134d11c96526c8c3ed282cebfacaae25ce9bf49c324bfe28d8c4f1d4913a84e"
+    },
+    "r4_extractor": {
+      "commit": "cdba779cd5d196116e642ab61a9a6e4ac9f877d9",
+      "unified_source_sha256": "2ac5ea0004402df82bbb26024089a1b0b2fe258346a71c7b89bd1512672eaaed",
+      "mmp_source_sha256": "43fe5ff18ecf2f355f1dead9e8a8393cba2e384ee44ef3293f14773c2e956c43",
+      "stereo_source_sha256": "838d66f48bcdd75ccfb1fa5cd8de1654bdf7632e82f62f1252554f7483736ff1",
+      "types_source_sha256": "d9fc616f25a4c6b6cc8b2bbd538920218ae51b116fd32c2f0c01ff395657b64b",
+      "use": "Prediction-only on-demand F0/F1 pair extraction under the exact accepted R4 extraction receipt; never training support or coverage authority."
+    }
+  },
+  "population": {
+    "primary_local_eligible": [
+      "episode_policy_id equals selected_anchor",
+      "selector_cyp_truth equals CYP3A4",
+      "R4 extraction_status is VALID_SINGLE or VALID_DOUBLE",
+      "anchor CYP3A4 value_state is complete",
+      "query CYP3A4 has a finite reported central point in scorer-only truth"
+    ],
+    "all_row_safety": [
+      "episode_policy_id equals selected_anchor",
+      "selector_cyp_truth equals CYP3A4",
+      "query CYP3A4 has a finite reported central point in scorer-only truth"
+    ],
+    "diagnostic_stress": [
+      "episode_policy_id equals deterministic_random_anchor_stress",
+      "selector_cyp_truth equals CYP3A4",
+      "anchor and query CYP3A4 states are complete",
+      "query transformation is valid"
+    ],
+    "identical_rows_rule": "Every primary system and control is scored on the exact same primary_local_eligible rows. A control that cannot form a local prediction emits the episode-specific global prediction.",
+    "independence_unit": "similarity_component_hash reconstructed-family proxy",
+    "repeat_inflation_rule": "Repeated predictions never increase unique component, episode-query, pair, or transformation support counts."
+  },
+  "folds": {
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "group_unit": "similarity_component_hash",
+    "reuse": "Use the accepted R2 repeat, outer-fold, and outer-scoped inner-fold assignments without regeneration.",
+    "current_training_partition": "For an outer fit, components whose outer_validation_fold differs from the current outer fold. For an inner fit, that outer partition minus components assigned to the current scoped inner validation fold.",
+    "current_training_authority": "Every label, pair target, scaler, categorical vocabulary, hierarchy mean/support count, nearest-neighbor pool, F0/F1 control pool, randomization, and model fit uses current_training_partition only.",
+    "outer_rule": "The validation component contributes no label, support, feature-selection, calibration, or model-fit information except the one designated anchor label exposed to that episode-specific G0 and local prediction context.",
+    "inner_rule": "Tune learned systems only on selected-anchor pseudo-episodes whose component is assigned to the current scoped inner validation fold. The inner component contributes only its designated anchor label to that pseudo-episode context; its other labels remain sealed to the inner scorer.",
+    "episode_global_rule": "The designated anchor CYP3A4 point enters the episode-specific global fit as an ordinary training row; every other member of its component remains excluded.",
+    "prediction_superset": "Every candidate emits predictions for every query row of every selected_anchor public episode in its validation partition, irrespective of selector or query-label availability. Row presence, order, local_available, and fallback are derived only from public episodes, masks, structures, and the single exposed anchor context.",
+    "sealed_filter": "Only the sealed inner or outer scorer may filter prediction_superset to selector_cyp_truth==CYP3A4 and finite query truth. It emits only a score-free selected-hyperparameter token back to modeling.",
+    "no_regeneration": "Insufficient cell support changes status to UNDERPOWERED; folds are never regenerated."
+  },
+  "targets": {
+    "training_delta": "query reported central pIC50 minus anchor reported central pIC50",
+    "pair_direction": "Generate both directions for each eligible unordered pair in current_training_partition with one-half directional weight.",
+    "sample_weight": "For a component with P eligible unordered pairs in current_training_partition, each of its 2*P directional rows has the single fit weight 1/(2*P). No separate direction or family multiplier is applied.",
+    "missing": "Never impute missing query truth. Only complete finite points enter pair targets.",
+    "intervals": "Reported low/high/std fields are diagnostic only and are not called confidence, credible, censoring, or scoring intervals.",
+    "uncertainty_weighting": false
+  },
+  "features": {
+    "generic_signed_morgan": "Accepted R3A 4096-bit chiral Morgan binary vector for analog minus the corresponding anchor vector, in frozen column order.",
+    "nested_context_rule": "C2 uses generic_signed_morgan plus measured anchor point. T0 and A2 reuse those exact columns and add only mmp_numeric plus class_feature, so TRACE is a strict structural extension of the generic pair control.",
+    "mmp_numeric": ["cut_count", "changed_heavy_atom_fraction"],
+    "class_feature": "Compact one-hot of the R4 directional transformation_class_id vocabulary observed in current_training_partition; unseen validation classes map to one explicit OTHER column.",
+    "anchor_state": "Measured anchor CYP3A4 point for T0 and C2; excluded for C3.",
+    "C3_anchor_state": "For outer prediction use the exact TRACE-G0-MAPL-FIXED anchor row from r3_global_oof_predictions. For inner selection use the exact repeat/outer/inner TRACE-G0-MAPL-FIXED anchor row from r3_global_inner_oof_predictions. Never use completion_state artifacts or measured fallback.",
+    "scaling": "Fit median and interquartile-range scaling on current_training_partition only; zero IQR maps to scale one; no validation row enters scaling."
+  },
+  "systems": {
+    "ordered": ["G0", "C0", "C1", "C2", "C3", "T0", "F0", "F1", "F2", "A0", "A1", "A2"],
+    "definitions": {
+      "G0": "Episode-specific TRACE-G0-MAPL-FIXED refit on permitted outer-training CYP3A4 points plus only that episode's exposed anchor point.",
+      "C0": "Copy the measured anchor CYP3A4 point.",
+      "C1": "Copy the CYP3A4 point of the most Morgan-similar complete molecule in current_training_partition; tie-break by molecule_id.",
+      "C2": "Generic signed-Morgan-difference ridge predicting delta, then add measured anchor point.",
+      "C3": "Full T0 structure features without measured anchor potency; add the exact pure MapLight OOF anchor prediction for the matching outer or inner context, never a completion artifact or measured fallback.",
+      "T0": "Contextual ridge delta plus the frozen residual hierarchy class to exact transformation to environment radius 1 to environment radius 2; add measured anchor point.",
+      "F0": "Apply T0 to one deterministically shuffled complete anchor identity/value tuple drawn only from valid on-demand R4 transformations in current_training_partition; unavailable control pools fall back to G0 and fail control-availability support when too sparse.",
+      "F1": "Apply T0 to the most Morgan-similar complete valid on-demand R4 anchor in current_training_partition; tie-break by similarity then molecule_id; unavailable control pools fall back to G0 and fail control-availability support when too sparse.",
+      "F2": "Fit T0 after deterministically permuting each complete categorical class/exact/environment tuple across current-training unordered pairs; retain continuous signed-Morgan/MMP/anchor features, pair targets, and weights; validation IDs remain structurally correct.",
+      "A0": "Transformation-class-only family-weighted delta hierarchy with endpoint-zero prior; add measured anchor point.",
+      "A1": "Full class/exact/environment hierarchy directly predicting delta without contextual ridge; add measured anchor point.",
+      "A2": "T0 contextual signed-Morgan plus MMP/class ridge delta without hierarchy; add measured anchor point."
+    },
+    "fallback": "Whenever a local system lacks a valid finite prediction, emit G0 and record local_available=false. Fallback rows remain in identical-row scoring and cannot satisfy local-support counts."
+  },
+  "context_model": {
+    "learner": "sklearn.linear_model.Ridge or an algebraically equivalent deterministic ridge implementation",
+    "fit_intercept": true,
+    "alpha_grid": [1.0, 10.0],
+    "selection": "C2 and A2 select alpha only. T0 and C3 select the joint (alpha,lambda) Cartesian product. Aggregate four inner-fold episode losses by component macro; exact ties choose larger alpha then larger lambda. F2 reuses T0's selected alpha and lambda without control-specific selection.",
+    "forbidden": ["CatBoost delta model", "neural pair encoder", "MCS fallback", "auxiliary assay features", "broad hyperparameter search"]
+  },
+  "global_model": {
+    "system_id": "TRACE-G0-MAPL-FIXED",
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "parameter_source": "Exact accepted R3C resolved_catboost_parameters record for TRACE-G0-MAPL-FIXED; no parameter, feature, seed, loss, eligibility, or weighting change is allowed.",
+    "features": ["maplight_morgan_count.npy", "maplight_avalon_count.npy", "maplight_erg.npy", "maplight_rdkit_descriptors.npy"],
+    "training": "Every finite reported CYP3A4 point in current_training_partition plus exactly the current episode's complete exposed anchor point as one ordinary row. Call fit(X,y) with no sample_weight or other fit argument, exactly preserving accepted R3 eligibility and weighting.",
+    "fit_scope": "One fresh fit per prediction episode; identical byte-for-byte target/feature contexts may be receipt-cached without merging episode capabilities."
+  },
+  "runtimes": {
+    "root": {"platform": "Linux x86_64", "python": "3.12.3", "numpy": "2.5.2", "scikit_learn": "1.9.0", "rdkit": "2026.03.5", "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6", "consumers": "projection, R4 extraction, Morgan/Ridge/hierarchy, scoring, bootstrap, publication"},
+    "maplight": {"platform": "Linux x86_64", "python": "3.10.13", "numpy": "1.25.2", "catboost": "1.2.1", "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8", "device": "CPU", "max_threads": 16, "consumer": "G0 only"},
+    "randomization_runtime": "root"
+  },
+  "hierarchy": {
+    "levels": ["endpoint_zero", "transformation_class_id", "exact_transformation_id", "environment_level_1_id", "environment_level_2_id"],
+    "fit_target": "Training delta minus that system's contextual ridge prediction for T0, C3, and F2; raw training delta for A0 and A1. C3's contextual prediction excludes measured anchor potency and uses only the frozen OOF anchor state at final anchor addition.",
+    "family_estimate": "Within each level key and component, compute the weighted arithmetic mean residual; then average component means equally.",
+    "shrinkage": "For a level with n distinct supporting components and component-macro mean m, posterior=(n*m + lambda*broader)/(n+lambda). Unseen keys use broader exactly.",
+    "lambda_grid": [2.0, 10.0],
+    "selection": "A0 and A1 select lambda only; A0 stops after transformation_class_id. T0 and C3 use joint selection defined by context_model.selection. F2 reuses T0's selected lambda. Exact lambda ties choose 10.0.",
+    "support": "Support is the number of distinct current_training_partition components contributing to that directional ID after validation-component exclusion.",
+    "reversal": "Directional training rows preserve the R4 reversed IDs and signed delta. Predictions must be finite and approximately antisymmetric before anchor addition; report the diagnostic, do not tune from it."
+  },
+  "control_randomization": {
+    "seed": 20260820,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(scoped_seed)) under runtimes.root",
+    "scoped_seed": "material is UTF-8 base_seed|system_id|repeat|outer_fold|inner_fold_or_minus_one|query_id_or_fit; scoped_seed is int.from_bytes(bytes.fromhex(SHA256(material))[:8], byteorder='big', signed=False).",
+    "on_demand_geometry": "For each validation query, rank complete candidate anchors in current_training_partition by accepted Morgan Tanimoto descending then molecule_id; retain exactly the first min(64,N), call the exact receipt-bound R4 extractor once per cached structure pair, and retain VALID_SINGLE or VALID_DOUBLE. These control-only rows never enter training support, coverage counts, or R4 authority.",
+    "F0": "For each validation query, sort valid on-demand candidate anchors by molecule_id, apply one PCG64 permutation scoped by repeat/outer/inner/query ID, and choose the first. Anchor identity and value remain paired; no held-out validation anchor is eligible.",
+    "F1": "Among the same valid on-demand top-64 candidates, rank Morgan Tanimoto descending then molecule_id ascending and choose the first.",
+    "F2": "Within each fit, sort eligible current-training unordered pair IDs, permute their complete directional categorical class/exact/environment tuple pairs once, and preserve continuous signed-Morgan/MMP/anchor features, pair targets, family weights, and validation IDs.",
+    "reuse": "Freeze and reuse each randomization across every applicable system, hyperparameter, slice, and bootstrap replicate."
+  },
+  "support_gate": {
+    "label_safe_replay": {
+      "basis": "Receipt-matched R4 state-only projection, accepted folds, and valid R4 local pairs; zero numeric target magnitudes parsed.",
+      "overall_training_families": 86,
+      "overall_training_pairs": 384,
+      "outer_cell_min_families": 64,
+      "outer_cell_min_pairs": 296,
+      "inner_cell_min_families": 43,
+      "inner_cell_min_pairs": 199
+    },
+    "unique_primary_components_min": 50,
+    "unique_primary_episode_query_pairs_min": 100,
+    "each_repeat_outer_fold_components_min": 5,
+    "each_repeat_outer_fold_unique_rows_min": 10,
+    "outer_training_min": {"families": 50, "valid_unordered_pairs": 200},
+    "inner_training_min": {"families": 40, "valid_unordered_pairs": 150},
+    "control_local_availability_min": {"families": 30, "unique_episode_query_rows": 50},
+    "evaluation_counting": "Primary counts use selector_cyp_truth==CYP3A4, complete anchor state, finite query point, valid true-anchor transformation, and unique base episode-query identities before repeat expansion.",
+    "training_counting": "Training-pair counts require both molecules complete for CYP3A4, a valid R4 local transformation, and membership in current_training_partition.",
+    "control_counting": "F0 and F1 each require their own valid on-demand prediction in at least 30 unique primary components and 50 unique base episode-query rows; all-G0 fallback cannot satisfy this gate.",
+    "clean_miss": "Any clean support miss yields R5_ORACLE_UNDERPOWERED, not FAILED."
+  },
+  "scoring": {
+    "loss": "absolute prediction minus reported central pIC50",
+    "primary_aggregation": "Mean query loss within episode, mean episode loss within component and repeat, mean repeats within component, then equal mean across unique components.",
+    "secondary": ["query_macro_mae", "episode_macro_mae", "component_macro_mae", "worst_global_component_decile_mae"],
+    "cell_metric": "For each repeat and outer fold, equal mean of component losses whose component is assigned to that cell.",
+    "contrast": "control component-macro MAE minus T0 component-macro MAE; positive favors T0.",
+    "required_contrasts": ["G0-T0", "C0-T0", "C1-T0", "C2-T0", "C3-T0", "F0-T0", "F1-T0", "F2-T0", "F0_LOCAL-T0", "F1_LOCAL-T0"],
+    "control_local_contrasts": "F0_LOCAL-T0 and F1_LOCAL-T0 use only rows where the named control has a valid on-demand local prediction; they prevent global fallback from masquerading as anchor falsification.",
+    "diagnostics": [
+      "activity_cliff",
+      "similarity_0.60_0.70",
+      "similarity_0.70_0.80",
+      "similarity_ge_0.80",
+      "exact_support",
+      "class_only_support",
+      "no_local_evidence",
+      "support_component_bins",
+      "selected_vs_random_anchor",
+      "pair_reversal",
+      "worst_global_component_decile"
+    ],
+    "activity_cliff": "Reuse the exact accepted R2 cliff definition; diagnostic only.",
+    "worst_decile": "Rank components once by G0 primary loss descending; take ceil(0.10*N) with component_id tie-break. Reuse this set for every system."
+  },
+  "bootstrap": {
+    "seed": 20260821,
+    "accepted_replicates": 2000,
+    "maximum_attempts": 20000,
+    "unit": "unique primary component_id sorted ascending",
+    "draw": "Draw N component indices with replacement using NumPy PCG64; carry all repeats, episodes, queries, and systems for each sampled component; reuse one multiplicity vector for every contrast.",
+    "accept_draw": "Accept when every required system has at least one finite scored component and all required contrast macros are finite; otherwise consume and reject the draw.",
+    "percentile": "Sort accepted values; for p in {0.025,0.975}, use linear interpolation at h=(n-1)*p.",
+    "attempt_exhaustion": "Fewer than 2000 accepted replicates after 20000 attempts is R5_ORACLE_FAILED."
+  },
+  "influence": {
+    "ranking": "Rank components by absolute contribution to the unbootstrapped G0-T0 contrast, descending then component_id.",
+    "checks": 10,
+    "rule": "Remove each ranked component separately and recompute the G0-T0 component macro contrast; every leave-one-out contrast must remain strictly positive."
+  },
+  "safety_fusion": {
+    "prediction": "On primary_local_eligible rows use 0.5*G0 + 0.5*T0; on all other all_row_safety rows use G0 exactly.",
+    "relative_degradation": "(fusion component-macro MAE minus G0 component-macro MAE) divided by G0 component-macro MAE.",
+    "bootstrap_seed": 20260822,
+    "bootstrap": "Run a separate 2,000-replicate PCG64 component bootstrap over every unique all_row_safety component, with the same 20,000-attempt and percentile rules. Never reuse primary multiplicities or omit safety-only components.",
+    "criterion": "Upper 95% bound of relative_degradation is strictly below 0.01.",
+    "worst_decile": "Rank all_row_safety components once by G0 loss descending then component_id and take ceil(0.10*N).",
+    "worst_decile_criterion": "Fusion minus G0 point component-macro MAE within the all-row frozen worst-global-component decile is at most 0.05 pIC50.",
+    "activity_cliff": "Report fusion and G0 activity-cliff losses; no cliff threshold may rescue acceptance."
+  },
+  "acceptance": {
+    "statuses_precedence": ["R5_ORACLE_FAILED", "R5_ORACLE_UNDERPOWERED", "R5_ORACLE_NO_SIGNAL", "R5_ORACLE_SIGNAL_PASS"],
+    "signal_pass": [
+      "Every required contrast has a strictly positive 95% bootstrap lower bound.",
+      "G0-T0 cell contrast is positive in at least 12 of 15 repeat-fold cells and at least 3 of 5 cells within each repeat.",
+      "Every top-10 G0-T0 leave-one-component-out contrast is strictly positive.",
+      "Safety fusion relative-degradation upper bound is below 0.01.",
+      "Safety fusion worst-global-decile degradation is at most 0.05 pIC50.",
+      "All predictions, losses, receipts, joins, folds, and operation accounting are complete and finite."
+    ],
+    "no_signal": "Clean supported execution where any signal_pass criterion is false.",
+    "underpowered": "Clean execution where any support_gate criterion is false before outer outcomes are opened.",
+    "failed": "Any integrity, leakage, receipt, schema, fold, nondeterminism, capability, runtime, or arithmetic defect.",
+    "ablation_rule": "A0, A1, and A2 are explanatory only and cannot rescue T0 after outer truth is opened.",
+    "stop_rule": "NO_SIGNAL or UNDERPOWERED stops inferred-anchor and learned-competence work on the critical path. SIGNAL_PASS authorizes only a separate inferred-anchor contract."
+  },
+  "capability_firewall": {
+    "projector": "May open accepted R2 observations/folds/episodes/truth/masks, R3 features and pure outer/inner OOF predictions, and R4 outputs; completion artifacts are forbidden. It emits disjoint model-public, cell-target, and sealed-scorer roots with exact receipts.",
+    "model": "May receive verified structural features, current training-pair targets, current training labels, and exactly one episode anchor label; it receives no query truth or scorer mask.",
+    "scorer": "May receive frozen prediction rows plus sealed query truth and masks; it receives no ability to refit or alter predictions.",
+    "episode_exclusion": "No non-anchor member of a held-out component may enter model labels, pair support, scaling, hyperparameter selection, control pools, or calibration for that episode.",
+    "always_zero": ["blinded_test_files_opened", "tdi_files_opened", "official_metric_calls", "submissions_created", "transductive_relationships", "inferred_anchor_candidate_pools"]
+  },
+  "projection_roots": {
+    "model_public": {
+      "files": ["manifest.json", "molecules.csv", "folds.csv", "public_episode_queries.csv", "transformation_pairs.csv", "episode_transformations.csv", "maplight_morgan_count.npy", "maplight_avalon_count.npy", "maplight_erg.npy", "maplight_rdkit_descriptors.npy", "morgan_binary.npy"],
+      "public_episode_queries_columns": ["episode_id", "episode_policy_id", "repeat", "outer_fold", "outer_group_id", "anchor_molecule_id", "query_molecule_id", "query_rank"],
+      "forbidden": ["selector_cyp_truth", "query_truth", "query_availability", "anchor_value", "target", "loss", "score"]
+    },
+    "cell_target": {
+      "one_cell_files": ["manifest.json", "training_points.csv", "training_pairs.csv", "episode_anchor_contexts.csv"],
+      "training_points_columns": ["molecule_id", "component_id", "point", "sample_weight"],
+      "training_pairs_columns": ["pair_id", "direction_id", "anchor_molecule_id", "analog_molecule_id", "component_id", "delta", "sample_weight"],
+      "episode_anchor_contexts_columns": ["episode_id", "anchor_molecule_id", "anchor_point", "anchor_point_available", "anchor_global_oof_prediction", "anchor_global_oof_source_scope", "anchor_global_oof_model_id", "anchor_global_oof_receipt_sha256"],
+      "rule": "Measured-potency model cells receive only current_training_partition targets and the one anchor context per prediction episode. They cannot resolve the C3-only or sealed roots. G0 ignores sample_weight and pair files."
+    },
+    "c3_target": {
+      "one_cell_files": ["manifest.json", "training_pairs.csv", "global_anchor_contexts.csv"],
+      "training_pairs_columns": ["pair_id", "direction_id", "anchor_molecule_id", "analog_molecule_id", "component_id", "delta", "sample_weight"],
+      "global_anchor_contexts_columns": ["episode_id", "anchor_molecule_id", "anchor_global_oof_prediction", "anchor_global_oof_source_scope", "anchor_global_oof_model_id", "anchor_global_oof_receipt_sha256"],
+      "rule": "The C3 process receives this root instead of cell_target. No training_points file, measured point column, measured anchor context, completion state, or resolvable sibling root exists in its capability."
+    },
+    "sealed_scorer": {
+      "files": ["manifest.json", "episode_truth.csv", "activity_cliffs.csv"],
+      "episode_truth_columns": ["episode_id", "query_molecule_id", "selector_cyp_truth", "query_point", "query_point_available"],
+      "activity_cliffs_columns": ["episode_id", "query_molecule_id", "activity_cliff"],
+      "consumer": "inner and outer scorer processes only"
+    },
+    "receipt_rule": "Each root has an exact manifest binding contract, parent inputs, source, columns, rows, bytes, SHA256, current cell scope, accounting, and denied authority. Load each file once, hash before parse, parse the verified bytes, reject symlinks and extra files."
+  },
+  "process_dag": {
+    "stages": ["pre_gate", "projection", "preflight", "inner_models", "inner_score", "selection_token", "outer_models", "prediction_freeze", "outer_score", "terminal_publish"],
+    "pre_gate": "Before numeric target access verify platform, both lock files, parent contracts, accepted R2/R3/R4 receipts, R4 extractor sources, and absent output destination.",
+    "projection": "A trusted process creates the three disjoint roots and exact manifests. No model or scorer code runs in this process.",
+    "preflight": "A trusted scorer computes only frozen support counts. Clean failure publishes UNDERPOWERED with zero fits and no predictive metric.",
+    "inner_models": "One fresh process per cell_id and candidate_id consumes model_public plus one system-appropriate target view and emits the complete fixed prediction_superset. C3 receives c3_target only; other learned systems receive cell_target only; no model receives a sealed root.",
+    "inner_score": "Fresh scorers open frozen candidate predictions and sealed inner truth, compute candidate component-macro MAE, and emit no query target or loss to modeling.",
+    "selection_token": "One score-free token per learned system and outer context contains only system_id, repeat, outer_fold, selected alpha/lambda sentinels, candidate receipt, and scorer receipt.",
+    "outer_models": "Fresh model processes consume only score-free tokens, model_public, and one system-appropriate target view. C3 receives c3_target only. G0 is fit per episode; pair systems are fit per repeat/outer fold and applied to the fixed prediction_superset.",
+    "prediction_freeze": "Validate schema, row order, finite values, exact cell receipts, and fixed superset before one immutable prediction freeze.",
+    "outer_score": "A fresh scorer alone joins frozen predictions to sealed truth, filters populations, computes all metrics/bootstrap/influence/safety, and stages the exact terminal.",
+    "terminal_publish": "Delete every private projection, target, truth, model, and staging artifact before one no-replace terminal promotion.",
+    "cell_id_material": ["contract_id", "scope", "repeat", "outer_fold", "inner_fold_or_minus_one", "system_id", "candidate_id", "episode_id_or_all"],
+    "failure_rule": "Any nonzero child, receipt drift, missing/extra row, nonfinite value, schema defect, capability breach, or cleanup failure stops immediately; never retry or reuse a process."
+  },
+  "selection_candidates": {
+    "C2": {"alpha": [1.0, 10.0], "lambda": [null]},
+    "A2": {"alpha": [1.0, 10.0], "lambda": [null]},
+    "T0": {"alpha": [1.0, 10.0], "lambda": [2.0, 10.0]},
+    "C3": {"alpha": [1.0, 10.0], "lambda": [2.0, 10.0]},
+    "A0": {"alpha": [null], "lambda": [2.0, 10.0]},
+    "A1": {"alpha": [null], "lambda": [2.0, 10.0]},
+    "F2": {"reuse": "T0 score-free token"},
+    "candidate_order": "system order, alpha ascending with null first, lambda ascending with null first",
+    "tie_break": "lowest inner component-macro MAE, then larger alpha, then larger lambda"
+  },
+  "output_schemas": {
+    "manifest.json": ["schema_version", "contract_sha256", "status", "parent_receipts", "input_receipts", "source_receipts", "runtime_receipts", "randomization_receipts", "output_receipts", "operation_accounting", "authority"],
+    "oracle_inner_selection.csv": ["system_id", "repeat", "outer_fold", "candidate_id", "alpha", "lambda", "inner_scored_rows", "inner_scored_components", "inner_component_macro_mae", "selected"],
+    "oracle_scored_rows.csv": ["episode_id", "query_molecule_id", "query_rank", "episode_policy_id", "repeat", "outer_fold", "component_id", "population_id", "system_id", "local_eligible", "local_available", "prediction_source", "extraction_status", "similarity", "exact_support_components", "class_support_components", "activity_cliff", "similarity_bin", "support_bin", "absolute_error", "query_weight", "episode_weight", "component_weight"],
+    "oracle_cell_metrics.csv": ["population_id", "system_id", "repeat", "outer_fold", "scored_rows", "scored_episodes", "scored_components", "query_macro_mae", "episode_macro_mae", "component_macro_mae", "contrast_vs_T0"],
+    "oracle_bootstrap_summary.csv": ["comparison_id", "population_id", "control_system_id", "candidate_system_id", "point_delta", "lower_95", "upper_95", "accepted_replicates", "attempts", "lower_bound_positive"],
+    "oracle_influence_checks.csv": ["comparison_id", "rank", "component_id", "absolute_contribution", "loo_point_delta", "direction_preserved"],
+    "oracle_ablation_scorecard.csv": ["system_id", "population_id", "scored_rows", "scored_episodes", "scored_components", "query_macro_mae", "episode_macro_mae", "component_macro_mae", "worst_global_decile_mae", "activity_cliff_mae", "local_available_rows"],
+    "oracle_result.json": ["schema_version", "contract_sha256", "parent_receipts", "status", "support", "criteria", "point_estimates", "bootstrap", "safety", "diagnostics", "operation_accounting", "authority"],
+    "failure.json": ["schema_version", "contract_sha256", "stage", "failure_code", "reason", "verified_receipts", "operation_accounting", "authority"]
+  },
+  "operation_accounting": {
+    "fields": ["direct_target_values_parsed", "anchor_labels_exposed_to_models", "query_truth_values_opened_by_scorers", "maplight_model_fits", "ridge_model_fits", "hierarchy_fits", "predictions_frozen", "internal_absolute_error_evaluations", "blinded_test_files_opened", "tdi_files_opened", "official_metric_calls", "submissions_created", "transductive_relationships", "inferred_anchor_candidate_pools"],
+    "types": "Every field is an exact non-boolean nonnegative integer.",
+    "forbidden_zeros": ["blinded_test_files_opened", "tdi_files_opened", "official_metric_calls", "submissions_created", "transductive_relationships", "inferred_anchor_candidate_pools"],
+    "authority_distinction": "Nonzero historical fit, prediction, truth, and internal-metric counts describe the completed experiment. They do not grant reusable model, prediction, target, scorer, or submission authority."
+  },
+  "failure_precedence": {
+    "status": "R5_ORACLE_FAILED overrides every other status; clean prefit support miss is UNDERPOWERED; supported completed evidence is NO_SIGNAL unless every pass criterion is true.",
+    "stage_order": ["pre_gate", "projection", "preflight", "inner_models", "inner_score", "selection_token", "outer_models", "prediction_freeze", "outer_score", "terminal_publish"],
+    "failure_code_order": ["CAPABILITY", "LEAKAGE", "RECEIPT", "SCHEMA", "FOLD", "NONFINITE", "ARITHMETIC", "NONDETERMINISM", "RUNTIME", "PROCESS", "CLEANUP"],
+    "terminal": "Publish exactly the file set in outputs.status_files for the resolved status."
+  },
+  "outputs": {
+    "status_files": {
+      "R5_ORACLE_FAILED": ["failure.json"],
+      "R5_ORACLE_UNDERPOWERED": ["manifest.json", "oracle_result.json"],
+      "R5_ORACLE_NO_SIGNAL": ["manifest.json", "oracle_inner_selection.csv", "oracle_scored_rows.csv", "oracle_cell_metrics.csv", "oracle_bootstrap_summary.csv", "oracle_influence_checks.csv", "oracle_ablation_scorecard.csv", "oracle_result.json"],
+      "R5_ORACLE_SIGNAL_PASS": ["manifest.json", "oracle_inner_selection.csv", "oracle_scored_rows.csv", "oracle_cell_metrics.csv", "oracle_bootstrap_summary.csv", "oracle_influence_checks.csv", "oracle_ablation_scorecard.csv", "oracle_result.json"]
+    },
+    "underpowered_sentinels": "oracle_result support contains exact measured support and failed boolean criteria; point_estimates, bootstrap, safety, and diagnostics are empty objects; every predictive operation count is zero; authority is exact R5_ORACLE_UNDERPOWERED.",
+    "scored_rows_policy": "Emit identifiers, slices, system_id, local_available, prediction_source, absolute_error, and aggregation weights; never emit target values or anchor values.",
+    "serialization": "UTF-8, LF, RFC4180 CSV, compact sorted-key JSON, canonical finite decimal strings, deterministic total row order.",
+    "publication": "Stage privately, validate exact bytes and receipts, chmod files 0444 and directory 0555, then atomically publish with renameat2 RENAME_NOREPLACE. Never overwrite or resume.",
+    "manifest": "Bind exact parent, input, contract, source, runtime, implementation, randomization, and output receipts plus status-conditioned authority and operation accounting."
+  },
+  "authority": {
+    "R5_ORACLE_CONTRACT_ONLY": {"oracle_evidence": false, "inferred_anchor_contract": false, "model_fits": false, "predictions": false, "internal_metrics": false, "official_st_rae": false, "test_access": false, "tdi": false, "submission": false, "transduction": false},
+    "R5_ORACLE_FAILED": {"oracle_evidence": false, "inferred_anchor_contract": false, "model_fits": false, "predictions": false, "internal_metrics": false, "official_st_rae": false, "test_access": false, "tdi": false, "submission": false, "transduction": false},
+    "R5_ORACLE_UNDERPOWERED": {"oracle_evidence": true, "inferred_anchor_contract": false, "model_fits": false, "predictions": false, "internal_metrics": false, "official_st_rae": false, "test_access": false, "tdi": false, "submission": false, "transduction": false},
+    "R5_ORACLE_NO_SIGNAL": {"oracle_evidence": true, "inferred_anchor_contract": false, "model_fits": false, "predictions": false, "internal_metrics": true, "official_st_rae": false, "test_access": false, "tdi": false, "submission": false, "transduction": false},
+    "R5_ORACLE_SIGNAL_PASS": {"oracle_evidence": true, "inferred_anchor_contract": true, "model_fits": false, "predictions": false, "internal_metrics": true, "official_st_rae": false, "test_access": false, "tdi": false, "submission": false, "transduction": false}
+  },
+  "implementation_milestones": [
+    "R5A freeze and independently audit this contract without target access",
+    "R5B implement projections and feature compiler with synthetic firewall acceptance",
+    "R5C implement models, controls, scorer, bootstrap, publisher, and two-root synthetic replay",
+    "R5D execute once on accepted official training artifacts and independently replay the terminal"
+  ],
+  "forbidden": [
+    "official challenge test access",
+    "official ST-RAE implementation or claim",
+    "TDI access or derivation",
+    "submission generation",
+    "transductive test relationships",
+    "inferred-anchor ranking",
+    "learned competence gate",
+    "metric-driven retry",
+    "outer-outcome hyperparameter selection",
+    "new global representation",
+    "neural pair encoder",
+    "MCS fallback",
+    "auxiliary assay features",
+    "silent repair or overwrite"
+  ]
+}

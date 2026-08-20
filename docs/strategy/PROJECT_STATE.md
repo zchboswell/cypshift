@@ -5,7 +5,7 @@ Last updated: 2026-08-20
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_COVERAGE_SUPPORTED`. The single
+TRACE is active at `R5_ORACLE_CONTRACT_FROZEN`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -359,10 +359,23 @@ coverage evidence plus permission to freeze a separate oracle contract only.
 It is not a TRACE accuracy result and grants no fit, prediction, metric,
 submission, test, TDI, or transductive authority.
 
+The R5 CYP3A4 oracle contract is now frozen at SHA-256 `c1d7a66c...` after
+independent scientific review. It asks one question: with the correct selected
+campaign anchor and measured CYP3A4 point exposed, does TRACE beat the
+episode-specific frozen MapLight global model and every mandated simple or
+falsification control? TRACE reuses the generic signed-Morgan difference base
+and adds only compact MMP features plus a family-shrunk
+class/exact/environment hierarchy. Three repeats, five component-held-out outer
+folds, four nested inner folds, a separate all-row safety bootstrap, fixed
+0.5 fusion, and hard `NO_SIGNAL` stopping are predeclared. The no-anchor-potency
+control is capability-isolated to pure MapLight OOF anchor predictions. The
+contract opens no numeric target, test, TDI, or official metric and authorizes
+implementation/synthetic acceptance only.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
-That hypothesis has not yet been tested.
+That hypothesis remains unscored; R5 implementation is the direct next step.
 
 ## Product state
 
@@ -535,19 +548,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Preserve both R4 terminals and freeze the separate
-CYP3A4 oracle-anchor experiment contract now authorized by the supported
-coverage result. Do not fit until that contract passes independent review. That
-oracle contract must retain the complete blueprint systems, controls, and ablations:
-frozen global, copy-anchor, nearest-neighbor, generic fingerprint-difference
-regression, delta without measured-anchor potency, true-anchor transformation
-grammar, shuffled-anchor assignment, wrong anchor, shuffled transformation,
-transformation-class-only, hierarchy without context, and context without
-hierarchy. Do not fit inferred-anchor logic, derive TDI
-labels, score with official ST-RAE, submit, or use transductive test
-relationships. `TDI-TRACE` remains deferred and `global_TDI` is the permanent
-fallback.
+Do not add another global representation or ensemble, rerun R3C/R4, or tune
+from their positive evidence. Implement the frozen R5 CYP3A4 oracle contract's
+least-privilege projections and feature/model cells, then pass synthetic
+firewall acceptance before opening numeric official targets. The contract
+retains the global, copy-anchor, external nearest-neighbor, generic
+signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
+shuffled/wrong-anchor, shuffled-grammar, class-only, hierarchy-only, and
+context-only systems. Inferred-anchor logic, learned competence, TDI, official
+ST-RAE, submission, and transductive test relationships remain forbidden.
+`global_TDI` remains the permanent TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

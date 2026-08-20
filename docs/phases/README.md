@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_COVERAGE_SUPPORTED`. The
+Phase 1 TRACE is active at `R5_ORACLE_CONTRACT_FROZEN`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -94,6 +94,12 @@ retains 738/903 selected-anchor rows across 118 families with every selected
 cell passing. This is geometry/coverage evidence, not TRACE predictive
 performance. It authorizes drafting and independently freezing the CYP3A4
 oracle contract only; no fit, prediction, metric, or submission is active.
+The separate R5 CYP3A4 oracle contract is now independently accepted at
+`c1d7a66c...`. It freezes the first honest TRACE predictive test, all required
+controls, nested component cross-fitting, support gates, family bootstrap,
+fixed safety fusion, and a hard `NO_SIGNAL` stop. No target value or predictive
+outcome has been opened; implementation and synthetic firewall acceptance are
+next.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

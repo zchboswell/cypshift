@@ -108,6 +108,21 @@ Supported coverage may authorize a separate oracle contract only; R4 itself
 authorizes no fit. Forty-three focused v1-v5 contract tests pass with
 independent scientific review.
 
+[`oracle_experiment_contract_v1.json`](oracle_experiment_contract_v1.json) is
+the independently accepted R5 CYP3A4 oracle contract. Its SHA-256 is
+`c1d7a66c4f479339b30c2006e4250381cb213d665d4902c71d4c4edbd347e8bf`.
+It freezes the selected-anchor CYP3A4 population, episode-specific inherited
+MapLight baseline, generic signed-Morgan ridge, compact MMP hierarchy, all
+required anchor/grammar falsifications and ablations, nested component
+cross-fitting, label-safe prediction superset, separate all-row safety
+bootstrap, status-specific terminals, and hard stopping logic. Independent Sol
+review passes after closing measured-anchor leakage in the no-potency control,
+inner-support impossibility, selector membership leakage, cross-fit scope,
+fallback-only control ambiguity, and runtime/schema gaps. R5 remains contract
+only: no numeric target, fit, prediction, internal score, test, TDI, official
+metric, or submission is authorized until implementation passes its separate
+synthetic gate.
+
 The synthetic least-privilege projection implementation is accepted for its
 boundary only. It verifies five source receipts before parse, retains exactly
 the permitted direct and mask-prefix fields, validates the complete fold and

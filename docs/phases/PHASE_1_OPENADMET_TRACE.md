@@ -345,14 +345,19 @@ families. Manifest and coverage receipts are `8166a89a...` and `b134d11c...`.
 This grants geometry/coverage authority and eligibility to freeze a separate
 oracle contract, not model or metric authority.
 
-Exact next action: freeze and independently review the CYP3A4 oracle-anchor
-contract before any fit. Preserve the global expert as fallback and retain the
-complete blueprint systems, controls, and ablations: copy-anchor,
-nearest-neighbor, generic fingerprint-difference regression, delta without
-measured-anchor potency, true-anchor transformation grammar, shuffled-anchor
-assignment, wrong anchor, shuffled transformation, transformation-class-only,
-hierarchy without context, and context without hierarchy. Keep inferred
-anchors, TDI, submissions, official scoring, and transduction deferred;
+The separate CYP3A4 oracle contract is now frozen at `c1d7a66c...` after
+independent review. It predeclares one primary TRACE system, the complete
+blueprint control/ablation set, nested component cross-fitting, label-safe
+prediction supersets, pure-OOF no-anchor-potency capability isolation, exact
+support gates, paired component bootstrap, influence checks, and fixed 0.5
+all-row safety fusion. A clean miss is permanent `R5_ORACLE_NO_SIGNAL`; only a
+full pass may authorize a separate inferred-anchor contract.
+
+Exact next action: implement R5's disjoint model-public, measured-target,
+no-potency, and sealed-scorer projections plus the compact signed-Morgan/MMP
+feature cells. Pass synthetic firewall and two-root determinism acceptance
+before opening official numeric targets. Keep inferred anchors, learned
+competence, TDI, submissions, official scoring, and transduction deferred;
 `global_TDI` remains the permanent TDI fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
