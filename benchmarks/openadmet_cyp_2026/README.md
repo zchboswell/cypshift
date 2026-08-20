@@ -80,7 +80,10 @@ submission, TDI, anchors, transformations, and transduction remain outside its
 authority.
 
 [`transformation_coverage_contract_v5.json`](transformation_coverage_contract_v5.json)
-is the implementation authority for R4 before any transformation fit or score.
+plus the exact additive
+[`transformation_coverage_contract_v6.json`](transformation_coverage_contract_v6.json)
+clarification are the implementation authority for R4 before any transformation
+fit or score.
 Its SHA-256 is
 `63d12cb376760c65eabd3d94d3f3939b0591e4019e1332075df0a4c10a4b4954`
 and its extraction-spec receipt is
@@ -141,6 +144,11 @@ episode direction, and emits the frozen 47-column pair CSV bytes. Fifty-three
 focused tests, Ruff, and strict mypy pass. This slice has no endpoint-support,
 status, production, official-input, model, prediction, metric, or publication
 authority; support arithmetic remains the next bounded block.
+
+The additive v6 clarification at `a0743c43...` binds the valid changed-fraction
+distribution to unique union structural-pair rows and requires its count to
+equal `counts.union.valid_rows`. It is a two-member exact overlay on the pinned
+v5 parent, changes no science or authority, and passes independent review.
 
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750

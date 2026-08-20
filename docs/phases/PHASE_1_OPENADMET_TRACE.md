@@ -249,6 +249,10 @@ extraction-spec receipt is
 V5 leaves that extraction receipt unchanged and repairs only the zero-valid
 distribution sentinel, pre-input runtime/checkout refusal, and the distinction
 between lexicographic JSON key serialization and numeric rational evaluation.
+The additive v6 overlay (`a0743c43...`) resolves the only support-implementation
+ambiguity by assigning that distribution to unique valid union pair rows and
+requiring its count to equal `counts.union.valid_rows`; everything else remains
+v5-exact.
 It uses only receipt-bound structures, direct measurement availability state,
 public episode membership, and a mask prefix containing anchor identity. It
 never opens campaign truth or selector/scorable fields and parses or retains

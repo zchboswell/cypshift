@@ -1675,3 +1675,28 @@
 - Reversal condition: Any component crossing, threshold, extraction-count,
   canonical direction, invalid-sentinel, deterministic-byte, or firewall defect
   revokes only this geometry evidence and keeps official R4 inputs closed.
+
+## D-058 — Freeze the narrow R4 v6 support-population clarification
+
+- Date: 2026-08-20
+- Status: accepted; `R4_TRANSFORMATION_COVERAGE_CONTRACT_V6_FROZEN`
+- Decision: Preserve v5 as immutable implementation authority and apply only
+  the two exact absent-member operations declared by v6. The valid changed-
+  heavy-atom fraction distribution is over unique valid union structural-pair
+  rows, and its count equals `counts.union.valid_rows`. All other v5 semantics
+  and bytes remain authoritative.
+- Evidence: The v6 overlay and test SHA-256 values are
+  `a0743c43cdafbcfd736cf94c57fe21488266d1f6df6ef73311c26ccda795f95d`
+  and
+  `ad340bfbfe38e4beba2c793bdef9a278c6929f5b6ccad564b6668b4303e76699`.
+  Its exact v5 parent receipt is `63d12cb3...`. Forty-six focused v1-v6
+  tests, strict duplicate-key parsing, five adversarial overlay mutations,
+  Ruff, formatting, and independent review pass. Chemistry, thresholds, output
+  schemas, firewall, publication, and authority are unchanged; official input
+  and all scientific operations remain zero.
+- Alternatives: Silently choose union, local, selected, or stress rows in the
+  implementation; mutate immutable v5; or duplicate the complete v5 document
+  solely to add two fields.
+- Reversal condition: Any parent-receipt, pointer-resolution, absent-member,
+  union-deduplication, or count-invariant defect blocks support arithmetic and
+  preserves v5 plus the defect as evidence.

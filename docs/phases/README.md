@@ -52,6 +52,9 @@ bond-stereo reconstruction, query-rank, and publication-receipt mechanics. It
 opens
 no campaign truth, selector/scorable state, target magnitude, test, TDI,
 prediction, or metric.
+The narrow additive v6 clarification binds the changed-fraction distribution to
+unique valid union pair rows and its count to `counts.union.valid_rows`; it
+changes no chemistry, threshold, schema, firewall, publication, or authority.
 The least-privilege projection implementation has independently passed 37
 focused synthetic tests; it has not opened official inputs and carries zero
 coverage or model authority. The pure pair extractor has also passed synthetic

@@ -1,0 +1,56 @@
+{
+    "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage_contract.v6",
+    "gate": "R4_TRANSFORMATION_COVERAGE_CONTRACT_V6_FROZEN",
+    "status": "contract_only_not_implemented",
+    "purpose": "Add one mechanically exact population invariant to immutable v5 before support arithmetic; no chemistry, threshold, schema, firewall, or authority changes.",
+    "parent": {
+        "path": "benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json",
+        "schema_version": "cypshift.openadmet_cyp_2026.transformation_coverage_contract.v5",
+        "gate": "R4_TRANSFORMATION_COVERAGE_CONTRACT_FROZEN",
+        "sha256": "63d12cb376760c65eabd3d94d3f3939b0591e4019e1332075df0a4c10a4b4954"
+    },
+    "resolution": {
+        "algorithm": "Strictly parse the exact parent after receipt verification, resolve the RFC 6901 parent_object_pointer, require the member to be absent, add exactly the declared member/value pair, and reject any other operation or mutation.",
+        "operations": [
+            {
+                "op": "add_absent_object_member",
+                "parent_object_pointer": "/outputs/schemas/transformation_coverage.json/section_schemas/valid_changed_heavy_atom_fraction_distribution",
+                "member": "population",
+                "value": "All valid union structural pair rows, with each transformation_pair_id counted exactly once regardless of local/episode overlap, endpoint eligibility, direction, or episode repetition."
+            },
+            {
+                "op": "add_absent_object_member",
+                "parent_object_pointer": "/outputs/schemas/transformation_coverage.json/section_schemas/valid_changed_heavy_atom_fraction_distribution",
+                "member": "count_invariant",
+                "value": "count equals counts.union.valid_rows exactly."
+            }
+        ],
+        "effective_contract": "The verified v5 parent plus the two ordered absent-member additions above; v5 remains immutable history and every unmentioned byte-level semantic is unchanged.",
+        "failure": "Missing or changed parent bytes, a missing/non-object pointer target, a preexisting member, an unknown operation, or any additional mutation is a contract-integrity failure before support arithmetic."
+    },
+    "unchanged": {
+        "extraction_spec_receipt": "59e3bd3390658bab854be52f88ef7de0164aae6e99ad48b0b0feb04c68669950",
+        "chemistry": true,
+        "populations_other_than_the_clarified_distribution": true,
+        "support_thresholds": true,
+        "output_files_columns_and_statuses": true,
+        "label_safe_firewall": true,
+        "runtime_and_publication_rules": true,
+        "authority": true
+    },
+    "authority": {
+        "contract_only": true,
+        "support_arithmetic": false,
+        "coverage_artifacts": false,
+        "official_input_access": false,
+        "oracle_contract_freeze": false,
+        "model_fits": false,
+        "predictions": false,
+        "metrics": false,
+        "official_st_rae": false,
+        "test_access": false,
+        "tdi": false,
+        "submissions": false,
+        "transduction": false
+    }
+}

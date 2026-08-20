@@ -228,7 +228,8 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The additive R4 v5 transformation-coverage contract is now frozen in
+The additive R4 v5 transformation-coverage contract and its narrow v6
+support-arithmetic clarification are now frozen in
 [`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json)
 at SHA-256 `63d12cb3...`; it preserves v1 (`d4c999e6...`), v2
 (`a13adee5...`), v3 (`f5e18626...`), and v4 (`cacd1f77...`) as immutable
@@ -247,6 +248,10 @@ v5 repair leaves that extraction science byte-identical while defining the
 zero-valid distribution, refusing runtime or dirty-checkout drift before input
 access, and separating lexicographic JSON key serialization from exact rational
 distribution arithmetic.
+V6 (`a0743c43...`) adds only two absent members to that exact parent: the
+changed-heavy-atom fraction distribution is over unique valid union pair rows,
+and its count equals `counts.union.valid_rows`. No chemistry, threshold, output,
+firewall, publication, or authority changed.
 The label-safe boundary is unchanged: campaign truth, selector identity, query
 availability, target magnitudes, blinded test chemistry, TDI, predictions, and
 metrics remain unopened and unauthorized. Independent scientific review passes.
