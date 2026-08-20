@@ -1619,3 +1619,30 @@
   exact zero and positive distributions, pre-input refusal, canonical bytes,
   support arithmetic, or authority boundary. Preserve the blocker and keep
   official coverage inputs closed.
+
+## D-056 — Accept the synthetic R4 projection consumer
+
+- Date: 2026-08-20
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_PROJECTION_CONSUMER_SYNTHETIC_ACCEPTED`
+- Decision: Accept the bounded v5 projection consumer and immutable typed
+  records as the sole input boundary for later synthetic coverage compilation.
+  Keep structural-union construction, chemistry extraction, support arithmetic,
+  production source authentication, publication, official input access, and all
+  models outside this milestone.
+- Evidence: The consumer and focused-test SHA-256 values are
+  `d60af6a251aa0f69cdee3f3f70a47b2107ec4f6d6c7d189ca641c3873f107472`
+  and `70f025c4ce3747cab35ac63e5ebf593df9bc9e687fd907c5317ed641affe9dda`.
+  It hashes all six files before parse, checks canonical bytes and typed
+  receipts, replays standardization and every direct/fold/public/mask join, and
+  rejects path, authority, type-alias, noncanonical, duplicate, containment,
+  and empty-population drift. Eleven focused and 48 combined tests, the full
+  suite with three expected skips, Ruff, mypy, build, and independent
+  adversarial review pass. Official inputs and scientific operations remain
+  zero.
+- Alternatives: Let the compiler reopen privileged sources; trust the
+  projector without revalidation; mix production receipts or coverage
+  arithmetic into the loader; or accept an internally consistent empty input.
+- Reversal condition: Any receipt-before-parse, standardization, identity,
+  component, fold, episode, mask, nonempty, determinism, or firewall defect
+  revokes only this consumer evidence and keeps official R4 inputs closed.

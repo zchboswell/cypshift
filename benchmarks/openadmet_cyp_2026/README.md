@@ -126,6 +126,14 @@ expected skips. This grants no coverage, support, model, metric, or official-
 input authority; production binding and the coverage compiler/publisher remain
 the next gate.
 
+The v5 projection consumer is synthetically accepted as a separate bounded
+slice. It hashes all six projected files before parse, replays exact manifests,
+receipts, standardization, direct/fold/public/mask joins, and emits immutable
+label-safe records. Eleven focused and 48 combined projection/consumer tests
+plus independent adversarial review pass. Production source identities and
+official cardinalities remain deferred; the next slice is structural-union and
+support arithmetic, not official execution.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

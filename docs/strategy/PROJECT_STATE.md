@@ -265,6 +265,16 @@ official input or extractor consumption, a production gate must bind R4 v5,
 the accepted R2B/R3A manifests and leaf receipts, and the implementation source
 receipts.
 
+The synthetic R4 projection consumer is now accepted as a separate bounded
+slice. It hashes all six projected files before parsing, revalidates canonical
+manifests/CSVs, receipts, zero authority, molecule standardization, the complete
+direct/fold/episode/mask joins, and returns immutable label-safe records.
+Adversarial review passed after requiring pre-parse hashing of the manifest and
+rejecting a self-consistent but empty six-file projection. Eleven focused and
+48 combined projection/consumer tests pass. Production receipt identities and
+official cardinalities remain intentionally deferred to the production runner;
+no extraction, coverage, model, metric, or publication authority is granted.
+
 The pure R4 v4 pair extractor is now synthetically accepted. It consumes two
 audited molecule records and implements deterministic ordinary single- and
 double-cut MMPs, virtual-H growth/contraction, exact stereo-only changes,
@@ -276,6 +286,10 @@ and extraction tests and the full 490-test suite pass, with three expected
 skips. This remains synthetic implementation evidence only: no official
 coverage population was opened and no support, model, prediction, or metric
 authority is granted.
+
+The next implementation slice constructs the structural union once, invokes
+the accepted pair extractor, and computes v5 coverage/support arithmetic before
+any production binding or official input access.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over

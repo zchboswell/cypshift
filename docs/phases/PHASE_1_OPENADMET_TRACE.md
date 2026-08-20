@@ -270,6 +270,15 @@ synthetic only; a production gate must still bind the v5 contract, accepted
 R2B/R3A manifests and leaf receipts, and exact implementation sources before
 official input access or extractor consumption.
 
+The synthetic projection consumer is also accepted as a bounded implementation
+slice. It hashes all six projected files before parsing and revalidates exact
+bytes, manifests, zero authority, molecule standardization, full direct/fold/
+episode/mask joins, symlink ancestry, and nonempty cardinality before returning
+immutable records. Eleven focused and 48 combined tests plus independent
+adversarial review pass. Production receipt identities and official
+cardinalities remain deferred to the production runner; this grants no
+extraction, support, model, metric, official-input, or publishing authority.
+
 The pure v4 pair extractor is synthetically accepted separately. It has no
 file, endpoint, fold, target, or model capability and deterministically emits
 ordinary single/double-cut, virtual-H, or exact stereo-only records with both
@@ -280,8 +289,9 @@ stereo incorrectly blocked graph-changing ordinary MMPs. Both now have exact
 regression witnesses. Sixty-nine focused contract/extractor tests and the full
 490-test suite pass with three expected skips. No official R4 input was opened.
 
-Exact next action: bind the accepted synthetic projector and extractor to the
-production receipt chain, then implement the coverage scorer and atomic
+Exact next action: build the structural union, extraction-once path, and exact
+coverage/support arithmetic over the accepted synthetic consumer; then bind the
+accepted projector/compiler to the production receipt chain and atomic
 publisher; pass synthetic firewall/support acceptance and
 independent review before one official coverage run. Only
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED` permits a later CYP3A4 oracle-anchor
