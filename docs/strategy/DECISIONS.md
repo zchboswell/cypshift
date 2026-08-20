@@ -1646,3 +1646,32 @@
 - Reversal condition: Any receipt-before-parse, standardization, identity,
   component, fold, episode, mask, nonempty, determinism, or firewall defect
   revokes only this consumer evidence and keeps official R4 inputs closed.
+
+## D-057 — Accept the synthetic R4 structural-geometry compiler
+
+- Date: 2026-08-20
+- Status: accepted implementation slice;
+  `R4_TRANSFORMATION_GEOMETRY_SYNTHETIC_ACCEPTED`
+- Decision: Accept the minimal structural-union, extraction-once, directional
+  episode, and canonical pair-byte compiler over the accepted projection
+  consumer and pure extractor. Keep endpoint support arithmetic, coverage
+  status, production authentication, publication, official inputs, and every
+  model outside this milestone.
+- Evidence: The compiler and combined focused-test SHA-256 values are
+  `559d4b88dd5657f166e05d3ba341fa0f5fb8021ba19fdbee62ec5469bdfda5c8`
+  and
+  `139b4812039a093431fde312dc3850d35325088b326b4468a6933b26404ec9af`.
+  It constructs same-component Morgan radius-2/4,096/chiral pairs at inclusive
+  similarity 0.60, unions every episode pair, extracts each unique pair once,
+  preserves exact anchor-to-query direction, and emits the exact 47-column
+  canonical pair CSV. Fifty-three focused tests, the full suite with three
+  expected skips, Ruff, strict mypy, build, and independent adversarial review
+  pass. Official inputs, endpoint support, model fits, predictions, metrics,
+  test, TDI, submissions, and transduction remain zero.
+- Alternatives: Extract local and episode populations separately; duplicate
+  repeated episode chemistry; let molecule order define direction; include
+  endpoint availability in structural rows; or combine support and publication
+  before this geometry was independently reviewable.
+- Reversal condition: Any component crossing, threshold, extraction-count,
+  canonical direction, invalid-sentinel, deterministic-byte, or firewall defect
+  revokes only this geometry evidence and keeps official R4 inputs closed.

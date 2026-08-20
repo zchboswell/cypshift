@@ -1,11 +1,11 @@
 # Project state
 
-Last updated: 2026-08-18
+Last updated: 2026-08-20
 
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`. The single
+TRACE is active at `R4_TRANSFORMATION_GEOMETRY_SYNTHETIC_ACCEPTED`. The single
 frozen official R3C global experiment passed its internal surrogate gate; no
 deployable model, official ST-RAE score, or submission is active.
 
@@ -287,8 +287,18 @@ skips. This remains synthetic implementation evidence only: no official
 coverage population was opened and no support, model, prediction, or metric
 authority is granted.
 
-The next implementation slice constructs the structural union once, invokes
-the accepted pair extractor, and computes v5 coverage/support arithmetic before
+The synthetic R4 structural-geometry compiler is now accepted. It constructs
+the union of same-component Morgan-radius-2/4,096/chiral pairs at inclusive
+similarity 0.60 and every public episode anchor-query pair, extracts each unique
+pair exactly once, preserves the exact anchor-to-query direction, and emits the
+frozen 47-column canonical pair bytes. Independent adversarial review verified
+component isolation, below-threshold episode inclusion, duplicate suppression,
+invalid-row sentinels, ordering, and zero label/fold/model access. This remains
+structural synthetic evidence only; no endpoint support, status gate, coverage
+artifact, official input, model, prediction, or metric authority is granted.
+
+The next implementation slice computes v5 endpoint and fold-safe support
+arithmetic and exact episode/coverage bytes over this accepted geometry before
 any production binding or official input access.
 
 The current scientific frontier is the original series-first hypothesis:
@@ -468,10 +478,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C, or tune from
-its positive outer evidence. Bind the accepted synthetic projection and pure
-extractor to the production receipt chain, then implement the coverage compiler
-and atomic publisher; pass synthetic firewall/support acceptance before one
-official coverage run. Only if the frozen result
+its positive outer evidence. Complete and independently audit v5 support
+arithmetic and exact episode/coverage bytes over the accepted synthetic
+geometry, then bind the accepted projection/compiler to the production receipt
+chain and atomic publisher; pass synthetic firewall/support acceptance before
+one official coverage run. Only if the frozen result
 is `R4_TRANSFORMATION_COVERAGE_SUPPORTED` may
 the next contract authorize the CYP3A4 oracle-anchor experiment. That oracle
 contract must retain the complete blueprint systems, controls, and ablations:

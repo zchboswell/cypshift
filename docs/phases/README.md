@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`. The
+Phase 1 TRACE is active at `R4_TRANSFORMATION_GEOMETRY_SYNTHETIC_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -58,8 +58,12 @@ coverage or model authority. The pure pair extractor has also passed synthetic
 acceptance and independent review after repairing E/Z reconstruction and
 graph-first stereo precedence. It implements ordinary single/double cuts,
 virtual-H changes, exact stereo-only changes, ambiguity, IDs, and invariance
-without I/O or label access. The next gate is the coverage compiler and
-publisher, followed by one independently audited official coverage run. A
+without I/O or label access. The first compiler slice also passes independent
+review: it builds the local-plus-episode union, extracts each unique pair once,
+preserves direction, and emits canonical pair bytes without endpoint or fold
+access. The remaining synthetic gate is support arithmetic plus exact episode/
+coverage bytes and publication, followed by one independently audited official
+coverage run. A
 separate CYP3A4 oracle-anchor contract may follow only after
 `R4_TRANSFORMATION_COVERAGE_SUPPORTED`; inferred anchors, submission, and TDI
 remain unauthorized until their own gates.

@@ -134,6 +134,14 @@ plus independent adversarial review pass. Production source identities and
 official cardinalities remain deferred; the next slice is structural-union and
 support arithmetic, not official execution.
 
+The synthetic structural-geometry compiler now also passes independent
+adversarial review. It forms the exact local-plus-episode union, invokes the
+accepted extractor once per unique structural pair, preserves canonical and
+episode direction, and emits the frozen 47-column pair CSV bytes. Fifty-three
+focused tests, Ruff, and strict mypy pass. This slice has no endpoint-support,
+status, production, official-input, model, prediction, metric, or publication
+authority; support arithmetic remains the next bounded block.
+
 The July 29 announcement and August 17 launch post are official prose receipts
 (URL, DOI, retrieval digest, CC BY 4.0 footer). They confirm two tracks, 750
 compounds, live-half/full-final leaderboard, external/pretrained use with

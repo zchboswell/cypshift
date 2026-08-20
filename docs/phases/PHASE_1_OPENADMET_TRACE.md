@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; synthetic transformation extraction accepted; gate
-`R4_TRANSFORMATION_EXTRACTION_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-18.
+Status: active; synthetic structural geometry accepted; gate
+`R4_TRANSFORMATION_GEOMETRY_SYNTHETIC_ACCEPTED`; acceptance date 2026-08-20.
 
 ## Context capsule
 
@@ -289,8 +289,14 @@ stereo incorrectly blocked graph-changing ordinary MMPs. Both now have exact
 regression witnesses. Sixty-nine focused contract/extractor tests and the full
 490-test suite pass with three expected skips. No official R4 input was opened.
 
-Exact next action: build the structural union, extraction-once path, and exact
-coverage/support arithmetic over the accepted synthetic consumer; then bind the
+The structural-union and extraction-once slice is now accepted independently.
+It includes every same-component pair at inclusive Morgan similarity 0.60 and
+every public episode pair, extracts each union identity once, retains exact
+anchor-to-query direction, and emits the frozen 47-column pair bytes. It has no
+direct-availability, fold, target, model, or metric capability.
+
+Exact next action: build exact coverage/support arithmetic and episode/coverage
+bytes over the accepted synthetic geometry; then bind the
 accepted projector/compiler to the production receipt chain and atomic
 publisher; pass synthetic firewall/support acceptance and
 independent review before one official coverage run. Only

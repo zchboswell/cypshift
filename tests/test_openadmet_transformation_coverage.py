@@ -1,11 +1,21 @@
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 import json
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
 
+import cypshift.openadmet_transformation_compiler as transformation_compiler
+from cypshift.chemistry import standardize_molecule
+from cypshift.openadmet_transformation_compiler import (
+    PAIR_COLUMNS,
+    CompiledTransformationPair,
+    compile_transformation_geometry,
+)
 from cypshift.openadmet_transformation_coverage import (
     OpenADMETTransformationCoverageError,
     load_transformation_projection,
@@ -19,8 +29,10 @@ from cypshift.openadmet_transformation_io import (
 from cypshift.openadmet_transformation_projection import (
     project_openadmet_transformation_inputs,
 )
+from cypshift.openadmet_transformation_types import TransformationPairResult
 from cypshift.openadmet_validation import FOLD_COLUMNS
 from cypshift.openadmet_validation_contract import MASK_COLUMNS, PUBLIC_EPISODE_COLUMNS
+from cypshift.schema import MoleculeInput, MoleculeRecord
 
 ENDPOINTS = ("CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4")
 
@@ -295,3 +307,84 @@ def test_projection_bundle_rejects_self_consistent_empty_projection(
     manifest_path.write_bytes(canonical_json_bytes(manifest))
     with pytest.raises(OpenADMETTransformationCoverageError, match="empty"):
         load_transformation_projection(projection)
+
+
+def test_geometry_unions_episode_pair_once_and_preserves_direction(
+    tmp_path: Path,
+) -> None:
+    bundle = load_transformation_projection(_projection(tmp_path))
+    geometry = compile_transformation_geometry(bundle)
+    assert len(geometry.pairs) == len(geometry.episodes) == 1
+    pair = geometry.pairs[0]
+    assert (pair.local_pair, pair.episode_pair) == (False, True)
+    episode = geometry.episodes[0]
+    assert episode.pair is pair
+    assert (
+        episode.direction.anchor_molecule_id,
+        episode.direction.analog_molecule_id,
+    ) == ("anchor", "query")
+    rows = list(
+        csv.DictReader(io.StringIO(geometry.transformation_pairs_csv.decode("utf-8")))
+    )
+    assert tuple(rows[0]) == PAIR_COLUMNS
+    assert rows[0]["local_pair"] == "false"
+    assert rows[0]["episode_pair"] == "true"
+    assert b"CYP3A4" not in geometry.transformation_pairs_csv
+
+
+def test_geometry_is_invariant_to_projection_row_order(tmp_path: Path) -> None:
+    first = compile_transformation_geometry(
+        load_transformation_projection(_projection(tmp_path / "first"))
+    )
+    second = compile_transformation_geometry(
+        load_transformation_projection(_projection(tmp_path / "second", reverse=True))
+    )
+    assert first == second
+    assert first.transformation_pairs_csv == second.transformation_pairs_csv
+
+
+def test_geometry_inclusive_boundary_is_local_and_extracted_once(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    bundle = load_transformation_projection(_projection(tmp_path))
+    real_extractor = transformation_compiler.extract_transformation_pair
+    calls: list[tuple[str, str]] = []
+
+    def boundary_extractor(
+        left: MoleculeRecord, right: MoleculeRecord
+    ) -> TransformationPairResult:
+        calls.append((left.molecule_id, right.molecule_id))
+        return replace(real_extractor(left, right), similarity=0.60)
+
+    monkeypatch.setattr(transformation_compiler, "_similarity", lambda _a, _b: 0.60)
+    monkeypatch.setattr(
+        transformation_compiler, "extract_transformation_pair", boundary_extractor
+    )
+    geometry = compile_transformation_geometry(bundle)
+    assert len(calls) == 1
+    assert geometry.pairs[0].local_pair is True
+    assert geometry.pairs[0].episode_pair is True
+
+
+def test_pair_csv_invalid_status_uses_frozen_empty_sentinels() -> None:
+    left = standardize_molecule(
+        MoleculeInput("left", "CCO.CN", "smiles", "synthetic", "fixture")
+    )
+    right = standardize_molecule(
+        MoleculeInput("right", "CCN.CN", "smiles", "synthetic", "fixture")
+    )
+    result = transformation_compiler.extract_transformation_pair(left, right)
+    row = transformation_compiler._pair_row(  # noqa: SLF001
+        CompiledTransformationPair(
+            result=result,
+            similarity_component_hash=_digest("component-a"),
+            local_pair=False,
+            episode_pair=True,
+        )
+    )
+    assert row["extraction_status"] == "STANDARDIZATION_HAZARD"
+    assert row["failure_code"] == "C2"
+    assert row["cut_count"] == ""
+    assert row["candidate_material"] == ""
+    assert row["changed_left_atom_indices"] == ""
+    assert row["left_virtual_h_eligible"] == ""
