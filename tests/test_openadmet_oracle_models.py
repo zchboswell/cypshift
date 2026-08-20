@@ -4,6 +4,7 @@ import inspect
 from dataclasses import replace
 from fractions import Fraction
 
+import numpy as np
 import pytest
 
 from cypshift.openadmet_oracle_models import (
@@ -103,6 +104,88 @@ def test_weighted_ridge_honors_explicit_pair_weights() -> None:
     # exercises Fraction-compatible frozen pair weights.
     assert fit.predict_row((1.0,)) > fit.predict_row((0.0,))
     assert fit.alpha == 1.0
+
+
+def _explicit_primal_ridge(
+    features: tuple[tuple[float, ...], ...],
+    targets: tuple[float, ...],
+    weights: tuple[float, ...],
+    alpha: float,
+) -> tuple[float, np.ndarray, RobustScaler]:
+    scaler = RobustScaler.fit(features)
+    scaled = np.asarray(tuple(scaler.transform_row(row) for row in features))
+    design = np.column_stack((np.ones(len(features)), scaled))
+    weight_array = np.asarray(weights)
+    normal = design.T @ (weight_array[:, None] * design)
+    normal[1:, 1:] += alpha * np.eye(scaled.shape[1])
+    right = design.T @ (weight_array * np.asarray(targets))
+    solution = np.linalg.solve(normal, right)
+    return float(solution[0]), solution[1:], scaler
+
+
+@pytest.mark.parametrize("weighted", (False, True))
+def test_dual_ridge_matches_independent_primal_for_random_high_dimensional_data(
+    weighted: bool,
+) -> None:
+    rng = np.random.default_rng(20260820)
+    features_array = rng.normal(size=(7, 13))
+    targets_array = rng.normal(size=7)
+    weights_array = (
+        rng.uniform(0.2, 2.0, size=7) if weighted else np.ones(7, dtype=float)
+    )
+    features = tuple(tuple(row) for row in features_array)
+    targets = tuple(float(value) for value in targets_array)
+    weights = tuple(float(value) for value in weights_array)
+    expected_intercept, expected_coefficients, expected_scaler = _explicit_primal_ridge(
+        features, targets, weights, alpha=1.7
+    )
+
+    fit = fit_weighted_ridge(features, targets, weights, alpha=1.7)
+    assert fit.scaler == expected_scaler
+    assert fit.intercept == pytest.approx(expected_intercept, rel=1e-10, abs=1e-10)
+    np.testing.assert_allclose(
+        fit.coefficients, expected_coefficients, rtol=1e-10, atol=1e-10
+    )
+    expected_scaled = np.asarray(
+        tuple(expected_scaler.transform_row(row) for row in features)
+    )
+    np.testing.assert_allclose(
+        fit.predict(features),
+        expected_intercept + expected_scaled @ expected_coefficients,
+        rtol=1e-10,
+        atol=1e-10,
+    )
+
+
+def test_dual_ridge_handles_singular_zero_iqr_features() -> None:
+    features = ((2.0, 4.0, 8.0, 16.0),) * 3
+    targets = (1.0, 4.0, 7.0)
+    weights = (1.0, 2.0, 3.0)
+    fit = fit_weighted_ridge(features, targets, weights, alpha=2.0)
+
+    assert fit.scaler.scales == (1.0, 1.0, 1.0, 1.0)
+    assert fit.intercept == pytest.approx(5.0)
+    assert fit.coefficients == pytest.approx((0.0, 0.0, 0.0, 0.0))
+    assert fit.predict(features) == pytest.approx((5.0, 5.0, 5.0))
+
+
+def test_dual_ridge_solves_observation_sized_system(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rng = np.random.default_rng(17)
+    features = tuple(tuple(row) for row in rng.normal(size=(3, 11)))
+    targets = tuple(float(value) for value in rng.normal(size=3))
+    calls: list[tuple[int, ...]] = []
+    original_solve = np.linalg.solve
+
+    def spy_solve(left: np.ndarray, right: np.ndarray) -> np.ndarray:
+        calls.append(left.shape)
+        return original_solve(left, right)
+
+    monkeypatch.setattr(np.linalg, "solve", spy_solve)
+    fit_weighted_ridge(features, targets, (1.0, 1.0, 1.0), alpha=1.0)
+
+    assert calls == [(3, 3)]
 
 
 def test_hierarchy_is_component_macro_recursive_and_most_specific() -> None:
