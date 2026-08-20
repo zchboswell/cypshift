@@ -16,10 +16,9 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
+from importlib import import_module
 from pathlib import Path
 from typing import Any, cast
-
-import numpy as np
 
 from cypshift.openadmet_oracle_projection import (
     PUBLIC_QUERY_COLUMNS,
@@ -639,6 +638,7 @@ def _validate_features(
     manifest: Mapping[str, Any],
     feature_rows: Sequence[Mapping[str, str]],
 ) -> dict[str, bytes]:
+    np = import_module("numpy")
     if (
         manifest.get("schema_version")
         != "cypshift.openadmet_cyp_2026.r3a_feature_manifest.v1"
@@ -704,7 +704,7 @@ def _validate_features(
         if stem == "maplight_rdkit_descriptors" and bool(np.isinf(array).any()):
             raise OpenADMETOracleSourceError(f"descriptor contains infinity: {name}")
         if stem == "maplight_rdkit_descriptors":
-            allowed: np.ndarray[Any, Any] = np.zeros(width, dtype=bool)
+            allowed: Any = np.zeros(width, dtype=bool)
             allowed[[39, 41, 43, 45]] = True
             if bool(np.isnan(array[:, ~allowed]).any()):
                 raise OpenADMETOracleSourceError("descriptor NaN mask differs")
