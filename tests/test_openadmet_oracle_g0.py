@@ -327,6 +327,12 @@ def test_actual_locked_catboost_replay_is_byte_stable(tmp_path: Path) -> None:
         "fit_rows": 101,
         "query_rows": 1,
     }
+    assert receipt["operation_accounting"] == {
+        **dict.fromkeys(g0.bound.ACCOUNTING_FIELDS, 0),
+        "direct_target_values_parsed": 101,
+        "anchor_labels_exposed_to_models": 1,
+        "maplight_model_fits": 1,
+    }
     assert (
         _sha(_json(receipt["resolved_catboost_parameters"]))
         == g0.bound.PARAMETER_SHA256

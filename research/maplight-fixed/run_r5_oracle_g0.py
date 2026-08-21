@@ -457,7 +457,6 @@ def run_g0(
     fragment = bound.csv_bytes(FRAGMENT_COLUMNS, fragment_rows)
     operation = dict(expected_accounting)
     operation["maplight_model_fits"] = 1
-    operation["predictions_frozen"] = len(fragment_rows)
     manifest = {
         "schema_version": "cypshift.openadmet_cyp_2026.r5c_g0_prediction_fragment.v1",
         "status": "R5_ORACLE_G0_EPISODE_COMPLETE",
