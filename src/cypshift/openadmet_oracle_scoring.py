@@ -636,10 +636,34 @@ def cell_contrasts(
             )
             if not subset:
                 raise OracleScoringError("primary cell is missing")
-            result = contrast(
-                subset, control_system_id, candidate_system_id, comparison_id="G0-T0"
+            controls = _metadata_map(
+                tuple(row for row in subset if row.system_id == control_system_id)
             )
-            cells.append(CellContrast(repeat, outer_fold, result.point_delta))
+            candidates = _metadata_map(
+                tuple(row for row in subset if row.system_id == candidate_system_id)
+            )
+            if not controls or not candidates or set(controls) != set(candidates):
+                raise OracleScoringError("comparison metadata is not aligned")
+            control_metric = _aggregate_metrics(
+                tuple(controls[key] for key in sorted(controls)),
+                validate_weights=False,
+            )
+            candidate_metric = _aggregate_metrics(
+                tuple(candidates[key] for key in sorted(candidates)),
+                validate_weights=False,
+            )
+            control_losses = dict(control_metric.component_losses)
+            candidate_losses = dict(candidate_metric.component_losses)
+            if set(control_losses) != set(candidate_losses):
+                raise OracleScoringError("comparison components differ")
+            point_delta = _mean(
+                (
+                    control_losses[item] - candidate_losses[item]
+                    for item in sorted(control_losses)
+                ),
+                "cell contrast",
+            )
+            cells.append(CellContrast(repeat, outer_fold, point_delta))
     return tuple(cells)
 
 

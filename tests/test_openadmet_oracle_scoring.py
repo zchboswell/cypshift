@@ -16,6 +16,7 @@ from cypshift.openadmet_oracle_scoring import (
     SealedTruth,
     absolute_loss,
     aggregate_metrics,
+    cell_contrasts,
     cell_metrics,
     contrast,
     score_predictions,
@@ -157,6 +158,38 @@ def test_aggregation_weights_are_contract_validated() -> None:
     rows = score_predictions(predictions, truths, system_id="G0")
     with pytest.raises(OracleScoringError, match="aggregation weights"):
         aggregate_metrics((replace(rows[0], query_weight=0.25), *rows[1:]))
+
+
+def test_cell_contrasts_preserve_full_hierarchy_weights_across_15_cells() -> None:
+    public = tuple(
+        _public(
+            f"episode-{repeat}-{outer}",
+            f"query-{repeat}-{outer}",
+            0,
+            f"component-{outer}",
+            repeat=repeat,
+            outer=outer,
+        )
+        for repeat in range(3)
+        for outer in range(5)
+    )
+    truths = tuple(_truth(row, 0.0) for row in public)
+    g0 = tuple(_prediction(row, 2.0, "G0") for row in public)
+    t0 = tuple(_prediction(row, 1.0, "T0") for row in public)
+    g0_rows = score_predictions(g0, truths, system_id="G0")
+    t0_rows = score_predictions(t0, truths, system_id="T0")
+
+    assert {row.component_weight for row in g0_rows} == {1.0 / 3.0}
+    cells = cell_contrasts((*g0_rows, *t0_rows))
+    assert tuple(
+        (row.repeat, row.outer_fold, row.point_delta) for row in cells
+    ) == tuple((repeat, outer, 1.0) for repeat in range(3) for outer in range(5))
+    with pytest.raises(OracleScoringError, match="aggregation weights"):
+        contrast(
+            (replace(g0_rows[0], component_weight=1.0), *g0_rows[1:], *t0_rows),
+            "G0",
+            "T0",
+        )
 
 
 def test_contrast_uses_identical_rows_and_local_only_control_rows() -> None:
