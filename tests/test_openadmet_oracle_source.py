@@ -348,6 +348,58 @@ def _fixture(root: Path) -> tuple[dict[str, Path], dict[str, str]]:
     return paths, {name: _sha(data[name]) for name in INPUT_FILES}
 
 
+def test_episode_context_is_emitted_once_for_multiple_queries() -> None:
+    episode_id = _sha(b"multi-query")
+    public = [
+        {
+            "episode_id": episode_id,
+            "episode_policy_id": "deterministic_random_anchor_stress",
+            "repeat": "0",
+            "outer_fold": "0",
+            "anchor_molecule_id": "anchor",
+            "query_molecule_id": query,
+            "query_rank": str(rank),
+            "_selector_cyp_truth": "CYP3A4",
+        }
+        for rank, query in enumerate(("query-1", "query-2"), 1)
+    ]
+    direct = {
+        molecule: {
+            "CYP3A4": {
+                "point": point,
+                "low": format(float(point) - 0.1, ".17g"),
+                "high": format(float(point) + 0.1, ".17g"),
+                "std": "0.1",
+                "value_state": "complete",
+            }
+        }
+        for molecule, point in (
+            ("anchor", "1"),
+            ("query-1", "1.2"),
+            ("query-2", "1.4"),
+        )
+    }
+    geometry = {(episode_id, rank): {"_pair": {"similarity": "0.7"}} for rank in (1, 2)}
+    oof = {
+        ("anchor", 0, 0, None): {
+            "prediction": "1.1",
+            "scope": "openadmet-direct-outer-v1",
+            "model_id": _sha(b"multi-query-model"),
+        }
+    }
+    anchors, global_rows, truths, cliffs = source_module._episode_rows(  # noqa: SLF001
+        public,
+        direct,
+        {},
+        geometry,
+        oof,
+        "a" * 64,
+        "b" * 64,
+    )
+    assert len(anchors) == len(global_rows) == 1
+    assert len(truths) == len(cliffs) == 2
+
+
 def test_source_compiler_emits_weighted_antisymmetric_private_bundle(
     tmp_path: Path,
 ) -> None:
