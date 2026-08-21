@@ -30,6 +30,7 @@ SUPPORT_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5c_oracle_prefit_support.v
 ACCOUNTING_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5c_oracle_dag_accounting.v1"
 SUPPORT_STATUS: Final = "R5_ORACLE_PREFLIGHT_SUPPORT_COMPLETE"
 ACCOUNTING_STATUS: Final = "R5_ORACLE_DAG_ACCOUNTING_COMPLETE"
+G0_FRAGMENT_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5c_g0_prediction_fragment.v1"
 SUPPORT_EVIDENCE_SCHEMA: Final = (
     "cypshift.openadmet_cyp_2026.r5c_oracle_prefit_support_evidence.v1"
 )
@@ -356,7 +357,7 @@ def _load_child_accounting(source: ChildManifestInput) -> dict[str, int]:
         os.close(root_fd)
     if sha256(data).hexdigest() != source.expected_manifest_sha256:
         raise OracleTerminalReceiptError("accounting child manifest receipt differs")
-    manifest = _canonical(data, "accounting child manifest")
+    manifest = _child_manifest(data)
     if manifest.get("contract_sha256") != RESOLVED_CONTRACT_SHA256:
         raise OracleTerminalReceiptError("accounting child contract differs")
     accounting = manifest.get("operation_accounting")
@@ -371,6 +372,22 @@ def _canonical(data: bytes, label: str) -> dict[str, Any]:
     except ValueError as exc:
         raise OracleTerminalReceiptError(str(exc)) from exc
     if data != _compact(value):
+        raise OracleTerminalReceiptError(f"{label} is not canonical")
+    return cast(dict[str, Any], value)
+
+
+def _child_manifest(data: bytes) -> dict[str, Any]:
+    label = "accounting child manifest"
+    try:
+        value = strict_json_object(data, label)
+    except ValueError as exc:
+        raise OracleTerminalReceiptError(str(exc)) from exc
+    expected = (
+        _pretty(value)
+        if value.get("schema_version") == G0_FRAGMENT_SCHEMA
+        else _compact(value)
+    )
+    if data != expected:
         raise OracleTerminalReceiptError(f"{label} is not canonical")
     return cast(dict[str, Any], value)
 
@@ -406,6 +423,12 @@ def _compact(value: Mapping[str, Any]) -> bytes:
             separators=(",", ":"),
         )
         + "\n"
+    ).encode()
+
+
+def _pretty(value: Mapping[str, Any]) -> bytes:
+    return (
+        json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     ).encode()
 
 

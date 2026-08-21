@@ -2,10 +2,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import subprocess
 from dataclasses import replace
 from pathlib import Path
 
 import pytest
+from test_openadmet_oracle_g0 import LOCKED_PYTHON
+from test_openadmet_oracle_g0 import _argv as locked_g0_argv
+from test_openadmet_oracle_g0 import _fixture as locked_g0_fixture
 
 from cypshift.openadmet_oracle_freezer_io import SYSTEMS
 from cypshift.openadmet_oracle_inner import SELECTION_COLUMNS
@@ -54,7 +59,9 @@ from cypshift.openadmet_oracle_terminal_receipts import (
     SUPPORT_EVIDENCE_SCHEMA,
     SUPPORT_EVIDENCE_STATUS,
     ChildManifestInput,
+    OracleTerminalReceiptError,
     SupportEvidenceInput,
+    load_child_manifest_accounting,
     publish_accounting_receipt,
     publish_support_receipt,
     receipt_source_bundle_sha256,
@@ -246,6 +253,59 @@ def _child_manifest(
     )
     publish_readonly_tree(root, {"manifest.json": data})
     return ChildManifestInput(label, root, _sha(data))
+
+
+@pytest.mark.skipif(
+    not LOCKED_PYTHON.is_file(), reason="locked research runtime unavailable"
+)
+def test_accounting_child_accepts_only_exact_locked_g0_json(tmp_path: Path) -> None:
+    locked_root = tmp_path / "locked"
+    locked_root.mkdir()
+    model, model_sha, episode, episode_sha = locked_g0_fixture(locked_root)
+    output = tmp_path / "g0"
+    completed = subprocess.run(
+        locked_g0_argv(model, model_sha, episode, episode_sha, output),
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=120,
+        env={"PATH": os.environ.get("PATH", "")},
+    )
+    assert completed.returncode == 0, completed.stderr
+    manifest_data = (output / "manifest.json").read_bytes()
+    child = ChildManifestInput("locked-g0", output, _sha(manifest_data))
+    accounting = load_child_manifest_accounting(child)
+    assert accounting["maplight_model_fits"] == 1
+
+    manifest = json.loads(manifest_data)
+    compact = _compact(manifest)
+    compact_root = tmp_path / "compact-g0"
+    publish_readonly_tree(compact_root, {"manifest.json": compact})
+    with pytest.raises(OracleTerminalReceiptError, match="not canonical"):
+        load_child_manifest_accounting(
+            ChildManifestInput("compact-g0", compact_root, _sha(compact))
+        )
+
+    non_g0 = {
+        "schema_version": "cypshift.test.non_g0.v1",
+        "contract_sha256": RESOLVED_CONTRACT_SHA256,
+        "operation_accounting": dict.fromkeys(ACCOUNTING_FIELDS, 0),
+    }
+    pretty = (json.dumps(non_g0, indent=2, sort_keys=True) + "\n").encode()
+    pretty_root = tmp_path / "pretty-non-g0"
+    publish_readonly_tree(pretty_root, {"manifest.json": pretty})
+    with pytest.raises(OracleTerminalReceiptError, match="not canonical"):
+        load_child_manifest_accounting(
+            ChildManifestInput("pretty-non-g0", pretty_root, _sha(pretty))
+        )
+
+    noncanonical = manifest_data + b"\n"
+    noncanonical_root = tmp_path / "noncanonical-g0"
+    publish_readonly_tree(noncanonical_root, {"manifest.json": noncanonical})
+    with pytest.raises(OracleTerminalReceiptError, match="not canonical"):
+        load_child_manifest_accounting(
+            ChildManifestInput("noncanonical-g0", noncanonical_root, _sha(noncanonical))
+        )
 
 
 def _cleanup_input(
