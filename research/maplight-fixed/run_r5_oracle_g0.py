@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import json
 import math
 import sys
 from collections.abc import Mapping, Sequence
@@ -25,6 +26,10 @@ _IO_SPEC.loader.exec_module(bound)
 G0Error = bound.G0Error
 CONTRACT_SHA256 = bound.CONTRACT_SHA256
 PARENT_CONTRACT_SHA256 = bound.PARENT_CONTRACT_SHA256
+RESOLVED_CONTRACT_SHA256 = (
+    "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50"
+)
+CONTRACT_ID = "R5-CYP3A4-ORACLE-V1"
 MODEL_ID = bound.MODEL_ID
 MAP_ARRAYS = bound.MAP_ARRAYS
 
@@ -56,7 +61,12 @@ PUBLIC_COLUMNS = (
     "query_rank",
 )
 POINT_COLUMNS = ("molecule_id", "component_id", "point", "sample_weight")
-ANCHOR_COLUMNS = ("episode_id", "anchor_molecule_id", "anchor_point")
+ANCHOR_COLUMNS = (
+    "episode_id",
+    "anchor_molecule_id",
+    "anchor_point_available",
+    "anchor_point",
+)
 FRAGMENT_COLUMNS = (
     "molecule_id",
     "endpoint",
@@ -221,6 +231,16 @@ def _identity(value: object) -> str:
     return hashlib.sha256(bound.json_bytes(value)).hexdigest()
 
 
+def _compact_identity(value: object) -> str:
+    data = json.dumps(
+        value,
+        ensure_ascii=False,
+        allow_nan=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
+
+
 def _validate_episode_policy(
     stage: object, queries: Sequence[Mapping[str, str]]
 ) -> None:
@@ -323,6 +343,7 @@ def run_g0(
 
     episode = cast(Mapping[str, Any], episode_manifest["episode"])
     episode_id = episode["episode_id"]
+    bound.require(bound.is_sha(episode_id), "episode identity differs")
     anchor_id = episode["anchor_molecule_id"]
     queries = [row for row in public if row["episode_id"] == episode_id]
     queries.sort(key=lambda row: _int(row["query_rank"], "query rank", 1, 10**9))
@@ -363,7 +384,7 @@ def run_g0(
         query_ids.append(query_id)
     bound.require(len(set(query_ids)) == len(query_ids), "duplicate episode query")
 
-    bound.require(len(anchors) == 1, "episode must expose exactly one anchor")
+    bound.require(len(anchors) == 1, "episode must expose exactly one anchor row")
     anchor = anchors[0]
     anchor_fold = fold_by_id.get(anchor_id)
     bound.require(
@@ -378,7 +399,14 @@ def run_g0(
         ),
         "anchor exposure differs",
     )
-    anchor_point = _finite(anchor["anchor_point"], "anchor point")
+    available_token = anchor["anchor_point_available"]
+    bound.require(available_token in {"true", "false"}, "anchor availability differs")
+    anchor_available = available_token == "true"
+    if anchor_available:
+        anchor_point = _finite(anchor["anchor_point"], "anchor point")
+    else:
+        bound.require(anchor["anchor_point"] == "", "unavailable anchor is nonempty")
+        anchor_point = None
     bound.require(anchor_id not in query_ids, "anchor appears in query superset")
 
     point_by_id: dict[str, float] = {}
@@ -400,8 +428,10 @@ def run_g0(
         )
         point_by_id[molecule_id] = _finite(row["point"], "training point")
     expected_accounting = dict.fromkeys(bound.ACCOUNTING_FIELDS, 0)
-    expected_accounting["direct_target_values_parsed"] = len(points) + 1
-    expected_accounting["anchor_labels_exposed_to_models"] = 1
+    expected_accounting["direct_target_values_parsed"] = len(points) + int(
+        anchor_available
+    )
+    expected_accounting["anchor_labels_exposed_to_models"] = int(anchor_available)
     bound.require(
         episode_manifest["operation_accounting"] == expected_accounting,
         "episode target accounting differs",
@@ -410,11 +440,12 @@ def run_g0(
     bound.require(bool(train_ids), "current-training population is empty")
     features, morgan = _feature_arrays(model_data, len(molecules))
     row_index = {molecule_id: index for index, molecule_id in enumerate(ids)}
-    fit_ids = [*train_ids, anchor_id]
+    fit_ids = [*train_ids, *([anchor_id] if anchor_available else [])]
     X = features[[row_index[molecule_id] for molecule_id in fit_ids]]
-    y = np.asarray(
-        [*(point_by_id[molecule_id] for molecule_id in train_ids), anchor_point]
-    )
+    fit_values = [point_by_id[molecule_id] for molecule_id in train_ids]
+    if anchor_point is not None:
+        fit_values.append(anchor_point)
+    y = np.asarray(fit_values)
     query_index = [row_index[molecule_id] for molecule_id in query_ids]
     prediction, resolved = _fit_predict(X, y, features[query_index])
     applicability = [
@@ -425,8 +456,21 @@ def run_g0(
         for molecule_id in query_ids
     ]
     scope_name = f"openadmet-oracle-{stage}-v1"
+    candidate_id = _compact_identity([CONTRACT_ID, "G0", None, None])
+    cell_id = _compact_identity(
+        [
+            CONTRACT_ID,
+            stage,
+            repeat,
+            current_outer,
+            -1 if inner is None else inner,
+            "G0",
+            candidate_id,
+            episode_id,
+        ]
+    )
     causal = {
-        "contract_sha256": CONTRACT_SHA256,
+        "contract_sha256": RESOLVED_CONTRACT_SHA256,
         "model_public_manifest_sha256": model_public_manifest_sha256,
         "episode_target_manifest_sha256": episode_target_manifest_sha256,
         "r3c_parameter_source": bound.R3C_PARAMETER_SOURCE,
@@ -460,8 +504,8 @@ def run_g0(
     manifest = {
         "schema_version": "cypshift.openadmet_cyp_2026.r5c_g0_prediction_fragment.v1",
         "status": "R5_ORACLE_G0_EPISODE_COMPLETE",
-        "contract_sha256": CONTRACT_SHA256,
-        "parent_contract_sha256": PARENT_CONTRACT_SHA256,
+        "contract_sha256": RESOLVED_CONTRACT_SHA256,
+        "parent_contract_sha256": CONTRACT_SHA256,
         "runner_source_sha256": source_file_receipts[
             Path(__file__).relative_to(bound.ROOT).as_posix()
         ],
@@ -480,13 +524,17 @@ def run_g0(
         "source_bundle_binding": model_manifest["source_bundle_binding"],
         "scope": dict(scope),
         "episode": dict(episode),
-        "system_id": MODEL_ID,
+        "system_id": "G0",
+        "source_system_id": MODEL_ID,
+        "candidate_id": candidate_id,
+        "cell_id": cell_id,
+        "public_query_receipt_sha256": episode["query_rows_sha256"],
         "runtime": locked_runtime,
         "r3c_parameter_source": bound.R3C_PARAMETER_SOURCE,
         "resolved_catboost_parameters": resolved,
         "counts": {
             "current_training_points": len(points),
-            "anchor_rows": 1,
+            "anchor_rows": int(anchor_available),
             "fit_rows": len(fit_ids),
             "query_rows": len(query_ids),
         },

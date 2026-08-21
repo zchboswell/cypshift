@@ -23,6 +23,8 @@ SCRIPT = ROOT / "research/maplight-fixed/run_r5_oracle_g0.py"
 LOCKED_PYTHON = ROOT / "research/maplight-fixed/.venv/bin/python"
 VIEW_BUILDER_SHA = "4" * 64
 SOURCE_CELL_SHA = "5" * 64
+EPISODE_ID = "a3f91930538b71b40278301053688770dbc84c1aebdd008b1993633b98c2bc40"
+PAIR_COMPONENT = "b1940f9846c03fff280f9518feea0c8e80e5ea0c645f4463d064b253f2c249ed"
 spec = importlib.util.spec_from_file_location("r5_g0", SCRIPT)
 assert spec is not None and spec.loader is not None
 g0 = importlib.util.module_from_spec(spec)
@@ -61,12 +63,22 @@ def _receipt(
 
 
 def _binding() -> dict[str, object]:
-    parents = {"direct_observations.csv": "1" * 64}
+    names = (
+        "direct_observations.csv",
+        "campaign_episodes_public.csv",
+        "feature_rows.csv",
+        "transformation_pairs.csv",
+        "episode_transformations.csv",
+    )
+    parents = {
+        name: hashlib.sha256(f"parent-{name}".encode()).hexdigest() for name in names
+    }
     inputs = {
-        "direct_observations.csv": {
-            "sha256": parents["direct_observations.csv"],
-            "bytes": 456,
+        name: {
+            "sha256": parents[name],
+            "bytes": 456 + index,
         }
+        for index, name in enumerate(names)
     }
     return {
         "manifest_receipt": {"sha256": "3" * 64, "bytes": 123},
@@ -90,7 +102,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
     model.mkdir()
     episode_root.mkdir()
     train_ids = [f"train{i:03d}" for i in range(100)]
-    ids = sorted(["anchor", "query", *train_ids])
+    ids = sorted(["anchor", "query", "query2", *train_ids])
     molecules = [
         {
             "molecule_id": molecule_id,
@@ -99,8 +111,8 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
             "standardized_smiles": "CC",
             "standardized_structure_hash": _sha(f"std-{molecule_id}".encode()),
             "similarity_component_hash": (
-                "heldout"
-                if molecule_id in {"anchor", "query"}
+                PAIR_COMPONENT
+                if molecule_id in {"anchor", "query", "query2"}
                 else f"train-{molecule_id}"
             ),
         }
@@ -108,7 +120,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
     ]
     folds: list[dict[str, object]] = []
     for molecule in molecules:
-        assigned = 4 if molecule["molecule_id"] in {"anchor", "query"} else 0
+        assigned = 1 if molecule["molecule_id"] in {"anchor", "query", "query2"} else 0
         for repeat in range(3):
             for current_outer in range(5):
                 folds.append(
@@ -126,15 +138,25 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
                 )
     public = [
         {
-            "episode_id": "episode-1",
+            "episode_id": EPISODE_ID,
             "episode_policy_id": "selected_anchor",
             "repeat": 0,
-            "outer_fold": 4,
-            "outer_group_id": "heldout",
+            "outer_fold": 1,
+            "outer_group_id": PAIR_COMPONENT,
             "anchor_molecule_id": "anchor",
             "query_molecule_id": "query",
             "query_rank": 1,
-        }
+        },
+        {
+            "episode_id": EPISODE_ID,
+            "episode_policy_id": "selected_anchor",
+            "repeat": 0,
+            "outer_fold": 1,
+            "outer_group_id": PAIR_COMPONENT,
+            "anchor_molecule_id": "anchor",
+            "query_molecule_id": "query2",
+            "query_rank": 2,
+        },
     ]
     rng = np.random.default_rng(20260820)
     row_count = len(ids)
@@ -207,8 +229,9 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
     ]
     anchors = [
         {
-            "episode_id": "episode-1",
+            "episode_id": EPISODE_ID,
             "anchor_molecule_id": "anchor",
+            "anchor_point_available": "true",
             "anchor_point": "2.75",
         }
     ]
@@ -234,14 +257,14 @@ def _fixture(tmp_path: Path) -> tuple[Path, str, Path, str]:
         "scope": {
             "stage": "outer",
             "repeat": 0,
-            "current_outer_validation_fold": 4,
+            "current_outer_validation_fold": 1,
             "inner_fold": "",
-            "episode_outer_fold": 4,
+            "episode_outer_fold": 1,
         },
         "episode": {
-            "episode_id": "episode-1",
+            "episode_id": EPISODE_ID,
             "anchor_molecule_id": "anchor",
-            "query_rows": 1,
+            "query_rows": 2,
             "query_rows_sha256": _sha(_csv(g0.PUBLIC_COLUMNS, public)),
         },
         "r3c_parameter_source": g0.bound.R3C_PARAMETER_SOURCE,
@@ -325,7 +348,7 @@ def test_actual_locked_catboost_replay_is_byte_stable(tmp_path: Path) -> None:
         "current_training_points": 100,
         "anchor_rows": 1,
         "fit_rows": 101,
-        "query_rows": 1,
+        "query_rows": 2,
     }
     assert receipt["operation_accounting"] == {
         **dict.fromkeys(g0.bound.ACCOUNTING_FIELDS, 0),
@@ -381,6 +404,94 @@ def test_fit_boundary_and_episode_row_exposure_are_exact(
     assert set(y[:-1]) == {1.0 + index / 50.0 for index in range(100)}
 
 
+def test_unavailable_anchor_is_not_parsed_or_fitted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    model, model_sha, episode, _episode_sha = _fixture(tmp_path)
+    episode.chmod(0o755)
+    anchor_path = episode / "episode_anchor_context.csv"
+    anchor_path.chmod(0o644)
+    anchor_data = _csv(
+        g0.ANCHOR_COLUMNS,
+        [
+            {
+                "episode_id": EPISODE_ID,
+                "anchor_molecule_id": "anchor",
+                "anchor_point_available": "false",
+                "anchor_point": "",
+            }
+        ],
+    )
+    anchor_path.write_bytes(anchor_data)
+    manifest_path = episode / "manifest.json"
+    manifest_path.chmod(0o644)
+    manifest = json.loads(manifest_path.read_bytes())
+    manifest["output_receipts"]["episode_anchor_context.csv"] = _receipt(
+        "episode_anchor_context.csv", anchor_data, g0.ANCHOR_COLUMNS
+    )
+    manifest["operation_accounting"]["direct_target_values_parsed"] = 100
+    manifest["operation_accounting"]["anchor_labels_exposed_to_models"] = 0
+    manifest_data = _json(manifest)
+    manifest_path.write_bytes(manifest_data)
+    _readonly(episode)
+    observed: dict[str, Any] = {}
+
+    def fake_fit(
+        X: Any, y: Any, query: Any
+    ) -> tuple[np.ndarray[Any, Any], dict[str, Any]]:
+        observed["rows"] = len(y)
+        return np.zeros(len(query)), dict(g0.bound.ACCEPTED_PARAMETERS)
+
+    monkeypatch.setattr(g0.bound, "runtime", lambda: {})
+    monkeypatch.setattr(g0, "_fit_predict", fake_fit)
+    output = g0.run_g0(
+        model_public_root=model,
+        model_public_manifest_sha256=model_sha,
+        episode_target_root=episode,
+        episode_target_manifest_sha256=_sha(manifest_data),
+        expected_source_bundle_sha256=g0._source_bundle_sha(),
+        expected_episode_view_builder_source_sha256=VIEW_BUILDER_SHA,
+        expected_source_cell_target_manifest_sha256=SOURCE_CELL_SHA,
+        output_root=tmp_path / "out-unavailable",
+    )
+    result = json.loads((output / "manifest.json").read_bytes())
+    assert observed["rows"] == 100
+    assert result["counts"]["anchor_rows"] == 0
+    assert result["operation_accounting"]["direct_target_values_parsed"] == 100
+    assert result["operation_accounting"]["anchor_labels_exposed_to_models"] == 0
+
+
+def test_nondigest_episode_identity_fails_before_fit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    model, model_sha, episode, _episode_sha = _fixture(tmp_path)
+    episode.chmod(0o755)
+    manifest_path = episode / "manifest.json"
+    manifest_path.chmod(0o644)
+    manifest = json.loads(manifest_path.read_bytes())
+    manifest["episode"]["episode_id"] = "episode-1"
+    manifest_bytes = _json(manifest)
+    manifest_path.write_bytes(manifest_bytes)
+    _readonly(episode)
+
+    def forbidden_fit(*_args: Any, **_kwargs: Any) -> Any:
+        raise AssertionError("fit must not run")
+
+    monkeypatch.setattr(g0, "_fit_predict", forbidden_fit)
+    monkeypatch.setattr(g0.bound, "runtime", lambda: {})
+    with pytest.raises(g0.G0Error, match="episode identity differs"):
+        g0.run_g0(
+            model_public_root=model,
+            model_public_manifest_sha256=model_sha,
+            episode_target_root=episode,
+            episode_target_manifest_sha256=_sha(manifest_bytes),
+            expected_source_bundle_sha256=g0._source_bundle_sha(),
+            expected_episode_view_builder_source_sha256=VIEW_BUILDER_SHA,
+            expected_source_cell_target_manifest_sha256=SOURCE_CELL_SHA,
+            output_root=tmp_path / "nondigest-output",
+        )
+
+
 def test_extra_file_symlink_and_no_overwrite_fail_closed(tmp_path: Path) -> None:
     model, model_sha, episode, episode_sha = _fixture(tmp_path)
     model.chmod(0o755)
@@ -421,13 +532,15 @@ def test_second_anchor_context_cannot_reach_fit(
         g0.ANCHOR_COLUMNS,
         [
             {
-                "episode_id": "episode-1",
+                "episode_id": EPISODE_ID,
                 "anchor_molecule_id": "anchor",
+                "anchor_point_available": "true",
                 "anchor_point": "2.75",
             },
             {
                 "episode_id": "sibling-episode",
                 "anchor_molecule_id": "query",
+                "anchor_point_available": "true",
                 "anchor_point": "9",
             },
         ],
@@ -470,14 +583,14 @@ def test_feature_nan_and_binary_firewalls(tmp_path: Path) -> None:
     descriptor[0, 0] = np.nan
     loaded["maplight_rdkit_descriptors.npy"] = _npy(descriptor)
     with pytest.raises(g0.G0Error, match="descriptor NaN mask differs"):
-        g0._feature_arrays(loaded, 102)
+        g0._feature_arrays(loaded, 103)
     descriptor[0, 0] = 0.0
     loaded["maplight_rdkit_descriptors.npy"] = _npy(descriptor)
-    morgan = np.zeros((102, 4096), dtype=np.uint8)
+    morgan = np.zeros((103, 4096), dtype=np.uint8)
     morgan[0, 0] = 2
     loaded["morgan_binary.npy"] = _npy(morgan)
     with pytest.raises(g0.G0Error, match="Morgan is not binary"):
-        g0._feature_arrays(loaded, 102)
+        g0._feature_arrays(loaded, 103)
 
 
 def test_manifest_digest_is_checked_before_episode_target_parse(

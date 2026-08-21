@@ -16,6 +16,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from fractions import Fraction
 from hashlib import sha256
+from types import MappingProxyType
 from typing import Any, Final, Literal
 
 from cypshift.chemistry import audit_molecules
@@ -106,8 +107,14 @@ class PairCellResult:
     fragment: bytes
     rows: tuple[Mapping[str, str], ...]
     accounting: Mapping[str, int]
+    system_id: str
+    alpha: float | None
+    lambda_: float | None
     candidate_id: str
+    cell_id: str
     fragment_id: str
+    selection_token_sha256: str | None = None
+    upstream_candidate_receipt_sha256: str | None = None
     model: TraceModel | None = None
 
 
@@ -123,6 +130,19 @@ class _EpisodeQuery:
     anchor_point: float | None
     global_anchor: float | None
     inner_fold: int | None
+
+
+@dataclass(frozen=True, slots=True)
+class _PreparedPairCell:
+    """Immutable target/chemistry material shared by one outer T0 process."""
+
+    examples: tuple[PairExample, ...]
+    points: Mapping[str, ControlMolecule]
+    records: Mapping[str, MoleculeRecord]
+    bits: Mapping[str, tuple[int, ...]]
+    measured_contexts: Mapping[str, float | None]
+    global_contexts: Mapping[str, float]
+    queries: tuple[_EpisodeQuery, ...]
 
 
 def candidate_id(
@@ -244,6 +264,8 @@ def fragment_id(
 
 def build_pair_examples(
     capability: OracleCellCapability,
+    *,
+    _bits: Mapping[str, tuple[int, ...]] | None = None,
 ) -> tuple[PairExample, ...]:
     """Rebuild directed examples from verified pair rows and target deltas."""
 
@@ -254,7 +276,7 @@ def build_pair_examples(
     model = capability.model_public
     rows = capability.target.training_pairs
     molecule_by_id = {row["molecule_id"]: row for row in model.molecules}
-    bits = _morgan_bits(model)
+    bits = _morgan_bits(model) if _bits is None else _bits
     pairs = model.pair_index
     examples: list[PairExample] = []
     for row in rows:
@@ -314,6 +336,7 @@ def run_pair_cell(
     upstream_candidate_receipt_sha256: str | None = None,
     control_cache: Mapping[tuple[str, str, int], tuple[LocalControlAnchor, ...]]
     | None = None,
+    _prepared: _PreparedPairCell | None = None,
     _shared_t0_capability: bool = False,
 ) -> PairCellResult:
     """Fit one system in one fresh cell and return its immutable CSV bytes.
@@ -374,16 +397,40 @@ def run_pair_cell(
     ):
         raise OraclePairCellError("candidate grid differs")
     examples = (
-        build_pair_examples(capability)
+        _prepared.examples
+        if _prepared is not None
+        else build_pair_examples(capability)
         if system_id in {"C2", "C3", "T0", "F2", "A0", "A1", "A2"}
         else ()
     )
-    points = _training_points(capability)
+    points = (
+        _prepared.points
+        if _prepared is not None
+        else _training_points(capability)
+        if system_id in {"C1", "C2", "T0", "F0", "F1", "F2", "A0", "A1", "A2"}
+        else {}
+    )
     point_values = {key: value.point for key, value in points.items()}
-    measured_contexts = _measured_contexts(capability)
-    global_contexts = _global_contexts(capability)
-    queries = _episode_queries(
-        capability, g0_predictions, measured_contexts, global_contexts
+    measured_contexts = (
+        _prepared.measured_contexts
+        if _prepared is not None
+        else _measured_contexts(capability)
+        if system_id != "C3"
+        else {}
+    )
+    global_contexts = (
+        _prepared.global_contexts
+        if _prepared is not None
+        else _global_contexts(capability)
+        if system_id == "C3"
+        else {}
+    )
+    queries = (
+        _prepared.queries
+        if _prepared is not None
+        else _episode_queries(
+            capability, g0_predictions, measured_contexts, global_contexts
+        )
     )
     if not queries:
         raise OraclePairCellError("cell has no public query rows")
@@ -458,16 +505,20 @@ def run_pair_cell(
         upstream_candidate_receipt_sha256=upstream_candidate_receipt_sha256,
     )
     return PairCellResult(
-        fragment,
-        tuple(rows),
-        _accounting(
+        fragment=fragment,
+        rows=tuple(rows),
+        accounting=_accounting(
             system_id,
             len(examples),
             len(points),
             measured_contexts,
         ),
-        candidate,
-        fragment_id(
+        system_id=system_id,
+        alpha=alpha,
+        lambda_=lambda_,
+        candidate_id=candidate,
+        cell_id=scoped_cell,
+        fragment_id=fragment_id(
             stage,
             repeat,
             outer,
@@ -479,7 +530,9 @@ def run_pair_cell(
             selection_token_sha256=selection_token_sha256,
             upstream_candidate_receipt_sha256=upstream_candidate_receipt_sha256,
         ),
-        model,
+        selection_token_sha256=selection_token_sha256,
+        upstream_candidate_receipt_sha256=upstream_candidate_receipt_sha256,
+        model=model,
     )
 
 
@@ -504,6 +557,7 @@ def run_shared_outer_t0(
         raise OraclePairCellError("shared T0 process requires outer scope")
     if not _is_digest(selection_token_sha256):
         raise OraclePairCellError("selection token receipt differs")
+    prepared = _prepare_pair_cell(capability, g0_predictions)
     t0 = run_pair_cell(
         capability,
         system_id="T0",
@@ -511,11 +565,12 @@ def run_shared_outer_t0(
         lambda_=lambda_,
         g0_predictions=g0_predictions,
         extractor=extractor,
+        _prepared=prepared,
     )
     if t0.model is None:
         raise OraclePairCellError("shared T0 model was not retained")
     upstream_receipt = sha256(t0.fragment).hexdigest()
-    control_cache = _build_control_cache(capability, g0_predictions, extractor)
+    control_cache = _build_control_cache(prepared, extractor)
     f0 = run_pair_cell(
         capability,
         system_id="F0",
@@ -527,6 +582,7 @@ def run_shared_outer_t0(
         selection_token_sha256=selection_token_sha256,
         upstream_candidate_receipt_sha256=upstream_receipt,
         control_cache=control_cache,
+        _prepared=prepared,
         _shared_t0_capability=True,
     )
     f1 = run_pair_cell(
@@ -540,6 +596,7 @@ def run_shared_outer_t0(
         selection_token_sha256=selection_token_sha256,
         upstream_candidate_receipt_sha256=upstream_receipt,
         control_cache=control_cache,
+        _prepared=prepared,
         _shared_t0_capability=True,
     )
     return t0, f0, f1
@@ -611,6 +668,8 @@ def _episode_queries(
     g0: Mapping[tuple[str, str, int], float],
     measured: Mapping[str, float | None],
     global_context: Mapping[str, float],
+    *,
+    _bits: Mapping[str, tuple[int, ...]] | None = None,
 ) -> tuple[_EpisodeQuery, ...]:
     model = capability.model_public
     target = capability.target
@@ -623,7 +682,7 @@ def _episode_queries(
         )
     }
     pair_rows = model.pair_index
-    bits = _morgan_bits(model)
+    bits = _morgan_bits(model) if _bits is None else _bits
     _stage, _repeat, _outer, inner = _scope(capability)
     output: list[_EpisodeQuery] = []
     for row in model.public_queries:
@@ -668,12 +727,19 @@ def _episode_queries(
     return tuple(output)
 
 
-def _training_points(capability: OracleCellCapability) -> dict[str, ControlMolecule]:
+def _training_points(
+    capability: OracleCellCapability,
+    *,
+    _bits: Mapping[str, tuple[int, ...]] | None = None,
+    _records_by_id: Mapping[str, MoleculeRecord] | None = None,
+) -> dict[str, ControlMolecule]:
     if not isinstance(capability.target, OracleCellTargetCapability):
         return {}
-    bits = _morgan_bits(capability.model_public)
+    bits = _morgan_bits(capability.model_public) if _bits is None else _bits
     molecules = {row["molecule_id"]: row for row in capability.model_public.molecules}
-    records = _records(capability.model_public)
+    records = (
+        _records(capability.model_public) if _records_by_id is None else _records_by_id
+    )
     output: dict[str, ControlMolecule] = {}
     for row in capability.target.training_points:
         value = _finite(row["point"], "training point")
@@ -722,35 +788,51 @@ def _control_query(
     )
 
 
-def _build_control_cache(
+def _prepare_pair_cell(
     capability: OracleCellCapability,
     g0: Mapping[tuple[str, str, int], float],
+) -> _PreparedPairCell:
+    bits = MappingProxyType(_morgan_bits(capability.model_public))
+    records = MappingProxyType(_records(capability.model_public))
+    points = MappingProxyType(
+        _training_points(capability, _bits=bits, _records_by_id=records)
+    )
+    measured = MappingProxyType(_measured_contexts(capability))
+    global_context = MappingProxyType(_global_contexts(capability))
+    queries = _episode_queries(capability, g0, measured, global_context, _bits=bits)
+    return _PreparedPairCell(
+        build_pair_examples(capability, _bits=bits),
+        points,
+        records,
+        bits,
+        measured,
+        global_context,
+        queries,
+    )
+
+
+def _build_control_cache(
+    prepared: _PreparedPairCell,
     extractor: Any,
-) -> dict[tuple[str, str, int], tuple[LocalControlAnchor, ...]]:
+) -> Mapping[tuple[str, str, int], tuple[LocalControlAnchor, ...]]:
     """Compute F0/F1 control geometry once for one shared outer process."""
 
-    points = _training_points(capability)
-    measured = _measured_contexts(capability)
-    global_context = _global_contexts(capability)
-    queries = _episode_queries(capability, g0, measured, global_context)
-    records = _records(capability.model_public)
-    bits = _morgan_bits(capability.model_public)
-    training = tuple(points.values())
+    training = tuple(prepared.points.values())
     cache: dict[tuple[str, str, int], tuple[LocalControlAnchor, ...]] = {}
-    for item in queries:
+    for item in prepared.queries:
         row = item.row
-        molecule = records.get(row["query_molecule_id"])
+        molecule = prepared.records.get(row["query_molecule_id"])
         if molecule is None:
             raise OraclePairCellError("control query molecule is missing")
         query = ControlQuery(
             row["episode_id"],
             molecule,
             row["outer_group_id"],
-            bits[molecule.molecule_id],
+            prepared.bits[molecule.molecule_id],
         )
         key = (row["episode_id"], row["query_molecule_id"], int(row["query_rank"]))
         cache[key] = valid_on_demand_anchors(query, training, extractor=extractor)
-    return cache
+    return MappingProxyType(cache)
 
 
 def _measured_contexts(capability: OracleCellCapability) -> dict[str, float | None]:

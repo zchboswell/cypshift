@@ -622,7 +622,7 @@ def _validate_episode_manifest(
     )
     values = accounting(manifest.get("operation_accounting"), "episode accounting")
     require(
-        values["anchor_labels_exposed_to_models"] == 1
+        values["anchor_labels_exposed_to_models"] in {0, 1}
         and all(values[name] == 0 for name in ACCOUNTING_FIELDS[2:]),
         "episode pre-fit accounting differs",
     )

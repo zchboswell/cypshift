@@ -2,18 +2,21 @@ from __future__ import annotations
 
 import hashlib
 import json
+from dataclasses import replace
 from pathlib import Path
 from typing import Any, cast
 
 import pytest
 from test_openadmet_oracle_projection import _fixture
 
+import cypshift.openadmet_oracle_pair_cell as pair_cell
 from cypshift.openadmet_oracle_cell_io import (
     OracleC3TargetCapability,
     OracleCellCapability,
     OracleCellTargetCapability,
     load_oracle_cell_capability,
 )
+from cypshift.openadmet_oracle_models import permute_category_contexts
 from cypshift.openadmet_oracle_pair_cell import (
     FRAGMENT_COLUMNS,
     OraclePairCellError,
@@ -207,8 +210,19 @@ def test_c3_requires_c3_target_and_f2_requires_selection_token(tmp_path: Path) -
         )
 
 
-def test_shared_outer_t0_owns_target_and_fit_accounting_once(tmp_path: Path) -> None:
+def test_shared_outer_t0_owns_target_and_fit_accounting_once(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     capability, g0 = _t0_capability(tmp_path)
+    calls = 0
+    original = pair_cell._training_points
+
+    def training_spy(*args: Any, **kwargs: Any) -> Any:
+        nonlocal calls
+        calls += 1
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(pair_cell, "_training_points", training_spy)
     t0, f0, f1 = run_shared_outer_t0(
         capability,
         alpha=1.0,
@@ -216,6 +230,7 @@ def test_shared_outer_t0_owns_target_and_fit_accounting_once(tmp_path: Path) -> 
         selection_token_sha256="a" * 64,
         g0_predictions=g0,
     )
+    assert calls == 1
     assert t0.rows and f0.rows and f1.rows
     assert t0.candidate_id != f0.candidate_id != f1.candidate_id
     assert t0.fragment_id != f0.fragment_id != f1.fragment_id
@@ -226,16 +241,96 @@ def test_shared_outer_t0_owns_target_and_fit_accounting_once(tmp_path: Path) -> 
         assert control.accounting["anchor_labels_exposed_to_models"] == 0
         assert control.accounting["ridge_model_fits"] == 0
         assert control.accounting["hierarchy_fits"] == 0
-    assert {
-        (row["episode_id"], row["query_molecule_id"], row["query_rank"])
-        for row in t0.rows
-    } == {
-        (row["episode_id"], row["query_molecule_id"], row["query_rank"])
-        for row in f0.rows
-    } == {
-        (row["episode_id"], row["query_molecule_id"], row["query_rank"])
-        for row in f1.rows
-    }
+    assert (
+        {
+            (row["episode_id"], row["query_molecule_id"], row["query_rank"])
+            for row in t0.rows
+        }
+        == {
+            (row["episode_id"], row["query_molecule_id"], row["query_rank"])
+            for row in f0.rows
+        }
+        == {
+            (row["episode_id"], row["query_molecule_id"], row["query_rank"])
+            for row in f1.rows
+        }
+    )
+
+
+def test_f2_runs_supported_multi_pair_cell_with_t0_token(tmp_path: Path) -> None:
+    capability, g0 = _t0_capability(tmp_path)
+    assert isinstance(capability.target, OracleCellTargetCapability)
+    pair_rows = list(capability.model_public.transformation_pairs)
+    training_rows = list(capability.target.training_pairs)
+    base_id = training_rows[0]["pair_id"]
+    base_pair = dict(capability.model_public.pair_index[base_id])
+    base_training = [
+        dict(row)
+        for row in training_rows
+        if row["pair_id"] == base_pair["transformation_pair_id"]
+    ]
+    for clone_index in (1, 2):
+        cloned = dict(base_pair)
+        cloned["transformation_pair_id"] = hashlib.sha256(
+            f"f2-pair-{clone_index}".encode()
+        ).hexdigest()
+        for direction in ("a_to_b", "b_to_a"):
+            cloned[f"{direction}_direction_id"] = hashlib.sha256(
+                f"f2-{direction}-{clone_index}".encode()
+            ).hexdigest()
+            for category in (
+                "transformation_class_id",
+                "exact_transformation_id",
+                "environment_level_1_id",
+                "environment_level_2_id",
+            ):
+                cloned[f"{direction}_{category}"] = hashlib.sha256(
+                    f"f2-{direction}-{category}-{clone_index}".encode()
+                ).hexdigest()
+        pair_rows.append(cloned)
+        for source in base_training:
+            row = dict(source)
+            row["pair_id"] = cloned["transformation_pair_id"]
+            row["direction_id"] = (
+                cloned["a_to_b_direction_id"]
+                if source["direction_id"] == base_pair["a_to_b_direction_id"]
+                else cloned["b_to_a_direction_id"]
+            )
+            training_rows.append(row)
+    pair_index = {row["transformation_pair_id"]: row for row in pair_rows}
+    model_public = replace(
+        capability.model_public,
+        transformation_pairs=tuple(pair_rows),
+        pair_index=pair_index,
+    )
+    target = replace(capability.target, training_pairs=tuple(training_rows))
+    f2_capability = replace(
+        capability, system_id="F2", model_public=model_public, target=target
+    )
+    examples = pair_cell.build_pair_examples(f2_capability)
+    assert len({row.pair_id for row in examples}) == 3
+    shuffled = permute_category_contexts(
+        examples,
+        seed=pair_cell.scoped_seed(pair_cell.BASE_SEED, "F2", 0, 1, None, "fit"),
+    )
+    originals = {(row.pair_id, row.direction_role): row for row in examples}
+    assert any(
+        row.features.class_id
+        != originals[(row.pair_id, row.direction_role)].features.class_id
+        for row in shuffled
+    )
+    result = run_pair_cell(
+        f2_capability,
+        system_id="F2",
+        alpha=1.0,
+        lambda_=2.0,
+        selection_token_sha256="a" * 64,
+        g0_predictions=g0,
+    )
+    assert result.rows
+    assert result.system_id == "F2"
+    assert result.accounting["ridge_model_fits"] == 1
+    assert result.accounting["hierarchy_fits"] == 1
 
 
 def test_g0_loader_and_atomic_pair_publication(tmp_path: Path) -> None:

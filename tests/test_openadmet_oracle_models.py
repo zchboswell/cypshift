@@ -311,6 +311,11 @@ def test_f2_permutation_preserves_pair_rows_and_is_deterministic() -> None:
     assert tuple(row.target for row in shuffled) == (1.0, -1.0, 2.0, -2.0)
     assert shuffled == permute_category_contexts(examples, seed=11)
     originals = {(row.pair_id, row.direction_role): row for row in examples}
+    assert any(
+        row.features.class_id
+        != originals[(row.pair_id, row.direction_role)].features.class_id
+        for row in shuffled
+    )
     for row in shuffled:
         original = originals[(row.pair_id, row.direction_role)]
         assert row.features.signed_morgan == original.features.signed_morgan
@@ -320,6 +325,74 @@ def test_f2_permutation_preserves_pair_rows_and_is_deterministic() -> None:
             == original.features.changed_heavy_atom_fraction
         )
         assert row.direction_id == original.direction_id
+
+
+def test_f2_gate_sized_permutation_fits_200_pairs_across_50_families() -> None:
+    examples: list[PairExample] = []
+    points: dict[str, float] = {}
+    for index in range(200):
+        left = f"a{index:03d}"
+        right = f"b{index:03d}"
+        family = f"family-{index % 50:02d}"
+        component = f"component-{index % 50:02d}"
+        delta = 0.25 + index / 1000.0
+        forward = _example(
+            f"pair-{index:03d}",
+            f"forward-{index:03d}",
+            left,
+            right,
+            delta,
+            component=component,
+            class_id=family,
+        )
+        reverse_family = f"reverse-{family}"
+        reverse = _example(
+            f"pair-{index:03d}",
+            f"reverse-{index:03d}",
+            right,
+            left,
+            -delta,
+            component=component,
+            class_id=reverse_family,
+        )
+        examples.extend(
+            (
+                replace(
+                    forward,
+                    features=_features(
+                        family,
+                        f"exact-{family}",
+                        f"env1-{family}",
+                        f"env2-{family}",
+                    ),
+                ),
+                replace(
+                    reverse,
+                    features=_features(
+                        reverse_family,
+                        f"exact-{reverse_family}",
+                        f"env1-{reverse_family}",
+                        f"env2-{reverse_family}",
+                    ),
+                ),
+            )
+        )
+        points[left] = 4.0 + index / 100.0
+        points[right] = points[left] + delta
+    seed = scoped_seed(20260820, "F2", 0, 1, None, "fit")
+    shuffled = permute_category_contexts(examples, seed=seed)
+    by_identity = {(row.pair_id, row.direction_role): row for row in examples}
+    assert len(shuffled) == 400
+    assert len({row.pair_id for row in shuffled}) == 200
+    assert len({row.component_id for row in shuffled}) == 50
+    assert any(
+        row.features.class_id
+        != by_identity[(row.pair_id, row.direction_role)].features.class_id
+        for row in shuffled
+    )
+    model = fit_f2(examples, points, alpha=1.0, lambda_=2.0, seed=seed)
+    assert model.system_id == "F2"
+    assert model.ridge is not None and model.hierarchy is not None
 
 
 def test_pair_antisymmetry_diagnostic_reports_reversal_and_missing_rows() -> None:
