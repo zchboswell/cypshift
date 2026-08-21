@@ -2089,3 +2089,45 @@
   cell, fragment, token, G0, accounting, stage, family, C3-potency, control,
   no-overwrite, or deterministic-replay drift revokes D-070 and blocks sealed
   scoring or official execution.
+
+## D-071 — Accept sealed four-fold TRACE inner selection
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the sealed-only v3 eligibility migration, authenticated
+  four-fold inner scorer, and 90 physically isolated score-free token
+  capabilities. Authorize final prediction freezing, outer sealed scoring,
+  terminal publication, and deterministic synthetic-runner implementation
+  only. Do not open official oracle targets or claim TRACE uplift.
+- Evidence: Commit `8453cb9f...` authenticates 960 immutable candidate
+  fragments and 60 inner sealed roots, produces exactly 240 aggregate candidate
+  rows, and selects one token for each of six learned systems in every one of
+  15 outer contexts. The private I/O, inner I/O, sealed migration, and inner
+  scorer SHA-256 values are `34b6f7605f641c56a77d6d9ddee73ade2394fdf1942156a36cf47ea624b02491`,
+  `d8ecfca7fd61037d14523b1e98e8f57d0a3fad710db992e1b1521f864d39632c`,
+  `64ecc651824422182ba88ee248c255505dbef1a9a2b8c7cdebeab57ac4d44766`,
+  and `3779cd29b714e6bbab384a69cc5ab8519a65ea5da5f559c2832d468cbdca9ee3`.
+  The repaired pair-engine and pair-I/O hashes are `5d101d04...` and
+  `a699228a...`; they supersede D-070's result-affecting source receipts after a
+  real nested run found that fragments serialized public episode fold metadata
+  instead of authenticated current-cell scope. The new D-070 runner bundle is
+  `7a39b71e5c78992c6a16224da1a94cb0ff298d1ba14e1ffaddcdb05b22510c0f`;
+  the current scorer bundle is
+  `714a888eda98814630cb08c133b26f9041968b03d364b992dd40fb80d6599a9c`.
+  Real authenticated C2, C3, T0, A0, A1, and A2 inner paths pass; all 33
+  bound-source mutations and fake source receipts fail before private input;
+  exact 14-field accounting rejects plus/minus-one poisons; token ancestry
+  contains no score evidence. Ninety focused tests and the full suite with 735
+  passes and three expected skips pass, as do Ruff, formatting, strict typing,
+  diff checks, and independent review.
+- Alternatives: Expose loss-bearing selection evidence to model processes;
+  place all tokens beneath the score root; trust self-declared source or
+  accounting receipts; parse truth once per hyperparameter candidate; retain
+  the incorrect nested-fold serialization; or proceed directly to official
+  fitting.
+- Reversal condition: Any sealed eligibility, truth-open accounting, source or
+  runtime closure, candidate accounting, four-fold join, tie-break, selected-
+  only population, token field, score-isolation, nested-scope, filesystem,
+  no-overwrite, or deterministic-byte drift revokes D-071 and blocks final
+  freezing, scoring, or official execution.

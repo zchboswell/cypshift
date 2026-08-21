@@ -104,9 +104,11 @@ capability splitter now pass end-to-end replay and independent review, emitting
 226 disjoint roots while keeping C3 physically isolated from measured anchor
 potency. All pair-system models, ablations, falsification controls, and locked-
 G0 fallback cells now emit independently authenticated prediction fragments.
-Sealed inner selection, final freezing/scoring, terminal publication, and full
-runner acceptance remain next; no official target, fit, prediction, metric, or
-TRACE score is active.
+Sealed four-fold selection now authenticates 960 candidate fragments and 60
+truth capabilities, emits 240 candidate summaries, and publishes 90 isolated
+score-free token capabilities. Final freezing/scoring, terminal publication,
+and full runner acceptance remain next; no official target, fit, prediction,
+metric, or TRACE score is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.
