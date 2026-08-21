@@ -3,7 +3,9 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import platform
 import subprocess
+import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -67,6 +69,13 @@ from cypshift.openadmet_oracle_terminal_receipts import (
     receipt_source_bundle_sha256,
 )
 from cypshift.openadmet_transformation_io import canonical_csv_bytes
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5C root runtime",
+)
 
 
 def _compact(value: object) -> bytes:

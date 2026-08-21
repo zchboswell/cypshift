@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import platform
+import sys
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -77,6 +79,13 @@ from cypshift.openadmet_oracle_terminal_receipts import (
 )
 from cypshift.openadmet_oracle_validation import CLIFF_COLUMNS, TRUTH_COLUMNS
 from cypshift.openadmet_transformation_io import canonical_csv_bytes
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5C root runtime",
+)
 
 
 def _source_binding() -> dict[str, Any]:

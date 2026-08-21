@@ -4,6 +4,8 @@ import csv
 import hashlib
 import io
 import json
+import platform
+import sys
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -64,6 +66,13 @@ from cypshift.openadmet_oracle_sealed import (
     OracleSealedCapabilityError,
     load_v3_sealed_scorer,
     migrate_v3_sealed_scorer,
+)
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5C root runtime",
 )
 
 

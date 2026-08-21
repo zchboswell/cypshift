@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 import stat
 import subprocess
+import sys
 from hashlib import sha256
 from pathlib import Path
 
@@ -45,6 +47,13 @@ from cypshift.openadmet_oracle_validation import (
     csv_rows,
 )
 from cypshift.openadmet_oracle_worker import VERBS
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5C root runtime",
+)
 
 TEST_COMMIT_OID = "1" * 40
 ROOT = Path(__file__).resolve().parents[1]

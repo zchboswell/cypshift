@@ -6,6 +6,7 @@ import importlib.util
 import io
 import json
 import os
+import platform
 import subprocess
 import sys
 from dataclasses import replace
@@ -36,6 +37,13 @@ from cypshift.openadmet_oracle_projection import project_openadmet_oracle_inputs
 from cypshift.openadmet_transformation_io import (
     canonical_csv_bytes,
     canonical_json_bytes,
+)
+
+pytestmark = pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5C root runtime",
 )
 
 ROOT = Path(__file__).parents[1]
