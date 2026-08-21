@@ -2131,3 +2131,35 @@
   only population, token field, score-isolation, nested-scope, filesystem,
   no-overwrite, or deterministic-byte drift revokes D-071 and blocks final
   freezing, scoring, or official execution.
+
+## D-072 — Accept the authenticated TRACE outer prediction freeze
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the truth-free final outer prediction freezer for all 12
+  frozen systems and 15 outer contexts. Authorize outer sealed scoring,
+  status-specific terminal publication, and deterministic synthetic-runner
+  implementation only. Do not open official oracle targets or claim TRACE
+  uplift.
+- Evidence: Signed commit `15ae153...` authenticates 90 score-free tokens, 165
+  pair fragments, 30 locked G0 fragments, and 15 sealed eligibility roots,
+  producing 12 canonical system files with 360 unique synthetic predictions and
+  30 merged eligibility rows. Only the freezer owns
+  `predictions_frozen=360`; every child remains zero, and no truth or cliff file
+  is opened. Freezer assembly, locked-G0 validation, general I/O, and closed
+  publication SHA-256 values are `773d4f49...`, `50b4ce21...`, `c46200eb...`,
+  and `116a5e57...`. The exact 14-file package is independently revalidated
+  before no-replace promotion. Arbitrary, forged-manifest, extra-file, and
+  missing-file publication attacks create no destination. Sixteen focused
+  tests and the full suite with 751 passes and three expected skips pass, as do
+  Ruff, formatting, strict typing, diff checks, deterministic two-root replay,
+  and independent review.
+- Alternatives: Let the freezer open truth; trust caller-assembled bytes;
+  silently deduplicate rows; mix selected and stress populations; accept
+  metadata or fallback drift; count frozen predictions in child cells; or send
+  model fragments directly to the scorer without one immutable freeze.
+- Reversal condition: Any system vocabulary, context, token, fragment, G0,
+  source, runtime, accounting, fixed-superset, metadata, fallback, eligibility,
+  row-key, finite-value, exact-file-set, publication, or deterministic-byte
+  drift revokes D-072 and blocks outer scoring or official execution.

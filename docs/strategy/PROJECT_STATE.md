@@ -578,9 +578,9 @@ Do not add another global representation or ensemble, rerun R3C/R4, or tune
 from their positive evidence. The R5 least-privilege source/capability
 firewall, pure model/statistics kernels, exact cell loader, controls, locked G0
 subprocess, practical row-space ridge, execution-mechanics overlay, fresh pair-
-system prediction fragments, and sealed four-fold inner selection are accepted.
-Implement the final freezer, outer scorer, terminal, and deterministic synthetic
-end-to-end runner next.
+system prediction fragments, sealed four-fold inner selection, and the final
+truth-free outer prediction freezer are accepted. Implement the outer scorer,
+terminal, and deterministic synthetic end-to-end runner next.
 The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
