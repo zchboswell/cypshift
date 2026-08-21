@@ -2054,3 +2054,38 @@
   runtime/parameter drift, control-causality defect, numerical-equivalence
   failure, execution-overlay contradiction, or non-atomic publication revokes
   D-069 and blocks pair-cell or official execution.
+
+## D-070 — Accept authenticated R5C pair-system prediction fragments
+
+- Date: 2026-08-20
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept fresh pair-system execution and immutable prediction
+  fragments for every frozen learned model, ablation, wrong/shuffled-anchor
+  control, shuffled-grammar control, and locked MapLight fallback. Authorize
+  sealed inner selection, freezer, terminal, and deterministic synthetic-runner
+  implementation only. Do not open official oracle targets or claim TRACE
+  uplift.
+- Evidence: The accepted pair runner, pair engine, and pair I/O SHA-256 values
+  are `01496d7015efd02541b0eff89faf89c9960b55c4953ed66d2dc962906453d88c`,
+  `6c31224d3e83ed24d01bf2668dfcb49af981d981ae57ba667dd4ca52507bfc8b`,
+  and `d206f5d7af40aa21455173510728812993b82876722db5a6f6c8f083e3fd7e4e`.
+  Fifty-nine focused tests and eleven direct publication attacks pass; all 27
+  transitive scientific-source mutations change the bound source receipt. A
+  real locked CatBoost G0 fragment passes strict authentication into pair
+  publication, shared T0/F0/F1 parses targets once and fits T0 once, F2 performs
+  a nonidentity multi-pair shuffle and clears a programmatic 200-pair/50-family
+  gate, and C3 remains physically isolated from measured potency. The full
+  suite passes 728 tests with three expected skips; Ruff, formatting, strict
+  typing, diff checks, and independent read-only review pass. Signed forward-
+  repair commit `54b05087...` supersedes the rejected pre-acceptance bytes in
+  `59f90ed1...`; the latter was pushed before its assigned no-push review
+  boundary and remains preserved rather than rewritten.
+- Alternatives: Trust caller-assembled capability records; let score-free
+  tokens or G0 bindings self-authenticate; fit F0/F1 independently; leave
+  scientific helper modules outside source causality; accept all-zero operation
+  accounting; or proceed directly to official fitting.
+- Reversal condition: Any raw-root receipt, source bundle, runtime, candidate,
+  cell, fragment, token, G0, accounting, stage, family, C3-potency, control,
+  no-overwrite, or deterministic-replay drift revokes D-070 and blocks sealed
+  scoring or official execution.

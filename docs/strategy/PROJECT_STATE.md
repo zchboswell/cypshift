@@ -577,10 +577,10 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
 from their positive evidence. The R5 least-privilege source/capability
 firewall, pure model/statistics kernels, exact cell loader, controls, locked G0
-subprocess, practical row-space ridge, and execution-mechanics overlay are
-accepted. Implement fresh pair-system cells and immutable prediction fragments,
-then inner selection, the final freezer, terminal, and deterministic synthetic
-end-to-end runner next. The contract
+subprocess, practical row-space ridge, execution-mechanics overlay, and fresh
+pair-system prediction fragments are accepted. Implement inner selection, the
+final freezer, terminal, and deterministic synthetic end-to-end runner next.
+The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
 shuffled/wrong-anchor, shuffled-grammar, class-only, hierarchy-only, and
