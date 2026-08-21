@@ -806,7 +806,7 @@ def _canonical_object(
     data: bytes, label: str, *, compact: bool = True
 ) -> dict[str, Any]:
     try:
-        value = cast(dict[str, Any], strict_json_object(data, label))
+        value = strict_json_object(data, label)
     except ValueError as exc:
         raise OracleOuterFreezerIOError(str(exc)) from exc
     expected = _compact_json(value) if compact else _pretty_json(value)

@@ -8,7 +8,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
-from typing import Any, Final, cast
+from typing import Any, Final
 
 from cypshift.openadmet_oracle_inner_io import EXPECTED_RUNTIME
 from cypshift.openadmet_oracle_pair_cell_io import ACCOUNTING_FIELDS
@@ -373,7 +373,7 @@ def _canonical(data: bytes, label: str) -> dict[str, Any]:
         raise OracleTerminalReceiptError(str(exc)) from exc
     if data != _compact(value):
         raise OracleTerminalReceiptError(f"{label} is not canonical")
-    return cast(dict[str, Any], value)
+    return value
 
 
 def _child_manifest(data: bytes) -> dict[str, Any]:
@@ -389,7 +389,7 @@ def _child_manifest(data: bytes) -> dict[str, Any]:
     )
     if data != expected:
         raise OracleTerminalReceiptError(f"{label} is not canonical")
-    return cast(dict[str, Any], value)
+    return value
 
 
 def _accounting(value: Mapping[str, int]) -> dict[str, int]:

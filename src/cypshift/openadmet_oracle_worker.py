@@ -12,7 +12,7 @@ import sys
 from collections.abc import Mapping, Sequence
 from hashlib import sha256
 from pathlib import Path
-from typing import Any, Final, cast
+from typing import Any, Final, Literal, cast
 
 from cypshift.openadmet_oracle_cell_io import load_oracle_cell_capability
 from cypshift.openadmet_oracle_cell_validation import OracleCellTargetCapability
@@ -801,12 +801,15 @@ def _path_mapping(value: Any, label: str) -> dict[str, Path]:
     return {name: _path(item, label) for name, item in _mapping(value, label).items()}
 
 
-def _scope(value: Any) -> tuple[str, int, int, int | None]:
+def _scope(
+    value: Any,
+) -> tuple[Literal["inner", "outer"], int, int, int | None]:
     row = _mapping(value, "scope")
     _keys(row, ("stage", "repeat", "outer_fold", "inner_fold"))
-    stage = _string(row["stage"], "stage")
-    if stage not in {"inner", "outer"}:
+    stage_value = _string(row["stage"], "stage")
+    if stage_value not in {"inner", "outer"}:
         raise OracleWorkerError("scope stage differs")
+    stage = cast(Literal["inner", "outer"], stage_value)
     inner = row["inner_fold"]
     return (
         stage,

@@ -89,7 +89,7 @@ def _validate_payloads(payloads: Mapping[str, bytes]) -> None:
 
 def _canonical_manifest(data: bytes) -> dict[str, Any]:
     try:
-        manifest = cast(dict[str, Any], strict_json_object(data, "freeze manifest"))
+        manifest = strict_json_object(data, "freeze manifest")
     except ValueError as exc:
         raise OracleOuterFreezerIOError(str(exc)) from exc
     if data != _compact_json(manifest):

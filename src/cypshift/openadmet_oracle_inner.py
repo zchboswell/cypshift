@@ -916,7 +916,7 @@ def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
         raise OracleInnerSelectionError(str(exc)) from exc
     if _compact_json_bytes(value) != data:
         raise OracleInnerSelectionError(f"{label} is not canonical")
-    return cast(dict[str, Any], value)
+    return value
 
 
 def _compact_json_bytes(value: Mapping[str, Any]) -> bytes:

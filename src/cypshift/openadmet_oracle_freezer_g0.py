@@ -405,7 +405,7 @@ def _csv_rows(data: bytes, columns: Sequence[str], label: str) -> list[dict[str,
 
 def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
     try:
-        value = cast(dict[str, Any], strict_json_object(data, label))
+        value = strict_json_object(data, label)
     except ValueError as exc:
         raise OracleOuterG0Error(str(exc)) from exc
     if data != _pretty_json(value):

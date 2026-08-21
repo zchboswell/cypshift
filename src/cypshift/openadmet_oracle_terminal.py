@@ -739,7 +739,7 @@ def _authority(status: str) -> dict[str, bool]:
         "submission": False,
         "transduction": False,
     }
-    return cast(dict[str, Any], result)
+    return result
 
 
 def _validate_source(expected: str) -> tuple[str, Mapping[str, str]]:
@@ -790,7 +790,7 @@ def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
         raise OracleTerminalError(str(exc)) from exc
     if data != _compact_json(result):
         raise OracleTerminalError(f"{label} is not canonical")
-    return cast(dict[str, Any], result)
+    return result
 
 
 def _compact_json(value: Mapping[str, Any]) -> bytes:

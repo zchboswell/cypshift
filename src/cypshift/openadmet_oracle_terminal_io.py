@@ -794,7 +794,7 @@ def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
         raise OracleTerminalIOError(str(exc)) from exc
     if data != _compact_json(value):
         raise OracleTerminalIOError(f"{label} is not canonical")
-    return cast(dict[str, Any], value)
+    return value
 
 
 def _compact_json(value: Mapping[str, Any]) -> bytes:
