@@ -7,10 +7,12 @@ from hashlib import sha256
 from pathlib import Path
 
 import pytest
+from test_openadmet_oracle_projection import _fixture as _projection_fixture
 from test_openadmet_oracle_source import _fixture
 
 from cypshift.openadmet_oracle_pair_cell_io import ACCOUNTING_FIELDS
 from cypshift.openadmet_oracle_private_io import publish_readonly_tree
+from cypshift.openadmet_oracle_projection import project_openadmet_oracle_inputs
 from cypshift.openadmet_oracle_runner import (
     OracleProcessFailure,
     SyntheticRunInput,
@@ -28,6 +30,7 @@ from cypshift.openadmet_oracle_runner_commands import (
     outer_pair_tasks,
     pair_command,
 )
+from cypshift.openadmet_oracle_sealed import SEALED_FILES
 from cypshift.openadmet_oracle_terminal_io import (
     TERMINAL_SOURCE_FILES,
     failure_source_bundle_sha256,
@@ -91,6 +94,46 @@ def test_terminal_source_closure_binds_direct_runner_stages() -> None:
         "src/cypshift/openadmet_oracle_worker.py",
     }
     assert required.issubset(TERMINAL_SOURCE_FILES)
+
+
+def test_real_worker_migrate_returns_exact_sealed_root(tmp_path: Path) -> None:
+    source, receipts = _projection_fixture(tmp_path / "fixture")
+    projection = project_openadmet_oracle_inputs(
+        source, tmp_path / "projection", expected_receipts=receipts
+    )
+    for path in source.iterdir():
+        path.chmod(0o444)
+    source.chmod(0o555)
+    v2 = projection.sealed_scorer_root / "inner/repeat-0/outer-0/inner-0"
+    output = tmp_path / "private/sealed-v3/inner/repeat-0/outer-0/inner-0"
+    output.parent.mkdir(parents=True)
+    meta = tmp_path / "control"
+    meta.mkdir()
+    coordinator = _Coordinator(tmp_path / "private", meta)
+    result = coordinator.worker(
+        "migrate",
+        {
+            "v2_root": str(v2),
+            "source_root": str(source),
+            "output_root": str(output),
+            "v2_manifest_sha256": sha256(
+                (v2 / "manifest.json").read_bytes()
+            ).hexdigest(),
+            "source_manifest_sha256": receipts["manifest.json"],
+            "scope": {
+                "stage": "inner",
+                "repeat": 0,
+                "outer_fold": 0,
+                "inner_fold": 0,
+            },
+        },
+    )
+    assert result["root"] == str(output)
+    assert set(path.name for path in output.iterdir()) == set(SEALED_FILES)
+    assert (
+        result["manifest_sha256"]
+        == sha256((output / "manifest.json").read_bytes()).hexdigest()
+    )
 
 
 def test_argv_capabilities_are_stage_minimal(tmp_path: Path) -> None:

@@ -291,7 +291,7 @@ def _migrate(payload: Mapping[str, Any]) -> Mapping[str, Any]:
         ),
     )
     scope = _scope(payload["scope"])
-    manifest = migrate_v3_sealed_scorer(
+    sealed_root = migrate_v3_sealed_scorer(
         _path(payload["v2_root"], "v2 root"),
         _path(payload["source_root"], "source root"),
         _path(payload["output_root"], "output root"),
@@ -303,10 +303,10 @@ def _migrate(payload: Mapping[str, Any]) -> Mapping[str, Any]:
         ),
         expected_scope=scope,
     )
-    manifest_data = read_stable_file(manifest)
+    manifest_data = read_stable_file(sealed_root / "manifest.json")
     manifest_record = strict_json_object(manifest_data, "sealed manifest")
     return {
-        "root": str(manifest.parent),
+        "root": str(sealed_root),
         "manifest_sha256": sha256(manifest_data).hexdigest(),
         "operation_accounting": _accounting_vector(
             manifest_record["operation_accounting"]
