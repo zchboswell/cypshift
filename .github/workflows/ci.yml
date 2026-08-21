@@ -41,6 +41,10 @@ jobs:
       - name: Sync locked environment
         run: uv sync --locked --all-groups
 
+      - name: Sync locked MapLight research runtime
+        if: matrix.python-version == '3.12.3'
+        run: uv sync --locked --project research/maplight-fixed
+
       - name: Check formatting and types
         run: |
           uv run --locked ruff check .

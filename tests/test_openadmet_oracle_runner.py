@@ -524,6 +524,7 @@ def test_entry_bootstrap_publishes_failed_on_invalid_config_shape(
 
 def test_entry_checkout_ignores_hostile_git_environment(tmp_path: Path) -> None:
     config = _entry_config(tmp_path)
+    config["commit_oid"] = "0" * 40
     hostile = tmp_path / "hostile-bin"
     hostile.mkdir()
     marker = tmp_path / "fake-git-ran"
