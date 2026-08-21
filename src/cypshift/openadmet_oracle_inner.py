@@ -147,6 +147,7 @@ def publish_inner_selection(
     merged_payloads: dict[str, bytes] = {}
     candidate_manifest_receipts: dict[str, str] = {}
     sealed_manifest_receipts: dict[str, str] = {}
+    g0_manifest_receipts: dict[str, str] = {}
     truth_open_count = 0
     evaluation_count = 0
     for repeat in range(3):
@@ -185,6 +186,37 @@ def publish_inner_selection(
                         candidate_manifest_receipts[label] = (
                             loaded_fragment.source.expected_manifest_sha256
                         )
+                        bindings = loaded_fragment.manifest.get("g0_bindings")
+                        if not isinstance(bindings, list):
+                            raise OracleInnerSelectionError(
+                                "candidate G0 binding ancestry differs"
+                            )
+                        for binding in bindings:
+                            if not isinstance(binding, Mapping):
+                                raise OracleInnerSelectionError(
+                                    "candidate G0 binding ancestry differs"
+                                )
+                            episode_id = binding.get("episode_id")
+                            receipt = binding.get("g0_manifest_sha256")
+                            if not isinstance(episode_id, str) or not isinstance(
+                                receipt, str
+                            ):
+                                raise OracleInnerSelectionError(
+                                    "candidate G0 binding ancestry differs"
+                                )
+                            g0_label = (
+                                _scope_label(
+                                    repeat, outer, loaded_fragment.source.inner_fold
+                                )
+                                + f"/episode-{episode_id}"
+                            )
+                            g0_prior = g0_manifest_receipts.setdefault(
+                                g0_label, receipt
+                            )
+                            if g0_prior != receipt:
+                                raise OracleInnerSelectionError(
+                                    "candidate G0 receipt differs by candidate"
+                                )
                     merged = _merged_fragment(loaded)
                     merged_receipts[(system, repeat, outer, alpha, lambda_value)] = (
                         sha256(merged).hexdigest()
@@ -340,6 +372,7 @@ def publish_inner_selection(
         },
         "input_receipts": {
             "candidate_manifests": dict(sorted(candidate_manifest_receipts.items())),
+            "g0_fragments": dict(sorted(g0_manifest_receipts.items())),
             "sealed_manifests": dict(sorted(sealed_manifest_receipts.items())),
         },
         "output_receipts": output_receipts,
@@ -883,7 +916,7 @@ def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
         raise OracleInnerSelectionError(str(exc)) from exc
     if _compact_json_bytes(value) != data:
         raise OracleInnerSelectionError(f"{label} is not canonical")
-    return value
+    return cast(dict[str, Any], value)
 
 
 def _compact_json_bytes(value: Mapping[str, Any]) -> bytes:

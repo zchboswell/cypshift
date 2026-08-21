@@ -39,6 +39,7 @@ RECEIPT_SOURCE_FILES: Final = (
     "src/cypshift/openadmet_oracle_pair_cell_io.py",
     "src/cypshift/openadmet_oracle_private_io.py",
     "src/cypshift/openadmet_oracle_terminal_receipts.py",
+    "src/cypshift/openadmet_oracle_support.py",
     "src/cypshift/openadmet_transformation_support.py",
     "src/cypshift/openadmet_oracle_validation.py",
 )
@@ -260,7 +261,7 @@ def _derive_support(
         )
         for system in ("F0", "F1")
     }
-    if {row["system_id"] for row in controls} != {"F0", "F1"}:
+    if {row["system_id"] for row in controls} not in (set(), {"F0", "F1"}):
         raise OracleTerminalReceiptError("support control system differs")
     support: dict[str, Any] = {
         "unique_primary_components": len({row["component_id"] for row in primary}),
@@ -321,11 +322,7 @@ def _records(value: Any, fields: tuple[str, ...]) -> tuple[dict[str, Any], ...]:
         identity = tuple(row[name] for name in fields)
         identities.append(identity)
         result.append(row)
-    if (
-        not result
-        or identities != sorted(identities)
-        or len(set(identities)) != len(identities)
-    ):
+    if identities != sorted(identities) or len(set(identities)) != len(identities):
         raise OracleTerminalReceiptError("support evidence order differs")
     return tuple(result)
 

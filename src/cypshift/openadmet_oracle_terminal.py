@@ -41,6 +41,7 @@ from cypshift.openadmet_oracle_terminal_io import (
     load_support,
     terminal_source_bundle_sha256,
     validate_execution,
+    validate_failure_execution,
 )
 from cypshift.openadmet_oracle_terminal_validation import (
     OracleTerminalValidationError,
@@ -277,7 +278,7 @@ def publish_failed_terminal(
     expected_source_sha256: str,
     cleanup_input: CleanupInput,
 ) -> Path:
-    source, _runtime = _validate_source(expected_source_sha256)
+    source, _runtime = validate_failure_execution(expected_source_sha256)
     _validate_destination(output_root)
     try:
         cleanup = load_cleanup(cleanup_input)
@@ -296,7 +297,11 @@ def publish_failed_terminal(
         raise OracleTerminalError("failure record differs")
     receipts = dict(record.verified_receipts)
     if record.stage == "pre_gate":
-        if cleanup.capabilities:
+        allowed = tuple(item.label for item in cleanup.capabilities)
+        if allowed not in {(), ("stale-control-cleanup-witness",)} or any(
+            receipts.get(item.label) != item.expected_sha256
+            for item in cleanup.capabilities
+        ):
             raise OracleTerminalError("pre-gate cleanup set differs")
     elif not cleanup.capabilities or any(
         receipts.get(item.label) != item.expected_sha256

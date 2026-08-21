@@ -79,15 +79,40 @@ TERMINAL_SOURCE_FILES: Final = tuple(
         {
             *FREEZER_SOURCE_FILES,
             "src/cypshift/openadmet_oracle_outer.py",
+            "src/cypshift/openadmet_oracle_g0_view.py",
+            "src/cypshift/openadmet_oracle_inner.py",
+            "src/cypshift/openadmet_oracle_runner.py",
+            "src/cypshift/openadmet_oracle_runner_commands.py",
+            "src/cypshift/openadmet_oracle_runner_cleanup.py",
+            "src/cypshift/openadmet_oracle_runner_full.py",
             "src/cypshift/openadmet_oracle_scoring.py",
+            "src/cypshift/openadmet_oracle_source.py",
+            "src/cypshift/openadmet_oracle_source_io.py",
+            "src/cypshift/openadmet_oracle_support.py",
             "src/cypshift/openadmet_oracle_statistics.py",
             "src/cypshift/openadmet_oracle_terminal.py",
             "src/cypshift/openadmet_oracle_terminal_cleanup.py",
             "src/cypshift/openadmet_oracle_terminal_io.py",
             "src/cypshift/openadmet_oracle_terminal_receipts.py",
             "src/cypshift/openadmet_oracle_terminal_validation.py",
+            "src/cypshift/openadmet_oracle_worker.py",
+            "scripts/run_openadmet_r5c.py",
         }
     )
+)
+FAILURE_SOURCE_FILES: Final = (
+    "scripts/run_openadmet_r5c.py",
+    "src/cypshift/openadmet_oracle_pair_cell_io.py",
+    "src/cypshift/openadmet_oracle_private_io.py",
+    "src/cypshift/openadmet_oracle_projection.py",
+    "src/cypshift/openadmet_oracle_runner.py",
+    "src/cypshift/openadmet_oracle_runner_cleanup.py",
+    "src/cypshift/openadmet_oracle_sealed.py",
+    "src/cypshift/openadmet_oracle_terminal.py",
+    "src/cypshift/openadmet_oracle_terminal_cleanup.py",
+    "src/cypshift/openadmet_oracle_terminal_io.py",
+    "src/cypshift/openadmet_oracle_worker.py",
+    "src/cypshift/openadmet_transformation_io.py",
 )
 
 
@@ -167,6 +192,35 @@ def terminal_source_bundle_sha256() -> str:
     }
     material = "".join(f"{name}|{receipts[name]}\n" for name in sorted(receipts))
     return sha256(material.encode()).hexdigest()
+
+
+def failure_source_bundle_sha256() -> str:
+    receipts = {
+        name: sha256(read_stable_file(ROOT / name)).hexdigest()
+        for name in FAILURE_SOURCE_FILES
+    }
+    material = "".join(f"{name}|{receipts[name]}\n" for name in sorted(receipts))
+    return sha256(material.encode()).hexdigest()
+
+
+def validate_failure_execution(
+    expected_source_sha256: str,
+) -> tuple[str, Mapping[str, str]]:
+    _digest(expected_source_sha256, "failure publisher source")
+    observed = failure_source_bundle_sha256()
+    if observed != expected_source_sha256:
+        raise OracleTerminalIOError("failure publisher source bundle differs")
+    runtime = {
+        "platform": f"{platform.system()} {platform.machine()} CPU",
+        "python_version": platform.python_version(),
+        "numpy_version": importlib.metadata.version("numpy"),
+        "sklearn_version": importlib.metadata.version("scikit-learn"),
+        "rdkit_version": importlib.metadata.version("rdkit"),
+        "uv_lock_sha256": sha256(read_stable_file(ROOT / "uv.lock")).hexdigest(),
+    }
+    if runtime != EXPECTED_RUNTIME:
+        raise OracleTerminalIOError("failure publisher runtime differs")
+    return observed, runtime
 
 
 def validate_execution(expected_source_sha256: str) -> tuple[str, Mapping[str, str]]:
@@ -801,6 +855,7 @@ __all__ = [
     "ACCOUNTING_STATUS",
     "AggregateAccountingInput",
     "FreezeInput",
+    "FAILURE_SOURCE_FILES",
     "InnerSelectionInput",
     "LoadedFreeze",
     "LoadedInnerSelection",
@@ -818,6 +873,8 @@ __all__ = [
     "load_aggregate_accounting",
     "load_support",
     "load_sealed_outer",
+    "failure_source_bundle_sha256",
     "terminal_source_bundle_sha256",
+    "validate_failure_execution",
     "validate_execution",
 ]

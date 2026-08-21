@@ -45,6 +45,7 @@ from cypshift.openadmet_oracle_terminal_io import (
     LoadedSupport,
     OracleTerminalIOError,
     SupportInput,
+    failure_source_bundle_sha256,
     load_aggregate_accounting,
     load_support,
     terminal_source_bundle_sha256,
@@ -295,6 +296,7 @@ def test_underpowered_and_failed_terminals_have_exact_status_file_sets(
         ),
     )
     source = terminal_source_bundle_sha256()
+    failure_source = failure_source_bundle_sha256()
     underpowered = tmp_path / "underpowered"
     publish_underpowered_terminal(
         support,
@@ -321,7 +323,7 @@ def test_underpowered_and_failed_terminals_have_exact_status_file_sets(
             dict.fromkeys(ACCOUNTING_FIELDS, 0),
         ),
         failed,
-        expected_source_sha256=source,
+        expected_source_sha256=failure_source,
         cleanup_input=failed_cleanup,
     )
     assert [path.name for path in failed.iterdir()] == ["failure.json"]
@@ -355,7 +357,7 @@ def test_underpowered_and_failed_terminals_have_exact_status_file_sets(
             dict.fromkeys(ACCOUNTING_FIELDS, 0),
         ),
         late_failed,
-        expected_source_sha256=source,
+        expected_source_sha256=failure_source,
         cleanup_input=late_cleanup,
     )
     assert not late_private.exists()
@@ -377,7 +379,7 @@ def test_underpowered_and_failed_terminals_have_exact_status_file_sets(
                 dict.fromkeys(ACCOUNTING_FIELDS, 0),
             ),
             failed,
-            expected_source_sha256=source,
+            expected_source_sha256=failure_source,
             cleanup_input=replay_cleanup,
         )
 
