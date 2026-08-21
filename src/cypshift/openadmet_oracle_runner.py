@@ -316,6 +316,27 @@ def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
             )
         if support.get("support_status") != "SUPPORTED":
             raise OracleRunnerError("support status differs")
+        projection_manifests = _string_mapping(projection, "manifests")
+        cliff_labels = {
+            "model-public",
+            *(
+                f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
+                for repeat in range(3)
+                for outer in range(5)
+            ),
+        }
+        cliff_witness = coordinator.worker(
+            "cliff-witness",
+            {
+                "projection_root": str(projection_root),
+                "manifests": {
+                    label: projection_manifests[label] for label in sorted(cliff_labels)
+                },
+            },
+        )
+        primary_cliffs = cliff_witness.get("primary_outer_activity_cliffs")
+        if type(primary_cliffs) is not int or primary_cliffs <= 0:
+            raise OracleRunnerError("supported synthetic primary cliff witness differs")
         from cypshift.openadmet_oracle_runner_full import run_supported
 
         fits_started = True
@@ -326,7 +347,7 @@ def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
             source_root=source_root,
             source_receipts=source_receipts,
             projection_root=projection_root,
-            projection_manifests=_string_mapping(projection, "manifests"),
+            projection_manifests=projection_manifests,
             support_root=_path_result(support, "root"),
             support_sha256=_digest_result(support, "sha256"),
             terminal_source_sha256=config.expected_terminal_source_sha256,

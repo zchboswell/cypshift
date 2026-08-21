@@ -80,6 +80,11 @@ from cypshift.openadmet_oracle_terminal_receipts import (
     publish_accounting_receipt,
     publish_support_receipt,
 )
+from cypshift.openadmet_oracle_validation import (
+    CLIFF_COLUMNS,
+    PUBLIC_QUERY_COLUMNS,
+    csv_rows,
+)
 from cypshift.openadmet_transformation_io import strict_json_object
 
 ROOT: Final = Path(__file__).resolve().parents[2]
@@ -89,6 +94,7 @@ VERBS: Final = frozenset(
     {
         "source",
         "project",
+        "cliff-witness",
         "support",
         "episodes",
         "view",
@@ -207,6 +213,69 @@ def _support(payload: Mapping[str, Any]) -> Mapping[str, Any]:
         "sha256": support_sha,
         "support_status": _string(support["support_status"], "support status"),
     }
+
+
+def _cliff_witness(payload: Mapping[str, Any]) -> Mapping[str, Any]:
+    """Fail supported synthetic rehearsal before fitting when cliffs are empty."""
+
+    _keys(payload, ("projection_root", "manifests"))
+    projection_root = _path(payload["projection_root"], "projection root")
+    manifests = _string_mapping(payload["manifests"], "projection manifests")
+    outer_labels = tuple(
+        f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
+        for repeat in range(3)
+        for outer in range(5)
+    )
+    expected_labels = {"model-public", *outer_labels}
+    if set(manifests) != expected_labels:
+        raise OracleWorkerError("cliff witness manifest set differs")
+    for label, expected_receipt in manifests.items():
+        observed = sha256(
+            read_stable_file(projection_root / label / "manifest.json")
+        ).hexdigest()
+        if observed != _digest(expected_receipt, f"cliff witness manifest: {label}"):
+            raise OracleWorkerError("cliff witness manifest differs")
+    public_rows = csv_rows(
+        read_stable_file(projection_root / "model-public/public_episode_queries.csv"),
+        PUBLIC_QUERY_COLUMNS,
+        "cliff witness public queries",
+    )
+    public = {(row["episode_id"], row["query_molecule_id"]): row for row in public_rows}
+    if len(public) != len(public_rows):
+        raise OracleWorkerError("cliff witness public identities differ")
+    primary_cliffs = 0
+    seen: set[tuple[str, str]] = set()
+    for repeat in range(3):
+        for outer in range(5):
+            label = f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
+            rows = csv_rows(
+                read_stable_file(projection_root / label / "activity_cliffs.csv"),
+                CLIFF_COLUMNS,
+                "cliff witness rows",
+            )
+            by_key = {
+                (row["episode_id"], row["query_molecule_id"]): row for row in rows
+            }
+            expected_keys = {
+                key
+                for key, row in public.items()
+                if int(row["repeat"]) == repeat and int(row["outer_fold"]) == outer
+            }
+            if (
+                len(by_key) != len(rows)
+                or set(by_key) != expected_keys
+                or seen & expected_keys
+            ):
+                raise OracleWorkerError("cliff witness row population differs")
+            seen.update(expected_keys)
+            primary_cliffs += sum(
+                row["activity_cliff"] == "true"
+                and public[key]["episode_policy_id"] == "selected_anchor"
+                for key, row in by_key.items()
+            )
+    if seen != set(public) or primary_cliffs <= 0:
+        raise OracleWorkerError("supported synthetic primary cliff witness is empty")
+    return {"primary_outer_activity_cliffs": primary_cliffs}
 
 
 def _episodes(payload: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -895,6 +964,7 @@ def _compact(value: Any) -> bytes:
 _DISPATCH = {
     "source": _source,
     "project": _project,
+    "cliff-witness": _cliff_witness,
     "support": _support,
     "episodes": _episodes,
     "view": _view,

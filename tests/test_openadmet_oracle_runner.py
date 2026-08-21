@@ -7,6 +7,7 @@ from hashlib import sha256
 from pathlib import Path
 
 import pytest
+from r5c_supported_fixture import supported_fixture
 from test_openadmet_oracle_projection import _fixture as _projection_fixture
 from test_openadmet_oracle_source import _fixture
 
@@ -189,6 +190,52 @@ def test_real_worker_episodes_enumerates_only_cell_target(tmp_path: Path) -> Non
             },
         )
     assert [record.returncode for record in coordinator.processes] == [0, 1]
+
+
+def test_supported_fixture_projects_nonempty_primary_outer_cliffs(
+    tmp_path: Path,
+) -> None:
+    inputs, input_receipts = supported_fixture(tmp_path / "inputs")
+    private = tmp_path / "private"
+    private.mkdir()
+    meta = tmp_path / "control"
+    meta.mkdir()
+    coordinator = _Coordinator(private, meta)
+    source = coordinator.worker(
+        "source",
+        {
+            "source_paths": {name: str(path) for name, path in inputs.items()},
+            "expected_receipts": input_receipts,
+            "output_root": str(private / "source"),
+        },
+    )
+    projection = coordinator.worker(
+        "project",
+        {
+            "source_root": source["root"],
+            "expected_receipts": source["receipts"],
+            "output_root": str(private / "projection"),
+        },
+    )
+    labels = {
+        "model-public",
+        *(
+            f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
+            for repeat in range(3)
+            for outer in range(5)
+        ),
+    }
+    result = coordinator.worker(
+        "cliff-witness",
+        {
+            "projection_root": projection["root"],
+            "manifests": {
+                label: projection["manifests"][label] for label in sorted(labels)
+            },
+        },
+    )
+    assert result["primary_outer_activity_cliffs"] > 0
+    assert [item.returncode for item in coordinator.processes] == [0, 0, 0]
 
 
 def test_argv_capabilities_are_stage_minimal(tmp_path: Path) -> None:

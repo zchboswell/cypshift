@@ -50,7 +50,10 @@ def _npy(value: np.ndarray) -> bytes:
 
 
 def _point(component: int, variant: int, endpoint: int) -> str:
-    return format(1.0 + component * 0.01 + variant * 0.2 + endpoint * 0.03, ".17g")
+    point = 1.0 + component * 0.01 + variant * 0.2 + endpoint * 0.03
+    if endpoint == 3 and variant == 4:
+        point += 0.4
+    return format(point, ".17g")
 
 
 def _records() -> tuple[
@@ -63,7 +66,7 @@ def _records() -> tuple[
         molecules: list[str] = []
         for variant, substituent in enumerate(SUBSTITUENTS):
             molecule = f"m{component:02d}-v{variant}"
-            smiles = f"[{component + 10}CH3]c1ccc({substituent})cc1"
+            smiles = f"[{component + 10}CH3]c1ccc(-c2ccccc2)c({substituent})c1"
             record = standardize_molecule(
                 MoleculeInput(molecule, smiles, "smiles", "r5c", "synthetic")
             )
