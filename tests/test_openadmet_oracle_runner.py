@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import stat
 import subprocess
 from hashlib import sha256
 from pathlib import Path
@@ -32,11 +33,18 @@ from cypshift.openadmet_oracle_runner_commands import (
     pair_command,
 )
 from cypshift.openadmet_oracle_sealed import SEALED_FILES
+from cypshift.openadmet_oracle_source import compile_openadmet_oracle_source
 from cypshift.openadmet_oracle_terminal_io import (
     TERMINAL_SOURCE_FILES,
     failure_source_bundle_sha256,
     terminal_source_bundle_sha256,
 )
+from cypshift.openadmet_oracle_validation import (
+    CLIFF_COLUMNS,
+    PUBLIC_QUERY_COLUMNS,
+    csv_rows,
+)
+from cypshift.openadmet_oracle_worker import VERBS
 
 TEST_COMMIT_OID = "1" * 40
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,7 +68,89 @@ def _input(
     )
 
 
+def _entry_config(tmp_path: Path) -> dict[str, object]:
+    paths, receipts = _fixture(tmp_path / "entry-inputs")
+    commit_oid = subprocess.run(
+        ("git", "rev-parse", "--verify", "HEAD"),
+        cwd=ROOT,
+        env={"PATH": os.defpath, "LANG": "C", "LC_ALL": "C"},
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    return {
+        "commit_oid": commit_oid,
+        "expected_failure_source_sha256": failure_source_bundle_sha256(),
+        "expected_terminal_source_sha256": terminal_source_bundle_sha256(),
+        "private_root": str(tmp_path / "entry-private"),
+        "schema_version": "cypshift.openadmet_cyp_2026.r5c_synthetic_run_config.v1",
+        "source_paths": {name: str(path) for name, path in paths.items()},
+        "source_receipts": receipts,
+        "terminal_root": str(tmp_path / "entry-terminal"),
+    }
+
+
+def _run_entry(
+    tmp_path: Path,
+    config: dict[str, object],
+    *,
+    python: Path = PAIR_PYTHON,
+    environment: dict[str, str] | None = None,
+    runner_sha256: str | None = None,
+) -> subprocess.CompletedProcess[str]:
+    config_path = tmp_path / "entry-config.json"
+    config_path.write_text(
+        json.dumps(config, sort_keys=True, separators=(",", ":")) + "\n"
+    )
+    script = ROOT / "scripts/run_openadmet_r5c.py"
+    return subprocess.run(
+        (
+            str(python),
+            str(script),
+            "--config",
+            str(config_path),
+            "--expected-runner-sha256",
+            runner_sha256 or sha256(script.read_bytes()).hexdigest(),
+        ),
+        cwd=ROOT,
+        env=environment
+        or {
+            "PATH": os.defpath,
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONNOUSERSITE": "1",
+        },
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+
+def _assert_bootstrap_failure(
+    tmp_path: Path, completed: subprocess.CompletedProcess[str]
+) -> None:
+    assert completed.returncode == 0, completed.stderr
+    result = json.loads(completed.stdout.splitlines()[0])
+    assert result["status"] == "R5_ORACLE_FAILED"
+    assert result["processes"] == []
+    terminal = tmp_path / "entry-terminal"
+    failure_path = terminal / "failure.json"
+    failure = json.loads(failure_path.read_text())
+    assert failure["stage"] == "pre_gate"
+    assert failure["operation_accounting"] == dict.fromkeys(
+        failure["operation_accounting"], 0
+    )
+    assert (
+        failure_path.read_bytes()
+        == (json.dumps(failure, sort_keys=True, separators=(",", ":")) + "\n").encode()
+    )
+    assert stat.S_IMODE(terminal.stat().st_mode) == 0o555
+    assert stat.S_IMODE(failure_path.stat().st_mode) == 0o444
+    assert not (tmp_path / "entry-private").exists()
+    assert not tuple(tmp_path.glob(".r5c-bootstrap-*"))
+
+
 def test_exact_pair_process_topology() -> None:
+    assert "cliff-witness" not in VERBS
     inner = inner_pair_tasks()
     assert len(inner) == 960
     assert sum(item.system_id == "C3" for item in inner) == 240
@@ -84,6 +174,7 @@ def test_exact_pair_process_topology() -> None:
     assert len(outer) == 135
     assert sum(item.shared_outer_t0 for item in outer) == 15
     assert sum(3 if item.shared_outer_t0 else 1 for item in outer) == 165
+    assert 3 + 75 + 75 + 390 + 390 + len(inner) + 1 + len(outer) + 4 == 2033
 
 
 def test_terminal_source_closure_binds_direct_runner_stages() -> None:
@@ -196,46 +287,46 @@ def test_supported_fixture_projects_nonempty_primary_outer_cliffs(
     tmp_path: Path,
 ) -> None:
     inputs, input_receipts = supported_fixture(tmp_path / "inputs")
-    private = tmp_path / "private"
-    private.mkdir()
-    meta = tmp_path / "control"
-    meta.mkdir()
-    coordinator = _Coordinator(private, meta)
-    source = coordinator.worker(
-        "source",
-        {
-            "source_paths": {name: str(path) for name, path in inputs.items()},
-            "expected_receipts": input_receipts,
-            "output_root": str(private / "source"),
-        },
+    source = compile_openadmet_oracle_source(
+        inputs,
+        tmp_path / "source",
+        expected_receipts=input_receipts,
     )
-    projection = coordinator.worker(
-        "project",
-        {
-            "source_root": source["root"],
-            "expected_receipts": source["receipts"],
-            "output_root": str(private / "projection"),
-        },
-    )
-    labels = {
-        "model-public",
-        *(
-            f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
-            for repeat in range(3)
-            for outer in range(5)
-        ),
+    source_receipts = {
+        name: record["sha256"] for name, record in source.output_receipts.items()
     }
-    result = coordinator.worker(
-        "cliff-witness",
-        {
-            "projection_root": projection["root"],
-            "manifests": {
-                label: projection["manifests"][label] for label in sorted(labels)
-            },
-        },
+    source_receipts["manifest.json"] = source.manifest_sha256
+    projection = project_openadmet_oracle_inputs(
+        source.output_directory,
+        tmp_path / "projection",
+        expected_receipts=source_receipts,
     )
-    assert result["primary_outer_activity_cliffs"] > 0
-    assert [item.returncode for item in coordinator.processes] == [0, 0, 0]
+    public_rows = csv_rows(
+        (projection.model_public_root / "public_episode_queries.csv").read_bytes(),
+        PUBLIC_QUERY_COLUMNS,
+        "test public queries",
+    )
+    public = {(row["episode_id"], row["query_molecule_id"]): row for row in public_rows}
+    primary_cliffs = 0
+    for repeat in range(3):
+        for outer in range(5):
+            rows = csv_rows(
+                (
+                    projection.sealed_scorer_root
+                    / f"outer/repeat-{repeat}/outer-{outer}/activity_cliffs.csv"
+                ).read_bytes(),
+                CLIFF_COLUMNS,
+                "test outer cliffs",
+            )
+            primary_cliffs += sum(
+                row["activity_cliff"] == "true"
+                and public[(row["episode_id"], row["query_molecule_id"])][
+                    "episode_policy_id"
+                ]
+                == "selected_anchor"
+                for row in rows
+            )
+    assert primary_cliffs > 0
 
 
 def test_argv_capabilities_are_stage_minimal(tmp_path: Path) -> None:
@@ -334,6 +425,120 @@ def test_generated_pair_argv_reaches_runner_after_argparse(tmp_path: Path) -> No
     assert completed.returncode == 1
     assert "pair runner source bundle receipt differs" in completed.stderr
     assert "required: --target-kind" not in completed.stderr
+
+
+def test_entry_bootstrap_publishes_failed_on_actual_runtime_drift(
+    tmp_path: Path,
+) -> None:
+    config = _entry_config(tmp_path)
+    fake = tmp_path / "fake-distributions"
+    for distribution, version in (
+        ("numpy", "2.5.2"),
+        ("scikit_learn", "1.9.0"),
+        ("rdkit", "2026.3.5"),
+    ):
+        metadata = fake / f"{distribution}-{version}.dist-info/METADATA"
+        metadata.parent.mkdir(parents=True)
+        metadata.write_text(
+            f"Metadata-Version: 2.1\nName: {distribution}\nVersion: {version}\n"
+        )
+    config_path = tmp_path / "entry-config.json"
+    config_path.write_text(
+        json.dumps(config, sort_keys=True, separators=(",", ":")) + "\n"
+    )
+    script = ROOT / "scripts/run_openadmet_r5c.py"
+    probe = """
+import importlib.metadata, importlib.util, json, os, pathlib, sys
+fake = pathlib.Path(os.environ["PYTHONPATH"]).resolve()
+script = pathlib.Path(sys.argv[1])
+spec = importlib.util.spec_from_file_location("r5c_entry", script)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+sys.argv = [str(script), "--config", sys.argv[2], "--expected-runner-sha256", sys.argv[3]]
+module.main()
+try:
+    version = importlib.metadata.version("numpy")
+except importlib.metadata.PackageNotFoundError:
+    version = "ABSENT"
+print(json.dumps({"fake_on_sys_path": str(fake) in sys.path, "numpy": version}, sort_keys=True))
+"""
+    completed = subprocess.run(
+        (
+            "/usr/bin/python3",
+            "-c",
+            probe,
+            str(script),
+            str(config_path),
+            sha256(script.read_bytes()).hexdigest(),
+        ),
+        cwd=ROOT,
+        env={
+            "PATH": os.defpath,
+            "PYTHONPATH": str(fake),
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONNOUSERSITE": "1",
+        },
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    _assert_bootstrap_failure(tmp_path, completed)
+    probe_result = json.loads(completed.stdout.splitlines()[1])
+    assert probe_result == {"fake_on_sys_path": False, "numpy": "ABSENT"}
+
+
+def test_entry_bootstrap_publishes_failed_on_failure_source_drift(
+    tmp_path: Path,
+) -> None:
+    config = _entry_config(tmp_path)
+    config["expected_failure_source_sha256"] = "0" * 64
+    completed = _run_entry(tmp_path, config)
+    _assert_bootstrap_failure(tmp_path, completed)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    (
+        ("schema_version", "wrong-schema"),
+        ("source_paths", []),
+        ("source_receipts", {"unexpected": "0" * 64}),
+    ),
+)
+def test_entry_bootstrap_publishes_failed_on_invalid_config_shape(
+    tmp_path: Path, field: str, value: object
+) -> None:
+    config = _entry_config(tmp_path)
+    config[field] = value
+    completed = _run_entry(tmp_path, config)
+    _assert_bootstrap_failure(tmp_path, completed)
+
+
+def test_entry_checkout_ignores_hostile_git_environment(tmp_path: Path) -> None:
+    config = _entry_config(tmp_path)
+    hostile = tmp_path / "hostile-bin"
+    hostile.mkdir()
+    marker = tmp_path / "fake-git-ran"
+    fake_git = hostile / "git"
+    fake_git.write_text(f"#!/bin/sh\ntouch {marker}\nexit 0\n")
+    fake_git.chmod(0o755)
+    environment = {
+        "PATH": str(hostile),
+        "GIT_DIR": str(tmp_path / "hostile-git-dir"),
+        "GIT_WORK_TREE": str(tmp_path),
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1",
+    }
+    completed = _run_entry(tmp_path, config, environment=environment)
+    _assert_bootstrap_failure(tmp_path, completed)
+    assert not marker.exists()
+
+
+def test_entry_bad_self_hash_refuses_without_terminal(tmp_path: Path) -> None:
+    config = _entry_config(tmp_path)
+    completed = _run_entry(tmp_path, config, runner_sha256="0" * 64)
+    assert completed.returncode != 0
+    assert not (tmp_path / "entry-terminal").exists()
+    assert not (tmp_path / "entry-private").exists()
 
 
 def test_entry_script_rejects_hostile_pythonpath_and_uses_repo_modules(

@@ -317,26 +317,6 @@ def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
         if support.get("support_status") != "SUPPORTED":
             raise OracleRunnerError("support status differs")
         projection_manifests = _string_mapping(projection, "manifests")
-        cliff_labels = {
-            "model-public",
-            *(
-                f"sealed-scorer/outer/repeat-{repeat}/outer-{outer}"
-                for repeat in range(3)
-                for outer in range(5)
-            ),
-        }
-        cliff_witness = coordinator.worker(
-            "cliff-witness",
-            {
-                "projection_root": str(projection_root),
-                "manifests": {
-                    label: projection_manifests[label] for label in sorted(cliff_labels)
-                },
-            },
-        )
-        primary_cliffs = cliff_witness.get("primary_outer_activity_cliffs")
-        if type(primary_cliffs) is not int or primary_cliffs <= 0:
-            raise OracleRunnerError("supported synthetic primary cliff witness differs")
         from cypshift.openadmet_oracle_runner_full import run_supported
 
         fits_started = True
@@ -437,9 +417,11 @@ def _pre_gate(config: SyntheticRunInput) -> None:
 def _validate_checkout(commit_oid: str) -> None:
     if not _is_commit_oid(commit_oid):
         raise OracleRunnerError("git commit OID differs")
+    environment = {"PATH": os.defpath, "LANG": "C", "LC_ALL": "C"}
     observed = subprocess.run(
-        ("git", "rev-parse", "HEAD"),
+        ("git", "rev-parse", "--verify", "HEAD"),
         cwd=ROOT,
+        env=environment,
         check=True,
         capture_output=True,
         text=True,
@@ -447,8 +429,9 @@ def _validate_checkout(commit_oid: str) -> None:
     if not _is_commit_oid(observed) or observed != commit_oid:
         raise OracleRunnerError("git commit differs")
     dirty = subprocess.run(
-        ("git", "status", "--porcelain"),
+        ("git", "status", "--porcelain=v1"),
         cwd=ROOT,
+        env=environment,
         check=True,
         capture_output=True,
         text=True,
