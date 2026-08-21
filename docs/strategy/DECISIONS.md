@@ -2163,3 +2163,40 @@
   source, runtime, accounting, fixed-superset, metadata, fallback, eligibility,
   row-key, finite-value, exact-file-set, publication, or deterministic-byte
   drift revokes D-072 and blocks outer scoring or official execution.
+
+## D-073 — Accept sealed TRACE scoring and exact terminal publication
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the sealed outer scorer, all frozen evidence calculations,
+  status resolver, and exact status-specific terminal publisher. Authorize the
+  deterministic full synthetic state-machine rehearsal only. Do not open
+  official oracle targets or claim TRACE uplift.
+- Evidence: Signed commit `15c2daf...` consumes only the authenticated final
+  freeze, 15 outer sealed roots, accepted inner-selection evidence, label-safe
+  support evidence, and receipt-bound child accounting. The outer scorer,
+  terminal serializer, cleanup validator, terminal I/O, receipt producer, and
+  cross-file validator hashes are `7839168a...`, `101e0866...`, `4edea190...`,
+  `40a5fe40...`, `fdecec5d...`, and `51e4f7ae...`. The complete synthetic
+  SIGNAL_PASS fixture contains 1,980 frozen rows, opens truth 1,125 times
+  exactly, performs 3,090 unique internal absolute-error evaluations, and emits
+  240 selection, 2,280 scored, 180 cell, 10 bootstrap, 10 influence, and 12
+  ablation rows. NO_SIGNAL, UNDERPOWERED, and FAILED paths are independently
+  exercised. Stress evidence is diagnostic-only; empty clean stress is valid
+  and stress mutation cannot alter primary status. Support is reconstructed
+  from authenticated label-safe hashed/fold evidence, accounting is summed by
+  reopening exact child manifests, and every private capability is removed
+  under an authenticated cleanup receipt before no-replace terminal promotion.
+  Five focused tests and the full suite with 756 passes and three expected skips
+  pass, as do Ruff, formatting, strict typing, diff checks, and independent
+  adversarial review.
+- Alternatives: Let the terminal invent support or accounting; accept caller-
+  supplied output mappings; let stress rescue status; retain private roots
+  after publication; expose target or prediction values publicly; or skip the
+  deterministic state-machine rehearsal.
+- Reversal condition: Any truth join, weight, metric, shared-bootstrap,
+  influence, safety, stress-isolation, support, accounting, status precedence,
+  public schema, authority, cleanup, file-set, receipt, source/runtime,
+  no-overwrite, or deterministic-byte drift revokes D-073 and blocks official
+  execution.

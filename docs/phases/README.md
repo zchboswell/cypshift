@@ -108,9 +108,11 @@ Sealed four-fold selection now authenticates 960 candidate fragments and 60
 truth capabilities, emits 240 candidate summaries, and publishes 90 isolated
 score-free token capabilities. The truth-free final freezer is accepted: it
 consolidates 15 outer contexts and 12 systems into one authenticated immutable
-package while opening no query truth or cliff labels. Outer scoring, terminal
-publication, and full runner acceptance remain next; no official target, fit,
-prediction, metric, or TRACE score is active.
+package while opening no query truth or cliff labels. The sealed outer scorer
+and exact status-specific terminal publisher are accepted; only the full
+deterministic synthetic state-machine rehearsal remains before an official
+execution gate. No official target, fit, prediction, metric, or TRACE score is
+active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.
