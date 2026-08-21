@@ -1,0 +1,189 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.direct_maplight_deployment.v1",
+  "freeze_date": "2026-08-21",
+  "status": "contract_and_synthetic_implementation_only",
+  "purpose": "Produce the first direct-track reference submission from the already selected fixed MapLight global expert, without tuning, ensembling, calibration, clipping, transduction, or metric access.",
+  "parents": {
+    "source_receipts": {
+      "path": "benchmarks/openadmet_cyp_2026/source_receipts.json",
+      "sha256": "764e59d37cc12993babce64208117d47612a1551bdcf30d1a22d10eb60636974",
+      "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b"
+    },
+    "submission_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/submission_contract.json",
+      "sha256": "4be9933cd5e9404603d8971e49847bb240eff99f09874696c769a4fafd0d9a3c"
+    },
+    "global_experiment_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract.json",
+      "sha256": "d728684cc3794bbe01ea44342202944a378968f097cb8f5490852b63721a6285"
+    },
+    "global_runner_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v4.json",
+      "sha256": "a37a316ceab297deb89d4458169d38d1c73d2edb39ab96ea4c77459a56b01254"
+    },
+    "oracle_parameter_record": {
+      "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v1.json",
+      "sha256": "c1d7a66c4f479339b30c2006e4250381cb213d665d4902c71d4c4edbd347e8bf",
+      "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757"
+    }
+  },
+  "training": {
+    "source_file": "cyp-challenge-TRAIN_inhibition.csv",
+    "source_sha256": "b8f79addd266fb6f9f4c222c5e4e73d926362328b6a8d2841871a54e46bd2278",
+    "source_rows": 4905,
+    "observations_path": "direct_observations.csv",
+    "observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "observation_rows": 19620,
+    "observation_columns": [
+      "observation_id",
+      "molecule_id",
+      "source_row_id",
+      "source_file",
+      "source_row",
+      "source_sha256",
+      "endpoint",
+      "raw_smiles",
+      "raw_point",
+      "raw_low",
+      "raw_high",
+      "raw_std",
+      "point",
+      "low",
+      "high",
+      "std",
+      "raw_structure_sha256",
+      "standardized_structure_hash",
+      "similarity_component_hash",
+      "scaffold_group_hash",
+      "value_state",
+      "point_eligible",
+      "anchor_eligible"
+    ],
+    "eligible_points": {
+      "CYP1A2": 1412,
+      "CYP2C9": 1285,
+      "CYP2D6": 1493,
+      "CYP3A4": 2335
+    },
+    "eligibility_rule": "Use exactly point_eligible=true rows and their canonical finite point. Do not impute, weight, calibrate, or reinterpret any measurement field."
+  },
+  "features": {
+    "training_root": {
+      "manifest_schema_version": "cypshift.openadmet_cyp_2026.r3a_feature_manifest.v1",
+      "manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+      "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+      "rows": 4905,
+      "arrays": {
+        "maplight_morgan_count.npy": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+        "maplight_avalon_count.npy": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+        "maplight_erg.npy": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+        "maplight_rdkit_descriptors.npy": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905"
+      }
+    },
+    "ordered_blocks": [
+      ["maplight_morgan_count", 1024, "int8"],
+      ["maplight_avalon_count", 1024, "int8"],
+      ["maplight_erg", 315, "<f8"],
+      ["maplight_rdkit_descriptors", 200, "<f8"]
+    ],
+    "columns": 2563,
+    "test_rule": "A separate fresh process receives only row_index, exact raw SMILES, its SHA256, and a receipt. It emits one 750-by-2563 matrix from the four ordered blocks. It receives no training row, target, prediction, metric, TDI field, family relationship, or other test row relationship.",
+    "kernel": {
+      "path": "research/maplight-fixed/maplight_fixed_features.py",
+      "sha256": "ac3d7bb88eaf1ed9da2e7ca6c3e042f57afa74344ca7094bcb72bfa7e4ebb35a",
+      "descriptor_order_sha256": "76ed228002c5cd229e4cbd8d62c3b3a49d698425a5216884c5c7b1b337f4293a",
+      "count_policy": "upstream_signed_int8",
+      "nonfinite_policy": "allow_gasteiger_charge_nan"
+    }
+  },
+  "test": {
+    "source_file": "cyp-challenge-TEST-BLINDED.csv",
+    "source_sha256": "a342f8444a8dcb531ca12f3685293f0bd6c36ae9073f491e44a9bc1cc4b741f9",
+    "rows": 750,
+    "columns": ["Molecule_Name", "SMILES"]
+  },
+  "model": {
+    "system_id": "TRACE-G0-MAPL-FIXED",
+    "feature_spec_id": "maplight-fixed-stage-a-v1",
+    "estimator": "catboost.CatBoostRegressor",
+    "constructor_arguments": {
+      "loss_function": "MAE",
+      "random_strength": 2,
+      "random_seed": 1,
+      "task_type": "CPU",
+      "thread_count": 16,
+      "verbose": 0,
+      "allow_writing_files": false
+    },
+    "fit_rule": "For each endpoint, call fit(X_train[point_eligible], y) once with no other fit argument, then predict all 750 test rows. Require the resolved parameter SHA256 to equal the accepted R3C record.",
+    "fits": 4,
+    "serialized_models": 0
+  },
+  "runtime": {
+    "platform": "Linux",
+    "machine": "x86_64",
+    "python": "3.10.13",
+    "packages": {
+      "numpy": "1.25.2",
+      "pandas": "2.0.3",
+      "rdkit": "2023.3.3",
+      "catboost": "1.2.1",
+      "scikit-learn": "1.3.0"
+    },
+    "lock_path": "research/maplight-fixed/uv.lock",
+    "lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+  },
+  "submission": {
+    "columns": [
+      "SMILES",
+      "Molecule_Name",
+      "CYP1A2_pIC50_direct_inhibition",
+      "CYP2C9_pIC50_direct_inhibition",
+      "CYP2D6_pIC50_direct_inhibition",
+      "CYP3A4_pIC50_direct_inhibition"
+    ],
+    "rows": 750,
+    "finite_predictions": 3000,
+    "identity_order_rule": "SMILES and Molecule_Name must equal the pinned test CSV row-for-row and byte-for-byte after RFC4180 decoding.",
+    "accepted_path": "/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-v1/accepted/submission.csv",
+    "terminal_files": ["submission.csv", "manifest.json"],
+    "rehearsal_rule": "Each production run may publish only a separate read-only two-file rehearsal terminal; a run may never publish directly to the accepted destination.",
+    "two_root_rule": "Before acceptance, two distinct fresh production rehearsal roots from identical immutable inputs must each revalidate and contain byte-identical submission.csv and manifest.json.",
+    "acceptance_rule": "Only the no-replace acceptance command may publish the authenticated byte-identical two-file terminal at accepted_path.parent. Existing accepted content is never replaced."
+  },
+  "implementation": {
+    "runner_path": "scripts/run_openadmet_direct_submission.py",
+    "runner_sha256": "ef4102e0ba1a61c7fb8ffa48671532409909f744b7bfbff4eeb90960e15e7ace",
+    "validator_path": "scripts/validate_openadmet_direct_submission.py",
+    "validator_sha256": "f11d83531e5b602cc088c5c7c0d0aa1bb4828e1041eaac5ae203837be48c3180",
+    "parameter_source_path": "research/maplight-fixed/r3b_cell_io.py",
+    "parameter_source_sha256": "15927a1ed3a348a5f6068d505cb84e0e2974c48cdf4f5eed053336ff886f6de2"
+  },
+  "accounting": {
+    "training_feature_rows": 4905,
+    "test_feature_rows": 750,
+    "model_fits": 4,
+    "predictions": 3000,
+    "submission_rows": 750,
+    "model_binaries": 0,
+    "official_metric_calls": 0,
+    "tdi_rows_opened": 0,
+    "transductive_operations": 0,
+    "calibration_operations": 0,
+    "clipping_operations": 0,
+    "ensemble_operations": 0
+  },
+  "forbidden": [
+    "TDI",
+    "official metric",
+    "leaderboard feedback",
+    "calibration",
+    "prediction clipping",
+    "model selection",
+    "hyperparameter tuning",
+    "ensemble or stack",
+    "test-test features or relationships",
+    "model binary serialization"
+  ],
+  "claim_boundary": "This is a pre-TRACE direct-track reference deployment. It does not test or establish TRACE superiority, official score, inferred-anchor validity, TDI performance, or transductive permission."
+}
