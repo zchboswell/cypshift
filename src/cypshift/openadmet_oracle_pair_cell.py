@@ -487,7 +487,9 @@ def run_pair_cell(
             extractor,
             control_cache,
         )
-        rows.append(_fragment_row(item, system_id, candidate, prediction))
+        rows.append(
+            _fragment_row(item, system_id, candidate, prediction, repeat, outer)
+        )
     rows.sort(key=lambda row: (row["episode_id"], int(row["query_rank"])))
     fragment = _csv_bytes(rows)
     episode_id = "all"
@@ -937,7 +939,12 @@ def _f0_query_id(row: Mapping[str, str]) -> str:
 
 
 def _fragment_row(
-    item: _EpisodeQuery, system_id: str, candidate: str, prediction: Prediction
+    item: _EpisodeQuery,
+    system_id: str,
+    candidate: str,
+    prediction: Prediction,
+    repeat: int,
+    outer_fold: int,
 ) -> dict[str, str]:
     row = item.row
     return {
@@ -945,8 +952,8 @@ def _fragment_row(
         "query_molecule_id": row["query_molecule_id"],
         "query_rank": row["query_rank"],
         "episode_policy_id": row["episode_policy_id"],
-        "repeat": row["repeat"],
-        "outer_fold": row["outer_fold"],
+        "repeat": str(repeat),
+        "outer_fold": str(outer_fold),
         "inner_fold": "" if item.inner_fold is None else str(item.inner_fold),
         "component_id": row["outer_group_id"],
         "system_id": system_id,

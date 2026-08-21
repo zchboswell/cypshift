@@ -970,17 +970,29 @@ def _validate_scope_mapping(scope: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _open_root(path: Path) -> int:
-    if ".." in path.parts or path.is_symlink():
+    if ".." in path.parts:
         raise OraclePairCellIOError("G0 root path differs")
     flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
     try:
-        fd = os.open(path, flags)
+        fd = os.open("/" if path.is_absolute() else ".", flags)
     except OSError as exc:
-        raise OraclePairCellIOError("cannot open G0 root") from exc
-    if not stat.S_ISDIR(os.fstat(fd).st_mode):
+        raise OraclePairCellIOError("cannot open G0 ancestry") from exc
+    try:
+        for part in path.parts:
+            if part in {"/", ".", ""}:
+                continue
+            try:
+                next_fd = os.open(part, flags, dir_fd=fd)
+            except OSError as exc:
+                raise OraclePairCellIOError("cannot open G0 ancestry") from exc
+            os.close(fd)
+            fd = next_fd
+        if not stat.S_ISDIR(os.fstat(fd).st_mode):
+            raise OraclePairCellIOError("G0 root is not a directory")
+        return fd
+    except Exception:
         os.close(fd)
-        raise OraclePairCellIOError("G0 root is not a directory")
-    return fd
+        raise
 
 
 def _read_at(root_fd: int, name: str) -> bytes:
@@ -989,14 +1001,29 @@ def _read_at(root_fd: int, name: str) -> bytes:
     except OSError as exc:
         raise OraclePairCellIOError(f"cannot open G0 file: {name}") from exc
     try:
-        info = os.fstat(fd)
-        if not stat.S_ISREG(info.st_mode):
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
             raise OraclePairCellIOError(f"G0 file is not regular: {name}")
         chunks: list[bytes] = []
         while block := os.read(fd, 1024 * 1024):
             chunks.append(block)
         result = b"".join(chunks)
-        if len(result) != info.st_size:
+        after = os.fstat(fd)
+        before_identity = (
+            before.st_dev,
+            before.st_ino,
+            before.st_size,
+            before.st_mtime_ns,
+            before.st_ctime_ns,
+        )
+        after_identity = (
+            after.st_dev,
+            after.st_ino,
+            after.st_size,
+            after.st_mtime_ns,
+            after.st_ctime_ns,
+        )
+        if before_identity != after_identity or len(result) != before.st_size:
             raise OraclePairCellIOError(f"G0 file changed: {name}")
         return result
     finally:
