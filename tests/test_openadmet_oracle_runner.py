@@ -136,6 +136,61 @@ def test_real_worker_migrate_returns_exact_sealed_root(tmp_path: Path) -> None:
     )
 
 
+def test_real_worker_episodes_enumerates_only_cell_target(tmp_path: Path) -> None:
+    source, receipts = _projection_fixture(tmp_path / "fixture")
+    projection = project_openadmet_oracle_inputs(
+        source, tmp_path / "projection", expected_receipts=receipts
+    )
+    for path in source.iterdir():
+        path.chmod(0o444)
+    source.chmod(0o555)
+    relative = Path("inner/repeat-0/outer-0/inner-0")
+    target = projection.cell_target_root / relative
+    c3_target = projection.c3_target_root / relative
+    model = projection.model_public_root
+    meta = tmp_path / "control"
+    meta.mkdir()
+    coordinator = _Coordinator(tmp_path / "private", meta)
+    payload = {
+        "model_root": str(model),
+        "model_manifest_sha256": sha256(
+            (model / "manifest.json").read_bytes()
+        ).hexdigest(),
+        "target_root": str(target),
+        "target_manifest_sha256": sha256(
+            (target / "manifest.json").read_bytes()
+        ).hexdigest(),
+        "scope": {
+            "stage": "inner",
+            "repeat": 0,
+            "outer_fold": 0,
+            "inner_fold": 0,
+        },
+    }
+    result = coordinator.worker("episodes", payload)
+    expected = sorted(
+        {
+            row.split(",", 1)[0]
+            for row in (target / "episode_anchor_contexts.csv")
+            .read_text(encoding="utf-8")
+            .splitlines()[1:]
+        }
+    )
+    assert result == {"episode_ids": expected}
+    with pytest.raises(OracleProcessFailure):
+        coordinator.worker(
+            "episodes",
+            {
+                **payload,
+                "target_root": str(c3_target),
+                "target_manifest_sha256": sha256(
+                    (c3_target / "manifest.json").read_bytes()
+                ).hexdigest(),
+            },
+        )
+    assert [record.returncode for record in coordinator.processes] == [0, 1]
+
+
 def test_argv_capabilities_are_stage_minimal(tmp_path: Path) -> None:
     digest = "a" * 64
     g0 = g0_command(

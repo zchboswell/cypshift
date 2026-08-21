@@ -232,6 +232,7 @@ def _episodes(payload: Mapping[str, Any]) -> Mapping[str, Any]:
         ),
         expected_scope=scope,
         system_id="G0",
+        target_kind="cell-target",
     )
     if not isinstance(capability.target, OracleCellTargetCapability):
         raise OracleWorkerError("G0 episode target kind differs")
