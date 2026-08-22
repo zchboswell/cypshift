@@ -2200,3 +2200,40 @@
   public schema, authority, cleanup, file-set, receipt, source/runtime,
   no-overwrite, or deterministic-byte drift revokes D-073 and blocks official
   execution.
+
+## D-074 — Accept the complete R5C synthetic production rehearsal
+
+- Date: 2026-08-21
+- Status: accepted synthetic execution boundary;
+  `R5C_SYNTHETIC_RUNNER_ACCEPTED`; no official predictive authority
+- Decision: Accept the thin R5C production-entry state machine after two fresh
+  full synthetic roots execute the exact frozen process topology and publish
+  byte-identical terminals. Authorize a separate official-attempt ancestry
+  wrapper and dormant inferred-anchor preregistration next. Do not interpret
+  the synthetic terminal status as TRACE performance, open blinded test or TDI
+  data, implement inferred-anchor deployment, or create a submission.
+- Evidence: Signed clean commit `4ee682a7...` produced two roots with exactly
+  2,033 fresh child processes each: source/project/support once; 75 migrations;
+  75 episode enumerations; 390 views and 390 locked G0 fits; 960 inner pair
+  cells; one sealed selection with 240 rows and 90 isolated tokens; 120 ordinary
+  plus 15 shared outer calls yielding 165 fragments; and one freezer,
+  accounting, cleanup, scorer, and terminal call. All 4,066 children returned
+  zero with unique positive PIDs. The exact eight-file terminals are byte-
+  identical at manifest SHA-256 `6f199dfd...` and result SHA-256 `0fe7bd10...`;
+  PID-normalized transcripts match at `d76499cd...`. Each root records 390
+  MapLight, 795 ridge, and 795 hierarchy fits, plus 3,780 frozen predictions;
+  all blinded-test, TDI, official-metric, submission, transduction, and
+  inferred-anchor counters are zero. Private/control roots are absent, source
+  provenance is explicitly synthetic, and final independent high-impact review
+  passes. Read-only configs, transcripts, exit evidence, and terminals are
+  retained outside Git under
+  `/home/zbos/cypshift-private/openadmet-2026/r5c-synthetic-4ee682a7/`.
+- Alternatives: Treat component tests or a fake-process topology run as full
+  acceptance; discard process transcripts; use a synthetic `NO_SIGNAL` result
+  as a scientific stop; point the synthetic runner at official parents; add
+  concurrency or orchestration machinery before the accepted vertical slice;
+  or jump directly to blinded-test inference.
+- Reversal condition: Any config/source/runtime/checkout drift, process-count
+  or return-code mismatch, non-deterministic terminal byte, missing transcript,
+  capability leak, forbidden counter, cleanup residue, or independent audit
+  failure revokes D-074 and blocks official R5D execution.

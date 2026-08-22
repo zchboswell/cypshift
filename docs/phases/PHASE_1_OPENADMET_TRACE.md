@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; official transformation coverage supported; gate
-`R4_TRANSFORMATION_COVERAGE_SUPPORTED`; date 2026-08-20.
+Status: active; full R5C synthetic runner accepted; gate
+`R5C_SYNTHETIC_RUNNER_ACCEPTED`; date 2026-08-21.
 
 ## Context capsule
 
@@ -380,12 +380,19 @@ feature-square system and matches the frozen primal predictions within
 2.3e-10. These are still synthetic implementation facts, not TRACE performance
 evidence or official execution authority.
 
-Exact next action: implement fresh pair-system cells and immutable prediction
-fragments, then inner selection, prediction freezing, terminal publication,
-and the deterministic synthetic runner against the accepted capabilities. Pass
-full synthetic fit/score acceptance before opening official numeric targets.
-Keep inferred anchors, learned competence, TDI, submissions, official scoring,
-and transduction deferred;
+The complete synthetic state machine is now accepted. Two fresh signed
+production-entry roots each ran exactly 2,033 successful child processes,
+including 390 locked G0 fits, 960 inner cells, 90 isolated selection tokens,
+and 165 outer fragments. Their exact eight-file terminals are byte-identical,
+their normalized process transcripts match, cleanup is complete, and
+independent high-impact review passes. The synthetic `NO_SIGNAL` result is an
+execution-boundary fact only and cannot stop or validate TRACE scientifically.
+
+Exact next action: freeze a narrow official R5D attempt/ancestry wrapper and a
+dormant F1 inferred-anchor preregistration before opening any official R5
+outcome. Then run the one training-only CYP3A4 oracle experiment. Keep inferred
+anchor implementation, blinded-test TRACE predictions, TDI, submissions,
+official scoring, and transduction deferred until their own gates;
 `global_TDI` remains the permanent TDI fallback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,

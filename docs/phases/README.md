@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`. The
+Phase 1 TRACE is active at `R5C_SYNTHETIC_RUNNER_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -109,10 +109,15 @@ truth capabilities, emits 240 candidate summaries, and publishes 90 isolated
 score-free token capabilities. The truth-free final freezer is accepted: it
 consolidates 15 outer contexts and 12 systems into one authenticated immutable
 package while opening no query truth or cliff labels. The sealed outer scorer
-and exact status-specific terminal publisher are accepted; only the full
-deterministic synthetic state-machine rehearsal remains before an official
-execution gate. No official target, fit, prediction, metric, or TRACE score is
-active.
+and exact status-specific terminal publisher are accepted. Two fresh signed
+production-entry rehearsals then completed all 2,033 child processes apiece
+and produced byte-identical exact terminals with no private residue;
+independent read-only review passes. This accepts the R5C synthetic execution
+boundary only. The synthetic `NO_SIGNAL` status is not a TRACE scientific
+result. The next gate is a narrow official-attempt ancestry wrapper plus
+dormant F1 preregistration before the one CYP3A4 training-only oracle run. No
+official target result, test prediction, submission, metric, or TRACE
+deployment authority is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

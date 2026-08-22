@@ -1,14 +1,15 @@
 # Project state
 
-Last updated: 2026-08-20
+Last updated: 2026-08-21
 
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`, with the R5C
-pure model and sealed-statistics kernels independently accepted. The single
-frozen official R3C global experiment passed its internal surrogate gate; no
-deployable model, official ST-RAE score, or submission is active.
+TRACE is active at `R5C_SYNTHETIC_RUNNER_ACCEPTED`. Two fresh full production-
+entry rehearsals completed the exact R5C process topology and produced byte-
+identical terminals; independent review found no high-impact blocker. The
+single frozen official R3C global experiment passed its internal surrogate
+gate; no deployable model, official ST-RAE score, or submission is active.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -254,6 +255,22 @@ and repeated adversarial review pass. This grants pure implementation evidence
 only: no cell capability, model fit, prediction, metric, official target,
 test, TDI, submission, or TRACE performance authority is active.
 
+The complete R5C synthetic execution boundary is now accepted. On signed
+commit `4ee682a7...`, two fresh production-entry roots each executed exactly
+2,033 successful child processes: 75 sealed migrations, 390 locked MapLight
+G0 fits, 960 inner pair cells, one sealed 240-row selection with 90 isolated
+tokens, 135 outer pair calls producing 165 fragments, and the freezer,
+accounting, cleanup, scorer, and terminal stages. Both exact eight-file
+terminals are byte-identical at manifest SHA-256 `6f199dfd...`; both raw
+process transcripts have the same SHA-256 after removing only PIDs and
+normalizing the declared terminal root. Every forbidden test, TDI, official-
+metric, submission, transduction, and inferred-anchor counter is zero, and no
+private or control root remains. Independent read-only review passes. The
+fixture status `R5_ORACLE_NO_SIGNAL` is execution-rehearsal output only: it is
+neither evidence that TRACE is superior nor evidence that TRACE scientifically
+fails. This grants `R5C_SYNTHETIC_RUNNER_ACCEPTED` and no official predictive,
+test, inferred-anchor, or submission authority.
+
 The additive R4 v5 transformation-coverage contract and its narrow v6
 support-arithmetic clarification are now frozen in
 [`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json)
@@ -401,7 +418,11 @@ implementation/synthetic acceptance only.
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
-That hypothesis remains unscored; R5 implementation is the direct next step.
+That hypothesis remains unscored. The direct next step is to freeze the
+smallest official R5D attempt/ancestry wrapper and dormant F1 inferred-anchor
+preregistration before opening any official R5 outcome, then execute the one
+authorized CYP3A4 training-only oracle experiment. The independent four-
+endpoint MapLight submission baseline remains a parallel reference lane.
 
 ## Product state
 
@@ -575,13 +596,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
-from their positive evidence. The R5 least-privilege source/capability
-firewall, pure model/statistics kernels, exact cell loader, controls, locked G0
-subprocess, practical row-space ridge, execution-mechanics overlay, fresh pair-
-system prediction fragments, sealed four-fold inner selection, and the final
-truth-free outer prediction freezer, sealed outer scorer, and exact terminal
-publisher are accepted. Implement the deterministic synthetic end-to-end runner
-next.
+from their positive evidence. The complete R5C synthetic state machine is
+accepted after two fresh exact 2,033-process replays, byte-identical terminals,
+preserved raw transcripts, and independent review. Freeze the smallest R5D
+official-attempt ancestry wrapper and dormant F1 inferred-anchor
+preregistration next, before opening official R5 outcomes. Then run the one
+authorized training-only CYP3A4 oracle experiment; in parallel, retain the
+four-endpoint fixed MapLight submission as the direct baseline.
 The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
