@@ -5,14 +5,22 @@ Last updated: 2026-08-22
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `I0_PREREGISTRATION_FROZEN`. Two fresh full
+TRACE is blocked at `R5D_OFFICIAL_PREFIT_FAILED`. Two fresh full
 R5C production-entry rehearsals completed the exact synthetic process topology
 and produced byte-identical terminals; independent review found no high-impact
 blocker. The direct four-endpoint MapLight lane has also completed two official
 blinded-test rehearsals and published one byte-identical, locally accepted
-750-row submission candidate. It has not been uploaded or scored. The one
-training-only CYP3A4 TRACE oracle attempt remains unopened and is now the exact
-next action.
+750-row submission candidate. It has not been uploaded or scored. The sole
+training-only CYP3A4 TRACE oracle attempt was claimed on signed commit
+`3c8f2f1...` and failed at the runner pre-gate because the clean execution
+worktree did not contain its required checkout-local root and MapLight Python
+executables. The immutable terminal is `R5_ORACLE_FAILED`; all target, fit,
+prediction, scorer, test, TDI, metric, submission, transductive, and inferred-
+anchor counters are zero. D-077 forbids retry or resume, so no official TRACE
+evidence exists and I0 remains inactive. The exact next action is to preserve
+this negative result and obtain an explicit reviewed decision before any
+replacement attempt; the accepted direct MapLight candidate remains the only
+deployable competition prediction.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and

@@ -1,7 +1,16 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; dormant I0/F1 preregistration frozen; gate
-`I0_PREREGISTRATION_FROZEN`; date 2026-08-22.
+Status: active but blocked; sole official R5D attempt consumed by a pre-fit
+runtime-layout failure; gate `R5D_OFFICIAL_PREFIT_FAILED`; date 2026-08-22.
+
+The fixed R5D attempt root contains an immutable `R5_ORACLE_FAILED` terminal
+and receipt. The clean signed checkout lacked its required checkout-local root
+and MapLight Python executables, so the accepted runner stopped before source
+compilation, target parsing, model fitting, prediction, or scoring. Every
+predictive and forbidden operation counter is zero. D-077 prohibits retry or
+resume; I0/F1 did not activate. A replacement requires a new explicit reviewed
+decision that binds this failure receipt and cannot be inferred from the prior
+authorization.
 
 ## Context capsule
 

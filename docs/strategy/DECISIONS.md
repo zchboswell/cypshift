@@ -2390,3 +2390,39 @@
   support/cell/influence drift, outcome-driven threshold change, test-test
   relation, or new model component revokes D-078. A clean gate miss permanently
   removes I0 from the critical path for this challenge version.
+
+## D-079 — Preserve the consumed R5D pre-fit failure and block implicit retry
+
+- Date: 2026-08-22
+- Status: accepted negative execution record; `R5D_OFFICIAL_PREFIT_FAILED`;
+  no official TRACE evidence
+- Decision: Preserve the sole D-077 attempt exactly as published and do not
+  retry, resume, replace, delete, or reinterpret it under the existing
+  contract. The signed clean worktree passed the wrapper's contract, runtime,
+  checkout, parent-manifest, and 17 source-receipt gates, atomically claimed
+  the fixed attempt root, and then the accepted runner rejected its missing
+  checkout-local root and MapLight Python executables. The wrapper published
+  one authenticated `R5_ORACLE_FAILED` terminal and receipt. Because D-077
+  explicitly makes any post-claim failure terminal, any replacement requires a
+  new explicit reviewed decision; user intent to continue TRACE does not by
+  itself rewrite the frozen one-attempt boundary.
+- Evidence: Attempt claim SHA-256 `331c93eb...`; failure terminal SHA-256
+  `79d73d85...`; official attempt receipt SHA-256 `2c1f0c59...`. The receipt
+  contains exactly two zero-exit cleanup/failure children and zero for all 14
+  operation counters, including target parsing, MapLight/ridge/hierarchy fits,
+  frozen predictions, truth opens, internal error evaluations, blinded-test
+  access, TDI access, official metrics, submissions, transduction, and inferred-
+  anchor pools. Read-only diagnosis reproduced only
+  `model executable differs`: the clean worktree had neither `.venv/bin/python`
+  nor `research/maplight-fixed/.venv/bin/python`; checkout, runtime, source
+  bundles, and source hashes independently passed. No official predictive
+  outcome was produced or inspected.
+- Alternatives: Quietly install the missing environments and rerun under
+  D-077; delete or rename the consumed root; treat wrapper-level runtime parity
+  as equivalent to the runner's checkout-local executable requirement; or
+  claim that zero scientific work makes the frozen retry prohibition void.
+- Reversal condition: None for the historical failed artifact. A separately
+  reviewed recovery contract may supersede only future execution authority if
+  it binds this exact receipt, proves the failure was pre-fit with all
+  scientific counters zero, and moves checkout-local executable verification
+  before claiming any new fixed root.
