@@ -2281,3 +2281,74 @@
   no-replace, or authority defect revokes D-075. Preserve any later rehearsal
   evidence and publish nothing; a changed receipt or submission rule requires a
   separately reviewed versioned contract before official execution.
+
+## D-076 — Accept the official direct MapLight submission candidate
+
+- Date: 2026-08-22
+- Status: accepted local official candidate;
+  `DIRECT_MAPLIGHT_OFFICIAL_CANDIDATE_ACCEPTED`; not uploaded or scored
+- Decision: Accept the exact four-endpoint direct MapLight candidate after two
+  independently generated official rehearsal roots revalidate and match
+  byte-for-byte. Preserve the accepted two-file read-only terminal as the first
+  direct submission candidate. It may be uploaded without waiting for TRACE,
+  but leaderboard feedback cannot change the frozen R5D experiment, inferred-
+  anchor preregistration, model family, parameters, or candidate bytes.
+- Evidence: Both rehearsals used official dataset revision `85f8b358...`, test
+  SHA-256 `a342f844...`, accepted R2A observations `00b1ac95...`, accepted R3A
+  feature manifest `32a95095...`, frozen contract `918fc135...`, and the exact
+  Python 3.10.13/NumPy 1.25.2/CatBoost 1.2.1 runtime. Each completed in 28.3
+  seconds with four fits, 4,905 aligned training feature rows, 750 test feature
+  rows, and 3,000 finite predictions. Both `submission.csv` files have SHA-256
+  `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`;
+  both manifests have SHA-256
+  `96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6`.
+  The no-replace acceptor published the exact same two files under
+  `/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-v1/accepted`
+  at root mode 0555/files 0444, and the independent validator confirms exact
+  six-column identity/order. Test-label, TDI, official-metric, calibration,
+  clipping, ensemble, model-binary, and transductive operations are zero.
+- Alternatives: Wait for TRACE before establishing a baseline; publish from a
+  single run; average or otherwise alter the byte-identical rehearsals; add
+  calibration, clipping, ensembling, or TDI inference; or tune after portal
+  feedback.
+- Reversal condition: Any input, runtime, parameter, row alignment, finite
+  value, schema, receipt, determinism, validator, or publication defect revokes
+  D-076. Preserve the artifact and do not upload changed bytes without a new
+  reviewed decision.
+
+## D-077 — Freeze the sole official R5D CYP3A4 oracle attempt
+
+- Date: 2026-08-22
+- Status: accepted contract and execution boundary;
+  `R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`; attempt unopened
+- Decision: Freeze the smallest separate official-attempt wrapper around the
+  accepted R5C state machine. Authorize exactly one training-only CYP3A4 oracle
+  attempt after a dormant F1 inferred-anchor preregistration is frozen. The
+  fixed outside-Git attempt root is claimed atomically only after contract,
+  runtime, checkout, four parent-manifest, and 17 ordered source-leaf receipts
+  pass. Retry and resume are forbidden. The wrapper must retain the complete
+  process transcript, independently revalidate the status-specific terminal,
+  remove private state, and publish one immutable attempt receipt without
+  adding authority.
+- Evidence: The contract SHA-256 is
+  `f8aadef95be8e0d719a14d08bc2a1164a03d2cf5079e9ed2dec749ee048bd700`.
+  It binds R2B `08dcf61c...`, R3A `32a95095...`, R3C `a2029e12...`, R4
+  `8166a89a...`, official revision `85f8b358...`, exact root and G0 runtimes,
+  and all 17 source receipts. Real-data preflight confirms 561 unique selected
+  and 561 unique stress episodes: selected episodes occur in five contexts and
+  stress episodes in one, yielding 3,366 G0/view pairs. The supported topology
+  is exactly 7,985 fresh children: 960 inner pair, 120 ordinary outer, 15 shared
+  outer, and the frozen source/projection/support/migration/selection/freezer/
+  accounting/cleanup/scorer processes. Focused official-wrapper, runner, and
+  terminal suites, Ruff, formatting, strict typing, diff checks, and a final
+  high-impact boundary review pass. No R5 official outcome, test file, TDI,
+  metric, submission, transductive relationship, or inferred-anchor pool was
+  opened; the fixed attempt root remains absent.
+- Alternatives: Point the synthetic R5C entry at official roots; omit official
+  ancestry or the raw process transcript; reuse the synthetic 390-G0 count;
+  retry after a late failure; add a workflow framework or concurrency layer;
+  or open official R5 outcomes before preregistering I0.
+- Reversal condition: Any contract, source, parent, runtime, checkout, attempt,
+  process, terminal, accounting, cleanup, no-replace, or authority drift revokes
+  D-077 and blocks the official attempt. Once the fixed root is claimed, any
+  later failure consumes the attempt and cannot be retried or resumed.

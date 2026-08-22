@@ -1,4 +1,4 @@
-"""Thin deterministic state-machine coordinator for the synthetic R5C run."""
+"""Thin deterministic state-machine coordinator for R5C/R5D oracle runs."""
 
 from __future__ import annotations
 
@@ -74,6 +74,19 @@ class SyntheticRunInput:
 
 
 @dataclass(frozen=True, slots=True)
+class OfficialRunInput:
+    """Receipt-authenticated inputs for the sole official R5D attempt."""
+
+    source_paths: Mapping[str, Path]
+    expected_source_receipts: Mapping[str, str]
+    private_root: Path
+    terminal_root: Path
+    commit_oid: str
+    expected_terminal_source_sha256: str
+    expected_failure_source_sha256: str
+
+
+@dataclass(frozen=True, slots=True)
 class ProcessRecord:
     index: int
     verb: str
@@ -86,6 +99,16 @@ class SyntheticRunResult:
     terminal_root: Path
     status: str
     processes: tuple[ProcessRecord, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class OfficialRunResult:
+    terminal_root: Path
+    status: str
+    processes: tuple[ProcessRecord, ...]
+
+
+RunInput = SyntheticRunInput | OfficialRunInput
 
 
 @dataclass(slots=True)
@@ -222,11 +245,29 @@ def runner_source_sha256() -> str:
 def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
     """Run one fresh synthetic state machine without retry or resume."""
 
+    return _run_oracle(config, run_label="synthetic")
+
+
+def run_official_oracle(config: OfficialRunInput) -> OfficialRunResult:
+    """Run the accepted mechanics once for receipt-bound official parents."""
+
+    result = _run_oracle(config, run_label="official")
+    return OfficialRunResult(
+        result.terminal_root,
+        result.status,
+        result.processes,
+    )
+
+
+def _run_oracle(config: RunInput, *, run_label: str) -> SyntheticRunResult:
+    if run_label not in {"synthetic", "official"}:
+        raise OracleRunnerError("run label differs")
+
     try:
         _pre_gate(config)
     except Exception:
         _destination_gate(config, allow_stale_control=True)
-        return _publish_pregate_failure(config)
+        return _publish_pregate_failure(config, run_label=run_label)
     private_root = config.private_root
     meta_root = _meta_root(config)
     private_root.mkdir(mode=0o700)
@@ -367,7 +408,7 @@ def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
                 "record": {
                     "stage": stage,
                     "failure_code": "PROCESS",
-                    "reason": "synthetic prefit stage failed",
+                    "reason": f"{run_label} prefit stage failed",
                     "verified_receipts": {capability["label"]: capability["sha256"]},
                     "operation_accounting": _zero_accounting(),
                 },
@@ -393,7 +434,7 @@ def run_synthetic_oracle(config: SyntheticRunInput) -> SyntheticRunResult:
             private_root.rmdir()
 
 
-def _pre_gate(config: SyntheticRunInput) -> None:
+def _pre_gate(config: RunInput) -> None:
     _destination_gate(config)
     _validate_checkout(config.commit_oid)
     _validate_runtime()
@@ -440,9 +481,7 @@ def _validate_checkout(commit_oid: str) -> None:
         raise OracleRunnerError("git worktree is not clean")
 
 
-def _destination_gate(
-    config: SyntheticRunInput, *, allow_stale_control: bool = False
-) -> None:
+def _destination_gate(config: RunInput, *, allow_stale_control: bool = False) -> None:
     if config.private_root.exists() or config.private_root.is_symlink():
         raise OracleRunnerError("private run root already exists")
     if config.terminal_root.exists() or config.terminal_root.is_symlink():
@@ -471,7 +510,9 @@ def _destination_gate(
         raise OracleRunnerError("private control root already exists")
 
 
-def _publish_pregate_failure(config: SyntheticRunInput) -> SyntheticRunResult:
+def _publish_pregate_failure(
+    config: RunInput, *, run_label: str = "synthetic"
+) -> SyntheticRunResult:
     private_root = config.private_root
     stale_meta_root = _meta_root(config)
     meta_root = _failure_meta_root(config)
@@ -509,7 +550,7 @@ def _publish_pregate_failure(config: SyntheticRunInput) -> SyntheticRunResult:
                 "record": {
                     "stage": "pre_gate",
                     "failure_code": "RUNTIME",
-                    "reason": "synthetic runner pre gate failed",
+                    "reason": f"{run_label} runner pre gate failed",
                     "verified_receipts": {
                         item["label"]: item["sha256"] for item in capabilities
                     },
@@ -539,11 +580,11 @@ def _publish_pregate_failure(config: SyntheticRunInput) -> SyntheticRunResult:
             private_root.rmdir()
 
 
-def _meta_root(config: SyntheticRunInput) -> Path:
+def _meta_root(config: RunInput) -> Path:
     return config.private_root.parent / f".{config.private_root.name}-control"
 
 
-def _failure_meta_root(config: SyntheticRunInput) -> Path:
+def _failure_meta_root(config: RunInput) -> Path:
     return config.terminal_root.parent / f".{config.terminal_root.name}-failure-control"
 
 
@@ -589,7 +630,7 @@ def _model_subprocess_environment() -> dict[str, str]:
 
 
 def _publish_late_failure(
-    config: SyntheticRunInput,
+    config: RunInput,
     coordinator: _Coordinator,
     failure: Exception,
 ) -> SyntheticRunResult:
@@ -713,11 +754,14 @@ def _compact(value: Any) -> bytes:
 
 
 __all__ = [
+    "OfficialRunInput",
+    "OfficialRunResult",
     "OracleRunnerError",
     "ProcessRecord",
     "RUNNER_SCHEMA",
     "SyntheticRunInput",
     "SyntheticRunResult",
     "run_synthetic_oracle",
+    "run_official_oracle",
     "runner_source_sha256",
 ]

@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R5C_SYNTHETIC_RUNNER_ACCEPTED`. The
+Phase 1 TRACE is active at `R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -41,11 +41,12 @@ component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
 evidence, not official ST-RAE, a deployable model, or a submission. The parallel
-direct MapLight deployment boundary is synthetically accepted: its four-fit
-runner, exact validator, and no-replace acceptance command passed two-root and
-adversarial replay without opening official blinded-test bytes. It grants no
-execution or publication authority; accepted output still requires two
-independent official rehearsal roots that revalidate and match byte-for-byte.
+direct MapLight deployment is now accepted as a local official candidate: two
+independent blinded-test rehearsals fit the same four frozen full-training
+models and produced byte-identical 750-row terminals, then the no-replace
+acceptor published one read-only candidate. No test labels, TDI, official
+metric, calibration, ensemble, or transductive operation was used. The
+candidate has not been uploaded or scored and is not TRACE evidence.
 Additive R4 v4 now supersedes v1/v2/v3 for implementation while preserving
 them as immutable history. It freezes label-safe direct-state and structural
 projections, joint
@@ -119,10 +120,11 @@ production-entry rehearsals then completed all 2,033 child processes apiece
 and produced byte-identical exact terminals with no private residue;
 independent read-only review passes. This accepts the R5C synthetic execution
 boundary only. The synthetic `NO_SIGNAL` status is not a TRACE scientific
-result. The next gate is a narrow official-attempt ancestry wrapper plus
-dormant F1 preregistration before the one CYP3A4 training-only oracle run. No
-official target result, test prediction, submission, metric, or TRACE
-deployment authority is active.
+result. The narrow R5D official-attempt wrapper is now frozen with exact parent,
+source, runtime, signed-checkout, one-attempt, 7,985-process, terminal, and
+cleanup bindings. The next gate is dormant F1 preregistration before the one
+CYP3A4 training-only oracle run. No official R5 target result, TRACE test
+prediction, official metric, or TRACE deployment authority is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

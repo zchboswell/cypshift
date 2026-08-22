@@ -437,6 +437,12 @@ def _validate_terminal(payloads: Mapping[str, bytes], status: str) -> None:
         _validate_full_rows(payloads, result, status)
 
 
+def validate_terminal_payloads(payloads: Mapping[str, bytes], status: str) -> None:
+    """Independently validate one complete status-specific terminal package."""
+
+    _validate_terminal(payloads, status)
+
+
 def _validate_manifest(
     manifest: Mapping[str, Any], payloads: Mapping[str, bytes], status: str
 ) -> None:
@@ -744,7 +750,7 @@ def _authority(status: str) -> dict[str, bool]:
 
 def _validate_source(expected: str) -> tuple[str, Mapping[str, str]]:
     try:
-        return validate_execution(expected)
+        return cast(tuple[str, Mapping[str, str]], validate_execution(expected))
     except OracleTerminalIOError as exc:
         raise OracleTerminalError(str(exc)) from exc
 
@@ -785,7 +791,7 @@ def _csv_rows(data: bytes, columns: Sequence[str], label: str) -> list[dict[str,
 
 def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
     try:
-        result = strict_json_object(data, label)
+        result = cast(dict[str, Any], strict_json_object(data, label))
     except ValueError as exc:
         raise OracleTerminalError(str(exc)) from exc
     if data != _compact_json(result):
@@ -858,4 +864,5 @@ __all__ = [
     "cleanup_private_roots",
     "publish_failed_terminal",
     "publish_underpowered_terminal",
+    "validate_terminal_payloads",
 ]

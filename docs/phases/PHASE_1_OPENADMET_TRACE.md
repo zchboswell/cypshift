@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; full R5C synthetic runner accepted; gate
-`R5C_SYNTHETIC_RUNNER_ACCEPTED`; date 2026-08-21.
+Status: active; R5D official execution contract frozen; gate
+`R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`; date 2026-08-22.
 
 ## Context capsule
 
@@ -232,18 +232,19 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
-The parallel direct MapLight deployment implementation is synthetically
-accepted at `DIRECT_MAPLIGHT_DEPLOYMENT_SYNTHETIC_ACCEPTED`. It freezes the
+The parallel direct MapLight deployment is accepted at
+`DIRECT_MAPLIGHT_OFFICIAL_CANDIDATE_ACCEPTED`. It freezes the
 receipt-bound R2A/R3A full-training path, four exact CatBoost fits, raw-SMILES
 test feature process, 750-row six-column validator, and a separate acceptance
 command. A production run can create only a read-only rehearsal terminal; it
 cannot write directly to the accepted destination. Acceptance requires two
 distinct official rehearsal roots to revalidate and match byte-for-byte before
-atomic no-replace publication. Synthetic two-root and adversarial tests plus
-independent re-audit pass. No official blinded-test bytes were opened, and no
-production fits, official predictions, metrics, or submissions were created,
-so this milestone grants implementation evidence only and no execution or
-publication authority.
+atomic no-replace publication. Two separate official rehearsals then opened the
+pinned 750-row blinded-test chemistry, fit four frozen full-training models,
+and produced byte-identical terminals. The no-replace acceptor published one
+read-only local candidate with 3,000 finite predictions. No test labels, TDI,
+official metric, calibration, clipping, ensemble, or transductive operation was
+used. The candidate has not been uploaded or scored and is not TRACE evidence.
 
 Additive R4 v5 now freezes the pre-fit transformation-coverage boundary in
 [`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json).
@@ -401,15 +402,18 @@ their normalized process transcripts match, cleanup is complete, and
 independent high-impact review passes. The synthetic `NO_SIGNAL` result is an
 execution-boundary fact only and cannot stop or validate TRACE scientifically.
 
-Exact next action: freeze a narrow official R5D attempt/ancestry wrapper and a
-dormant F1 inferred-anchor preregistration before opening any official R5
-outcome. Then run the one training-only CYP3A4 oracle experiment. Keep inferred
+The narrow R5D attempt/ancestry wrapper is frozen. It binds the four exact
+official parents and 17 ordered leaves, fixed runtimes, signed clean checkout,
+one no-retry attempt, 3,366 official G0/view contexts, 7,985 total supported
+children, terminal revalidation, process transcript, cleanup, and zero
+forbidden operations. Exact next action: freeze the dormant F1 inferred-anchor
+preregistration before opening any official R5 outcome, then run the one
+training-only CYP3A4 oracle experiment. Keep inferred
 anchor implementation, blinded-test TRACE predictions, TDI, submissions,
 official scoring, and transduction deferred until their own gates;
 `global_TDI` remains the permanent TDI fallback.
-The parallel direct baseline may advance only under separate execution
-authority, and accepted publication still requires two independently produced
-official rehearsal roots with exact terminal equality.
+The parallel direct baseline has passed its separate official two-rehearsal
+gate and may be uploaded as the first submission without changing TRACE.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
 submissions, transductive use, held-out tuning, broad adapters, services, or

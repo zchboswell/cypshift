@@ -1,15 +1,18 @@
 # Project state
 
-Last updated: 2026-08-21
+Last updated: 2026-08-22
 
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R5C_SYNTHETIC_RUNNER_ACCEPTED`. Two fresh full production-
-entry rehearsals completed the exact R5C process topology and produced byte-
-identical terminals; independent review found no high-impact blocker. The
-single frozen official R3C global experiment passed its internal surrogate
-gate; no deployable model, official ST-RAE score, or submission is active.
+TRACE is active at `R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`. Two fresh full
+R5C production-entry rehearsals completed the exact synthetic process topology
+and produced byte-identical terminals; independent review found no high-impact
+blocker. The direct four-endpoint MapLight lane has also completed two official
+blinded-test rehearsals and published one byte-identical, locally accepted
+750-row submission candidate. It has not been uploaded or scored. The one
+training-only CYP3A4 TRACE oracle attempt remains unopened pending the dormant
+F1 preregistration.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -230,20 +233,23 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
-The parallel four-endpoint direct MapLight deployment boundary is now
-synthetically accepted at `DIRECT_MAPLIGHT_DEPLOYMENT_SYNTHETIC_ACCEPTED`.
+The parallel four-endpoint direct MapLight deployment boundary is accepted at
+`DIRECT_MAPLIGHT_OFFICIAL_CANDIDATE_ACCEPTED`.
 Its frozen contract binds the accepted R2A observations, accepted R3A feature
 root, R3 parameter record, exact 3.10 runtime, six-column 750-row schema, four
 full-training fits, and 3,000 finite predictions. The production runner cannot
 write directly to the accepted destination: a separate no-replace acceptance
 command must authenticate and revalidate two distinct read-only rehearsal
-roots and require both terminal files to match byte-for-byte. Ten focused and
-42 neighboring tests, exact-runtime receipt checks, and independent re-audit
-pass. This is synthetic implementation evidence only. No official blinded-test
-bytes were opened, and no production fit, official prediction, metric, or
-submission was created. Accepted publication remains absent and requires two
-independently produced official rehearsal roots under separate execution
-authority.
+roots and require both terminal files to match byte-for-byte. Two independent
+official rehearsals then opened the same pinned 750-row blinded-test chemistry,
+fit the four frozen full-training MapLight models, and produced byte-identical
+terminals in 28.3 seconds each. The no-replace acceptance command published the
+exact two-file read-only candidate at submission SHA-256 `9d3ed5ff...` and
+manifest SHA-256 `96ee587c...`; the strict validator confirms 750 ordered rows
+and 3,000 finite predictions. No test label, TDI file, metric, calibration,
+clipping, ensemble, or transductive relationship was opened or computed. This
+is a deployable direct baseline candidate, not TRACE evidence or an official
+score, and it has not yet been uploaded to the competition portal.
 
 R5B's trusted synthetic source compiler and capability splitter are now
 accepted. The compiler authenticates synthetic analogues of the frozen R2,
@@ -430,14 +436,22 @@ control is capability-isolated to pure MapLight OOF anchor predictions. The
 contract opens no numeric target, test, TDI, or official metric and authorizes
 implementation/synthetic acceptance only.
 
+The narrow R5D official-attempt contract is now frozen. It binds the exact R2B,
+R3A, R3C, and R4 official parent manifests, their 17 ordered source leaves, the
+root and locked G0 runtimes, a clean signed checkout, one fixed no-retry attempt
+root, complete process transcript, terminal receipts, zero forbidden counters,
+and private cleanup. Official episode cardinality derives 3,366 G0/view calls
+and 7,985 total fresh child processes on the supported path. The contract and
+wrapper have not opened the official R5 outcome or consumed the sole attempt.
+
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
 That hypothesis remains unscored. The direct next step is to freeze the
-smallest official R5D attempt/ancestry wrapper and dormant F1 inferred-anchor
-preregistration before opening any official R5 outcome, then execute the one
-authorized CYP3A4 training-only oracle experiment. The independent four-
-endpoint MapLight submission baseline remains a parallel reference lane.
+smallest dormant F1 inferred-anchor preregistration before opening any official
+R5 outcome, then execute the one authorized CYP3A4 training-only oracle
+experiment. The accepted four-endpoint MapLight submission candidate remains
+the independent direct baseline and may be uploaded without waiting for TRACE.
 
 ## Product state
 
@@ -611,16 +625,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 ## Exact next action
 
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
-from their positive evidence. The complete R5C synthetic state machine is
-accepted after two fresh exact 2,033-process replays, byte-identical terminals,
-preserved raw transcripts, and independent review. Freeze the smallest R5D
-official-attempt ancestry wrapper and dormant F1 inferred-anchor
-preregistration next, before opening official R5 outcomes. Then run the one
-authorized training-only CYP3A4 oracle experiment; in parallel, retain the
-four-endpoint fixed MapLight submission as the direct baseline. That parallel
-lane remains implementation-only until two separately authorized official
-rehearsals revalidate and match exactly; only then may its no-replace acceptance
-command publish the frozen destination.
+from their positive evidence. The complete R5C synthetic state machine and the
+R5D official-attempt wrapper are frozen. Finalize the dormant F1 inferred-anchor
+preregistration before opening the R5 terminal, then consume the one authorized
+training-only CYP3A4 oracle attempt. Preserve its complete 7,985-process
+transcript and publish only the frozen status-specific terminal and attempt
+receipt. In parallel, the byte-identical direct MapLight candidate is ready for
+the first portal upload; leaderboard feedback cannot alter the frozen TRACE
+experiment or activate I0.
 
 The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
