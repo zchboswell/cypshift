@@ -1,0 +1,299 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.i0_preregistration.v1",
+  "contract_id": "R6-CYP3A4-I0-V1",
+  "status": "I0_PREREG_ONLY",
+  "purpose": "Preregister the smallest deployable inferred-anchor CYP3A4 candidate before any official R5 outcome is opened: I0 is exactly the frozen R5 F1 nearest-valid-training-anchor control and is retained only if authenticated R5 evidence supports it beyond G0.",
+  "parent_receipts": {
+    "validation_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.validation_contract.v4",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3"
+    },
+    "r5_contract_v1": {
+      "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v1.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v1",
+      "sha256": "c1d7a66c4f479339b30c2006e4250381cb213d665d4902c71d4c4edbd347e8bf"
+    },
+    "r5_contract_v2": {
+      "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v2.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v2",
+      "sha256": "bfa00b7f1e9ec8ed8d450b5499011e165b50bbf633b897d24177aee6066ea623"
+    },
+    "r5_contract_v3": {
+      "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v3.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v3",
+      "sha256": "275f1425d1a93805cb7d5b7dc1b63c67d6f02476eab9f77798cac6cc625a3d55"
+    },
+    "r5_resolved_contract": {
+      "resolution": "Apply the exact authenticated v2 and v3 absent-member overlays to v1 in order.",
+      "sha256": "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50"
+    },
+    "r5d_official_execution_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v1.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v1",
+      "sha256": "f8aadef95be8e0d719a14d08bc2a1164a03d2cf5079e9ed2dec749ee048bd700"
+    }
+  },
+  "activation": {
+    "terminal": "One immutable official R5 terminal whose exact manifest and result receipts are bound by a separately authenticated r5d_official_attempt_receipt.v1 envelope produced under r5d_official_execution_contract; an R5-shaped terminal or synthetic rehearsal terminal is ineligible.",
+    "required_status": "R5_ORACLE_SIGNAL_PASS",
+    "required_contract_sha256": "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50",
+    "required_attempt_envelope": {
+      "schema_version": "cypshift.openadmet_cyp_2026.r5d_official_attempt_receipt.v1",
+      "execution_contract_sha256": "Must equal parent_receipts.r5d_official_execution_contract.sha256.",
+      "source_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+      "official_source_parent_ancestry": "Must equal the exact R2B, R3A, R3C and R4 official source-parent receipts frozen by r5d_official_execution_contract; self-declared or synthetic ancestry is invalid.",
+      "attempt_semantics": "Must authenticate the one authorized official attempt, no retry or resume, the accepted runner/runtime/checkout receipts, zero blinded-test/TDI/submission/transductive operations, and the exact terminal manifest and result SHA-256 values.",
+      "terminal_cross_binding": "The envelope status, resolved R5 contract SHA-256, terminal manifest SHA-256, oracle result SHA-256, output receipts and operation accounting must equal the independently reopened terminal bytes exactly."
+    },
+    "required_result_authority": {
+      "oracle_evidence": true,
+      "inferred_anchor_contract": true,
+      "internal_metrics": true
+    },
+    "authentication_order": "First verify the exact r5d_official_execution_contract receipt; then authenticate the separate official-attempt envelope and its official source-parent ancestry; then independently reopen and cross-bind the read-only terminal manifest, exact status-conditioned file set, output receipts, result receipt and parent/source/runtime/accounting bindings before parsing any evidence row.",
+    "preactivation": "Until the exact official-execution parent, official-attempt envelope and official terminal all authenticate and the terminal status is R5_ORACLE_SIGNAL_PASS, remain I0_PREREG_ONLY and perform no evidence reduction, fit, prediction, test access or submission operation.",
+    "nonpass": "Any authentic official R5 status other than R5_ORACLE_SIGNAL_PASS resolves directly to I0_DEPLOYMENT_NO_SIGNAL before oracle_scored_rows.csv or oracle_inner_selection.csv is parsed."
+  },
+  "permission_resolution": {
+    "superseded_rule": "validation_contract campaign_episodes.public_artifact_role says public episodes and their membership must not be reused for inferred-anchor evaluation.",
+    "narrow_exception": "After activation only, I0 may reuse authenticated published R5 derived G0/F1 primary absolute-loss rows, selected T0 coordinates, and published result support. This exception does not expose or authorize any raw R2 episode, membership, mask, anchor, truth, label or observation artifact.",
+    "authentication_only": [
+      "manifest.json"
+    ],
+    "evidence_inputs": {
+      "oracle_scored_rows.csv": "Parse only aligned G0 and F1 rows in the frozen primary selected-anchor population and only their published identifiers, local-availability metadata, aggregation weights and absolute_error; never reconstruct a target or prediction.",
+      "oracle_inner_selection.csv": "Parse only the 15 selected T0 alpha/lambda coordinates.",
+      "oracle_result.json": "Parse only status, contract and terminal bindings, authority, support.control_local_support.F1 and criteria.F1_min_30_families_50_rows."
+    },
+    "other_r5_outputs": "oracle_cell_metrics.csv, oracle_bootstrap_summary.csv, oracle_influence_checks.csv and oracle_ablation_scorecard.csv are forbidden evidence inputs; I0 recomputes its two predeclared contrasts from published G0/F1 absolute losses.",
+    "raw_r2_forbidden": [
+      "campaign_episodes_public.csv",
+      "campaign_episodes_truth.csv",
+      "episode_label_masks.csv",
+      "direct_observations.csv",
+      "group_folds.csv"
+    ],
+    "candidate_pool_resolution": {
+      "candidate_pool_id": "I0_TOP64_COMPLETE_CYP3A4_TRAIN_ONLY_V1",
+      "supersedes": "DEFERRED_NO_INFERRED_POOL_V1 for future I0 inference only.",
+      "scope": "Complete finite-central-point CYP3A4 official training molecules only; blinded-test molecules are queries only and never candidates for one another.",
+      "milestone_state": "Defined but not materialized; inferred_anchor_candidate_pools remains zero in this preregistration milestone."
+    }
+  },
+  "system": {
+    "system_id": "I0",
+    "alias_of": "The exact frozen R5 F1 system under r5_resolved_contract.",
+    "definition": "Use the most Morgan-similar complete CYP3A4 training anchor among the first at most 64 training candidates whose on-demand accepted R4 transformation is VALID_SINGLE or VALID_DOUBLE; tie-break by molecule_id, apply the frozen T0 delta model at the preregistered full-train coordinate, and add the measured training-anchor point.",
+    "fallback": "Use exact full-training G0 only when no valid candidate anchor exists; record local_available=false and prediction_source=G0.",
+    "integrity_rule": "A nonfinite value, invalid fit, receipt drift, schema defect or extraction/model error is I0_FAILED and must not be converted to G0 fallback.",
+    "no_new_components": [
+      "no new model",
+      "no new ranker",
+      "no new metric",
+      "no competence gate",
+      "no ensemble or fusion",
+      "no framework"
+    ]
+  },
+  "evidence_gate": {
+    "population": {
+      "row_source": "oracle_scored_rows.csv",
+      "filters": {
+        "population_id": "primary_local_eligible",
+        "episode_policy_id": "selected_anchor",
+        "system_id": [
+          "G0",
+          "F1"
+        ]
+      },
+      "alignment_key": [
+        "episode_id",
+        "query_molecule_id",
+        "query_rank",
+        "episode_policy_id",
+        "repeat",
+        "outer_fold",
+        "component_id",
+        "population_id"
+      ],
+      "alignment": "Require exactly one G0 and one F1 row for every key and exact equality of all key and aggregation-weight fields.",
+      "f1_local": "A local F1 row has local_available=true and prediction_source=F1.",
+      "f1_fallback": "Every other F1 row has local_available=false and prediction_source=G0, and its canonical absolute_error equals the aligned G0 absolute_error exactly."
+    },
+    "aggregation": "Reuse the frozen R5 primary component macro: mean query absolute error within episode, mean episode loss within component and repeat, mean repeat loss within component, then equal mean across unique components.",
+    "contrasts": {
+      "G0-I0": "G0 component-macro MAE minus F1 component-macro MAE on every aligned primary key, including exact F1 fallback rows; positive favors I0.",
+      "G0-I0_LOCAL": "G0 component-macro MAE minus F1 component-macro MAE after applying the f1_local mask to aligned keys; positive favors I0."
+    },
+    "bootstrap": {
+      "rng": "numpy.random.Generator(numpy.random.PCG64(20260821)) in the exact accepted R5 root runtime",
+      "seed": 20260821,
+      "accepted_replicates": 2000,
+      "maximum_attempts": 20000,
+      "universe": "Every unique primary component_id sorted ascending.",
+      "draw": "For each attempt draw N component indices with replacement from the sorted N-component universe and reuse that one multiplicity vector for both G0-I0 and G0-I0_LOCAL; the local mask never receives an independent draw.",
+      "accept_draw": "Accept only when both masked component-macro contrasts are finite and each contains at least one scored component; otherwise consume and reject the draw.",
+      "percentile": "Sort 2,000 accepted values per contrast; for p in {0.025,0.975}, use linear interpolation at h=(n-1)*p.",
+      "failure": "Fewer than 2,000 accepted replicates after 20,000 attempts is I0_FAILED.",
+      "criterion": "The 95% lower bound is strictly positive for both G0-I0 and G0-I0_LOCAL."
+    },
+    "cells": {
+      "population": "G0-I0 on the full aligned primary population, including fallback rows.",
+      "grid": {
+        "repeats": 3,
+        "outer_folds": 5,
+        "required_cells": 15
+      },
+      "metric": "Within each exact (repeat,outer_fold) cell compute component-macro G0 MAE minus component-macro F1 MAE.",
+      "criterion": "All 15 cells are finite and present; at least 12 of 15 are strictly positive and at least 3 of 5 are strictly positive within each repeat."
+    },
+    "influence": {
+      "population": "Unbootstrapped full aligned primary G0-I0 contrast.",
+      "ranking": "Compute each component's additive contribution to the unbootstrapped equal-component contrast; rank absolute contribution descending then component_id ascending.",
+      "checks": 10,
+      "criterion": "Remove each of the top 10 components separately, recompute the full G0-I0 contrast, and require every leave-one-component-out contrast to remain strictly positive."
+    },
+    "availability": {
+      "source": "Authenticated oracle_result.json support and criteria only.",
+      "minimum_primary_components_with_local_f1": 30,
+      "minimum_unique_base_episode_query_rows_before_repeat_expansion": 50,
+      "support_paths": {
+        "components": "support.control_local_support.F1.families",
+        "base_rows": "support.control_local_support.F1.rows_or_pairs",
+        "criterion": "criteria.F1_min_30_families_50_rows"
+      },
+      "criterion": "The two counts meet their minima and the published F1_min_30_families_50_rows value is exactly true."
+    }
+  },
+  "final_t0_coordinate": {
+    "source": "Authenticated oracle_inner_selection.csv only.",
+    "filter": "system_id=T0 and selected=true.",
+    "required_rows": "Exactly one selected T0 row for each of the 15 (repeat,outer_fold) cells and no duplicate or missing cell.",
+    "allowed_coordinates": {
+      "alpha": [
+        1.0,
+        10.0
+      ],
+      "lambda": [
+        2.0,
+        10.0
+      ]
+    },
+    "selection": "Choose the modal exact (alpha,lambda) coordinate across the 15 selected rows; if coordinate frequencies tie, choose larger alpha, then larger lambda.",
+    "non_authority": "Inner losses, outer losses, test chemistry and leaderboard feedback cannot alter this coordinate."
+  },
+  "full_train_inference": {
+    "milestone_state": "Mechanically preregistered only; no implementation, fit, prediction, test open or submission is authorized by I0_PREREG_ONLY.",
+    "endpoint": "CYP3A4 direct inhibition only.",
+    "G0": "Fit the exact frozen R3 TRACE-G0-MAPL-FIXED model and parameters once on all official training observations with a finite reported central CYP3A4 point.",
+    "T0": "Fit the exact frozen R5 T0 features, scaling, contextual ridge and residual hierarchy at final_t0_coordinate on every valid complete-CYP3A4 official training pair, emitting both directions with target analog point minus anchor point.",
+    "pair_weight": "For a training component with P eligible unordered pairs, each of its 2*P directional rows has the single fit weight 1/(2*P).",
+    "candidate_ranking": {
+      "pool_id": "I0_TOP64_COMPLETE_CYP3A4_TRAIN_ONLY_V1",
+      "universe": "Official training molecules with a complete finite reported central CYP3A4 point.",
+      "similarity": "Accepted R3A 4096-bit chiral Morgan Tanimoto.",
+      "pre_extraction_order": "Similarity descending, then molecule_id ascending; inspect exactly the first min(64,N) candidates.",
+      "geometry": "Apply the exact receipt-bound accepted R4 extractor independently from each retained training candidate anchor to the current query and retain only VALID_SINGLE or VALID_DOUBLE.",
+      "selection": "Choose the retained valid candidate with greatest Morgan similarity, then molecule_id ascending.",
+      "test_isolation": "A blinded-test molecule is only the current query; it is never an anchor candidate, training row, pair target or source of a test-test relationship."
+    },
+    "prediction": "When a valid training anchor exists, return its measured CYP3A4 point plus the finite T0 query-minus-anchor delta and record local_available=true and prediction_source=F1; otherwise return exact G0 and record local_available=false and prediction_source=G0.",
+    "failure": "Any receipt, schema, training-population, weighting, coordinate, feature, extraction, fit, or nonfinite-prediction defect is I0_FAILED; only an honestly empty valid-anchor set permits G0 fallback."
+  },
+  "operation_accounting": {
+    "types": "Every value is an exact non-boolean nonnegative integer.",
+    "preregistration_milestone": {
+      "official_r5_terminal_files_opened": 0,
+      "published_r5_loss_rows_parsed": 0,
+      "direct_target_values_parsed": 0,
+      "model_fits": 0,
+      "predictions_generated": 0,
+      "internal_metric_evaluations": 0,
+      "blinded_test_files_opened": 0,
+      "tdi_files_opened": 0,
+      "official_metric_calls": 0,
+      "submissions_created": 0,
+      "transductive_relationships": 0,
+      "inferred_anchor_candidate_pools": 0
+    },
+    "future_evidence_reducer": "A separately reviewed reducer may open only the authenticated published files in permission_resolution after activation; it parses published absolute losses but zero targets or predictions and performs zero model fits, test opens, official metric calls, submissions, transductive relationships or candidate-pool materializations.",
+    "future_inference": "Full-training fits, candidate-pool materialization and blinded-test prediction require separate implementation and execution gates after I0_DEPLOYMENT_PASS; this preregistration records no such operation."
+  },
+  "acceptance": {
+    "statuses": [
+      "I0_PREREG_ONLY",
+      "I0_FAILED",
+      "I0_DEPLOYMENT_NO_SIGNAL",
+      "I0_DEPLOYMENT_PASS"
+    ],
+    "prereg_only": "The contract is frozen but no authenticated official R5 outcome has been opened.",
+    "failed": "Any authentication, receipt, schema, alignment, fallback, support, arithmetic, randomization, finiteness or determinism defect.",
+    "deployment_no_signal": "An authentic official R5 status other than R5_ORACLE_SIGNAL_PASS, or an activated clean reduction where any bootstrap, cell, influence or availability criterion is false.",
+    "deployment_pass": [
+      "Activation is exact R5_ORACLE_SIGNAL_PASS.",
+      "Both G0-I0 and G0-I0_LOCAL 95% bootstrap lower bounds are strictly positive.",
+      "Full-population G0-I0 is positive in at least 12 of 15 cells and at least 3 of 5 cells within each repeat.",
+      "Every top-10 full-population G0-I0 leave-one-component-out contrast is strictly positive.",
+      "F1 availability covers at least 30 primary components and 50 unique base episode-query rows before repeat expansion, and the published F1_min_30_families_50_rows criterion is true.",
+      "The exact modal T0 coordinate and every input, join, loss and accounting value are complete and finite."
+    ],
+    "pass_scope": "I0_DEPLOYMENT_PASS authorizes a separate minimal I0 implementation gate only; it is not a fit, prediction, official score or submission result."
+  },
+  "authority": {
+    "I0_PREREG_ONLY": {
+      "contract_only": true,
+      "official_r5_evidence": false,
+      "i0_implementation_contract": false,
+      "model_fits": false,
+      "predictions": false,
+      "test_access": false,
+      "official_metric": false,
+      "tdi": false,
+      "submission": false,
+      "transduction": false
+    },
+    "I0_FAILED": {
+      "contract_only": false,
+      "official_r5_evidence": false,
+      "i0_implementation_contract": false,
+      "model_fits": false,
+      "predictions": false,
+      "test_access": false,
+      "official_metric": false,
+      "tdi": false,
+      "submission": false,
+      "transduction": false
+    },
+    "I0_DEPLOYMENT_NO_SIGNAL": {
+      "contract_only": false,
+      "official_r5_evidence": true,
+      "i0_implementation_contract": false,
+      "model_fits": false,
+      "predictions": false,
+      "test_access": false,
+      "official_metric": false,
+      "tdi": false,
+      "submission": false,
+      "transduction": false
+    },
+    "I0_DEPLOYMENT_PASS": {
+      "contract_only": false,
+      "official_r5_evidence": true,
+      "i0_implementation_contract": true,
+      "model_fits": false,
+      "predictions": false,
+      "test_access": false,
+      "official_metric": false,
+      "tdi": false,
+      "submission": false,
+      "transduction": false
+    }
+  },
+  "hard_stop": {
+    "r5_nonpass": "If the authentic official R5 status is not R5_ORACLE_SIGNAL_PASS, publish I0_DEPLOYMENT_NO_SIGNAL and stop before parsing detailed R5 losses, choosing a coordinate, fitting, opening test chemistry or predicting.",
+    "i0_gate_miss": "If any clean I0 evidence criterion misses, publish I0_DEPLOYMENT_NO_SIGNAL and permanently remove I0 from the critical path; do not tune a threshold, population, mask, ranker, candidate cap, hyperparameter, bootstrap or fallback from the result.",
+    "integrity": "I0_FAILED is never reinterpreted as NO_SIGNAL or rescued with G0 fallback; repair requires a new reviewed implementation gate without changing this preregistered science from outcomes.",
+    "leaderboard": "Leaderboard feedback, official test relationships, TDI, another isoform, a new model and a new metric cannot activate or rescue I0."
+  }
+}

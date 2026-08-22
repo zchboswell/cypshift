@@ -5,14 +5,14 @@ Last updated: 2026-08-22
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is active at `R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`. Two fresh full
+TRACE is active at `I0_PREREGISTRATION_FROZEN`. Two fresh full
 R5C production-entry rehearsals completed the exact synthetic process topology
 and produced byte-identical terminals; independent review found no high-impact
 blocker. The direct four-endpoint MapLight lane has also completed two official
 blinded-test rehearsals and published one byte-identical, locally accepted
 750-row submission candidate. It has not been uploaded or scored. The one
-training-only CYP3A4 TRACE oracle attempt remains unopened pending the dormant
-F1 preregistration.
+training-only CYP3A4 TRACE oracle attempt remains unopened and is now the exact
+next action.
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
@@ -443,14 +443,20 @@ root, complete process transcript, terminal receipts, zero forbidden counters,
 and private cleanup. Official episode cardinality derives 3,366 G0/view calls
 and 7,985 total fresh child processes on the supported path. The contract and
 wrapper have not opened the official R5 outcome or consumed the sole attempt.
+The dormant I0 deployment criterion is also frozen before outcome access. It is
+exactly the existing F1 nearest-valid-training-anchor control, adds no model or
+ranker, and can activate only after an authenticated official R5
+`SIGNAL_PASS`. It then requires independently recomputed positive G0-minus-F1
+and local-only bootstrap lower bounds, 12/15 positive cells with at least 3/5
+per repeat, ten positive leave-one-component-out checks, and the frozen F1
+support gate. Any miss removes I0 from the critical path without tuning.
 
 The current scientific frontier is the original series-first hypothesis:
 whether an explicit measured-parent and parent-to-analog delta can improve over
 the strongest global molecular comparator under family-held-out evaluation.
-That hypothesis remains unscored. The direct next step is to freeze the
-smallest dormant F1 inferred-anchor preregistration before opening any official
-R5 outcome, then execute the one authorized CYP3A4 training-only oracle
-experiment. The accepted four-endpoint MapLight submission candidate remains
+That hypothesis remains unscored. The direct next step is to execute the one
+authorized CYP3A4 training-only oracle experiment. The accepted four-endpoint
+MapLight submission candidate remains
 the independent direct baseline and may be uploaded without waiting for TRACE.
 
 ## Product state
@@ -626,9 +632,9 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 Do not add another global representation or ensemble, rerun R3C/R4, or tune
 from their positive evidence. The complete R5C synthetic state machine and the
-R5D official-attempt wrapper are frozen. Finalize the dormant F1 inferred-anchor
-preregistration before opening the R5 terminal, then consume the one authorized
-training-only CYP3A4 oracle attempt. Preserve its complete 7,985-process
+R5D official-attempt wrapper and dormant I0/F1 preregistration are frozen.
+Consume the one authorized training-only CYP3A4 oracle attempt. Preserve its
+complete 7,985-process
 transcript and publish only the frozen status-specific terminal and attempt
 receipt. In parallel, the byte-identical direct MapLight candidate is ready for
 the first portal upload; leaderboard feedback cannot alter the frozen TRACE

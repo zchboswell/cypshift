@@ -2352,3 +2352,41 @@
   process, terminal, accounting, cleanup, no-replace, or authority drift revokes
   D-077 and blocks the official attempt. Once the fixed root is claimed, any
   later failure consumes the attempt and cannot be retried or resumed.
+
+## D-078 — Preregister the minimal F1 inferred-anchor bridge
+
+- Date: 2026-08-22
+- Status: accepted dormant contract; `I0_PREREGISTRATION_FROZEN`; no official
+  R5 outcome opened and no inferred-anchor implementation authorized
+- Decision: Preregister I0 as exactly the existing frozen R5 F1 control before
+  opening the official R5 outcome. I0 uses the most Morgan-similar complete
+  training anchor among the first at most 64 candidates with a valid accepted
+  R4 transformation, applies the selected T0 delta, and otherwise falls back to
+  G0 only for an honestly empty valid-anchor set. It adds no model, ranker,
+  metric, competence gate, fusion, or framework. Activation requires an
+  authenticated sole-attempt R5D receipt and `R5_ORACLE_SIGNAL_PASS`; any other
+  authentic R5 status stops before detailed loss parsing.
+- Evidence: The preregistration SHA-256 is
+  `05924fb3a8a7e8e4d28a1ee11d6fe725af273ee3c6340062f9f25af57ded8d7c`.
+  It binds the resolved R5 contract `9143ecd1...` and official execution
+  contract `f8aadef9...` before any evidence row. After activation only, a
+  future sealed reducer may use aligned published G0/F1 primary absolute-error
+  rows and the 15 selected T0 coordinates. Both full-population and local-only
+  G0-minus-F1 95% bootstrap lower bounds must be positive under one shared
+  2,000-replicate PCG64 draw; at least 12/15 cells and 3/5 per repeat must be
+  positive; all ten top-component leave-one-out contrasts must remain positive;
+  and F1 must retain at least 30 components and 50 base rows. The full-training
+  T0 coordinate is the mode of the 15 selected coordinates with the frozen
+  larger-alpha/larger-lambda tie-break. Twenty-seven inherited and focused
+  contract tests, Ruff, formatting, and diff checks pass. All target, fit,
+  prediction, test, TDI, metric, submission, transductive, and candidate-pool
+  counters remain zero.
+- Alternatives: Put TRACE deployment behind a new learned anchor ranker; tune a
+  threshold from the R5 result; compare only locally available rows; use an
+  independent local bootstrap; reuse raw R2 episode membership; let leaderboard
+  feedback rescue I0; or build inferred anchors before oracle evidence.
+- Reversal condition: Any parent/envelope/terminal mismatch, target or raw-
+  episode access, row misalignment, fallback mismatch, non-shared bootstrap,
+  support/cell/influence drift, outcome-driven threshold change, test-test
+  relation, or new model component revokes D-078. A clean gate miss permanently
+  removes I0 from the critical path for this challenge version.

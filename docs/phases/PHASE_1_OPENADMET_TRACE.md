@@ -1,7 +1,7 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; R5D official execution contract frozen; gate
-`R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`; date 2026-08-22.
+Status: active; dormant I0/F1 preregistration frozen; gate
+`I0_PREREGISTRATION_FROZEN`; date 2026-08-22.
 
 ## Context capsule
 
@@ -406,9 +406,12 @@ The narrow R5D attempt/ancestry wrapper is frozen. It binds the four exact
 official parents and 17 ordered leaves, fixed runtimes, signed clean checkout,
 one no-retry attempt, 3,366 official G0/view contexts, 7,985 total supported
 children, terminal revalidation, process transcript, cleanup, and zero
-forbidden operations. Exact next action: freeze the dormant F1 inferred-anchor
-preregistration before opening any official R5 outcome, then run the one
-training-only CYP3A4 oracle experiment. Keep inferred
+forbidden operations. The dormant I0 preregistration is also frozen before
+outcome access: it aliases the existing F1 control, adds no model or ranker, and
+requires positive full/local bootstraps, 12/15 cell direction with 3/5 per
+repeat, ten positive influence checks, and the existing F1 support gate after
+an authentic R5 `SIGNAL_PASS`. Exact next action: run the one training-only
+CYP3A4 oracle experiment. Keep inferred
 anchor implementation, blinded-test TRACE predictions, TDI, submissions,
 official scoring, and transduction deferred until their own gates;
 `global_TDI` remains the permanent TDI fallback.

@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R5D_OFFICIAL_EXECUTION_CONTRACT_FROZEN`. The
+Phase 1 TRACE is active at `I0_PREREGISTRATION_FROZEN`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -122,8 +122,9 @@ independent read-only review passes. This accepts the R5C synthetic execution
 boundary only. The synthetic `NO_SIGNAL` status is not a TRACE scientific
 result. The narrow R5D official-attempt wrapper is now frozen with exact parent,
 source, runtime, signed-checkout, one-attempt, 7,985-process, terminal, and
-cleanup bindings. The next gate is dormant F1 preregistration before the one
-CYP3A4 training-only oracle run. No official R5 target result, TRACE test
+cleanup bindings. The dormant I0 criterion is now frozen as the exact existing
+F1 control with no new model or ranker and hard bootstrap/cell/influence/support
+stops. The next gate is the one CYP3A4 training-only oracle run. No official R5 target result, TRACE test
 prediction, official metric, or TRACE deployment authority is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
