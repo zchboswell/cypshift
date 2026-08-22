@@ -19,6 +19,27 @@ re-serialize the CSV. If it must be copied, verify the SHA-256 above before
 uploading. The accompanying manifest is the provenance record and is not the
 competition upload.
 
+## Competition-validator result
+
+The exact accepted CSV passes the competition tutorial's own
+`validate_activity_submission` function with `valid=True` and no errors. The
+validation used:
+
+- tutorial repository commit: `858ae63ce79934113bccdb7fc65467de5f7b1935`
+- `validation/activity_validation.py` SHA-256:
+  `276a53d7f22ff973aaf567e64d977202995e91ba3cef2bbdc4de71c13bdebcb2`
+- official blinded-test dataset revision:
+  `85f8b358d0a2056a98b990dd75d3b3ec9247862b`
+- official blinded-test CSV SHA-256:
+  `a342f8444a8dcb531ca12f3685293f0bd6c36ae9073f491e44a9bc1cc4b741f9`
+- expected and submitted `Molecule_Name` cardinality: 750, with no missing or
+  extra IDs
+
+The validator confirmed all required identifier and four regression columns,
+750 rows, unique molecule names, numeric finite predictions, and the exact
+official molecule-ID set. The submission SHA-256 was checked before and after
+and remained `9d3ed5ff...db504b`.
+
 ## Interpretation
 
 This artifact is the regression baseline against which a later TRACE-enabled
