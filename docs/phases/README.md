@@ -1,6 +1,6 @@
 # Active phase
 
-Phase 1 TRACE is active at `R5B_CAPABILITY_SPLITTER_SYNTHETIC_ACCEPTED`. The
+Phase 1 TRACE is active at `R5C_SYNTHETIC_RUNNER_ACCEPTED`. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in
@@ -102,8 +102,22 @@ outcome has been opened. Its additive v2 clarification binds random-anchor
 stress to outer diagnostics only. The trusted synthetic source compiler and
 capability splitter now pass end-to-end replay and independent review, emitting
 226 disjoint roots while keeping C3 physically isolated from measured anchor
-potency. Model cells, sealed scoring, and runner acceptance remain next; no
-official target, fit, prediction, metric, or TRACE score is active.
+potency. All pair-system models, ablations, falsification controls, and locked-
+G0 fallback cells now emit independently authenticated prediction fragments.
+Sealed four-fold selection now authenticates 960 candidate fragments and 60
+truth capabilities, emits 240 candidate summaries, and publishes 90 isolated
+score-free token capabilities. The truth-free final freezer is accepted: it
+consolidates 15 outer contexts and 12 systems into one authenticated immutable
+package while opening no query truth or cliff labels. The sealed outer scorer
+and exact status-specific terminal publisher are accepted. Two fresh signed
+production-entry rehearsals then completed all 2,033 child processes apiece
+and produced byte-identical exact terminals with no private residue;
+independent read-only review passes. This accepts the R5C synthetic execution
+boundary only. The synthetic `NO_SIGNAL` status is not a TRACE scientific
+result. The next gate is a narrow official-attempt ancestry wrapper plus
+dormant F1 preregistration before the one CYP3A4 training-only oracle run. No
+official target result, test prediction, submission, metric, or TRACE
+deployment authority is active.
 Unresolved metric,
 TDI-order, interval, backend, and permission behavior remains frozen.
 `TDI-TRACE` is deferred; `global_TDI` is the permanent fallback.

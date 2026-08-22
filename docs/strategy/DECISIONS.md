@@ -2015,3 +2015,225 @@
   prediction-fallback, population, join, aggregation, bootstrap-multiplicity,
   stress, safety, evidence-cardinality, determinism, or authority drift revokes
   D-068 and blocks official R5 execution.
+
+## D-069 — Accept the first R5C execution foundations
+
+- Date: 2026-08-20
+- Status: accepted synthetic implementation foundations; no official execution
+  or predictive authority
+- Decision: Accept the exact cell capability loader, C0/C1/F0/F1 controls,
+  locked one-episode MapLight G0 subprocess, algebraically equivalent row-space
+  ridge, and additive R5 v3 execution-mechanics overlay. Authorize fresh
+  pair-system cell, immutable prediction-fragment, freezer, scorer-terminal,
+  and deterministic synthetic-runner implementation only. Do not open official
+  numeric oracle targets or claim TRACE uplift yet.
+- Evidence: The cell I/O and validation SHA-256 values are
+  `a4e1567f00d73037492659ea02090cc8554fbe28629374de8a97b69e8780062c`
+  and `1aa2130280b0326fc943dfcaad0d341e186cb25048d2f5789825e10bed77ec8b`;
+  all 75 measured and 75 C3 scopes replay and independent audit closes the
+  receipt, TOCTOU, fold, pair, episode, OOF, feature-alignment, and C3-potency
+  firewalls. The control source is `8bce9b92...`; independent witnesses cover
+  top-64 truncation, reversed direction, deterministic PCG64 selection, frozen
+  T0 reuse, and explicit G0 fallback. The G0 I/O and runner hashes are
+  `5e35fd20...` and `9ed74e57...`; two real locked Python 3.10.13,
+  NumPy 1.25.2, CatBoost 1.2.1 runs with 101 nonconstant fit rows are
+  byte-identical. The row-space ridge source is `9ac284ef...`; 100 adversarial
+  cases match the frozen primal/sklearn predictions within `2.3e-10`, and an
+  800-by-4,100 fit uses an 800-by-800 solve in about 1.5 seconds. The v3 overlay
+  and canonical resolved-contract SHA-256 values are
+  `275f1425d1a93805cb7d5b7dc1b63c67d6f02476eab9f77798cac6cc625a3d55`
+  and `9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50`;
+  it changes only execution mechanics and passes repeated independent review.
+- Alternatives: Let each model inspect shared target roots; serialize T0 model
+  state across capabilities; give C3 measured potency; accept molecule-only F0
+  seeds; run feature-square ridge systems hundreds of times; omit wrong-anchor
+  controls; or open official targets before the full runner is synthetically
+  accepted.
+- Reversal condition: Any source/manifest receipt drift, widened cell
+  capability, measured-potency access by C3, family or episode leakage, G0
+  runtime/parameter drift, control-causality defect, numerical-equivalence
+  failure, execution-overlay contradiction, or non-atomic publication revokes
+  D-069 and blocks pair-cell or official execution.
+
+## D-070 — Accept authenticated R5C pair-system prediction fragments
+
+- Date: 2026-08-20
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept fresh pair-system execution and immutable prediction
+  fragments for every frozen learned model, ablation, wrong/shuffled-anchor
+  control, shuffled-grammar control, and locked MapLight fallback. Authorize
+  sealed inner selection, freezer, terminal, and deterministic synthetic-runner
+  implementation only. Do not open official oracle targets or claim TRACE
+  uplift.
+- Evidence: The accepted pair runner, pair engine, and pair I/O SHA-256 values
+  are `01496d7015efd02541b0eff89faf89c9960b55c4953ed66d2dc962906453d88c`,
+  `6c31224d3e83ed24d01bf2668dfcb49af981d981ae57ba667dd4ca52507bfc8b`,
+  and `d206f5d7af40aa21455173510728812993b82876722db5a6f6c8f083e3fd7e4e`.
+  Fifty-nine focused tests and eleven direct publication attacks pass; all 27
+  transitive scientific-source mutations change the bound source receipt. A
+  real locked CatBoost G0 fragment passes strict authentication into pair
+  publication, shared T0/F0/F1 parses targets once and fits T0 once, F2 performs
+  a nonidentity multi-pair shuffle and clears a programmatic 200-pair/50-family
+  gate, and C3 remains physically isolated from measured potency. The full
+  suite passes 728 tests with three expected skips; Ruff, formatting, strict
+  typing, diff checks, and independent read-only review pass. Signed forward-
+  repair commit `54b05087...` supersedes the rejected pre-acceptance bytes in
+  `59f90ed1...`; the latter was pushed before its assigned no-push review
+  boundary and remains preserved rather than rewritten.
+- Alternatives: Trust caller-assembled capability records; let score-free
+  tokens or G0 bindings self-authenticate; fit F0/F1 independently; leave
+  scientific helper modules outside source causality; accept all-zero operation
+  accounting; or proceed directly to official fitting.
+- Reversal condition: Any raw-root receipt, source bundle, runtime, candidate,
+  cell, fragment, token, G0, accounting, stage, family, C3-potency, control,
+  no-overwrite, or deterministic-replay drift revokes D-070 and blocks sealed
+  scoring or official execution.
+
+## D-071 — Accept sealed four-fold TRACE inner selection
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the sealed-only v3 eligibility migration, authenticated
+  four-fold inner scorer, and 90 physically isolated score-free token
+  capabilities. Authorize final prediction freezing, outer sealed scoring,
+  terminal publication, and deterministic synthetic-runner implementation
+  only. Do not open official oracle targets or claim TRACE uplift.
+- Evidence: Commit `8453cb9f...` authenticates 960 immutable candidate
+  fragments and 60 inner sealed roots, produces exactly 240 aggregate candidate
+  rows, and selects one token for each of six learned systems in every one of
+  15 outer contexts. The private I/O, inner I/O, sealed migration, and inner
+  scorer SHA-256 values are `34b6f7605f641c56a77d6d9ddee73ade2394fdf1942156a36cf47ea624b02491`,
+  `d8ecfca7fd61037d14523b1e98e8f57d0a3fad710db992e1b1521f864d39632c`,
+  `64ecc651824422182ba88ee248c255505dbef1a9a2b8c7cdebeab57ac4d44766`,
+  and `3779cd29b714e6bbab384a69cc5ab8519a65ea5da5f559c2832d468cbdca9ee3`.
+  The repaired pair-engine and pair-I/O hashes are `5d101d04...` and
+  `a699228a...`; they supersede D-070's result-affecting source receipts after a
+  real nested run found that fragments serialized public episode fold metadata
+  instead of authenticated current-cell scope. The new D-070 runner bundle is
+  `7a39b71e5c78992c6a16224da1a94cb0ff298d1ba14e1ffaddcdb05b22510c0f`;
+  the current scorer bundle is
+  `714a888eda98814630cb08c133b26f9041968b03d364b992dd40fb80d6599a9c`.
+  Real authenticated C2, C3, T0, A0, A1, and A2 inner paths pass; all 33
+  bound-source mutations and fake source receipts fail before private input;
+  exact 14-field accounting rejects plus/minus-one poisons; token ancestry
+  contains no score evidence. Ninety focused tests and the full suite with 735
+  passes and three expected skips pass, as do Ruff, formatting, strict typing,
+  diff checks, and independent review.
+- Alternatives: Expose loss-bearing selection evidence to model processes;
+  place all tokens beneath the score root; trust self-declared source or
+  accounting receipts; parse truth once per hyperparameter candidate; retain
+  the incorrect nested-fold serialization; or proceed directly to official
+  fitting.
+- Reversal condition: Any sealed eligibility, truth-open accounting, source or
+  runtime closure, candidate accounting, four-fold join, tie-break, selected-
+  only population, token field, score-isolation, nested-scope, filesystem,
+  no-overwrite, or deterministic-byte drift revokes D-071 and blocks final
+  freezing, scoring, or official execution.
+
+## D-072 — Accept the authenticated TRACE outer prediction freeze
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the truth-free final outer prediction freezer for all 12
+  frozen systems and 15 outer contexts. Authorize outer sealed scoring,
+  status-specific terminal publication, and deterministic synthetic-runner
+  implementation only. Do not open official oracle targets or claim TRACE
+  uplift.
+- Evidence: Signed commit `15ae153...` authenticates 90 score-free tokens, 165
+  pair fragments, 30 locked G0 fragments, and 15 sealed eligibility roots,
+  producing 12 canonical system files with 360 unique synthetic predictions and
+  30 merged eligibility rows. Only the freezer owns
+  `predictions_frozen=360`; every child remains zero, and no truth or cliff file
+  is opened. Freezer assembly, locked-G0 validation, general I/O, and closed
+  publication SHA-256 values are `773d4f49...`, `50b4ce21...`, `c46200eb...`,
+  and `116a5e57...`. The exact 14-file package is independently revalidated
+  before no-replace promotion. Arbitrary, forged-manifest, extra-file, and
+  missing-file publication attacks create no destination. Sixteen focused
+  tests and the full suite with 751 passes and three expected skips pass, as do
+  Ruff, formatting, strict typing, diff checks, deterministic two-root replay,
+  and independent review.
+- Alternatives: Let the freezer open truth; trust caller-assembled bytes;
+  silently deduplicate rows; mix selected and stress populations; accept
+  metadata or fallback drift; count frozen predictions in child cells; or send
+  model fragments directly to the scorer without one immutable freeze.
+- Reversal condition: Any system vocabulary, context, token, fragment, G0,
+  source, runtime, accounting, fixed-superset, metadata, fallback, eligibility,
+  row-key, finite-value, exact-file-set, publication, or deterministic-byte
+  drift revokes D-072 and blocks outer scoring or official execution.
+
+## D-073 — Accept sealed TRACE scoring and exact terminal publication
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation; no official execution or
+  predictive authority
+- Decision: Accept the sealed outer scorer, all frozen evidence calculations,
+  status resolver, and exact status-specific terminal publisher. Authorize the
+  deterministic full synthetic state-machine rehearsal only. Do not open
+  official oracle targets or claim TRACE uplift.
+- Evidence: Signed commit `15c2daf...` consumes only the authenticated final
+  freeze, 15 outer sealed roots, accepted inner-selection evidence, label-safe
+  support evidence, and receipt-bound child accounting. The outer scorer,
+  terminal serializer, cleanup validator, terminal I/O, receipt producer, and
+  cross-file validator hashes are `7839168a...`, `101e0866...`, `4edea190...`,
+  `40a5fe40...`, `fdecec5d...`, and `51e4f7ae...`. The complete synthetic
+  SIGNAL_PASS fixture contains 1,980 frozen rows, opens truth 1,125 times
+  exactly, performs 3,090 unique internal absolute-error evaluations, and emits
+  240 selection, 2,280 scored, 180 cell, 10 bootstrap, 10 influence, and 12
+  ablation rows. NO_SIGNAL, UNDERPOWERED, and FAILED paths are independently
+  exercised. Stress evidence is diagnostic-only; empty clean stress is valid
+  and stress mutation cannot alter primary status. Support is reconstructed
+  from authenticated label-safe hashed/fold evidence, accounting is summed by
+  reopening exact child manifests, and every private capability is removed
+  under an authenticated cleanup receipt before no-replace terminal promotion.
+  Five focused tests and the full suite with 756 passes and three expected skips
+  pass, as do Ruff, formatting, strict typing, diff checks, and independent
+  adversarial review.
+- Alternatives: Let the terminal invent support or accounting; accept caller-
+  supplied output mappings; let stress rescue status; retain private roots
+  after publication; expose target or prediction values publicly; or skip the
+  deterministic state-machine rehearsal.
+- Reversal condition: Any truth join, weight, metric, shared-bootstrap,
+  influence, safety, stress-isolation, support, accounting, status precedence,
+  public schema, authority, cleanup, file-set, receipt, source/runtime,
+  no-overwrite, or deterministic-byte drift revokes D-073 and blocks official
+  execution.
+
+## D-074 — Accept the complete R5C synthetic production rehearsal
+
+- Date: 2026-08-21
+- Status: accepted synthetic execution boundary;
+  `R5C_SYNTHETIC_RUNNER_ACCEPTED`; no official predictive authority
+- Decision: Accept the thin R5C production-entry state machine after two fresh
+  full synthetic roots execute the exact frozen process topology and publish
+  byte-identical terminals. Authorize a separate official-attempt ancestry
+  wrapper and dormant inferred-anchor preregistration next. Do not interpret
+  the synthetic terminal status as TRACE performance, open blinded test or TDI
+  data, implement inferred-anchor deployment, or create a submission.
+- Evidence: Signed clean commit `4ee682a7...` produced two roots with exactly
+  2,033 fresh child processes each: source/project/support once; 75 migrations;
+  75 episode enumerations; 390 views and 390 locked G0 fits; 960 inner pair
+  cells; one sealed selection with 240 rows and 90 isolated tokens; 120 ordinary
+  plus 15 shared outer calls yielding 165 fragments; and one freezer,
+  accounting, cleanup, scorer, and terminal call. All 4,066 children returned
+  zero with unique positive PIDs. The exact eight-file terminals are byte-
+  identical at manifest SHA-256 `6f199dfd...` and result SHA-256 `0fe7bd10...`;
+  PID-normalized transcripts match at `d76499cd...`. Each root records 390
+  MapLight, 795 ridge, and 795 hierarchy fits, plus 3,780 frozen predictions;
+  all blinded-test, TDI, official-metric, submission, transduction, and
+  inferred-anchor counters are zero. Private/control roots are absent, source
+  provenance is explicitly synthetic, and final independent high-impact review
+  passes. Read-only configs, transcripts, exit evidence, and terminals are
+  retained outside Git under
+  `/home/zbos/cypshift-private/openadmet-2026/r5c-synthetic-4ee682a7/`.
+- Alternatives: Treat component tests or a fake-process topology run as full
+  acceptance; discard process transcripts; use a synthetic `NO_SIGNAL` result
+  as a scientific stop; point the synthetic runner at official parents; add
+  concurrency or orchestration machinery before the accepted vertical slice;
+  or jump directly to blinded-test inference.
+- Reversal condition: Any config/source/runtime/checkout drift, process-count
+  or return-code mismatch, non-deterministic terminal byte, missing transcript,
+  capability leak, forbidden counter, cleanup residue, or independent audit
+  failure revokes D-074 and blocks official R5D execution.

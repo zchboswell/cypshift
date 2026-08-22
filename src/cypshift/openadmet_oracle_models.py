@@ -316,23 +316,46 @@ def fit_weighted_ridge(
     scaler = RobustScaler.fit(matrix)
     scaled = tuple(scaler.transform_row(row) for row in matrix)
     np: Any = import_module("numpy")
+    n_rows = len(scaled)
     width = len(scaled[0])
-    design = np.asarray(tuple((1.0, *row) for row in scaled), dtype=float)
+    scaled_array = np.asarray(scaled, dtype=float)
     weight_array = np.asarray(weights, dtype=float)
     target_array = np.asarray(values, dtype=float)
-    normal = design.T @ (weight_array[:, None] * design)
-    normal[1:, 1:] += float(alpha) * np.eye(width)
-    right = design.T @ (weight_array * target_array)
-    try:
-        solution = np.linalg.solve(normal, right)
-    except np.linalg.LinAlgError:
-        solution = np.linalg.lstsq(normal, right, rcond=None)[0]
-    if not np.all(np.isfinite(solution)):
+    if n_rows < width:
+        # Centering removes the unregularized intercept.  The dual system is
+        # algebraically identical to the primal weighted ridge, while its
+        # order is the number of observations rather than the feature count.
+        total_weight = float(weight_array.sum())
+        xbar = (weight_array[:, None] * scaled_array).sum(axis=0) / total_weight
+        ybar = float((weight_array * target_array).sum() / total_weight)
+        square_root_weights = np.sqrt(weight_array)
+        centered = scaled_array - xbar
+        z_matrix = square_root_weights[:, None] * centered
+        centered_target = square_root_weights * (target_array - ybar)
+        normal = z_matrix @ z_matrix.T + float(alpha) * np.eye(n_rows)
+        try:
+            dual = np.linalg.solve(normal, centered_target)
+        except np.linalg.LinAlgError:
+            dual = np.linalg.lstsq(normal, centered_target, rcond=None)[0]
+        coefficients = z_matrix.T @ dual
+        intercept = ybar - float(xbar @ coefficients)
+    else:
+        design = np.asarray(tuple((1.0, *row) for row in scaled), dtype=float)
+        normal = design.T @ (weight_array[:, None] * design)
+        normal[1:, 1:] += float(alpha) * np.eye(width)
+        right = design.T @ (weight_array * target_array)
+        try:
+            solution = np.linalg.solve(normal, right)
+        except np.linalg.LinAlgError:
+            solution = np.linalg.lstsq(normal, right, rcond=None)[0]
+        intercept = float(solution[0])
+        coefficients = solution[1:]
+    if not np.isfinite(intercept) or not np.all(np.isfinite(coefficients)):
         raise OracleModelError("ridge fit is non-finite")
     return RidgeFit(
         scaler,
-        tuple(float(value) for value in solution[1:]),
-        float(solution[0]),
+        tuple(float(value) for value in coefficients),
+        intercept,
         float(alpha),
     )
 

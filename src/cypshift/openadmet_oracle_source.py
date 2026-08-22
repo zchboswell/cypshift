@@ -923,6 +923,7 @@ def _episode_rows(
     global_rows: list[dict[str, str]] = []
     truth_rows: list[dict[str, str]] = []
     cliff_rows: list[dict[str, str]] = []
+    emitted_contexts: set[tuple[str, int, int, int | None, str]] = set()
     for episode in public:
         policy = episode["episode_policy_id"]
         repeat, assigned_outer = int(episode["repeat"]), int(episode["outer_fold"])
@@ -956,14 +957,25 @@ def _episode_rows(
                 "anchor_global_oof_model_id": global_prediction["model_id"],
                 "anchor_global_oof_receipt_sha256": source,
             }
-            global_rows.append(base)
-            anchor = dict(base)
-            point = direct[episode["anchor_molecule_id"]]["CYP3A4"]
-            anchor["anchor_point_available"] = (
-                "true" if _complete_point(point) else "false"
+            context_key = (
+                scope.stage,
+                scope.repeat,
+                scope.outer,
+                scope.inner,
+                episode["episode_id"],
             )
-            anchor["anchor_point"] = point["point"] if _complete_point(point) else ""
-            anchor_rows.append(anchor)
+            if context_key not in emitted_contexts:
+                emitted_contexts.add(context_key)
+                global_rows.append(base)
+                anchor = dict(base)
+                point = direct[episode["anchor_molecule_id"]]["CYP3A4"]
+                anchor["anchor_point_available"] = (
+                    "true" if _complete_point(point) else "false"
+                )
+                anchor["anchor_point"] = (
+                    point["point"] if _complete_point(point) else ""
+                )
+                anchor_rows.append(anchor)
             query = episode["query_molecule_id"]
             selector = str(episode.get("_selector_cyp_truth", "CYP3A4"))
             if selector not in ENDPOINTS:

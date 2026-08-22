@@ -1,0 +1,272 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v3",
+  "contract_id": "R5-CYP3A4-ORACLE-V3",
+  "gate": "R5_ORACLE_CONTRACT_V3_FROZEN",
+  "status": "R5_ORACLE_CONTRACT_ONLY",
+  "purpose": "Freeze the execution and serialization mechanics left implicit by the accepted R5 oracle contract without changing its science, gates, populations, systems, or authority.",
+  "parent": {
+    "path": "benchmarks/openadmet_cyp_2026/oracle_experiment_contract_v2.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.oracle_experiment_contract.v2",
+    "contract_id": "R5-CYP3A4-ORACLE-V2",
+    "sha256": "bfa00b7f1e9ec8ed8d450b5499011e165b50bbf633b897d24177aee6066ea623"
+  },
+  "resolution": {
+    "algorithm": "Strictly parse the exact v2 parent after receipt verification, resolve each RFC 6901 parent_object_pointer (the empty pointer is the root object), require the member to be absent, add exactly the declared member/value pair, and reject any other operation or mutation.",
+    "operations": [
+      {
+        "op": "add_absent_object_member",
+        "parent_object_pointer": "",
+        "member": "execution_overlay",
+        "value": {
+          "g0": {
+            "prediction_superset": "G0 emits one row for every public query row in its validation partition before selector, query-truth, or score masks are opened; inner cells use selected_anchor only and outer cells use selected_anchor plus deterministic_random_anchor_stress. Row presence and order use only the public superset and episode context.",
+            "anchor_fit_rule": "This replaces only V1's false-availability global-fit phrase: append the one exposed anchor point to the current-training fit only when anchor_point_available=true. When it is false, parse and fit current-training points only; never substitute a missing value or expose a non-available anchor. All science and gates remain unchanged.",
+            "public_terminal": "A public prediction terminal contains no anchor point, anchor availability, query truth, score, or complete_anchor field."
+          },
+          "identity": {
+            "canonical_json": "All identity material is a JSON array serialized as UTF-8 with ensure_ascii=false, allow_nan=false, separators=(',', ':'), and no trailing bytes; integer and boolean types are preserved and object key order is never used.",
+            "contract_id": "Use the effective resolved parent contract_id R5-CYP3A4-ORACLE-V1 in identity arrays; the v3 overlay metadata contract_id is not silently substituted.",
+            "candidate_id": {
+              "material": ["contract_id", "system_id", "alpha", "lambda"],
+              "serialization": "candidate_id = lowercase SHA256(UTF-8 compact JSON array [contract_id, system_id, alpha, lambda]); null is JSON null and numbers use JSON number syntax.",
+              "scope": "The candidate identity excludes repeat, fold, episode, and scores.",
+              "reuse_material": {
+                "F2": ["contract_id", "F2", "selected_t0_alpha", "selected_t0_lambda", "t0_selection_token_sha256"],
+                "F0": ["contract_id", "F0", null, null, "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"],
+                "F1": ["contract_id", "F1", null, null, "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"]
+              },
+              "reuse_serialization": "F2 uses selected numeric T0 alpha/lambda plus the immutable T0 selection-token receipt; F0/F1 retain null own alpha/lambda but bind the upstream T0 selection-token and candidate-fragment receipts in this exact order."
+            },
+            "cell_id": {
+              "material": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "system_id", "candidate_id", "episode_id_or_all"],
+              "serialization": "cell_id = lowercase SHA256(UTF-8 compact JSON array [contract_id, stage, repeat, outer_fold, inner_fold_or_minus_one, system_id, candidate_id, episode_id_or_all]); outer inner_fold_or_minus_one is -1 and episode_id_or_all is 'all' for a non-episode cell.",
+              "scope": "The exact candidate_id is an input string, not a second decoded object.",
+              "reuse_material": {
+                "F2": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F2", "selected_t0_alpha", "selected_t0_lambda", "candidate_id", "episode_id_or_all", "t0_selection_token_sha256"],
+                "F0": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F0", "candidate_id", "episode_id_or_all", "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"],
+                "F1": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F1", "candidate_id", "episode_id_or_all", "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"]
+              }
+            },
+            "fragment_id": {
+              "material": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "system_id", "candidate_id", "episode_id_or_all", "cell_id"],
+              "serialization": "fragment_id = lowercase SHA256(UTF-8 compact JSON array in exactly this order); it is the immutable private-fragment receipt identity and is not an additional CSV column. T0, F0, and F1 therefore have distinct fragment IDs even when they share the T0 fit/token.",
+              "control_reuse": {
+                "F0": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F0", "candidate_id", "episode_id_or_all", "cell_id", "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"],
+                "F1": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F1", "candidate_id", "episode_id_or_all", "cell_id", "upstream_t0_selection_token_sha256", "upstream_t0_candidate_receipt_sha256"],
+                "F2": ["contract_id", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "F2", "candidate_id", "episode_id_or_all", "cell_id", "t0_selection_token_sha256"]
+              }
+            },
+            "f0_query_identity": {
+              "material": ["episode_id", "query_molecule_id", "query_rank"],
+              "episode_id": "Use the frozen R2 base episode_id exactly; its frozen material already indirectly contains repeat. Repeat is not appended, embedded, or re-encoded here; it scopes the random seed separately.",
+              "repeat_scope": "Repeat is a separate seed-scope field for F0 randomization and never part of this query identity.",
+              "serialization": "f0_query_id = lowercase SHA256(UTF-8 compact JSON array [episode_id, query_molecule_id, query_rank]); query_rank is the one-based integer from the public query row."
+            },
+            "stage_mapping": {
+              "v1_scope_field": "stage",
+              "values": {"inner": "inner", "outer": "outer"},
+              "replacement": "Use these exact V1 scope tokens in every scope, cell, receipt, and fragment; no stage alias or replacement token is permitted."
+            }
+          },
+          "private_prediction_fragment": {
+            "schema_version": "cypshift.openadmet_cyp_2026.r5c_private_prediction_fragment.v1",
+            "columns": ["episode_id", "query_molecule_id", "query_rank", "episode_policy_id", "repeat", "outer_fold", "inner_fold", "component_id", "system_id", "candidate_id", "prediction", "local_available", "prediction_source", "extraction_status", "similarity", "exact_support_components", "class_support_components"],
+            "row_order": "episode_id ascending, then query_rank ascending, with no additional or derived sort key; this is the existing public-query order.",
+            "types": {
+              "episode_id": "frozen lowercase SHA256 episode identity",
+              "query_molecule_id": "canonical molecule identifier",
+              "query_rank": "one-based integer from the public query row",
+              "episode_policy_id": "selected_anchor or deterministic_random_anchor_stress",
+              "repeat": "integer 0..2",
+              "outer_fold": "integer 0..4",
+              "inner_fold": "empty for outer or integer 0..3",
+              "component_id": "frozen similarity component hash",
+              "system_id": "system vocabulary below",
+              "candidate_id": "exact candidate identity above",
+              "prediction_source": "source vocabulary below",
+              "prediction": "finite canonical decimal",
+              "local_available": "boolean",
+              "extraction_status": "empty or frozen R4 status token",
+              "similarity": "empty or finite canonical decimal",
+              "exact_support_components": "nonnegative integer",
+              "class_support_components": "nonnegative integer"
+            },
+            "raw_model_only": "This immutable model fragment has no complete_anchor, anchor point, query truth, loss, score, or rank-derived field beyond query_rank.",
+            "system_id": {
+              "vocabulary": ["G0", "C0", "C1", "C2", "C3", "T0", "F0", "F1", "F2", "A0", "A1", "A2"],
+              "g0_normalization": "Every locked TRACE-G0-MAPL-FIXED prediction is serialized with system_id=G0."
+            },
+            "prediction_source": {
+              "vocabulary": ["G0", "LOCAL", "C0", "C1", "F0", "F1"],
+              "fallback": "G0",
+              "rules": "Use G0 exactly for G0 and for every local/control fallback (local_available=false). Use LOCAL for a finite fitted pair-model prediction; use C0, C1, F0, or F1 only when that named control produced its own finite local prediction. No other source token is valid."
+            },
+            "metadata_provenance": "extraction_status, similarity, exact_support_components, and class_support_components are always verified from the true anchor-to-query public/R4 metadata and are identical across systems for a row. F0 and F1 do run frozen on-demand R4 control geometry, but that control geometry never replaces these true anchor-to-query metadata fields."
+          },
+          "sealed_scorer_capability": {
+            "added_file": "sealed_episode_eligibility.csv",
+            "root_file_set": ["manifest.json", "episode_truth.csv", "activity_cliffs.csv", "sealed_episode_eligibility.csv"],
+            "columns": ["episode_id", "query_molecule_id", "query_rank", "complete_anchor", "valid_true_transformation", "true_extraction_status"],
+            "key": ["episode_id", "query_molecule_id", "query_rank"],
+            "trusted_source": "Join the accepted R4 true episode transformation with the R2 state projection by the exact episode_id/query_molecule_id/query_rank key; do not derive eligibility from model output, F0/F1 geometry, or numeric query truth.",
+            "cardinality": "Exactly one row for every public query row in the sealed-scorer root's scope: inner selected_anchor only; outer selected_anchor plus deterministic_random_anchor_stress.",
+            "row_order": "episode_id ascending, then query_rank ascending; query_molecule_id must match the public key at that rank.",
+            "scope": "The file carries the exact stage, repeat, outer_fold, and inner_fold scope of its existing sealed-scorer root; no row from another cell is permitted.",
+            "manifest_receipt": "Each existing sealed-scorer root adds this file to its exact file set and manifest output_receipts; receipt records relative_path, columns, rows, bytes, lowercase SHA256, and the sealed root scope before parse.",
+            "accounting": "Opening this eligibility-only file adds zero query_truth_values_opened_by_scorers. The scorer owns that counter and increments it exactly by the count of finite numeric query_point values parsed from episode_truth.csv; complete_anchor, valid_true_transformation, and true_extraction_status rows add zero. Source R2/R4 state bytes are receipt-authenticated, no model target is exposed, and duplicate keys or row-count drift fail closed.",
+            "join": "After immutable model-fragment freeze, the trusted private freezer joins on the exact key and passes complete_anchor, valid_true_transformation, and true_extraction_status only to the sealed scorer.",
+            "c3_firewall": "C3 and every model process receive neither this capability nor any of its fields; C3 receives c3_target only and never receives completion, eligibility, query truth, or a completion-derived surrogate."
+          },
+          "population_scope": {
+            "inner": ["selected_anchor"],
+            "outer": ["selected_anchor", "deterministic_random_anchor_stress"],
+            "rule": "Inner model cells and inner selection contain selected_anchor only; outer model cells and private freezes contain selected_anchor plus deterministic_random_anchor_stress. Stress remains diagnostic-only under the accepted v2 clarification."
+          },
+          "parameter_sentinels": {
+            "sentinel": "Untunable alpha and lambda serialize as JSON null in candidate material; F2 is a reuse process and instead serializes the selected numeric T0 alpha and lambda plus the immutable T0 selection-token receipt.",
+            "systems": {
+              "G0": {"alpha": null, "lambda": null},
+              "C0": {"alpha": null, "lambda": null},
+              "C1": {"alpha": null, "lambda": null},
+              "C2": {"alpha": [1.0, 10.0], "lambda": [null]},
+              "C3": {"alpha": [1.0, 10.0], "lambda": [2.0, 10.0]},
+              "T0": {"alpha": [1.0, 10.0], "lambda": [2.0, 10.0]},
+              "F0": {"alpha": null, "lambda": null},
+              "F1": {"alpha": null, "lambda": null},
+              "F2": {"alpha": "selected_t0_alpha", "lambda": "selected_t0_lambda", "token_receipt": "t0_selection_token_sha256"},
+              "A0": {"alpha": [null], "lambda": [2.0, 10.0]},
+              "A1": {"alpha": [null], "lambda": [2.0, 10.0]},
+              "A2": {"alpha": [1.0, 10.0], "lambda": [null]}
+            }
+          },
+          "hash_domains": {
+            "overlay_contract": "domain=cypshift.openadmet_cyp_2026.oracle.overlay.v3; receipt is lowercase SHA256 of the exact v3 overlay file bytes, with no reserialization or prefix.",
+            "resolved_contract": "domain=cypshift.openadmet_cyp_2026.oracle.resolved.v3; receipt is lowercase SHA256 of the canonical resolved v1+v2+v3 JSON bytes defined below.",
+            "candidate_receipt": "domain=cypshift.openadmet_cyp_2026.oracle.candidate-fragment.v1; receipt is lowercase SHA256 of immutable candidate prediction-fragment bytes. It is fixed before selection-token writing.",
+            "pre_token_selection_artifact": "domain=cypshift.openadmet_cyp_2026.oracle.pre-token-selection.v1; receipt is lowercase SHA256 of canonical scorer selection artifact bytes. It is written before and independently of the token, so no receipt cycle exists.",
+            "g0_binding": {
+              "domain": "cypshift.openadmet_cyp_2026.oracle.g0-binding.v1",
+              "material": ["contract_sha256", "model_public_manifest_sha256", "episode_target_manifest_sha256", "stage", "repeat", "outer_fold", "inner_fold_or_minus_one", "episode_id_or_all", "cell_id", "r3c_parameter_record_sha256", "g0_source_bundle_sha256"],
+              "serialization": "lowercase SHA256 of UTF-8 compact JSON array in exactly the declared order; this binds model-public, episode-target, scope, episode, cell, parameter, and source-bundle receipts."
+            }
+          },
+          "canonical_serialization": {
+            "resolved_json": "UTF-8 compact JSON with ensure_ascii=false, allow_nan=false, sort_keys=true, separators=(',', ':'), and no trailing LF; hash the exact bytes once.",
+            "contract_sha256_meaning": "The contract_sha256 field in every token, receipt, capability, and output means the resolved-contract receipt, never the overlay metadata receipt or the v2 parent receipt.",
+            "field_domains": {
+              "contract_sha256": "cypshift.openadmet_cyp_2026.oracle.resolved.v3",
+              "candidate_receipt_sha256": "cypshift.openadmet_cyp_2026.oracle.candidate-fragment.v1",
+              "scorer_receipt_sha256": "cypshift.openadmet_cyp_2026.oracle.pre-token-selection.v1"
+            },
+            "fixed_witnesses": {
+              "resolved_json": {"value": "{\"a\":[1,null],\"z\":\"x\"}", "sha256": "767e0c5e9367724c031c31765db1363df75e6a8ea2885876e3789547a7355377"},
+              "candidate_receipt": {"value": "candidate-fragment-v1\\n", "sha256": "2622fe89c9e886e0a4e08a5fda43b1ea0bee1015d5b15379ca288c74ae7949e3"},
+              "scorer_receipt": {"value": "{\"candidate_id\":\"candidate-v1\",\"selected_alpha\":1.0,\"selected_lambda\":2.0}\\n", "sha256": "a03d729c9b447fc5befc6a77ba271924bc80e09298e113741e72ce0256f0924e"}
+            },
+            "no_cycle": "candidate_receipt_sha256 hashes immutable candidate fragment bytes; scorer_receipt_sha256 hashes the pre-token scorer selection artifact; the token consumes both receipts and neither artifact hashes the token."
+          },
+          "outer_t0": {
+            "fit": "An outer process may fit T0 once for each repeat/outer-fold context after consuming its score-free token.",
+            "emission": "That one exact fitted model and token may emit T0, F0, and F1 fragments together.",
+            "controls": "F0 and F1 apply the frozen T0 model/token to frozen on-demand R4 control geometry; they never fit, tune, select, calibrate, or alter a candidate, and their fallback is G0.",
+            "distinct_ids": "T0, F0, and F1 retain distinct system_id, candidate_id, cell_id, and fragment identities even when they share one fitted T0 model and token."
+          },
+          "selection_token": {
+            "schema_version": "cypshift.openadmet_cyp_2026.r5c_score_free_selection_token.v1",
+            "fields": ["schema_version", "contract_sha256", "system_id", "repeat", "outer_fold", "candidate_id", "alpha", "lambda", "candidate_receipt_sha256", "scorer_receipt_sha256"],
+            "serialization": "UTF-8 compact sorted-key JSON object with separators=(',', ':'), allow_nan=false, and one trailing LF; alpha or lambda is JSON null only for a sentinel grid coordinate.",
+            "cardinality": "Exactly one token per learned system, repeat, and outer-fold context; the outer process consumes only its matching token.",
+            "forbidden_fields": ["score", "loss", "rank", "metric", "query_truth", "component_loss", "bootstrap", "influence"],
+            "forbidden_values": "No forbidden field may be encoded under another key or nested value; receipt hashes identify bytes only and are not scores."
+          },
+          "g0_freeze": {
+            "scope": "G0",
+            "authentication": "Before freeze, authenticate the g0_binding hash plus contract_sha256, model_public_manifest_sha256, episode_target_manifest_sha256, exact stage/repeat/outer/inner scope, episode_id_or_all, cell_id, r3c_parameter_record_sha256, g0_source_bundle_sha256, public-superset receipt, fragment receipt, and system_id=G0.",
+            "source_identity": "Retain source_system_id=TRACE-G0-MAPL-FIXED and its source-file/source-bundle receipt in the private G0 manifest; this receipt records provenance and does not change the contract system_id.",
+            "private_only": "The source identity is private freeze data and is not a public terminal column."
+          },
+          "operation_accounting": {
+            "fields": ["direct_target_values_parsed", "anchor_labels_exposed_to_models", "query_truth_values_opened_by_scorers", "maplight_model_fits", "ridge_model_fits", "hierarchy_fits", "predictions_frozen", "internal_absolute_error_evaluations", "blinded_test_files_opened", "tdi_files_opened", "official_metric_calls", "submissions_created", "transductive_relationships", "inferred_anchor_candidate_pools"],
+            "types": "Every field is a non-boolean JSON integer >= 0; field order is the declared order.",
+            "g0_rule": "For each G0 cell, direct_target_values_parsed equals finite current-training training_points.point rows plus one iff the episode_anchor_contexts.anchor_point is finite and anchor_point_available=true; anchor_labels_exposed_to_models is one iff that anchor is available and otherwise zero; maplight_model_fits is one; the G0 cell emits predictions_frozen=0 because only the final freezer owns that counter.",
+            "t0_controls_rule": "A shared outer T0 fit contributes one fit to the T0 process only; F0 and F1 contribute no fit, tuning, selection, calibration, or candidate-count operation.",
+            "private_transport_rule": "Joining complete_anchor from the completion-only sealed projection after immutable model-fragment freeze contributes no target parse, model fit, prediction, metric, or public-terminal operation.",
+            "forbidden_operations": "blinded_test_files_opened, tdi_files_opened, official_metric_calls, submissions_created, transductive_relationships, and inferred_anchor_candidate_pools remain exactly zero."
+          },
+          "operation_accounting_table": {
+            "grain": "Deltas are per fresh model cell or per one shared outer T0 process before stage aggregation; omitted fields are zero and every delta is a nonnegative integer.",
+            "fit_deltas": {
+              "C2": {"ridge_model_fits": 1, "hierarchy_fits": 0},
+              "C3": {"ridge_model_fits": 1, "hierarchy_fits": 1},
+              "T0": {"ridge_model_fits": 1, "hierarchy_fits": 1},
+              "F2": {"ridge_model_fits": 1, "hierarchy_fits": 1},
+              "A0": {"ridge_model_fits": 0, "hierarchy_fits": 1},
+              "A1": {"ridge_model_fits": 0, "hierarchy_fits": 1},
+              "A2": {"ridge_model_fits": 1, "hierarchy_fits": 0}
+            },
+            "shared_outer_t0": "The T0/F0/F1 process contributes exactly one T0 ridge fit and one T0 hierarchy fit; F0 and F1 contribute zero fits, tuning, selection, or calibration deltas.",
+            "prediction_freeze": "Only the final prediction freezer increments predictions_frozen once per unique [episode_id, query_molecule_id, query_rank, system_id, candidate_id] row after exact row-order validation; every individual cell and model call emits zero, duplicates fail, and no row is silently deduplicated.",
+            "scorer": "Eligibility-only sealed_episode_eligibility.csv opens add zero query_truth_values_opened_by_scorers. The scorer parses episode_truth.csv and owns query_truth_values_opened_by_scorers as exactly the count of finite numeric query_point values; internal_absolute_error_evaluations equals finite prediction/truth joins scored once per unique join key.",
+            "target_capability_accounting": {
+              "source_rows": {
+                "cell_target": "training_points.point and training_pairs.delta finite numeric rows, plus episode_anchor_contexts.anchor_point rows only when anchor_point_available=true",
+                "c3_target": "training_pairs.delta finite numeric rows and global_anchor_contexts rows with no measured anchor value",
+                "model_public": "no numeric target rows"
+              },
+              "processes": {
+                "G0": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus one finite episode_anchor_contexts.anchor_point iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "C0": {"capability": "cell_target", "direct_target_values_parsed": "one finite episode_anchor_contexts.anchor_point per available prediction episode", "anchor_labels_exposed": "one per available episode_anchor_contexts row"},
+                "C1": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus one finite episode_anchor_contexts.anchor_point iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "C2": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "C3": {"capability": "c3_target", "direct_target_values_parsed": "finite training_pairs.delta rows", "anchor_labels_exposed": "0; global_anchor_contexts contains only pure OOF state"},
+                "T0": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "F0": {"capability": "shared_outer_t0", "direct_target_values_parsed": "0; reuse the already counted shared T0 target view", "anchor_labels_exposed": "0; frozen on-demand R4 control geometry is not a second target-capability parse"},
+                "F1": {"capability": "shared_outer_t0", "direct_target_values_parsed": "0; reuse the already counted shared T0 target view", "anchor_labels_exposed": "0; frozen on-demand R4 control geometry is not a second target-capability parse"},
+                "F2": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "A0": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "A1": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"},
+                "A2": {"capability": "cell_target", "direct_target_values_parsed": "finite training_points.point rows plus finite training_pairs.delta rows plus finite episode_anchor_contexts.anchor_point rows iff anchor_point_available=true", "anchor_labels_exposed": "one per episode_anchor_contexts row iff anchor_point_available=true"}
+              }
+            },
+            "counter_ownership": {
+              "target_capability_process": "Each process uses only the declared target capability rows and contributes its declared direct_target_values_parsed and anchor_labels_exposed delta once; F0/F1 reuse the shared T0 target view and contribute zero additional target rows.",
+              "prediction_freezer": "Every model cell, including G0, emits predictions_frozen=0. Only the final prediction freezer owns predictions_frozen and counts each unique immutable fragment row exactly once by [episode_id, query_molecule_id, query_rank, system_id, candidate_id]; no cell or model call may increment it.",
+              "scorer": "Only the scorer owns query_truth_values_opened_by_scorers and internal_absolute_error_evaluations. Eligibility-only opens add zero; finite numeric query_point values parsed from episode_truth.csv and finite prediction/truth joins are each counted exactly once by the scorer.",
+              "deduplication": "Stage aggregation sums disjoint process deltas in V1 process_dag order; shared T0/F0/F1 fit and target deltas are owned by the shared T0 process once, and final-freeze/scorer counters are not re-added by child cells or manifests."
+            },
+            "stage_aggregation": "Aggregate child deltas by stage in V1 process_dag order; inner selected rows and outer selected-plus-stress rows are counted once per stage scope, while shared T0/F0/F1 fit deltas are not multiplied by emitted fragments."
+          },
+          "scorer_transport": {
+            "private_freeze": "Only the private prediction freeze may transport complete_anchor from the completion-only sealed scorer capability to the scorer join after immutable model output.",
+            "public_terminal_forbidden": ["complete_anchor", "anchor_point", "anchor_point_available", "query_truth", "score", "loss"]
+          }
+        }
+      }
+    ],
+    "effective_contract": "The verified v1 parent, the verified v2 absent-member addition, and this one ordered absent-member addition. V1 and v2 remain immutable history; every unmentioned scientific, gate, schema, runtime, firewall, output, accounting, and authority rule is unchanged.",
+    "failure": "Missing or changed v2 bytes, a duplicate JSON key, a missing/non-object pointer target, a preexisting member, an unknown operation, or any additional mutation is a contract-integrity failure before execution acceptance."
+  },
+  "unchanged": {
+    "science_and_populations": true,
+    "systems_features_targets_and_hyperparameters": true,
+    "support_thresholds_and_gates": true,
+    "inner_selection_and_outer_primary_scoring": true,
+    "bootstrap_influence_and_safety": true,
+    "output_authority_and_publication": true,
+    "forbidden_operations": true
+  },
+  "authority": {
+    "contract_only": true,
+    "oracle_evidence": false,
+    "inferred_anchor_contract": false,
+    "model_fits": false,
+    "predictions": false,
+    "internal_metrics": false,
+    "official_st_rae": false,
+    "test_access": false,
+    "tdi": false,
+    "submission": false,
+    "transduction": false
+  },
+  "reversal_condition": "Any anchor-availability fit drift, identity or row-order ambiguity, source/fallback drift, stress/control influence, private-field publication, accounting mismatch, or G0 source-receipt loss revokes this overlay and preserves v2 unchanged."
+}
