@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import platform
 import stat
 import sys
 from hashlib import sha256
@@ -305,12 +306,21 @@ def test_official_wrapper_rejects_leaf_drift_before_claim(
     assert not attempt_root.exists()
 
 
+@pytest.mark.skipif(
+    sys.version_info[:3] != (3, 12, 3)
+    or platform.system() != "Linux"
+    or platform.machine() != "x86_64",
+    reason="requires the exact R5D root runtime",
+)
 def test_official_runner_uses_the_accepted_underpowered_state_machine(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     source_paths, source_receipts = source_fixture(tmp_path / "inputs")
     monkeypatch.setattr(
         "cypshift.openadmet_oracle_runner._validate_checkout", lambda _oid: None
+    )
+    monkeypatch.setattr(
+        "cypshift.openadmet_oracle_runner._validate_runtime", lambda: None
     )
     result = run_official_oracle(
         OfficialRunInput(
