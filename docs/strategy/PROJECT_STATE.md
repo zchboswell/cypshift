@@ -230,6 +230,21 @@ contexts, and parent-state completion checks passed. The terminal is an exact
 evidence only. It is not an official ST-RAE result, a full-training model, a
 submission, or evidence for TRACE anchors, transformations, or TDI.
 
+The parallel four-endpoint direct MapLight deployment boundary is now
+synthetically accepted at `DIRECT_MAPLIGHT_DEPLOYMENT_SYNTHETIC_ACCEPTED`.
+Its frozen contract binds the accepted R2A observations, accepted R3A feature
+root, R3 parameter record, exact 3.10 runtime, six-column 750-row schema, four
+full-training fits, and 3,000 finite predictions. The production runner cannot
+write directly to the accepted destination: a separate no-replace acceptance
+command must authenticate and revalidate two distinct read-only rehearsal
+roots and require both terminal files to match byte-for-byte. Ten focused and
+42 neighboring tests, exact-runtime receipt checks, and independent re-audit
+pass. This is synthetic implementation evidence only. No official blinded-test
+bytes were opened, and no production fit, official prediction, metric, or
+submission was created. Accepted publication remains absent and requires two
+independently produced official rehearsal roots under separate execution
+authority.
+
 R5B's trusted synthetic source compiler and capability splitter are now
 accepted. The compiler authenticates synthetic analogues of the frozen R2,
 R3, and R4 parents before deriving current-training points, exact
@@ -602,7 +617,11 @@ preserved raw transcripts, and independent review. Freeze the smallest R5D
 official-attempt ancestry wrapper and dormant F1 inferred-anchor
 preregistration next, before opening official R5 outcomes. Then run the one
 authorized training-only CYP3A4 oracle experiment; in parallel, retain the
-four-endpoint fixed MapLight submission as the direct baseline.
+four-endpoint fixed MapLight submission as the direct baseline. That parallel
+lane remains implementation-only until two separately authorized official
+rehearsals revalidate and match exactly; only then may its no-replace acceptance
+command publish the frozen destination.
+
 The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
 signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,

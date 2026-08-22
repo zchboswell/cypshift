@@ -232,6 +232,19 @@ receipt and arithmetic audits pass. This is internal surrogate evidence only,
 not official ST-RAE, a full-training model, a submission, or local TRACE
 evidence.
 
+The parallel direct MapLight deployment implementation is synthetically
+accepted at `DIRECT_MAPLIGHT_DEPLOYMENT_SYNTHETIC_ACCEPTED`. It freezes the
+receipt-bound R2A/R3A full-training path, four exact CatBoost fits, raw-SMILES
+test feature process, 750-row six-column validator, and a separate acceptance
+command. A production run can create only a read-only rehearsal terminal; it
+cannot write directly to the accepted destination. Acceptance requires two
+distinct official rehearsal roots to revalidate and match byte-for-byte before
+atomic no-replace publication. Synthetic two-root and adversarial tests plus
+independent re-audit pass. No official blinded-test bytes were opened, and no
+production fits, official predictions, metrics, or submissions were created,
+so this milestone grants implementation evidence only and no execution or
+publication authority.
+
 Additive R4 v5 now freezes the pre-fit transformation-coverage boundary in
 [`transformation_coverage_contract_v5.json`](../../benchmarks/openadmet_cyp_2026/transformation_coverage_contract_v5.json).
 Its exact SHA-256 is
@@ -394,6 +407,9 @@ outcome. Then run the one training-only CYP3A4 oracle experiment. Keep inferred
 anchor implementation, blinded-test TRACE predictions, TDI, submissions,
 official scoring, and transduction deferred until their own gates;
 `global_TDI` remains the permanent TDI fallback.
+The parallel direct baseline may advance only under separate execution
+authority, and accepted publication still requires two independently produced
+official rehearsal roots with exact terminal equality.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
 submissions, transductive use, held-out tuning, broad adapters, services, or

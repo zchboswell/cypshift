@@ -2237,3 +2237,47 @@
   or return-code mismatch, non-deterministic terminal byte, missing transcript,
   capability leak, forbidden counter, cleanup residue, or independent audit
   failure revokes D-074 and blocks official R5D execution.
+
+## D-075 — Accept the synthetic direct MapLight deployment boundary
+
+- Date: 2026-08-21
+- Status: accepted synthetic implementation;
+  `DIRECT_MAPLIGHT_DEPLOYMENT_SYNTHETIC_ACCEPTED`; no official execution or
+  publication authority
+- Decision: Accept the frozen four-endpoint direct MapLight deployment
+  contract, full-training runner, exact submission validator, and two-root
+  no-replace acceptance command as a parallel pre-TRACE baseline slice. A
+  production run may publish only a separate read-only rehearsal terminal and
+  cannot write directly to the accepted destination. Any later authorized
+  publication must independently authenticate and revalidate two distinct
+  official rehearsal roots and require both `submission.csv` and
+  `manifest.json` to match byte-for-byte before atomic no-replace promotion.
+  Do not open the blinded test, fit official full-training models, generate
+  official predictions, or publish an accepted submission under this decision.
+- Evidence: The contract, runner, and validator SHA-256 values are
+  `918fc1358e3394f32cd21b2f57b283f584e97242068fa0dc60448babc3963960`,
+  `ef4102e0ba1a61c7fb8ffa48671532409909f744b7bfbff4eeb90960e15e7ace`,
+  and
+  `f11d83531e5b602cc088c5c7c0d0aa1bb4828e1041eaac5ae203837be48c3180`.
+  The contract binds the accepted R2A observations, accepted R3A MapLight
+  feature root, exact R3 parameter record, Python 3.10.13 runtime, 4,905
+  aligned training rows, four endpoint fits, 750 output rows, and 3,000 finite
+  predictions. Ten focused tests, 42 neighboring contract/feature tests, and
+  the full 802-test collection under all declared dependency groups pass, as
+  do Ruff, formatting, strict typing, exact-runtime contract loading, and
+  Python 3.10 compilation. Synthetic witnesses reject a direct run to the
+  accepted root, one root presented twice, an individually valid byte mismatch,
+  and an existing destination. An independent high-impact audit first found
+  the missing two-root acceptance gate; the repaired path passed narrow
+  re-audit. Official blinded-test bytes opened, production fits, official
+  predictions, metric calls, and submissions remain zero.
+- Alternatives: Let one run publish directly to the accepted destination;
+  compare only submission rows while ignoring manifest drift; reuse the R3C OOF
+  state as a serialized deployment model; add calibration, clipping, an
+  ensemble, transduction, or another model family; or begin official execution
+  before synthetic acceptance and records were complete.
+- Reversal condition: Any parent, feature, runtime, parameter, row-alignment,
+  raw-SMILES separation, schema, finite-prediction, determinism, terminal,
+  no-replace, or authority defect revokes D-075. Preserve any later rehearsal
+  evidence and publish nothing; a changed receipt or submission rule requires a
+  separately reviewed versioned contract before official execution.

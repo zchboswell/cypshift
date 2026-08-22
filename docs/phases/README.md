@@ -40,9 +40,14 @@ official experiment then passed: fixed MapLight beat Morgan CatBoost by 0.0646
 component-macro MAE, the endpoint median by 0.1411, and Morgan 1-NN by 0.4389,
 with positive 95% bootstrap lower bounds. It improved over the median for every
 CYP and beat Morgan in 56/60 outer cells. This is frozen internal-surrogate
-evidence, not official ST-RAE, a deployable model, or a submission. Additive R4
-v4 now supersedes v1/v2/v3 for implementation while preserving them as
-immutable history. It freezes label-safe direct-state and structural
+evidence, not official ST-RAE, a deployable model, or a submission. The parallel
+direct MapLight deployment boundary is synthetically accepted: its four-fit
+runner, exact validator, and no-replace acceptance command passed two-root and
+adversarial replay without opening official blinded-test bytes. It grants no
+execution or publication authority; accepted output still requires two
+independent official rehearsal roots that revalidate and match byte-for-byte.
+Additive R4 v4 now supersedes v1/v2/v3 for implementation while preserving
+them as immutable history. It freezes label-safe direct-state and structural
 projections, joint
 single/double-cut chemistry, reusable transformation IDs, exact CIP/automorphism
 stereo records, ambiguity/invariance rules, structural-only row outputs, and
