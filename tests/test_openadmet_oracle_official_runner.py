@@ -62,6 +62,85 @@ def _parent(
     return sha256(data).hexdigest(), manifest
 
 
+def _recovery_parent(tmp_path: Path) -> dict[str, object]:
+    root = tmp_path / "consumed-attempt"
+    terminal = root / "terminal"
+    receipt_root = root / "receipt"
+    terminal.mkdir(parents=True)
+    receipt_root.mkdir()
+    accounting = dict.fromkeys(ACCOUNTING_FIELDS, 0)
+    authority = {
+        "oracle_evidence": False,
+        "inferred_anchor_contract": False,
+        "model_fits": False,
+        "predictions": False,
+        "internal_metrics": False,
+        "official_st_rae": False,
+        "test_access": False,
+        "tdi": False,
+        "submission": False,
+        "transduction": False,
+    }
+    old_contract = "f" * 64
+    claim = _compact(
+        {
+            "attempt_id": "consumed-attempt",
+            "contract_sha256": old_contract,
+        }
+    )
+    failure = _compact(
+        {
+            "stage": "pre_gate",
+            "failure_code": "RUNTIME",
+            "operation_accounting": accounting,
+            "authority": authority,
+        }
+    )
+    claim_sha = sha256(claim).hexdigest()
+    failure_sha = sha256(failure).hexdigest()
+    receipt = _compact(
+        {
+            "attempt_id": "consumed-attempt",
+            "contract_sha256": old_contract,
+            "claim_sha256": claim_sha,
+            "status": "R5_ORACLE_FAILED",
+            "terminal_receipts": {"failure.json": failure_sha},
+            "processes": [
+                {"index": 0, "verb": "cleanup", "pid": 11, "returncode": 0},
+                {"index": 1, "verb": "failed", "pid": 12, "returncode": 0},
+            ],
+            "operation_accounting": accounting,
+            "authority": authority,
+        }
+    )
+    (root / "attempt_claim.json").write_bytes(claim)
+    (terminal / "failure.json").write_bytes(failure)
+    (receipt_root / "official_attempt_receipt.json").write_bytes(receipt)
+    for path in (
+        root / "attempt_claim.json",
+        terminal / "failure.json",
+        receipt_root / "official_attempt_receipt.json",
+    ):
+        path.chmod(0o444)
+    terminal.chmod(0o555)
+    receipt_root.chmod(0o555)
+    root.chmod(0o555)
+    return {
+        "attempt_root": str(root),
+        "attempt_id": "consumed-attempt",
+        "execution_contract_sha256": old_contract,
+        "claim_sha256": claim_sha,
+        "failure_sha256": failure_sha,
+        "receipt_sha256": sha256(receipt).hexdigest(),
+        "required_status": "R5_ORACLE_FAILED",
+        "required_failure": {"stage": "pre_gate", "failure_code": "RUNTIME"},
+        "required_processes": [
+            {"index": 0, "verb": "cleanup", "returncode": 0},
+            {"index": 1, "verb": "failed", "returncode": 0},
+        ],
+    }
+
+
 def _fixture(tmp_path: Path) -> tuple[Path, dict[str, object], Path]:
     revision = "8" * 40
     roots = {name: tmp_path / name for name in ("r2b", "r3a", "r3c", "r4")}
@@ -146,6 +225,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, dict[str, object], Path]:
             }
         },
         "source_order": ["direct_observations.csv"],
+        "recovery_parent": _recovery_parent(tmp_path),
         "execution": {
             "attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
             "artifact_root": str(attempt_root),
@@ -240,7 +320,6 @@ def _run(
     monkeypatch.setattr(module, "_runtime_gate", lambda: None)
     monkeypatch.setattr(module, "_checkout_gate", lambda _oid: None)
     monkeypatch.setattr(module, "_verify_model_executables", lambda: None)
-    monkeypatch.setattr(module, "_verify_recovery_parent", lambda *_args, **_kw: None)
 
     def fake_run(value: object) -> OfficialRunResult:
         terminal = cast(Any, value).terminal_root
@@ -308,9 +387,12 @@ def test_official_wrapper_rejects_leaf_drift_before_claim(
     assert not attempt_root.exists()
 
 
-def test_official_wrapper_authenticates_zero_operation_recovery_parent() -> None:
+def test_official_wrapper_authenticates_zero_operation_recovery_parent(
+    tmp_path: Path,
+) -> None:
     module = _load_entry()
-    contract = json.loads(module.CONTRACT_PATH.read_text())
+    contract_path, _config, _attempt = _fixture(tmp_path)
+    contract = json.loads(contract_path.read_text())
     private_io = __import__(
         "cypshift.openadmet_oracle_private_io",
         fromlist=["open_directory_no_symlinks"],
