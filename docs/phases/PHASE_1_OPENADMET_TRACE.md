@@ -1,16 +1,18 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active but blocked; sole official R5D attempt consumed by a pre-fit
-runtime-layout failure; gate `R5D_OFFICIAL_PREFIT_FAILED`; date 2026-08-22.
+Status: active; one pre-fit recovery is frozen but unopened after the original
+official R5D attempt was consumed by a zero-operation runtime-layout failure;
+gate `R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`; date 2026-08-22.
 
 The fixed R5D attempt root contains an immutable `R5_ORACLE_FAILED` terminal
 and receipt. The clean signed checkout lacked its required checkout-local root
 and MapLight Python executables, so the accepted runner stopped before source
 compilation, target parsing, model fitting, prediction, or scoring. Every
 predictive and forbidden operation counter is zero. D-077 prohibits retry or
-resume; I0/F1 did not activate. A replacement requires a new explicit reviewed
-decision that binds this failure receipt and cannot be inferred from the prior
-authorization.
+resume of that root; I0/F1 did not activate. D-080 binds the exact failed claim,
+terminal, and receipt and authorizes one distinct replacement only after the
+root and MapLight executables are verified in the clean execution checkout
+before its no-replace claim. All scientific rules and authority remain exact.
 
 ## Context capsule
 
@@ -29,6 +31,22 @@ continuous and TDI is binary. Preserve raw structures, available bounds,
 standard deviations, and missingness. Raw curves, censor qualifiers, per-row
 assay/probe state, QC, and label origin are not released and must not be
 invented.
+
+## Official TRACE execution environment
+
+The clean execution checkout must provision both ignored environments before
+the official wrapper is invoked:
+
+```console
+UV_PYTHON=3.12.3 uv sync --locked --all-groups
+uv sync --locked --project research/maplight-fixed --python 3.10.13
+```
+
+Invoke the wrapper with that checkout's `.venv/bin/python`. The wrapper verifies
+`.venv/bin/python`, `research/maplight-fixed/.venv/bin/python`, and its own
+interpreter identity before it may create the fixed recovery root. This is a
+general clean-checkout requirement, not an official-data peculiarity; cloning
+or adding a worktree never copies virtual environments.
 
 ## Validation protocols
 

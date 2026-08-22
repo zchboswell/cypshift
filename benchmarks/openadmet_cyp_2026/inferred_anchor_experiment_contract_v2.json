@@ -1,0 +1,47 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.i0_preregistration.v2",
+  "contract_id": "R6-CYP3A4-I0-V2",
+  "status": "I0_PREREG_ONLY",
+  "purpose": "Bind the unchanged dormant I0/F1 preregistration to the one authenticated R5D pre-fit recovery attempt without changing any scientific rule or granting execution authority.",
+  "inheritance": {
+    "path": "benchmarks/openadmet_cyp_2026/inferred_anchor_experiment_contract_v1.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.i0_preregistration.v1",
+    "sha256": "05924fb3a8a7e8e4d28a1ee11d6fe725af273ee3c6340062f9f25af57ded8d7c",
+    "rule": "Every v1 system, population, alignment, bootstrap, cell, influence, support, T0-coordinate, inference, accounting, acceptance, authority and hard-stop rule remains exact. This overlay replaces only the eligible official-attempt envelope parent."
+  },
+  "failed_attempt_parent": {
+    "attempt_id": "r5d-cyp3a4-official-attempt-1",
+    "receipt_sha256": "2c1f0c5901a399df31f428420a51ea5d469b2ee9a931304a1a6a612ca711078c",
+    "required_status": "R5_ORACLE_FAILED",
+    "required_stage": "pre_gate",
+    "required_failure_code": "RUNTIME",
+    "required_operation_accounting": "Exact 14-field all-zero vector.",
+    "authority": "No I0 activation or scientific evidence authority."
+  },
+  "recovery_execution_parent": {
+    "path": "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v2",
+    "sha256": "0934e66ac4e0297ff3301651b270f785e926f7303f0ab5034aaf2c541bcad993",
+    "eligible_attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
+    "required_envelope_schema": "cypshift.openadmet_cyp_2026.r5d_official_attempt_receipt.v1"
+  },
+  "activation": {
+    "required_status": "R5_ORACLE_SIGNAL_PASS",
+    "required_resolved_oracle_contract_sha256": "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50",
+    "authentication_order": "Authenticate this overlay and both exact parents before parsing the recovery receipt; then apply the complete v1 activation and evidence gate unchanged.",
+    "nonpass": "Any recovery status other than R5_ORACLE_SIGNAL_PASS produces the v1 I0_DEPLOYMENT_NO_SIGNAL hard stop before detailed loss parsing."
+  },
+  "authority": {
+    "contract_only": true,
+    "official_r5_evidence": false,
+    "i0_implementation_contract": false,
+    "model_fits": false,
+    "predictions": false,
+    "test_access": false,
+    "official_metric": false,
+    "tdi": false,
+    "submission": false,
+    "transduction": false
+  },
+  "reversal_condition": "Any change to v1 science, a recovery-parent mismatch, a second recovery, retry/resume, outcome-informed threshold or coordinate change, or test/TDI/submission access revokes I0."
+}

@@ -1,11 +1,13 @@
 # Active phase
 
-Phase 1 TRACE is blocked at `R5D_OFFICIAL_PREFIT_FAILED`. The sole official
+Phase 1 TRACE is staged at `R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`. The original
 R5D attempt published an immutable pre-gate `R5_ORACLE_FAILED` result because
 the clean execution worktree lacked its required checkout-local Python
 executables. No target value, fit, prediction, score, test file, TDI file,
 metric, submission, transductive relationship, or inferred-anchor pool was
-opened. Retry and resume remain forbidden under D-077, and I0 is inactive. The
+opened. Retry and resume of that root remain forbidden under D-077. D-080
+authorizes one separately claimed replacement after both pinned checkout-local
+Python environments pass before claim; I0 remains inactive. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in

@@ -1,0 +1,339 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v2",
+  "contract_id": "R5D-CYP3A4-OFFICIAL-RECOVERY-ATTEMPT-V1",
+  "gate": "R5D_OFFICIAL_PREFIT_RECOVERY_CONTRACT_FROZEN",
+  "status": "R5D_OFFICIAL_PREFIT_RECOVERY_CONTRACT_ONLY",
+  "purpose": "Authorize exactly one replacement of the consumed R5D attempt solely because its authenticated pre-gate failure performed zero scientific operations; preserve all R5 science, official ancestry, topology, runtime, accounting, cleanup, and authority rules unchanged.",
+  "resolved_oracle_contract_sha256": "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50",
+  "official_source_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+  "parents": {
+    "r2b": {
+      "manifest_name": "manifest.json",
+      "manifest_schema": "cypshift.openadmet_cyp_2026.validation_artifacts.v1",
+      "manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8"
+    },
+    "r3a": {
+      "manifest_name": "feature_manifest.json",
+      "manifest_schema": "cypshift.openadmet_cyp_2026.r3a_feature_manifest.v1",
+      "manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b"
+    },
+    "r3c": {
+      "manifest_name": "manifest.json",
+      "manifest_schema": "cypshift.openadmet_cyp_2026.r3b_terminal_manifest.v1",
+      "manifest_sha256": "a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c",
+      "required_status": "GLOBAL_EXPERT_FROZEN"
+    },
+    "r4": {
+      "manifest_name": "manifest.json",
+      "manifest_schema": "cypshift.openadmet_cyp_2026.transformation_coverage_manifest.v5",
+      "manifest_sha256": "8166a89aee5137228a31085e21d36d6f0bf4a28d833cdc7bd1280feff4170043",
+      "required_status": "R4_TRANSFORMATION_COVERAGE_SUPPORTED"
+    }
+  },
+  "source_bundle": {
+    "campaign_episodes_public.csv": {
+      "parent": "r2b",
+      "relative_path": "campaign_episodes_public.csv",
+      "sha256": "471804773631623235a7d554a1d8e297c5b098089f96390c85f622a82b619a7a"
+    },
+    "campaign_episodes_truth.csv": {
+      "parent": "r2b",
+      "relative_path": "campaign_episodes_truth.csv",
+      "sha256": "f2ec3ca6c3f48850cf6dedf1f129903d525ec72e8da55566eca66103745bd2a4"
+    },
+    "direct_observations.csv": {
+      "parent": "r2b",
+      "relative_path": "direct_observations.csv",
+      "sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7"
+    },
+    "episode_label_masks.csv": {
+      "parent": "r2b",
+      "relative_path": "episode_label_masks.csv",
+      "sha256": "0b437aa5c43286833f4b2ccbf97c36afbfa6e940dcf20d1e2a2728a324fe3240"
+    },
+    "group_folds.csv": {
+      "parent": "r2b",
+      "relative_path": "group_folds.csv",
+      "sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774"
+    },
+    "feature_manifest.json": {
+      "parent": "r3a",
+      "relative_path": "feature_manifest.json",
+      "sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b"
+    },
+    "feature_rows.csv": {
+      "parent": "r3a",
+      "relative_path": "feature_rows.csv",
+      "sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30"
+    },
+    "maplight_avalon_count.npy": {
+      "parent": "r3a",
+      "relative_path": "maplight_avalon_count.npy",
+      "sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95"
+    },
+    "maplight_erg.npy": {
+      "parent": "r3a",
+      "relative_path": "maplight_erg.npy",
+      "sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504"
+    },
+    "maplight_morgan_count.npy": {
+      "parent": "r3a",
+      "relative_path": "maplight_morgan_count.npy",
+      "sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14"
+    },
+    "maplight_rdkit_descriptors.npy": {
+      "parent": "r3a",
+      "relative_path": "maplight_rdkit_descriptors.npy",
+      "sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905"
+    },
+    "morgan_binary.npy": {
+      "parent": "r3a",
+      "relative_path": "morgan_binary.npy",
+      "sha256": "7e10e94b9f89c71d0d76951ebc27f9e0a8fd28e6cb7bc499560e759b6fee52f3"
+    },
+    "global_inner_oof_predictions.csv": {
+      "parent": "r3c",
+      "relative_path": "global_inner_oof_predictions.csv",
+      "sha256": "17cc5aadf6e109efe13893e9d9364371043f1fc7b1e4e2faa20dae5ab5c3c332"
+    },
+    "global_oof_predictions.csv": {
+      "parent": "r3c",
+      "relative_path": "global_oof_predictions.csv",
+      "sha256": "1935b580ec779f2fc08d40e32e9669edae6e166ea70cd964e325df853527af80"
+    },
+    "episode_transformations.csv": {
+      "parent": "r4",
+      "relative_path": "episode_transformations.csv",
+      "sha256": "8afc1b82e573ede6cb9c52a14a2a21dd73fa561d7829b7faaeda298d7d70cc2a"
+    },
+    "transformation_coverage.json": {
+      "parent": "r4",
+      "relative_path": "transformation_coverage.json",
+      "sha256": "b134d11c96526c8c3ed282cebfacaae25ce9bf49c324bfe28d8c4f1d4913a84e"
+    },
+    "transformation_pairs.csv": {
+      "parent": "r4",
+      "relative_path": "transformation_pairs.csv",
+      "sha256": "5eadb743e748e50b07d3eb09648400647d5370a97d2d76579bb453ba66f01a76"
+    }
+  },
+  "source_order": [
+    "direct_observations.csv",
+    "group_folds.csv",
+    "campaign_episodes_public.csv",
+    "campaign_episodes_truth.csv",
+    "episode_label_masks.csv",
+    "feature_manifest.json",
+    "feature_rows.csv",
+    "maplight_morgan_count.npy",
+    "maplight_avalon_count.npy",
+    "maplight_erg.npy",
+    "maplight_rdkit_descriptors.npy",
+    "morgan_binary.npy",
+    "global_oof_predictions.csv",
+    "global_inner_oof_predictions.csv",
+    "transformation_pairs.csv",
+    "episode_transformations.csv",
+    "transformation_coverage.json"
+  ],
+  "runtime": {
+    "root": {
+      "platform": "Linux x86_64 CPU",
+      "python_version": "3.12.3",
+      "numpy_version": "2.5.2",
+      "sklearn_version": "1.9.0",
+      "rdkit_version": "2026.3.5",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
+    },
+    "g0": {
+      "platform": "Linux x86_64 CPU",
+      "python_version": "3.10.13",
+      "numpy_version": "1.25.2",
+      "catboost_version": "1.2.1",
+      "thread_count": 16
+    }
+  },
+  "execution": {
+    "attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
+    "artifact_root": "/home/zbos/cypshift-private/openadmet-2026/r5d-cyp3a4-official-recovery-attempt-1",
+    "maximum_attempts": 1,
+    "retry": false,
+    "resume": false,
+    "input_scope": "training-only official CYP3A4 parents listed above",
+    "fresh_processes": true,
+    "fresh_outside_git_roots": true,
+    "clean_signed_checkout_required": true,
+    "attempt_start": "Before creating the fixed recovery root, authenticate the exact consumed failure root and all-zero accounting, validate both checkout-local Python executables, then repeat every v1 contract, runtime, checkout, parent-manifest, and source-leaf gate. Creating the fixed recovery root consumes the sole replacement; any later crash or incomplete root may not be retried or resumed.",
+    "artifact_layout": {
+      "claim_file": "attempt_claim.json",
+      "private_root": "private",
+      "terminal_root": "terminal",
+      "receipt_root": "receipt",
+      "final_root_entries": [
+        "attempt_claim.json",
+        "receipt",
+        "terminal"
+      ]
+    },
+    "claim": {
+      "schema_version": "cypshift.openadmet_cyp_2026.r5d_official_attempt_claim.v1",
+      "fields": [
+        "schema_version",
+        "contract_sha256",
+        "attempt_id",
+        "commit_oid",
+        "config_sha256",
+        "wrapper_source_sha256"
+      ],
+      "publication": "Create the fixed recovery root with no replacement, write one canonical compact sorted-key JSON claim with one trailing LF, fsync and chmod it 0444 before the first source/model child starts."
+    },
+    "official_episode_cardinality": {
+      "selected_anchor_episodes": 561,
+      "deterministic_random_anchor_stress_episodes": 561,
+      "selected_contexts_per_episode": 5,
+      "stress_contexts_per_episode": 1,
+      "g0_episode_contexts": 3366,
+      "derivation": "Each unique selected-anchor episode appears once in its assigned outer scope and once in each of the four current-outer inner-validation scopes; each unique stress episode appears only in its assigned outer scope. Therefore 561*5 + 561*1 = 3366."
+    },
+    "supported_topology": {
+      "total_child_processes": 7985,
+      "verbs": {
+        "accounting": 1,
+        "cleanup": 1,
+        "episodes": 75,
+        "freezer": 1,
+        "g0": 3366,
+        "inner": 1,
+        "migrate": 75,
+        "outer": 1,
+        "pair-inner": 960,
+        "pair-outer": 120,
+        "pair-outer-shared": 15,
+        "project": 1,
+        "source": 1,
+        "support": 1,
+        "view": 3366
+      }
+    },
+    "underpowered_topology": {
+      "total_child_processes": 5,
+      "verbs": {
+        "cleanup": 1,
+        "project": 1,
+        "source": 1,
+        "support": 1,
+        "underpowered": 1
+      }
+    },
+    "support_miss": "A clean label-safe support miss publishes the accepted UNDERPOWERED terminal before any fit, prediction, or metric and consumes the one official attempt.",
+    "child_failure": "Any child nonzero return code stops permanently, publishes one accepted FAILED terminal when the frozen failure path can do so truthfully, and never retries or resumes.",
+    "terminal_statuses": [
+      "R5_ORACLE_FAILED",
+      "R5_ORACLE_UNDERPOWERED",
+      "R5_ORACLE_NO_SIGNAL",
+      "R5_ORACLE_SIGNAL_PASS"
+    ],
+    "preclaim_executable_gate": {
+      "root_python": "<checkout>/.venv/bin/python",
+      "g0_python": "<checkout>/research/maplight-fixed/.venv/bin/python",
+      "root_identity": "The executing sys.executable must resolve to root_python.",
+      "timing": "Both regular files and root identity must be verified before recovery root creation."
+    },
+    "recovery_scope": "Only the pre-fit executable-layout defect is repaired. Model systems, features, candidates, grids, folds, episode populations, statistics, thresholds, seeds, topology, source bytes, runtimes, and authority remain v1-exact."
+  },
+  "attempt_envelope": {
+    "schema_version": "cypshift.openadmet_cyp_2026.r5d_official_attempt_receipt.v1",
+    "file_set": [
+      "official_attempt_receipt.json"
+    ],
+    "fields": [
+      "schema_version",
+      "contract_sha256",
+      "resolved_oracle_contract_sha256",
+      "attempt_id",
+      "status",
+      "source_revision",
+      "commit_oid",
+      "config_sha256",
+      "claim_sha256",
+      "wrapper_source_sha256",
+      "terminal_source_sha256",
+      "failure_source_sha256",
+      "parent_receipts",
+      "source_receipts",
+      "terminal_receipts",
+      "processes",
+      "operation_accounting",
+      "authority"
+    ],
+    "process_fields": [
+      "index",
+      "verb",
+      "pid",
+      "returncode"
+    ],
+    "rules": {
+      "contract_sha256": "Lowercase SHA-256 of these exact v2 recovery execution contract bytes before parse.",
+      "status": "Exact status independently reopened from the accepted R5 terminal.",
+      "claim_sha256": "Exact SHA-256 of the canonical pre-execution claim that consumed the sole recovery attempt.",
+      "parent_receipts": "Exact four manifest receipts above, verified before any source leaf is parsed.",
+      "source_receipts": "Exact 17-leaf source bundle above, derived from the verified parent manifests and checked from stable file descriptors before execution.",
+      "terminal_receipts": "Exact status-specific terminal file set and SHA-256 values after semantic terminal validation.",
+      "processes": "The complete ordered child-process transcript retained in the receipt; indices are contiguous, PIDs are positive, and return codes are recorded without normalization.",
+      "operation_accounting": "Exact terminal accounting; the six forbidden counters remain zero.",
+      "authority": "Exact terminal authority with no added permission from the envelope.",
+      "publication": "One canonical compact sorted-key JSON file with one trailing LF, staged and reopened before read-only Linux RENAME_NOREPLACE publication. The completed fixed artifact root contains exactly the claim file, terminal root, and receipt root and is then chmod 0555."
+    }
+  },
+  "forbidden_operations": {
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "official_metric_calls": 0,
+    "submissions_created": 0,
+    "transductive_relationships": 0,
+    "inferred_anchor_candidate_pools": 0
+  },
+  "authority": {
+    "contract_only": true,
+    "official_attempt": false,
+    "oracle_evidence": false,
+    "inferred_anchor_contract": false,
+    "model_fits": false,
+    "predictions": false,
+    "internal_metrics": false,
+    "official_st_rae": false,
+    "test_access": false,
+    "tdi": false,
+    "submission": false,
+    "transduction": false
+  },
+  "reversal_condition": "Any recovery-parent byte or semantic mismatch, nonzero prior scientific counter, missing preclaim checkout-local executable, parent or leaf receipt drift, source-revision mismatch, unreviewed runner/source/runtime/science change, extra recovery attempt, retry/resume, missing process record, terminal/envelope mismatch, forbidden operation, private residue, or non-atomic publication revokes this contract and blocks TRACE.",
+  "recovery_parent": {
+    "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/r5d-cyp3a4-official-attempt-1",
+    "attempt_id": "r5d-cyp3a4-official-attempt-1",
+    "execution_contract_sha256": "f8aadef95be8e0d719a14d08bc2a1164a03d2cf5079e9ed2dec749ee048bd700",
+    "claim_sha256": "331c93eb2503001692bcd165b071c003b58d4067a2e31aa995454c626c8587bb",
+    "failure_sha256": "79d73d854ffa26cc13c204659096e524750d70e8f5aad578f6e996509566a463",
+    "receipt_sha256": "2c1f0c5901a399df31f428420a51ea5d469b2ee9a931304a1a6a612ca711078c",
+    "required_status": "R5_ORACLE_FAILED",
+    "required_failure": {
+      "stage": "pre_gate",
+      "failure_code": "RUNTIME"
+    },
+    "required_processes": [
+      {
+        "index": 0,
+        "verb": "cleanup",
+        "returncode": 0
+      },
+      {
+        "index": 1,
+        "verb": "failed",
+        "returncode": 0
+      }
+    ],
+    "required_operation_accounting": "Exact 14-field all-zero vector in both the failed terminal and official attempt receipt.",
+    "required_authority": "Every authority value false in both the failed terminal and official attempt receipt.",
+    "scientific_visibility": "No source compiler, target parser, model fit, prediction freezer, truth scorer, test, TDI, metric, submission, transduction, or inferred-anchor pool operation occurred."
+  }
+}

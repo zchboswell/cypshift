@@ -5,7 +5,8 @@ Last updated: 2026-08-22
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE is blocked at `R5D_OFFICIAL_PREFIT_FAILED`. Two fresh full
+TRACE has an unopened one-attempt pre-fit recovery contract at
+`R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`. Two fresh full
 R5C production-entry rehearsals completed the exact synthetic process topology
 and produced byte-identical terminals; independent review found no high-impact
 blocker. The direct four-endpoint MapLight lane has also completed two official
@@ -16,11 +17,16 @@ training-only CYP3A4 TRACE oracle attempt was claimed on signed commit
 worktree did not contain its required checkout-local root and MapLight Python
 executables. The immutable terminal is `R5_ORACLE_FAILED`; all target, fit,
 prediction, scorer, test, TDI, metric, submission, transductive, and inferred-
-anchor counters are zero. D-077 forbids retry or resume, so no official TRACE
-evidence exists and I0 remains inactive. The exact next action is to preserve
-this negative result and obtain an explicit reviewed decision before any
-replacement attempt; the accepted direct MapLight candidate remains the only
-deployable competition prediction.
+anchor counters are zero. D-077 still forbids retry or resume of that consumed
+root. D-080 separately authorizes one replacement root only because the exact
+failure receipt proves zero scientific work; it moves both checkout-local
+executable checks before the new claim and changes no model, data, split,
+candidate, statistic, threshold, or authority. No official TRACE evidence
+exists and I0 remains inactive until that recovery returns an authenticated
+`R5_ORACLE_SIGNAL_PASS`. The accepted direct MapLight candidate remains the
+only deployable competition prediction and its exact manual-upload handoff is
+recorded in
+[`DIRECT_BASELINE_HANDOFF.md`](../../benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md).
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and

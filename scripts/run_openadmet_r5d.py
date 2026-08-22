@@ -20,11 +20,11 @@ from typing import Any, Final, cast
 
 SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5d_official_run_config.v1"
 CONTRACT_SCHEMA: Final = (
-    "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v1"
+    "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v2"
 )
-CONTRACT_ID: Final = "R5D-CYP3A4-OFFICIAL-ATTEMPT-V1"
+CONTRACT_ID: Final = "R5D-CYP3A4-OFFICIAL-RECOVERY-ATTEMPT-V1"
 CONTRACT_SHA256: Final = (
-    "f8aadef95be8e0d719a14d08bc2a1164a03d2cf5079e9ed2dec749ee048bd700"
+    "0934e66ac4e0297ff3301651b270f785e926f7303f0ab5034aaf2c541bcad993"
 )
 CLAIM_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5d_official_attempt_claim.v1"
 RECEIPT_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5d_official_attempt_receipt.v1"
@@ -33,7 +33,7 @@ RESOLVED_CONTRACT_SHA256: Final = (
 )
 ROOT: Final = Path(__file__).resolve().parents[1]
 CONTRACT_PATH: Final = (
-    ROOT / "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v1.json"
+    ROOT / "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json"
 )
 CONFIG_FIELDS: Final = {
     "schema_version",
@@ -63,6 +63,34 @@ EXPECTED_RUNTIME: Final = {
     "uv_lock_sha256": (
         "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
     ),
+}
+ACCOUNTING_FIELDS: Final = {
+    "anchor_labels_exposed_to_models",
+    "blinded_test_files_opened",
+    "direct_target_values_parsed",
+    "hierarchy_fits",
+    "inferred_anchor_candidate_pools",
+    "internal_absolute_error_evaluations",
+    "maplight_model_fits",
+    "official_metric_calls",
+    "predictions_frozen",
+    "query_truth_values_opened_by_scorers",
+    "ridge_model_fits",
+    "submissions_created",
+    "tdi_files_opened",
+    "transductive_relationships",
+}
+AUTHORITY_FIELDS: Final = {
+    "inferred_anchor_contract",
+    "internal_metrics",
+    "model_fits",
+    "official_st_rae",
+    "oracle_evidence",
+    "predictions",
+    "submission",
+    "tdi",
+    "test_access",
+    "transduction",
 }
 
 
@@ -311,6 +339,95 @@ def _verify_parents_and_sources(
     return source_paths, source_receipts, parent_receipts
 
 
+def _verify_model_executables() -> None:
+    root_python = ROOT / ".venv/bin/python"
+    g0_python = ROOT / "research/maplight-fixed/.venv/bin/python"
+    for executable in (root_python, g0_python):
+        if not executable.is_file():
+            raise ValueError("model executable differs")
+    if Path(sys.executable).resolve() != root_python.resolve():
+        raise ValueError("root model executable differs")
+
+
+def _verify_recovery_parent(
+    contract: Mapping[str, Any],
+    *,
+    open_directory_no_symlinks: Any,
+    read_exact_root: Any,
+    read_stable_file: Any,
+) -> None:
+    rule = contract.get("recovery_parent")
+    if not isinstance(rule, Mapping):
+        raise ValueError("recovery parent rule differs")
+    attempt_root = _path(rule.get("attempt_root"), "recovery parent root")
+    root_fd = open_directory_no_symlinks(attempt_root)
+    try:
+        if set(os.listdir(root_fd)) != {"attempt_claim.json", "receipt", "terminal"}:
+            raise ValueError("recovery parent file set differs")
+    finally:
+        os.close(root_fd)
+    claim_data = read_stable_file(attempt_root / "attempt_claim.json")
+    failure_data = read_exact_root(attempt_root / "terminal", ("failure.json",))[
+        "failure.json"
+    ]
+    receipt_data = read_exact_root(
+        attempt_root / "receipt", ("official_attempt_receipt.json",)
+    )["official_attempt_receipt.json"]
+    if (
+        sha256(claim_data).hexdigest() != rule.get("claim_sha256")
+        or sha256(failure_data).hexdigest() != rule.get("failure_sha256")
+        or sha256(receipt_data).hexdigest() != rule.get("receipt_sha256")
+    ):
+        raise ValueError("recovery parent receipt differs")
+    claim = _strict_object(claim_data, "recovery parent claim")
+    failure = _strict_object(failure_data, "recovery parent failure")
+    receipt = _strict_object(receipt_data, "recovery parent receipt")
+    expected_failure = rule.get("required_failure")
+    expected_processes = rule.get("required_processes")
+    if (
+        claim.get("attempt_id") != rule.get("attempt_id")
+        or claim.get("contract_sha256") != rule.get("execution_contract_sha256")
+        or receipt.get("attempt_id") != rule.get("attempt_id")
+        or receipt.get("contract_sha256") != rule.get("execution_contract_sha256")
+        or receipt.get("claim_sha256") != rule.get("claim_sha256")
+        or receipt.get("status") != rule.get("required_status")
+        or receipt.get("terminal_receipts")
+        != {"failure.json": rule.get("failure_sha256")}
+        or not isinstance(expected_failure, Mapping)
+        or failure.get("stage") != expected_failure.get("stage")
+        or failure.get("failure_code") != expected_failure.get("failure_code")
+        or not isinstance(expected_processes, list)
+    ):
+        raise ValueError("recovery parent semantics differ")
+    observed_processes = receipt.get("processes")
+    if not isinstance(observed_processes, list) or len(observed_processes) != len(
+        expected_processes
+    ):
+        raise ValueError("recovery parent processes differ")
+    for observed, expected in zip(observed_processes, expected_processes, strict=True):
+        if (
+            not isinstance(observed, Mapping)
+            or not isinstance(expected, Mapping)
+            or {key: observed.get(key) for key in ("index", "verb", "returncode")}
+            != dict(expected)
+            or type(observed.get("pid")) is not int
+            or cast(int, observed["pid"]) <= 0
+        ):
+            raise ValueError("recovery parent processes differ")
+    for value in (failure, receipt):
+        accounting = value.get("operation_accounting")
+        authority = value.get("authority")
+        if (
+            not isinstance(accounting, Mapping)
+            or set(accounting) != ACCOUNTING_FIELDS
+            or any(type(item) is not int or item != 0 for item in accounting.values())
+            or not isinstance(authority, Mapping)
+            or set(authority) != AUTHORITY_FIELDS
+            or any(item is not False for item in authority.values())
+        ):
+            raise ValueError("recovery parent performed a scientific operation")
+
+
 def _claim_attempt(
     attempt_root: Path,
     claim: bytes,
@@ -523,6 +640,13 @@ def main() -> None:
         raise ValueError("terminal source bundle differs")
     if failure_source_bundle_sha256() != failure_source:
         raise ValueError("failure source bundle differs")
+    _verify_model_executables()
+    _verify_recovery_parent(
+        contract,
+        open_directory_no_symlinks=open_directory_no_symlinks,
+        read_exact_root=read_exact_root,
+        read_stable_file=read_stable_file,
+    )
     source_paths, source_receipts, parent_receipts = _verify_parents_and_sources(
         contract, roots
     )
@@ -532,7 +656,7 @@ def main() -> None:
     if not isinstance(execution, Mapping) or not isinstance(envelope_rule, Mapping):
         raise ValueError("official execution rules differ")
     attempt_root = _path(execution.get("artifact_root"), "official artifact root")
-    if execution.get("attempt_id") != "r5d-cyp3a4-official-attempt-1":
+    if execution.get("attempt_id") != "r5d-cyp3a4-official-recovery-attempt-1":
         raise ValueError("official attempt identity differs")
     claim_data = _compact(
         {

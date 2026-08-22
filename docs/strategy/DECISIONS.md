@@ -2426,3 +2426,41 @@
   it binds this exact receipt, proves the failure was pre-fit with all
   scientific counters zero, and moves checkout-local executable verification
   before claiming any new fixed root.
+
+## D-080 — Authorize one zero-operation R5D pre-fit recovery
+
+- Date: 2026-08-22
+- Status: accepted recovery boundary;
+  `R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`; replacement attempt unopened
+- Decision: Preserve D-079 permanently and authorize exactly one separately
+  named R5D replacement attempt. This is not a retry or resume of the consumed
+  root. It is permitted only because the independently reopened D-079 claim,
+  terminal, and receipt prove a pre-gate `RUNTIME` failure with exactly two
+  successful cleanup/failure children, all 14 operation counters zero, and all
+  authority false. Before creating the replacement root, the wrapper must
+  verify both pinned checkout-local Python executables and that its own
+  interpreter resolves to the root environment. The complete D-077 science,
+  official parents, 17 source leaves, runtime versions, 7,985-child topology,
+  statistics, thresholds, cleanup, forbidden operations, and no-retry/no-resume
+  rule remain unchanged. User direction to continue TRACE after the explicit
+  failure explanation supplies authority for this one reviewed replacement,
+  not for further attempts.
+- Evidence: Recovery contract SHA-256 `0934e66a...` binds the original contract
+  `f8aadef9...`, claim `331c93eb...`, failure `79d73d85...`, and receipt
+  `2c1f0c59...`, plus the new fixed outside-Git recovery root. The dormant I0
+  overlay SHA-256 `37982400...` inherits every v1 scientific and hard-stop rule
+  and changes only the eligible official-attempt parent. A clean detached
+  execution checkout provisioned with root Python 3.12.3 and locked MapLight
+  Python 3.10.13 passes the exact runner pre-gate. Contract, wrapper,
+  zero-operation-parent, missing-environment, and unchanged-I0 tests pass. No
+  official source value, model fit, prediction, truth, metric, test file, TDI,
+  submission, transductive relation, or inferred-anchor pool was opened while
+  freezing this recovery.
+- Alternatives: Quietly reuse D-077; edit or delete the failed root; relax the
+  inner executable check; claim before provisioning environments; change TRACE
+  science; or abandon TRACE after a non-scientific launch failure.
+- Reversal condition: Any failed-parent mismatch, nonzero prior operation,
+  missing executable, source/runtime/science drift, second replacement,
+  retry/resume, incomplete process transcript, private residue, or forbidden
+  operation revokes D-080. A failure after the replacement claim is terminal
+  and authorizes no further attempt.

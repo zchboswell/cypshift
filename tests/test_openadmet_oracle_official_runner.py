@@ -99,9 +99,9 @@ def _fixture(tmp_path: Path) -> tuple[Path, dict[str, object], Path]:
     attempt_root = tmp_path / "official-attempt"
     contract = {
         "schema_version": (
-            "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v1"
+            "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v2"
         ),
-        "contract_id": "R5D-CYP3A4-OFFICIAL-ATTEMPT-V1",
+        "contract_id": "R5D-CYP3A4-OFFICIAL-RECOVERY-ATTEMPT-V1",
         "resolved_oracle_contract_sha256": (
             "9143ecd1b24d1d9a97b1e5821e2b953f4cfffcec1cc39de3a8c49b81a4f58a50"
         ),
@@ -147,7 +147,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, dict[str, object], Path]:
         },
         "source_order": ["direct_observations.csv"],
         "execution": {
-            "attempt_id": "r5d-cyp3a4-official-attempt-1",
+            "attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
             "artifact_root": str(attempt_root),
             "supported_topology": {"total_child_processes": 0, "verbs": {}},
             "underpowered_topology": {"total_child_processes": 0, "verbs": {}},
@@ -239,6 +239,8 @@ def _run(
     )
     monkeypatch.setattr(module, "_runtime_gate", lambda: None)
     monkeypatch.setattr(module, "_checkout_gate", lambda _oid: None)
+    monkeypatch.setattr(module, "_verify_model_executables", lambda: None)
+    monkeypatch.setattr(module, "_verify_recovery_parent", lambda *_args, **_kw: None)
 
     def fake_run(value: object) -> OfficialRunResult:
         terminal = cast(Any, value).terminal_root
@@ -291,7 +293,7 @@ def test_official_wrapper_claims_once_and_publishes_bound_receipt(
 def test_official_wrapper_binds_the_frozen_contract_bytes() -> None:
     module = _load_entry()
     contract = ROOT / (
-        "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v1.json"
+        "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json"
     )
     assert module.CONTRACT_PATH == contract
     assert module.CONTRACT_SHA256 == sha256(contract.read_bytes()).hexdigest()
@@ -304,6 +306,30 @@ def test_official_wrapper_rejects_leaf_drift_before_claim(
     with pytest.raises(ValueError, match="source leaf receipt"):
         module.main()
     assert not attempt_root.exists()
+
+
+def test_official_wrapper_authenticates_zero_operation_recovery_parent() -> None:
+    module = _load_entry()
+    contract = json.loads(module.CONTRACT_PATH.read_text())
+    private_io = __import__(
+        "cypshift.openadmet_oracle_private_io",
+        fromlist=["open_directory_no_symlinks"],
+    )
+    module._verify_recovery_parent(
+        contract,
+        open_directory_no_symlinks=private_io.open_directory_no_symlinks,
+        read_exact_root=private_io.read_exact_root,
+        read_stable_file=private_io.read_stable_file,
+    )
+
+
+def test_official_wrapper_rejects_missing_model_environment_before_claim(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    module = _load_entry()
+    monkeypatch.setattr(module, "ROOT", ROOT / "missing-execution-checkout")
+    with pytest.raises(ValueError, match="model executable"):
+        module._verify_model_executables()
 
 
 @pytest.mark.skipif(
