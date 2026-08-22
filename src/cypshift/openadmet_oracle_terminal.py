@@ -750,7 +750,7 @@ def _authority(status: str) -> dict[str, bool]:
 
 def _validate_source(expected: str) -> tuple[str, Mapping[str, str]]:
     try:
-        return cast(tuple[str, Mapping[str, str]], validate_execution(expected))
+        return validate_execution(expected)
     except OracleTerminalIOError as exc:
         raise OracleTerminalError(str(exc)) from exc
 
@@ -791,7 +791,7 @@ def _csv_rows(data: bytes, columns: Sequence[str], label: str) -> list[dict[str,
 
 def _canonical_object(data: bytes, label: str) -> dict[str, Any]:
     try:
-        result = cast(dict[str, Any], strict_json_object(data, label))
+        result = strict_json_object(data, label)
     except ValueError as exc:
         raise OracleTerminalError(str(exc)) from exc
     if data != _compact_json(result):
