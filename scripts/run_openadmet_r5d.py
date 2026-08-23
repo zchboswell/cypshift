@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the sole receipt-bound official CYP3A4 TRACE oracle attempt."""
+"""Run the receipt-bound official CYP3A4 TRACE crash replacement."""
 
 from __future__ import annotations
 
@@ -20,10 +20,13 @@ from typing import Any, Final, cast
 
 SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5d_official_run_config.v1"
 CONTRACT_SCHEMA: Final = (
-    "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v2"
+    "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v3"
 )
-CONTRACT_ID: Final = "R5D-CYP3A4-OFFICIAL-RECOVERY-ATTEMPT-V1"
+CONTRACT_ID: Final = "R5D-CYP3A4-OFFICIAL-CRASH-REPLACEMENT-V1"
 CONTRACT_SHA256: Final = (
+    "ee135e7fa450ab05b68f92a46085213f7be574ce218ab9fda01df833e46125cf"
+)
+PARENT_CONTRACT_SHA256: Final = (
     "0934e66ac4e0297ff3301651b270f785e926f7303f0ab5034aaf2c541bcad993"
 )
 CLAIM_SCHEMA: Final = "cypshift.openadmet_cyp_2026.r5d_official_attempt_claim.v1"
@@ -33,6 +36,9 @@ RESOLVED_CONTRACT_SHA256: Final = (
 )
 ROOT: Final = Path(__file__).resolve().parents[1]
 CONTRACT_PATH: Final = (
+    ROOT / "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v3.json"
+)
+PARENT_CONTRACT_PATH: Final = (
     ROOT / "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json"
 )
 CONFIG_FIELDS: Final = {
@@ -240,17 +246,37 @@ def _config(data: bytes) -> dict[str, Any]:
     return value
 
 
-def _contract(data: bytes) -> dict[str, Any]:
+def _contract(data: bytes, parent_data: bytes) -> dict[str, Any]:
     if sha256(data).hexdigest() != CONTRACT_SHA256:
         raise ValueError("official execution contract receipt differs")
-    value = _strict_object(data, "R5D execution contract")
+    if sha256(parent_data).hexdigest() != PARENT_CONTRACT_SHA256:
+        raise ValueError("parent execution contract receipt differs")
+    value = _strict_object(data, "R5D crash-replacement contract")
+    parent = _strict_object(parent_data, "R5D parent execution contract")
+    parent_rule = value.get("parent_contract")
+    overlay_execution = value.get("execution")
     if (
         value.get("schema_version") != CONTRACT_SCHEMA
         or value.get("contract_id") != CONTRACT_ID
-        or value.get("resolved_oracle_contract_sha256") != RESOLVED_CONTRACT_SHA256
+        or not isinstance(parent_rule, Mapping)
+        or parent_rule.get("sha256") != PARENT_CONTRACT_SHA256
+        or not isinstance(overlay_execution, Mapping)
+        or parent.get("resolved_oracle_contract_sha256") != RESOLVED_CONTRACT_SHA256
     ):
         raise ValueError("official execution contract identity differs")
-    return value
+    execution = dict(cast(Mapping[str, Any], parent["execution"]))
+    for name in ("attempt_id", "artifact_root", "maximum_attempts", "retry", "resume"):
+        execution[name] = overlay_execution.get(name)
+    result = dict(parent)
+    result.update(
+        {
+            "schema_version": value["schema_version"],
+            "contract_id": value["contract_id"],
+            "execution": execution,
+            "interrupted_parent": value.get("interrupted_parent"),
+        }
+    )
+    return result
 
 
 def _parent_roots(config: Mapping[str, Any]) -> dict[str, Path]:
@@ -428,6 +454,83 @@ def _verify_recovery_parent(
             raise ValueError("recovery parent performed a scientific operation")
 
 
+def _verify_interrupted_parent(contract: Mapping[str, Any]) -> None:
+    rule = contract.get("interrupted_parent")
+    if not isinstance(rule, Mapping):
+        raise ValueError("interrupted parent rule differs")
+    root = _path(rule.get("attempt_root"), "interrupted parent root")
+    claim = root / "attempt_claim.json"
+    if sha256(_read_stable(claim)).hexdigest() != rule.get("claim_sha256"):
+        raise ValueError("interrupted parent claim differs")
+    required_present = rule.get("required_present")
+    required_absent = rule.get("required_absent")
+    if (
+        not isinstance(required_present, list)
+        or not all(isinstance(item, str) for item in required_present)
+        or not isinstance(required_absent, list)
+        or not all(isinstance(item, str) for item in required_absent)
+        or any(not (root / item).exists() for item in required_present)
+        or any(
+            (root / item).exists() or (root / item).is_symlink()
+            for item in required_absent
+        )
+    ):
+        raise ValueError("interrupted parent topology differs")
+
+    rows: list[list[Any]] = []
+    for path in sorted(
+        root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
+    ):
+        metadata = path.lstat()
+        relative = path.relative_to(root).as_posix()
+        mode = stat.S_IMODE(metadata.st_mode)
+        if stat.S_ISLNK(metadata.st_mode):
+            raise ValueError("interrupted parent symlink differs")
+        if stat.S_ISDIR(metadata.st_mode):
+            rows.append([relative, "d", mode, 0, None])
+        elif stat.S_ISREG(metadata.st_mode):
+            payload = _read_stable(path)
+            rows.append(
+                [relative, "f", mode, len(payload), sha256(payload).hexdigest()]
+            )
+        else:
+            raise ValueError("interrupted parent file type differs")
+    inventory = rule.get("inventory")
+    if (
+        not isinstance(inventory, Mapping)
+        or len(rows) != inventory.get("entries")
+        or sum(row[1] == "d" for row in rows) != inventory.get("directories")
+        or sum(row[1] == "f" for row in rows) != inventory.get("files")
+        or sha256(_compact(rows)).hexdigest() != inventory.get("sha256")
+    ):
+        raise ValueError("interrupted parent inventory differs")
+
+    private = root / "private"
+    counts = {
+        "g0_manifests": len(tuple((private / "g0").glob("*/manifest.json"))),
+        "inner_candidate_manifests": len(
+            tuple((private / "inner-candidates").glob("*/manifest.json"))
+        ),
+        "inner_selection_rows": max(
+            0,
+            len(
+                _read_stable(
+                    private / "inner-selection/oracle_inner_selection.csv"
+                ).splitlines()
+            )
+            - 1,
+        ),
+        "isolated_selection_tokens": len(
+            tuple((private / "tokens").glob("*/capability/selection_token.json"))
+        ),
+        "outer_fragment_manifests": len(
+            tuple((private / "outer-fragments").glob("*/manifest.json"))
+        ),
+    }
+    if counts != rule.get("completed_artifacts"):
+        raise ValueError("interrupted parent artifact counts differ")
+
+
 def _claim_attempt(
     attempt_root: Path,
     claim: bytes,
@@ -601,7 +704,9 @@ def main() -> None:
     roots = _parent_roots(config)
     _runtime_gate()
     _checkout_gate(commit_oid)
-    contract = _contract(_read_stable(CONTRACT_PATH))
+    contract = _contract(
+        _read_stable(CONTRACT_PATH), _read_stable(PARENT_CONTRACT_PATH)
+    )
 
     source_root = (ROOT / "src").resolve()
     sys.path.insert(0, str(source_root))
@@ -647,6 +752,7 @@ def main() -> None:
         read_exact_root=read_exact_root,
         read_stable_file=read_stable_file,
     )
+    _verify_interrupted_parent(contract)
     source_paths, source_receipts, parent_receipts = _verify_parents_and_sources(
         contract, roots
     )
@@ -656,7 +762,7 @@ def main() -> None:
     if not isinstance(execution, Mapping) or not isinstance(envelope_rule, Mapping):
         raise ValueError("official execution rules differ")
     attempt_root = _path(execution.get("artifact_root"), "official artifact root")
-    if execution.get("attempt_id") != "r5d-cyp3a4-official-recovery-attempt-1":
+    if execution.get("attempt_id") != "r5d-cyp3a4-official-crash-replacement-1":
         raise ValueError("official attempt identity differs")
     claim_data = _compact(
         {

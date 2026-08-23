@@ -1,0 +1,75 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.oracle_official_execution_contract.v3",
+  "contract_id": "R5D-CYP3A4-OFFICIAL-CRASH-REPLACEMENT-V1",
+  "gate": "R5D_OFFICIAL_CRASH_REPLACEMENT_CONTRACT_FROZEN",
+  "status": "R5D_OFFICIAL_CRASH_REPLACEMENT_CONTRACT_ONLY",
+  "purpose": "Authorize exactly one fresh replacement after an external Codex process loss interrupted the v2 attempt before prediction freezing or outer scoring. Preserve the interrupted root, rerun from the beginning, and change no scientific input, model, candidate, statistic, threshold, seed, topology, runtime, or authority rule.",
+  "parent_contract": {
+    "path": "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json",
+    "sha256": "0934e66ac4e0297ff3301651b270f785e926f7303f0ab5034aaf2c541bcad993",
+    "inheritance": "Every v2 field remains exact except the attempt identity/root and the additional interrupted-parent gate below."
+  },
+  "interrupted_parent": {
+    "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/r5d-cyp3a4-official-recovery-attempt-1",
+    "attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
+    "claim_sha256": "be22a0d9fb8879db23b39e74ba19852ebfc9843ae41cc63184dc1a80bf0102bd",
+    "inventory": {
+      "algorithm": "SHA-256 of canonical compact JSON plus LF over every descendant sorted by relative POSIX path; each row is [path,type,mode,size,sha256-or-null] and symlinks/special files are forbidden.",
+      "entries": 15907,
+      "directories": 5607,
+      "files": 10300,
+      "sha256": "e948f77559d38c35b020a7d0beb228a066c53690dd5818d267079af6e3889f40"
+    },
+    "completed_artifacts": {
+      "g0_manifests": 3366,
+      "inner_candidate_manifests": 960,
+      "inner_selection_rows": 240,
+      "isolated_selection_tokens": 90,
+      "outer_fragment_manifests": 73
+    },
+    "required_present": [
+      "attempt_claim.json",
+      ".private-control",
+      "private/g0",
+      "private/inner-candidates",
+      "private/inner-selection",
+      "private/outer-fragments"
+    ],
+    "required_absent": [
+      "terminal",
+      "receipt",
+      "private/freeze",
+      "private/accounting",
+      "private/cleanup"
+    ],
+    "scientific_visibility": "The accepted state machine completed inner selection and 73 outer fragments but never invoked the freezer, aggregate accounting, authenticated cleanup, outer sealed scorer, terminal publisher, blinded test, TDI, official metric, submission, transduction, or inferred-anchor pool. No terminal outcome was produced or opened.",
+    "disposition": "Preserve this root byte-for-byte as interrupted evidence. Do not resume it, publish a post-hoc terminal, reuse its artifacts as execution inputs, or delete it."
+  },
+  "execution": {
+    "attempt_id": "r5d-cyp3a4-official-crash-replacement-1",
+    "artifact_root": "/home/zbos/cypshift-private/openadmet-2026/r5d-cyp3a4-official-crash-replacement-1",
+    "maximum_attempts": 1,
+    "retry": false,
+    "resume": false,
+    "start_from_scratch": true,
+    "durable_process_log_required": true,
+    "supported_topology": "Inherit the exact v2 7,985-child topology.",
+    "attempt_start": "Authenticate the exact v2 contract, original zero-operation parent, interrupted-parent inventory, clean signed checkout, both runtimes, four official parents, and 17 source leaves before atomically claiming this distinct root.",
+    "interruption_policy": "A further interruption or failure is terminal and authorizes no additional attempt."
+  },
+  "authority": {
+    "contract_only": true,
+    "official_attempt": false,
+    "oracle_evidence": false,
+    "inferred_anchor_contract": false,
+    "model_fits": false,
+    "predictions": false,
+    "internal_metrics": false,
+    "official_st_rae": false,
+    "test_access": false,
+    "tdi": false,
+    "submission": false,
+    "transduction": false
+  },
+  "reversal_condition": "Any interrupted-root byte, count, topology, source, parent, runtime, checkout, model, statistic, threshold, seed, process-log, terminal, cleanup, forbidden-operation, or authority drift revokes this replacement before execution."
+}

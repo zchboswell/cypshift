@@ -2464,3 +2464,34 @@
   retry/resume, incomplete process transcript, private residue, or forbidden
   operation revokes D-080. A failure after the replacement claim is terminal
   and authorizes no further attempt.
+
+## D-081 — Preserve the interrupted R5D recovery and authorize one fresh crash replacement
+
+- Date: 2026-08-22
+- Status: accepted crash-replacement boundary;
+  `R5D_OFFICIAL_CRASH_REPLACEMENT_FROZEN`; replacement unopened
+- Decision: Preserve the D-080 recovery root exactly and never resume, delete,
+  post-hoc complete, or use it as execution input. Authorize one separately
+  named fresh run from the beginning solely because an external Codex process
+  loss killed the accepted parent process without a child failure or terminal.
+  The replacement inherits every D-077/D-080 source, parent, runtime, model,
+  feature, candidate, fold, statistic, threshold, seed, 7,985-child topology,
+  cleanup, forbidden-operation, and authority rule. Run it detached from Codex
+  and retain durable stdout/stderr. A further interruption or failure is final.
+- Evidence: The interrupted root claim SHA-256 is `be22a0d9...`. Its canonical
+  15,907-entry inventory (5,607 directories and 10,300 files) is
+  `e948f775...`. It contains 3,366 G0 manifests, 960 inner-candidate manifests,
+  the exact 240-row inner selection, 90 isolated tokens, and 73 outer-fragment
+  manifests. Terminal, receipt, freezer, aggregate-accounting, and cleanup
+  roots are absent. The v3 execution overlay SHA-256 is `ee135e7f...`; the
+  dormant I0 v3 overlay is `9a636ad8...` and changes only the eligible attempt
+  parent. Focused contract/wrapper tests and an exact local inventory reopen
+  pass before execution.
+- Alternatives: Resume the partial tree; infer or fabricate the lost process
+  transcript; publish a post-hoc failure; delete the consumed root; reuse its
+  selected tokens; change TRACE science; or abandon TRACE after an external
+  application failure.
+- Reversal condition: Any interrupted-root byte, artifact count, source,
+  parent, runtime, checkout, model, statistic, threshold, seed, process-log,
+  terminal, cleanup, forbidden-operation, or authority drift revokes D-081.
+  The historical interrupted root remains immutable regardless of outcome.

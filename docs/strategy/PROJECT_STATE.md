@@ -5,25 +5,24 @@ Last updated: 2026-08-22
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE has an unopened one-attempt pre-fit recovery contract at
-`R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`. Two fresh full
+TRACE has a frozen but unopened crash-replacement contract at
+`R5D_OFFICIAL_CRASH_REPLACEMENT_FROZEN`. Two fresh full
 R5C production-entry rehearsals completed the exact synthetic process topology
 and produced byte-identical terminals; independent review found no high-impact
 blocker. The direct four-endpoint MapLight lane has also completed two official
 blinded-test rehearsals and published one byte-identical, locally accepted
-750-row submission candidate. It has not been uploaded or scored. The sole
-training-only CYP3A4 TRACE oracle attempt was claimed on signed commit
-`3c8f2f1...` and failed at the runner pre-gate because the clean execution
-worktree did not contain its required checkout-local root and MapLight Python
-executables. The immutable terminal is `R5_ORACLE_FAILED`; all target, fit,
-prediction, scorer, test, TDI, metric, submission, transductive, and inferred-
-anchor counters are zero. D-077 still forbids retry or resume of that consumed
-root. D-080 separately authorizes one replacement root only because the exact
-failure receipt proves zero scientific work; it moves both checkout-local
-executable checks before the new claim and changes no model, data, split,
-candidate, statistic, threshold, or authority. No official TRACE evidence
-exists and I0 remains inactive until that recovery returns an authenticated
-`R5_ORACLE_SIGNAL_PASS`. The accepted direct MapLight candidate remains the
+750-row submission candidate. It has not been uploaded or scored. The D-080
+TRACE recovery passed its pre-gates and completed 3,366 G0 fits, all 960 inner
+candidates, the frozen 240-row/90-token selection, and 73 outer fragments
+before an external Codex process loss stopped its parent process. It produced
+no freezer, aggregate-accounting, outer-scorer, terminal, receipt, official
+metric, test, TDI, submission, transductive, or inferred-anchor operation. Its
+exact 15,907-entry private-tree inventory is preserved and may not be resumed
+or used as execution input. D-081 authorizes one fresh, separately named rerun
+from the beginning with identical science and a durable outside-Codex process
+log. No official TRACE evidence exists and I0 remains inactive until that
+replacement returns an authenticated `R5_ORACLE_SIGNAL_PASS`. The accepted
+direct MapLight candidate remains the
 only deployable competition prediction and its exact manual-upload handoff is
 recorded in
 [`DIRECT_BASELINE_HANDOFF.md`](../../benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md).

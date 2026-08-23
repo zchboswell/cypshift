@@ -1,8 +1,8 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; one pre-fit recovery is frozen but unopened after the original
-official R5D attempt was consumed by a zero-operation runtime-layout failure;
-gate `R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`; date 2026-08-22.
+Status: active; one crash-replacement attempt is frozen but unopened after the
+D-080 recovery was externally interrupted before freezing or scoring; gate
+`R5D_OFFICIAL_CRASH_REPLACEMENT_FROZEN`; date 2026-08-22.
 
 The fixed R5D attempt root contains an immutable `R5_ORACLE_FAILED` terminal
 and receipt. The clean signed checkout lacked its required checkout-local root
@@ -13,6 +13,16 @@ resume of that root; I0/F1 did not activate. D-080 binds the exact failed claim,
 terminal, and receipt and authorizes one distinct replacement only after the
 root and MapLight executables are verified in the clean execution checkout
 before its no-replace claim. All scientific rules and authority remain exact.
+
+The D-080 replacement passed those gates and completed all 3,366 locked G0
+fits, all 960 inner candidates, the exact 240-row selection and 90 isolated
+tokens, and 73/165 outer fragments. Closing Codex killed the active parent
+process; the machine did not reboot. No freezer, aggregate accounting,
+authenticated cleanup, outer sealed scorer, terminal, or receipt was produced.
+The interrupted root remains byte-preserved with inventory SHA-256
+`e948f775...`; it is neither resumable nor TRACE evidence. D-081 binds that
+inventory and authorizes one fresh from-scratch replacement with unchanged
+science and a durable detached process log.
 
 ## Context capsule
 

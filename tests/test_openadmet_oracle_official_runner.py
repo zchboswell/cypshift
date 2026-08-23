@@ -227,7 +227,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, dict[str, object], Path]:
         "source_order": ["direct_observations.csv"],
         "recovery_parent": _recovery_parent(tmp_path),
         "execution": {
-            "attempt_id": "r5d-cyp3a4-official-recovery-attempt-1",
+            "attempt_id": "r5d-cyp3a4-official-crash-replacement-1",
             "artifact_root": str(attempt_root),
             "supported_topology": {"total_child_processes": 0, "verbs": {}},
             "underpowered_topology": {"total_child_processes": 0, "verbs": {}},
@@ -315,8 +315,11 @@ def _run(
     config_path.write_bytes(_compact(config))
     monkeypatch.setattr(module, "CONTRACT_PATH", contract_path)
     monkeypatch.setattr(
-        module, "CONTRACT_SHA256", sha256(contract_path.read_bytes()).hexdigest()
+        module,
+        "_contract",
+        lambda _overlay, _parent: json.loads(contract_path.read_text()),
     )
+    monkeypatch.setattr(module, "_verify_interrupted_parent", lambda _contract: None)
     monkeypatch.setattr(module, "_runtime_gate", lambda: None)
     monkeypatch.setattr(module, "_checkout_gate", lambda _oid: None)
     monkeypatch.setattr(module, "_verify_model_executables", lambda: None)
@@ -372,10 +375,15 @@ def test_official_wrapper_claims_once_and_publishes_bound_receipt(
 def test_official_wrapper_binds_the_frozen_contract_bytes() -> None:
     module = _load_entry()
     contract = ROOT / (
+        "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v3.json"
+    )
+    parent = ROOT / (
         "benchmarks/openadmet_cyp_2026/oracle_official_execution_contract_v2.json"
     )
     assert module.CONTRACT_PATH == contract
     assert module.CONTRACT_SHA256 == sha256(contract.read_bytes()).hexdigest()
+    assert module.PARENT_CONTRACT_PATH == parent
+    assert module.PARENT_CONTRACT_SHA256 == sha256(parent.read_bytes()).hexdigest()
 
 
 def test_official_wrapper_rejects_leaf_drift_before_claim(
@@ -403,6 +411,83 @@ def test_official_wrapper_authenticates_zero_operation_recovery_parent(
         read_exact_root=private_io.read_exact_root,
         read_stable_file=private_io.read_stable_file,
     )
+
+
+def test_official_wrapper_authenticates_interrupted_parent_inventory(
+    tmp_path: Path,
+) -> None:
+    module = _load_entry()
+    root = tmp_path / "interrupted"
+    files = {
+        "attempt_claim.json": b"claim\n",
+        "private/g0/item/manifest.json": b"g0\n",
+        "private/inner-candidates/item/manifest.json": b"inner\n",
+        "private/inner-selection/oracle_inner_selection.csv": b"header\nrow\n",
+        "private/tokens/item/capability/selection_token.json": b"token\n",
+        "private/outer-fragments/item/manifest.json": b"outer\n",
+    }
+    for name, payload in files.items():
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+    (root / ".private-control").mkdir()
+
+    def inventory() -> dict[str, int | str]:
+        rows: list[list[object]] = []
+        for path in sorted(
+            root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
+        ):
+            metadata = path.lstat()
+            relative = path.relative_to(root).as_posix()
+            mode = stat.S_IMODE(metadata.st_mode)
+            if path.is_dir():
+                rows.append([relative, "d", mode, 0, None])
+            else:
+                payload = path.read_bytes()
+                rows.append(
+                    [relative, "f", mode, len(payload), sha256(payload).hexdigest()]
+                )
+        return {
+            "entries": len(rows),
+            "directories": sum(row[1] == "d" for row in rows),
+            "files": sum(row[1] == "f" for row in rows),
+            "sha256": sha256(_compact(rows)).hexdigest(),
+        }
+
+    contract = {
+        "interrupted_parent": {
+            "attempt_root": str(root),
+            "claim_sha256": sha256(files["attempt_claim.json"]).hexdigest(),
+            "required_present": [
+                "attempt_claim.json",
+                ".private-control",
+                "private/g0",
+                "private/inner-candidates",
+                "private/inner-selection",
+                "private/outer-fragments",
+            ],
+            "required_absent": [
+                "terminal",
+                "receipt",
+                "private/freeze",
+                "private/accounting",
+                "private/cleanup",
+            ],
+            "inventory": inventory(),
+            "completed_artifacts": {
+                "g0_manifests": 1,
+                "inner_candidate_manifests": 1,
+                "inner_selection_rows": 1,
+                "isolated_selection_tokens": 1,
+                "outer_fragment_manifests": 1,
+            },
+        }
+    }
+    module._verify_interrupted_parent(contract)
+    outer = root / "private/outer-fragments/item/manifest.json"
+    outer.write_bytes(b"drifted\n")
+    with pytest.raises(ValueError, match="inventory"):
+        module._verify_interrupted_parent(contract)
 
 
 def test_official_wrapper_rejects_missing_model_environment_before_claim(
