@@ -2495,3 +2495,40 @@
   parent, runtime, checkout, model, statistic, threshold, seed, process-log,
   terminal, cleanup, forbidden-operation, or authority drift revokes D-081.
   The historical interrupted root remains immutable regardless of outcome.
+
+## D-082 — Accept official R5D NO_SIGNAL and stop inferred-anchor TRACE
+
+- Date: 2026-08-23
+- Status: accepted negative official evidence; `R5D_OFFICIAL_NO_SIGNAL`;
+  `I0_DEPLOYMENT_NO_SIGNAL`; no TRACE submission authority
+- Decision: Accept the exact crash-replacement terminal as the sole official
+  training-only CYP3A4 oracle result. It is a clean scientific `NO_SIGNAL`, not
+  an execution or support failure. Permanently stop I0/F1 and all inferred-
+  anchor TRACE deployment for this challenge version under the preregistered
+  nonpass rule. Do not rerun R5D, tune from the result, add a rescue gate/model,
+  or let leaderboard feedback reactivate TRACE. Preserve the immutable direct
+  MapLight candidate as the only authorized direct submission for manual
+  upload.
+- Evidence: Signed source commit `ee189abe...`; v3 execution contract
+  `ee135e7f...`; claim `0036a70e...`; official receipt `a5e61aaa...`; terminal
+  manifest `dd93d2f...`; oracle result `4b06a96a...`; durable wrapper log
+  `ffa36aaf...`. Independent reopening passed the four official parents, 17
+  source leaves, exact locked runtimes, all terminal receipts, and the complete
+  7,985-child transcript with zero nonzero exits. G0 component-macro MAE was
+  0.4327 versus 0.7159 for T0; G0-minus-T0 was -0.2832 with 95% interval
+  [-0.3983, -0.1674], and only 1/15 cells favored T0. Required bootstrap,
+  cell-direction, top-ten influence, and safety-upper-bound gates failed while
+  all support gates passed. The final root is read-only and contains only the
+  claim, receipt, and exact eight-file terminal; private/control roots are
+  absent. Blinded-test, TDI, official-metric, submission, transductive, and
+  inferred-anchor-pool counters are all zero. The exact accepted MapLight CSV
+  `9d3ed5ff...` was rechecked with the pinned competition validator
+  `276a53d7...`: 750 exact IDs and SMILES in order, six exact columns, 3,000
+  finite predictions, valid true, zero errors.
+- Alternatives: Treat `NO_SIGNAL` as permission to inspect the test set or tune
+  an inferred-anchor threshold; deploy F1 despite the required `SIGNAL_PASS`;
+  rerun with a changed split/control/model; blend TRACE into MapLight; or delay
+  the already validated baseline upload.
+- Reversal condition: None for the historical official result. A future
+  challenge version may preregister a materially new hypothesis before opening
+  its outcomes, but this challenge's R5D and I0 decisions remain terminal.

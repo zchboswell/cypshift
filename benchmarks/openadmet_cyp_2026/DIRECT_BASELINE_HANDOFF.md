@@ -1,8 +1,12 @@
 # Direct MapLight baseline handoff
 
-This is the immutable starting submission for the OpenADMET CYP challenge. It
-is a direct, fixed MapLight prediction over all four challenge CYP endpoints;
-it is not TRACE evidence and it has not yet been uploaded to the competition.
+This is the immutable direct submission for the OpenADMET CYP challenge. It is
+a fixed MapLight prediction over all four challenge CYP endpoints; it is not
+TRACE evidence and it has not yet been uploaded to the competition. The sole
+official TRACE oracle returned authenticated `R5_ORACLE_NO_SIGNAL`, so the
+frozen inferred-anchor gate cannot activate and this baseline remains the only
+contract-authorized direct submission candidate. The official negative result
+is recorded in [`TRACE_OFFICIAL_OUTCOME.md`](TRACE_OFFICIAL_OUTCOME.md).
 
 ## Exact accepted artifact
 
@@ -23,7 +27,7 @@ competition upload.
 
 The exact accepted CSV passes the competition tutorial's own
 `validate_activity_submission` function with `valid=True` and no errors. The
-validation used:
+validation was rerun after the final TRACE result on 2026-08-23 and used:
 
 - tutorial repository commit: `858ae63ce79934113bccdb7fc65467de5f7b1935`
 - `validation/activity_validation.py` SHA-256:
@@ -42,8 +46,9 @@ and remained `9d3ed5ff...db504b`.
 
 ## Interpretation
 
-This artifact is the regression baseline against which a later TRACE-enabled
-CYP3A4 submission will be compared. It uses no blinded-test labels, TDI data,
-official metric calls, calibration, clipping, ensemble, or transduction. A
-manual competition upload and any returned leaderboard result must be recorded
-separately; neither has occurred at the time of this handoff.
+This artifact is the frozen direct-track result. TRACE did not pass its
+training-only evidence gate, so no TRACE-enabled CYP3A4 test prediction was
+created. The artifact uses no blinded-test labels, TDI data, official metric
+calls, calibration, clipping, ensemble, or transduction. A manual competition
+upload and any returned leaderboard result must be recorded separately;
+neither has occurred at the time of this handoff.

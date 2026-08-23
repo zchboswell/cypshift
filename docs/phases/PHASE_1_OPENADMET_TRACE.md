@@ -1,8 +1,8 @@
 # Phase 1 — OpenADMET TRACE
 
-Status: active; one crash-replacement attempt is frozen but unopened after the
-D-080 recovery was externally interrupted before freezing or scoring; gate
-`R5D_OFFICIAL_CRASH_REPLACEMENT_FROZEN`; date 2026-08-22.
+Status: active; the sole official crash-replacement oracle completed with
+authenticated `R5_ORACLE_NO_SIGNAL`; gate `R5D_OFFICIAL_NO_SIGNAL`; date
+2026-08-23.
 
 The fixed R5D attempt root contains an immutable `R5_ORACLE_FAILED` terminal
 and receipt. The clean signed checkout lacked its required checkout-local root
@@ -23,6 +23,16 @@ The interrupted root remains byte-preserved with inventory SHA-256
 `e948f775...`; it is neither resumable nor TRACE evidence. D-081 binds that
 inventory and authorizes one fresh from-scratch replacement with unchanged
 science and a durable detached process log.
+
+That D-081 replacement completed from the beginning. All 7,985 child processes
+exited zero, the exact eight-file terminal and attempt receipt validate, and
+private/control roots are absent. G0 reached 0.433 component-macro MAE versus
+0.716 for T0; the predeclared G0-minus-T0 contrast was negative with a wholly
+negative 95% interval and only 1/15 cells favored T0. Support passed, so this is
+a scientific `NO_SIGNAL` result rather than underpowering or execution failure.
+The frozen I0/F1 activation requires `R5_ORACLE_SIGNAL_PASS`; it is therefore
+permanently inactive for this challenge version. No TRACE test prediction was
+created. The validated direct MapLight candidate is the manual-upload handoff.
 
 ## Context capsule
 
@@ -439,21 +449,21 @@ their normalized process transcripts match, cleanup is complete, and
 independent high-impact review passes. The synthetic `NO_SIGNAL` result is an
 execution-boundary fact only and cannot stop or validate TRACE scientifically.
 
-The narrow R5D attempt/ancestry wrapper is frozen. It binds the four exact
-official parents and 17 ordered leaves, fixed runtimes, signed clean checkout,
-one no-retry attempt, 3,366 official G0/view contexts, 7,985 total supported
-children, terminal revalidation, process transcript, cleanup, and zero
-forbidden operations. The dormant I0 preregistration is also frozen before
-outcome access: it aliases the existing F1 control, adds no model or ranker, and
-requires positive full/local bootstraps, 12/15 cell direction with 3/5 per
-repeat, ten positive influence checks, and the existing F1 support gate after
-an authentic R5 `SIGNAL_PASS`. Exact next action: run the one training-only
-CYP3A4 oracle experiment. Keep inferred
-anchor implementation, blinded-test TRACE predictions, TDI, submissions,
-official scoring, and transduction deferred until their own gates;
-`global_TDI` remains the permanent TDI fallback.
+The narrow R5D attempt/ancestry wrapper bound the four exact official parents
+and 17 ordered leaves, fixed runtimes, signed clean checkout, one no-retry
+attempt, 3,366 official G0/view contexts, 7,985 total supported children,
+terminal revalidation, process transcript, cleanup, and zero forbidden
+operations. The crash replacement completed every child and published
+authenticated `R5_ORACLE_NO_SIGNAL`. The dormant I0 preregistration was frozen
+before outcome access as the existing F1 control, adding no model or ranker;
+its mandatory `SIGNAL_PASS` parent is absent, so I0 stops before implementation.
+Keep inferred-anchor implementation, blinded-test TRACE predictions, TDI,
+official scoring, and transduction forbidden; `global_TDI` remains the
+permanent TDI fallback.
 The parallel direct baseline has passed its separate official two-rehearsal
-gate and may be uploaded as the first submission without changing TRACE.
+gate and is the final direct submission handoff because official R5D returned
+`NO_SIGNAL`. Do not rerun R5D, tune from its losses, or revive I0 from portal
+feedback.
 
 R3A non-goals: target access, modeling, metric implementation, redistribution,
 submissions, transductive use, held-out tuning, broad adapters, services, or

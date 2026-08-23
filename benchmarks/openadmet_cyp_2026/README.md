@@ -4,6 +4,14 @@ This directory is the tracked launch receipt for the 2026-08-17 OpenADMET CYP
 release: immutable revisions and metadata only; no challenge CSV, prediction,
 model cache, or upstream source tree is copied here.
 
+The official training-only TRACE oracle is complete with authenticated
+`R5_ORACLE_NO_SIGNAL`; see
+[`TRACE_OFFICIAL_OUTCOME.md`](TRACE_OFFICIAL_OUTCOME.md) for the immutable
+receipt chain, negative scientific result, and deployment stop. The exact
+competition-validated direct MapLight upload is documented separately in
+[`DIRECT_BASELINE_HANDOFF.md`](DIRECT_BASELINE_HANDOFF.md). No prediction CSV is
+tracked in Git.
+
 The pinned read-only source clones were verified at:
 
 - dataset `85f8b358d0a2056a98b990dd75d3b3ec9247862b` (Apache-2.0); tutorial

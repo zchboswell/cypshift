@@ -1,29 +1,29 @@
 # Project state
 
-Last updated: 2026-08-22
+Last updated: 2026-08-23
 
 ## Status
 
 The installable core and the public comparator program are complete. Phase 1
-TRACE has a frozen but unopened crash-replacement contract at
-`R5D_OFFICIAL_CRASH_REPLACEMENT_FROZEN`. Two fresh full
-R5C production-entry rehearsals completed the exact synthetic process topology
-and produced byte-identical terminals; independent review found no high-impact
-blocker. The direct four-endpoint MapLight lane has also completed two official
-blinded-test rehearsals and published one byte-identical, locally accepted
-750-row submission candidate. It has not been uploaded or scored. The D-080
-TRACE recovery passed its pre-gates and completed 3,366 G0 fits, all 960 inner
-candidates, the frozen 240-row/90-token selection, and 73 outer fragments
-before an external Codex process loss stopped its parent process. It produced
-no freezer, aggregate-accounting, outer-scorer, terminal, receipt, official
-metric, test, TDI, submission, transductive, or inferred-anchor operation. Its
-exact 15,907-entry private-tree inventory is preserved and may not be resumed
-or used as execution input. D-081 authorizes one fresh, separately named rerun
-from the beginning with identical science and a durable outside-Codex process
-log. No official TRACE evidence exists and I0 remains inactive until that
-replacement returns an authenticated `R5_ORACLE_SIGNAL_PASS`. The accepted
-direct MapLight candidate remains the
-only deployable competition prediction and its exact manual-upload handoff is
+TRACE has finished its sole official training-only oracle with authenticated
+`R5_ORACLE_NO_SIGNAL`. The crash-replacement run completed all 7,985 frozen
+children with zero nonzero exits, published the exact read-only eight-file
+terminal and attempt receipt, removed all private/control state, and performed
+zero blinded-test, TDI, official-metric, submission, transductive, or
+inferred-anchor-pool operations. Fixed MapLight G0 reached 0.433
+component-macro MAE versus 0.716 for measured-anchor T0; the G0-minus-T0 95%
+interval was entirely negative and only 1/15 cells favored T0. The
+preregistered I0/F1 bridge therefore permanently stops for this challenge
+version; no TRACE test prediction or submission is authorized. The exact
+negative outcome is recorded in
+[`TRACE_OFFICIAL_OUTCOME.md`](../../benchmarks/openadmet_cyp_2026/TRACE_OFFICIAL_OUTCOME.md).
+
+The direct four-endpoint MapLight lane completed two official blinded-test
+rehearsals and published one byte-identical, locally accepted 750-row candidate.
+The competition tutorial validator was rerun after the TRACE result and again
+returned valid with zero errors, exact identifier/SMILES order, and 3,000 finite
+predictions. It has not been uploaded or scored. This immutable MapLight file is
+the only deployable competition prediction; its manual-upload handoff is
 recorded in
 [`DIRECT_BASELINE_HANDOFF.md`](../../benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md).
 
@@ -449,28 +449,23 @@ control is capability-isolated to pure MapLight OOF anchor predictions. The
 contract opens no numeric target, test, TDI, or official metric and authorizes
 implementation/synthetic acceptance only.
 
-The narrow R5D official-attempt contract is now frozen. It binds the exact R2B,
-R3A, R3C, and R4 official parent manifests, their 17 ordered source leaves, the
-root and locked G0 runtimes, a clean signed checkout, one fixed no-retry attempt
-root, complete process transcript, terminal receipts, zero forbidden counters,
-and private cleanup. Official episode cardinality derives 3,366 G0/view calls
-and 7,985 total fresh child processes on the supported path. The contract and
-wrapper have not opened the official R5 outcome or consumed the sole attempt.
-The dormant I0 deployment criterion is also frozen before outcome access. It is
-exactly the existing F1 nearest-valid-training-anchor control, adds no model or
-ranker, and can activate only after an authenticated official R5
-`SIGNAL_PASS`. It then requires independently recomputed positive G0-minus-F1
-and local-only bootstrap lower bounds, 12/15 positive cells with at least 3/5
-per repeat, ten positive leave-one-component-out checks, and the frozen F1
-support gate. Any miss removes I0 from the critical path without tuning.
+The narrow R5D official-attempt contract bound the exact R2B, R3A, R3C, and R4
+parents, their 17 ordered source leaves, locked runtimes, clean signed checkout,
+one fixed no-retry root, process transcript, terminal receipts, zero forbidden
+counters, and private cleanup. Its authorized crash replacement has now
+consumed the attempt and completed exactly 3,366 G0/view calls and 7,985 fresh
+children. The dormant I0 criterion was frozen before outcome access as the
+existing F1 nearest-valid-training-anchor control. Its mandatory activation
+parent was `R5_ORACLE_SIGNAL_PASS`; the authenticated result is
+`R5_ORACLE_NO_SIGNAL`, so I0 is permanently removed from this challenge's
+critical path without implementation or tuning.
 
-The current scientific frontier is the original series-first hypothesis:
-whether an explicit measured-parent and parent-to-analog delta can improve over
-the strongest global molecular comparator under family-held-out evaluation.
-That hypothesis remains unscored. The direct next step is to execute the one
-authorized CYP3A4 training-only oracle experiment. The accepted four-endpoint
-MapLight submission candidate remains
-the independent direct baseline and may be uploaded without waiting for TRACE.
+The official series-first hypothesis is now falsified for the frozen CYP3A4
+design: measured-parent T0 did not improve over the strongest global molecular
+comparator under family-held-out evaluation. This is a clean negative result,
+not a support or execution failure. Do not tune or replace I0 from the opened
+outcome. The accepted four-endpoint MapLight candidate is the final direct
+submission handoff for this challenge version.
 
 ## Product state
 
@@ -643,15 +638,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not add another global representation or ensemble, rerun R3C/R4, or tune
-from their positive evidence. The complete R5C synthetic state machine and the
-R5D official-attempt wrapper and dormant I0/F1 preregistration are frozen.
-Consume the one authorized training-only CYP3A4 oracle attempt. Preserve its
-complete 7,985-process
-transcript and publish only the frozen status-specific terminal and attempt
-receipt. In parallel, the byte-identical direct MapLight candidate is ready for
-the first portal upload; leaderboard feedback cannot alter the frozen TRACE
-experiment or activate I0.
+Do not rerun R5D, parse its negative result into a new gate, tune I0/F1, add a
+rescue representation or ensemble, or generate TRACE test predictions. Preserve
+the immutable 7,985-process official receipt and `R5_ORACLE_NO_SIGNAL` terminal.
+The exact competition-validated MapLight `submission.csv` is ready for the
+user's manual direct-track upload. Record the portal attempt and returned score
+without changing the uploaded bytes or using leaderboard feedback to revive
+TRACE.
 
 The contract
 retains the global, copy-anchor, external nearest-neighbor, generic
