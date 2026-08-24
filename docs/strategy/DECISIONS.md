@@ -3213,3 +3213,38 @@
   of the exact optimized bytes before the existing claim can be reconsidered.
   Rejection leaves the claim unconsumed and advances to the next preregistered
   Phase 2 lane.
+
+## D-101 — Reject EXP-G1 as resource-infeasible without consuming its claim
+
+- Date: 2026-08-24
+- Status: accepted terminal negative G2-3D evidence; `EXP-G1` closed; G2-3C
+  claim remains unconsumed; no official authority
+- Decision: Accept tracked resource receipt SHA-256 `67585830...a9be4` and
+  reject `EXP-G1` as resource-infeasible. Fold-local quantized-Pool reuse is
+  exactly prediction-equivalent but fails both preregistered 20%-margin resource
+  gates. Do not consume the G2-3C claim, run the 8,820-fit development screen,
+  change its grid, seeds, iterations, depth, features, threads, or concurrency,
+  or test another G1 optimization. Advance to a contract-only G2-4A freeze for
+  the preregistered `EXP-M1` masked multitask lane.
+- Evidence: Two opposite-order synthetic roots paired the accepted raw-array
+  reference and the sole optimization over all fourteen frozen probe identities
+  per mode. All 56 real CatBoost fits completed, all 3,584 prediction values
+  matched at exact float64 bytes, and every resolved-parameter receipt matched.
+  Root A raw consumed 711.63 wall-seconds and 9,544.93 CPU-seconds; optimized
+  consumed 717.13 and 9,602.97, 0.8% slower wall and 0.6% more CPU. Root B
+  reproduced the finding. The worse optimized projection is 125.497 wall-hours
+  and 1,680.519 CPU-core-hours versus the frozen 96/960 maxima. Peak RSS was
+  1,459,196 KB and restricted work was 25,422,692 bytes. The private work root
+  was cleaned, receipt bytes are immutable, the tracked claim SHA-256 remains
+  `1c9f3438...46154`, the fixed official attempt root is absent, and every
+  official, confirmatory, historical-row, test, TDI, external, submission,
+  metric, leaderboard, upload, and claim-consumption counter is zero. Twenty-
+  five focused tests pass.
+- Alternatives: Consume the claim despite the falsifier; relax either resource
+  threshold; average roots; subtract reference overhead; reduce scientific
+  identities; change threads or concurrency; use GPU or approximate equality;
+  test a second optimization; or expand directly to heterogeneous G2 models.
+- Reversal condition: None for the historical G1 result. A corrected receipt
+  or validator defect may revoke acceptance but cannot authorize a retry from
+  observed timing. A future materially different experiment requires its own
+  prospective contract and may not be represented as `EXP-G1`.

@@ -165,8 +165,20 @@ worse optimized-root projection and requires at most 96 wall-hours and 960
 CPU-core-hours, preserving 20% margin below the existing ceilings. This
 contract milestone executed zero synthetic fit or prediction, kept claim
 `1c9f3438...46154` unconsumed, and opened no official or forbidden capability.
-The exact next action is reviewed integration and green post-main CI for D-100,
-then its single bounded implementation and fail-fast synthetic execution.
+Reviewed integration and post-main CI for D-100 passed. D-101 now rejects
+`EXP-G1` as resource-infeasible under tracked receipt SHA-256
+`67585830...a9be4`. Both opposite-order roots completed all 56 real CatBoost
+fits; fold-local quantized-Pool reuse matched every float64 prediction byte and
+resolved-parameter receipt, but the worse optimized root projects to 125.497
+wall-hours and 1,680.519 CPU-core-hours versus the contracted 96/960 maxima.
+The optimization was 0.8% slower by wall time and 0.6% more CPU on root A, so
+repeated quantization is not the dominant cost. The private work root was
+cleaned, the immutable G2-3C claim remains unchanged and unconsumed, the fixed
+official attempt root remains absent, and every official and forbidden counter
+is zero. Do not execute, repair, resize, or optimize `EXP-G1` again. The exact
+next action is a contract-only G2-4A freeze for the preregistered `EXP-M1`
+masked shared fingerprint MLP against its independent-head and within-component
+label-permutation controls.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking

@@ -1,0 +1,136 @@
+{
+  "accounting": {
+    "blinded_test_files_opened": 0,
+    "claim_consumptions": 0,
+    "confirmatory_truth_values_opened": 0,
+    "development_metric_evaluations": 0,
+    "external_records_acquired": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "leaderboard_observations": 0,
+    "live_uploads": 0,
+    "official_features_opened": 0,
+    "official_metric_evaluations": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_target_values_opened": 0,
+    "submissions_created": 0,
+    "synthetic_catboost_fits": 56,
+    "synthetic_predictions_generated": 3584,
+    "synthetic_source_rows_opened": 800,
+    "tdi_files_opened": 0
+  },
+  "authority": {
+    "blinded_test_access": false,
+    "confirmatory_truth_access": false,
+    "development_metric_evaluation": false,
+    "external_record_acquisition": false,
+    "historical_r3c_row_level_access": false,
+    "leaderboard_observation": false,
+    "live_upload": false,
+    "official_feature_access": false,
+    "official_metric_evaluation": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_target_access": false,
+    "submission_generation": false,
+    "tdi_access": false
+  },
+  "completed_modes": [
+    "root_a_optimized",
+    "root_a_reference",
+    "root_b_optimized",
+    "root_b_reference"
+  ],
+  "completed_real_catboost_fits": 56,
+  "contract_sha256": "173273102393794ec345782ad8298d66d675a91d3569301ea3fd3e0297b24a92",
+  "decision": "reject_exp_g1_unconsumed",
+  "exact_prediction_equivalence": true,
+  "failure": null,
+  "implementation_receipts": {
+    "accepted_synthetic_driver_source_sha256": "ec14ec45802d2ae31bccf0feceb7719306a078670615ba2e5c70e80eee3b3e9e",
+    "accepted_wrapper_source_sha256": "dd413f4416efa0fe10ece428b41718207ea7cd69ecec68344468848cbf503a6b",
+    "compiler_source_sha256": "1af2ddf8df3b6b9df5a1dac8f6f299851146903ed240e1831fa0487bfc05e6c8",
+    "optimized_predictor_source_sha256": "4ba5f1a430823d71f4319039e3943701c473f127c571da0d1a48436ac7036be5",
+    "research_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+    "resource_driver_source_sha256": "f560c88cf92b9315ec21c6ca4edffd9b55ac5725d7ccefc990464b05bc87a6db"
+  },
+  "maximum_real_catboost_fits": 56,
+  "mode_order": {
+    "root_a": [
+      "reference",
+      "optimized"
+    ],
+    "root_b": [
+      "optimized",
+      "reference"
+    ]
+  },
+  "mode_telemetry": {
+    "root_a_optimized": {
+      "cpu_seconds": 9602.965052999996,
+      "mode": "fold_local_quantized_pool_reuse",
+      "peak_rss_kb": 1459196,
+      "probe_sha256": "27412884044f372f0f183d6f8f052b98402657451ec4dd21945e3f2f784b38d5",
+      "projection": {
+        "cpu_core_hours": 1680.5188842749994,
+        "wall_hours": 125.49688939812499
+      },
+      "wall_seconds": 717.125082275
+    },
+    "root_a_reference": {
+      "cpu_seconds": 9544.928528,
+      "mode": "accepted_raw_array_reference",
+      "peak_rss_kb": 1377396,
+      "probe_sha256": "89e7496aa8f37555aebc8db09cf7e9cd20649f519ea37632919ca0485b08f345",
+      "projection": {
+        "cpu_core_hours": 1670.3624924,
+        "wall_hours": 124.53526821295
+      },
+      "wall_seconds": 711.630104074
+    },
+    "root_b_optimized": {
+      "cpu_seconds": 9593.599955000005,
+      "mode": "fold_local_quantized_pool_reuse",
+      "peak_rss_kb": 1459196,
+      "probe_sha256": "4baeb8a8d281c0ec5fdacf98f2fa9bc5275e92d0cccaee9f4bd80aa9feb8b52c",
+      "projection": {
+        "cpu_core_hours": 1678.8799921250009,
+        "wall_hours": 125.18281829182501
+      },
+      "wall_seconds": 715.330390239
+    },
+    "root_b_reference": {
+      "cpu_seconds": 9593.919305000003,
+      "mode": "accepted_raw_array_reference",
+      "peak_rss_kb": 1459196,
+      "probe_sha256": "ee05993f153b4e1b2e0c835aebb0abec3e1c51df4e6844ee4ffcce115bf9ecc1",
+      "projection": {
+        "cpu_core_hours": 1678.9358783750006,
+        "wall_hours": 125.54404990627499
+      },
+      "wall_seconds": 717.394570893
+    }
+  },
+  "optimization_id": "FOLD_LOCAL_QUANTIZED_POOL_REUSE_V1",
+  "optimized_acceptance": {
+    "cpu_pass": false,
+    "maximum_projected_cpu_core_hours": 960.0,
+    "maximum_projected_wall_hours": 96.0,
+    "required_margin_fraction": 0.2,
+    "wall_pass": false,
+    "worst_projected_cpu_core_hours": 1680.5188842749994,
+    "worst_projected_wall_hours": 125.49688939812499,
+    "worst_root_rule": true
+  },
+  "prediction_tolerance": 0.0,
+  "reference_context": {
+    "worst_projected_cpu_core_hours": 1678.9358783750006,
+    "worst_projected_wall_hours": 125.54404990627499
+  },
+  "restricted_work_tree_bytes": 25422692,
+  "roots": 2,
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g1_resource_feasibility_receipt.v1",
+  "scientific_interpretation": "Synthetic implementation-equivalence and resource evidence only; no diagnostic may rank a model.",
+  "second_source_physical_order_reversed": true,
+  "status": "G2_3D_EXP_G1_RESOURCE_INFEASIBLE"
+}

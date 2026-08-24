@@ -154,6 +154,16 @@ may the worse optimized-root projection be tested against 96 wall-hours and
 960 CPU-core-hours, a 20% margin below both frozen ceilings. The contract freeze
 performed zero fit or prediction and did not consume the G2-3C claim.
 
+The completed one-shot falsifier is tracked in
+[`global_v2_g1_resource_feasibility_rejection.json`](global_v2_g1_resource_feasibility_rejection.json)
+at SHA-256 `67585830...a9be4`. Both opposite-order roots completed all 56 real
+CatBoost fits. Quantized-Pool reuse matched all exact float64 prediction and
+resolved-parameter bytes, but the worse optimized root projects to 125.497
+wall-hours and 1,680.519 CPU-core-hours, above both 96/960 acceptance maxima.
+`EXP-G1` is therefore terminally resource-infeasible. The private work root was
+cleaned, the official attempt root remains absent, and the claim remains
+unconsumed; all official and forbidden counters are zero.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

@@ -3,7 +3,7 @@
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
 G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
 accepted but resource feasibility rejected, and the one-shot G2-3D resource
-falsifier frozen; the G2-3C claim remains
+falsifier terminally rejected; the G2-3C claim remains
 unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
 upload capabilities remain closed.
@@ -367,6 +367,19 @@ equivalence passes, the worse optimized-root linear projection must be at most
 96 wall-hours and 960 CPU-core-hours, 20% below both existing ceilings. The
 contract freeze executes no probe and keeps the claim unconsumed.
 
+D-101 accepts the exact negative G2-3D receipt
+[`global_v2_g1_resource_feasibility_rejection.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_resource_feasibility_rejection.json)
+at SHA-256 `67585830...a9be4` and terminally rejects `EXP-G1` as
+resource-infeasible. Two opposite-order roots completed all 56 real CatBoost
+fits and 3,584 synthetic prediction values. Quantized-Pool reuse matched every
+raw float64 prediction byte and resolved-parameter receipt, proving scientific
+identity, but root A was 0.8% slower by wall time and used 0.6% more CPU. The
+worse optimized-root projection is 125.497 wall-hours and 1,680.519 CPU-core-
+hours, failing both 96/960 acceptance maxima. The work root was cleaned, peak
+RSS stayed below 1.46 GB, the G2-3C claim remains unconsumed, the official
+attempt root is absent, and every forbidden counter is zero. No second G1
+optimization, grid change, official run, or claim consumption is permitted.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -472,7 +485,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-100 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-101 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -482,14 +495,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-100 contract `17327310...24a92`, then require green
-post-main CI. Keep claim `1c9f3438...46154` unconsumed. Implement only
-`FOLD_LOCAL_QUANTIZED_POOL_REUSE_V1` and its bounded two-root paired synthetic
-falsifier. Require exact float64 prediction and resolved-parameter bytes before
-resource acceptance; use the worse optimized-root projection and require at
-most 96 wall-hours and 960 CPU-core-hours. If either equivalence or resource
-gate fails, reject EXP-G1 as infeasible without consuming the claim or testing
-another remedy. Keep official development,
+Review and integrate D-101's implementation and terminal rejection receipt
+`67585830...a9be4`, then require green post-main CI. Keep claim
+`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` again.
+Next freeze a contract-only G2-4A child for the exact G2-0 `EXP-M1` shared
+fingerprint MLP, four independent-head control, and within-training-component
+label-permutation control. Bind the existing family folds and development-only
+boundary; freeze masking, fold-fitted preprocessing, inner stopping, three-seed
+reduction, interval-loss comparison, fit arithmetic, acceptance, and resources
+before implementing or opening a target. Keep official development,
 confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
 external records, submission, official metric, leaderboard, and upload
 capability closed.

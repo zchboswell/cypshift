@@ -48,8 +48,13 @@ SHA-256 `17327310...24a92`: fold-local quantized-Pool reuse is the only allowed
 optimization, exact prediction bytes are mandatory, and the worse of two
 paired optimized roots must project to no more than 96 wall-hours and 960
 CPU-core-hours. The contract itself executed no fit or prediction and leaves
-the claim unconsumed. Integrate it with green post-main CI before implementing
-or timing the bounded synthetic probe.
+the claim unconsumed. D-101 now records the terminal negative result at receipt
+SHA-256 `67585830...a9be4`: 56/56 fits and all exact prediction bytes matched,
+but the worse optimized-root projection is 125.497 wall-hours and 1,680.519
+CPU-core-hours, failing both 96/960 gates. The claim remains unconsumed and
+`EXP-G1` is closed without another remedy. The next gate is a contract-only
+G2-4A freeze for `EXP-M1`; no multitask implementation or official execution is
+yet authorized.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
