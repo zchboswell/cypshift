@@ -1,0 +1,114 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_synthetic_firewall_acceptance.v1",
+  "accepted_at_utc": "2026-08-24T05:08:00Z",
+  "gate": "G2_1_SYNTHETIC_FIREWALL_ACCEPTED",
+  "status": "synthetic_mechanics_accepted_no_official_execution_authority",
+  "parent_contract": {
+    "path": "global_v2_experiment_contract.json",
+    "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+  },
+  "implementation_contract": {
+    "path": "global_v2_synthetic_firewall_contract.json",
+    "sha256": "be583b5b25a9dacbdc28224e24d2bb5a4e13e036835f6fd712996999de4541c8"
+  },
+  "implementation_sources": {
+    "src/cypshift/openadmet_global_v2_metric.py": "e63f12af8e911da5f2f9ffde802f14039b7d8fb38293be85fec754793fc43269",
+    "src/cypshift/openadmet_global_v2_firewall.py": "047c3b49d96f4f8cd898d6bad68fdfb79aff59fa4e5d8c932545a3d975f2976c"
+  },
+  "test_sources": {
+    "tests/test_openadmet_global_v2_metric.py": "84baa32590e2350b0551613312315deb0f6967be3d29797caa577b10dc3114f1",
+    "tests/test_openadmet_global_v2_firewall.py": "9bed0255e9d0a56a98761f6742c950e5f9b9edb71359cd0a07dc35493fd45783"
+  },
+  "synthetic_fixture": {
+    "fixture_id": "synthetic-global-v2-firewall-v1",
+    "molecules": 36,
+    "components": 36,
+    "development_molecules": 29,
+    "confirmatory_molecules": 7,
+    "confirmatory_complete_truth_rows": 28,
+    "source_manifest_sha256": "872b5be99a57ab0536c85065d20183c378120728578f23e969bb4deca63c618d"
+  },
+  "two_fresh_replays": {
+    "roots": 2,
+    "input_order_second_root": "reversed",
+    "relative_file_maps_byte_identical": true,
+    "all_files_tree_sha256": "b7fa39ebbe1c407321d90a6c3ed4d6fb251edfa57e2d964aa43dcacee3fa8b93",
+    "stage_tree_sha256": {
+      "source": "78424885a2e161983356d895bfd3caf28b2f1e6ad36032a1d0da1b7e4ff9e33e",
+      "compiled": "3838c8e7f9f92b5560de9302a1123de6d30f87ea2851c2b1a588c36e96c7507e",
+      "candidate": "ad4fec91935b33e3bca20c9e702efd455190e5cb659ddb6deed94ddaec79421c",
+      "prediction": "cb5442dd2f65357de1a59f5a78b90e09b7a74caad3a71e1858f629e8b3fb3db4",
+      "score": "72e3246adb9f4d80543ac3492dd77f2affe7a4c2a881377a65bd454a6df835ba"
+    }
+  },
+  "accepted_manifests": {
+    "compilation_manifest_sha256": "103b2ff7fdfd160a0fd2fff95ec83a9075f865b588e58eb166a8b26a47959c42",
+    "development_manifest_sha256": "5be20535438a7a580d03f6fde8369c6d82f3c21b16873f6ae6b3bcfaf8a99b1c",
+    "predictor_manifest_sha256": "721643551961f5039c111842fcba2c456cc1b5a956404b42ce57e94356f90080",
+    "scorer_manifest_sha256": "0c2865514ca6d1c0287ed26935e1a9190032b871ef7174f17ce92614f7c07f19",
+    "candidate_manifest_sha256": "41a330a38b543411177744fcff1c639d29724eac81c673c287a4cff8410516b2",
+    "prediction_manifest_sha256": "a8b3f978601f429ed73b8ed2c9e6607cb6713b8fb8828c8b5aacaff80413cb67",
+    "score_manifest_sha256": "afba1ba3cb7cdb31510a8e9d7af846437e690fef7c8b5c09950034def4725545"
+  },
+  "metric_parity": {
+    "metric_id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+    "endpoint_fixture_values": {
+      "CYP1A2": 0.5,
+      "CYP2C9": 0.0,
+      "CYP2D6": 1.0,
+      "CYP3A4": 1.25
+    },
+    "macro_fixture_value": 0.6875,
+    "pinned_tutorial_fixtures_pass": true,
+    "synthetic_endpoint_mean_control_value": 1.0729612909422725,
+    "interpretation": "The control value proves deterministic interface plumbing only. It is not scientific evidence, a live-backend score, or an official score."
+  },
+  "adversarial_evidence": {
+    "focused_tests_passed": 26,
+    "focused_tests_failed": 0,
+    "partition_disjoint_and_exhaustive": true,
+    "target_independent_membership": true,
+    "capability_file_sets_exact": true,
+    "cross_compilation_mix_rejected": true,
+    "wrong_receipt_rejected_before_csv_parse": true,
+    "non_synthetic_identifier_rejected": true,
+    "malformed_hash_rejected": true,
+    "duplicate_key_rejected": true,
+    "nonfinite_value_rejected": true,
+    "invalid_bounds_rejected": true,
+    "symlink_rejected": true,
+    "traversal_rejected": true,
+    "overwrite_rejected": true,
+    "aggregate_only_score_terminal": true
+  },
+  "validation": {
+    "full_pytest_collected": 856,
+    "full_pytest_passed": 852,
+    "full_pytest_skipped": 4,
+    "ruff_check": "pass",
+    "mypy_src_files": 78,
+    "mypy": "pass",
+    "package_build": "pass"
+  },
+  "synthetic_operations_across_two_replays": {
+    "synthetic_source_publications": 2,
+    "synthetic_capability_compilations": 2,
+    "synthetic_model_fits": 8,
+    "synthetic_predictions_generated": 56,
+    "synthetic_metric_evaluations": 2
+  },
+  "forbidden_accounting": {
+    "official_target_values_opened": 0,
+    "official_features_generated": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_metric_evaluations": 0,
+    "external_records_acquired": 0,
+    "blinded_test_files_opened": 0,
+    "blinded_test_relationships": 0,
+    "tdi_files_opened": 0,
+    "submissions_created": 0,
+    "leaderboard_observations": 0
+  },
+  "decision": "Accept G2-1 synthetic mechanics only and advance to a distinct G2-2 MapLight reproduction contract."
+}

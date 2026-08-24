@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-087. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-088. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -20,9 +20,17 @@ remain unchanged. The contract fixes five falsifiable experiments, exact
 candidates and seeds, nested selection, effect-size gates, resource ceilings,
 and a label-free confirmatory partition of 913/4,553 components and 997/4,905
 molecules with one score only. Live-backend metric parity remains unverified.
-No Phase 2 target, feature, model, prediction, metric-evaluation,
-external-record, blinded-test, submission, or leaderboard-selection authority
-exists yet. The next gate is synthetic G2-1 firewall implementation.
+G2-1 synthetic mechanics are accepted under child contract `be583b5b...4541c8`
+and acceptance receipt `3e897b61...b919fd`. Two fresh roots, one with reversed
+input order, replayed byte-identically at combined tree receipt
+`b7fa39eb...a8b93`. The three capability roots are disjoint: development alone
+contains synthetic targets, the confirmatory predictor contains identities
+only, and the scorer alone contains synthetic truth. Pinned tutorial metric
+fixtures and 26 focused adversarial tests pass; the synthetic control score has
+no scientific or official interpretation. No **official** Phase 2 target,
+feature, model, prediction, metric-evaluation, external-record, blinded-test,
+submission, or leaderboard-selection authority exists yet. The next gate is a
+contract-only G2-2 MapLight reproduction freeze.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -672,16 +680,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-After the reviewed G2-0 contract milestone is integrated, create
-`codex/global-v2-synthetic-firewall` from passing `main`. Implement only the
-trusted label-free confirmatory assignment, disjoint development and sealed
-truth capabilities, clean-room tutorial-metric kernel with pinned upstream
-synthetic parity, narrow synthetic model/stage interfaces, exact receipts, and
-adversarial firewall tests. Require two byte-identical synthetic replays. Open
-no official numeric target, generate no official feature or prediction, fit no
-official model, evaluate no official metric outcome, acquire no external
-record, inspect no blinded-test relationship, and perform no submission
-operation in that milestone.
+After the reviewed G2-1 firewall milestone is integrated, create
+`codex/global-v2-maplight-contract` from passing `main`. Freeze a distinct G2-2
+MapLight reproduction contract bound to implementation sources `e63f12af...`
+and `047c3b49...`, the accepted R2/R3 receipts, exact Python/MapLight runtimes,
+the label-free official partition preflight, R3C population and aggregate
+tolerances, cross-fitted OOF/residual/uncertainty schemas, resource ceiling,
+failure terminals, and denied capabilities. Open no official target, generate
+no official feature or prediction, fit no official model, evaluate no official
+metric outcome, acquire no external record, inspect no blinded-test
+relationship, and perform no submission operation during that contract
+milestone.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

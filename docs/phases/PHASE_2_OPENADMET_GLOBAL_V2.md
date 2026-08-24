@@ -1,7 +1,7 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; G2-0 Global-v2 contract frozen; no Phase 2 target, feature,
-model, prediction, metric-evaluation, external-record, blinded-test,
+Status: active; G2-1 synthetic firewall accepted; no official Phase 2 target,
+feature, model, prediction, metric-evaluation, external-record, blinded-test,
 submission, or leaderboard-selection authority yet.
 
 Authorized: 2026-08-24.
@@ -44,6 +44,19 @@ reseeded, and permits one aggregate confirmatory score only. The five
 experiments, candidate sets, seeds, nested selection, paired uncertainty,
 effect-size gates, resource ceilings, and simplest falsifiers are frozen. This
 is contract evidence only; all predictive operations remain unopened.
+
+G2-1 is accepted under
+[`global_v2_synthetic_firewall_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_synthetic_firewall_contract.json)
+at SHA-256 `be583b5b...4541c8`. The metric and firewall implementation source
+receipts are `e63f12af...43269` and `047c3b49...2976c`; the acceptance receipt
+is
+[`global_v2_synthetic_firewall_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_synthetic_firewall_acceptance.json)
+at SHA-256 `3e897b61...b919fd`. Two fresh synthetic roots replayed all five
+stages byte-identically at combined tree receipt `b7fa39eb...a8b93`, including
+reversed input order. Pinned tutorial metric fixtures, capability isolation,
+cross-root binding, immutable publication, and adversarial failures pass 26
+focused tests. This accepts synthetic mechanics only; all official-operation
+counters remain zero.
 
 ## Scientific posture
 
@@ -112,7 +125,24 @@ Acceptance: contract tests prove exact receipts, family containment,
 cross-fitting, sealed confirmation, and denied test/submission/leaderboard
 authority. No scientific target or outcome is opened.
 
-### G2-1 — Reproduce MapLight and generate reusable OOF evidence
+### G2-1 — Accept the synthetic capability and metric firewall
+
+Before opening an official numeric target, prove the label-free confirmatory
+assignment, development-versus-sealed-truth capability split, clean-room
+tutorial metric, model-stage interfaces, receipt binding, and immutable
+publication using synthetic inputs only. Two fresh roots must replay to an
+identical relative byte map. Wrong receipts, leakage, cross-root mixing,
+nonfinite or degenerate metrics, symlinks, traversal, and overwrite must fail
+closed.
+
+Acceptance: the child contract, pinned tutorial parity fixtures, deterministic
+endpoint-mean control, aggregate-only score terminal, adversarial tests, exact
+implementation hashes, and all zero official-operation counters pass review.
+This gate grants synthetic mechanics only; it cannot open an official target,
+feature, fit, prediction, metric outcome, external record, test relationship,
+submission, or leaderboard observation.
+
+### G2-2 — Reproduce MapLight and generate reusable OOF evidence
 
 Reproduce the accepted fixed MapLight result under the new harness before
 adding a model. Generate family-safe OOF predictions, residuals, uncertainty,
@@ -124,7 +154,7 @@ the accepted R3C population and aggregates reproduce within the frozen numeric
 tolerance; no blinded-test, TDI, submission, or official metric operation
 occurs. Mismatch stops Phase 2 modeling until explained prospectively.
 
-### G2-2 — Global tree and representation ensemble
+### G2-3 — Global tree and representation ensemble
 
 Run `EXP-G1` first: a frozen 12-configuration, three-seed CatBoost screen over
 the current MapLight representation. Run `EXP-G2` only afterward: a small set
@@ -150,7 +180,7 @@ Acceptance:
 If no candidate passes, retain fixed MapLight and stop this lane without grid
 expansion from observed scores.
 
-### G2-3 — Masked multitask and interval alignment
+### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
 frozen fingerprints/embeddings. Add a Chemprop-style shared encoder only as a
@@ -164,7 +194,7 @@ at least two endpoints, and no endpoint degradation above 0.020. A multitask
 model with correlated errors and no stack ablation value is removed even if its
 standalone point estimate looks competitive.
 
-### G2-4 — Provenance-first external transfer
+### G2-5 — Provenance-first external transfer
 
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
@@ -181,7 +211,7 @@ Acceptance: at least 5% primary and 0.025 macro component-MAE improvement on
 challenge-only rows, no endpoint degradation above 0.020, and a passing
 external/no-external ablation. Random-split or external-only gains do not count.
 
-### G2-5 — Consolidate, then conditionally test TRACE v2
+### G2-6 — Consolidate, then conditionally test TRACE v2
 
 Freeze a small global constituent set using development evidence only. Run
 `EXP-T2` only if cross-fitted global residuals show a positive
@@ -197,26 +227,29 @@ Acceptance: at least 0.015 component-MAE improvement, a wholly favorable paired
 component-bootstrap interval, and activity-cliff degradation no greater than
 0.010. Otherwise reject TRACE v2 and keep the global system unchanged.
 
-### G2-6 — Robustness and one confirmatory score
+### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
 duplicate/tautomer, influential-family, assay-source, endpoint-harm,
 metric/clipping, and constituent-ablation checks. Predesignate exactly one
-primary contender and fixed MapLight control. The sealed scorer returns only
-the contracted aggregate evidence.
+primary contender, its complete recipe and receipts, and the fixed MapLight
+control.
+
+### G2-8 — One confirmatory score
+
+The sealed scorer opens only after the G2-7 contender lock and returns only the
+contracted aggregate evidence. It evaluates exactly one contender once.
 
 If the contender fails, promote no runner-up and return to fixed MapLight. Do
 not reopen development from confirmatory or leaderboard outcomes.
 
-### G2-7 — Candidate freeze and rehearsal
+### G2-9 — Candidate acceptance and submission boundary
 
 Only a confirmatory pass permits full-training fitting and blinded-test
 prediction. Produce two independent roots, require byte-identical 750-row CSVs,
 run the current official validator, freeze candidate/environment/input hashes,
 record external-data disclosures, and publish through atomic no-replace
 acceptance. No result changes the historical MapLight or R5D artifacts.
-
-### G2-8 — Submission boundary
 
 The existing MapLight candidate remains ready for immediate manual upload by
 the user. The orchestrator may record a user-supplied portal timestamp, remote
@@ -252,7 +285,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-086 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-088 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -262,12 +295,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-After the reviewed G2-0 contract is integrated, create
-`codex/global-v2-synthetic-firewall` from passing `main`. Implement only the
-trusted label-free confirmatory assignment, disjoint development/sealed-truth
-capabilities, clean-room tutorial-metric kernel and parity fixtures, synthetic
-model/stage interfaces, exact receipts, and adversarial firewall tests. Two
-synthetic roots must replay byte-identically before acceptance. Open no official
-numeric target, generate no official feature or prediction, fit no official
-model, evaluate no official metric outcome, acquire no external record, inspect
-no blinded-test relationship, and perform no submission operation.
+After the reviewed G2-1 firewall is integrated, create
+`codex/global-v2-maplight-contract` from passing `main`. Freeze only the G2-2
+MapLight reproduction contract: accepted implementation and R2/R3 receipts,
+exact runtimes, official label-free partition preflight, R3C reproduction
+tolerances, OOF/residual/uncertainty schemas, resource ceiling, terminals, and
+denied capabilities. Open no official numeric target, generate no official
+feature or prediction, fit no official model, evaluate no official metric
+outcome, acquire no external record, inspect no blinded-test relationship, and
+perform no submission operation during that milestone.

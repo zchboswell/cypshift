@@ -25,6 +25,19 @@ evaluation, external-data acquisition, blinded-test access, submission, or
 leaderboard selection. Its exact next gate is a synthetic-only capability and
 metric firewall.
 
+That G2-1 firewall is now synthetically accepted under
+[`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
+and exact
+[`global_v2_synthetic_firewall_acceptance.json`](global_v2_synthetic_firewall_acceptance.json),
+with SHA-256 values `be583b5b...4541c8` and `3e897b61...b919fd`. Two fresh
+36-molecule roots replayed source, three disjoint capabilities, deterministic
+endpoint-mean candidate, confirmatory prediction, and aggregate-only score
+byte-identically at combined tree receipt `b7fa39eb...a8b93`. Twenty-six
+focused adversarial tests and the full suite pass. The synthetic score is
+plumbing evidence only; official targets, features, fits, predictions, metrics,
+external records, blinded-test access, submissions, and leaderboard selection
+remain unopened.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

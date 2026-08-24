@@ -2682,3 +2682,39 @@
   synthetic firewall failure stops or replaces the affected future child
   contract before official execution. It does not permit outcome-driven repair
   of this frozen G2-0 record.
+
+## D-088 — Accept the Global-v2 synthetic capability and metric firewall
+
+- Date: 2026-08-24
+- Status: accepted G2-1 synthetic mechanics; no official scientific execution
+  authority
+- Decision: Accept the smallest end-to-end Global-v2 synthetic vertical slice:
+  target-independent component assignment, disjoint development,
+  confirmatory-predictor, and confirmatory-scorer capabilities, a clean-room
+  tutorial MA-ST-RAE kernel, deterministic endpoint-mean control, frozen
+  prediction, aggregate-only score terminal, exact receipt binding, and atomic
+  no-replace publication. Advance only to a distinct G2-2 MapLight
+  reproduction contract bound to the accepted implementation hashes.
+- Evidence: The child contract SHA-256 is `be583b5b...4541c8`; metric and
+  firewall source SHA-256 values are `e63f12af...43269` and
+  `047c3b49...2976c`. Two fresh 36-molecule roots, with the second input order
+  reversed, produced byte-identical source, compiled-capability, candidate,
+  prediction, and score maps at combined tree receipt `b7fa39eb...a8b93`.
+  Pinned tutorial endpoint values 0.5, 0.0, 1.0, and 1.25 macro-average to
+  0.6875. Twenty-six focused tests reject receipt, membership, capability,
+  cross-compilation, duplicate, nonfinite, bound, symlink, traversal, and
+  overwrite failures. The full 856-test collection passes with four expected
+  skips; Ruff, strict source mypy, and package build pass. The acceptance
+  receipt SHA-256 is
+  `3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd`.
+  All official-target, feature, fit, prediction, metric, external, test, TDI,
+  submission, and leaderboard counters are zero.
+- Alternatives: Reuse the broad R5 orchestration machinery; open official
+  targets while developing the splitter; let a predictor share the scorer
+  root; import the tutorial's pandas/numpy evaluator into the RDKit-only core;
+  or infer live-backend parity from a local function name.
+- Reversal condition: Any source or receipt mismatch, synthetic replay drift,
+  capability leak, tutorial parity failure, nonzero forbidden counter, or
+  adversarial/CI regression revokes G2-1 acceptance and blocks G2-2. The
+  synthetic control value is plumbing evidence only and cannot select a model
+  or be represented as scientific or official performance.

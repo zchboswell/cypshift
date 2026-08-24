@@ -1,0 +1,184 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_synthetic_firewall_contract.v1",
+  "freeze_date": "2026-08-24",
+  "gate": "G2_1_SYNTHETIC_FIREWALL_CONTRACT_FROZEN",
+  "status": "synthetic_only_no_official_execution_authority",
+  "parent": {
+    "path": "global_v2_experiment_contract.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_experiment_contract.v1",
+    "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+  },
+  "purpose": "Mechanically prove the Global-v2 partition, capability separation, clean-room tutorial metric, deterministic model-stage interfaces, receipt binding, and fail-closed publication on synthetic data before any official numeric target or model operation.",
+  "targeted_failure_modes": [
+    "component leakage between development and confirmatory roots",
+    "confirmatory truth visible to a predictor or candidate freezer",
+    "development targets visible to a confirmatory predictor",
+    "candidate or prediction not bound to its exact upstream capability",
+    "metric formula, endpoint masking, denominator, or macro mismatch",
+    "noncanonical or nondeterministic evidence bytes",
+    "receipt-after-parse, symlink, traversal, or overwrite acceptance",
+    "accidental official, blinded-test, TDI, submission, or leaderboard capability"
+  ],
+  "implementation": {
+    "modules": [
+      "src/cypshift/openadmet_global_v2_metric.py",
+      "src/cypshift/openadmet_global_v2_firewall.py"
+    ],
+    "test_files": [
+      "tests/test_openadmet_global_v2_metric.py",
+      "tests/test_openadmet_global_v2_firewall.py"
+    ],
+    "dependencies": "Python standard library plus existing core utilities only; no research dependency is added"
+  },
+  "synthetic_source": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_synthetic_source.v1",
+    "status": "SYNTHETIC_SOURCE_FROZEN",
+    "required_fixture_prefix": "synthetic-global-v2-",
+    "required_molecule_prefix": "synthetic-mol-",
+    "exact_files": ["identities.csv", "targets.csv", "manifest.json"],
+    "identity_columns": ["molecule_id", "similarity_component_hash"],
+    "target_columns": [
+      "molecule_id",
+      "endpoint",
+      "availability",
+      "point",
+      "low",
+      "high"
+    ],
+    "availability_states": ["complete", "missing"],
+    "complete_rule": "point, low, and high are finite and low <= point <= high",
+    "missing_rule": "point, low, and high are all empty",
+    "receipt_order": "Authenticate the exact immutable source root and manifest receipt before parsing either CSV"
+  },
+  "partition": {
+    "policy_id": "openadmet-global-v2-confirmatory-component-hash-v1",
+    "seed": 20260824,
+    "material": "openadmet-global-v2-confirmatory-v1|20260824|<similarity_component_hash>",
+    "arithmetic": "First eight SHA256 bytes interpreted unsigned big-endian modulo 5; zero is confirmatory and all other values are development",
+    "invariants": [
+      "one molecule has exactly one component hash",
+      "one component appears in exactly one partition",
+      "target availability and values never enter assignment",
+      "input order cannot change assignment or output bytes",
+      "reseed, rebalance, and post-target reassignment are forbidden"
+    ]
+  },
+  "capability_roots": {
+    "development": {
+      "exact_files": ["identities.csv", "targets.csv", "manifest.json"],
+      "may_contain": ["development label-free identities", "development synthetic targets"],
+      "must_not_contain": ["confirmatory identity", "confirmatory truth", "prediction", "score"]
+    },
+    "confirmatory_predictor": {
+      "exact_files": ["identities.csv", "manifest.json"],
+      "may_contain": ["confirmatory label-free identities"],
+      "must_not_contain": ["any target", "bound", "truth", "score"]
+    },
+    "confirmatory_scorer": {
+      "exact_files": ["truth.csv", "manifest.json"],
+      "may_contain": ["confirmatory synthetic truth and reported bounds"],
+      "must_not_contain": ["development row", "feature", "candidate", "prediction"]
+    }
+  },
+  "metric": {
+    "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+    "tutorial_source_sha256": "c0ee287c06c0301d4b3bfd74559b90eb1bd85db68b75b7d018ae92280c0e1dd3",
+    "eligible": "complete rows only; predictions must cover every eligible key exactly and may include prediction-only keys that are ignored by the scorer",
+    "numerator": "sum max(prediction - high, 0) + max(low - prediction, 0)",
+    "denominator": "using the arithmetic mean of eligible central points as every baseline prediction, apply the identical bound-distance sum",
+    "denominator_failure": "nonpositive or nonfinite denominator fails closed",
+    "macro": "plain arithmetic mean of the four endpoint values in canonical endpoint order",
+    "parity_fixtures": {
+      "common_truth": [
+        {"point": 2.0, "low": 1.0, "high": 3.0},
+        {"point": 8.0, "low": 7.0, "high": 9.0}
+      ],
+      "endpoint_outside": {
+        "predictions": [0.0, 10.0],
+        "numerator": 2.0,
+        "denominator": 4.0,
+        "value": 0.5
+      },
+      "endpoint_inside": {"predictions": [1.0, 9.0], "value": 0.0},
+      "macro_predictions": {
+        "CYP1A2": [0.0, 10.0],
+        "CYP2C9": [1.0, 9.0],
+        "CYP2D6": [5.0, 5.0],
+        "CYP3A4": [-1.0, 12.0]
+      },
+      "macro_endpoint_values": {
+        "CYP1A2": 0.5,
+        "CYP2C9": 0.0,
+        "CYP2D6": 1.0,
+        "CYP3A4": 1.25
+      },
+      "macro_value": 0.6875
+    },
+    "name_boundary": "Passing parity establishes only the pinned tutorial calculation on contracted synthetic fixtures. It does not establish live-backend parity and must never be called an official score."
+  },
+  "synthetic_stage_sequence": [
+    "publish authenticated synthetic source",
+    "compile three disjoint immutable capability roots",
+    "fit deterministic endpoint means from development capability only",
+    "freeze candidate before confirmatory prediction",
+    "predict from candidate plus label-free confirmatory capability only",
+    "score once from prediction plus sealed truth capability",
+    "publish aggregate-only terminal evidence"
+  ],
+  "required_adversarial_tests": [
+    "two fresh roots replay to byte-identical relative file maps",
+    "row-order permutation preserves every derived byte",
+    "component partition is disjoint and exhaustive",
+    "target magnitude and availability changes cannot change membership",
+    "predictor root contains no numeric truth or bounds",
+    "development root contains no confirmatory molecule",
+    "wrong receipt, malformed hash, duplicate key, nonfinite value, invalid bound, symlink, traversal, and overwrite fail closed",
+    "candidate cannot consume scorer capability and scorer cannot consume development capability",
+    "prediction and truth from different compilation roots cannot be combined",
+    "second publication to a consumed scorer destination is rejected",
+    "all forbidden-operation counters remain zero"
+  ],
+  "acceptance": {
+    "synthetic_roots_required": 2,
+    "relative_file_maps_byte_identical": true,
+    "metric_parity_fixtures_pass": true,
+    "all_adversarial_tests_pass": true,
+    "source_and_contract_hashes_recorded": true,
+    "full_repository_ci_passes": true
+  },
+  "accounting_fields": [
+    "official_target_values_opened",
+    "official_features_generated",
+    "official_model_fits",
+    "official_predictions_generated",
+    "official_metric_evaluations",
+    "external_records_acquired",
+    "blinded_test_files_opened",
+    "blinded_test_relationships",
+    "tdi_files_opened",
+    "submissions_created",
+    "leaderboard_observations"
+  ],
+  "authority": {
+    "synthetic_source_generation": true,
+    "synthetic_partition": true,
+    "synthetic_target_projection": true,
+    "synthetic_model_fit": true,
+    "synthetic_prediction": true,
+    "synthetic_metric_evaluation": true,
+    "official_target_access": false,
+    "official_feature_generation": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_metric_evaluation": false,
+    "external_record_acquisition": false,
+    "blinded_test_access": false,
+    "transductive_relationships": false,
+    "tdi_access": false,
+    "submission_generation": false,
+    "leaderboard_observation": false,
+    "live_upload": false
+  },
+  "next_gate": "After accepted synthetic evidence and reviewed integration, draft a distinct G2-2 MapLight reproduction execution contract bound to exact implementation-source receipts. Do not open official inputs under this G2-1 contract."
+}
