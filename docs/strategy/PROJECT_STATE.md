@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-086. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-087. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -13,9 +13,16 @@ The primary build is now a family-safe, cross-fitted heterogeneous global
 ensemble, followed by masked multitask and provenance-controlled external
 transfer ablations. A materially new, default-to-global residual TRACE-v2
 hypothesis is conditionally authorized only after positive global OOF evidence.
-No Phase 2 model, metric, external-data, prediction, or submission authority
-exists yet. The first scientific gate is a knowledgebase- and contract-only
-G2-0 freeze.
+G2-0 is frozen at contract SHA-256 `612b8cea...e5c0d`. Dataset and Space heads
+are unchanged; tutorial revision `858ae63...` now supplies the backend-derived
+ST-RAE implementation and macro arithmetic while the accepted validator bytes
+remain unchanged. The contract fixes five falsifiable experiments, exact
+candidates and seeds, nested selection, effect-size gates, resource ceilings,
+and a label-free confirmatory partition of 913/4,553 components and 997/4,905
+molecules with one score only. Live-backend metric parity remains unverified.
+No Phase 2 target, feature, model, prediction, metric-evaluation,
+external-record, blinded-test, submission, or leaderboard-selection authority
+exists yet. The next gate is synthetic G2-1 firewall implementation.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -665,13 +672,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-After the Phase 2 knowledgebase milestone is reviewed and integrated, create
-`codex/global-v2-contract` from passing `main` and freeze G2-0 only. Refresh the
-public source/rule/validator receipts; freeze the authority boundary,
-development and separately sealed confirmatory design, experiment registry,
-metrics, candidate budgets, acceptance rules, and synthetic contract tests.
-Open no new numeric target, model fit, prediction, blinded-test relationship,
-metric outcome, external record, or submission operation in that milestone.
+After the reviewed G2-0 contract milestone is integrated, create
+`codex/global-v2-synthetic-firewall` from passing `main`. Implement only the
+trusted label-free confirmatory assignment, disjoint development and sealed
+truth capabilities, clean-room tutorial-metric kernel with pinned upstream
+synthetic parity, narrow synthetic model/stage interfaces, exact receipts, and
+adversarial firewall tests. Require two byte-identical synthetic replays. Open
+no official numeric target, generate no official feature or prediction, fit no
+official model, evaluate no official metric outcome, acquire no external
+record, inspect no blinded-test relationship, and perform no submission
+operation in that milestone.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

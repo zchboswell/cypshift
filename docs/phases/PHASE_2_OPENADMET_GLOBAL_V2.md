@@ -1,7 +1,8 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; strategy and orchestration handoff accepted; no Phase 2 model,
-metric, external-data, prediction, or submission authority yet.
+Status: active; G2-0 Global-v2 contract frozen; no Phase 2 target, feature,
+model, prediction, metric-evaluation, external-record, blinded-test,
+submission, or leaderboard-selection authority yet.
 
 Authorized: 2026-08-24.
 
@@ -26,6 +27,23 @@ both gaps are closed: `sha256sum -c` passes all ten files in the public R5D
 bundle, and `uv run pytest -q
 tests/test_openadmet_r5d_public_audit_bundle.py` passes. This does not rewrite
 the audit's original limitation.
+
+G2-0 is now frozen in
+[`global_v2_experiment_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_experiment_contract.json)
+at SHA-256 `612b8cea...e5c0d`. The refresh found unchanged dataset and Space
+heads and tutorial revision `858ae63...`, which adds the backend-derived
+ST-RAE implementation and endpoint-macro arithmetic while leaving the accepted
+submission validator unchanged. The local metric remains explicitly named the
+tutorial metric until live-backend parity is independently established.
+
+The contract fixes a label-free 20% component-hash confirmatory partition:
+913/4,553 direct components and 997/4,905 direct molecules are confirmatory;
+the other 3,640 components and 3,908 molecules are development. Membership is
+independent of target availability and magnitude, cannot be rebalanced or
+reseeded, and permits one aggregate confirmatory score only. The five
+experiments, candidate sets, seeds, nested selection, paired uncertainty,
+effect-size gates, resource ceilings, and simplest falsifiers are frozen. This
+is contract evidence only; all predictive operations remain unopened.
 
 ## Scientific posture
 
@@ -244,9 +262,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Create `codex/global-v2-contract` from the passing integrated knowledgebase
-milestone. Freeze G2-0 only: refreshed public receipts, authority boundaries,
-the development/confirmatory split design, experiment registry, metrics,
-candidate budgets, acceptance rules, and synthetic contract tests. Open no new
-numeric target, model fit, prediction, test relationship, metric outcome,
-external record, or submission operation during that milestone.
+After the reviewed G2-0 contract is integrated, create
+`codex/global-v2-synthetic-firewall` from passing `main`. Implement only the
+trusted label-free confirmatory assignment, disjoint development/sealed-truth
+capabilities, clean-room tutorial-metric kernel and parity fixtures, synthetic
+model/stage interfaces, exact receipts, and adversarial firewall tests. Two
+synthetic roots must replay byte-identically before acceptance. Open no official
+numeric target, generate no official feature or prediction, fit no official
+model, evaluate no official metric outcome, acquire no external record, inspect
+no blinded-test relationship, and perform no submission operation.

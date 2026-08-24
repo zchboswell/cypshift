@@ -14,6 +14,17 @@ competition-validated direct MapLight upload is documented separately in
 [`DIRECT_BASELINE_HANDOFF.md`](DIRECT_BASELINE_HANDOFF.md). No prediction CSV is
 tracked in Git.
 
+Phase 2 begins with the contract-only Global-v2 freeze in
+[`global_v2_experiment_contract.json`](global_v2_experiment_contract.json),
+SHA-256 `612b8cea...e5c0d`. It pins the refreshed public-source receipts, the
+label-free development/confirmatory boundary, tutorial MA-ST-RAE arithmetic,
+five falsifiable experiments, exact candidate and seed budgets, paired
+uncertainty, acceptance rules, and resource ceilings. G2-0 authorizes no
+official target access, feature generation, model fit, prediction, metric
+evaluation, external-data acquisition, blinded-test access, submission, or
+leaderboard selection. Its exact next gate is a synthetic-only capability and
+metric firewall.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

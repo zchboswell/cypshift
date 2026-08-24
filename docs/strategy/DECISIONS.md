@@ -2646,3 +2646,39 @@
   solve it. Live upload additionally requires organizer-approved API evidence,
   current rules, security review, and an explicit candidate-specific human arm
   action.
+
+## D-087 — Freeze the Global-v2 experiment contract before execution
+
+- Date: 2026-08-24
+- Status: accepted G2-0 contract evidence; no scientific execution authority
+- Decision: Freeze the Global-v2 experiment registry, label-free confirmatory
+  assignment, tutorial-metric specification, nested family-holdout selection,
+  paired uncertainty, effect-size gates, resource ceilings, simplest
+  falsifiers, and capability boundaries in
+  `global_v2_experiment_contract.json` at SHA-256
+  `612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d`.
+  Advance only to a synthetic firewall milestone. Do not open official numeric
+  targets, generate official features or predictions, fit a model, evaluate a
+  metric outcome, acquire an external record, inspect a blinded-test
+  relationship, or create a submission under G2-0.
+- Evidence: A 2026-08-24 source refresh found dataset revision
+  `85f8b358...` and Space revision `13c5057b...` unchanged. Tutorial revision
+  `858ae63c...` adds a backend-derived ST-RAE evaluator while the accepted
+  submission validator remains byte-identical. The receipt-bound local metric
+  is therefore named tutorial MA-ST-RAE until live-backend parity is proven.
+  A target-independent component-hash rule assigns 913 of 4,553 components
+  and 997 of 4,905 molecules to one-use confirmatory evaluation; it cannot be
+  reseeded or rebalanced after target access. Seven contract tests verify exact
+  parent receipts, the 12-member G1 grid and 8,880-fit ceiling, the five-stage
+  falsification ladder, aggregate resource ceilings, and denied execution
+  authorities.
+- Alternatives: Begin a broad model sweep before freezing selection; reuse the
+  blinded test as a validation set; tune the confirmatory partition from label
+  coverage; call tutorial outputs official scores; acquire external assays
+  before provenance and overlap policy; or construct a general orchestration
+  service.
+- Reversal condition: A verified organizer rule or backend implementation
+  conflict, receipt mismatch, family leakage, infeasible preflight minimum, or
+  synthetic firewall failure stops or replaces the affected future child
+  contract before official execution. It does not permit outcome-driven repair
+  of this frozen G2-0 record.

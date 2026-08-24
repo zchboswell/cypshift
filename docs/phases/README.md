@@ -6,12 +6,13 @@ residual only if global out-of-fold evidence justifies it:
 
 - [`PHASE_2_OPENADMET_GLOBAL_V2.md`](PHASE_2_OPENADMET_GLOBAL_V2.md)
 
-The active phase freezes a contract-led sequence for evaluation, MapLight
+G2-0 now freezes the contract-led sequence for evaluation, MapLight
 reproduction, heterogeneous global models, masked multitask learning,
 provenance-controlled external transfer, conditional TRACE v2, one sealed
-confirmatory score, candidate rehearsal, and submission safety. None of those
-new scientific stages has execution authority until its own pre-result
-contract and synthetic firewall pass.
+confirmatory score, candidate rehearsal, and submission safety. No new
+scientific stage has execution authority until its own pre-result contract and
+synthetic firewall pass. The exact next milestone implements and adversarially
+tests the synthetic-only capability and tutorial-metric firewall.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

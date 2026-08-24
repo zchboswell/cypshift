@@ -1,0 +1,346 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_experiment_contract.v1",
+  "freeze_date": "2026-08-24",
+  "recorded_at_utc": "2026-08-24T04:21:32Z",
+  "gate": "G2_0_GLOBAL_V2_CONTRACT_FROZEN",
+  "status": "contract_only_no_execution_authority",
+  "base_commit": "249be023a7b7b12c2e3fedae6c6368be7f254ccc",
+  "governing_decisions": ["D-084", "D-085", "D-086"],
+  "purpose": "Freeze the Global-v2 hypotheses, evaluation boundary, candidate budgets, metrics, stopping rules, and capability separation before opening any new target, feature, fit, prediction, score, external record, blinded-test relationship, or submission operation.",
+  "primary_hypothesis": "A small heterogeneous global ensemble selected entirely through nested reconstructed-family holdout improves direct CYP prediction over fixed MapLight without endpoint harm.",
+  "occam_rule": "Retain a component only when its preregistered paired ablation passes. A failed learner, feature block, loss, transfer source, stack, or residual expert is removed rather than repaired from outer, confirmatory, test, or leaderboard outcomes.",
+  "targeted_failure_modes": [
+    "V1 molecule or exact-duplicate leakage",
+    "V2 reconstructed-family leakage",
+    "V3 non-cross-fitted selection, calibration, stacking, or error modeling",
+    "V4 seed, split, library, or feature drift",
+    "V6 tutorial metric or live-backend mismatch",
+    "M2 reported-bound or missingness misrepresentation",
+    "C6 representation or dependency drift",
+    "E1 out-of-domain global extrapolation",
+    "E3 correlated ensemble errors without ablation value",
+    "S4 activity-cliff oversmoothing",
+    "P1/P3 external provenance, license, or training-overlap uncertainty",
+    "P5 partial publication or overwrite",
+    "P6 submission, permission, or leaderboard contamination"
+  ],
+  "inputs": {
+    "strategy_audit": {
+      "path": "docs/strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md",
+      "sha256": "88cfcb717e1ac21a40300e78d73ff3caa3387a41933cb15893ba40831472f79e"
+    },
+    "challenge_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/challenge_contract.json",
+      "sha256": "344d3414d03bb98e57def998e80ab4cf315c1bebe7c01cb9d7c1c32ba3cd6123"
+    },
+    "source_receipts": {
+      "path": "benchmarks/openadmet_cyp_2026/source_receipts.json",
+      "sha256": "764e59d37cc12993babce64208117d47612a1551bdcf30d1a22d10eb60636974"
+    },
+    "validation_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/validation_contract.json",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3"
+    },
+    "global_v1_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract.json",
+      "sha256": "d728684cc3794bbe01ea44342202944a378968f097cb8f5490852b63721a6285"
+    },
+    "global_v1_runner_overlay": {
+      "path": "benchmarks/openadmet_cyp_2026/global_experiment_contract_v5.json",
+      "sha256": "596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2"
+    },
+    "accepted_artifacts": {
+      "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+      "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+      "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+      "training_topology_sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a",
+      "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+      "r3c_terminal_manifest_sha256": "a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c",
+      "r3c_global_result_sha256": "d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94"
+    },
+    "core_runtime": {
+      "python": "3.12.3",
+      "python_pin_sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "standardizer_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a"
+    },
+    "existing_research_receipts": {
+      "maplight_fixed_uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+      "gin_contract_sha256": "d88c3b42c09f200939759e021fc15163da3ba501360079eea29a0139df11e55e",
+      "gin_stage_b_contract_sha256": "8d5c6f95e700760cdb31cb7b293c24da779adefa28a6f72e9cffdce5571bb906",
+      "gin_uv_lock_sha256": "20f99263340b244fc1b202752d6a096efd0354e401e7f87a8029d9546813225d",
+      "gin_rights_and_training_overlap": "unresolved; internal ablation only until a child provenance contract resolves both"
+    }
+  },
+  "public_source_refresh": {
+    "retrieved_at_utc": "2026-08-24T04:21:32Z",
+    "dataset": {
+      "url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test",
+      "head_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+      "relation_to_r0": "unchanged"
+    },
+    "space": {
+      "url": "https://huggingface.co/spaces/openadmet/cyp-challenge",
+      "head_revision": "13c5057b37d1e72b3f036dd0d59718b1823f8fdd",
+      "relation_to_r0": "unchanged",
+      "selected_files": {
+        "README.md": {"size_bytes": 115, "sha256": "8e94a6f82ed3be212aba3266630cf35222bd5715b2b2291031e06fd59d384aaa"},
+        "config.py": {"size_bytes": 26448, "sha256": "342cd287e63a79c61b8e18fa46e81950ebb7333b6e91ee427af18426e04ca52f"},
+        "submission.py": {"size_bytes": 24146, "sha256": "e79d709800b57c5c693223ddf0e5f630d5bd2d85563b96151346c93ed2c890b5"}
+      }
+    },
+    "tutorial": {
+      "url": "https://github.com/OpenADMET/CYP-Challenge-Tutorial",
+      "head_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+      "r0_revision": "9d4925eb4a0fb914256da1b27d110593bcbe3cf0",
+      "relation_to_r0": "changed by the backend-evaluation import; validators and README are byte-unchanged",
+      "selected_files": {
+        "README.md": {"size_bytes": 4377, "sha256": "de2ee4ef6096d187e09cdad8f1c50f491fa43f616e04a39868ee6209c001b461"},
+        "evaluation/config.py": {"size_bytes": 2691, "sha256": "5c1c79c3d89e2f73ede6d74672fccab8fcdd429d56db603343585a30979331b1"},
+        "evaluation/custom_scoring_functions.py": {"size_bytes": 14174, "sha256": "c0ee287c06c0301d4b3bfd74559b90eb1bd85db68b75b7d018ae92280c0e1dd3"},
+        "evaluation/evaluate_predictions.py": {"size_bytes": 20808, "sha256": "593fefdfb224030daf0fc55a1c62289177389842d55027dc4e4153018496e7c7"},
+        "evaluation/utils.py": {"size_bytes": 1414, "sha256": "c6ddfc1e8d8cf26c77567125680da8b9656bfa43fca31f62f0e333e21aba7cb6"},
+        "validation/activity_validation.py": {"size_bytes": 3051, "sha256": "276a53d7f22ff973aaf567e64d977202995e91ba3cef2bbdc4de71c13bdebcb2"},
+        "validation/tdi_validation.py": {"size_bytes": 4046, "sha256": "e343dc779076b9df302621b66bb1b5ca1a1a19b26e16614d674f4a174d4193ad"}
+      }
+    },
+    "announcement_html": {
+      "url": "https://openadmet.ghost.io/announcing-openadmets-cyp-inhibition-blind-challenge/",
+      "size_bytes": 66806,
+      "sha256": "32603980731fd5e2b56d4d8d380e0e1d51371e1c154ddd3cf03973f4d260c8c6",
+      "interpretation": "retrieval receipt only; a byte change from R0 is not represented as a scientific rule change"
+    },
+    "launch_post_html": {
+      "url": "https://openadmet.ghost.io/openadmets-cyp-challenge-is-underway/",
+      "size_bytes": 46730,
+      "sha256": "e1d6366e101ddc5edc733392dbc0e5e60d88cd4f3875a56282791d3586095cb8",
+      "interpretation": "retrieval receipt only; a byte change from R0 is not represented as a scientific rule change"
+    },
+    "refresh_result": "Dataset and Space heads are unchanged. Tutorial HEAD now contains the backend-derived evaluator. No upload-automation permission or transductive permission was found or inferred."
+  },
+  "scope": {
+    "track": "direct_inhibition_regression",
+    "endpoints": ["CYP1A2", "CYP2C9", "CYP2D6", "CYP3A4"],
+    "population": {
+      "direct_molecules": 4905,
+      "direct_component_hashes": 4553,
+      "molecule_endpoint_cells": 19620,
+      "accepted_finite_central_and_bound_targets": 6525,
+      "accepted_missing_targets": 13095
+    },
+    "group_unit": "unchanged D-032 similarity component hash used only as a conservative reconstructed-family proxy",
+    "target": "finite reported central direct pIC50 with both finite reported bounds; do not impute or derive a target",
+    "raw_state": "Preserve exact central, lower, upper, standard-deviation, missingness, source, raw structure, and occurrence fields. Do not rename reported bounds as censoring or independently verified credible intervals.",
+    "excluded": ["TDI", "single-concentration auxiliary targets", "Emax auxiliary targets", "blinded-test chemistry or relationships", "official score calls", "submission generation", "leaderboard iteration"]
+  },
+  "confirmatory_partition": {
+    "policy_id": "openadmet-global-v2-confirmatory-component-hash-v1",
+    "seed": 20260824,
+    "material": "openadmet-global-v2-confirmatory-v1|20260824|<similarity_component_hash>",
+    "arithmetic": "Interpret the first eight SHA256 digest bytes as an unsigned big-endian integer. A component is confirmatory iff integer modulo 5 equals 0; otherwise it is development.",
+    "label_independence": "The assignment consumes only the accepted label-free feature row and component hash. Target availability and magnitude cannot affect membership.",
+    "expected_label_free_counts": {
+      "all_components": 4553,
+      "all_molecules": 4905,
+      "confirmatory_components": 913,
+      "confirmatory_molecules": 997,
+      "development_components": 3640,
+      "development_molecules": 3908
+    },
+    "development_folds": {
+      "repeats": 3,
+      "outer_folds": 5,
+      "inner_folds": 4,
+      "repeat_seeds": [20260810, 20260811, 20260812],
+      "rule": "Remove confirmatory components, then preserve every remaining accepted group_folds.csv outer and scoped inner assignment exactly. Never rebalance, reseed, or use endpoint availability."
+    },
+    "trusted_preflight_minima": {
+      "development_finite_targets_per_endpoint": 750,
+      "development_outer_validation_targets_per_endpoint_cell": 75,
+      "development_inner_training_targets_per_endpoint_cell": 400,
+      "confirmatory_finite_targets_per_endpoint": 150
+    },
+    "minimum_failure": "If any minimum fails, publish GLOBAL_V2_UNDERPOWERED before model fitting. Do not move a component, change modulo arithmetic, or choose another seed.",
+    "capabilities": {
+      "trusted_source": "May verify accepted direct-observation bytes and emit disjoint development-target and sealed-confirmatory-truth roots plus label-free identities and receipts.",
+      "development": "May read development targets and label-free feature rows only. It cannot resolve the sealed confirmatory path or any prior row-level R3C/R5 terminal.",
+      "candidate_freezer": "May read development OOF predictions and aggregate evidence but no confirmatory truth.",
+      "confirmatory_predictor": "May read one frozen candidate and label-free confirmatory features but no truth.",
+      "confirmatory_scorer": "May read exactly one frozen confirmatory prediction and sealed truth after candidate lock; it returns contracted aggregate evidence only.",
+      "post_score": "A pass permits the unchanged candidate recipe to refit on all permitted training targets. A failure returns to the predesignated MapLight fallback; no runner-up is scored."
+    },
+    "maximum_confirmatory_scores": 1
+  },
+  "metrics": {
+    "primary": {
+      "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+      "direction": "lower_is_better",
+      "source_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+      "source_function": "evaluation.custom_scoring_functions.rae_soft_threshold_absolute_error",
+      "endpoint_numerator": "Sum max(prediction - reported_upper, 0) + max(reported_lower - prediction, 0) over eligible endpoint rows.",
+      "endpoint_denominator": "Compute the arithmetic mean of endpoint truth in the same scored population, then sum its distance outside every row's reported bounds with the identical soft-threshold rule.",
+      "endpoint_value": "endpoint_numerator / endpoint_denominator; a nonpositive or nonfinite denominator fails closed",
+      "macro": "Plain arithmetic mean of the four endpoint ST-RAE values.",
+      "missingness": "Score only rows with a finite central point and both finite bounds. Missing endpoint truth is excluded, never imputed.",
+      "name_boundary": "This is the receipt-bound tutorial MA-ST-RAE. The tutorial says it is ported from the backend, but live-backend byte and behavior parity remain unverified; do not call a local result an official score.",
+      "implementation_gate": "A later clean-room local implementation must match the pinned tutorial functions on exact synthetic fixtures, endpoint masks, denominators, macro arithmetic, and degenerate failures before this metric can select a model."
+    },
+    "guardrails": {
+      "component_macro_mae": "For each endpoint, every scored D-032 component receives equal total weight divided across its eligible rows; macro-average the four endpoint values.",
+      "endpoint_mae": "Report each endpoint separately on identical paired rows.",
+      "spearman": "Diagnostic only and never a promotion authority.",
+      "activity_cliff": "Use only the immutable R2 activity-cliff identities; report separately and never discover a threshold from candidate outcomes."
+    },
+    "paired_uncertainty": {
+      "unit": "global D-032 component shared across endpoints and systems",
+      "bootstrap_seed": 20260827,
+      "accepted_replicates": 2000,
+      "maximum_attempts": 20000,
+      "draw": "Sample the sorted union of scored components with replacement at the original component count. Retain all eligible endpoint rows for each drawn component with multiplicity and recompute both systems and their difference.",
+      "rejection": "Reject a draw when either system has no eligible row for an endpoint or any tutorial metric denominator is nonpositive or nonfinite.",
+      "interval": "Sort accepted differences and linearly interpolate the 0.025 and 0.975 quantiles with h=(n-1)*p.",
+      "cell_direction": "Report all 15 repeat-by-outer-fold endpoint-macro paired directions; never count endpoints or inner cells as independent directional evidence."
+    }
+  },
+  "experiments": {
+    "EXP-G1": {
+      "hypothesis": "A small frozen nested screen and three-seed bagging reduce MapLight variance and underfitting.",
+      "targeted_failure": "single-seed, lightly configured CatBoost",
+      "model_seeds": [20260824, 20260825, 20260826],
+      "baseline": "Exact accepted TRACE-G0-MAPL-FIXED CatBoost 1.2.1 recipe and feature bytes.",
+      "selection": "Within each outer cell and endpoint, score each configuration's three-seed averaged inner OOF prediction. Select by lower endpoint tutorial ST-RAE, then lower endpoint component-macro MAE, then configuration_id. Refit the selected endpoint configuration under all three seeds on outer training and average predictions.",
+      "confirmatory_recipe": "After nested development evidence passes, choose one configuration per endpoint by lower endpoint tutorial ST-RAE over that configuration's complete three-repeat development OOF predictions, then lower endpoint component-macro MAE, then configuration_id. Fit its three seeds on all development targets for the single confirmatory prediction. This rule is applied before confirmatory truth opens.",
+      "common_arguments": {"task_type": "CPU", "thread_count": 16, "verbose": 0, "allow_writing_files": false},
+      "configurations": [
+        {"configuration_id": "G1-C00", "loss_function": "MAE", "depth": 6, "learning_rate": 0.03, "iterations": 2000, "l2_leaf_reg": 3, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C01", "loss_function": "MAE", "depth": 6, "learning_rate": 0.05, "iterations": 1200, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C02", "loss_function": "MAE", "depth": 8, "learning_rate": 0.03, "iterations": 2000, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C03", "loss_function": "MAE", "depth": 8, "learning_rate": 0.05, "iterations": 1200, "l2_leaf_reg": 30, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C04", "loss_function": "MAE", "depth": 10, "learning_rate": 0.03, "iterations": 1600, "l2_leaf_reg": 30, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C05", "loss_function": "MAE", "depth": 10, "learning_rate": 0.05, "iterations": 1000, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C06", "loss_function": "MAE", "depth": 6, "learning_rate": 0.03, "iterations": 2000, "l2_leaf_reg": 10, "random_strength": 0.5, "bootstrap_type": "Bernoulli", "subsample": 0.8, "rsm": 0.8},
+        {"configuration_id": "G1-C07", "loss_function": "MAE", "depth": 8, "learning_rate": 0.03, "iterations": 1600, "l2_leaf_reg": 10, "random_strength": 0.5, "bootstrap_type": "Bernoulli", "subsample": 0.8, "rsm": 0.8},
+        {"configuration_id": "G1-C08", "loss_function": "MAE", "depth": 10, "learning_rate": 0.03, "iterations": 1200, "l2_leaf_reg": 30, "random_strength": 0.5, "bootstrap_type": "Bernoulli", "subsample": 0.8, "rsm": 0.8},
+        {"configuration_id": "G1-C09", "loss_function": "RMSE", "depth": 8, "learning_rate": 0.03, "iterations": 1600, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C10", "loss_function": "Huber:delta=0.5", "depth": 8, "learning_rate": 0.03, "iterations": 1600, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0},
+        {"configuration_id": "G1-C11", "loss_function": "Huber:delta=1.0", "depth": 8, "learning_rate": 0.03, "iterations": 1600, "l2_leaf_reg": 10, "random_strength": 2, "bootstrap_type": "Bayesian", "bagging_temperature": 1.0, "rsm": 1.0}
+      ],
+      "maximum_model_fits": 8880,
+      "acceptance": {"minimum_relative_primary_improvement": 0.03, "minimum_absolute_component_mae_improvement": 0.015, "paired_component_mae_upper_95_below_zero": true, "maximum_endpoint_mae_degradation": 0.015, "minimum_favorable_outer_cells": 8, "total_outer_cells": 15},
+      "simplest_falsifier": "The best frozen configuration fails to beat fixed MapLight in at least 8/15 paired outer cells or misses either effect-size threshold.",
+      "resource_ceiling": {"cpu_core_hours": 1200, "gpu_hours": 0, "restricted_storage_gb": 40}
+    },
+    "EXP-G2": {
+      "hypothesis": "A small stack of representation- and learner-diverse global experts has complementary reconstructed-family errors.",
+      "targeted_failure": "one feature concatenation and one learner produce correlated errors",
+      "model_seeds": [20260824, 20260825, 20260826],
+      "experts": [
+        {"id": "G2-E00", "learner": "selected EXP-G1 three-seed CatBoost", "features": "accepted raw-SMILES MapLight 2563", "authority": "required anchor expert"},
+        {"id": "G2-E01", "learner": "LightGBM fixed l1 tree", "features": "standardized Morgan radius-2 count 2048 plus fold-fitted finite RDKit descriptor block", "fixed_parameters": {"n_estimators": 1500, "learning_rate": 0.03, "num_leaves": 31, "min_child_samples": 20, "subsample": 0.8, "colsample_bytree": 0.8, "reg_lambda": 10.0, "objective": "regression_l1", "deterministic": true}},
+        {"id": "G2-E02", "learner": "XGBoost fixed histogram tree", "features": "standardized Morgan radius-3 bit 4096 plus AtomPair bit 2048 plus TopologicalTorsion bit 2048", "fixed_parameters": {"n_estimators": 1500, "learning_rate": 0.03, "max_depth": 8, "min_child_weight": 5, "subsample": 0.8, "colsample_bytree": 0.8, "reg_lambda": 10.0, "reg_alpha": 0.1, "objective": "reg:absoluteerror", "tree_method": "hist"}},
+        {"id": "G2-E03", "learner": "selected EXP-G1 CatBoost recipe", "features": "raw-SMILES Avalon count 1024 plus ErG 315 plus at most 512 fold-selected finite nonconstant Mordred values", "selection_boundary": "Mordred finiteness, variance filtering, scaling, and column order are fitted inside inner training only."},
+        {"id": "G2-E04", "learner": "selected EXP-G1 CatBoost recipe", "features": "accepted MapLight 2563 plus frozen GIN 300", "authority": "internal ablation only until exact weight rights and challenge-overlap provenance pass a child contract"}
+      ],
+      "stackers": [
+        {"id": "G2-S00", "kind": "nonnegative least squares", "intercept": false, "weight_sum": "normalize positive weights to one; if all zero, use G2-E00 exactly"},
+        {"id": "G2-S01", "kind": "ridge", "standardize_predictions": true, "intercept": true, "lambda_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0]}
+      ],
+      "selection": "For each endpoint, all feature filtering, preprocessing, expert inclusion, ridge lambda, and stack weights inside nested development evaluation use inner OOF predictions only. Remove the worse of any pair with absolute inner OOF error correlation above 0.995. Retain at most four experts including G2-E00. Choose lower inner endpoint tutorial ST-RAE, then endpoint component MAE, then stacker id.",
+      "confirmatory_recipe": "After nested development evidence passes, rerun the identical predeclared selection rule on complete development OOF predictions, freeze one constituent set and stacker per endpoint, fit every constituent on all development targets, and apply the frozen stack to the single confirmatory prediction before truth opens.",
+      "acceptance": {"minimum_relative_primary_improvement": 0.05, "minimum_absolute_component_mae_improvement": 0.025, "paired_component_mae_upper_95_below_zero": true, "minimum_favorable_outer_cells": 10, "total_outer_cells": 15, "maximum_endpoint_mae_degradation": 0.015, "every_retained_expert_requires_positive_drop_one_ablation": true},
+      "simplest_falsifier": "The best two-expert inner-fitted blend improves neither tutorial MA-ST-RAE nor component MAE over its better constituent.",
+      "resource_ceiling": {"cpu_core_hours": 4000, "gpu_hours": 20, "restricted_storage_gb": 100}
+    },
+    "EXP-M1": {
+      "hypothesis": "Masked cross-isoform sharing improves data efficiency beyond four independent networks on the identical representation.",
+      "targeted_failure": "separate endpoint models discard shared CYP representation and missing-label rows",
+      "model_seeds": [20260824, 20260825, 20260826],
+      "input": "standardized Morgan radius-2 count 2048 plus fold-fitted finite RDKit descriptors; training-only median imputation and standardization",
+      "shared_model": {"trunk_widths": [512, 256], "activation": "ReLU", "dropout": 0.1, "endpoint_head_width": 64, "masked_endpoints": 4, "optimizer": "AdamW", "learning_rate": 0.001, "weight_decay": 0.0001, "batch_size": 128, "maximum_epochs": 300, "inner_patience_epochs": 25},
+      "controls": ["four independent networks with the same per-endpoint input and optimization", "shared trunk with endpoint labels permuted within training components"],
+      "losses": ["masked central MAE", "masked distance outside reported lower/upper bounds"],
+      "chemprop_boundary": "A message-passing model is not authorized initially. It receives a child contract only if the shared fingerprint MLP passes its independent-head control and a pinned deterministic environment is feasible.",
+      "acceptance": {"minimum_absolute_component_mae_improvement": 0.02, "minimum_materially_improved_endpoints": 2, "maximum_endpoint_mae_degradation": 0.02, "shared_model_must_beat_independent_control": true, "permuted_control_must_not_reproduce_gain": true},
+      "simplest_falsifier": "The shared model cannot beat four independent heads on identical inputs and folds.",
+      "resource_ceiling": {"cpu_core_hours": 300, "gpu_hours": 80, "restricted_storage_gb": 80}
+    },
+    "EXP-X1": {
+      "hypothesis": "Assay-aware public CYP pretraining adds challenge-only reconstructed-family value after conservative overlap exclusion.",
+      "targeted_failure": "challenge training data are small relative to CYP assay heterogeneity",
+      "candidate_sources": ["OpenADMET public CYP inhibition/reactivity", "ChEMBL CYP1A2/2C9/2D6/3A4", "optional confirmatory PubChem CYP assays"],
+      "child_contract_required_before_acquisition": ["exact source revision and retrieval date", "license and redistribution status", "record-level assay and organism fields", "unit and endpoint normalization", "release-date policy", "exact/equivalent/family exclusion", "weight and model rights", "external/no-external ablation"],
+      "fold_exclusion": "For each challenge outer fold, componentize the challenge/external union and remove external exact duplicates, equivalent forms, and analog-component members of held-out challenge components before fitting. Never use blinded-test relationships while transductive permission remains unresolved.",
+      "acceptance": {"minimum_relative_primary_improvement": 0.05, "minimum_absolute_component_mae_improvement": 0.025, "maximum_endpoint_mae_degradation": 0.02, "external_ablation_must_pass": true},
+      "simplest_falsifier": "External pretraining improves random or external splits but not challenge-only reconstructed-family holdout.",
+      "resource_ceiling": {"cpu_core_hours": 1000, "gpu_hours": 220, "restricted_storage_gb": 250}
+    },
+    "EXP-T2": {
+      "hypothesis": "A heavily shrunk local model can correct cross-fitted global residuals on a small competence-qualified subset without replacing the global expert.",
+      "targeted_failure": "global residual smoothness may exist, but R5D could not identify safe full local replacement",
+      "activation": "Contract drafting is permitted only when frozen global OOF evidence shows a positive improvement-versus-coverage region before selecting a local learner or threshold.",
+      "requirements": ["residual targets are global OOF prediction minus truth", "no query component enters its own neighbors or gate calibration", "exact global fallback outside accepted coverage", "maximum local weight 0.25", "activity-cliff abstention", "uncertainty and coverage thresholds fitted inside inner folds", "no R5D row-level loss input", "no T0 or I0 reuse"],
+      "acceptance": {"minimum_absolute_component_mae_improvement": 0.015, "paired_component_mae_upper_95_below_zero": true, "maximum_activity_cliff_mae_degradation": 0.01, "no_endpoint_harm": true},
+      "simplest_falsifier": "No positive cross-fitted improvement-versus-coverage region exists after ranking corrections by uncertainty.",
+      "resource_ceiling": {"cpu_core_hours": 500, "gpu_hours": 50, "restricted_storage_gb": 50}
+    }
+  },
+  "candidate_and_confirmation": {
+    "development_robustness": ["model seed perturbation", "D-032 similarity-threshold sensitivity as diagnosis without changing primary groups", "duplicate and tautomer policy sensitivity", "top-ten influential-component removal", "assay-source ablation", "endpoint-specific harm", "metric and clipping sensitivity", "drop-one constituent ablation"],
+    "freeze": "Predesignate exactly one primary contender, its full recipe, constituent set, weights, dependencies, and accepted development receipts before confirmatory prediction.",
+    "confirmatory_acceptance": "Require both the experiment's development effect-size rules and a favorable sealed paired comparison with no endpoint harm. Exact arithmetic and thresholds must be frozen in the contender child contract before prediction.",
+    "failure": "A confirmatory failure keeps the exact accepted MapLight baseline. No runner-up, weight change, threshold change, or second confirmatory score is authorized.",
+    "success": "A confirmatory pass permits two independent full-training rehearsals, byte-identical candidate predictions, current official validator replay, external disclosure, and atomic no-replace acceptance under a later deployment contract."
+  },
+  "resource_ceiling": {
+    "total_cpu_core_hours": 15000,
+    "total_gpu_hours": 400,
+    "maximum_restricted_storage_gb": 300,
+    "policy": "Each child contract sets a no-larger ceiling. Exhaustive architecture search and post-outcome grid expansion are forbidden."
+  },
+  "milestone_sequence": [
+    "G2_0_GLOBAL_V2_CONTRACT_FROZEN",
+    "G2_1_SYNTHETIC_FIREWALL_ACCEPTED",
+    "G2_2_MAPLIGHT_REPRODUCED",
+    "G2_3_GLOBAL_EXPERIMENTS_COMPLETE",
+    "G2_4_MULTITASK_EXPERIMENT_COMPLETE",
+    "G2_5_EXTERNAL_TRANSFER_COMPLETE_OR_REJECTED",
+    "G2_6_TRACE_V2_COMPLETE_OR_NOT_ACTIVATED",
+    "G2_7_PRIMARY_CONTENDER_FROZEN",
+    "G2_8_CONFIRMATORY_ACCEPTED_OR_REJECTED",
+    "G2_9_CANDIDATE_ACCEPTED_OR_MAPLIGHT_RETAINED"
+  ],
+  "authority": {
+    "public_source_refresh": true,
+    "contract_and_hypothesis_registry": true,
+    "confirmatory_partition_formula": true,
+    "metric_specification": true,
+    "target_access": false,
+    "feature_generation": false,
+    "model_fitting": false,
+    "prediction_generation": false,
+    "metric_evaluation": false,
+    "external_record_acquisition": false,
+    "blinded_test_access": false,
+    "transductive_relationships": false,
+    "tdi_access": false,
+    "submission_generation": false,
+    "leaderboard_observation_for_selection": false,
+    "live_upload": false
+  },
+  "forbidden": [
+    "opening numeric targets during this contract milestone",
+    "rebuilding or tuning from R3C or R5 row-level predictions, errors, or truths",
+    "changing D-032 components from target availability or model outcomes",
+    "reassigning a confirmatory component after preflight",
+    "fitting preprocessing, feature selection, calibration, stacking, thresholds, or error models outside inner cross-fitting",
+    "calling tutorial metric output an official score before live-backend parity",
+    "using external data without a source and exclusion child contract",
+    "using blinded-test chemistry for external overlap or transductive features while permission is unresolved",
+    "using manual-upload or leaderboard results for model, feature, weight, threshold, or candidate selection",
+    "rerunning R5D, activating I0, or tuning TRACE v2 from R5D row losses",
+    "adding research dependencies to the public RDKit-only core",
+    "generic orchestration infrastructure, service, dashboard, database, plugin system, or agent swarm",
+    "submission generation or upload"
+  ],
+  "next_gate": "Implement only the trusted label-free confirmatory assignment, disjoint target capabilities, tutorial-metric kernel, synthetic model/stage interfaces, receipt validation, and adversarial firewalls. Pass synthetic review before opening any official numeric target or fitting any model."
+}
