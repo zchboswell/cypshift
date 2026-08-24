@@ -1,8 +1,28 @@
 # Project state
 
-Last updated: 2026-08-23
+Last updated: 2026-08-24
 
 ## Status
+
+Phase 2 Global-v2 is active under D-084 through D-086. The externally supplied
+2026-08-24 audit is preserved byte-for-byte at
+[`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
+and reconciled into the authoritative
+[`PHASE_2_OPENADMET_GLOBAL_V2.md`](../phases/PHASE_2_OPENADMET_GLOBAL_V2.md).
+The primary build is now a family-safe, cross-fitted heterogeneous global
+ensemble, followed by masked multitask and provenance-controlled external
+transfer ablations. A materially new, default-to-global residual TRACE-v2
+hypothesis is conditionally authorized only after positive global OOF evidence.
+No Phase 2 model, metric, external-data, prediction, or submission authority
+exists yet. The first scientific gate is a knowledgebase- and contract-only
+G2-0 freeze.
+
+R5D and I0 remain immutable negative history: they may not be rerun, repaired,
+or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
+ban on every new local hypothesis; it does not reinterpret the official
+`R5_ORACLE_NO_SIGNAL` result. The existing exact MapLight candidate remains
+ready for the user's manual upload in parallel, and any portal result is barred
+from model, threshold, fusion, or candidate selection.
 
 The installable core and the public comparator program are complete. Phase 1
 TRACE has finished its sole official training-only oracle with authenticated
@@ -36,7 +56,7 @@ recorded in
 
 The authoritative OpenADMET launch intake is recorded in
 [`benchmarks/openadmet_cyp_2026/`](../../benchmarks/openadmet_cyp_2026/) and
-[`docs/phases/PHASE_1_OPENADMET_TRACE.md`](../phases/PHASE_1_OPENADMET_TRACE.md).
+[`archived Phase 1 plan`](../archive/phases/PHASE_1_OPENADMET_TRACE.md).
 The dataset, tutorial, and Space revisions are verified. Public required column
 names and types are frozen; official TDI column order disagrees. Exact live
 ST-RAE implementation,
@@ -645,21 +665,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Do not rerun R5D, parse its negative result into a new gate, tune I0/F1, add a
-rescue representation or ensemble, or generate TRACE test predictions. Preserve
-the immutable 7,985-process official receipt and `R5_ORACLE_NO_SIGNAL` terminal.
-The exact competition-validated MapLight `submission.csv` is ready for the
-user's manual direct-track upload. Record the portal attempt and returned score
-without changing the uploaded bytes or using leaderboard feedback to revive
-TRACE.
+After the Phase 2 knowledgebase milestone is reviewed and integrated, create
+`codex/global-v2-contract` from passing `main` and freeze G2-0 only. Refresh the
+public source/rule/validator receipts; freeze the authority boundary,
+development and separately sealed confirmatory design, experiment registry,
+metrics, candidate budgets, acceptance rules, and synthetic contract tests.
+Open no new numeric target, model fit, prediction, blinded-test relationship,
+metric outcome, external record, or submission operation in that milestone.
 
-The contract
-retains the global, copy-anchor, external nearest-neighbor, generic
-signed-Morgan difference, no-measured-anchor-potency, true-anchor hierarchy,
-shuffled/wrong-anchor, shuffled-grammar, class-only, hierarchy-only, and
-context-only systems. Inferred-anchor logic, learned competence, TDI, official
-ST-RAE, submission, and transductive test relationships remain forbidden.
-`global_TDI` remains the permanent TDI fallback.
+In parallel, the user may manually upload the exact immutable MapLight
+`submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any
+user-supplied portal receipt without changing the bytes and without allowing
+leaderboard feedback to influence Phase 2. Do not rerun R5D, tune I0/F1, or
+generate a TRACE test prediction. `global_TDI` remains the permanent TDI
+fallback until a separate accepted contract says otherwise.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

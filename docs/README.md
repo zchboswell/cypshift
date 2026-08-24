@@ -13,6 +13,7 @@ are evidence, not user documentation.
 | [Scientific rationale](SCIENCE.md) | Understand the series-first hypothesis and what would make it genuinely different from a global molecular model |
 | [Validation](VALIDATION.md) | Review current benchmark results, leakage controls, limitations, and supported claims |
 | [Current state](strategy/PROJECT_STATE.md) | See what is complete, what is retained, and the exact next scientific boundary |
+| [Active Global-v2 phase](phases/PHASE_2_OPENADMET_GLOBAL_V2.md) | Restore orchestration context, gates, stopping rules, and the exact next action |
 
 ## Scientific governance
 
@@ -28,6 +29,9 @@ These files define the rules under which results may be interpreted:
   reversal conditions.
 - [Release intake](strategy/LAUNCH_INTAKE.md) — the active external-data freeze
   boundary.
+- [2026-08-24 strategy audit](strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
+  — immutable source analysis adopted and reconciled by the active Phase 2
+  plan.
 
 ## Evidence
 

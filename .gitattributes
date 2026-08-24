@@ -7,3 +7,4 @@
 *.toml text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+docs/strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md text eol=lf -diff

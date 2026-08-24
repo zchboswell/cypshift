@@ -2564,3 +2564,85 @@
   blinded-test or submission value, nonzero forbidden counter, expanded
   authority, source-license incompatibility, or failure of the independent
   terminal validator revokes the public bundle and requires immediate removal.
+
+## D-084 — Adopt the Global-v2 audit mandate
+
+- Date: 2026-08-24
+- Status: accepted Phase 2 strategy; no Phase 2 scientific execution authority
+- Decision: Adopt the externally supplied 2026-08-24 OpenADMET audit as the
+  strategic mandate for Phase 2. Preserve its exact source bytes and reconcile
+  them into one active repository phase. Build a family-safe heterogeneous
+  global ensemble first, then evaluate masked multitask learning and
+  provenance-controlled external transfer. Retain complexity only after a
+  preregistered ablation. Keep leaderboard evidence outside model selection.
+- Evidence: The imported audit has SHA-256
+  `88cfcb717e1ac21a40300e78d73ff3caa3387a41933cb15893ba40831472f79e`
+  and starts from repository commit `8da243e...`. Its independent reductions
+  match D-082's accepted negative result and identify concrete limitations in
+  the current single-seed, single-learner MapLight deployment. On the current
+  checkout, all ten files in the public R5D audit bundle pass `sha256sum -c`
+  and the focused public-bundle pytest passes, closing the audit's two declared
+  local verification gaps. Recommendations are mandate; factual claims still
+  require repository contracts, receipts, execution, and review before they
+  become evidence.
+- Alternatives: Upload only the existing baseline and stop research; revive
+  R5D directly; implement all proposed models without staged falsification; or
+  build a general orchestration platform before a scientific vertical slice.
+- Reversal condition: A corrected competition contract, demonstrated family
+  leakage, unavailable lawful data, infeasible resource requirement, or a
+  preregistered negative experiment can stop or narrow its affected lane. It
+  cannot rewrite completed evidence or authorize leaderboard-driven tuning.
+
+## D-085 — Authorize only a materially new residual TRACE v2
+
+- Date: 2026-08-24
+- Status: accepted conditional hypothesis; supersedes only D-082's prospective
+  ban on every new 2026 local experiment
+- Decision: Preserve R5D's `R5_ORACLE_NO_SIGNAL`, I0's permanent nonactivation,
+  and the bans on rerun, repair, row-level outcome tuning, and TRACE test
+  prediction. After a stronger global system produces fully cross-fitted OOF
+  residuals, permit one separately named and preregistered TRACE-v2 experiment
+  only if those residuals show a positive improvement-versus-coverage region.
+  The new expert predicts global residuals, defaults exactly to global,
+  abstains on cliffs and high uncertainty, and caps local weight at 0.25.
+- Evidence: R5D showed that the measured-anchor T0 replacement was much worse
+  than G0 and that similarity and inner selection did not identify safe local
+  predictions. The audit's proposed residual formulation targets that observed
+  competence failure without reopening T0 or I0. Its frozen keep gate requires
+  at least 0.015 component-MAE improvement, a wholly favorable paired
+  component-bootstrap interval, and activity-cliff degradation no greater than
+  0.010.
+- Alternatives: Treat D-082 as a ban on all future local hypotheses; rerun T0;
+  tune a rescue gate from published R5D rows; deploy a full local replacement;
+  or allow local weight above 0.25 before evidence.
+- Reversal condition: Absence of a positive cross-fitted residual
+  benefit-versus-coverage region stops implementation. Any contract, firewall,
+  support, bootstrap, cell, cliff, influence, confirmatory, or authority failure
+  rejects TRACE v2 without repair from the observed result.
+
+## D-086 — Use a minimal contract-led control plane
+
+- Date: 2026-08-24
+- Status: accepted orchestration and submission boundary
+- Decision: Orchestrate Phase 2 with the canonical knowledgebase, immutable
+  per-experiment JSON contracts, the existing append-only experiment ledger,
+  narrow direct runners, and the established contract/synthetic/evidence
+  milestone sequence. Add shared workflow code only after repeated concrete
+  need is demonstrated. Do not build a service, dashboard, database, generic
+  orchestration platform, plugin system, or agent swarm. Keep research
+  dependencies out of the RDKit-only core.
+- Evidence: The repository already completed R2 through R5 with direct typed
+  state machines, receipt-bound capabilities, atomic no-replace publication,
+  and independent review. A second generic workflow layer would add migration
+  and failure surface before improving a scientific comparison. The exact
+  MapLight candidate is already validator-accepted for manual upload, while the
+  audit found no documented challenge-specific authority for unattended live
+  uploads.
+- Alternatives: Build `src/cypshift/workflow/` and SQLite event sourcing before
+  experiments; use ad hoc unreceipted scripts; automate the portal UI; or let
+  an agent hold credentials and select submissions from leaderboard results.
+- Reversal condition: Two accepted Phase 2 implementations demonstrate the
+  same missing lifecycle primitive and a smaller direct abstraction cannot
+  solve it. Live upload additionally requires organizer-approved API evidence,
+  current rules, security review, and an explicit candidate-specific human arm
+  action.
