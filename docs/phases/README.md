@@ -9,19 +9,18 @@ residual only if global out-of-fold evidence justifies it:
 G2-0 freezes the contract-led sequence, G2-1 accepts its synthetic-only
 capability and tutorial-metric firewall, G2-2A freezes the sealed-holdout-safe
 MapLight reproduction contract, and G2-2B accepts the exact-runtime synthetic
-runner. G2-2C now freezes the additive development-execution contract and one
-unconsumed claim. Its additive compiler and fixed-root attempt wrapper are now
-accepted under exact official-shaped synthetic receipt `c5784598...0fa5` after
-two rejected audit paths and two final byte-identical 300-fit replays. No
-official scientific operation occurred and the tracked claim remains
-unconsumed. Those bytes are integrated and post-main CI is green, but the first
-read-only official-parent preflight rejected an R3A filename mismatch before
-any claim or fixed root existed: the accepted feature manifest is named
-`feature_manifest.json`, not `manifest.json`. The two-name adapter has now
-passed fresh two-root acceptance under superseding receipt `ffb3956c...83b2`.
-The exact next milestone is review, integration, and green post-main CI for
-only that repair; only then may the fixed private source view be published and
-the single no-replace official attempt consume the claim.
+runner. G2-2C is complete under D-094. After two rejected synthetic audit paths
+and a fail-closed official-parent preflight, D-093 integrated the exact R2B/R3A
+two-name adapter with green post-main CI. The sole claim-bound official
+development attempt then completed two sequential 300-fit replays; all six
+terminal files matched byte-for-byte at manifest SHA-256 `62c88f7d...77fe`.
+Family-safe development OOF component-macro MAE is 0.5838 and repeat means span
+only 0.00057. CYP1A2 (0.6673) and CYP2D6 (0.5986) are the primary weaknesses.
+This is internal development evidence, not the official challenge metric or
+confirmatory evidence. The claim is permanently consumed; no retry or resume is
+authorized. The exact next milestone is a contract-only G2-3 `EXP-G1` freeze
+for the preregistered 12-configuration, three-seed CatBoost screen over unchanged
+MapLight features, with all selection inside inner component folds.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

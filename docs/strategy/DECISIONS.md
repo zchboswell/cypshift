@@ -2920,3 +2920,48 @@
   receipts, fresh acceptance bytes, exact claim derivation, family or sparse
   capability isolation, cleanup, forbidden counters, signed integration, or
   post-main CI revokes D-093 before claim consumption.
+
+## D-094 — Accept the reproduced G2-2 MapLight development baseline
+
+- Date: 2026-08-24
+- Status: accepted terminal G2-2 development evidence; sole claim consumed;
+  confirmatory and competition-facing capabilities remain closed
+- Decision: Accept the one authorized G2-2C attempt as
+  `G2_2_MAPLIGHT_REPRODUCED` under official attempt receipt SHA-256
+  `5f270854...2b936`, consumed claim SHA-256 `6d215b05...1e43`, contract
+  `962484b7...985c2`, compiler `8317a225...f8b4`, wrapper
+  `3d161a43...ac52`, runner `154f8d23...acb93f`, research lock
+  `99e72821...195d8`, and resolved parameter receipt `c56235a5...1757`.
+  Preserve only aggregate tracked evidence at SHA-256
+  `76775030...a4482` in `global_v2_maplight_official_reproduction.json`; keep
+  all row-level official OOF, residual, uncertainty, and component-diagnostic
+  artifacts outside Git.
+  Advance to a contract-only G2-3 `EXP-G1` freeze. The next experiment must
+  bind this baseline, use the unchanged MapLight representation, keep all
+  selection inside inner component folds, and retain the preregistered global
+  and endpoint-harm gates.
+- Evidence: Two sequential 300-fit replays completed in 3,643.6 wall-seconds,
+  below the 16.194 CPU-core-hour upper bound and 234,160,503-byte restricted
+  storage peak. All six terminal files were byte-identical at terminal manifest
+  SHA-256 `62c88f7d...77fe`. Per replay, 3,908 development molecules and 5,197
+  finite truth rows produced 46,896 outer and 187,584 inner predictions, 60
+  component metrics and q90 contexts, and 15,591 residual and uncertainty rows.
+  Model processes opened zero outer or inner validation truth; the scorer
+  opened 5,197 truth values only after prediction freeze. Every confirmatory,
+  historical-row, blinded-test, TDI, external, submission, official-metric,
+  leaderboard, and upload counter is zero. Family-safe development OOF
+  component-macro MAE is 0.58378. Repeat means are 0.58355, 0.58368, and
+  0.58412. Endpoint means are CYP1A2 0.66733, CYP2D6 0.59855, CYP3A4
+  0.57927, and CYP2C9 0.48997. These values establish a stable development
+  baseline only; they are not the official challenge metric or confirmatory
+  evidence.
+- Alternatives: Retry or resume the consumed claim; retain private replay
+  staging; copy row-level official outputs into Git; tune from confirmatory or
+  leaderboard feedback; widen G2-3 immediately to heterogeneous
+  representations; or optimize only the weakest endpoint without the global
+  and no-harm gates.
+- Reversal condition: The completed attempt is immutable and cannot be rerun.
+  Any receipt mismatch, non-identical replay byte, family/capability leak,
+  hidden forbidden operation, or aggregate-calculation defect revokes the
+  scientific acceptance and stops G2-3; it does not authorize a retry, resume,
+  move, overwrite, or replacement G2-2 attempt.

@@ -71,10 +71,11 @@ leakage. Neither opened an official input or produced scientific performance
 evidence. G2-2B grants no official execution authority; G2-2C requires a new
 contract and claim.
 
-G2-2C is frozen in
+G2-2C was frozen in
 [`global_v2_maplight_execution_contract.json`](global_v2_maplight_execution_contract.json)
-with immutable unconsumed template
-[`global_v2_maplight_execution_claim.json`](global_v2_maplight_execution_claim.json),
+with
+[`global_v2_maplight_execution_claim.json`](global_v2_maplight_execution_claim.json)
+as an immutable authorization template, initially unconsumed,
 at SHA-256 values `962484b7...985c2` and `59d7d691...30659`. Its additive
 compiler and fixed-root wrapper are accepted by exact official-shaped
 synthetic receipt
@@ -92,9 +93,22 @@ pre-acceptance audit failures remain in
 [`global_v2_maplight_execution_synthetic_audit_rejection.json`](global_v2_maplight_execution_synthetic_audit_rejection.json)
 and
 [`global_v2_maplight_execution_synthetic_audit_rejection_v2.json`](global_v2_maplight_execution_synthetic_audit_rejection_v2.json).
-The tracked claim remains byte-identical and unconsumed. No official root may
-be opened until these exact implementation bytes are reviewed, integrated, and
-green on post-main CI.
+Those exact D-093 implementation bytes were reviewed, integrated, and passed
+post-main CI. The sole claim-bound development attempt then reached
+`G2_2_MAPLIGHT_REPRODUCED`; its aggregate tracked receipt is
+[`global_v2_maplight_official_reproduction.json`](global_v2_maplight_official_reproduction.json).
+Its tracked SHA-256 is `76775030...a4482`.
+Two sequential 300-fit replays matched all six terminal files byte-for-byte at
+manifest SHA-256 `62c88f7d...77fe`. The family-safe development OOF
+component-macro MAE is 0.5838, with repeat means spanning only 0.00057. CYP1A2
+(0.6673) and CYP2D6 (0.5986) are the weakest endpoints. This is internal
+development evidence, not the official challenge metric or confirmatory
+evidence. The claim is permanently consumed and no retry, resume, move, or
+overwrite is authorized. All confirmatory, historical-row, blinded-test, TDI,
+external, submission, official-metric, leaderboard, and upload counters remain
+zero. The exact next gate is a contract-only G2-3 `EXP-G1` freeze for the
+preregistered 12-configuration, three-seed CatBoost screen over unchanged
+MapLight features with all selection inside inner component folds.
 
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in

@@ -172,10 +172,11 @@ despite byte identity because unique components could not falsify inner-family
 leakage. The accepted fixture uses two-molecule components and an explicit
 inner component-containment gate.
 
-G2-2C freezes the development-execution contract at SHA-256
-`962484b7...985c2` and its immutable unconsumed claim at SHA-256
-`59d7d691...30659`. The contract binds exact G2-2A, G2-2B, runner, compiler,
-runtime, and official input receipt strings; the 3,908-molecule/3,640-component
+G2-2C froze the development-execution contract at SHA-256
+`962484b7...985c2` and its immutable authorization template at SHA-256
+`59d7d691...30659`, later consumed exactly once under D-094. The contract binds
+exact G2-2A, G2-2B, runner, compiler, runtime, and official input receipt
+strings; the 3,908-molecule/3,640-component
 development partition; the three support minima; two sequential fresh replays;
 and a 600-fit total ceiling. The tracked claim keeps its three future
 implementation fields null and remains an immutable authorization template.
@@ -194,23 +195,45 @@ parent binding. The repaired run was interrupted after one complete replay
 when audit found terminal lineage, exact-claim, pre-consumption gate,
 fixed-root, and stage-authority defects. The final implementation adds a fixed
 no-replace private source builder and one bound CLI; twelve adversarial tests
-pass. This acceptance is not official execution authority until the exact bytes
-are reviewed, integrated, and pass post-main CI. Actual consumption remains an
-atomic no-replace event at the fixed private attempt root. All confirmatory,
-historical-row, test, TDI, external, submission, official-metric, leaderboard,
-and upload authorities remain false.
+pass. This acceptance did not itself grant official execution authority. D-093
+then integrated the exact bytes and passed post-main CI, permitting the sole
+claim-bound attempt. Actual consumption was an atomic no-replace event at the
+fixed private attempt root. All confirmatory, historical-row, test, TDI,
+external, submission, official-metric, leaderboard, and upload authorities
+remained false.
 
 Post-main CI for D-092 is green on Python 3.11, locked Python 3.12.3, and
 Python 3.14. The following read-only parent-layout preflight rejected official
 execution before source publication or claim consumption because the compiler
 expected the accepted R3A manifest at `manifest.json`; the immutable accepted
 root correctly stores exact receipt `32a95095...026b` at
-`feature_manifest.json`. Both fixed G2-2C roots remain absent and every
-official counter remains zero. The explicit two-name adapter then passed a
-fresh two-root, 600-fit synthetic acceptance in about 1.78 wall-hours; all six
-terminal files matched at tree SHA-256 `49e56607...80e5`. Review, integrate,
-and require green post-main CI for these exact D-093 bytes before retrying the
-preflight.
+`feature_manifest.json`. At that preflight both fixed G2-2C roots remained
+absent and every official counter remained zero. The explicit two-name adapter
+then passed a fresh two-root, 600-fit synthetic acceptance in about 1.78
+wall-hours; all six
+terminal files matched at tree SHA-256 `49e56607...80e5`. D-093 reviewed and
+integrated those exact bytes and post-main CI passed.
+
+D-094 accepts the single official development execution as
+`G2_2_MAPLIGHT_REPRODUCED`. Two sequential 300-fit replays completed in 3,643.6
+wall-seconds and matched all six terminal files byte-for-byte at terminal
+manifest SHA-256 `62c88f7d...77fe`. Each replay covered 3,908 molecules, 5,197
+finite truth rows, 46,896 outer predictions, 187,584 inner predictions, 60 q90
+contexts, and 15,591 residual/uncertainty rows. Model stages opened zero outer
+or inner validation truth; scorer truth opened only after prediction freeze.
+Every confirmatory, historical-row, blinded-test, TDI, external, submission,
+official-metric, leaderboard, and upload counter is zero. The claim is consumed
+and the attempt is terminal: retry, resume, move, and overwrite are forbidden.
+The tracked aggregate receipt is
+[`global_v2_maplight_official_reproduction.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_official_reproduction.json)
+at SHA-256 `76775030...a4482`; row-level official outputs remain outside Git.
+
+The family-safe development OOF component-macro MAE is 0.5838. Repeat means are
+0.58355, 0.58368, and 0.58412, a span of only 0.00057. Endpoint means are
+CYP1A2 0.6673, CYP2D6 0.5986, CYP3A4 0.5793, and CYP2C9 0.4900. This is a
+stable internal development baseline, not the official challenge metric or
+confirmatory evidence. G2-3 should target CYP1A2 and CYP2D6 while retaining the
+preregistered no-endpoint-harm gate.
 
 Generate family-safe development OOF predictions, residuals, component-equal
 absolute-residual q90 bands, and per-component diagnostics for all four
@@ -355,7 +378,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-093 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-094 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -365,16 +388,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate the exact D-093 parent-layout adapter and superseding
-synthetic acceptance, then require green post-main CI. Only from that
-integrated checkout may the
-bound locked-runtime CLI authenticate the accepted R2B/R3A roots, atomically
-publish or reopen the fixed private source view, derive the private consumed
-claim, and create the fixed no-replace official attempt root. The CLI must run
-the two 300-fit development replays sequentially and retain only the consumed
-claim, non-authoritative receipt, and status-specific terminal. Any
-underpowered, failed, crashed, or incomplete attempt consumes the sole claim;
-never retry, resume, move, or overwrite it. Audit the terminal and receipt
-before parsing diagnostic values. Do not open confirmatory truth, historical
-R3C row-level artifacts, blinded test, TDI, external records, submission,
-official metric, leaderboard, or upload capability.
+Freeze the smallest additive G2-3 `EXP-G1` contract before another scientific
+fit. Bind the exact D-094 aggregate receipt and the private development OOF
+inputs while keeping confirmatory truth, historical R3C row-level artifacts,
+blinded test, TDI, external records, submission, official metric, leaderboard,
+and upload capabilities closed. Run only the preregistered 12-configuration,
+three-seed CatBoost screen over unchanged MapLight features. Fit iteration
+choice and any later comparison inside inner component folds; outer predictions
+remain score-only. Target CYP1A2 and CYP2D6, but do not alter endpoint-specific
+acceptance after observing outcomes. Accept only at least 3% relative and 0.015
+absolute component-macro MAE improvement, a paired upper 95% bound below zero,
+and no endpoint degradation above 0.015. Failure retains fixed MapLight and
+stops `EXP-G1` without widening the grid from outer evidence.

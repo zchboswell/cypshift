@@ -1,0 +1,122 @@
+{
+  "accounting": {
+    "blinded_test_files_opened": 0,
+    "component_metric_rows_computed_per_replay": 60,
+    "confirmatory_truth_values_opened": 0,
+    "external_records_acquired": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "inner_truth_values_opened_by_model": 0,
+    "leaderboard_observations": 0,
+    "live_uploads": 0,
+    "official_metric_evaluations": 0,
+    "official_model_fits_per_replay": 300,
+    "official_prediction_rows_per_replay": 234480,
+    "official_residual_values_computed_per_replay": 77955,
+    "official_target_values_opened_per_replay": 249456,
+    "outer_truth_values_opened_by_model": 0,
+    "scorer_truth_values_opened_after_prediction_freeze_per_replay": 5197,
+    "submissions_created": 0,
+    "tdi_files_opened": 0,
+    "tutorial_ma_st_rae_calls": 0
+  },
+  "authority": {
+    "confirmatory_truth_access": false,
+    "development_feature_access": true,
+    "development_model_fitting": true,
+    "development_prediction_generation": true,
+    "development_residual_or_diagnostic_computation": true,
+    "development_target_access": true,
+    "external_record_acquisition": false,
+    "official_metric_evaluation": false,
+    "submission_generation": false,
+    "test_or_tdi_access": false
+  },
+  "counts_per_replay": {
+    "component_metric_rows": 60,
+    "finite_truth_rows": 5197,
+    "inner_maplight_fits": 240,
+    "inner_predictions": 187584,
+    "molecules": 3908,
+    "outer_maplight_fits": 60,
+    "outer_predictions": 46896,
+    "q90_contexts": 60,
+    "residual_rows": 15591,
+    "uncertainty_rows": 15591
+  },
+  "determinism": {
+    "files_compared": 6,
+    "overwrite": false,
+    "relative_byte_maps_identical": true,
+    "replays_completed": 2,
+    "resume": false,
+    "retry": false
+  },
+  "development_component_macro_mae": {
+    "CYP1A2": {
+      "max": 0.7259294642731581,
+      "mean": 0.667333406753392,
+      "min": 0.6014019744906618,
+      "sd": 0.03361646973046916
+    },
+    "CYP2C9": {
+      "max": 0.5269210530114614,
+      "mean": 0.4899744448552545,
+      "min": 0.4461439241428318,
+      "sd": 0.024859306553183864
+    },
+    "CYP2D6": {
+      "max": 0.6837500534068351,
+      "mean": 0.5985509824172084,
+      "min": 0.5437107250003704,
+      "sd": 0.04125388131322296
+    },
+    "CYP3A4": {
+      "max": 0.6173954903601595,
+      "mean": 0.5792662268344283,
+      "min": 0.5218134981682331,
+      "sd": 0.023380588180462538
+    },
+    "endpoint_macro_mean": 0.5837812652150708
+  },
+  "development_mean_q90": {
+    "CYP1A2": 1.5481446075720842,
+    "CYP2C9": 1.0701966341973084,
+    "CYP2D6": 1.5361672246424452,
+    "CYP3A4": 1.2339149261682985
+  },
+  "repeat_component_macro_mae": {
+    "0": 0.5835488706850892,
+    "1": 0.5836758112768206,
+    "2": 0.5841191136833025
+  },
+  "receipts": {
+    "attempt_receipt_sha256": "5f27085420107786143125a37536bf43d809879d11537e94719af59ce0f2b936",
+    "consumed_claim_sha256": "6d215b0587c9a4539223254d23f1215f8ef165dcbe13bdb803489e3270a71e43",
+    "contract_sha256": "962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2",
+    "implementation": {
+      "compiler_source_sha256": "8317a225eb065e57debb8c8af0a38cde55bb4f0eea7af2cd6a42fbf77d16f8b4",
+      "execution_wrapper_source_sha256": "3d161a438df2fabe822c3e6d321f95b5690f3e3461087632d8cc8b53bbe3ac52",
+      "research_uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+      "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+      "runner_source_sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f"
+    },
+    "outputs": {
+      "development_component_metrics.csv": "43306bf14c00becc37390ea2649d3a37363abe1d7b1cf5ae8e36789837302bd8",
+      "development_inner_oof.csv": "bfc72037bc2b75d010829dd568c3bdc62ceed3dcdd91aa10657e074226de23c3",
+      "development_outer_oof.csv": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+      "development_residuals.csv": "f31373dd486fb43d684838fc9e5e86453efca169410ac939cb8e50cc19f6a30b",
+      "development_uncertainty.csv": "5859963e1c346168a8fcfa399fbd4e05fb68c66878e9d8e55b9a66aac40fb005"
+    },
+    "terminal_manifest_sha256": "62c88f7d1213ead4fd297f1a44905e71638e704765f9abc206dd12d152bf77fe"
+  },
+  "resource": {
+    "cpu_core_hours_upper_bound": 16.19365493780445,
+    "gpu_hours": 0,
+    "peak_restricted_storage_bytes": 234160503,
+    "wall_seconds": 3643.5723610060013
+  },
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_official_reproduction.v1",
+  "scientific_interpretation": "Family-safe development OOF baseline only. It is not the official challenge metric or confirmatory evidence. Repeat means differ by only 0.000570243, so the baseline is stable enough for paired G2-3 comparisons. CYP1A2 is the weakest endpoint and CYP2D6 is second; G2-3 should target those errors while enforcing the preregistered no-endpoint-harm gate.",
+  "status": "G2_2_MAPLIGHT_REPRODUCED",
+  "timestamp_utc": "2026-08-24T16:24:00Z"
+}

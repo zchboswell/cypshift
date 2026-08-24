@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-092. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-094. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -27,9 +27,8 @@ input order, replayed byte-identically at combined tree receipt
 contains synthetic targets, the confirmatory predictor contains identities
 only, and the scorer alone contains synthetic truth. Pinned tutorial metric
 fixtures and 26 focused adversarial tests pass; the synthetic control score has
-no scientific or official interpretation. No **official** Phase 2 target,
-feature, model, prediction, metric-evaluation, external-record, blinded-test,
-submission, or leaderboard-selection authority exists yet. G2-2A freezes the
+no scientific or official interpretation. At the G2-1 gate, no **official**
+Phase 2 operation had occurred. G2-2A freezes the
 sealed-holdout-safe MapLight reproduction contract at SHA-256
 `7983e767...a344b`. It authenticates immutable R3C aggregate receipts but
 forbids a full-population rerun because R3C includes the 997 molecules now
@@ -41,10 +40,11 @@ current cell's training-target file; no fit opens validation truth, and the
 scorer sees truth only after prediction freeze. A 20-molecule resolved-parameter blocker
 and an otherwise deterministic unique-component audit rejection remain tracked
 negative evidence. Seventeen focused tests pass, including explicit
-multi-molecule inner-family separation. G2-2C is frozen at contract SHA-256
-`962484b7...985c2` with one immutable unconsumed claim at SHA-256
-`59d7d691...30659`. It binds the exact accepted parents, runner, compiler,
-runtime and official input receipt strings; the 3,908-molecule/3,640-component
+multi-molecule inner-family separation. G2-2C froze contract SHA-256
+`962484b7...985c2` with one immutable authorization template at SHA-256
+`59d7d691...30659`, which D-094 has now consumed exactly once. It binds the
+exact accepted parents, runner, compiler, runtime and official input receipt
+strings; the 3,908-molecule/3,640-component
 development partition and support minima; two sequential fresh replays; and a
 600-fit ceiling. The additive official compiler and wrapper are now accepted on
 official-shaped sparse synthetic data under superseding receipt SHA-256
@@ -63,10 +63,22 @@ complete replay when a pre-publication audit found lineage, claim-order,
 fixed-root, and authority gaps. All synthetic executions opened zero official
 inputs. An integrated-parent layout preflight then rejected D-092 before claim
 consumption because the accepted R3A manifest is named `feature_manifest.json`,
-not `manifest.json`. The two-name adapter and fresh 600-fit reacceptance now
-pass, but official capabilities stay closed until these superseding exact bytes
-are reviewed, integrated, and green on post-main CI. The tracked claim remains
-byte-identical and unconsumed.
+not `manifest.json`. D-093 repaired that adapter, passed fresh 600-fit synthetic
+reacceptance, and is integrated with green post-main CI. D-094 records the sole
+claim-bound G2-2C official development execution as
+`G2_2_MAPLIGHT_REPRODUCED`: two sequential 300-fit replays matched all six
+terminal files byte-for-byte at manifest SHA-256 `62c88f7d...77fe`. The
+tracked aggregate restart receipt is
+[`global_v2_maplight_official_reproduction.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_official_reproduction.json)
+at SHA-256 `76775030...a4482`; row-level official outputs remain outside Git. The
+family-safe development OOF component-macro MAE is 0.5838; repeat means span
+only 0.00057. CYP1A2 is weakest at 0.6673, followed by CYP2D6 at 0.5986,
+CYP3A4 at 0.5793, and CYP2C9 at 0.4900. This is internal development evidence,
+not the official challenge metric or confirmatory evidence. The claim is now
+consumed permanently; retry, resume, move, or overwrite remain forbidden.
+Confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
+external records, submissions, official metric evaluation, leaderboard, and
+upload capabilities remained closed.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -716,22 +728,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-The exact R2B/R3A parent-name adapter is reaccepted under D-093 after two fresh
-byte-identical 300-fit synthetic replays. Keep both fixed G2-2C roots absent and
-the claim unconsumed until those exact bytes are reviewed, integrated, and pass
-post-main CI. Only then run the bound locked-runtime CLI once. It must
-atomically publish or authenticate only the
-fixed private source root
-`/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1`,
-derive the private consumed claim without modifying the tracked template, and
-create only the fixed no-replace attempt root
-`/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-attempt-1`.
-An underpowered, failed, crashed, or incomplete attempt consumes the claim and
-must not be retried, resumed, moved, or overwritten. On success, authenticate
-the status-specific terminal and receipt before opening any diagnostic value.
-Confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
-external records, submissions, official metric evaluation, leaderboard, and
-uploads remain unavailable to G2-2C.
+Freeze the smallest additive G2-3 `EXP-G1` contract before another scientific
+fit. Bind the exact D-094 baseline receipt and private development OOF inputs;
+keep the confirmatory partition and all test, TDI, submission, official-metric,
+leaderboard, and upload capabilities closed. Run only the preregistered
+12-configuration, three-seed CatBoost screen over the unchanged MapLight
+representation, with every iteration choice and later comparison trained inside
+inner component folds. Target the observed CYP1A2 and CYP2D6 weaknesses without
+allowing endpoint harm. Accept only if relative component-macro MAE improves by
+at least 3%, absolute MAE improves by at least 0.015, the paired upper 95% bound
+is below zero, and no endpoint degrades by more than 0.015. If it fails, retain
+fixed MapLight and do not widen the screen from outer outcomes.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any
