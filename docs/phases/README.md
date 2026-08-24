@@ -9,10 +9,12 @@ residual only if global out-of-fold evidence justifies it:
 G2-0 freezes the contract-led sequence, G2-1 accepts its synthetic-only
 capability and tutorial-metric firewall, G2-2A freezes the sealed-holdout-safe
 MapLight reproduction contract, and G2-2B accepts the exact-runtime synthetic
-runner. No official scientific stage has execution authority until its own
-pre-result contract and synthetic firewall pass. The exact next milestone
-freezes the additive G2-2C development-execution contract and claim; it does
-not open official inputs or perform an official fit.
+runner. G2-2C now freezes the additive development-execution contract and one
+unconsumed claim. No official scientific stage has execution authority until
+its own pre-result contract and synthetic firewall pass. The exact next
+milestone implements and adversarially accepts only the official-shaped
+capability compiler and attempt wrapper on synthetic inputs; it does not
+consume the claim, open official inputs, or perform an official fit.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

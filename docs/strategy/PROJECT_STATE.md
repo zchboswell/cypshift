@@ -41,8 +41,17 @@ current cell's training-target file; no fit opens validation truth, and the
 scorer sees truth only after prediction freeze. A 20-molecule resolved-parameter blocker
 and an otherwise deterministic unique-component audit rejection remain tracked
 negative evidence. Seventeen focused tests pass, including explicit
-multi-molecule inner-family separation. The next gate is a contract-only G2-2C
-development execution freeze; official capabilities remain unopened.
+multi-molecule inner-family separation. G2-2C is now frozen at contract SHA-256
+`962484b7...985c2` with one immutable unconsumed claim at SHA-256
+`59d7d691...30659`. It binds the exact accepted parents, runner, compiler,
+runtime and official input receipt strings; the 3,908-molecule/3,640-component
+development partition and support minima; two sequential fresh replays; and a
+600-fit ceiling. The future official compiler, attempt wrapper, and
+official-shaped synthetic-acceptance receipts remain null, so claim consumption
+is not yet authorized. This contract milestone opened no official file and
+performed no official fit, prediction, residual, diagnostic, or metric. The
+next gate is an additive official-shaped compiler/wrapper implementation and
+synthetic acceptance only; official capabilities remain unopened.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking

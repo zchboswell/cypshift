@@ -172,6 +172,18 @@ despite byte identity because unique components could not falsify inner-family
 leakage. The accepted fixture uses two-molecule components and an explicit
 inner component-containment gate.
 
+G2-2C freezes the development-execution contract at SHA-256
+`962484b7...985c2` and its immutable unconsumed claim at SHA-256
+`59d7d691...30659`. The contract binds exact G2-2A, G2-2B, runner, compiler,
+runtime, and official input receipt strings; the 3,908-molecule/3,640-component
+development partition; the three support minima; two sequential fresh replays;
+and a 600-fit total ceiling. Its three future implementation receipt fields are
+null. The tracked claim is an immutable authorization template, while actual
+consumption is an atomic no-replace private-root event recorded by a separate
+read-only consumed claim and receipt. Therefore this freeze cannot yet be used
+to open an official input. All current official, confirmatory, historical-row,
+test, TDI, submission, and leaderboard authorities remain false.
+
 Generate family-safe development OOF predictions, residuals, component-equal
 absolute-residual q90 bands, and per-component diagnostics for all four
 endpoints. Any preprocessing, calibration, error model, or later stack must
@@ -325,12 +337,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-After reviewed G2-2B integration, create
-`codex/global-v2-maplight-execution-contract` from passing `main`. Freeze only
-an additive G2-2C development-execution contract and one unconsumed claim bound
-to exact G2-2A, G2-2B, implementation, runtime, and official input receipts.
-Specify the 3,908-molecule/3,640-component preflight, two fresh sequential
-replays, 600-fit total ceiling, private roots, terminal schemas, cleanup,
-fail-closed conditions, and zero forbidden counters. Open no official input,
-fit no official model, generate no official prediction, compute no official
-residual or diagnostic, and evaluate no metric during that contract milestone.
+After reviewed G2-2C integration, create the next narrow implementation branch
+from passing `main`. Implement only the additive official capability compiler
+and attempt wrapper, then adversarially accept official-shaped synthetic
+capabilities through two fresh roots. Bind their exact source and acceptance
+hashes for later insertion into the private consumed claim. Do not consume the
+tracked claim, open an official input, fit an official model, generate an
+official prediction, compute an official residual or diagnostic, or evaluate
+an official metric during that implementation milestone. Any capability,
+receipt, component, runtime, cleanup, no-replace, or zero-counter failure stops
+before official execution.

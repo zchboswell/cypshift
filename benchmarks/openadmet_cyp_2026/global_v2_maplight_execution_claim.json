@@ -1,0 +1,28 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_execution_claim.v1",
+  "status": "G2_2C_CLAIM_UNCONSUMED",
+  "claim_id": "g2-2c-maplight-development-attempt-1",
+  "contract_sha256": "962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2",
+  "base_commit": "cfc23b357298a4708b7808fc963483c99a12d1c7",
+  "g2_2a_contract_sha256": "7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b",
+  "g2_2b_acceptance_sha256": "1a498f21dc227884b27476e9b753a03f984cac656548394fd440b65dc8a3a3bb",
+  "runner_source_sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f",
+  "synthetic_compiler_source_sha256": "45b3068999aa113f830df15cd2c4b0a334328820ed77da4b26ae91ecf80c199f",
+  "runtime_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+  "official_input_receipts": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_morgan_count_sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+    "maplight_avalon_count_sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+    "maplight_erg_sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905"
+  },
+  "future_official_compiler_source_sha256": null,
+  "future_attempt_wrapper_source_sha256": null,
+  "future_official_shaped_synthetic_acceptance_sha256": null,
+  "maximum_consumptions": 1
+}

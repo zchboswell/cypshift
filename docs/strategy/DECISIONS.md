@@ -2788,3 +2788,39 @@
   prediction-freeze, q90, output, determinism, or accounting regression revokes
   G2-2B and blocks G2-2C. It does not permit outcome-driven repair or any access
   to confirmatory truth, historical R3C row-level artifacts, or blinded test.
+
+## D-091 — Freeze one bounded development-only MapLight execution claim
+
+- Date: 2026-08-24
+- Status: accepted G2-2C contract and unconsumed-claim evidence; no official
+  scientific execution authority
+- Decision: Freeze the additive G2-2C execution contract at SHA-256
+  `962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2`
+  and one immutable unconsumed claim at SHA-256
+  `59d7d6915fc3f9e8ae0cb1fef2af805eb3d4d68c641091d518e4e02683730659`.
+  Bind the accepted G2-2A and G2-2B receipts, exact MapLight runner and
+  synthetic compiler, locked runtime, official input receipt strings,
+  development population and support minima, two sequential fresh replays,
+  600-fit ceiling, terminal schemas, cleanup, and zero forbidden counters.
+  Keep the future official compiler, attempt wrapper, and official-shaped
+  synthetic-acceptance hashes null until a distinct reviewed synthetic
+  implementation milestone. Do not consume the claim or open any official
+  input during this freeze.
+- Evidence: Seven focused static tests authenticate both new artifacts and all
+  tracked parents and implementation sources. The contract requires 3,908
+  development molecules in 3,640 components, preserves 997 molecules in 913
+  confirmatory components, freezes minima of 750 development targets per
+  endpoint, 75 outer-validation targets per cell, and 400 inner-training
+  targets per cell, and caps execution at two 300-fit replays. Current official
+  target, feature, fit, prediction, residual, diagnostic, and metric counters
+  are zero, as are confirmatory, historical-row, blinded-test, TDI, external,
+  submission, leaderboard, and upload counters.
+- Alternatives: Open official files while writing the compiler; treat a
+  mutable tracked claim as attempt state; authorize retries after a crash;
+  populate future implementation hashes prospectively; run the two replays in
+  parallel; or let a development metric control reproduction acceptance.
+- Reversal condition: Any parent, source, runtime, population, receipt, claim,
+  no-replace, cleanup, terminal, or authority contradiction rejects G2-2C
+  before official execution. A reviewed integrated official-shaped synthetic
+  acceptance may fill the three private consumed-claim implementation fields;
+  it may not change any other frozen field or authorize confirmatory truth.

@@ -1,0 +1,219 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_execution_contract.v1",
+  "freeze_date": "2026-08-24",
+  "contract_id": "G2-2C-MAPL-DEVELOPMENT-EXECUTION-V1",
+  "gate": "G2_2C_MAPLIGHT_DEVELOPMENT_EXECUTION_CONTRACT_FROZEN",
+  "status": "contract_and_unconsumed_claim_only_no_official_execution_yet",
+  "base_commit": "cfc23b357298a4708b7808fc963483c99a12d1c7",
+  "purpose": "Authorize at most one later claim consumption containing exactly two fresh sequential fixed-MapLight replays on the authenticated 3,908-molecule development partition, after an additive official-shaped capability compiler and wrapper pass synthetic acceptance. This freeze itself opens no official input and executes no model or metric.",
+  "targeted_failure_modes": [
+    "V1/V2 molecule, exact-duplicate, or component-family leakage",
+    "V3 in-fold residual or uncertainty fitting",
+    "V4 source, runtime, feature, split, parameter, seed, or implementation drift",
+    "C6 MapLight feature-order or resolved-CatBoost-parameter drift",
+    "P5 partial publication, overwrite, retry, resume, or replay nondeterminism",
+    "P6 confirmatory, historical-row, blinded-test, TDI, submission, or leaderboard contamination"
+  ],
+  "parents": {
+    "g2_2a_contract": {
+      "path": "global_v2_maplight_reproduction_contract.json",
+      "sha256": "7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b",
+      "required_gate": "G2_2A_MAPLIGHT_REPRODUCTION_CONTRACT_FROZEN"
+    },
+    "g2_2b_acceptance": {
+      "path": "global_v2_maplight_synthetic_acceptance.json",
+      "sha256": "1a498f21dc227884b27476e9b753a03f984cac656548394fd440b65dc8a3a3bb",
+      "required_status": "G2_2B_SYNTHETIC_RUNNER_ACCEPTED"
+    }
+  },
+  "accepted_implementation": {
+    "runner_path": "research/maplight-fixed/global_v2_maplight_runner.py",
+    "runner_sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f",
+    "synthetic_compiler_path": "research/maplight-fixed/run_global_v2_maplight_synthetic.py",
+    "synthetic_compiler_sha256": "45b3068999aa113f830df15cd2c4b0a334328820ed77da4b26ae91ecf80c199f",
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "synthetic_combined_tree_sha256": "e81bfb922a0f8588d1e88c8b5c2edefbbe3455bd6caf677e66a5d3dcaf65de06",
+    "execution_extension_rule": "The official capability compiler and attempt wrapper must be additive, must call the accepted runner mechanics without changing scientific choices, and must be bound by exact source hashes in the consumed claim and terminal receipt. They may not open an official input until their official-shaped synthetic acceptance is reviewed and integrated."
+  },
+  "runtime": {
+    "parent": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.12.3",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
+    },
+    "maplight": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.10.13",
+      "numpy": "1.25.2",
+      "catboost": "1.2.1",
+      "thread_count": 16,
+      "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+    }
+  },
+  "official_inputs": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_morgan_count_sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+    "maplight_avalon_count_sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+    "maplight_erg_sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "read_boundary": "The contract and claim freeze must authenticate only these already recorded receipt strings. Reading any corresponding official file consumes unauthorized capability and fails this milestone."
+  },
+  "population_and_preflight": {
+    "label_free_assignment": {
+      "all_molecules": 4905,
+      "all_components": 4553,
+      "development_molecules": 3908,
+      "development_components": 3640,
+      "confirmatory_molecules": 997,
+      "confirmatory_components": 913
+    },
+    "minimum_support": {
+      "development_finite_targets_per_endpoint": 750,
+      "outer_validation_targets_per_endpoint_repeat_fold": 75,
+      "inner_training_targets_per_endpoint_repeat_outer_inner": 400
+    },
+    "failure": "A trusted label-safe preflight failure publishes G2_2_UNDERPOWERED with zero fits and permanently consumes the claim. Never move a component, reseed, rebalance, pool endpoints, inspect confirmatory truth, or repair from observed support."
+  },
+  "execution": {
+    "claim_id": "g2-2c-maplight-development-attempt-1",
+    "claim_path": "global_v2_maplight_execution_claim.json",
+    "maximum_claim_consumptions": 1,
+    "replays": 2,
+    "replay_order": "Sequential only: replay-b may start only after replay-a publishes a complete read-only terminal. Each replay uses a distinct fresh outside-Git root.",
+    "maplight_fits_per_replay": 300,
+    "maplight_fits_total_ceiling": 600,
+    "outer_prediction_rows_per_replay": 46896,
+    "inner_prediction_rows_per_replay": 187584,
+    "retry": false,
+    "resume": false,
+    "overwrite": false,
+    "input_scope": "Authenticated development molecules and development targets only; label-free assignment must be completed and checked before any target parse.",
+    "attempt_start": "After every immutable contract, claim, checkout, runtime, implementation-acceptance, parent-manifest, source-leaf, and resource gate passes, atomically creating the fixed private attempt root with no replacement consumes the sole claim. A crash, underpowered terminal, failed terminal, or incomplete root remains consumed.",
+    "determinism": "The two terminal relative file-name and byte maps must be identical. Process identifiers, timestamps, durations, and resource telemetry live only in a separate non-authoritative receipt outside both comparison roots.",
+    "cleanup": "On every terminal, remove private target capabilities, writable model state, temporary feature links or copies, CatBoost state, and staging roots. Retain only the read-only claim, receipt, and status-specific terminal. Cleanup failure changes the status to G2_2_FAILED.",
+    "resource_ceiling": {
+      "cpu_core_hours": 200,
+      "gpu_hours": 0,
+      "restricted_storage_gb": 80,
+      "maximum_wall_hours": 12
+    }
+  },
+  "claim_contract": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_execution_claim.v1",
+    "required_fields": [
+      "schema_version",
+      "status",
+      "claim_id",
+      "contract_sha256",
+      "base_commit",
+      "g2_2a_contract_sha256",
+      "g2_2b_acceptance_sha256",
+      "runner_source_sha256",
+      "synthetic_compiler_source_sha256",
+      "runtime_lock_sha256",
+      "official_input_receipts",
+      "future_official_compiler_source_sha256",
+      "future_attempt_wrapper_source_sha256",
+      "future_official_shaped_synthetic_acceptance_sha256",
+      "maximum_consumptions"
+    ],
+    "unconsumed_placeholders": "The three future_* fields must be null while this claim is unconsumed. Claim consumption requires a private canonical claim derived without changing any frozen field, replacing each null with the exact reviewed integrated implementation receipt. The private consumed-claim hash must appear in the attempt receipt.",
+    "publication": "The tracked claim is a frozen unconsumed authorization template, not mutable attempt state. Consumption is evidenced by atomic no-replace creation of the fixed private attempt root and publication of its canonical read-only consumed claim. The tracked template remains immutable historical evidence."
+  },
+  "terminal_contract": {
+    "statuses": [
+      "G2_2_FAILED",
+      "G2_2_UNDERPOWERED",
+      "G2_2_MAPLIGHT_REPRODUCED"
+    ],
+    "status_specific_file_sets": {
+      "G2_2_FAILED": [
+        "failure.json",
+        "manifest.json"
+      ],
+      "G2_2_UNDERPOWERED": [
+        "preflight.json",
+        "manifest.json"
+      ],
+      "G2_2_MAPLIGHT_REPRODUCED": [
+        "development_outer_oof.csv",
+        "development_inner_oof.csv",
+        "development_residuals.csv",
+        "development_uncertainty.csv",
+        "development_component_metrics.csv",
+        "manifest.json"
+      ]
+    },
+    "manifest_required_fields": [
+      "schema_version",
+      "status",
+      "contract_sha256",
+      "consumed_claim_sha256",
+      "source_receipts",
+      "implementation_receipts",
+      "runtime",
+      "counts",
+      "output_receipts",
+      "determinism",
+      "accounting",
+      "authority"
+    ],
+    "reproduction_acceptance": "Both replay terminals must be complete, read-only, cross-fitted, receipt-valid, and byte-identical; every forbidden counter must be zero. Metric values have no historical-parity or model-selection threshold.",
+    "failure": "Any receipt, runtime, source, split, capability, nonfinite, component, resolved-parameter, prediction-freeze, q90, accounting, cleanup, determinism, or publication defect terminates G2-2 as failed with no retry, resume, overwrite, or outcome-driven repair."
+  },
+  "forbidden_accounting": {
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "tutorial_ma_st_rae_calls": 0,
+    "official_metric_evaluations": 0,
+    "external_records_acquired": 0,
+    "submissions_created": 0,
+    "leaderboard_observations": 0,
+    "live_uploads": 0
+  },
+  "current_milestone_accounting": {
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_residual_values_computed": 0,
+    "official_diagnostics_computed": 0,
+    "official_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "external_records_acquired": 0,
+    "submissions_created": 0,
+    "leaderboard_observations": 0,
+    "live_uploads": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "tracked_unconsumed_claim": true,
+    "official_shaped_synthetic_implementation": false,
+    "claim_consumption": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_residual_or_diagnostic_computation": false,
+    "official_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_r3c_row_level_access": false,
+    "external_record_acquisition": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "submission_generation": false,
+    "leaderboard_observation": false,
+    "live_upload": false
+  },
+  "next_gate": "Implement only the additive official capability compiler and attempt wrapper, then adversarially accept them on official-shaped synthetic data with all official-operation counters zero. Do not consume the claim or open official inputs in that implementation milestone."
+}
