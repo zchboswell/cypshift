@@ -14,9 +14,14 @@ unconsumed claim. Its additive compiler and fixed-root attempt wrapper are now
 accepted under exact official-shaped synthetic receipt `c5784598...0fa5` after
 two rejected audit paths and two final byte-identical 300-fit replays. No
 official scientific operation occurred and the tracked claim remains
-unconsumed. The exact next milestone is review, integration, and green
-post-main CI for those bytes; only then may the fixed private source view be
-authenticated and the single no-replace official attempt consume the claim.
+unconsumed. Those bytes are integrated and post-main CI is green, but the first
+read-only official-parent preflight rejected an R3A filename mismatch before
+any claim or fixed root existed: the accepted feature manifest is named
+`feature_manifest.json`, not `manifest.json`. The two-name adapter has now
+passed fresh two-root acceptance under superseding receipt `ffb3956c...83b2`.
+The exact next milestone is review, integration, and green post-main CI for
+only that repair; only then may the fixed private source view be published and
+the single no-replace official attempt consume the claim.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

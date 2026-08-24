@@ -179,12 +179,12 @@ runtime, and official input receipt strings; the 3,908-molecule/3,640-component
 development partition; the three support minima; two sequential fresh replays;
 and a 600-fit total ceiling. The tracked claim keeps its three future
 implementation fields null and remains an immutable authorization template.
-The additive compiler/wrapper implementation is accepted under exact
-official-shaped synthetic receipt `c5784598...0fa5`, which binds compiler
-`67fb59ab...3d75`, wrapper `3d161a43...ac52`, and acceptance driver
+The additive compiler/wrapper implementation is accepted under superseding
+official-shaped synthetic receipt `ffb3956c...83b2`, which binds compiler
+`8317a225...f8b4`, wrapper `3d161a43...ac52`, and acceptance driver
 `d50b6016...f947`. Two distinct 326-molecule sparse roots completed 600 real
 CatBoost fits total and matched all six terminal files at tree receipt
-`e05df355...555ca`; root B reversed physical source order. Each replay retained
+`49e56607...80e5`; root B reversed physical source order. Each replay retained
 only its terminal, scored 1,043 finite truth rows after prediction freeze, and
 recorded every official and forbidden operation as zero.
 
@@ -199,6 +199,18 @@ are reviewed, integrated, and pass post-main CI. Actual consumption remains an
 atomic no-replace event at the fixed private attempt root. All confirmatory,
 historical-row, test, TDI, external, submission, official-metric, leaderboard,
 and upload authorities remain false.
+
+Post-main CI for D-092 is green on Python 3.11, locked Python 3.12.3, and
+Python 3.14. The following read-only parent-layout preflight rejected official
+execution before source publication or claim consumption because the compiler
+expected the accepted R3A manifest at `manifest.json`; the immutable accepted
+root correctly stores exact receipt `32a95095...026b` at
+`feature_manifest.json`. Both fixed G2-2C roots remain absent and every
+official counter remains zero. The explicit two-name adapter then passed a
+fresh two-root, 600-fit synthetic acceptance in about 1.78 wall-hours; all six
+terminal files matched at tree SHA-256 `49e56607...80e5`. Review, integrate,
+and require green post-main CI for these exact D-093 bytes before retrying the
+preflight.
 
 Generate family-safe development OOF predictions, residuals, component-equal
 absolute-residual q90 bands, and per-component diagnostics for all four
@@ -343,7 +355,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-092 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-093 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -353,8 +365,9 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate the exact D-092 implementation and synthetic acceptance,
-then require green post-main CI. Only from that integrated checkout may the
+Review and integrate the exact D-093 parent-layout adapter and superseding
+synthetic acceptance, then require green post-main CI. Only from that
+integrated checkout may the
 bound locked-runtime CLI authenticate the accepted R2B/R3A roots, atomically
 publish or reopen the fixed private source view, derive the private consumed
 claim, and create the fixed no-replace official attempt root. The CLI must run

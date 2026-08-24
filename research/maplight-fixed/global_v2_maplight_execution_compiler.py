@@ -123,6 +123,8 @@ OFFICIAL_PARENT_RECEIPT_KEYS: Final = {
     "r2b_manifest_sha256": "r2b_manifest_sha256",
     "r3a_feature_manifest_sha256": "r3a_feature_manifest_sha256",
 }
+R2B_PARENT_MANIFEST: Final = "manifest.json"
+R3A_PARENT_MANIFEST: Final = "feature_manifest.json"
 
 
 class MapLightExecutionCompilerError(RuntimeError):
@@ -381,12 +383,16 @@ def publish_official_source(
     runner._readonly_root(r2b_root, "accepted R2B root")
     runner._readonly_root(r3a_root, "accepted R3A root")
     _require(
-        runner.sha256_path(runner._regular(r2b_root / "manifest.json", "R2B manifest"))
+        runner.sha256_path(
+            runner._regular(r2b_root / R2B_PARENT_MANIFEST, "R2B manifest")
+        )
         == claim_receipts["r2b_manifest_sha256"],
         "R2B parent manifest receipt differs",
     )
     _require(
-        runner.sha256_path(runner._regular(r3a_root / "manifest.json", "R3A manifest"))
+        runner.sha256_path(
+            runner._regular(r3a_root / R3A_PARENT_MANIFEST, "R3A feature manifest")
+        )
         == claim_receipts["r3a_feature_manifest_sha256"],
         "R3A parent manifest receipt differs",
     )

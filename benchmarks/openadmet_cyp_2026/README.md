@@ -79,9 +79,15 @@ at SHA-256 values `962484b7...985c2` and `59d7d691...30659`. Its additive
 compiler and fixed-root wrapper are accepted by exact official-shaped
 synthetic receipt
 [`global_v2_maplight_execution_synthetic_acceptance.json`](global_v2_maplight_execution_synthetic_acceptance.json),
-SHA-256 `c5784598...0fa5`. Two distinct sparse roots completed 600 real locked
+at superseding SHA-256 `ffb3956c...83b2`. Two distinct sparse roots completed
+600 real locked
 CatBoost fits and matched six terminal files at tree receipt
-`e05df355...555ca`; every official and forbidden counter is zero. The two
+`49e56607...80e5`; every official and forbidden counter is zero. The original
+receipt was superseded after a read-only parent-layout preflight found that the
+accepted R3A manifest is named `feature_manifest.json`. That rejection occurred
+before source publication or claim consumption and is preserved in
+[`global_v2_maplight_official_parent_layout_preflight.json`](global_v2_maplight_official_parent_layout_preflight.json).
+The two
 pre-acceptance audit failures remain in
 [`global_v2_maplight_execution_synthetic_audit_rejection.json`](global_v2_maplight_execution_synthetic_audit_rejection.json)
 and

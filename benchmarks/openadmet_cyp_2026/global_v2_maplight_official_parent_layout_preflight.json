@@ -1,0 +1,40 @@
+{
+  "accounting": {
+    "claim_consumptions": 0,
+    "forbidden_operations": 0,
+    "official_feature_values_opened": 0,
+    "official_metric_evaluations": 0,
+    "official_model_fits": 0,
+    "official_prediction_rows": 0,
+    "official_target_values_opened": 0
+  },
+  "accepted_parents": {
+    "r2b": {
+      "manifest_name": "manifest.json",
+      "manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+      "read_only": true,
+      "root": "/home/zbos/cypshift-private/openadmet-2026/r2b-official-v1"
+    },
+    "r3a": {
+      "manifest_name": "feature_manifest.json",
+      "manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+      "read_only": true,
+      "root": "/home/zbos/cypshift-private/openadmet-2026/r3c-inputs-v1/r3a-features"
+    }
+  },
+  "claim": {
+    "sha256": "59d7d6915fc3f9e8ae0cb1fef2af805eb3d4d68c641091d518e4e02683730659",
+    "status": "G2_2C_CLAIM_UNCONSUMED"
+  },
+  "decision": "Repair only the explicit R3A parent-manifest filename adapter and require fresh exact-hash two-root synthetic acceptance, reviewed integration, and green post-main CI before official execution.",
+  "fixed_roots": {
+    "attempt_root_exists": false,
+    "source_root_exists": false
+  },
+  "hypothesis": "The integrated bound CLI can authenticate the exact accepted read-only R2B and R3A parent layouts before consuming the sole development claim.",
+  "observed_compiler_r3a_manifest_name": "manifest.json",
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_official_parent_layout_preflight.v1",
+  "status": "G2_2C_OFFICIAL_PARENT_LAYOUT_PREFLIGHT_REJECTED",
+  "targeted_failure_mode": "Parent-layout and immutable-receipt adapter drift",
+  "timestamp_utc": "2026-08-24T13:01:00Z"
+}

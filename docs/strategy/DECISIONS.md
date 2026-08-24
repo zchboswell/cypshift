@@ -2880,3 +2880,43 @@
   regression revokes this acceptance before claim consumption. After the fixed
   attempt root is created, every terminal or incomplete state is final and
   cannot authorize a retry, resume, move, or overwrite.
+
+## D-093 — Repair and reaccept the official R3A parent-layout adapter
+
+- Date: 2026-08-24
+- Status: accepted superseding official-shaped synthetic evidence; tracked
+  claim unconsumed and official execution blocked until reviewed integration
+  and green post-main CI
+- Decision: Keep the D-091 contract, immutable claim, scientific recipe,
+  wrapper, runtime, splits, support gates, fixed private roots, and authority
+  unchanged. Name the two accepted parent manifests explicitly: R2B
+  `manifest.json` and R3A `feature_manifest.json`. Supersede only D-092's
+  implementation acceptance with compiler SHA-256 `8317a225...f8b4` and
+  fresh synthetic acceptance SHA-256 `ffb3956c...83b2`; wrapper
+  `3d161a43...ac52`, acceptance driver `d50b6016...f947`, runner
+  `154f8d23...acb93f`, contract `962484b7...985c2`, and unconsumed claim
+  `59d7d691...30659` remain exact.
+- Evidence: Green post-main CI for D-092 permitted a read-only official-parent
+  preflight. It authenticated R2B manifest receipt `08dcf61c...c8c8` at
+  `manifest.json` and R3A receipt `32a95095...026b` at
+  `feature_manifest.json`, then rejected the compiler's incorrect R3A
+  `manifest.json` lookup before source publication, target or feature parse,
+  fit, or claim consumption. Both fixed official roots remained absent. The
+  two-name repair passed its focused source-builder test and two entirely fresh
+  sequential 300-fit CatBoost 1.2.1 replays in about 1.78 wall-hours. Root B
+  reversed physical source order; all six terminal files were byte-identical
+  at combined tree SHA-256 `49e56607...80e5`, with terminal manifest
+  SHA-256 `a86f6dbe...7dcb`. Each replay used 326 molecules, 1,043 finite
+  targets, 3,912 outer and 15,648 inner predictions, 3,129 residual and
+  uncertainty rows, 60 component metrics and q90 contexts, and 300 fits.
+  Private capability and prediction roots were cleaned. Every official,
+  confirmatory, historical-row, blinded-test, TDI, external, submission,
+  metric, leaderboard, and upload counter is zero.
+- Alternatives: Rename or mutate the immutable accepted R3A root; create an
+  unreviewed intermediate input view; consume the claim to discover a known
+  filename failure; reuse D-092's terminals despite changed compiler bytes; or
+  expand the repair into contract, wrapper, recipe, or schema changes.
+- Reversal condition: Any discrepancy in the two accepted parent names or
+  receipts, fresh acceptance bytes, exact claim derivation, family or sparse
+  capability isolation, cleanup, forbidden counters, signed integration, or
+  post-main CI revokes D-093 before claim consumption.

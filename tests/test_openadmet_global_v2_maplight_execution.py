@@ -75,6 +75,8 @@ def _fake_terminal(tmp_path: Path, *, reverse: bool = False) -> Path:
 
 
 def test_compiler_binds_exact_contract_and_accepted_runner() -> None:
+    assert compiler.R2B_PARENT_MANIFEST == "manifest.json"
+    assert compiler.R3A_PARENT_MANIFEST == "feature_manifest.json"
     assert runner.sha256_path(compiler.EXECUTION_CONTRACT) == (
         compiler.EXECUTION_CONTRACT_SHA256
     )
@@ -93,7 +95,7 @@ def test_tracked_acceptance_derives_exact_private_claim_without_consuming_templa
     None
 ):
     assert runner.sha256_path(wrapper.TRACKED_ACCEPTANCE) == (
-        "c57845989a29208f240151ab1b585f64f737b82f008dd2b7df62fd9764e50fa5"
+        "ffb3956c17912468175c13d729f538fc213522c75630c80a6e99455902e183b2"
     )
     before = compiler.TRACKED_CLAIM.read_bytes()
     consumed = wrapper.derive_consumed_claim(
@@ -102,13 +104,13 @@ def test_tracked_acceptance_derives_exact_private_claim_without_consuming_templa
     )
     assert consumed["status"] == "G2_2C_CLAIM_CONSUMED"
     assert consumed["future_official_compiler_source_sha256"] == (
-        "67fb59abcb7062c896306832ab1241200e653723c5346f3c0ae99bd82abc3d75"
+        "8317a225eb065e57debb8c8af0a38cde55bb4f0eea7af2cd6a42fbf77d16f8b4"
     )
     assert consumed["future_attempt_wrapper_source_sha256"] == (
         "3d161a438df2fabe822c3e6d321f95b5690f3e3461087632d8cc8b53bbe3ac52"
     )
     assert consumed["future_official_shaped_synthetic_acceptance_sha256"] == (
-        "c57845989a29208f240151ab1b585f64f737b82f008dd2b7df62fd9764e50fa5"
+        "ffb3956c17912468175c13d729f538fc213522c75630c80a6e99455902e183b2"
     )
     assert consumed["maximum_consumptions"] == 1
     assert compiler.TRACKED_CLAIM.read_bytes() == before
@@ -154,7 +156,7 @@ def test_official_source_builder_binds_exact_claim_parents_and_leaves(
         )
     }
     r3a = runner.publish_files(
-        tmp_path / "r3a", {"manifest.json": r3a_manifest, **r3a_files}
+        tmp_path / "r3a", {"feature_manifest.json": r3a_manifest, **r3a_files}
     )
     acceptance_root = runner.publish_files(
         tmp_path / "tracked-acceptance", {"acceptance.json": b"{}\n"}

@@ -47,11 +47,11 @@ multi-molecule inner-family separation. G2-2C is frozen at contract SHA-256
 runtime and official input receipt strings; the 3,908-molecule/3,640-component
 development partition and support minima; two sequential fresh replays; and a
 600-fit ceiling. The additive official compiler and wrapper are now accepted on
-official-shaped sparse synthetic data under receipt SHA-256
-`c5784598...0fa5`, binding compiler `67fb59ab...3d75`, wrapper
+official-shaped sparse synthetic data under superseding receipt SHA-256
+`ffb3956c...83b2`, binding compiler `8317a225...f8b4`, wrapper
 `3d161a43...ac52`, and acceptance driver `d50b6016...f947`. Two distinct roots,
 the second with reversed physical source order, completed 600 real CatBoost
-fits and matched all six terminal files at tree receipt `e05df355...555ca`.
+fits and matched all six terminal files at tree receipt `49e56607...80e5`.
 Each replay contained 326 development molecules, 1,043 finite truth rows,
 19,560 prediction rows, and 15,645 residual computations. Twelve focused tests
 cover sparse capabilities, family containment, exact claim derivation, fixed
@@ -60,10 +60,13 @@ identity, and no-replace behavior. Two earlier synthetic executions remain
 rejected negative evidence: one completed 600 deterministic fits but failed
 exact accounting/summation/parent binding; the next was interrupted after one
 complete replay when a pre-publication audit found lineage, claim-order,
-fixed-root, and authority gaps. All three executions opened zero official
-inputs and the tracked claim remains byte-identical and unconsumed. Official
-capabilities stay closed until these exact implementation bytes are reviewed,
-integrated, and green on post-main CI.
+fixed-root, and authority gaps. All synthetic executions opened zero official
+inputs. An integrated-parent layout preflight then rejected D-092 before claim
+consumption because the accepted R3A manifest is named `feature_manifest.json`,
+not `manifest.json`. The two-name adapter and fresh 600-fit reacceptance now
+pass, but official capabilities stay closed until these superseding exact bytes
+are reviewed, integrated, and green on post-main CI. The tracked claim remains
+byte-identical and unconsumed.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -713,10 +716,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact D-092 G2-2C implementation and acceptance bytes,
-then require green post-main CI before any official source is opened. From that
-integrated checkout, run the bound locked-runtime CLI once with the accepted
-read-only R2B and R3A roots. It must atomically publish or authenticate only the
+The exact R2B/R3A parent-name adapter is reaccepted under D-093 after two fresh
+byte-identical 300-fit synthetic replays. Keep both fixed G2-2C roots absent and
+the claim unconsumed until those exact bytes are reviewed, integrated, and pass
+post-main CI. Only then run the bound locked-runtime CLI once. It must
+atomically publish or authenticate only the
 fixed private source root
 `/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1`,
 derive the private consumed claim without modifying the tracked template, and
