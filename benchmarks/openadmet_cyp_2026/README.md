@@ -71,6 +71,25 @@ leakage. Neither opened an official input or produced scientific performance
 evidence. G2-2B grants no official execution authority; G2-2C requires a new
 contract and claim.
 
+G2-2C is frozen in
+[`global_v2_maplight_execution_contract.json`](global_v2_maplight_execution_contract.json)
+with immutable unconsumed template
+[`global_v2_maplight_execution_claim.json`](global_v2_maplight_execution_claim.json),
+at SHA-256 values `962484b7...985c2` and `59d7d691...30659`. Its additive
+compiler and fixed-root wrapper are accepted by exact official-shaped
+synthetic receipt
+[`global_v2_maplight_execution_synthetic_acceptance.json`](global_v2_maplight_execution_synthetic_acceptance.json),
+SHA-256 `c5784598...0fa5`. Two distinct sparse roots completed 600 real locked
+CatBoost fits and matched six terminal files at tree receipt
+`e05df355...555ca`; every official and forbidden counter is zero. The two
+pre-acceptance audit failures remain in
+[`global_v2_maplight_execution_synthetic_audit_rejection.json`](global_v2_maplight_execution_synthetic_audit_rejection.json)
+and
+[`global_v2_maplight_execution_synthetic_audit_rejection_v2.json`](global_v2_maplight_execution_synthetic_audit_rejection_v2.json).
+The tracked claim remains byte-identical and unconsumed. No official root may
+be opened until these exact implementation bytes are reviewed, integrated, and
+green on post-main CI.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

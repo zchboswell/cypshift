@@ -177,12 +177,28 @@ G2-2C freezes the development-execution contract at SHA-256
 `59d7d691...30659`. The contract binds exact G2-2A, G2-2B, runner, compiler,
 runtime, and official input receipt strings; the 3,908-molecule/3,640-component
 development partition; the three support minima; two sequential fresh replays;
-and a 600-fit total ceiling. Its three future implementation receipt fields are
-null. The tracked claim is an immutable authorization template, while actual
-consumption is an atomic no-replace private-root event recorded by a separate
-read-only consumed claim and receipt. Therefore this freeze cannot yet be used
-to open an official input. All current official, confirmatory, historical-row,
-test, TDI, submission, and leaderboard authorities remain false.
+and a 600-fit total ceiling. The tracked claim keeps its three future
+implementation fields null and remains an immutable authorization template.
+The additive compiler/wrapper implementation is accepted under exact
+official-shaped synthetic receipt `c5784598...0fa5`, which binds compiler
+`67fb59ab...3d75`, wrapper `3d161a43...ac52`, and acceptance driver
+`d50b6016...f947`. Two distinct 326-molecule sparse roots completed 600 real
+CatBoost fits total and matched all six terminal files at tree receipt
+`e05df355...555ca`; root B reversed physical source order. Each replay retained
+only its terminal, scored 1,043 finite truth rows after prediction freeze, and
+recorded every official and forbidden operation as zero.
+
+The negative path remains evidence. The first 600-fit deterministic run was
+rejected for omitted forbidden counters, non-exact summation, and incomplete
+parent binding. The repaired run was interrupted after one complete replay
+when audit found terminal lineage, exact-claim, pre-consumption gate,
+fixed-root, and stage-authority defects. The final implementation adds a fixed
+no-replace private source builder and one bound CLI; twelve adversarial tests
+pass. This acceptance is not official execution authority until the exact bytes
+are reviewed, integrated, and pass post-main CI. Actual consumption remains an
+atomic no-replace event at the fixed private attempt root. All confirmatory,
+historical-row, test, TDI, external, submission, official-metric, leaderboard,
+and upload authorities remain false.
 
 Generate family-safe development OOF predictions, residuals, component-equal
 absolute-residual q90 bands, and per-component diagnostics for all four
@@ -327,7 +343,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-088 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-092 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -337,13 +353,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-After reviewed G2-2C integration, create the next narrow implementation branch
-from passing `main`. Implement only the additive official capability compiler
-and attempt wrapper, then adversarially accept official-shaped synthetic
-capabilities through two fresh roots. Bind their exact source and acceptance
-hashes for later insertion into the private consumed claim. Do not consume the
-tracked claim, open an official input, fit an official model, generate an
-official prediction, compute an official residual or diagnostic, or evaluate
-an official metric during that implementation milestone. Any capability,
-receipt, component, runtime, cleanup, no-replace, or zero-counter failure stops
-before official execution.
+Review and integrate the exact D-092 implementation and synthetic acceptance,
+then require green post-main CI. Only from that integrated checkout may the
+bound locked-runtime CLI authenticate the accepted R2B/R3A roots, atomically
+publish or reopen the fixed private source view, derive the private consumed
+claim, and create the fixed no-replace official attempt root. The CLI must run
+the two 300-fit development replays sequentially and retain only the consumed
+claim, non-authoritative receipt, and status-specific terminal. Any
+underpowered, failed, crashed, or incomplete attempt consumes the sole claim;
+never retry, resume, move, or overwrite it. Audit the terminal and receipt
+before parsing diagnostic values. Do not open confirmatory truth, historical
+R3C row-level artifacts, blinded test, TDI, external records, submission,
+official metric, leaderboard, or upload capability.

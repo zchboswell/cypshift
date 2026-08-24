@@ -2824,3 +2824,59 @@
   before official execution. A reviewed integrated official-shaped synthetic
   acceptance may fill the three private consumed-claim implementation fields;
   it may not change any other frozen field or authorize confirmatory truth.
+
+## D-092 — Accept the exact-claim G2-2C execution implementation
+
+- Date: 2026-08-24
+- Status: accepted official-shaped synthetic implementation evidence; tracked
+  claim unconsumed and no official execution authority until reviewed
+  integration and green post-main CI
+- Decision: Accept synthetic receipt SHA-256
+  `c57845989a29208f240151ab1b585f64f737b82f008dd2b7df62fd9764e50fa5`
+  for compiler SHA-256 `67fb59ab...3d75`, fixed-root attempt wrapper SHA-256
+  `3d161a43...ac52`, and acceptance driver SHA-256 `d50b6016...f947`. The
+  compiler must derive the exact consumed claim from the immutable tracked
+  template, authenticate the exact R2B/R3A parent manifests and seven leaves,
+  assign the label-free development partition before parsing targets, and
+  publish disjoint sparse model/scorer capabilities. The bound CLI may publish
+  only
+  `/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1`
+  before consumption and may create only
+  `/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-attempt-1`
+  to consume the claim. Runtime and storage gates precede consumption; the two
+  300-fit replays remain sequential, no-replace, non-retriable, and
+  non-resumable. Integrate and pass post-main CI before opening either accepted
+  official parent root.
+- Evidence: Two final official-shaped synthetic roots completed 600 real
+  CatBoost 1.2.1 fits in about 1.82 wall-hours. Root B reversed physical source
+  order, yet all six terminal files were byte-identical at combined tree
+  SHA-256 `e05df355...555ca`; both terminal manifests are SHA-256
+  `56b194a5...6d3e`. Each replay used 326 development molecules, 1,043 sparse
+  finite truth rows, 19,560 prediction rows, 15,645 residual computations, 60
+  q90 contexts, and 300 fits. Model stages opened zero outer/inner validation
+  truth, scorer truth opened only after prediction freeze, private capability
+  roots were removed, and every official, confirmatory, historical-row, test,
+  TDI, external, submission, metric, leaderboard, and upload counter is zero.
+  Twelve focused tests cover exact claim derivation without template mutation,
+  fixed source publication, exact parent/leaf lineage, opaque confirmatory
+  suffixes, arbitrary physical source order, sparse cross-fitting, outer/inner
+  family containment, stage-scoped authority, prediction-identity forgery,
+  receipt failure, cleanup, and unconsumed-claim rejection before source open.
+  The first 600-fit run was rejected despite determinism for omitted counters,
+  non-exact summation, and incomplete parent binding. A second run was
+  interrupted after one complete replay when audit found lineage,
+  claim-order, source-view, fixed-root, authority, and resource-receipt gaps.
+  Both negative records remain immutable and opened zero official input.
+- Alternatives: Accept deterministic bytes without exact lineage; allow a
+  caller-selected source or attempt root; build the source view by hand; let a
+  SHA-shaped counterfeit claim reach official files; consume before source and
+  runtime authentication; claim fitting authority on an underpowered stop;
+  omit resource telemetry; or continue a replay after implementation bytes
+  changed.
+- Reversal condition: Any integrated source or acceptance hash mismatch,
+  parent/leaf receipt drift, claim-template mutation, pre-consumption gate
+  defect, capability or family leak, prediction-identity inconsistency,
+  nonzero forbidden counter, cleanup defect, runtime/resource breach, or CI
+  regression revokes this acceptance before claim consumption. After the fixed
+  attempt root is created, every terminal or incomplete state is final and
+  cannot authorize a retry, resume, move, or overwrite.

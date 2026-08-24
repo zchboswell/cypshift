@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-090. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-092. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -41,17 +41,29 @@ current cell's training-target file; no fit opens validation truth, and the
 scorer sees truth only after prediction freeze. A 20-molecule resolved-parameter blocker
 and an otherwise deterministic unique-component audit rejection remain tracked
 negative evidence. Seventeen focused tests pass, including explicit
-multi-molecule inner-family separation. G2-2C is now frozen at contract SHA-256
+multi-molecule inner-family separation. G2-2C is frozen at contract SHA-256
 `962484b7...985c2` with one immutable unconsumed claim at SHA-256
 `59d7d691...30659`. It binds the exact accepted parents, runner, compiler,
 runtime and official input receipt strings; the 3,908-molecule/3,640-component
 development partition and support minima; two sequential fresh replays; and a
-600-fit ceiling. The future official compiler, attempt wrapper, and
-official-shaped synthetic-acceptance receipts remain null, so claim consumption
-is not yet authorized. This contract milestone opened no official file and
-performed no official fit, prediction, residual, diagnostic, or metric. The
-next gate is an additive official-shaped compiler/wrapper implementation and
-synthetic acceptance only; official capabilities remain unopened.
+600-fit ceiling. The additive official compiler and wrapper are now accepted on
+official-shaped sparse synthetic data under receipt SHA-256
+`c5784598...0fa5`, binding compiler `67fb59ab...3d75`, wrapper
+`3d161a43...ac52`, and acceptance driver `d50b6016...f947`. Two distinct roots,
+the second with reversed physical source order, completed 600 real CatBoost
+fits and matched all six terminal files at tree receipt `e05df355...555ca`.
+Each replay contained 326 development molecules, 1,043 finite truth rows,
+19,560 prediction rows, and 15,645 residual computations. Twelve focused tests
+cover sparse capabilities, family containment, exact claim derivation, fixed
+private source/attempt roots, parent/leaf lineage, stage authority, prediction
+identity, and no-replace behavior. Two earlier synthetic executions remain
+rejected negative evidence: one completed 600 deterministic fits but failed
+exact accounting/summation/parent binding; the next was interrupted after one
+complete replay when a pre-publication audit found lineage, claim-order,
+fixed-root, and authority gaps. All three executions opened zero official
+inputs and the tracked claim remains byte-identical and unconsumed. Official
+capabilities stay closed until these exact implementation bytes are reviewed,
+integrated, and green on post-main CI.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -701,18 +713,21 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-After reviewed G2-2B integration, create
-`codex/global-v2-maplight-execution-contract` from passing `main`. Freeze only
-the additive G2-2C development-execution contract and one unconsumed claim.
-Bind G2-2A SHA-256 `7983e767...a344b`, G2-2B acceptance SHA-256
-`1a498f21...a3bb`, runner SHA-256 `154f8d23...b93f`, compiler SHA-256
-`45b30689...99f`, exact official input receipts, 3,908/3,640 development
-preflight, two sequential 300-fit replays, private output locations, resource
-ceiling, failure terminals, cleanup, and all denied capabilities. Perform no
-official input read, fit, prediction, residual, diagnostic, or metric operation
-during the contract milestone. Confirmatory truth, historical R3C row-level
-artifacts, blinded test, TDI, external records, submissions, and leaderboard
-remain permanently unavailable to G2-2C.
+Review and integrate the exact D-092 G2-2C implementation and acceptance bytes,
+then require green post-main CI before any official source is opened. From that
+integrated checkout, run the bound locked-runtime CLI once with the accepted
+read-only R2B and R3A roots. It must atomically publish or authenticate only the
+fixed private source root
+`/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1`,
+derive the private consumed claim without modifying the tracked template, and
+create only the fixed no-replace attempt root
+`/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-attempt-1`.
+An underpowered, failed, crashed, or incomplete attempt consumes the claim and
+must not be retried, resumed, moved, or overwritten. On success, authenticate
+the status-specific terminal and receipt before opening any diagnostic value.
+Confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
+external records, submissions, official metric evaluation, leaderboard, and
+uploads remain unavailable to G2-2C.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

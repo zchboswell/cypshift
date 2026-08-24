@@ -1,0 +1,40 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_execution_synthetic_audit_rejection.v1",
+  "status": "G2_2C_OFFICIAL_SHAPED_SYNTHETIC_INTERRUPTED_AFTER_AUDIT_REJECTION",
+  "execution_contract_sha256": "962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2",
+  "rejected_compiler_source_sha256": "849ee0b8da1928a10d7be13b8f751a2555340638eb70610eaad33569ede36706",
+  "rejected_execution_wrapper_source_sha256": "f6e5d40c9ff23f434b6048fb8ddf812d26d9ea8a2814d3ada265e54127413959",
+  "rejected_acceptance_source_sha256": "e75697c88e8543ca952fe10e1a328dc25b4efdba18aae61ec549fa94dddbb124",
+  "published_acceptance": false,
+  "completed_evidence": {
+    "full_replays": 1,
+    "known_completed_maplight_fits": 300,
+    "second_replay": "interrupted_during_model_fitting_before_prediction_publication",
+    "molecules": 326,
+    "finite_truth_rows": 1043,
+    "confirmatory_target_values_parsed": 0,
+    "official_operations_observed": 0
+  },
+  "rejection": [
+    "The official terminal retained only derived capability receipts instead of the frozen dataset revision, R2B/R3A parent manifests, and seven official source-leaf receipts.",
+    "The official compiler accepted merely SHA-shaped wrapper and acceptance fields instead of requiring the exact frozen claim derivation from the tracked template.",
+    "The wrapper created the claim-consuming attempt root before authenticating the official source and locked runtime, contrary to the frozen attempt-start order.",
+    "No accepted code assembled the fixed private official source view, and the attempt root was caller-selected rather than mechanically fixed.",
+    "Official authority was not stage-scoped: the model loader expected fitting authority before a fit, while an underpowered terminal would have claimed fitting and prediction authority despite zero fits."
+  ],
+  "decision": "Interrupt the second replay because any terminal would be inadmissible after implementation bytes changed. Repair the exact claim, source-view, pre-consumption gate, fixed-root, lineage, authority, identity-validation, and resource-receipt boundaries; then require two entirely fresh real replays.",
+  "authority": {
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "external_record_acquisition": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "submission_generation": false,
+    "leaderboard_observation": false,
+    "live_upload": false
+  }
+}
