@@ -106,9 +106,15 @@ development evidence, not the official challenge metric or confirmatory
 evidence. The claim is permanently consumed and no retry, resume, move, or
 overwrite is authorized. All confirmatory, historical-row, blinded-test, TDI,
 external, submission, official-metric, leaderboard, and upload counters remain
-zero. The exact next gate is a contract-only G2-3 `EXP-G1` freeze for the
-preregistered 12-configuration, three-seed CatBoost screen over unchanged
-MapLight features with all selection inside inner component folds.
+zero. G2-3A now freezes that exact screen in
+[`global_v2_g1_screen_contract.json`](global_v2_g1_screen_contract.json) at
+SHA-256 `ce39721f...d97c3`. It binds the unchanged MapLight representation,
+three-seed-before-score reduction, inner-only selection, paired baseline rows,
+all five promotion gates, aggregate-only publication, and exact 8,820-fit
+execution limit. The parent's unused 60-fit margin cannot fund repair or
+expansion. This milestone opens no official input or scientific operation. The
+exact next gate is reviewed integration and green post-main CI, followed by a
+separate synthetic-only G2-3B implementation contract.
 
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in

@@ -2965,3 +2965,49 @@
   hidden forbidden operation, or aggregate-calculation defect revokes the
   scientific acceptance and stops G2-3; it does not authorize a retry, resume,
   move, overwrite, or replacement G2-2 attempt.
+
+## D-095 — Freeze the minimal nested EXP-G1 screen
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-3A evidence; no official input, fit,
+  prediction, or metric operation authorized
+- Decision: Freeze `global_v2_g1_screen_contract.json` at SHA-256
+  `ce39721f...d97c3`, bound to the D-094 aggregate baseline receipt
+  `76775030...a4482` and the exact G2-0 twelve-configuration, three-seed
+  CatBoost screen. Use only the unchanged 2,563-column MapLight feature order.
+  Within every repeat/outer-fold/endpoint cell, freeze all three seed
+  predictions before scoring, select the configuration from pooled inner OOF
+  rows by endpoint tutorial ST-RAE, component-macro MAE, then configuration ID,
+  and refit only that selection under the three frozen seeds. Compare the
+  resulting nested outer predictions against the immutable D-094 baseline on
+  identical rows. All five promotion members are conjunctive: at least 3%
+  tutorial-primary improvement, at least 0.015 component-macro MAE
+  improvement, paired component-bootstrap upper 95% bound below zero, at least
+  8/15 favorable outer cells, and no endpoint degradation above 0.015.
+- Evidence: Exact arithmetic requires 8,640 inner configuration-seed fits and
+  180 selected outer-seed fits, totaling 8,820 new fits. The G2-0 parent ceiling
+  is 8,880; its spare 60 fits are deliberately unusable for retries, repairs,
+  extra seeds, baseline refits, or a thirteenth configuration. Expected
+  prediction counts are 6,753,024 raw inner rows, 2,251,008 seed-averaged inner
+  rows, 562,752 complete selection-projection rows, 140,688 raw outer rows, and
+  46,896 seed-averaged outer rows. The contract defines least-privilege inner
+  model/freezer/selector and outer model/freezer/scorer stages, exact family and
+  prediction identities, float64 `math.fsum` reductions, a cross-fitted
+  selection-only projection for a future full-development recipe, paired metric
+  masks, terminal failures, aggregate-only Git publication, and a 1,200
+  CPU-core-hour/40 GB/120 wall-hour ceiling. Nine focused static tests bind the
+  exact parents, baseline, sources, configurations, seeds, arithmetic, nested
+  selection, acceptance, authority, and terminals. Every official,
+  confirmatory, historical-row, blinded-test, TDI, external, submission,
+  metric, leaderboard, and upload counter is zero.
+- Alternatives: Use the parent's unused 60-fit allowance; tune only CYP1A2 or
+  CYP2D6; score seeds separately and select the luckiest; add early stopping;
+  select from outer outcomes; refit the baseline; start heterogeneous EXP-G2
+  before falsifying tuned MapLight; or issue an official claim before synthetic
+  capability and determinism evidence.
+- Reversal condition: Any parent or baseline receipt drift, mismatch from the
+  exact twelve configurations or three seeds, fit/prediction arithmetic error,
+  family or capability leak, non-inner selection, inconsistent paired mask,
+  acceptance ambiguity, nonzero scientific operation, unsigned integration, or
+  CI regression revokes D-095 before G2-3B. A later clean EXP-G1 rejection is
+  final negative evidence and cannot authorize grid expansion or rerun.

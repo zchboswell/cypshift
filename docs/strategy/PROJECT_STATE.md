@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-094. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-095. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -79,6 +79,21 @@ consumed permanently; retry, resume, move, or overwrite remain forbidden.
 Confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
 external records, submissions, official metric evaluation, leaderboard, and
 upload capabilities remained closed.
+
+G2-3A now freezes the minimal `EXP-G1` contract at SHA-256
+`ce39721f...d97c3`. It copies the exact G2-0 twelve-configuration, three-seed
+CatBoost screen and leaves the accepted 2,563 MapLight features unchanged.
+Selection is endpoint-specific inside each outer cell from three-seed-averaged
+inner OOF predictions only; outer scores cannot alter a configuration, seed,
+iteration count, or fit. Exact mechanics require 8,820 new fits: 8,640 inner
+configuration-seed fits and 180 selected outer-seed refits. The parent's spare
+60-fit allowance is explicitly unusable. Promotion still requires every
+predeclared member: at least 3% tutorial-primary improvement, 0.015 absolute
+component-macro MAE improvement, paired upper 95% bound below zero, at least
+8/15 favorable cells, and no endpoint degradation above 0.015. The contract
+opens no official input or scientific operation; G2-3B must first prove the
+least-privilege nested implementation and deterministic terminals on synthetic
+data.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -728,17 +743,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Freeze the smallest additive G2-3 `EXP-G1` contract before another scientific
-fit. Bind the exact D-094 baseline receipt and private development OOF inputs;
-keep the confirmatory partition and all test, TDI, submission, official-metric,
-leaderboard, and upload capabilities closed. Run only the preregistered
-12-configuration, three-seed CatBoost screen over the unchanged MapLight
-representation, with every iteration choice and later comparison trained inside
-inner component folds. Target the observed CYP1A2 and CYP2D6 weaknesses without
-allowing endpoint harm. Accept only if relative component-macro MAE improves by
-at least 3%, absolute MAE improves by at least 0.015, the paired upper 95% bound
-is below zero, and no endpoint degrades by more than 0.015. If it fails, retain
-fixed MapLight and do not widen the screen from outer outcomes.
+Review and integrate the exact G2-3A contract at SHA-256
+`ce39721f...d97c3`, then require green post-main CI before implementing G2-3B.
+The next additive contract may implement only a synthetic fixture,
+least-privilege capability compiler, nested selector, deterministic seed and
+outer-context freezers, paired scorer, and terminal publisher. Two fresh
+synthetic roots must falsify family leakage, truth leakage, seed/configuration
+drift, prediction-identity forgery, non-inner selection, nondeterminism, budget
+reuse, incomplete cleanup, and forbidden operations before any official
+execution claim exists. Keep confirmatory truth, historical R3C row-level
+artifacts, blinded test, TDI, external records, submission, official metric,
+leaderboard, and upload capabilities closed.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

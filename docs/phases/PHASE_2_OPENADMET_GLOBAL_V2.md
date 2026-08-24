@@ -1,8 +1,9 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; G2-2B MapLight synthetic runner accepted; no official Phase 2
-target, feature, model, prediction, metric-evaluation, external-record,
-blinded-test, submission, or leaderboard-selection authority yet.
+Status: active; G2-2 development baseline reproduced and G2-3A `EXP-G1`
+contract frozen; confirmatory, historical-row, blinded-test, TDI, external,
+submission, official-metric, leaderboard, and upload capabilities remain
+closed.
 
 Authorized: 2026-08-24.
 
@@ -273,6 +274,24 @@ Acceptance:
 If no candidate passes, retain fixed MapLight and stop this lane without grid
 expansion from observed scores.
 
+G2-3A freezes the additive `EXP-G1` contract in
+[`global_v2_g1_screen_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_screen_contract.json)
+at SHA-256 `ce39721f...d97c3`. It binds the D-094 baseline, exact parent grid,
+three model seeds, unchanged 2,563-feature MapLight order, repeated component
+folds, nested selection, paired evaluation, terminal statuses, aggregate-only
+publication, and resource ceiling. All three seed predictions are frozen and
+averaged before a configuration is scored. Each outer cell selects only from
+its inner OOF truth; outer evidence cannot revise the grid or fit. Exact
+arithmetic is 8,640 inner plus 180 selected outer fits, totaling 8,820. The
+parent's unused 60-fit difference is not a repair budget. A later full-
+development endpoint recipe may be derived only from the separate complete
+inner cross-fit projection and cannot enter or revise G1/G2 outer evidence.
+Every promotion member is conjunctive, including 8/15 favorable cells and the
+endpoint-harm ceiling. This is contract-only evidence: all official input, fit,
+prediction, and metric counters are zero. G2-3B must prove the exact nested
+capability and terminal mechanics twice on fresh synthetic roots before any
+execution claim.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -378,7 +397,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-094 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-095 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -388,15 +407,17 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Freeze the smallest additive G2-3 `EXP-G1` contract before another scientific
-fit. Bind the exact D-094 aggregate receipt and the private development OOF
-inputs while keeping confirmatory truth, historical R3C row-level artifacts,
+Review and integrate the exact G2-3A contract at SHA-256
+`ce39721f...d97c3`, then require green post-main CI. Only afterward freeze a
+distinct additive G2-3B synthetic implementation contract. Implement a tiny
+family-bearing fixture, disjoint target capabilities, the exact twelve
+configuration forms and three-seed reduction, nested selector, outer freezer,
+paired scorer, accounting, cleanup, and status-specific terminals. Require two
+fresh roots, including reversed physical input order, to match every contracted
+terminal byte. Synthetic mechanics must reject family or truth leakage,
+configuration/seed drift, prediction-identity forgery, selection from outer
+truth, nonfinite values, partial fits, budget reuse, overwrite, retry, resume,
+and nonzero forbidden counters. Do not open official inputs, create an execution
+claim, or access confirmatory truth, historical R3C row-level artifacts,
 blinded test, TDI, external records, submission, official metric, leaderboard,
-and upload capabilities closed. Run only the preregistered 12-configuration,
-three-seed CatBoost screen over unchanged MapLight features. Fit iteration
-choice and any later comparison inside inner component folds; outer predictions
-remain score-only. Target CYP1A2 and CYP2D6, but do not alter endpoint-specific
-acceptance after observing outcomes. Accept only at least 3% relative and 0.015
-absolute component-macro MAE improvement, a paired upper 95% bound below zero,
-and no endpoint degradation above 0.015. Failure retains fixed MapLight and
-stops `EXP-G1` without widening the grid from outer evidence.
+or upload capability.
