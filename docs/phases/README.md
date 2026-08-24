@@ -26,9 +26,13 @@ expansion. All five promotion gates remain conjunctive. G2-3B now freezes the
 synthetic implementation boundary at SHA-256 `c8c706a8...ba866`: two fresh
 80-molecule/40-component roots, 17,640 full-topology deterministic model-stage
 invocations, exactly 28 real CatBoost compatibility fits, and byte-identical
-terminal maps. The contract freeze opens no synthetic or official operation.
-Its exact next gate is reviewed integration and green post-main CI, then only
-the contracted synthetic runner and adversarial tests.
+terminal maps. That implementation is now accepted at receipt SHA-256
+`479ba130...7ff06`: all 17,640 model-stage identities, 28 real locked-runtime
+fits, 23 focused adversarial tests, and seven byte-identical terminal files
+passed across the two roots. This is synthetic mechanics evidence only; every
+official and forbidden counter remains zero. The exact next gate is reviewed
+integration and green post-main CI for these hashes, then a distinct G2-3C
+execution contract and one immutable development-only claim.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

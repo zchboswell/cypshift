@@ -1,7 +1,7 @@
 # Phase 2 — OpenADMET global-v2
 
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
-and G2-3B synthetic implementation contract frozen; official development,
+and G2-3B synthetic implementation accepted; official development,
 confirmatory, historical-row, blinded-test, TDI, external, submission,
 official-metric, leaderboard, and upload capabilities remain closed.
 
@@ -308,6 +308,21 @@ terminal maps. Acceptance is mechanics and runtime evidence only; synthetic
 scores or selections cannot rank science. This freeze executes neither layer
 and opens no official input.
 
+The exact G2-3B implementation is now accepted in
+[`global_v2_g1_synthetic_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_synthetic_acceptance.json)
+at SHA-256 `479ba130...7ff06`. Two fresh sequential roots completed in 15.85
+wall-seconds at about 1.0 GB peak RSS. Root B reversed both physical source
+order and model-stage execution order; all seven terminal files nevertheless
+matched at tree receipt `bf40c3f6...2f872`. The exact total is 17,640 model-
+double invocations and 28 real CatBoost fits. Per root, the mechanics froze
+138,240 raw inner rows, 46,080 three-seed inner means, 11,520 complete
+projection rows, 2,880 raw outer rows, 960 three-seed outer means, 60 nested
+selection tokens, four future endpoint tokens, and 2,000 paired bootstrap
+replicates. Twenty-three focused tests cover the fourteen contracted
+adversarial classes. The 933-test repository suite, Ruff, and mypy pass
+locally. Synthetic values are engineered controls only, not scientific
+performance evidence. All official and forbidden counters remain zero.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -413,7 +428,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-096 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-097 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -423,14 +438,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate the exact G2-3B contract at SHA-256
-`c8c706a8...ba866`, then require green post-main CI. Only afterward implement
-its additive runner, synthetic driver, and focused tests. Run two fresh roots
-sequentially, including reversed physical input order; require 17,640 exact-
-topology deterministic model-stage invocations, 28 real locked-runtime
-CatBoost compatibility fits, expected inner selections and future endpoint
-tokens, all adversarial failures, exact cleanup/accounting, and byte-identical
-terminal maps. Do not open official inputs or baseline row outputs, create an
-execution claim, or access confirmatory truth, historical R3C row-level
-artifacts, blinded test, TDI, external records, submission, official metric,
-leaderboard, or upload capability.
+Review and integrate G2-3B acceptance SHA-256 `479ba130...7ff06` and its exact
+implementation hashes, then require green post-main CI. Only afterward draft a
+separate additive G2-3C contract and immutable single-use claim for the fixed
+8,820-fit EXP-G1 development attempt. Bind the accepted compiler, model-double
+control logic, real CatBoost constructors, freezers, selector, scorer,
+terminals, D-094 baseline receipts, official development source receipts,
+fixed private roots, resource ceilings, cleanup, and no-retry behavior. Do not
+open official inputs or baseline row outputs before that reviewed contract and
+claim exist. Keep confirmatory truth, historical R3C row-level artifacts,
+blinded test, TDI, external records, submission, official metric, leaderboard,
+and upload capability closed.

@@ -1,5 +1,13 @@
 # MapLight fixed-feature environment
 
+The G2-3B EXP-G1 synthetic implementation lives in
+`global_v2_g1_runner.py` and `run_global_v2_g1_synthetic.py`. It is bound to
+the locked Python 3.10.13/NumPy 1.25.2/CatBoost 1.2.1 environment and separates
+the 8,820-identity deterministic control-plane replay per root from fourteen
+real constructor/runtime probes. Its tracked two-root acceptance is
+`benchmarks/openadmet_cyp_2026/global_v2_g1_synthetic_acceptance.json`. These
+synthetic outputs are mechanics evidence only and cannot rank a model.
+
 This directory locks the compatible Stage A reproduction environment. It is
 not the unrecoverable historical MapLight environment.
 

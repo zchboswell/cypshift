@@ -9,7 +9,9 @@ ROOT = Path(__file__).parents[1]
 BENCHMARK = ROOT / "benchmarks" / "openadmet_cyp_2026"
 CONTRACT_PATH = BENCHMARK / "global_v2_g1_synthetic_contract.json"
 PARENT_PATH = BENCHMARK / "global_v2_g1_screen_contract.json"
+ACCEPTANCE_PATH = BENCHMARK / "global_v2_g1_synthetic_acceptance.json"
 CONTRACT_SHA256 = "c8c706a815c3fa44933021e1f44b33cb3372a9334c9bc34f01dd5c851bdba866"
+ACCEPTANCE_SHA256 = "479ba13074908e1d092867a940a29fe42e30b7265d36bc81d614450380c7ff06"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -195,3 +197,46 @@ def test_acceptance_is_conjunctive_mechanics_only_and_precedes_g2_3c() -> None:
     assert "cannot be resumed" in terminal["immutability"]
     assert "drafting G2-3C" in contract["next_gate"]
     assert "Do not open an official input" in contract["next_gate"]
+
+
+def test_tracked_g1_synthetic_acceptance_binds_exact_implementation() -> None:
+    acceptance = _load(ACCEPTANCE_PATH)
+    assert _sha256(ACCEPTANCE_PATH) == ACCEPTANCE_SHA256
+    assert acceptance["status"] == "G2_3B_EXP_G1_SYNTHETIC_ACCEPTED"
+    assert acceptance["contract_sha256"] == CONTRACT_SHA256
+    assert acceptance["roots"] == 2
+    assert acceptance["relative_terminal_maps_identical"]
+    assert acceptance["model_double_invocations_total"] == 17640
+    assert acceptance["real_catboost_fits_total"] == 28
+    assert acceptance["focused_tests_passed"] == 23
+    receipts = acceptance["implementation_receipts"]
+    assert receipts["g1_runner_source_sha256"] == _sha256(
+        ROOT / "research" / "maplight-fixed" / "global_v2_g1_runner.py"
+    )
+    assert receipts["synthetic_driver_source_sha256"] == _sha256(
+        ROOT / "research" / "maplight-fixed" / "run_global_v2_g1_synthetic.py"
+    )
+    assert receipts["focused_test_source_sha256"] == _sha256(
+        ROOT / "tests" / "test_openadmet_global_v2_g1_synthetic.py"
+    )
+    forbidden = {
+        "official_target_values_opened",
+        "official_features_opened",
+        "official_model_fits",
+        "official_predictions_generated",
+        "development_metric_evaluations",
+        "official_metric_evaluations",
+        "confirmatory_truth_values_opened",
+        "historical_r3c_row_level_artifacts_opened",
+        "blinded_test_files_opened",
+        "tdi_files_opened",
+        "external_records_acquired",
+        "submissions_created",
+        "leaderboard_observations",
+        "live_uploads",
+    }
+    assert all(
+        value == 0
+        for name, value in acceptance["accounting_per_replay"].items()
+        if name in forbidden
+    )

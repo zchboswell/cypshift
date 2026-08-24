@@ -121,9 +121,16 @@ exactly 28 locked-runtime CatBoost compatibility fits, then publish byte-
 identical terminal maps despite reversed physical source order. The model
 double tests nested mechanics; the real fits probe every configuration form
 and all three seeds. Neither layer produces scientific evidence. This contract
-freeze performs zero synthetic or official operation. Its exact next gate is
-reviewed integration and green post-main CI, followed only by the contracted
-G2-3B implementation and adversarial acceptance.
+freeze performed zero synthetic or official operation. The exact implementation
+is now accepted in
+[`global_v2_g1_synthetic_acceptance.json`](global_v2_g1_synthetic_acceptance.json)
+at SHA-256 `479ba130...7ff06`. Both fresh roots matched all seven terminal files
+at tree receipt `bf40c3f6...2f872` after 17,640 deterministic model-stage
+invocations, 28 real locked-runtime CatBoost fits, and 23 focused adversarial
+tests. Root B reversed both physical source order and execution order. This is
+mechanics evidence only; all official and forbidden counters are zero. The
+exact next gate is reviewed integration and green post-main CI, then a distinct
+G2-3C execution contract and single immutable development claim.
 
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in

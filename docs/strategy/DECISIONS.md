@@ -3051,3 +3051,44 @@
   unsigned integration, or CI regression revokes D-096. A failed synthetic
   replay cannot be resumed, repaired, moved, or converted into execution
   authority.
+
+## D-097 — Accept the exact EXP-G1 synthetic implementation
+
+- Date: 2026-08-24
+- Status: accepted G2-3B synthetic mechanics and locked-runtime evidence; no
+  official development, metric, confirmatory, test, or submission authority
+- Decision: Accept `global_v2_g1_synthetic_acceptance.json` at SHA-256
+  `479ba130...7ff06`, bound to G2-3B contract `c8c706a8...ba866`, runner
+  `fef03428...6ff47`, driver `8dea72b4...3fa3`, focused tests
+  `209048f2...6579`, accepted MapLight runner `154f8d23...6a9acb93f`, tutorial
+  metric `e63f12af...43269`, and research lock `99e72821...4195d8`. Retain the
+  two-layer design: deterministic model doubles prove the complete nested
+  control flow; real CatBoost fits prove only constructor/runtime compatibility.
+- Evidence: Two fresh 80-molecule/40-component roots ran sequentially in 15.85
+  wall-seconds at about 1.0 GB peak RSS. Root B reversed both physical source
+  order and model-stage execution order. All seven terminal files matched
+  byte-for-byte at combined tree receipt `bf40c3f6...2f872` and terminal
+  manifest `b3aeb574...be2c`. Across both roots, 17,640 model-stage identities
+  and exactly 28 real locked-runtime CatBoost fits completed. Per root, the
+  implementation froze 138,240 raw inner predictions, 46,080 three-seed inner
+  means, 11,520 complete-projection rows, 2,880 raw outer predictions, 960
+  three-seed outer means, 60 outer selections, four future endpoint tokens,
+  888 tutorial calls, and 2,000 paired component-bootstrap replicates.
+  Twenty-three focused tests cover family and truth leakage, cross-root mixing,
+  seed/configuration and feature/runtime drift, identity forgery, nonfinite
+  arithmetic, partial probes, completion-order nondeterminism, overwrite,
+  retry/resume, symlink/traversal, cleanup, and forbidden accounting. Ruff,
+  mypy, and the 933-test repository suite pass locally. Every official,
+  development-metric, confirmatory, historical-row, blinded-test, TDI,
+  external, submission, leaderboard, and upload counter is zero.
+- Alternatives: Treat synthetic effect sizes as model evidence; run every
+  synthetic identity as a real fit; omit root-instance binding; accept only
+  canonical input/execution order; loosen a failed topology; open official
+  development inputs in the same milestone; or draft a claim before reviewed
+  integration and post-main CI.
+- Reversal condition: Any tracked/source receipt drift, non-identical terminal,
+  hidden family or capability leak, invalid resolved CatBoost semantics,
+  nonzero forbidden operation, synthetic value used as scientific evidence,
+  incomplete cleanup, unsigned integration, or post-main CI failure revokes
+  D-097 and stops G2-3. It does not authorize replay, repair, resume, move,
+  overwrite, official access, or a replacement G2-3B attempt.

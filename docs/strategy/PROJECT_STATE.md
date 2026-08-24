@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-096. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-097. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -107,6 +107,22 @@ performance. Reversed physical input order must yield byte-identical terminal
 maps. This contract milestone performs zero synthetic or official operation;
 implementation remains unauthorized until reviewed integration and green
 post-main CI.
+
+G2-3B implementation is now synthetically accepted at tracked receipt SHA-256
+`479ba130...7ff06`. Two sequential fresh roots, the second with reversed
+physical source order and reversed model-stage execution order, matched all
+seven terminal files byte-for-byte at tree receipt `bf40c3f6...2f872` and
+terminal manifest `b3aeb574...be2c`. Across both roots, the deterministic model
+double traversed all 17,640 contracted identities and the locked Python
+3.10.13/NumPy 1.25.2/CatBoost 1.2.1 probe completed exactly 28 real fits. Each
+root froze 138,240 raw and 46,080 seed-averaged inner predictions, 11,520
+complete-projection rows, 2,880 raw and 960 seed-averaged outer predictions,
+60 outer selection tokens, four future endpoint tokens, and 2,000 bootstrap
+replicates. Twenty-three focused adversarial tests and the 933-test repository
+suite pass locally. The accepted synthetic values are deliberately engineered
+mechanics controls and have no model-quality interpretation. Every official,
+development-metric, confirmatory, historical-row, blinded-test, TDI, external,
+submission, leaderboard, and upload counter remains zero.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -756,17 +772,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-3B synthetic implementation contract at
-SHA-256 `c8c706a8...ba866`, then require green post-main CI. Only afterward
-implement its additive runner, driver, and focused adversarial tests. Require
-two sequential fresh roots, 17,640 exact-topology deterministic model-stage
-invocations, 28 real locked-runtime CatBoost compatibility fits, and
-byte-identical terminal maps before accepting implementation bytes. Keep
-official development inputs and baseline row outputs, confirmatory truth,
-historical R3C row-level artifacts, blinded test, TDI, external records,
-submission, official metric, leaderboard, and upload capabilities closed. A
-distinct G2-3C execution contract and immutable claim may be drafted only after
-accepted G2-3B implementation is reviewed, integrated, and green on `main`.
+Review and integrate the exact G2-3B implementation and acceptance receipt at
+SHA-256 `479ba130...7ff06`, then require green post-main CI. Only afterward
+draft a distinct additive G2-3C execution contract bound to runner
+`fef03428...6ff47`, driver `8dea72b4...3fa3`, focused tests
+`209048f2...6579`, and the exact accepted parents. G2-3C may authorize one
+immutable development-only claim and the fixed 8,820-fit EXP-G1 attempt; it
+must keep confirmatory truth, historical R3C row-level artifacts, blinded test,
+TDI, external records, submission, official metric, leaderboard, and upload
+capabilities closed. Do not open official development inputs or baseline row
+outputs until that separate contract, claim, exact implementation hashes,
+reviewed integration, and green post-main CI all exist.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any
