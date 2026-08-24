@@ -129,8 +129,20 @@ at tree receipt `bf40c3f6...2f872` after 17,640 deterministic model-stage
 invocations, 28 real locked-runtime CatBoost fits, and 23 focused adversarial
 tests. Root B reversed both physical source order and execution order. This is
 mechanics evidence only; all official and forbidden counters are zero. The
-exact next gate is reviewed integration and green post-main CI, then a distinct
-G2-3C execution contract and single immutable development claim.
+G2-3C execution contract is frozen at SHA-256 `c75cb01e...0b869` with immutable
+unconsumed claim `1c9f3438...46154`. Its additive official-shaped mechanics are
+now accepted in
+[`global_v2_g1_execution_synthetic_acceptance.json`](global_v2_g1_execution_synthetic_acceptance.json)
+at SHA-256 `87065e0c...65f9e`: two fresh 312-development-molecule roots matched
+all nine terminal files at tree receipt `a8848562...c2f1b`, traversed 17,640
+model-stage identities total, preserved distinct point/tutorial masks, and
+kept 352 confirmatory rows opaque. The 28 matching real runtime probes took
+1,443.87 wall-seconds and 19,203.67 CPU-seconds. Linear 8,820-fit projection is
+126.339 wall-hours and 1,680.321 CPU-core-hours, exceeding both frozen resource
+ceilings on the smaller fixture. The claim therefore remains unconsumed and
+official execution is blocked pending one separately contracted,
+implementation-equivalent synthetic resource falsifier. All official and
+forbidden counters remain zero.
 
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in

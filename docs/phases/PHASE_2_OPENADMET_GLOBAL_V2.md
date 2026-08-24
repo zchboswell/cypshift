@@ -1,8 +1,9 @@
 # Phase 2 — OpenADMET global-v2
 
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
-G2-3B synthetic implementation accepted, and G2-3C execution contract plus
-unconsumed claim frozen; official development, confirmatory, historical-row,
+G2-3B synthetic implementation accepted, and G2-3C official-shaped mechanics
+accepted but resource feasibility rejected; the G2-3C claim remains
+unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
 upload capabilities remain closed.
 
@@ -337,6 +338,21 @@ official-shaped compiler/wrapper milestone passes two-root synthetic
 falsification and reviewed integration. Therefore this contract and claim
 grant no current official access, fitting, prediction, or metric authority.
 
+D-099 accepts the additive compiler/wrapper mechanics under
+[`global_v2_g1_execution_synthetic_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_execution_synthetic_acceptance.json),
+SHA-256 `87065e0c...65f9e`. Two fresh 312-development-molecule roots matched all
+nine terminal files at tree receipt `a8848562...c2f1b`, including reversed
+physical source order. The sparse masks are explicit and distinct: 999 finite
+central targets, 860 tutorial-eligible intervals, 139 point-only rows, and 424
+tutorial rows without standard deviations; 352 confirmatory rows stayed opaque
+and zero confirmatory values were parsed. Each root traversed the exact 8,820
+model-stage identities and 888 tutorial calls. The exact 28 real runtime probes
+matched, but consumed 1,443.87 wall-seconds and 19,203.67 CPU-seconds. Linear
+projection from the smaller fixture is already 126.339 wall-hours and 1,680.321
+CPU-core-hours, above the frozen 120-hour and 1,200-core-hour limits. Mechanics
+acceptance therefore does not permit claim consumption. No official input was
+opened and every forbidden counter remains zero.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -442,7 +458,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-098 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-099 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -452,13 +468,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate G2-3C contract SHA-256 `c75cb01e...0b869`, claim SHA-256
-`1c9f3438...46154`, and focused tests, then require green post-main CI. Only
-afterward implement the additive official capability compiler, attempt wrapper,
-and two-root official-shaped synthetic driver. The acceptance must bind exact
-integrated hashes and falsify the full topology, family and truth isolation,
-paired-baseline boundary, resources, cleanup, terminals, and forbidden
-accounting without consuming the claim or opening official inputs. Keep
+Review and integrate D-099's compiler `1af2ddf8...5e6c8`, wrapper
+`dd413f44...03a6b`, driver `ec14ec45...3e9e`, and acceptance
+`87065e0c...65f9e`, then require green post-main CI. Keep claim
+`1c9f3438...46154` unconsumed. Next freeze a distinct synthetic-only resource
+feasibility contract for at most one implementation-equivalent optimization;
+require exact prediction equivalence and a conservative projection below both
+existing ceilings with explicit margin. If that falsifier fails, reject EXP-G1
+as infeasible without consuming the claim. Keep official development,
 confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
 external records, submission, official metric, leaderboard, and upload
 capability closed.

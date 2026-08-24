@@ -34,11 +34,16 @@ official and forbidden counter remains zero. Those hashes are reviewed,
 integrated, and green on post-main CI. G2-3C now freezes its
 execution contract at SHA-256 `c75cb01e...0b869` and the immutable unconsumed
 claim at `1c9f3438...46154`: one fixed attempt, exactly 8,820 fits, zero
-baseline refits, and no retry or resume. Its future implementation receipts
-remain null. The exact next gate is reviewed integration and green post-main
-CI for this contract-only milestone, then additive official-shaped
-compiler/wrapper implementation and two-root synthetic acceptance with no
-claim consumption or official input access.
+baseline refits, and no retry or resume. D-099 accepts the additive
+official-shaped mechanics at receipt `87065e0c...65f9e`: two roots matched all
+nine terminal files, the sparse point/tutorial masks stayed distinct, and all
+official and forbidden counters remained zero. The 28 real probes nevertheless
+project to 126.339 wall-hours and 1,680.321 CPU-core-hours for the frozen 8,820
+fits, already above both execution ceilings on the smaller fixture. The claim
+therefore remains unconsumed. The exact next gate is reviewed integration and
+green post-main CI, followed by one separately contracted synthetic-only
+implementation-equivalent resource falsifier; failure rejects EXP-G1 without
+official access or claim consumption.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-098. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-099. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -136,6 +136,27 @@ All five promotion gates remain conjunctive. The four future implementation
 receipt fields remain null, so the claim cannot yet be consumed. This contract
 milestone opened no official development or baseline row-level input and
 performed zero fit, prediction, or metric operation.
+
+D-099 accepts the additive G2-3C implementation mechanics at tracked
+official-shaped synthetic acceptance SHA-256 `87065e0c...65f9e`, binding
+compiler `1af2ddf8...5e6c8`, wrapper `dd413f44...03a6b`, and driver
+`ec14ec45...3e9e`. Two fresh 312-development-molecule roots matched all nine
+terminal files byte-for-byte at tree receipt `a8848562...c2f1b`. Each root
+traversed the exact 8,820-stage topology and 888 tutorial calls while preserving
+separate point and tutorial masks: 999 finite central targets, 860
+tutorial-eligible intervals, 139 point-only rows, and 424 tutorial rows without
+standard deviations. All 352 confirmatory rows stayed opaque and zero
+confirmatory values were parsed. The 28 real locked-runtime probes matched but
+took 1,443.87 wall-seconds and 19,203.67 CPU-seconds at 1,505,876 KB peak RSS.
+Even linear projection from this smaller synthetic fixture is 126.339
+wall-hours and 1,680.321 CPU-core-hours for 8,820 fits, exceeding the frozen
+120-hour and 1,200-core-hour ceilings before larger official folds. Therefore
+the claim remains unconsumed, every official and forbidden counter remains
+zero, and official execution is blocked. The exact next action is a distinct
+synthetic-only resource-feasibility contract for at most one
+implementation-equivalent optimization with prediction-equivalence evidence;
+if it cannot fit both existing ceilings with margin, reject EXP-G1 as
+infeasible without consuming the claim.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking

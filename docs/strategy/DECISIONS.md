@@ -3127,3 +3127,47 @@
   operation; unsigned integration; or post-main CI regression revokes D-098.
   A later consumed failure or rejection remains terminal and cannot authorize
   retry, repair, resume, move, overwrite, or grid expansion.
+
+## D-099 — Accept G2-3C mechanics but block claim consumption on resources
+
+- Date: 2026-08-24
+- Status: accepted official-shaped synthetic implementation evidence; sole
+  development claim remains unconsumed and official execution is blocked
+- Decision: Accept the additive G2-3C compiler, attempt wrapper, and two-root
+  official-shaped synthetic mechanics at acceptance SHA-256
+  `87065e0c...65f9e`, binding compiler `1af2ddf8...5e6c8`, wrapper
+  `dd413f44...03a6b`, driver `ec14ec45...3e9e`, accepted G1 runner
+  `fef03428...6ff47`, and the locked research runtime. Keep the tracked claim
+  `1c9f3438...46154` unconsumed. The exact runtime probes falsify feasibility
+  under the frozen 120 wall-hour and 1,200 CPU-core-hour ceilings, so mechanics
+  acceptance does not grant official source, baseline-row, fitting, prediction,
+  or development-metric authority.
+- Evidence: Two fresh 312-development-molecule roots, the second in reversed
+  physical source order, matched all nine terminal files byte-for-byte at tree
+  receipt `a8848562...c2f1b`. Per root the sparse compiler retained 999 finite
+  central targets, 860 tutorial-eligible intervals, 139 point-only rows, and
+  424 tutorial-eligible rows without standard deviations while keeping all 352
+  confirmatory rows opaque and parsing zero confirmatory values. Each replay
+  traversed exactly 8,640 inner and 180 selected-outer model-stage identities,
+  froze 539,136 raw and 179,712 seed-averaged inner predictions, 11,232 raw and
+  3,744 seed-averaged outer predictions, and made 888 tutorial-metric calls.
+  The 28 real locked-runtime probes completed in 1,443.87 wall-seconds, consumed
+  19,203.67 CPU-seconds, reached 1,505,876 KB peak RSS, and matched across both
+  roots. At the smaller synthetic scale, exact linear projection to 8,820 fits
+  is 126.339 wall-hours and 1,680.321 CPU-core-hours, already exceeding both
+  frozen ceilings before the larger official folds. Eight focused tests and the
+  954-test repository suite pass; Ruff, production mypy, package build, and the
+  locked-runtime CLI smoke check pass. Every official, confirmatory,
+  historical-row, blinded-test, TDI, external, submission, official-metric,
+  leaderboard, and upload counter is zero.
+- Alternatives: Consume the claim and hope the larger official run is faster;
+  relax a ceiling after observing official data; reduce the grid, seeds,
+  iterations, depth, or feature set; add adaptive concurrency; retry a failed
+  consumed attempt; or call mechanics acceptance proof of scientific model
+  quality.
+- Reversal condition: Claim consumption requires a separately frozen,
+  synthetic-only resource-feasibility contract and exact prediction-equivalence
+  evidence for any implementation optimization. The conservative projection
+  must fit both existing ceilings with explicit margin without changing a
+  scientific identity. If no such bounded implementation remedy passes, reject
+  EXP-G1 as infeasible without consuming the claim; do not widen or tune it.
