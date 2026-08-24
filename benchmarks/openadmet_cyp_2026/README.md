@@ -1,8 +1,10 @@
 # OpenADMET CYP 2026 — TRACE contract receipts
 
 This directory is the tracked launch receipt for the 2026-08-17 OpenADMET CYP
-release: immutable revisions and metadata only; no challenge CSV, prediction,
-model cache, or upstream source tree is copied here.
+release. It contains immutable contracts and receipts plus one explicitly
+bounded, training-only validation audit bundle. No challenge CSV, raw model
+prediction, submission value, model cache, or upstream source tree is copied
+here.
 
 The official training-only TRACE oracle is complete with authenticated
 `R5_ORACLE_NO_SIGNAL`; see
@@ -11,6 +13,13 @@ receipt chain, negative scientific result, and deployment stop. The exact
 competition-validated direct MapLight upload is documented separately in
 [`DIRECT_BASELINE_HANDOFF.md`](DIRECT_BASELINE_HANDOFF.md). No prediction CSV is
 tracked in Git.
+
+External reviewers can independently recompute the official TRACE decision
+without repeating its 19.55-hour fit in
+[`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact
+bundle contains held-out **training** errors and deterministic reductions only;
+it contains no blinded-test access, test prediction, submission value, raw
+prediction, raw target, or SMILES.
 
 The pinned read-only source clones were verified at:
 

@@ -42,6 +42,14 @@ metric calls, submissions, transductive relationships, and inferred-anchor
 candidate pools. The run therefore did not inspect the challenge test set or
 create a submission.
 
+The exact claim, official receipt, and eight-file training-validation terminal
+are published in the
+[`r5d_training_validation_audit/`](r5d_training_validation_audit/) bundle so an
+external reviewer can recompute the complete decision without rerunning the
+models. The bundle contains no blinded-test access or prediction, submission
+value, raw prediction, raw target, or SMILES. Its source training data is the
+public Apache-2.0 OpenADMET training split.
+
 ## Why TRACE did not pass
 
 The frozen question was whether measured-anchor TRACE (`T0`) robustly improves

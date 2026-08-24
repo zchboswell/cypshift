@@ -4,6 +4,13 @@ Status: active; the sole official crash-replacement oracle completed with
 authenticated `R5_ORACLE_NO_SIGNAL`; gate `R5D_OFFICIAL_NO_SIGNAL`; date
 2026-08-23.
 
+The exact training-only claim, official receipt, and eight-file terminal are
+publicly reviewable in
+[`r5d_training_validation_audit/`](../../benchmarks/openadmet_cyp_2026/r5d_training_validation_audit/).
+The bundle exposes held-out absolute errors and aggregate evidence but no
+blinded-test access or prediction, submission value, raw prediction, raw
+target, or SMILES.
+
 The fixed R5D attempt root contains an immutable `R5_ORACLE_FAILED` terminal
 and receipt. The clean signed checkout lacked its required checkout-local root
 and MapLight Python executables, so the accepted runner stopped before source

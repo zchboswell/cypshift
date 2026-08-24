@@ -1,13 +1,14 @@
 # Active phase
 
-Phase 1 TRACE is staged at `R5D_OFFICIAL_PREFIT_RECOVERY_FROZEN`. The original
-R5D attempt published an immutable pre-gate `R5_ORACLE_FAILED` result because
-the clean execution worktree lacked its required checkout-local Python
-executables. No target value, fit, prediction, score, test file, TDI file,
-metric, submission, transductive relationship, or inferred-anchor pool was
-opened. Retry and resume of that root remain forbidden under D-077. D-080
-authorizes one separately claimed replacement after both pinned checkout-local
-Python environments pass before claim; I0 remains inactive. The
+Phase 1 TRACE is complete at `R5D_OFFICIAL_NO_SIGNAL`. The sole authenticated
+crash-replacement run completed all 7,985 frozen child processes and found that
+fixed MapLight substantially outperformed measured-anchor TRACE under the
+predeclared component-held-out evaluation. D-082 therefore permanently stops
+I0/inferred-anchor deployment for this challenge version. No blinded-test,
+TDI, official-metric, submission, transductive, or inferred-anchor-pool
+operation occurred. D-083 publishes the exact training-only claim, receipt,
+and eight-file terminal for external review without exposing test predictions,
+submission values, raw predictions, raw targets, or SMILES. The
 launch-day OpenADMET source revisions, file receipts, submission names/types,
 endpoint-state notes, and unresolved
 metric/permission items are frozen in

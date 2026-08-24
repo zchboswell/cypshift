@@ -2532,3 +2532,35 @@
 - Reversal condition: None for the historical official result. A future
   challenge version may preregister a materially new hypothesis before opening
   its outcomes, but this challenge's R5D and I0 decisions remain terminal.
+
+## D-083 — Publish the training-only R5D audit terminal
+
+- Date: 2026-08-23
+- Status: accepted public validation evidence; no prediction or submission
+  authority
+- Decision: Publish the exact R5D crash-replacement attempt claim, official
+  receipt, and eight-file terminal in the repository as a bounded
+  training-validation audit bundle. The bundle may expose public training
+  molecule identifiers, held-out absolute errors, validation metadata,
+  aggregate metrics, hyperparameter selections, process records, and immutable
+  receipts. It must not contain blinded-test access or predictions, submission
+  values, raw model predictions, raw target values, or SMILES. Preserve D-082's
+  permanent TRACE deployment stop and the separately stored direct MapLight
+  submission bytes.
+- Evidence: OpenADMET publishes the source dataset under Apache-2.0. The copied
+  claim, receipt, terminal manifest, and result retain SHA-256 values
+  `0036a70e...`, `a5e61aaa...`, `dd93d2f...`, and `4b06a96a...`. The public
+  verification test checks the exact terminal receipts, all 7,985 contiguous
+  zero-exit process records and verb counts, zero values for all six forbidden
+  counters, exact denied authority for test/prediction/submission/TDI/
+  transduction, absence of raw prediction/target/SMILES columns, and complete
+  deterministic terminal revalidation. An independent membership check found
+  all 243 published query identifiers in the pinned 4,905-molecule training
+  projection and zero in the pinned 750-molecule blinded-test set.
+- Alternatives: Require every external reviewer to repeat the 19.55-hour model
+  run; publish only aggregate prose; publish private intermediate model roots;
+  publish the direct submission; or publish raw source labels and predictions.
+- Reversal condition: Any digest mismatch, raw prediction/target/SMILES field,
+  blinded-test or submission value, nonzero forbidden counter, expanded
+  authority, source-license incompatibility, or failure of the independent
+  terminal validator revokes the public bundle and requires immediate removal.

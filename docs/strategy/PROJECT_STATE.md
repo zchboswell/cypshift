@@ -17,6 +17,13 @@ preregistered I0/F1 bridge therefore permanently stops for this challenge
 version; no TRACE test prediction or submission is authorized. The exact
 negative outcome is recorded in
 [`TRACE_OFFICIAL_OUTCOME.md`](../../benchmarks/openadmet_cyp_2026/TRACE_OFFICIAL_OUTCOME.md).
+The exact claim, 7,985-process receipt, and eight-file training-validation
+terminal are now published in
+[`r5d_training_validation_audit/`](../../benchmarks/openadmet_cyp_2026/r5d_training_validation_audit/).
+This lets an external auditor recompute the official decision without rerunning
+the 19.55-hour fit. The bundle contains held-out training errors only and no
+blinded-test access or prediction, submission value, raw prediction, raw
+target, or SMILES.
 
 The direct four-endpoint MapLight lane completed two official blinded-test
 rehearsals and published one byte-identical, locally accepted 750-row candidate.
