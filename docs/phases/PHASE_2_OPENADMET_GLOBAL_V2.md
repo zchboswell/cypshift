@@ -1,9 +1,10 @@
 # Phase 2 — OpenADMET global-v2
 
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
-and G2-3B synthetic implementation accepted; official development,
-confirmatory, historical-row, blinded-test, TDI, external, submission,
-official-metric, leaderboard, and upload capabilities remain closed.
+G2-3B synthetic implementation accepted, and G2-3C execution contract plus
+unconsumed claim frozen; official development, confirmatory, historical-row,
+blinded-test, TDI, external, submission, official-metric, leaderboard, and
+upload capabilities remain closed.
 
 Authorized: 2026-08-24.
 
@@ -323,6 +324,19 @@ adversarial classes. The 933-test repository suite, Ruff, and mypy pass
 locally. Synthetic values are engineered controls only, not scientific
 performance evidence. All official and forbidden counters remain zero.
 
+G2-3C freezes the later execution envelope in
+[`global_v2_g1_execution_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_execution_contract.json)
+at SHA-256 `c75cb01e...0b869` and its tracked unconsumed claim at SHA-256
+`1c9f3438...46154`. The fixed private roots and all development-source and G2-2
+baseline receipts are named without opening row-level input. The single future
+attempt must execute exactly 8,820 new fits, refit the baseline zero times, run
+one sixteen-thread CatBoost fit at a time, and terminate without retry, resume,
+move, or overwrite. Promotion remains the same five-way conjunction frozen in
+G2-3A. Four future implementation receipts are null until a separate additive
+official-shaped compiler/wrapper milestone passes two-root synthetic
+falsification and reviewed integration. Therefore this contract and claim
+grant no current official access, fitting, prediction, or metric authority.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -428,7 +442,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-097 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-098 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -438,14 +452,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate G2-3B acceptance SHA-256 `479ba130...7ff06` and its exact
-implementation hashes, then require green post-main CI. Only afterward draft a
-separate additive G2-3C contract and immutable single-use claim for the fixed
-8,820-fit EXP-G1 development attempt. Bind the accepted compiler, model-double
-control logic, real CatBoost constructors, freezers, selector, scorer,
-terminals, D-094 baseline receipts, official development source receipts,
-fixed private roots, resource ceilings, cleanup, and no-retry behavior. Do not
-open official inputs or baseline row outputs before that reviewed contract and
-claim exist. Keep confirmatory truth, historical R3C row-level artifacts,
-blinded test, TDI, external records, submission, official metric, leaderboard,
-and upload capability closed.
+Review and integrate G2-3C contract SHA-256 `c75cb01e...0b869`, claim SHA-256
+`1c9f3438...46154`, and focused tests, then require green post-main CI. Only
+afterward implement the additive official capability compiler, attempt wrapper,
+and two-root official-shaped synthetic driver. The acceptance must bind exact
+integrated hashes and falsify the full topology, family and truth isolation,
+paired-baseline boundary, resources, cleanup, terminals, and forbidden
+accounting without consuming the claim or opening official inputs. Keep
+confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
+external records, submission, official metric, leaderboard, and upload
+capability closed.

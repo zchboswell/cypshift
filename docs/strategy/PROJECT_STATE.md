@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-097. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-098. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -123,6 +123,19 @@ suite pass locally. The accepted synthetic values are deliberately engineered
 mechanics controls and have no model-quality interpretation. Every official,
 development-metric, confirmatory, historical-row, blinded-test, TDI, external,
 submission, leaderboard, and upload counter remains zero.
+
+G2-3C now freezes the single-use development execution contract at SHA-256
+`c75cb01e...0b869` and its immutable unconsumed claim at SHA-256
+`1c9f3438...46154`. The claim binds the exact D-095/D-096/D-097 parents,
+accepted runner `fef03428...6ff47`, driver `8dea72b4...3fa3`, focused tests
+`209048f2...6579`, research lock, fixed development-source receipts, and the
+immutable G2-2 baseline outer-OOF receipt. A future attempt is limited to one
+fresh fixed root, exactly 8,820 new CatBoost fits, zero baseline refits, one
+fit at a time with sixteen threads, and no retry, resume, move, or overwrite.
+All five promotion gates remain conjunctive. The four future implementation
+receipt fields remain null, so the claim cannot yet be consumed. This contract
+milestone opened no official development or baseline row-level input and
+performed zero fit, prediction, or metric operation.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -772,17 +785,19 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-3B implementation and acceptance receipt at
-SHA-256 `479ba130...7ff06`, then require green post-main CI. Only afterward
-draft a distinct additive G2-3C execution contract bound to runner
-`fef03428...6ff47`, driver `8dea72b4...3fa3`, focused tests
-`209048f2...6579`, and the exact accepted parents. G2-3C may authorize one
-immutable development-only claim and the fixed 8,820-fit EXP-G1 attempt; it
-must keep confirmatory truth, historical R3C row-level artifacts, blinded test,
-TDI, external records, submission, official metric, leaderboard, and upload
-capabilities closed. Do not open official development inputs or baseline row
-outputs until that separate contract, claim, exact implementation hashes,
-reviewed integration, and green post-main CI all exist.
+Review and integrate the exact G2-3C execution contract
+`c75cb01e...0b869`, unconsumed claim `1c9f3438...46154`, and focused static
+tests, then require green post-main CI. Only afterward implement the distinct
+additive official capability compiler, attempt wrapper, and official-shaped
+synthetic driver. Accept those exact hashes only after two fresh synthetic
+roots prove the full 8,820-stage topology, least-privilege input and baseline
+capabilities, deterministic aggregates, resource accounting, cleanup, and
+failure semantics with every official and forbidden counter zero. Do not
+consume the claim or open official development or baseline row-level inputs
+until that implementation acceptance is reviewed, integrated, and green on
+post-main CI. Confirmatory truth, historical R3C row-level artifacts, blinded
+test, TDI, external records, submission, official metric, leaderboard, and
+upload capabilities remain closed.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

@@ -30,9 +30,15 @@ terminal maps. That implementation is now accepted at receipt SHA-256
 `479ba130...7ff06`: all 17,640 model-stage identities, 28 real locked-runtime
 fits, 23 focused adversarial tests, and seven byte-identical terminal files
 passed across the two roots. This is synthetic mechanics evidence only; every
-official and forbidden counter remains zero. The exact next gate is reviewed
-integration and green post-main CI for these hashes, then a distinct G2-3C
-execution contract and one immutable development-only claim.
+official and forbidden counter remains zero. Those hashes are reviewed,
+integrated, and green on post-main CI. G2-3C now freezes its
+execution contract at SHA-256 `c75cb01e...0b869` and the immutable unconsumed
+claim at `1c9f3438...46154`: one fixed attempt, exactly 8,820 fits, zero
+baseline refits, and no retry or resume. Its future implementation receipts
+remain null. The exact next gate is reviewed integration and green post-main
+CI for this contract-only milestone, then additive official-shaped
+compiler/wrapper implementation and two-root synthetic acceptance with no
+claim consumption or official input access.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

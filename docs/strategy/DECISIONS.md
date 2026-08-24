@@ -3092,3 +3092,38 @@
   incomplete cleanup, unsigned integration, or post-main CI failure revokes
   D-097 and stops G2-3. It does not authorize replay, repair, resume, move,
   overwrite, official access, or a replacement G2-3B attempt.
+
+## D-098 — Freeze the single-use EXP-G1 development execution envelope
+
+- Date: 2026-08-24
+- Status: accepted contract-and-unconsumed-claim-only G2-3C evidence; no
+  official development or baseline-row access, fit, prediction, or metric
+  operation authorized
+- Decision: Freeze `global_v2_g1_execution_contract.json` at SHA-256
+  `c75cb01e...0b869` and its immutable unconsumed claim at SHA-256
+  `1c9f3438...46154`. Bind the exact D-095/D-096/D-097 receipts, runner
+  `fef03428...6ff47`, driver `8dea72b4...3fa3`, focused tests
+  `209048f2...6579`, fixed G2-2 development-source and baseline-prediction
+  receipts, private source/baseline/attempt roots, runtime, resources, cleanup,
+  and terminal semantics. Permit at most one later consumed attempt containing
+  exactly 8,820 new CatBoost fits and zero baseline refits, with one
+  sixteen-thread fit at a time and no retry, resume, move, or overwrite.
+- Evidence: Eight focused static tests authenticate every parent and accepted
+  source, the exact fit and prediction arithmetic, the five conjunctive
+  promotion gates, immutable official receipt strings, one-use claim
+  semantics, fixed resources, cleanup, terminals, and current zero authority.
+  Four future implementation receipt fields are null. The contract freeze
+  opens no corresponding private file and every official, development-metric,
+  confirmatory, historical-row, blinded-test, TDI, external, submission,
+  leaderboard, and upload counter is zero.
+- Alternatives: Consume the claim before official-shaped wrapper acceptance;
+  open the development source while drafting; reuse the synthetic driver as an
+  official compiler; run two 8,820-fit official replays; refit the baseline;
+  parallelize adaptively; treat unused parent capacity as repair budget; or
+  combine contract freeze, implementation acceptance, and scientific execution.
+- Reversal condition: Any parent, source, baseline, runtime, or implementation
+  receipt drift; non-exact fit topology; family, truth, or outer-feedback leak;
+  altered acceptance; premature claim consumption; nonzero forbidden
+  operation; unsigned integration; or post-main CI regression revokes D-098.
+  A later consumed failure or rejection remains terminal and cannot authorize
+  retry, repair, resume, move, overwrite, or grid expansion.
