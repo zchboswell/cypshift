@@ -2718,3 +2718,36 @@
   adversarial/CI regression revokes G2-1 acceptance and blocks G2-2. The
   synthetic control value is plumbing evidence only and cannot select a model
   or be represented as scientific or official performance.
+
+## D-089 — Preserve the sealed holdout while freezing MapLight reproduction
+
+- Date: 2026-08-24
+- Status: accepted G2-2A contract evidence; no official scientific execution
+  authority
+- Decision: Freeze the G2-2A MapLight reproduction contract at SHA-256
+  `7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b`.
+  Authenticate the accepted R3C terminal and aggregate receipts, but never
+  rerun its full 4,905-molecule population or read its historical row-level
+  outcomes. Prove the exact recipe on synthetic data, then permit a separately
+  reviewed G2-2C contract to run MapLight only on the 3,908 development
+  molecules. Do not compare development metric values with historical R3C
+  metric values because the populations differ.
+- Evidence: G2-0 prospectively assigned 997 molecules in 913 components to a
+  sealed confirmatory partition. Historical R3C used all 4,905 molecules and
+  4,553 components, so literal full-population reproduction would expose
+  confirmatory truth before candidate freeze. Exact historical terminal,
+  result, endpoint-loss, bootstrap, and global-cell receipt hashes remain
+  available as immutable aggregate authentication. The contract freezes the
+  accepted 2,563-column MapLight recipe, Python 3.10.13/NumPy 1.25.2/CatBoost
+  1.2.1 runtime, 3x5x4 family cross-fit, 300 fits per replay, deterministic OOF
+  schemas, and component-equal no-interpolation q90 of absolute inner-OOF
+  residuals. All current official-operation authorities remain false.
+- Alternatives: Rerun R3C literally and contaminate the confirmatory holdout;
+  alter the new partition to exclude historical rows; silently compare
+  different populations; read row-level R3C outcomes to tune the new harness;
+  or defer uncertainty mechanics until after observing development errors.
+- Reversal condition: An authenticated split receipt showing no R3C overlap,
+  a reviewed organizer requirement that invalidates the sealed partition, or a
+  receipt/runtime inconsistency stops G2-2 before official execution and
+  requires a new prospective decision. It does not authorize confirmatory
+  truth access or outcome-driven repair.

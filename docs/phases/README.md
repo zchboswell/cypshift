@@ -6,11 +6,13 @@ residual only if global out-of-fold evidence justifies it:
 
 - [`PHASE_2_OPENADMET_GLOBAL_V2.md`](PHASE_2_OPENADMET_GLOBAL_V2.md)
 
-G2-0 freezes the contract-led sequence and G2-1 now accepts its synthetic-only
-capability and tutorial-metric firewall. No official scientific stage has
-execution authority until its own pre-result contract and synthetic firewall
-pass. The exact next milestone freezes the distinct G2-2 MapLight reproduction
-contract; it does not open official inputs or perform a fit.
+G2-0 freezes the contract-led sequence, G2-1 accepts its synthetic-only
+capability and tutorial-metric firewall, and G2-2A freezes the
+sealed-holdout-safe MapLight reproduction contract. No official scientific
+stage has execution authority until its own pre-result contract and synthetic
+firewall pass. The exact next milestone implements and adversarially accepts
+the G2-2B runner on synthetic inputs only; it does not open official inputs or
+perform an official fit.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

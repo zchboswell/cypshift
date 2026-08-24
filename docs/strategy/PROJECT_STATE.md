@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-088. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-089. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -29,8 +29,12 @@ only, and the scorer alone contains synthetic truth. Pinned tutorial metric
 fixtures and 26 focused adversarial tests pass; the synthetic control score has
 no scientific or official interpretation. No **official** Phase 2 target,
 feature, model, prediction, metric-evaluation, external-record, blinded-test,
-submission, or leaderboard-selection authority exists yet. The next gate is a
-contract-only G2-2 MapLight reproduction freeze.
+submission, or leaderboard-selection authority exists yet. G2-2A freezes the
+sealed-holdout-safe MapLight reproduction contract at SHA-256
+`7983e767...a344b`. It authenticates immutable R3C aggregate receipts but
+forbids a full-population rerun because R3C includes the 997 molecules now
+sealed for confirmatory evaluation. The next gate is G2-2B synthetic runner
+implementation and adversarial acceptance only.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -680,17 +684,18 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-After the reviewed G2-1 firewall milestone is integrated, create
-`codex/global-v2-maplight-contract` from passing `main`. Freeze a distinct G2-2
-MapLight reproduction contract bound to implementation sources `e63f12af...`
-and `047c3b49...`, the accepted R2/R3 receipts, exact Python/MapLight runtimes,
-the label-free official partition preflight, R3C population and aggregate
-tolerances, cross-fitted OOF/residual/uncertainty schemas, resource ceiling,
-failure terminals, and denied capabilities. Open no official target, generate
-no official feature or prediction, fit no official model, evaluate no official
-metric outcome, acquire no external record, inspect no blinded-test
-relationship, and perform no submission operation during that contract
-milestone.
+After reviewed G2-2A integration, create
+`codex/global-v2-maplight-synthetic` from passing `main`. Implement only the
+receipt-bound G2-2B MapLight runner and adversarially accept it on two fresh
+synthetic roots, including reversed input order. Enforce the exact MapLight
+recipe, 3x5x4 family cross-fit, immutable prediction-before-truth boundary,
+component-balanced absolute-residual q90, deterministic output schemas,
+no-replace publication, and zero forbidden-operation counters frozen in
+`global_v2_maplight_reproduction_contract.json` at SHA-256
+`7983e767...a344b`. Open no official target or feature, fit no official model,
+generate no official prediction, evaluate no official metric outcome, acquire
+no external record, read no historical row-level R3C artifact, inspect no
+blinded-test relationship, and perform no submission operation during G2-2B.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

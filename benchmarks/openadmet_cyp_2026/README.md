@@ -38,6 +38,18 @@ plumbing evidence only; official targets, features, fits, predictions, metrics,
 external records, blinded-test access, submissions, and leaderboard selection
 remain unopened.
 
+G2-2A now freezes the MapLight reproduction boundary in
+[`global_v2_maplight_reproduction_contract.json`](global_v2_maplight_reproduction_contract.json),
+SHA-256 `7983e767...a344b`. Because the accepted historical R3C population
+contains molecules now assigned to the sealed confirmatory partition, the
+contract forbids a full-population rerun and any read of historical row-level
+R3C outcomes. It authenticates exact aggregate receipts, freezes the historical
+MapLight recipe and runtimes, and specifies a 3x5x4 development-only cross-fit
+with component-balanced absolute-residual q90. This contract opens no official
+input or scientific operation. Its next gate is two-root G2-2B synthetic runner
+acceptance; later official development execution requires a separate additive
+G2-2C contract and claim.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

@@ -1,0 +1,178 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_reproduction_contract.v1",
+  "freeze_date": "2026-08-24",
+  "gate": "G2_2A_MAPLIGHT_REPRODUCTION_CONTRACT_FROZEN",
+  "status": "contract_only_no_official_execution_authority",
+  "base_commit": "df9ec9c4f418eb8677cb474d3ad4ec7e49395d3c",
+  "purpose": "Freeze the smallest sealed-holdout-safe route to authenticate historical R3C MapLight evidence, prove the fixed MapLight runner on synthetic data, and later generate deterministic development-only cross-fitted MapLight evidence without opening confirmatory truth.",
+  "targeted_failure_modes": [
+    "V1/V2 exact-duplicate or reconstructed-family leakage",
+    "V3 in-fold residual, uncertainty, calibration, or error-model fitting",
+    "V4 runtime, feature, seed, split, parameter, or source drift",
+    "V6 treating tutorial output as a live-backend official score",
+    "C6 MapLight feature-order or resolved-CatBoost-parameter drift",
+    "P5 partial publication, overwrite, retry, or nondeterministic evidence",
+    "P6 confirmatory, blinded-test, TDI, submission, or leaderboard contamination"
+  ],
+  "parents": {
+    "global_v2": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "g2_1_contract": {
+      "path": "global_v2_synthetic_firewall_contract.json",
+      "sha256": "be583b5b25a9dacbdc28224e24d2bb5a4e13e036835f6fd712996999de4541c8"
+    },
+    "g2_1_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "validation": {
+      "path": "validation_contract.json",
+      "sha256": "ada8beff0b6f42baeb61c91df1cbb75ef832ce2b1b87b0d0bcbf253c94326ab3"
+    },
+    "r3_runner": {
+      "path": "global_experiment_contract_v5.json",
+      "sha256": "596d9a246b130c00f07abfcaf73b369038b874ce556be5e6354df10e1d5ad6e2"
+    }
+  },
+  "accepted_inputs": {
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_morgan_count_sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+    "maplight_avalon_count_sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+    "maplight_erg_sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905"
+  },
+  "historical_r3c_reference": {
+    "use": "Immutable aggregate authentication and fixed-recipe reference only. Never read or compare historical row-level OOF predictions, residuals, errors, truths, completion rows, or uncertainty rows.",
+    "terminal_manifest_sha256": "a2029e12231a22415900c55303ec5413b395aedc15d565ef7b4e650196b3277c",
+    "global_result_sha256": "d9aff555db3c985ca834a11f5d1f198a9c8c5bafcaced6e7719a88bab09c2f94",
+    "endpoint_loss_checks_sha256": "9f574b1366a351ec6a9eb07d29e947e69c5b12925b9ff2e22542e8827d5c73d5",
+    "bootstrap_summary_sha256": "b5054dbbfd014ed04c27b2d6578f0f54f2e76f85871038afeb9d09448762a1c1",
+    "global_cell_metrics_sha256": "9c550564e61b32e416ea9c4e6c080e8d8af4e7d4c0df43bd96d1f6fd16101851",
+    "accepted_status": "GLOBAL_EXPERT_FROZEN",
+    "population": {"molecules": 4905, "components": 4553, "endpoint_cells": 19620, "complete_targets": 6525},
+    "maplight_component_macro_mae": {
+      "CYP1A2": 0.6573103822118366,
+      "CYP2C9": 0.4746750811243161,
+      "CYP2D6": 0.583529663910722,
+      "CYP3A4": 0.5686966679930828,
+      "macro": 0.5710529488099894
+    },
+    "operational_counts": {"outer_maplight_fits": 60, "inner_maplight_fits": 240, "outer_prediction_rows_all_four_r3c_systems": 235440, "inner_prediction_rows_maplight": 235440, "q90_contexts": 60},
+    "name_boundary": "These are accepted historical internal-surrogate aggregates, not a target for outcome-driven tuning and not an official challenge score."
+  },
+  "sealed_holdout_resolution": {
+    "conflict": "The historical R3C population includes molecules now assigned to the G2-0 confirmatory partition. Re-executing full-population R3C would open sealed confirmatory truth before candidate freeze.",
+    "decision": "Do not rerun the full R3C population and do not read historical row-level R3C artifacts. Authenticate exact historical aggregate receipts, prove recipe parity synthetically, and execute official MapLight only on development molecules.",
+    "comparison_boundary": "The development population differs from R3C. Its metric values must never be required to equal, improve on, or be tuned toward historical R3C values. Only recipe, runtime, split, deterministic mechanics, and internal consistency are parity gates.",
+    "confirmatory_truth_reads_before_g2_8": 0
+  },
+  "implementation_receipts": {
+    "accepted_g2_1_metric_source_sha256": "e63f12af8e911da5f2f9ffde802f14039b7d8fb38293be85fec754793fc43269",
+    "accepted_g2_1_firewall_source_sha256": "047c3b49d96f4f8cd898d6bad68fdfb79aff59fa4e5d8c932545a3d975f2976c",
+    "historical_r3c_runner_sha256": "436c95a808733d7144604fdd6d733cc1edba6320072f201374a6d331afa3eb8d",
+    "historical_cell_bundle_sha256": "9934e267b09df763fb45071884415b5c8f6eeb10189edc30e862bc758c45a053",
+    "historical_freezer_bundle_sha256": "535e84951279894f0c8245112a95218e67d8059fc6f6b88aea1372d18323e6bc",
+    "historical_scorer_bundle_sha256": "2a3dec027efe46e0e6439a0280ce1df9182fe1a063d25143f7bd331b2d1ea8ac",
+    "new_runner_rule": "G2-2B must bind every new source file and may reuse a direct accepted primitive only when its exact current source receipt and narrower capability are explicit."
+  },
+  "runtime": {
+    "parent": {"platform": "Linux x86_64 CPU", "python": "3.12.3", "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"},
+    "maplight": {"platform": "Linux x86_64 CPU", "python": "3.10.13", "numpy": "1.25.2", "catboost": "1.2.1", "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"}
+  },
+  "fixed_maplight": {
+    "system_id": "TRACE-G0-MAPL-FIXED",
+    "feature_order": ["maplight_morgan_count:1024", "maplight_avalon_count:1024", "maplight_erg:315", "maplight_rdkit_descriptors:200"],
+    "feature_columns": 2563,
+    "constructor_arguments": {"loss_function": "MAE", "random_strength": 2, "random_seed": 1, "task_type": "CPU", "thread_count": 16, "verbose": 0, "allow_writing_files": false},
+    "omitted_arguments": ["eval_set", "early_stopping_rounds", "use_best_model", "iterations", "nan_mode"],
+    "fit_call": "fit(X_training, y_training) with no additional arguments",
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "nan_policy": "Preserve only the contracted descriptor NaN mask; CatBoost 1.2.1 must resolve nan_mode=Min; reject every other nonfinite feature or parameter drift."
+  },
+  "official_population": {
+    "assignment": "Use only the G2-0 component-hash rule on authenticated label-free feature_rows.csv before any target parse.",
+    "expected_label_free": {"all_molecules": 4905, "all_components": 4553, "development_molecules": 3908, "development_components": 3640, "confirmatory_molecules": 997, "confirmatory_components": 913},
+    "development_targets": "Trusted source emits only development target rows to the runner after verifying direct-observation, fold, feature, and assignment receipts.",
+    "confirmatory_truth": "A separate immutable scorer capability is created but its path and manifest receipt are unavailable to G2-2 model, freezer, diagnostic, and terminal processes.",
+    "preflight_minima": {"development_finite_targets_per_endpoint": 750, "outer_validation_targets_per_endpoint_repeat_fold": 75, "inner_training_targets_per_endpoint_repeat_outer_inner": 400},
+    "preflight_failure": "Publish G2_2_UNDERPOWERED with zero fits. Never move a component, reseed, rebalance, pool endpoints, or open confirmatory truth."
+  },
+  "cross_fitting": {
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "repeat_seeds": [20260810, 20260811, 20260812],
+    "rule": "Remove confirmatory components, then preserve every remaining accepted outer and scoped inner assignment exactly.",
+    "outer_maplight_fits_per_replay": 60,
+    "inner_maplight_fits_per_replay": 240,
+    "total_maplight_fits_per_replay": 300,
+    "expected_label_free_outer_prediction_rows_per_replay": 46896,
+    "expected_label_free_inner_prediction_rows_per_replay": 187584,
+    "residual_rule": "Residual equals frozen outer OOF prediction minus central truth only after the prediction root is immutable; each residual is keyed to molecule, endpoint, component, repeat, and outer fold.",
+    "uncertainty": {
+      "method": "q90 of absolute residuals from matching inner OOF MapLight predictions only; no learned error model, conditioning, pooling, or fallback is permitted in G2-2",
+      "grouping": "Compute one value separately within each endpoint, repeat, and outer-fold context. No outer residual enters its own statistic.",
+      "component_equal_weighting": "For each eligible component, give each of its n absolute residual rows weight 1/n so every component contributes equal total mass; normalize all weights across the context.",
+      "weighted_order_statistic": "Sort by absolute residual ascending, then similarity_component_hash and molecule_id ascending; choose the first absolute residual whose normalized cumulative weight is at least 0.90. Do not interpolate.",
+      "band": "lower = prediction - q90 and upper = prediction + q90; the band is diagnostic only and is not a confidence, credible, or official scoring interval.",
+      "failure": "Any empty, mismatched, duplicate, nonfinite, cross-context, or incompletely cross-fitted residual population fails G2-2 without pooling or repair."
+    }
+  },
+  "output_schemas": {
+    "development_outer_oof.csv": ["molecule_id", "endpoint", "similarity_component_hash", "repeat", "outer_fold", "system_id", "prediction", "model_id", "split_id"],
+    "development_inner_oof.csv": ["molecule_id", "endpoint", "similarity_component_hash", "repeat", "outer_fold", "inner_fold", "system_id", "prediction", "model_id", "split_id"],
+    "development_residuals.csv": ["molecule_id", "endpoint", "similarity_component_hash", "repeat", "outer_fold", "prediction", "point", "residual", "prediction_receipt"],
+    "development_uncertainty.csv": ["molecule_id", "endpoint", "similarity_component_hash", "repeat", "outer_fold", "prediction", "q90", "lower", "upper", "inner_residual_receipt"],
+    "development_component_metrics.csv": ["endpoint", "repeat", "outer_fold", "scored_molecules", "scored_components", "component_macro_mae"],
+    "manifest.json": ["schema_version", "status", "contract_sha256", "source_receipts", "implementation_receipts", "runtime", "counts", "output_receipts", "determinism", "accounting", "authority"]
+  },
+  "metric_boundary": {
+    "component_macro_mae": "Diagnostic reproduction measure only; compute from frozen development outer OOF predictions with equal component weight.",
+    "tutorial_ma_st_rae_calls": 0,
+    "official_metric_calls": 0,
+    "selection": "G2-2 selects no model and has no performance threshold. Fixed MapLight either reproduces mechanics and evidence integrity or the program stops for prospective explanation."
+  },
+  "attempts_and_determinism": {
+    "g2_2b_synthetic_roots": 2,
+    "g2_2c_official_development_replays": 2,
+    "retry": false,
+    "resume": false,
+    "overwrite": false,
+    "official_claim": "One claim authorizes exactly two fresh sequential development-only replays after every source, runtime, contract, implementation, and G2-2B receipt passes.",
+    "determinism": "The two official relative output byte maps must be identical except a separately stored process-duration transcript that has no authority and is excluded from both roots."
+  },
+  "statuses": {
+    "G2_2_FAILED": "Any receipt, runtime, source, split, capability, nonfinite, cross-fit, determinism, accounting, or publication defect.",
+    "G2_2_UNDERPOWERED": "Clean trusted preflight fails a frozen development support minimum before fitting.",
+    "G2_2_MAPLIGHT_REPRODUCED": "Both fresh development-only roots are byte-identical, complete, cross-fitted, receipt-valid, and all forbidden counters are zero."
+  },
+  "resource_ceiling": {"cpu_core_hours": 200, "gpu_hours": 0, "restricted_storage_gb": 80, "maximum_wall_hours": 12},
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "synthetic_runner_implementation": true,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "external_record_acquisition": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "submission_generation": false,
+    "leaderboard_observation": false,
+    "live_upload": false
+  },
+  "future_g2_2c_boundary": {
+    "requires": ["reviewed signed integration of this contract", "reviewed G2-2B synthetic acceptance bound to exact implementation hashes", "distinct additive G2-2C execution contract and one unconsumed claim"],
+    "may_eventually_open": ["authenticated development target capability", "accepted training-only MapLight feature capability"],
+    "must_never_open": ["confirmatory truth", "historical R3C row-level artifacts", "blinded-test chemistry or predictions", "TDI", "external records", "submission", "leaderboard"]
+  },
+  "next_gate": "Implement and adversarially accept G2-2B on synthetic data only. This contract milestone opens no official input and performs no fit or metric evaluation."
+}

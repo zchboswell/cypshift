@@ -1,8 +1,8 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; G2-1 synthetic firewall accepted; no official Phase 2 target,
-feature, model, prediction, metric-evaluation, external-record, blinded-test,
-submission, or leaderboard-selection authority yet.
+Status: active; G2-2A MapLight reproduction contract frozen; no official Phase
+2 target, feature, model, prediction, metric-evaluation, external-record,
+blinded-test, submission, or leaderboard-selection authority yet.
 
 Authorized: 2026-08-24.
 
@@ -144,15 +144,27 @@ submission, or leaderboard observation.
 
 ### G2-2 — Reproduce MapLight and generate reusable OOF evidence
 
-Reproduce the accepted fixed MapLight result under the new harness before
-adding a model. Generate family-safe OOF predictions, residuals, uncertainty,
-and per-component diagnostics for all four endpoints. Any preprocessing,
-calibration, error model, or later stack must consume only cross-fitted values.
+G2-2A freezes the reproduction contract at SHA-256
+`7983e767...a344b`. The historical R3C population overlaps the new sealed
+confirmatory partition, so a full-population rerun would prematurely open
+confirmatory truth. Authenticate the immutable historical R3C aggregate
+receipts without reading row-level outcomes, prove the fixed recipe and
+cross-fit mechanics in G2-2B using synthetic data, and only then authorize a
+distinct G2-2C execution contract for two development-only replays. Never
+compare development scores with historical full-population R3C scores because
+the populations differ.
 
-Acceptance: exact input and split receipts match; deterministic payloads replay;
-the accepted R3C population and aggregates reproduce within the frozen numeric
-tolerance; no blinded-test, TDI, submission, or official metric operation
-occurs. Mismatch stops Phase 2 modeling until explained prospectively.
+Generate family-safe development OOF predictions, residuals, component-equal
+absolute-residual q90 bands, and per-component diagnostics for all four
+endpoints. Any preprocessing, calibration, error model, or later stack must
+consume only cross-fitted values.
+
+Acceptance: exact historical aggregate receipts authenticate; exact input and
+split receipts match; deterministic payloads replay; the fixed recipe,
+runtime, split mechanics, counts, and internal consistency reproduce; no
+confirmatory truth, historical row-level R3C artifact, blinded-test, TDI,
+submission, or official metric operation occurs. Mismatch stops Phase 2
+modeling until explained prospectively.
 
 ### G2-3 — Global tree and representation ensemble
 
@@ -295,12 +307,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-After the reviewed G2-1 firewall is integrated, create
-`codex/global-v2-maplight-contract` from passing `main`. Freeze only the G2-2
-MapLight reproduction contract: accepted implementation and R2/R3 receipts,
-exact runtimes, official label-free partition preflight, R3C reproduction
-tolerances, OOF/residual/uncertainty schemas, resource ceiling, terminals, and
-denied capabilities. Open no official numeric target, generate no official
-feature or prediction, fit no official model, evaluate no official metric
-outcome, acquire no external record, inspect no blinded-test relationship, and
-perform no submission operation during that milestone.
+After reviewed G2-2A integration, create
+`codex/global-v2-maplight-synthetic` from passing `main`. Implement and
+adversarially accept only the G2-2B runner on two fresh synthetic roots under
+the exact contract SHA-256 `7983e767...a344b`. Bind every implementation
+source, enforce exact MapLight/runtime/cross-fit/q90/output mechanics, reverse
+one input order, require byte-identical relative output maps, and keep every
+forbidden counter zero. Open no official numeric target or feature, generate no
+official prediction, fit no official model, evaluate no official metric
+outcome, acquire no external record, read no historical row-level R3C artifact,
+inspect no blinded-test relationship, and perform no submission operation.
