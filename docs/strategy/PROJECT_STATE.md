@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-089. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-090. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -33,8 +33,16 @@ submission, or leaderboard-selection authority exists yet. G2-2A freezes the
 sealed-holdout-safe MapLight reproduction contract at SHA-256
 `7983e767...a344b`. It authenticates immutable R3C aggregate receipts but
 forbids a full-population rerun because R3C includes the 997 molecules now
-sealed for confirmatory evaluation. The next gate is G2-2B synthetic runner
-implementation and adversarial acceptance only.
+sealed for confirmatory evaluation. Its synthetic-only G2-2B gate is now
+accepted under receipt SHA-256 `1a498f21...a3bb`: two fresh exact-runtime roots, including
+reversed source order, ran 600 real fixed-MapLight fits total and matched all
+318 relative files at tree receipt `e81bfb92...5de06`. Each fit opens only its
+current cell's training-target file; no fit opens validation truth, and the
+scorer sees truth only after prediction freeze. A 20-molecule resolved-parameter blocker
+and an otherwise deterministic unique-component audit rejection remain tracked
+negative evidence. Seventeen focused tests pass, including explicit
+multi-molecule inner-family separation. The next gate is a contract-only G2-2C
+development execution freeze; official capabilities remain unopened.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -684,18 +692,18 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-After reviewed G2-2A integration, create
-`codex/global-v2-maplight-synthetic` from passing `main`. Implement only the
-receipt-bound G2-2B MapLight runner and adversarially accept it on two fresh
-synthetic roots, including reversed input order. Enforce the exact MapLight
-recipe, 3x5x4 family cross-fit, immutable prediction-before-truth boundary,
-component-balanced absolute-residual q90, deterministic output schemas,
-no-replace publication, and zero forbidden-operation counters frozen in
-`global_v2_maplight_reproduction_contract.json` at SHA-256
-`7983e767...a344b`. Open no official target or feature, fit no official model,
-generate no official prediction, evaluate no official metric outcome, acquire
-no external record, read no historical row-level R3C artifact, inspect no
-blinded-test relationship, and perform no submission operation during G2-2B.
+After reviewed G2-2B integration, create
+`codex/global-v2-maplight-execution-contract` from passing `main`. Freeze only
+the additive G2-2C development-execution contract and one unconsumed claim.
+Bind G2-2A SHA-256 `7983e767...a344b`, G2-2B acceptance SHA-256
+`1a498f21...a3bb`, runner SHA-256 `154f8d23...b93f`, compiler SHA-256
+`45b30689...99f`, exact official input receipts, 3,908/3,640 development
+preflight, two sequential 300-fit replays, private output locations, resource
+ceiling, failure terminals, cleanup, and all denied capabilities. Perform no
+official input read, fit, prediction, residual, diagnostic, or metric operation
+during the contract milestone. Confirmatory truth, historical R3C row-level
+artifacts, blinded test, TDI, external records, submissions, and leaderboard
+remain permanently unavailable to G2-2C.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

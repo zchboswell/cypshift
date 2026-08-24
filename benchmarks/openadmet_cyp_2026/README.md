@@ -50,6 +50,27 @@ input or scientific operation. Its next gate is two-root G2-2B synthetic runner
 acceptance; later official development execution requires a separate additive
 G2-2C contract and claim.
 
+The G2-2B implementation is accepted in exact
+[`global_v2_maplight_synthetic_acceptance.json`](global_v2_maplight_synthetic_acceptance.json),
+SHA-256 `1a498f21...a3bb`. Two fresh 200-molecule, 100-component roots
+executed 600 real fixed-MapLight fits total in the locked Python
+3.10.13/NumPy 1.25.2/CatBoost 1.2.1 runtime. Reversed source order produced an
+identical 318-file evidence map at tree receipt `e81bfb92...5de06`. Training
+capabilities contain only the target rows allowed for each outer or inner cell;
+the separate scorer opens synthetic truth after immutable prediction freeze.
+The exact component-balanced, non-interpolated absolute-residual q90 and all
+five contracted CSV outputs replay.
+
+The negative evidence is preserved in
+[`global_v2_maplight_synthetic_blocker.json`](global_v2_maplight_synthetic_blocker.json)
+and
+[`global_v2_maplight_synthetic_audit_rejection.json`](global_v2_maplight_synthetic_audit_rejection.json).
+The first records CatBoost's support-dependent automatic `subsample` resolution;
+the second rejects deterministic evidence that could not falsify inner-family
+leakage. Neither opened an official input or produced scientific performance
+evidence. G2-2B grants no official execution authority; G2-2C requires a new
+contract and claim.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

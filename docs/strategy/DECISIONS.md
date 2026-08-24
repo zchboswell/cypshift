@@ -2751,3 +2751,40 @@
   receipt/runtime inconsistency stops G2-2 before official execution and
   requires a new prospective decision. It does not authorize confirmatory
   truth access or outcome-driven repair.
+
+## D-090 — Accept the exact-runtime synthetic MapLight runner
+
+- Date: 2026-08-24
+- Status: accepted G2-2B synthetic mechanics; no official scientific execution
+  authority
+- Decision: Accept the receipt-bound MapLight-only runner and capability
+  compiler at source SHA-256 values `154f8d23...b93f` and
+  `45b30689...99f`. Each fit interface opens only its current cell's training
+  targets; the scorer capability exposes truth only after prediction freeze.
+  Require component containment in both outer and scoped inner folds, exact
+  CatBoost parameters, component-equal non-interpolated q90, atomic no-replace
+  publication, and two byte-identical synthetic roots. Advance only to a
+  contract-only G2-2C development execution freeze.
+- Evidence: Acceptance receipt SHA-256 `1a498f21...a3bb` binds two fresh
+  200-molecule, 100-component roots, 600 real CatBoost fits total, 24,000 OOF
+  prediction rows total, and 318 matched files at combined tree SHA-256
+  `e81bfb92...5de06`. The second root reversed source order. Seventeen focused
+  tests cover receipt tamper, multi-molecule outer and inner family containment,
+  training-only targets, truth-after-freeze, q90 arithmetic, symlinks,
+  writability, traversal, overwrite, replay mismatch, and exact tracked source
+  and acceptance hashes. All official, confirmatory, historical-row, test, TDI,
+  submission, and leaderboard counters are zero.
+- Negative evidence: The first 20-molecule attempt stopped after one synthetic
+  fit because CatBoost resolved `subsample=1`, not the accepted
+  `0.800000011920929`; the repair increased fixture support rather than adding
+  an omitted constructor argument. A later 600-fit, byte-identical replay was
+  rejected because unique components could not falsify inner-family leakage.
+  Both records remain tracked and have zero official operations.
+- Alternatives: Pass `subsample` explicitly and drift from the accepted
+  constructor; accept unique-component determinism without a family attack;
+  let the model process see validation truth; calculate q90 from outer
+  residuals; or proceed directly to official targets after a partial replay.
+- Reversal condition: Any source, runtime, parameter, capability, component,
+  prediction-freeze, q90, output, determinism, or accounting regression revokes
+  G2-2B and blocks G2-2C. It does not permit outcome-driven repair or any access
+  to confirmatory truth, historical R3C row-level artifacts, or blinded test.

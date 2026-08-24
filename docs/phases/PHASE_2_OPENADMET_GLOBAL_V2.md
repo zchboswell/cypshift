@@ -1,7 +1,7 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; G2-2A MapLight reproduction contract frozen; no official Phase
-2 target, feature, model, prediction, metric-evaluation, external-record,
+Status: active; G2-2B MapLight synthetic runner accepted; no official Phase 2
+target, feature, model, prediction, metric-evaluation, external-record,
 blinded-test, submission, or leaderboard-selection authority yet.
 
 Authorized: 2026-08-24.
@@ -153,6 +153,24 @@ cross-fit mechanics in G2-2B using synthetic data, and only then authorize a
 distinct G2-2C execution contract for two development-only replays. Never
 compare development scores with historical full-population R3C scores because
 the populations differ.
+
+G2-2B is accepted under exact receipt
+[`global_v2_maplight_synthetic_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_synthetic_acceptance.json),
+SHA-256 `1a498f21...a3bb`. Two fresh 200-molecule, 100-component roots
+performed 600 real fixed-MapLight fits total in the locked runtime. The second
+source order was reversed; model capability, scorer capability, predictions,
+residuals, q90 bands, component diagnostics, and manifests matched across all
+318 files at tree receipt `e81bfb92...5de06`. The model stage received only
+per-cell training targets and opened neither outer nor inner validation truth;
+the scorer opened synthetic truth only after immutable prediction publication.
+
+The negative path is part of the evidence. A 20-molecule fixture stopped after
+one fit because CatBoost automatically resolved `subsample=1`; increasing
+support preserved the omitted-constructor recipe and recovered the exact
+historical resolved parameter hash. The first two-root replay was then rejected
+despite byte identity because unique components could not falsify inner-family
+leakage. The accepted fixture uses two-molecule components and an explicit
+inner component-containment gate.
 
 Generate family-safe development OOF predictions, residuals, component-equal
 absolute-residual q90 bands, and per-component diagnostics for all four
@@ -307,13 +325,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-After reviewed G2-2A integration, create
-`codex/global-v2-maplight-synthetic` from passing `main`. Implement and
-adversarially accept only the G2-2B runner on two fresh synthetic roots under
-the exact contract SHA-256 `7983e767...a344b`. Bind every implementation
-source, enforce exact MapLight/runtime/cross-fit/q90/output mechanics, reverse
-one input order, require byte-identical relative output maps, and keep every
-forbidden counter zero. Open no official numeric target or feature, generate no
-official prediction, fit no official model, evaluate no official metric
-outcome, acquire no external record, read no historical row-level R3C artifact,
-inspect no blinded-test relationship, and perform no submission operation.
+After reviewed G2-2B integration, create
+`codex/global-v2-maplight-execution-contract` from passing `main`. Freeze only
+an additive G2-2C development-execution contract and one unconsumed claim bound
+to exact G2-2A, G2-2B, implementation, runtime, and official input receipts.
+Specify the 3,908-molecule/3,640-component preflight, two fresh sequential
+replays, 600-fit total ceiling, private roots, terminal schemas, cleanup,
+fail-closed conditions, and zero forbidden counters. Open no official input,
+fit no official model, generate no official prediction, compute no official
+residual or diagnostic, and evaluate no metric during that contract milestone.

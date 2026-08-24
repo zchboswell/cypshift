@@ -1,0 +1,38 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_synthetic_audit_rejection.v1",
+  "timestamp_utc": "2026-08-24T06:05:16Z",
+  "status": "G2_2B_SYNTHETIC_REJECTED",
+  "contract_sha256": "7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b",
+  "runner_source_sha256": "6b25d5ee006ee390e49a3ab2ab624f410593cdc0a9dd0684db5698c101f3a770",
+  "compiler_source_sha256": "ea5e02bba2ce6b55e03226658bd3a2bdd3b72ea293c72354a6f0b42dfbca549e",
+  "tentative_acceptance_sha256": "1f83de120f8abd22013946c3be8287a93ff57615630c52dddfceeffa0eb97b25",
+  "combined_tree_sha256": "14deea87d423ca24e504e9ea373b391d0f72cf3521a0283cf6c96a9130acea23",
+  "evidence_that_passed": {
+    "fresh_roots": 2,
+    "second_source_order_reversed": true,
+    "files_byte_identical": 318,
+    "maplight_fits_per_root": 300,
+    "outer_prediction_rows_per_root": 2400,
+    "inner_prediction_rows_per_root": 9600,
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "forbidden_operation_counters_zero": true
+  },
+  "rejection": "The 200-molecule fixture assigned one molecule to every component. The runner enforced outer component containment but did not explicitly enforce component-equal inner-fold assignment. Byte determinism therefore could not falsify inner-family leakage.",
+  "accounting": {
+    "synthetic_maplight_fits": 600,
+    "synthetic_prediction_rows": 24000,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "submissions_created": 0,
+    "leaderboard_observations": 0
+  },
+  "decision": "Reject the tentative acceptance. Add an explicit inner component-containment gate, change the synthetic population to 100 two-molecule components while preserving 200 molecules and support, add an adversarial split test, bind new source receipts, and require two new fresh roots.",
+  "scientific_interpretation": "Rejected implementation evidence only; no model-performance result."
+}

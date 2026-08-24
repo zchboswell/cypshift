@@ -1,0 +1,41 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_synthetic_blocker.v1",
+  "timestamp_utc": "2026-08-24T05:59:15Z",
+  "status": "G2_2B_SYNTHETIC_BLOCKED",
+  "contract_sha256": "7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b",
+  "runner_source_sha256": "6b25d5ee006ee390e49a3ab2ab624f410593cdc0a9dd0684db5698c101f3a770",
+  "compiler_source_sha256": "863b69274691414976df189edabe8547b19902fb290a9685ad7df5eac102ba2e",
+  "failure_stage": "first_outer_maplight_fit",
+  "failure_code": "RESOLVED_PARAMETER_RECEIPT",
+  "failure": "The 20-molecule synthetic fixture caused CatBoost 1.2.1 to resolve subsample=1 instead of the accepted 0.800000011920929, so the runner stopped before publishing any prediction.",
+  "expected_resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+  "observed_resolved_parameter_sha256": "4708fb141bb465748f5fbb2dfcc39c7a107c870758a17ef3536a64e86d378493",
+  "parameter_delta": {"subsample": {"expected": 0.800000011920929, "observed": 1}},
+  "preserved_receipts": {
+    "model_capability_manifest_sha256": "927ea8c732ce8395af304905aaba7f89092f034d41cd9d685ea88014ced96dec",
+    "model_capability_tree_sha256": "9985395bdee4c8a79f66869476db3758851d5c3ed525cb0b3d7139a68d5cc39f",
+    "scorer_capability_manifest_sha256": "b4a5056c8da580108d5315a71e9591f6126888c1a8ec1d60cb9d56d8027c03d6",
+    "scorer_capability_tree_sha256": "b56a7988b9e007b111e23ead987ba6496d42c828e868fa07d495121e24d88c1f"
+  },
+  "accounting": {
+    "synthetic_molecules": 20,
+    "synthetic_target_values_compiled": 80,
+    "model_capability_target_files": 300,
+    "maplight_model_fits": 1,
+    "prediction_roots_published": 0,
+    "scorer_truth_values_opened": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "submissions_created": 0,
+    "leaderboard_observations": 0
+  },
+  "decision": "Preserve this failed implementation receipt. Increase only the synthetic fixture population so every inner training cell exceeds CatBoost's automatic subsample transition, then require a new implementation source receipt and two fresh roots. Do not set subsample explicitly because the accepted constructor omits it.",
+  "scientific_interpretation": "Infrastructure failure before synthetic prediction publication; no model-performance evidence."
+}
