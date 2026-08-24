@@ -156,7 +156,17 @@ zero, and official execution is blocked. The exact next action is a distinct
 synthetic-only resource-feasibility contract for at most one
 implementation-equivalent optimization with prediction-equivalence evidence;
 if it cannot fit both existing ceilings with margin, reject EXP-G1 as
-infeasible without consuming the claim.
+infeasible without consuming the claim. D-100 now freezes that one-shot
+synthetic resource falsifier at SHA-256 `17327310...24a92`. It permits only
+fold-local CatBoost quantized-Pool reuse, keeps every scientific and runtime
+identity fixed, and requires exact float64 prediction-byte and resolved-
+parameter equality across two paired 14-identity roots. Feasibility uses the
+worse optimized-root projection and requires at most 96 wall-hours and 960
+CPU-core-hours, preserving 20% margin below the existing ceilings. This
+contract milestone executed zero synthetic fit or prediction, kept claim
+`1c9f3438...46154` unconsumed, and opened no official or forbidden capability.
+The exact next action is reviewed integration and green post-main CI for D-100,
+then its single bounded implementation and fail-fast synthetic execution.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking

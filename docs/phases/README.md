@@ -43,7 +43,13 @@ fits, already above both execution ceilings on the smaller fixture. The claim
 therefore remains unconsumed. The exact next gate is reviewed integration and
 green post-main CI, followed by one separately contracted synthetic-only
 implementation-equivalent resource falsifier; failure rejects EXP-G1 without
-official access or claim consumption.
+official access or claim consumption. D-100 now freezes that sole falsifier at
+SHA-256 `17327310...24a92`: fold-local quantized-Pool reuse is the only allowed
+optimization, exact prediction bytes are mandatory, and the worse of two
+paired optimized roots must project to no more than 96 wall-hours and 960
+CPU-core-hours. The contract itself executed no fit or prediction and leaves
+the claim unconsumed. Integrate it with green post-main CI before implementing
+or timing the bounded synthetic probe.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

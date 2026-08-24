@@ -1,0 +1,169 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g1_resource_feasibility_contract.v1",
+  "freeze_date": "2026-08-24",
+  "recorded_at_utc": "2026-08-24T21:59:32Z",
+  "gate": "G2_3D_EXP_G1_RESOURCE_FEASIBILITY_CONTRACT_FROZEN",
+  "status": "contract_only_synthetic_resource_execution_not_yet_authorized",
+  "base_commit": "cefc7ddc47c6ecf269f629cc6ccf50782c92e9b5",
+  "purpose": "Falsify whether one implementation-equivalent reuse of fold-local CatBoost quantization can place the unchanged 8,820-fit EXP-G1 design conservatively below both frozen execution ceilings before the sole development claim is consumed.",
+  "hypothesis": "The accepted wrapper repeatedly quantizes identical training and prediction feature matrices across the twelve configurations and three seeds in one fold. Reusing one fold-local quantized Pool pair may remove enough repeated implementation work to preserve exact predictions while reducing projected wall and CPU use below the frozen limits with twenty-percent margin.",
+  "targeted_failure": "The exact nested EXP-G1 design is scientifically executable but computationally infeasible: the accepted smaller synthetic probe projects to 126.338625 wall-hours and 1680.321125 CPU-core-hours before larger official folds.",
+  "occam_boundary": "Test exactly one optimization: fold-local CatBoost numeric-feature quantization reuse. Do not alter a configuration, seed, iteration, depth, loss, feature, target, fold, fit identity, fit count, thread count, concurrency, metric, selection rule, or terminal. Fail at the first prediction-equivalence mismatch and reject EXP-G1 without testing another remedy.",
+  "parents": {
+    "execution_contract": {
+      "path": "global_v2_g1_execution_contract.json",
+      "sha256": "c75cb01e3d4fec1595c17d5b0f0bd4369c8424ef7dbf4f8fd1fe2112fd20b869"
+    },
+    "unconsumed_claim": {
+      "path": "global_v2_g1_execution_claim.json",
+      "sha256": "1c9f34388290c3992ae9346fbb9b4a71602d3d12b44a619f425ac93dec946154"
+    },
+    "mechanics_acceptance": {
+      "path": "global_v2_g1_execution_synthetic_acceptance.json",
+      "sha256": "87065e0cd15bbdccb0d1e8bafc1e0b3869988be6f18ad8cbc4bc23b0e2965f9e"
+    }
+  },
+  "accepted_implementation": {
+    "compiler_path": "research/maplight-fixed/global_v2_g1_execution_compiler.py",
+    "compiler_sha256": "1af2ddf8df3b6b9df5a1dac8f6f299851146903ed240e1831fa0487bfc05e6c8",
+    "wrapper_path": "research/maplight-fixed/global_v2_g1_execution_wrapper.py",
+    "wrapper_sha256": "dd413f4416efa0fe10ece428b41718207ea7cd69ecec68344468848cbf503a6b",
+    "synthetic_driver_path": "research/maplight-fixed/run_global_v2_g1_execution_synthetic.py",
+    "synthetic_driver_sha256": "ec14ec45802d2ae31bccf0feceb7719306a078670615ba2e5c70e80eee3b3e9e",
+    "focused_tests_path": "tests/test_openadmet_global_v2_g1_execution.py",
+    "focused_tests_sha256": "642ffe6e2889a94980471d9dd5012a12fdb5b2d57b87d1bf864b24aaee762964",
+    "research_lock_path": "research/maplight-fixed/uv.lock",
+    "research_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+  },
+  "single_optimization": {
+    "optimization_id": "FOLD_LOCAL_QUANTIZED_POOL_REUSE_V1",
+    "scope": "Within one authenticated training/prediction fold only, create one CatBoost 1.2.1 quantized training Pool and one prediction Pool quantized from the training borders, then reuse that immutable pair across the frozen configuration-seed probe identities.",
+    "training_pool": "The Pool contains the exact contiguous float32 training feature rows and float64 targets already passed to real_predictor. Quantization uses CatBoost 1.2.1 CPU defaults because no frozen configuration changes border_count, border_type, nan_mode, or any quantization option.",
+    "prediction_pool": "Quantize the exact contiguous float32 prediction rows using only the borders derived from the matching training Pool. No prediction row, target, validation truth, selector output, baseline prediction, or other fold may enter border construction.",
+    "cache_identity": "Bind the cache to SHA-256 receipts of the ordered training feature bytes, ordered target bytes, ordered prediction feature bytes, feature width, runtime identity, and fold identity. Any mismatch creates a distinct cache entry or fails closed.",
+    "lifetime": "Keep cache state private to one synthetic replay process, destroy it after the probe, and publish only aggregate receipts. No cache may cross roots, folds, endpoints, attempts, or capability boundaries.",
+    "constructor_rule": "Instantiate and fit a fresh CatBoostRegressor for every frozen configuration-seed identity with the exact accepted constructor, including thread_count=16. Reusing a trained model, tree, target-dependent statistic, prediction, or resolved parameter is forbidden.",
+    "prediction_rule": "Call predict on the matching quantized prediction Pool. Convert to finite float64 exactly as the accepted wrapper does.",
+    "allowed_source_changes_after_integration": [
+      "one additive resource-probe driver",
+      "one additive optimized predictor/cache implementation",
+      "focused tests",
+      "one aggregate synthetic feasibility receipt if and only if every gate passes"
+    ],
+    "forbidden_alternatives": [
+      "changing thread_count or concurrent fit count",
+      "reducing or pruning configurations, seeds, folds, iterations, depth, features, endpoints, or fit identities",
+      "early stopping, warm starts, model reuse, prediction reuse, or target sharing",
+      "GPU execution, different CatBoost or NumPy bytes, approximate predictions, or tolerance-based equivalence",
+      "a second optimization after this optimization fails"
+    ]
+  },
+  "synthetic_falsifier": {
+    "roots": 2,
+    "root_a_order": "canonical physical source order",
+    "root_b_order": "reversed physical source order before trusted compilation",
+    "source_fixture": "Reuse the exact accepted 400-molecule, 200-component official-shaped sparse synthetic generator and compiler. Only development molecules reach the model capability; confirmatory values remain opaque.",
+    "probe_cell": "Use the accepted repeat=0, outer=0, CYP1A2 outer-training and validation feature populations with at least 48 finite training targets.",
+    "probe_identities_per_mode_per_root": 14,
+    "probe_identities": "G1-C00 through G1-C11 under seed 20260824 plus G1-C00 under seeds 20260825 and 20260826.",
+    "modes_per_root": ["accepted_raw_array_reference", "fold_local_quantized_pool_reuse"],
+    "maximum_real_catboost_fits_per_root": 28,
+    "maximum_real_catboost_fits_total": 56,
+    "execution_order": "Root A runs reference then optimized; root B runs optimized then reference. Roots execute sequentially and each mode is timed separately in a fresh child process.",
+    "fail_fast": "For each identity compare constructor parameters, canonical resolved-parameter bytes, prediction shape, finiteness, and exact float64 prediction bytes. Stop immediately on the first mismatch; a fail-fast rejection may complete fewer than 56 fits.",
+    "scientific_interpretation": "Synthetic runtime and implementation-equivalence evidence only. No synthetic prediction or diagnostic may rank a configuration, seed, endpoint, or scientific system."
+  },
+  "equivalence_acceptance": {
+    "constructor_parameters_exact": true,
+    "resolved_parameter_json_bytes_exact": true,
+    "prediction_float64_bytes_exact": true,
+    "prediction_tolerance": 0.0,
+    "all_14_identities_per_root_required": true,
+    "reference_receipts_match_between_roots": true,
+    "optimized_receipts_match_between_roots": true,
+    "physical_order_invariant": true,
+    "all_members_conjunctive": true
+  },
+  "resource_measurement": {
+    "clock": "time.monotonic_ns around each fresh child process",
+    "cpu": "resource.getrusage(RUSAGE_CHILDREN) user plus system deltas for each mode",
+    "memory": "maximum child ru_maxrss plus private cache byte accounting",
+    "projection": "For each optimized root separately, multiply its measured 14-fit wall-seconds and CPU-seconds by 8820/14. Use the worse projected root for acceptance; do not average roots or subtract reference overhead.",
+    "reference_projection": "Report the same paired projection for the accepted raw-array reference as context only. It cannot relax an optimized threshold.",
+    "official_ceiling_wall_hours": 120,
+    "official_ceiling_cpu_core_hours": 1200,
+    "required_margin_fraction": 0.2,
+    "maximum_projected_wall_hours": 96,
+    "maximum_projected_cpu_core_hours": 960,
+    "maximum_restricted_storage_gb": 40,
+    "maximum_synthetic_probe_wall_hours": 3,
+    "maximum_synthetic_probe_cpu_core_hours": 80,
+    "maximum_concurrent_catboost_fits": 1,
+    "thread_count_per_fit": 16,
+    "gpu_hours": 0
+  },
+  "decision_rule": {
+    "pass_status": "G2_3D_EXP_G1_RESOURCE_FEASIBLE",
+    "reject_status": "G2_3D_EXP_G1_RESOURCE_INFEASIBLE",
+    "logic": "Pass only if every exact-equivalence member passes, both roots complete all 14 identities in both modes, the worse optimized-root projection is at most 96 wall-hours and 960 CPU-core-hours, restricted storage remains below 40 GB, all capability and accounting checks pass, and every forbidden operation remains zero.",
+    "pass_action": "Publish one aggregate receipt, review and integrate the exact optimized implementation, derive the claim-bound implementation receipts without changing the frozen scientific identity, and only then reconsider sole claim consumption.",
+    "reject_action": "Publish one aggregate negative receipt, leave the claim permanently unconsumed, reject EXP-G1 as infeasible, and advance to the next preregistered Phase 2 lane without another G1 optimization, grid change, or official access.",
+    "no_ambiguous_result": "A prediction mismatch, resource overrun, interrupted timing, incomplete identity set, capability defect, or accounting defect is rejection, not permission to retry or test another remedy."
+  },
+  "required_adversarial_tests": [
+    "wrong parent, implementation, runtime, contract, claim, or source receipt fails before fitting",
+    "cache identity changes for any training feature, target, prediction feature, order, width, fold, or runtime byte",
+    "prediction borders derive only from the matching training Pool and cannot cross a fold, endpoint, or root",
+    "model, tree, target statistic, prediction, and resolved-parameter reuse all fail",
+    "wrong constructor, thread count, configuration, seed, identity count, execution order, or concurrency fails",
+    "any prediction byte mismatch fails with zero tolerance and stops the experiment",
+    "average-root, best-root, reference-subtracted, or non-linear resource projection fails",
+    "claim consumption and every official or forbidden operation remain exactly zero",
+    "temporary Pools, borders, model state, and capabilities are cleaned after success, rejection, or interruption",
+    "accepted or rejected aggregate publication is atomic and no-replace"
+  ],
+  "current_milestone_accounting": {
+    "synthetic_source_rows_opened": 0,
+    "synthetic_catboost_fits": 0,
+    "synthetic_predictions_generated": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "external_records_acquired": 0,
+    "submissions_created": 0,
+    "official_metric_evaluations": 0,
+    "leaderboard_observations": 0,
+    "live_uploads": 0,
+    "claim_consumptions": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "synthetic_source_generation": false,
+    "synthetic_catboost_fitting": false,
+    "synthetic_prediction_generation": false,
+    "resource_measurement": false,
+    "optimized_implementation_acceptance": false,
+    "claim_consumption": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_r3c_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_observation": false,
+    "live_upload": false
+  },
+  "next_gate": "Review and integrate this exact contract with green post-main CI. Then implement only FOLD_LOCAL_QUANTIZED_POOL_REUSE_V1 and its bounded two-root synthetic falsifier. Do not consume the G2-3C claim, open an official input, evaluate a development metric, create a submission, or observe a leaderboard under this milestone."
+}

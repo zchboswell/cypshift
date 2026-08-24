@@ -144,6 +144,16 @@ official execution is blocked pending one separately contracted,
 implementation-equivalent synthetic resource falsifier. All official and
 forbidden counters remain zero.
 
+The sole G2-3D resource falsifier is now frozen in
+[`global_v2_g1_resource_feasibility_contract.json`](global_v2_g1_resource_feasibility_contract.json)
+at SHA-256 `17327310...24a92`. It allows only fold-local CatBoost quantized-Pool
+reuse and changes no scientific or runtime identity. Two paired synthetic roots
+must match the accepted raw-array reference at exact float64 prediction bytes
+and resolved-parameter bytes across all fourteen probe identities. Only then
+may the worse optimized-root projection be tested against 96 wall-hours and
+960 CPU-core-hours, a 20% margin below both frozen ceilings. The contract freeze
+performed zero fit or prediction and did not consume the G2-3C claim.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

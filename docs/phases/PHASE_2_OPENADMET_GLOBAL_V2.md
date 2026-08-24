@@ -1,8 +1,9 @@
 # Phase 2 — OpenADMET global-v2
 
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
-G2-3B synthetic implementation accepted, and G2-3C official-shaped mechanics
-accepted but resource feasibility rejected; the G2-3C claim remains
+G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
+accepted but resource feasibility rejected, and the one-shot G2-3D resource
+falsifier frozen; the G2-3C claim remains
 unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
 upload capabilities remain closed.
@@ -353,6 +354,19 @@ CPU-core-hours, above the frozen 120-hour and 1,200-core-hour limits. Mechanics
 acceptance therefore does not permit claim consumption. No official input was
 opened and every forbidden counter remains zero.
 
+D-100 freezes the sole G2-3D implementation-equivalent resource falsifier in
+[`global_v2_g1_resource_feasibility_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_resource_feasibility_contract.json)
+at SHA-256 `17327310...24a92`. It permits only fold-local reuse of CatBoost
+1.2.1 quantized training and prediction Pools. Every one of the 8,820 future
+fit identities, constructor arguments, sixteen threads, sequential execution,
+feature, target, fold, metric, and decision remains unchanged. Two synthetic
+roots pair the accepted raw-array reference with the optimization across the
+same fourteen probe identities. Exact float64 prediction bytes and resolved-
+parameter JSON bytes are required; a first mismatch rejects the remedy. If
+equivalence passes, the worse optimized-root linear projection must be at most
+96 wall-hours and 960 CPU-core-hours, 20% below both existing ceilings. The
+contract freeze executes no probe and keeps the claim unconsumed.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -458,7 +472,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-099 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-100 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -468,14 +482,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-099's compiler `1af2ddf8...5e6c8`, wrapper
-`dd413f44...03a6b`, driver `ec14ec45...3e9e`, and acceptance
-`87065e0c...65f9e`, then require green post-main CI. Keep claim
-`1c9f3438...46154` unconsumed. Next freeze a distinct synthetic-only resource
-feasibility contract for at most one implementation-equivalent optimization;
-require exact prediction equivalence and a conservative projection below both
-existing ceilings with explicit margin. If that falsifier fails, reject EXP-G1
-as infeasible without consuming the claim. Keep official development,
+Review and integrate D-100 contract `17327310...24a92`, then require green
+post-main CI. Keep claim `1c9f3438...46154` unconsumed. Implement only
+`FOLD_LOCAL_QUANTIZED_POOL_REUSE_V1` and its bounded two-root paired synthetic
+falsifier. Require exact float64 prediction and resolved-parameter bytes before
+resource acceptance; use the worse optimized-root projection and require at
+most 96 wall-hours and 960 CPU-core-hours. If either equivalence or resource
+gate fails, reject EXP-G1 as infeasible without consuming the claim or testing
+another remedy. Keep official development,
 confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
 external records, submission, official metric, leaderboard, and upload
 capability closed.

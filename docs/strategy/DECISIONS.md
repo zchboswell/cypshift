@@ -3171,3 +3171,45 @@
   must fit both existing ceilings with explicit margin without changing a
   scientific identity. If no such bounded implementation remedy passes, reject
   EXP-G1 as infeasible without consuming the claim; do not widen or tune it.
+
+## D-100 — Freeze one implementation-equivalent EXP-G1 resource falsifier
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-3D evidence; no synthetic execution or
+  official authority; G2-3C claim remains unconsumed
+- Decision: Freeze
+  `global_v2_g1_resource_feasibility_contract.json` at SHA-256
+  `17327310...24a92`. Test exactly one implementation optimization after
+  reviewed integration: reuse one fold-local CatBoost 1.2.1 quantized training
+  Pool and its matching prediction Pool across fresh models for the frozen
+  configuration-seed identities. Preserve every configuration, seed,
+  iteration, depth, loss, feature, target, fold, fit identity, fit count,
+  sixteen-thread constructor, sequential-execution rule, metric, selection,
+  and terminal. A mismatch or resource failure rejects EXP-G1 without another
+  implementation remedy or claim consumption.
+- Evidence: D-099's accepted 28 real probes project the unchanged 8,820-fit
+  design to 126.339 wall-hours and 1,680.321 CPU-core-hours on the smaller
+  synthetic fixture. Code inspection finds repeated feature quantization as
+  the only fold-local work that can be reused without reusing a model, target
+  statistic, or prediction. The frozen falsifier pairs raw reference and
+  optimized modes on two opposite-order synthetic roots, with fourteen
+  identities per mode and root. All float64 prediction bytes, constructor
+  parameters, and canonical resolved-parameter bytes must match exactly. The
+  worse optimized-root projection, never an average or overhead-subtracted
+  value, must be at most 96 wall-hours and 960 CPU-core-hours, retaining 20%
+  margin below both original ceilings. Seven focused static tests pass. This
+  milestone performs zero fit or prediction, opens no official input, and
+  keeps every official and forbidden counter, including claim consumption, at
+  zero.
+- Alternatives: Consume the claim and hope; change thread count or concurrency;
+  reduce configurations, seeds, folds, iterations, depth, or features; use
+  early stopping, warm starts, GPU, approximate equality, model or prediction
+  reuse; average favorable timing roots; or try another optimization after a
+  failure.
+- Reversal condition: Any parent, implementation, runtime, claim, cache-
+  identity, capability, exact-equivalence, projection, resource, cleanup,
+  accounting, signed-integration, or post-main-CI failure rejects the
+  falsifier. Passing it requires an aggregate receipt and reviewed integration
+  of the exact optimized bytes before the existing claim can be reconsidered.
+  Rejection leaves the claim unconsumed and advances to the next preregistered
+  Phase 2 lane.
