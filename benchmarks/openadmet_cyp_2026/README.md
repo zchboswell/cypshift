@@ -113,8 +113,17 @@ three-seed-before-score reduction, inner-only selection, paired baseline rows,
 all five promotion gates, aggregate-only publication, and exact 8,820-fit
 execution limit. The parent's unused 60-fit margin cannot fund repair or
 expansion. This milestone opens no official input or scientific operation. The
-exact next gate is reviewed integration and green post-main CI, followed by a
-separate synthetic-only G2-3B implementation contract.
+G2-3B now freezes that separate implementation boundary in
+[`global_v2_g1_synthetic_contract.json`](global_v2_g1_synthetic_contract.json)
+at SHA-256 `c8c706a8...ba866`. Two fresh 80-molecule/40-component roots must
+exercise all 17,640 deterministic full-topology model-stage identities and
+exactly 28 locked-runtime CatBoost compatibility fits, then publish byte-
+identical terminal maps despite reversed physical source order. The model
+double tests nested mechanics; the real fits probe every configuration form
+and all three seeds. Neither layer produces scientific evidence. This contract
+freeze performs zero synthetic or official operation. Its exact next gate is
+reviewed integration and green post-main CI, followed only by the contracted
+G2-3B implementation and adversarial acceptance.
 
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in

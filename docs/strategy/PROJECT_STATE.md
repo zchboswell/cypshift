@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-095. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-096. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -94,6 +94,19 @@ component-macro MAE improvement, paired upper 95% bound below zero, at least
 opens no official input or scientific operation; G2-3B must first prove the
 least-privilege nested implementation and deterministic terminals on synthetic
 data.
+
+G2-3B now freezes the synthetic implementation boundary at SHA-256
+`c8c706a8...ba866`. Two fresh 80-molecule/40-component roots must replay the
+full 12-configuration, three-seed nested topology with 17,640 deterministic
+model-stage invocations total, while exactly 28 real locked-runtime CatBoost
+fits probe all twelve configuration forms and all three seeds. This split is
+deliberate: the model double exhaustively tests family isolation, selection,
+identity, reductions, accounting, cleanup, and terminals; the real fits test
+runtime compatibility without assigning scientific meaning to synthetic model
+performance. Reversed physical input order must yield byte-identical terminal
+maps. This contract milestone performs zero synthetic or official operation;
+implementation remains unauthorized until reviewed integration and green
+post-main CI.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -743,17 +756,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-3A contract at SHA-256
-`ce39721f...d97c3`, then require green post-main CI before implementing G2-3B.
-The next additive contract may implement only a synthetic fixture,
-least-privilege capability compiler, nested selector, deterministic seed and
-outer-context freezers, paired scorer, and terminal publisher. Two fresh
-synthetic roots must falsify family leakage, truth leakage, seed/configuration
-drift, prediction-identity forgery, non-inner selection, nondeterminism, budget
-reuse, incomplete cleanup, and forbidden operations before any official
-execution claim exists. Keep confirmatory truth, historical R3C row-level
-artifacts, blinded test, TDI, external records, submission, official metric,
-leaderboard, and upload capabilities closed.
+Review and integrate the exact G2-3B synthetic implementation contract at
+SHA-256 `c8c706a8...ba866`, then require green post-main CI. Only afterward
+implement its additive runner, driver, and focused adversarial tests. Require
+two sequential fresh roots, 17,640 exact-topology deterministic model-stage
+invocations, 28 real locked-runtime CatBoost compatibility fits, and
+byte-identical terminal maps before accepting implementation bytes. Keep
+official development inputs and baseline row outputs, confirmatory truth,
+historical R3C row-level artifacts, blinded test, TDI, external records,
+submission, official metric, leaderboard, and upload capabilities closed. A
+distinct G2-3C execution contract and immutable claim may be drafted only after
+accepted G2-3B implementation is reviewed, integrated, and green on `main`.
 
 In parallel, the user may manually upload the exact immutable MapLight
 `submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any

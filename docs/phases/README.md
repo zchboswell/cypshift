@@ -22,10 +22,13 @@ authorized. G2-3A now freezes the preregistered 12-configuration, three-seed
 CatBoost screen over unchanged MapLight features, with all selection inside
 inner component folds, at SHA-256 `ce39721f...d97c3`. Its executable limit
 is 8,820 new fits; the parent's unused 60-fit margin cannot fund repair or
-expansion. All five promotion gates remain conjunctive, and the current
-milestone opens no official input or scientific operation. The exact next gate
-is reviewed integration and green post-main CI for these contract bytes, then a
-separate synthetic-only G2-3B implementation contract.
+expansion. All five promotion gates remain conjunctive. G2-3B now freezes the
+synthetic implementation boundary at SHA-256 `c8c706a8...ba866`: two fresh
+80-molecule/40-component roots, 17,640 full-topology deterministic model-stage
+invocations, exactly 28 real CatBoost compatibility fits, and byte-identical
+terminal maps. The contract freeze opens no synthetic or official operation.
+Its exact next gate is reviewed integration and green post-main CI, then only
+the contracted synthetic runner and adversarial tests.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

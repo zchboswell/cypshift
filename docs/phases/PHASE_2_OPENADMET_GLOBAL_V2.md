@@ -1,9 +1,9 @@
 # Phase 2 — OpenADMET global-v2
 
-Status: active; G2-2 development baseline reproduced and G2-3A `EXP-G1`
-contract frozen; confirmatory, historical-row, blinded-test, TDI, external,
-submission, official-metric, leaderboard, and upload capabilities remain
-closed.
+Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
+and G2-3B synthetic implementation contract frozen; official development,
+confirmatory, historical-row, blinded-test, TDI, external, submission,
+official-metric, leaderboard, and upload capabilities remain closed.
 
 Authorized: 2026-08-24.
 
@@ -292,6 +292,22 @@ prediction, and metric counters are zero. G2-3B must prove the exact nested
 capability and terminal mechanics twice on fresh synthetic roots before any
 execution claim.
 
+G2-3B freezes the distinct additive synthetic implementation contract in
+[`global_v2_g1_synthetic_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g1_synthetic_contract.json)
+at SHA-256 `c8c706a8...ba866`. Its two-layer Occam design tests the exact control
+flow without spending the official-sized fit budget on meaningless synthetic
+outcomes. A deterministic model double must traverse all 8,820 configuration,
+seed, and selected-outer model-stage identities per root; across two roots that
+is 17,640 invocations. A separate locked-runtime probe performs exactly 14 real
+CatBoost fits per root: all twelve configurations under the first seed and
+G1-C00 under the remaining two seeds, totaling 28. The 80-molecule fixture has
+40 two-molecule families, exact 2,563-column shape, three repeats, five outer
+folds, four scoped inner folds, predeclared selection/tie oracles, and sealed
+truth capabilities. Reversed physical input order must publish byte-identical
+terminal maps. Acceptance is mechanics and runtime evidence only; synthetic
+scores or selections cannot rank science. This freeze executes neither layer
+and opens no official input.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -397,7 +413,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-095 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-096 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -407,17 +423,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate the exact G2-3A contract at SHA-256
-`ce39721f...d97c3`, then require green post-main CI. Only afterward freeze a
-distinct additive G2-3B synthetic implementation contract. Implement a tiny
-family-bearing fixture, disjoint target capabilities, the exact twelve
-configuration forms and three-seed reduction, nested selector, outer freezer,
-paired scorer, accounting, cleanup, and status-specific terminals. Require two
-fresh roots, including reversed physical input order, to match every contracted
-terminal byte. Synthetic mechanics must reject family or truth leakage,
-configuration/seed drift, prediction-identity forgery, selection from outer
-truth, nonfinite values, partial fits, budget reuse, overwrite, retry, resume,
-and nonzero forbidden counters. Do not open official inputs, create an execution
-claim, or access confirmatory truth, historical R3C row-level artifacts,
-blinded test, TDI, external records, submission, official metric, leaderboard,
-or upload capability.
+Review and integrate the exact G2-3B contract at SHA-256
+`c8c706a8...ba866`, then require green post-main CI. Only afterward implement
+its additive runner, synthetic driver, and focused tests. Run two fresh roots
+sequentially, including reversed physical input order; require 17,640 exact-
+topology deterministic model-stage invocations, 28 real locked-runtime
+CatBoost compatibility fits, expected inner selections and future endpoint
+tokens, all adversarial failures, exact cleanup/accounting, and byte-identical
+terminal maps. Do not open official inputs or baseline row outputs, create an
+execution claim, or access confirmatory truth, historical R3C row-level
+artifacts, blinded test, TDI, external records, submission, official metric,
+leaderboard, or upload capability.

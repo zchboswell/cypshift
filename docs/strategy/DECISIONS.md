@@ -3011,3 +3011,43 @@
   acceptance ambiguity, nonzero scientific operation, unsigned integration, or
   CI regression revokes D-095 before G2-3B. A later clean EXP-G1 rejection is
   final negative evidence and cannot authorize grid expansion or rerun.
+
+## D-096 — Freeze the two-layer EXP-G1 synthetic implementation boundary
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-3B evidence; no synthetic execution,
+  official input, fit, prediction, or metric operation authorized
+- Decision: Freeze `global_v2_g1_synthetic_contract.json` at SHA-256
+  `c8c706a8...ba866`, bound to the exact D-095 parent
+  `ce39721f...d97c3`. Implement one additive runner and one synthetic driver
+  only after reviewed integration and green post-main CI. Use two fresh
+  80-molecule/40-component roots with two molecules per family, three repeats,
+  five outer folds, four scoped inner folds, four endpoints, and the exact
+  2,563-column MapLight shape. Separate exhaustive mechanics from runtime
+  compatibility: a deterministic model double traverses every frozen inner and
+  selected-outer configuration/seed identity, while real CatBoost fits only
+  probe the frozen constructor forms and seeds.
+- Evidence: Each root requires 8,640 inner and 180 outer model-stage
+  invocations, matching the D-095 8,820 topology exactly; two roots total
+  17,640. Each root performs exactly fourteen locked-runtime real fits: all
+  twelve configurations under seed 20260824 plus G1-C00 under seeds 20260825
+  and 20260826; two roots total twenty-eight. Reversed physical source order
+  must preserve every terminal byte. Predeclared selection oracles require at
+  least three winning configuration IDs and an exact configuration-ID tie.
+  Least-privilege stages seal validation and outer truth until their freezers
+  are immutable. Fourteen adversarial classes cover family and truth leakage,
+  seed/configuration drift, identity forgery, outer-feedback selection,
+  nonfinite arithmetic, partial topology, runtime drift, completion-order
+  nondeterminism, cross-root mixing, retry/resume/overwrite, cleanup, and all
+  forbidden counters. Nine focused static tests bind the frozen contract. This
+  milestone opens no synthetic or official capability.
+- Alternatives: Execute 17,640 real synthetic CatBoost fits; probe only object
+  construction without fitting; shrink the scientific topology; omit the
+  reversed-order replay; use singleton components; let synthetic scores tune
+  the grid; or combine implementation and official execution authority.
+- Reversal condition: Any parent drift, contract-hash mismatch, non-exact
+  topology or probe count, family/capability leak, nondeterministic terminal,
+  synthetic result used as scientific evidence, nonzero official operation,
+  unsigned integration, or CI regression revokes D-096. A failed synthetic
+  replay cannot be resumed, repaired, moved, or converted into execution
+  authority.
