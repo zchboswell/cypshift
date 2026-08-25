@@ -1,0 +1,89 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_scoring_capability_rejection.v1",
+  "recorded_at_utc": "2026-08-25T21:45:39Z",
+  "status": "G2_7E_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_REJECTED",
+  "scoring_capability_contract_sha256": "b1cb08665c762c736c8dc277522fc5acba3e06af2a66952f276112dd26adac9f",
+  "failure_stage": "POST_CAPABILITY_CLEANUP",
+  "failure_type": "NoFitAcceptanceError",
+  "failure_message": "cleanup root is unsafe",
+  "reason": "The single authorized D-128 formal synthetic acceptance completed both official-shaped capability compilations, then correctly refused to recursively clean a /tmp work root with only three resolved path components. No aggregate acceptance was published. The attempt is terminally rejected because complete cleanup is conjunctive and D-128 authorizes exactly one attempt.",
+  "failed_invocation_root_class": "/tmp/<single-component-name>",
+  "attempt_accounting": {
+    "authorized_attempts": 1,
+    "attempts_consumed": 1,
+    "attempts_remaining": 0,
+    "roots_compiled": 2,
+    "retained_synthetic_files_before_cleanup": 530,
+    "retained_synthetic_bytes_before_cleanup": 52814752,
+    "acceptance_published": false
+  },
+  "determinism_observation": {
+    "capability_maps_identical": true,
+    "root_a_source_manifest_sha256": "a2fe7bf02b463636e8a1374bc4486eecf121aa2beeb328a7e7447ada33df1e11",
+    "root_b_source_manifest_sha256": "b7fe80807e974f4f85ed7a51815ad915976b3da18792b06374da8c353053c187",
+    "capability_manifest_sha256": "6f8039abdeb3fde9c2657f084b0ec831113a484f15305210f895ea440c64f593",
+    "scoring_truth_sha256": "1170795f1068568a0ab38a192cd2e3d8d2bb576b937e6969aee8723bf615b6d9",
+    "accepted_as_scientific_evidence": false,
+    "interpretation": "Byte identity is retained only as negative-attempt engineering evidence. Cleanup failure prevents capability acceptance and grants no model-quality, metric, resource, claim, or official-execution authority."
+  },
+  "implementation_receipts_at_failure": {
+    "scoring_compiler_source_sha256": "6f15205fccb4a7c2e1cc2c7244e31acf15d7fd34b285c85145bfde551da6f492",
+    "acceptance_driver_source_sha256": "5d2a6df1d6b55da936ed75049f9271eeb011b4536a7590b1398d94f86ce4e782",
+    "focused_tests_sha256": "aec564d1ed17891528ee997f09f03f7d6161ba980a57293ade8a32641fc7daa9"
+  },
+  "historical_claim": {
+    "path": "global_v2_maplight_robustness_execution_claim.json",
+    "sha256": "da0104bc8d297904fc26e019f1717fee38411d9aa741c774f2185090bcceb334",
+    "consumptions": 0,
+    "usable": false,
+    "unchanged": true
+  },
+  "cleanup": {
+    "synthetic_work_root_present_when_recorded": true,
+    "cleanup_initially_blocked_by_safety_predicate": true,
+    "required_disposition": "Move only the exact generated synthetic work root beneath a sufficiently deep explicit temporary parent, invoke the accepted safe cleanup predicate on that nested path, and verify both paths absent.",
+    "completed_at_utc": "2026-08-25T21:46:59Z",
+    "synthetic_work_root_present_after_cleanup": false,
+    "temporary_quarantine_parent_present_after_cleanup": false,
+    "private_roots_retained": 0,
+    "recoverability": "Generated synthetic scratch data was permanently removed after its aggregate hashes and counts were recorded."
+  },
+  "operation_accounting": {
+    "real_catboost_fits": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_baseline_rows_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "authority": {
+    "retry_under_d128": false,
+    "resume_under_d128": false,
+    "repair_under_d128": false,
+    "replacement_under_d128": false,
+    "official_access": false,
+    "model_fitting": false,
+    "development_scoring": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "submission_generation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "scientific_interpretation": "This is a synthetic cleanup-boundary failure. It changes no estimate of MapLight performance and cannot support candidate selection or a competition submission.",
+  "next_action": "After this rejection is reviewed, integrated, and green on main, freeze a separate fail-before-work contract for a materially distinct acceptance path whose fixed roots satisfy the cleanup predicate before either root is created. Do not rerun, resume, repair, or reinterpret the consumed D-128 attempt."
+}

@@ -4363,3 +4363,35 @@
   direct-observation fixture, one formal opposite-order two-root synthetic
   acceptance driver, and focused tests. It must run zero real fit and zero
   development metric and may not create a claim or open an official byte.
+
+## D-129 — Reject the consumed D-128 scorer-capability acceptance attempt
+
+- Date: 2026-08-25
+- Status: accepted terminal negative G2-7E evidence; D-128 attempts remaining
+  zero; generated synthetic scratch cleaned; D-127 claim immutable, unconsumed,
+  unusable, and barred; zero official source, fit, prediction, metric, claim,
+  submission, leaderboard-selection, private-portal-record, or upload operation
+- Decision: Accept
+  `global_v2_maplight_robustness_scoring_capability_rejection.json` at SHA-256
+  `e551c755...414848d`. Reject the sole D-128 formal attempt because complete
+  cleanup is conjunctive. Preserve exact failed-source receipts, hard-disable
+  the consumed driver before work, and authorize no retry, resume, in-place
+  repair, replacement, or scientific interpretation under D-128.
+- Evidence: Both official-shaped roots completed and produced identical
+  `manifest.json` and `scoring_truth.csv` hashes despite opposite physical and
+  dependency-safe order. Terminal cleanup then raised `cleanup root is unsafe`
+  for `/tmp/<single-component-name>`, before acceptance publication. The 530
+  generated files totaling 52,814,752 bytes were moved beneath one explicit
+  deeper temporary parent, removed with the accepted safe-cleanup predicate,
+  and both paths verified absent. Ten focused tests pass. Real CatBoost fits,
+  development metrics, official operations, claims created/consumed, and live
+  uploads all equal zero.
+- Alternatives: Treat byte identity as acceptance despite incomplete cleanup;
+  rerun with a deeper root; silently patch and reuse the same attempt; retain
+  synthetic scratch indefinitely; or let private portal evidence justify
+  bypassing the scorer gate.
+- Reversal condition: This historical rejection is immutable. Any future
+  scorer-capability path must begin with a separately reviewed contract that
+  proves cleanup-root safety before either root is created, uses a materially
+  distinct attempt identity, preserves D-128 science unchanged, and grants no
+  authority to the consumed D-128 attempt or permanently barred D-127 claim.

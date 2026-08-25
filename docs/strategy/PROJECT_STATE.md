@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-128. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-129. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -615,6 +615,19 @@ execution: zero synthetic row, official byte, baseline row, fit, prediction,
 metric, claim, confirmatory, submission, or upload operation occurs. Fixed
 MapLight remains the best validated internal system at 0.5838 component-macro
 MAE.
+
+D-129 preserves the sole D-128 formal scorer-capability attempt as terminal
+negative engineering evidence at rejection SHA-256
+`e551c755...414848d`. Both opposite-order synthetic roots compiled identical
+two-file scorer capabilities, but terminal cleanup correctly refused the
+three-component `/tmp` work root. Because D-128 authorized exactly one formal
+attempt and required complete cleanup, no acceptance was published and the
+attempt cannot be retried, resumed, repaired, or reinterpreted. Its 530 files
+and 52,814,752 bytes of generated synthetic scratch data were removed only
+after aggregate receipts were recorded. Ten focused tests pass; the rejected
+driver is hard-disabled. Zero real or official fit, prediction, metric, claim,
+submission, leaderboard-selection, or upload operation occurred. This result
+does not change the 0.5838 internal MapLight estimate.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1266,20 +1279,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-128 scoring-capability repair contract SHA-256
-`b1cb0866...6adac9f`, then require green post-main CI. Only afterward implement
-one trusted scorer-enrichment compiler, its separate official-shaped direct-
-observation fixture, one two-root synthetic acceptance driver, and focused
-tests. Require byte-identical scorer capabilities, zero confirmatory value
-parses, zero real fits, and zero development metrics. Do not implement the
-scientific runner or attempt driver, create or consume a claim, use the D-127
-root, open an official byte or baseline, fit a model, or score a development
-target until the repair is accepted and a later corrected execution contract
-is reviewed, integrated, and green on `main`. Confirmatory truth, historical
-row-level artifacts, blinded test, TDI, submission generation, official metric,
-leaderboard selection, and upload capability remain closed. EXP-G3 and
-G1/G2/M1/X1/T2 plus immutable R5D/I0 remain closed; `global_TDI` remains the
-TDI fallback.
+Review and integrate the D-129 scorer-capability rejection SHA-256
+`e551c755...414848d`, then require green post-main CI. Only afterward freeze a
+separate fail-before-work correction contract for a materially distinct
+synthetic acceptance path. It must authenticate cleanup-root safety before
+creating either root, preserve D-128's eight-field scorer science unchanged,
+and grant no retry authority to the consumed D-128 attempt. Do not implement
+the scientific runner or official attempt driver, create or consume a claim,
+use the D-127 root, open an official byte or baseline, fit a model, or score a
+development target until a new scorer-capability acceptance and later
+corrected execution contract are reviewed, integrated, and green on `main`.
+Confirmatory truth, historical row-level artifacts, blinded test, TDI,
+submission generation, official metric, leaderboard selection, and upload
+capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
+remain closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

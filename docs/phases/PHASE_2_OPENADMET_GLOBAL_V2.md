@@ -988,6 +988,18 @@ opposite physical and launch order. It performs no fit or metric and creates
 no claim authority. A later corrected execution contract must use a new claim
 ID and fixed root; the D-127 claim and root are permanently forbidden.
 
+D-129 records the one D-128 formal synthetic attempt as rejected at
+[`global_v2_maplight_robustness_scoring_capability_rejection.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_rejection.json),
+SHA-256 `e551c755...414848d`. Canonical and reversed physical/dependency order
+produced identical scorer-capability maps, but terminal cleanup refused the
+shallow `/tmp/<single-component-name>` root. Since cleanup is conjunctive and
+D-128 authorized one attempt, no acceptance exists and the attempt has zero
+remaining uses. The generated 530-file, 52,814,752-byte synthetic root was
+removed after aggregate receipts were frozen. The driver now fails before
+work. This is cleanup-boundary evidence only; it changes no model-quality or
+resource estimate and authorizes no official operation. A later path requires
+a separate contract that validates its fixed cleanup roots before creation.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -1039,7 +1051,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-128 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-129 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1049,16 +1061,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-128 scoring-capability repair contract SHA-256
-`b1cb0866...6adac9f`, then require green post-main CI. Only afterward implement
-the trusted scorer-enrichment compiler, its separate official-shaped direct-
-observation fixture, one two-root synthetic acceptance driver, and focused
-tests. That sole acceptance must parse zero confirmatory value, run zero real
-fit and zero development metric, and match every capability byte under
-opposite order. Do not implement the scientific runner or attempt driver,
-create or consume any claim, reuse the D-127 root, open an official byte or
-baseline, fit a model, or score a development target before the repair is
-accepted and a later corrected execution contract is integrated. Confirmatory truth,
-historical row-level artifacts, blinded test, TDI, submission generation,
-official metric, leaderboard selection, and upload remain closed.
-`global_TDI` remains the TDI fallback.
+Review and integrate D-129 rejection SHA-256 `e551c755...414848d`, then require
+green post-main CI. Only afterward freeze a distinct fail-before-work
+scorer-capability correction contract. The new path must prove its fixed roots
+satisfy cleanup safety before creating either root and must preserve D-128's
+scoring fields, chronology, zero-confirmatory-decode rule, and zero-fit/metric
+boundary. Do not rerun or repair D-128; implement the scientific runner or
+official attempt driver; create or consume a claim; reuse the D-127 root; open
+an official byte or baseline; fit a model; or score a development target before
+a new synthetic capability acceptance and later corrected execution contract
+are integrated. Confirmatory truth, historical row-level artifacts, blinded
+test, TDI, submission generation, official metric, leaderboard selection, and
+upload remain closed. `global_TDI` remains the TDI fallback.

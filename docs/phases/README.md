@@ -303,6 +303,15 @@ gate is one trusted scorer-enrichment compiler plus a two-root official-shaped
 synthetic acceptance with zero real fit and zero development metric. The
 scientific runner, a corrected claim, and official access remain closed.
 
+D-129 records the sole D-128 formal acceptance as terminally rejected at
+SHA-256 `e551c755...414848d`. Both opposite-order synthetic compilations were
+byte-identical, but the accepted cleanup safety predicate refused the shallow
+temporary root. No acceptance was published; generated synthetic scratch data
+was removed after aggregate receipt capture, and the failed driver is
+hard-disabled. D-128 has zero attempts remaining. The next gate is a separate
+fail-before-work correction contract, not a rerun or repair. It must prove root
+safety before work and retain zero fit, metric, claim, or official authority.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),
