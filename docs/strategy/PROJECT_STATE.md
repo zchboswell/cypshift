@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-119. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-120. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -464,6 +464,23 @@ and is deliberately unusable. This milestone opened zero official row and
 performed zero fit, prediction, or metric. Its exact next gate is an additive
 official compiler/wrapper plus two-root official-shaped synthetic acceptance;
 do not consume the claim or open an official byte in that milestone.
+
+D-120 now accepts those additive execution mechanics at tracked receipt
+SHA-256 `4bdc758a...2636`. Two fresh 1,200-molecule/600-component no-network
+roots, the second in reversed physical order, matched all six aggregate
+terminal files at tree SHA-256 `d137623f...6516`. Each root compiled 960
+development molecules while keeping 240 confirmatory molecules opaque,
+traversed exactly 60 model-double fits and 11,520 candidate predictions, opened
+the 11,520-row synthetic baseline only after prediction freeze, made 24 pinned
+tutorial calls, and accepted 2,000 paired component-bootstrap replicates. Two
+exact 1,500-tree runtime controls also matched. Atomic no-replace publication,
+status-specific aggregate terminals, exact four-field claim derivation, and
+source/structure/family/capability tamper rejection are covered by 14 focused
+tests. The tracked claim remains unchanged and unconsumed; official source,
+baseline rows, fits, predictions, metrics, confirmatory truth, historical rows,
+blinded test, TDI, external records, submissions, leaderboard selection, and
+uploads all remain unopened. Synthetic promotion values are engineered
+mechanics controls and have no model-quality interpretation.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1113,19 +1130,19 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-119 contract SHA-256 `be9dccf0...f87e57` and unconsumed
-claim SHA-256 `71fc0231...25f9b`, then require green post-main CI. After
-integration, implement only the additive official capability compiler,
-single-use attempt wrapper, official-shaped synthetic driver, and narrow
-adversarial tests. Two fresh opposite-order synthetic roots must match all six
-aggregate terminal files and exercise the exact 60-fit topology with a model
-double; a bounded exact-runtime control must reuse D-118. Bind reviewed source
-hashes in one aggregate acceptance before deriving or consuming a private
-claim. Open no official byte, fit no official model, and evaluate no official
-metric in that milestone. Do not inspect confirmatory truth, blinded test, TDI,
-historical row-level artifacts, generate a submission, use portal evidence for
-selection, or upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain closed;
-`global_TDI` remains the TDI fallback.
+Review and integrate D-120 acceptance SHA-256 `4bdc758a...2636`, then require
+green post-main CI. Only after those exact bytes are integrated may one private
+canonical derivative fill the tracked claim's four null implementation fields
+and atomically consume the sole fixed development attempt. Execute exactly 60
+official LightGBM fits and 46,896 candidate OOF predictions once; freeze every
+candidate prediction before scorer truth or fixed MapLight OOF opens; publish
+only the six status-specific aggregate terminals and receipt; clean all private
+capabilities and row-level work. No retry, resume, move, overwrite, repair,
+parameter change, alternate representation, or model selection from portal
+evidence is permitted. Confirmatory truth, historical row-level artifacts,
+blinded test, TDI, submission generation, official metric, leaderboard
+selection, and upload remain closed. G1/G2/M1/X1/T2 and immutable R5D/I0 remain
+closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

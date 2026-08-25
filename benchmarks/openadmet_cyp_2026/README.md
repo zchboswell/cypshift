@@ -177,6 +177,20 @@ cannot yet be consumed. This milestone opened zero official row and performed
 zero fit, prediction, or metric. Its next gate is official-shaped synthetic
 acceptance of the additive compiler and wrapper, not official execution.
 
+That boundary is now accepted in
+[`global_v2_g3_execution_synthetic_acceptance.json`](global_v2_g3_execution_synthetic_acceptance.json),
+SHA-256 `4bdc758a...2636`. Two fresh opposite-order no-network roots matched all
+six aggregate terminal files at tree SHA-256 `d137623f...6516`. Each root
+compiled 960 development molecules while keeping 240 confirmatory molecules
+opaque, traversed the exact 60-fit/11,520-prediction model-double topology,
+opened the fixed synthetic baseline only after candidate freeze, made 24 pinned
+tutorial calls, and accepted 2,000 paired component-bootstrap replicates. Both
+exact 1,500-tree runtime controls matched. Atomic no-replace publication and
+aggregate failure/underpowered terminals are tested. All private roots were
+cleaned; claim consumption, official operations, and forbidden operations are
+zero. This is mechanics evidence only. After reviewed integration and green
+post-main CI, the next gate is the sole fixed official development execution.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

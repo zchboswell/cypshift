@@ -35,6 +35,10 @@ D-119 now freezes that development execution contract and an immutable
 unconsumed claim. The fixed scientific run remains unopened, and the claim is
 unusable until a later official-shaped synthetic compiler/wrapper acceptance
 binds four reviewed implementation receipts.
+D-120 accepts that compiler/wrapper boundary on two fresh opposite-order
+no-network synthetic roots. All six aggregate terminals match byte-for-byte;
+the tracked claim remains unchanged and unconsumed, and every official or
+forbidden operation remains zero.
 
 Authorized: 2026-08-24.
 
@@ -756,6 +760,25 @@ and acceptance hashes are null, so it cannot authorize execution. This
 contract milestone listed or opened no official source root, opened no target,
 feature, or baseline row, and ran zero fit, prediction, or metric.
 
+D-120 accepts the additive official compiler, single-use wrapper, and
+official-shaped driver under
+[`global_v2_g3_execution_synthetic_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_execution_synthetic_acceptance.json),
+SHA-256 `4bdc758a...2636`. Two fresh no-network roots contained 1,200 molecules
+in 600 components; the compiler retained 960 development molecules and kept
+all 960 confirmatory endpoint rows opaque. Reversing every physical source
+order changed source bytes but not one of the six aggregate terminal hashes;
+the combined tree is `d137623f...6516`. Per root, the model double traversed
+all 60 fits and 11,520 candidate rows, the scorer opened 11,520 synthetic
+baseline rows only after the complete candidate freeze, 24 pinned tutorial
+calls completed, and 2,000 paired component-bootstrap replicates were
+accepted. The two exact full-width 1,500-tree runtime controls matched. Fourteen
+focused tests cover lineage, chemistry, NaN preservation, family containment,
+least privilege, chronology, atomic no-replace publication, underpowered and
+failure terminals, exact claim derivation, tamper rejection, and no replacement.
+All synthetic values are engineered mechanics controls with no model-quality
+meaning. Private roots were removed; claim consumptions, official operations,
+and every forbidden counter remain zero.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -814,7 +837,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-119 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-120 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -824,15 +847,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-119 contract SHA-256 `be9dccf0...f87e57` and unconsumed
-claim SHA-256 `71fc0231...25f9b`, then require green post-main CI. After
-integration, implement only the additive official capability compiler,
-single-use attempt wrapper, official-shaped synthetic driver, and narrow
-adversarial tests. Two fresh opposite-order synthetic roots must match all six
-aggregate terminal files and exercise the exact 60-fit topology with a model
-double; a bounded exact-runtime control must reuse D-118. Bind reviewed source
-hashes in one aggregate acceptance before deriving or consuming a private
-claim. Open no official byte, fit no official model, and evaluate no official
-metric in that milestone. Do not inspect confirmatory truth, historical row-
-level artifacts, blinded test, TDI, generate a submission, use portal evidence
-for selection, or upload.
+Review and integrate D-120 acceptance SHA-256 `4bdc758a...2636`, then require
+green post-main CI. Only then derive the exact private claim by filling its four
+null future receipt fields and atomically consume the sole fixed attempt. Run
+the official development falsifier once: 60 exact LightGBM fits, 46,896
+candidate OOF predictions, complete prediction freeze before scorer truth or
+fixed MapLight OOF access, and all six preregistered promotion-gate families.
+Publish only aggregate status-specific terminals and the resource/cleanup
+receipt. No retry, resume, move, overwrite, repair, alternate model, or portal-
+guided selection is allowed. Confirmatory truth, historical row-level
+artifacts, blinded test, TDI, submission generation, official metric,
+leaderboard selection, and upload remain closed.

@@ -3979,3 +3979,42 @@
   opposite-order synthetic roots. Bind their reviewed hashes in one aggregate
   acceptance before consuming a private claim; open no official byte in that
   milestone.
+
+## D-120 — Accept EXP-G3 official-shaped execution mechanics
+
+- Date: 2026-08-25
+- Status: accepted official-shaped synthetic implementation evidence; tracked
+  claim unchanged and unconsumed; zero official or forbidden operation
+- Decision: Accept `global_v2_g3_execution_synthetic_acceptance.json` at
+  SHA-256 `4bdc758a...2636`. Bind compiler `fbac206c...fde5`, wrapper
+  `318c0780...db1b`, driver `924a328b...e73b`, accepted G3 runner
+  `a639c2f2...3415`, and research lock `b110c1b6...152c`. Permit only reviewed
+  integration and green post-main CI before one exact private four-field claim
+  derivative and the sole fixed official development attempt.
+- Evidence: Two fresh 1,200-molecule/600-component roots ran in separate
+  no-network execution, with the second reversing physical source order. All
+  six terminal files matched byte-for-byte at tree SHA-256
+  `d137623f...6516`. Per root, 960 development molecules in 480 components
+  traversed 60 model-double fits and 11,520 predictions; 240 confirmatory
+  molecules remained opaque; the 11,520-row synthetic baseline opened only
+  after prediction freeze; 24 tutorial calls and 2,000 accepted paired
+  component-bootstrap replicates completed. Both exact full-width 1,500-tree
+  runtime controls matched. Fourteen focused adversarial tests cover lineage,
+  chemistry, NaN-preserving features, family boundaries, least privilege,
+  baseline chronology, atomic no-replace publication, status-specific
+  terminals, exact claim derivation, tamper rejection, and no replacement.
+  Private roots retained, claim consumptions, official operations, and every
+  forbidden counter are zero. Synthetic promotion values have no model-quality
+  interpretation.
+- Alternatives: Open the official source during adapter development; trust one
+  physical order; expose validation truth or baseline to the model stage;
+  publish candidates non-atomically; omit failure/underpowered terminals; fill
+  more than the four frozen claim fields; consume the claim before reviewed
+  integration; or let private portal evidence select or repair the model.
+- Reversal condition: Any source, parent, chemistry, family, feature, runtime,
+  capability, fit, prediction-freeze, baseline chronology, metric, bootstrap,
+  gate, atomic publication, terminal, cleanup, claim, accounting, or authority
+  drift revokes progression before official access. Otherwise integrate these
+  exact bytes, require green post-main CI, then consume and execute the sole
+  official development attempt once with no retry, resume, move, overwrite, or
+  repair.

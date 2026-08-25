@@ -214,6 +214,18 @@ fit, prediction, or metric. After reviewed integration and green post-main CI,
 implement and accept only the additive official-shaped synthetic compiler and
 single-use wrapper; do not consume the claim or open an official byte.
 
+D-120 accepts those exact mechanics at tracked receipt SHA-256
+`4bdc758a...2636`. Two fresh no-network roots reversed physical source order
+and matched all six aggregate terminals at tree SHA-256 `d137623f...6516`.
+Each root exercised 60 model-double fits, 11,520 candidate predictions, delayed
+synthetic-baseline access, 24 tutorial calls, and 2,000 accepted paired
+component-bootstrap replicates; both exact 1,500-tree runtime controls matched.
+Confirmatory values parsed and all official/forbidden operations are zero, all
+private roots were cleaned, and the tracked claim remains unchanged and
+unconsumed. After reviewed integration and green post-main CI, the next gate is
+the sole fixed official development execution—not another synthetic replay or
+any portal-guided choice.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),
