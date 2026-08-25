@@ -21,6 +21,9 @@ D-115 records `EXP-T2` as not activated: no accepted stronger global successor
 produced cross-fitted OOF residuals and no prospective positive improvement-
 versus-coverage region exists. MapLight remains the stable baseline, and no T2
 contract, fit, prediction, metric, or model-quality result exists.
+D-116 now freezes the separately named `EXP-G3` recovery contract: one
+deterministic LightGBM L1 expert, one fixed representation, 60 family-safe
+outer fits, no tuning or blend, and no official operation at this milestone.
 
 Authorized: 2026-08-24.
 
@@ -659,6 +662,35 @@ is a terminal activation-order decision, not a negative model score. Any later
 local residual idea requires a new named prospective hypothesis after separate
 stronger-global evidence; it cannot reinterpret T2.
 
+### G2-6R — Occam global recovery with one fixed expert
+
+D-116 freezes `EXP-G3` under
+[`global_v2_g3_single_expert_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_single_expert_contract.json),
+SHA-256 `ee2725ba...5da47`. This is not a repair of G1, an instantiation of
+parent-defined G2, or a reopening of M1/X1/T2. It tests exactly one fixed
+LightGBM 4.7.0 `regression_l1` expert on a 2,048-column chiral Morgan-count
+block plus the accepted 200-column RDKit descriptor block. Descriptor NaN is
+preserved for native missing routing; no column is imputed, scaled, selected,
+dropped, or target-encoded.
+
+The model uses one seed, all 1,500 trees, full rows and features, deterministic
+forced col-wise CPU histograms, one fit at a time with sixteen threads, and no
+validation set, early stopping, grid, extra seed, blend, calibration, external
+data, or endpoint-specific parameter. With no selection, the exact scientific
+topology is only 3 repeats x 5 outer folds x 4 endpoints = 60 fits, 46,896
+candidate predictions, and zero baseline refits.
+
+Promotion requires every gate: at least 3% pinned tutorial-primary improvement,
+0.015 component-macro MAE improvement, a paired component-bootstrap upper 95%
+bound below zero, at least 8/15 favorable outer cells, no endpoint degradation
+above 0.015, and at least 0.010 component-MAE improvement on CYP1A2 or CYP2D6.
+A clean miss retains fixed MapLight and closes G3 without a post-result blend,
+grid, feature change, extra seed, or successor. Before any execution claim, a
+separate contract must create an isolated exact runtime and accept two opposite-
+order synthetic roots plus a real-fit resource probe at 20% margin. D-116
+itself installs no dependency, opens no official input, and performs no fit,
+prediction, metric, submission, leaderboard selection, or upload.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -717,7 +749,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-115 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-116 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -727,12 +759,11 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-115 nonactivation receipt SHA-256
-`75eb8d10...0f59c98`, then require green post-main CI. Do not contract or
-execute `EXP-T2`; its activation evidence does not exist. After integration,
-freeze a separately named single-expert global contract for one fixed
-representation-diverse learner against MapLight. It must not repair G1,
-instantiate parent-defined G2, reopen M1/X1/T2, or use private portal evidence.
-Do not fit, score, inspect blinded test, generate a submission, call an official
-metric, or upload before that hypothesis has its own reviewed contract and
-synthetic capability gate.
+Review and integrate D-116 `EXP-G3` contract SHA-256
+`ee2725ba...5da47`, then require green post-main CI. After integration, freeze
+the separate deterministic-runtime and synthetic-implementation contract. It
+may create only an isolated LightGBM research lock and must prove opposite-order
+roots, the 60-identity topology, exact parameters, prediction identity, cleanup,
+and 20%-margin resources. Do not create a claim, open an official input, fit or
+score an official model, inspect blinded test, generate a submission, call an
+official metric, use portal evidence, or upload before that gate passes.

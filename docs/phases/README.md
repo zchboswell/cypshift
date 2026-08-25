@@ -169,6 +169,17 @@ separately named single-expert global contract for one fixed representation-
 diverse learner against MapLight—not a G1 repair, parent-defined G2, or a choice
 from private portal evidence.
 
+D-116 freezes the separately named `EXP-G3` contract at SHA-256
+`ee2725ba...5da47`. The smallest new global hypothesis is one deterministic
+LightGBM 4.7.0 L1 expert over 2,048 chiral Morgan-count and 200 accepted RDKit
+descriptor columns, with no preprocessing, tuning, blending, or early stopping.
+The exact family-safe workload is 60 fits and zero baseline refits. Promotion
+requires every frozen effect-size, paired-uncertainty, cell, endpoint-harm, and
+CYP1A2/CYP2D6 targeted-improvement gate. This contract installed no dependency,
+opened no official input, and ran no fit or metric. After reviewed integration
+and green post-main CI, the next gate is a separate isolated-runtime and two-
+root synthetic mechanics/resource contract—not official execution or a claim.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

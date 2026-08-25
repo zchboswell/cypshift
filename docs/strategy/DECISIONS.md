@@ -3812,3 +3812,47 @@
   single-expert global hypothesis testing one fixed representation-diverse
   learner against MapLight; it may not repair G1, instantiate parent-defined
   G2, or use private portal evidence for selection.
+
+## D-116 — Freeze one deterministic LightGBM expert as EXP-G3
+
+- Date: 2026-08-25
+- Status: accepted contract-only Global-v2 recovery lane; zero dependency,
+  runtime, implementation, official-input, fit, prediction, metric, submission,
+  leaderboard-selection, upload, or claim operation
+- Decision: Accept `global_v2_g3_single_expert_contract.json` at SHA-256
+  `ee2725ba...5da47`. Test exactly one deterministic LightGBM 4.7.0 L1 expert
+  against immutable fixed MapLight on the accepted 3x5 family-safe development
+  outer folds. Use 2,048 chiral radius-2 Morgan-count columns followed by the
+  accepted 200 RDKit descriptor columns. Preserve descriptor NaN for native
+  missing routing and perform no imputation, scaling, selection, blend, grid,
+  early stopping, extra seed, or endpoint-specific parameter. Freeze one seed,
+  all 1,500 trees, full rows and features, forced col-wise histograms, exact
+  package/wheel receipts, and one 16-thread fit at a time. The exact workload is
+  60 fits, 46,896 predictions, zero inner-selection fits, and zero baseline
+  refits.
+- Evidence: G1 required 8,820 fits and failed its sole resource falsifier before
+  official execution; M1's 2,430-fit lane also failed CPU before official
+  execution; parent-defined G2 cannot instantiate its required G1 anchor; X1
+  failed before its activity query; and T2 did not activate. A single fixed
+  expert is therefore the smallest untested global representation/learner
+  diversity hypothesis. The exact LightGBM 4.7.0 manylinux wheel is bound at
+  SHA-256 `d23e922...57ebb7`; the project runtime remains unchanged. Promotion
+  requires every member: at least 3% pinned tutorial-primary and 0.015 absolute
+  component-macro MAE improvement, paired upper 95% bound below zero, at least
+  8/15 favorable cells, no endpoint harm above 0.015, and at least 0.010 gain
+  on CYP1A2 or CYP2D6. A later two-root synthetic and real-fit probe must pass
+  20%-margin CPU, wall, storage, RSS, and zero-GPU resource gates before any
+  execution claim. Eight focused static tests pass. This freeze opened no
+  official or private row and produced no model-quality evidence.
+- Alternatives: Repair or shrink G1/M1; instantiate parent-defined G2 without
+  its anchor; add multiple LightGBM seeds, a parameter grid, early stopping,
+  XGBoost, Avalon/ErG/Mordred/embedding blocks, learned stacking, or a fixed
+  MapLight blend; use external data; mine MapLight residuals; or select any
+  choice from private portal evidence.
+- Reversal condition: Any changed parent, feature, runtime, package, parameter,
+  seed, thread count, fold, mask, fit identity, acceptance gate, resource bound,
+  capability, or forbidden-data counter revokes the contract before execution.
+  A clean scientific miss closes EXP-G3 without repair. The next gate is a
+  separately reviewed deterministic-runtime and synthetic-implementation
+  contract; only that milestone may create an isolated LightGBM research lock,
+  and it still cannot open official input or create an execution claim.

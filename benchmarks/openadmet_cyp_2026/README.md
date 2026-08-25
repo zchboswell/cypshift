@@ -127,6 +127,19 @@ leaderboard-selection, or upload operation. `EXP-T2` is closed without a
 contract or model-quality result; its next lane is a separately named,
 prospectively contracted single global expert against MapLight.
 
+The separately named recovery lane `EXP-G3` is frozen in
+[`global_v2_g3_single_expert_contract.json`](global_v2_g3_single_expert_contract.json),
+SHA-256 `ee2725ba...5da47`. It tests one deterministic LightGBM 4.7.0 L1
+expert over a fixed 2,048-column chiral Morgan-count block and the accepted
+200-column RDKit descriptor block. The contract removes stochastic subsampling,
+inner tuning, preprocessing, blending, and early stopping; its exact outer-only
+budget is 60 fits and 46,896 predictions. Promotion requires all effect-size,
+paired-bootstrap, favorable-cell, endpoint-harm, and targeted CYP1A2/CYP2D6
+gates. A later isolated-runtime, two-root synthetic mechanics, and 20%-margin
+resource contract must pass before any claim. This freeze installed no
+dependency, opened no official input, and ran no fit, prediction, metric,
+submission, leaderboard-selection, or upload operation.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

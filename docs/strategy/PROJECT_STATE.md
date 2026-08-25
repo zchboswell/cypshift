@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-115. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-116. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -401,6 +401,22 @@ a contract or execution. The next gate is a separately named, prospectively
 contracted single-expert global hypothesis testing one fixed representation-
 diverse learner against MapLight; it is not a G1 repair or an instantiation of
 parent-defined G2.
+
+D-116 freezes the separately named `EXP-G3` single-expert recovery contract at
+SHA-256 `ee2725ba...5da47`. It tests exactly one deterministic LightGBM 4.7.0
+L1 expert over 2,048 chiral Morgan-count columns plus the accepted 200-column
+RDKit descriptor block, with native descriptor NaN handling and no imputation,
+scaling, selection, blend, grid, early stopping, or endpoint-specific repair.
+One fixed seed, 1,500 trees, full row/feature use, forced col-wise histograms,
+and the exact manylinux wheel hash are frozen. The 3x5x4 outer topology requires
+only 60 fits and 46,896 predictions, with zero inner-selection or baseline
+refits. Promotion remains conjunctive: at least 3% tutorial-primary and 0.015
+component-macro MAE improvement, paired upper 95% bound below zero, at least
+8/15 favorable cells, no endpoint harm above 0.015, and at least 0.010 gain on
+CYP1A2 or CYP2D6. A two-root synthetic mechanics and 20%-margin resource gate
+must pass before any execution claim. This contract milestone changed no
+runtime or dependency, opened no official input, and ran zero fit, prediction,
+metric, submission, leaderboard-selection, or upload operation.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1050,17 +1066,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-115 nonactivation receipt SHA-256
-`75eb8d10...0f59c98`, then require green post-main CI. Keep `EXP-T2` closed:
-the qualifying stronger-global OOF evidence and positive prospective coverage
-region do not exist, and baseline residuals may not be mined to create them.
-After integration, freeze a separately named single-expert global contract that
-tests one fixed representation-diverse learner against MapLight and targets the
-frozen CYP1A2 and CYP2D6 error. It must not repair G1, instantiate parent-defined
-G2, reopen M1/X1/T2, or use private portal observations for selection. Do not
-fit another model, inspect blinded test, generate a submission, call an official
-metric, or upload before that lane's separate contract and synthetic gates.
-Immutable R5D/I0 remain closed; `global_TDI` remains the TDI fallback.
+Review and integrate D-116 `EXP-G3` contract SHA-256
+`ee2725ba...5da47`, then require green post-main CI. After integration, freeze
+a separate deterministic-runtime and synthetic-implementation contract. That
+later milestone may create only an isolated LightGBM research lock and must
+prove two opposite-order roots, all 60 fit identities, exact resolved
+parameters, prediction identity, cleanup, and 20%-margin resource feasibility
+before any execution claim. Do not open an official input, fit an official
+model, inspect blinded test, generate a submission, call an official metric, or
+upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain closed; private portal
+observations cannot select any choice; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.
