@@ -25,6 +25,13 @@ evaluation, external-data acquisition, blinded-test access, submission, or
 leaderboard selection. Its exact next gate is a synthetic-only capability and
 metric firewall.
 
+The strategy audit's current public copy is bound by
+[`global_v2_audit_privacy_redaction.json`](global_v2_audit_privacy_redaction.json)
+at SHA-256 `8a738405...a23798`. The original imported hash remains immutable
+G2-0 lineage; the public copy is SHA-256 `0b87f86e...0c10312` after six
+identifier-only redactions. No scientific content or contract byte changed,
+and the current tree contains no private submission identifier or result.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

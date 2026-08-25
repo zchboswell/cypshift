@@ -22,11 +22,15 @@ not leaderboard iteration.
 
 The strategy source is the exact externally supplied
 [`2026-08-24 audit`](../strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md),
-whose imported SHA-256 is
+whose original imported SHA-256 remains frozen as
 `88cfcb717e1ac21a40300e78d73ff3caa3387a41933cb15893ba40831472f79e`.
-The audit is retained verbatim as provenance. This phase file is the
-authoritative repository synthesis; factual claims become repository evidence
-only through the normal contract, receipt, execution, and review gates.
+The current public copy is privacy-sanitized at SHA-256 `0b87f86e...0c10312`
+under redaction receipt `8a738405...a23798`; only six occurrences of one
+private portal identifier changed, with no scientific meaning changed. The
+original receipt remains immutable lineage in G2-0, while the public tree
+retains no private identifier or result. This phase file is the authoritative
+repository synthesis; factual claims become repository evidence only through
+the normal contract, receipt, execution, and review gates.
 
 The audit reported that it could not execute two local checks. On this checkout
 both gaps are closed: `sha256sum -c` passes all ten files in the public R5D
@@ -580,7 +584,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-106 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-107 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -590,8 +594,8 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-106's exact aggregate rejection SHA-256
-`3222856d...54297`, then require green post-main CI. Treat the consumed M1
+Review and integrate D-107's audit privacy-redaction receipt SHA-256
+`8a738405...a23798`, then require green post-main CI. Treat the consumed M1
 claim and `EXP-M1` as permanently closed; do not retry, repair its runtime
 warning, alter resources, or shrink the frozen design. Keep G1 claim
 `1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` or its

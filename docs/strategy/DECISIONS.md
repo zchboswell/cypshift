@@ -3432,3 +3432,32 @@
   warning-accounting, capability, or cleanup defect revokes evidentiary trust
   and stops the lane; it does not authorize replacement, repair, resume, move,
   overwrite, or official M1 execution.
+
+## D-107 — Sanitize the public strategy-audit copy at the portal boundary
+
+- Date: 2026-08-24
+- Status: accepted privacy-only redaction; scientific strategy and immutable
+  experiment contracts unchanged
+- Decision: Publish only the sanitized strategy-audit copy at SHA-256
+  `0b87f86e...0c10312` under redaction receipt SHA-256
+  `8a738405...a23798`. Replace six occurrences of one private submission
+  identifier with neutral prior-submission language. Preserve the original
+  imported SHA-256 `88cfcb71...f79e` as immutable G2-0 lineage without
+  changing `global_v2_experiment_contract.json` or any descendant contract,
+  claim, result, or scientific decision. Validate the original receipt and
+  sanitized public bytes separately through the redaction overlay.
+- Evidence: A whole-current-tree scan found the private identifier only in the
+  imported audit. The six replacements alter headings/prose/table labels only;
+  no number, recommendation, experiment specification, acceptance gate,
+  receipt, model result, or authority changed. Receipt accounting records six
+  redactions, zero scientific contract/result changes, and zero private
+  identifier/result values in the current tree.
+- Alternatives: Leave the identifier in the public current tree; mutate the
+  immutable G2-0 contract to pretend the source receipt never existed; discard
+  the audit and its provenance; publish the private portal result; or rewrite
+  signed repository history without explicit user authorization.
+- Reversal condition: Any private identifier/result in the current tree,
+  sanitized-copy hash mismatch, altered scientific meaning, mutated G2-0 byte,
+  or false lineage claim revokes the redaction receipt and requires an
+  immediate privacy repair. Historical Git erasure, if required, is a separate
+  destructive operation requiring explicit user direction.

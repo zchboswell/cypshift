@@ -10,7 +10,7 @@
 
 **Build a stronger global ensemble first. Do not make TRACE the primary competition strategy.**
 
-The most defensible path to a significant gain over `glhf` is:
+The most defensible path to a significant gain over the prior private submission is:
 
 1. A family-safe, cross-fitted heterogeneous global ensemble using tuned MapLight variants, LightGBM/XGBoost, alternative fingerprints and descriptors, and one or two pretrained molecular representations.
 2. A masked four-isoform multitask model with an objective aligned to the challenge’s credible intervals and MA-ST-RAE metric.
@@ -636,9 +636,9 @@ TRACE v2 is experiment number four. That ordering is a consequence of the eviden
 
 ---
 
-## 8. Live `glhf` leaderboard assessment
+## 8. Private live leaderboard assessment
 
-The official Space was still marked **Running** at the final check. Its leaderboard is rendered inside an iframe whose dynamic table was not exposed through the browser-accessible text representation used for this audit. Direct searches also did not expose an indexed `glhf` row. 
+The official Space was still marked **Running** at the final check. Its leaderboard is rendered inside an iframe whose dynamic table was not exposed through the browser-accessible text representation used for this audit. Direct searches also did not expose an indexed prior-submission row. 
 
 I checked at the beginning of the audit on August 23 and again at **2026-08-24 02:10:19 UTC**, more than eight hours later. I could not verify the row through the accessible representation. I am therefore reporting it as **unobserved**, not absent. 
 
@@ -647,7 +647,7 @@ I checked at the beginning of the audit on August 23 and again at **2026-08-24 0
 | Exact leaderboard | Official CYP challenge Space  |
 | Final check | 2026-08-24 02:10:19 UTC |
 | Requested track | Direct inhibition |
-| `glhf` visible | Not independently observable in accessible iframe text |
+| Prior submission visible | Not independently observable in accessible iframe text |
 | Displayed score | Unverified |
 | Rank | Unverified |
 | Total ranked entries | Unverified |
@@ -978,7 +978,7 @@ The dataset is small enough that exhaustive neural architecture search is not wa
 
 ## 13. Explicit unknowns and blockers
 
-1. **`glhf` leaderboard row:** not observable through the dynamic iframe representation available to this audit.
+1. **Private leaderboard row:** not observable through the dynamic iframe representation available to this audit.
 2. **Challenge-specific automation permission:** generic Gradio API support exists, but unattended competition uploads were not explicitly authorized in the sources inspected.
 3. **Approved submission endpoint:** endpoint name, request schema, authentication scope, processing-state semantics and remote receipt behavior remain unverified.
 4. **Full local audit commands:** exact all-file `sha256sum -c` and the public audit pytest were not executed in this runtime.
@@ -1047,7 +1047,7 @@ None of these block internal model development. Items 2 and 3 are hard blockers 
 
 ### Days 1–3 — Global ensemble foundation
 
-Complete the experiment harness, tuned tree experts, feature diversity, OOF uncertainty and cross-fitted stack. This should produce the first candidate plausibly superior to `glhf`.
+Complete the experiment harness, tuned tree experts, feature diversity, OOF uncertainty and cross-fitted stack. This should produce the first candidate plausibly superior to the prior private submission.
 
 ### Days 3–5 — Multitask and interval alignment
 

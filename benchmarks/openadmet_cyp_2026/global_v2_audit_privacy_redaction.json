@@ -1,0 +1,28 @@
+{
+  "accounting": {
+    "private_leaderboard_identifiers_published_in_current_tree": 0,
+    "private_leaderboard_results_published_in_current_tree": 0,
+    "redacted_text_occurrences": 6,
+    "scientific_contracts_modified": 0,
+    "scientific_results_modified": 0
+  },
+  "base_commit": "0399f0c8d4241950a89f053a61eac97376697a96",
+  "decision": "publish_sanitized_strategy_audit_only",
+  "original_import_receipt": {
+    "retained_as_immutable_lineage_in_contract": "global_v2_experiment_contract.json",
+    "sha256": "88cfcb717e1ac21a40300e78d73ff3caa3387a41933cb15893ba40831472f79e"
+  },
+  "parent_contract_sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d",
+  "privacy_boundary": {
+    "original_private_value_retained_in_current_tree": false,
+    "redaction_class": "private leaderboard submission identifier",
+    "replacement_semantics": "prior private submission",
+    "scientific_meaning_changed": false
+  },
+  "public_copy": {
+    "path": "docs/strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md",
+    "sha256": "0b87f86ece50ce3d31f6c66f0ce0e5c22529aeb949243556c9a8f18790c10312"
+  },
+  "schema_version": "cypshift.openadmet_cyp_2026.audit_privacy_redaction.v1",
+  "status": "GLOBAL_V2_AUDIT_PUBLIC_COPY_SANITIZED"
+}

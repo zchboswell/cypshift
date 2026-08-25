@@ -89,6 +89,14 @@ stays closed at fixed MapLight. After D-106 integration and green post-main CI,
 the next gate is a contract-only G2-5 `EXP-X1` provenance and acquisition-
 feasibility freeze; external acquisition remains unauthorized.
 
+D-107 privacy-sanitizes the current public strategy-audit copy under receipt
+SHA-256 `8a738405...a23798`. The immutable original import hash remains G2-0
+lineage, while the public copy is SHA-256 `0b87f86e...0c10312` after six
+identifier-only redactions with no scientific change. No private submission
+identifier or result remains in the current tree, and no experiment contract
+byte changed. After reviewed integration and green post-main CI, proceed to the
+same contract-only G2-5 `EXP-X1` provenance gate.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

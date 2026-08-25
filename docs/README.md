@@ -30,8 +30,8 @@ These files define the rules under which results may be interpreted:
 - [Release intake](strategy/LAUNCH_INTAKE.md) — the active external-data freeze
   boundary.
 - [2026-08-24 strategy audit](strategy/OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
-  — immutable source analysis adopted and reconciled by the active Phase 2
-  plan.
+  — privacy-sanitized public source analysis adopted and reconciled by the
+  active Phase 2 plan; its original import receipt remains immutable lineage.
 
 ## Evidence
 

@@ -10,7 +10,16 @@ ROOT = Path(__file__).parents[1]
 CONTRACT_PATH = (
     ROOT / "benchmarks" / "openadmet_cyp_2026" / "global_v2_experiment_contract.json"
 )
+AUDIT_REDACTION_PATH = (
+    ROOT
+    / "benchmarks"
+    / "openadmet_cyp_2026"
+    / "global_v2_audit_privacy_redaction.json"
+)
 CONTRACT_SHA256 = "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+AUDIT_REDACTION_SHA256 = (
+    "8a7384050d6068fc63c5da1f842f0984145b1fd633fdc1aee0463884a7a23798"
+)
 
 
 def _load(path: Path = CONTRACT_PATH) -> dict[str, Any]:
@@ -58,7 +67,6 @@ def test_global_v2_contract_identity_and_denied_execution_authority() -> None:
 def test_global_v2_parent_receipts_match_tracked_bytes() -> None:
     inputs = _load()["inputs"]
     for name in (
-        "strategy_audit",
         "challenge_contract",
         "source_receipts",
         "validation_contract",
@@ -69,6 +77,15 @@ def test_global_v2_parent_receipts_match_tracked_bytes() -> None:
         path = ROOT / receipt["path"]
         assert path.is_file()
         assert _sha256(path) == receipt["sha256"]
+
+    redaction = _load(AUDIT_REDACTION_PATH)
+    original = inputs["strategy_audit"]
+    public_copy = redaction["public_copy"]
+    assert _sha256(AUDIT_REDACTION_PATH) == AUDIT_REDACTION_SHA256
+    assert redaction["original_import_receipt"]["sha256"] == original["sha256"]
+    assert public_copy["path"] == original["path"]
+    assert _sha256(ROOT / public_copy["path"]) == public_copy["sha256"]
+    assert redaction["privacy_boundary"]["scientific_meaning_changed"] is False
 
     accepted = inputs["accepted_artifacts"]
     assert accepted == {

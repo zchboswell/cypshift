@@ -4,10 +4,12 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-106. The externally supplied
-2026-08-24 audit is preserved byte-for-byte at
+Phase 2 Global-v2 is active under D-084 through D-107. The externally supplied
+2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
-and reconciled into the authoritative
+with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
+`8a738405...a23798`; the original imported SHA-256 `88cfcb71...f79e` remains
+immutable lineage in G2-0. It is reconciled into the authoritative
 [`PHASE_2_OPENADMET_GLOBAL_V2.md`](../phases/PHASE_2_OPENADMET_GLOBAL_V2.md).
 The primary build is now a family-safe, cross-fitted heterogeneous global
 ensemble, followed by masked multitask and provenance-controlled external
@@ -250,6 +252,18 @@ already resource-rejected and no selected G1 recipe available, parent-defined
 fixed MapLight. The exact next lane is a contract-only G2-5 `EXP-X1`
 provenance/acquisition-feasibility freeze; acquire no external record before
 that contract is reviewed and integrated.
+
+D-107 sanitizes the public strategy-audit copy without changing scientific
+content. Six occurrences of one private portal identifier were replaced by
+neutral prior-submission language. Redaction receipt SHA-256
+`8a738405...a23798` binds the original immutable import receipt, current public
+copy SHA-256 `0b87f86e...0c10312`, parent G2-0 contract, six-redaction count,
+and zero scientific-contract/result changes. The current tree contains no
+private submission identifier or result. G2-0 and all descendant contract
+bytes remain unchanged; tests now validate the immutable original lineage
+through the redaction receipt and the sanitized public copy separately. The
+exact next scientific gate remains the zero-acquisition G2-5 `EXP-X1`
+provenance/acquisition-feasibility contract.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -899,8 +913,9 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate exact D-106 aggregate rejection `3222856d...54297`, then
-require green post-main CI. Preserve the consumed M1 claim and rejection; do
+Review and integrate exact D-107 privacy-redaction receipt
+`8a738405...a23798`, then require green post-main CI. Preserve the consumed M1
+claim and rejection; do
 not retry, repair its warning, resize or retime the experiment, or execute an
 official M1 fit. Keep the G1 claim unconsumed and do not instantiate
 parent-defined `EXP-G2` without its unavailable selected-G1 anchor. Freeze the
