@@ -97,6 +97,15 @@ identifier or result remains in the current tree, and no experiment contract
 byte changed. After reviewed integration and green post-main CI, proceed to the
 same contract-only G2-5 `EXP-X1` provenance gate.
 
+D-108 rejects a pre-contract G2-5 source-audit path at receipt SHA-256
+`6f0f063c...a5efc`. A documentation/schema view unexpectedly rendered at least
+45 public external CYP3A4 records. No file was downloaded, no value was retained
+or used, and no official or scientific operation occurred, but any positive
+record exposure fails the frozen zero-record boundary. After reviewed
+integration and green post-main CI, restart only through a separate
+metadata-only G2-5A contract that binds this rejection and exposes zero
+additional records.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

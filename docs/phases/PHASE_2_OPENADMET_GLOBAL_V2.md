@@ -6,9 +6,11 @@ accepted but resource feasibility rejected, and the one-shot G2-3D resource
 falsifier terminally rejected; G2-4A `EXP-M1` is frozen, G2-4B implementation
 is accepted, and G2-4C terminally rejects `EXP-M1` on CPU resources after its
 sole deterministic formal attempt; the G2-3C claim remains unconsumed, and
-official development, confirmatory, historical-row,
-blinded-test, TDI, external, submission, official-metric, leaderboard, and
-upload capabilities remain closed.
+official development, confirmatory, historical-row, blinded-test, TDI,
+external-file acquisition, submission, official-metric, leaderboard, and
+upload capabilities remain closed. A pre-contract documentation view exposed
+at least 45 public external CYP3A4 preview records; D-108 rejects that path
+without scientific use and requires a metadata-only restart.
 
 Authorized: 2026-08-24.
 
@@ -495,6 +497,19 @@ standalone point estimate looks competitive.
 
 ### G2-5 — Provenance-first external transfer
 
+D-108 rejects the first source-audit preflight under tracked receipt
+[`global_v2_x1_prefreeze_preview_rejection.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_prefreeze_preview_rejection.json),
+SHA-256 `6f0f063c...a5efc`. A dataset-card schema view unexpectedly rendered at
+least 45 public CYP3A4 record rows before a child contract existed. No external
+file or byte was written locally, no row value was retained or used, and no
+official input, fit, prediction, metric, submission, leaderboard selection, or
+upload occurred. Nevertheless any positive exposure fails the required zero-
+record precondition. Do not reopen or repair that preview path and do not use
+an exposed identity, structure, value, order, or distribution. After reviewed
+integration and green post-main CI, a separate G2-5A contract may use only
+allowlisted repository metadata and protocol/license prose and must expose zero
+additional external records.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -584,7 +599,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-107 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-108 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -594,18 +609,20 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-107's audit privacy-redaction receipt SHA-256
-`8a738405...a23798`, then require green post-main CI. Treat the consumed M1
+Review and integrate D-108's prefreeze rejection receipt SHA-256
+`6f0f063c...a5efc`, then require green post-main CI. Treat the consumed M1
 claim and `EXP-M1` as permanently closed; do not retry, repair its runtime
 warning, alter resources, or shrink the frozen design. Keep G1 claim
 `1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` or its
-unavailable-anchor `EXP-G2`. Next freeze the smallest G2-5 `EXP-X1`
-provenance/acquisition-feasibility child contract: exact candidate source
+unavailable-anchor `EXP-G2`. Next freeze the smallest metadata-only G2-5A
+`EXP-X1` provenance/acquisition-feasibility child contract. Bind D-108 and
+allowlist only repository metadata plus protocol/license prose; do not reopen
+the rejected dataset-card preview path. Freeze exact candidate source
 revisions, retrieval and release-date rules, licenses and redistribution,
 assay/organism/unit fields, challenge-family exclusion, weight/model rights,
 external/no-external ablation, and a source-specific stopping rule. The freeze
-must acquire zero external records and open no official input. Keep official
-development, confirmatory truth, historical R3C row-level artifacts, blinded
+must expose zero additional external records and open no official input. Keep
+official development, confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, upload,
 and execution-claim capability closed until that contract passes its own
 reviewed gate.

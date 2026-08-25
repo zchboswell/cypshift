@@ -1,0 +1,100 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_prefreeze_preview_rejection.v1",
+  "recorded_at_utc": "2026-08-25T03:30:00Z",
+  "gate": "G2_5_PREFREEZE_SOURCE_PREVIEW_REJECTED",
+  "status": "rejected_non_scientific_boundary_incident",
+  "base_commit": "a3e272d5c2a4ceda483cb5d20bafdae898c8c83d",
+  "purpose": "Fail closed after a documentation-page schema inspection unexpectedly rendered public external CYP3A4 record previews before the required EXP-X1 provenance and acquisition contract existed.",
+  "parents": {
+    "global_v2": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "g2_1_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "m1_terminal_rejection": {
+      "path": "global_v2_m1_resource_rejection.json",
+      "sha256": "3222856dfde449e616fe13cf02942abca5d4c78ad775a7d6035729d7bfa54297"
+    },
+    "audit_privacy_overlay": {
+      "path": "global_v2_audit_privacy_redaction.json",
+      "sha256": "8a7384050d6068fc63c5da1f842f0984145b1fd633fdc1aee0463884a7a23798"
+    }
+  },
+  "incident": {
+    "operation_intent": "Read public source documentation for endpoint, unit, assay, row-count, and license metadata only.",
+    "unexpected_behavior": "Opening the dataset-card documentation around its schema also rendered exact public compound records and CYP3A4 values in the tool response.",
+    "resource": "https://huggingface.co/datasets/openadmet/Octant_CYP_inhibition_reactivity_blog_release",
+    "observed_repository_revision": "96dc1cceaa545a22041d1e16a9c2524a658403f8",
+    "minimum_external_record_rows_exposed": 45,
+    "exact_external_record_rows_exposed": null,
+    "count_policy": "Forty-five record rows were present in the returned excerpts. The source page may have rendered more internally; exact reconstruction is unnecessary because any positive count rejects the zero-record precondition.",
+    "scientific_use": "No exposed identity, structure, target value, ordering, distribution, or row relationship may enter source selection, filtering, thresholding, modeling, validation, or submission work.",
+    "public_record_values_retained_here": 0
+  },
+  "boundary_decision": {
+    "required_precontract_external_records_opened": 0,
+    "observed_positive_external_record_exposure": true,
+    "preflight_pass": false,
+    "decision": "Reject this pre-contract source-audit path. It cannot become the EXP-X1 provenance contract or evidence for acquisition feasibility.",
+    "scientific_scope": "This is a capability-governance rejection only. It contains no model-quality, overlap, support, assay-transfer, or leaderboard inference.",
+    "no_retry_semantics": "Do not repeat or repair the rejected dataset-card browsing path. A separate metadata-only contract freeze may proceed because no experiment contract, execution claim, external file, official input, fit, prediction, or metric existed."
+  },
+  "containment": {
+    "external_dataset_files_downloaded": 0,
+    "external_dataset_bytes_written_locally": 0,
+    "external_record_values_copied_to_repo_or_artifact": 0,
+    "external_record_values_used_for_decision_or_modeling": 0,
+    "external_structure_or_target_hashes_computed": 0,
+    "local_cleanup_required": false,
+    "rule": "Do not reopen the dataset card, Data Studio, file preview, raw data URL, or resolve URL before an integrated child contract grants acquisition. Use repository metadata APIs and protocol/license prose only for the replacement freeze."
+  },
+  "current_milestone_accounting": {
+    "external_record_preview_rendered": true,
+    "minimum_external_records_opened": 45,
+    "external_files_downloaded": 0,
+    "external_records_used_for_science": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "incident_receipt_and_static_tests": true,
+    "external_metadata_review": false,
+    "external_record_acquisition": false,
+    "implementation": false,
+    "synthetic_operation": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "official_predictions": false,
+    "development_metrics": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false,
+    "claim_creation_or_consumption": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, freeze a separate metadata-only G2-5A EXP-X1 provenance and acquisition-feasibility contract. Bind this rejection, allowlist only exact repository-metadata and protocol/license resources, select at most one source, acquire zero additional external records, open zero official input, and grant no acquisition until that new contract is itself reviewed, integrated, and green."
+}

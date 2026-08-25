@@ -32,6 +32,15 @@ G2-0 lineage; the public copy is SHA-256 `0b87f86e...0c10312` after six
 identifier-only redactions. No scientific content or contract byte changed,
 and the current tree contains no private submission identifier or result.
 
+The first G2-5 source-audit path is rejected in
+[`global_v2_x1_prefreeze_preview_rejection.json`](global_v2_x1_prefreeze_preview_rejection.json),
+SHA-256 `6f0f063c...a5efc`. A dataset-card schema view unexpectedly rendered at
+least 45 public external CYP3A4 records before the required child contract
+existed. No external file was downloaded, no row value is retained here or was
+used scientifically, and every official, fit, prediction, metric, submission,
+leaderboard-selection, and upload counter remains zero. The next gate is a
+separate metadata-only contract with the preview path denied.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

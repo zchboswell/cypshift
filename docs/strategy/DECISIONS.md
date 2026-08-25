@@ -3461,3 +3461,40 @@
   or false lineage claim revokes the redaction receipt and requires an
   immediate privacy repair. Historical Git erasure, if required, is a separate
   destructive operation requiring explicit user direction.
+
+## D-108 — Reject the pre-contract EXP-X1 dataset-card preview path
+
+- Date: 2026-08-24
+- Status: rejected non-scientific G2-5 preflight; no external file or official
+  operation
+- Decision: Accept boundary-rejection receipt
+  `global_v2_x1_prefreeze_preview_rejection.json` at SHA-256
+  `6f0f063c...a5efc`. A documentation/schema request unexpectedly rendered at
+  least 45 public external CYP3A4 record rows before the required EXP-X1 child
+  contract existed, so reject that source-audit path against the zero-record
+  precondition. Do not reopen, repair, or use its exposed identities,
+  structures, values, ordering, or distribution. After reviewed integration
+  and green post-main CI, permit only a separate metadata-only G2-5A freeze
+  that binds this rejection, allowlists exact repository-metadata and
+  protocol/license prose resources, selects at most one source, and exposes
+  zero additional external records.
+- Evidence: The response excerpts contained 45 record rows; the page may have
+  rendered more internally, and exact reconstruction is unnecessary because
+  any positive count rejects the preflight. No dataset file or byte was
+  downloaded or written locally, no row value was copied to Git or an artifact
+  or used for science, and no external structure/target hash, official input,
+  fit, prediction, development metric, confirmatory or historical-row access,
+  blinded-test or TDI access, submission, official metric, leaderboard
+  selection, upload, or execution claim occurred. The receipt contains no
+  public record value and makes no model-quality, overlap, support, or assay-
+  transfer inference.
+- Alternatives: Call the rendered rows metadata; claim zero external access;
+  reconstruct or retain their values; use the preview to select or filter a
+  source; continue directly to acquisition; or close EXP-X1 permanently even
+  though no child contract, claim, external file, official input, fit,
+  prediction, or metric existed.
+- Reversal condition: Any exposed row value in the tracked receipt, scientific
+  use of a previewed record, hidden local external file, false counter, repeat
+  of the rejected browsing path, or official/forbidden operation revokes this
+  containment decision and stops G2-5. A distinct reviewed metadata-only
+  contract is not a retry of this rejected browsing operation.

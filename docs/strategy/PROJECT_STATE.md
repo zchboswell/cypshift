@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-107. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-108. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -264,6 +264,19 @@ bytes remain unchanged; tests now validate the immutable original lineage
 through the redaction receipt and the sanitized public copy separately. The
 exact next scientific gate remains the zero-acquisition G2-5 `EXP-X1`
 provenance/acquisition-feasibility contract.
+
+D-108 rejects the first G2-5 source-audit path before contract freeze. A public
+dataset-card schema view unexpectedly rendered at least 45 external CYP3A4
+record rows. No file or byte was written locally, no row value was retained in
+Git or an artifact, and no official input, fit, prediction, metric, submission,
+or leaderboard selection occurred. Because the required pre-contract count was
+zero, receipt SHA-256 `6f0f063c...a5efc` fails the preflight and forbids reuse
+of the dataset-card preview path or any exposed row in science. This is a
+capability-governance rejection with no model-quality or overlap inference. A
+separate metadata-only G2-5A freeze may proceed after reviewed integration and
+green post-main CI; it must bind D-108, allowlist repository metadata and
+protocol/license prose only, select at most one source, and expose zero
+additional external records.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -913,18 +926,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate exact D-107 privacy-redaction receipt
-`8a738405...a23798`, then require green post-main CI. Preserve the consumed M1
+Review and integrate exact D-108 prefreeze rejection receipt
+`6f0f063c...a5efc`, then require green post-main CI. Preserve the consumed M1
 claim and rejection; do
 not retry, repair its warning, resize or retime the experiment, or execute an
 official M1 fit. Keep the G1 claim unconsumed and do not instantiate
 parent-defined `EXP-G2` without its unavailable selected-G1 anchor. Freeze the
-smallest source-specific G2-5 `EXP-X1` provenance/acquisition-feasibility child
-contract next. It must bind immutable source revisions, licenses and
+smallest source-specific, metadata-only G2-5A `EXP-X1` provenance/acquisition-
+feasibility child contract next. It must bind D-108, allowlist repository
+metadata and protocol/license prose only, and bind immutable source revisions,
+licenses and
 redistribution, release/retrieval dates, organism/assay/endpoint/unit fields,
 challenge-family exclusion, model/weight rights, the external/no-external
-ablation, resource ceilings, and a simplest falsifier while acquiring zero
-external records and opening zero official input. Confirmatory truth,
+ablation, resource ceilings, and a simplest falsifier while exposing zero
+additional external records and opening zero official input. Confirmatory truth,
 historical R3C row-level artifacts, blinded test, TDI, external records,
 submission, official metric, leaderboard, and upload capabilities remain
 closed. Any private portal observation remains outside the public
