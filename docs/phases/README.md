@@ -64,6 +64,12 @@ This contract creates no environment and runs no fit. After reviewed
 integration and green post-main CI, only the isolated runtime, implementation,
 unit tests, and at most four tiny API smokes are authorized; the formal probe
 still requires a separate single-use source-binding claim.
+The additive implementation is now accepted at receipt SHA-256
+`8b195bc6...26622`: two opposite-order model-double roots matched 2,430 fit
+receipts and 75 selection tokens each, the isolated exact CPU lock is resolved,
+and 4/4 bounded PyTorch API smokes passed. Smoke timing is non-authoritative.
+The exact next gate is reviewed integration and green post-main CI, followed
+by a separate immutable source-binding claim before the formal 32-fit probe.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

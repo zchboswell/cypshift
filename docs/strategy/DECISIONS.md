@@ -3325,3 +3325,36 @@
   signed-integration, or post-main-CI defect revokes this freeze before the
   formal attempt. A later terminal resource or mechanics failure closes EXP-M1
   without changing device, threads, concurrency, fits, epochs, or runtime.
+
+## D-104 — Accept the exact EXP-M1 implementation before formal timing
+
+- Date: 2026-08-24
+- Status: accepted G2-4B implementation and bounded API-smoke evidence; formal
+  two-root probe and official authority remain closed
+- Decision: Accept aggregate implementation receipt SHA-256
+  `8b195bc6...26622`. Preserve the isolated Python 3.12.3/NumPy 2.5.2/RDKit
+  2026.03.5/PyTorch 2.13.0+cpu lock, deterministic fit engine, exact synthetic
+  fixture, exhaustive model double, four-worker formal driver, conservative
+  projector, network namespace, single-use claim verifier, and fail-closed
+  cleanup. Do not rerun the four exhausted API smokes. Require reviewed signed
+  integration and green post-main CI before freezing a distinct source-binding
+  claim; require that claim's integration before the 32-fit formal probe.
+- Evidence: Two fresh opposite-order model-double roots matched all six
+  terminal files byte-for-byte after 2,430 fit receipts and 75 selection tokens
+  per root. All 4/4 authorized real PyTorch API smokes completed at three epochs,
+  at most 64 rows, and one fit at a time, spanning shared, permuted,
+  independent, central-MAE, and interval-loss forms. They produced 160 finite
+  prediction values. Their 3.5-second elapsed time is explicitly not resource
+  evidence. Twenty-four focused tests pass. One isolated environment and 13
+  packages were created; the root dependency set is unchanged. Every official
+  and forbidden counter is zero, and temporary model-double roots were cleaned.
+- Alternatives: Add PyTorch to the core; infer formal resources from the tiny
+  smokes; run the 32 fits before source integration; omit the reverse root,
+  exact repeat, cache accounting, network namespace, or cleanup; use average
+  rather than worst observations; or create and consume a mutable claim in the
+  same milestone.
+- Reversal condition: Any source, lock, runtime, architecture, loss, optimizer,
+  topology, mask, fold, preprocessing, permutation, stopping, prediction,
+  resource formula, namespace, claim, cleanup, accounting, signed-integration,
+  or post-main-CI defect revokes implementation acceptance before claim
+  consumption. A formal mechanics or resource failure is terminal for EXP-M1.

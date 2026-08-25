@@ -421,6 +421,24 @@ isolated environment, additive implementation, model-double tests, and at most
 four three-epoch API smokes; the formal two-root probe and its claim remain
 unauthorized until a separate reviewed source-binding freeze.
 
+D-104 accepts the additive G2-4B implementation under aggregate receipt
+[`global_v2_m1_implementation_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_m1_implementation_acceptance.json)
+at SHA-256 `8b195bc6...26622`. The isolated environment resolves Python 3.12.3,
+NumPy 2.5.2, RDKit 2026.03.5, and PyTorch 2.13.0+cpu with CUDA unavailable; the
+root project and lock remain unchanged. Two fresh roots, one reversing physical
+and execution order, matched all six model-double terminal files after 2,430
+fit receipts and 75 selection tokens per root. Four bounded real PyTorch fits
+then covered shared, permuted, independent, central-MAE, and interval-loss API
+forms at three epochs and at most 64 rows; all completed and produced 160 finite
+prediction values. Their 3.5-second elapsed time is explicitly not resource
+evidence. Twenty-four focused tests cover topology, family isolation,
+preprocessing, intact-bundle permutation, deterministic architecture,
+worst-case projection, exact repeats, claim authentication, safe cleanup, and
+network isolation. Temporary roots were cleaned; every official and forbidden
+counter remains zero. Reviewed integration and green post-main CI must precede
+a distinct single-use claim binding the exact sources and fixed roots. The
+formal 32-fit probe remains unauthorized.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -526,7 +544,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-103 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-104 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -536,15 +554,16 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-103's G2-4B contract SHA-256 `f80a6e8d...48df7`, then
-require green post-main CI. Keep claim `1c9f3438...46154` unconsumed and never
-execute or optimize `EXP-G1` again. Only afterward create the isolated locked
-CPU runtime and implement the exact M1 runner, synthetic driver, model double,
-and focused tests. Use no more than four one-worker, three-epoch, 64-row API
-smokes and record each; they are not resource evidence. Freeze and integrate a
-separate single-use source-binding claim before the formal two-root 32-fit
-probe. Do not add a model, feature, loss, seed, device, dependency, or timing
-remedy outside the child. Keep official
+Review and integrate D-104's exact implementation receipt SHA-256
+`8b195bc6...26622`, then require green post-main CI. Keep claim
+`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` again.
+Only afterward freeze a separate immutable G2-4C single-use claim binding the
+exact runner, driver, focused tests, project, Python pin, lock, fixed attempt
+roots, receipt root, isolated environment, and dedicated cache. Review and
+integrate that claim before consuming it once inside the no-network namespace
+for two sequential roots and exactly 32 full-width fits. Do not rerun the four
+exhausted API smokes or add a model, feature, loss, seed, device, dependency, or
+timing remedy. Keep official
 development, confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, upload,
 and execution-claim capability closed.

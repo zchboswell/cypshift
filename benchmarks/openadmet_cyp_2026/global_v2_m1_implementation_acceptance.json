@@ -1,0 +1,82 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_m1_implementation_acceptance.v1",
+  "gate": "G2_4B_EXP_M1_IMPLEMENTATION_ACCEPTED",
+  "status": "implementation_and_bounded_smokes_accepted_formal_probe_unauthorized",
+  "recorded_at_utc": "2026-08-25T01:18:38Z",
+  "contract_sha256": "f80a6e8d7735a67ddebf636958aea0b56e738afbc3d10bcea2450ec168048df7",
+  "source_bindings": {
+    "research_pyproject_sha256": "402958b3f919b97a91942f866b7e9421098764c7fc0fa0f6a90ae02be556a9d7",
+    "research_python_pin_sha256": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+    "research_uv_lock_sha256": "e69858045e94375fb2c937db4f0847aa36508e704ebc2b4fdfba72ece25ded1b",
+    "m1_runner_sha256": "5e2e372e37fa5cc0d062e79149c6b1185b97bbd1adda6264aeb3ce1fd6e62bc5",
+    "m1_synthetic_driver_sha256": "008f62c9b19982b030db0cb76d2815f3c023a2a4636bdbe4283d2227e798f5af",
+    "focused_test_sha256": "ad94bf7664f11dd3ebb9223f71c16bff78376a6d9849083336cab73bbcbee010"
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "rdkit": "2026.03.5",
+    "torch": "2.13.0+cpu",
+    "cuda_available": false,
+    "environment_created": 1,
+    "packages_installed": 13,
+    "root_project_changed": false
+  },
+  "model_double_replay": {
+    "roots": 2,
+    "opposite_physical_and_execution_order": true,
+    "fit_receipts_per_root": 2430,
+    "selection_receipts_per_root": 75,
+    "byte_identical": true,
+    "terminal_sha256": {
+      "feature_preprocessing_receipt.json": "568b288cf0909d53a51d32147e96de9af32676256d89ac8833d383371f0fe8e0",
+      "fixture_receipt.json": "11368280179595e82e42b2e4ca2f437ed2f9a03ce7bd70772564b83cd9290d3d",
+      "loss_selection_receipts.csv": "d5462aec02c381b1ec7092a2b2e5a76a987b043407a94c6279dc485d4a2ab69e",
+      "model_double_fit_receipts.csv": "d94cb1b0c91ac35857b8677a4706375fc4c4aa4b77a6a6c5e2ffc91b1a8e8cec",
+      "prediction_receipts.json": "1fb81432c14688bad632533020fd8bec00c195f4b21b9b0cac073feb53223669",
+      "manifest.json": "dc9f75ad1fc34683d0b04e63d9860cd642bba159cd950592b38ba975ac352a12"
+    },
+    "temporary_roots_cleaned": true
+  },
+  "bounded_smokes": {
+    "receipt_path": "global_v2_m1_bounded_smoke.json",
+    "receipt_sha256": "af6bb7375532ac7b09efcdea8f17d9fe571822b9f83f22d97d67decddf185cbc",
+    "fits": 4,
+    "epochs_per_fit": 3,
+    "maximum_training_rows": 64,
+    "maximum_concurrent_fits": 1,
+    "successful_fits": 4,
+    "prediction_values": 160,
+    "resource_timing_authority": false,
+    "note": "The smoke receipt binds the exact final fit-engine bytes. Its historical driver hash precedes only the additive formal claim, namespace, projection, and cleanup orchestration now covered by focused tests; no smoke was repeated."
+  },
+  "validation": {
+    "focused_tests": 24,
+    "focused_tests_passed": 24,
+    "ruff_passed": true,
+    "formal_resource_probe_executed": false,
+    "formal_attempt_claim_created_or_consumed": false
+  },
+  "accounting": {
+    "accepted_model_double_fit_receipts": 4860,
+    "real_synthetic_torch_fits": 4,
+    "real_synthetic_prediction_values": 160,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "next_gate": "Review and integrate these exact bytes with green post-main CI. Then freeze a separate immutable single-use formal-attempt claim binding the six source hashes above and exact fixed roots. Do not run the 32-fit probe before that claim is reviewed and integrated."
+}

@@ -192,6 +192,19 @@ fit. Reviewed integration and green post-main CI permit only the isolated
 implementation and four tiny API smokes; a separate source-binding claim is
 still required before the one-shot formal probe.
 
+The additive G2-4B implementation is accepted in
+[`global_v2_m1_implementation_acceptance.json`](global_v2_m1_implementation_acceptance.json)
+at SHA-256 `8b195bc6...26622`. The isolated lock resolves the exact CPU runtime
+without changing the installable core. Two opposite-order model-double roots
+matched all six terminal files after 2,430 fit receipts and 75 selection tokens
+per root. Four authorized three-epoch API smokes covered shared, permuted,
+independent, central-MAE, and interval-loss forms on at most 64 rows; all four
+completed, but their 3.5-second timing has no resource authority. Twenty-four
+focused tests pass. The temporary model-double roots were cleaned and every
+official and forbidden counter is zero. The 32-fit probe remains unauthorized
+until these exact bytes are integrated with green post-main CI and a separate
+single-use source-binding claim is reviewed and integrated.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-103. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-104. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -204,6 +204,21 @@ scientific operation. After signed integration and green post-main CI, only
 the isolated implementation and at most four tiny API smokes are authorized;
 the formal probe requires a separate integrated single-use source-binding
 claim.
+
+D-104 now accepts the additive implementation at aggregate receipt SHA-256
+`8b195bc6...26622`. The isolated exact CPU environment is resolved without
+changing the root project. Two fresh opposite-order model-double roots matched
+all six terminal files after 2,430 fit receipts and 75 selection tokens each.
+All four authorized three-epoch PyTorch API smokes completed on at most 64 rows
+and produced 160 finite prediction values; their 3.5-second timing has no
+resource or model-quality interpretation. Twenty-four focused tests pass,
+including family isolation, training-only preprocessing, intact-bundle
+permutation, exact architecture and repeat identity, conservative projections,
+claim authentication, safe cleanup, and no-network launch. Temporary roots
+were cleaned and every official and forbidden counter is zero. The formal
+32-fit probe remains unauthorized until these bytes pass reviewed integration
+and post-main CI and a separate immutable single-use source-binding claim is
+reviewed and integrated.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -853,14 +868,15 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-4B contract `f80a6e8d...48df7` and focused
-static tests, then require green post-main CI. Only afterward create the
-isolated locked CPU environment and implement the exact runner, synthetic
-driver, model double, and focused tests. Use at most four bounded API smokes;
-freeze a separate single-use source-binding claim before the formal two-root
-32-fit probe. Do not open an official target, feature, structure, baseline row,
-or fold artifact, create an official execution claim, or use an API smoke as
-resource evidence. Confirmatory truth, historical R3C row-level artifacts, blinded
+Review and integrate the exact D-104 implementation receipt `8b195bc6...26622`
+and source bytes, then require green post-main CI. Only afterward freeze and
+integrate one immutable source-binding claim for the fixed formal roots,
+isolated environment, dedicated cache, and exact six source hashes. Consume it
+once inside the no-network namespace for two sequential roots and exactly 32
+full-width fits. Do not rerun the four exhausted API smokes, open an official
+target, feature, structure, baseline row, or fold artifact, create an official
+execution claim, or use an API smoke as resource evidence. Confirmatory truth,
+historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, and
 upload capabilities remain closed. Any private portal observation remains
 outside the public knowledgebase and cannot select a model, feature, loss,
