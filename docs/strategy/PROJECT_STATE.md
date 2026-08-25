@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-112. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-113. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -343,6 +343,28 @@ exists, no external record or official input was opened, and no model,
 prediction, metric, submission, leaderboard-selection, or upload operation
 occurred. Fixed MapLight remains the best validated system at 0.5838 internal
 component-macro MAE.
+
+D-113 accepts the minimal additive real-source boundary at receipt SHA-256
+`c29aaaf4...33f3fb4`. The accepted adapter reuses the unchanged G2-5B ChEMBL
+compiler, core standardizer, D-032 union graph, and support falsifier; it
+authenticates the frozen R2B source and decodes only the first eight
+identity/structure fields from each direct-observation record. All target-
+bearing suffix bytes are discarded in place, and the accepted component outer
+and inner folds are reused without reassignment. The acquisition wrapper makes
+one nonredirecting, nonresumable HTTPS request, verifies the complete archive
+SHA-256 before tar listing, rejects unsafe members, and runs extraction plus
+compilation in a fresh no-network namespace before mandatory restricted-root
+cleanup. Two fresh official-shaped synthetic roots with different physical
+SQLite and R2B hashes matched all seven aggregate terminal files byte-for-byte
+at tree SHA-256 `7789290d...8f6b8a`. Each root traversed 336 synthetic ChEMBL
+activities and 160 challenge observation records, discarded 160 opaque target
+suffixes, parsed zero target values, rebuilt 110 union nodes in 40 components,
+and reproduced outer 52/36, inner 44/32, and confirmatory 52/36
+molecule/component support. Twenty-two focused adversarial tests pass. No real
+archive, external record, official input, model fit, prediction, metric,
+submission, leaderboard-selection, upload, or claim consumption occurred. The
+tracked claim remains unchanged and unconsumed until this milestone is reviewed,
+integrated, and green on post-main CI.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -992,13 +1014,11 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-112 claim SHA-256 `f1bea832...1ba5c60`, then require green
-post-main CI. Implement only one additive real-source adapter, one acquisition
-wrapper, and one official-shaped synthetic driver. Require two fresh roots to
-produce byte-identical terminal maps and pass focused adversarial tests in a
-separately reviewed signed acceptance milestone. Do not consume the claim,
-download or open ChEMBL 37, or open any official challenge input before that
-acceptance is integrated and green. After the sole acquisition, apply the
+Review and integrate D-113 adapter acceptance SHA-256
+`c29aaaf4...33f3fb4`, then require green post-main CI. Only after that exact
+milestone is integrated may the private consumed claim bind its five accepted
+implementation receipts and perform the sole ChEMBL 37 acquisition. After the
+sole acquisition, apply the
 frozen 1,000/750 support falsifier before any fit. Do not fit a model, evaluate
 a metric, inspect blinded test, generate a submission, use leaderboard evidence,
 or upload before their later gates. Private portal observations remain outside

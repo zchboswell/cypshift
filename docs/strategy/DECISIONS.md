@@ -3682,3 +3682,56 @@
   cleanup, row-level publication, false zero counter, or leaderboard-driven
   choice revokes the claim and rejects EXP-X1. The next gate is the minimal
   real-source adapter's official-shaped synthetic acceptance, not acquisition.
+
+## D-113 — Accept the EXP-X1 real-source adapter behind the unconsumed claim
+
+- Date: 2026-08-25
+- Status: accepted official-shaped synthetic G2-5D mechanics; tracked claim
+  unchanged and unconsumed; zero real archive, external-record, official,
+  model-quality, submission or upload operation
+- Decision: Accept `global_v2_x1_real_source_adapter_acceptance.json` at
+  SHA-256 `c29aaaf4...33f3fb4`. Add only one real-source adapter, one acquisition
+  wrapper, and one official-shaped synthetic driver. Reuse the accepted G2-5B
+  SQLite query, ordered filter, standardizer, equivalence rule, D-032 union
+  graph, ghost-node firewall, and support falsifier without modifying their
+  source. Authenticate the exact R2B file set while decoding only the first
+  eight direct-observation fields through raw SMILES; discard every target-
+  bearing suffix byte without decoding or retention. Reuse accepted outer and
+  inner component folds exactly. Bind one nonredirecting HTTPS GET, full
+  archive checksum before tar listing, regular nontraversing members, one
+  extracted database, no-network extraction/compilation, one process,
+  aggregate-only publication, and complete restricted-root cleanup. Keep the
+  tracked D-112 claim immutable and unconsumed until reviewed integration and
+  green post-main CI.
+- Evidence: Two fresh official-shaped synthetic roots reversed physical SQLite
+  insertion and R2B row order. Their SQLite and R2B hashes differed, while all
+  seven terminal files matched byte-for-byte at tree SHA-256
+  `7789290d...8f6b8a`. Per root, 336 synthetic activity rows produced 320
+  eligible and 16 rejected rows; 160 observation records yielded 40 challenge
+  molecules in 20 components; all 160 suffixes were discarded; zero target
+  values were parsed or retained; and the union/support oracles remained 110
+  nodes, 40 components, outer 52/36, inner 44/32, and confirmatory 52/36. The
+  miniature 50/35 gate passes and the real 1,000/750 gate fails as designed.
+  Twenty-two focused adversarial tests cover identity drift, endpoint
+  cardinality, receipt/file-mode/file-set failures, component outer/inner
+  crossings, poisoned target bytes, checksum-before-listing, traversal,
+  symlink, duplicate/multiple database members, one-request/no-range download,
+  exact claim derivation, tamper rejection, no-replace behavior, and cleanup.
+  No real archive request, external row, official input, fit, prediction,
+  metric, submission, leaderboard selection, upload, or claim consumption
+  occurred. Fixed MapLight remains 0.5838 internal component-macro MAE.
+- Alternatives: Reuse the synthetic-only top-level compiler by relabeling it;
+  parse the full direct-observation CSV; trust target-bearing suffix topology;
+  regenerate folds; change the accepted compiler; allow redirects, range
+  requests, resume, mirrors, unsafe extraction, or networked compilation;
+  consume the claim before integration; publish restricted row-level outputs;
+  or represent synthetic support as model-quality evidence.
+- Reversal condition: Any changed accepted compiler, adapter, wrapper, driver,
+  test, schema, chemistry, topology, firewall, lock, claim or acceptance byte;
+  any decoded target suffix; component reassignment; unverified or repeated
+  request; checksum-after-listing; unsafe archive member; network-enabled
+  compilation; incomplete cleanup; row-level publication; false zero counter;
+  pre-integration claim consumption; or leaderboard-driven source/model choice
+  revokes this acceptance and rejects EXP-X1. The next gate is reviewed signed
+  integration and green post-main CI, then the sole private claim consumption
+  and frozen support falsifier—not model fitting.

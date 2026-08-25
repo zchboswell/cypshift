@@ -12,9 +12,10 @@ upload capabilities remain closed. A pre-contract documentation view exposed
 at least 45 public external CYP3A4 preview records; D-108 rejects that path
 without scientific use and requires a metadata-only restart.
 G2-5A provenance and G2-5B synthetic compiler mechanics are accepted; G2-5C
-now has an immutable unconsumed acquisition claim, but real acquisition remains
-blocked until a separate real-source adapter passes official-shaped synthetic
-acceptance.
+has an immutable unconsumed acquisition claim, and G2-5D now accepts the
+real-source adapter on two official-shaped synthetic roots. Real acquisition
+remains blocked until that exact acceptance is reviewed, integrated, and green
+on post-main CI.
 
 Authorized: 2026-08-24.
 
@@ -575,6 +576,23 @@ hashes are null. This claim-only milestone downloaded no file, opened no
 external record or official input, and performed no model-quality or submission
 operation.
 
+D-113 accepts the G2-5D additive adapter boundary in
+[`global_v2_x1_real_source_adapter_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_real_source_adapter_acceptance.json),
+SHA-256 `c29aaaf4...33f3fb4`. The adapter authenticates the accepted R2B file set
+but decodes only observation identity, source identity, endpoint, and raw
+SMILES; 160/160 synthetic target-bearing suffixes were discarded and zero
+target values were parsed in each replay. It reuses the accepted component
+outer/inner folds exactly and delegates source filtering, chemistry, union
+components, ghost-node exclusion, and support decisions to the unchanged
+G2-5B compiler. The wrapper fixes one HTTPS GET, checksum before tar listing,
+safe extraction, an offline namespace, aggregate-only publication, and cleanup.
+Opposite physical SQLite and R2B order yielded identical seven-file terminal
+maps at tree SHA-256 `7789290d...8f6b8a`; 22 focused adversarial tests pass and
+all disposable roots were removed. This is synthetic mechanics evidence only.
+The tracked claim remains unchanged and unconsumed, and all real external,
+official, model, metric, submission, leaderboard-selection, and upload counters
+remain zero.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -674,13 +692,10 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-112 claim SHA-256 `f1bea832...1ba5c60`, then require green
-post-main CI. Implement only the additive real-source adapter, acquisition
-wrapper, and official-shaped synthetic driver required to fill the claim's
-future bindings. Accept them only after two fresh synthetic roots produce
-byte-identical terminals and all focused adversaries pass in a separate signed
-milestone. Do not consume the claim, download or open ChEMBL 37, or open an
-official challenge input before that acceptance is integrated and green. After
+Review and integrate D-113 adapter acceptance SHA-256
+`c29aaaf4...33f3fb4`, then require green post-main CI. Do not consume the claim,
+download or open ChEMBL 37, or open an official challenge input before that
+acceptance is integrated and green. After
 the sole acquisition, apply the frozen 1,000/750 support falsifier before any
 model fit. Do not evaluate a metric, inspect blinded test, generate a
 submission, use leaderboard evidence, or upload before their later gates.

@@ -89,6 +89,19 @@ real-source adapter and official-shaped synthetic acceptance bindings are null.
 This milestone creates no archive, external record, official input, model,
 prediction, metric, submission, or upload authority.
 
+G2-5D now accepts the additive real-source boundary under
+[`global_v2_x1_real_source_adapter_acceptance.json`](global_v2_x1_real_source_adapter_acceptance.json),
+SHA-256 `c29aaaf4...33f3fb4`. Two official-shaped synthetic roots had different
+physical SQLite and R2B hashes but identical seven-file aggregate terminals.
+The adapter discarded every target-bearing suffix, parsed zero target values,
+reused the frozen family folds, and reproduced the accepted union/support
+oracles; 22 focused adversarial tests pass. The wrapper binds one exact request,
+checksum-before-listing, safe extraction, offline compilation, and cleanup. No
+real archive, external record, official input, model, metric, submission,
+leaderboard-selection, upload, or claim consumption occurred. The D-112 claim
+remains unchanged and unconsumed until this exact acceptance is reviewed,
+integrated, and green on post-main CI.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

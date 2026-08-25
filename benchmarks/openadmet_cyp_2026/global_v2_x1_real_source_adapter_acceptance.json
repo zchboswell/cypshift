@@ -1,0 +1,128 @@
+{
+  "accounting": {
+    "blinded_test_rows_opened": 0,
+    "confirmatory_truth_values_opened": 0,
+    "decoded_direct_prefix_fields": 1280,
+    "development_metric_evaluations": 0,
+    "execution_claims_created_or_consumed": 0,
+    "external_activity_rows_opened": 0,
+    "external_dataset_files_downloaded": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "new_external_records_opened": 0,
+    "official_features_opened": 0,
+    "official_metric_calls": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_structures_opened": 0,
+    "official_target_values_opened": 0,
+    "official_training_structures_opened": 0,
+    "opaque_direct_suffixes_discarded": 160,
+    "submission_rows_generated": 0,
+    "synthetic_activity_rows_opened": 336,
+    "synthetic_sqlite_files_created": 1,
+    "synthetic_union_comparisons": 5995,
+    "target_values_parsed": 0,
+    "target_values_retained": 0,
+    "tdi_rows_opened": 0
+  },
+  "adversarial_boundaries_passed": true,
+  "authority": {
+    "blinded_test": false,
+    "confirmatory_truth": false,
+    "external_record_acquisition": false,
+    "leaderboard_selection": false,
+    "metric_evaluation": false,
+    "model_fitting": false,
+    "official_features": false,
+    "official_identity_inputs": false,
+    "official_target_values": false,
+    "prediction_generation": false,
+    "submission": false,
+    "synthetic_adapter_mechanics": true,
+    "upload": false
+  },
+  "claim_template_sha256": "f1bea8327896c0eb01a2a13032af265f1ed0b42d280109acdf10262ae1ba5c60",
+  "counts": {
+    "activity_rows": 336,
+    "challenge_components": 20,
+    "challenge_molecules": 40,
+    "confirmatory_endpoint_cells": 4,
+    "eligible_activity_rows": 320,
+    "external_compounds": 80,
+    "global_forbidden_structures": 20,
+    "ineligible_activity_rows": 16,
+    "inner_endpoint_cells": 240,
+    "outer_endpoint_cells": 60,
+    "union_components": 40,
+    "union_nodes": 110
+  },
+  "files_compared": 7,
+  "focused_tests_passed": 22,
+  "logical_source_sha256": "83d90b7bc4cb4664b6f9ae6047e4fd9df6dc22899fe7d07dd71cce1660098ff1",
+  "mutable_roots_retained": 0,
+  "next_gate": "Review and integrate this exact acceptance, require green post-main CI, then derive and consume the frozen private claim exactly once.",
+  "physical_r2b_hashes_differ": true,
+  "physical_r2b_tree_sha256": [
+    "e54db9f270e550652af9f08cee6b7b980205837d8f502eb023a9ef7cd8a84d5a",
+    "6be0bb36242e634f3a651e702f91ae9573995a889875dd3ac3781af129415ff1"
+  ],
+  "physical_sqlite_hashes_differ": true,
+  "physical_sqlite_sha256": [
+    "5db79b514cf2108197a59055403a889f97c8a0801775006c8c72fcf944664038",
+    "fbab6f6b194e11c936eb3ab226ddab069437708d8ca841b89f8c42bb12bf6005"
+  ],
+  "private_roots_retained": 0,
+  "projection": {
+    "challenge_components": 20,
+    "challenge_molecules": 40,
+    "confirmatory_components": 4,
+    "confirmatory_molecules": 8,
+    "decoded_prefix_fields": 1280,
+    "direct_observation_records_scanned": 160,
+    "opaque_suffixes_discarded": 160,
+    "source_revision": "synthetic-x1-official-shaped-v1",
+    "target_values_parsed": 0,
+    "target_values_retained": 0
+  },
+  "relative_terminal_maps_byte_identical": true,
+  "roots": 2,
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_real_source_adapter_acceptance.v1",
+  "scientific_interpretation": "Synthetic adapter, archive, identity-projection, fold, union, and support mechanics only; no external-support or model-quality evidence.",
+  "source_bindings": {
+    "accepted_compiler_sha256": "34ea893e7238f62cb46eb280e76718b76b797cca24176d2225c0598e63ebf77e",
+    "acquisition_wrapper_sha256": "ee52b80e79e64f50a5e084099055bc6df72a1c87ebd5183d97c7c744eaa01412",
+    "chemistry_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+    "confirmatory_firewall_sha256": "047c3b49d96f4f8cd898d6bad68fdfb79aff59fa4e5d8c932545a3d975f2976c",
+    "focused_tests_sha256": "de24c83bf4de63de843d9325ae6419b9db74ad40e88207d6ffa06127a293d23a",
+    "fold_schema_source_sha256": "75ded69bcd6d109879adef842e3f6905362990b26711529033bd615ef7355def",
+    "identity_projector_sha256": "685d13f757450eca4797e5dd917dcd99e0f1179de75bbb166b4716e0e572a518",
+    "official_shaped_synthetic_driver_sha256": "eb1ff1eee3a82c60d4ace8267f64a3853d779bb49fc22556aa2cd1645700676b",
+    "r2b_schema_source_sha256": "df530394a6b790b763695f6a7f2553add5d752cfeb7910846dd747086a15ed86",
+    "real_source_adapter_sha256": "2bb0bb700878061f4a428979a9b9fd2dceb75761b06c3e3d211a81af51dd9a62",
+    "root_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+    "topology_source_sha256": "1b6fd30fc36295a7c7275cc47d19ca4d0674765bc21036d2b7f638cce276cadb"
+  },
+  "status": "G2_5D_X1_OFFICIAL_SHAPED_SYNTHETIC_ACCEPTED",
+  "support_decisions": {
+    "miniature_thresholds": {
+      "minimum_novel_molecules": 50,
+      "minimum_outer_safe_components": 35,
+      "pass": true
+    },
+    "novel_molecules_by_endpoint": {
+      "CYP1A2": 60,
+      "CYP2C9": 60,
+      "CYP2D6": 60,
+      "CYP3A4": 60
+    },
+    "official_thresholds": {
+      "minimum_novel_molecules": 1000,
+      "minimum_outer_safe_components": 750,
+      "pass": false
+    },
+    "scientific_interpretation": "Official-shaped synthetic support mechanics only."
+  },
+  "terminal_tree_sha256": "7789290d311c882e29c055d309963c93e929ff7c4f87c5b4a2b43befd28f6b8a"
+}
