@@ -4138,3 +4138,42 @@
   implementation and one formal two-root synthetic acceptance after reviewed
   signed integration and green post-main CI; official and confirmatory access
   remain closed.
+
+## D-124 — Reject the MapLight robustness synthetic resource path
+
+- Date: 2026-08-25
+- Status: accepted terminal negative G2-7B evidence; sole formal attempt
+  completed; zero official source row, target, feature, fit, prediction,
+  development metric, claim, confirmatory truth, historical row, blinded test,
+  TDI, external record, submission, official metric, leaderboard-selection,
+  private-portal record, or upload operation
+- Decision: Accept aggregate rejection
+  `global_v2_maplight_robustness_synthetic_rejection.json` at SHA-256
+  `e7cba8af...e0eb821` and reject the D-123 implementation/resource path. Do
+  not publish or rely on the generated
+  passing acceptance, create an official G2-7 claim, or retry, repair, resume,
+  optimize, or replace this attempt. Any future G2-7 path must be materially
+  distinct and prospectively frozen.
+- Evidence: Both opposite-order roots completed 3,480 model-double invocations,
+  666,432 mechanics prediction rows, 26 locked-runtime CatBoost fits, 20,488
+  real probe predictions, and a 797,232-identity full-size traversal per root.
+  All eight terminal files were byte-identical at tree SHA-256
+  `6746735f...44b39f`, and the formal implementation bytes remained unchanged.
+  Prepublication audit found that only 47 of the nominal 2,563 full-width probe
+  columns varied; 2,516 columns were constant. CatBoost could therefore discard
+  98.17% of the feature columns, making the generated 0.2504 wall-hour and
+  3.1847 CPU-core-hour projections optimistic rather than the conservative
+  resource falsifier D-123 required. The passing arithmetic is not accepted as
+  valid resource evidence. This result contains no model-quality observation;
+  fixed MapLight remains the best validated internal system at 0.5838
+  component-macro MAE.
+- Alternatives: Publish the mechanically passing acceptance; silently repair
+  the matrix and rerun; reinterpret full width as sufficient despite constant
+  columns; substitute an average or historical timing after seeing the result;
+  create the official claim anyway; or use private portal evidence to justify
+  progression.
+- Reversal condition: None for the historical G2-7B attempt. A receipt or audit
+  defect may revoke this record but cannot authorize a retry, repair, resume,
+  or replacement. A future materially distinct experiment requires a new
+  prospective contract and may use already accepted exact full-feature
+  MapLight runtime evidence without representing itself as G2-7B.

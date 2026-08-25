@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-123. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-124. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -528,6 +528,20 @@ requires byte-identical eight-file terminal maps and a further 20% margin below
 every D-122 resource ceiling. This contract created no implementation or
 runtime and ran zero synthetic or official operation. Synthetic oracle values
 will have no model-quality interpretation.
+
+D-124 rejects the sole G2-7B formal synthetic attempt at the prepublication
+resource-validity audit under aggregate receipt SHA-256
+`e7cba8af...e0eb821`. Both roots completed, the 3,480 model-double
+invocations and 26 real CatBoost probes ran, and all eight terminal files were
+byte-identical, but only 47 of the declared 2,563 probe columns varied. CatBoost
+could discard the other 2,516 constant columns, so the apparent 0.2504-hour
+wall and 3.1847-core-hour projections are optimistic and cannot establish the
+contracted conservative resource margin. This is an implementation/resource
+rejection, not model-quality evidence: zero official row, fit, prediction,
+metric, claim, confirmatory, submission, leaderboard-selection, or upload
+operation occurred. The attempt cannot be retried, repaired, resumed, or
+replaced. Fixed MapLight remains the best validated internal system at 0.5838
+component-macro MAE.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1179,11 +1193,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-123 synthetic contract SHA-256
-`97b982fa...e2abfd`, then require green post-main CI. Next implement only its
-additive runner, deterministic fixtures, focused adversarial tests, bounded API
-smokes, and one formal two-root synthetic acceptance. Do not create an official
-claim, open official rows, or run scientific fits in that milestone.
+Review and integrate D-124's aggregate G2-7B rejection and require green
+post-main CI. Then freeze, without execution, a materially distinct G2-7 path
+that relies on the already accepted exact full-feature MapLight runtime and
+D-094 observed resource evidence instead of repairing or repeating the failed
+synthetic resource probe. Do not create an official claim, open official rows,
+or run scientific fits in that contract milestone.
 Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and

@@ -54,6 +54,11 @@ Both 720-fit and 1,020-fit conditional paths must replay byte-identically under
 opposite physical and launch order; 26 real CatBoost probes and a full-size
 no-fit traversal must preserve a further 20% resource margin. This is still
 contract-only evidence with zero synthetic or official execution.
+D-124 rejects the sole G2-7B formal attempt during prepublication audit. The
+deterministic mechanics completed and matched across roots, but 2,516 of 2,563
+resource-probe columns were constant, invalidating the apparently passing
+runtime projection. No official capability opened, and this attempt may not be
+retried, repaired, resumed, or replaced.
 
 Authorized: 2026-08-24.
 
@@ -855,6 +860,19 @@ Every projected ceiling is capped at 80% of D-122. Ten focused static tests
 pass. The freeze created no implementation or runtime and performed zero
 synthetic or official operation; all oracle values are mechanics-only.
 
+D-124 records the one-shot result as
+[`global_v2_maplight_robustness_synthetic_rejection.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_synthetic_rejection.json).
+Its SHA-256 is `e7cba8af...e0eb821`.
+The two roots completed all 3,480 model-double invocations, 666,432 mechanics
+prediction rows, 26 real CatBoost fits, 20,488 real probe predictions, and the
+797,232-identity full-size traversal per root. Their eight-file terminal maps
+were byte-identical. Prepublication audit nevertheless rejected the generated
+acceptance: only 47 of 2,563 feature columns varied, allowing CatBoost to drop
+2,516 constants and making the 0.2504 wall-hour and 3.1847 CPU-core-hour
+projections nonconservative. The failure is resource-fixture validity, not
+model behavior. It opened zero official data and produced no development or
+confirmatory score. No G2-7B retry, repair, resume, or replacement is allowed.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -905,7 +923,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-123 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-124 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -915,12 +933,11 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-123 synthetic contract SHA-256
-`97b982fa...e2abfd`, then require green post-main CI. Next implement only the
-contracted additive runner, deterministic fixtures, adversarial tests, bounded
-API smokes, and one formal two-root synthetic acceptance. Do not create an
-official claim, open an official byte, or fit an official model in that
-milestone. Confirmatory truth,
+Review and integrate D-124's aggregate rejection, then require green post-main
+CI. Next freeze only a materially distinct G2-7 path grounded in the already
+accepted exact MapLight runtime and D-094 full-feature resource observations;
+do not modify or repeat G2-7B. Do not create an official claim, open an official
+byte, or fit an official model in that contract milestone. Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.
 `global_TDI` remains the TDI fallback.
