@@ -180,6 +180,17 @@ opened no official input, and ran no fit or metric. After reviewed integration
 and green post-main CI, the next gate is a separate isolated-runtime and two-
 root synthetic mechanics/resource contract—not official execution or a claim.
 
+D-117 freezes that exact synthetic-runtime gate at SHA-256
+`6ec0e73b...da4f9f`. Two opposite-order model-double roots must cover all 120
+fit identities, while eight exact full-width LightGBM fits must match 6,304
+float64 prediction bytes and resolved parameters across roots. The worse
+maximum full-size fit is projected across all 60 scientific fits, plus non-fit
+overhead, against every 20%-margin resource gate. This contract created no
+environment, dependency, implementation, fit, or official capability. After
+reviewed integration and green post-main CI, only the isolated runtime, narrow
+synthetic implementation, bounded smokes, and one formal two-root acceptance
+are authorized; official input and claim creation remain closed.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

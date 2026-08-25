@@ -140,6 +140,18 @@ resource contract must pass before any claim. This freeze installed no
 dependency, opened no official input, and ran no fit, prediction, metric,
 submission, leaderboard-selection, or upload operation.
 
+The deterministic synthetic/resource boundary for that lane is frozen in
+[`global_v2_g3_synthetic_contract.json`](global_v2_g3_synthetic_contract.json),
+SHA-256 `6ec0e73b...da4f9f`. It requires two opposite-order roots, 120 complete
+model-double identities, 1,920 model-double outer predictions, and eight exact
+LightGBM fits on full-width 3,908x2,248 synthetic matrices. All 6,304 probe
+predictions, resolved parameters, and seven scientific terminals must match
+byte-for-byte. The worse root's maximum individual full-size fit is multiplied
+by all 60 scientific fits, plus non-fit overhead, before every 20%-margin
+resource gate is applied. This contract-only freeze creates no runtime,
+dependency, implementation, fit, prediction, metric, official input, claim,
+submission, leaderboard-selection, or upload authority.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

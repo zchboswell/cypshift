@@ -24,6 +24,9 @@ contract, fit, prediction, metric, or model-quality result exists.
 D-116 now freezes the separately named `EXP-G3` recovery contract: one
 deterministic LightGBM L1 expert, one fixed representation, 60 family-safe
 outer fits, no tuning or blend, and no official operation at this milestone.
+D-117 freezes its isolated-runtime, two-root synthetic mechanics, exact real-
+fit determinism, cleanup, and 20%-margin resource contract; no runtime or fit
+operation occurs at the freeze.
 
 Authorized: 2026-08-24.
 
@@ -691,6 +694,27 @@ order synthetic roots plus a real-fit resource probe at 20% margin. D-116
 itself installs no dependency, opens no official input, and performs no fit,
 prediction, metric, submission, leaderboard selection, or upload.
 
+D-117 freezes the next gate under
+[`global_v2_g3_synthetic_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_synthetic_contract.json),
+SHA-256 `6ec0e73b...da4f9f`. After its reviewed integration, one isolated
+`research/lightgbm-global` project may bind the exact D-116 runtime without
+changing the root project. Across two opposite-order roots, the exhaustive
+model double must cover 120 fit identities and 1,920 outer prediction rows.
+The real runtime probe uses eight exact 1,500-tree fits on 3,908x2,248 synthetic
+matrices, with 3,120 labeled training and 788 prediction rows per endpoint.
+All 6,304 finite float64 predictions, resolved parameters, and seven scientific
+terminal files must match byte-for-byte across roots.
+
+Resource feasibility uses 60 times the worse root's maximum individual exact-
+fit wall and CPU cost plus the worse non-fit overhead; it cannot average roots,
+use mean fit cost, subtract probe overhead, or omit the isolated environment,
+dedicated cache, storage, or RSS. The conjunctive 20%-margin maxima are 128
+CPU-core-hours, 19.2 wall-hours, 25.6 GB restricted storage, 19.2 GiB RSS, and
+zero GPU. A miss closes G3 before official access without another runtime,
+optimization, reduced probe, sparse input, or retry. D-117 itself creates no
+environment, dependency, implementation, synthetic or official fit,
+prediction, metric, claim, submission, leaderboard selection, or upload.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -749,7 +773,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-116 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-117 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -759,11 +783,11 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-116 `EXP-G3` contract SHA-256
-`ee2725ba...5da47`, then require green post-main CI. After integration, freeze
-the separate deterministic-runtime and synthetic-implementation contract. It
-may create only an isolated LightGBM research lock and must prove opposite-order
-roots, the 60-identity topology, exact parameters, prediction identity, cleanup,
-and 20%-margin resources. Do not create a claim, open an official input, fit or
-score an official model, inspect blinded test, generate a submission, call an
-official metric, use portal evidence, or upload before that gate passes.
+Review and integrate D-117 synthetic contract SHA-256
+`6ec0e73b...da4f9f`, then require green post-main CI. After integration,
+create only the isolated runtime, narrow runner and synthetic driver,
+adversarial tests, at most two bounded API smokes, and one formal two-root
+synthetic acceptance. Require exact scientific terminal and real-prediction
+parity, complete cleanup, and all resource gates. Do not create a claim, open
+an official input, fit or score an official model, inspect blinded test,
+generate a submission, call an official metric, use portal evidence, or upload.

@@ -3856,3 +3856,44 @@
   separately reviewed deterministic-runtime and synthetic-implementation
   contract; only that milestone may create an isolated LightGBM research lock,
   and it still cannot open official input or create an execution claim.
+
+## D-117 — Freeze the EXP-G3 synthetic determinism and resource falsifier
+
+- Date: 2026-08-25
+- Status: accepted contract-only isolated-runtime and synthetic gate; zero
+  environment, dependency, implementation, fit, prediction, metric, official-
+  input, claim, submission, leaderboard-selection, or upload operation
+- Decision: Accept `global_v2_g3_synthetic_contract.json` at SHA-256
+  `6ec0e73b...da4f9f`. After reviewed integration and green post-main CI,
+  permit one isolated `research/lightgbm-global` lock, one direct typed runner,
+  one synthetic driver, narrow tests, at most two 64-row/16-round API smokes,
+  and one formal two-root acceptance. The model double must exhaust all sixty
+  family-safe fit identities per root before scorer truth opens. Four exact
+  1,500-tree LightGBM fits per root must use full-width 3,908x2,248 synthetic
+  matrices and match resolved parameters plus every canonical float64
+  prediction byte. Do not add an official compiler, execution wrapper, claim,
+  second runtime, optimization, grid, model, feature, or workflow framework.
+- Evidence: The two roots reverse every physical input row and fit-stage order
+  before canonical parsing. Across roots the frozen counts are 120 model-double
+  identities, 1,920 model-double outer predictions, eight real LightGBM fits,
+  and 6,304 real probe predictions. Seven scientific terminal files must match
+  byte-for-byte; root-specific resource timings remain outside that
+  deterministic map. The probe uses 3,120 labeled training rows to exceed any
+  official endpoint support without opening an official row. Resource
+  projection multiplies all 60 future fits by the worse root's maximum
+  individual exact-fit wall and CPU cost, adds worse non-fit overhead, counts
+  the isolated environment/cache/work root, and uses maximum RSS. Every
+  20%-margin gate is conjunctive: at most 128 CPU-core-hours, 19.2 wall-hours,
+  25.6 GB restricted storage, 19.2 GiB RSS, and exactly zero GPU. Ten focused
+  static tests pass. This freeze creates no model-quality evidence.
+- Alternatives: Time a tiny or narrow matrix; average roots or fits; subtract
+  probe overhead; use sparse input only for timing; reduce tree count; change
+  threads; omit environment/cache/RSS; trust deterministic flags without a
+  cross-root byte comparison; implement official access before mechanics;
+  create a claim now; or allow retry or repair after a formal miss.
+- Reversal condition: Any changed parent, runtime, wheel, lock, fixture,
+  feature formula, model parameter, fit identity, terminal, projection,
+  resource limit, cleanup, capability, or forbidden counter revokes the gate.
+  A formal integrity or resource miss permanently closes EXP-G3. The next gate
+  is the reviewed isolated implementation and sole formal two-root synthetic
+  acceptance; official inputs and claim creation remain unauthorized.

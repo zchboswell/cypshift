@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-116. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-117. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -417,6 +417,22 @@ CYP1A2 or CYP2D6. A two-root synthetic mechanics and 20%-margin resource gate
 must pass before any execution claim. This contract milestone changed no
 runtime or dependency, opened no official input, and ran zero fit, prediction,
 metric, submission, leaderboard-selection, or upload operation.
+
+D-117 freezes the `EXP-G3` isolated-runtime and synthetic-resource contract at
+SHA-256 `6ec0e73b...da4f9f`. After reviewed integration, one isolated
+`research/lightgbm-global` lock may bind Python 3.12.3, NumPy 2.5.2, SciPy
+1.18.0, RDKit 2026.03.5, and the exact LightGBM 4.7.0 manylinux wheel without
+changing the root project. Two opposite-order roots must traverse all 120
+model-double fit identities and produce 1,920 outer predictions total. Eight
+exact 1,500-tree LightGBM fits then use full-width 3,908x2,248 synthetic
+matrices, 3,120 labeled training rows, and 788 prediction rows per endpoint;
+all 6,304 cross-root probe predictions, resolved parameters, and seven
+scientific terminal files must match byte-for-byte. Resource projection uses
+60 times the worse root's maximum individual full-size fit plus non-fit
+overhead, never a mean or net timing, and must pass 128 CPU-core-hours, 19.2
+wall-hours, 25.6 GB storage, 19.2 GiB RSS, and zero GPU. This contract-only
+milestone created no runtime, dependency, implementation, fit, prediction,
+metric, official access, claim, submission, leaderboard selection, or upload.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1066,13 +1082,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-116 `EXP-G3` contract SHA-256
-`ee2725ba...5da47`, then require green post-main CI. After integration, freeze
-a separate deterministic-runtime and synthetic-implementation contract. That
-later milestone may create only an isolated LightGBM research lock and must
-prove two opposite-order roots, all 60 fit identities, exact resolved
-parameters, prediction identity, cleanup, and 20%-margin resource feasibility
-before any execution claim. Do not open an official input, fit an official
+Review and integrate D-117 synthetic contract SHA-256
+`6ec0e73b...da4f9f`, then require green post-main CI. After integration,
+create only the isolated LightGBM research lock, narrow typed runner and
+synthetic driver, adversarial tests, at most two bounded API smokes, and one
+formal two-root synthetic acceptance. Require exact seven-file terminal parity,
+eight real-fit prediction-byte matches, full cleanup, and all 20%-margin
+resource gates. Do not create a claim, open an official input, fit an official
 model, inspect blinded test, generate a submission, call an official metric, or
 upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain closed; private portal
 observations cannot select any choice; `global_TDI` remains the TDI fallback.

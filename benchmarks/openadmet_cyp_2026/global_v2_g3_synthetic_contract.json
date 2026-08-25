@@ -1,0 +1,226 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g3_synthetic_contract.v1",
+  "recorded_at_utc": "2026-08-25T11:53:13Z",
+  "freeze_date": "2026-08-25",
+  "status": "G2_6S_EXP_G3_SYNTHETIC_CONTRACT_FROZEN",
+  "experiment_id": "EXP-G3",
+  "base_commit": "8977404620b125bae2ea1b3e9cf4ded807784d4b",
+  "purpose": "Freeze the deterministic isolated runtime, two-root synthetic capability proof, exact LightGBM probe, and conservative 20%-margin resource falsifier required before any EXP-G3 execution claim can exist.",
+  "hypothesis": "The exact fixed EXP-G3 topology can be implemented with family-safe least-privilege stages, byte-stable deterministic LightGBM predictions, complete cleanup, and sufficient resource margin without opening any official input.",
+  "targeted_failure": "A scientifically small 60-fit design can still fail through runtime drift, implicit LightGBM defaults, feature-order or missing-value drift, family crossing, truth leakage, nondeterminism, optimistic resource projection, or incomplete cleanup.",
+  "occam_boundary": "Use one isolated runtime, one direct runner, one synthetic driver, one exhaustive model double, and eight exact real LightGBM fits total. Add no workflow framework, grid, model, feature, imputation, scaling, selection, optimization, concurrency, official compiler, execution wrapper, or claim. A miss rejects EXP-G3 before official access without a second implementation strategy.",
+  "parents": {
+    "g3_single_expert_contract": {
+      "path": "global_v2_g3_single_expert_contract.json",
+      "sha256": "ee2725ba2ea634fab7db35aa9b2d0e396b5f46feac3d1819891cc240bd25da47"
+    },
+    "global_v2_synthetic_firewall_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    }
+  },
+  "targeted_failure_modes": [
+    "V1 parent contract, wheel, lock, source, parameter, or terminal receipt drift",
+    "V2 molecule, endpoint, repeat, outer-fold, component, feature-row, or prediction identity drift",
+    "V3 component family crossing or a model capability resolving validation truth, baseline predictions, another endpoint, scorer state, or confirmatory truth",
+    "V4 Morgan width/order/count/chirality drift, descriptor order drift, NaN imputation, infinity acceptance, scaling, selection, or target encoding",
+    "V5 parameter alias, implicit iteration count, row or feature subsampling, early stopping, changed seed/thread count, model reuse, or nonfinite prediction",
+    "V6 physical-order sensitivity, missing or duplicate fit, prediction freeze after truth access, cross-root mixing, or noncanonical reduction",
+    "V7 resource projection that averages roots, uses mean rather than maximum fit cost, subtracts probe overhead, omits environment/cache/storage/RSS, or exceeds a 20%-margin gate",
+    "V8 retry, resume, replacement, incomplete cleanup, row-level publication, official access, claim operation, submission, official metric, leaderboard selection, upload, or private-portal influence"
+  ],
+  "runtime_contract": {
+    "platform": "Linux x86_64 CPU on AMD Ryzen 9 7950X; one socket, sixteen physical cores, thirty-two logical CPUs",
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "rdkit": "2026.03.5",
+    "lightgbm": "4.7.0",
+    "lightgbm_manylinux_wheel": "lightgbm-4.7.0-py3-none-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+    "lightgbm_manylinux_wheel_sha256": "d23e922acd891e77212e4d0fbcee9ba973c96dee479491341d05ba595357ebb7",
+    "parent_uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+    "isolated_project_path": "research/lightgbm-global",
+    "future_isolated_pyproject_sha256": null,
+    "future_isolated_uv_lock_sha256": null,
+    "environment_rule": "After this contract is reviewed, integrated, and green on post-main CI, an additive implementation milestone may create the isolated project and exact lock. It must not alter the root pyproject.toml or uv.lock. Prepare one dedicated wheel cache with network access, then run every formal root with UV_OFFLINE=1 and no network namespace.",
+    "process_rule": "Run one fit process at a time. Each exact probe fit receives sixteen LightGBM threads and no GPU. Pin no competing fit or worker process to the same cores.",
+    "warning_rule": "Any Python warning, native crash, nonzero child exit, fallback, or nonfinite prediction rejects the formal acceptance. LightGBM informational logging is disabled by the frozen verbosity parameter."
+  },
+  "implementation_boundary": {
+    "allowed_after_integration": [
+      "one isolated research pyproject.toml and uv.lock",
+      "one typed direct EXP-G3 runner",
+      "one typed synthetic acceptance driver",
+      "narrow unit and adversarial tests",
+      "at most two pre-formal tiny LightGBM API smokes",
+      "one formal two-root synthetic acceptance"
+    ],
+    "tiny_smoke_limit": "Each optional API smoke uses at most 64 rows, 2,248 columns, 16 boosting rounds, one thread, synthetic numeric inputs, and no timing or model-quality interpretation. The smokes cannot enter resource projection or scientific terminals.",
+    "forbidden": "No official/private source compiler, execution wrapper, claim, official input path, external source, confirmatory truth, historical row-level artifact, blinded test, TDI, submission, official metric, leaderboard, upload, generic orchestration layer, or dependency in the installable root project."
+  },
+  "synthetic_mechanics_fixture": {
+    "schema": "cypshift.openadmet_cyp_2026.global_v2_g3_synthetic_mechanics_fixture.v1",
+    "seed": 20260901,
+    "molecules": 100,
+    "components": 50,
+    "molecules_per_component": 2,
+    "development_components": 40,
+    "development_molecules": 80,
+    "confirmatory_components": 10,
+    "confirmatory_molecules": 20,
+    "component_assignment": "Generate lowercase SHA-256 component tokens from cypshift-g3-synthetic-component-v1|<counter>. Retain the first forty whose parent confirmatory modulo is nonzero as development and the first ten whose modulo is zero as confirmatory; assign two canonical molecule IDs per component.",
+    "fold_assignment": "For each accepted parent repeat seed, sort development component hashes by SHA-256(seed|OUTER|component) and assign rank modulo five. A component and both molecules never split. Every root must prove exact outer train/validation disjointness across all fifteen contexts.",
+    "targets": {
+      "central": "For development molecule index i and endpoint index e, central is missing iff (i+e) mod 5 equals zero; otherwise value is 4.0 + 0.025*i + 0.2*e + 0.05*((7*i+e) mod 5).",
+      "exact_finite_central_per_endpoint": 64,
+      "exact_missing_central_per_endpoint": 16,
+      "confirmatory_rule": "Confirmatory target bytes exist only in a sealed synthetic scorer capability that the source compiler, feature stage, model double, and real probe cannot resolve. Those stages parse zero confirmatory values."
+    },
+    "features": {
+      "columns": 2248,
+      "morgan_columns": 2048,
+      "descriptor_columns": 200,
+      "morgan_rule": "For canonical row i and Morgan column j, emit int32 zero unless (1315423911*i + 2654435761*j + seed) mod 64 is less than two; otherwise emit one plus that integer expression modulo three.",
+      "descriptor_rule": "For canonical row i and descriptor offset j, emit NaN iff (37*i + 53*j + seed) mod 29 equals zero; otherwise emit float64 (((17*i + 31*j + seed) mod 1009) / 1009).",
+      "order_and_missing_rule": "Columns 0:2048 are counts and 2048:2248 are descriptors. Preserve descriptor NaN and reject infinity. Perform no imputation, scaling, selection, dropping, compression, or target encoding.",
+      "model_double_rule": "The deterministic double validates feature capability identity and shape but returns a frozen finite formula independent of target magnitude. Synthetic metric direction has no model-quality meaning."
+    },
+    "physical_order_variants": {
+      "root_a": "canonical input row, endpoint, repeat, outer-fold, and fit-stage order",
+      "root_b": "reverse every physical input row and reverse endpoint, repeat, outer-fold, and fit-stage launch order before canonical parsing and terminal serialization"
+    }
+  },
+  "model_double_contract": {
+    "fit_id": "SHA-256 of compact JSON [schema, system_id, repeat, outer_fold, endpoint, sorted_training_component_hashes, sorted_validation_component_hashes, feature_receipt_sha256, parameter_receipt_sha256]",
+    "exact_fit_identities_per_root": 60,
+    "exact_fit_identities_across_roots": 120,
+    "outer_prediction_rows_per_root": 960,
+    "prediction_formula": "For validation molecule index i, endpoint index e, repeat index r, and outer fold f, prediction is 3.5 + 0.02*i + 0.15*e + 0.001*r + 0.0001*f. Serialize finite float64 using format .17g after canonical identity sorting.",
+    "family_gate": "For every fit, training and validation component sets are nonempty, internally unique, and disjoint; every molecule inherits exactly one component and one validation fold per repeat.",
+    "capability_gate": "The model double receives current training target rows, current training and validation features, exact parameter receipt, and identity token only. It cannot resolve validation truth, baseline prediction, scorer, confirmatory, historical, test, TDI, external, submission, metric, leaderboard, or upload paths.",
+    "truth_freeze_gate": "All sixty candidate outer prediction partitions must be immutable before the scorer may resolve synthetic development validation truth."
+  },
+  "exact_lightgbm_probe": {
+    "purpose": "Test exact runtime compatibility, resolved parameters, native descriptor-NaN handling, full-width cost, physical-order invariance, and float64 prediction-byte determinism without scientific interpretation.",
+    "rows_per_root": 3908,
+    "columns": 2248,
+    "training_rows": 3120,
+    "prediction_rows": 788,
+    "probe_endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "fits_per_root": 4,
+    "fits_across_roots": 8,
+    "predictions_per_root": 3152,
+    "feature_rule": "Generate the exact 2,248-column synthetic numeric matrix by the mechanics fixture formulas. Rows 0:3120 are training and rows 3120:3908 are prediction after canonical identity sorting. All 3,120 training rows are labeled to conservatively exceed any official endpoint training support.",
+    "target_rule": "For endpoint index e and training row i, target is 4.0 + 0.2*e + 0.03*finite_or_zero(descriptor column e) + 0.01*sum(Morgan columns 0:16) + 0.0001*(i mod 101). This is a synthetic runtime control and not CYP evidence.",
+    "root_order_rule": "Root A constructs canonical physical rows and runs endpoints forward. Root B constructs physical rows in reverse and runs endpoints in reverse. Both canonicalize identity and feature order before Dataset construction.",
+    "model_api": "Use lightgbm.train with the exact D-116 parameter object and num_boost_round=1500. Pass no validation Dataset, callback, early stopping, custom objective, or custom metric.",
+    "parameter_gate": "Capture Booster.params after fit, canonicalize aliases to the exact D-116 names, bind num_boost_round separately, and require identical resolved-parameter SHA-256 across all eight fits and the prospective contract receipt.",
+    "prediction_gate": "Require one finite float64 value per expected identity. After canonical sorting, every endpoint's prediction bytes and SHA-256 must match exactly between roots. Models and row-level probe predictions are deleted after aggregate acceptance.",
+    "warning_and_exit_gate": "Every fit exits zero with zero Python warnings and no fallback. One failed identity rejects the formal acceptance; no dropped or replacement fit is allowed."
+  },
+  "deterministic_terminal_contract": {
+    "relative_files": [
+      "g3_synthetic_feature_receipt.json",
+      "g3_synthetic_fit_identity_receipts.csv",
+      "g3_synthetic_outer_predictions.csv",
+      "g3_synthetic_metrics.json",
+      "g3_probe_parameter_receipts.csv",
+      "g3_probe_predictions.csv",
+      "g3_synthetic_terminal_manifest.json"
+    ],
+    "comparison": "After canonical serialization, all seven relative files must match byte-for-byte across roots. Their sorted relative-path/SHA-256 map produces one deterministic tree SHA-256.",
+    "timing_boundary": "Root-specific wall, CPU, RSS, environment, cache, and storage measurements are private resource receipts outside the deterministic seven-file map. Their values may differ, but both schemas, counters, resource decision, cleanup decision, and exact environment identity must agree.",
+    "publication": "Track only one aggregate acceptance or rejection receipt with parent/source/runtime hashes, deterministic tree hash, counts, worst-root resource projection, gate decisions, cleanup, and zero forbidden counters. Publish no synthetic row, feature matrix, model, prediction, timing trace, environment directory, or cache."
+  },
+  "resource_projection": {
+    "scientific_fits": 60,
+    "wall_formula": "60 * worse_root_max_exact_fit_wall_seconds + worse_root_nonfit_wall_seconds, divided by 3600. Use the maximum individual exact fit, not a mean; do not subtract real-probe or harness overhead.",
+    "cpu_formula": "60 * worse_root_max_exact_fit_cpu_seconds + worse_root_nonfit_cpu_seconds, divided by 3600. Use the maximum individual exact fit, not a mean; do not divide by threads or subtract probe overhead.",
+    "storage_formula": "Use the worse simultaneous peak bytes across the immutable isolated environment, dedicated wheel cache, complete source/work root, generated full-width features, temporary Dataset/model state, predictions, terminals, and aggregate receipt. Exclude nothing stored on restricted media.",
+    "rss_formula": "Use the maximum observed peak resident set across the parent driver and every exact fit child in either root; do not average or subtract shared pages.",
+    "maximum_projected_cpu_core_hours": 128,
+    "maximum_projected_gpu_hours": 0,
+    "maximum_projected_wall_hours": 19.2,
+    "maximum_projected_restricted_storage_gb": 25.6,
+    "maximum_peak_rss_gib": 19.2,
+    "logic": "Every gate is conjunctive. Equality passes numeric maxima and GPU use must equal zero. Any mismatch, warning, failed fit, fallback, accounting defect, cleanup defect, or resource miss publishes G2_6S_G3_RESOURCE_REJECTED before official access. No alternate thread count, sparse input, optimization, smaller probe, reduced tree count, second timing method, or retry is authorized."
+  },
+  "formal_execution_protocol": {
+    "preconditions": "This exact contract, implementation sources, tests, isolated pyproject, and isolated lock are immutable. D-117 integration and green post-main CI must precede any formal root.",
+    "roots": "Run root A to completion and cleanup, then root B to completion and cleanup. Both fixed roots must be absent before launch and are created atomically with no replace, resume, move, or overwrite.",
+    "network": "The dedicated exact wheel cache is prepared before the formal attempt. Both formal roots run with UV_OFFLINE=1 inside a no-network namespace. Any network-capable child or cache miss rejects the attempt.",
+    "comparison_order": "Freeze both deterministic terminals and private resource receipts; validate exact seven-file parity; compute the worse-root projection; decide every mechanics and resource gate; publish one aggregate receipt atomically; then delete both work roots, private resource roots, and the dedicated cache.",
+    "attempt_limit": "One formal two-root acceptance only after integration. Pre-formal unit tests and at most two tiny API smokes cannot create formal terminals. A formal integrity or resource miss is terminal for EXP-G3."
+  },
+  "acceptance": {
+    "mechanics": [
+      "exact parent, implementation, runtime, wheel, isolated lock, and source receipts",
+      "two opposite-order roots and one byte-identical seven-file terminal map",
+      "120 complete model-double fit identities and 1,920 complete model-double outer prediction rows across roots",
+      "eight exact LightGBM fits, 6,304 finite probe predictions, one resolved-parameter hash, and exact cross-root prediction bytes",
+      "zero component crossings, validation-truth model reads, baseline model reads, confirmatory values parsed, missing/duplicate/dropped/replacement fits, warnings, fallbacks, or nonzero exits",
+      "all five 20%-margin resource gates pass using the worse root",
+      "aggregate-only publication and complete root/cache cleanup"
+    ],
+    "scientific_boundary": "Synthetic metrics and predictions test mechanics only. They cannot rank, tune, accept, reject, calibrate, blend, or otherwise characterize EXP-G3 model quality.",
+    "pass": "Publish G2_6S_G3_SYNTHETIC_ACCEPTED and permit only a later separately reviewed single-use official development execution contract and unconsumed claim.",
+    "miss": "Publish G2_6S_G3_SYNTHETIC_REJECTED or G2_6S_G3_RESOURCE_REJECTED, retain fixed MapLight, and permanently close EXP-G3 without repair."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "runtime_environments_created": 0,
+    "dependency_changes": 0,
+    "implementation_files_created": 0,
+    "tiny_api_smokes": 0,
+    "formal_synthetic_roots": 0,
+    "synthetic_model_double_fits": 0,
+    "synthetic_real_lightgbm_fits": 0,
+    "synthetic_predictions": 0,
+    "official_inputs_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions": 0,
+    "development_metrics": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "runtime_environment_creation": false,
+    "dependency_changes": false,
+    "implementation": false,
+    "tiny_api_smokes": false,
+    "formal_synthetic_execution": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "official_predictions": false,
+    "development_metrics": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "external_data": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false,
+    "claim_creation_or_consumption": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, create only the isolated runtime, narrow implementation, tests, optional bounded API smokes, and one formal two-root synthetic acceptance. Do not open an official input or create an execution claim."
+}
