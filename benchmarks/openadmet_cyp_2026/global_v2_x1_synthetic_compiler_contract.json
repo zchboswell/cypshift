@@ -1,0 +1,371 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_synthetic_compiler_contract.v1",
+  "freeze_date": "2026-08-25",
+  "recorded_at_utc": "2026-08-25T04:31:17Z",
+  "gate": "G2_5B_EXP_X1_SYNTHETIC_COMPILER_CONTRACT_FROZEN",
+  "status": "synthetic_implementation_contract_only_no_acquisition_authority",
+  "base_commit": "877e8161b30d981ef764753caeb2b2892282168e",
+  "parent": {
+    "path": "global_v2_x1_provenance_contract.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_provenance_contract.v1",
+    "sha256": "a51f81a411e35e6514cbf2739a382b63b6c4db2e379e18004907a8e590a21c1d"
+  },
+  "purpose": "Implement and falsify deterministic ChEMBL-table compilation, raw-field preservation, exact IC50 eligibility accounting, conservative challenge equivalence removal, and per-cell challenge/external union-family exclusion on synthetic SQLite data before any ChEMBL activity record or official challenge input is opened.",
+  "hypothesis": "One restricted SQLite compiler plus the already accepted core chemistry and D-032 union-component primitives can produce order-invariant, leakage-safe external training capabilities and exact support decisions without model fitting.",
+  "targeted_failure": "A plausible source query can silently discard provenance, aggregate replicates, accept censored or low-quality values, trust source chemistry, leak external analogs through removed duplicates, or count rows rather than independent family-safe support.",
+  "occam_boundary": "Add one isolated research compiler, one synthetic driver and focused tests. Reuse Python sqlite3, cypshift.chemistry and the accepted D-032 Morgan/Tanimoto semantics. Add no dependency, production API, data service, workflow engine, model, feature representation, source, or generic orchestration layer.",
+  "targeted_failure_modes": [
+    "V1/V2 exact, connectivity-equivalent, or transitive analog-family leakage across development outer, scoped inner, or confirmatory boundaries",
+    "V3 target, assay, unit, relation, quality, structure, or support filtering changed after observing counts or outcomes",
+    "V4 SQLite rowid, insertion order, floating serialization, RDKit, standardization, fingerprint, threshold, component-hash, or fold-identity drift",
+    "V6 synthetic counts, external diagnostics, or a support pass mislabeled as model-quality or official challenge evidence",
+    "P5 partial extraction, missing source rows, duplicate joins, silent replicate aggregation, retry, resume, overwrite, cross-root mix, or receipt forgery",
+    "P6 rejected-preview reuse, real ChEMBL activity acquisition, official input, blinded-test relation, submission, metric, leaderboard-selection, or upload contamination"
+  ],
+  "implementation_scope": {
+    "compiler": "research/external-transfer/global_v2_x1_compiler.py",
+    "synthetic_driver": "research/external-transfer/run_global_v2_x1_synthetic.py",
+    "tests": "tests/test_openadmet_global_v2_x1_synthetic_compiler.py",
+    "allowed_reuse": [
+      "src/cypshift/chemistry.py",
+      "src/cypshift/openadmet_topology.py"
+    ],
+    "dependency_rule": "Use the root locked Python 3.12.3/RDKit 2026.3.5 environment and Python standard library sqlite3 only. Do not copy or fork chemistry or similarity semantics.",
+    "review_binding": "A later acceptance receipt must bind this contract, both implementation sources, every directly reused source, the root lockfile, focused tests, both fresh root manifests and the complete byte-identical terminal map."
+  },
+  "future_source_schema": {
+    "required_tables": {
+      "activities": [
+        "activity_id",
+        "assay_id",
+        "molregno",
+        "standard_type",
+        "standard_relation",
+        "standard_value",
+        "standard_units",
+        "pchembl_value",
+        "standard_flag",
+        "potential_duplicate",
+        "data_validity_comment",
+        "activity_comment"
+      ],
+      "assays": [
+        "assay_id",
+        "assay_chembl_id",
+        "assay_type",
+        "assay_organism",
+        "assay_tax_id",
+        "description",
+        "confidence_score",
+        "doc_id",
+        "tid"
+      ],
+      "target_dictionary": [
+        "tid",
+        "target_chembl_id",
+        "pref_name",
+        "organism",
+        "tax_id",
+        "target_type"
+      ],
+      "molecule_dictionary": [
+        "molregno",
+        "chembl_id"
+      ],
+      "compound_structures": [
+        "molregno",
+        "canonical_smiles",
+        "standard_inchi",
+        "standard_inchi_key"
+      ],
+      "docs": [
+        "doc_id",
+        "chembl_id",
+        "year",
+        "doi",
+        "src_id"
+      ],
+      "source": [
+        "src_id",
+        "src_description"
+      ]
+    },
+    "join_graph": "activities.assay_id = assays.assay_id; activities.molregno = molecule_dictionary.molregno = compound_structures.molregno; assays.tid = target_dictionary.tid; assays.doc_id = docs.doc_id; docs.src_id = source.src_id.",
+    "source_aliases": {
+      "molecule_dictionary.chembl_id": "molecule_chembl_id",
+      "docs.chembl_id": "doc_chembl_id",
+      "assays.description": "assay_description"
+    },
+    "schema_preflight": "Before selecting an activity row, open a regular nonsymlink SQLite file read-only, require a successful integrity_check, exact required tables and columns, unique primary join identities, and the four parent target IDs with Homo sapiens, tax_id 9606 and SINGLE PROTEIN. Missing, duplicate or conflicting target metadata fails the whole root before activity parsing.",
+    "query_policy": "Use one explicit SELECT over the frozen joins with an explicit complete ORDER BY target_chembl_id, activity_id, assay_id, molregno, molecule_chembl_id. Never use SELECT *, rowid, implicit order, API results, a current-release alias, or SQL aggregation."
+  },
+  "sqlite_capability": {
+    "open_mode": "Authenticate the complete file bytes before opening. Use a file: URI with mode=ro and immutable=1, PRAGMA query_only=ON, PRAGMA temp_store=MEMORY, disabled extension loading, and no attached database.",
+    "input_rule": "The input must be one regular nonsymlink file under the fixed fresh root. Reject traversal, hard-link substitution after authentication, journal/WAL companions, writable access, network paths and pre-existing output roots.",
+    "row_completeness": "Receipt the joined source-row count and a canonical hash over every preserved field before filtering. Every joined row receives exactly one terminal eligibility state; no row may disappear through an inner join without a preflight count mismatch.",
+    "no_mutation": "The compiler may not execute CREATE, INSERT, UPDATE, DELETE, DROP, VACUUM, REINDEX, ATTACH or any user-defined extension against an input database."
+  },
+  "preservation_and_filtering": {
+    "preserved_before_filter": "Serialize every required raw source value with explicit null/type encoding and complete activity, assay, target, molecule, structure, document and source identities before assigning eligibility. Do not trim, recase, standardize, average, deduplicate or reinterpret a raw field.",
+    "one_primary_reason_order": [
+      "TARGET_NOT_SELECTED",
+      "STANDARD_TYPE_NOT_IC50",
+      "STANDARD_RELATION_NOT_EXACT",
+      "STANDARD_UNITS_NOT_NM",
+      "STANDARD_VALUE_NOT_FINITE_POSITIVE",
+      "PCHEMBL_NOT_FINITE",
+      "PCHEMBL_RECOMPUTE_MISMATCH",
+      "STANDARD_FLAG_NOT_ONE",
+      "POTENTIAL_DUPLICATE_NOT_ZERO",
+      "DATA_VALIDITY_COMMENT_PRESENT",
+      "ASSAY_CONFIDENCE_BELOW_NINE",
+      "ASSAY_ORGANISM_EXPLICITLY_NONHUMAN",
+      "STRUCTURE_MISSING_OR_QUARANTINED"
+    ],
+    "eligibility": {
+      "target": "Exact parent target_chembl_id only after archive target metadata passes preflight.",
+      "standard_type": "IC50",
+      "standard_relation": "=",
+      "standard_units": "nM",
+      "standard_value": "SQLite integer or real, finite and greater than zero; booleans, text numerics, NaN and infinities are invalid.",
+      "pchembl_value": "SQLite integer or real and finite.",
+      "recompute": "derived_pIC50 = 9.0 - math.log10(standard_value); abs(derived_pIC50 - pchembl_value) <= 0.011.",
+      "standard_flag": 1,
+      "potential_duplicate": 0,
+      "data_validity_comment": null,
+      "minimum_confidence_score": 9,
+      "assay_organism": "Accept null organism/taxonomy or exact Homo sapiens/tax_id 9606; reject any explicitly nonhuman organism or non-9606 nonnull tax_id.",
+      "structure": "canonical_smiles must pass the exact accepted core standardizer; missing or quarantined structures are ineligible."
+    },
+    "replicates": "Retain each eligible activity_id separately with its raw and derived values. Multiple activities, assays, documents, targets or molregno values mapping to one standardized molecule are not averaged, selected or collapsed by this compiler.",
+    "numeric_serialization": "Serialize derived finite floats with format(value, '.17g') after canonical identity sorting; use math.fsum only for aggregate checksums and never to combine measurements.",
+    "filter_receipt": "Publish joined, eligible and each primary-rejection count globally and by endpoint. Their sum must equal joined rows exactly. Only counts and hashes may enter Git; row values remain in disposable restricted roots."
+  },
+  "chemistry_identity": {
+    "standardization": {
+      "policy_id": "rdkit-cleanup-fragment-parent-v1",
+      "implementation": "cypshift.chemistry.standardize_molecule",
+      "runtime": "RDKit 2026.3.5",
+      "rule": "Treat ChEMBL canonical_smiles, standard_inchi and standard_inchi_key as preserved provenance, never trusted identity. Recompute accepted isomeric standardized SMILES and lowercase SHA-256 over its UTF-8 bytes."
+    },
+    "exact_identity": "Two molecules are exact when their recomputed standardized_structure_hash values match.",
+    "equivalence": {
+      "policy_id": "rdkit-standard-inchi-connectivity-block-v1",
+      "formula": "Parse the accepted standardized SMILES, compute RDKit standard MolToInchiKey, require an uppercase key, and use its first fourteen-character connectivity block.",
+      "interpretation": "Connectivity-block equality is a conservative exclusion key only. It may collapse stereochemical, isotopic, protonation or tautomeric forms; it never changes a retained structure or measurement and never merges labels.",
+      "failure": "An accepted standardized structure without a valid recomputed connectivity block is quarantined from external eligibility and counted; never fall back to the source-provided InChIKey."
+    },
+    "unique_external_molecule": "Support molecule counts use unique recomputed standardized_structure_hash values within an endpoint after eligibility; activity rows and molregno values are not molecule counts."
+  },
+  "union_family_graph": {
+    "population": "All accepted challenge training structures plus every unique external standardized structure with at least one eligible activity at any selected endpoint. Include external structures later forbidden as exact/equivalent label-free connector nodes; include no blinded-test structure.",
+    "node_identity": "One node per standardized_structure_hash. Exact challenge/external structures share one node while retaining separate source membership receipts.",
+    "edges": [
+      "Connect distinct nodes whose recomputed rdkit-standard-inchi-connectivity-block-v1 keys match.",
+      "Connect distinct nodes with inclusive RDKit Morgan/Tanimoto similarity >= 0.60 using radius 2, fpSize 4096 and includeChirality true, exactly matching the accepted D-032 semantics."
+    ],
+    "algorithm": "Canonicalize nodes by standardized_structure_hash, compute every unordered pair exactly once with RDKit BulkTanimotoSimilarity, union all qualifying equivalence or similarity edges, and derive transitive connected components. Approximate neighbor search, Butina assignment, scaffold grouping and source-specific preclustering are forbidden.",
+    "component_hash": "Lowercase SHA-256 of UTF-8 material x1_union_component_v1|rdkit-cleanup-fragment-parent-v1|rdkit-standard-inchi-connectivity-block-v1|morgan_ecfp4_radius=2;fp_size=4096;include_chirality=true;tanimoto_inclusive_threshold=0.60 followed by newline and the ascending unique standardized_structure_hash members.",
+    "challenge_fold_policy": "Preserve the accepted challenge repeat/outer/scoped-inner assignments exactly. External edges may merge challenge components but may never reassign, drop or rescore a challenge molecule.",
+    "topology_capability": "The graph stage receives structures, source membership, challenge component/fold identities and hashes only. It cannot resolve an external activity value, challenge truth, prediction, metric, confirmatory truth or blinded-test path."
+  },
+  "exclusion_and_support": {
+    "global_exact_equivalent": "Mark every external standardized structure globally forbidden if its standardized hash equals any challenge hash or its recomputed connectivity block equals any challenge connectivity block. Strip all of its activity rows from every training capability but retain its node and edges as label-free topology so related external molecules cannot evade exclusion through a removed duplicate.",
+    "outer_cell": "For each repeat and outer fold, mark every union component touched by an outer-validation challenge node. An external standardized structure is safe only if it is not globally forbidden and its union component is untouched. Apply the safe identity set to eligible external activities only after the topology receipt is immutable.",
+    "inner_cell": "For each repeat, outer fold and scoped inner fold, mark union components touched by either outer-validation or inner-validation challenge nodes. External training activity is safe only outside both held-out populations.",
+    "confirmatory": "Using label-free confirmatory membership only, mark every union component touched by a confirmatory challenge node and exclude its external members before a future contender fit. The scorer capability and confirmatory truth remain absent.",
+    "support_counts": "For each endpoint and cell, count unique safe external standardized hashes and distinct union component hashes represented by them. Count no activity row, assay, molregno, exact/equivalent forbidden structure, or empty component as independent support.",
+    "official_thresholds": {
+      "minimum_novel_molecules_per_endpoint_after_global_exact_equivalent_removal": 1000,
+      "minimum_family_safe_external_components_per_endpoint_in_every_outer_cell": 750,
+      "all_four_endpoints_required": true,
+      "decision": "Fail EXP-X1 without model fitting if any endpoint or outer cell is below either parent threshold. Thresholds are immutable inputs, not inferred from data."
+    }
+  },
+  "least_privilege_stage_graph": {
+    "source_preflight": "Authenticates a synthetic SQLite file, schema, joins and target metadata before an activity row is parsed; publishes one read-only source receipt.",
+    "raw_compiler": "Reads source rows once, preserves fields, assigns one filter reason, standardizes eligible structures and publishes separate restricted raw/eligible capabilities plus aggregate counts.",
+    "topology_compiler": "Receives eligible external identities without values and synthetic challenge structures/fold identities without truth; freezes exact/equivalent flags, union edges, components and per-cell safe identity sets.",
+    "capability_joiner": "After topology freeze, joins safe external identities to eligible activity rows for each endpoint/cell. It cannot open validation truth, fit a model, aggregate replicates or alter topology.",
+    "support_decider": "Reads aggregate unique-molecule/component counts only and applies caller-bound thresholds. Synthetic mechanics use explicit miniature thresholds while a separate assertion applies the exact 1000/750 official thresholds to count summaries.",
+    "terminal_publisher": "Publishes once with complete hashes, counts, authority, cleanup and either synthetic accepted or failed status; no-replace, no-resume and no-cross-root semantics are mandatory."
+  },
+  "synthetic_fixture": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_synthetic_fixture.v1",
+    "seed": 20260831,
+    "roots": 2,
+    "root_a_order": "Create exact required tables and insert every table in ascending primary identity order; write challenge and fold rows in canonical order.",
+    "root_b_order": "Create the same logical schema and values but insert every table and physical input row in exact reverse order so SQLite rowids and filesystem order differ.",
+    "sqlite_tables": 7,
+    "external_compounds_total": 84,
+    "eligible_external_compounds_before_overlap": 80,
+    "activity_rows_total": 336,
+    "eligible_activity_rows": 320,
+    "ineligible_activity_rows": 16,
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "challenge_components": 20,
+    "challenge_molecules_per_component": 2,
+    "challenge_molecules": 40,
+    "external_series_design": "For each challenge component, include one globally forbidden external identity, one novel direct family neighbor and one novel transitive-chain family neighbor. Alternate ten exact standardized matches and ten distinct connectivity-equivalent forms among the forbidden identities. Add twenty novel unrelated external singleton components.",
+    "eligible_external_standardized_structures": 80,
+    "global_exact_forbidden_structures": 10,
+    "global_equivalent_forbidden_structures": 10,
+    "global_novel_structures_per_endpoint": 60,
+    "union_unique_structure_nodes": 110,
+    "union_components": 40,
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "fold_balance": "Each repeat assigns exactly four challenge components per outer fold. Within each outer-training population, each scoped inner fold holds exactly four challenge components. Molecules never split their parent challenge component.",
+    "expected_outer_safe_per_endpoint_cell": {
+      "molecules": 52,
+      "union_components": 36
+    },
+    "expected_inner_safe_per_endpoint_cell": {
+      "molecules": 44,
+      "union_components": 32
+    },
+    "confirmatory_components": 4,
+    "expected_confirmatory_safe_per_endpoint": {
+      "molecules": 52,
+      "union_components": 36
+    },
+    "filter_adversaries": "The sixteen ineligible activity rows exercise every primary filter reason, null versus explicit assay organism, missing and invalid structure, type-strict numerics and first-reason ordering. Separate mutated copies exercise schema, target-map, join, duplicate-key, integrity and path failures.",
+    "support_threshold_probe": "The fixture passes explicit miniature mechanics thresholds of 50 novel molecules and 35 outer-safe components per endpoint, but fails the immutable official 1000/750 thresholds. Both decisions must be published and the miniature pass has no acquisition or scientific meaning.",
+    "no_outcome_data": "The fixture contains no challenge truth, prediction, model, metric, real ChEMBL row, official structure, historical row, blinded test, TDI or submission value."
+  },
+  "determinism_and_receipts": {
+    "canonical_order": "Sort by complete explicit semantic identity at every parse, join, reduction and publication boundary. Physical table order, rowid, process completion order and dictionary/set iteration cannot affect a byte.",
+    "root_equivalence": "The two roots must have different SQLite file SHA-256 values because physical insertion order differs, while their authenticated logical-source hash, filter map, chemistry map, union graph, cell capabilities, support decisions and complete relative terminal maps are byte-identical.",
+    "terminal_files": [
+      "x1_synthetic_filter_counts.json",
+      "x1_synthetic_chemistry_counts.json",
+      "x1_synthetic_union_counts.json",
+      "x1_synthetic_cell_support.csv",
+      "x1_synthetic_support_decisions.json",
+      "x1_synthetic_result.json",
+      "manifest.json"
+    ],
+    "private_files": [
+      "raw_source_rows.jsonl",
+      "eligible_activities.csv",
+      "external_identities.csv",
+      "union_nodes.csv",
+      "union_edges.csv",
+      "cell_safe_external_identities.csv"
+    ],
+    "tracked_boundary": "A later tracked acceptance may contain aggregate synthetic counts, hashes, timings, authority and decisions only. Synthetic row files remain in disposable roots and real external row values are never tracked."
+  },
+  "required_adversarial_tests": [
+    "opposite SQLite insertion order and opposite physical CSV order produce different source-file hashes but byte-identical logical and terminal maps",
+    "missing table or column, wrong target metadata, duplicate join key, orphan activity, integrity failure, symlink, traversal, WAL companion, writable input or pre-existing output fails before row parsing",
+    "SELECT-star, rowid dependence, implicit SQL order, aggregation or an activity row missing exactly one terminal filter state fails",
+    "every raw relation, value, unit, comment, assay, structure, document and source field survives preservation byte-for-byte with explicit null/type encoding",
+    "wrong target, non-IC50, censored relation, wrong unit, nonfinite/nonpositive value, missing/mismatched pChEMBL, quality flag, duplicate flag, validity comment, low confidence, nonhuman assay and bad structure each hit the exact first reason",
+    "source-provided canonical SMILES, InChI or InChIKey cannot override recomputed standardization hash or connectivity block",
+    "ten exact and ten connectivity-equivalent external identities are globally forbidden from values but retained as label-free union connector nodes",
+    "removing a forbidden connector node, omitting an external-external edge, using a strict greater-than 0.60 comparison, or replacing transitive components with pairwise-only exclusion fails expected union bytes",
+    "an external molecule connected only through a forbidden ghost or a two-edge transitive chain to held-out challenge is excluded",
+    "outer exclusion uses outer validation; scoped inner exclusion uses outer plus inner validation; challenge folds are never reassigned by merged union components",
+    "topology capability access to external values or challenge truth and activity capability access to held-out truth, blinded-test paths, metrics or models fails",
+    "support counts use unique standardized molecules and union components per endpoint/cell, never activities, assays, molregno rows or source-provided identifiers",
+    "miniature 50/35 thresholds pass while immutable 1000/750 thresholds fail on the same counts, proving caller-bound thresholds and no synthetic authority escalation",
+    "missing, duplicate, extra, cross-cell, cross-endpoint, cross-root or forged-lineage row fails complete accounting",
+    "interrupt, injected failure, retry, resume, moved root, overwrite, second publication or partial cleanup produces no accepted terminal",
+    "all real ChEMBL, official, model, metric, confirmatory-truth, historical-row, blinded-test, TDI, submission, leaderboard-selection, upload and claim counters remain exactly zero"
+  ],
+  "acceptance": {
+    "fresh_roots_required": 2,
+    "opposite_physical_orders_required": true,
+    "sqlite_file_hashes_must_differ": true,
+    "logical_source_hashes_must_match": true,
+    "relative_terminal_maps_byte_identical": true,
+    "activity_rows_per_root": 336,
+    "eligible_activity_rows_per_root": 320,
+    "ineligible_activity_rows_per_root": 16,
+    "global_novel_structures_per_endpoint": 60,
+    "outer_contexts": 15,
+    "outer_endpoint_cells": 60,
+    "inner_contexts": 60,
+    "inner_endpoint_cells": 240,
+    "expected_outer_safe_molecules_per_endpoint_cell": 52,
+    "expected_outer_safe_components_per_endpoint_cell": 36,
+    "expected_inner_safe_molecules_per_endpoint_cell": 44,
+    "expected_inner_safe_components_per_endpoint_cell": 32,
+    "miniature_support_pass": true,
+    "official_support_pass": false,
+    "all_filter_chemistry_graph_capability_and_accounting_adversaries_pass": true,
+    "all_parent_and_source_hashes_recorded": true,
+    "focused_tests_pass": true,
+    "full_repository_ci_passes": true,
+    "scientific_interpretation": "Acceptance proves compiler, exclusion, support-decision and least-privilege mechanics only. Synthetic support, structures, activities and decisions cannot select a source, model, feature, threshold or candidate."
+  },
+  "terminal_contract": {
+    "success_status": "G2_5B_EXP_X1_SYNTHETIC_COMPILER_ACCEPTED",
+    "failure_status": "G2_5B_EXP_X1_SYNTHETIC_COMPILER_FAILED",
+    "publication": "Publish at most one immutable terminal per fresh root, compare only complete roots, then remove both mutable/private roots after the aggregate acceptance or blocker is frozen.",
+    "failure": "Any acceptance mismatch fails G2-5B without acquisition authority. A corrected implementation requires a new reviewed contract; do not repair or reinterpret a failed root."
+  },
+  "resource_ceiling": {
+    "roots": 2,
+    "synthetic_sqlite_activity_rows": 672,
+    "maximum_pairwise_union_comparisons": 11990,
+    "cpu_core_hours": 2,
+    "gpu_hours": 0,
+    "restricted_storage_gb": 1,
+    "maximum_wall_hours": 1,
+    "process_concurrency": 1,
+    "model_fits": 0,
+    "rule": "Run roots sequentially. Exceeding any ceiling fails the synthetic gate and grants no acquisition, model or repair authority."
+  },
+  "current_milestone_accounting": {
+    "synthetic_sqlite_files_created": 0,
+    "synthetic_activity_rows_opened": 0,
+    "synthetic_union_comparisons": 0,
+    "inherited_prefreeze_external_preview_minimum_records": 45,
+    "new_external_records_opened": 0,
+    "external_dataset_files_downloaded": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "implementation": false,
+    "synthetic_fixture_creation": false,
+    "synthetic_execution": false,
+    "external_record_acquisition": false,
+    "external_activity_query": false,
+    "official_inputs": false,
+    "model_fitting": false,
+    "prediction_generation": false,
+    "metric_evaluation": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false,
+    "claim_creation_or_consumption": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the two-root synthetic compiler and adversarial tests above. If and only if the exact acceptance gate passes and its receipt is reviewed, integrated and green, freeze a separate immutable single-use acquisition claim binding the accepted source hashes, exact chembl_37 archive URL/SHA-256, fixed restricted roots, no-network execution, support receipt and cleanup. Do not download or open ChEMBL activity data or any official challenge input before that later claim is integrated."
+}

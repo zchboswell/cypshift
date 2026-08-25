@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-109. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-110. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -291,6 +291,21 @@ at any endpoint rejects EXP-X1 without source replacement or threshold repair.
 This contract opened zero new external activity records, downloaded zero
 dataset files, opened zero official inputs, and ran zero fit, prediction or
 metric. Archive acquisition remains unauthorized.
+
+D-110 freezes the next G2-5B synthetic compiler contract at SHA-256
+`db36935e...a3442`. It permits one isolated read-only SQLite compiler and one
+synthetic driver using the existing core standardizer and exact D-032 union
+graph. Raw source fields remain byte-preserved; each activity receives one
+ordered IC50 eligibility reason; source chemistry and InChIKeys are never
+trusted. Exact/equivalent external matches lose all values but stay as
+label-free ghost nodes so transitive analogs cannot cross held-out outer,
+inner, or confirmatory families. Two opposite-insertion-order roots must each
+process 336 synthetic activities, retain 320 eligible rows, remove 20 exact/
+equivalent external structures globally, and reproduce exact per-cell support
+bytes. The synthetic 50/35 mechanics gate passes while the immutable real
+1,000/750 gate fails. This contract created no fixture, opened no new external
+or official record, and performed no fit, prediction, metric, claim or
+submission. Acquisition remains unauthorized.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -940,18 +955,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-109 contract SHA-256 `a51f81a4...a21c1d`, then require
-green post-main CI. Next freeze a deterministic synthetic-only ChEMBL compiler
-and challenge/external union-component exclusion contract, and accept two
-opposite-order synthetic roots before acquisition. A later separate single-use
-claim must bind the exact archive URL/SHA-256, fresh restricted roots,
-no-network compilation, support accounting and cleanup. Do not download the
-archive, open a ChEMBL activity record or official input, fit a model, evaluate
-a metric, inspect blinded test, generate a submission, use leaderboard
-evidence, or upload before those gates. Private portal observations remain
-outside the public knowledgebase and cannot select a source, model, feature,
-loss, threshold, or candidate. Closed G1/G2/M1 and immutable R5D/I0 remain
-closed; `global_TDI` remains the TDI fallback.
+Review and integrate D-110 contract SHA-256 `db36935e...a3442`, then require
+green post-main CI. Implement only its isolated compiler and synthetic driver,
+execute the two opposite-order roots sequentially, and require complete
+filter, chemistry, forbidden-ghost, transitive-family, fold, capability,
+support, determinism, accounting and cleanup acceptance. Synthetic acceptance
+still cannot acquire data. A later separate single-use claim must bind the
+accepted source hashes, exact archive URL/SHA-256, fresh restricted roots,
+no-network compilation, support receipt and cleanup. Do not open real ChEMBL
+activity data or an official input, fit a model, evaluate a metric, inspect
+blinded test, generate a submission, use leaderboard evidence, or upload
+before those gates. Private portal observations remain outside the public
+knowledgebase and cannot select a source, model, feature, loss, threshold, or
+candidate. Closed G1/G2/M1 and immutable R5D/I0 remain closed; `global_TDI`
+remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

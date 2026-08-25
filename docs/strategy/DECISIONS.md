@@ -3538,3 +3538,50 @@
   source or weight, false zero counter, official/blinded-test access, or
   leaderboard-driven choice revokes the contract and rejects EXP-X1. The next
   gate is synthetic compiler/leakage mechanics, not acquisition.
+
+## D-110 — Freeze the EXP-X1 synthetic compiler and ghost-node leakage proof
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-5B design; zero synthetic, external,
+  official, model, metric or submission operation
+- Decision: Freeze `global_v2_x1_synthetic_compiler_contract.json` at SHA-256
+  `db36935e...a3442`. Permit one isolated read-only SQLite compiler, one
+  synthetic driver and focused tests in the locked Python 3.12.3/RDKit
+  2026.3.5 runtime. Preserve every raw joined ChEMBL field before assigning one
+  ordered eligibility reason; accept only exact high-confidence human IC50
+  rows; recompute core standardized structures and fourteen-character standard
+  InChI connectivity blocks; and reuse the exact inclusive D-032 radius-2,
+  4,096-bit chiral Morgan/Tanimoto 0.60 union graph. Remove values from exact/
+  equivalent external matches globally but retain those structures as label-
+  free ghost connectors. Exclude every external component touching held-out
+  outer, outer-plus-inner, or confirmatory challenge nodes. Count only unique
+  safe standardized molecules and union components per endpoint/cell.
+- Evidence: The prospective two-root fixture has 84 external compounds and 336
+  activity rows per root, of which 320 rows on 80 structures pass eligibility.
+  Ten exact and ten connectivity-equivalent external identities are globally
+  forbidden, leaving 60 novel structures per endpoint. With twenty balanced
+  challenge components, each outer cell must retain 52 external molecules in
+  36 components and each scoped inner cell 44 molecules in 32 components.
+  Opposite table insertion and file order must change SQLite file hashes while
+  every logical and terminal byte matches. The miniature 50/35 mechanics gate
+  passes but the parent 1,000/750 gate fails on the same counts, proving no
+  synthetic authority escalation. Eleven focused static tests pass. No
+  synthetic fixture or SQLite file was created, and no real ChEMBL activity,
+  official input, fit, prediction, metric, confirmatory truth, historical row,
+  blinded test, submission, leaderboard-selection, upload or claim operation
+  occurred.
+- Alternatives: Query activity records before implementation proof; trust
+  ChEMBL canonical structures or InChIKeys; aggregate replicates in SQL; use
+  rowid or implicit query order; discard exact duplicates before topology;
+  compare only challenge-to-external pairs; use approximate neighbors,
+  pairwise-only exclusion or strict `>0.60`; reassign frozen challenge folds;
+  count activities as support; or let miniature thresholds replace the parent
+  gate.
+- Reversal condition: Any unpreserved field, missing filter row, source-trusted
+  chemistry, removed ghost connector, incomplete unordered-pair graph,
+  nontransitive family, fold reassignment, activity-based support, threshold
+  change, nondeterministic terminal, false zero counter, real external or
+  official access, model/metric operation, or leaderboard-driven choice
+  revokes this contract and rejects G2-5B. A future acquisition still requires
+  separate reviewed synthetic acceptance and a separate integrated single-use
+  claim.

@@ -524,6 +524,21 @@ EXP-X1 without adding OpenADMET, PubChem, or third-party weights. This milestone
 downloaded no archive, opened no new external record or official input, and ran
 no fit, prediction, or metric.
 
+D-110 freezes the synthetic-only G2-5B implementation contract in
+[`global_v2_x1_synthetic_compiler_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_synthetic_compiler_contract.json),
+SHA-256 `db36935e...a3442`. One isolated read-only SQLite compiler must preserve
+every raw ChEMBL field, assign one ordered IC50 filter reason, recompute the
+accepted core structure and a conservative InChI connectivity exclusion key,
+and reuse exact D-032 Morgan/Tanimoto union components. External exact or
+equivalent matches lose all values but remain label-free ghost nodes, so their
+analog neighbors cannot evade an outer, inner, or confirmatory boundary. Two
+synthetic roots reverse every physical insertion order while preserving 336
+logical activity rows, 320 eligible rows, 20 forbidden external structures,
+and exact cell-support oracles. The miniature 50/35 mechanics gate must pass
+while the real 1,000/750 gate fails. This freeze runs no synthetic operation,
+opens no external or official record, and grants no acquisition or model
+authority.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -613,7 +628,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-109 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-110 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -623,15 +638,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-109 contract SHA-256 `a51f81a4...a21c1d`, then require
-green post-main CI. Keep the rejected preview path, closed G1/G2/M1 lanes and
-private portal observations outside model selection. Next freeze a
-deterministic synthetic-only compiler contract for the exact ChEMBL tables,
-field preservation, IC50 filter accounting, structure standardization, and
-challenge/external union-component exclusion; accept it across two
-opposite-order synthetic roots before any source acquisition. Only then may a
-separate single-use claim bind the exact chembl_37 archive URL and SHA-256,
-restricted fresh roots, no-network compilation, integrity/support receipts and
-cleanup. Do not download the archive, open a ChEMBL activity record or official
-input, fit a model, evaluate a metric, inspect blinded test, generate a
-submission, use leaderboard evidence, or upload before those reviewed gates.
+Review and integrate D-110 contract SHA-256 `db36935e...a3442`, then require
+green post-main CI. Implement exactly one isolated compiler and synthetic
+driver, run the two opposite-order roots sequentially, require every filter,
+chemistry, ghost-connector, transitive-family, capability, support,
+determinism, accounting, cleanup and no-replace adversary, and track only an
+aggregate acceptance or blocker. Do not change the 50/35 miniature or 1,000/750
+official thresholds. Acquisition remains closed after synthetic acceptance: a
+separate reviewed single-use claim must first bind the exact accepted source
+hashes, chembl_37 archive URL/SHA-256, restricted roots, no-network execution,
+support receipt and cleanup. Do not open real ChEMBL activity data or an
+official input, fit a model, evaluate a metric, inspect blinded test, generate
+a submission, use leaderboard evidence, or upload before those gates.

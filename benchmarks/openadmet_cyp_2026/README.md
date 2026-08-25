@@ -54,6 +54,19 @@ source. This freeze downloaded no external file, opened no ChEMBL activity
 record or official input, and ran no model or metric. The next gate is a
 synthetic-only compiler and union-component leakage proof, not acquisition.
 
+G2-5B now freezes that synthetic mechanics boundary in
+[`global_v2_x1_synthetic_compiler_contract.json`](global_v2_x1_synthetic_compiler_contract.json),
+SHA-256 `db36935e...a3442`. It specifies one read-only SQLite compiler, exact
+raw-field preservation and ordered IC50 filtering, recomputed core chemistry,
+conservative InChI connectivity equivalence, forbidden duplicate ghost nodes,
+and exact D-032 union components for every outer, scoped-inner, and
+confirmatory exclusion. Two opposite-insertion-order synthetic roots must
+replay 336 activity rows each and produce byte-identical logical terminals.
+The fixture deliberately passes miniature 50/35 mechanics thresholds while
+failing the real 1,000/750 gate. This contract creates no fixture, opens no
+external or official record, and authorizes no acquisition, model, metric, or
+submission operation.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

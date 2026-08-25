@@ -120,6 +120,21 @@ integration and green post-main CI, the next gate is a deterministic
 synthetic-only ChEMBL compiler and challenge/external union-component proof;
 archive acquisition still requires a separate single-use claim.
 
+D-110 now freezes G2-5B at SHA-256 `db36935e...a3442`. The smallest allowed
+implementation is one read-only SQLite compiler plus the existing core
+standardizer and exact D-032 Morgan/Tanimoto union graph. The two-root
+synthetic fixture freezes 336 source activities per root, 320 exact-eligible
+rows, 20 exact/equivalent forbidden external structures retained as label-free
+graph connectors, and exact outer/inner/confirmatory safe-support oracles.
+Opposite insertion order must change SQLite file hashes but not one logical or
+terminal byte. A miniature 50-molecule/35-component gate passes while the real
+1,000/750 gate fails, preventing synthetic mechanics from escalating to data
+or model authority. This milestone performed zero synthetic execution,
+external acquisition, official access, fit, prediction, metric, or submission.
+After reviewed integration and green post-main CI, implement and accept only
+the contracted two-root synthetic compiler; acquisition still requires its own
+later integrated single-use claim.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),
