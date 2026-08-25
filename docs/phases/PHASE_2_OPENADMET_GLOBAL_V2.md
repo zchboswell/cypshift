@@ -72,6 +72,15 @@ and eight terminal files byte-for-byte. The exact 720/1,020-fit paths traverse
 3,480 model-double invocations, 667,872 synthetic prediction identities, and
 6,980 supervised checkpoints. Ten fail-stop fault classes reject correctly;
 zero real CatBoost fit, scientific metric, official operation, or claim occurs.
+D-127 now freezes the separate G2-7D single-use execution contract at SHA-256
+`65934b0a...a91f488` and its immutable unconsumed claim at
+`da0104bc...ceb334`. It binds the integrated D-126 compiler, wrapper, cumulative
+supervisor, accepted MapLight runtime, exact official source and baseline
+receipts, one fixed absent attempt root, unchanged 720–1,020-fit D-122 science,
+and the actual 7.68-hour/128-core-hour fail-stop envelope. Five future
+implementation and acceptance hashes remain null, so the claim is unusable.
+This milestone opens zero official byte and performs zero fit, prediction,
+metric, confirmatory, submission, or upload operation.
 
 Authorized: 2026-08-24.
 
@@ -935,6 +944,24 @@ namespace tests on the hosted Python 3.12.3 runner. Host rejection receipt
 injection remains part of the exact local acceptance; hosted CI retains static
 policy and artifact validation. No model or supervisor byte changed.
 
+D-127 freezes the next boundary in
+[`global_v2_maplight_robustness_execution_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_contract.json),
+SHA-256 `65934b0a...a91f488`, with immutable unconsumed claim
+[`global_v2_maplight_robustness_execution_claim.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim.json),
+SHA-256 `da0104bc...ceb334`. The contract binds the reviewed D-126 implementation
+at integrated commit `15db9fb...`, successful post-main CI run `32892466738`,
+exact official source and immutable baseline receipts, and one fixed absent
+private attempt root. It inherits every D-122 candidate, seed, grouping,
+support, metric, selection, diagnostic, prediction count, and terminal rule
+without revision. The future attempt remains one replay, 720–1,020 sequential
+CatBoost fits, zero baseline or inner refits, one selection token, no runner-up,
+and continuously enforced D-125 limits. Only one scientific runner, one
+single-use attempt driver, one official-shaped execution/scoring acceptance
+driver, its aggregate acceptance, and focused tests may be added. All five
+future receipts are null, `usable` is false, and consumptions are zero. Thirteen
+focused static tests pass. This freeze reads no official or baseline row-level
+file and creates no model-quality evidence.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -951,9 +978,10 @@ run the current official validator, freeze candidate/environment/input hashes,
 record external-data disclosures, and publish through atomic no-replace
 acceptance. No result changes the historical MapLight or R5D artifacts.
 
-The existing MapLight candidate remains ready for immediate manual upload by
-the user. The orchestrator may record a user-supplied portal timestamp, remote
-receipt, and score, but may not access credentials or alter model selection.
+The historical MapLight candidate and any portal state remain outside model
+selection. Portal identifiers, receipts, and results stay in private operator
+context; the public knowledgebase records no such value. The orchestrator may
+not access credentials or let portal evidence change a scientific choice.
 
 Automated uploading is outside the critical path. A thin dry-run integration
 may be considered only after an organizer-approved challenge endpoint is
@@ -985,7 +1013,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-126 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-127 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -995,12 +1023,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-126 no-fit acceptance SHA-256
-`ca722b26...c231e0e`, then require green post-main CI. Only afterward freeze a
-separate single-use G2-7D official execution contract and immutable unconsumed
-claim bound to the integrated implementation and fixed official source. Do not
-modify or repeat G2-7B, open an official byte, consume a claim, or fit a
-scientific model before that next contract is reviewed and integrated.
+Review and integrate the D-127 contract SHA-256 `65934b0a...a91f488` and
+unconsumed claim SHA-256 `da0104bc...ceb334`, then require green post-main CI.
+Only afterward implement the exact additive scientific runner, single-use
+attempt driver, official-shaped execution/scoring acceptance driver, and
+focused tests. Their distinct formal two-root acceptance must remain synthetic
+and bind all five future receipts before claim consumption. Do not modify or
+repeat G2-7B, open an official byte, consume a claim, or fit a scientific model
+before that implementation and acceptance are reviewed, integrated, and green.
 Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.

@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-126. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-127. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -584,12 +584,30 @@ coverage intact. The corrections change no scientific identity. Fixed
 MapLight remains the best validated internal
 system at 0.5838 component-macro MAE.
 
+D-127 freezes the separate G2-7D official development execution contract at
+SHA-256 `65934b0a...a91f488` and its immutable unconsumed claim at
+`da0104bc...ceb334`. It binds integrated commit `15db9fb...`, successful
+post-main CI run `32892466738`, the exact D-122/D-125/D-126 parents, accepted
+compiler/wrapper/supervisor/MapLight bytes, immutable official source and
+baseline receipts, and the fixed absent
+`g2-7d-maplight-robustness-development-attempt-1` root. Scientific execution
+remains exactly 720 fits when full MapLight is retained and 1,020 only when one
+eligible deletion triggers the conditional seed check, with zero baseline or
+inner refits. The accepted supervisor must begin before claim consumption and
+enforce 7.68 wall-hours, 128 CPU-core-hours, 51.2 GB, 15.36 GiB simultaneous
+RSS, and zero GPU over the complete process tree. Five future implementation
+and acceptance fields remain null, `usable` is false, and consumptions are
+zero. Thirteen focused tests pass. This contract milestone opens no official or
+baseline row-level file and performs zero fit, prediction, metric,
+confirmatory, submission, or upload operation. Fixed MapLight remains the best
+validated internal system at 0.5838 component-macro MAE.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
 `R5_ORACLE_NO_SIGNAL` result. The existing exact MapLight candidate remains
-ready for the user's manual upload in parallel, and any portal result is barred
-from model, threshold, fusion, or candidate selection.
+historical deployment evidence. Current portal state stays private, and any
+portal result is barred from model, threshold, fusion, or candidate selection.
 
 The installable core and the public comparator program are complete. Phase 1
 TRACE has finished its sole official training-only oracle with authenticated
@@ -1234,14 +1252,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-126 no-fit acceptance SHA-256
-`ca722b26...c231e0e`, then require green post-main CI. Only afterward freeze a
-separate single-use G2-7D official execution contract and immutable unconsumed
-claim bound to the integrated implementation, exact official source receipts,
-fixed attempt root, cumulative supervisor, and D-122 science. Do not open an
-official byte, consume a claim, run a scientific fit, or evaluate a development
-metric before that distinct contract and claim are reviewed, integrated, and
-green on `main`.
+Review and integrate D-127 contract SHA-256 `65934b0a...a91f488` and claim
+SHA-256 `da0104bc...ceb334`, then require green post-main CI. Only afterward
+implement the additive scientific runner, single-use attempt driver,
+official-shaped execution/scoring acceptance driver, and focused tests. A
+distinct two-root synthetic acceptance must bind the five null future receipt
+fields before any claim consumption. Do not open an official byte, consume a
+claim, run a scientific fit, or evaluate a development metric before that
+implementation and acceptance are reviewed, integrated, and green on `main`.
 Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and

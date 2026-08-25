@@ -4275,3 +4275,50 @@
   Otherwise the next gate is only a separate reviewed G2-7D official execution
   contract and immutable unconsumed claim; it may not retroactively authorize
   an operation in this milestone.
+
+## D-127 — Freeze single-use MapLight robustness execution and unusable claim
+
+- Date: 2026-08-25
+- Status: accepted contract-and-unconsumed-claim G2-7D evidence; zero official
+  source row, target, feature, baseline row, fit, prediction, development
+  metric, confirmatory truth, historical row, blinded test, TDI, external
+  record, submission, official metric, leaderboard-selection, private-portal,
+  upload, or claim-consumption operation
+- Decision: Accept
+  `global_v2_maplight_robustness_execution_contract.json` at SHA-256
+  `65934b0a...a91f488` and its immutable unconsumed claim at SHA-256
+  `da0104bc...ceb334`. Freeze one fixed G2-7D attempt root and one consumption.
+  Reuse the integrated D-126 compiler, no-fit wrapper, cumulative supervisor,
+  accepted MapLight runner, chemistry, metric, and locks unchanged. Permit only
+  one future scientific runner, one single-use attempt driver, one
+  official-shaped execution/scoring acceptance driver, its aggregate
+  acceptance, and focused tests. The five future receipt fields are null and
+  `usable` is false, so this decision creates no official execution authority.
+- Evidence: The contract binds D-122 `ad9aef87...a7a45af`, D-125
+  `55fafa1d...5806527`, D-126 `ca722b26...c231e0e`, D-094
+  `76775030...a4482`, integrated commit `15db9fb...`, and successful post-main
+  CI run `32892466738`. It authenticates exact official source, R2B/R3A,
+  feature-array, fixed-baseline manifest, outer-OOF, and component-metric
+  receipt strings without opening their files. The attempt remains exactly
+  540 stage-A fits, 180 stage-B fits, and 300 conditional stage-C fits: 720–
+  1,020 total, 562,752–797,232 prediction identities, zero baseline refits,
+  zero inner fits, one selection token, no runner-up, and no deployable clip.
+  The accepted supervisor begins before claim consumption and enforces the
+  actual complete process tree at 7.68 wall-hours, 128 CPU-core-hours, 51.2 GB
+  restricted storage, 15.36 GiB simultaneous RSS, and zero GPU. Thirteen
+  focused static tests pass. Fixed MapLight remains the best validated internal
+  system at 0.5838 component-macro MAE; this freeze creates no new model-quality
+  evidence.
+- Alternatives: Consume a claim directly from D-126; let the no-fit wrapper
+  masquerade as a scientific runner; weaken or resize D-122; accept historical
+  timing as the result; add a candidate, seed, clip, calibration, blend, cache,
+  concurrency, retry, runner-up, service, or portal-driven choice; or open an
+  official source before scoring mechanics are accepted.
+- Reversal condition: Any parent, source, baseline, root, implementation,
+  runtime, family, support, candidate, seed, fit, prediction, chronology,
+  metric, bootstrap, selection, diagnostic, resource, process-tree, cleanup,
+  terminal, privacy, integration, or post-main-CI drift revokes D-127 before
+  official access. Otherwise the next gate is only the exact additive sources,
+  focused tests, and one formal two-root official-shaped synthetic
+  execution/scoring acceptance. It may fill no tracked field, consume no claim,
+  and open no official byte.

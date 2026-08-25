@@ -279,13 +279,26 @@ receipt `37429202...e8f5b1` because hosted CI cannot provide the accepted local
 namespace boundary. Live fault injection remains required locally; static
 supervisor policy remains covered in every CI lane.
 
+D-127 now freezes the separate single-use G2-7D development execution contract
+at SHA-256 `65934b0a...a91f488` and immutable unconsumed claim at
+`da0104bc...ceb334`. It binds the integrated D-126 implementation, exact source
+and fixed-baseline receipts, one absent attempt root, unchanged 720–1,020-fit
+D-122 science, and the continuously enforced D-125 resource limits. Five future
+implementation and acceptance receipts remain null, so the claim is unusable
+and unconsumed. Zero official row, fit, prediction, metric, confirmatory,
+submission, or upload operation occurs. After reviewed integration and green
+post-main CI, the next gate is only the additive scientific runner, single-use
+driver, and two-root official-shaped execution/scoring acceptance—not official
+access itself.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),
 with a stable historical pointer at
 [`PHASE_1_OPENADMET_TRACE.md`](PHASE_1_OPENADMET_TRACE.md). The accepted direct
-MapLight candidate remains available for the user's exact manual upload; R5D
-and I0 remain immutable negative history.
+MapLight candidate remains historical deployment evidence; current portal
+state stays private and outside model selection. R5D and I0 remain immutable
+negative history.
 
 Completed plans under [`docs/archive/`](../archive/) are historical evidence,
 not active instructions.

@@ -11,6 +11,35 @@ The retained result is a locally reproduced fixed MapLight plus GIN comparator.
 It is a global molecular reference for the future series-first experiment, not
 an original `cypshift` architecture or a clinical model.
 
+## OpenADMET CYP 2026 active Phase 2 gate
+
+The concise restart source is
+[`PROJECT_STATE.md`](../docs/strategy/PROJECT_STATE.md); the authoritative phase
+sequence is
+[`PHASE_2_OPENADMET_GLOBAL_V2.md`](../docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md).
+The current G2-7 chain is:
+
+- D-122 science contract:
+  [`global_v2_maplight_robustness_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_contract.json),
+  SHA-256 `ad9aef87...a7a45af`;
+- D-125 cumulative fail-stop contract:
+  [`global_v2_maplight_robustness_bounded_execution_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_bounded_execution_contract.json),
+  SHA-256 `55fafa1d...5806527`;
+- D-126 no-fit mechanics acceptance:
+  [`global_v2_maplight_robustness_no_fit_acceptance.json`](openadmet_cyp_2026/global_v2_maplight_robustness_no_fit_acceptance.json),
+  SHA-256 `ca722b26...c231e0e`;
+- D-127 single-use execution contract and unusable claim:
+  [`global_v2_maplight_robustness_execution_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_contract.json)
+  at `65934b0a...a91f488` and
+  [`global_v2_maplight_robustness_execution_claim.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim.json)
+  at `da0104bc...ceb334`.
+
+The claim has five null future receipts, zero consumptions, and no official
+authority. After D-127 integration and green post-main CI, the only next gate
+is the additive scientific runner, single-use attempt driver, and formal
+two-root official-shaped execution/scoring acceptance. Official development
+access remains closed until that acceptance is integrated.
+
 ## OpenADMET TRACE source rows
 
 The receipt-bound R1 adapter validates the pinned dataset revision, all five
