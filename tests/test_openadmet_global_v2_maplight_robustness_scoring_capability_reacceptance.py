@@ -29,6 +29,9 @@ CONTRACT = (
     BENCHMARK
     / "global_v2_maplight_robustness_scoring_capability_reacceptance_contract.json"
 )
+ACCEPTANCE_SHA256 = (
+    "9643dac8627b6729458aba3b4f886f5438b859a3c25d0347f1c71070c4873ed0"
+)
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -63,7 +66,7 @@ def test_new_driver_does_not_import_or_reactivate_old_driver() -> None:
     assert "terminally consumed" in old_text
 
 
-def test_fixed_root_is_deep_absent_and_preflight_is_noop() -> None:
+def test_fixed_root_is_deep_absent_after_formal_cleanup() -> None:
     assert driver.FIXED_PARENT_ROOT == Path("/tmp/cypshift-g2-7f")
     assert driver.FIXED_WORK_ROOT == (
         Path("/tmp/cypshift-g2-7f/scoring-capability-attempt-1")
@@ -71,9 +74,9 @@ def test_fixed_root_is_deep_absent_and_preflight_is_noop() -> None:
     assert len(driver.FIXED_WORK_ROOT.parts) >= 4
     assert not driver.FIXED_PARENT_ROOT.exists()
     assert not driver.FIXED_WORK_ROOT.exists()
-    assert not driver.ACCEPTANCE.exists()
+    assert driver.ACCEPTANCE.exists()
     assert not driver.REJECTION.exists()
-    driver._preflight()
+    driver._validate_cleanup_path(driver.FIXED_WORK_ROOT)
     assert not driver.FIXED_PARENT_ROOT.exists()
     assert not driver.FIXED_WORK_ROOT.exists()
 
@@ -216,8 +219,38 @@ def test_success_schema_keeps_zero_authority_and_exact_counts() -> None:
     assert terminal["claim_authority"] is False
 
 
-def test_formal_terminals_do_not_exist_before_integrated_attempt() -> None:
-    assert not driver.ACCEPTANCE.exists()
+def test_formal_acceptance_binds_exact_attempt_and_zero_authority() -> None:
+    assert maplight.sha256_path(driver.ACCEPTANCE) == ACCEPTANCE_SHA256
+    acceptance = _load(driver.ACCEPTANCE)
+    assert acceptance["status"] == (
+        "G2_7F_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_ACCEPTED"
+    )
+    assert acceptance["attempt_id"] == driver.ATTEMPT_ID
+    assert acceptance["reacceptance_contract_sha256"] == driver.CONTRACT_SHA256
+    assert acceptance["d129_rejection_sha256"] == driver.D129_REJECTION_SHA256
+    assert acceptance["scoring_compiler_source_sha256"] == (
+        driver.SCORING_COMPILER_SHA256
+    )
+    assert acceptance["acceptance_driver_source_sha256"] == maplight.sha256_path(
+        driver.SCRIPT
+    )
+    assert acceptance["focused_tests_sha256"] == (
+        "668e4ff103a7f2ec6ec61982462406df246662e80a313b9bb0e7f9d60462ec97"
+    )
+    roots = acceptance["roots"]
+    assert len(roots) == 2
+    assert roots[0]["source_physical_order_reversed"] is False
+    assert roots[1]["source_physical_order_reversed"] is True
+    assert roots[0]["scoring_capability_tree_sha256"] == roots[1][
+        "scoring_capability_tree_sha256"
+    ]
+    assert acceptance["scoring_capability_maps_byte_identical"] is True
+    assert acceptance["confirmatory_value_fields_decoded"] == 0
+    assert acceptance["real_catboost_fits"] == 0
+    assert acceptance["development_metric_evaluations"] == 0
+    assert acceptance["official_operations"] == 0
+    assert acceptance["claims_created"] == acceptance["claims_consumed"] == 0
+    assert acceptance["private_roots_retained"] == 0
     assert not driver.REJECTION.exists()
     assert not driver.FIXED_PARENT_ROOT.exists()
     assert not driver.FIXED_WORK_ROOT.exists()

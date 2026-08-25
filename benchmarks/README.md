@@ -46,7 +46,10 @@ The current G2-7 chain is:
   [`run_global_v2_maplight_robustness_scoring_capability_acceptance_v2.py`](../research/maplight-fixed/run_global_v2_maplight_robustness_scoring_capability_acceptance_v2.py)
   at `e8895bb9...c84de61` and
   [`test_openadmet_global_v2_maplight_robustness_scoring_capability_reacceptance.py`](../tests/test_openadmet_global_v2_maplight_robustness_scoring_capability_reacceptance.py)
-  at `668e4ff1...462ec97`.
+  at-attempt `668e4ff1...462ec97`;
+- D-132 fixed-root scorer-capability acceptance:
+  [`global_v2_maplight_robustness_scoring_capability_acceptance_v2.json`](openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_acceptance_v2.json),
+  SHA-256 `9643dac8...c4873ed0`.
 
 Pre-implementation audit proved that D-127 cannot satisfy exact D-122 scoring:
 its accepted scorer capability exposes central `point` only, while the frozen
@@ -58,8 +61,8 @@ acceptance produced byte-identical synthetic capabilities but failed mandatory
 cleanup-root safety, so D-129 rejects it with no acceptance and zero attempts
 remaining. D-130 now freezes a separately identified fixed-root path that must
 prove cleanup safety before any work, with zero fit and zero metric. Official
-development access remains closed. The implementation is not an acceptance;
-its single formal attempt remains unused until green integration.
+development access remains closed. G2-7F is now accepted after one formal
+attempt; it creates no model-quality or official authority.
 
 ## OpenADMET TRACE source rows
 

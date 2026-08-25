@@ -1026,6 +1026,19 @@ endpoint/development/opaque-confirmatory counts and zero fit or metric. The
 formal two-root attempt, fixed roots, and success/failure terminals remain
 unused and absent pending reviewed integration and green post-main CI.
 
+D-132 accepts the one formal G2-7F attempt at
+[`global_v2_maplight_robustness_scoring_capability_acceptance_v2.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_acceptance_v2.json),
+SHA-256 `9643dac8...c4873ed0`. Clean signed `main` commit `1a12329...` and green
+post-main CI run `32909057932` preceded the no-argument execution. Canonical and
+reversed physical/dependency order produced byte-identical two-file capability
+maps at `933e2f16...b3ea57`. Across both roots, 9,600 endpoint rows produced
+7,680 development scoring rows; all 1,920 confirmatory value suffixes remained
+opaque. The root and parent were absent before publication. Fits, metrics,
+official operations, claims, submissions, and uploads were zero. The receipt
+binds driver `e8895bb9...c84de61`, scorer compiler `6f15205f...6f492`, and
+focused tests at attempt `668e4ff1...462ec97`; current additive acceptance-audit
+tests are `0d425935...ecd8ec`. No model-quality authority is created.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -1077,7 +1090,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-131 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-132 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1087,17 +1100,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-131 driver SHA-256 `e8895bb9...c84de61` and focused tests
-`668e4ff1...462ec97`, then require green post-main CI. Only afterward run the
-integrated no-argument driver exactly once from clean `main`. Its two-root
-synthetic attempt must validate root safety before work, preserve the exact
-scorer compiler and eight output fields, decode zero confirmatory value
-suffixes, clean before terminal publication, and run zero real fit or
-development metric. Do not run it from this branch; rerun or repair D-128;
-implement the scientific runner or official attempt driver; create or consume
-a claim; reuse the D-127 root; open an official byte or baseline; fit a model;
-or score a development target before G2-7F acceptance and a later corrected
-execution contract are integrated.
+Review and integrate D-132 acceptance SHA-256 `9643dac8...c4873ed0` and audit
+tests `0d425935...ecd8ec`, then require green post-main CI. Only afterward
+freeze a corrected single-use execution contract and new unusable claim that
+bind D-122, D-125, D-126, and the accepted eight-field G2-7F scorer. Keep the
+D-127 claim/root and D-128 attempt permanently barred. Do not implement or run
+the scientific/official driver; create a usable claim; open an official byte or
+baseline; fit a model; score development truth; or access confirmatory truth
+before the corrected contract is integrated. Submission generation, official
+metric, leaderboard selection, and upload remain closed.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

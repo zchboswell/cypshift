@@ -329,6 +329,15 @@ minimal scorer-capability compilation. The formal D-130 attempt remains unused;
 fixed roots and terminals are absent. Integration and green post-main CI must
 precede its one no-argument execution.
 
+D-132 accepts that sole formal attempt at aggregate receipt SHA-256
+`9643dac8...c4873ed0`. The two opposite-order scorer-capability maps matched at
+tree SHA-256 `933e2f16...b3ea57`; 9,600 synthetic endpoint rows yielded 7,680
+development scoring rows while 1,920 confirmatory suffixes remained opaque.
+Both fixed roots were removed before publication. Fits, metrics, official
+operations, and claims stayed zero. This is scorer-mechanics evidence, not a
+model-quality result. A separate corrected execution contract and new unusable
+claim are now required before any official path.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

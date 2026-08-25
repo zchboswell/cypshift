@@ -4457,3 +4457,33 @@
   opacity, count, privacy, integration, or post-main-CI drift revokes D-131
   before the formal attempt. Otherwise invoke the integrated driver exactly
   once with no arguments and interpret only its aggregate synthetic terminal.
+
+## D-132 — Accept the fixed-root scorer capability
+
+- Date: 2026-08-25
+- Status: accepted G2-7F scorer-mechanics evidence; one formal attempt consumed;
+  fixed roots cleaned; zero real fit, development metric, official source,
+  claim, submission, leaderboard-selection, private-portal-record, upload, or
+  claim-consumption operation
+- Decision: Accept
+  `global_v2_maplight_robustness_scoring_capability_acceptance_v2.json` at
+  SHA-256 `9643dac8...c4873ed0`. The eight-field scorer-enrichment capability is
+  now sufficient for a later corrected D-122 execution path. It grants no
+  model-quality or official authority by itself.
+- Evidence: Exact signed integrated commit `1a12329...` passed post-main CI run
+  `32909057932`. The sole no-argument attempt completed in 1.8 seconds. Two
+  opposite-order roots produced identical two-file capability maps at tree
+  SHA-256 `933e2f16...b3ea57`. Across both roots, 9,600 synthetic endpoint rows,
+  7,680 decoded development rows, 7,680 emitted scoring rows, 1,920 opaque
+  confirmatory suffixes, and 1,536 tutorial-eligible rows were accounted.
+  Cleanup removed fixed root and parent before publication. Driver, compiler,
+  and focused-test hashes match the receipt. Twelve additive audit tests pass.
+- Alternatives: Treat the failed D-128 attempt as accepted; repeat G2-7F for
+  more evidence; modify bounds or provenance; add a model/metric check; create
+  or consume an official claim now; or use private portal evidence to select a
+  scientific path.
+- Reversal condition: The acceptance is immutable. Any parent, driver,
+  compiler, test-at-attempt, root, count, opacity, determinism, cleanup,
+  accounting, privacy, integration, or post-main-CI drift blocks progression.
+  Otherwise the next gate is only a corrected contract and new unusable claim;
+  it is not official access or model execution.

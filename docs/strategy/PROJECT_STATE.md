@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-131. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-132. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -657,6 +657,20 @@ claim, or official operation. The one D-130 formal attempt has not run; its
 fixed roots and both terminals remain absent. This implementation is not yet
 acceptance or model-quality evidence.
 
+D-132 accepts the sole G2-7F formal synthetic attempt at aggregate receipt
+SHA-256 `9643dac8...c4873ed0`. From clean signed `main` commit `1a12329...` after
+green post-main CI run `32909057932`, the fixed no-argument driver compiled two
+opposite-order official-shaped roots. Their two-file scorer-capability maps
+matched byte-for-byte at tree SHA-256 `933e2f16...b3ea57`. Across both roots it
+opened 9,600 synthetic endpoint rows, decoded 7,680 development rows, emitted
+7,680 scoring rows, and skipped 1,920 confirmatory value suffixes before
+decoding. Each root contained 768 tutorial-eligible rows. Fixed work root and
+parent were absent before terminal publication. Real CatBoost fits,
+development metrics, official operations, claims, submissions,
+leaderboard-selection, and uploads all remained zero. This accepts scorer
+capability mechanics only and changes no model-quality estimate; fixed MapLight
+remains 0.5838 component-macro MAE.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1307,17 +1321,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-131 V2 driver SHA-256
-`e8895bb9...c84de61` and focused tests `668e4ff1...462ec97`, then require green
-post-main CI. Only afterward invoke the integrated driver once from clean
-`main` with no arguments. The sole two-root synthetic attempt must preserve the
-D-128 eight-field scorer science, decode zero confirmatory value suffixes,
-clean its fixed roots before one aggregate terminal, and run zero real fit or
-development metric. Do not run the formal attempt from this branch; implement
-the scientific runner or official attempt driver; create or consume a claim;
-use the D-127 root; open an official byte or baseline; fit a model; or score a
-development target until G2-7F acceptance and a later corrected execution
-contract are reviewed, integrated, and green on `main`.
+Review and integrate the D-132 G2-7F acceptance SHA-256
+`9643dac8...c4873ed0` with audit tests `0d425935...ecd8ec`, then require green
+post-main CI. Only afterward freeze a separate corrected single-use execution
+contract and new unusable claim that bind the accepted eight-field scorer,
+exact D-122 science, D-125 resource ceiling, D-126 execution mechanics, and
+D-132 acceptance. The D-127 claim/root and D-128 attempt remain permanently
+barred. Do not implement or run the scientific/official driver, create a usable
+claim, open an official byte or baseline, fit a model, score development truth,
+or access confirmatory truth until the corrected contract is reviewed,
+integrated, and green on `main`.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
