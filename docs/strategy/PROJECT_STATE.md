@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-124. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-125. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -542,6 +542,21 @@ metric, claim, confirmatory, submission, leaderboard-selection, or upload
 operation occurred. The attempt cannot be retried, repaired, resumed, or
 replaced. Fixed MapLight remains the best validated internal system at 0.5838
 component-macro MAE.
+
+D-125 freezes a materially distinct G2-7C bounded-execution contract at
+SHA-256 `55fafa1d...5806527`. It never repairs, imports, executes, or derives
+authority from the rejected G2-7B runner. Instead, it inherits every D-122
+candidate and scientific identity unchanged, uses D-094's 600 exact official
+full-feature fits only as prior feasibility context, and makes eventual
+acceptance depend on continuous cumulative measurement of the real attempt.
+D-094 observed 1.012 wall-hours and at most 16.194 CPU-core-hours; a transparent
+1.7x maximum-branch context is 1.721 wall-hours and at most 27.529
+CPU-core-hours, leaving more than 4.4x headroom to the hard 7.68/128 limits.
+Those contextual values are not a projection gate or per-fit maximum. The
+future supervisor must fail-stop the complete process tree on wall, CPU,
+storage, simultaneous RSS, GPU, warning, exit, or accounting drift. This
+milestone creates no implementation or claim and opens zero synthetic or
+official capability.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1193,12 +1208,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-124's aggregate G2-7B rejection and require green
-post-main CI. Then freeze, without execution, a materially distinct G2-7 path
-that relies on the already accepted exact full-feature MapLight runtime and
-D-094 observed resource evidence instead of repairing or repeating the failed
-synthetic resource probe. Do not create an official claim, open official rows,
-or run scientific fits in that contract milestone.
+Review and integrate D-125 bounded-execution contract SHA-256
+`55fafa1d...5806527`, then require green post-main CI. Next implement only its
+narrow D-122-derived official compiler, single-use wrapper, cumulative resource
+supervisor, two-root no-fit official-shaped acceptance, and focused adversarial
+tests. Do not create a claim, open official rows, run a scientific fit, or
+evaluate a development metric in that implementation milestone.
 Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and

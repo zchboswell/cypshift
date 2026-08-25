@@ -59,6 +59,12 @@ deterministic mechanics completed and matched across roots, but 2,516 of 2,563
 resource-probe columns were constant, invalidating the apparently passing
 runtime projection. No official capability opened, and this attempt may not be
 retried, repaired, resumed, or replaced.
+D-125 freezes the materially distinct G2-7C bounded-execution path. It keeps
+the exact D-122 science, prohibits reuse of rejected G2-7B implementation
+bytes, uses D-094 exact full-feature resource totals only as feasibility
+context, and makes a future real attempt fail-stop against continuously
+enforced 7.68 wall-hour, 128 CPU-core-hour, 51.2 GB, 15.36 GiB, and zero-GPU
+limits. This milestone remains contract-only with no implementation or claim.
 
 Authorized: 2026-08-24.
 
@@ -873,6 +879,25 @@ projections nonconservative. The failure is resource-fixture validity, not
 model behavior. It opened zero official data and produced no development or
 confirmatory score. No G2-7B retry, repair, resume, or replacement is allowed.
 
+D-125 freezes the replacement-free forward path in
+[`global_v2_maplight_robustness_bounded_execution_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_bounded_execution_contract.json),
+SHA-256 `55fafa1d...5806527`. It imports no authority from the rejected G2-7B
+implementation and preserves all D-122 candidates, seeds, grouping overlays,
+support rules, chronology, selection gates, diagnostics, and 720–1,020 fit
+accounting. D-094 supplies real full-feature prior context: 600 exact official
+MapLight fits consumed 1.012 wall-hours and at most 16.194 CPU-core-hours. A
+visible 1.7x maximum-branch context is 1.721 wall-hours and at most 27.529
+CPU-core-hours, more than 4.4x below the frozen hard limits. Those values cannot
+accept a future attempt. Acceptance requires the actual complete process tree
+to remain within 7.68 wall-hours, 128 CPU-core-hours, 51.2 GB restricted
+storage, 15.36 GiB simultaneous RSS, and zero GPU while every scientific
+identity completes. Any limit, warning, child, cleanup, or accounting miss
+aborts without a partial terminal. Before a separate claim can exist, a new
+D-122-derived implementation must pass two opposite-order no-fit
+official-shaped roots; no real CatBoost fit or resource projection belongs to
+that mechanics gate. This freeze performs zero implementation, source, fit,
+prediction, metric, claim, or confirmatory operation.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -923,7 +948,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-124 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-125 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -933,11 +958,11 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-124's aggregate rejection, then require green post-main
-CI. Next freeze only a materially distinct G2-7 path grounded in the already
-accepted exact MapLight runtime and D-094 full-feature resource observations;
-do not modify or repeat G2-7B. Do not create an official claim, open an official
-byte, or fit an official model in that contract milestone. Confirmatory truth,
+Review and integrate D-125 bounded-execution contract SHA-256
+`55fafa1d...5806527`, then require green post-main CI. Next implement only its
+narrow compiler, wrapper, continuous supervisor, focused tests, and no-fit
+official-shaped mechanics acceptance. Do not modify or repeat G2-7B, create a
+claim, open an official byte, or fit a scientific model. Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.
 `global_TDI` remains the TDI fallback.

@@ -4177,3 +4177,45 @@
   or replacement. A future materially distinct experiment requires a new
   prospective contract and may use already accepted exact full-feature
   MapLight runtime evidence without representing itself as G2-7B.
+
+## D-125 — Freeze fail-stop MapLight robustness execution without synthetic timing
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-7C evidence; zero implementation, runtime
+  creation, synthetic source, model-double invocation, CatBoost fit,
+  prediction, metric, claim, official row, confirmatory truth, historical row,
+  blinded test, TDI, external record, submission, official metric,
+  leaderboard-selection, private-portal record, or upload operation
+- Decision: Accept
+  `global_v2_maplight_robustness_bounded_execution_contract.json` at SHA-256
+  `55fafa1d...5806527`. Preserve every D-122 scientific identity and make a
+  future attempt pass only when the actual complete process tree finishes
+  inside continuously enforced cumulative limits. Treat G2-7B as terminal
+  negative history: its runner and driver may be authenticated only to prevent
+  reuse and may not be imported, copied, executed, patched, benchmarked, or
+  used to create a claim.
+- Evidence: D-094 supplies the only resource prior: two exact 300-fit official
+  full-feature replays over 3,908 molecules completed 600 fits in 3,643.572
+  seconds and at most 16.194 CPU-core-hours, with 234,160,503 bytes peak
+  restricted storage and zero GPU. Scaling the aggregate by the transparent
+  1.7 maximum-fit-count ratio gives 1.721 wall-hours and at most 27.529
+  CPU-core-hours, more than 4.4x below the hard 7.68/128 limits. This context
+  justifies an attempt but cannot accept it, masquerade as a per-fit maximum,
+  or alter the battery. The future supervisor begins before claim consumption,
+  polls the full process tree at most every second, and enforces wall, CPU,
+  storage, simultaneous RSS, and zero GPU during child fits. Any limit, warning,
+  fallback, exit, signal, detached child, cleanup, or accounting miss aborts
+  without partial publication. The exact science remains 540 stage-A fits,
+  180 stage-B fits, and 300 conditional stage-C fits, totaling 720–1,020 with
+  no baseline or inner refit. Thirteen focused static tests pass.
+- Alternatives: Repair or rerun G2-7B; accept its synthetic projection; treat
+  D-094 aggregate timing as a maximum-fit gate; weaken the D-122 battery; start
+  official execution before implementation acceptance; create a claim now;
+  optimize, cache, quantize, parallelize, or use private portal evidence.
+- Reversal condition: Any parent, rejected-source non-reuse, exact-science,
+  historical-resource, cumulative-monitor, process-tree, stage, claim,
+  terminal, cleanup, privacy, integration, or post-main-CI drift revokes D-125
+  before official access. Otherwise the next gate is only the new narrow
+  D-122-derived compiler, wrapper, supervisor, no-fit official-shaped
+  acceptance, and focused tests; claim creation and scientific fitting remain
+  closed.

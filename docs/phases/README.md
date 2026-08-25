@@ -245,6 +245,22 @@ forbidden accounting are conjunctive. The later workload is 720–1,020 fits;
 this contract milestone ran zero. The next gate is a separate two-root
 synthetic implementation/resource contract, not official access.
 
+D-123 froze that synthetic/resource contract at SHA-256
+`97b982fa...e2abfd`, but D-124 terminally rejected its sole formal attempt at
+receipt `e7cba8af...e0eb821`: only 47/2,563 timing-probe columns varied, so its
+mechanically passing projection was nonconservative. No official byte opened,
+and G2-7B cannot be retried, repaired, resumed, or replaced.
+
+D-125 now freezes a materially distinct G2-7C bounded-execution contract at
+SHA-256 `55fafa1d...5806527`. It preserves every D-122 scientific identity,
+prohibits rejected G2-7B source reuse, treats D-094's exact full-feature runtime
+only as feasibility context, and requires continuous fail-stop measurement of
+the eventual real attempt against 7.68 wall-hours, 128 CPU-core-hours, 51.2 GB,
+15.36 GiB, and zero GPU. No implementation or claim exists. After reviewed
+integration and green post-main CI, the next gate is only a new narrow
+compiler/wrapper/supervisor plus two-root no-fit official-shaped mechanics—not
+an official source open or scientific fit.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

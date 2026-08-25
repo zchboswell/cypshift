@@ -1,0 +1,320 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_bounded_execution_contract.v1",
+  "freeze_date": "2026-08-25",
+  "recorded_at_utc": "2026-08-25T17:25:17Z",
+  "gate": "G2_7C_MAPLIGHT_ROBUSTNESS_BOUNDED_EXECUTION_CONTRACT_FROZEN",
+  "status": "contract_only_no_implementation_claim_or_official_execution_authority",
+  "base_commit": "2aa9eda2cb41a2ef1c22dbad3531b734724caa44",
+  "purpose": "Freeze a materially distinct fail-stop path for the exact D-122 robustness science after G2-7B resource rejection: use the accepted full-feature official MapLight runtime as prior feasibility evidence, enforce cumulative resource limits during the eventual scientific attempt, and never estimate acceptance from a synthetic timing matrix.",
+  "hypothesis": "The exact 720-to-1,020-fit D-122 robustness battery can complete once inside the frozen cumulative execution envelope while preserving every candidate, seed, grouping, family, chronology, metric, selection, diagnostic, and terminal invariant.",
+  "occam_boundary": "Add only a narrow D-122-derived compiler, execution wrapper, and resource supervisor around accepted MapLight primitives. Add no model, feature, parameter, seed, clip, metric, threshold, grouping rule, retry, cache, quantization, concurrency, or synthetic resource estimator. The rejected G2-7B runner and driver remain historical evidence and are not imported, copied, executed, or repaired.",
+  "targeted_failure_modes": [
+    "G2-7B retry, repair, resume, replacement, or rejected-source reuse disguised as a new path",
+    "historical aggregate timing treated as a per-fit maximum or scientific acceptance statistic",
+    "cumulative wall, CPU, storage, RSS, GPU, fit-count, prediction-count, warning, or child-process drift",
+    "resource observation begins after source opening or excludes compiler, scorer, bootstrap, publisher, cleanup, or child work",
+    "partial results or unused budget fund a retry, reduced battery, altered ordering, optimization, or runner-up",
+    "parent, source, runtime, feature, parameter, candidate, seed, group, metric, selection, or terminal drift",
+    "molecule, exact duplicate, original D-032 component, threshold component, or tautomer component crosses an active split",
+    "confirmatory-touching overlay families remain in development or confirmatory truth opens",
+    "validation truth, immutable baseline OOF, metric, or diagnostic opens before its complete prediction freeze",
+    "private portal evidence enters a claim, oracle, threshold, selection, diagnostic, or publication"
+  ],
+  "parents": {
+    "maplight_robustness_contract": {
+      "path": "global_v2_maplight_robustness_contract.json",
+      "sha256": "ad9aef871ab06e5082568f20a9a6d293897924bdfeda2fb341685cffaa7a45af"
+    },
+    "maplight_robustness_synthetic_rejection": {
+      "path": "global_v2_maplight_robustness_synthetic_rejection.json",
+      "sha256": "e7cba8af6ab38e753cc2f7117fcf94dbce1036634227edb6195c14ab8e0eb821",
+      "status": "G2_7B_MAPLIGHT_ROBUSTNESS_SYNTHETIC_REJECTED",
+      "use": "Terminal negative history and non-reuse boundary only. Its generated acceptance and resource projection have zero authority."
+    },
+    "maplight_official_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "status": "G2_2_MAPLIGHT_REPRODUCED",
+      "use": "Exact official full-feature runtime and aggregate baseline evidence only; row-level historical artifacts remain closed."
+    },
+    "maplight_execution_contract": {
+      "path": "global_v2_maplight_execution_contract.json",
+      "sha256": "962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2"
+    },
+    "maplight_execution_synthetic_acceptance": {
+      "path": "global_v2_maplight_execution_synthetic_acceptance.json",
+      "sha256": "ffb3956c17912468175c13d729f538fc213522c75630c80a6e99455902e183b2",
+      "use": "Accepted sparse-capability and official-source adapter primitives only; it grants no new source or scientific authority."
+    },
+    "post_main_ci": {
+      "run_id": 32876238646,
+      "head_sha": "2aa9eda2cb41a2ef1c22dbad3531b734724caa44",
+      "conclusion": "success",
+      "python_jobs_passed": [
+        "3.11",
+        "3.12.3",
+        "3.14"
+      ]
+    }
+  },
+  "accepted_runtime_primitives": {
+    "runner": {
+      "path": "research/maplight-fixed/global_v2_maplight_runner.py",
+      "sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f"
+    },
+    "official_compiler": {
+      "path": "research/maplight-fixed/global_v2_maplight_execution_compiler.py",
+      "sha256": "8317a225eb065e57debb8c8af0a38cde55bb4f0eea7af2cd6a42fbf77d16f8b4"
+    },
+    "official_wrapper": {
+      "path": "research/maplight-fixed/global_v2_maplight_execution_wrapper.py",
+      "sha256": "3d161a438df2fabe822c3e6d321f95b5690f3e3461087632d8cc8b53bbe3ac52"
+    },
+    "research_uv_lock": {
+      "path": "research/maplight-fixed/uv.lock",
+      "sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8"
+    },
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "runtime": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.10.13",
+      "numpy": "1.25.2",
+      "rdkit": "2023.3.3",
+      "catboost": "1.2.1",
+      "thread_count": 16,
+      "maximum_concurrent_fits": 1,
+      "gpu_hours": 0
+    }
+  },
+  "rejected_g2_7b_non_reuse": {
+    "runner_path": "research/maplight-fixed/global_v2_maplight_robustness_runner.py",
+    "runner_sha256": "ded3caa9b6a71d03cf6a1f428a14fee0993317ad2072625b7cfc61ef9a6c5666",
+    "driver_path": "research/maplight-fixed/run_global_v2_maplight_robustness_synthetic.py",
+    "driver_sha256": "6af784962fc0b4d3e48a6df5f763874143a1c157d9bac6ac1aaf8e920ea73aac",
+    "rule": "These bytes may be authenticated to enforce non-reuse and may be cited as negative history. Future implementation code may not import, copy, execute, patch, benchmark, or derive a claim from them.",
+    "formal_attempts_remaining": 0,
+    "resource_acceptance_authority": false,
+    "mechanical_acceptance_authority": false
+  },
+  "exact_scientific_inheritance": {
+    "rule": "Inherit D-122 without revision. A future validator must compare every candidate, feature block, constructor argument, omitted argument, seed, group perturbation, support minimum, diagnostic, metric, selection predicate, ordering, fit count, prediction count, terminal, cleanup rule, and forbidden counter for exact equality before a source capability can exist.",
+    "default_candidate": "G2-7-M0-FULL",
+    "drop_one_candidates": [
+      "G2-7-M1-DROP-MORGAN",
+      "G2-7-M2-DROP-AVALON",
+      "G2-7-M3-DROP-ERG",
+      "G2-7-M4-DROP-DESCRIPTORS"
+    ],
+    "seed_perturbation_values": [
+      2026082411,
+      2026082412,
+      2026082413,
+      2026082414,
+      2026082415
+    ],
+    "group_perturbations": [
+      "THRESHOLD_0_55",
+      "THRESHOLD_0_50",
+      "TAUTOMER_MERGED"
+    ],
+    "fits": {
+      "stage_a": 540,
+      "stage_b": 180,
+      "stage_c_if_deletion_selected": 300,
+      "minimum_total": 720,
+      "maximum_total": 1020,
+      "baseline_refits": 0,
+      "inner_fits": 0
+    },
+    "predictions": {
+      "stage_a": 422064,
+      "stage_b_upper_bound": 140688,
+      "stage_c_if_deletion_selected": 234480,
+      "minimum_total": 562752,
+      "maximum_total": 797232
+    },
+    "selection_tokens": 1,
+    "runner_ups": 0,
+    "deployable_clips": 0,
+    "retained_model_binaries": 0
+  },
+  "historical_feasibility_context": {
+    "source": "D-094 exact official full-feature MapLight reproduction, not G2-7B synthetic timing",
+    "feature_columns": 2563,
+    "development_molecules": 3908,
+    "replays": 2,
+    "fits_per_replay": 300,
+    "fits_observed": 600,
+    "wall_seconds_observed": 3643.5723610060013,
+    "cpu_core_hours_upper_bound_observed": 16.19365493780445,
+    "peak_restricted_storage_bytes_observed": 234160503,
+    "gpu_hours_observed": 0,
+    "maximum_branch_context": {
+      "fit_ratio": 1.7,
+      "wall_hours_linear_context": 1.7205758371417228,
+      "cpu_core_hours_linear_upper_context": 27.529213394267565,
+      "restricted_storage_gb_linear_context": 0.3980728551,
+      "wall_headroom_factor_to_hard_limit": 4.463621907394834,
+      "cpu_headroom_factor_to_hard_limit": 4.649606153536285
+    },
+    "interpretation": "This aggregate observation justifies attempting the already frozen science under a fail-stop envelope. It is not a per-fit maximum, guarantee, projection gate, acceptance statistic, optimization target, or authority to alter the battery."
+  },
+  "cumulative_resource_envelope": {
+    "measurement_scope": "Begin before any future claim consumption or official source open and end only after terminal publication attempt and cleanup. Include trusted compiler, model children, scorer, bootstrap, diagnostics, publisher, logs, temporary files, cleanup, and all descendants.",
+    "hard_limits": {
+      "cpu_core_hours": 128.0,
+      "wall_hours": 7.68,
+      "restricted_storage_gb": 51.2,
+      "peak_rss_gib": 15.36,
+      "gpu_hours": 0
+    },
+    "relationship_to_d_122": "Each nonzero limit is exactly 80 percent of the D-122 ceiling and preserves its previously frozen additional margin.",
+    "supervisor": {
+      "clock": "Linux CLOCK_MONOTONIC measured outside the restricted work root",
+      "cpu": "Cumulative user plus system CPU for the supervisor and every descendant, including terminated children; no child may detach or escape accounting.",
+      "storage": "Maximum allocated bytes across the complete fixed restricted root, including hidden and temporary files; paths outside that root are forbidden except authenticated read-only inputs and runtime libraries.",
+      "rss": "Maximum simultaneous resident set size of supervisor plus all live descendants, not the maximum of one process in isolation.",
+      "gpu": "No GPU device, runtime, environment visibility, allocation, or use is permitted.",
+      "poll_interval_seconds_maximum": 1.0,
+      "wall_deadline_enforced_during_child_fit": true,
+      "cpu_limit_enforced_during_child_fit": true,
+      "storage_limit_enforced_during_child_fit": true,
+      "simultaneous_rss_limit_enforced_during_child_fit": true,
+      "storage_and_rss_checked_before_and_after_every_stage_and_fit": true,
+      "network_disabled": true,
+      "child_signal_policy": "On any limit or invariant miss, terminate the active process group, escalate once if required, retain no model state, publish no partial scientific terminal, and clean the complete restricted root before aggregate rejection.",
+      "warning_policy": "Any Python warning, CatBoost warning, fallback, nonzero exit, nonfinite value, signal, timeout, or incomplete accounting rejects the attempt."
+    },
+    "acceptance_rule": "All scientific identities complete and every hard limit passes conjunctively. Equality passes non-GPU maxima; GPU use must equal zero. No mean, projection, extrapolation, partial completion, or favorable stage can substitute.",
+    "budget_rule": "Unused capacity cannot fund a retry, resume, moved root, repair, alternate order, smaller battery, extra candidate, seed, threshold, feature, metric, clip, model, optimization, cache, or concurrency change."
+  },
+  "least_privilege_stage_graph": {
+    "supervisor_preflight": "Authenticate parent, implementation, runtime, absent fixed roots, no-network namespace, resource monitors, and one unconsumed future claim before the claim can open. Begin cumulative observation before consuming the claim.",
+    "trusted_compiler": "After claim consumption, authenticate exact official source receipts before parsing; build immutable label-free primary and overlay groups, exclude confirmatory-touching overlay families, validate support, and publish disjoint model/scorer capabilities.",
+    "model_and_freezer": "Models receive only the exact active training targets, ordered feature view, candidate/seed/group token, and family-safe train/predict indices. Complete each required prediction freeze before its scorer capability can exist.",
+    "scorer_and_selector": "Open only matching validation truth and immutable baseline rows after the complete stage freeze; apply D-122 arithmetic and selection once; never emit a runner-up or row-level artifact.",
+    "diagnostics": "Run D-122 duplicate, influence, source, endpoint, and training-only clipping diagnostics after required freezes without adding a fit or revising the selected token.",
+    "publisher_and_cleanup": "Publish exactly one aggregate no-replace terminal only after model state, row-level predictions, truth capabilities, temporary state, and the restricted work root are cleaned. Resource failure publishes only aggregate rejection outside the cleaned root."
+  },
+  "future_implementation_gate": {
+    "required_new_components": [
+      "one D-122-derived official compiler",
+      "one single-use execution wrapper",
+      "one cumulative resource supervisor",
+      "one no-fit official-shaped capability and identity acceptance driver",
+      "focused adversarial tests"
+    ],
+    "allowed_reuse": "Call authenticated helpers from the accepted MapLight runner, official compiler, and official wrapper only where their semantics remain exact. Do not add an abstraction or orchestration platform.",
+    "no_fit_acceptance": "Before a claim contract, two opposite-order official-shaped roots must prove exact capability separation, family containment, stage chronology, both conditional identity paths, terminal construction, supervisor fail-stop behavior, cleanup, and zero forbidden counters with a deterministic model double. Run no real CatBoost fit, resource projection, development metric, or confirmatory operation.",
+    "bounded_api_smokes": "At most two optional no-network CatBoost API smokes, each at most 128 rows and 16 iterations, may prove subprocess monitoring and termination only. Their timing has zero resource or model-quality authority.",
+    "required_before_claim": [
+      "reviewed signed integration of the exact implementation bytes",
+      "green post-main CI on Python 3.11, locked 3.12.3, and Python 3.14",
+      "one aggregate no-fit official-shaped acceptance bound to those bytes",
+      "complete cleanup and zero official or forbidden operations"
+    ],
+    "current_implementation_receipts": {
+      "compiler_sha256": null,
+      "wrapper_sha256": null,
+      "supervisor_sha256": null,
+      "acceptance_driver_sha256": null,
+      "focused_tests_sha256": null,
+      "no_fit_acceptance_sha256": null
+    }
+  },
+  "future_claim_boundary": {
+    "claims_created_now": 0,
+    "maximum_future_claims": 1,
+    "maximum_consumptions": 1,
+    "attempts": 1,
+    "retry": false,
+    "resume": false,
+    "move": false,
+    "overwrite": false,
+    "replacement": false,
+    "claim_rule": "A separate reviewed contract may freeze one unusable claim only after every future implementation receipt is non-null and accepted. The claim must bind exact private source and baseline roots, this contract, D-122, the accepted implementation, runtime, resource supervisor, fixed absent attempt/terminal roots, and the zero-use private-portal boundary.",
+    "claim_creation_authorized_by_this_contract": false,
+    "claim_consumption_authorized_by_this_contract": false
+  },
+  "terminal_contract": {
+    "accepted": "G2_7_PRIMARY_CONTENDER_FROZEN",
+    "underpowered": "G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED",
+    "scientifically_rejected": "G2_7_MAPLIGHT_ROBUSTNESS_REJECTED",
+    "resource_aborted": "G2_7C_MAPLIGHT_ROBUSTNESS_RESOURCE_ABORTED",
+    "failed": "G2_7_MAPLIGHT_ROBUSTNESS_FAILED",
+    "publication": "Exactly one aggregate-only read-only terminal after complete cleanup; no partial terminal, model, row-level prediction, truth, feature, private path, unrestricted log, or portal observation may be retained.",
+    "accepted_content": "Bind one selected candidate and exact recipe, all D-122 aggregate gates, exact fit and prediction counts, parent/source/implementation/runtime receipts, cumulative resource observations, cleanup, and zero forbidden accounting.",
+    "failure_effect": "Any underpowered, scientific rejection, resource abort, or failure closes this attempt without confirmatory access, runner-up, retry, repair, or replacement. Fixed MapLight remains historical baseline evidence but is not automatically promoted through the failed gate."
+  },
+  "required_adversarial_tests": [
+    "any parent, accepted primitive, runtime, lock, or source receipt drift fails before a claim or source open",
+    "any import, copy, execution, patch, or authority derived from the rejected G2-7B implementation fails",
+    "D-094 aggregate timing cannot be represented as a maximum fit or acceptance gate",
+    "all D-122 candidates, features, parameters, seeds, groups, support gates, metrics, selection rules, diagnostics, counts, and terminals compare exactly",
+    "both full-retained and deletion-selected identity paths are complete and mutually exclusive",
+    "molecule, duplicate, original component, threshold component, tautomer component, or confirmatory-touch crossing fails before its fit",
+    "truth, baseline, metric, or diagnostic access before the matching complete prediction freeze fails",
+    "wall or CPU limit enforcement interrupts an active child within the polling bound and cleans without partial publication",
+    "storage, simultaneous RSS, GPU visibility or use, warning, fallback, nonzero exit, signal, timeout, detached child, or incomplete descendant accounting fails",
+    "unused budget cannot fund a retry, resume, optimization, cache, altered thread count, concurrency, reduced battery, extra candidate, or runner-up",
+    "interrupt, moved root, overwrite, second publication, symlink, traversal, writable terminal, retained model state, or cleanup miss fails",
+    "official, confirmatory, historical-row, blinded-test, TDI, external, submission, official-metric, leaderboard-selection, upload, claim, and private-portal counters remain zero in this milestone"
+  ],
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "implementation_files_created": 0,
+    "runtime_environments_created": 0,
+    "synthetic_source_rows_opened": 0,
+    "synthetic_model_double_invocations": 0,
+    "synthetic_model_fits": 0,
+    "synthetic_predictions_generated": 0,
+    "synthetic_metric_evaluations": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "implementation": false,
+    "runtime_environment_creation": false,
+    "synthetic_source_generation": false,
+    "synthetic_model_double_execution": false,
+    "synthetic_model_fitting": false,
+    "synthetic_metric_evaluation": false,
+    "no_fit_official_shaped_acceptance": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "scientific_interpretation": "This freeze changes no candidate and produces no model-quality evidence. It replaces synthetic resource projection with a future cumulative fail-stop rule while preserving G2-7B as immutable negative history.",
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the narrow D-122-derived compiler, wrapper, supervisor, no-fit official-shaped acceptance, and focused adversarial tests. Do not create a claim, open an official byte, fit a scientific model, evaluate a development or confirmatory metric, generate a submission, use a leaderboard for selection, or upload."
+}
