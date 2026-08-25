@@ -4395,3 +4395,35 @@
   proves cleanup-root safety before either root is created, uses a materially
   distinct attempt identity, preserves D-128 science unchanged, and grants no
   authority to the consumed D-128 attempt or permanently barred D-127 claim.
+
+## D-130 — Freeze distinct fail-before-work scorer-capability reacceptance
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-7F evidence; zero new implementation,
+  synthetic row, official source, fit, prediction, metric, claim, submission,
+  leaderboard-selection, private-portal-record, upload, or claim-consumption
+  operation
+- Decision: Accept
+  `global_v2_maplight_robustness_scoring_capability_reacceptance_contract.json`
+  at SHA-256 `b414b0cf...efae698`. Authorize one new V2 synthetic acceptance
+  implementation and attempt identity after reviewed integration and green
+  post-main CI. Reuse only the exact unchanged scorer compiler; bar the D-128
+  driver, attempt, root, outputs, retry, repair, and reinterpretation.
+- Evidence: D-129 isolated the failure to post-capability cleanup: opposite
+  orders produced identical two-file maps, but the shallow root failed the
+  accepted safety predicate. D-130 removes invocation-time root choice. It
+  fixes `/tmp/cypshift-g2-7f/scoring-capability-attempt-1`, requires the parent
+  and root absent, proves exact resolution and four-component depth, and invokes
+  the accepted cleanup predicate on the still-absent root before any creation.
+  It requires root and empty-parent removal before one no-replace terminal.
+  Nine focused tests pass. D-129's integrated signed commit `1b8c5f7...` passed
+  post-main CI run `32904446518` in all three lanes.
+- Alternatives: Rerun the old driver with a deeper CLI path; treat deterministic
+  output as acceptance; modify the scorer compiler; weaken cleanup; allow an
+  alternate root or terminal; combine the repair with the scientific runner;
+  or use private portal evidence to bypass the gate.
+- Reversal condition: Any parent, compiler, fixed-root, pre-work chronology,
+  absence, cleanup predicate, terminal, field, count, opacity, order,
+  determinism, privacy, integration, or post-main-CI drift revokes D-130 before
+  synthetic execution. Otherwise the next gate is only the V2 driver, focused
+  tests, and one zero-fit, zero-metric, zero-official two-root attempt.

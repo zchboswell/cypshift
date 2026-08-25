@@ -1,0 +1,210 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_scoring_capability_reacceptance_contract.v1",
+  "recorded_at_utc": "2026-08-25T22:16:25Z",
+  "freeze_date": "2026-08-25",
+  "gate": "G2_7F_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_REACCEPTANCE_CONTRACT_FROZEN",
+  "status": "contract_only_distinct_attempt_no_new_implementation_or_official_operation",
+  "contract_id": "G2-7F-MAPLIGHT-ROBUSTNESS-SCORING-CAPABILITY-REACCEPTANCE-V1",
+  "base_commit": "1b8c5f7271f05fb77701695b1b47ad9dc428938c",
+  "purpose": "Authorize one materially distinct synthetic scorer-capability acceptance path after the sole D-128 attempt failed mandatory cleanup, while preserving its successful field-isolation mechanics as unaccepted evidence and proving cleanup safety before any work begins.",
+  "hypothesis": "The unchanged eight-field scorer compiler can be accepted on one new two-root official-shaped synthetic attempt when an exact fixed four-component work root is authenticated by the accepted cleanup predicate before root creation and the root plus its parent are absent again before terminal publication.",
+  "targeted_failure": "A path selected at invocation time or checked only during terminal cleanup can pass all capability mechanics yet leave mutable scorer data behind, creating an invalid acceptance or an outcome-driven retry opportunity.",
+  "occam_boundary": "Reuse the exact D-129 scoring compiler without modification. Add only one new fixed-root acceptance driver, one aggregate acceptance or rejection terminal, and focused tests. Do not change the scorer fields, source fixture semantics, D-126 capabilities, D-122 metric or diagnostics, chemistry, family boundaries, models, candidates, seeds, fits, predictions, resources, claims, or official authority.",
+  "parents": {
+    "d128_scoring_capability_contract": {
+      "path": "global_v2_maplight_robustness_scoring_capability_contract.json",
+      "sha256": "b1cb08665c762c736c8dc277522fc5acba3e06af2a66952f276112dd26adac9f",
+      "required_gate": "G2_7E_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_CONTRACT_FROZEN"
+    },
+    "d129_terminal_rejection": {
+      "path": "global_v2_maplight_robustness_scoring_capability_rejection.json",
+      "sha256": "e551c7558d8e71153ccea91f5bbeb8271839da5cfadb83bca88b4e509414848d",
+      "required_status": "G2_7E_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_REJECTED",
+      "required_attempts_consumed": 1,
+      "required_attempts_remaining": 0,
+      "required_cleanup_complete": true
+    },
+    "d126_no_fit_acceptance": {
+      "path": "global_v2_maplight_robustness_no_fit_acceptance.json",
+      "sha256": "ca722b265f751ad6efe58017b0106fbca35be4ee04e46d129ed7e8a51c231e0e",
+      "required_status": "G2_7C_MAPLIGHT_ROBUSTNESS_NO_FIT_ACCEPTED"
+    },
+    "permanently_unusable_d127_claim": {
+      "path": "global_v2_maplight_robustness_execution_claim.json",
+      "sha256": "da0104bc8d297904fc26e019f1717fee38411d9aa741c774f2185090bcceb334",
+      "required_status": "G2_7D_MAPLIGHT_ROBUSTNESS_CLAIM_UNCONSUMED",
+      "required_consumptions": 0,
+      "required_usable": false
+    }
+  },
+  "integrated_parent_evidence": {
+    "commit": "1b8c5f7271f05fb77701695b1b47ad9dc428938c",
+    "signature_required": "good",
+    "pull_request": 166,
+    "post_main_ci_run": 32904446518,
+    "post_main_ci_status": "success",
+    "python_3_11_seconds": 256,
+    "python_3_12_3_locked_seconds": 564,
+    "python_3_14_seconds": 239
+  },
+  "d129_disposition": {
+    "old_attempt_id": "G2-7E-D128-SCORING-CAPABILITY-ATTEMPT-1",
+    "old_attempts_remaining": 0,
+    "old_work_root_class": "/tmp/<single-component-name>",
+    "old_acceptance_published": false,
+    "old_acceptance_driver_path": "research/maplight-fixed/run_global_v2_maplight_robustness_scoring_capability_acceptance.py",
+    "old_acceptance_driver_current_sha256": "3a52a0052ac1a9927d7d48a840c70abeb461e28a6e1705477683928ecad2512f",
+    "old_driver_required_behavior": "fail before work with the sole D-128 attempt terminally consumed",
+    "reuse_old_attempt": false,
+    "reuse_old_root": false,
+    "reuse_old_driver": false,
+    "reinterpret_old_determinism_as_acceptance": false
+  },
+  "reused_scientific_primitive": {
+    "path": "research/maplight-fixed/global_v2_maplight_robustness_scoring_compiler.py",
+    "sha256": "6f15205fccb4a7c2e1cc2c7244e31acf15d7fd34b285c85145bfde551da6f492",
+    "reuse_authorized_only_if_byte_identical": true,
+    "reason": "D-129 rejected terminal cleanup, not the scorer field transform. Reusing this exact small compiler preserves Occam's razor; any compiler-byte change revokes this contract and requires review before execution.",
+    "output_columns": [
+      "molecule_id",
+      "endpoint",
+      "standardized_structure_hash",
+      "primary_component_hash",
+      "source_file",
+      "point",
+      "low",
+      "high"
+    ],
+    "unchanged_rules": [
+      "match every development point to all three accepted D-126 stage truths",
+      "never decode a confirmatory value suffix",
+      "never impute or midpoint a missing reported bound",
+      "authenticate exactly one accepted source_file value",
+      "publish no model input, feature array, unrestricted row, or claim capability"
+    ]
+  },
+  "new_single_attempt": {
+    "attempts": 1,
+    "attempt_id": "G2-7F-SCORING-CAPABILITY-REACCEPTANCE-ATTEMPT-1",
+    "future_driver_path": "research/maplight-fixed/run_global_v2_maplight_robustness_scoring_capability_acceptance_v2.py",
+    "future_focused_tests_path": "tests/test_openadmet_global_v2_maplight_robustness_scoring_capability_reacceptance.py",
+    "success_terminal_path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_acceptance_v2.json",
+    "failure_terminal_path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_reacceptance_rejection.json",
+    "fixed_parent_root": "/tmp/cypshift-g2-7f",
+    "fixed_work_root": "/tmp/cypshift-g2-7f/scoring-capability-attempt-1",
+    "cli_root_or_output_override": false,
+    "root_a": "canonical physical source order and canonical dependency-safe launch order",
+    "root_b": "reversed physical source order and reversed dependency-safe launch order",
+    "fixture": "Reuse D-129 official-shaped fixture semantics: 1,200 molecules, four endpoints, 960 development identities, 240 confirmatory identities, full 23-column development direct observations, and invalid UTF-8 confirmatory value suffixes.",
+    "real_catboost_fits": 0,
+    "development_metric_evaluations": 0,
+    "model_quality_authority": false,
+    "claim_authority": false
+  },
+  "fail_before_work_preflight": {
+    "chronology": [
+      "authenticate this contract, every parent receipt, the exact unchanged scoring compiler, and the hard-disabled D-128 driver",
+      "require the fixed parent and work roots absent and require both terminal paths absent",
+      "require /tmp to resolve exactly to /tmp and the fixed paths to contain no symlink or parent traversal",
+      "require the fixed work root to be absolute, resolve exactly to /tmp/cypshift-g2-7f/scoring-capability-attempt-1, and contain at least four resolved path components",
+      "invoke the accepted D-126 _safe_cleanup predicate on the still-absent fixed work root; any refusal terminates with zero root creation",
+      "only after every preflight passes, atomically create the fixed work root through its absent fixed parent"
+    ],
+    "operations_before_preflight_pass": {
+      "directories_created": 0,
+      "synthetic_rows_generated": 0,
+      "synthetic_rows_opened": 0,
+      "capabilities_published": 0,
+      "official_rows_opened": 0,
+      "model_fits": 0,
+      "metrics": 0,
+      "claims_created": 0,
+      "claims_consumed": 0
+    },
+    "adversarial_requirements": [
+      "a shallow three-component root fails before directory creation",
+      "a root or parent symlink fails before directory creation",
+      "an existing root, parent, success terminal, or failure terminal fails before synthetic work",
+      "a changed contract, parent, compiler, or old-driver receipt fails before synthetic work",
+      "the D-128 driver still rejects before creating a supplied root"
+    ]
+  },
+  "execution_and_terminal_rules": {
+    "requirements": [
+      "compile exactly two fresh roots in opposite physical and dependency-safe order",
+      "require byte-identical two-file scorer-capability maps",
+      "require exactly 9,600 synthetic endpoint rows, 7,680 decoded development rows, 7,680 emitted scoring rows, and 1,920 prefix-checked suffix-opaque confirmatory rows across both roots",
+      "require zero confirmatory value suffix decodes, real fits, development metrics, official operations, claims, submissions, or uploads",
+      "on every exit invoke accepted safe cleanup on the exact fixed work root, then remove only the empty fixed parent",
+      "verify fixed work root and parent absent before publishing exactly one no-replace aggregate success or failure terminal",
+      "publish no raw or synthetic row, feature, model, prediction, private path content, or portal observation"
+    ],
+    "success_status": "G2_7F_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_ACCEPTED",
+    "failure_status": "G2_7F_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_REJECTED",
+    "failure_rule": "Any preflight, parent, field, order, count, opacity, determinism, cleanup, terminal, privacy, or accounting failure consumes the one D-130 attempt. There is no retry, resume, alternate root, move, overwrite, repair, replacement, or reinterpretation under this contract."
+  },
+  "unchanged_future_science": {
+    "stage_a_fits": 540,
+    "stage_b_fits": 180,
+    "stage_c_conditional_fits": 300,
+    "minimum_total_fits": 720,
+    "maximum_total_fits": 1020,
+    "minimum_prediction_identities": 562752,
+    "maximum_prediction_identities": 797232,
+    "selection_tokens": 1,
+    "runner_ups": 0,
+    "hard_wall_hours": 7.68,
+    "hard_cpu_core_hours": 128.0,
+    "hard_storage_gb": 51.2,
+    "hard_peak_rss_gib": 15.36,
+    "hard_gpu_hours": 0
+  },
+  "current_milestone_accounting": {
+    "new_implementation_files": 0,
+    "synthetic_source_rows_opened": 0,
+    "synthetic_scoring_values_parsed": 0,
+    "synthetic_capabilities_published": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_baseline_rows_opened": 0,
+    "model_fits": 0,
+    "predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "current_authority": {
+    "synthetic_implementation": false,
+    "synthetic_execution": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_baseline_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the new fixed-root V2 acceptance driver and focused tests. Authenticate cleanup-root safety before work, then run exactly one two-root official-shaped synthetic attempt with the unchanged scorer compiler, zero real fit, zero development metric, zero claim, and zero official operation. Do not implement the scientific runner or official attempt driver, create or consume a claim, open an official byte or baseline, access confirmatory truth, generate a submission, use leaderboard evidence for selection, or upload until G2-7F is accepted and a later corrected execution contract explicitly authorizes those steps."
+}

@@ -312,6 +312,15 @@ hard-disabled. D-128 has zero attempts remaining. The next gate is a separate
 fail-before-work correction contract, not a rerun or repair. It must prove root
 safety before work and retain zero fit, metric, claim, or official authority.
 
+D-130 freezes that separate G2-7F fail-before-work contract at SHA-256
+`b414b0cf...efae698`. It reuses the exact unchanged scorer compiler but requires
+a new V2 driver, attempt ID, terminals, and fixed four-component work root.
+Before creating its parent or a synthetic row, the driver must authenticate the
+absent root with the accepted cleanup predicate. Cleanup of root and empty
+parent must complete before one aggregate terminal. The contract performs zero
+new implementation or execution and grants no model, metric, claim, or official
+authority.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

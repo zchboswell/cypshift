@@ -38,7 +38,10 @@ The current G2-7 chain is:
   SHA-256 `b1cb0866...6adac9f`;
 - D-129 terminal rejection of the sole D-128 acceptance attempt:
   [`global_v2_maplight_robustness_scoring_capability_rejection.json`](openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_rejection.json),
-  SHA-256 `e551c755...414848d`.
+  SHA-256 `e551c755...414848d`;
+- D-130 fixed-root scorer-capability reacceptance contract:
+  [`global_v2_maplight_robustness_scoring_capability_reacceptance_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_reacceptance_contract.json),
+  SHA-256 `b414b0cf...efae698`.
 
 Pre-implementation audit proved that D-127 cannot satisfy exact D-122 scoring:
 its accepted scorer capability exposes central `point` only, while the frozen
@@ -48,8 +51,9 @@ null future receipts, zero consumptions, and no authority permanently. D-128
 freezes only a minimal scorer-enrichment capability repair. Its sole formal
 acceptance produced byte-identical synthetic capabilities but failed mandatory
 cleanup-root safety, so D-129 rejects it with no acceptance and zero attempts
-remaining. The next gate is a separately contracted fail-before-work path with
-zero fit and zero metric. Official development access remains closed.
+remaining. D-130 now freezes a separately identified fixed-root path that must
+prove cleanup safety before any work, with zero fit and zero metric. Official
+development access remains closed.
 
 ## OpenADMET TRACE source rows
 
