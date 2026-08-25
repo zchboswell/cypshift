@@ -191,6 +191,18 @@ reviewed integration and green post-main CI, only the isolated runtime, narrow
 synthetic implementation, bounded smokes, and one formal two-root acceptance
 are authorized; official input and claim creation remain closed.
 
+D-118 accepts that implementation and sole formal attempt at receipt SHA-256
+`437f17f6...721ed5`. Two opposite-order roots matched all seven deterministic
+terminal files at tree SHA-256 `5e4edc47...3df8e8`; the exact runtime completed
+120 model-double fits, eight full-width LightGBM fits, and 8,224 total synthetic
+predictions with zero family crossings, warnings, fallbacks, or nonzero exits.
+The conservative 60-fit projection is 1.171 CPU-core-hours and 0.0794
+wall-hours, with 6.612 GB storage, 0.310 GiB RSS, and zero GPU, passing every
+20%-margin gate. Cleanup is complete and no official or model-quality operation
+occurred. After reviewed integration and green post-main CI, the next gate is a
+separate single-use official development execution contract and unconsumed
+claim—not official access under this receipt.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

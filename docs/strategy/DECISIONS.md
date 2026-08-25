@@ -3897,3 +3897,45 @@
   A formal integrity or resource miss permanently closes EXP-G3. The next gate
   is the reviewed isolated implementation and sole formal two-root synthetic
   acceptance; official inputs and claim creation remain unauthorized.
+
+## D-118 — Accept EXP-G3 synthetic determinism and resource feasibility
+
+- Date: 2026-08-25
+- Status: accepted synthetic implementation and sole formal attempt; zero
+  official-input, scientific-model, development-metric, confirmatory,
+  submission, leaderboard-selection, upload, or claim operation
+- Decision: Accept `global_v2_g3_synthetic_acceptance.json` at SHA-256
+  `437f17f6...721ed5`. The isolated exact Python 3.12.3/LightGBM 4.7.0
+  implementation satisfies D-117. Two bounded API smokes and two sequential
+  no-network formal roots completed without warning, fallback, or nonzero exit.
+  The opposite-order roots matched all seven terminal files byte-for-byte at
+  tree SHA-256 `5e4edc47...3df8e8`, covering 120 model-double fits, 1,920
+  model-double predictions, eight exact 1,500-tree full-width fits, and 6,304
+  real-runtime probe predictions. Permit only a later separately reviewed
+  single-use official development execution contract and immutable unconsumed
+  claim; this receipt itself opens no official capability.
+- Evidence: Both 64-row smokes produced the same 16 finite prediction bytes and
+  exact resolved parameters. The formal roots used 3,908x2,248 dense float64
+  matrices with descriptor NaN preserved, 3,120 training rows, 788 prediction
+  rows, four endpoints, reversed physical/launch order, and one resolved
+  parameter hash. The conservative 60-fit projection is 1.171 CPU-core-hours,
+  0.0794 wall-hours, 6.612 GB restricted storage, 0.310 GiB peak RSS, and zero
+  GPU versus maxima of 128, 19.2, 25.6, 19.2, and zero. Component crossings,
+  confirmatory values parsed, warnings, fallbacks, and nonzero exits are all
+  zero. Both scientific roots, private roots, and the dedicated cache were
+  deleted. Twenty-five combined contract/implementation/acceptance tests pass;
+  the full repository suite, Ruff, mypy, and package build pass. Synthetic
+  metrics and predictions have no model-quality meaning.
+- Alternatives: Treat the smokes as timing evidence; skip the full-width probe;
+  average fit costs; retry or optimize after a miss; add a second runtime,
+  thread count, sparse representation, tree count, seed, or parameter; open
+  official inputs under the synthetic receipt; create an execution claim before
+  freezing its contract; or use a private portal result to alter the lane.
+- Reversal condition: Any later discovery that the tracked receipt, source
+  bindings, exact lock, terminal parity, family containment, resolved
+  parameters, resource formulas, cleanup, or zero forbidden counters are false
+  revokes progression before official access. The completed formal attempt is
+  never rerun or repaired. Otherwise the next gate is one contract-only
+  milestone freezing the exact single-use official development execution and
+  unconsumed claim; no official row opens until that milestone is integrated
+  and green on post-main CI.

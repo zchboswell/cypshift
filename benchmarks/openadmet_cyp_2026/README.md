@@ -152,6 +152,18 @@ resource gate is applied. This contract-only freeze creates no runtime,
 dependency, implementation, fit, prediction, metric, official input, claim,
 submission, leaderboard-selection, or upload authority.
 
+The isolated implementation and sole formal synthetic attempt are accepted in
+[`global_v2_g3_synthetic_acceptance.json`](global_v2_g3_synthetic_acceptance.json),
+SHA-256 `437f17f6...721ed5`. Two bounded API smokes and two no-network formal
+roots used the exact Python 3.12.3/LightGBM 4.7.0 lock. The roots matched all
+seven scientific terminal files at tree SHA-256 `5e4edc47...3df8e8`, including
+120 model-double identities and eight full-width 1,500-tree fits. The frozen
+60-fit projection passes at 1.171 CPU-core-hours, 0.0794 wall-hours, 6.612 GB
+storage, 0.310 GiB RSS, and zero GPU. Cleanup removed both roots and the
+dedicated cache. This is mechanics/resource evidence only; it creates no
+official-input, model-quality, claim, submission, leaderboard-selection, or
+upload authority.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

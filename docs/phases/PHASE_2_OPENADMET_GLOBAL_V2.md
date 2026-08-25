@@ -27,6 +27,10 @@ outer fits, no tuning or blend, and no official operation at this milestone.
 D-117 freezes its isolated-runtime, two-root synthetic mechanics, exact real-
 fit determinism, cleanup, and 20%-margin resource contract; no runtime or fit
 operation occurs at the freeze.
+D-118 accepts the exact implementation and sole formal attempt: two opposite-
+order roots match all seven terminals, and every conservative resource gate
+passes. Official development access and claim creation remain closed pending a
+separate contract milestone.
 
 Authorized: 2026-08-24.
 
@@ -715,6 +719,24 @@ optimization, reduced probe, sparse input, or retry. D-117 itself creates no
 environment, dependency, implementation, synthetic or official fit,
 prediction, metric, claim, submission, leaderboard selection, or upload.
 
+D-118 accepts the exact isolated implementation and sole formal attempt under
+[`global_v2_g3_synthetic_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_synthetic_acceptance.json),
+SHA-256 `437f17f6...721ed5`. The additive Python 3.12.3/LightGBM 4.7.0 lock
+leaves the installable root unchanged. Both authorized 64-row API smokes
+produced identical finite prediction bytes and exact resolved parameters with
+zero warnings. Two sequential no-network formal roots reversed physical row
+and endpoint order, then matched all seven scientific terminal files
+byte-for-byte at tree SHA-256 `5e4edc47...3df8e8`. Across roots the model
+double completed all 120 fit identities and 1,920 outer predictions; the real
+runtime completed eight exact full-width 1,500-tree fits and 6,304 probe
+predictions. The conservative projection passes all 20%-margin gates at 1.171
+CPU-core-hours, 0.0794 wall-hours, 6.612 GB restricted storage, 0.310 GiB peak
+RSS, and zero GPU. Family crossings, confirmatory reads, warnings, fallbacks,
+and nonzero exits are zero; both roots, private roots, and the dedicated cache
+were deleted. These synthetic outputs do not measure model quality. A separate
+reviewed single-use development execution contract and unconsumed claim must
+precede any official input.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -773,7 +795,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-117 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-118 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -783,11 +805,14 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-117 synthetic contract SHA-256
-`6ec0e73b...da4f9f`, then require green post-main CI. After integration,
-create only the isolated runtime, narrow runner and synthetic driver,
-adversarial tests, at most two bounded API smokes, and one formal two-root
-synthetic acceptance. Require exact scientific terminal and real-prediction
-parity, complete cleanup, and all resource gates. Do not create a claim, open
-an official input, fit or score an official model, inspect blinded test,
-generate a submission, call an official metric, use portal evidence, or upload.
+Review and integrate D-118 synthetic acceptance SHA-256
+`437f17f6...721ed5`, then require green post-main CI. After integration, freeze
+one separate official development execution contract and immutable unconsumed
+claim binding the accepted runtime and sources, exact development identities
+and family folds, fixed features and parameters, immutable MapLight OOF pairing,
+60-fit and 46,896-prediction ceilings, aggregate-only scoring, cleanup, and all
+D-116 promotion gates. Do not create the claim or open official input until the
+contract milestone is reviewed, integrated, and green. Do not inspect
+confirmatory truth, historical row-level artifacts, blinded test, TDI, generate
+a submission, call an official metric, use portal evidence for selection, or
+upload.

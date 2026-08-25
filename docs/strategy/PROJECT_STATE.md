@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-117. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-118. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -433,6 +433,23 @@ overhead, never a mean or net timing, and must pass 128 CPU-core-hours, 19.2
 wall-hours, 25.6 GB storage, 19.2 GiB RSS, and zero GPU. This contract-only
 milestone created no runtime, dependency, implementation, fit, prediction,
 metric, official access, claim, submission, leaderboard selection, or upload.
+
+D-118 accepts that isolated implementation and its sole formal synthetic
+attempt under tracked aggregate receipt SHA-256 `437f17f6...721ed5`. The exact
+Python 3.12.3/LightGBM 4.7.0 lock is additive and leaves the installable root
+unchanged. Two bounded 64-row API smokes produced the same finite prediction
+bytes with exact resolved parameters and zero warnings. The formal no-network
+attempt completed two opposite-order roots: all seven scientific terminal
+files matched byte-for-byte at tree SHA-256 `5e4edc47...3df8e8`, covering 120
+model-double fit identities, 1,920 model-double outer predictions, eight exact
+1,500-tree full-width LightGBM fits, and 6,304 exact probe predictions. The
+conservative 60-fit projection passes every gate at 1.171 CPU-core-hours,
+0.0794 wall-hours, 6.612 GB restricted storage, 0.310 GiB peak RSS, and zero
+GPU. Component crossings, warnings, fallbacks, nonzero exits, and confirmatory
+truth reads are all zero; both roots, private roots, and the dedicated cache
+were removed. These synthetic values have no model-quality interpretation.
+Official input and claim creation remain closed until a separately reviewed
+single-use development execution contract and unconsumed claim are integrated.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1082,16 +1099,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-117 synthetic contract SHA-256
-`6ec0e73b...da4f9f`, then require green post-main CI. After integration,
-create only the isolated LightGBM research lock, narrow typed runner and
-synthetic driver, adversarial tests, at most two bounded API smokes, and one
-formal two-root synthetic acceptance. Require exact seven-file terminal parity,
-eight real-fit prediction-byte matches, full cleanup, and all 20%-margin
-resource gates. Do not create a claim, open an official input, fit an official
-model, inspect blinded test, generate a submission, call an official metric, or
-upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain closed; private portal
-observations cannot select any choice; `global_TDI` remains the TDI fallback.
+Review and integrate D-118 synthetic acceptance SHA-256
+`437f17f6...721ed5`, then require green post-main CI. After integration, freeze
+one separately reviewed official development execution contract and one
+immutable unconsumed claim binding the accepted runtime, sources, family folds,
+features, fixed MapLight OOF comparator, 60-fit/46,896-prediction ceiling,
+aggregate-only terminals, cleanup, and every D-116 promotion gate. Do not open
+an official input or create the claim before that contract milestone is
+integrated. Do not inspect confirmatory truth, blinded test, TDI, historical
+row-level artifacts, generate a submission, call an official metric, use portal
+evidence for selection, or upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain
+closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.
