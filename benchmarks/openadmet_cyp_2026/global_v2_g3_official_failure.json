@@ -1,0 +1,142 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g3_official_failure.v1",
+  "recorded_at_utc": "2026-08-25T14:49:12Z",
+  "status": "G2_6R_G3_FAILED",
+  "decision": "reject_exp_g3_without_retry_or_model_quality_claim",
+  "base_commit": "cfb3bd47695fbadc168c9cbdf0e329d8084ace71",
+  "parents": {
+    "execution_contract": {
+      "path": "global_v2_g3_execution_contract.json",
+      "sha256": "be9dccf0e1c83aa626550bcabd14dceb12e5f466306f82af7a211b7a28f87e57"
+    },
+    "unconsumed_claim_template": {
+      "path": "global_v2_g3_execution_claim.json",
+      "sha256": "71fc023160b5d9da6c620f246ff134ea2e790159bfb675aac33aa4a6c3025f9b"
+    },
+    "official_shaped_synthetic_acceptance": {
+      "path": "global_v2_g3_execution_synthetic_acceptance.json",
+      "sha256": "4bdc758a51eb3cd2ebca7d5154f531567a07542cb419d2539924fd42859e2636"
+    },
+    "post_main_ci": {
+      "run_id": 32860509984,
+      "head_sha": "cfb3bd47695fbadc168c9cbdf0e329d8084ace71",
+      "conclusion": "success"
+    }
+  },
+  "private_aggregate_receipts": {
+    "consumed_claim_sha256": "6ec7d7d65ea703f9b5c5fec264ba287ab9da3158edeeed11a33ddec2acb24ed2",
+    "attempt_receipt_sha256": "e9ae4e5b2db371b7b7ec297e4f79a46275cc37c8ded1a6a51acba04e6a58d190",
+    "terminal_manifest_sha256": "1e805d35886fb91665e2edeeca650d62c5189f56625d8a7f6d526aa19b2681f4",
+    "terminal_result_sha256": "60349bbe54da6e06fe199e0e32125ab0f818efe899a6af8b05e947707369c340",
+    "accepted_source_manifest_sha256": "1b46b5bc5acf541b051ebac032fe580a991de5434692f6dd506eacdfc75ec218",
+    "failure_type": "G3ExecutionCompilerError",
+    "attempt_root_mode": "0555",
+    "attempt_file_mode": "0444",
+    "cleanup_complete": true
+  },
+  "execution": {
+    "claim_consumptions": 1,
+    "attempts": 1,
+    "completed_lightgbm_fits": 0,
+    "candidate_predictions": 0,
+    "baseline_prediction_rows_opened": 0,
+    "tutorial_metric_calls": 0,
+    "bootstrap_replicates": 0,
+    "wall_hours": 3.494152810566852e-7,
+    "cpu_core_hours": 1.0548888888887535e-7,
+    "peak_rss_gib": 0.14110946655273438,
+    "restricted_storage_gb": 0.372488012,
+    "gpu_hours": 0
+  },
+  "failure": {
+    "stage": "official_source_manifest_identity",
+    "first_failing_predicate": "source_manifest_authority_exact_equality",
+    "cause": "The D-120 official-shaped synthetic source used the new 15-key G3 capability authority vocabulary, while the immutable accepted MapLight execution source uses its older 12-key source-authority vocabulary. Shared permissions agree, but exact dictionary equality fails before any source leaf or row is opened.",
+    "expected_authority_keys": [
+      "blinded_test_access",
+      "confirmatory_truth_access",
+      "development_metric_evaluation",
+      "external_record_acquisition",
+      "historical_row_level_access",
+      "leaderboard_selection",
+      "live_upload",
+      "official_baseline_prediction_access",
+      "official_feature_access",
+      "official_metric_evaluation",
+      "official_model_fitting",
+      "official_prediction_generation",
+      "official_target_access",
+      "submission_generation",
+      "tdi_access"
+    ],
+    "observed_authority_keys": [
+      "blinded_test_access",
+      "confirmatory_truth_access",
+      "external_record_acquisition",
+      "leaderboard_observation",
+      "live_upload",
+      "official_feature_access",
+      "official_metric_evaluation",
+      "official_model_fitting",
+      "official_prediction_generation",
+      "official_target_access",
+      "submission_generation",
+      "tdi_access"
+    ],
+    "shared_authority_values_agree": true,
+    "source_manifest_opened": true,
+    "source_leaf_files_opened": 0,
+    "source_rows_parsed": 0,
+    "model_fit_reached": false,
+    "scorer_reached": false,
+    "retry_authorized": false,
+    "resume_authorized": false,
+    "repair_authorized": false
+  },
+  "latent_adapter_mismatch": {
+    "reached": false,
+    "compiler_required_exact_source_receipt_keys": [
+      "direct_observations.csv",
+      "feature_rows.csv",
+      "group_folds.csv",
+      "maplight_rdkit_descriptors.npy"
+    ],
+    "accepted_manifest_additional_receipt_keys": [
+      "maplight_avalon_count.npy",
+      "maplight_erg.npy",
+      "maplight_morgan_count.npy"
+    ],
+    "cause": "G3 correctly allowlisted four leaves for opening, but incorrectly required the immutable source manifest receipt dictionary itself to omit three accepted denied-array receipts. None of those three arrays was opened."
+  },
+  "accounting": {
+    "official_source_manifests_opened": 1,
+    "official_source_leaf_files_opened": 0,
+    "official_source_rows_parsed": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_structure_rows_opened": 0,
+    "official_baseline_manifests_opened": 0,
+    "official_baseline_prediction_rows_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0
+  },
+  "scientific_result": {
+    "exp_g3_model_quality": null,
+    "promotion_gate_result": null,
+    "best_validated_system_changed": false,
+    "best_validated_system": "fixed MapLight",
+    "internal_development_component_macro_mae": 0.5838
+  },
+  "reversal_condition": "None inside EXP-G3. The sole claim is consumed and the contract forbids retry, resume, adapter repair, source-shape relaxation, or replacement execution. This failure cannot be interpreted as model-quality evidence.",
+  "next_gate": "Preserve EXP-G3 as terminal pre-fit negative evidence. After reviewed integration and green post-main CI, freeze fixed MapLight as the primary contender through the smallest preregistered robustness gate before any confirmatory truth or new submission candidate opens."
+}

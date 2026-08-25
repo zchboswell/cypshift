@@ -226,6 +226,15 @@ unconsumed. After reviewed integration and green post-main CI, the next gate is
 the sole fixed official development execution—not another synthetic replay or
 any portal-guided choice.
 
+D-121 records that sole attempt as terminally failed before fitting at aggregate
+receipt SHA-256 `ab12c742...0e28a5`. The claim was consumed exactly once, but
+the compiler rejected the immutable accepted source manifest's older authority
+and receipt-metadata shape before opening a source leaf or row. Zero fits,
+predictions, metrics, bootstrap replicates, submissions, or uploads occurred.
+This is adapter evidence only, not model-quality evidence; EXP-G3 is closed
+without retry or repair. Fixed MapLight remains the best validated system and
+the next gate is its separately frozen G2-7 robustness/primary-contender lock.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

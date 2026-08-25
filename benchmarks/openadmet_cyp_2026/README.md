@@ -191,6 +191,17 @@ cleaned; claim consumption, official operations, and forbidden operations are
 zero. This is mechanics evidence only. After reviewed integration and green
 post-main CI, the next gate is the sole fixed official development execution.
 
+That sole execution is terminally recorded in
+[`global_v2_g3_official_failure.json`](global_v2_g3_official_failure.json),
+SHA-256 `ab12c742...0e28a5`. The claim was consumed once, but an exact
+source-manifest vocabulary mismatch stopped the compiler before any source leaf
+or row opened. The aggregate record also identifies a second unreached
+receipt-metadata mismatch. There were zero fits, predictions, metric calls,
+bootstrap replicates, submissions, or uploads, and cleanup completed. This
+closes EXP-G3 without retry or a model-quality conclusion. Fixed MapLight
+remains the best validated system; the next gate is its preregistered G2-7
+robustness and primary-contender freeze.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

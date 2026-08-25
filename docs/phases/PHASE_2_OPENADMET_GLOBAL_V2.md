@@ -39,6 +39,12 @@ D-120 accepts that compiler/wrapper boundary on two fresh opposite-order
 no-network synthetic roots. All six aggregate terminals match byte-for-byte;
 the tracked claim remains unchanged and unconsumed, and every official or
 forbidden operation remains zero.
+D-121 records the sole claim-bound official attempt as terminally failed before
+fitting. The immutable accepted source manifest and D-120 synthetic source used
+different authority and receipt-metadata vocabularies. The claim is consumed;
+no retry or repair is authorized. Zero source rows, fits, predictions, metrics,
+bootstrap replicates, submissions, or uploads occurred, so this is no evidence
+about G3 model quality. Fixed MapLight remains the best validated system.
 
 Authorized: 2026-08-24.
 
@@ -779,6 +785,23 @@ All synthetic values are engineered mechanics controls with no model-quality
 meaning. Private roots were removed; claim consumptions, official operations,
 and every forbidden counter remain zero.
 
+D-121 records the exact one-shot outcome in
+[`global_v2_g3_official_failure.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_official_failure.json),
+SHA-256 `ab12c742...0e28a5`. The private claim was consumed once and the attempt
+published a read-only aggregate failure terminal, but exact source-manifest
+authority equality failed before any source leaf or row opened. The accepted
+source has the older 12-key authority vocabulary while the D-120 synthetic
+source has the new 15-key vocabulary, despite matching shared permissions.
+Aggregate receipt comparison also exposes a latent adapter error: three denied
+array receipts are valid immutable metadata, but the compiler required that
+metadata to be absent instead of only preventing those arrays from opening.
+The attempt made zero fits, predictions, baseline-row opens, tutorial calls,
+bootstrap replicates, metrics, submissions, or uploads. Cleanup completed.
+Therefore EXP-G3 is terminally rejected as an execution path, without any G3
+model-quality or promotion-gate result. Its consumed claim forbids retry,
+resume, repair, source-shape relaxation, or replacement. Fixed MapLight remains
+the best validated system at 0.5838 development component-macro MAE.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -837,7 +860,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-120 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-121 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -847,14 +870,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-120 acceptance SHA-256 `4bdc758a...2636`, then require
-green post-main CI. Only then derive the exact private claim by filling its four
-null future receipt fields and atomically consume the sole fixed attempt. Run
-the official development falsifier once: 60 exact LightGBM fits, 46,896
-candidate OOF predictions, complete prediction freeze before scorer truth or
-fixed MapLight OOF access, and all six preregistered promotion-gate families.
-Publish only aggregate status-specific terminals and the resource/cleanup
-receipt. No retry, resume, move, overwrite, repair, alternate model, or portal-
-guided selection is allowed. Confirmatory truth, historical row-level
-artifacts, blinded test, TDI, submission generation, official metric,
-leaderboard selection, and upload remain closed.
+Review and integrate D-121 failure receipt SHA-256 `ab12c742...0e28a5`, then
+require green post-main CI. Do not retry, resume, repair, relax, or replace
+EXP-G3: its sole claim is consumed and its pre-fit adapter failure provides no
+model-quality result. Next create a separate contract-only milestone that
+freezes fixed MapLight as the single primary contender and preregisters the
+smallest G2-7 robustness battery before any confirmatory truth opens.
+Confirmatory truth, historical row-level artifacts, blinded test, TDI,
+submission generation, official metric, leaderboard selection, and upload
+remain closed. `global_TDI` remains the TDI fallback.

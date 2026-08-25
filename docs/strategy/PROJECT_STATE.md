@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-120. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-121. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -481,6 +481,21 @@ baseline rows, fits, predictions, metrics, confirmatory truth, historical rows,
 blinded test, TDI, external records, submissions, leaderboard selection, and
 uploads all remain unopened. Synthetic promotion values are engineered
 mechanics controls and have no model-quality interpretation.
+
+D-121 records the sole official EXP-G3 development attempt as terminally
+failed before fitting at aggregate receipt SHA-256 `ab12c742...0e28a5`. The
+private claim was consumed exactly once, but the compiler rejected exact
+source-manifest authority equality before opening any source leaf or row. The
+immutable accepted source used an older 12-key authority vocabulary while the
+D-120 synthetic source used the new 15-key G3 vocabulary; shared permissions
+agree. A read-only aggregate diagnosis also found that the compiler incorrectly
+required receipt metadata for three denied arrays to be absent rather than
+merely forbidding those arrays from opening. The attempt performed zero model
+fits, predictions, baseline-row opens, metric calls, bootstrap replicates,
+submissions, or uploads; cleanup is complete. This is terminal adapter evidence,
+not model-quality evidence. EXP-G3 may not be retried, resumed, repaired, or
+replaced. Fixed MapLight remains the best validated system at 0.5838 internal
+development component-macro MAE.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1130,19 +1145,15 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-120 acceptance SHA-256 `4bdc758a...2636`, then require
-green post-main CI. Only after those exact bytes are integrated may one private
-canonical derivative fill the tracked claim's four null implementation fields
-and atomically consume the sole fixed development attempt. Execute exactly 60
-official LightGBM fits and 46,896 candidate OOF predictions once; freeze every
-candidate prediction before scorer truth or fixed MapLight OOF opens; publish
-only the six status-specific aggregate terminals and receipt; clean all private
-capabilities and row-level work. No retry, resume, move, overwrite, repair,
-parameter change, alternate representation, or model selection from portal
-evidence is permitted. Confirmatory truth, historical row-level artifacts,
-blinded test, TDI, submission generation, official metric, leaderboard
-selection, and upload remain closed. G1/G2/M1/X1/T2 and immutable R5D/I0 remain
-closed; `global_TDI` remains the TDI fallback.
+Review and integrate D-121 failure receipt SHA-256 `ab12c742...0e28a5`, then
+require green post-main CI. EXP-G3 is permanently closed: its sole claim is
+consumed and its pre-fit adapter failure authorizes no retry, resume, repair,
+source relaxation, replacement execution, or model-quality claim. Next freeze
+fixed MapLight as the single primary contender through the smallest
+preregistered G2-7 robustness gate. Do not open confirmatory truth, historical
+row-level artifacts, blinded test, TDI, submission generation, official metric,
+leaderboard selection, or upload capability. G1/G2/M1/X1/T2 and immutable
+R5D/I0 remain closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

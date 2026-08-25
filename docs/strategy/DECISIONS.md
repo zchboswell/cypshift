@@ -4018,3 +4018,35 @@
   exact bytes, require green post-main CI, then consume and execute the sole
   official development attempt once with no retry, resume, move, overwrite, or
   repair.
+
+## D-121 — Close EXP-G3 after its terminal pre-fit official failure
+
+- Date: 2026-08-25
+- Status: accepted aggregate-only terminal failure; sole claim consumed; zero
+  source rows, fits, predictions, baseline rows, metrics, bootstrap replicates,
+  submissions, leaderboard-selection operations, or uploads
+- Decision: Accept `global_v2_g3_official_failure.json` at SHA-256
+  `ab12c742...0e28a5` as the complete public record of the one authorized
+  attempt. Reject EXP-G3 as an execution path without retry, resume, repair,
+  source-shape relaxation, replacement execution, or model-quality claim.
+  Retain fixed MapLight as the best validated system at 0.5838 internal
+  development component-macro MAE and proceed only to a separately frozen G2-7
+  robustness/primary-contender gate.
+- Evidence: The private claim was consumed exactly once and a read-only
+  aggregate terminal was atomically published. Exact authority equality failed
+  before any source leaf or row opened because the immutable accepted source
+  has an older 12-key authority vocabulary and the D-120 synthetic source has a
+  new 15-key vocabulary; their shared permissions agree. Aggregate receipt
+  comparison also reveals an unreached mismatch where three denied-array
+  receipts are valid metadata but the compiler required them to be absent.
+  Completed fits, predictions, baseline-row opens, tutorial calls, bootstrap
+  replicates, and metrics are all zero; cleanup is complete and every forbidden
+  counter is zero. Four focused public-record tests pass.
+- Alternatives: Repair or relax the compiler and rerun; replace the consumed
+  claim; reinterpret the failure as evidence against the LightGBM hypothesis;
+  open private row-level work to diagnose further; select a model from portal
+  evidence; or advance directly to confirmatory scoring.
+- Reversal condition: None inside EXP-G3. Its single-use authority is exhausted.
+  A future independent experiment would require a materially new hypothesis and
+  contract, but no such experiment is currently authorized. The next gate is a
+  contract-only fixed-MapLight robustness freeze before confirmatory access.
