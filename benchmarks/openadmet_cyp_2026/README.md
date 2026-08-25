@@ -202,6 +202,17 @@ closes EXP-G3 without retry or a model-quality conclusion. Fixed MapLight
 remains the best validated system; the next gate is its preregistered G2-7
 robustness and primary-contender freeze.
 
+That G2-7 boundary is frozen in
+[`global_v2_maplight_robustness_contract.json`](global_v2_maplight_robustness_contract.json),
+SHA-256 `ad9aef87...a7a45af`. Full fixed MapLight is the default; four drop-one
+feature recipes, five seeds, three conservative family overlays, duplicate and
+influence diagnostics, the authenticated single-source boundary, endpoint
+harm, and training-only clipping sensitivity form one conjunctive battery. A
+simpler recipe can replace full MapLight only through the frozen one-token
+selection rule. The future workload is 720–1,020 fits, but this contract opened
+no official row and ran zero fit or metric. Its next gate is a separate
+synthetic implementation/resource contract, not a claim or official access.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

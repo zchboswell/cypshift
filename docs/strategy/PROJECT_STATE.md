@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-121. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-122. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -497,6 +497,22 @@ not model-quality evidence. EXP-G3 may not be retried, resumed, repaired, or
 replaced. Fixed MapLight remains the best validated system at 0.5838 internal
 development component-macro MAE.
 
+D-122 freezes the G2-7 fixed-MapLight robustness and primary-contender contract
+at SHA-256 `ad9aef87...a7a45af`. The first stage preregisters four drop-one
+feature-block ablations and five fixed seed perturbations, then emits one
+selection token only after all predictions freeze. Exact full MapLight remains
+the default; a simpler recipe can replace it only by the frozen material-
+improvement, paired-interval, cell, and endpoint-harm rule. The selected recipe
+then faces two stricter component thresholds, a tautomer-merged family overlay,
+duplicate collapse, fixed top-ten influential-component removal, authenticated
+single-source handling, endpoint harm, and two training-only clipping
+diagnostics. The workload is exactly 720 new fits when full MapLight remains
+selected and at most 1,020 when a drop-one recipe triggers its conditional seed
+check. This contract opened zero official row and ran zero fit, prediction, or
+metric. It also removes stale public assertions about portal activity without
+recording a private identifier, result, or rank; private portal evidence remains
+outside model selection.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -529,9 +545,10 @@ The direct four-endpoint MapLight lane completed two official blinded-test
 rehearsals and published one byte-identical, locally accepted 750-row candidate.
 The competition tutorial validator was rerun after the TRACE result and again
 returned valid with zero errors, exact identifier/SMILES order, and 3,000 finite
-predictions. It has not been uploaded or scored. This immutable MapLight file is
-the only deployable competition prediction; its manual-upload handoff is
-recorded in
+predictions. This immutable MapLight file is the only deployable competition
+prediction. Repository evidence intentionally makes no claim about private
+portal activity or results, and none may select a model. Its manual-upload
+handoff is recorded in
 [`DIRECT_BASELINE_HANDOFF.md`](../../benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md).
 
 The authoritative OpenADMET launch intake is recorded in
@@ -769,7 +786,8 @@ manifest SHA-256 `96ee587c...`; the strict validator confirms 750 ordered rows
 and 3,000 finite predictions. No test label, TDI file, metric, calibration,
 clipping, ensemble, or transductive relationship was opened or computed. This
 is a deployable direct baseline candidate, not TRACE evidence or an official
-score, and it has not yet been uploaded to the competition portal.
+score. Private portal activity and results are intentionally outside repository
+evidence and cannot select a model, threshold, feature, or candidate.
 
 R5B's trusted synthetic source compiler and capability splitter are now
 accepted. The compiler authenticates synthetic analogues of the frozen R2,
@@ -1145,15 +1163,15 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-121 failure receipt SHA-256 `ab12c742...0e28a5`, then
-require green post-main CI. EXP-G3 is permanently closed: its sole claim is
-consumed and its pre-fit adapter failure authorizes no retry, resume, repair,
-source relaxation, replacement execution, or model-quality claim. Next freeze
-fixed MapLight as the single primary contender through the smallest
-preregistered G2-7 robustness gate. Do not open confirmatory truth, historical
+Review and integrate D-122 robustness contract SHA-256
+`ad9aef87...a7a45af`, then require green post-main CI. Next freeze a separate
+two-root synthetic implementation/resource contract for the exact staged
+720-to-1,020-fit topology. Do not create an official claim, open official rows,
+or run scientific fits in that milestone. Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
-leaderboard selection, or upload capability. G1/G2/M1/X1/T2 and immutable
-R5D/I0 remain closed; `global_TDI` remains the TDI fallback.
+leaderboard selection, and upload capability remain closed. EXP-G3 and
+G1/G2/M1/X1/T2 plus immutable R5D/I0 remain closed; `global_TDI` remains the
+TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

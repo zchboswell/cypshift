@@ -88,5 +88,6 @@ was `276a53d7f22ff973aaf567e64d977202995e91ba3cef2bbdc4de71c13bdebcb2`.
 The result was `valid=True`, zero errors, exact molecule and SMILES order, six
 exact columns, and 3,000 finite predictions.
 
-This is the direct-activity submission only. It has not been uploaded or
-scored, and no TDI submission is claimed here.
+This is the direct-activity submission only. Private portal activity and results
+are intentionally outside this repository record and cannot select a model. No
+TDI submission is claimed here.

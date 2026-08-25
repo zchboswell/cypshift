@@ -1,0 +1,357 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_contract.v1",
+  "freeze_date": "2026-08-25",
+  "recorded_at_utc": "2026-08-25T15:28:28Z",
+  "gate": "G2_7_MAPLIGHT_ROBUSTNESS_CONTRACT_FROZEN",
+  "status": "contract_only_no_scientific_execution_authority",
+  "base_commit": "e7398a2c9a227bc4cdf4665499f635045aa731bb",
+  "purpose": "Freeze the smallest family-safe robustness battery that can either retain exact fixed MapLight or prospectively select one materially superior drop-one simplification before any confirmatory truth opens.",
+  "hypothesis": "The accepted fixed MapLight recipe is stable to model seed and conservative family regrouping, is not driven by duplicate or influential-family weighting, and no single feature-block deletion is a materially superior simpler contender.",
+  "occam_rule": "Keep exact fixed MapLight unless one and only one prospectively eligible drop-one recipe is selected by the frozen ordering. Never add a feature, learner, seed ensemble, clip, calibration, or blend. A selected deletion removes complexity; observed diagnostics cannot create another candidate.",
+  "targeted_failure_modes": [
+    "V1/V2 molecule, exact-duplicate, tautomer, or reconstructed-family leakage",
+    "V3 validation-truth access before complete prediction freeze",
+    "V4 seed, split, feature, parameter, runtime, or execution-order drift",
+    "V6 tutorial-metric or paired-bootstrap arithmetic drift",
+    "C4 tautomer or charge-state grouping sensitivity",
+    "C5 duplicate weighting drives the apparent result",
+    "C6 one MapLight feature block adds unjustified or harmful complexity",
+    "E1 performance is concentrated in one endpoint, source slice, or influential family",
+    "S4 family-threshold or clipping sensitivity hides unstable extrapolation",
+    "P1/P5/P6 environment, receipt, partial-publication, overwrite, retry, or private-portal contamination"
+  ],
+  "parents": {
+    "global_v2": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "maplight_reproduction_contract": {
+      "path": "global_v2_maplight_reproduction_contract.json",
+      "sha256": "7983e767dcc53d75c3a1816cf2a6528980c300b700bc339575cfb8a0faca344b"
+    },
+    "maplight_execution_contract": {
+      "path": "global_v2_maplight_execution_contract.json",
+      "sha256": "962484b7e8f20ca9b9e37735e82c4db62766116a47c49c44dbc90d14db7985c2"
+    },
+    "maplight_official_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "status": "G2_2_MAPLIGHT_REPRODUCED",
+      "development_component_macro_mae": 0.5837812652150708
+    },
+    "g3_terminal_failure": {
+      "path": "global_v2_g3_official_failure.json",
+      "sha256": "ab12c742dd8eff916f604bf79665bfbcc773a4d89caee0600d7a7cd7030e28a5",
+      "meaning": "EXP-G3 is closed without a model-quality result and cannot be retried or repaired."
+    },
+    "direct_maplight_deployment": {
+      "path": "direct_maplight_deployment_contract.json",
+      "sha256": "918fc1358e3394f32cd21b2f57b283f584e97242068fa0dc60448babc3963960",
+      "use": "Exact full-training recipe reference only; this contract grants no test or submission access."
+    },
+    "post_main_ci": {
+      "run_id": 32864287869,
+      "head_sha": "e7398a2c9a227bc4cdf4665499f635045aa731bb",
+      "conclusion": "success"
+    }
+  },
+  "accepted_inputs": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_morgan_count_sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+    "maplight_avalon_count_sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+    "maplight_erg_sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "immutable_outer_oof_sha256": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+    "immutable_component_metrics_sha256": "43306bf14c00becc37390ea2649d3a37363abe1d7b1cf5ae8e36789837302bd8",
+    "source_policy": "A future trusted compiler may bind exact private roots only after separate official-shaped synthetic acceptance and a reviewed single-use claim. This contract lists or opens no private root."
+  },
+  "runtime": {
+    "trusted_compiler": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.12.3",
+      "rdkit": "2026.03.5",
+      "root_uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "standardizer_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a"
+    },
+    "model": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.10.13",
+      "numpy": "1.25.2",
+      "rdkit": "2023.3.3",
+      "catboost": "1.2.1",
+      "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+      "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757"
+    },
+    "fit_parallelism": "one fit at a time with thread_count=16",
+    "gpu_hours": 0
+  },
+  "population": {
+    "development_molecules": 3908,
+    "development_components": 3640,
+    "confirmatory_molecules": 997,
+    "confirmatory_components": 913,
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "repeats": 3,
+    "outer_folds": 5,
+    "repeat_seeds": [
+      20260810,
+      20260811,
+      20260812
+    ],
+    "primary_group_rule": "The accepted D-032 similarity_component_hash at inclusive Morgan/Tanimoto threshold 0.60 remains the only candidate-selection and confirmatory group unit.",
+    "confirmatory_rule": "Confirmatory membership remains the accepted label-free G2-0 assignment. No perturbation may move, parse, or score a confirmatory target."
+  },
+  "fixed_maplight": {
+    "candidate_id": "G2-7-M0-FULL",
+    "system_id": "TRACE-G0-MAPL-FIXED",
+    "feature_spec_id": "maplight-fixed-stage-a-v1",
+    "feature_blocks": [
+      {
+        "id": "MORGAN_COUNT",
+        "columns": 1024,
+        "source": "maplight_morgan_count.npy"
+      },
+      {
+        "id": "AVALON_COUNT",
+        "columns": 1024,
+        "source": "maplight_avalon_count.npy"
+      },
+      {
+        "id": "ERG",
+        "columns": 315,
+        "source": "maplight_erg.npy"
+      },
+      {
+        "id": "RDKIT_DESCRIPTORS",
+        "columns": 200,
+        "source": "maplight_rdkit_descriptors.npy"
+      }
+    ],
+    "feature_columns": 2563,
+    "constructor_arguments": {
+      "loss_function": "MAE",
+      "random_strength": 2,
+      "random_seed": 1,
+      "task_type": "CPU",
+      "thread_count": 16,
+      "verbose": 0,
+      "allow_writing_files": false
+    },
+    "omitted_arguments": [
+      "eval_set",
+      "early_stopping_rounds",
+      "use_best_model",
+      "iterations",
+      "nan_mode"
+    ],
+    "fit_call": "fit(X_outer_training, y_outer_training) with no additional arguments",
+    "prediction_rule": "No calibration, clipping, blend, averaging across seeds, endpoint-specific parameter, or model serialization."
+  },
+  "drop_one_candidates": [
+    {
+      "candidate_id": "G2-7-M1-DROP-MORGAN",
+      "drop_block": "MORGAN_COUNT",
+      "feature_columns": 1539
+    },
+    {
+      "candidate_id": "G2-7-M2-DROP-AVALON",
+      "drop_block": "AVALON_COUNT",
+      "feature_columns": 1539
+    },
+    {
+      "candidate_id": "G2-7-M3-DROP-ERG",
+      "drop_block": "ERG",
+      "feature_columns": 2248
+    },
+    {
+      "candidate_id": "G2-7-M4-DROP-DESCRIPTORS",
+      "drop_block": "RDKIT_DESCRIPTORS",
+      "feature_columns": 2363
+    }
+  ],
+  "stage_a_selection": {
+    "chronology": "Complete and freeze all four drop-one and five full-feature seed-perturbation outer predictions before any outer validation truth, fixed MapLight OOF row, tutorial metric, or component metric opens.",
+    "drop_one_fits": 240,
+    "seed_perturbation_values": [
+      2026082411,
+      2026082412,
+      2026082413,
+      2026082414,
+      2026082415
+    ],
+    "full_feature_seed_perturbation_fits": 300,
+    "stage_a_fits": 540,
+    "stage_a_prediction_rows": 422064,
+    "candidate_selection": {
+      "full_is_default": true,
+      "drop_one_eligibility": "Against exact full MapLight on identical primary D-032 rows, require at least 1% lower tutorial-primary MA-ST-RAE or at least 0.005 lower component-macro MAE; require the paired component-bootstrap upper 95% bound of candidate minus full below zero; require at least 8/15 favorable outer cells; and permit no endpoint component-MAE degradation above 0.005.",
+      "ordering": "Among eligible deletions choose fewer feature columns, then lower tutorial-primary value, then lower component-macro MAE, then lexicographically smaller candidate_id. If none is eligible, retain G2-7-M0-FULL.",
+      "one_selection_token": true,
+      "no_runner_up": true
+    }
+  },
+  "stage_b_selected_robustness": {
+    "chronology": "After the immutable selection token, a separate model capability may fit only that selected recipe under the three frozen grouping perturbations. Freeze every perturbation prediction before the final scorer opens its validation truth.",
+    "group_perturbations": [
+      {
+        "id": "THRESHOLD_0_55",
+        "rule": "Rebuild a label-free Morgan-radius-2/4096/chiral inclusive Tanimoto graph at threshold 0.55 over all accepted molecule identities. Exclude every development molecule in a perturbed component touching any confirmatory identity, then hash-assign intact remaining components to five folds for each accepted repeat seed without target access."
+      },
+      {
+        "id": "THRESHOLD_0_50",
+        "rule": "Apply the identical conservative overlay at inclusive threshold 0.50. This is a stricter merged-family diagnostic and can never replace the primary D-032 groups."
+      },
+      {
+        "id": "TAUTOMER_MERGED",
+        "rule": "Using the pinned parent RDKit standardization, merge original D-032 components when their accepted structures share an RDKit canonical-tautomer isomeric-SMILES hash. Preserve raw chemistry and model features; the overlay changes grouping only. Exclude any overlay component touching confirmatory membership before deterministic fold assignment."
+      }
+    ],
+    "fits": 180,
+    "prediction_rows_upper_bound": 140688,
+    "support_preflight": "Before any perturbation fit, every endpoint/repeat/fold must retain at least 75 validation targets and 400 training targets. A miss publishes underpowered aggregate evidence and cannot move a component or open confirmatory truth.",
+    "family_invariant": "No molecule, exact duplicate, original D-032 component, threshold-overlay component, or tautomer-overlay component may cross its active training/validation boundary."
+  },
+  "stage_c_conditional_selected_seed_check": {
+    "condition": "Run only when the selected candidate is not G2-7-M0-FULL.",
+    "rule": "Fit the selected drop-one recipe under all five frozen seed-perturbation values on the unchanged primary D-032 folds. Seeds remain diagnostics and cannot replace, average, or alter the selected random_seed=1 recipe.",
+    "fits": 300,
+    "prediction_rows": 234480
+  },
+  "diagnostics_without_additional_fits": {
+    "duplicate_policy": "On primary frozen rows, recompute component metrics after first averaging absolute error within endpoint/repeat/fold/standardized_structure_hash so duplicate molecule identities cannot add weight. Report the paired change for full and selected recipes.",
+    "influential_families": "Rank original D-032 development components by the selected recipe's total component-equal absolute-error contribution under exact full-data predictions, with component hash as tie-break. Recompute every primary and endpoint metric after removing exactly the top ten fixed components. The ranking cannot be rediscovered per candidate, seed, clip, or metric.",
+    "assay_source": "The accepted direct source schema has one source_file field and the bound training artifact is expected to contain exactly the single value cyp-challenge-TRAIN_inhibition.csv. Publish SINGLE_SOURCE_NOT_APPLICABLE with zero source ablations. Any second value or unavailable provenance fails preflight; do not invent assay labels from row order or performance.",
+    "clipping": [
+      {
+        "id": "NO_CLIP_PRIMARY",
+        "rule": "Use exact finite float64 predictions unchanged. This remains the only deployable recipe."
+      },
+      {
+        "id": "OUTER_TRAIN_MINMAX_DIAGNOSTIC",
+        "rule": "Within each endpoint/repeat/fold, clip validation predictions only to the finite central-target minimum and maximum computed from that outer training partition."
+      },
+      {
+        "id": "OUTER_TRAIN_Q005_Q995_DIAGNOSTIC",
+        "rule": "Within each endpoint/repeat/fold, linearly interpolate training-only finite central-target quantiles at 0.005 and 0.995 using h=(n-1)*p, then clip validation predictions to those bounds."
+      }
+    ],
+    "clipping_boundary": "Clipped diagnostics cannot select or modify the contender. If either diagnostic improves tutorial-primary MA-ST-RAE by more than 1% or component-macro MAE by more than 0.005, reject the unclipped contender as calibration-sensitive rather than adopting the clip."
+  },
+  "metrics": {
+    "primary": {
+      "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+      "direction": "lower_is_better",
+      "eligibility": "Finite central point and both finite reported bounds; no imputation or midpoint.",
+      "tutorial_source_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+      "metric_source_sha256": "e63f12af8e911da5f2f9ffde802f14039b7d8fb38293be85fec754793fc43269",
+      "name_boundary": "Local tutorial proxy only; never call it the live official score."
+    },
+    "component_macro_mae": "Equal weight per active component within endpoint, then equal macro weight across the four endpoints.",
+    "endpoint_harm": "Report every endpoint separately for primary, seed, grouping, duplicate, influence, clipping, and ablation views.",
+    "paired_bootstrap": {
+      "seed": 20260827,
+      "accepted_replicates_per_drop_one_comparison": 2000,
+      "maximum_attempts": 20000,
+      "unit": "sorted original D-032 component union with all eligible endpoint rows retained per draw",
+      "interval": "linearly interpolated 0.025 and 0.975 quantiles of candidate-minus-full component-macro MAE"
+    }
+  },
+  "robustness_acceptance": {
+    "seed": "For every required selected-recipe seed perturbation, tutorial-primary relative degradation is at most 0.03, component-macro MAE degradation is at most 0.015, and no endpoint component-MAE degradation exceeds 0.025 versus random_seed=1 on identical rows.",
+    "grouping": "Every perturbation passes support and containment; selected-recipe component-macro MAE is at most 0.030 above its unchanged-primary value and no endpoint is more than 0.050 worse. These are diagnostics and never replace primary groups.",
+    "duplicate": "Absolute selected-recipe component-macro MAE change after duplicate collapse is at most 0.010.",
+    "influence": "Absolute selected-recipe component-macro MAE change after the fixed top-ten removal is at most 0.020 and the selected recipe does not become worse than full MapLight by more than 0.005.",
+    "source": "The single accepted source is authenticated and the status is SINGLE_SOURCE_NOT_APPLICABLE; any invented or second source fails.",
+    "endpoint": "Every stage-specific endpoint-harm ceiling passes conjunctively.",
+    "clipping": "Neither training-only clip exceeds the frozen improvement trigger; the deployable recipe remains unclipped.",
+    "constituent": "Selection follows the exact drop-one eligibility and ordering once. No second deletion, refit choice, or post-robustness runner-up is permitted.",
+    "all_required": true
+  },
+  "workload": {
+    "fits_per_recipe_or_perturbation": 60,
+    "stage_a_fits": 540,
+    "stage_b_fits": 180,
+    "stage_c_conditional_fits": 300,
+    "minimum_new_fits": 720,
+    "maximum_new_fits": 1020,
+    "minimum_new_prediction_rows": 562752,
+    "maximum_new_prediction_rows": 797232,
+    "baseline_refits": 0,
+    "inner_model_fits": 0,
+    "drop_one_bootstrap_replicates": 8000,
+    "maximum_tutorial_metric_calls": 80,
+    "model_binaries_retained": 0
+  },
+  "terminal_contract": {
+    "accepted": "G2_7_PRIMARY_CONTENDER_FROZEN",
+    "underpowered": "G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED",
+    "rejected": "G2_7_MAPLIGHT_ROBUSTNESS_REJECTED",
+    "failed": "G2_7_MAPLIGHT_ROBUSTNESS_FAILED",
+    "publication": "Publish exactly one aggregate-only read-only terminal through atomic no-replace promotion after row-level predictions, truths, features, and model state are cleaned.",
+    "accepted_content": "Bind the one selected candidate ID and exact recipe, all aggregate gate values, selected/full paired evidence, counts, receipts, resources, cleanup, and zero forbidden accounting. Do not publish row-level values or private portal observations.",
+    "retry": false,
+    "resume": false,
+    "overwrite": false,
+    "replacement": false
+  },
+  "resource_ceiling": {
+    "cpu_core_hours": 160,
+    "maximum_wall_hours": 9.6,
+    "restricted_storage_gb": 64,
+    "peak_rss_gib": 19.2,
+    "gpu_hours": 0,
+    "margin": "Each ceiling preserves at least 20% margin below a 200 CPU-core-hour, 12 wall-hour, 80 GB, 24 GiB robustness envelope."
+  },
+  "current_milestone_accounting": {
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "model_fits": 0,
+    "predictions_generated": 0,
+    "metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "implementation": false,
+    "synthetic_execution": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "confirmatory_boundary": {
+    "maximum_confirmatory_scores": 0,
+    "meaning": "This contract does not resolve or authorize G2-8. A later contract may create one score only after an accepted G2-7 terminal binds a distinct selected contender and exact confirmatory acceptance arithmetic. If full MapLight remains selected, that later contract must explicitly resolve the identical-contender/control boundary before any truth opens."
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, freeze a separate two-root synthetic implementation/resource contract for this exact staged topology. Do not create a claim, open an official byte, fit an official model, or access confirmatory truth in that milestone."
+}

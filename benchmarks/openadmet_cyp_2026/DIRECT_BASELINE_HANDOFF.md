@@ -2,8 +2,9 @@
 
 This is the immutable direct submission for the OpenADMET CYP challenge. It is
 a fixed MapLight prediction over all four challenge CYP endpoints; it is not
-TRACE evidence and it has not yet been uploaded to the competition. The sole
-official TRACE oracle returned authenticated `R5_ORACLE_NO_SIGNAL`, so the
+TRACE evidence. Private portal activity and results are intentionally outside
+this repository record and cannot alter scientific or candidate selection. The
+sole official TRACE oracle returned authenticated `R5_ORACLE_NO_SIGNAL`, so the
 frozen inferred-anchor gate cannot activate and this baseline remains the only
 contract-authorized direct submission candidate. The official negative result
 is recorded in [`TRACE_OFFICIAL_OUTCOME.md`](TRACE_OFFICIAL_OUTCOME.md).
@@ -50,5 +51,5 @@ This artifact is the frozen direct-track result. TRACE did not pass its
 training-only evidence gate, so no TRACE-enabled CYP3A4 test prediction was
 created. The artifact uses no blinded-test labels, TDI data, official metric
 calls, calibration, clipping, ensemble, or transduction. A manual competition
-upload and any returned leaderboard result must be recorded separately;
-neither has occurred at the time of this handoff.
+upload and any returned leaderboard result remain private operational evidence;
+this public handoff intentionally makes no claim about whether either occurred.

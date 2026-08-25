@@ -45,6 +45,10 @@ different authority and receipt-metadata vocabularies. The claim is consumed;
 no retry or repair is authorized. Zero source rows, fits, predictions, metrics,
 bootstrap replicates, submissions, or uploads occurred, so this is no evidence
 about G3 model quality. Fixed MapLight remains the best validated system.
+D-122 freezes fixed MapLight's G2-7 robustness and primary-contender contract.
+It authorizes no implementation, official row, fit, prediction, metric, claim,
+or confirmatory access. Exact full MapLight is the default and a predeclared
+drop-one simplification may replace it only through the frozen selection rule.
 
 Authorized: 2026-08-24.
 
@@ -810,6 +814,24 @@ metric/clipping, and constituent-ablation checks. Predesignate exactly one
 primary contender, its complete recipe and receipts, and the fixed MapLight
 control.
 
+D-122 freezes this boundary in
+[`global_v2_maplight_robustness_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_contract.json),
+SHA-256 `ad9aef87...a7a45af`. Stage A fixes four single-block deletions and five
+alternative seeds for 540 fits, with every prediction frozen before scoring and
+one deterministic selection token. Full MapLight remains the default; a
+deletion must materially improve tutorial-primary or component-macro MAE,
+receive a wholly favorable paired component interval, win at least 8/15 cells,
+and satisfy the 0.005 endpoint-harm ceiling. Stage B applies two stricter
+similarity thresholds and one tautomer-merged family overlay to only the
+selected recipe for 180 fits. A selected deletion triggers 300 conditional seed
+fits. Duplicate collapse, one fixed top-ten influential-family removal,
+authenticated single-source handling, endpoint harm, and two training-only
+clipping diagnostics add no fits. Every gate is conjunctive. Exact workload is
+720 fits when full MapLight remains selected and at most 1,020 otherwise. This
+contract listed no private root, opened no official row, and performed zero
+fit, prediction, metric, submission, or portal operation. A later synthetic
+contract must prove this exact staged topology before any claim can exist.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -860,7 +882,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-121 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-122 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -870,12 +892,11 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-121 failure receipt SHA-256 `ab12c742...0e28a5`, then
-require green post-main CI. Do not retry, resume, repair, relax, or replace
-EXP-G3: its sole claim is consumed and its pre-fit adapter failure provides no
-model-quality result. Next create a separate contract-only milestone that
-freezes fixed MapLight as the single primary contender and preregisters the
-smallest G2-7 robustness battery before any confirmatory truth opens.
-Confirmatory truth, historical row-level artifacts, blinded test, TDI,
-submission generation, official metric, leaderboard selection, and upload
-remain closed. `global_TDI` remains the TDI fallback.
+Review and integrate D-122 robustness contract SHA-256
+`ad9aef87...a7a45af`, then require green post-main CI. Next freeze a separate
+two-root synthetic implementation/resource contract for the exact staged
+720-to-1,020-fit topology. Do not create an official claim, open an official
+byte, or fit an official model in that milestone. Confirmatory truth,
+historical row-level artifacts, blinded test, TDI, submission generation,
+official metric, leaderboard selection, and upload remain closed.
+`global_TDI` remains the TDI fallback.

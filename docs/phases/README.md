@@ -235,6 +235,16 @@ This is adapter evidence only, not model-quality evidence; EXP-G3 is closed
 without retry or repair. Fixed MapLight remains the best validated system and
 the next gate is its separately frozen G2-7 robustness/primary-contender lock.
 
+D-122 freezes that G2-7 contract at SHA-256 `ad9aef87...a7a45af`. Exact full
+MapLight remains the default contender; only one of four drop-one feature
+recipes may replace it, and only through a frozen material-improvement, paired-
+uncertainty, cell, and endpoint-harm rule after complete prediction freeze.
+Five seed perturbations, two stricter family thresholds, a tautomer-merged
+overlay, duplicate/influence/source/endpoint/clipping diagnostics, and complete
+forbidden accounting are conjunctive. The later workload is 720–1,020 fits;
+this contract milestone ran zero. The next gate is a separate two-root
+synthetic implementation/resource contract, not official access.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

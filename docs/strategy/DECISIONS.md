@@ -4050,3 +4050,44 @@
   A future independent experiment would require a materially new hypothesis and
   contract, but no such experiment is currently authorized. The next gate is a
   contract-only fixed-MapLight robustness freeze before confirmatory access.
+
+## D-122 — Freeze fixed MapLight robustness and primary-contender selection
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-7 evidence; zero official source row,
+  target, feature, historical-row artifact, fit, prediction, metric, claim,
+  confirmatory-truth, test, TDI, submission, leaderboard-selection, or upload
+  operation
+- Decision: Accept `global_v2_maplight_robustness_contract.json` at SHA-256
+  `ad9aef87...a7a45af`. Keep exact full fixed MapLight as the default contender.
+  Permit only four prospectively named drop-one feature recipes, and select at
+  most one only after all stage-A predictions freeze through the exact
+  material-improvement, paired-interval, 8/15-cell, endpoint-harm, and Occam
+  ordering. No seed, grouping overlay, clipping diagnostic, portal observation,
+  or runner-up may change that token.
+- Evidence: The contract binds D-084, D-094, D-121, the accepted official
+  reproduction and deployment recipes, exact source/feature/OOF receipts,
+  Python 3.12.3/RDKit 2026.03.5 trusted compilation, and the isolated Python
+  3.10.13/CatBoost 1.2.1 model runtime. Stage A requires 240 drop-one and 300
+  full-feature seed fits. Stage B runs the selected recipe under 0.55 and 0.50
+  conservative component thresholds plus one canonical-tautomer overlay for
+  180 fits. A selected deletion conditionally requires 300 additional seed
+  fits. Duplicate collapse, fixed top-ten influence removal, authenticated
+  single-source handling, endpoint harm, and two training-only clipping views
+  add no fit. Thus the exact later workload is 720–1,020 fits and
+  562,752–797,232 predictions, with every prediction frozen before its scorer
+  opens validation truth. Seven focused static tests pass. Private portal status
+  assertions were neutralized without recording any identifier, result, or
+  rank.
+- Alternatives: Treat the existing candidate as robust without falsification;
+  reopen G1/G3; select a seed or clip from development outcomes; test arbitrary
+  block combinations; weaken family groups; let a perturbed group replace the
+  primary D-032 boundary; invent assay-source labels; open confirmatory truth;
+  or let private portal evidence choose the contender.
+- Reversal condition: Any parent, source, runtime, chemistry, family,
+  confirmatory-membership, feature, parameter, seed, fit, prediction-freeze,
+  metric, bootstrap, selection, diagnostic, resource, terminal, privacy, or
+  authority drift revokes progression before official access. Otherwise the
+  next gate is a separately frozen two-root synthetic implementation/resource
+  contract for this exact staged topology; do not create a claim or open an
+  official byte in that milestone.
