@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-114. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-115. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -383,6 +383,24 @@ consumed and forbids retry, resume, alternate source, source repair, threshold
 change, or partial reuse. Fixed MapLight therefore remains the best validated
 system at 0.5838 internal development component-macro MAE, and `EXP-X1` has no
 model-quality result.
+
+D-115 does not activate `EXP-T2`, under tracked aggregate receipt SHA-256
+`75eb8d10...0f59c98`. The frozen activation rule requires both a stronger
+global system with fully cross-fitted OOF residuals and a prospectively frozen
+positive improvement-versus-coverage region before any local learner or
+threshold is selected. Neither exists: `EXP-G1` and `EXP-M1` stopped on
+resources before official execution, parent-defined `EXP-G2` lacks its required
+G1 anchor, and `EXP-X1` stopped before its activity query. Fixed MapLight is the
+stable baseline, not the required stronger successor. Opening its row-level
+residuals now to search for a favorable competence region would reverse the
+frozen activation order. This aggregate-only audit opened no row-level artifact,
+official input, confirmatory or blinded-test value; ran zero fits, predictions,
+residual computations, or metrics; and used no portal observation for
+selection. `EXP-T2` therefore has no model-quality result and is closed without
+a contract or execution. The next gate is a separately named, prospectively
+contracted single-expert global hypothesis testing one fixed representation-
+diverse learner against MapLight; it is not a G1 repair or an instantiation of
+parent-defined G2.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1032,16 +1050,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-114 acquisition-failure receipt SHA-256
-`ac08140b...50e4eb2`, then require green post-main CI. Keep `EXP-X1` closed:
-the consumed claim cannot be retried, repaired, resumed, redirected, or reused.
-After integration, audit the remaining preregistered Global-v2 lanes and freeze
-the smallest scientifically distinct next hypothesis that can target the frozen
-CYP1A2 and CYP2D6 error without reopening G1/G2/M1/X1 or using private portal
-observations for selection. Do not fit another model, inspect blinded test,
-generate a submission, call an official metric, or upload before that lane's
-separate contract and synthetic gates. Immutable R5D/I0 remain closed;
-`global_TDI` remains the TDI fallback.
+Review and integrate D-115 nonactivation receipt SHA-256
+`75eb8d10...0f59c98`, then require green post-main CI. Keep `EXP-T2` closed:
+the qualifying stronger-global OOF evidence and positive prospective coverage
+region do not exist, and baseline residuals may not be mined to create them.
+After integration, freeze a separately named single-expert global contract that
+tests one fixed representation-diverse learner against MapLight and targets the
+frozen CYP1A2 and CYP2D6 error. It must not repair G1, instantiate parent-defined
+G2, reopen M1/X1/T2, or use private portal observations for selection. Do not
+fit another model, inspect blinded test, generate a submission, call an official
+metric, or upload before that lane's separate contract and synthetic gates.
+Immutable R5D/I0 remain closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

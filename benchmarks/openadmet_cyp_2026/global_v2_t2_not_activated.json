@@ -1,0 +1,82 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_t2_not_activated.v1",
+  "recorded_at_utc": "2026-08-25T10:57:17Z",
+  "status": "G2_6_TRACE_V2_NOT_ACTIVATED",
+  "decision": "do_not_contract_or_execute_exp_t2",
+  "base_commit": "c1a76ce39670022c6c8dbd9cf2c74b52d2fffd67",
+  "parents": {
+    "global_v2_contract": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "g1_resource_rejection": {
+      "path": "global_v2_g1_resource_feasibility_rejection.json",
+      "sha256": "675858301f65920e0accbd493cc9211c5edb0a017ed70f4674ec8b5cf41a9be4"
+    },
+    "m1_resource_rejection": {
+      "path": "global_v2_m1_resource_rejection.json",
+      "sha256": "3222856dfde449e616fe13cf02942abca5d4c78ad775a7d6035729d7bfa54297"
+    },
+    "x1_acquisition_failure": {
+      "path": "global_v2_x1_acquisition_failure.json",
+      "sha256": "ac08140b951e0252f4be43359b911a0f11ae40247c7b8b3f6bfc0c24850e4eb2"
+    }
+  },
+  "activation_rule": {
+    "contract_text": "Contract drafting is permitted only when frozen global OOF evidence shows a positive improvement-versus-coverage region before selecting a local learner or threshold.",
+    "governing_decision": "D-085 additionally requires that a stronger global system first produce fully cross-fitted OOF residuals.",
+    "all_preconditions_conjunctive": true
+  },
+  "evidence_inventory": {
+    "accepted_stronger_global_successors": 0,
+    "accepted_stronger_global_successor_oof_receipts": 0,
+    "positive_improvement_versus_coverage_receipts": 0,
+    "maplight_is_stable_baseline": true,
+    "maplight_is_stronger_successor": false,
+    "maplight_component_macro_mae": 0.5837812652150708,
+    "g1_scientific_oof_predictions": 0,
+    "g1_terminal_reason": "resource_infeasible_before_official_execution",
+    "g2_scientific_oof_predictions": 0,
+    "g2_terminal_reason": "required_g1_anchor_unavailable",
+    "m1_scientific_oof_predictions": 0,
+    "m1_terminal_reason": "resource_infeasible_before_official_execution",
+    "x1_scientific_oof_predictions": 0,
+    "x1_terminal_reason": "sqlite_schema_preflight_failed_before_activity_query"
+  },
+  "activation_decision": {
+    "stronger_global_system_completed": false,
+    "stronger_global_oof_residuals_available": false,
+    "positive_improvement_versus_coverage_region_frozen": false,
+    "activation_pass": false,
+    "exp_t2_contract_authorized": false,
+    "exp_t2_implementation_authorized": false,
+    "exp_t2_execution_authorized": false,
+    "reason": "Searching row-level MapLight residuals now for a favorable competence region would reverse the frozen activation order, and MapLight is the baseline rather than the required stronger global successor."
+  },
+  "accounting": {
+    "new_official_target_values_opened": 0,
+    "new_official_features_opened": 0,
+    "new_official_structures_opened": 0,
+    "row_level_maplight_artifacts_opened": 0,
+    "historical_r5d_row_level_artifacts_opened": 0,
+    "new_model_fits": 0,
+    "new_predictions_generated": 0,
+    "new_residual_values_computed": 0,
+    "new_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "scientific_interpretation": "EXP-T2 has no model-quality result because it did not activate. This preserves the preregistered ordering and avoids selecting a local learner, threshold, or coverage region from baseline residual outcomes.",
+  "reversal_condition": "None for EXP-T2 under Global-v2. Later evidence from a separately contracted stronger global system cannot retroactively activate or reinterpret this closed lane; it would require a new named prospective hypothesis.",
+  "next_gate": "Freeze a separately named single-expert global hypothesis that tests one fixed representation-diverse learner against MapLight. It must not repair EXP-G1, instantiate parent-defined EXP-G2, or select from private portal evidence."
+}

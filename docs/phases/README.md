@@ -148,6 +148,27 @@ external, official, model, metric, submission, leaderboard-selection, upload,
 or claim operation occurred. The next gate is a reviewed single-use ChEMBL 37
 acquisition claim, not archive access.
 
+D-112 froze that one-shot claim at SHA-256 `f1bea832...1ba5c60`; D-113 then
+accepted the minimal real-source adapter at receipt `c29aaaf4...33f3fb4`
+without opening real data or consuming the claim. D-114 consumed the sole claim
+and terminally rejected `EXP-X1` at receipt `ac08140b...50e4eb2`: the exact
+archive and SQLite integrity passed, but frozen synthetic API-style physical
+column aliases failed schema preflight before any activity query, support
+decision, model fit, prediction, or metric. Cleanup is complete and X1 cannot
+be retried or repaired.
+
+D-115 records `EXP-T2` as not activated at receipt SHA-256
+`75eb8d10...0f59c98`. G1 and M1 stopped before scientific OOF execution,
+parent-defined G2 lacks its required G1 anchor, and X1 stopped before its
+activity query. Thus there is no accepted stronger-successor OOF receipt and no
+prospectively frozen positive improvement-versus-coverage region. MapLight is
+the stable baseline, not its own stronger successor. No row-level artifact,
+fit, prediction, residual computation, metric, or model-quality result was
+opened. After reviewed integration and green post-main CI, the next gate is a
+separately named single-expert global contract for one fixed representation-
+diverse learner against MapLight—not a G1 repair, parent-defined G2, or a choice
+from private portal evidence.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

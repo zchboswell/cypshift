@@ -17,6 +17,10 @@ then consumed the sole G2-5C claim and terminally rejected `EXP-X1`: the exact
 archive passed checksum, extraction, and SQLite integrity, but the frozen
 synthetic physical-schema contract failed against the real `assays` table
 before any activity row, support decision, model fit, prediction, or metric.
+D-115 records `EXP-T2` as not activated: no accepted stronger global successor
+produced cross-fitted OOF residuals and no prospective positive improvement-
+versus-coverage region exists. MapLight remains the stable baseline, and no T2
+contract, fit, prediction, metric, or model-quality result exists.
 
 Authorized: 2026-08-24.
 
@@ -642,6 +646,19 @@ Acceptance: at least 0.015 component-MAE improvement, a wholly favorable paired
 component-bootstrap interval, and activity-cliff degradation no greater than
 0.010. Otherwise reject TRACE v2 and keep the global system unchanged.
 
+D-115 records `G2_6_TRACE_V2_NOT_ACTIVATED` under
+[`global_v2_t2_not_activated.json`](../../benchmarks/openadmet_cyp_2026/global_v2_t2_not_activated.json),
+SHA-256 `75eb8d10...0f59c98`. No accepted stronger global system produced
+scientific OOF predictions, and no prospective positive improvement-versus-
+coverage receipt exists. Fixed MapLight cannot satisfy the stronger-successor
+condition by serving as its own successor. Therefore no T2 contract,
+implementation, fit, threshold, local learner, or coverage region is
+authorized. The aggregate-only audit opened no row-level artifact or official
+input and ran zero fits, predictions, residual computations, or metrics. This
+is a terminal activation-order decision, not a negative model score. Any later
+local residual idea requires a new named prospective hypothesis after separate
+stronger-global evidence; it cannot reinterpret T2.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -700,7 +717,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-112 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-115 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -710,10 +727,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-114 acquisition-failure receipt SHA-256
-`ac08140b...50e4eb2`, then require green post-main CI. Do not retry or repair
-`EXP-X1`; its sole claim is consumed. After integration, audit the remaining
-preregistered lanes and freeze one smallest distinct hypothesis against the
-frozen MapLight error profile. Do not fit, score, inspect blinded test, generate
-a submission, use leaderboard evidence, or upload before that hypothesis has
-its own reviewed contract and synthetic capability gate.
+Review and integrate D-115 nonactivation receipt SHA-256
+`75eb8d10...0f59c98`, then require green post-main CI. Do not contract or
+execute `EXP-T2`; its activation evidence does not exist. After integration,
+freeze a separately named single-expert global contract for one fixed
+representation-diverse learner against MapLight. It must not repair G1,
+instantiate parent-defined G2, reopen M1/X1/T2, or use private portal evidence.
+Do not fit, score, inspect blinded test, generate a submission, call an official
+metric, or upload before that hypothesis has its own reviewed contract and
+synthetic capability gate.

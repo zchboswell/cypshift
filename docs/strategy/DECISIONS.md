@@ -3774,3 +3774,41 @@
   integration of this failure record, followed by an audit of remaining frozen
   lanes for the smallest distinct hypothesis targeting the MapLight error
   profile without using private portal observations for selection.
+
+## D-115 — Do not activate EXP-T2 without stronger global OOF evidence
+
+- Date: 2026-08-25
+- Status: terminal nonactivation; aggregate evidence audit only; zero row-level,
+  official-input, model-quality, submission, or upload operation
+- Decision: Accept `global_v2_t2_not_activated.json` at SHA-256
+  `75eb8d10...0f59c98` and do not draft, implement, or execute `EXP-T2`. The
+  Global-v2 contract and D-085 require a stronger global successor with fully
+  cross-fitted OOF residuals and a positive improvement-versus-coverage region
+  frozen before selecting a local learner or threshold. Fixed MapLight is the
+  stable baseline and cannot serve as its own stronger successor. Searching its
+  row-level residuals now for a favorable competence region would reverse the
+  preregistered activation order.
+- Evidence: The receipt binds the Global-v2 contract `612b8cea...e5c0d`,
+  MapLight reproduction `76775030...a4482`, G1 resource rejection
+  `67585830...a9be4`, M1 resource rejection `3222856d...54297`, and X1
+  acquisition failure `ac08140b...50e4eb2`. Accepted stronger global
+  successors, stronger-successor OOF receipts, and positive improvement-
+  versus-coverage receipts are each zero. G1 and M1 produced zero scientific
+  OOF predictions before resource rejection; parent-defined G2 is unavailable
+  without its required G1 anchor; X1 produced zero scientific OOF predictions
+  before schema preflight failed. The audit opened zero row-level MapLight or
+  R5D artifacts, official inputs, confirmatory truth, blinded test, or TDI;
+  computed zero fits, predictions, residuals, or metrics; and generated zero
+  submission rows, official metric calls, leaderboard-driven selections, or
+  uploads. The result is an activation decision, not model-quality evidence.
+- Alternatives: Treat MapLight as a stronger successor to itself; inspect its
+  row-level residuals and choose a favorable coverage threshold now; reinterpret
+  resource-rejected G1/M1 or unavailable G2 as scientific OOF evidence; reuse
+  R5D row losses; or let a private portal observation choose the local learner,
+  threshold, representation, or candidate.
+- Reversal condition: None within `EXP-T2` under Global-v2. Later evidence from
+  a separately contracted stronger global system cannot retroactively activate
+  or reinterpret this closed lane. The next gate is a new named, prospective
+  single-expert global hypothesis testing one fixed representation-diverse
+  learner against MapLight; it may not repair G1, instantiate parent-defined
+  G2, or use private portal evidence for selection.

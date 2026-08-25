@@ -114,6 +114,19 @@ prediction, metric, submission, leaderboard-selection, or upload occurred.
 `EXP-X1` cannot be retried, repaired, redirected, or partially reused and has
 no model-quality interpretation.
 
+G2-6 does not activate TRACE-v2 under
+[`global_v2_t2_not_activated.json`](global_v2_t2_not_activated.json), SHA-256
+`75eb8d10...0f59c98`. The accepted stronger-global successor count, stronger-
+successor OOF receipt count, and positive improvement-versus-coverage receipt
+count are all zero. G1 and M1 stopped before official execution, parent-defined
+G2 lacks its required G1 anchor, and X1 stopped before its activity query.
+MapLight remains the stable baseline rather than the required stronger
+successor. This aggregate-only audit opened no row-level artifact or official
+input and performed zero fit, prediction, residual, metric, submission,
+leaderboard-selection, or upload operation. `EXP-T2` is closed without a
+contract or model-quality result; its next lane is a separately named,
+prospectively contracted single global expert against MapLight.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact
