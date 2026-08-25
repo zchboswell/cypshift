@@ -77,6 +77,18 @@ namespace, and terminal cleanup. This claim milestone executes zero fit or
 prediction. Its exact next gate is reviewed integration and green post-main CI,
 then one consumption and no replacement.
 
+D-106 now records the terminal G2-4C result at aggregate receipt SHA-256
+`3222856d...54297`. The sole claim was consumed; both opposite-order roots
+completed all 32 formal fits and matched every scientific identity. The frozen
+projection fails only CPU at 266.737/240 core-hours; wall 17.207/38.4 hours,
+storage 4.304/64 GB, RSS 2.164/24 GiB, and GPU 0/0 hours pass. Cleanup is
+complete, every official and forbidden counter is zero, and no M1 quality
+claim exists. `EXP-M1` is permanently closed. With no accepted `EXP-G1`
+selection, parent-defined `EXP-G2` also lacks its required anchor, so G2-3
+stays closed at fixed MapLight. After D-106 integration and green post-main CI,
+the next gate is a contract-only G2-5 `EXP-X1` provenance and acquisition-
+feasibility freeze; external acquisition remains unauthorized.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

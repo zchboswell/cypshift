@@ -215,6 +215,21 @@ unconsumed. This freeze ran zero fit, prediction, or metric operation and opens
 no official capability. Only reviewed signed integration and green post-main
 CI authorize its sole formal consumption.
 
+That sole formal attempt is now tracked in
+[`global_v2_m1_resource_rejection.json`](global_v2_m1_resource_rejection.json)
+at SHA-256 `3222856d...54297`. Both sequential roots completed 16 full-width,
+300-epoch CPU fits each (32 total), with root B reversing physical and launch
+order. All five
+scientific terminal hashes and all runtime identities matched. The conservative
+projection is 266.737 CPU-core-hours, 17.207 wall-hours, 4.304 GB restricted
+storage, 2.164 GiB peak RSS, and zero GPU-hours. CPU alone exceeds its 240-hour
+gate; every other gate passes. The exact run also emitted one identical
+non-writable-input PyTorch warning per fit, which independently satisfies the
+contract's warning rejection rule. Both work/private roots and the dedicated
+cache were cleaned, no failure receipt exists, and all official and forbidden
+counters remain zero. This is synthetic mechanics and resource evidence only:
+`EXP-M1` has no official model-quality result and cannot be retried or repaired.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

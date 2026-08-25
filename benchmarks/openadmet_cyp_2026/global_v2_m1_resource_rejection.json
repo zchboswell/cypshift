@@ -1,0 +1,159 @@
+{
+  "accounting": {
+    "blinded_test_rows_opened": 0,
+    "confirmatory_truth_values_opened": 0,
+    "development_metric_evaluations": 0,
+    "external_records_opened": 0,
+    "formal_claims_consumed": 1,
+    "formal_claims_created": 1,
+    "formal_probe_fits": 32,
+    "historical_row_level_artifacts_opened": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "official_execution_claims_created_or_consumed": 0,
+    "official_features_opened": 0,
+    "official_metric_calls": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "official_structures_opened": 0,
+    "official_target_values_opened": 0,
+    "submission_rows_generated": 0,
+    "tdi_rows_opened": 0
+  },
+  "authority": {
+    "blinded_test_access": false,
+    "confirmatory_truth_access": false,
+    "development_metric_evaluation": false,
+    "external_record_access": false,
+    "historical_row_level_access": false,
+    "leaderboard_selection": false,
+    "live_upload": false,
+    "official_execution_claim": false,
+    "official_feature_access": false,
+    "official_metric_call": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "official_structure_access": false,
+    "official_target_access": false,
+    "submission_generation": false,
+    "tdi_access": false
+  },
+  "claim": {
+    "attempt_id": "g2-4c-m1-synthetic-attempt-1",
+    "claim_sha256": "d6693d11dba104b50a3b0d7785be0285f5a6db00ae9c9cf4346d1bbe13816497",
+    "consumed": true,
+    "maximum_attempts": 1,
+    "replacement_authorized": false
+  },
+  "cleanup": {
+    "cache_root_absent": true,
+    "failure_receipt_absent": true,
+    "private_roots_absent": true,
+    "root_a_absent": true,
+    "root_b_absent": true
+  },
+  "contract_sha256": "f80a6e8d7735a67ddebf636958aea0b56e738afbc3d10bcea2450ec168048df7",
+  "decision": "reject_exp_m1_without_official_access",
+  "determinism": {
+    "cross_root_runtime_identity_equal": true,
+    "root_b_physical_and_launch_order_reversed": true,
+    "scientific_terminal_sha256": {
+      "feature_preprocessing_receipt.json": "568b288cf0909d53a51d32147e96de9af32676256d89ac8833d383371f0fe8e0",
+      "fixture_receipt.json": "11368280179595e82e42b2e4ca2f437ed2f9a03ce7bd70772564b83cd9290d3d",
+      "loss_selection_receipts.csv": "d5462aec02c381b1ec7092a2b2e5a76a987b043407a94c6279dc485d4a2ab69e",
+      "model_double_fit_receipts.csv": "d94cb1b0c91ac35857b8677a4706375fc4c4aa4b77a6a6c5e2ffc91b1a8e8cec",
+      "prediction_receipts.json": "1fb81432c14688bad632533020fd8bec00c195f4b21b9b0cac073feb53223669"
+    },
+    "within_root_repeat_identity_equal": true
+  },
+  "formal_probe": {
+    "epochs_per_fit": 300,
+    "fits_completed": 32,
+    "fits_per_root": 16,
+    "input_columns": 2248,
+    "maximum_concurrent_fits": 4,
+    "measured_root_cpu_core_hours_total": 3.515193768705,
+    "measured_root_cpu_seconds_total": 12654.697567339,
+    "measured_root_wall_seconds_total": 823.468996487,
+    "network_isolated": true,
+    "prediction_rows_per_fit": 997,
+    "roots_completed": 2,
+    "threads_per_fit": 4,
+    "training_rows_per_fit": 3908
+  },
+  "private_receipt_sha256": {
+    "claim_consumption.json": "98f0bd42b8bf3e5cf85dd61c4b3a916509e46043ce0e50cca688276797eaa2d4",
+    "cleanup.json": "753ba8067b09fa283ee9263e69fa82ee98bcf59284eb0a523f93c6df1e0a21c7",
+    "resource_projection.json": "8498a3246481622571323bd6fe2a78c9c3b46f45af4e0fde8b24274dd706da43",
+    "result.json": "38ecb5570aa970f316d053307db354823519edce7c6478ba21030da17a6210d9",
+    "root_a_resource_observations.json": "21ab5f5c119612afdb63b64ce4c5772dfd0f468e3c92862daf2c9f30e87e0eae",
+    "root_b_resource_observations.json": "40e6a7945bdc3beed767c9f8a898da2689fbd4fdc32687341683d720daeb1cac"
+  },
+  "resource_projection": {
+    "accepted": false,
+    "gates": {
+      "cpu": false,
+      "gpu": true,
+      "rss": true,
+      "storage": true,
+      "wall": true
+    },
+    "maximum_cpu_core_hours": 240.0,
+    "maximum_gpu_hours": 0,
+    "maximum_peak_rss_gib": 24.0,
+    "maximum_restricted_storage_gb": 64.0,
+    "maximum_wall_hours": 38.4,
+    "projected_cpu_core_hours": 266.7373089008778,
+    "projected_cpu_excess_core_hours": 26.7373089008778,
+    "projected_cpu_excess_percent": 11.14054537536575,
+    "projected_gpu_hours": 0,
+    "projected_peak_rss_gib": 2.16412353515625,
+    "projected_restricted_storage_gb": 4.304410385,
+    "projected_wall_hours": 17.206805174399165,
+    "worst_root_rule": true
+  },
+  "root_telemetry": {
+    "root_a": {
+      "batch_wall_seconds": [
+        105.645632811,
+        106.320032872,
+        99.762320456,
+        98.469015757
+      ],
+      "maximum_simultaneous_child_rss_kib": 2245536,
+      "preprocessing_cpu_seconds": 0.17534529,
+      "preprocessing_wall_seconds": 0.175367637,
+      "total_cpu_seconds": 6311.026635699999,
+      "total_wall_seconds": 410.561844601
+    },
+    "root_b": {
+      "batch_wall_seconds": [
+        106.672396143,
+        106.611061831,
+        100.037595532,
+        99.290625137
+      ],
+      "maximum_simultaneous_child_rss_kib": 2269248,
+      "preprocessing_cpu_seconds": 0.143334886,
+      "preprocessing_wall_seconds": 0.143361676,
+      "total_cpu_seconds": 6343.670931639,
+      "total_wall_seconds": 412.907151886
+    }
+  },
+  "runtime_warning_observation": {
+    "count": 32,
+    "disposition": "The frozen contract treats any warning as rejection; CPU infeasibility independently rejects the lane, so no repair or retry is authorized.",
+    "type": "PyTorch non-writable NumPy tensor warning"
+  },
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_m1_resource_rejection.v1",
+  "scientific_interpretation": "Synthetic determinism and resource evidence only. EXP-M1 was not fitted or scored on official development data, and this result contains no model-quality evidence.",
+  "source_bindings": {
+    "focused_test_sha256": "ad94bf7664f11dd3ebb9223f71c16bff78376a6d9849083336cab73bbcbee010",
+    "m1_runner_sha256": "5e2e372e37fa5cc0d062e79149c6b1185b97bbd1adda6264aeb3ce1fd6e62bc5",
+    "m1_synthetic_driver_sha256": "008f62c9b19982b030db0cb76d2815f3c023a2a4636bdbe4283d2227e798f5af",
+    "research_pyproject_sha256": "402958b3f919b97a91942f866b7e9421098764c7fc0fa0f6a90ae02be556a9d7",
+    "research_python_pin_sha256": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+    "research_uv_lock_sha256": "e69858045e94375fb2c937db4f0847aa36508e704ebc2b4fdfba72ece25ded1b"
+  },
+  "status": "G2_4_M1_RESOURCE_REJECTED"
+}

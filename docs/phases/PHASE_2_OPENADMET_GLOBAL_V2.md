@@ -4,9 +4,9 @@ Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
 G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
 accepted but resource feasibility rejected, and the one-shot G2-3D resource
 falsifier terminally rejected; G2-4A `EXP-M1` is frozen, G2-4B implementation
-is accepted, and the G2-4C formal claim is frozen and unconsumed; the G2-3C
-claim remains
-unconsumed, and official development, confirmatory, historical-row,
+is accepted, and G2-4C terminally rejects `EXP-M1` on CPU resources after its
+sole deterministic formal attempt; the G2-3C claim remains unconsumed, and
+official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
 upload capabilities remain closed.
 
@@ -454,6 +454,27 @@ unconsumed and this milestone ran zero fit, prediction, or metric operation;
 every official and forbidden counter is zero. Reviewed signed integration and
 green post-main CI are mandatory before the sole consumption.
 
+D-106 records that sole consumption in
+[`global_v2_m1_resource_rejection.json`](../../benchmarks/openadmet_cyp_2026/global_v2_m1_resource_rejection.json)
+at SHA-256 `3222856d...54297`. Both sequential roots completed all 32
+full-width, 300-epoch CPU fits; root B reversed physical and launch order, and
+all five scientific terminal receipts plus every runtime identity matched
+exactly. The worse-root projection is 266.737 CPU-core-hours versus the frozen
+240 maximum, a 26.737-hour or 11.14% miss. Wall time (17.207/38.4 hours),
+restricted storage (4.304/64 GB), peak RSS (2.164/24 GiB), and GPU use (0/0
+hours) pass. The exact runtime also emitted 32 identical non-writable-input
+PyTorch warnings; the contract treats warnings as rejection, while the CPU
+miss independently decides the lane. Both work roots, both private roots, and
+the dedicated cache were removed; no failure receipt exists. Every official
+and forbidden counter remains zero, so this is mechanics/resource evidence
+only and contains no model-quality result. `EXP-M1` is closed permanently: do
+not repair the warning, change threads/device/concurrency, reduce the design,
+or retry. Because `EXP-G1` produced no selected recipe, the parent-defined
+`EXP-G2` required anchor is unavailable and G2-3 remains closed at fixed
+MapLight. The next preregistered lane is G2-5 `EXP-X1`, beginning with a
+contract-only provenance and acquisition-feasibility freeze before any
+external record is acquired.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -559,7 +580,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-105 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-106 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -569,15 +590,18 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-105's exact unconsumed claim SHA-256
-`d6693d11...16497`, then require green post-main CI. Keep G1 claim
-`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` again.
-Recheck every bound source, exact host/environment/cache, absent attempt and
-receipt roots, and the no-network launcher. Then consume the M1 claim exactly
-once for two sequential roots and 32 full-width fits. Publish acceptance or
-terminal rejection and cleanup; do not retry, resume, move, overwrite, rerun
-the four exhausted API smokes, or add a model, feature, loss, seed, device,
-dependency, or timing remedy. Keep official
+Review and integrate D-106's exact aggregate rejection SHA-256
+`3222856d...54297`, then require green post-main CI. Treat the consumed M1
+claim and `EXP-M1` as permanently closed; do not retry, repair its runtime
+warning, alter resources, or shrink the frozen design. Keep G1 claim
+`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` or its
+unavailable-anchor `EXP-G2`. Next freeze the smallest G2-5 `EXP-X1`
+provenance/acquisition-feasibility child contract: exact candidate source
+revisions, retrieval and release-date rules, licenses and redistribution,
+assay/organism/unit fields, challenge-family exclusion, weight/model rights,
+external/no-external ablation, and a source-specific stopping rule. The freeze
+must acquire zero external records and open no official input. Keep official
 development, confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, upload,
-and execution-claim capability closed.
+and execution-claim capability closed until that contract passes its own
+reviewed gate.

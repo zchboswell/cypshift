@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-105. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-106. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -231,6 +231,25 @@ cache. Five focused claim tests pass. This milestone ran zero fit, prediction,
 or metric operation; every official and forbidden counter is zero. Reviewed
 signed integration and green post-main CI are required before the sole
 consumption.
+
+D-106 terminally rejects `EXP-M1` under tracked aggregate receipt SHA-256
+`3222856d...54297`. The sole no-network claim was consumed exactly once; two
+sequential roots completed all 32 full-width 300-epoch CPU fits, with root B
+reversing physical and launch order. All five scientific terminal hashes and
+every runtime identity matched across roots. The worse-root projection is
+266.737 CPU-core-hours against the 240 maximum, failing by 26.737 hours or
+11.14%. Wall (17.207/38.4 hours), storage (4.304/64 GB), RSS (2.164/24 GiB),
+and GPU (0/0 hours) pass. Thirty-two identical PyTorch non-writable-input
+warnings were observed; the contract rejects any warning, and CPU infeasibility
+independently decides the lane. Cleanup removed both work roots, both private
+roots, and the dedicated cache; no failure receipt exists. Every official and
+forbidden counter remains zero, so no M1 model-quality evidence exists. Do not
+retry, repair, resize, retime, or execute `EXP-M1` officially. With `EXP-G1`
+already resource-rejected and no selected G1 recipe available, parent-defined
+`EXP-G2` cannot instantiate its required anchor and G2-3 remains closed at
+fixed MapLight. The exact next lane is a contract-only G2-5 `EXP-X1`
+provenance/acquisition-feasibility freeze; acquire no external record before
+that contract is reviewed and integrated.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -880,21 +899,24 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate exact D-105 claim `d6693d11...16497`, then require green
-post-main CI. Recheck all six source hashes, host, isolated environment,
-dedicated cache, absent attempt and receipt roots, and the no-network launcher.
-Consume the claim once for two sequential roots and exactly 32 full-width fits;
-publish its terminal decision and cleanup. Do not retry, resume, move,
-overwrite, rerun the four exhausted API smokes, open an official
-target, feature, structure, baseline row, or fold artifact, create an official
-execution claim, or use an API smoke as resource evidence. Confirmatory truth,
-historical R3C row-level artifacts, blinded
-test, TDI, external records, submission, official metric, leaderboard, and
-upload capabilities remain closed. Any private portal observation remains
-outside the public knowledgebase and cannot select a model, feature, loss,
-threshold, or candidate. Do not rerun R5D, tune I0/F1, or generate a TRACE test
-prediction. `global_TDI` remains the permanent TDI fallback until a separate
-accepted contract says otherwise.
+Review and integrate exact D-106 aggregate rejection `3222856d...54297`, then
+require green post-main CI. Preserve the consumed M1 claim and rejection; do
+not retry, repair its warning, resize or retime the experiment, or execute an
+official M1 fit. Keep the G1 claim unconsumed and do not instantiate
+parent-defined `EXP-G2` without its unavailable selected-G1 anchor. Freeze the
+smallest source-specific G2-5 `EXP-X1` provenance/acquisition-feasibility child
+contract next. It must bind immutable source revisions, licenses and
+redistribution, release/retrieval dates, organism/assay/endpoint/unit fields,
+challenge-family exclusion, model/weight rights, the external/no-external
+ablation, resource ceilings, and a simplest falsifier while acquiring zero
+external records and opening zero official input. Confirmatory truth,
+historical R3C row-level artifacts, blinded test, TDI, external records,
+submission, official metric, leaderboard, and upload capabilities remain
+closed. Any private portal observation remains outside the public
+knowledgebase and cannot select a model, feature, loss, threshold, or
+candidate. Do not rerun R5D, tune I0/F1, or generate a TRACE test prediction.
+`global_TDI` remains the permanent TDI fallback until a separate accepted
+contract says otherwise.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

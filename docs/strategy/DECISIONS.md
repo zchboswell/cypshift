@@ -3387,3 +3387,48 @@
   signed-integration, or post-main-CI defect revokes the claim before
   consumption. After consumption, any defect or interruption is terminal and
   cannot authorize a replacement attempt.
+
+## D-106 — Reject EXP-M1 on the sole formal CPU resource proof
+
+- Date: 2026-08-24
+- Status: terminal G2-4C resource rejection; sole claim consumed; no official
+  development or model-quality authority
+- Decision: Accept aggregate rejection receipt
+  `global_v2_m1_resource_rejection.json` at SHA-256
+  `3222856d...54297`, bound to contract `f80a6e8d...48df7`, consumed claim
+  `d6693d11...16497`, and all six D-104 source hashes. Reject `EXP-M1`
+  permanently because its worse-root projection is 266.737 CPU-core-hours
+  against the frozen 240 maximum. Do not retry, repair the observed warning,
+  change device, threads, concurrency, epochs, fits, architecture, or losses,
+  or shrink the experiment. Close G2-3 at fixed MapLight because the rejected
+  `EXP-G1` supplies no selected recipe for parent-defined `EXP-G2`'s required
+  anchor. Advance only to a contract-first G2-5 `EXP-X1` provenance and
+  acquisition-feasibility freeze; acquire no external record before review.
+- Evidence: The one authorized no-network attempt completed both sequential
+  roots and all 32 full-width 300-epoch PyTorch fits in 823.469 measured root
+  wall-seconds and 12,654.698 CPU-seconds. Root B reversed physical and launch
+  order. The five scientific terminal files, all 2,430 model-double identities,
+  all 75 loss-selection tokens, exact-repeat parameters/predictions, and every
+  cross-root runtime identity matched. The final projection passes wall at
+  17.207/38.4 hours, storage at 4.304/64 GB, RSS at 2.164/24 GiB, and GPU at
+  0/0 hours, but fails CPU by 26.737 core-hours or 11.14%. Thirty-two identical
+  PyTorch warnings reported non-writable NumPy-backed input tensors; the
+  training path read/indexed those tensors without in-place mutation, but the
+  frozen contract rejects any warning and no repair is authorized. The CPU
+  miss independently determines rejection. Both public/private work roots and
+  the dedicated cache were removed, no failure receipt exists, and every
+  official, development-metric, confirmatory, historical-row, blinded-test,
+  TDI, external, submission, official-metric, leaderboard-selection, and
+  upload counter is zero. Therefore this result has no predictive-quality
+  interpretation.
+- Alternatives: Infer feasibility from the four tiny smokes; average the two
+  roots; ignore import/startup or wrapper CPU; reduce epochs or fit identities;
+  change affinity, concurrency, device, or PyTorch behavior; repair the warning
+  and retry; execute M1 officially despite the failed precondition; substitute
+  fixed MapLight silently for EXP-G2's selected-G1 anchor; or acquire external
+  data before a source/provenance contract.
+- Reversal condition: The consumed attempt and rejection are immutable and
+  cannot be rerun. A receipt, source-binding, determinism, resource-arithmetic,
+  warning-accounting, capability, or cleanup defect revokes evidentiary trust
+  and stops the lane; it does not authorize replacement, repair, resume, move,
+  overwrite, or official M1 execution.
