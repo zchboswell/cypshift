@@ -56,8 +56,14 @@ CPU-core-hours, failing both 96/960 gates. The claim remains unconsumed and
 contract SHA-256 `63516e0f...b1c2cc0`: 2,430 exact neural fits cover the shared
 fingerprint MLP, four independent networks, the training-only label-permuted
 control, two inner-selected losses, and three seeds. The next gate is G2-4B's
-deterministic runtime and synthetic implementation contract; no implementation,
-multitask fit, official input, or development score is yet authorized.
+deterministic runtime and synthetic implementation contract. D-103 now freezes
+that contract at SHA-256 `f80a6e8d...48df7`: an isolated CPU-only PyTorch
+2.13.0 environment, four pinned four-core workers, an exhaustive 2,430-identity
+model double per root, and 32 full-width real timing fits across two roots.
+This contract creates no environment and runs no fit. After reviewed
+integration and green post-main CI, only the isolated runtime, implementation,
+unit tests, and at most four tiny API smokes are authorized; the formal probe
+still requires a separate single-use source-binding claim.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

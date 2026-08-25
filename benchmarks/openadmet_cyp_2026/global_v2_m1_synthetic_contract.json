@@ -1,0 +1,364 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_m1_synthetic_contract.v1",
+  "freeze_date": "2026-08-24",
+  "recorded_at_utc": "2026-08-25T00:30:27Z",
+  "gate": "G2_4B_EXP_M1_SYNTHETIC_CONTRACT_FROZEN",
+  "status": "contract_only_no_runtime_install_or_synthetic_execution_authority",
+  "base_commit": "8ebc45bc5585d495ed3b2cd920bbc6f2e3ae80b3",
+  "purpose": "Freeze the exact CPU-only runtime, least-privilege synthetic mechanics, deterministic replay, and conservative resource falsifier required before the 2,430-fit EXP-M1 design may receive any official development authority.",
+  "hypothesis": "The parent-frozen masked multitask design can be implemented deterministically on the available CPU host and conservatively projected below all twenty-percent-margin resource gates without changing a scientific identity.",
+  "targeted_failure": "The available host has no GPU and no installed neural framework; the simplest falsifier is that exact CPU PyTorch replays drift or a full-width 300-epoch probe projects the unchanged 2,430-fit design above 240 CPU-core-hours or 38.4 wall-hours.",
+  "occam_boundary": "Add one isolated research runtime, one M1 runner, one synthetic driver, and focused tests only. Exercise the exact parent architectures, losses, seeds, folds, preprocessing, masks, permutations, stopping, selection, reductions, and fit counts. Do not change the public core dependency set, add a GPU path, compile a model, tune threads after timing, reduce epochs or fits, or interpret synthetic outcomes as model quality.",
+  "targeted_failure_modes": [
+    "V1/V2 synthetic molecule, exact-duplicate, or component leakage across outer or inner boundaries",
+    "V3 target, loss, epoch, preprocessing, checkpoint, or control selection outside the current inner capability",
+    "V4 Python, NumPy, RDKit, PyTorch, wheel, thread, affinity, seed, architecture, loss, or dtype drift",
+    "V6 treating synthetic tutorial values as official or scientific evidence",
+    "C6 changing the G2-4A model, feature, mask, optimizer, seed, control, or fit identity",
+    "P5 nondeterminism, partial topology, timing subtraction, favorable-root averaging, retry, resume, overwrite, or cleanup failure",
+    "P6 official, confirmatory, historical-row, blinded-test, TDI, external, submission, official-metric, leaderboard, upload, or claim contamination"
+  ],
+  "parents": {
+    "m1_screen_contract": {
+      "path": "global_v2_m1_screen_contract.json",
+      "sha256": "63516e0f3b9b87cd24911d39d753de0dabac458413d05a6ac83a27d97b1c2cc0"
+    },
+    "global_v2_synthetic_firewall_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    }
+  },
+  "host_profile": {
+    "profile_scope": "Read-only label-free system inspection; no framework was installed and no model or tensor operation was executed.",
+    "platform": "Linux x86_64",
+    "kernel_observed": "7.0.0-30-generic",
+    "glibc_observed": "2.39",
+    "cpu_vendor": "AuthenticAMD",
+    "cpu_model_name": "AMD Ryzen 9 7950X 16-Core Processor",
+    "cpu_family": 25,
+    "cpu_model": 97,
+    "cpu_stepping": 2,
+    "physical_cores": 16,
+    "logical_processors": 32,
+    "thread_sibling_rule": "Logical processors 0 through 15 are the first thread of physical cores 0 through 15; processors 16 through 31 are their respective siblings.",
+    "mem_total_kib_observed": 31940952,
+    "cuda_devices": 0,
+    "rocm_devices": 0,
+    "gpu_policy": "GPU use is exactly zero. CUDA, ROCm, MPS, XPU, and remote accelerators are forbidden for this lane.",
+    "execution_preflight": "The formal attempt requires the exact CPU vendor, family, model, stepping, physical-core topology, and sched_setaffinity support above; Linux x86_64, glibc at least 2.28, at least 30 GiB physical RAM, and zero visible accelerator devices. Drift fails before a probe rather than selecting another runtime."
+  },
+  "runtime_contract": {
+    "isolation_directory": "research/multitask-mlp",
+    "python": "3.12.3",
+    "uv": "0.12.3",
+    "numpy": {
+      "version": "2.5.2",
+      "wheel": "numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "3cdec01fa790a186d430433fdd4d4ffb70eed6f0eeb4bf05c8dbe2dce0a9bcb8"
+    },
+    "rdkit": {
+      "version": "2026.3.5",
+      "wheel": "rdkit-2026.3.5-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "sha256": "b75944ba959d908e97b4d68754e5950216ac08aa81faf67cfd1d7a3cb5b2bad7"
+    },
+    "torch": {
+      "version": "2.13.0+cpu",
+      "index": "https://download.pytorch.org/whl/cpu",
+      "wheel": "torch-2.13.0+cpu-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "wheel_url": "https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "wheel_sha256": "4ca4a9394b0c771238a4f73590fdbbc4debad85ed0fa63d026ae1b085da7d6e2",
+      "metadata_sha256": "b3c7f4b3f77d06f86a42aab7d0facef7b661ca3c22967bfcc396917d935dd335",
+      "upload_time_utc": "2026-07-08T19:29:03Z",
+      "required_extras": [],
+      "forbidden_companions": [
+        "torchvision",
+        "torchaudio",
+        "torchtext"
+      ]
+    },
+    "lock_requirements": "A future uv.lock must resolve only the exact direct versions above and their necessary CPU transitive dependencies. It must contain no package whose normalized name begins nvidia-, cuda-, cudnn-, nccl-, rocm-, hip-, triton, torchvision, torchaudio, or torchtext.",
+    "root_boundary": "Do not add PyTorch or any M1-only dependency to the root pyproject.toml or root uv.lock. The installable RDKit-only core and its CI matrix remain unchanged.",
+    "network_boundary": "Dependency synchronization is allowed only before the formal attempt. Both formal roots run with network access disabled and consume the same immutable environment receipt."
+  },
+  "feature_and_preprocessing_mechanics": {
+    "official_shape": {
+      "development_molecules": 3908,
+      "input_columns": 2248,
+      "morgan_columns": 2048,
+      "descriptor_columns": 200
+    },
+    "morgan_api": "rdkit.Chem.rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048, includeChirality=True, useBondTypes=True, countSimulation=False, includeRedundantEnvironments=False), then GetCountFingerprint and DataStructs.ConvertToNumpyArray into int32 columns 0 through 2047.",
+    "structure_rule": "Recompute the frozen standardized SMILES from exact raw structure using the accepted core standardizer, require SHA-256 of UTF-8 standardized SMILES to equal the accepted standardized_structure_hash, then fingerprint. Synthetic fixtures use exact generated standardized SMILES and the same hash check.",
+    "descriptor_rule": "Consume the exact accepted 200-column MapLight descriptor array and receipt in its existing order. Synthetic fixtures generate the same width and allowed nonfinite pattern without claiming descriptor chemistry.",
+    "preprocessing_rule": "Implement the exact G2-4A target-blind training-only descriptor median imputation and 2,248-column population standardization once per fold context. Emit float64 statistic bytes and contiguous float32 transformed arrays; every system in the context consumes the same immutable transform receipt.",
+    "preprocessing_contexts": 75,
+    "context_arithmetic": "3 repeats * 5 outer folds * 4 inner folds = 60 inner contexts, plus 3 * 5 = 15 outer contexts.",
+    "forbidden": "No target-conditioned feature row, global preprocessing fit, descriptor drop, alternative fingerprint API, hidden structure repair, or system-specific transform."
+  },
+  "determinism_contract": {
+    "process_start_method": "spawn",
+    "maximum_concurrent_fits": 4,
+    "intraop_threads_per_fit": 4,
+    "interop_threads_per_fit": 1,
+    "data_loader_workers": 0,
+    "worker_affinity": {
+      "slot_0": [0, 1, 2, 3],
+      "slot_1": [4, 5, 6, 7],
+      "slot_2": [8, 9, 10, 11],
+      "slot_3": [12, 13, 14, 15]
+    },
+    "environment": {
+      "PYTHONHASHSEED": "0",
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "MKL_NUM_THREADS": "4",
+      "MKL_DYNAMIC": "FALSE",
+      "OPENBLAS_NUM_THREADS": "4",
+      "NUMEXPR_NUM_THREADS": "4"
+    },
+    "torch_settings": [
+      "torch.use_deterministic_algorithms(True, warn_only=False)",
+      "torch.set_deterministic_debug_mode('error')",
+      "torch.set_num_threads(4)",
+      "torch.set_num_interop_threads(1)",
+      "torch.set_float32_matmul_precision('highest')",
+      "torch.set_flush_denormal(True)",
+      "torch.backends.mkldnn.enabled = False"
+    ],
+    "seed_derivation": "For scoped shuffles and initialization, compute SHA-256 over UTF-8 cypshift-m1-v1|<namespace>|<pipe-joined canonical fields>, interpret the first eight digest bytes as unsigned big-endian, and reduce modulo 2^63. Shared and permuted models use namespace SHARED_ARCH for identical initialization under the same fold, loss, and base model seed; independent models use INDEPENDENT|<endpoint>.",
+    "row_order": "Canonical molecule_id ascending before every deterministic epoch permutation. Physical source order and worker launch order cannot affect any tensor, checkpoint, prediction, reduction, or receipt.",
+    "byte_receipts": "Serialize each named parameter as contiguous little-endian float32 raw bytes in lexicographic parameter-name order and each prediction as contiguous little-endian float64 raw bytes in canonical identity order. Hash the concatenation with length-prefixed names and shapes. torch.save, pickle, and archive bytes are not equivalence authorities.",
+    "forbidden": "No torch.compile, JIT, autocast, mixed precision, fused optimizer, scheduler, warm start, gradient clipping, checkpoint averaging, worker thread, dynamic affinity, nondeterministic warning mode, or execution-order reduction."
+  },
+  "synthetic_fixture": {
+    "schema": "cypshift.openadmet_cyp_2026.global_v2_m1_synthetic_fixture.v1",
+    "seed": 20260830,
+    "molecules": 100,
+    "components": 50,
+    "molecules_per_component": 2,
+    "development_components": 40,
+    "development_molecules": 80,
+    "confirmatory_components": 10,
+    "confirmatory_molecules": 20,
+    "component_assignment": "Generate lowercase SHA-256 component tokens from cypshift-m1-synthetic-component-v1|<counter>. Retain the first 40 whose parent confirmatory modulo is nonzero as development and the first 10 whose modulo is zero as confirmatory; assign two canonical molecule IDs to each.",
+    "structures": "For canonical molecule index i from 0 through 99, standardized SMILES is the string C repeated i+1 times. Every unbranched alkane is unique. Hash exact UTF-8 bytes and verify the accepted standardization identity path.",
+    "fold_assignment": "For each parent repeat seed, sort development component hashes by SHA-256(seed|OUTER|component) and assign rank modulo 5. Within each outer-training set, sort by SHA-256(seed|outer_fold|INNER|component) and assign rank modulo 4. A component and both molecules never split.",
+    "targets": {
+      "central": "For development molecule index i and endpoint index e, central is missing iff (i+e) mod 5 = 0; otherwise point = 4.0 + 0.025*i + 0.2*e + 0.05*((7*i+e) mod 5).",
+      "bounds": "For a finite central cell, bounds are missing iff (i+2*e) mod 4 = 0; otherwise lower=point-(0.15+0.01*e) and upper=point+(0.15+0.01*e).",
+      "standard_deviation": "For interval-eligible cells, standard deviation is missing iff (i+3*e) mod 3 = 0; otherwise std=0.05+0.005*e. The loss ignores std but identity preservation does not.",
+      "exact_counts_per_endpoint": {
+        "finite_central": 64,
+        "interval_eligible": 48,
+        "point_only": 16,
+        "missing_central": 16
+      },
+      "confirmatory_rule": "Confirmatory target bytes exist only in the sealed synthetic scorer root. The development compiler and every model process receive confirmatory identities without a resolvable truth path and parse zero values."
+    },
+    "physical_order_variants": {
+      "root_a": "canonical file and stage order",
+      "root_b": "reverse every input CSV row and array row before canonical parsing; reverse independent endpoint, loss, seed, and worker-batch launch order"
+    }
+  },
+  "model_double_topology": {
+    "purpose": "Traverse every scientific and prediction identity cheaply while real PyTorch probes test only runtime forms and worst-case cost.",
+    "fit_counts_per_root": {
+      "shared_two_loss_inner": 360,
+      "shared_selected_outer": 45,
+      "independent_two_loss_inner": 1440,
+      "independent_two_loss_outer": 360,
+      "permuted_selected_inner": 180,
+      "permuted_selected_outer": 45,
+      "total": 2430
+    },
+    "prediction_rows_per_root": {
+      "inner_raw": 57600,
+      "inner_seed_averaged": 19200,
+      "outer_raw": 11520,
+      "outer_seed_averaged": 3840
+    },
+    "selection_tokens_per_root": {
+      "shared_outer_loss": 15,
+      "independent_endpoint_outer_loss": 60
+    },
+    "selection_oracles": "Engineer exactly five shared central wins, five shared interval wins, and five shared exact ties resolved by loss_id; across 60 independent tokens engineer exactly 20 of each. Outer outcomes cannot change a token.",
+    "epoch_oracles": "Each inner fit identity receives a deterministic best epoch in 1 through 300. Every outer epoch receipt must equal floor((second+third)/2) after sorting its four inner best epochs.",
+    "permutation_oracles": "Exercise both losses, every endpoint, every inner and outer training scope, intact label bundles, deterministic bijection, a permitted fixed point, and a required nonidentity permutation whenever more than one eligible cell exists.",
+    "metric_boundary": "Synthetic tutorial and MAE values test arithmetic and tie behavior only. They are never recorded as scientific, development, confirmatory, official, or leaderboard evidence."
+  },
+  "real_runtime_probe": {
+    "purpose": "Cover every architecture, loss, and base-seed form at a conservative full-development row count and maximum epoch count without official input.",
+    "training_rows": 3908,
+    "prediction_rows": 997,
+    "input_columns": 2248,
+    "batch_size": 128,
+    "epochs_per_fit": 300,
+    "batches_per_epoch": 31,
+    "optimizer_steps_per_fit": 9300,
+    "fits_per_root": 16,
+    "fits_across_two_roots": 32,
+    "shared_family_batches": [
+      [
+        "shared CENTRAL seed 20260824",
+        "shared CENTRAL seed 20260825",
+        "shared INTERVAL seed 20260824",
+        "shared INTERVAL seed 20260825"
+      ],
+      [
+        "shared CENTRAL seed 20260826",
+        "shared INTERVAL seed 20260826",
+        "permuted CENTRAL seed 20260824",
+        "permuted INTERVAL seed 20260824"
+      ]
+    ],
+    "independent_batches": [
+      [
+        "independent CENTRAL seed 20260824",
+        "independent CENTRAL seed 20260825",
+        "independent INTERVAL seed 20260824",
+        "independent INTERVAL seed 20260825"
+      ],
+      [
+        "independent CENTRAL seed 20260826",
+        "independent INTERVAL seed 20260826",
+        "independent CENTRAL seed 20260824 resource-repeat-1",
+        "independent INTERVAL seed 20260824 resource-repeat-1"
+      ]
+    ],
+    "data_generation": "NumPy PCG64 seed 20260830 generates a deterministic official-width raw count/descriptor matrix, allowed descriptor nonfinite patterns, all target masks, and prediction rows. Canonical preprocessing runs before fit timing and is measured separately. No structure, target, feature, fold, or prediction byte comes from an official source.",
+    "resource_repeat_rule": "The two resource-repeat-1 fits use byte-identical data, initialization seed, epoch shuffles, architecture, loss, and optimizer state to their matching first-batch identities. The repeat label exists only in the receipt identity and is excluded from every numerical seed, permitting an exact within-root parameter and prediction comparison across worker slots.",
+    "measurements": "Record batch perf_counter_ns wall time, each child process user+system CPU ns, peak RSS, runtime configuration, parameter digest, float64 prediction digest, preprocessing cost, fixed wrapper overhead, environment bytes, cache bytes, work bytes, and cleanup receipt. Never subtract warm-up, import, launch, preprocessing, serialization, or failed-fit cost from a projection.",
+    "success": "All 32 fits complete, every same-identity parameter and prediction digest matches exactly across roots, repeated independent identities match within root, every resolved setting matches, and no warning or forbidden fallback occurs."
+  },
+  "resource_projection": {
+    "scientific_fit_classes": {
+      "shared_or_permuted": 630,
+      "independent": 1800,
+      "total": 2430
+    },
+    "wall_formula": "ceil(630/4) * worse_root_max_full_shared_batch_wall + ceil(1800/4) * worse_root_max_full_independent_batch_wall + 75 * worse_root_preprocessing_wall + worse_root_nonfit_nonpreprocessing_wall. Use 158 and 450 batches exactly; do not average roots or subtract probe overhead.",
+    "cpu_formula": "630 * worse_root_max_shared_child_cpu + 1800 * worse_root_max_independent_child_cpu + 75 * worse_root_preprocessing_cpu + worse_root_nonfit_nonpreprocessing_cpu. Use maximum individual child CPU within each class, not its mean.",
+    "storage_formula": "Count the immutable runtime environment, downloaded wheel cache, complete work root, temporary checkpoints, terminal receipts, and a canonical upper bound for all parent-contracted private prediction rows. Use the worse simultaneous peak; exclude nothing stored on restricted media.",
+    "maximum_projected_cpu_core_hours": 240,
+    "maximum_projected_gpu_hours": 0,
+    "maximum_projected_wall_hours": 38.4,
+    "maximum_projected_restricted_storage_gb": 64,
+    "maximum_peak_rss_gib": 24,
+    "logic": "Every gate is conjunctive. Equality passes numeric maxima; exact GPU use must equal zero. Any mismatch, failed fit, warning, fallback, budget miss, or accounting defect publishes G2_4_M1_RESOURCE_REJECTED before official access. No alternate device, thread count, concurrency, architecture, fit reduction, epoch reduction, second timing optimization, or retry is authorized."
+  },
+  "capability_firewall": {
+    "fixture_builder": "May create only the exact synthetic identities, structures, features, folds, and separated target roots. It cannot resolve any private official path.",
+    "preprocessor": "May read label-free synthetic training/prediction features and fold identities only. It cannot read a target, metric, baseline prediction, or confirmatory truth.",
+    "inner_model": "May read one synthetic inner-training target capability, matching features, one architecture/loss/seed identity, and its matching unpermuted inner-validation objective for stopping. It cannot resolve outer-validation truth, another cell, baseline rows, or confirmatory truth.",
+    "loss_selector": "May read complete frozen synthetic inner predictions and matching inner truth only after every required seed/loss identity exists. It cannot read any outer truth or baseline prediction.",
+    "outer_model": "May read one frozen loss token, synthetic outer-training targets, matching features, and four epoch receipts. It cannot resolve outer-validation truth, metrics, baseline rows, or confirmatory truth.",
+    "outer_scorer": "May read synthetic outer truth and synthetic control predictions only after all outer prediction bytes are immutable. It emits mechanics receipts only.",
+    "runtime_probe": "May read only generated numeric synthetic matrices and labels. It cannot resolve a chemistry, official receipt root, baseline row, metric output, or confirmatory path.",
+    "forbidden_counters": "Every official development, confirmatory, historical-row, blinded-test, TDI, external, submission, official-metric, leaderboard, upload, and execution-claim counter must remain zero."
+  },
+  "formal_attempt_contract": {
+    "maximum_attempts": 1,
+    "attempt_id": "g2-4c-m1-synthetic-attempt-1",
+    "precondition": "Before the attempt, a reviewed signed source-binding claim must freeze the exact future runner, driver, focused tests, pyproject, Python pin, uv.lock, parent contract, fixed attempt/receipt roots, and all null fields below. The claim must be integrated with green post-main CI.",
+    "roots": 2,
+    "execution": "Run roots sequentially. Within each root execute exactly four fixed four-worker real-probe batches. Root B reverses physical and launch order but never scientific identity.",
+    "no_replace": "After claim consumption, no retry, resume, partial reuse, moved root, overwritten root, alternative schedule, source edit, dependency edit, or replacement attempt is authorized.",
+    "cleanup": "On success or failure, remove every mutable work and cache root named by the claim after copying immutable aggregate receipts to the fixed receipt root. A cleanup defect is terminal failure.",
+    "network": "Disabled for both roots and every child process."
+  },
+  "terminal_contract": {
+    "statuses": [
+      "G2_4B_M1_SYNTHETIC_FAILED",
+      "G2_4_M1_RESOURCE_REJECTED",
+      "G2_4B_M1_SYNTHETIC_ACCEPTED"
+    ],
+    "required_terminal_files": [
+      "feature_preprocessing_receipt.json",
+      "model_double_fit_receipts.csv",
+      "loss_selection_receipts.csv",
+      "prediction_receipts.json",
+      "runtime_probe_receipts.csv",
+      "resource_projection.json",
+      "accounting.json",
+      "manifest.json"
+    ],
+    "cross_root_equivalence": "The feature/preprocessing, model-double fit, loss-selection, and prediction receipt files must be byte-identical after replacing the root-local attempt label. Runtime-probe projections must match exactly for identity, parameters, predictions, settings, and counts while retaining root-specific timing and resource observations. Bind both the exact four-file scientific tree and the complete root-specific eight-file trees.",
+    "tracked_publication": "A passing or rejecting formal attempt may track only aggregate counts, digests, timings, resource projections, environment receipts, accounting, cleanup, and decision. Synthetic row-level features, labels, parameters, predictions, and mutable work remain outside Git.",
+    "failure": "Any incomplete topology, failed or extra fit, byte mismatch, identity mismatch, selection mismatch, capability leak, nonfinite value, warning, fallback, resource breach, forbidden counter, partial publication, cleanup defect, crash, or interruption is terminal."
+  },
+  "future_source_bindings": {
+    "research_pyproject_sha256": null,
+    "research_python_pin_sha256": null,
+    "research_uv_lock_sha256": null,
+    "m1_runner_sha256": null,
+    "m1_synthetic_driver_sha256": null,
+    "focused_test_sha256": null,
+    "formal_attempt_claim_sha256": null,
+    "formal_acceptance_or_rejection_sha256": null
+  },
+  "post_integration_implementation_authority": {
+    "precondition": "This exact contract and static tests are reviewed, integrated as one signed commit, and green on post-main CI.",
+    "research_environment_creation": true,
+    "implementation": true,
+    "model_double_unit_tests": true,
+    "real_torch_smoke_limit": {
+      "maximum_fits": 4,
+      "maximum_epochs_per_fit": 3,
+      "maximum_training_rows": 64,
+      "input_columns": 2248,
+      "maximum_concurrent_fits": 1,
+      "resource_timing_authority": false
+    },
+    "formal_two_root_probe": false,
+    "formal_attempt_claim_creation": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "rule": "Bounded smokes establish API correctness only and cannot estimate resources, change the contract, rank science, or be represented as the formal attempt. Record every smoke in the experiment ledger."
+  },
+  "current_milestone_accounting": {
+    "runtime_environments_created": 0,
+    "dependencies_installed": 0,
+    "synthetic_features_generated": 0,
+    "synthetic_model_fits": 0,
+    "synthetic_predictions_generated": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "runtime_or_dependency_changes": false,
+    "implementation": false,
+    "synthetic_feature_generation": false,
+    "synthetic_model_fits": false,
+    "synthetic_predictions": false,
+    "formal_attempt_claim": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "official_predictions": false,
+    "development_metrics": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "external_data": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the isolated CPU research runtime, exact M1 runner, exact synthetic driver, and focused tests named here. Use tiny bounded unit fixtures during implementation; do not run the two-root 32-fit resource probe. Then freeze a separate source-binding single-use formal-attempt claim, integrate it, and only afterward consume it once for the full synthetic mechanics and resource decision."
+}

@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-102. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-103. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -190,6 +190,20 @@ runtime, implementation, or execution capability. The exact next action is a
 reviewed G2-4B deterministic-runtime and synthetic-implementation contract,
 followed by two-root mechanics and resource evidence; do not open an official
 input or fit an official model.
+
+D-103 now freezes that G2-4B contract at SHA-256 `f80a6e8d...48df7`. The exact
+prospective lane is an isolated Python 3.12.3/PyTorch 2.13.0 CPU environment on
+the profiled Ryzen 9 7950X, with four spawned four-core workers and zero GPU.
+Each synthetic root exhaustively traverses all 2,430 M1 identities with a
+model double; 32 full-width, 300-epoch real fits across both roots cover every
+architecture, loss, and seed form for worst-root resource projection. The
+20%-margin gates are 240 CPU-core-hours, zero GPU-hours, 38.4 wall-hours, 64 GB
+restricted storage, and 24 GiB RSS. Twelve focused static tests pass. This
+milestone created no environment, installed no dependency, and ran no fit or
+scientific operation. After signed integration and green post-main CI, only
+the isolated implementation and at most four tiny API smokes are authorized;
+the formal probe requires a separate integrated single-use source-binding
+claim.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -839,14 +853,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-4A M1 contract `63516e0f...b1c2cc0` and
-focused static tests, then require green post-main CI. Only afterward freeze a
-G2-4B child for the deterministic neural runtime, additive implementation,
-synthetic fixture, two-root replay, representative real-fit timing sample,
-capability firewalls, cleanup, and 20%-margin resource projection. Do not open
-an official target, feature, structure, baseline row, or fold artifact; create
-an execution claim; or fit a synthetic model before that child is reviewed and
-integrated. Confirmatory truth, historical R3C row-level artifacts, blinded
+Review and integrate the exact G2-4B contract `f80a6e8d...48df7` and focused
+static tests, then require green post-main CI. Only afterward create the
+isolated locked CPU environment and implement the exact runner, synthetic
+driver, model double, and focused tests. Use at most four bounded API smokes;
+freeze a separate single-use source-binding claim before the formal two-root
+32-fit probe. Do not open an official target, feature, structure, baseline row,
+or fold artifact, create an official execution claim, or use an API smoke as
+resource evidence. Confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, and
 upload capabilities remain closed. Any private portal observation remains
 outside the public knowledgebase and cannot select a model, feature, loss,

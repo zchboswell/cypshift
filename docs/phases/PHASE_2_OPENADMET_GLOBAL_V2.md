@@ -3,7 +3,8 @@
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
 G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
 accepted but resource feasibility rejected, and the one-shot G2-3D resource
-falsifier terminally rejected; G2-4A `EXP-M1` is contract-frozen; the G2-3C
+falsifier terminally rejected; G2-4A `EXP-M1` and the G2-4B deterministic
+synthetic boundary are contract-frozen; the G2-3C
 claim remains
 unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
@@ -401,6 +402,25 @@ resource projection must remain 20% below the 300 CPU-hour, 80 GPU-hour, 80 GB,
 and 48 wall-hour execution ceilings before a one-shot claim can exist. This
 milestone is contract-only and every official and forbidden counter is zero.
 
+D-103 freezes G2-4B in
+[`global_v2_m1_synthetic_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_m1_synthetic_contract.json)
+at SHA-256 `f80a6e8d...48df7`. The prospective runtime is isolated under
+`research/multitask-mlp`: Python 3.12.3, NumPy 2.5.2, RDKit 2026.3.5, and the
+exact PyTorch 2.13.0 CPU wheel. The pinned 16-core host runs four spawned
+workers on disjoint four-core affinity slots with deterministic algorithms,
+MKLDNN disabled, and zero accelerator use. Per root, an exhaustive model
+double traverses all 2,430 scientific fit identities; across two roots, 32
+full-width, 300-epoch real fits cover shared, permuted, independent, both-loss,
+all-seed, and exact-repeat runtime forms. The worse-root projection must stay
+at or below 240 CPU-core-hours, zero GPU-hours, 38.4 wall-hours, 64 GB stored,
+and 24 GiB peak RSS. Twelve focused tests freeze topology, counts, balanced
+family folds, firewalls, one-shot terminals, and zero current accounting.
+This milestone installs nothing and executes no synthetic or official model.
+After reviewed integration and green post-main CI it authorizes only the
+isolated environment, additive implementation, model-double tests, and at most
+four three-epoch API smokes; the formal two-root probe and its claim remain
+unauthorized until a separate reviewed source-binding freeze.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -506,7 +526,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-102 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-103 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -516,13 +536,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-102's contract SHA-256 `63516e0f...b1c2cc0`, then require
-green post-main CI. Keep claim `1c9f3438...46154` unconsumed and never execute
-or optimize `EXP-G1` again. Next freeze a G2-4B child that pins the exact neural
-runtime, additive implementation sources, synthetic fixture, two-root replay,
-fit sample, deterministic byte receipts, capability firewalls, cleanup, and
-20%-margin resource projection for the 2,430-fit M1 design. Do not add a model,
-feature, loss, seed, or dependency outside that child. Keep official
+Review and integrate D-103's G2-4B contract SHA-256 `f80a6e8d...48df7`, then
+require green post-main CI. Keep claim `1c9f3438...46154` unconsumed and never
+execute or optimize `EXP-G1` again. Only afterward create the isolated locked
+CPU runtime and implement the exact M1 runner, synthetic driver, model double,
+and focused tests. Use no more than four one-worker, three-epoch, 64-row API
+smokes and record each; they are not resource evidence. Freeze and integrate a
+separate single-use source-binding claim before the formal two-root 32-fit
+probe. Do not add a model, feature, loss, seed, device, dependency, or timing
+remedy outside the child. Keep official
 development, confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, upload,
 and execution-claim capability closed.

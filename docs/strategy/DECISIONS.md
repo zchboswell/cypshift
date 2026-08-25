@@ -3292,3 +3292,36 @@
   capability, privacy, signed-integration, or post-main-CI defect revokes this
   freeze before implementation. A clean later resource or scientific rejection
   closes EXP-M1 without widening or retrying it.
+
+## D-103 — Freeze the deterministic CPU synthetic boundary for EXP-M1
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-4B evidence; no dependency installation,
+  synthetic execution, official authority, or formal attempt claim
+- Decision: Freeze `global_v2_m1_synthetic_contract.json` at SHA-256
+  `f80a6e8d...48df7`. Pin an isolated Python 3.12.3/NumPy 2.5.2/RDKit
+  2026.3.5/PyTorch 2.13.0 CPU runtime on the observed Ryzen 9 7950X. Use four
+  spawned workers on disjoint physical-core affinity slots, four intra-op
+  threads each, deterministic PyTorch algorithms, MKLDNN disabled, and no
+  accelerator. Prove the full 2,430-identity topology with a model double in
+  each of two roots and project resources from exactly 32 full-width,
+  300-epoch real fits spanning every architecture, loss, and seed form.
+- Evidence: Read-only host inspection found 16 physical cores, 32 logical
+  processors, 31,940,952 KiB RAM, and no CUDA or ROCm device. The exact CPU
+  wheel and metadata hashes are frozen. Root B reverses physical and launch
+  order. Parameter and float64 prediction digests must match exactly while
+  timings remain root-specific. The worse-root projection must simultaneously
+  remain at or below 240 CPU-core-hours, zero GPU-hours, 38.4 wall-hours, 64 GB
+  stored, and 24 GiB RSS. Twelve focused static tests pass. Current accounting
+  is zero for environments, dependencies, features, fits, predictions, metrics,
+  official inputs, claims, and forbidden capabilities.
+- Alternatives: Add PyTorch to the installable core; use GPU; allow dynamic
+  threads or affinity; time reduced-width or reduced-epoch models; sample the
+  topology instead of traversing it; average favorable roots; install and run
+  before contract review; or collapse implementation and the one-shot formal
+  attempt into one mutable milestone.
+- Reversal condition: Any parent, wheel, host, affinity, determinism, fixture,
+  topology, identity, timing, projection, firewall, cleanup, accounting,
+  signed-integration, or post-main-CI defect revokes this freeze before the
+  formal attempt. A later terminal resource or mechanics failure closes EXP-M1
+  without changing device, threads, concurrency, fits, epochs, or runtime.

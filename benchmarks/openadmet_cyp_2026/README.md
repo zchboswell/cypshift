@@ -179,6 +179,19 @@ claim, a deterministic two-root synthetic replay must pass mechanics and
 resource gates with 20% margin. This artifact is contract-only: it opened no
 input, fit no model, generated no prediction, and computed no metric.
 
+G2-4B is frozen in
+[`global_v2_m1_synthetic_contract.json`](global_v2_m1_synthetic_contract.json)
+at SHA-256 `f80a6e8d...48df7`. It pins an isolated Python 3.12.3/PyTorch
+2.13.0 CPU runtime on the profiled 16-core host, four disjoint four-core
+workers, deterministic parameter and prediction receipts, exact synthetic
+family/mask mechanics, an exhaustive 2,430-identity model double per root, and
+32 representative real timing fits across two roots. The worse-root projection
+must pass 240 CPU-core-hours, zero GPU-hours, 38.4 wall-hours, 64 GB storage,
+and 24 GiB RSS simultaneously. This freeze installed no dependency and ran no
+fit. Reviewed integration and green post-main CI permit only the isolated
+implementation and four tiny API smokes; a separate source-binding claim is
+still required before the one-shot formal probe.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact
