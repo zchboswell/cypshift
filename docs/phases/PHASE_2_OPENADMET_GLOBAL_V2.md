@@ -49,6 +49,11 @@ D-122 freezes fixed MapLight's G2-7 robustness and primary-contender contract.
 It authorizes no implementation, official row, fit, prediction, metric, claim,
 or confirmatory access. Exact full MapLight is the default and a predeclared
 drop-one simplification may replace it only through the frozen selection rule.
+D-123 freezes the separate G2-7B synthetic implementation/resource boundary.
+Both 720-fit and 1,020-fit conditional paths must replay byte-identically under
+opposite physical and launch order; 26 real CatBoost probes and a full-size
+no-fit traversal must preserve a further 20% resource margin. This is still
+contract-only evidence with zero synthetic or official execution.
 
 Authorized: 2026-08-24.
 
@@ -832,6 +837,24 @@ contract listed no private root, opened no official row, and performed zero
 fit, prediction, metric, submission, or portal operation. A later synthetic
 contract must prove this exact staged topology before any claim can exist.
 
+D-123 freezes that proof boundary in
+[`global_v2_maplight_robustness_synthetic_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_synthetic_contract.json),
+SHA-256 `97b982fa...e2abfd`. Each of two roots exercises both engineered
+selection profiles: exact full retained at 720 invocations and one eligible
+Morgan-block deletion at 1,020, totaling 3,480 model-double invocations and
+666,432 mechanics prediction rows. Root B reverses all physical rows and every
+dependency-safe launch order. The 1,200-molecule fixture contains primary and
+three conservative overlay family oracles, including explicit label-free
+exclusion of development components touching confirmatory identities; no
+confirmatory target exists. Exactly 26 real CatBoost fits cover five ordered
+feature views, four unique column counts, six seed values, and four index forms.
+A separate official-sized
+synthetic traversal carries 797,232 maximum-branch prediction identities and
+projects 1,020 times the worse maximum individual fit plus non-fit overhead.
+Every projected ceiling is capped at 80% of D-122. Ten focused static tests
+pass. The freeze created no implementation or runtime and performed zero
+synthetic or official operation; all oracle values are mechanics-only.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -882,7 +905,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-122 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-123 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -892,11 +915,12 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-122 robustness contract SHA-256
-`ad9aef87...a7a45af`, then require green post-main CI. Next freeze a separate
-two-root synthetic implementation/resource contract for the exact staged
-720-to-1,020-fit topology. Do not create an official claim, open an official
-byte, or fit an official model in that milestone. Confirmatory truth,
+Review and integrate D-123 synthetic contract SHA-256
+`97b982fa...e2abfd`, then require green post-main CI. Next implement only the
+contracted additive runner, deterministic fixtures, adversarial tests, bounded
+API smokes, and one formal two-root synthetic acceptance. Do not create an
+official claim, open an official byte, or fit an official model in that
+milestone. Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.
 `global_TDI` remains the TDI fallback.

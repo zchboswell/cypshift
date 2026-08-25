@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-122. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-123. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -512,6 +512,22 @@ check. This contract opened zero official row and ran zero fit, prediction, or
 metric. It also removes stale public assertions about portal activity without
 recording a private identifier, result, or rank; private portal evidence remains
 outside model selection.
+
+D-123 freezes the separate G2-7B synthetic implementation and resource
+contract at SHA-256 `97b982fa...e2abfd`. Two opposite-order roots must exercise
+both exact control paths: 720 model-double invocations when full MapLight stays
+selected and 1,020 when the predeclared Morgan deletion is selected, for 3,480
+invocations across both roots. The engineered fixture includes intact primary,
+threshold, tautomer, duplicate, influence, single-source, endpoint, and clipping
+oracles while confirmatory truth does not exist. Twenty-six real locked-runtime
+CatBoost fits cover all five ordered feature views, four unique column counts,
+all six seed forms, and all four primary/overlay index forms; a full-size
+no-fit traversal projects the worse
+maximum individual fit across all 1,020 possible scientific fits. Acceptance
+requires byte-identical eight-file terminal maps and a further 20% margin below
+every D-122 resource ceiling. This contract created no implementation or
+runtime and ran zero synthetic or official operation. Synthetic oracle values
+will have no model-quality interpretation.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1163,11 +1179,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-122 robustness contract SHA-256
-`ad9aef87...a7a45af`, then require green post-main CI. Next freeze a separate
-two-root synthetic implementation/resource contract for the exact staged
-720-to-1,020-fit topology. Do not create an official claim, open official rows,
-or run scientific fits in that milestone. Confirmatory truth, historical
+Review and integrate D-123 synthetic contract SHA-256
+`97b982fa...e2abfd`, then require green post-main CI. Next implement only its
+additive runner, deterministic fixtures, focused adversarial tests, bounded API
+smokes, and one formal two-root synthetic acceptance. Do not create an official
+claim, open official rows, or run scientific fits in that milestone.
+Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and
 G1/G2/M1/X1/T2 plus immutable R5D/I0 remain closed; `global_TDI` remains the

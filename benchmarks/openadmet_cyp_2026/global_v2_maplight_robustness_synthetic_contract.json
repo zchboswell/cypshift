@@ -1,0 +1,361 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_synthetic_contract.v1",
+  "freeze_date": "2026-08-25",
+  "recorded_at_utc": "2026-08-25T16:00:11Z",
+  "gate": "G2_7B_MAPLIGHT_ROBUSTNESS_SYNTHETIC_CONTRACT_FROZEN",
+  "status": "contract_only_no_synthetic_or_official_execution_authority",
+  "base_commit": "a6225f30322fbc210e3c4b2f3481edf0c2079637",
+  "purpose": "Freeze the least-privilege implementation, deterministic two-root replay, exact conditional control flow, and conservative resource falsifier for the accepted G2-7 MapLight robustness battery before any implementation or scientific input opens.",
+  "hypothesis": "The exact 720-fit full-retained path and exact 1,020-fit deletion-selected path can both be represented without family leakage or truth-before-freeze access, replay independently of physical and launch order, and fit the frozen resource ceiling with 20 percent margin.",
+  "occam_boundary": "Use one additive robustness runner around the accepted MapLight feature/runtime interfaces. Reuse accepted metric, family, and atomic-publication primitives. Add no orchestration platform, model family, feature, parameter, seed, clip, calibration, blend, retry path, or scientific candidate.",
+  "targeted_failure_modes": [
+    "parent, source, runtime, feature-block, parameter, seed, or fit-identity drift",
+    "molecule, exact duplicate, D-032 component, threshold-overlay component, or tautomer-overlay component crosses an active split",
+    "confirmatory-touching overlay families remain in development",
+    "validation truth, immutable baseline OOF, metric, or diagnostic access before the complete prediction freeze",
+    "selection-token, conditional-stage, Occam-order, or no-runner-up drift",
+    "physical row order or dependency-safe launch order changes a terminal byte",
+    "real CatBoost feature-shape, seed-form, or grouping-index incompatibility",
+    "optimistic average-fit resource projection hides a worst-fit execution failure",
+    "partial publication, retained model state, retry, resume, overwrite, or forbidden capability",
+    "private portal evidence contaminates any oracle, token, diagnostic, or choice"
+  ],
+  "parents": {
+    "maplight_robustness_contract": {
+      "path": "global_v2_maplight_robustness_contract.json",
+      "sha256": "ad9aef871ab06e5082568f20a9a6d293897924bdfeda2fb341685cffaa7a45af"
+    },
+    "synthetic_firewall_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "maplight_synthetic_acceptance": {
+      "path": "global_v2_maplight_synthetic_acceptance.json",
+      "sha256": "1a498f21dc227884b27476e9b753a03f984cac656548394fd440b65dc8a3a3bb"
+    },
+    "maplight_execution_synthetic_acceptance": {
+      "path": "global_v2_maplight_execution_synthetic_acceptance.json",
+      "sha256": "ffb3956c17912468175c13d729f538fc213522c75630c80a6e99455902e183b2"
+    },
+    "maplight_official_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "use": "Aggregate identity and immutable baseline reference only; row-level official evidence remains closed."
+    },
+    "post_main_ci": {
+      "run_id": 32868137658,
+      "head_sha": "a6225f30322fbc210e3c4b2f3481edf0c2079637",
+      "conclusion": "success",
+      "python_jobs_passed": [
+        "3.11",
+        "3.12.3",
+        "3.14"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "trusted_compiler": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.12.3",
+      "rdkit": "2026.03.5",
+      "root_uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
+    },
+    "model": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.10.13",
+      "numpy": "1.25.2",
+      "rdkit": "2023.3.3",
+      "catboost": "1.2.1",
+      "uv_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+      "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757"
+    },
+    "fit_parallelism": "one fit at a time with thread_count=16",
+    "network": "disabled for every smoke, formal synthetic root, and future scientific execution",
+    "future_source_receipts": {
+      "runner_source_sha256": null,
+      "synthetic_driver_source_sha256": null,
+      "focused_test_source_sha256": null,
+      "synthetic_acceptance_sha256": null
+    }
+  },
+  "synthetic_mechanics_fixture": {
+    "schema_version": "cypshift.openadmet_cyp_2026.maplight_robustness_synthetic_source.v1",
+    "fixture_seed": 20260831,
+    "roots": 2,
+    "root_a_order": "canonical molecule_id, candidate_id, seed, perturbation, repeat, outer_fold, and endpoint order",
+    "root_b_order": "reverse every physical source row and reverse every model-stage launch order inside each dependency-safe topological layer",
+    "components": 600,
+    "molecules_per_component": 2,
+    "molecules": 1200,
+    "development_components": 480,
+    "development_molecules": 960,
+    "confirmatory_components": 120,
+    "confirmatory_molecules": 240,
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "finite_development_targets_per_endpoint": 960,
+    "features": {
+      "columns": 2563,
+      "blocks": {
+        "MORGAN_COUNT": 1024,
+        "AVALON_COUNT": 1024,
+        "ERG": 315,
+        "RDKIT_DESCRIPTORS": 200
+      },
+      "rule": "Deterministic authenticated float32 blocks preserve exact accepted column order, integer-like count semantics, finite ErG values, and the declared descriptor NaN mask. Every drop-one view is a zero-copy ordered block exclusion, never a recomputation."
+    },
+    "primary_folds": "The accepted 3-repeat by 5-fold D-032 topology is represented with intact two-molecule components and at least 180 validation and 720 training target rows in every endpoint cell.",
+    "overlay_oracles": {
+      "THRESHOLD_0_55": {
+        "development_components_merged_in_pairs": 20,
+        "development_components_touching_confirmatory": 4,
+        "development_molecules_excluded": 8,
+        "remaining_development_molecules": 952
+      },
+      "THRESHOLD_0_50": {
+        "development_components_merged_in_pairs": 40,
+        "development_components_touching_confirmatory": 8,
+        "development_molecules_excluded": 16,
+        "remaining_development_molecules": 944
+      },
+      "TAUTOMER_MERGED": {
+        "development_components_merged_in_pairs": 24,
+        "development_components_touching_confirmatory": 6,
+        "development_molecules_excluded": 12,
+        "remaining_development_molecules": 948
+      }
+    },
+    "overlay_support": "Every overlay/repeat/fold/endpoint must retain at least 75 finite validation and 400 finite training targets after all confirmatory-touching components are excluded. The frozen fixture is invalid if this exact official support gate is not exercised and passed.",
+    "diagnostic_oracles": "Include repeated standardized-structure hashes, ten predesignated influential components, exactly one authenticated source_file value, finite training-only min/max and q005/q995 bounds, and deliberately triggered nonfinite, duplicate, source, clip, and influence adversaries.",
+    "truth_boundary": "Each mechanics profile has its own sealed synthetic scorer truth capability. Model and freezer capabilities cannot resolve any validation truth, baseline, metric, diagnostic, or other profile. Confirmatory target values do not exist in the fixture."
+  },
+  "selection_oracles": {
+    "full_retained_profile": {
+      "id": "FULL_RETAINED",
+      "expected_selected_candidate": "G2-7-M0-FULL",
+      "rule": "All four deletions fail at least one frozen eligibility member; stage C is absent."
+    },
+    "deletion_selected_profile": {
+      "id": "DROP_MORGAN_SELECTED",
+      "expected_selected_candidate": "G2-7-M1-DROP-MORGAN",
+      "rule": "Only G2-7-M1-DROP-MORGAN passes every eligibility member; stage C is required."
+    },
+    "ordering_micro_oracles": [
+      "No eligible deletion returns G2-7-M0-FULL.",
+      "Two equally eligible 1,539-column deletions with identical metric bytes resolve lexicographically to G2-7-M1-DROP-MORGAN.",
+      "An eligible 1,539-column deletion precedes an eligible 2,248-column deletion even when input order is reversed.",
+      "A seed, grouping, duplicate, influence, source, endpoint, or clip diagnostic cannot create or revise the selection token."
+    ],
+    "scientific_boundary": "All oracle scores and tokens are engineered mechanics assertions. They provide no evidence that any official candidate, seed, overlay, or diagnostic is better."
+  },
+  "full_topology_model_double": {
+    "purpose": "Exercise both exact conditional paths, every fit and prediction identity, every capability transition, all diagnostics, all terminal statuses, and cleanup without treating a model-double invocation as a CatBoost fit.",
+    "prediction_rule": "A documented pure float64 function of authenticated synthetic features plus profile, candidate, seed, perturbation, repeat, outer_fold, endpoint, molecule_id, and active component receipt. It cannot use truth, metrics, wall clock, process ID, filesystem order, launch order, or mutable state.",
+    "per_root": {
+      "FULL_RETAINED": {
+        "stage_a_invocations": 540,
+        "stage_b_invocations": 180,
+        "stage_c_invocations": 0,
+        "total_invocations": 720,
+        "prediction_rows": 137808
+      },
+      "DROP_MORGAN_SELECTED": {
+        "stage_a_invocations": 540,
+        "stage_b_invocations": 180,
+        "stage_c_invocations": 300,
+        "total_invocations": 1020,
+        "prediction_rows": 195408
+      },
+      "total_invocations": 1740,
+      "prediction_rows": 333216
+    },
+    "across_roots": {
+      "model_double_invocations": 3480,
+      "prediction_rows": 666432
+    },
+    "fit_accounting": "Model-double invocations are named and counted separately and must never be reported as CatBoost fits or scientific model operations."
+  },
+  "exact_catboost_probe": {
+    "purpose": "Prove the accepted runtime handles every feature width, every seed form, and every grouping-index form with byte-identical float64 predictions and resolved parameters across opposite-order roots.",
+    "resource_matrix": {
+      "rows": 3908,
+      "full_columns": 2563,
+      "training_rows": 3120,
+      "prediction_rows": 788,
+      "family_rule": "Training and prediction identities are disjoint under the active synthetic family receipt; arrays are canonicalized before fitting."
+    },
+    "fits_per_root": {
+      "five_candidate_shapes_at_random_seed_1_on_primary_indices": 5,
+      "full_shape_at_each_of_five_frozen_alternative_seeds": 5,
+      "full_shape_at_random_seed_1_on_three_overlay_index_forms": 3,
+      "total": 13
+    },
+    "roots": 2,
+    "exact_total_real_catboost_fits": 26,
+    "prediction_rows_per_root": 10244,
+    "prediction_rows_across_roots": 20488,
+    "model_api": "Use the exact omitted-constructor MapLight recipe and fit(X_training, y_training) call. No fast mode, fewer iterations, alternate thread count, imputation, sparse substitution, serialization, or parameter repair is permitted.",
+    "acceptance": "Every fit exits zero with no warning or fallback; every prediction is finite; matched probe identities have byte-identical float64 predictions and canonical resolved-parameter receipts across roots; the five ordered feature views, four unique column counts, six total seed values, and four total primary/overlay index forms are all covered.",
+    "scientific_boundary": "Probe values cannot enter candidate selection, robustness metrics, diagnostics, or any model-quality claim."
+  },
+  "stage_graph": {
+    "trusted_compiler": "Authenticate all parent, runtime, fixture, feature, structure, family, fold, source, and profile receipts before target parsing; build label-free primary and overlay groups; exclude every confirmatory-touching overlay component before publishing disjoint capabilities.",
+    "stage_a_model": "May read exactly one profile-scoped outer-training target, one candidate/seed token, matching ordered feature view, and matching primary train/predict identities. It cannot resolve validation truth, fixed baseline OOF, metrics, diagnostics, another profile, or confirmatory membership values beyond label-free exclusion receipts.",
+    "stage_a_freezer": "Requires the complete 540 fit/prediction identity set for one profile and atomically freezes it before any stage-A scorer capability exists.",
+    "stage_a_scorer_and_selector": "Only after the profile freezer is immutable, open paired synthetic validation truth and synthetic exact-full baseline on exact primary identities; compute the frozen candidate gates and publish exactly one immutable selection token through the exact Occam ordering.",
+    "stage_b_model": "May read only the immutable selected-recipe token, one overlay token, matching training target capability, features, and active family-safe indices. It cannot resolve validation truth or change the selection token.",
+    "stage_b_freezer_and_scorer": "Freeze all 180 perturbation predictions for one profile before opening any perturbation validation truth; report support, containment, aggregate metric, and endpoint-harm diagnostics only.",
+    "stage_c_conditional": "Require exactly zero stage-C identities for FULL_RETAINED and exactly 300 selected-deletion seed identities for DROP_MORGAN_SELECTED. Freeze all required predictions before its scorer opens truth. Any other count or branch fails.",
+    "no_fit_diagnostics": "After all required predictions freeze, compute duplicate collapse, fixed top-ten influence removal, authenticated SINGLE_SOURCE_NOT_APPLICABLE, endpoint harm, and both training-only clipping views without a model capability. A clip can reject but never replace the selected recipe.",
+    "terminal_publisher": "After all required gates and cleanup, atomically publish exactly one aggregate terminal per profile and one root manifest with no-replace semantics. Partial terminals and row-level values are forbidden."
+  },
+  "deterministic_numeric_policy": {
+    "identity_order": "Sort every reduction by complete profile, stage, candidate, seed, perturbation, repeat, outer_fold, endpoint, active component, standardized structure, and molecule identity; never use source or completion order.",
+    "reductions": "Use float64 math.fsum in the exact parent-defined order and denominators for duplicate means, component means, endpoint macro means, repeat means, and diagnostic deltas.",
+    "quantiles": "Use parent-defined linear interpolation for q005, q995, and paired-bootstrap bounds with no library-default substitution.",
+    "bootstrap": "Use seed 20260827, exactly 2,000 accepted component draws per deletion comparison, at most 20,000 attempts, and the sorted original D-032 component union.",
+    "failure": "Any missing, duplicate, extra, nonfinite, cross-profile, cross-root, cross-cell, identity-mismatched, receipt-mismatched, noncanonical, or denominator-invalid row fails the complete root."
+  },
+  "full_size_resource_falsifier": {
+    "official_shaped_synthetic_population": {
+      "development_molecules": 3908,
+      "confirmatory_identities_without_truth": 997,
+      "feature_columns": 2563,
+      "maximum_branch_fit_identities": 1020,
+      "maximum_branch_prediction_identities": 797232
+    },
+    "execution": "Per root, traverse all 797,232 maximum-branch synthetic prediction identities and every no-fit grouping, support, selection, metric, bootstrap, duplicate, influence, source, endpoint, clipping, cleanup, and publication operation. Replace the model-double fit body with only the 13 exact CatBoost probes; retain no model binary.",
+    "projection": {
+      "scientific_fits": 1020,
+      "wall_formula": "1020 * worse_root_max_individual_exact_fit_wall_seconds / 3600 + worse_root_full_size_nonfit_wall_hours",
+      "cpu_formula": "1020 * worse_root_max_individual_exact_fit_cpu_seconds / 3600 + worse_root_full_size_nonfit_cpu_core_hours",
+      "storage_formula": "1.20 * worse_root_peak_restricted_storage_gb including source, feature, prediction, metric, bootstrap, temporary, log, and cleanup state",
+      "rss_formula": "1.20 * worse_root_peak_rss_gib across compiler, model, scorer, bootstrap, and publisher processes",
+      "gpu_formula": "exactly zero"
+    },
+    "acceptance_maxima": {
+      "projected_cpu_core_hours": 128.0,
+      "projected_wall_hours": 7.68,
+      "projected_restricted_storage_gb": 51.2,
+      "peak_rss_gib": 15.36,
+      "gpu_hours": 0
+    },
+    "margin": "Each maximum is 80 percent of the D-122 ceiling and therefore preserves a further 20 percent execution margin.",
+    "logic": "Every gate is conjunctive and uses the worse root and maximum individual exact-fit time, never the mean. A miss rejects the implementation/resource path without alternate thread count, sparse substitution, caching optimization, smaller probe, fewer predictions, changed feature width, retry, or official access."
+  },
+  "deterministic_terminal_contract": {
+    "relative_files": [
+      "maplight_robustness_synthetic_source_receipt.json",
+      "maplight_robustness_fit_identity_receipts.csv",
+      "maplight_robustness_prediction_receipts.csv",
+      "maplight_robustness_selection_tokens.json",
+      "maplight_robustness_diagnostics.json",
+      "maplight_robustness_probe_parameter_receipts.csv",
+      "maplight_robustness_probe_prediction_receipts.csv",
+      "maplight_robustness_synthetic_terminal_manifest.json"
+    ],
+    "comparison": "All eight relative files must be byte-identical between root A and root B after removal of absolute paths and timing/resource observations.",
+    "timing_boundary": "Wall, CPU, storage, and RSS observations are bound in the aggregate acceptance receipt outside the deterministic eight-file map.",
+    "publication": "Track only one aggregate acceptance or rejection receipt after both disposable roots, model state, row-level predictions, truths, and unrestricted logs are cleaned.",
+    "success": "G2_7B_MAPLIGHT_ROBUSTNESS_SYNTHETIC_ACCEPTED",
+    "failure": "G2_7B_MAPLIGHT_ROBUSTNESS_SYNTHETIC_REJECTED",
+    "retry": false,
+    "resume": false,
+    "overwrite": false,
+    "replacement": false
+  },
+  "required_adversarial_tests": [
+    "parent, runtime, feature-block, parameter, seed, fixture, or source receipt mismatch fails before source parsing",
+    "reversed physical rows and reversed dependency-safe launch order preserve all eight terminal files byte-for-byte",
+    "a molecule, exact duplicate, original component, threshold component, or tautomer component crossing an active boundary fails before its model invocation",
+    "every overlay component touching a confirmatory identity is excluded label-free and any retained touching molecule fails",
+    "stage A truth or baseline opens only after all 540 predictions freeze; stage B truth opens only after all 180 predictions freeze; conditional stage C truth opens only after all required predictions freeze",
+    "missing, duplicate, extra, cross-profile, cross-root, cross-cell, wrong-candidate, wrong-seed, wrong-perturbation, or forged-lineage prediction fails",
+    "the full-retained profile requires exactly 720 invocations and no stage C; the deletion-selected profile requires exactly 1,020 invocations and 300 stage-C identities",
+    "selection eligibility, fewer-column ordering, metric ordering, lexical tie-break, full default, one-token, and no-runner-up micro-oracles all pass",
+    "seed, grouping, duplicate, influence, source, endpoint, and clipping diagnostics cannot revise the selected token",
+    "a second source value, invented assay label, wrong influential-component set, validation-derived clip, or adopted clipped recipe fails",
+    "all 26 real CatBoost fits cover five ordered feature views, four unique column counts, six seed values, and four index forms with exact parameter and prediction-byte parity",
+    "resource projection uses 1,020 times the worse maximum individual fit plus worse full-size non-fit overhead and passes every 20-percent-margin gate",
+    "nonfinite values, invalid tutorial denominator, incomplete bootstrap, warning, fallback, nonzero exit, retained model binary, or cleanup miss fails",
+    "interrupt, partial publication, retry, resume, moved root, overwrite, second publication, symlink, traversal, or writable accepted destination fails",
+    "all official, confirmatory-truth, historical-row, blinded-test, TDI, external, submission, official-metric, leaderboard-selection, upload, claim, and private-portal counters remain exactly zero"
+  ],
+  "acceptance": {
+    "fresh_sequential_roots": 2,
+    "mechanics_profiles_per_root": 2,
+    "model_double_invocations_total": 3480,
+    "model_double_prediction_rows_total": 666432,
+    "real_catboost_fits_total": 26,
+    "real_catboost_prediction_rows_total": 20488,
+    "full_size_maximum_branch_prediction_identities_per_root": 797232,
+    "all_eight_terminal_files_byte_identical": true,
+    "both_conditional_paths_exact": true,
+    "all_selection_and_diagnostic_oracles_pass": true,
+    "all_family_and_capability_adversaries_pass": true,
+    "all_runtime_and_resource_gates_pass": true,
+    "cleanup_complete": true,
+    "focused_tests_pass": true,
+    "full_repository_ci_passes": true,
+    "scientific_interpretation": "Acceptance proves mechanics, deterministic runtime compatibility, and conservative resource feasibility only. Synthetic candidates, scores, selections, predictions, and diagnostics have no model-quality meaning."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "implementation_files_created": 0,
+    "runtime_environments_created": 0,
+    "synthetic_source_rows_opened": 0,
+    "synthetic_model_double_invocations": 0,
+    "synthetic_catboost_fits": 0,
+    "synthetic_predictions_generated": 0,
+    "synthetic_metric_evaluations": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created_or_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "implementation": false,
+    "runtime_environment_creation": false,
+    "synthetic_source_generation": false,
+    "synthetic_model_double_execution": false,
+    "synthetic_catboost_fitting": false,
+    "synthetic_metric_evaluation": false,
+    "formal_synthetic_acceptance": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the additive robustness runner, exact synthetic fixtures, focused tests, at most two tiny CatBoost API smokes totaling no more than 128 rows and 16 iterations each, and one formal two-root synthetic acceptance under this contract. Do not create an official claim, open an official byte, fit an official model, evaluate a development or confirmatory metric, generate a submission, observe a leaderboard for selection, or upload."
+}

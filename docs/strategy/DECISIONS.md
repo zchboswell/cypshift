@@ -4091,3 +4091,50 @@
   next gate is a separately frozen two-root synthetic implementation/resource
   contract for this exact staged topology; do not create a claim or open an
   official byte in that milestone.
+
+## D-123 — Freeze MapLight robustness synthetic mechanics and resources
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-7B evidence; zero implementation, runtime
+  creation, synthetic source, model-double invocation, CatBoost fit,
+  prediction, metric, official row, claim, confirmatory truth, historical row,
+  blinded test, TDI, external record, submission, official metric,
+  leaderboard-selection, private-portal record, or upload operation
+- Decision: Accept
+  `global_v2_maplight_robustness_synthetic_contract.json` at SHA-256
+  `97b982fa...e2abfd`. Before any scientific claim or input can exist, require
+  two fresh sequential roots to exercise both exact conditional paths with a
+  deterministic model double: 720 invocations when full MapLight remains the
+  selection and 1,020 when the sole engineered eligible deletion triggers the
+  300-invocation conditional seed stage. Root B reverses every physical input
+  and dependency-safe launch order. All eight terminal files must match
+  byte-for-byte.
+- Evidence: The contract binds D-122 and its green post-main CI run
+  `32868137658`, the accepted synthetic firewall, both MapLight synthetic
+  acceptances, the aggregate official reproduction, and exact compiler/model
+  runtimes. Across both roots the model double must traverse 3,480 fit
+  identities and 666,432 prediction rows. The mechanics fixture contains 600
+  two-molecule components, 960 development molecules, three explicit
+  conservative overlays, label-free confirmatory-touch exclusions, duplicate,
+  influence, single-source, endpoint, and clipping oracles, but no confirmatory
+  target. Exactly 26 real CatBoost fits cover all five ordered feature views,
+  four unique column counts, all six seed forms, and all four primary/overlay
+  index forms. A full-size synthetic
+  no-fit traversal covers 797,232 maximum-branch prediction identities; the
+  resource projection multiplies 1,020 by the worse maximum individual fit and
+  adds worse-root non-fit overhead. Every gate is capped at 80% of D-122:
+  128 CPU-core-hours, 7.68 wall-hours, 51.2 GB restricted storage, 15.36 GiB
+  RSS, and zero GPU. Ten focused static tests pass.
+- Alternatives: Implement directly from D-122; exercise only the likely
+  full-retained branch; run all 2,040 real CatBoost fits across two synthetic
+  roots; time only full width or average fit duration; shrink official support
+  gates for the fixture; omit confirmatory-touch exclusions; allow an overlay
+  or clip to revise selection; create the official claim alongside synthetic
+  mechanics; or use private portal evidence in an oracle.
+- Reversal condition: Any parent, runtime, feature, seed, family, overlay,
+  support, capability, chronology, branch, fit/prediction identity, numeric,
+  selection, diagnostic, resource, terminal, cleanup, privacy, or authority
+  drift revokes progression. Otherwise the next gate is the exact additive
+  implementation and one formal two-root synthetic acceptance after reviewed
+  signed integration and green post-main CI; official and confirmatory access
+  remain closed.

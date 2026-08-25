@@ -213,6 +213,19 @@ selection rule. The future workload is 720–1,020 fits, but this contract opene
 no official row and ran zero fit or metric. Its next gate is a separate
 synthetic implementation/resource contract, not a claim or official access.
 
+That separate G2-7B boundary is now frozen in
+[`global_v2_maplight_robustness_synthetic_contract.json`](global_v2_maplight_robustness_synthetic_contract.json),
+SHA-256 `97b982fa...e2abfd`. Two opposite-order roots must exhaust both the
+720-invocation full-retained path and the 1,020-invocation deletion-selected
+path. Twenty-six real CatBoost probes cover all ordered feature views, unique
+column counts, seed forms, and group-index forms, while an official-sized
+synthetic no-fit traversal supplies
+the conservative 1,020-fit resource projection. Acceptance requires all eight
+deterministic terminal files to match byte-for-byte and every projection to
+remain at or below 80% of the D-122 ceilings. This contract itself created no
+implementation and ran no synthetic or official operation. Its next gate is
+the exact synthetic implementation and one formal acceptance, not a claim.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact
