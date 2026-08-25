@@ -77,6 +77,18 @@ receipt contains aggregate counts and hashes only; all synthetic row roots were
 removed. It grants no external acquisition, official-input, model, metric,
 submission, leaderboard-selection, upload, or claim authority.
 
+G2-5C now freezes an immutable single-use acquisition claim in
+[`global_v2_x1_acquisition_claim.json`](global_v2_x1_acquisition_claim.json),
+SHA-256 `f1bea832...1ba5c60`. It binds the exact ChEMBL 37 URL and checksum, one
+future download, fixed absent restricted roots, checksum-before-inspection,
+four exact target identities, frozen label-free R2B receipts for 4,905 challenge
+training structures/fold identities, read-only/no-network compilation,
+1,000/750 support and lane-resource falsifiers, aggregate-only receipts, and cleanup.
+The claim remains unconsumed and cannot yet be consumed because its future
+real-source adapter and official-shaped synthetic acceptance bindings are null.
+This milestone creates no archive, external record, official input, model,
+prediction, metric, submission, or upload authority.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

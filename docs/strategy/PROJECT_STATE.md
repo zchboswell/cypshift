@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-111. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-112. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -324,6 +324,25 @@ real external, official, fit, prediction, metric, submission, leaderboard-
 selection, upload, and claim counters remain zero. This is mechanics evidence
 only; it does not improve or evaluate MapLight. Acquisition remains closed
 until a separate reviewed single-use ChEMBL 37 acquisition claim is integrated.
+
+D-112 freezes that G2-5C claim at SHA-256 `f1bea832...1ba5c60`. It binds one
+exact ChEMBL 37 SQLite archive request, the frozen URL and SHA-256, fresh fixed
+restricted attempt/receipt roots, checksum-before-inspection, four exact human
+single-protein target identities, the frozen R2B label-free challenge
+structure/fold receipts for exactly 4,905 training structures, read-only
+immutable SQLite access, a no-network compilation namespace, aggregate-only terminal receipts, complete
+cleanup, and no retry, resume, mirror, repair, threshold change, or second
+download. The one-shot resource falsifier is 640 CPU-core-hours, 120 wall-hours,
+160 GB restricted storage, 64 GiB peak RSS, zero GPU-hours, and one process.
+The tracked claim is intentionally unconsumable: five future adapter/acceptance
+receipt fields remain null. A minimal real-source adapter, acquisition wrapper,
+and official-shaped two-root synthetic acceptance must be separately reviewed,
+integrated, and green before a private consumed claim may bind those hashes.
+This milestone created one claim and ran static tests only; no archive path
+exists, no external record or official input was opened, and no model,
+prediction, metric, submission, leaderboard-selection, or upload operation
+occurred. Fixed MapLight remains the best validated system at 0.5838 internal
+component-macro MAE.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -973,19 +992,19 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-111 acceptance SHA-256 `5ea379d1...001a8`, then require
-green post-main CI. Freeze a separate immutable single-use ChEMBL 37
-acquisition claim binding the accepted compiler, driver, tests and receipt;
-exact archive URL/SHA-256; fresh restricted roots; one read-only no-network
-execution; support receipt; resources; and cleanup. Do not download or open the
-archive before that claim is reviewed, integrated and green. Apply the frozen
-1,000/750 support falsifier after the sole acquisition and before any fit. Do
-not open an official input, fit a model, evaluate a metric, inspect blinded
-test, generate a submission, use leaderboard evidence, or upload before their
-later gates. Private portal observations remain outside the public
-knowledgebase and cannot select a source, model, feature, loss, threshold, or
-candidate. Closed G1/G2/M1 and immutable R5D/I0 remain closed; `global_TDI`
-remains the TDI fallback.
+Review and integrate D-112 claim SHA-256 `f1bea832...1ba5c60`, then require green
+post-main CI. Implement only one additive real-source adapter, one acquisition
+wrapper, and one official-shaped synthetic driver. Require two fresh roots to
+produce byte-identical terminal maps and pass focused adversarial tests in a
+separately reviewed signed acceptance milestone. Do not consume the claim,
+download or open ChEMBL 37, or open any official challenge input before that
+acceptance is integrated and green. After the sole acquisition, apply the
+frozen 1,000/750 support falsifier before any fit. Do not fit a model, evaluate
+a metric, inspect blinded test, generate a submission, use leaderboard evidence,
+or upload before their later gates. Private portal observations remain outside
+the public knowledgebase and cannot select a source, model, feature, loss,
+threshold, or candidate. Closed G1/G2/M1 and immutable R5D/I0 remain closed;
+`global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

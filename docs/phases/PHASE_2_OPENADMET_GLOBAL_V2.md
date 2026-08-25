@@ -11,6 +11,10 @@ external-file acquisition, submission, official-metric, leaderboard, and
 upload capabilities remain closed. A pre-contract documentation view exposed
 at least 45 public external CYP3A4 preview records; D-108 rejects that path
 without scientific use and requires a metadata-only restart.
+G2-5A provenance and G2-5B synthetic compiler mechanics are accepted; G2-5C
+now has an immutable unconsumed acquisition claim, but real acquisition remains
+blocked until a separate real-source adapter passes official-shaped synthetic
+acceptance.
 
 Authorized: 2026-08-24.
 
@@ -555,6 +559,22 @@ input, fit, prediction, metric, submission, leaderboard-selection, upload, or
 claim operation occurred, so this result has no model-quality meaning and
 grants no acquisition authority.
 
+D-112 freezes the immutable G2-5C acquisition claim in
+[`global_v2_x1_acquisition_claim.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_acquisition_claim.json),
+SHA-256 `f1bea832...1ba5c60`. It permits at most one future download of the exact
+ChEMBL 37 SQLite archive and binds checksum-before-inspection, fixed absent
+restricted roots, exact target verification before activity query, immutable
+read-only SQLite, the frozen label-free R2B receipts for exactly 4,905 challenge
+training structures and fold identities, no-network extraction/compilation, the
+conjunctive 1,000/750 support gate, lane-specific resources, aggregate-only
+publication, and complete cleanup. It forbids retry, resume, alternate URL, mirror, source repair,
+threshold change, partial reuse, or a second acquisition. The tracked claim
+cannot yet be consumed: the real-source adapter, acquisition wrapper,
+official-shaped synthetic driver/acceptance, and private consumed-claim receipt
+hashes are null. This claim-only milestone downloaded no file, opened no
+external record or official input, and performed no model-quality or submission
+operation.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -644,7 +664,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-111 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-112 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -654,13 +674,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-111 acceptance SHA-256 `5ea379d1...001a8`, then require
-green post-main CI. Freeze a separate immutable single-use ChEMBL 37
-acquisition claim binding the accepted compiler, driver, tests and receipt; the
-exact archive URL/SHA-256; fixed fresh restricted roots; one read-only,
-no-network execution; endpoint support receipt; resource ceilings; and complete
-cleanup. Do not download or open the archive before that claim is reviewed,
-integrated and green. After the sole acquisition, apply the frozen 1,000/750
-support falsifier before any model fit. Do not open an official input, fit a
-model, evaluate a metric, inspect blinded test, generate a submission, use
-leaderboard evidence, or upload before their later gates.
+Review and integrate D-112 claim SHA-256 `f1bea832...1ba5c60`, then require green
+post-main CI. Implement only the additive real-source adapter, acquisition
+wrapper, and official-shaped synthetic driver required to fill the claim's
+future bindings. Accept them only after two fresh synthetic roots produce
+byte-identical terminals and all focused adversaries pass in a separate signed
+milestone. Do not consume the claim, download or open ChEMBL 37, or open an
+official challenge input before that acceptance is integrated and green. After
+the sole acquisition, apply the frozen 1,000/750 support falsifier before any
+model fit. Do not evaluate a metric, inspect blinded test, generate a
+submission, use leaderboard evidence, or upload before their later gates.

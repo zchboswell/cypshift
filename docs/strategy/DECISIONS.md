@@ -3632,3 +3632,53 @@
   change; or any leaderboard-driven source/model choice revokes this acceptance
   and rejects EXP-X1. The next gate is a contract-only single-use ChEMBL 37
   acquisition claim, not archive access.
+
+## D-112 — Freeze the single-use EXP-X1 acquisition claim behind an adapter gate
+
+- Date: 2026-08-25
+- Status: accepted claim-only G2-5C freeze; immutable and unconsumed; zero
+  archive, external-record, official, model-quality, submission or upload
+  operation
+- Decision: Freeze `global_v2_x1_acquisition_claim.json` at SHA-256
+  `f1bea832...1ba5c60`. Bind the accepted D-109 through D-111 parents and six
+  unchanged source hashes; the exact ChEMBL 37 SQLite URL, release, DOI,
+  license and archive SHA-256; one fixed absent attempt root and one retained
+  aggregate-receipt root; the exact frozen R2B source receipts and label-free
+  structure/fold capability for 4,905 training molecules; checksum before
+  listing or extraction; exact
+  Homo-sapiens single-protein target verification before activity query;
+  immutable read-only SQLite; and no-network extraction, compilation and
+  support publication. Permit at most one future download and one consumption,
+  with no retry, resume, mirror, alternate format, source repair, threshold
+  change, partial reuse or second attempt. Freeze a one-shot ceiling of 640
+  CPU-core-hours, 120 wall-hours, 160 GB restricted storage, 64 GiB peak RSS,
+  zero GPU-hours and one process. Keep the claim unconsumable until one additive
+  real-source adapter, acquisition wrapper and official-shaped synthetic driver
+  pass a separately reviewed two-root acceptance and bind all null future fields
+  in a private consumed-claim receipt.
+- Evidence: The claim's nine focused tests authenticate the exact claim bytes,
+  parents, accepted sources, archive identity, null adapter bindings, narrow
+  paths, checksum/network/read boundaries, targets, conjunctive 1,000/750
+  support gate, parent-bounded resources, cleanup, authority and zero counters.
+  The fixed attempt and receipt roots are absent. Fifty focused D-109 through
+  D-112 tests pass with Ruff and mypy clean. Only existing receipt strings for
+  the future challenge capability were authenticated; no source file was opened.
+  No archive request, path, external
+  record, activity query, official input, fit, prediction, metric, confirmatory
+  truth, historical row, blinded test, TDI, submission, official metric,
+  leaderboard selection or upload occurred. MapLight remains 0.5838 internal
+  component-macro MAE; this claim has no model-quality meaning.
+- Alternatives: Download immediately after claim integration; label the
+  synthetic-only compiler as real-source capable; consume the one-shot claim
+  before the adapter is accepted; allow range retries or mirrors; verify the
+  checksum after extraction; open SQLite read-write; inspect activities before
+  target verification; retain raw external rows in Git; change support gates
+  after counts; or fit before support falsification.
+- Reversal condition: Any changed parent/source/archive byte, pre-adapter claim
+  consumption, archive or activity access before integrated acceptance,
+  non-atomic or second download, alternate source, checksum-after-inspection,
+  network-enabled compilation, writable database, target mismatch, source or
+  threshold repair, official-input access, model/metric operation, incomplete
+  cleanup, row-level publication, false zero counter, or leaderboard-driven
+  choice revokes the claim and rejects EXP-X1. The next gate is the minimal
+  real-source adapter's official-shaped synthetic acceptance, not acquisition.

@@ -1,0 +1,201 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_acquisition_claim.v1",
+  "gate": "G2_5C_EXP_X1_ACQUISITION_CLAIM_FROZEN",
+  "status": "immutable_unconsumed_claim_adapter_acceptance_required",
+  "recorded_at_utc": "2026-08-25T05:57:11Z",
+  "base_commit": "95d29a83962b7edfde460ba53db85c8fed021190",
+  "claim_id": "g2-5c-x1-acquisition-attempt-1",
+  "maximum_consumptions": 1,
+  "consumed": false,
+  "purpose": "Bind one future ChEMBL 37 archive acquisition and one leakage-safe support compilation. This tracked claim creates no authority to acquire or open the archive until the missing real-source adapter bindings are accepted, integrated and copied into the private consumed claim receipt.",
+  "parents": {
+    "provenance_contract": {
+      "path": "global_v2_x1_provenance_contract.json",
+      "sha256": "a51f81a411e35e6514cbf2739a382b63b6c4db2e379e18004907a8e590a21c1d"
+    },
+    "synthetic_compiler_contract": {
+      "path": "global_v2_x1_synthetic_compiler_contract.json",
+      "sha256": "db36935e2fb7478f8e038f094a11bcdd47ed8574541b50b2a27170170eba3442"
+    },
+    "synthetic_compiler_acceptance": {
+      "path": "global_v2_x1_synthetic_compiler_acceptance.json",
+      "sha256": "5ea379d18c7c3422c112726c25ba869e77fea91fb06ddac1f13d2529025001a8"
+    }
+  },
+  "accepted_source_bindings": {
+    "compiler_sha256": "34ea893e7238f62cb46eb280e76718b76b797cca24176d2225c0598e63ebf77e",
+    "synthetic_driver_sha256": "b10bdee870019783edacf231c6a6c5b9c76d0e2cbc309ba733d25e235fc0305d",
+    "focused_tests_sha256": "b05e5eb640ef53767477cb015dccc3c002caebff4ae299fda1c1bedce26c85e3",
+    "chemistry_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+    "topology_source_sha256": "1b6fd30fc36295a7c7275cc47d19ca4d0674765bc21036d2b7f638cce276cadb",
+    "root_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6"
+  },
+  "future_consumption_bindings": {
+    "real_source_adapter_sha256": null,
+    "acquisition_wrapper_sha256": null,
+    "official_shaped_synthetic_driver_sha256": null,
+    "official_shaped_synthetic_acceptance_sha256": null,
+    "adapter_acceptance_receipt_sha256": null
+  },
+  "source": {
+    "database": "ChEMBL",
+    "release": "chembl_37",
+    "release_date": "2026-05-01",
+    "doi": "10.6019/chembl.database.37",
+    "archive_url": "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_37/chembl_37_sqlite.tar.gz",
+    "archive_sha256": "33c203740555f96067710cdfc1c3c55d890660e5908ec5cbf5817492c290d281",
+    "archive_listing_size": "5.4G",
+    "license": "Creative Commons Attribution-ShareAlike 3.0 Unported",
+    "maximum_downloads": 1,
+    "alternate_source_or_mirror": false
+  },
+  "challenge_source": {
+    "root": "/home/zbos/cypshift-private/openadmet-2026/r2b-official-v1",
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "training_topology_sha256": "710978431402dbb737244bf01a9f4d9e4e398181400627db680a4f12d06d3b8a",
+    "exact_training_structures": 4905,
+    "allowed_capability": "Read only authenticated challenge training molecule identities, raw structures, label-free development/confirmatory membership and frozen outer/inner component-fold identities needed for overlap and family exclusion.",
+    "forbidden_capability": "Do not parse target columns, features, confirmatory truth, historical row-level outcomes, blinded-test identities or any metric input."
+  },
+  "paths": {
+    "attempt_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1",
+    "archive_path": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1/source/chembl_37_sqlite.tar.gz",
+    "extract_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1/extracted",
+    "private_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1/.private",
+    "terminal_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1/terminal",
+    "receipt_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-5c-x1-acquisition-attempt-1-receipt"
+  },
+  "consumption": {
+    "preconditions": [
+      "This exact tracked claim is reviewed, integrated as one signed commit, and green on post-main CI.",
+      "A separately reviewed additive real-source adapter, acquisition wrapper, official-shaped synthetic driver and byte-identical two-root acceptance are integrated and bind all five future consumption fields.",
+      "Every parent and accepted source hash still matches, the exact host paths are absent, and /usr/bin/unshare supports a fresh user and network namespace.",
+      "Only the receipt-bound label-free challenge training structure and fold capability may be opened during support compilation; official targets, features, confirmatory truth, historical outcomes and blinded-test inputs remain forbidden."
+    ],
+    "atomicity": "Consumption is the atomic no-replace creation of attempt_root plus a private consumed-claim receipt binding every future source hash. Once created, the claim remains consumed after download, checksum, adapter, resource, support, integrity or cleanup failure.",
+    "network_boundary": "Permit exactly one HTTPS download request for the frozen archive URL into archive_path. Verify the complete archive SHA-256 before listing or extraction. Extraction, SQLite target verification, activity compilation, chemistry, topology, support decision and receipt publication run under /usr/bin/unshare --user --map-root-user --net with no network.",
+    "read_boundary": "Open the extracted SQLite database and fixed challenge_source root read-only and immutable. Do not alter either source, query an API, substitute a mirror, parse a forbidden challenge capability, or retain row-level source data in Git.",
+    "no_replace": "No retry, resume, range request, alternate URL, mirror, release, format, moved root, overwritten root, manual row repair, source edit, threshold edit, partial reuse or second acquisition is authorized."
+  },
+  "target_verification_before_activity_query": {
+    "organism": "Homo sapiens",
+    "target_type": "SINGLE PROTEIN",
+    "targets": {
+      "CYP1A2": "CHEMBL3356",
+      "CYP2C9": "CHEMBL3397",
+      "CYP2D6": "CHEMBL289",
+      "CYP3A4": "CHEMBL340"
+    },
+    "failure": "Any missing or mismatched target metadata rejects EXP-X1 before an activity query."
+  },
+  "support_falsifier": {
+    "minimum_novel_eligible_molecules_per_endpoint": 1000,
+    "minimum_family_safe_external_components_per_endpoint_per_outer_cell": 750,
+    "all_four_endpoints_required": true,
+    "all_outer_cells_required": true,
+    "decision_input": "Aggregate unique standardized-molecule and union-component counts only after global exact/equivalent challenge removal and cell-scoped family exclusion.",
+    "decision_lineage": "The terminal support decision must bind the accepted compiler hash, all challenge_source receipts, the filtered external capability receipt, the complete union-node/edge/component receipt, and every per-cell safe-identity receipt.",
+    "failure": "Any failed endpoint, cell, integrity gate or resource gate rejects EXP-X1 before a fit with no source fallback, threshold repair, source addition or model operation."
+  },
+  "resource_falsifier": {
+    "cpu_core_hours": 640,
+    "gpu_hours": 0,
+    "wall_hours": 120,
+    "maximum_restricted_storage_gb": 160,
+    "maximum_peak_rss_gib": 64,
+    "process_concurrency": 1,
+    "model_fits": 0,
+    "rule": "Measure the sole complete acquisition and compilation. Exceeding any ceiling rejects EXP-X1; no retry or optimization is authorized under this claim."
+  },
+  "terminal_receipt": {
+    "allowed_statuses": [
+      "G2_5C_X1_ACQUISITION_FAILED",
+      "G2_5C_X1_INTEGRITY_REJECTED",
+      "G2_5C_X1_RESOURCE_REJECTED",
+      "G2_5C_X1_SUPPORT_REJECTED",
+      "G2_5C_X1_SUPPORT_ACCEPTED"
+    ],
+    "public_aggregate_only": [
+      "source release, URL, archive and extracted-member hashes",
+      "challenge source revision and receipt hashes",
+      "target verification, ordered filter counts and preservation accounting",
+      "per-endpoint and per-cell unique-molecule/component support counts",
+      "comparison, timing, CPU, RSS, storage, authority and claim accounting",
+      "terminal decision and cleanup receipt"
+    ],
+    "restricted_only": [
+      "archive and extracted SQLite database",
+      "raw and eligible activity records",
+      "standardized external structures and per-cell capability rows"
+    ],
+    "publication": "Publish aggregate receipt once with no replace and no row-level external values, structures or predictions."
+  },
+  "cleanup": {
+    "required": true,
+    "delete_after_aggregate_receipt_acceptance": [
+      "attempt_root including archive_path, extract_root, private_root and terminal_root"
+    ],
+    "retain": [
+      "receipt_root aggregate hashes, counts, resources, accounting, decision and cleanup receipt"
+    ],
+    "receipt_publication": "Keep receipt_root absent until every terminal aggregate and cleanup fact is complete, then publish it atomically with no replace and remove all write bits. No mutable terminal or row-level state may exist outside attempt_root.",
+    "failure": "Any archive, extracted database, row-level capability or mutable terminal retained outside the fixed restricted attempt root, or any incomplete required deletion, is terminal."
+  },
+  "current_authority": {
+    "claim_and_static_tests": true,
+    "adapter_implementation": false,
+    "official_shaped_synthetic_execution": false,
+    "claim_consumption": false,
+    "archive_download": false,
+    "archive_open": false,
+    "external_activity_query": false,
+    "official_inputs": false,
+    "model_fitting": false,
+    "prediction_generation": false,
+    "metric_evaluation": false,
+    "submission": false,
+    "upload": false
+  },
+  "post_adapter_integration_authority": {
+    "precondition": "All consumption preconditions pass and a private consumed claim binds the accepted adapter milestone without modifying this tracked claim.",
+    "maximum_consumptions": 1,
+    "maximum_downloads": 1,
+    "archive_and_external_support_compilation": true,
+    "official_identity_inputs": true,
+    "official_training_structures": true,
+    "maximum_official_training_structures": 4905,
+    "official_fold_identity_capability": true,
+    "official_target_values": false,
+    "official_target_or_feature_inputs": false,
+    "model_fitting": false,
+    "prediction_generation": false,
+    "metric_evaluation": false,
+    "submission": false,
+    "upload": false
+  },
+  "current_milestone_accounting": {
+    "acquisition_claims_created": 1,
+    "acquisition_claims_consumed": 0,
+    "external_dataset_files_downloaded": 0,
+    "new_external_records_opened": 0,
+    "external_activity_queries": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0
+  },
+  "next_gate": "Review and integrate this exact claim and require green post-main CI. Then implement only one additive real-source adapter, one acquisition wrapper and one official-shaped synthetic driver; require two fresh byte-identical synthetic terminal maps and adversarial acceptance in a separately reviewed signed milestone. Do not consume this claim, download or open ChEMBL 37, or open any official challenge input before that acceptance is integrated and green."
+}
