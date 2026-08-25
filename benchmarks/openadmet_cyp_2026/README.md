@@ -164,6 +164,19 @@ dedicated cache. This is mechanics/resource evidence only; it creates no
 official-input, model-quality, claim, submission, leaderboard-selection, or
 upload authority.
 
+The separately reviewed development execution boundary is frozen in
+[`global_v2_g3_execution_contract.json`](global_v2_g3_execution_contract.json),
+SHA-256 `be9dccf0...f87e57`, with immutable unconsumed template
+[`global_v2_g3_execution_claim.json`](global_v2_g3_execution_claim.json),
+SHA-256 `71fc0231...25f9b`. It fixes one development-only attempt, exact
+structure reconstruction, 2,248 features, 60 fits, 46,896 candidate OOF
+predictions, prediction freeze before scoring, immutable MapLight pairing, six
+conjunctive promotion gates, aggregate-only publication, and fail-closed
+cleanup. Four future implementation/acceptance bindings are null, so the claim
+cannot yet be consumed. This milestone opened zero official row and performed
+zero fit, prediction, or metric. Its next gate is official-shaped synthetic
+acceptance of the additive compiler and wrapper, not official execution.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

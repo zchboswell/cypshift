@@ -1,0 +1,323 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g3_execution_contract.v1",
+  "recorded_at_utc": "2026-08-25T13:11:11Z",
+  "freeze_date": "2026-08-25",
+  "gate": "G2_6T_EXP_G3_EXECUTION_CONTRACT_FROZEN",
+  "status": "contract_and_unconsumed_claim_only_no_official_execution_yet",
+  "contract_id": "G2-6T-EXP-G3-DEVELOPMENT-EXECUTION-V1",
+  "experiment_id": "EXP-G3",
+  "base_commit": "b68340c4a9b6495f79af0dc27db37f024a4db925",
+  "purpose": "Authorize exactly one future claim-bound family-safe development execution of the fixed EXP-G3 LightGBM expert, only after an additive compiler and wrapper pass two-root official-shaped synthetic acceptance at reviewed integrated source hashes.",
+  "hypothesis": "The exact fixed EXP-G3 expert materially improves immutable fixed MapLight on family-safe development OOF evidence, especially CYP1A2 or CYP2D6, while satisfying every preregistered global, paired-uncertainty, cell, and endpoint-harm gate.",
+  "targeted_failure": "A mechanically valid and resource-feasible expert can still fail through official-source drift, structure reconstruction drift, component leakage, validation-truth access, feature-order drift, parameter drift, incomplete prediction freeze, incorrect MapLight pairing, metric/bootstrap drift, outcome-driven repair, or forbidden portal/test contamination.",
+  "occam_boundary": "Execute the already frozen D-116 expert once. Add only one official source compiler, one attempt wrapper, one official-shaped synthetic acceptance driver, and narrow tests. Do not add a model, feature, preprocessing step, seed, fit, validation set, early stopping rule, calibration, blend, threshold, endpoint-specific choice, metric, retry, repair, resume, move, overwrite, exploratory branch, or workflow framework.",
+  "parents": {
+    "g3_single_expert_contract": {
+      "path": "global_v2_g3_single_expert_contract.json",
+      "sha256": "ee2725ba2ea634fab7db35aa9b2d0e396b5f46feac3d1819891cc240bd25da47",
+      "required_status": "G2_6R_EXP_G3_CONTRACT_FROZEN"
+    },
+    "g3_synthetic_contract": {
+      "path": "global_v2_g3_synthetic_contract.json",
+      "sha256": "6ec0e73bb7c62a4b0c01987f1ef51bc964cc07b17d307c95f8c90f7574da4f9f",
+      "required_status": "G2_6S_EXP_G3_SYNTHETIC_CONTRACT_FROZEN"
+    },
+    "g3_synthetic_acceptance": {
+      "path": "global_v2_g3_synthetic_acceptance.json",
+      "sha256": "437f17f6c35a9dc6f207ea5d16dfdc3a9f80ae07d67d2c10a31e1c283d721ed5",
+      "required_status": "G2_6S_G3_SYNTHETIC_ACCEPTED"
+    },
+    "maplight_official_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "required_status": "G2_2_MAPLIGHT_REPRODUCED"
+    },
+    "synthetic_firewall_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    }
+  },
+  "accepted_implementation": {
+    "implementation_commit": "bde26d0f81af420d8efaeeb436bfc10d18f84fbd",
+    "g3_runner_path": "research/lightgbm-global/g3_runner.py",
+    "g3_runner_sha256": "a639c2f21022b79ebcfbe5187190cd5bf6698628e29d8a364873200118db3415",
+    "g3_synthetic_driver_path": "research/lightgbm-global/run_g3_synthetic.py",
+    "g3_synthetic_driver_sha256": "0136c9924736205491b7844064f1c2365a9651ce379af553d1dfb0a8d777d62f",
+    "g3_implementation_tests_path": "tests/test_openadmet_global_v2_g3_synthetic_implementation.py",
+    "g3_implementation_tests_sha256": "01f347822ae671cd7dc93e0775419adbf4c9cc04cb52dda1ff6cc906ed5a24ed",
+    "g3_acceptance_tests_path": "tests/test_openadmet_global_v2_g3_synthetic_acceptance.py",
+    "g3_acceptance_tests_sha256": "ee82c877a566e9db16fbbd5502ce3b74bb2df74f0ac1411ea42e92bcfd3d5550",
+    "research_pyproject_path": "research/lightgbm-global/pyproject.toml",
+    "research_pyproject_sha256": "9121a981fa079d94c0a3746e788a7825f95971019e843a185142ff3ec9907ca1",
+    "research_lock_path": "research/lightgbm-global/uv.lock",
+    "research_lock_sha256": "b110c1b6e7221815d1b447fbe9669654891a5db65877969a1fa1b9a6ce07152c",
+    "chemistry_source_path": "src/cypshift/chemistry.py",
+    "chemistry_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+    "schema_source_path": "src/cypshift/schema.py",
+    "schema_source_sha256": "42a65b149e103ea28ff7db3c54d3fbd5944d0b9866f8425d28a5c979a44b4c8e",
+    "tutorial_metric_source_path": "src/cypshift/openadmet_global_v2_metric.py",
+    "tutorial_metric_source_sha256": "e63f12af8e911da5f2f9ffde802f14039b7d8fb38293be85fec754793fc43269",
+    "extension_rule": "The future compiler and wrapper are additive adapters around these accepted primitives. They may implement official capability parsing, exact Morgan generation, the 60-fit traversal, scoring, accounting, cleanup, and terminal publication only. Their exact hashes and two-root official-shaped synthetic acceptance must enter the private consumed claim before an official byte opens."
+  },
+  "claim_contract": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_g3_execution_claim.v1",
+    "claim_id": "g2-6t-g3-development-attempt-1",
+    "claim_path": "global_v2_g3_execution_claim.json",
+    "maximum_consumptions": 1,
+    "future_receipt_fields": [
+      "future_official_compiler_source_sha256",
+      "future_execution_wrapper_source_sha256",
+      "future_official_shaped_synthetic_driver_source_sha256",
+      "future_official_shaped_synthetic_acceptance_sha256"
+    ],
+    "unconsumed_placeholders": "Every future_* field is null in the tracked immutable template. After a reviewed integrated official-shaped acceptance, one private canonical consumed claim may fill exactly those four nulls without changing any frozen field.",
+    "consumption": "Atomic no-replace creation of the fixed private attempt root and its attempt_claim.json consumes the sole claim. The tracked template never mutates. Acceptance, rejection, underpowered preflight, integrity failure, crash, or interruption remains consumed and permits no retry, resume, move, or overwrite.",
+    "precondition": "Consumption is forbidden until this contract and claim are integrated with green post-main CI and a later aggregate acceptance proves the exact additive compiler/wrapper on two fresh opposite-order official-shaped synthetic roots with zero official and forbidden operations."
+  },
+  "official_inputs": {
+    "development_source_root": "/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1",
+    "fixed_baseline_terminal_root": "/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-attempt-1/terminal",
+    "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/g2-6t-g3-development-attempt-1",
+    "attempt_root_absent_at_freeze": true,
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "baseline_manifest_sha256": "62c88f7d1213ead4fd297f1a44905e71638e704765f9abc206dd12d152bf77fe",
+    "baseline_outer_oof_sha256": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+    "source_file_allowlist": [
+      "manifest.json",
+      "direct_observations.csv",
+      "group_folds.csv",
+      "feature_rows.csv",
+      "maplight_rdkit_descriptors.npy"
+    ],
+    "baseline_file_allowlist": [
+      "manifest.json",
+      "development_outer_oof.csv"
+    ],
+    "denied_source_files": [
+      "maplight_morgan_count.npy",
+      "maplight_avalon_count.npy",
+      "maplight_erg.npy"
+    ],
+    "read_boundary": "This milestone records existing aggregate receipt strings and verifies only that the future fixed attempt root is absent. It does not list, parse, copy, link, hash, or otherwise open a row-level official source or baseline file. A valid private consumed claim is required before the future compiler may open allowlisted roots."
+  },
+  "source_compilation": {
+    "population": {
+      "all_molecules": 4905,
+      "all_components": 4553,
+      "development_molecules": 3908,
+      "development_components": 3640,
+      "confirmatory_molecules_excluded": 997,
+      "confirmatory_components_excluded": 913,
+      "finite_development_truth_rows": 5197
+    },
+    "identity_rule": "Authenticate feature_rows.csv and group_folds.csv first. Compute the frozen component-hash confirmatory assignment from receipt-bound feature identities before decoding any numeric target field. Retain exactly the 3,908 development molecule IDs and accepted 3x5 outer assignments; never rebalance, reseed, or infer membership from target availability or value.",
+    "structure_rule": "For each retained development molecule only, collect its raw_smiles strings from direct_observations.csv, run the accepted cypshift standardizer on every distinct raw string, require accepted status and exact equality to the feature row standardized_structure_hash, and require one canonical standardized structure across all observations. Preserve every raw string and provenance privately; reject rather than repair any mismatch.",
+    "morgan_rule": "Generate one dense int32 2,048-column chiral radius-2 Morgan count row per canonical development molecule using RDKit GetMorganGenerator with useCounts=true, includeChirality=true, useBondTypes=true, countSimulation=false, and includeRedundantEnvironments=false. Preserve bit order 0:2048 and reject negative or nonintegral counts.",
+    "descriptor_rule": "Authenticate the accepted 4,905x200 float64 descriptor array and select the 3,908 development rows by exact feature-row identity. Preserve column order and NaN, reject positive or negative infinity, and do not recompute descriptors.",
+    "matrix_rule": "Concatenate Morgan counts then descriptors into one 3,908x2,248 C-contiguous float64 matrix. Perform no imputation, scaling, selection, dropping, compression, target encoding, assay-context encoding, or label-dependent computation.",
+    "truth_rule": "After the label-free development filter, parse only development direct-inhibition point/interval/std fields through the already accepted aggregation rules. Parse zero confirmatory values. Publish disjoint model and scorer capabilities: model capabilities expose only one endpoint's current outer-training finite-central values; scorer truth remains unreadable until all candidate predictions freeze.",
+    "baseline_rule": "Authenticate only the immutable fixed MapLight terminal manifest and development_outer_oof.csv. The model stage cannot resolve either. The scorer may resolve the exact 46,896 baseline rows only after all candidate prediction partitions freeze.",
+    "preflight_minima": {
+      "development_finite_targets_per_endpoint": 750,
+      "outer_training_targets_per_endpoint_repeat_fold": 400,
+      "outer_validation_targets_per_endpoint_repeat_fold": 75,
+      "positive_finite_tutorial_denominator_per_endpoint_repeat": true
+    },
+    "underpowered": "Any source, identity, family, structure, feature, truth, fold, baseline, support, or tutorial-denominator mismatch publishes G2_6R_G3_UNDERPOWERED with zero fits and consumes the sole attempt. It cannot alter a component, mask, structure, split, feature, denominator, or model."
+  },
+  "execution": {
+    "attempts": 1,
+    "replays": 1,
+    "retry": false,
+    "resume": false,
+    "move": false,
+    "overwrite": false,
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "repeat_seeds": [
+      20260810,
+      20260811,
+      20260812
+    ],
+    "outer_folds": 5,
+    "outer_endpoint_contexts": 60,
+    "exact_new_lightgbm_fits": 60,
+    "baseline_refits": 0,
+    "inner_selection_fits": 0,
+    "expected_candidate_outer_prediction_rows": 46896,
+    "expected_baseline_outer_prediction_rows": 46896,
+    "model_seed": 20260825,
+    "num_boost_round": 1500,
+    "parameter_source": "Use the exact D-116 parameter object through the accepted G3 runner. Require one resolved-parameter SHA-256 across all 60 fits and equality to the accepted prospective receipt. Pass no validation Dataset, callback, early stopping, custom objective, custom metric, continuation, categorical declaration, or model reuse.",
+    "fit_order": "Canonical repeat seed, outer fold, then endpoint order. Run one fit process at a time with exactly sixteen LightGBM threads and no overlapping fit or GPU operation.",
+    "fit_capability": "Each fit receives only its endpoint's current outer-training finite-central target rows and the matching training/prediction feature rows. It cannot resolve outer-validation truth, another endpoint's targets, baseline predictions, scorer state, confirmatory, historical, blinded-test, TDI, external, submission, metric, leaderboard, upload, or portal paths.",
+    "prediction_freeze": "Require all sixty unique fit identities and exactly 46,896 finite float64 candidate predictions on the complete label-free outer-validation populations. Canonically sort and atomically freeze the candidate OOF file before scorer truth or fixed MapLight OOF can open.",
+    "fit_failure": "A missing, extra, duplicate, failed, warned, nonfinite, parameter-drifted, interrupted, or replaced fit identity fails the consumed attempt. Unused capacity cannot fund a retry, replacement, another seed, parameter, feature, preprocessing rule, blend, or successor."
+  },
+  "development_evaluation": {
+    "paired_identity": "Candidate and fixed MapLight require identical molecule_id, endpoint, similarity_component_hash, repeat, outer fold, finite truth mask, and scorer row. Any missing, extra, duplicate, or mismatched identity fails before a metric.",
+    "primary_metric": {
+      "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+      "direction": "lower_is_better",
+      "exact_local_calls": 24,
+      "rule": "For each system, repeat, and endpoint, join all five folds and compute the pinned tutorial ST-RAE on eligible interval rows. Macro-average four endpoints, then average three repeat macro values.",
+      "relative_improvement": "(fixed_MapLight_primary - EXP_G3_primary) / fixed_MapLight_primary",
+      "name_boundary": "This is a pinned local tutorial diagnostic. Live-backend parity remains unverified and no value may be called an official score."
+    },
+    "component_macro_mae": {
+      "rule": "Within each endpoint and repeat, give every D-032 component equal total weight divided across its finite-central rows. Average four endpoints then three repeats.",
+      "absolute_improvement": "fixed_MapLight minus EXP-G3 on identical rows",
+      "endpoint_improvement": "For each endpoint, fixed MapLight minus EXP-G3 after averaging the three repeat component-equal values."
+    },
+    "favorable_cells": "For each of 15 repeat-by-outer-fold cells, macro-average four endpoint component-equal MAEs. A cell is favorable only when EXP-G3 is strictly lower on identical rows.",
+    "paired_component_bootstrap": {
+      "difference": "EXP-G3 component-macro MAE minus fixed MapLight component-macro MAE",
+      "unit": "D-032 component shared across endpoints, repeats, and both systems",
+      "seed": 20260827,
+      "accepted_replicates": 2000,
+      "maximum_attempts": 20000,
+      "draw": "Sample the sorted union of scored development components with replacement at the original component count; retain all eligible rows and all three repeat predictions for each drawn component with multiplicity.",
+      "rejection": "Reject a draw when either system lacks an eligible endpoint row or any result is nonfinite.",
+      "interval": "Sort accepted differences and linearly interpolate p=0.025 and p=0.975 using h=(n-1)*p."
+    },
+    "promotion_gates": {
+      "minimum_relative_primary_improvement": 0.03,
+      "minimum_absolute_component_mae_improvement": 0.015,
+      "paired_component_mae_upper_95_below_zero": true,
+      "minimum_favorable_outer_cells": 8,
+      "total_outer_cells": 15,
+      "maximum_endpoint_mae_degradation": 0.015,
+      "minimum_improved_targeted_endpoints": 1,
+      "targeted_endpoints": [
+        "CYP1A2",
+        "CYP2D6"
+      ],
+      "minimum_targeted_endpoint_component_mae_improvement": 0.01,
+      "logic": "All six gate families are conjunctive. Equality passes numeric minimum or maximum gates except the paired upper bound and favorable-cell comparisons, which must be strictly favorable."
+    },
+    "accepted": "Publish G2_6R_G3_ACCEPTED and advance the unchanged single expert only to a separately preregistered robustness and contender freeze.",
+    "clean_rejection": "Publish G2_6R_G3_REJECTED, retain fixed MapLight, and permanently close EXP-G3 without blend, grid, feature change, extra seed, endpoint repair, or outcome-driven successor."
+  },
+  "runtime_and_resources": {
+    "platform": "Linux x86_64 CPU on the accepted host class",
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "rdkit": "2026.03.5",
+    "lightgbm": "4.7.0",
+    "lightgbm_manylinux_wheel_sha256": "d23e922acd891e77212e4d0fbcee9ba973c96dee479491341d05ba595357ebb7",
+    "thread_count_per_fit": 16,
+    "maximum_concurrent_fits": 1,
+    "gpu_hours": 0,
+    "synthetic_projection": {
+      "projected_cpu_core_hours": 1.1709157071152776,
+      "projected_wall_hours": 0.07931188166511371,
+      "restricted_storage_gb": 6.612240404,
+      "peak_rss_gib": 0.3101158142089844
+    },
+    "hard_maxima": {
+      "cpu_core_hours": 160,
+      "wall_hours": 24,
+      "restricted_storage_gb": 32,
+      "peak_rss_gib": 24,
+      "gpu_hours": 0
+    },
+    "rule": "Record monotonic wall and process resource telemetry outside scientific terminals. Equality passes numeric maxima and GPU use must equal zero. Any ceiling breach fails the consumed attempt without concurrency change, sparse replacement, smaller feature block, reduced tree count, optimization, retiming, or retry."
+  },
+  "terminal_contract": {
+    "statuses": [
+      "G2_6R_G3_FAILED",
+      "G2_6R_G3_UNDERPOWERED",
+      "G2_6R_G3_REJECTED",
+      "G2_6R_G3_ACCEPTED"
+    ],
+    "required_aggregate_outputs": [
+      "g3_repeat_metrics.csv",
+      "g3_outer_cell_metrics.csv",
+      "g3_endpoint_metrics.csv",
+      "g3_bootstrap_summary.json",
+      "g3_result.json",
+      "manifest.json"
+    ],
+    "private_row_level_outputs": [
+      "g3_outer_predictions.csv",
+      "g3_paired_scorer_rows.csv"
+    ],
+    "attempt_root_file_set": [
+      "attempt_claim.json",
+      "receipt",
+      "terminal"
+    ],
+    "publication": "Only aggregate parent/source/runtime/implementation hashes, counts, metrics, gate decisions, resources, accounting, cleanup, and final status may enter Git. Raw structures, targets, bounds, standard deviations, feature matrices, models, row-level predictions, paired scorer rows, components, and timing traces remain private.",
+    "cleanup": "Before terminal publication, remove target/model/scorer capabilities, writable model state, feature arrays, candidate predictions, paired rows, temporary links or copies, LightGBM state, and staging roots. Retain only the read-only consumed claim, receipt, and status-specific aggregate terminal. Cleanup failure changes any scientific status to G2_6R_G3_FAILED.",
+    "failure": "Any parent, claim, source, runtime, structure, family, feature, capability, fit identity, parameter, prediction-freeze, paired-join, metric, bootstrap, accounting, resource, cleanup, publication, or authority defect is terminal with no retry, resume, move, overwrite, repair, or reinterpretation."
+  },
+  "forbidden": {
+    "must_remain_zero": [
+      "official_metric_evaluations",
+      "confirmatory_truth_values_opened",
+      "historical_r3c_row_level_artifacts_opened",
+      "blinded_test_files_opened",
+      "tdi_files_opened",
+      "external_records_acquired",
+      "submissions_created",
+      "leaderboard_observations_used_for_selection",
+      "live_uploads"
+    ],
+    "must_never_open": "Confirmatory truth, historical R3C or R5D row-level artifacts, blinded-test chemistry or predictions, TDI, external records, submission state, live official metric, leaderboard, upload capability, and private portal values remain outside EXP-G3 under every terminal."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "tracked_unconsumed_claims_created": 1,
+    "official_source_roots_listed_or_opened": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_baseline_prediction_rows_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "tutorial_metric_calls": 0,
+    "official_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_r3c_row_level_artifacts_opened": 0,
+    "blinded_test_files_opened": 0,
+    "tdi_files_opened": 0,
+    "external_records_acquired": 0,
+    "submissions_created": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claim_consumptions": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "tracked_unconsumed_claim": true,
+    "official_shaped_synthetic_implementation": false,
+    "claim_consumption": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_baseline_prediction_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "official_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the additive G3 official capability compiler, single-use attempt wrapper, official-shaped synthetic driver, and narrow adversarial tests. Two fresh opposite-order synthetic roots must match the six aggregate terminal files and exercise the exact 60-fit topology with a deterministic model double while a bounded exact-runtime control reuses the already accepted D-118 engine. Bind their reviewed hashes in one aggregate acceptance before deriving or consuming a private claim. Open no official byte in that milestone."
+}

@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-118. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-119. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -450,6 +450,20 @@ truth reads are all zero; both roots, private roots, and the dedicated cache
 were removed. These synthetic values have no model-quality interpretation.
 Official input and claim creation remain closed until a separately reviewed
 single-use development execution contract and unconsumed claim are integrated.
+
+D-119 freezes that execution contract at SHA-256 `be9dccf0...f87e57` and its
+immutable unconsumed claim at SHA-256 `71fc0231...25f9b`. The future run is one
+fixed development-only attempt: reconstruct accepted standardized structures,
+generate the exact 2,048-column chiral Morgan-count block, append the accepted
+200 descriptor columns, and execute exactly 60 outer LightGBM fits yielding
+46,896 candidate predictions. Model capabilities see only the current outer-
+training endpoint targets; scorer truth and fixed MapLight OOF remain closed
+until every candidate partition is frozen. Promotion requires all six frozen
+gate families. The tracked claim has four null future implementation receipts
+and is deliberately unusable. This milestone opened zero official row and
+performed zero fit, prediction, or metric. Its exact next gate is an additive
+official compiler/wrapper plus two-root official-shaped synthetic acceptance;
+do not consume the claim or open an official byte in that milestone.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1099,17 +1113,19 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-118 synthetic acceptance SHA-256
-`437f17f6...721ed5`, then require green post-main CI. After integration, freeze
-one separately reviewed official development execution contract and one
-immutable unconsumed claim binding the accepted runtime, sources, family folds,
-features, fixed MapLight OOF comparator, 60-fit/46,896-prediction ceiling,
-aggregate-only terminals, cleanup, and every D-116 promotion gate. Do not open
-an official input or create the claim before that contract milestone is
-integrated. Do not inspect confirmatory truth, blinded test, TDI, historical
-row-level artifacts, generate a submission, call an official metric, use portal
-evidence for selection, or upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain
-closed; `global_TDI` remains the TDI fallback.
+Review and integrate D-119 contract SHA-256 `be9dccf0...f87e57` and unconsumed
+claim SHA-256 `71fc0231...25f9b`, then require green post-main CI. After
+integration, implement only the additive official capability compiler,
+single-use attempt wrapper, official-shaped synthetic driver, and narrow
+adversarial tests. Two fresh opposite-order synthetic roots must match all six
+aggregate terminal files and exercise the exact 60-fit topology with a model
+double; a bounded exact-runtime control must reuse D-118. Bind reviewed source
+hashes in one aggregate acceptance before deriving or consuming a private
+claim. Open no official byte, fit no official model, and evaluate no official
+metric in that milestone. Do not inspect confirmatory truth, blinded test, TDI,
+historical row-level artifacts, generate a submission, use portal evidence for
+selection, or upload. G1/G2/M1/X1/T2 and immutable R5D/I0 remain closed;
+`global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

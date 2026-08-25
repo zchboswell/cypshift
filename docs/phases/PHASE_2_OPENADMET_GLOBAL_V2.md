@@ -31,6 +31,10 @@ D-118 accepts the exact implementation and sole formal attempt: two opposite-
 order roots match all seven terminals, and every conservative resource gate
 passes. Official development access and claim creation remain closed pending a
 separate contract milestone.
+D-119 now freezes that development execution contract and an immutable
+unconsumed claim. The fixed scientific run remains unopened, and the claim is
+unusable until a later official-shaped synthetic compiler/wrapper acceptance
+binds four reviewed implementation receipts.
 
 Authorized: 2026-08-24.
 
@@ -737,6 +741,21 @@ were deleted. These synthetic outputs do not measure model quality. A separate
 reviewed single-use development execution contract and unconsumed claim must
 precede any official input.
 
+D-119 freezes that next boundary under
+[`global_v2_g3_execution_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_execution_contract.json),
+SHA-256 `be9dccf0...f87e57`, with immutable unconsumed claim
+[`global_v2_g3_execution_claim.json`](../../benchmarks/openadmet_cyp_2026/global_v2_g3_execution_claim.json),
+SHA-256 `71fc0231...25f9b`. The sole future official development attempt binds
+the accepted 3,908-molecule/3,640-component partition, exact family folds,
+structure reconstruction, 2,048 Morgan-count plus 200 descriptor features,
+fixed 1,500-tree parameters, 60 fits, and 46,896 candidate OOF predictions.
+Candidate predictions must freeze before scorer truth or immutable MapLight OOF
+opens. Promotion requires all six preregistered gate families; a clean miss
+closes EXP-G3 without repair. The tracked claim's four future implementation
+and acceptance hashes are null, so it cannot authorize execution. This
+contract milestone listed or opened no official source root, opened no target,
+feature, or baseline row, and ran zero fit, prediction, or metric.
+
 ### G2-7 — Robustness and primary contender freeze
 
 Before opening sealed truth, run frozen seed, component-threshold,
@@ -795,7 +814,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-118 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-119 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -805,14 +824,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-118 synthetic acceptance SHA-256
-`437f17f6...721ed5`, then require green post-main CI. After integration, freeze
-one separate official development execution contract and immutable unconsumed
-claim binding the accepted runtime and sources, exact development identities
-and family folds, fixed features and parameters, immutable MapLight OOF pairing,
-60-fit and 46,896-prediction ceilings, aggregate-only scoring, cleanup, and all
-D-116 promotion gates. Do not create the claim or open official input until the
-contract milestone is reviewed, integrated, and green. Do not inspect
-confirmatory truth, historical row-level artifacts, blinded test, TDI, generate
-a submission, call an official metric, use portal evidence for selection, or
-upload.
+Review and integrate D-119 contract SHA-256 `be9dccf0...f87e57` and unconsumed
+claim SHA-256 `71fc0231...25f9b`, then require green post-main CI. After
+integration, implement only the additive official capability compiler,
+single-use attempt wrapper, official-shaped synthetic driver, and narrow
+adversarial tests. Two fresh opposite-order synthetic roots must match all six
+aggregate terminal files and exercise the exact 60-fit topology with a model
+double; a bounded exact-runtime control must reuse D-118. Bind reviewed source
+hashes in one aggregate acceptance before deriving or consuming a private
+claim. Open no official byte, fit no official model, and evaluate no official
+metric in that milestone. Do not inspect confirmatory truth, historical row-
+level artifacts, blinded test, TDI, generate a submission, use portal evidence
+for selection, or upload.

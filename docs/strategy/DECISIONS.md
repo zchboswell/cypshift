@@ -3939,3 +3939,43 @@
   milestone freezing the exact single-use official development execution and
   unconsumed claim; no official row opens until that milestone is integrated
   and green on post-main CI.
+
+## D-119 — Freeze the single-use EXP-G3 development execution
+
+- Date: 2026-08-25
+- Status: accepted contract and immutable unconsumed claim only; zero official
+  source-row, target, feature, baseline-prediction, fit, prediction, metric,
+  submission, leaderboard-selection, upload, or claim-consumption operation
+- Decision: Accept `global_v2_g3_execution_contract.json` at SHA-256
+  `be9dccf0...f87e57` and its tracked immutable claim template at SHA-256
+  `71fc0231...25f9b`. The sole future development attempt is fixed at 60 exact
+  LightGBM fits, 46,896 candidate outer predictions, and zero baseline refits.
+  The tracked claim is unusable because four future official compiler, wrapper,
+  synthetic-driver, and acceptance receipts remain null. Those receipts may be
+  filled only in one private canonical derivative after a later reviewed,
+  integrated official-shaped synthetic acceptance.
+- Evidence: The contract binds D-116, D-117, D-118, the immutable MapLight
+  reproduction, accepted implementation/runtime hashes, existing aggregate
+  source receipts, 3,908 development molecules in 3,640 components, exact
+  structure reconstruction, 2,048 chiral Morgan-count and 200 accepted
+  descriptor columns, fixed folds and parameters, one-at-a-time sixteen-thread
+  execution, prediction freeze before scorer access, paired MapLight identity,
+  24 local tutorial calls, 2,000 accepted component-bootstrap replicates, all
+  six promotion-gate families, aggregate-only terminals, hard resources, and
+  cleanup. Ten focused static tests pass. The fixed attempt root was absent at
+  freeze; no official source root was listed or opened.
+- Alternatives: Open official inputs directly under D-118; reuse the synthetic
+  driver as an official compiler; create a usable claim before binding future
+  adapter hashes; recompute descriptors; use accepted Morgan arrays instead of
+  reconstructing from authenticated structures; expose validation truth or
+  baseline predictions before candidate freeze; tune from outer evidence;
+  permit retry, repair, resume, move, overwrite, or private portal selection.
+- Reversal condition: Any changed parent, receipt, source identity, family
+  assignment, structure, feature, parameter, fit identity, capability,
+  prediction-freeze, paired join, metric, bootstrap, gate, resource, terminal,
+  cleanup, publication, accounting, or authority revokes progression before
+  official access. Otherwise the next gate is an additive official compiler,
+  single-use wrapper, official-shaped synthetic driver, and two fresh
+  opposite-order synthetic roots. Bind their reviewed hashes in one aggregate
+  acceptance before consuming a private claim; open no official byte in that
+  milestone.
