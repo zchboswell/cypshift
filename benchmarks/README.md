@@ -28,17 +28,23 @@ The current G2-7 chain is:
 - D-126 no-fit mechanics acceptance:
   [`global_v2_maplight_robustness_no_fit_acceptance.json`](openadmet_cyp_2026/global_v2_maplight_robustness_no_fit_acceptance.json),
   SHA-256 `ca722b26...c231e0e`;
-- D-127 single-use execution contract and unusable claim:
+- D-127 historical single-use execution contract and permanently unusable claim:
   [`global_v2_maplight_robustness_execution_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_contract.json)
   at `65934b0a...a91f488` and
   [`global_v2_maplight_robustness_execution_claim.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim.json)
-  at `da0104bc...ceb334`.
+  at `da0104bc...ceb334`;
+- D-128 scoring-capability repair contract:
+  [`global_v2_maplight_robustness_scoring_capability_contract.json`](openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_contract.json),
+  SHA-256 `b1cb0866...6adac9f`.
 
-The claim has five null future receipts, zero consumptions, and no official
-authority. After D-127 integration and green post-main CI, the only next gate
-is the additive scientific runner, single-use attempt driver, and formal
-two-root official-shaped execution/scoring acceptance. Official development
-access remains closed until that acceptance is integrated.
+Pre-implementation audit proved that D-127 cannot satisfy exact D-122 scoring:
+its accepted scorer capability exposes central `point` only, while the frozen
+tutorial, duplicate, and source diagnostics also require reported `low/high`,
+standardized-structure identity, and `source_file`. The D-127 claim keeps five
+null future receipts, zero consumptions, and no authority permanently. D-128
+freezes only a minimal scorer-enrichment capability repair; its next gate is a
+two-root official-shaped synthetic acceptance with zero fit and zero metric.
+Official development access remains closed.
 
 ## OpenADMET TRACE source rows
 

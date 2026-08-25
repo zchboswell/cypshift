@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-127. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-128. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -601,6 +601,20 @@ zero. Thirteen focused tests pass. This contract milestone opens no official or
 baseline row-level file and performs zero fit, prediction, metric,
 confirmatory, submission, or upload operation. Fixed MapLight remains the best
 validated internal system at 0.5838 component-macro MAE.
+
+D-128 revokes D-127 progression before any implementation or claim consumption
+and freezes the G2-7E scoring-capability repair at SHA-256
+`b1cb0866...6adac9f`. The exact accepted D-126 compiler emits stage truth with
+only `molecule_id`, `endpoint`, and central `point`; exact D-122 tutorial,
+duplicate, and source diagnostics additionally require reported `low/high`,
+standardized-structure identity, and `source_file`. Zero-width bound
+substitution and invented provenance are forbidden. The D-127 claim stays
+immutable with five null receipts, zero consumptions, and `usable=false`, and
+is now permanently barred from use. D-128 authorizes no implementation or
+execution: zero synthetic row, official byte, baseline row, fit, prediction,
+metric, claim, confirmatory, submission, or upload operation occurs. Fixed
+MapLight remains the best validated internal system at 0.5838 component-macro
+MAE.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1252,15 +1266,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-127 contract SHA-256 `65934b0a...a91f488` and claim
-SHA-256 `da0104bc...ceb334`, then require green post-main CI. Only afterward
-implement the additive scientific runner, single-use attempt driver,
-official-shaped execution/scoring acceptance driver, and focused tests. A
-distinct two-root synthetic acceptance must bind the five null future receipt
-fields before any claim consumption. Do not open an official byte, consume a
-claim, run a scientific fit, or evaluate a development metric before that
-implementation and acceptance are reviewed, integrated, and green on `main`.
-Confirmatory truth, historical
+Review and integrate D-128 scoring-capability repair contract SHA-256
+`b1cb0866...6adac9f`, then require green post-main CI. Only afterward implement
+one trusted scorer-enrichment compiler, its separate official-shaped direct-
+observation fixture, one two-root synthetic acceptance driver, and focused
+tests. Require byte-identical scorer capabilities, zero confirmatory value
+parses, zero real fits, and zero development metrics. Do not implement the
+scientific runner or attempt driver, create or consume a claim, use the D-127
+root, open an official byte or baseline, fit a model, or score a development
+target until the repair is accepted and a later corrected execution contract
+is reviewed, integrated, and green on `main`. Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and
 G1/G2/M1/X1/T2 plus immutable R5D/I0 remain closed; `global_TDI` remains the

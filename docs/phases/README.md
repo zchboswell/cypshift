@@ -291,6 +291,18 @@ post-main CI, the next gate is only the additive scientific runner, single-use
 driver, and two-root official-shaped execution/scoring acceptance—not official
 access itself.
 
+D-128 revokes D-127 progression before implementation or claim consumption and
+freezes the G2-7E scorer-capability repair at SHA-256
+`b1cb0866...6adac9f`. The accepted D-126 scorer exposes only central `point`,
+but exact D-122 tutorial, duplicate, and source diagnostics also require
+reported `low/high`, standardized-structure identity, and `source_file`.
+Silently treating point as both bounds or inventing source provenance is
+forbidden. The D-127 claim remains immutable, unconsumed, and permanently
+unusable. After reviewed integration and green post-main CI, the only next
+gate is one trusted scorer-enrichment compiler plus a two-root official-shaped
+synthetic acceptance with zero real fit and zero development metric. The
+scientific runner, a corrected claim, and official access remain closed.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

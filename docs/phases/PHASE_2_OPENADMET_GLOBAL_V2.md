@@ -81,6 +81,14 @@ and the actual 7.68-hour/128-core-hour fail-stop envelope. Five future
 implementation and acceptance hashes remain null, so the claim is unusable.
 This milestone opens zero official byte and performs zero fit, prediction,
 metric, confirmatory, submission, or upload operation.
+D-128 now revokes progression from D-127 and freezes the G2-7E scoring-
+capability repair at SHA-256 `b1cb0866...6adac9f`. The pre-implementation
+audit found that D-126 stage truth contains only `molecule_id`, `endpoint`, and
+central `point`, while exact D-122 scoring also needs reported `low/high`,
+standardized-structure identity, and authenticated `source_file`. The D-127
+claim remains unchanged, unconsumed, and permanently unusable. This repair is
+contract-only: zero synthetic row, official byte, fit, prediction, metric,
+claim, confirmatory, submission, or upload operation occurs.
 
 Authorized: 2026-08-24.
 
@@ -962,6 +970,24 @@ future receipts are null, `usable` is false, and consumptions are zero. Thirteen
 focused static tests pass. This freeze reads no official or baseline row-level
 file and creates no model-quality evidence.
 
+D-128 supersedes only D-127's forward progression, not its immutable history.
+Its scoring-capability contract is
+[`global_v2_maplight_robustness_scoring_capability_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_scoring_capability_contract.json),
+SHA-256 `b1cb0866...6adac9f`. Static audit of the exact accepted D-126 compiler
+proved that every stage truth file has only `molecule_id`, `endpoint`, and
+`point`. That is sufficient for no-fit chronology and component MAE, but not
+for the frozen tutorial eligibility and distance arithmetic, duplicate
+collapse, or single-source diagnostic, which require `low`, `high`,
+`standardized_structure_hash`, and `source_file`. D-128 forbids zero-width
+bound substitution and hard-coded provenance. It permits only a future
+trusted scorer-enrichment compiler, separate official-shaped direct-observation
+fixture, acceptance driver, and focused tests. The future capability must skip
+confirmatory rows before decoding any value suffix, match D-126 central truth
+exactly, publish only eight scorer fields, and replay byte-identically under
+opposite physical and launch order. It performs no fit or metric and creates
+no claim authority. A later corrected execution contract must use a new claim
+ID and fixed root; the D-127 claim and root are permanently forbidden.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -1013,7 +1039,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-127 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-128 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1023,15 +1049,16 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate the D-127 contract SHA-256 `65934b0a...a91f488` and
-unconsumed claim SHA-256 `da0104bc...ceb334`, then require green post-main CI.
-Only afterward implement the exact additive scientific runner, single-use
-attempt driver, official-shaped execution/scoring acceptance driver, and
-focused tests. Their distinct formal two-root acceptance must remain synthetic
-and bind all five future receipts before claim consumption. Do not modify or
-repeat G2-7B, open an official byte, consume a claim, or fit a scientific model
-before that implementation and acceptance are reviewed, integrated, and green.
-Confirmatory truth,
+Review and integrate D-128 scoring-capability repair contract SHA-256
+`b1cb0866...6adac9f`, then require green post-main CI. Only afterward implement
+the trusted scorer-enrichment compiler, its separate official-shaped direct-
+observation fixture, one two-root synthetic acceptance driver, and focused
+tests. That sole acceptance must parse zero confirmatory value, run zero real
+fit and zero development metric, and match every capability byte under
+opposite order. Do not implement the scientific runner or attempt driver,
+create or consume any claim, reuse the D-127 root, open an official byte or
+baseline, fit a model, or score a development target before the repair is
+accepted and a later corrected execution contract is integrated. Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.
 `global_TDI` remains the TDI fallback.

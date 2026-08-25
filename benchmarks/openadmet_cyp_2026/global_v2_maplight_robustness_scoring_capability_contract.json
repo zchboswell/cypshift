@@ -1,0 +1,259 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_scoring_capability_contract.v1",
+  "recorded_at_utc": "2026-08-25T20:56:13Z",
+  "freeze_date": "2026-08-25",
+  "gate": "G2_7E_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_CONTRACT_FROZEN",
+  "status": "contract_only_d127_progression_revoked_no_implementation_or_official_operation",
+  "contract_id": "G2-7E-MAPLIGHT-ROBUSTNESS-SCORING-CAPABILITY-REPAIR-V1",
+  "base_commit": "1dddf21dcd3fbb1d9ceee59658065272b99d7f61",
+  "purpose": "Repair one fail-closed capability omission discovered before D-127 implementation: exact D-122 scoring needs reported low/high values and authenticated source provenance, while the accepted D-126 scorer capability exposes only molecule_id, endpoint, and point.",
+  "hypothesis": "A minimal scorer-only enrichment capability can preserve the accepted D-126 model and family boundaries while supplying exactly the frozen D-122 scoring fields after prediction freeze, with confirmatory suffixes kept opaque and no new scientific choice.",
+  "targeted_failure": "Proceeding from D-127 would either make exact tutorial-primary and source diagnostics impossible, silently substitute zero-width point bounds, invent source provenance, or let a scientific runner reopen unrestricted official rows.",
+  "occam_boundary": "Keep D-122 science, the D-126 compiler, no-fit wrapper, supervisor, MapLight runner, chemistry, metric, locks, model capability, folds, targets, candidates, seeds, fit counts, selection gates, diagnostics, resources, and roots unchanged. Add only one trusted scorer-enrichment compiler, its official-shaped synthetic fixture and acceptance driver, and focused tests. Add no feature, model, metric, candidate, seed, bound imputation, calibration, blend, clip, cache, concurrency, retry, framework, or service.",
+  "parents": {
+    "maplight_robustness_contract": {
+      "path": "global_v2_maplight_robustness_contract.json",
+      "sha256": "ad9aef871ab06e5082568f20a9a6d293897924bdfeda2fb341685cffaa7a45af",
+      "required_gate": "G2_7_MAPLIGHT_ROBUSTNESS_CONTRACT_FROZEN"
+    },
+    "bounded_execution_contract": {
+      "path": "global_v2_maplight_robustness_bounded_execution_contract.json",
+      "sha256": "55fafa1d9806ba3221c26b8cd71d077ad61a0f485e51defbae21cbd4b5806527",
+      "required_gate": "G2_7C_MAPLIGHT_ROBUSTNESS_BOUNDED_EXECUTION_CONTRACT_FROZEN"
+    },
+    "no_fit_acceptance": {
+      "path": "global_v2_maplight_robustness_no_fit_acceptance.json",
+      "sha256": "ca722b265f751ad6efe58017b0106fbca35be4ee04e46d129ed7e8a51c231e0e",
+      "required_status": "G2_7C_MAPLIGHT_ROBUSTNESS_NO_FIT_ACCEPTED"
+    },
+    "superseded_execution_contract": {
+      "path": "global_v2_maplight_robustness_execution_contract.json",
+      "sha256": "65934b0acdd509138a05a01f8c727fca9dd762023f4d3f90c0401f9e8a91f488",
+      "historical_status": "G2_7D_MAPLIGHT_ROBUSTNESS_EXECUTION_CONTRACT_FROZEN",
+      "progression_authority": false
+    },
+    "permanently_unusable_d127_claim": {
+      "path": "global_v2_maplight_robustness_execution_claim.json",
+      "sha256": "da0104bc8d297904fc26e019f1717fee38411d9aa741c774f2185090bcceb334",
+      "required_status": "G2_7D_MAPLIGHT_ROBUSTNESS_CLAIM_UNCONSUMED",
+      "consumptions": 0,
+      "usable": false,
+      "future_rule": "The tracked D-127 claim remains immutable and must never be consumed, completed privately, repaired, replaced in place, or used to open an official byte. A later corrected execution contract requires a new claim ID and fixed attempt root."
+    }
+  },
+  "defect_evidence": {
+    "discovered_before": [
+      "scientific runner implementation",
+      "official-shaped scoring execution",
+      "claim consumption",
+      "official source access",
+      "real CatBoost fit",
+      "development metric evaluation"
+    ],
+    "d122_required_fields": {
+      "tutorial_primary": [
+        "molecule_id",
+        "endpoint",
+        "point",
+        "low",
+        "high"
+      ],
+      "duplicate_diagnostic": [
+        "standardized_structure_hash"
+      ],
+      "source_diagnostic": [
+        "source_file"
+      ],
+      "eligibility": "Tutorial-primary rows require finite point, low, and high with no imputation or midpoint. Duplicate collapse uses accepted standardized structure identity. Source status requires exactly cyp-challenge-TRAIN_inhibition.csv."
+    },
+    "d126_emitted_stage_truth_columns": [
+      "molecule_id",
+      "endpoint",
+      "point"
+    ],
+    "missing_from_d126_scorer": [
+      "low",
+      "high",
+      "standardized_structure_hash",
+      "source_file"
+    ],
+    "accepted_compiler_source": {
+      "path": "research/maplight-fixed/global_v2_maplight_robustness_execution_compiler.py",
+      "sha256": "029afd827e3a86718e7e2493594bbc6e6ed78e258534221e32acc2027ace72a7",
+      "truth_columns_symbol": "TARGET_COLUMNS",
+      "truth_columns_value": [
+        "molecule_id",
+        "endpoint",
+        "point"
+      ]
+    },
+    "conclusion": "The D-127 precondition requiring exact D-122 scoring is unprovable from its accepted scorer capability. Absence of low/high cannot be repaired by treating point as both bounds, and absence of source_file cannot be repaired by a hard-coded scientific result."
+  },
+  "scorer_enrichment_capability": {
+    "trusted_runtime": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.12.3",
+      "rdkit": "2026.03.5"
+    },
+    "future_source_path": "research/maplight-fixed/global_v2_maplight_robustness_scoring_compiler.py",
+    "inputs": {
+      "accepted_d126_model_capability": "Read only its immutable manifest and folds.csv to establish the exact development molecule, standardized_structure_hash, primary component, and family receipts.",
+      "accepted_d126_scorer_capability": "Read only its immutable manifest and three stage truth files to bind the exact finite central-point keys and values already accepted by D-126.",
+      "official_mode": "Read only direct_observations.csv from the same fixed accepted official source root under a future corrected consumed claim that binds its existing SHA-256.",
+      "synthetic_mode": "Read one separate official-shaped direct_observations.csv capability whose complete schema and semantic receipt are frozen by the future acceptance driver."
+    },
+    "official_population_accounting": {
+      "all_molecules": 4905,
+      "all_endpoint_rows": 19620,
+      "development_molecules": 3908,
+      "development_rows_decoded": 15632,
+      "finite_development_point_rows_emitted": 5197,
+      "confirmatory_molecules": 997,
+      "confirmatory_rows_prefix_checked_suffix_opaque": 3988,
+      "confirmatory_value_fields_decoded": 0
+    },
+    "official_direct_columns": [
+      "observation_id",
+      "molecule_id",
+      "source_row_id",
+      "source_file",
+      "source_row",
+      "source_sha256",
+      "endpoint",
+      "raw_smiles",
+      "raw_point",
+      "raw_low",
+      "raw_high",
+      "raw_std",
+      "point",
+      "low",
+      "high",
+      "std",
+      "raw_structure_sha256",
+      "standardized_structure_hash",
+      "similarity_component_hash",
+      "scaffold_group_hash",
+      "value_state",
+      "point_eligible",
+      "anchor_eligible"
+    ],
+    "output_columns": [
+      "molecule_id",
+      "endpoint",
+      "standardized_structure_hash",
+      "primary_component_hash",
+      "source_file",
+      "point",
+      "low",
+      "high"
+    ],
+    "row_policy": "Before decoding any value suffix, parse only observation_id and molecule_id. If molecule_id is not in the exact D-126 development model capability, retain no bytes and do not decode the remaining row. Require exactly 19,620 physical endpoint rows, exactly 15,632 fully decoded development rows, and exactly 3,988 prefix-checked suffix-opaque confirmatory rows; any other or unknown count fails. For a development row, require exact four-endpoint coverage, source and structure/component agreement, exact point equality with all three D-126 stage truths, and canonical finite low/high when present. Emit exactly the 5,197 accepted finite central-point keys. Emit empty low/high when either reported bound is absent or nonfinite; never impute, midpoint, widen, narrow, or rename a bound.",
+    "source_policy": "Every decoded development row must have source_file exactly cyp-challenge-TRAIN_inhibition.csv. Any absent, second, or different value fails capability compilation before fitting; the scientific result later publishes SINGLE_SOURCE_NOT_APPLICABLE with zero ablations.",
+    "capability_separation": "Publish one immutable scorer-only root. It contains no feature array, training target file, fold assignment beyond receipt-bound identities, model input, claim, baseline prediction, confirmatory value, historical row, blinded test, TDI, external record, submission row, portal observation, or upload capability. Model processes cannot resolve its path. Scientific scorers may open it only after the matching complete stage prediction freeze.",
+    "chronology": "The trusted compiler may parse development scoring fields into the sealed scorer-only capability before fitting, as the accepted D-126 compiler already does for central truth. No scientific runner or model process may open a scoring row until the matching immutable stage freeze exists.",
+    "publication": "Atomic no-replace, canonical order, read-only tree, exact source and parent receipts, zero forbidden accounting, and no retained raw row bytes."
+  },
+  "future_official_shaped_acceptance": {
+    "attempts": 1,
+    "roots": 2,
+    "root_a": "canonical physical source order and canonical dependency-safe launch order",
+    "root_b": "reversed physical source order and reversed dependency-safe launch order",
+    "fixture": "Use the accepted D-126 1,200-molecule fixture unchanged for model capabilities plus a separate full 23-column direct-observation capability. Preserve 960 development and 240 confirmatory molecule identities; include complete, missing-one-bound, missing-both-bounds, duplicate-structure, and four-endpoint rows. Every confirmatory value suffix is an invalid UTF-8 poison sentinel that must remain undecoded.",
+    "requirements": [
+      "both roots produce byte-identical scorer-enrichment capability trees",
+      "all emitted point values match every accepted D-126 stage truth byte-for-byte after canonical float parsing",
+      "tutorial eligibility equals exactly the rows with finite point, low, and high",
+      "the single accepted source value is authenticated without a scientific ablation",
+      "standardized structure and primary component identities match the D-126 model capability",
+      "confirmatory target values parsed equals zero",
+      "wrong source, point, structure, component, bound, receipt, parent, order, schema, symlink, traversal, duplicate, or overwrite fails closed",
+      "all mutable synthetic roots are cleaned",
+      "official and forbidden operation counters remain zero"
+    ],
+    "real_catboost_fits": 0,
+    "development_metric_evaluations": 0,
+    "model_quality_authority": false,
+    "claim_authority": false
+  },
+  "corrected_execution_boundary": {
+    "d127_claim_disposition": "permanently_unusable_unconsumed_historical_template",
+    "future_gate": "Only after the scorer-enrichment implementation and its one formal synthetic acceptance are reviewed, integrated, and green on main may a separate corrected single-use execution contract and new unusable claim be frozen.",
+    "unchanged_science": {
+      "stage_a_fits": 540,
+      "stage_b_fits": 180,
+      "stage_c_conditional_fits": 300,
+      "minimum_total_fits": 720,
+      "maximum_total_fits": 1020,
+      "minimum_prediction_identities": 562752,
+      "maximum_prediction_identities": 797232,
+      "baseline_refits": 0,
+      "inner_fits": 0,
+      "selection_tokens": 1,
+      "runner_ups": 0,
+      "deployable_clips": 0
+    },
+    "unchanged_resource_maxima": {
+      "wall_hours": 7.68,
+      "cpu_core_hours": 128.0,
+      "restricted_storage_gb": 51.2,
+      "peak_simultaneous_rss_gib": 15.36,
+      "gpu_hours": 0
+    },
+    "fixed_attempt_root_rule": "A future corrected claim must use a new claim ID and a new fixed absent private attempt root. The D-127 root remains forbidden so an old or partial consumer cannot be confused with the corrected attempt."
+  },
+  "current_milestone_accounting": {
+    "synthetic_source_rows_opened": 0,
+    "synthetic_scoring_values_parsed": 0,
+    "synthetic_capabilities_published": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_baseline_rows_opened": 0,
+    "model_fits": 0,
+    "predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "current_authority": {
+    "synthetic_implementation": false,
+    "synthetic_execution": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_baseline_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "claim_creation": false,
+    "claim_consumption": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "targeted_failure_modes": [
+    "V3 scorer truth or reported bounds reach a model process or open before prediction freeze",
+    "V4 source, parent, point, structure, component, schema, receipt, order, or capability drift",
+    "V6 missing bounds are silently imputed or a tutorial proxy is represented as a verified live score",
+    "C5 duplicate identities cannot be reconstructed for the frozen collapse diagnostic",
+    "E1 source provenance is invented, unavailable, or contains more than the accepted single value",
+    "P5/P6 D-127 claim consumption, official access, partial publication, overwrite, cleanup, portal, submission, or upload contamination"
+  ],
+  "next_gate": "After reviewed signed integration and green post-main CI, implement only the trusted scorer-enrichment compiler, one official-shaped synthetic acceptance driver, and focused tests. Run exactly one two-root synthetic acceptance with zero real fit and zero development metric. Do not implement the scientific runner or attempt driver, create or consume a claim, open an official byte, access a fixed baseline, fit a model, score a development target, access confirmatory truth, generate a submission, use leaderboard evidence for selection, or upload until this repaired capability is accepted and a later corrected execution contract explicitly authorizes those steps."
+}

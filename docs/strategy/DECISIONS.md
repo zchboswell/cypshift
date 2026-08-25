@@ -4322,3 +4322,44 @@
   focused tests, and one formal two-root official-shaped synthetic
   execution/scoring acceptance. It may fill no tracked field, consume no claim,
   and open no official byte.
+
+## D-128 — Revoke D-127 progression and freeze scoring-capability repair
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-7E evidence; D-127 claim remains immutable,
+  unconsumed, unusable, and permanently barred; zero implementation, synthetic
+  row, official source row, baseline row, fit, prediction, metric, claim,
+  confirmatory truth, historical row, blinded test, TDI, external record,
+  submission, official metric, leaderboard-selection, private-portal, upload,
+  or claim-consumption operation
+- Decision: Accept
+  `global_v2_maplight_robustness_scoring_capability_contract.json` at SHA-256
+  `b1cb0866...6adac9f`. Revoke only D-127's forward execution authority before
+  implementation or consumption. Preserve its contract and claim as immutable
+  history, with all five future hashes null, consumptions zero, and
+  `usable=false`. Freeze one minimal future scorer-enrichment compiler before
+  any scientific runner or corrected claim can exist.
+- Evidence: D-122 requires finite reported `point`, `low`, and `high` for the
+  tutorial-primary mask and arithmetic, `standardized_structure_hash` for the
+  duplicate-collapse diagnostic, and authenticated `source_file` for the
+  single-source gate. Static audit of accepted D-126 compiler SHA-256
+  `029afd82...ace72a7` proves its three stage truth files contain only
+  `molecule_id`, `endpoint`, and `point`. Therefore D-127's exact-D-122-scoring
+  precondition cannot be proved from its accepted scorer capability. D-128
+  keeps all D-122 candidates, seeds, groups, fits, predictions, selection,
+  diagnostics, resources, and roots unchanged except that any later corrected
+  attempt must use a new claim ID and root. Nine focused tests pass. No
+  scientific or official operation occurred.
+- Alternatives: Treat point as both bounds; omit tutorial scoring; hard-code
+  source provenance as a scientific result; let the model or runner reopen the
+  unrestricted source; mutate D-126 or the D-127 claim in place; consume the
+  D-127 attempt and fail after fitting; or use private portal evidence to
+  justify bypassing the gate.
+- Reversal condition: Any parent, D-127 disposition, development/confirmatory
+  prefix firewall, point equality, bound, structure, component, source,
+  capability, chronology, publication, cleanup, privacy, integration, or
+  post-main-CI drift revokes D-128 before implementation. Otherwise the next
+  gate is only the trusted scorer-enrichment compiler, separate official-shaped
+  direct-observation fixture, one formal opposite-order two-root synthetic
+  acceptance driver, and focused tests. It must run zero real fit and zero
+  development metric and may not create a claim or open an official byte.
