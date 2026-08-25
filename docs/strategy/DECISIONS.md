@@ -3248,3 +3248,47 @@
   or validator defect may revoke acceptance but cannot authorize a retry from
   observed timing. A future materially different experiment requires its own
   prospective contract and may not be represented as `EXP-G1`.
+
+## D-102 — Freeze the smallest controlled EXP-M1 fingerprint test
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-4A evidence; no runtime, implementation,
+  synthetic fit, official input, development metric, or execution authority
+- Decision: Freeze `global_v2_m1_screen_contract.json` at SHA-256
+  `63516e0f...b1c2cc0`. Test exactly one parent-specified shared 512/256 MLP over
+  standardized Morgan radius-2 count 2048 plus 200 fold-preprocessed RDKit
+  descriptors against the immutable fixed MapLight baseline, four independent
+  networks, and one training-only label-permuted shared control. Select central
+  MAE versus reported-bound dead-zone loss only from four inner component
+  folds, let each independent endpoint select its own loss from the same inner
+  evidence, fit both independent outer losses for matched and strongest-control
+  comparisons, average the three frozen seeds before selection and scoring,
+  and run exactly 2,430 neural fits. Do not add Chemprop, auxiliary targets, another
+  representation, architecture, loss, seed, calibration, or post-outcome
+  repair.
+- Evidence: The child preserves the 3x5 outer and four-fold inner D-032 family
+  boundaries, all three parent seeds, the exact 512/256 trunk, 64-unit heads,
+  dropout, AdamW settings, batch size, 300-epoch cap, and patience 25. It
+  freezes target-blind per-fold imputation and scaling, loss masks, deterministic
+  batch and label permutations, median inner epoch reduction, prediction
+  identities, seed arithmetic, three paired component bootstraps, and one-shot
+  terminals. Promotion requires every preregistered condition: at least 0.020
+  component-macro MAE improvement over fixed MapLight, strictly positive
+  tutorial-primary direction, at least two endpoint gains of 0.010, no endpoint
+  degradation above 0.020, at least 8/15 favorable outer cells, and paired
+  upper 95% bounds below zero versus matching-loss independent, independently
+  selected independent, and permuted controls.
+  Before a claim can exist, two synthetic roots must project the full design to
+  at most 240 CPU-core-hours, 64 GPU-hours, 64 GB, and 38.4 wall-hours, retaining
+  20% margin. Eleven focused static tests pass. Every scientific and forbidden
+  operation counter is zero.
+- Alternatives: Run the shared model without an independent control; omit the
+  permutation falsifier; choose loss or epochs from outer outcomes; expand to
+  Chemprop immediately; reuse MapLight's infeasible claim; weaken the parent
+  effect-size or endpoint-harm gates; or install a neural runtime before its
+  deterministic and resource contract is frozen.
+- Reversal condition: Any parent, feature, split, mask, architecture,
+  optimization, loss-selection, fit-arithmetic, acceptance, resource,
+  capability, privacy, signed-integration, or post-main-CI defect revokes this
+  freeze before implementation. A clean later resource or scientific rejection
+  closes EXP-M1 without widening or retrying it.

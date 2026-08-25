@@ -164,6 +164,21 @@ wall-hours and 1,680.519 CPU-core-hours, above both 96/960 acceptance maxima.
 cleaned, the official attempt root remains absent, and the claim remains
 unconsumed; all official and forbidden counters are zero.
 
+G2-4A is frozen in
+[`global_v2_m1_screen_contract.json`](global_v2_m1_screen_contract.json) at
+SHA-256 `63516e0f...b1c2cc0`. The 2,430-fit design compares one shared
+four-endpoint 512/256 MLP with four independent networks, the immutable fixed
+MapLight baseline, and a training-only label-permuted shared control on exact
+family folds and identical 2,248-column inputs. Central MAE and reported-bound
+dead-zone loss are selected only inside four inner folds; both independent
+outer losses are frozen to support matching-loss and strongest-control
+comparisons, and three seeds are averaged before selection and scoring.
+Promotion requires material fixed-MapLight improvement plus paired superiority
+to all controls. Before any
+claim, a deterministic two-root synthetic replay must pass mechanics and
+resource gates with 20% margin. This artifact is contract-only: it opened no
+input, fit no model, generated no prediction, and computed no metric.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

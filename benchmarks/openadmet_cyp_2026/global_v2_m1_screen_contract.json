@@ -1,0 +1,367 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_m1_screen_contract.v1",
+  "freeze_date": "2026-08-24",
+  "recorded_at_utc": "2026-08-24T23:51:34Z",
+  "gate": "G2_4A_EXP_M1_CONTRACT_FROZEN",
+  "status": "contract_only_no_implementation_or_official_execution_authority",
+  "base_commit": "080925e13a25748a0d6b8811aa265a8680be59b8",
+  "purpose": "Freeze the smallest family-safe test of whether one masked four-endpoint fingerprint MLP learns useful shared CYP inhibition structure beyond the accepted fixed MapLight baseline, four independent endpoint networks, and a training-only label-permutation control.",
+  "hypothesis": "Masked cross-isoform sharing improves data efficiency beyond four independent networks on the identical representation and the gain disappears when training labels are detached from molecules.",
+  "targeted_failure": "Separate endpoint models discard shared CYP representation and missing-label rows; the simplest falsifier is that the shared model cannot beat the accepted fixed MapLight baseline and four independent networks on identical development folds.",
+  "occam_boundary": "Use one parent-frozen shared MLP, its exact four-network independent control, one label-permuted shared control, two parent-frozen losses selected only inside each outer-training population, and three parent-frozen seeds. Do not add a layer, width, seed, loss, feature block, embedding, calibration, auxiliary endpoint, message-passing model, or post-outcome repair. A clean rejection removes EXP-M1 rather than expanding it.",
+  "targeted_failure_modes": [
+    "V1/V2 molecule, exact-duplicate, or D-032 component leakage across outer or inner folds",
+    "V3 loss, epoch, preprocessing, seed, architecture, or checkpoint selection outside inner component folds",
+    "V4 fingerprint, descriptor, target-mask, optimizer, permutation, runtime, or fold drift",
+    "V6 treating tutorial MA-ST-RAE as a live-backend official score",
+    "C6 giving the shared candidate a different input, optimization, loss token, or seed reduction from either control",
+    "P5 partial publication, nondeterminism, retry, resume, overwrite, or fit-budget reuse",
+    "P6 confirmatory, historical-row, blinded-test, TDI, external, submission, official-metric, leaderboard, or upload contamination"
+  ],
+  "parents": {
+    "global_v2": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "g2_1_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "g1_terminal_rejection": {
+      "path": "global_v2_g1_resource_feasibility_rejection.json",
+      "sha256": "675858301f65920e0accbd493cc9211c5edb0a017ed70f4674ec8b5cf41a9be4"
+    }
+  },
+  "accepted_development_inputs": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "read_boundary": "This freeze authenticates tracked receipt strings only. It opens no private or official file. A later one-shot claim must reauthenticate every parent before parsing any development target, feature, structure, baseline prediction, or fold row."
+  },
+  "accepted_baseline": {
+    "system_id": "TRACE-G0-MAPL-FIXED",
+    "status": "G2_2_MAPLIGHT_REPRODUCED",
+    "aggregate_receipt_sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+    "development_outer_oof_sha256": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+    "development_component_metrics_sha256": "43306bf14c00becc37390ea2649d3a37363abe1d7b1cf5ae8e36789837302bd8",
+    "baseline_refits": 0,
+    "rule": "Consume the immutable fixed MapLight development outer predictions on paired identities only. Never refit, retry, tune, calibrate, or replace the baseline inside EXP-M1."
+  },
+  "population_and_splits": {
+    "label_free_assignment": {
+      "all_molecules": 4905,
+      "all_components": 4553,
+      "development_molecules": 3908,
+      "development_components": 3640,
+      "confirmatory_molecules": 997,
+      "confirmatory_components": 913
+    },
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "repeat_seeds": [
+      20260810,
+      20260811,
+      20260812
+    ],
+    "rule": "Remove confirmatory components and preserve every accepted group_folds.csv outer and scoped inner assignment exactly. Never rebalance, reseed, or use endpoint availability or outcome.",
+    "family_invariant": "No similarity_component_hash may cross a training/validation boundary in any outer or inner cell. Exact molecule identities and duplicate forms inherit their component boundary across all endpoints and systems.",
+    "training_masks": {
+      "CENTRAL_MAE": "Train and validate on each finite reported central value. A missing endpoint remains masked and is never imputed.",
+      "INTERVAL_DEAD_ZONE": "Train and validate only when the reported central, lower, and upper values are all finite and lower is not greater than upper. Missing or point-only cells remain masked and are never imputed."
+    },
+    "prediction_population": "Every fitted system predicts all four endpoints for every label-free molecule in its validation partition. Metrics apply the frozen target-specific masks after predictions are immutable.",
+    "preflight_minima": {
+      "development_finite_targets_per_endpoint": 750,
+      "outer_validation_targets_per_endpoint_repeat_fold": 75,
+      "inner_training_targets_per_endpoint_repeat_outer_inner": 400
+    },
+    "failure": "If a parent receipt, disjointness check, minimum, eligible loss population, or positive finite tutorial denominator fails, publish G2_4_M1_UNDERPOWERED with zero fits. Never move a component, alter a mask, or choose another split."
+  },
+  "feature_contract": {
+    "row_source": "Use the exact accepted standardized molecule identity for each authenticated R3A feature row. Raw structures and standardization are preserved; no chemistry is silently repaired.",
+    "morgan_count": {
+      "radius": 2,
+      "columns": 2048,
+      "use_counts": true,
+      "include_chirality": true,
+      "use_bond_types": true,
+      "include_redundant_environments": false,
+      "order": "bit index 0 through 2047"
+    },
+    "rdkit_descriptors": {
+      "columns": 200,
+      "order": "the exact accepted MapLight RDKit descriptor order bound by maplight_rdkit_descriptors_sha256",
+      "column_rule": "Retain all 200 columns. Any training column without at least one finite value fails the cell; no descriptor is dropped from outcomes."
+    },
+    "total_columns": 2248,
+    "fold_fitted_preprocessing": {
+      "fit_population": "All label-free molecules in the current inner- or outer-training component partition, independent of endpoint target availability.",
+      "descriptor_imputation": "For each descriptor column, compute the float64 median of finite training values using NumPy's sorted midpoint rule, replace nonfinite training and validation values with that median, and record the 200 medians.",
+      "standardization": "After descriptor imputation, compute a float64 population mean and population standard deviation with ddof=0 for each of all 2,248 columns on training molecules only. Transform training and validation values by (x-mean)/std. A finite zero-variance column transforms to exact zero and records scale 1.",
+      "output": "Contiguous float32 matrices in the frozen column order; all preprocessing statistics and transformed arrays must be finite.",
+      "sharing": "For one fold context, every shared, independent, and permuted system receives byte-identical transformed input rows from the same target-blind preprocessing receipt."
+    },
+    "forbidden": "No Avalon, ErG, AtomPair, torsion, embedding, GIN, Chemprop, external, test-derived, feature-selected, target-encoded, or assay-context input is authorized."
+  },
+  "systems": {
+    "shared_candidate": {
+      "system_id": "M1-SHARED-MLP",
+      "input_width": 2248,
+      "trunk": [
+        "Linear(2248,512)",
+        "ReLU",
+        "Dropout(0.1)",
+        "Linear(512,256)",
+        "ReLU",
+        "Dropout(0.1)"
+      ],
+      "heads": "Four separately parameterized heads in endpoint order; each is Linear(256,64), ReLU, Dropout(0.1), Linear(64,1).",
+      "masked_loss": "For each minibatch, compute the mean eligible cell loss separately for every endpoint present, then take the arithmetic mean across present endpoints. A minibatch with no eligible endpoint fails closed.",
+      "target_standardization": false
+    },
+    "independent_control": {
+      "system_id": "M1-INDEPENDENT-MLP4",
+      "networks": 4,
+      "architecture": "One separately initialized network per endpoint with the exact shared trunk and one exact endpoint head. It receives the same transformed rows, optimizer, batching, stopping rule, and three model seeds as the shared candidate.",
+      "loss_control": "Screen both exact losses inside each endpoint's outer-training population. Fit both losses in the outer cell so the shared candidate is compared both with its exact matching-loss independent network and with the independently inner-selected strongest control.",
+      "aggregation": "Each network predicts its one endpoint under both losses. Join predictions by immutable molecule, fold, endpoint, and loss identity before seed averaging, matching-loss comparison, independent selection, and scoring."
+    },
+    "permuted_control": {
+      "system_id": "M1-PERMUTED-MLP",
+      "architecture": "The exact four-head shared candidate architecture and selected loss token.",
+      "permutation_seed": 20260829,
+      "scope": "For each repeat, outer fold, optional inner fold, endpoint, and selected loss, use only eligible cells in that fit's training-component partition. Sort source intact label bundles by (similarity_component_hash, molecule_id). Sort destination cells by (SHA-256 hex of UTF-8 20260829|repeat|outer|inner-or-OUTER|endpoint|loss|similarity_component_hash|molecule_id, similarity_component_hash, molecule_id). Assign source bundles to destination cells in order.",
+      "bundle": "Move central, lower, upper, standard deviation, raw missingness flags, assay source, and provenance together. CENTRAL_MAE permutes all finite-central bundles; INTERVAL_DEAD_ZONE permutes all tutorial-eligible bundles. No label enters or exits the current training partition.",
+      "validation": "Validation labels remain authentic and unavailable to the model. The same scoped permutation is used for all three model seeds so initialization variance is not confounded with three different scrambles.",
+      "identity_check": "Require a deterministic bijection with the exact eligible count and identical sorted source/destination label-bundle byte multisets. A fixed point is allowed; an identity permutation over more than one eligible cell fails."
+    }
+  },
+  "optimization": {
+    "model_seeds": [
+      20260824,
+      20260825,
+      20260826
+    ],
+    "losses": {
+      "CENTRAL_MAE": "absolute(prediction - reported central)",
+      "INTERVAL_DEAD_ZONE": "max(reported lower - prediction, 0) + max(prediction - reported upper, 0)"
+    },
+    "optimizer": {
+      "name": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "epsilon": 1e-08,
+      "amsgrad": false
+    },
+    "batching": {
+      "batch_size": 128,
+      "drop_last": false,
+      "row_order": "molecule_id ascending before each epoch shuffle",
+      "shuffle": "One deterministic full permutation per epoch from a generator scoped by contract, system, loss, repeat, outer fold, optional inner fold, endpoint-or-SHARED, model seed, and epoch.",
+      "gradient_accumulation": false
+    },
+    "epochs": {
+      "maximum": 300,
+      "patience": 25,
+      "minimum_delta": 0.0,
+      "inner_checkpoint": "After each epoch, evaluate the matching unpermuted validation objective in inference mode. A strict decrease replaces the checkpoint; equal values retain the earlier epoch. Stop after 25 consecutive epochs without a strict decrease and restore the best finite checkpoint.",
+      "outer_epoch_rule": "For each system, selected loss, model seed, repeat, outer fold, and optional endpoint, sort the four inner best-epoch integers and use floor((second + third)/2) for the outer refit. Train exactly that many complete epochs without outer validation, checkpoint choice, or early stopping."
+    },
+    "numeric_and_determinism": {
+      "model_and_feature_dtype": "float32",
+      "metric_and_reduction_dtype": "float64 with math.fsum over canonical identities",
+      "initialization": "The pinned future runtime's default linear-layer initialization under the scoped model seed; no custom initialization.",
+      "determinism": "A later runtime contract must pin Python, NumPy, RDKit, PyTorch, CUDA, cuDNN, hardware class, deterministic-algorithm settings, environment variables, worker count, and source hashes. Two fresh synthetic roots must replay predictions and receipts byte-identically before a claim can exist.",
+      "forbidden": "No scheduler, warm start, mixed precision, gradient clipping, checkpoint averaging, stochastic-weight averaging, ensembling beyond the three arithmetic seed means, or nondeterministic fallback."
+    }
+  },
+  "nested_loss_selection": {
+    "candidate_only_screen": "Inside each repeat and outer fold, fit both shared-candidate losses in all four inner folds and all three model seeds. Average the three seed predictions with math.fsum in ascending seed order before scoring.",
+    "selection_population": "Pool the four inner validation folds into one prediction per outer-training molecule and endpoint for each loss. Select lower four-endpoint tutorial MA-ST-RAE, then lower component-macro central MAE on all finite-central cells, then lexicographically lower loss_id.",
+    "selected_token": "Freeze one shared-candidate loss token per repeat and outer fold only after both shared losses have complete immutable inner predictions. The token is used unchanged by the shared candidate and permuted control.",
+    "independent_control_selection": "For every endpoint, repeat, and outer fold, fit both independent losses in all four inner folds and three seeds. Select lower endpoint tutorial ST-RAE, then lower endpoint component-macro central MAE, then loss_id. Freeze one independent loss token per endpoint and outer cell.",
+    "independent_outer_rule": "Fit both losses under all three seeds for every independent endpoint outer cell. Score the loss matching the shared token as the representation-matched control and separately score the endpoint's own frozen loss token as the strongest nested independent control. The second projection reuses an already frozen prediction and never adds or chooses a fit from outer outcomes.",
+    "permuted_stopping": "After the shared loss token is frozen, run only that loss for the permuted inner stopping fits. Their inner metrics may choose only their own outer epoch counts and cannot revise the shared loss token.",
+    "forbidden_feedback": "Outer predictions, baseline predictions, outer truth, endpoint diagnostics, component errors, bootstrap results, confirmatory truth, test data, and leaderboard observations cannot select a loss, epoch, feature, architecture, or seed."
+  },
+  "fit_and_prediction_budget": {
+    "inner_fold_contexts": 60,
+    "outer_contexts": 15,
+    "shared_two_loss_inner_fits": 360,
+    "shared_selected_outer_fits": 45,
+    "independent_two_loss_inner_fits": 1440,
+    "independent_two_loss_outer_fits": 360,
+    "permuted_selected_loss_inner_fits": 180,
+    "permuted_selected_outer_fits": 45,
+    "exact_new_neural_fits": 2430,
+    "baseline_refits": 0,
+    "expected_inner_raw_prediction_rows": 2813760,
+    "expected_inner_seed_averaged_rows": 937920,
+    "expected_outer_raw_prediction_rows": 562752,
+    "expected_outer_seed_averaged_rows": 187584,
+    "budget_rule": "Every identity is mandatory and no failed fit can be dropped or replaced. Unused time, GPU, CPU, storage, fit, or prediction capacity cannot fund a retry, extra seed, loss, architecture, or feature."
+  },
+  "capability_and_stage_contract": {
+    "feature_builder": "May read authenticated label-free development feature identities and standardized structures only. It emits immutable Morgan, descriptor, and feature receipts without resolving any target or baseline prediction.",
+    "preprocessor": "May read one training/prediction feature partition and fold identities but no targets. It emits one immutable preprocessing receipt and transformed matrices shared by all systems in that fold context.",
+    "inner_model": "May read only its current inner-training targets, masks, transformed features, system, loss, seed, and training-only permutation token when applicable. It may evaluate its matching inner-validation objective for stopping but cannot resolve outer-validation truth, baseline predictions, another cell, or confirmatory paths.",
+    "loss_selector": "Only after both losses and all three seeds are frozen across four inner folds may read matching inner-validation truth. It emits one immutable shared token per outer cell and one independent token per endpoint and outer cell; it cannot read any outer truth or baseline prediction.",
+    "outer_model": "May read only one frozen loss token, one system, one seed, one outer-training target partition, its four frozen inner epoch receipts, and matching features. It cannot resolve outer-validation truth, baseline predictions, metrics, or confirmatory paths.",
+    "outer_freezer": "Freezes all candidate and control outer predictions, validates complete identities, and averages seeds before any scorer can read truth.",
+    "outer_scorer": "Only after every outer prediction is immutable may read development outer point/lower/upper truth and exact fixed-MapLight predictions. It emits aggregate development evidence and no public row-level artifact.",
+    "prediction_identity": "Every prediction binds contract, parent, source, feature, preprocessing, fold, endpoint, system, loss token, permutation token when applicable, seed, epoch, model, molecule, component, stage, and selection receipts. Any duplicate, omission, cross-cell row, or forged identity fails the whole attempt."
+  },
+  "development_evaluation": {
+    "paired_identity": "Candidate, independent, permuted, and fixed-MapLight comparisons require the exact same molecule, endpoint, component, repeat, outer-fold, truth-mask, and scorer rows after canonical sorting. Any missing, extra, duplicate, or cross-system identity fails before a metric is computed.",
+    "primary_metric": {
+      "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+      "direction": "lower_is_better",
+      "repeat_rule": "For each system and repeat, join all five outer folds into one complete OOF prediction per development molecule and endpoint. Compute the four endpoint tutorial ST-RAE values and their arithmetic macro mean; the experiment value is the arithmetic mean of the three repeat macro values.",
+      "candidate_relative_improvement": "(fixed_MapLight_primary - shared_primary) / fixed_MapLight_primary; require a positive finite fixed baseline.",
+      "name_boundary": "This is the pinned tutorial metric only. Live-backend parity is unverified and no local value may be called an official score."
+    },
+    "component_macro_mae": {
+      "repeat_rule": "Within each endpoint and repeat complete OOF population, give each D-032 component equal total weight divided across its finite-central rows. Average the four endpoint values, then the three repeat values.",
+      "baseline_absolute_improvement": "fixed_MapLight_component_macro_mae - shared_component_macro_mae on identical rows.",
+      "matching_independent_difference": "shared_component_macro_mae - matching-loss independent component_macro_mae on identical rows.",
+      "selected_independent_difference": "shared_component_macro_mae - independently inner-selected independent component_macro_mae on identical rows.",
+      "permuted_difference": "shared_component_macro_mae - permuted_component_macro_mae on identical rows.",
+      "endpoint_improvement": "For each endpoint, fixed MapLight minus shared after averaging its three repeat component-equal values.",
+      "material_endpoint_threshold": 0.01
+    },
+    "favorable_cells": "For each of the 15 repeat-by-outer-fold cells, macro-average the four endpoint component-equal MAEs. A baseline cell is favorable only when shared is strictly lower than fixed MapLight on identical rows.",
+    "paired_component_bootstrap": {
+      "unit": "D-032 component shared across endpoints, repeats, and systems",
+      "seed": 20260827,
+      "accepted_replicates": 2000,
+      "maximum_attempts": 20000,
+      "comparisons": [
+        "shared minus fixed MapLight",
+        "shared minus matching-loss independent",
+        "shared minus independently selected independent",
+        "shared minus permuted"
+      ],
+      "draw": "Sample the sorted union of scored development components with replacement at the original component count. Retain every eligible row and all three repeat predictions for each drawn component with multiplicity and recompute each paired difference.",
+      "rejection": "Reject a draw when any compared system lacks an eligible endpoint row or any result is nonfinite.",
+      "interval": "Sort accepted differences and linearly interpolate p=0.025 and p=0.975 with h=(n-1)*p."
+    },
+    "acceptance": {
+      "minimum_absolute_component_mae_improvement_vs_fixed_maplight": 0.02,
+      "minimum_relative_primary_improvement_vs_fixed_maplight": 0.0,
+      "minimum_materially_improved_endpoints_vs_fixed_maplight": 2,
+      "material_endpoint_improvement": 0.01,
+      "maximum_endpoint_mae_degradation_vs_fixed_maplight": 0.02,
+      "minimum_favorable_outer_cells_vs_fixed_maplight": 8,
+      "total_outer_cells": 15,
+      "shared_must_strictly_beat_matching_independent_component_mae": true,
+      "shared_vs_matching_independent_paired_upper_95_below_zero": true,
+      "shared_must_strictly_beat_selected_independent_component_mae": true,
+      "shared_vs_selected_independent_paired_upper_95_below_zero": true,
+      "shared_must_strictly_beat_permuted_component_mae": true,
+      "shared_vs_permuted_paired_upper_95_below_zero": true,
+      "permuted_must_not_pass_fixed_maplight_promotion": true,
+      "logic": "Every member is conjunctive. Equality passes numeric minimum or maximum gates except primary improvement, favorable cells, strict system comparisons, and paired upper bounds, which must be strictly favorable."
+    },
+    "decision": "A complete pass publishes G2_4_M1_ACCEPTED and may expose only the shared candidate's immutable development OOF predictions to a later separately frozen constituent contract. A clean miss publishes G2_4_M1_REJECTED, retains fixed MapLight, discards all M1 systems, and permanently stops EXP-M1 without repair."
+  },
+  "terminal_contract": {
+    "statuses": [
+      "G2_4_M1_FAILED",
+      "G2_4_M1_UNDERPOWERED",
+      "G2_4_M1_RESOURCE_REJECTED",
+      "G2_4_M1_REJECTED",
+      "G2_4_M1_ACCEPTED"
+    ],
+    "required_aggregate_outputs": [
+      "m1_loss_selection_summary.csv",
+      "m1_outer_cell_metrics.csv",
+      "m1_endpoint_metrics.csv",
+      "m1_control_metrics.csv",
+      "m1_bootstrap_summary.json",
+      "m1_result.json",
+      "manifest.json"
+    ],
+    "private_row_level_outputs": [
+      "m1_inner_predictions.csv",
+      "m1_outer_predictions.csv"
+    ],
+    "publication": "Only aggregate receipts, counts, selected loss IDs, epoch summaries, metrics, resource use, accounting, authority, and decision may enter Git. Row-level targets, bounds, structures, predictions, residuals, component memberships, and any private leaderboard observation remain private.",
+    "failure": "Any incomplete fit set, failed model, receipt or identity mismatch, family/capability leak, nonfinite value, budget breach, forbidden counter, nondeterminism, partial publication, cleanup defect, crash, or interruption is terminal G2_4_M1_FAILED. No retry, resume, move, overwrite, or replacement attempt is authorized.",
+    "rejection": "A scientifically clean completed rejection is authoritative negative evidence and cannot authorize a wider MLP, extra seed, new loss, endpoint-specific repair, Chemprop run, auxiliary task, or repeat of EXP-M1."
+  },
+  "resource_ceiling": {
+    "cpu_core_hours": 300,
+    "gpu_hours": 80,
+    "restricted_storage_gb": 80,
+    "maximum_wall_hours": 48,
+    "concurrency": "A later implementation contract must freeze device count, process concurrency, data-loader workers, threads, and peak accounting before any claim can exist."
+  },
+  "resource_feasibility_gate": {
+    "required_before_claim": true,
+    "method": "Run an official-shaped synthetic two-root replay in the pinned deterministic runtime with every stage identity and a predeclared representative real-fit sample. Project the exact 2,430-fit workload without subtracting harness overhead and use the worse root.",
+    "maximum_projected_cpu_core_hours": 240,
+    "maximum_projected_gpu_hours": 64,
+    "maximum_projected_restricted_storage_gb": 64,
+    "maximum_projected_wall_hours": 38.4,
+    "margin": "Each projection is 20% below the execution ceiling. A miss publishes G2_4_M1_RESOURCE_REJECTED without opening an official target or creating a claim; no second optimization or reduced scientific design is authorized."
+  },
+  "current_milestone_accounting": {
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "runtime_or_dependency_changes": false,
+    "implementation": false,
+    "synthetic_model_fits": false,
+    "synthetic_predictions": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "official_predictions": false,
+    "development_metrics": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "external_data": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false,
+    "claim_creation_or_consumption": false
+  },
+  "next_gate": "After reviewed signed integration and green post-main CI, freeze the exact deterministic neural runtime and additive synthetic implementation contract. Prove two-root feature, preprocessing, masking, permutation, stopping, selection, fit-accounting, prediction-identity, cleanup, and 20%-margin resource behavior before opening any official input, fitting an official model, computing a development metric, or creating an execution claim."
+}

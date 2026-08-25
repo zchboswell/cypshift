@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-099. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-102. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -175,10 +175,21 @@ The optimization was 0.8% slower by wall time and 0.6% more CPU on root A, so
 repeated quantization is not the dominant cost. The private work root was
 cleaned, the immutable G2-3C claim remains unchanged and unconsumed, the fixed
 official attempt root remains absent, and every official and forbidden counter
-is zero. Do not execute, repair, resize, or optimize `EXP-G1` again. The exact
-next action is a contract-only G2-4A freeze for the preregistered `EXP-M1`
-masked shared fingerprint MLP against its independent-head and within-component
-label-permutation controls.
+is zero. Do not execute, repair, resize, or optimize `EXP-G1` again. D-102 now
+freezes the next preregistered lane, G2-4A `EXP-M1`, at SHA-256
+`63516e0f...b1c2cc0`. It fixes one 2,248-column shared MLP, four exact
+independent networks, one training-only label-permuted shared control, two
+nested losses, three seeds, fold-fitted preprocessing, inner-only stopping and
+loss selection, and 2,430 total neural fits. Promotion requires a 0.020
+component-macro MAE gain over fixed MapLight, positive tutorial-primary
+direction, at least two endpoint gains of 0.010, no endpoint harm above 0.020,
+8/15 favorable outer cells, and paired evidence that the shared model beats
+both controls. A 20%-margin synthetic resource gate must pass before any claim
+can exist. This freeze opens no target, feature, structure, prediction, metric,
+runtime, implementation, or execution capability. The exact next action is a
+reviewed G2-4B deterministic-runtime and synthetic-implementation contract,
+followed by two-root mechanics and resource evidence; do not open an official
+input or fit an official model.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -828,26 +839,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact G2-3C execution contract
-`c75cb01e...0b869`, unconsumed claim `1c9f3438...46154`, and focused static
-tests, then require green post-main CI. Only afterward implement the distinct
-additive official capability compiler, attempt wrapper, and official-shaped
-synthetic driver. Accept those exact hashes only after two fresh synthetic
-roots prove the full 8,820-stage topology, least-privilege input and baseline
-capabilities, deterministic aggregates, resource accounting, cleanup, and
-failure semantics with every official and forbidden counter zero. Do not
-consume the claim or open official development or baseline row-level inputs
-until that implementation acceptance is reviewed, integrated, and green on
-post-main CI. Confirmatory truth, historical R3C row-level artifacts, blinded
+Review and integrate the exact G2-4A M1 contract `63516e0f...b1c2cc0` and
+focused static tests, then require green post-main CI. Only afterward freeze a
+G2-4B child for the deterministic neural runtime, additive implementation,
+synthetic fixture, two-root replay, representative real-fit timing sample,
+capability firewalls, cleanup, and 20%-margin resource projection. Do not open
+an official target, feature, structure, baseline row, or fold artifact; create
+an execution claim; or fit a synthetic model before that child is reviewed and
+integrated. Confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, and
-upload capabilities remain closed.
-
-In parallel, the user may manually upload the exact immutable MapLight
-`submission.csv` identified in `DIRECT_BASELINE_HANDOFF.md`. Record any
-user-supplied portal receipt without changing the bytes and without allowing
-leaderboard feedback to influence Phase 2. Do not rerun R5D, tune I0/F1, or
-generate a TRACE test prediction. `global_TDI` remains the permanent TDI
-fallback until a separate accepted contract says otherwise.
+upload capabilities remain closed. Any private portal observation remains
+outside the public knowledgebase and cannot select a model, feature, loss,
+threshold, or candidate. Do not rerun R5D, tune I0/F1, or generate a TRACE test
+prediction. `global_TDI` remains the permanent TDI fallback until a separate
+accepted contract says otherwise.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

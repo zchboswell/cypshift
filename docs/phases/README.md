@@ -52,9 +52,12 @@ the claim unconsumed. D-101 now records the terminal negative result at receipt
 SHA-256 `67585830...a9be4`: 56/56 fits and all exact prediction bytes matched,
 but the worse optimized-root projection is 125.497 wall-hours and 1,680.519
 CPU-core-hours, failing both 96/960 gates. The claim remains unconsumed and
-`EXP-G1` is closed without another remedy. The next gate is a contract-only
-G2-4A freeze for `EXP-M1`; no multitask implementation or official execution is
-yet authorized.
+`EXP-G1` is closed without another remedy. G2-4A now freezes `EXP-M1` at
+contract SHA-256 `63516e0f...b1c2cc0`: 2,430 exact neural fits cover the shared
+fingerprint MLP, four independent networks, the training-only label-permuted
+control, two inner-selected losses, and three seeds. The next gate is G2-4B's
+deterministic runtime and synthetic implementation contract; no implementation,
+multitask fit, official input, or development score is yet authorized.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

@@ -3,7 +3,8 @@
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
 G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
 accepted but resource feasibility rejected, and the one-shot G2-3D resource
-falsifier terminally rejected; the G2-3C claim remains
+falsifier terminally rejected; G2-4A `EXP-M1` is contract-frozen; the G2-3C
+claim remains
 unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
 upload capabilities remain closed.
@@ -380,6 +381,26 @@ RSS stayed below 1.46 GB, the G2-3C claim remains unconsumed, the official
 attempt root is absent, and every forbidden counter is zero. No second G1
 optimization, grid change, official run, or claim consumption is permitted.
 
+D-102 freezes G2-4A in
+[`global_v2_m1_screen_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_m1_screen_contract.json)
+at SHA-256 `63516e0f...b1c2cc0`. The smallest parent-faithful design contains one
+shared 512/256 fingerprint MLP, four independent copies, and one shared
+training-only label-permutation control on identical 2,248-column inputs.
+Central MAE and reported-bound dead-zone loss are selected only from the four
+inner component folds; three seeds are averaged before selection and scoring.
+Fold-fitted preprocessing, early stopping, outer epoch reduction, permutation,
+prediction identity, paired bootstrap, and all acceptance rules are exact. The
+budget is 2,430 fits and 562,752 raw outer prediction rows, with zero baseline
+refits. Both independent losses are fit so the shared candidate must beat its
+matching-loss control and the independently inner-selected strongest control.
+Promotion requires a 0.020 component-macro MAE gain over fixed MapLight,
+positive tutorial-primary direction, at least two endpoint gains of 0.010, no
+endpoint harm above 0.020, 8/15 favorable cells, and paired upper bounds below
+zero versus both independent and permuted controls. A two-root synthetic
+resource projection must remain 20% below the 300 CPU-hour, 80 GPU-hour, 80 GB,
+and 48 wall-hour execution ceilings before a one-shot claim can exist. This
+milestone is contract-only and every official and forbidden counter is zero.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -485,7 +506,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-101 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-102 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -495,15 +516,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-101's implementation and terminal rejection receipt
-`67585830...a9be4`, then require green post-main CI. Keep claim
-`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` again.
-Next freeze a contract-only G2-4A child for the exact G2-0 `EXP-M1` shared
-fingerprint MLP, four independent-head control, and within-training-component
-label-permutation control. Bind the existing family folds and development-only
-boundary; freeze masking, fold-fitted preprocessing, inner stopping, three-seed
-reduction, interval-loss comparison, fit arithmetic, acceptance, and resources
-before implementing or opening a target. Keep official development,
-confirmatory truth, historical R3C row-level artifacts, blinded test, TDI,
-external records, submission, official metric, leaderboard, and upload
-capability closed.
+Review and integrate D-102's contract SHA-256 `63516e0f...b1c2cc0`, then require
+green post-main CI. Keep claim `1c9f3438...46154` unconsumed and never execute
+or optimize `EXP-G1` again. Next freeze a G2-4B child that pins the exact neural
+runtime, additive implementation sources, synthetic fixture, two-root replay,
+fit sample, deterministic byte receipts, capability firewalls, cleanup, and
+20%-margin resource projection for the 2,430-fit M1 design. Do not add a model,
+feature, loss, seed, or dependency outside that child. Keep official
+development, confirmatory truth, historical R3C row-level artifacts, blinded
+test, TDI, external records, submission, official metric, leaderboard, upload,
+and execution-claim capability closed.
