@@ -321,6 +321,14 @@ parent must complete before one aggregate terminal. The contract performs zero
 new implementation or execution and grants no model, metric, claim, or official
 authority.
 
+D-131 now implements the V2 fixed-root driver at SHA-256
+`e8895bb9...c84de61` with focused tests `668e4ff1...462ec97`. Twelve tests prove
+parent authentication, old-driver isolation, no CLI override, fail-before-work
+ownership, cleanup-before-terminal chronology, confirmatory opacity, and one
+minimal scorer-capability compilation. The formal D-130 attempt remains unused;
+fixed roots and terminals are absent. Integration and green post-main CI must
+precede its one no-argument execution.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

@@ -4427,3 +4427,33 @@
   determinism, privacy, integration, or post-main-CI drift revokes D-130 before
   synthetic execution. Otherwise the next gate is only the V2 driver, focused
   tests, and one zero-fit, zero-metric, zero-official two-root attempt.
+
+## D-131 — Implement the fixed-root scorer-capability reacceptance driver
+
+- Date: 2026-08-25
+- Status: accepted implementation evidence pending reviewed integration; D-130
+  formal attempts executed zero; fixed roots and both terminals absent; zero
+  real fit, development metric, official, claim, submission,
+  leaderboard-selection, private-portal-record, or upload operation
+- Decision: Accept the V2 driver source at SHA-256
+  `e8895bb9...c84de61` and its focused tests at `668e4ff1...462ec97` for review.
+  Do not execute the formal attempt until this exact implementation is
+  integrated through a signed fast-forward and green post-main CI.
+- Evidence: The driver accepts no root/output argument, binds D-130/D-129 and
+  the unchanged scorer compiler, keeps the D-128 driver hard-disabled and
+  unimported, preflights the exact absent root with the accepted cleanup
+  predicate, tracks creation ownership, and requires root/parent absence before
+  one terminal. Twelve focused tests pass. One test-only compilation produced
+  exactly `manifest.json` plus `scoring_truth.csv` from 4,800 synthetic endpoint
+  rows, decoded 3,840 development rows, skipped 960 confirmatory suffixes before
+  decoding, and marked 768 rows tutorial-eligible. It ran zero fit or metric
+  and grants no scientific authority.
+- Alternatives: Run before integration; import or patch the rejected driver;
+  expose a configurable root; clean a pre-existing unowned path; publish before
+  cleanup; modify the scorer compiler; combine this with model execution; or
+  use private portal evidence to bypass acceptance.
+- Reversal condition: Any contract, rejection, compiler, driver, tests,
+  fixed-root, old-driver isolation, preflight, ownership, cleanup, terminal,
+  opacity, count, privacy, integration, or post-main-CI drift revokes D-131
+  before the formal attempt. Otherwise invoke the integrated driver exactly
+  once with no arguments and interpret only its aggregate synthetic terminal.

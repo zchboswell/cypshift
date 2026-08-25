@@ -1013,6 +1013,19 @@ still-absent root. It must remove root and empty parent before publishing one
 aggregate terminal. This contract-only milestone runs no synthetic operation,
 fit, metric, claim, or official access.
 
+D-131 implements the future V2 driver at
+`research/maplight-fixed/run_global_v2_maplight_robustness_scoring_capability_acceptance_v2.py`,
+SHA-256 `e8895bb9...c84de61`, with focused tests
+`668e4ff1...462ec97`. It imports accepted D-126 fixture/capability primitives
+and the unchanged scorer compiler, but never imports the rejected D-128 driver.
+It exposes no root/output override. A creation-started flag prevents a failed
+preflight from cleaning a path the attempt did not create, while every path
+after attempted creation is cleaned before terminal publication. Twelve tests
+pass, including a one-root V2 fixture compilation with exact 4,800/3,840/960
+endpoint/development/opaque-confirmatory counts and zero fit or metric. The
+formal two-root attempt, fixed roots, and success/failure terminals remain
+unused and absent pending reviewed integration and green post-main CI.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -1064,7 +1077,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-130 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-131 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1074,15 +1087,17 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-130 contract SHA-256 `b414b0cf...efae698`, then require
-green post-main CI. Only afterward implement the new fixed-root V2 acceptance
-driver and focused tests. Its one two-root synthetic attempt must validate root
-safety before work, preserve the exact scorer compiler and eight output fields,
-decode zero confirmatory value suffixes, and run zero real fit or development
-metric. Do not rerun or repair D-128; implement the scientific runner or
-official attempt driver; create or consume a claim; reuse the D-127 root; open
-an official byte or baseline; fit a model; or score a development target before
-G2-7F acceptance and a later corrected execution contract are integrated.
+Review and integrate D-131 driver SHA-256 `e8895bb9...c84de61` and focused tests
+`668e4ff1...462ec97`, then require green post-main CI. Only afterward run the
+integrated no-argument driver exactly once from clean `main`. Its two-root
+synthetic attempt must validate root safety before work, preserve the exact
+scorer compiler and eight output fields, decode zero confirmatory value
+suffixes, clean before terminal publication, and run zero real fit or
+development metric. Do not run it from this branch; rerun or repair D-128;
+implement the scientific runner or official attempt driver; create or consume
+a claim; reuse the D-127 root; open an official byte or baseline; fit a model;
+or score a development target before G2-7F acceptance and a later corrected
+execution contract are integrated.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

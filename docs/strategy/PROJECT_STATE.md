@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-130. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-131. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -642,6 +642,20 @@ and non-reusable. Nine focused tests pass. This contract-only milestone creates
 zero new implementation, synthetic operation, fit, metric, claim, official
 access, submission, leaderboard-selection, or upload authority. Fixed MapLight
 remains the best validated internal system at 0.5838 component-macro MAE.
+
+D-131 implements the D-130 V2 fixed-root driver at source SHA-256
+`e8895bb9...c84de61` with focused tests SHA-256
+`668e4ff1...462ec97`. The driver imports no rejected D-128 driver, accepts no
+root or output argument, authenticates the exact absent four-component root
+with the accepted cleanup predicate before creation, tracks whether it began
+creation so a preflight failure cannot clean an unowned path, and requires root
+plus parent absent before terminal publication. Twelve focused tests pass. One
+test-only V2 fixture compilation emitted the exact two-file scorer capability:
+4,800 synthetic endpoint rows, 3,840 decoded development rows, 960 opaque
+confirmatory suffixes, and 768 tutorial-eligible rows, with zero fit, metric,
+claim, or official operation. The one D-130 formal attempt has not run; its
+fixed roots and both terminals remain absent. This implementation is not yet
+acceptance or model-quality evidence.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1293,17 +1307,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-130 reacceptance contract SHA-256
-`b414b0cf...efae698`, then require green post-main CI. Only afterward implement
-the new fixed-root V2 acceptance driver and focused tests. Before any work it
-must prove the exact root satisfies the accepted cleanup predicate; its sole
-two-root synthetic attempt must preserve the D-128 eight-field scorer science,
-decode zero confirmatory value suffixes, and run zero real fit or development
-metric. Do not implement the scientific runner or official attempt driver,
-create or consume a claim, use the D-127 root, open an official byte or
-baseline, fit a model, or score a development target until G2-7F acceptance
-and a later corrected execution contract are reviewed, integrated, and green
-on `main`.
+Review and integrate the D-131 V2 driver SHA-256
+`e8895bb9...c84de61` and focused tests `668e4ff1...462ec97`, then require green
+post-main CI. Only afterward invoke the integrated driver once from clean
+`main` with no arguments. The sole two-root synthetic attempt must preserve the
+D-128 eight-field scorer science, decode zero confirmatory value suffixes,
+clean its fixed roots before one aggregate terminal, and run zero real fit or
+development metric. Do not run the formal attempt from this branch; implement
+the scientific runner or official attempt driver; create or consume a claim;
+use the D-127 root; open an official byte or baseline; fit a model; or score a
+development target until G2-7F acceptance and a later corrected execution
+contract are reviewed, integrated, and green on `main`.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
