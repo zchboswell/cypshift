@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-125. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-126. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -557,6 +557,32 @@ future supervisor must fail-stop the complete process tree on wall, CPU,
 storage, simultaneous RSS, GPU, warning, exit, or accounting drift. This
 milestone creates no implementation or claim and opens zero synthetic or
 official capability.
+
+D-126 accepts the new D-122-derived G2-7C execution implementation under
+tracked no-fit acceptance SHA-256 `ca722b26...c231e0e`. It does not import,
+execute, or patch rejected G2-7B implementation bytes. Two opposite-order
+official-shaped roots reconstructed the primary, 0.55, 0.50, and
+tautomer-merged family overlays from raw structures, produced byte-identical
+252-file capability trees and eight-file terminal maps, and traversed both the
+720-fit full-retained and 1,020-fit deletion-selected branches. Across both
+roots, 3,480 deterministic model-double invocations, 667,872 synthetic
+prediction identities, and 6,980 fit/stage checkpoints completed with zero
+real CatBoost fit, scientific metric, official operation, or claim. The
+continuous no-network supervisor accepted its control and rejected all ten
+wall, CPU, storage, RSS, warning, signal, detached-child, nonzero-exit,
+missing-checkpoint, and partial-publication faults. A cleanup-root rejection
+at receipt `8fb6aba9...85d0ce3` and a prepublication adapter-audit rejection at
+receipt `4e4c45ae...563ec28` remain negative engineering evidence; both opened
+zero official capability. Integration CI also rejected superseded acceptance
+`5698f878...61f5683` because exact-runtime tests were not skipped on other
+supported Python versions and a checkout-mode assertion was nonportable; that
+rejection is bound at `93a8adeb...0e7669e`. A second CI path rejected
+superseded acceptance `587eca16...5f5b63` because the hosted runner could not
+provide the accepted local namespace boundary; host rejection
+`37429202...e8f5b1` keeps live fault injection local and leaves static CI
+coverage intact. The corrections change no scientific identity. Fixed
+MapLight remains the best validated internal
+system at 0.5838 component-macro MAE.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1208,12 +1234,14 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-125 bounded-execution contract SHA-256
-`55fafa1d...5806527`, then require green post-main CI. Next implement only its
-narrow D-122-derived official compiler, single-use wrapper, cumulative resource
-supervisor, two-root no-fit official-shaped acceptance, and focused adversarial
-tests. Do not create a claim, open official rows, run a scientific fit, or
-evaluate a development metric in that implementation milestone.
+Review and integrate D-126 no-fit acceptance SHA-256
+`ca722b26...c231e0e`, then require green post-main CI. Only afterward freeze a
+separate single-use G2-7D official execution contract and immutable unconsumed
+claim bound to the integrated implementation, exact official source receipts,
+fixed attempt root, cumulative supervisor, and D-122 science. Do not open an
+official byte, consume a claim, run a scientific fit, or evaluate a development
+metric before that distinct contract and claim are reviewed, integrated, and
+green on `main`.
 Confirmatory truth, historical
 row-level artifacts, blinded test, TDI, submission generation, official metric,
 leaderboard selection, and upload capability remain closed. EXP-G3 and

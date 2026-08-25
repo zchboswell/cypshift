@@ -65,6 +65,13 @@ bytes, uses D-094 exact full-feature resource totals only as feasibility
 context, and makes a future real attempt fail-stop against continuously
 enforced 7.68 wall-hour, 128 CPU-core-hour, 51.2 GB, 15.36 GiB, and zero-GPU
 limits. This milestone remains contract-only with no implementation or claim.
+D-126 accepts the additive G2-7C implementation at no-fit receipt SHA-256
+`ca722b26...c231e0e`. Two opposite-order official-shaped roots reconstruct the
+contracted family overlays from raw structures and match 252 capability files
+and eight terminal files byte-for-byte. The exact 720/1,020-fit paths traverse
+3,480 model-double invocations, 667,872 synthetic prediction identities, and
+6,980 supervised checkpoints. Ten fail-stop fault classes reject correctly;
+zero real CatBoost fit, scientific metric, official operation, or claim occurs.
 
 Authorized: 2026-08-24.
 
@@ -898,6 +905,36 @@ official-shaped roots; no real CatBoost fit or resource projection belongs to
 that mechanics gate. This freeze performs zero implementation, source, fit,
 prediction, metric, claim, or confirmatory operation.
 
+D-126 accepts that mechanics gate in
+[`global_v2_maplight_robustness_no_fit_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_no_fit_acceptance.json),
+SHA-256 `ca722b26...c231e0e`. The new compiler authenticates D-122/D-125 and
+the accepted MapLight source boundary, reconstructs standard structures and
+the primary, 0.55, 0.50, and tautomer-merged family overlays, and publishes
+training-only sparse target capabilities. Canonical and opposite-order roots
+match all 252 capability files and eight terminal files byte-for-byte while
+exercising the full-retained and deletion-selected branches. Across both roots,
+3,480 deterministic model-double invocations, 667,872 synthetic prediction
+identities, and 6,980 before/after fit or stage checkpoints complete. The
+no-network cumulative supervisor accepts its control and rejects ten resource,
+process, warning, terminal, and cleanup faults. Two prepublication paths remain
+negative engineering evidence: a cleanup-root refusal at `8fb6aba9...85d0ce3`
+and an adapter audit rejection at `4e4c45ae...563ec28`. Neither opened official
+capability. No real CatBoost fit, resource projection, target metric, official
+operation, claim, confirmatory score, submission, leaderboard selection, or
+upload occurred. This result validates mechanics only; fixed MapLight remains
+the best validated internal system.
+Superseded acceptance `5698f878...61f5683` failed reviewed integration CI
+because three exact-runtime tests ran outside Python 3.12.3 and one assertion
+depended on checkout file mode. Rejection receipt `93a8adeb...0e7669e` binds
+that negative path. The corrected acceptance skips only those three runtime
+executions while retaining static policy coverage on every supported Python;
+it changes no scientific identity or supervisor behavior.
+Superseded acceptance `587eca16...5f5b63` then failed only the three live
+namespace tests on the hosted Python 3.12.3 runner. Host rejection receipt
+`37429202...e8f5b1` binds that unsupported execution boundary. Live fault
+injection remains part of the exact local acceptance; hosted CI retains static
+policy and artifact validation. No model or supervisor byte changed.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -948,7 +985,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-125 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-126 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -958,11 +995,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-125 bounded-execution contract SHA-256
-`55fafa1d...5806527`, then require green post-main CI. Next implement only its
-narrow compiler, wrapper, continuous supervisor, focused tests, and no-fit
-official-shaped mechanics acceptance. Do not modify or repeat G2-7B, create a
-claim, open an official byte, or fit a scientific model. Confirmatory truth,
+Review and integrate D-126 no-fit acceptance SHA-256
+`ca722b26...c231e0e`, then require green post-main CI. Only afterward freeze a
+separate single-use G2-7D official execution contract and immutable unconsumed
+claim bound to the integrated implementation and fixed official source. Do not
+modify or repeat G2-7B, open an official byte, consume a claim, or fit a
+scientific model before that next contract is reviewed and integrated.
+Confirmatory truth,
 historical row-level artifacts, blinded test, TDI, submission generation,
 official metric, leaderboard selection, and upload remain closed.
 `global_TDI` remains the TDI fallback.

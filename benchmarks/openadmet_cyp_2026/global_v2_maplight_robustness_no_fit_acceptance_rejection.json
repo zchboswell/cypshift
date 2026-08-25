@@ -1,0 +1,51 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_no_fit_acceptance_rejection.v1",
+  "recorded_at_utc": "2026-08-25T18:29:11Z",
+  "status": "G2_7C_MAPLIGHT_ROBUSTNESS_NO_FIT_ACCEPTANCE_REJECTED",
+  "bounded_contract_sha256": "55fafa1d9806ba3221c26b8cd71d077ad61a0f485e51defbae21cbd4b5806527",
+  "failure_stage": "POST_TERMINAL_CLEANUP",
+  "failure_type": "NoFitAcceptanceError",
+  "failure_message": "cleanup root is unsafe",
+  "reason": "The formal driver correctly refused to recursively clean a requested /tmp work root with only three resolved path components. The aggregate acceptance had already been written, so it is invalid because cleanup was not complete and cannot be used as evidence.",
+  "failed_invocation_root_class": "/tmp/<single-component-name>",
+  "invalid_acceptance_sha256": "27a262132a7bee9590245bf2dba0e8973c8268654f400a2b28a5a6d796e4886e",
+  "invalid_acceptance_bytes": 20973,
+  "retained_synthetic_files_before_cleanup": 536,
+  "retained_synthetic_bytes_before_cleanup": 44702597,
+  "implementation_receipts": {
+    "compiler_source_sha256": "0bdc9c98d6f0343bc50192da38dd3c1b149badad6993fce245b9c59d6839e272",
+    "wrapper_source_sha256": "a6e02c244d6bd1b7bcb020dcf9627f68d453ae25827527e6de9acdaa30226c66",
+    "supervisor_source_sha256": "0d7b016b638fb4019eb377328f63a193d23fd6763540a636bd821cbabed63cec",
+    "acceptance_driver_source_sha256": "da30ff74d6929826e55a71806ccf3dcbadedef0aba1aee17ad3bf771a7ca7f1e",
+    "focused_tests_sha256": "65500e5eff09006a1faae6eaa839da6898ba6095b5cfd82f2daecdb4e7aabdb1"
+  },
+  "cleanup": {
+    "invalid_acceptance_moved_to_recoverable_trash": true,
+    "synthetic_work_root_moved_to_recoverable_trash": true,
+    "invalid_acceptance_present": false,
+    "synthetic_work_root_present": false,
+    "private_roots_retained": 0
+  },
+  "accounting": {
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "scientific_interpretation": "This is cleanup-argument evidence only. It contains no model-quality or resource-feasibility observation and does not consume the future single scientific claim.",
+  "next_action": "Use a fresh, deeper fixed synthetic work root that satisfies the already implemented cleanup safety predicate; change no scientific identity, model, feature, metric, resource limit, or official authority. D-125 does not make the no-fit mechanics gate single-use."
+}

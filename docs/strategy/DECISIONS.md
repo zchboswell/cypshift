@@ -4219,3 +4219,59 @@
   D-122-derived compiler, wrapper, supervisor, no-fit official-shaped
   acceptance, and focused tests; claim creation and scientific fitting remain
   closed.
+
+## D-126 — Accept the fail-stop MapLight robustness implementation without fitting
+
+- Date: 2026-08-25
+- Status: accepted G2-7C no-fit mechanics evidence; zero real CatBoost fit,
+  resource projection, target metric, claim, official row, confirmatory truth,
+  historical row, blinded test, TDI, external record, submission, official
+  metric, leaderboard-selection, private-portal record, or upload operation
+- Decision: Accept
+  `global_v2_maplight_robustness_no_fit_acceptance.json` at SHA-256
+  `ca722b26...c231e0e`. The additive D-122-derived compiler, wrapper, and
+  cumulative process-tree supervisor satisfy D-125 without importing, copying,
+  executing, patching, or benchmarking the terminally rejected G2-7B
+  implementation. Keep claim creation and official execution closed until a
+  later single-use G2-7D contract binds these reviewed bytes after green
+  post-main CI.
+- Evidence: Two fresh official-shaped synthetic roots used opposite source and
+  launch order, independently reconstructed the primary, inclusive 0.55,
+  inclusive 0.50, and canonical-tautomer-merged family overlays from raw
+  structures, and matched all 252 capability files and eight terminal files
+  byte-for-byte. Across both roots, the deterministic model double traversed
+  3,480 exact invocations, 667,872 synthetic prediction identities, and 6,980
+  before/after fit or stage checkpoints over both the 720-fit full-retained and
+  1,020-fit deletion-selected branches. The no-network supervisor measured the
+  complete process tree and accepted its control while rejecting all ten wall,
+  CPU, storage, simultaneous RSS, warning, signal, detached-child,
+  nonzero-exit, missing-checkpoint, and partial-publication faults. Twenty-eight
+  focused tests pass. A first generated path was rejected because the cleanup
+  root was intentionally too broad; its tracked rejection is
+  `8fb6aba9...85d0ce3`. A second generated path was rejected during
+  prepublication audit because supplied overlay hashes were not reconstructed;
+  its tracked rejection is `4e4c45ae...563ec28`. Both negative paths opened
+  zero official capability and produced no model-quality observation. Reviewed
+  integration CI rejected superseded acceptance `5698f878...61f5683` because
+  three exact-runtime tests ran outside Python 3.12.3 and one assertion assumed
+  a checkout preserved read-only mode. Receipt `93a8adeb...0e7669e` binds that
+  negative path. The correction changes only test portability and rejection
+  lineage, not science or supervisor behavior. Superseded acceptance
+  `587eca16...5f5b63` then failed only the three live namespace tests on the
+  hosted Python 3.12.3 runner; host receipt `37429202...e8f5b1` binds that
+  unsupported execution boundary. The live tests remain mandatory locally,
+  while hosted CI retains static policy and artifact coverage. Fixed
+  MapLight therefore remains the best validated internal system at 0.5838
+  component-macro MAE.
+- Alternatives: Use the generated pre-audit receipts; trust supplied family
+  overlays; loosen cleanup protection; import rejected G2-7B code; fit timing
+  probes; accept aggregate historical timing as execution proof; create or
+  consume a claim now; open official rows; or use private portal evidence to
+  select a model.
+- Reversal condition: Any parent, source, raw-structure reconstruction,
+  capability, sparse-target, exact-identity, cross-root determinism,
+  checkpoint, process-tree, no-network, fault-injection, cleanup, privacy,
+  integration, or post-main-CI drift revokes D-126 before official access.
+  Otherwise the next gate is only a separate reviewed G2-7D official execution
+  contract and immutable unconsumed claim; it may not retroactively authorize
+  an operation in this milestone.

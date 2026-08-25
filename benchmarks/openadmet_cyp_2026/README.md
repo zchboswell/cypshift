@@ -226,6 +226,31 @@ remain at or below 80% of the D-122 ceilings. This contract itself created no
 implementation and ran no synthetic or official operation. Its next gate is
 the exact synthetic implementation and one formal acceptance, not a claim.
 
+The sole G2-7B attempt is terminally rejected in
+[`global_v2_maplight_robustness_synthetic_rejection.json`](global_v2_maplight_robustness_synthetic_rejection.json),
+SHA-256 `e7cba8af...e0eb821`, because 2,516 of 2,563 timing-probe columns were
+constant. D-125 therefore froze the materially distinct fail-stop contract in
+[`global_v2_maplight_robustness_bounded_execution_contract.json`](global_v2_maplight_robustness_bounded_execution_contract.json),
+SHA-256 `55fafa1d...5806527`, without importing rejected implementation bytes.
+Its new mechanics are accepted in
+[`global_v2_maplight_robustness_no_fit_acceptance.json`](global_v2_maplight_robustness_no_fit_acceptance.json),
+SHA-256 `ca722b26...c231e0e`. Two opposite-order official-shaped roots matched
+252 capability files and eight terminals, traversed both exact future branches,
+and passed the cumulative supervisor control while all ten injected fault
+classes failed closed. The two associated rejection receipts preserve an
+unsafe cleanup-root refusal and a prepublication adapter-audit correction.
+This evidence contains zero real CatBoost fit, scientific metric, official
+operation, or claim. A separate integrated official-execution contract and
+unconsumed claim remain mandatory before any official access.
+Its first proposed acceptance, `5698f878...61f5683`, is superseded and rejected
+by integration-CI receipt `93a8adeb...0e7669e`: exact-runtime tests ran on
+unsupported interpreters and a read-only checkout-mode assertion was not
+portable. The corrected receipt changes neither the science nor supervisor.
+That corrected-but-superseded acceptance, `587eca16...5f5b63`, was then
+rejected by host receipt `37429202...e8f5b1` because hosted CI cannot provide
+the accepted local namespace boundary. Only live fault injection is skipped on
+hosted CI; it remains mandatory in local acceptance.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

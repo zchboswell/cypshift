@@ -261,6 +261,24 @@ integration and green post-main CI, the next gate is only a new narrow
 compiler/wrapper/supervisor plus two-root no-fit official-shaped mechanics—not
 an official source open or scientific fit.
 
+D-126 now accepts that narrow implementation at no-fit receipt SHA-256
+`ca722b26...c231e0e`. Two opposite-order official-shaped roots reconstructed
+all family overlays from raw structures, matched 252 capability files and eight
+terminal files byte-for-byte, and traversed the exact 720/1,020-fit branches
+with 3,480 model-double invocations, 667,872 synthetic prediction identities,
+and 6,980 supervised checkpoints. The supervisor accepted its control and
+rejected ten fail-stop fault classes. Zero real CatBoost fit, scientific
+metric, official operation, or claim occurred. After reviewed integration and
+green post-main CI, the next gate is a separate single-use official execution
+contract and immutable unconsumed claim—not official access itself.
+Superseded acceptance `5698f878...61f5683` is rejected under integration-CI
+receipt `93a8adeb...0e7669e`; the correction changes only runtime-test skipping
+and a nonportable checkout-mode assertion.
+Superseded acceptance `587eca16...5f5b63` is separately rejected at host
+receipt `37429202...e8f5b1` because hosted CI cannot provide the accepted local
+namespace boundary. Live fault injection remains required locally; static
+supervisor policy remains covered in every CI lane.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),
