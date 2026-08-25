@@ -3358,3 +3358,32 @@
   resource formula, namespace, claim, cleanup, accounting, signed-integration,
   or post-main-CI defect revokes implementation acceptance before claim
   consumption. A formal mechanics or resource failure is terminal for EXP-M1.
+
+## D-105 — Freeze the sole source-bound EXP-M1 formal resource attempt
+
+- Date: 2026-08-24
+- Status: accepted contract-only G2-4C claim; immutable and unconsumed; zero
+  formal fits and no official authority
+- Decision: Freeze `global_v2_m1_formal_attempt_claim.json` at SHA-256
+  `d6693d11...16497`. Bind the exact D-103/D-104 parents, implementation commit,
+  project, Python pin, lock, runner, driver, focused tests, prepared isolated
+  environment, dedicated cache, and fixed absent attempt/receipt paths. After
+  reviewed signed integration and green post-main CI, consume it exactly once
+  inside a fresh user/network namespace for root A then root B, 16 full-width
+  300-epoch fits each. No fit is authorized before that integration.
+- Evidence: The environment contains the exact 13 locked packages under Python
+  3.12.3 with PyTorch 2.13.0+cpu and CUDA unavailable. Its apparent bytes and
+  the dedicated cache bytes are frozen for later accounting. All six source
+  hashes match the accepted implementation; root A, root B, and receipt paths
+  are absent; destructive targets have exact attempt-specific basenames. Five
+  focused claim tests pass. The claim has one creation, zero consumptions, zero
+  formal fits, and every official and forbidden counter at zero.
+- Alternatives: Run directly from D-104; use the shared default uv cache;
+  permit network during fitting; choose paths at execution time; combine claim
+  creation and consumption; edit a source after claim; rerun a smoke; or retain
+  mutable roots after publishing aggregate evidence.
+- Reversal condition: Any parent, source, environment, cache, host, path,
+  namespace, topology, resource, no-replace, cleanup, accounting,
+  signed-integration, or post-main-CI defect revokes the claim before
+  consumption. After consumption, any defect or interruption is terminal and
+  cannot authorize a replacement attempt.

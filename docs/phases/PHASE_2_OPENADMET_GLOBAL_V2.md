@@ -3,8 +3,8 @@
 Status: active; G2-2 development baseline reproduced, G2-3A `EXP-G1` frozen,
 G2-3B synthetic implementation accepted, G2-3C official-shaped mechanics
 accepted but resource feasibility rejected, and the one-shot G2-3D resource
-falsifier terminally rejected; G2-4A `EXP-M1` and the G2-4B deterministic
-synthetic boundary are contract-frozen; the G2-3C
+falsifier terminally rejected; G2-4A `EXP-M1` is frozen, G2-4B implementation
+is accepted, and the G2-4C formal claim is frozen and unconsumed; the G2-3C
 claim remains
 unconsumed, and official development, confirmatory, historical-row,
 blinded-test, TDI, external, submission, official-metric, leaderboard, and
@@ -439,6 +439,21 @@ counter remains zero. Reviewed integration and green post-main CI must precede
 a distinct single-use claim binding the exact sources and fixed roots. The
 formal 32-fit probe remains unauthorized.
 
+D-105 freezes the sole G2-4C formal-attempt claim in
+[`global_v2_m1_formal_attempt_claim.json`](../../benchmarks/openadmet_cyp_2026/global_v2_m1_formal_attempt_claim.json)
+at SHA-256 `d6693d11...16497`. It binds implementation commit `229d31c...aa46a`,
+the exact D-103/D-104 receipts, all six implementation source hashes, the
+prepared 13-package Python 3.12.3/PyTorch 2.13.0+cpu environment, a dedicated
+offline cache, and destructively narrow fixed root A, root B, receipt, and
+cache paths. Its only future execution is two sequential roots with 16
+full-width 300-epoch fits each, four pinned workers, four cores per worker,
+zero GPU, and a fresh `unshare` network namespace. It preserves the exact
+worst-root resource formulas and requires cleanup of both public/private work
+roots and the dedicated cache. Five focused claim tests pass. The claim is
+unconsumed and this milestone ran zero fit, prediction, or metric operation;
+every official and forbidden counter is zero. Reviewed signed integration and
+green post-main CI are mandatory before the sole consumption.
+
 ### G2-4 — Masked multitask and interval alignment
 
 Compare four independent heads with the smallest shared four-endpoint MLP over
@@ -544,7 +559,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-104 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-105 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -554,16 +569,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-104's exact implementation receipt SHA-256
-`8b195bc6...26622`, then require green post-main CI. Keep claim
+Review and integrate D-105's exact unconsumed claim SHA-256
+`d6693d11...16497`, then require green post-main CI. Keep G1 claim
 `1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` again.
-Only afterward freeze a separate immutable G2-4C single-use claim binding the
-exact runner, driver, focused tests, project, Python pin, lock, fixed attempt
-roots, receipt root, isolated environment, and dedicated cache. Review and
-integrate that claim before consuming it once inside the no-network namespace
-for two sequential roots and exactly 32 full-width fits. Do not rerun the four
-exhausted API smokes or add a model, feature, loss, seed, device, dependency, or
-timing remedy. Keep official
+Recheck every bound source, exact host/environment/cache, absent attempt and
+receipt roots, and the no-network launcher. Then consume the M1 claim exactly
+once for two sequential roots and 32 full-width fits. Publish acceptance or
+terminal rejection and cleanup; do not retry, resume, move, overwrite, rerun
+the four exhausted API smokes, or add a model, feature, loss, seed, device,
+dependency, or timing remedy. Keep official
 development, confirmatory truth, historical R3C row-level artifacts, blinded
 test, TDI, external records, submission, official metric, leaderboard, upload,
 and execution-claim capability closed.

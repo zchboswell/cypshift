@@ -205,6 +205,16 @@ official and forbidden counter is zero. The 32-fit probe remains unauthorized
 until these exact bytes are integrated with green post-main CI and a separate
 single-use source-binding claim is reviewed and integrated.
 
+G2-4C now freezes that immutable claim in
+[`global_v2_m1_formal_attempt_claim.json`](global_v2_m1_formal_attempt_claim.json)
+at SHA-256 `d6693d11...16497`. It binds the exact D-104 parents and six source
+hashes; the prepared Python 3.12.3/PyTorch 2.13.0 CPU environment; dedicated
+offline cache; fixed absent root A, root B, and receipt paths; two sequential
+16-fit roots; the no-network launcher; and terminal cleanup. The claim is
+unconsumed. This freeze ran zero fit, prediction, or metric operation and opens
+no official capability. Only reviewed signed integration and green post-main
+CI authorize its sole formal consumption.
+
 External reviewers can independently recompute the official TRACE decision
 without repeating its 19.55-hour fit in
 [`r5d_training_validation_audit/`](r5d_training_validation_audit/). That exact

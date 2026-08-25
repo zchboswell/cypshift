@@ -4,7 +4,7 @@ Last updated: 2026-08-24
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-104. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-105. The externally supplied
 2026-08-24 audit is preserved byte-for-byte at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 and reconciled into the authoritative
@@ -219,6 +219,18 @@ were cleaned and every official and forbidden counter is zero. The formal
 32-fit probe remains unauthorized until these bytes pass reviewed integration
 and post-main CI and a separate immutable single-use source-binding claim is
 reviewed and integrated.
+
+D-105 now freezes the sole G2-4C formal-attempt claim at SHA-256
+`d6693d11...16497`. The immutable unconsumed claim binds implementation commit
+`229d31c...aa46a`, both parent receipts, every implementation source hash, the
+prepared exact 13-package CPU environment, dedicated offline cache, and fixed
+absent attempt/receipt roots. Its only future operation is two sequential
+16-fit roots inside a fresh no-network namespace, followed by the frozen
+worst-root projection and deletion of both mutable/private roots plus the
+cache. Five focused claim tests pass. This milestone ran zero fit, prediction,
+or metric operation; every official and forbidden counter is zero. Reviewed
+signed integration and green post-main CI are required before the sole
+consumption.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -868,12 +880,12 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the exact D-104 implementation receipt `8b195bc6...26622`
-and source bytes, then require green post-main CI. Only afterward freeze and
-integrate one immutable source-binding claim for the fixed formal roots,
-isolated environment, dedicated cache, and exact six source hashes. Consume it
-once inside the no-network namespace for two sequential roots and exactly 32
-full-width fits. Do not rerun the four exhausted API smokes, open an official
+Review and integrate exact D-105 claim `d6693d11...16497`, then require green
+post-main CI. Recheck all six source hashes, host, isolated environment,
+dedicated cache, absent attempt and receipt roots, and the no-network launcher.
+Consume the claim once for two sequential roots and exactly 32 full-width fits;
+publish its terminal decision and cleanup. Do not retry, resume, move,
+overwrite, rerun the four exhausted API smokes, open an official
 target, feature, structure, baseline row, or fold artifact, create an official
 execution claim, or use an API smoke as resource evidence. Confirmatory truth,
 historical R3C row-level artifacts, blinded

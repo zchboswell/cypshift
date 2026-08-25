@@ -1,0 +1,123 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.m1_formal_attempt_claim.v1",
+  "gate": "G2_4C_EXP_M1_FORMAL_ATTEMPT_CLAIM_FROZEN",
+  "status": "immutable_unconsumed_claim_formal_probe_unauthorized_until_integration",
+  "recorded_at_utc": "2026-08-25T01:49:00Z",
+  "base_commit": "229d31c1afd5451b6158fcb3c008ad98fc6aa46a",
+  "contract_sha256": "f80a6e8d7735a67ddebf636958aea0b56e738afbc3d10bcea2450ec168048df7",
+  "attempt_id": "g2-4c-m1-synthetic-attempt-1",
+  "maximum_attempts": 1,
+  "consumed": false,
+  "parents": {
+    "synthetic_contract": {
+      "path": "global_v2_m1_synthetic_contract.json",
+      "sha256": "f80a6e8d7735a67ddebf636958aea0b56e738afbc3d10bcea2450ec168048df7"
+    },
+    "implementation_acceptance": {
+      "path": "global_v2_m1_implementation_acceptance.json",
+      "sha256": "8b195bc6e1ceac980345a8a5a4a8d6914ef4e6591e80bd35943a491282126622"
+    }
+  },
+  "source_bindings": {
+    "research_pyproject_sha256": "402958b3f919b97a91942f866b7e9421098764c7fc0fa0f6a90ae02be556a9d7",
+    "research_python_pin_sha256": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+    "research_uv_lock_sha256": "e69858045e94375fb2c937db4f0847aa36508e704ebc2b4fdfba72ece25ded1b",
+    "m1_runner_sha256": "5e2e372e37fa5cc0d062e79149c6b1185b97bbd1adda6264aeb3ce1fd6e62bc5",
+    "m1_synthetic_driver_sha256": "008f62c9b19982b030db0cb76d2815f3c023a2a4636bdbe4283d2227e798f5af",
+    "focused_test_sha256": "ad94bf7664f11dd3ebb9223f71c16bff78376a6d9849083336cab73bbcbee010"
+  },
+  "paths": {
+    "root_a": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-4c-m1-synthetic-attempt-1-root-a",
+    "root_b": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-4c-m1-synthetic-attempt-1-root-b",
+    "receipt_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-4c-m1-synthetic-attempt-1-receipt",
+    "environment_root": "/home/zbos/code/cypshift/research/multitask-mlp/.venv",
+    "cache_root": "/home/zbos/.cache/cypshift-private/openadmet-cyp-2026/g2-4c-m1-synthetic-attempt-1-cache"
+  },
+  "environment_receipt": {
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "rdkit": "2026.03.5",
+    "torch": "2.13.0+cpu",
+    "cuda_available": false,
+    "packages": 13,
+    "pip_freeze_sha256": "0b3eced77892bc3917b87c0885a2078fc9eba934862b9a1314ab104deef405bc",
+    "environment_apparent_bytes_before_attempt": 964861638,
+    "cache_apparent_bytes_before_attempt": 964834276,
+    "dedicated_cache": true,
+    "network_during_formal_roots": false
+  },
+  "formal_execution": {
+    "roots": 2,
+    "root_order": [
+      "root_a canonical physical and execution order",
+      "root_b reversed physical and launch order"
+    ],
+    "fits_per_root": 16,
+    "fits_total": 32,
+    "epochs_per_fit": 300,
+    "training_rows": 3908,
+    "prediction_rows": 997,
+    "input_columns": 2248,
+    "maximum_concurrent_fits": 4,
+    "threads_per_fit": 4,
+    "gpu_hours": 0,
+    "network_launcher": "unshare --user --map-root-user --net",
+    "resource_logic": "Use exact equality receipts and the worse observations under the frozen 158 shared/permuted batches, 450 independent batches, 75 preprocessing contexts, fixed wrapper margin, complete storage, and conjunctive 240 CPU-hour, zero GPU-hour, 38.4 wall-hour, 64 GB, and 24 GiB RSS gates.",
+    "no_replace": "After consumption, no retry, resume, partial reuse, moved root, overwritten root, source edit, lock edit, alternative schedule, thread change, device change, epoch change, fit change, cache replacement, or second attempt is authorized."
+  },
+  "cleanup": {
+    "required": true,
+    "delete_after_aggregate_publication": [
+      "root_a",
+      "root_b",
+      "both dot-prefixed private roots",
+      "cache_root"
+    ],
+    "retain": [
+      "receipt_root aggregate digests, timings, projections, accounting, decision, and cleanup receipt",
+      "isolated locked environment"
+    ],
+    "failure": "Any missing cleanup member is terminal even if mechanics and numeric gates otherwise pass."
+  },
+  "current_authority": {
+    "claim_contract_only": true,
+    "claim_consumption": false,
+    "formal_probe": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "submission": false,
+    "upload": false
+  },
+  "post_integration_authority": {
+    "precondition": "This exact immutable claim is reviewed, integrated as one signed commit, and green on post-main CI while every bound source and fixed-root preflight still matches.",
+    "claim_consumption": true,
+    "formal_probe": true,
+    "maximum_consumptions": 1,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "development_metrics": false,
+    "submission": false,
+    "upload": false
+  },
+  "current_milestone_accounting": {
+    "formal_claims_created": 1,
+    "formal_claims_consumed": 0,
+    "formal_probe_fits": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0
+  },
+  "next_gate": "Review and integrate this exact signed claim and require green post-main CI. Recheck the six source hashes, exact host, environment, cache, absent attempt and receipt roots, and no-network launcher. Then consume this claim exactly once by running the formal command; do not execute a fit before integration."
+}

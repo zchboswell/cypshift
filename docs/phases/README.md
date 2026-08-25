@@ -70,6 +70,12 @@ receipts and 75 selection tokens each, the isolated exact CPU lock is resolved,
 and 4/4 bounded PyTorch API smokes passed. Smoke timing is non-authoritative.
 The exact next gate is reviewed integration and green post-main CI, followed
 by a separate immutable source-binding claim before the formal 32-fit probe.
+G2-4C now freezes that unconsumed claim at SHA-256 `d6693d11...16497`, binding
+all six source hashes, the exact isolated environment and dedicated cache,
+fixed absent attempt/receipt roots, two sequential 16-fit roots, a no-network
+namespace, and terminal cleanup. This claim milestone executes zero fit or
+prediction. Its exact next gate is reviewed integration and green post-main CI,
+then one consumption and no replacement.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
