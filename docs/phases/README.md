@@ -106,6 +106,20 @@ integration and green post-main CI, restart only through a separate
 metadata-only G2-5A contract that binds this rejection and exposes zero
 additional records.
 
+D-109 now freezes that G2-5A contract at SHA-256 `a51f81a4...a21c1d`.
+ChEMBL 37 is the sole source because its immutable pre-challenge SQLite release
+covers all four exact human single-protein targets. The contract binds the
+archive SHA-256, DOI, license, target IDs, raw assay/structure/provenance
+preservation, exact IC50 eligibility, family exclusion, no-fallback support
+falsifier, rights, parent acceptance gates, and 20%-margin resources. Support
+must reach 1,000 novel molecules per endpoint and 750 family-safe external
+components per endpoint in every outer cell or EXP-X1 stops. This milestone
+opened zero new external records, downloaded zero dataset files, opened zero
+official input, and ran zero model-quality operation. After reviewed
+integration and green post-main CI, the next gate is a deterministic
+synthetic-only ChEMBL compiler and challenge/external union-component proof;
+archive acquisition still requires a separate single-use claim.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

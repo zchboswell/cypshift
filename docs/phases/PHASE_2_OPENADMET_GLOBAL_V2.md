@@ -510,6 +510,20 @@ integration and green post-main CI, a separate G2-5A contract may use only
 allowlisted repository metadata and protocol/license prose and must expose zero
 additional external records.
 
+D-109 freezes the replacement source-specific G2-5A contract in
+[`global_v2_x1_provenance_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_provenance_contract.json),
+SHA-256 `a51f81a4...a21c1d`. ChEMBL 37 is the sole selected source: its exact
+pre-challenge SQLite archive, SHA-256, DOI, CC BY-SA 3.0 obligations, four
+human single-protein target identifiers, IC50 eligibility, raw assay and
+document provenance, challenge-family exclusion, external/no-external
+ablation, rights and resources are frozen before acquisition. The prospective
+support falsifier requires at least 1,000 novel eligible molecules per endpoint
+after exact/equivalent challenge removal and 750 family-safe external
+components per endpoint in every outer cell. Any endpoint failure rejects
+EXP-X1 without adding OpenADMET, PubChem, or third-party weights. This milestone
+downloaded no archive, opened no new external record or official input, and ran
+no fit, prediction, or metric.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -599,7 +613,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-108 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-109 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -609,20 +623,15 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-108's prefreeze rejection receipt SHA-256
-`6f0f063c...a5efc`, then require green post-main CI. Treat the consumed M1
-claim and `EXP-M1` as permanently closed; do not retry, repair its runtime
-warning, alter resources, or shrink the frozen design. Keep G1 claim
-`1c9f3438...46154` unconsumed and never execute or optimize `EXP-G1` or its
-unavailable-anchor `EXP-G2`. Next freeze the smallest metadata-only G2-5A
-`EXP-X1` provenance/acquisition-feasibility child contract. Bind D-108 and
-allowlist only repository metadata plus protocol/license prose; do not reopen
-the rejected dataset-card preview path. Freeze exact candidate source
-revisions, retrieval and release-date rules, licenses and redistribution,
-assay/organism/unit fields, challenge-family exclusion, weight/model rights,
-external/no-external ablation, and a source-specific stopping rule. The freeze
-must expose zero additional external records and open no official input. Keep
-official development, confirmatory truth, historical R3C row-level artifacts, blinded
-test, TDI, external records, submission, official metric, leaderboard, upload,
-and execution-claim capability closed until that contract passes its own
-reviewed gate.
+Review and integrate D-109 contract SHA-256 `a51f81a4...a21c1d`, then require
+green post-main CI. Keep the rejected preview path, closed G1/G2/M1 lanes and
+private portal observations outside model selection. Next freeze a
+deterministic synthetic-only compiler contract for the exact ChEMBL tables,
+field preservation, IC50 filter accounting, structure standardization, and
+challenge/external union-component exclusion; accept it across two
+opposite-order synthetic roots before any source acquisition. Only then may a
+separate single-use claim bind the exact chembl_37 archive URL and SHA-256,
+restricted fresh roots, no-network compilation, integrity/support receipts and
+cleanup. Do not download the archive, open a ChEMBL activity record or official
+input, fit a model, evaluate a metric, inspect blinded test, generate a
+submission, use leaderboard evidence, or upload before those reviewed gates.

@@ -41,6 +41,19 @@ used scientifically, and every official, fit, prediction, metric, submission,
 leaderboard-selection, and upload counter remains zero. The next gate is a
 separate metadata-only contract with the preview path denied.
 
+G2-5A now freezes that replacement metadata-only contract in
+[`global_v2_x1_provenance_contract.json`](global_v2_x1_provenance_contract.json),
+SHA-256 `a51f81a4...a21c1d`. It selects only the immutable ChEMBL 37 SQLite
+archive for all four human single-protein CYP targets, binds its exact DOI,
+release date, checksum, license, target identifiers, raw-field preservation,
+IC50 eligibility, challenge-family exclusion, rights, resources, and
+external/no-external ablation. Prospective support requires at least 1,000
+novel eligible molecules per endpoint and 750 family-safe external components
+per endpoint in every outer cell; failure rejects EXP-X1 without another
+source. This freeze downloaded no external file, opened no ChEMBL activity
+record or official input, and ran no model or metric. The next gate is a
+synthetic-only compiler and union-component leakage proof, not acquisition.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

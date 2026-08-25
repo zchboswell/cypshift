@@ -1,10 +1,10 @@
 # Project state
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-108. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-109. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -277,6 +277,20 @@ separate metadata-only G2-5A freeze may proceed after reviewed integration and
 green post-main CI; it must bind D-108, allowlist repository metadata and
 protocol/license prose only, select at most one source, and expose zero
 additional external records.
+
+D-109 freezes that source-specific G2-5A contract at SHA-256
+`a51f81a4...a21c1d`. ChEMBL 37 is the only selected source and is bound to its
+immutable pre-challenge SQLite URL and SHA-256, DOI, CC BY-SA 3.0 obligations,
+four exact human single-protein CYP targets, raw assay/structure/document
+provenance, exact IC50 eligibility, family-safe challenge exclusion,
+external/no-external ablation, rights, parent acceptance, and 20%-margin
+resources. The simplest support falsifier requires at least 1,000 novel
+eligible molecules per endpoint after exact/equivalent challenge removal and
+750 family-safe external components per endpoint in every outer cell. Failure
+at any endpoint rejects EXP-X1 without source replacement or threshold repair.
+This contract opened zero new external activity records, downloaded zero
+dataset files, opened zero official inputs, and ran zero fit, prediction or
+metric. Archive acquisition remains unauthorized.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -926,27 +940,18 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate exact D-108 prefreeze rejection receipt
-`6f0f063c...a5efc`, then require green post-main CI. Preserve the consumed M1
-claim and rejection; do
-not retry, repair its warning, resize or retime the experiment, or execute an
-official M1 fit. Keep the G1 claim unconsumed and do not instantiate
-parent-defined `EXP-G2` without its unavailable selected-G1 anchor. Freeze the
-smallest source-specific, metadata-only G2-5A `EXP-X1` provenance/acquisition-
-feasibility child contract next. It must bind D-108, allowlist repository
-metadata and protocol/license prose only, and bind immutable source revisions,
-licenses and
-redistribution, release/retrieval dates, organism/assay/endpoint/unit fields,
-challenge-family exclusion, model/weight rights, the external/no-external
-ablation, resource ceilings, and a simplest falsifier while exposing zero
-additional external records and opening zero official input. Confirmatory truth,
-historical R3C row-level artifacts, blinded test, TDI, external records,
-submission, official metric, leaderboard, and upload capabilities remain
-closed. Any private portal observation remains outside the public
-knowledgebase and cannot select a model, feature, loss, threshold, or
-candidate. Do not rerun R5D, tune I0/F1, or generate a TRACE test prediction.
-`global_TDI` remains the permanent TDI fallback until a separate accepted
-contract says otherwise.
+Review and integrate D-109 contract SHA-256 `a51f81a4...a21c1d`, then require
+green post-main CI. Next freeze a deterministic synthetic-only ChEMBL compiler
+and challenge/external union-component exclusion contract, and accept two
+opposite-order synthetic roots before acquisition. A later separate single-use
+claim must bind the exact archive URL/SHA-256, fresh restricted roots,
+no-network compilation, support accounting and cleanup. Do not download the
+archive, open a ChEMBL activity record or official input, fit a model, evaluate
+a metric, inspect blinded test, generate a submission, use leaderboard
+evidence, or upload before those gates. Private portal observations remain
+outside the public knowledgebase and cannot select a source, model, feature,
+loss, threshold, or candidate. Closed G1/G2/M1 and immutable R5D/I0 remain
+closed; `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.

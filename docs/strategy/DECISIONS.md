@@ -3498,3 +3498,43 @@
   of the rejected browsing path, or official/forbidden operation revokes this
   containment decision and stops G2-5. A distinct reviewed metadata-only
   contract is not a retry of this rejected browsing operation.
+
+## D-109 — Freeze ChEMBL 37 as the sole EXP-X1 source before acquisition
+
+- Date: 2026-08-25
+- Status: accepted contract-only G2-5A metadata evidence; zero new external
+  record, official input, model or metric operation
+- Decision: Freeze `global_v2_x1_provenance_contract.json` at SHA-256
+  `a51f81a4...a21c1d`. Select only the exact ChEMBL 37 SQLite archive at
+  frozen SHA-256 `33c20374...0d281` for all four exact Homo sapiens
+  single-protein targets. Bind its 2026-05-01 release, DOI, CC BY-SA 3.0
+  obligations, target identifiers, raw relation/censoring/assay/structure/
+  document preservation, exact high-confidence IC50 eligibility, challenge-
+  family exclusion, external/no-external ablation, weight rights, parent
+  acceptance gates and 20%-margin resources before any acquisition. Require
+  at least 1,000 novel eligible molecules per endpoint after global exact/
+  equivalent challenge removal and 750 family-safe external components per
+  endpoint in every outer cell. If any endpoint or integrity gate fails,
+  reject EXP-X1 without another source, threshold change or model fit.
+- Evidence: Release-directory, DOI, license/checksum prose and target metadata
+  identify one immutable pre-challenge source covering CYP1A2, CYP2C9, CYP2D6
+  and CYP3A4. The alternative OpenADMET compound summary is CYP3A4-only; with
+  the other three endpoints fixed, it would require about 0.100 absolute
+  CYP3A4 MAE improvement merely to deliver the parent's 0.025 macro gain.
+  PubChem adds per-depositor mapping complexity, and third-party weights lack
+  the required source/split/rights binding. No ChEMBL activity response or
+  file was opened, no archive was downloaded, and no official input, fit,
+  prediction, metric, confirmatory, blinded-test, submission, leaderboard-
+  selection, upload or claim operation occurred.
+- Alternatives: Acquire multiple sources before support is known; select the
+  largest advertised row count; use the rejected preview; query moving
+  ChEMBL activity APIs; permit censored/low-confidence/nonhuman rows; treat
+  exact challenge duplicates as transfer evidence; choose thresholds after
+  counts; use blinded-test similarity; or fit before a synthetic compiler and
+  family-exclusion proof.
+- Reversal condition: Any archive or activity record opened before a later
+  integrated claim, checksum/release drift, unpreserved raw field, silent
+  chemistry change, family crossing, support-threshold alteration, added
+  source or weight, false zero counter, official/blinded-test access, or
+  leaderboard-driven choice revokes the contract and rejects EXP-X1. The next
+  gate is synthetic compiler/leakage mechanics, not acquisition.

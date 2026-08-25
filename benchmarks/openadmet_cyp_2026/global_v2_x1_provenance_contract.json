@@ -1,0 +1,298 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_provenance_contract.v1",
+  "recorded_at_utc": "2026-08-25T04:00:00Z",
+  "gate": "G2_5A_EXP_X1_PROVENANCE_CONTRACT_FROZEN",
+  "status": "contract_only_metadata_review",
+  "base_commit": "b89fdfdd0b61d2c973ffe6c4fb06ff1b02f9bbf3",
+  "purpose": "Freeze one source-specific, leakage-safe and falsifiable EXP-X1 acquisition boundary before opening any ChEMBL activity record or official challenge input.",
+  "parents": {
+    "global_v2": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "g2_1_acceptance": {
+      "path": "global_v2_synthetic_firewall_acceptance.json",
+      "sha256": "3e897b61ad54b96faeba7b715cfa6e21d54108fb4d8bc3b9550a1054aab919fd"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "m1_terminal_rejection": {
+      "path": "global_v2_m1_resource_rejection.json",
+      "sha256": "3222856dfde449e616fe13cf02942abca5d4c78ad775a7d6035729d7bfa54297"
+    },
+    "audit_privacy_overlay": {
+      "path": "global_v2_audit_privacy_redaction.json",
+      "sha256": "8a7384050d6068fc63c5da1f842f0984145b1fd633fdc1aee0463884a7a23798"
+    },
+    "prefreeze_preview_rejection": {
+      "path": "global_v2_x1_prefreeze_preview_rejection.json",
+      "sha256": "6f0f063c09174ed10b2fa6c93d851efd66f4d7ff68602ff7a7ea8608876a5efc"
+    }
+  },
+  "hypothesis": "Assay-aware public four-endpoint CYP IC50 records can improve fixed MapLight on challenge-only reconstructed-family holdout after conservative overlap exclusion.",
+  "targeted_failure": "The challenge development set is too small to cover transferable CYP structure-activity families, while unfiltered public data would create false gains through duplicate or analog-family leakage.",
+  "metadata_review": {
+    "retrieved_at_utc": "2026-08-25T03:58:28Z",
+    "allowed_resources": [
+      "The ChEMBL 37 release directory listing, README, LICENSE, REQUIRED.ATTRIBUTION and checksum text",
+      "DOI metadata for 10.6019/chembl.database.37 and its redirect to the exact release directory",
+      "ChEMBL target-metadata responses for the four selected target identifiers"
+    ],
+    "external_activity_records_opened": 0,
+    "external_dataset_files_downloaded": 0,
+    "official_challenge_inputs_opened": 0,
+    "qualification": "Target-metadata responses establish the prospective identifiers only. Their species and target-type fields must be reverified inside the exact release archive after acquisition is separately authorized.",
+    "denied_resources": [
+      "The rejected OpenADMET dataset card, Data Studio, file preview, raw-data URL and resolve URL",
+      "Any ChEMBL activity API response, example record, query preview or current-release activity export",
+      "Any PubChem assay record or pretrained-model weight"
+    ]
+  },
+  "source_selection": {
+    "policy": "Select exactly one source from metadata before record acquisition; do not add, replace or combine sources after support, overlap or model outcomes are observed.",
+    "selected_source": "ChEMBL 37",
+    "reason": "It is the smallest candidate source with exact prospective human single-protein identifiers for all four challenge endpoints and an immutable pre-challenge release archive.",
+    "rejected_candidates": {
+      "OpenADMET Octant CYP inhibition release": "Documentation advertises 51,414 well-level/reaction rows, but its compound-level inhibition summary has 1,340 rows for CYP3A4 only and uses active preincubation. With the other endpoints fixed, a CYP3A4-only source would need about 0.100 absolute CYP3A4 MAE improvement merely to clear the 0.025 four-endpoint macro gate. The prefreeze preview path is also permanently denied by D-108.",
+      "PubChem CYP assays": "Not selected because per-depositor assay mapping and provenance add complexity without a prospective need once an immutable four-endpoint source is available.",
+      "Pretrained CheMeleon or other third-party weights": "Not selected because model-data overlap, split evidence and weight rights are not sufficiently source-bound for this lane; EXP-X1 grants no third-party weight use."
+    },
+    "no_fallback": "If ChEMBL 37 fails acquisition integrity, endpoint support, family-safe support, licensing, resource or later ablation gates, reject EXP-X1 without opening another external source."
+  },
+  "source_identity": {
+    "database": "ChEMBL",
+    "release": "chembl_37",
+    "release_date": "2026-05-01",
+    "release_date_policy": "The immutable database release must predate the challenge's 2026-08-03 initial launch. Later ChEMBL releases and moving current-release API activity results are forbidden.",
+    "doi": "10.6019/chembl.database.37",
+    "archive_url": "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_37/chembl_37_sqlite.tar.gz",
+    "archive_sha256": "33c203740555f96067710cdfc1c3c55d890660e5908ec5cbf5817492c290d281",
+    "archive_listing_size": "5.4G",
+    "archive_acquired_at_freeze": false,
+    "license": {
+      "name": "Creative Commons Attribution-ShareAlike 3.0 Unported",
+      "source": "The LICENSE file in the exact chembl_37 release directory",
+      "requirements": [
+        "Attribute ChEMBL and https://www.ebi.ac.uk/chembl/.",
+        "Name the exact chembl_37 release.",
+        "Preserve ChEMBL identifiers in derived provenance.",
+        "Cite Mendez et al. 2019, DOI 10.1093/nar/gky1075, as requested by REQUIRED.ATTRIBUTION.",
+        "Do not redistribute the archive or extracted external records through this Git repository."
+      ]
+    }
+  },
+  "endpoint_targets": {
+    "CYP1A2": {
+      "target_chembl_id": "CHEMBL3356",
+      "organism": "Homo sapiens",
+      "tax_id": 9606,
+      "target_type": "SINGLE PROTEIN"
+    },
+    "CYP2C9": {
+      "target_chembl_id": "CHEMBL3397",
+      "organism": "Homo sapiens",
+      "tax_id": 9606,
+      "target_type": "SINGLE PROTEIN"
+    },
+    "CYP2D6": {
+      "target_chembl_id": "CHEMBL289",
+      "organism": "Homo sapiens",
+      "tax_id": 9606,
+      "target_type": "SINGLE PROTEIN"
+    },
+    "CYP3A4": {
+      "target_chembl_id": "CHEMBL340",
+      "organism": "Homo sapiens",
+      "tax_id": 9606,
+      "target_type": "SINGLE PROTEIN"
+    }
+  },
+  "future_acquisition": {
+    "only_permitted_artifact": "The exact chembl_37 SQLite archive at the frozen URL and SHA-256.",
+    "integrity_sequence": [
+      "Download once into restricted untracked storage only under a later single-use source-binding claim.",
+      "Verify SHA-256 before extraction and reject without inspection on mismatch.",
+      "Extract into a fresh no-replace restricted root, record the member map and hashes, and prohibit network access during compilation.",
+      "Verify the four target identifiers, species and target type against target_dictionary inside the archive before any activity query.",
+      "Delete mutable archive and extracted database after the immutable aggregate receipt is accepted unless a later reviewed claim explicitly retains a restricted copy."
+    ],
+    "forbidden": [
+      "API activity extraction",
+      "A later or current ChEMBL release",
+      "Partial or alternate-format mirrors",
+      "Manual row repair",
+      "Untracked source substitution",
+      "Opening official challenge inputs during source acquisition"
+    ]
+  },
+  "provenance_and_preservation": {
+    "required_tables": [
+      "activities",
+      "assays",
+      "target_dictionary",
+      "molecule_dictionary",
+      "compound_structures",
+      "docs",
+      "source"
+    ],
+    "required_activity_fields": [
+      "activity_id",
+      "assay_id",
+      "molregno",
+      "standard_type",
+      "standard_relation",
+      "standard_value",
+      "standard_units",
+      "pchembl_value",
+      "standard_flag",
+      "potential_duplicate",
+      "data_validity_comment",
+      "activity_comment"
+    ],
+    "required_assay_fields": [
+      "assay_chembl_id",
+      "assay_type",
+      "assay_organism",
+      "assay_tax_id",
+      "assay_description",
+      "confidence_score",
+      "doc_id",
+      "tid"
+    ],
+    "required_structure_and_document_fields": [
+      "molecule_chembl_id",
+      "canonical_smiles",
+      "standard_inchi",
+      "standard_inchi_key",
+      "doc_chembl_id",
+      "year",
+      "doi",
+      "src_id"
+    ],
+    "rule": "Preserve every extracted raw structure, relation, censoring marker, unit, assay field, quality flag and document/source identifier before eligibility filtering. Never silently standardize, average, reinterpret or overwrite chemistry or measurements."
+  },
+  "eligibility": {
+    "target_filter": "An exact endpoint target_chembl_id above whose archive row is Homo sapiens, tax_id 9606 and SINGLE PROTEIN.",
+    "activity_filter": {
+      "standard_type": "IC50",
+      "standard_relation": "=",
+      "standard_units": "nM",
+      "standard_value": "finite and greater than zero",
+      "pchembl_value": "finite",
+      "standard_flag": 1,
+      "potential_duplicate": 0,
+      "data_validity_comment": null,
+      "minimum_assay_confidence_score": 9
+    },
+    "assay_context_policy": "Do not select rows from descriptions or observed performance. Preserve assay type, organism, description and document source as heterogeneity fields; reject an explicitly non-human assay organism but permit null assay organism when the exact high-confidence human protein target is established.",
+    "normalization": "Compute candidate pIC50 as 9 - log10(standard_value in nM). Require absolute agreement with stored pchembl_value at most 0.011; otherwise reject the row and count the reason. Do not infer values from censored relations or comments.",
+    "replicates": "Retain eligible measurements separately with activity_id and assay/document provenance. Any future molecule-level aggregation must be frozen in a later synthetic implementation contract and fitted inside training boundaries; this contract authorizes no averaging rule.",
+    "audit_counts": "Report deterministic per-endpoint counts at every filter, missingness pattern, relation, unit, quality reason, assay type, assay organism and document year without exposing row values in Git."
+  },
+  "challenge_overlap_and_folds": {
+    "global_exact_equivalent_rule": "After a later official-source claim separately opens the 4,905 challenge training structures, standardize challenge and external structures with the accepted immutable chemistry compiler and remove every external molecule that is exact or equivalent to any challenge training molecule before model evaluation. These rows are redundant, not independent transfer support.",
+    "outer_fold_rule": "For each development outer cell, componentize the challenge/external union using the accepted exact, equivalent and reconstructed analog-family edges. Remove every external molecule connected to any held-out challenge component before fitting; external labels may occur only on that cell's training side.",
+    "inner_fold_rule": "Repeat the same union-component exclusion relative to every inner validation component before feature selection, preprocessing, aggregation, calibration, stopping or model selection.",
+    "confirmatory_rule": "If a contender is later frozen, construct label-free union components and remove external molecules connected to any confirmatory challenge component before its fit. Confirmatory truth remains sealed until one aggregate score.",
+    "blinded_test_rule": "Do not open or use blinded-test structures, similarities, components or records because transductive permissions remain unresolved.",
+    "evaluation_population": "Score only challenge rows. External splits and external-only metrics are diagnostics and cannot promote a candidate."
+  },
+  "prospective_support_falsifier": {
+    "unit": "unique eligible external standardized molecules and reconstructed-family connected components",
+    "minimum_novel_molecules_per_endpoint_after_global_exact_equivalent_removal": 1000,
+    "minimum_family_safe_external_components_per_endpoint_in_every_outer_cell": 750,
+    "all_four_endpoints_required": true,
+    "decision": "Reject EXP-X1 immediately if acquisition integrity or any endpoint support threshold fails. Do not fit a transfer model, lower a threshold, pool endpoints to hide failure, add a source or inspect another source's records.",
+    "rationale": "A transfer lane must have material novel and family-diverse support at every endpoint; raw database row volume is not evidence of independent support."
+  },
+  "later_experiment_boundary": {
+    "candidate": "One all-four-endpoint ChEMBL-transfer system paired with an otherwise identical no-external control; the exact representation, learner, aggregation and training schedule require a later synthetic implementation contract.",
+    "baseline": {
+      "name": "fixed MapLight",
+      "component_macro_mae": 0.5838,
+      "endpoint_mae": {
+        "CYP1A2": 0.6673,
+        "CYP2C9": 0.49,
+        "CYP2D6": 0.5986,
+        "CYP3A4": 0.5793
+      },
+      "interpretation": "Internal family-safe development evidence only; not an official challenge metric or confirmatory score."
+    },
+    "acceptance": {
+      "minimum_relative_primary_improvement": 0.05,
+      "minimum_absolute_component_macro_mae_improvement": 0.025,
+      "maximum_endpoint_mae_degradation": 0.02,
+      "external_no_external_ablation_must_pass": true,
+      "all_conditions_conjunctive": true
+    },
+    "source_specific_arithmetic": "Holding three endpoints fixed, a CYP3A4-only intervention would require 0.100 absolute CYP3A4 MAE improvement to supply 0.025 four-endpoint macro improvement; this is why a one-endpoint source is not the sole EXP-X1 lane.",
+    "model_quality_operations_authorized_here": 0
+  },
+  "resource_boundary": {
+    "parent_ceiling": {
+      "cpu_core_hours": 1000,
+      "gpu_hours": 220,
+      "restricted_storage_gb": 250
+    },
+    "future_maximum_with_twenty_percent_margin": {
+      "cpu_core_hours": 800,
+      "gpu_hours": 176,
+      "restricted_storage_gb": 200
+    },
+    "current_contract_usage": "Less than one CPU-minute for metadata review, contract serialization and static tests; zero GPU-hours; zero external or official dataset storage.",
+    "rule": "A later implementation contract must set a smaller measured one-shot resource falsifier before any scientific model fit."
+  },
+  "rights_and_disclosure": {
+    "third_party_weights_permitted": false,
+    "tracked_external_records_permitted": false,
+    "tracked_external_predictions_permitted": false,
+    "trained_weight_publication": "Keep any later locally trained weights restricted and unpublished until a component-specific ChEMBL database-rights and ShareAlike review permits release.",
+    "submission_disclosure": "Any later accepted candidate and submission record must disclose ChEMBL 37, its DOI, license, retrieval receipt, target mapping, overlap exclusions and the Mendez et al. citation."
+  },
+  "current_milestone_accounting": {
+    "inherited_prefreeze_external_preview_minimum_records": 45,
+    "new_external_records_opened": 0,
+    "external_activity_records_used_for_science": 0,
+    "external_dataset_files_downloaded": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "execution_claims_created_or_consumed": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "metadata_review": true,
+    "external_record_acquisition": false,
+    "external_activity_query": false,
+    "implementation": false,
+    "synthetic_operation": false,
+    "official_inputs": false,
+    "official_model_fits": false,
+    "official_predictions": false,
+    "development_metrics": false,
+    "confirmatory": false,
+    "historical_rows": false,
+    "blinded_test": false,
+    "tdi": false,
+    "submission": false,
+    "official_metric": false,
+    "leaderboard_selection": false,
+    "upload": false,
+    "claim_creation_or_consumption": false
+  },
+  "invalidation": "Any unbound archive, checksum mismatch, activity/API preview before authorization, post-release substitution, unpreserved relation or provenance, silent chemistry change, challenge-family crossing, support-threshold change, added source, third-party weight, official or blinded-test access, model-quality operation, private leaderboard-driven choice or false counter revokes this contract and rejects EXP-X1.",
+  "next_gate": "After reviewed signed integration and green post-main CI, freeze and accept a deterministic synthetic-only ChEMBL compiler and challenge/external union-component exclusion implementation. Then freeze a separate single-use acquisition claim binding that exact implementation, the exact chembl_37 archive URL and SHA-256, restricted fresh roots and no-network compilation. Do not download the archive, open a ChEMBL activity record, open an official challenge input, or fit a model before both gates pass."
+}
