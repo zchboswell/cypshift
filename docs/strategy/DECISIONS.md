@@ -3735,3 +3735,42 @@
   revokes this acceptance and rejects EXP-X1. The next gate is reviewed signed
   integration and green post-main CI, then the sole private claim consumption
   and frozen support falsifier—not model fitting.
+
+## D-114 — Reject EXP-X1 after the sole acquisition fails schema preflight
+
+- Date: 2026-08-25
+- Status: terminally rejected after one consumed claim and one exact archive
+  download; cleanup complete; zero activity-row, official-input, fit,
+  prediction, metric, submission, or upload operation
+- Decision: Accept `global_v2_x1_acquisition_failure.json` at SHA-256
+  `ac08140b...50e4eb2` as the terminal aggregate record and close `EXP-X1`.
+  The exact 5,764,252,857-byte ChEMBL 37 archive passed the frozen SHA-256
+  before listing, safe extraction produced one 30,480,314,368-byte read-only
+  SQLite database, and offline integrity checking passed. Schema preflight then
+  rejected `assays` before the activity query. Do not retry, resume, mirror,
+  repair the source contract, change support thresholds, retain partial inputs,
+  or fit an external-transfer model under this lane.
+- Evidence: The sealed private aggregate receipt has SHA-256
+  `47e26624...80b56f`, status `G2_5C_X1_ACQUISITION_FAILED`, consumed-claim
+  SHA-256 `245ed65c...135275`, cleanup complete, read-only file mode, and no
+  row-level content. The fixed attempt root is absent. Public compiler audit
+  identifies the contract defect: synthetic fixtures exposed API-style aliases
+  (`assay_chembl_id`, `target_chembl_id`, and `doc_chembl_id`) as physical
+  columns, while the ChEMBL SQLite tables use `chembl_id`. Integrity therefore
+  passed but the required-column subset failed before `SOURCE_QUERY`. One
+  archive was downloaded; zero external activity rows, external target values,
+  official structures/features/targets, fits, predictions, development metrics,
+  confirmatory values, historical rows, blinded-test rows, TDI rows, submission
+  rows, official metric calls, leaderboard selections, or uploads occurred.
+  Fixed MapLight remains 0.5838 internal component-macro MAE.
+- Alternatives: Patch the aliases and reuse the deleted archive; issue a second
+  claim or request; resume from the extracted database; select a mirror or
+  alternate external source; relax the no-retry rule; infer support from public
+  summaries; or proceed to fitting without the frozen 1,000/750 falsifier.
+- Reversal condition: None within `EXP-X1`. The claim is consumed and the
+  no-retry boundary is part of the preregistered evidence. A future external
+  hypothesis must be scientifically distinct, separately contracted, and may
+  not reinterpret or reuse this failed attempt. The next gate is reviewed
+  integration of this failure record, followed by an audit of remaining frozen
+  lanes for the smallest distinct hypothesis targeting the MapLight error
+  profile without using private portal observations for selection.

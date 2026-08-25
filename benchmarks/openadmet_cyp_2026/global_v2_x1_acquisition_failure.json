@@ -1,0 +1,90 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_acquisition_failure.v1",
+  "recorded_at_utc": "2026-08-25T10:21:50Z",
+  "status": "G2_5C_X1_ACQUISITION_FAILED",
+  "decision": "reject_exp_x1_without_retry_or_model_fit",
+  "base_commit": "c834300825e0af3f7181da9f80e168f4ab6077e2",
+  "parents": {
+    "acquisition_claim": {
+      "path": "global_v2_x1_acquisition_claim.json",
+      "sha256": "f1bea8327896c0eb01a2a13032af265f1ed0b42d280109acdf10262ae1ba5c60"
+    },
+    "real_source_adapter_acceptance": {
+      "path": "global_v2_x1_real_source_adapter_acceptance.json",
+      "sha256": "c29aaaf46e62e9751aa1d4845f9d78b1f974032aa89754f8f3557f3c433f3fb4"
+    }
+  },
+  "private_aggregate_receipt": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_x1_acquisition_receipt.v1",
+    "sha256": "47e26624758f7df2a0de10a15dfe9d1be864ee7cd0bba73109848867fc80b56f",
+    "consumed_claim_sha256": "245ed65cb4b6c558895a80000705816550dab027b51d458fe12ab1d378135275",
+    "failure_category": "X1AcquisitionError",
+    "cleanup_complete": true,
+    "receipt_root_mode": "0555",
+    "receipt_file_mode": "0444"
+  },
+  "acquisition": {
+    "source": "ChEMBL 37 SQLite",
+    "downloads_attempted": 1,
+    "downloads_completed": 1,
+    "archive_bytes": 5764252857,
+    "archive_sha256_verified_before_listing": true,
+    "archive_members_safely_validated": true,
+    "database_files_extracted": 1,
+    "database_bytes": 30480314368,
+    "offline_namespace": true,
+    "sqlite_read_only_immutable": true,
+    "sqlite_integrity_check_passed": true
+  },
+  "failure": {
+    "stage": "sqlite_schema_preflight",
+    "message": "required SQLite column missing: assays",
+    "cause": "The synthetic physical-schema contract used API-style entity aliases as SQLite column names. The ChEMBL SQLite tables use chembl_id in assays, target_dictionary, and docs, while the compiler required assay_chembl_id, target_chembl_id, and doc_chembl_id respectively.",
+    "source_corruption_detected": false,
+    "support_falsifier_reached": false,
+    "chemistry_union_reached": false,
+    "model_fit_reached": false,
+    "retry_authorized": false,
+    "replacement_source_authorized": false,
+    "threshold_repair_authorized": false
+  },
+  "cleanup": {
+    "attempt_root_absent": true,
+    "archive_absent": true,
+    "extracted_database_absent": true,
+    "private_root_absent": true,
+    "terminal_root_absent": true,
+    "aggregate_receipt_retained_read_only": true
+  },
+  "accounting": {
+    "acquisition_claims_created": 1,
+    "acquisition_claims_consumed": 1,
+    "external_dataset_files_downloaded": 1,
+    "external_dataset_bytes_downloaded": 5764252857,
+    "external_activity_rows_opened": 0,
+    "external_target_values_opened": 0,
+    "official_target_values_opened": 0,
+    "official_features_opened": 0,
+    "official_structures_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0
+  },
+  "scientific_result": {
+    "support_decision": null,
+    "external_transfer_model_quality": null,
+    "best_validated_system_changed": false,
+    "best_validated_system": "fixed MapLight",
+    "internal_development_component_macro_mae": 0.5838
+  },
+  "reversal_condition": "None inside EXP-X1. The sole claim is consumed and forbids retry, resume, source repair, alternate source, threshold change, or a second acquisition. A future external-data hypothesis would require a scientifically distinct preregistered lane and cannot reinterpret this failed attempt.",
+  "next_gate": "Close EXP-X1 and return to the frozen internal evidence. Audit the remaining preregistered lanes and choose the smallest distinct hypothesis that can target CYP1A2 and CYP2D6 without reopening closed experiments or using private portal observations for selection."
+}

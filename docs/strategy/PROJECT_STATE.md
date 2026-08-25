@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-113. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-114. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -363,8 +363,26 @@ and reproduced outer 52/36, inner 44/32, and confirmatory 52/36
 molecule/component support. Twenty-two focused adversarial tests pass. No real
 archive, external record, official input, model fit, prediction, metric,
 submission, leaderboard-selection, upload, or claim consumption occurred. The
-tracked claim remains unchanged and unconsumed until this milestone is reviewed,
-integrated, and green on post-main CI.
+tracked claim remained unchanged and unconsumed until this milestone was
+reviewed, integrated, and green on post-main CI.
+
+D-114 terminally rejects `EXP-X1` under tracked aggregate receipt SHA-256
+`ac08140b...50e4eb2`. After D-113 integration and green post-main CI, the sole
+private claim was derived and consumed once. One nonredirecting request fetched
+the exact 5,764,252,857-byte ChEMBL 37 archive, its frozen SHA-256 passed before
+listing, safe extraction produced one 30,480,314,368-byte read-only SQLite
+database, and offline `PRAGMA integrity_check` passed. The subsequent schema
+preflight failed before the activity query because the frozen synthetic
+physical-schema contract used API-style aliases where the SQLite tables expose
+`chembl_id`; the first rejection was `required SQLite column missing: assays`.
+The support falsifier, challenge projection, chemistry union, model fitting,
+prediction, and metric evaluation were never reached. The fixed attempt root,
+archive, database, private root, and terminal root were removed; a sealed
+aggregate failure receipt remains outside Git. The claim is permanently
+consumed and forbids retry, resume, alternate source, source repair, threshold
+change, or partial reuse. Fixed MapLight therefore remains the best validated
+system at 0.5838 internal development component-macro MAE, and `EXP-X1` has no
+model-quality result.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1014,16 +1032,15 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-113 adapter acceptance SHA-256
-`c29aaaf4...33f3fb4`, then require green post-main CI. Only after that exact
-milestone is integrated may the private consumed claim bind its five accepted
-implementation receipts and perform the sole ChEMBL 37 acquisition. After the
-sole acquisition, apply the
-frozen 1,000/750 support falsifier before any fit. Do not fit a model, evaluate
-a metric, inspect blinded test, generate a submission, use leaderboard evidence,
-or upload before their later gates. Private portal observations remain outside
-the public knowledgebase and cannot select a source, model, feature, loss,
-threshold, or candidate. Closed G1/G2/M1 and immutable R5D/I0 remain closed;
+Review and integrate D-114 acquisition-failure receipt SHA-256
+`ac08140b...50e4eb2`, then require green post-main CI. Keep `EXP-X1` closed:
+the consumed claim cannot be retried, repaired, resumed, redirected, or reused.
+After integration, audit the remaining preregistered Global-v2 lanes and freeze
+the smallest scientifically distinct next hypothesis that can target the frozen
+CYP1A2 and CYP2D6 error without reopening G1/G2/M1/X1 or using private portal
+observations for selection. Do not fit another model, inspect blinded test,
+generate a submission, call an official metric, or upload before that lane's
+separate contract and synthetic gates. Immutable R5D/I0 remain closed;
 `global_TDI` remains the TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under

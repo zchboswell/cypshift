@@ -6,16 +6,17 @@ accepted but resource feasibility rejected, and the one-shot G2-3D resource
 falsifier terminally rejected; G2-4A `EXP-M1` is frozen, G2-4B implementation
 is accepted, and G2-4C terminally rejects `EXP-M1` on CPU resources after its
 sole deterministic formal attempt; the G2-3C claim remains unconsumed, and
-official development, confirmatory, historical-row, blinded-test, TDI,
-external-file acquisition, submission, official-metric, leaderboard, and
+confirmatory, historical-row, blinded-test, TDI, additional external-file
+acquisition, program submission, official-metric, leaderboard-selection, and
 upload capabilities remain closed. A pre-contract documentation view exposed
 at least 45 public external CYP3A4 preview records; D-108 rejects that path
 without scientific use and requires a metadata-only restart.
-G2-5A provenance and G2-5B synthetic compiler mechanics are accepted; G2-5C
-has an immutable unconsumed acquisition claim, and G2-5D now accepts the
-real-source adapter on two official-shaped synthetic roots. Real acquisition
-remains blocked until that exact acceptance is reviewed, integrated, and green
-on post-main CI.
+G2-5A provenance and G2-5B synthetic compiler mechanics are accepted; G2-5D
+accepted the real-source adapter on two official-shaped synthetic roots. D-114
+then consumed the sole G2-5C claim and terminally rejected `EXP-X1`: the exact
+archive passed checksum, extraction, and SQLite integrity, but the frozen
+synthetic physical-schema contract failed against the real `assays` table
+before any activity row, support decision, model fit, prediction, or metric.
 
 Authorized: 2026-08-24.
 
@@ -589,9 +590,26 @@ safe extraction, an offline namespace, aggregate-only publication, and cleanup.
 Opposite physical SQLite and R2B order yielded identical seven-file terminal
 maps at tree SHA-256 `7789290d...8f6b8a`; 22 focused adversarial tests pass and
 all disposable roots were removed. This is synthetic mechanics evidence only.
-The tracked claim remains unchanged and unconsumed, and all real external,
+The tracked claim remained unchanged and unconsumed, and all real external,
 official, model, metric, submission, leaderboard-selection, and upload counters
-remain zero.
+remained zero at this synthetic milestone.
+
+D-114 terminally rejects `EXP-X1` under
+[`global_v2_x1_acquisition_failure.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_acquisition_failure.json),
+SHA-256 `ac08140b...50e4eb2`. After reviewed D-113 integration and green
+post-main CI, the one-shot claim was consumed. The exact ChEMBL 37 archive was
+downloaded once, checksum-verified before listing, safely extracted, opened
+read-only without network access, and passed SQLite integrity. Schema preflight
+then rejected `assays` before the ordered activity query: the synthetic fixture
+had frozen API-style aliases such as `assay_chembl_id`, while the physical
+SQLite schema uses `chembl_id`. The same contract error also affects the
+logical aliases frozen for target and document identifiers. No external
+activity row, official challenge input, support count, chemistry union, model
+fit, prediction, or metric was opened or produced. Cleanup removed the archive,
+30,480,314,368-byte database, and all mutable/private attempt state; only a
+read-only aggregate failure receipt remains outside Git. Retry, repair, mirror,
+alternate source, threshold change, and partial reuse are forbidden, so
+`EXP-X1` is closed with no model-quality evidence.
 
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
@@ -692,10 +710,10 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-113 adapter acceptance SHA-256
-`c29aaaf4...33f3fb4`, then require green post-main CI. Do not consume the claim,
-download or open ChEMBL 37, or open an official challenge input before that
-acceptance is integrated and green. After
-the sole acquisition, apply the frozen 1,000/750 support falsifier before any
-model fit. Do not evaluate a metric, inspect blinded test, generate a
-submission, use leaderboard evidence, or upload before their later gates.
+Review and integrate D-114 acquisition-failure receipt SHA-256
+`ac08140b...50e4eb2`, then require green post-main CI. Do not retry or repair
+`EXP-X1`; its sole claim is consumed. After integration, audit the remaining
+preregistered lanes and freeze one smallest distinct hypothesis against the
+frozen MapLight error profile. Do not fit, score, inspect blinded test, generate
+a submission, use leaderboard evidence, or upload before that hypothesis has
+its own reviewed contract and synthetic capability gate.

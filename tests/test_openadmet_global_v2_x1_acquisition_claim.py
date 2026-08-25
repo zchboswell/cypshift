@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import stat
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
 BENCHMARK = ROOT / "benchmarks" / "openadmet_cyp_2026"
 CLAIM_PATH = BENCHMARK / "global_v2_x1_acquisition_claim.json"
+FAILURE_PATH = BENCHMARK / "global_v2_x1_acquisition_failure.json"
 CLAIM_SHA256 = "f1bea8327896c0eb01a2a13032af265f1ed0b42d280109acdf10262ae1ba5c60"
 
 
@@ -105,7 +107,7 @@ def test_future_adapter_bindings_block_consumption() -> None:
     assert "No retry" in claim["consumption"]["no_replace"]
 
 
-def test_paths_are_fixed_absent_and_destructively_narrow() -> None:
+def test_paths_are_fixed_attempt_absent_and_receipt_narrow() -> None:
     paths = {name: Path(value) for name, value in _load(CLAIM_PATH)["paths"].items()}
     attempt = paths["attempt_root"]
     receipt = paths["receipt_root"]
@@ -118,7 +120,15 @@ def test_paths_are_fixed_absent_and_destructively_narrow() -> None:
     )
     assert all(path not in {Path("/"), Path.home()} for path in paths.values())
     assert not attempt.exists()
-    assert not receipt.exists()
+    if receipt.exists():
+        receipt_path = receipt / "receipt.json"
+        assert not receipt.is_symlink()
+        assert {path.name for path in receipt.iterdir()} == {"receipt.json"}
+        assert receipt_path.is_file() and not receipt_path.is_symlink()
+        assert stat.S_IMODE(receipt.stat().st_mode) == 0o555
+        assert stat.S_IMODE(receipt_path.stat().st_mode) == 0o444
+        failure = _load(FAILURE_PATH)
+        assert _sha256(receipt_path) == failure["private_aggregate_receipt"]["sha256"]
 
 
 def test_network_read_and_target_boundaries_fail_closed() -> None:

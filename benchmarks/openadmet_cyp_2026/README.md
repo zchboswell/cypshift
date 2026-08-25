@@ -84,7 +84,7 @@ future download, fixed absent restricted roots, checksum-before-inspection,
 four exact target identities, frozen label-free R2B receipts for 4,905 challenge
 training structures/fold identities, read-only/no-network compilation,
 1,000/750 support and lane-resource falsifiers, aggregate-only receipts, and cleanup.
-The claim remains unconsumed and cannot yet be consumed because its future
+The claim remained unconsumed and could not yet be consumed because its future
 real-source adapter and official-shaped synthetic acceptance bindings are null.
 This milestone creates no archive, external record, official input, model,
 prediction, metric, submission, or upload authority.
@@ -98,9 +98,21 @@ reused the frozen family folds, and reproduced the accepted union/support
 oracles; 22 focused adversarial tests pass. The wrapper binds one exact request,
 checksum-before-listing, safe extraction, offline compilation, and cleanup. No
 real archive, external record, official input, model, metric, submission,
-leaderboard-selection, upload, or claim consumption occurred. The D-112 claim
-remains unchanged and unconsumed until this exact acceptance is reviewed,
-integrated, and green on post-main CI.
+leaderboard-selection, upload, or claim consumption occurred in that synthetic
+milestone. The D-112 claim remained unchanged and unconsumed until the exact
+acceptance was reviewed, integrated, and green on post-main CI.
+
+G2-5C execution is terminally rejected under
+[`global_v2_x1_acquisition_failure.json`](global_v2_x1_acquisition_failure.json),
+SHA-256 `ac08140b...50e4eb2`. The sole claim was consumed once. The exact
+5,764,252,857-byte archive passed checksum and safe extraction, and the
+30,480,314,368-byte read-only database passed SQLite integrity. Schema preflight
+then rejected the frozen API-style physical column aliases before any activity
+query. Cleanup removed all restricted inputs and mutable/private outputs. No
+external activity row, official challenge input, support result, model fit,
+prediction, metric, submission, leaderboard-selection, or upload occurred.
+`EXP-X1` cannot be retried, repaired, redirected, or partially reused and has
+no model-quality interpretation.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
