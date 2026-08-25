@@ -135,6 +135,19 @@ After reviewed integration and green post-main CI, implement and accept only
 the contracted two-root synthetic compiler; acquisition still requires its own
 later integrated single-use claim.
 
+D-111 now accepts those synthetic mechanics at receipt SHA-256
+`5ea379d1...001a8`. Two sequential opposite-order roots had different physical
+SQLite hashes but identical logical source and seven-file terminal maps at tree
+SHA-256 `a5e7d2d3...88111`. Each root retained 320/336 eligible activities,
+removed ten exact and ten connectivity-equivalent external values while
+keeping ghost connectors, and matched outer 52/36, inner 44/32, and
+confirmatory 52/36 support oracles after 5,995 exhaustive comparisons.
+Twenty-one implementation tests pass and all disposable roots were cleaned.
+The synthetic 50/35 gate passes while the real 1,000/750 gate fails; no real
+external, official, model, metric, submission, leaderboard-selection, upload,
+or claim operation occurred. The next gate is a reviewed single-use ChEMBL 37
+acquisition claim, not archive access.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

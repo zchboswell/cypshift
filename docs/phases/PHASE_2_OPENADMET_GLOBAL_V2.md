@@ -539,6 +539,22 @@ while the real 1,000/750 gate fails. This freeze runs no synthetic operation,
 opens no external or official record, and grants no acquisition or model
 authority.
 
+D-111 accepts the exact G2-5B implementation under aggregate receipt
+[`global_v2_x1_synthetic_compiler_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_x1_synthetic_compiler_acceptance.json),
+SHA-256 `5ea379d1...001a8`. Two sequential opposite-order roots produced
+different physical SQLite hashes but the same logical source and all seven
+terminal files at tree SHA-256 `a5e7d2d3...88111`. Per root, 320/336 rows were
+eligible across 80 structures; ten exact and ten connectivity-equivalent
+external matches were removed from values but retained as ghost topology;
+5,995 exhaustive comparisons yielded 110 nodes in 40 union components. The
+outer 52/36, inner 44/32, and confirmatory 52/36 molecule/component support
+oracles all matched. Twenty-one focused implementation adversaries pass and
+all disposable roots were cleaned. The real 1,000/750 support gate remains a
+deliberate failure on synthetic counts. No real external record, official
+input, fit, prediction, metric, submission, leaderboard-selection, upload, or
+claim operation occurred, so this result has no model-quality meaning and
+grants no acquisition authority.
+
 Before acquiring or fitting external records, freeze exact source revisions,
 licenses, release dates, organism, endpoint, units, assay format, quality,
 standardization, and disclosure policy. Candidate sources are public
@@ -628,7 +644,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-110 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-111 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -638,15 +654,13 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-110 contract SHA-256 `db36935e...a3442`, then require
-green post-main CI. Implement exactly one isolated compiler and synthetic
-driver, run the two opposite-order roots sequentially, require every filter,
-chemistry, ghost-connector, transitive-family, capability, support,
-determinism, accounting, cleanup and no-replace adversary, and track only an
-aggregate acceptance or blocker. Do not change the 50/35 miniature or 1,000/750
-official thresholds. Acquisition remains closed after synthetic acceptance: a
-separate reviewed single-use claim must first bind the exact accepted source
-hashes, chembl_37 archive URL/SHA-256, restricted roots, no-network execution,
-support receipt and cleanup. Do not open real ChEMBL activity data or an
-official input, fit a model, evaluate a metric, inspect blinded test, generate
-a submission, use leaderboard evidence, or upload before those gates.
+Review and integrate D-111 acceptance SHA-256 `5ea379d1...001a8`, then require
+green post-main CI. Freeze a separate immutable single-use ChEMBL 37
+acquisition claim binding the accepted compiler, driver, tests and receipt; the
+exact archive URL/SHA-256; fixed fresh restricted roots; one read-only,
+no-network execution; endpoint support receipt; resource ceilings; and complete
+cleanup. Do not download or open the archive before that claim is reviewed,
+integrated and green. After the sole acquisition, apply the frozen 1,000/750
+support falsifier before any model fit. Do not open an official input, fit a
+model, evaluate a metric, inspect blinded test, generate a submission, use
+leaderboard evidence, or upload before their later gates.

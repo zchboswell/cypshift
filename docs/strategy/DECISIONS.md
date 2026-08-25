@@ -3585,3 +3585,50 @@
   revokes this contract and rejects G2-5B. A future acquisition still requires
   separate reviewed synthetic acceptance and a separate integrated single-use
   claim.
+
+## D-111 — Accept deterministic EXP-X1 compiler and ghost-node mechanics
+
+- Date: 2026-08-25
+- Status: accepted synthetic-only G2-5B implementation; zero real external,
+  official, model-quality, submission or claim operation
+- Decision: Accept `global_v2_x1_synthetic_compiler_acceptance.json` at
+  SHA-256 `5ea379d1...001a8`. Bind compiler `34ea893e...bf77e`, driver
+  `b10bdee8...0305d`, focused tests `b05e5eb6...c85e3`, the unchanged core
+  chemistry/topology sources and root lock. Two sequential roots with opposite
+  SQLite and CSV insertion order had different physical SQLite hashes but
+  byte-identical logical source and seven-file terminal maps at tree SHA-256
+  `a5e7d2d3...88111`. Accept the compiler, filter, recomputed chemistry,
+  exact/equivalent ghost-node, exhaustive inclusive similarity, transitive
+  exclusion, cell capability, support-decision, determinism, cleanup and
+  no-replace mechanics only. Keep archive acquisition unauthorized until a
+  separate reviewed single-use claim is integrated and green.
+- Evidence: Per root, 320 of 336 activity rows on 80 standardized external
+  structures passed the exact ordered eligibility filter. Ten exact and ten
+  connectivity-equivalent matches lost their values globally but remained as
+  topology connectors. The union contained 110 nodes, 157 qualifying
+  similarity edges and 40 components after 5,995 unordered-pair comparisons.
+  Every endpoint had 60 novel structures; every outer cell retained 52
+  molecules in 36 components, every scoped-inner cell 44 in 32, and each
+  confirmatory cell 52 in 36. The synthetic 50/35 gate passed and the immutable
+  1,000/750 support gate failed. Twenty-one focused implementation tests passed,
+  including exact 0.60 inclusion and schema, join, path, integrity, fold,
+  chemistry, graph, accounting, cleanup and publication adversaries. Aggregate
+  accounting is two synthetic SQLite files, 672 opened synthetic rows and
+  11,990 comparisons. All disposable roots were removed; every real external,
+  official, fit, prediction, metric, confirmatory-truth, historical-row,
+  blinded-test, TDI, submission, leaderboard-selection, upload and claim
+  counter is zero. MapLight evidence remains 0.5838 internal component-macro
+  MAE; this synthetic result neither evaluates nor improves it.
+- Alternatives: Trust source chemistry or InChIKeys; remove forbidden nodes
+  before graph construction; compare challenge/external pairs only; use
+  pairwise rather than transitive exclusion; use strict `>0.60`; count activity
+  rows as support; accept one physical order; retain mutable roots; treat the
+  miniature gate as acquisition evidence; download ChEMBL immediately; or fit
+  before support falsification.
+- Reversal condition: Any mismatch in the tracked source hashes, receipt,
+  logical/terminal equivalence, filter accounting, graph, support oracle,
+  cleanup or zero counters; any real external/archive or official access before
+  a later integrated claim; any model or metric operation; any support-threshold
+  change; or any leaderboard-driven source/model choice revokes this acceptance
+  and rejects EXP-X1. The next gate is a contract-only single-use ChEMBL 37
+  acquisition claim, not archive access.

@@ -67,6 +67,16 @@ failing the real 1,000/750 gate. This contract creates no fixture, opens no
 external or official record, and authorizes no acquisition, model, metric, or
 submission operation.
 
+The exact implementation is now accepted under
+[`global_v2_x1_synthetic_compiler_acceptance.json`](global_v2_x1_synthetic_compiler_acceptance.json),
+SHA-256 `5ea379d1...001a8`. Two opposite-order roots produced different SQLite
+file hashes but identical logical and seven-file terminal maps. Per root the
+compiler retained 320/336 activities, built 110 nodes and 40 union components,
+and matched every outer, inner, and confirmatory support oracle. The tracked
+receipt contains aggregate counts and hashes only; all synthetic row roots were
+removed. It grants no external acquisition, official-input, model, metric,
+submission, leaderboard-selection, upload, or claim authority.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-110. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-111. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -306,6 +306,24 @@ bytes. The synthetic 50/35 mechanics gate passes while the immutable real
 1,000/750 gate fails. This contract created no fixture, opened no new external
 or official record, and performed no fit, prediction, metric, claim or
 submission. Acquisition remains unauthorized.
+
+D-111 accepts the G2-5B synthetic compiler mechanics at tracked receipt
+SHA-256 `5ea379d1...001a8`. Two sequential roots reversed every SQLite-table and
+CSV input order: their physical SQLite SHA-256 values differed, while the
+logical source SHA-256 `200e983c...ec706` and all seven terminal files matched
+byte-for-byte at tree SHA-256 `a5e7d2d3...88111`. Across both roots the compiler
+opened 672 synthetic activity rows, retained 640 eligible rows, recomputed 220
+union nodes through 11,990 exhaustive unordered-pair comparisons, and removed
+20 exact/equivalent external values per root while retaining their label-free
+ghost connectivity. Every outer endpoint cell retained 52 molecules in 36
+components; every scoped-inner cell retained 44 in 32; confirmatory cells
+retained 52 in 36. The miniature 50/35 mechanics gate passes and the immutable
+1,000/750 real-data gate fails, as designed. Twenty-one focused implementation
+tests pass, all mutable/source/terminal/private roots were removed, and all
+real external, official, fit, prediction, metric, submission, leaderboard-
+selection, upload, and claim counters remain zero. This is mechanics evidence
+only; it does not improve or evaluate MapLight. Acquisition remains closed
+until a separate reviewed single-use ChEMBL 37 acquisition claim is integrated.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -955,17 +973,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate D-110 contract SHA-256 `db36935e...a3442`, then require
-green post-main CI. Implement only its isolated compiler and synthetic driver,
-execute the two opposite-order roots sequentially, and require complete
-filter, chemistry, forbidden-ghost, transitive-family, fold, capability,
-support, determinism, accounting and cleanup acceptance. Synthetic acceptance
-still cannot acquire data. A later separate single-use claim must bind the
-accepted source hashes, exact archive URL/SHA-256, fresh restricted roots,
-no-network compilation, support receipt and cleanup. Do not open real ChEMBL
-activity data or an official input, fit a model, evaluate a metric, inspect
-blinded test, generate a submission, use leaderboard evidence, or upload
-before those gates. Private portal observations remain outside the public
+Review and integrate D-111 acceptance SHA-256 `5ea379d1...001a8`, then require
+green post-main CI. Freeze a separate immutable single-use ChEMBL 37
+acquisition claim binding the accepted compiler, driver, tests and receipt;
+exact archive URL/SHA-256; fresh restricted roots; one read-only no-network
+execution; support receipt; resources; and cleanup. Do not download or open the
+archive before that claim is reviewed, integrated and green. Apply the frozen
+1,000/750 support falsifier after the sole acquisition and before any fit. Do
+not open an official input, fit a model, evaluate a metric, inspect blinded
+test, generate a submission, use leaderboard evidence, or upload before their
+later gates. Private portal observations remain outside the public
 knowledgebase and cannot select a source, model, feature, loss, threshold, or
 candidate. Closed G1/G2/M1 and immutable R5D/I0 remain closed; `global_TDI`
 remains the TDI fallback.

@@ -8,8 +8,10 @@ from typing import Any
 ROOT = Path(__file__).parents[1]
 BENCHMARK = ROOT / "benchmarks" / "openadmet_cyp_2026"
 CONTRACT_PATH = BENCHMARK / "global_v2_x1_synthetic_compiler_contract.json"
+ACCEPTANCE_PATH = BENCHMARK / "global_v2_x1_synthetic_compiler_acceptance.json"
 PARENT_PATH = BENCHMARK / "global_v2_x1_provenance_contract.json"
 CONTRACT_SHA256 = "db36935e2fb7478f8e038f094a11bcdd47ed8574541b50b2a27170170eba3442"
+ACCEPTANCE_SHA256 = "5ea379d18c7c3422c112726c25ba869e77fea91fb06ddac1f13d2529025001a8"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -261,3 +263,29 @@ def test_x1_contract_opens_no_synthetic_external_or_official_capability() -> Non
     assert "implement only the two-root synthetic compiler" in contract["next_gate"]
     assert "single-use acquisition claim" in contract["next_gate"]
     assert "Do not download or open ChEMBL activity data" in contract["next_gate"]
+
+
+def test_x1_synthetic_acceptance_binds_exact_code_and_zero_real_authority() -> None:
+    acceptance = _load(ACCEPTANCE_PATH)
+    bindings = acceptance["source_bindings"]
+    assert _sha256(ACCEPTANCE_PATH) == ACCEPTANCE_SHA256
+    assert acceptance["status"] == "G2_5B_EXP_X1_SYNTHETIC_COMPILER_ACCEPTED"
+    assert acceptance["contract_sha256"] == CONTRACT_SHA256
+    assert bindings["compiler_sha256"] == _sha256(
+        ROOT / "research/external-transfer/global_v2_x1_compiler.py"
+    )
+    assert bindings["synthetic_driver_sha256"] == _sha256(
+        ROOT / "research/external-transfer/run_global_v2_x1_synthetic.py"
+    )
+    assert bindings["focused_tests_sha256"] == _sha256(
+        ROOT / "tests/test_openadmet_global_v2_x1_synthetic_compiler.py"
+    )
+    assert acceptance["roots"]["physical_sqlite_hashes_differ"]
+    assert acceptance["roots"]["relative_terminal_maps_byte_identical"]
+    assert acceptance["focused_tests_passed"] == 21
+    assert acceptance["accounting"]["synthetic_activity_rows_opened"] == 672
+    assert acceptance["accounting"]["synthetic_union_comparisons"] == 11990
+    assert not acceptance["support_decisions"]["official_thresholds"]["pass"]
+    assert not acceptance["authority"]["external_record_acquisition"]
+    assert not acceptance["authority"]["model_fitting"]
+    assert not acceptance["authority"]["submission"]
