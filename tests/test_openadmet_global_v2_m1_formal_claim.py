@@ -69,7 +69,9 @@ def test_claim_binds_exact_parents_and_all_six_sources() -> None:
 def test_claim_paths_are_absolute_fixed_and_destructively_narrow() -> None:
     paths = {name: Path(value) for name, value in _load(CLAIM_PATH)["paths"].items()}
     assert all(path.is_absolute() for path in paths.values())
-    assert paths["environment_root"] == RESEARCH / ".venv"
+    assert paths["environment_root"] == Path(
+        "/home/zbos/code/cypshift/research/multitask-mlp/.venv"
+    )
     assert paths["root_a"].name == "g2-4c-m1-synthetic-attempt-1-root-a"
     assert paths["root_b"].name == "g2-4c-m1-synthetic-attempt-1-root-b"
     assert paths["receipt_root"].name == "g2-4c-m1-synthetic-attempt-1-receipt"
