@@ -1039,6 +1039,18 @@ binds driver `e8895bb9...c84de61`, scorer compiler `6f15205f...6f492`, and
 focused tests at attempt `668e4ff1...462ec97`; current additive acceptance-audit
 tests are `0d425935...ecd8ec`. No model-quality authority is created.
 
+D-133 freezes the corrected G2-7G execution boundary at
+[`global_v2_maplight_robustness_execution_contract_v2.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_contract_v2.json),
+SHA-256 `9464b094...91151bcf`, with a new immutable claim at
+[`global_v2_maplight_robustness_execution_claim_v2.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim_v2.json),
+SHA-256 `d7e68837...44df6f9f`. D-132 signed commit `fed05e6...` was fast-forwarded
+through PR #169 and passed post-main CI run `32911452732`. The corrected
+contract binds D-122, D-125, D-126, and D-132 without changing any candidate,
+seed, split, gate, fit, prediction, or resource identity. The new G2-7G root is
+absent and its claim retains five null future hashes, zero consumptions, and
+`usable=false`. D-127 and D-128 paths remain barred. Thirteen focused tests pass
+with zero official or model-quality operation.
+
 ### G2-8 — One confirmatory score
 
 The sealed scorer opens only after the G2-7 contender lock and returns only the
@@ -1090,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-132 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-133 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1100,15 +1112,16 @@ plausible improvement as execution authority.
 
 ## Exact next action
 
-Review and integrate D-132 acceptance SHA-256 `9643dac8...c4873ed0` and audit
-tests `0d425935...ecd8ec`, then require green post-main CI. Only afterward
-freeze a corrected single-use execution contract and new unusable claim that
-bind D-122, D-125, D-126, and the accepted eight-field G2-7F scorer. Keep the
-D-127 claim/root and D-128 attempt permanently barred. Do not implement or run
-the scientific/official driver; create a usable claim; open an official byte or
-baseline; fit a model; score development truth; or access confirmatory truth
-before the corrected contract is integrated. Submission generation, official
-metric, leaderboard selection, and upload remain closed.
+Review and integrate D-133 contract SHA-256 `9464b094...91151bcf`, claim
+`d7e68837...44df6f9f`, and tests `b499097b...ee439f7a`, then require green
+post-main CI. Only afterward implement the minimal scientific runner, new single-use
+attempt driver, official-shaped execution acceptance driver, and focused
+tests. Do not run the formal synthetic acceptance from that implementation
+branch; make the claim usable; open an official byte or baseline; fit a
+scientific model; score development truth; or access confirmatory truth before
+the exact implementation is integrated. D-127 and D-128 paths remain barred.
+Submission generation, official metric, leaderboard selection, and upload
+remain closed.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

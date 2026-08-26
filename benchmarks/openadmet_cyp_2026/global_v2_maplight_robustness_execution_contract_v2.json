@@ -1,0 +1,322 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_execution_contract.v2",
+  "recorded_at_utc": "2026-08-25T23:46:27Z",
+  "freeze_date": "2026-08-25",
+  "gate": "G2_7G_MAPLIGHT_ROBUSTNESS_EXECUTION_CONTRACT_FROZEN",
+  "status": "corrected_contract_and_unconsumed_claim_only_no_official_execution_yet",
+  "contract_id": "G2-7G-MAPLIGHT-ROBUSTNESS-DEVELOPMENT-EXECUTION-V2",
+  "base_commit": "fed05e694b7200f21332ed585bf40b31f7df238b",
+  "purpose": "Authorize exactly one future claim-bound execution of the unchanged D-122 MapLight robustness battery only after a separate official-shaped synthetic execution acceptance binds the exact runner and driver sources to the accepted eight-field G2-7F scorer capability.",
+  "hypothesis": "Exact fixed MapLight is stable to the prospectively frozen feature, seed, grouping, duplicate, influence, source, endpoint, and clipping challenges, or one predeclared drop-one simplification is materially superior under every D-122 selection and robustness gate.",
+  "targeted_failure": "The corrected path can still fail through parent or source drift, family leakage, real-fit parameter drift, premature truth access, scoring or bootstrap drift, resource exhaustion, partial publication, cleanup failure, or outcome-driven repair.",
+  "acceptance_criterion": "A later official-shaped synthetic acceptance must prove the exact D-122 scientific topology and eight-field scorer chronology across two opposite-order roots, both conditional paths, two bounded real CatBoost controls, cumulative supervision, deterministic aggregate terminals, complete cleanup, and zero official or forbidden operations.",
+  "occam_boundary": "Reuse the accepted D-126 execution implementation and D-132 scorer compiler unchanged. Add only one scientific runner, one single-use attempt driver, one official-shaped execution acceptance driver, its aggregate acceptance, and focused tests. Add no candidate, feature, seed, group, fit, metric, clip, calibration, blend, threshold, retry, repair, resume, cache, concurrency change, framework, or service.",
+  "parents": {
+    "maplight_robustness_contract": {
+      "path": "global_v2_maplight_robustness_contract.json",
+      "sha256": "ad9aef871ab06e5082568f20a9a6d293897924bdfeda2fb341685cffaa7a45af",
+      "required_gate": "G2_7_MAPLIGHT_ROBUSTNESS_CONTRACT_FROZEN"
+    },
+    "bounded_execution_contract": {
+      "path": "global_v2_maplight_robustness_bounded_execution_contract.json",
+      "sha256": "55fafa1d9806ba3221c26b8cd71d077ad61a0f485e51defbae21cbd4b5806527",
+      "required_gate": "G2_7C_MAPLIGHT_ROBUSTNESS_BOUNDED_EXECUTION_CONTRACT_FROZEN"
+    },
+    "no_fit_acceptance": {
+      "path": "global_v2_maplight_robustness_no_fit_acceptance.json",
+      "sha256": "ca722b265f751ad6efe58017b0106fbca35be4ee04e46d129ed7e8a51c231e0e",
+      "required_status": "G2_7C_MAPLIGHT_ROBUSTNESS_NO_FIT_ACCEPTED"
+    },
+    "scoring_capability_acceptance": {
+      "path": "global_v2_maplight_robustness_scoring_capability_acceptance_v2.json",
+      "sha256": "9643dac8627b6729458aba3b4f886f5438b859a3c25d0347f1c71070c4873ed0",
+      "required_status": "G2_7F_MAPLIGHT_ROBUSTNESS_SCORING_CAPABILITY_ACCEPTED"
+    },
+    "maplight_official_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "required_status": "G2_2_MAPLIGHT_REPRODUCED"
+    },
+    "post_main_ci": {
+      "run_id": 32911452732,
+      "head_sha": "fed05e694b7200f21332ed585bf40b31f7df238b",
+      "conclusion": "success",
+      "python_jobs_passed": [
+        "3.11",
+        "3.12.3",
+        "3.14"
+      ]
+    }
+  },
+  "barred_history": {
+    "d127_contract_sha256": "65934b0acdd509138a05a01f8c727fca9dd762023f4d3f90c0401f9e8a91f488",
+    "d127_claim_sha256": "da0104bc8d297904fc26e019f1717fee38411d9aa741c774f2185090bcceb334",
+    "d127_claim_consumptions": 0,
+    "d127_claim_usable": false,
+    "d127_claim_and_root_permanently_barred": true,
+    "d128_contract_sha256": "b1cb08665c762c736c8dc277522fc5acba3e06af2a66952f276112dd26adac9f",
+    "d128_terminal_rejection_sha256": "e551c7558d8e71153ccea91f5bbeb8271839da5cfadb83bca88b4e509414848d",
+    "d128_attempts_remaining": 0,
+    "boundary": "The D-127 contract and claim and the D-128 driver, attempt, root, outputs, retry, repair, resume, replacement, and reinterpretation remain immutable negative history and grant no authority to this contract."
+  },
+  "accepted_implementation": {
+    "implementation_commit": "fed05e694b7200f21332ed585bf40b31f7df238b",
+    "robustness_compiler_path": "research/maplight-fixed/global_v2_maplight_robustness_execution_compiler.py",
+    "robustness_compiler_sha256": "029afd827e3a86718e7e2493594bbc6e6ed78e258534221e32acc2027ace72a7",
+    "no_fit_wrapper_path": "research/maplight-fixed/global_v2_maplight_robustness_execution_wrapper.py",
+    "no_fit_wrapper_sha256": "a6e02c244d6bd1b7bcb020dcf9627f68d453ae25827527e6de9acdaa30226c66",
+    "resource_supervisor_path": "research/maplight-fixed/global_v2_maplight_resource_supervisor.py",
+    "resource_supervisor_sha256": "0d7b016b638fb4019eb377328f63a193d23fd6763540a636bd821cbabed63cec",
+    "maplight_runner_path": "research/maplight-fixed/global_v2_maplight_runner.py",
+    "maplight_runner_sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f",
+    "scoring_compiler_path": "research/maplight-fixed/global_v2_maplight_robustness_scoring_compiler.py",
+    "scoring_compiler_sha256": "6f15205fccb4a7c2e1cc2c7244e31acf15d7fd34b285c85145bfde551da6f492",
+    "scoring_acceptance_driver_path": "research/maplight-fixed/run_global_v2_maplight_robustness_scoring_capability_acceptance_v2.py",
+    "scoring_acceptance_driver_sha256": "e8895bb93e1363ee6b7d4b514a420f35425d55b39f0214a982ed78e21c84de61",
+    "scoring_acceptance_tests_path": "tests/test_openadmet_global_v2_maplight_robustness_scoring_capability_reacceptance.py",
+    "scoring_acceptance_tests_sha256": "0d425935197b0ad4d0d637f6a12799b63a3fdcad4ae4cd2014e022ed20ecd8ec",
+    "tutorial_metric_source_path": "src/cypshift/openadmet_global_v2_metric.py",
+    "tutorial_metric_source_sha256": "e63f12af8e911da5f2f9ffde802f14039b7d8fb38293be85fec754793fc43269",
+    "chemistry_source_path": "src/cypshift/chemistry.py",
+    "chemistry_source_sha256": "21d8df35f001c790290d3ef2c836c9f459015b5db0f48c8f6e44436f9181103a",
+    "research_lock_path": "research/maplight-fixed/uv.lock",
+    "research_lock_sha256": "99e72821b69d9bb943a6e32adc7e0dec0e46c6d32df090241d4fb9296a4195d8",
+    "root_lock_path": "uv.lock",
+    "root_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+    "extension_rule": "The future scientific runner may only convert accepted model capabilities into exact CatBoost predictions and apply D-122 scoring, selection, diagnostics, and aggregate terminal arithmetic using the accepted eight-field scorer capability. The future attempt driver may only authenticate and consume the new claim, start the accepted supervisor before consumption, invoke accepted sources, enforce cleanup, and publish one terminal."
+  },
+  "claim_contract": {
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_execution_claim.v2",
+    "claim_id": "g2-7g-maplight-robustness-development-attempt-1",
+    "claim_path": "global_v2_maplight_robustness_execution_claim_v2.json",
+    "maximum_consumptions": 1,
+    "future_receipt_fields": [
+      "future_scientific_runner_source_sha256",
+      "future_official_attempt_driver_source_sha256",
+      "future_official_shaped_acceptance_driver_source_sha256",
+      "future_official_shaped_execution_acceptance_sha256",
+      "future_focused_tests_sha256"
+    ],
+    "unconsumed_placeholders": "Every future_* field is null and usable is false in the tracked immutable template. After reviewed integration, green post-main CI, and one accepted official-shaped synthetic attempt, one private canonical consumed claim may fill exactly those five nulls without changing a frozen field.",
+    "consumption": "The accepted cumulative supervisor starts before atomic no-replace creation of the fixed private attempt root and attempt_claim.json consumes the sole new claim. The tracked template never mutates. Acceptance, scientific rejection, underpowered preflight, resource abort, failure, crash, or interruption remains consumed and permits no retry, resume, move, overwrite, repair, or replacement.",
+    "precondition": "Consumption is forbidden until a separately reviewed aggregate acceptance binds the exact future sources and proves both D-122 conditional paths, the accepted eight-field scorer, exactly two bounded real CatBoost controls, cumulative supervision, cleanup, deterministic aggregate terminals, and zero official or forbidden operations across two fresh opposite-order official-shaped roots."
+  },
+  "official_inputs": {
+    "development_source_root": "/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-source-v1",
+    "fixed_baseline_terminal_root": "/home/zbos/cypshift-private/openadmet-2026/g2-2c-maplight-development-attempt-1/terminal",
+    "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1",
+    "attempt_root_absent_at_freeze": true,
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_morgan_count_sha256": "24c805df9dc7da5ca7d43e86161aa2862995cd818415ee083b6f6ba5ac493c14",
+    "maplight_avalon_count_sha256": "368cb438d02127324f3471d21bf29e75e108bc0021f5fc50bfffb6ab841eed95",
+    "maplight_erg_sha256": "24e70fdf07d1d7bb8bbb3ed54acd95b9734e847908ab5e99d6a454360d5a3504",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "baseline_manifest_sha256": "62c88f7d1213ead4fd297f1a44905e71638e704765f9abc206dd12d152bf77fe",
+    "baseline_outer_oof_sha256": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+    "baseline_component_metrics_sha256": "43306bf14c00becc37390ea2649d3a37363abe1d7b1cf5ae8e36789837302bd8",
+    "source_file_allowlist": [
+      "manifest.json",
+      "direct_observations.csv",
+      "group_folds.csv",
+      "feature_rows.csv",
+      "maplight_morgan_count.npy",
+      "maplight_avalon_count.npy",
+      "maplight_erg.npy",
+      "maplight_rdkit_descriptors.npy"
+    ],
+    "baseline_file_allowlist": [
+      "manifest.json",
+      "development_outer_oof.csv",
+      "development_component_metrics.csv"
+    ],
+    "denied_baseline_files": [
+      "development_inner_oof.csv",
+      "development_residuals.csv",
+      "development_uncertainty.csv"
+    ],
+    "read_boundary": "This milestone records existing aggregate receipt strings and verifies only that the new fixed attempt root is absent. It does not list, parse, copy, link, hash, or otherwise open a row-level official source or baseline file. A valid private consumed claim is required before the future attempt driver may open allowlisted roots."
+  },
+  "scientific_invariants": {
+    "inheritance": "Every candidate, feature view, seed, outer split, family overlay, support rule, fit identity, prediction identity, metric, bootstrap, selection gate, diagnostic, and terminal rule is inherited unchanged from D-122 SHA-256 ad9aef871ab06e5082568f20a9a6d293897924bdfeda2fb341685cffaa7a45af.",
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "repeat_seeds": [
+      20260810,
+      20260811,
+      20260812
+    ],
+    "outer_folds": 5,
+    "default_candidate": "G2-7-M0-FULL",
+    "drop_one_candidates": [
+      "G2-7-M1-DROP-MORGAN",
+      "G2-7-M2-DROP-AVALON",
+      "G2-7-M3-DROP-ERG",
+      "G2-7-M4-DROP-DESCRIPTORS"
+    ],
+    "seed_perturbation_values": [
+      2026082411,
+      2026082412,
+      2026082413,
+      2026082414,
+      2026082415
+    ],
+    "group_perturbations": [
+      "THRESHOLD_0_55",
+      "THRESHOLD_0_50",
+      "TAUTOMER_MERGED"
+    ],
+    "fit_counts": {
+      "stage_a_total": 540,
+      "stage_b_total": 180,
+      "stage_c_if_deletion_selected": 300,
+      "minimum_total": 720,
+      "maximum_total": 1020,
+      "baseline_refits": 0,
+      "inner_fits": 0
+    },
+    "prediction_counts": {
+      "stage_a": 422064,
+      "stage_b_upper_bound": 140688,
+      "stage_c_if_deletion_selected": 234480,
+      "minimum_total": 562752,
+      "maximum_total": 797232
+    },
+    "selection_tokens": 1,
+    "runner_ups": 0,
+    "full_is_default": true,
+    "conditional_stage_c": "Stage C runs only when the immutable stage-A selection token names an eligible deletion.",
+    "selection_and_robustness": "A deletion may replace full MapLight only through every frozen D-122 material-improvement, paired-bootstrap, cell, and endpoint-harm gate. The selected recipe must then pass every seed, group, duplicate, influence, source, endpoint, clipping, support, containment, chronology, accounting, resource, and cleanup gate conjunctively. No diagnostic may revise the selection token.",
+    "attempts": 1,
+    "replays": 1,
+    "retry": false,
+    "resume": false,
+    "move": false,
+    "overwrite": false,
+    "replacement": false
+  },
+  "scoring_capability": {
+    "required_fields": [
+      "molecule_id",
+      "endpoint",
+      "standardized_structure_hash",
+      "primary_component_hash",
+      "source_file",
+      "point",
+      "low",
+      "high"
+    ],
+    "accepted_compiler_sha256": "6f15205fccb4a7c2e1cc2c7244e31acf15d7fd34b285c85145bfde551da6f492",
+    "accepted_capability_sha256": "9643dac8627b6729458aba3b4f886f5438b859a3c25d0347f1c71070c4873ed0",
+    "confirmatory_value_fields_decoded_in_acceptance": 0,
+    "chronology": "The scorer capability remains unreadable until every required prediction for its stage is canonically frozen. It may open only development truth and the immutable full-MapLight baseline fields needed by that stage, may never write model capability, and may never expose confirmatory value suffixes.",
+    "repair_boundary": "The accepted enrichment repairs only D-127's missing standardized_structure_hash, primary_component_hash, source_file, low, and high evidence; tutorial eligibility is derived only from the reported bounds. It does not change any D-122 model, split, target, metric, gate, threshold, or selection rule."
+  },
+  "runtime_and_resources": {
+    "trusted_compiler": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.12.3",
+      "rdkit": "2026.03.5"
+    },
+    "model": {
+      "platform": "Linux x86_64 CPU",
+      "python": "3.10.13",
+      "numpy": "1.25.2",
+      "rdkit": "2023.3.3",
+      "catboost": "1.2.1",
+      "thread_count_per_fit": 16,
+      "maximum_concurrent_fits": 1
+    },
+    "hard_maxima": {
+      "cpu_core_hours": 128.0,
+      "wall_hours": 7.68,
+      "restricted_storage_gb": 51.2,
+      "peak_simultaneous_rss_gib": 15.36,
+      "gpu_hours": 0
+    },
+    "measurement": "The accepted cumulative supervisor starts before claim consumption and measures the trusted compiler, every model child, scorer, bootstrap, diagnostic, publisher, temporary file, cleanup action, and descendant until terminal publication attempt and cleanup finish. Poll at most once per second and enforce every limit during child fits.",
+    "acceptance": "Every scientific identity and scoring identity must complete and every hard maximum must pass conjunctively. Any limit, warning, fallback, nonzero exit, signal, timeout, detached child, missing checkpoint, partial publication, or incomplete accounting aborts without a scientific terminal.",
+    "budget_rule": "Unused capacity cannot fund a retry, resume, moved root, repair, alternate order, smaller battery, extra candidate, seed, threshold, feature, metric, clip, model, optimization, cache, concurrency change, or runner-up."
+  },
+  "terminal_and_privacy": {
+    "statuses": [
+      "G2_7_PRIMARY_CONTENDER_FROZEN",
+      "G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED",
+      "G2_7_MAPLIGHT_ROBUSTNESS_REJECTED",
+      "G2_7C_MAPLIGHT_ROBUSTNESS_RESOURCE_ABORTED",
+      "G2_7_MAPLIGHT_ROBUSTNESS_FAILED"
+    ],
+    "publication": "Publish exactly one aggregate-only read-only terminal after cleanup. Raw structures, targets, intervals, feature matrices, component memberships, models, row-level predictions, paired rows, unrestricted logs, and private portal observations remain private.",
+    "cleanup": "Before terminal publication remove target, model, scorer, truth, and baseline capabilities; writable model state; feature links or copies; stage predictions; paired rows; CatBoost state; staging roots; and the restricted work root. Retain only the read-only consumed claim, aggregate receipt, and status-specific terminal. Cleanup failure changes any scientific status to G2_7_MAPLIGHT_ROBUSTNESS_FAILED.",
+    "must_remain_zero": [
+      "confirmatory_truth_values_opened",
+      "historical_row_level_artifacts_opened",
+      "blinded_test_rows_opened",
+      "tdi_rows_opened",
+      "external_records_acquired",
+      "submission_rows_generated",
+      "official_metric_calls",
+      "leaderboard_observations_used_for_selection",
+      "live_uploads"
+    ],
+    "failure": "Any parent, claim, source, structure, family, feature, capability, fit, parameter, prediction-freeze, paired-join, metric, bootstrap, selection, diagnostic, accounting, resource, cleanup, publication, or authority defect is terminal with no retry, resume, move, overwrite, repair, replacement, runner-up, or reinterpretation."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "tracked_unconsumed_claims_created": 1,
+    "future_implementation_files_created": 0,
+    "synthetic_source_rows_opened": 0,
+    "synthetic_model_fits": 0,
+    "synthetic_predictions_generated": 0,
+    "synthetic_metric_evaluations": 0,
+    "official_source_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_feature_rows_opened": 0,
+    "official_baseline_prediction_rows_opened": 0,
+    "official_model_fits": 0,
+    "official_predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "claims_consumed": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "private_portal_observations_recorded": 0
+  },
+  "current_authority": {
+    "contract_and_static_tests": true,
+    "tracked_unconsumed_claim": true,
+    "official_shaped_execution_scoring_implementation": false,
+    "claim_consumption": false,
+    "official_source_access": false,
+    "official_target_access": false,
+    "official_feature_access": false,
+    "official_baseline_prediction_access": false,
+    "official_model_fitting": false,
+    "official_prediction_generation": false,
+    "development_metric_evaluation": false,
+    "confirmatory_truth_access": false,
+    "historical_row_level_access": false,
+    "blinded_test_access": false,
+    "tdi_access": false,
+    "external_record_acquisition": false,
+    "submission_generation": false,
+    "official_metric_evaluation": false,
+    "leaderboard_selection": false,
+    "live_upload": false
+  },
+  "next_gate": "Implement only the additive scientific runner, new single-use attempt driver, official-shaped execution acceptance driver, and focused tests. After reviewed signed integration and green post-main CI, run exactly one formal two-root synthetic acceptance with zero official operations. Do not consume the claim, open an official byte, fit a scientific model, evaluate a development metric, access confirmatory truth, generate a submission, use leaderboard evidence for selection, or upload in that milestone."
+}

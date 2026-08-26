@@ -338,6 +338,16 @@ operations, and claims stayed zero. This is scorer-mechanics evidence, not a
 model-quality result. A separate corrected execution contract and new unusable
 claim are now required before any official path.
 
+D-133 freezes that corrected G2-7G execution contract at SHA-256
+`9464b094...91151bcf` and its new unusable claim at `d7e68837...44df6f9f`. It
+binds D-122 science, D-125 cumulative limits, D-126 mechanics, and D-132 eight-field
+scoring while keeping the exact 720–1,020 fits and 562,752–797,232 predictions.
+The new fixed root is absent; five future receipts are null, consumptions are
+zero, and `usable=false`. D-127 and D-128 paths remain barred. Thirteen focused
+tests pass, and no official row, fit, metric, claim consumption, submission, or
+upload occurred. Reviewed integration and green post-main CI must precede only
+the additive runner and official-shaped synthetic acceptance implementation.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

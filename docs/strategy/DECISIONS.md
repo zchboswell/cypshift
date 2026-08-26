@@ -4487,3 +4487,38 @@
   accounting, privacy, integration, or post-main-CI drift blocks progression.
   Otherwise the next gate is only a corrected contract and new unusable claim;
   it is not official access or model execution.
+
+## D-133 — Freeze corrected single-use robustness execution and unusable claim
+
+- Date: 2026-08-25
+- Status: accepted contract-and-unconsumed-claim G2-7G evidence; new fixed root
+  absent; five future hashes null; D-127 claim/root and D-128 attempt barred;
+  zero official source, baseline, fit, prediction, development metric, claim
+  consumption, submission, leaderboard-selection, private-portal-record,
+  upload, or model-quality operation
+- Decision: Accept
+  `global_v2_maplight_robustness_execution_contract_v2.json` at SHA-256
+  `9464b094...91151bcf` and its new immutable unconsumed claim at SHA-256
+  `d7e68837...44df6f9f`. Bind the exact D-122 science, D-125 cumulative resource
+  ceilings, D-126 execution mechanics, and D-132 accepted eight-field scorer.
+  Freeze one distinct G2-7G identity, root, and consumption without granting
+  current execution authority.
+- Evidence: Signed D-132 commit `fed05e6...` was fast-forwarded through PR #169
+  and passed post-main CI run `32911452732` on Python 3.11, 3.12.3, and 3.14.
+  The new root was absent at freeze. The contract preserves 720–1,020 fits,
+  562,752–797,232 prediction identities, one selection token, no runner-up,
+  7.68 wall-hours, 128 CPU-core-hours, 51.2 GB restricted storage, 15.36 GiB
+  simultaneous RSS, and zero GPU. Its new claim is `usable=false`, has zero
+  consumptions, and leaves all five future implementation/acceptance receipts
+  null. Thirteen focused tests pass.
+- Alternatives: Mutate or reuse D-127; repair or reinterpret D-128; duplicate
+  the full retired contract; change a candidate, seed, threshold, gate, fit,
+  metric, or resource ceiling; create a usable claim; combine contract freeze
+  with implementation or execution; or use private portal evidence for model
+  selection.
+- Reversal condition: Any parent, barred-history, source, baseline, scorer,
+  root, claim, science, fit, prediction, selection, resource, privacy,
+  integration, or post-main-CI drift blocks progression. Otherwise the next
+  gate is only the additive scientific runner, new attempt driver,
+  official-shaped execution acceptance driver, and focused tests; the formal
+  synthetic attempt waits for reviewed integration and green post-main CI.

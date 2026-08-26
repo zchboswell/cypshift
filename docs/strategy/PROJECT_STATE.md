@@ -4,7 +4,7 @@ Last updated: 2026-08-25
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-132. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-133. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -671,6 +671,20 @@ leaderboard-selection, and uploads all remained zero. This accepts scorer
 capability mechanics only and changes no model-quality estimate; fixed MapLight
 remains 0.5838 component-macro MAE.
 
+D-133 freezes the corrected G2-7G single-use robustness execution contract at
+SHA-256 `9464b094...91151bcf` and a new immutable unconsumed claim at
+`d7e68837...44df6f9f`. Signed D-132 commit `fed05e6...` was integrated through
+PR #169 and passed post-main CI run `32911452732` before this freeze. The
+contract binds exact D-122 science, D-125 cumulative limits, D-126 no-fit
+mechanics, and D-132 eight-field scorer acceptance. It preserves the exact
+720–1,020 fits, 562,752–797,232 prediction identities, one selection token,
+and no runner-up. The new fixed G2-7G root was absent at freeze; the claim has
+five null future receipts, zero consumptions, `usable=false`, and no official
+or model authority. The D-127 claim/root and D-128 attempt remain permanently
+barred. Thirteen focused tests pass. This milestone opens no official row and
+runs no fit, prediction, metric, submission, or upload; fixed MapLight remains
+0.5838 component-macro MAE.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1321,16 +1335,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-132 G2-7F acceptance SHA-256
-`9643dac8...c4873ed0` with audit tests `0d425935...ecd8ec`, then require green
-post-main CI. Only afterward freeze a separate corrected single-use execution
-contract and new unusable claim that bind the accepted eight-field scorer,
-exact D-122 science, D-125 resource ceiling, D-126 execution mechanics, and
-D-132 acceptance. The D-127 claim/root and D-128 attempt remain permanently
-barred. Do not implement or run the scientific/official driver, create a usable
-claim, open an official byte or baseline, fit a model, score development truth,
-or access confirmatory truth until the corrected contract is reviewed,
-integrated, and green on `main`.
+Review and integrate the D-133 G2-7G contract SHA-256
+`9464b094...91151bcf`, new unusable claim `d7e68837...44df6f9f`, and focused
+tests `b499097b...ee439f7a`, then require green post-main CI. Only afterward
+implement the minimal scientific runner, new single-use attempt driver, official-shaped
+execution acceptance driver, and focused tests. Do not run the formal
+synthetic acceptance from the implementation branch; make the claim usable;
+open an official byte or baseline; fit a scientific model; score development
+truth; or access confirmatory truth before the exact implementation is
+reviewed, integrated, and green on `main`. The D-127 claim/root and D-128
+attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
