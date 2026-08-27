@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-141. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-142. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -971,6 +971,54 @@ formal-acceptance, official, confirmatory, submission, or upload authority.
 Fixed MapLight remains the best validated internal system at component-macro
 MAE `0.5837812652`.
 
+D-141 is now integrated as signed commit
+`61e335485ab983cdf1f030aedefd64ea8252b492`. PR CI run `33112350539` and
+exact-SHA post-main CI run `33113306698` are green. From that clean,
+synchronized `main`, the sole fixed G2-7H composite acceptance ran exactly
+once with no arguments and exited zero. D-142 accepts its immutable public
+receipt
+[`global_v2_maplight_robustness_official_orchestration_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_acceptance.json)
+at SHA-256
+`92a18f0e6837d70d4bb39560d42a22cfb23acac8ea72a955b9656b392d954596`,
+status `G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_ACCEPTED`, and size
+72,449 bytes. The publication was observed as a regular, single-link `0444`
+file with canonical sorted two-space JSON and one terminal LF. Git does not
+preserve read-only permission bits, so `0444` is publication evidence rather
+than a fresh-checkout CI invariant; canonical bytes and the receipt hash are
+the portable identity.
+
+The receipt proves forward and reverse orders with six scenarios each, 12
+scenario and 12 supervisor invocations, independently byte-identical
+normalized maps, the exact five official terminal statuses plus fail-closed
+pre-consumption propagation, all eleven frozen mechanics checks, and each of
+the ten mechanics-probe counters exactly once. Applicable success/rejection
+profiles preserve one selection token and no runner-up; underpowered preserves
+zero science. The receipt inherits, without reexecution, D-135's 3,480
+model-double fits, 667,872 synthetic predictions, and two real CatBoost
+controls. Every D-135 through D-141 implementation, contract, and immutable
+science binding matches its live reviewed source.
+The standalone public receipt audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py`
+has SHA-256
+`10ebb8f18d38f6d069e35d3994468e6a70dc0de3df6cb5736352721be439a28c`
+and passes `1/1`; it binds canonical bytes, lineage, order identity, mechanics,
+privacy, and zero authority without making checkout mode a CI invariant.
+
+All scenario cleanup fields are true, cleanup completed before publication,
+no private root was retained, the fixed `/tmp/cypshift-g2-7h` tree is absent,
+and no rejection record exists. All top-level forbidden-operation counters are
+zero, including official source/baseline bytes, official or tracked/private
+claim creation/consumption, model doubles, real CatBoost fits, predictions,
+metrics, and row access. The acceptance separately records disposable public
+synthetic fixture activity: 10 scenario claim publications, six probe claim
+publications, and one intentionally interrupted synthetic staging. Those
+mechanics did not mutate or consume the tracked claim, create/open a private
+claim, or touch official bytes. D-142 grants composite-orchestration mechanics
+evidence only: zero official-execution, model-quality, confirmatory,
+blinded-test, submission, leaderboard, portal, or upload authority. Fixed
+MapLight therefore remains the best validated internal system at
+component-macro MAE `0.5837812652`.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1621,21 +1669,22 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review, sign, and integrate the exact four-file D-141 implementation and this
-seven-file knowledgebase milestone through the fast-forward-only workflow,
-then require green exact-SHA post-main CI. D-140 is already integrated and
-green at post-main run `33109592304`. Only after D-141 is green on clean,
-synchronized `main` may a fresh read-only preflight prove the fixed composite
-parent, work, acceptance, and rejection roots absent and invoke the sole fixed
-no-argument composite acceptance exactly once. Do not run that acceptance or
-the official G2-7G attempt from the implementation branch. Package any
-immutable aggregate acceptance or rejection as a separate reviewed milestone
-before any official preflight.
+Review, sign, and integrate the immutable D-142 composite-acceptance receipt
+and this aggregate evidence through the fast-forward-only workflow, then
+require green exact-SHA post-main CI. Only after D-142 is green on clean,
+synchronized `main` may a fresh read-only official preflight authenticate the
+D-122 contract, D-135 through D-142 receipt chain, unchanged unusable tracked
+claim, pinned runtimes and resource envelope, exact fixed-root absence, and
+official source/baseline allowlist receipts without opening their bytes. Then
+invoke the sole fixed no-argument G2-7G official driver exactly once. Do not
+run it from the D-142 packaging branch and do not retry, resume, move, repair,
+overwrite, replace, or reinterpret either one-use gate.
 D-135 remains inherited immutable science-kernel evidence and must not be
 repeated, repaired, resumed, or reinterpreted. The tracked claim remains
 unchanged, unusable, and unconsumed; official attempt, restricted, staging,
-acceptance, and rejection
-roots must remain absent; and no official source or baseline byte may open.
+and claim-staging roots must remain absent before the supervised child; and no
+official source or baseline byte may open before the sole private claim is
+atomically consumed inside supervision.
 The D-127 claim/root and D-128 attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload

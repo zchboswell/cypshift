@@ -5047,3 +5047,80 @@
   a fresh fixed-root preflight and invoke the sole no-argument composite
   acceptance exactly once. Package its immutable aggregate as a separate
   reviewed milestone before any official attempt preflight.
+
+## D-142 — Accept the sole G2-7H composite-orchestration mechanics receipt
+
+- Date: 2026-08-27
+- Status: accepted aggregate mechanics evidence pending reviewed signed
+  integration; D-141 is integrated as signed commit
+  `61e335485ab983cdf1f030aedefd64ea8252b492` with green PR CI run
+  `33112350539` and green exact-SHA post-main CI run `33113306698`; the sole
+  fixed no-argument composite acceptance ran exactly once from clean
+  synchronized `main` and exited zero; official G2-7G execution remains unrun;
+  tracked claim remains byte-identical, unusable, and unconsumed; zero
+  official/private-byte, official/tracked/private-claim mutation or
+  consumption, fit, prediction, development-metric, confirmatory,
+  blinded-test, TDI, submission, leaderboard, portal, upload, science, or
+  model-quality operation or authority
+- Decision: Accept the immutable 72,449-byte canonical public receipt
+  `global_v2_maplight_robustness_official_orchestration_acceptance.json` with
+  status `G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_ACCEPTED` and
+  SHA-256
+  `92a18f0e6837d70d4bb39560d42a22cfb23acac8ea72a955b9656b392d954596`.
+  Publication was observed as a regular, single-link file with mode `0444`.
+  Git does not preserve owner-write bits, so that mode is immutable
+  publication evidence but not a fresh-checkout CI invariant; canonical bytes
+  and SHA-256 are the portable identity. Preserve the exact D-122 battery,
+  D-135 science kernel, D-136 provenance, D-137/D-138 mechanics, D-139/D-140
+  transitions, and D-141 implementation without rerun or reinterpretation.
+- Evidence: The receipt proves forward and reverse execution orders, six
+  scenarios per order, 12 scenario and 12 supervisor invocations,
+  independently byte-identical normalized maps, the exact five official
+  terminal statuses plus fail-closed pre-consumption propagation, all eleven
+  frozen mechanics checks, and each of ten mechanics-probe counters exactly
+  once. Applicable scientific-success and rejection fixtures preserve one
+  selection token and no runner-up; underpowered preserves zero science.
+  Every populated terminal lineage matches the reviewed D-135-through-D-141
+  implementation, contract, and immutable science hashes. D-135's 3,480
+  model-double invocations, 667,872 synthetic predictions, and two real
+  CatBoost controls are inherited with `reexecuted=false`; D-142 performs none
+  of them. The standalone public receipt audit test at SHA-256
+  `10ebb8f18d38f6d069e35d3994468e6a70dc0de3df6cb5736352721be439a28c`
+  passes `1/1` and binds canonical bytes, lineage, order identity, mechanics,
+  privacy, and zero authority without asserting the non-portable checkout
+  mode.
+
+  Every scenario has cleanup complete, cleanup finished before receipt
+  publication, `private_roots_retained` is zero, the fixed acceptance parent
+  and work roots are absent, and no rejection record exists. All top-level
+  forbidden-operation counters are zero, including official source/baseline
+  bytes, official or tracked/private claim creation/consumption, model-double
+  and real-CatBoost fits, predictions, metric calls, confirmatory/test/TDI
+  rows, submissions, and uploads. All aggregate authority fields are false.
+
+  Disposable synthetic mechanics are not hidden as false-zero claim evidence:
+  the receipt separately records 10 scenario fixture-claim publications, six
+  probe publications, and one intentionally interrupted synthetic claim
+  staging. These occurred only in disposable public roots; no tracked claim
+  was mutated or consumed, no private claim was created or opened, and no
+  official byte was touched. The receipt contains no absolute/private path or
+  row-level molecule, structure, target, prediction, or metric value. D-142 is
+  formal composite-orchestration mechanics evidence only and grants zero
+  official-execution, model-quality, confirmatory, submission, or upload
+  authority.
+- Alternatives: Repeat or repair the acceptance; run it with alternate roots
+  or outputs; combine its review with official execution; reinterpret fixture
+  accounting as model-quality evidence; hide synthetic claim activity behind
+  generic zero-claim wording; modify D-141-bound files; add a candidate,
+  feature, seed, group, retry, cache, concurrency, framework, or service; open
+  official, confirmatory, blinded-test, TDI, row-level, leaderboard, or portal
+  evidence; or live-upload.
+- Reversal condition: Any receipt-byte, status, lineage, order-map, taxonomy,
+  mechanics, probe-count, cleanup, privacy, zero-authority, D-141 signed
+  integration, or exact-SHA CI mismatch blocks official progression. Otherwise
+  integrate D-142 by signed fast-forward and require green exact-SHA post-main
+  CI, then perform a fresh official one-use preflight. If and only if contract,
+  receipt chain, tracked claim, runtimes, resources, fixed-root absence,
+  supervisor readiness, and source/baseline allowlist receipts authenticate,
+  invoke the sole fixed no-argument G2-7G official driver exactly once. Do not
+  retry, resume, move, repair, overwrite, replace, or reinterpret it.

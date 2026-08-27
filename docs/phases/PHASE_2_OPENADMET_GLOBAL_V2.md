@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-141 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-142 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1386,21 +1386,63 @@ unusable, and unconsumed, and no private claim was created or opened. D-141
 grants zero formal-acceptance, official, tracked/private-claim, science,
 model-quality, confirmatory, submission, or upload authority.
 
+D-141 is integrated as signed commit
+`61e335485ab983cdf1f030aedefd64ea8252b492`; PR CI run `33112350539` and
+exact-SHA post-main CI run `33113306698` both succeeded. From that clean,
+synchronized `main`, the fixed no-argument G2-7H composite acceptance ran
+exactly once and exited zero. D-142 accepts the resulting public aggregate
+receipt
+[`global_v2_maplight_robustness_official_orchestration_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_acceptance.json)
+at SHA-256
+`92a18f0e6837d70d4bb39560d42a22cfb23acac8ea72a955b9656b392d954596`,
+status `G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_ACCEPTED`, and 72,449
+canonical JSON bytes. Publication was observed at regular-file mode `0444`,
+but Git does not preserve read-only bits; the portable acceptance identity is
+the canonical byte hash, not a fresh-checkout mode assertion.
+
+The receipt proves two opposite six-scenario orders, 12 scenario and 12
+supervisor invocations, byte-identical normalized result maps, the exact five
+official statuses and pre-consumption fail-closed propagation, all eleven
+frozen mechanics flags, and all ten mechanics probes exactly once. Success and
+rejection preserve one selection token with no runner-up; underpowered
+preserves zero science. D-135's 3,480 model-double fits, 667,872 synthetic
+predictions, and two real CatBoost controls are inherited without reexecution.
+All live D-135-through-D-141 source and contract bindings match.
+The standalone immutable-receipt audit test
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py`
+at SHA-256
+`10ebb8f18d38f6d069e35d3994468e6a70dc0de3df6cb5736352721be439a28c`
+passes `1/1` and binds canonical bytes, lineage, order identity, mechanics,
+privacy, and authority without treating checkout mode as portable.
+
+Every scenario reports cleanup complete; cleanup precedes publication;
+`private_roots_retained` is zero; the fixed acceptance tree and rejection
+record are absent. Every top-level forbidden-operation count is zero,
+including official source/baseline bytes, official or tracked/private claims,
+fits, predictions, metrics, and row access. The separate 10 scenario
+fixture-claim publications, six probe publications, and one interrupted
+synthetic staging are disposable public mechanics evidence only. They did not
+mutate or consume the tracked claim, derive/open a private claim, or open any
+official byte. D-142 changes no science and grants zero official-execution,
+model-quality, confirmatory, blinded-test, submission, leaderboard, portal, or
+upload authority.
+
 ## Exact next action
 
-Review, sign, and integrate the exact D-141 implementation plus this seven-file
-knowledgebase package through the fast-forward-only workflow, then require
-green exact-SHA post-main CI. D-140 is already integrated and green at run
-`33109592304`. Only after D-141 is green on clean synchronized `main` may a
-fresh read-only preflight prove the fixed composite parent, work, acceptance,
-and rejection roots absent and run the sole fixed no-argument composite
-acceptance exactly once. Do not run that acceptance or the official G2-7G
-driver from the implementation branch, and do not preflight the official
-attempt until the resulting aggregate acceptance is separately reviewed,
-integrated, and green on main. D-135 must not be repeated. The tracked
-claim must remain unchanged and unconsumed, all official fixed roots must remain
-absent, and no official source or baseline byte may be opened. D-127 and D-128
-paths remain barred.
+Review, sign, and integrate the immutable D-142 receipt and its aggregate
+knowledgebase evidence through the fast-forward-only workflow, then require
+green exact-SHA post-main CI. Only afterward, on clean synchronized `main`, run
+a fresh official one-use preflight authenticating the D-122 contract, D-135
+through D-142 lineage, unchanged unusable tracked claim, pinned Python
+3.12.3/3.10.13 runtimes and dependency receipts, frozen resource envelope,
+exact fixed-root absence, cumulative supervisor readiness, and source/baseline
+allowlist receipts without opening official bytes. If and only if that
+preflight is green, invoke the sole fixed no-argument G2-7G official driver
+exactly once. Do not run it from the D-142 branch; do not retry, resume, move,
+repair, overwrite, replace, or reinterpret it. D-135 and D-142 must not be
+repeated. The tracked claim must remain unchanged and unconsumed until the
+supervised child atomically consumes the sole private derivation. D-127 and
+D-128 paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

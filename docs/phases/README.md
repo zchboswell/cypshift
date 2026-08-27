@@ -544,9 +544,40 @@ D-141 ran no fixed acceptance or official attempt. Disposable synthetic
 fixture claims were confined to temporary public roots; no tracked claim was
 changed or consumed, no private claim was created or opened, and no
 official/private byte was opened. D-141 has zero science, model-quality,
-formal-gate, official, confirmatory, submission, or upload authority. Review,
-sign, integrate, and require green exact-SHA post-main CI for D-141 before a
-fresh preflight and the sole fixed no-argument composite acceptance.
+formal-gate, official, confirmatory, submission, or upload authority. At that
+milestone, reviewed integration and green exact-SHA post-main CI were required
+before the sole fixed no-argument composite acceptance.
+
+D-141 is integrated as signed commit
+`61e335485ab983cdf1f030aedefd64ea8252b492`; PR CI `33112350539` and
+exact-SHA post-main CI `33113306698` are green. The sole fixed no-argument
+G2-7H composite acceptance then ran exactly once from clean synchronized
+`main`, exited zero, and published the canonical 72,449-byte receipt
+[`global_v2_maplight_robustness_official_orchestration_acceptance.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_acceptance.json)
+with status `G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_ACCEPTED` and
+SHA-256
+`92a18f0e6837d70d4bb39560d42a22cfb23acac8ea72a955b9656b392d954596`.
+Its observed publication mode is `0444`; Git's mode model makes that
+observation non-portable, so canonical bytes and the hash are the CI identity.
+
+D-142 records forward/reverse six-scenario orders, 12 scenario/supervisor
+invocations, byte-identical normalized maps, all five official terminal
+statuses plus pre-consumption fail-closed propagation, all eleven mechanics
+checks, ten once-only probes, exact token/no-runner-up behavior, cleanup before
+publication, zero retained private roots, and no rejection record. D-135's
+3,480 model-double fits, 667,872 synthetic predictions, and two real CatBoost
+controls are inherited with `reexecuted=false`; the composite acceptance itself
+has every forbidden-operation counter at zero. Its 10 scenario fixture-claim
+publications, six probe publications, and one interrupted synthetic staging
+are disposable public mechanics only, not tracked/private/official claim
+mutation or consumption. D-142 grants zero official-execution, model-quality,
+confirmatory, submission, or upload authority. After reviewed signed D-142
+integration and green exact-SHA post-main CI, run a fresh official one-use
+preflight and only then invoke the sole no-argument G2-7G official driver once.
+The standalone receipt audit test has SHA-256
+`10ebb8f18d38f6d069e35d3994468e6a70dc0de3df6cb5736352721be439a28c`
+and passes `1/1`; it validates byte identity and aggregate invariants without
+asserting the non-portable checkout mode.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

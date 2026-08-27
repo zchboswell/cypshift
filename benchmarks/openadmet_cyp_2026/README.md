@@ -413,8 +413,49 @@ or consumed, no private claim was created or opened, and no official/private
 byte was opened. Read-only authentication of the tracked public template
 occurred; it remains byte-identical, unusable, and unconsumed. D-141 grants
 zero science, model-quality, formal-acceptance, official, confirmatory,
-submission, or upload authority. Review, sign, integrate, and require green
-exact-SHA post-main CI before the sole fixed composite acceptance may run.
+submission, or upload authority. At that milestone, reviewed integration and
+green exact-SHA post-main CI were required before the sole fixed composite
+acceptance.
+
+D-141 is integrated as signed commit
+`61e335485ab983cdf1f030aedefd64ea8252b492`; PR CI run `33112350539` and
+exact-SHA post-main CI run `33113306698` are green. The sole fixed no-argument
+G2-7H composite acceptance subsequently ran exactly once from clean
+synchronized `main`, exited zero, and published
+[`global_v2_maplight_robustness_official_orchestration_acceptance.json`](global_v2_maplight_robustness_official_orchestration_acceptance.json).
+D-142 binds its 72,449 canonical JSON bytes at SHA-256
+`92a18f0e6837d70d4bb39560d42a22cfb23acac8ea72a955b9656b392d954596`
+and status `G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_ACCEPTED`.
+Publication was observed as a regular, single-link `0444` file. Because Git
+stores only executable versus non-executable mode, `0444` is observed
+publication evidence rather than a portable checkout invariant; byte identity
+is the acceptance hash.
+
+The receipt contains two opposite six-scenario orders, 12 scenario and 12
+supervisor invocations, byte-identical normalized maps, all five official
+terminal statuses plus fail-closed pre-consumption propagation, all eleven
+mechanics flags, and all ten probe counters exactly once. It preserves exact
+selection-token/no-runner-up behavior, underpowered zero-science behavior, and
+inherits D-135's 3,480 model-double fits, 667,872 synthetic predictions, and
+two real CatBoost controls with `reexecuted=false`. All D-135-through-D-141
+source, contract, and receipt hashes match.
+The standalone public receipt audit test at SHA-256
+`10ebb8f18d38f6d069e35d3994468e6a70dc0de3df6cb5736352721be439a28c`
+passes `1/1`, binding canonical bytes, lineage, order identity, mechanics,
+privacy, and zero authority without asserting checkout mode.
+
+Cleanup completed in every scenario and before publication; no private root
+was retained; the fixed acceptance work tree and rejection record are absent.
+Every forbidden-operation count is zero, including official bytes,
+tracked/private/official claim mutation or consumption, fits, predictions,
+metrics, and private row access. The receipt separately and transparently
+records 10 disposable scenario fixture-claim publications, six probe
+publications, and one intentionally interrupted synthetic staging. Those
+public synthetic mechanics confer no official claim or model-quality
+authority. D-142 is aggregate orchestration acceptance only. After signed
+reviewed integration and green exact-SHA post-main CI, perform a fresh official
+one-use preflight and only then invoke the sole no-argument G2-7G official
+driver once.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
