@@ -51,6 +51,41 @@ _PRE_D141_ORCHESTRATION_SOURCE_SHAPE_NODES = {
 }
 
 
+_PRE_D145_POST_ATTEMPT_STATE_NODES = {
+    (
+        "tests/test_openadmet_global_v2_maplight_robustness_execution_contract_"
+        "v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze"
+    ): (
+        "historical D-133 pre-attempt root-absence node; D-143 terminal and "
+        "D-145 public transition audit own current post-attempt state"
+    ),
+    (
+        "tests/test_openadmet_global_v2_maplight_robustness_official_"
+        "orchestration.py::test_supervisor_precedes_claim_consumption_and_common_"
+        "seal_owns_terminal_publication"
+    ): (
+        "historical D-141 pre-attempt root-absence node; D-142 mechanics and "
+        "D-143 terminal plus D-145 public transition audit own surviving semantics"
+    ),
+    (
+        "tests/test_openadmet_global_v2_maplight_robustness_official_"
+        "orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_"
+        "and_active_replacements"
+    ): (
+        "historical D-140 six-marker collection node; D-145 public transition "
+        "audit owns the exact ten-marker state"
+    ),
+    (
+        "tests/test_openadmet_global_v2_maplight_robustness_official_"
+        "orchestration_acceptance_record.py::test_formal_orchestration_"
+        "acceptance_record_is_exact_and_static"
+    ): (
+        "historical D-142 live-conftest-hash node; D-145 public transition audit "
+        "preserves D-142 receipt provenance and owns the new live hook"
+    ),
+}
+
+
 def pytest_collection_modifyitems(items: list[pytest.Item]) -> None:
     """Retire only exact historical nodes whose replacement evidence is frozen."""
 
@@ -68,5 +103,8 @@ def pytest_collection_modifyitems(items: list[pytest.Item]) -> None:
         if reason is not None:
             item.add_marker(pytest.mark.skip(reason=reason))
         reason = _PRE_D141_ORCHESTRATION_SOURCE_SHAPE_NODES.get(item.nodeid)
+        if reason is not None:
+            item.add_marker(pytest.mark.skip(reason=reason))
+        reason = _PRE_D145_POST_ATTEMPT_STATE_NODES.get(item.nodeid)
         if reason is not None:
             item.add_marker(pytest.mark.skip(reason=reason))
