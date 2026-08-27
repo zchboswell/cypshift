@@ -1,0 +1,101 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_official_orchestration_seal_erratum.v1",
+  "status": "G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_SEAL_ERRATUM_FROZEN",
+  "recorded_at_utc": "2026-08-27T17:30:00Z",
+  "purpose": "Correct one platform-infeasible ordering detail in D-137 before the official-driver repair is accepted or either remaining one-use gate is invoked.",
+  "targeted_failure": "On the pinned Linux host and filesystem, rename and renameat2 return EACCES when the source terminal directory itself is mode 0555, even though both parents are owned and writable. D-137 ordered the fixed staging tree to be made read-only before atomic promotion, so that literal sequence cannot publish a terminal on the accepted host.",
+  "hypothesis": "Freezing every aggregate leaf at 0444, retaining the unpublished staging directory at owner-only 0700, fsyncing it, atomically promoting it without replacement, then immediately changing only the visible terminal directory to 0555 and fsyncing and revalidating the complete tree preserves D-137's scientific, privacy, no-overwrite, and final-read-only guarantees without widening its bounded seal.",
+  "acceptance_criterion": "The repaired driver and fixed zero-official composite acceptance must prove the exact corrected sequence and all promotion fault boundaries: leaves are 0444 before promotion; staging is a flat owned 0700 directory; renameat2 RENAME_NOREPLACE is the sole visibility commit point; the final root is immediately chmod 0555 and fsynced; both parents are fsynced; the complete final tree is re-opened without following symlinks and matches its pre-promotion inode, device, size, mode, and SHA-256 evidence; and any collision, promotion error, or post-promotion error blocks permanently without fallback, overwrite, replacement, or another scientific invocation.",
+  "parents": {
+    "d137_repair_contract_sha256": "f6576d61147731066dd09577338ab236b5ee0054eb4380377fa3bf6f0534b967",
+    "d137_signed_commit": "0dbbc7013b5303ef2f1535455d458b87208df1b9",
+    "d137_post_main_ci_run": 33096357416,
+    "d135_science_kernel_acceptance_sha256": "4c886d0dd51bfb48095ac2a8f88b202e78cb85f840f8f7bd474c2982ffedf390",
+    "d136_provenance_bridge_sha256": "2820c30f387d138d115b36f621b038dc75a1f5af43a7fa9f97b3b837a33a0dc3",
+    "tracked_claim_sha256": "d7e68837a9df0b392eab7d03282ec84d21b8787f4b2ac14b1fc79fec44df6f9f"
+  },
+  "platform_falsifier": {
+    "scope": "redistributable temporary directories only; no official, private, claim, model, metric, or scientific capability",
+    "source_directory_modes_tested": [
+      "0755",
+      "0555",
+      "0700",
+      "0500"
+    ],
+    "rename_succeeds": [
+      "0755",
+      "0700"
+    ],
+    "rename_fails_errno_13": [
+      "0555",
+      "0500"
+    ],
+    "interpretation": "This is host mechanics evidence only. It has no model-quality, official-execution, confirmatory, submission, leaderboard, or upload meaning."
+  },
+  "corrected_sequence": [
+    "validate the exact aggregate-only flat payload and receipt inputs through no-follow descriptors",
+    "write and fsync every fixed staging leaf and set every leaf to mode 0444",
+    "retain the unpublished fixed staging directory at mode 0700 and fsync it",
+    "atomically rename the fixed staging directory to the absent final terminal through renameat2 RENAME_NOREPLACE",
+    "treat successful rename as the sole terminal-visibility commit point and permit no fallback afterward",
+    "immediately set the visible final terminal directory to mode 0555",
+    "fsync the final terminal directory and both source and destination parents",
+    "revalidate the exact final flat file set, ownership, single-link regular-file type, modes, sizes, hashes, and pre-promotion inode and device identities"
+  ],
+  "promotion_failure_rules": {
+    "collision": "EEXIST blocks permanently, preserves the consumed claim, publishes no replacement, and permits no fallback or second invocation.",
+    "promotion_error": "EXDEV, ENOSYS, EINVAL, EACCES, or any other rename failure blocks permanently and permits no fallback or alternate rename primitive.",
+    "post_promotion_error": "Any chmod, fsync, validation, or resource error after the rename commit point leaves the visible terminal untouched, blocks automation, and permits no fallback, overwrite, cleanup of the final terminal, or second invocation.",
+    "pre_promotion_seal_error": "Only the one D-137 bounded same-invocation minimal FAILED or prospective RESOURCE_ABORTED seal remains eligible, within one shared five-second wall/CPU budget. Actual exhaustion of that shared budget cannot authorize a fallback."
+  },
+  "security_boundary": {
+    "final_terminal_read_only": true,
+    "staging_root_before_promotion_mode": "0700",
+    "staging_leaf_modes_before_promotion": "0444",
+    "final_terminal_root_mode": "0555",
+    "concurrent_malicious_same_uid_root_substitution_in_scope": false,
+    "trusted_child_rule": "Only the accepted trusted child and outer publisher may create the fixed staging root during supervision. Pre-existing, orphaned, root, dangling-root, and descendant symlinks are unlinked without following them; an unrelated sentinel must remain byte-identical.",
+    "rationale": "The immutable accepted supervisor cannot defend against an adversarial same-UID path substitution after its preflight without changing its accepted bytes. D-138 narrows no scientific or privacy boundary and states this mechanics threat model explicitly rather than claiming an unprovable race guarantee."
+  },
+  "unchanged_d137_invariants": {
+    "science_kernel_bytes": true,
+    "candidates_features_parameters_seeds_groups_folds": true,
+    "fit_prediction_metric_bootstrap_selection_and_gates": true,
+    "five_status_taxonomy": true,
+    "truthful_aggregate_accounting": true,
+    "resource_limits": true,
+    "post_supervision_seal_size_and_time_limits": true,
+    "single_selection_token_no_runner_up": true,
+    "tracked_claim_bytes": true,
+    "retry_resume_move_overwrite_replacement": false
+  },
+  "implementation_scope": {
+    "production_files_that_may_change": [
+      "research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py"
+    ],
+    "new_acceptance_driver": "research/maplight-fixed/run_global_v2_maplight_robustness_official_orchestration_acceptance.py",
+    "new_focused_tests": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py",
+    "erratum_contract_tests": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_seal_erratum.py"
+  },
+  "current_milestone_accounting": {
+    "temporary_rename_probes": 4,
+    "official_source_or_baseline_bytes_opened": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "model_double_invocations": 0,
+    "real_catboost_fits": 0,
+    "predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "live_uploads": 0,
+    "model_quality_authority": false,
+    "official_execution_authority": false,
+    "claim_authority": false,
+    "repair_contract_erratum_authority": true
+  },
+  "progression_rule": "Review and integrate this additive erratum by signed fast-forward and require green exact-SHA post-main CI. Only then may the still-uncommitted driver-only repair, fixed no-argument composite acceptance driver, and dedicated focused tests be packaged. Do not run the composite acceptance or official execution from an implementation branch."
+}

@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-137. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-138. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -823,6 +823,34 @@ operation. Fixed MapLight remains the best validated internal system at
 component-macro MAE `0.5837812652`. Nine contract-integrity tests at SHA-256
 `814675f2...1490f9c9` and all 29 safe related tests pass.
 
+D-138 freezes one additive, mechanics-only seal-order erratum after a
+redistributable temporary-directory probe falsified D-137's literal
+pre-promotion mode order on the pinned host. The erratum contract
+[`global_v2_maplight_robustness_official_orchestration_seal_erratum.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_seal_erratum.json),
+SHA-256 `a3e1bd65...f3faeb33`, records that moving a source directory at mode
+`0555` or `0500` returns `EACCES`, while `0755` and owner-only `0700` move
+successfully. The corrected bounded seal therefore freezes every aggregate
+leaf at `0444`, keeps the unpublished staging directory at `0700`, fsyncs it,
+uses `renameat2(RENAME_NOREPLACE)` as the sole visibility commit point, then
+immediately changes the final root to `0555`, fsyncs the final root and both
+parents, and revalidates exact inode, device, ownership, link count, mode,
+size, and SHA-256 evidence. Collision or any promotion/post-promotion defect
+blocks permanently with no fallback, overwrite, replacement, final cleanup,
+or second invocation. Only a controlled pre-promotion defect remains eligible
+for D-137's one minimal fallback, and primary plus fallback share one
+five-second wall/CPU budget. The final terminal remains read-only; the trusted
+child/outer publisher is the sole in-scope staging writer, while pre-existing,
+orphaned, dangling, root, and descendant symlinks must still be unlinked
+without touching an external sentinel. The immutable accepted supervisor
+cannot prove safety against a malicious concurrent same-UID path substitution,
+so D-138 states that threat-model limit explicitly rather than claiming it.
+This changes no science, status, accounting, resource, claim, selection, or
+privacy rule. The official and composite acceptances remain unrun; the claim
+is unchanged and unconsumed; no official byte, fit, prediction, metric,
+confirmatory, blinded-test, submission, leaderboard, or upload operation
+occurred. Three focused erratum tests at SHA-256
+`de7aafde...2ba3f13b` pass on redistributable temporary roots.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1473,18 +1501,19 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-137 repair contract SHA-256
-`f6576d61...0534b967` through the signed fast-forward-only workflow and require
-green post-main CI for that exact commit. Only afterward implement the
-driver-local orchestration repair, one fixed no-argument composite acceptance
-driver, and dedicated focused tests exactly as frozen. Do not run the composite
-acceptance or the official G2-7G attempt from the contract or implementation
-branch. D-135 is inherited immutable science-kernel evidence and must not be
-repeated, repaired, resumed, or reinterpreted. The tracked claim remains
-unchanged, unusable, and unconsumed; the official attempt, restricted, staging,
-acceptance, and rejection roots must remain absent; and no official source or
-baseline byte may be opened. The D-127 claim/root and D-128 attempt remain
-permanently barred.
+Review and integrate the D-138 seal-order erratum SHA-256
+`a3e1bd65...f3faeb33` through the signed fast-forward-only workflow and require
+green post-main CI for that exact commit. D-137 is already integrated at signed
+commit `0dbbc701...d4ebf1b9` with green post-main CI run `33096357416`. Only
+after the erratum is green may the still-uncommitted driver-local orchestration
+repair, fixed no-argument composite acceptance driver, and dedicated focused
+tests be packaged. Do not run the composite acceptance or official G2-7G
+attempt from the contract or implementation branch. D-135 remains inherited
+immutable science-kernel evidence and must not be repeated, repaired, resumed,
+or reinterpreted. The tracked claim remains unchanged, unusable, and
+unconsumed; official attempt, restricted, staging, acceptance, and rejection
+roots must remain absent; and no official source or baseline byte may open.
+The D-127 claim/root and D-128 attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0

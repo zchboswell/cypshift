@@ -441,6 +441,22 @@ MAE. Reviewed integration and green exact-SHA post-main CI must precede
 implementation, and the composite and official one-use executions remain
 closed.
 
+D-138 adds one mechanics-only seal-order erratum at SHA-256
+`a3e1bd65...f3faeb33`. A temporary-root falsifier on the pinned host showed
+that a source directory at `0555` cannot be renamed (`EACCES`), so D-137's
+literal read-only-root-before-promotion order is not executable. The corrected
+sequence freezes leaves at `0444`, retains the unpublished staging root at
+owner-only `0700`, fsyncs it, atomically promotes it with
+`RENAME_NOREPLACE`, then immediately sets the final root to `0555`, fsyncs
+both parents and the final root, and revalidates exact inode/device/hash/mode
+evidence. Promotion or post-promotion defects have no fallback; controlled
+pre-promotion fallback shares the original five-second seal budget. The final
+terminal, science kernel, claim, accounting, resources, statuses, and privacy
+boundary are unchanged. Three focused tests at `de7aafde...2ba3f13b` pass;
+zero official, claim, model, metric, confirmatory, blinded-test, submission,
+leaderboard, or upload operation occurred. Reviewed D-138 integration and
+green post-main CI now precede implementation packaging.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

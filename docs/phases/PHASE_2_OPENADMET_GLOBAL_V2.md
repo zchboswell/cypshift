@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-137 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-138 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1259,18 +1259,42 @@ safe related tests pass, while implementation and both one-use executions
 remain closed. Fixed MapLight remains the best validated internal system at
 component-macro MAE `0.5837812652`.
 
+D-138 freezes one additive seal-order erratum after a safe temporary-root
+probe showed that the pinned host returns `EACCES` when a mode-`0555` source
+directory is renamed. D-137's scientific and orchestration intent is retained,
+but its literal pre-promotion root mode is replaced with the executable
+fail-closed order: validate the aggregate payload; set and fsync every leaf at
+`0444`; keep the unpublished staging root owner-only at `0700`; atomically
+promote it with `renameat2(RENAME_NOREPLACE)`; immediately set the visible
+final root to `0555`; fsync the final root and both parents; and re-open the
+complete tree without following symlinks to verify exact inode, device,
+ownership, single-link type, mode, size, and SHA-256 evidence. A collision,
+promotion error, or post-promotion defect blocks permanently and permits no
+fallback, overwrite, replacement, final cleanup, or second invocation. Only
+one controlled pre-promotion defect remains eligible for D-137's minimal
+fallback, and both seal attempts share one five-second wall/CPU budget. The
+trusted child and outer publisher are the only in-scope staging writers;
+pre-existing, orphaned, dangling, root, and descendant symlinks still must be
+unlinked without touching an external sentinel. This erratum is contract-only:
+the claim and fixed roots remain untouched, both one-use gates remain unrun,
+and science, statuses, accounting, resources, selection, and privacy are
+unchanged. Contract SHA-256 is `a3e1bd65...f3faeb33`; three focused tests at
+`de7aafde...2ba3f13b` pass.
+
 ## Exact next action
 
-Review and integrate D-137 contract `f6576d61...0534b967` through the signed
+Review and integrate D-138 erratum `a3e1bd65...f3faeb33` through the signed
 fast-forward-only workflow, then require green post-main CI for that exact
-commit. Only afterward implement the exact driver-local repair, fixed
-no-argument composite acceptance driver, and dedicated focused tests. Review,
-integrate, and require green exact-SHA post-main CI for that implementation
-before running the composite acceptance exactly once. Do not run either the
-composite acceptance or official G2-7G driver yet. D-135 must not be repeated.
-The tracked claim must remain unchanged and unconsumed, all new fixed roots
-must remain absent, and no official source or baseline byte may be opened.
-D-127 and D-128 paths remain barred.
+commit. D-137 is already integrated at signed commit
+`0dbbc701...d4ebf1b9` with green post-main run `33096357416`. Only after the
+erratum is green may the exact driver-local repair, fixed no-argument composite
+acceptance driver, and dedicated focused tests be packaged. Review, integrate,
+and require green exact-SHA post-main CI for that implementation before running
+the composite acceptance exactly once. Do not run either the composite
+acceptance or official G2-7G driver yet. D-135 must not be repeated. The
+tracked claim must remain unchanged and unconsumed, all new fixed roots must
+remain absent, and no official source or baseline byte may be opened. D-127
+and D-128 paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

@@ -4780,3 +4780,56 @@
   exact-SHA post-main CI, then implement only the frozen driver patch, fixed
   no-argument composite acceptance driver, and focused tests. Do not run the
   composite acceptance or official execution from either branch.
+
+## D-138 — Correct the terminal seal order before implementation acceptance
+
+- Date: 2026-08-27
+- Status: accepted additive contract-only seal-order erratum pending reviewed
+  integration; D-137 repair contract and D-135 science kernel inherited;
+  repair implementation remains uncommitted; composite and official one-use
+  executions unrun; tracked claim unchanged, unusable, and unconsumed; zero
+  official, private-byte, claim, fit, prediction, metric, confirmatory,
+  blinded-test, TDI, submission, leaderboard, portal, upload, or model-quality
+  operation
+- Decision: Accept
+  `global_v2_maplight_robustness_official_orchestration_seal_erratum.json` at
+  SHA-256 `a3e1bd65...f3faeb33`. Supersede only D-137's platform-infeasible
+  order of changing the staging directory itself to `0555` before atomic
+  rename. Freeze aggregate leaves at `0444`, the unpublished staging root at
+  owner-only `0700`, atomic `renameat2(RENAME_NOREPLACE)` as the sole
+  visibility commit point, immediate final-root `0555`, parent/final fsyncs,
+  and full post-promotion evidence validation.
+- Evidence: After signed D-137 commit `0dbbc701...d4ebf1b9` passed exact-SHA
+  post-main CI run `33096357416`, the first safe disposable seal probe tested
+  source directory modes `0755`, `0555`, `0700`, and `0500`. Rename succeeded
+  for `0755` and `0700` but returned `EACCES` for `0555` and `0500` on the
+  pinned host, despite owned writable parents. No official/private path or
+  byte, claim, model, prediction, or metric capability was involved. The
+  corrected sequence preserves an unpublished owner-only root, read-only
+  leaves, no-replace visibility, and a read-only final tree. It requires exact
+  final inode/device, current-user ownership, single-link regular files,
+  modes, sizes, and hashes to match pre-promotion evidence. A collision,
+  rename error, or any post-promotion chmod/fsync/validation/resource error is
+  permanently blocking: retain the consumed claim and visible terminal if
+  any, perform no fallback or final cleanup, and never reinvoke. Only one
+  controlled pre-promotion seal error remains eligible for the D-137 minimal
+  disposition, and primary plus fallback share one five-second wall/CPU
+  budget; actual time exhaustion cannot authorize fallback. Three focused
+  erratum tests at SHA-256 `de7aafde...2ba3f13b` pass. The immutable supervisor
+  cannot defend against a malicious concurrent same-UID path substitution
+  without changing accepted bytes, so the trusted child/outer publisher is
+  explicitly the sole in-scope staging writer; pre-existing, orphaned,
+  dangling, root, and descendant symlinks remain no-follow cleanup cases.
+- Alternatives: Silently relax D-137; repeatedly attempt the impossible
+  `0555` rename; use an overwrite-capable rename fallback; publish writable
+  leaves; change the accepted supervisor; widen seal time/resources; delete a
+  terminal after the rename commit point; retry the fixed claim; or invoke
+  either one-use gate before reviewed integration.
+- Reversal condition: Any parent hash, fixed path, leaf/root mode, no-replace
+  primitive, fsync, post-promotion validation, collision disposition, shared
+  seal budget, symlink/threat-model, claim, privacy, integration, or post-main
+  CI drift blocks progression. Otherwise integrate D-138 by signed
+  fast-forward, require green exact-SHA post-main CI, then package the
+  still-uncommitted driver-only repair, fixed no-argument composite acceptance
+  driver, and dedicated focused tests. Do not run the composite acceptance or
+  official execution from the implementation branch.

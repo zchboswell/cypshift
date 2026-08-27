@@ -310,6 +310,21 @@ submission, leaderboard, or upload operation. The tracked claim and all fixed
 roots remain untouched; fixed MapLight remains `0.5837812652` internal
 component-macro MAE.
 
+D-138 freezes the additive mechanics-only
+[`global_v2_maplight_robustness_official_orchestration_seal_erratum.json`](global_v2_maplight_robustness_official_orchestration_seal_erratum.json)
+at SHA-256 `a3e1bd65...f3faeb33`. A redistributable temporary-root falsifier
+showed that the pinned host rejects renaming a source directory at mode `0555`
+with `EACCES`. The accepted correction leaves all staged aggregate files at
+`0444`, keeps the unpublished root owner-only at `0700`, fsyncs it, atomically
+promotes it without replacement, immediately makes the final root `0555`,
+fsyncs the final root and both parents, and verifies the complete final tree
+against pre-promotion inode/device/hash/size/mode evidence. Rename collision,
+promotion failure, and every post-promotion defect block with no fallback or
+replacement; controlled pre-promotion fallback shares one five-second budget.
+Three focused tests at `de7aafde...2ba3f13b` pass. D-137 science, accounting,
+statuses, resources, claim, and privacy remain unchanged, and no official or
+one-use operation occurred.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact
