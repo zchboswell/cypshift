@@ -1,10 +1,10 @@
 # Project state
 
-Last updated: 2026-08-25
+Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-133. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-134. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -685,6 +685,31 @@ barred. Thirteen focused tests pass. This milestone opens no official row and
 runs no fit, prediction, metric, submission, or upload; fixed MapLight remains
 0.5838 component-macro MAE.
 
+D-134 makes the G2-7G execution implementation ready for review without
+running its formal acceptance or consuming its claim. The additive scientific
+runner is frozen for review at SHA-256 `dca9b8d1...2ca90bde`, the fixed one-use
+official driver at `1675336e...a3de57fc`, the official-shaped two-root acceptance
+driver at `7cb471ce...2a42e473`, and nine focused tests at
+`3fedd87e...4228c53f`. Test-only official-shaped capabilities traversed both
+conditional paths: full retention accounted for exactly 720 model-double fit
+identities and deletion selection for exactly 1,020. The exact eight-field
+scorer, one selection token, no-runner-up rule, matched-row grouping
+comparisons, duplicate collapse, fixed top-ten influence removal, source
+firewall, and both training-only clipping diagnostics are implemented. Model
+children run only in the pinned Python 3.10.13/CatBoost 1.2.1 environment;
+the trusted compiler/scorer remain in Python 3.12.3, with both runtime trees
+under the accepted cumulative supervisor. The audit additionally binds mode,
+predictor class, claim authority, model/scorer/baseline identities, exact
+paired rows, all four endpoint diagnostics, and the 56-call tutorial-metric
+count below the frozen maximum of 80. Official aggregate evidence remains
+staged until cumulative supervision succeeds. Nine focused and 55 relevant
+tests pass. The fixed formal-acceptance root, acceptance/rejection records, official
+G2-7G root, and consumed claim remain absent. No official byte, real CatBoost
+fit, scientific development metric, claim, submission, leaderboard-selection,
+or upload operation occurred; fixed MapLight remains 0.5838 component-macro
+MAE. This is implementation evidence only, not model-quality or execution
+acceptance evidence.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1335,16 +1360,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-133 G2-7G contract SHA-256
-`9464b094...91151bcf`, new unusable claim `d7e68837...44df6f9f`, and focused
-tests `b499097b...ee439f7a`, then require green post-main CI. Only afterward
-implement the minimal scientific runner, new single-use attempt driver, official-shaped
-execution acceptance driver, and focused tests. Do not run the formal
-synthetic acceptance from the implementation branch; make the claim usable;
-open an official byte or baseline; fit a scientific model; score development
-truth; or access confirmatory truth before the exact implementation is
-reviewed, integrated, and green on `main`. The D-127 claim/root and D-128
-attempt remain permanently barred.
+Review and integrate the D-134 scientific runner SHA-256
+`dca9b8d1...2ca90bde`, one-use official driver `1675336e...a3de57fc`,
+official-shaped acceptance driver `7cb471ce...2a42e473`, and focused tests
+`3fedd87e...4228c53f`, then require green post-main CI. Only afterward invoke
+the fixed no-argument formal synthetic acceptance exactly once from clean
+`main`. Do not run it from the implementation branch, mutate the tracked
+claim, create or consume an official claim, open an official byte or baseline,
+fit a scientific model, score official development truth, or access
+confirmatory truth before the exact implementation is reviewed, integrated,
+and green. The D-127 claim/root and D-128 attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0

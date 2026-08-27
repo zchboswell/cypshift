@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-133 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-134 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1110,16 +1110,39 @@ At every fresh start or context restoration:
 Do not treat the imported audit, archived plans, conversation history, or a
 plausible improvement as execution authority.
 
+D-134 implements the corrected G2-7G path without executing it. The scientific
+runner `dca9b8d1...2ca90bde` consumes only D-126 model capabilities until each
+stage prediction root is frozen, then opens only the accepted D-132
+eight-field scorer and immutable baseline fields needed by that stage. It
+implements the exact D-122 candidate ordering, paired component bootstrap,
+seed and matched-row grouping perturbations, duplicate collapse, fixed
+top-ten influence diagnostic, single-source firewall, endpoint gates, and
+training-only clipping diagnostics. It validates exact cross-capability and
+paired-row joins, binds execution mode to predictor and claim authority, and
+measures 56 tutorial-metric calls per path against the frozen maximum of 80.
+The fixed official driver
+`1675336e...a3de57fc` starts the cumulative supervisor before claim consumption
+and separates the trusted Python 3.12.3 compiler/scorer from pinned Python
+3.10.13/CatBoost 1.2.1 model descendants; aggregate output is staged until
+cumulative supervision succeeds. The acceptance driver
+`7cb471ce...2a42e473` predeclares two opposite-order roots, both conditional
+paths, and exactly two real CatBoost compatibility controls. Test-only
+execution covered 720 and 1,020 model-double fit identities; nine focused and
+55 relevant tests pass. The two paths use independent stage-A work, so the
+1,740 model-double identities are actual test invocations rather than reused
+accounting. This is not the formal acceptance and grants no model,
+official, claim, confirmatory, submission, or upload authority.
+
 ## Exact next action
 
-Review and integrate D-133 contract SHA-256 `9464b094...91151bcf`, claim
-`d7e68837...44df6f9f`, and tests `b499097b...ee439f7a`, then require green
-post-main CI. Only afterward implement the minimal scientific runner, new single-use
-attempt driver, official-shaped execution acceptance driver, and focused
-tests. Do not run the formal synthetic acceptance from that implementation
-branch; make the claim usable; open an official byte or baseline; fit a
-scientific model; score development truth; or access confirmatory truth before
-the exact implementation is integrated. D-127 and D-128 paths remain barred.
+Review and integrate D-134 runner `dca9b8d1...2ca90bde`, one-use driver
+`1675336e...a3de57fc`, acceptance driver `7cb471ce...2a42e473`, and tests
+`3fedd87e...4228c53f`, then require green post-main CI. Only afterward invoke
+the sole fixed no-argument two-root formal synthetic acceptance from clean
+`main`. Do not run it from this implementation branch; mutate the claim; open
+an official byte or baseline; fit a scientific model; score official
+development truth; or access confirmatory truth before integration. D-127 and
+D-128 paths remain barred.
 Submission generation, official metric, leaderboard selection, and upload
 remain closed.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,

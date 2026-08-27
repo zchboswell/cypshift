@@ -348,6 +348,20 @@ tests pass, and no official row, fit, metric, claim consumption, submission, or
 upload occurred. Reviewed integration and green post-main CI must precede only
 the additive runner and official-shaped synthetic acceptance implementation.
 
+D-134 now makes that additive implementation review-ready without consuming
+the formal attempt: scientific runner `dca9b8d1...2ca90bde`, one-use driver
+`1675336e...a3de57fc`, official-shaped acceptance driver
+`7cb471ce...2a42e473`, and nine focused tests `3fedd87e...4228c53f`. Test-only
+capabilities traversed the exact 720-fit full-retained and 1,020-fit
+deletion-selected paths independently. Mode/predictor/claim binding, exact
+paired-row joins, all-endpoint diagnostics, the measured 56-of-80 tutorial
+metric-call budget, and supervisor-gated terminal publication now fail closed.
+Nine focused and 55 relevant tests pass. The formal
+acceptance, official root, claim consumption, official bytes, real fits,
+development metrics, submissions, leaderboard selection, and uploads remain
+zero. Reviewed integration and green post-main CI must precede the sole formal
+two-root acceptance.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

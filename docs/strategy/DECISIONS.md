@@ -4522,3 +4522,48 @@
   gate is only the additive scientific runner, new attempt driver,
   official-shaped execution acceptance driver, and focused tests; the formal
   synthetic attempt waits for reviewed integration and green post-main CI.
+
+## D-134 — Make the corrected robustness execution implementation review-ready
+
+- Date: 2026-08-26
+- Status: accepted implementation evidence only; formal two-root attempt
+  unrun; fixed acceptance and official roots absent; claim unconsumed; zero
+  official byte, real CatBoost fit, scientific development metric, submission,
+  leaderboard-selection, private-portal-record, upload, or model-quality
+  operation
+- Decision: Accept for review the additive scientific runner at SHA-256
+  `dca9b8d1...2ca90bde`, fixed one-use official driver at
+  `1675336e...a3de57fc`, official-shaped acceptance driver at
+  `7cb471ce...2a42e473`, and nine focused tests at
+  `3fedd87e...4228c53f`. Do not run the formal acceptance until these exact
+  bytes are integrated through a signed fast-forward and green post-main CI.
+- Evidence: The runner imports only accepted D-126/D-132 primitives and never
+  imports, executes, copies, or patches rejected G2-7B code. Test-only
+  official-shaped capabilities traversed both frozen conditional paths:
+  exactly 540 stage-A plus 180 stage-B fit identities for full retention, and
+  those 720 plus 300 conditional stage-C identities for deletion selection.
+  Both paths issued one token and no runner-up and published aggregate-only
+  terminals with zero retained row values or model binaries. The scorer opens
+  after the matching stage freeze and uses the exact molecule, endpoint,
+  standardized-structure, primary-component, source, point, low, and high
+  fields. Group diagnostics compare matched active rows, every robustness view
+  retains all four endpoint summaries, and paired row sets must match exactly.
+  Execution mode is bound to predictor class, capability mode, and claim
+  authority. Exactly 56 tutorial-metric calls per path are measured against
+  the frozen maximum of 80. The cumulative supervisor contains the trusted
+  Python 3.12.3 compiler/scorer and separate
+  pinned Python 3.10.13/CatBoost 1.2.1 descendants. Nine focused and 55
+  relevant tests pass; official aggregate output cannot become final until
+  cumulative supervision succeeds. All formal, official, claim, and external
+  roots remain untouched.
+- Alternatives: Reuse or inspect rejected G2-7B bytes; run before integration;
+  combine compiler and model runtimes; force a synthetic selection token;
+  compare grouping perturbations on unmatched rows; add a candidate, seed,
+  group, metric, clip, retry, cache, concurrency mode, or runner-up; consume
+  the claim now; or use private portal evidence for selection.
+- Reversal condition: Any source hash, parent, runtime, stage chronology,
+  split, feature view, CatBoost constructor, scorer field, bootstrap, selection,
+  diagnostic, accounting, resource, cleanup, privacy, fixed-root, integration,
+  or post-main-CI drift revokes D-134 before formal acceptance. Otherwise run
+  the integrated no-argument acceptance exactly once and interpret only its
+  aggregate synthetic mechanics evidence.
