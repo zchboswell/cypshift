@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-138. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-139. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -851,6 +851,37 @@ confirmatory, blinded-test, submission, leaderboard, or upload operation
 occurred. Three focused erratum tests at SHA-256
 `de7aafde...2ba3f13b` pass on redistributable temporary roots.
 
+Signed D-138 commit `158dffca...a6e8318` is integrated. PR CI run
+`33100049450` and exact-SHA post-main CI run `33101131039` are green across
+Python 3.11, 3.12.3, and 3.14.
+
+D-139 freezes a contract-only test-provenance transition in
+[`global_v2_maplight_robustness_official_orchestration_test_transition_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_test_transition_contract.json),
+SHA-256 `6703ad30...45709c2c`, before the repaired driver can replace
+historical official-orchestration bytes. The D-136 bridge,
+historical D-135 aggregate audit file, and current pytest transition hook are
+correct for their accepted state and remain byte-for-byte unchanged in this
+milestone. Changing the live official driver in D-140 will make exactly three
+D-136 audit nodes obsolete by design:
+
+- `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_acceptance_binds_exact_contract_and_integrated_implementation`;
+- `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_provenance_bridge_retires_only_the_obsolete_pre_acceptance_state`;
+  and
+- `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_claim_derivation_is_read_only_and_fills_exactly_five_receipts`.
+
+The first two bind historical D-134/D-136 live-byte identity and the third
+binds the pre-repair five-field claim derivation. D-139 authorizes no skip or
+implementation change itself. It freezes only a prospective D-140 transition:
+mark those exact node IDs, retain every other historical audit, and bind each
+retirement to replacement current-state assertions in the new D-140 focused
+suite. No implementation, historical audit, hook, science, official, claim,
+fit, prediction, metric, confirmatory, blinded-test, submission, leaderboard,
+or upload operation occurs in D-139. Both fixed one-use gates remain unrun and
+fixed MapLight remains the best validated internal system at component-macro
+MAE `0.5837812652`. Six contract tests at SHA-256
+`185555b2...a0df90a0` freeze the exact three-to-three mapping,
+the D-140-only collection transition, and zero authority.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1501,18 +1532,20 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-138 seal-order erratum SHA-256
-`a3e1bd65...f3faeb33` through the signed fast-forward-only workflow and require
-green post-main CI for that exact commit. D-137 is already integrated at signed
-commit `0dbbc701...d4ebf1b9` with green post-main CI run `33096357416`. Only
-after the erratum is green may the still-uncommitted driver-local orchestration
-repair, fixed no-argument composite acceptance driver, and dedicated focused
-tests be packaged. Do not run the composite acceptance or official G2-7G
-attempt from the contract or implementation branch. D-135 remains inherited
-immutable science-kernel evidence and must not be repeated, repaired, resumed,
-or reinterpreted. The tracked claim remains unchanged, unusable, and
-unconsumed; official attempt, restricted, staging, acceptance, and rejection
-roots must remain absent; and no official source or baseline byte may open.
+Review and integrate only the D-139 test-provenance transition contract through
+the signed fast-forward-only workflow and require green post-main CI for its
+exact commit. D-138 is already integrated and green at exact-SHA post-main CI
+run `33101131039`. Only after D-139 is green may D-140 package the
+driver-local orchestration repair, fixed no-argument composite acceptance
+driver, dedicated focused tests, and the exact three prospective pytest
+markers/replacement bindings frozen by D-139. Integrate D-140 and require
+green exact-SHA post-main CI before running the fixed composite acceptance
+exactly once. Do not run the composite acceptance or official G2-7G attempt
+from any contract or implementation branch. D-135 remains inherited immutable
+science-kernel evidence and must not be repeated, repaired, resumed, or
+reinterpreted. The tracked claim remains unchanged, unusable, and unconsumed;
+official attempt, restricted, staging, acceptance, and rejection roots must
+remain absent; and no official source or baseline byte may open.
 The D-127 claim/root and D-128 attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload

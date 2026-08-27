@@ -455,7 +455,27 @@ terminal, science kernel, claim, accounting, resources, statuses, and privacy
 boundary are unchanged. Three focused tests at `de7aafde...2ba3f13b` pass;
 zero official, claim, model, metric, confirmatory, blinded-test, submission,
 leaderboard, or upload operation occurred. Reviewed D-138 integration and
-green post-main CI now precede implementation packaging.
+green post-main CI now precede implementation packaging. Signed D-138 commit
+`158dffca...a6e8318` is integrated after green PR CI run `33100049450`;
+exact-SHA post-main run `33101131039` is green across Python 3.11, 3.12.3, and
+3.14.
+
+D-139 freezes a contract-only test-provenance transition at SHA-256
+`6703ad30...45709c2c` before D-140 changes the live repaired driver and current
+claim derivation. The D-136 historical audit file and `tests/conftest.py`
+remain unchanged in D-139. Exactly three
+D-136 nodes prospectively become historical when D-140 lands: the assertions
+that bind the immutable D-135 receipt and D-136 bridge directly to the live
+historical driver, plus the pre-repair five-field claim-derivation assertion.
+D-140 may mark only those exact nodes and must bind each retirement to a
+replacement current-state assertion in its new focused tests; every other
+historical audit remains active. D-139 changes no implementation, science,
+claim, status, accounting, resource, privacy, or selection rule and performs
+zero formal, official, claim, fit, prediction, metric, confirmatory,
+blinded-test, submission, leaderboard, or upload operation. Reviewed D-139
+integration and green exact-SHA post-main CI precede D-140. Six static contract
+tests at `185555b2...a0df90a0` pass. Reviewed D-140 integration and green
+post-main CI precede the sole fixed composite acceptance.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

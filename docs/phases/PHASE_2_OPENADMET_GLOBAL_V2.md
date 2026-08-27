@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-138 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-139 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1281,20 +1281,39 @@ and science, statuses, accounting, resources, selection, and privacy are
 unchanged. Contract SHA-256 is `a3e1bd65...f3faeb33`; three focused tests at
 `de7aafde...2ba3f13b` pass.
 
+Signed D-138 commit `158dffca...a6e8318` is integrated after green PR CI run
+`33100049450`. Exact-SHA post-main CI run `33101131039` is green across Python
+3.11, 3.12.3, and 3.14.
+
+D-139 freezes only the prospective test-provenance transition required when
+D-140 replaces the historical live official driver and five-field claim
+derivation. Its contract SHA-256 is `6703ad30...45709c2c`, and six static
+contract tests at `185555b2...a0df90a0` pass. The accepted D-136 bridge, its
+historical audit file, and the current pytest hook remain unchanged in D-139.
+D-140 may retire exactly three historical nodes: the D-135 live-implementation
+binding, the D-136 live-bridge
+binding, and the pre-repair five-field claim-derivation audit. Their full exact
+node IDs are frozen in the D-139 contract. Every retirement must be marked by
+the D-140 hook and paired with a replacement current-state assertion in the
+new D-140 focused tests; all other historical audits remain active. This is a
+test-provenance transition, not science or model-quality evidence. It changes
+no implementation, candidate, feature, seed, group, fit, prediction, metric,
+gate, resource, status, accounting, claim, privacy, selection-token, or
+no-runner-up rule and runs neither fixed one-use gate.
+
 ## Exact next action
 
-Review and integrate D-138 erratum `a3e1bd65...f3faeb33` through the signed
-fast-forward-only workflow, then require green post-main CI for that exact
-commit. D-137 is already integrated at signed commit
-`0dbbc701...d4ebf1b9` with green post-main run `33096357416`. Only after the
-erratum is green may the exact driver-local repair, fixed no-argument composite
-acceptance driver, and dedicated focused tests be packaged. Review, integrate,
-and require green exact-SHA post-main CI for that implementation before running
-the composite acceptance exactly once. Do not run either the composite
-acceptance or official G2-7G driver yet. D-135 must not be repeated. The
-tracked claim must remain unchanged and unconsumed, all new fixed roots must
-remain absent, and no official source or baseline byte may be opened. D-127
-and D-128 paths remain barred.
+Review and integrate only the D-139 test-provenance transition contract and
+require green exact-SHA post-main CI for its signed commit. D-138 is already
+integrated and green at exact-SHA post-main run `33101131039`. Next, D-140 may
+package only the repaired official driver, fixed no-argument composite
+acceptance driver, dedicated focused tests, and exact conftest markers and
+replacement bindings frozen by D-139. Review, integrate, and require green
+exact-SHA post-main CI for D-140 before running the fixed composite acceptance
+exactly once. Do not run either the composite acceptance or official G2-7G
+driver yet. D-135 must not be repeated. The tracked claim must remain unchanged
+and unconsumed, all new fixed roots must remain absent, and no official source
+or baseline byte may be opened. D-127 and D-128 paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

@@ -325,6 +325,22 @@ Three focused tests at `de7aafde...2ba3f13b` pass. D-137 science, accounting,
 statuses, resources, claim, and privacy remain unchanged, and no official or
 one-use operation occurred.
 
+Signed D-138 commit `158dffca...a6e8318` is integrated after green PR CI run
+`33100049450` and green exact-SHA post-main run `33101131039` across Python
+3.11, 3.12.3, and 3.14. D-139 therefore freezes the separate contract-only
+[`global_v2_maplight_robustness_official_orchestration_test_transition_contract.json`](global_v2_maplight_robustness_official_orchestration_test_transition_contract.json)
+at SHA-256 `6703ad30...45709c2c`. The D-136
+bridge, its historical aggregate audit file, and the current pytest hook remain
+unchanged. The contract prospectively identifies exactly three D-136 nodes
+whose live-driver and pre-repair claim-derivation assertions become obsolete
+only when D-140 lands. D-140 must mark exactly those nodes and bind each one to
+replacement current-state coverage in the new focused suite; broad, hash-
+driven, prefix, file, or class skips are forbidden. Six contract tests at
+SHA-256 `185555b2...a0df90a0` freeze that cardinality and zero-authority
+boundary. D-139 changes no production, test collection, science, claim,
+resource, status, accounting, selection, privacy, or one-use state. The fixed
+composite acceptance and official attempt remain unrun.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

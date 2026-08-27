@@ -4833,3 +4833,57 @@
   still-uncommitted driver-only repair, fixed no-argument composite acceptance
   driver, and dedicated focused tests. Do not run the composite acceptance or
   official execution from the implementation branch.
+
+## D-139 — Freeze the historical-test transition before repairing the driver
+
+- Date: 2026-08-27
+- Status: accepted contract-only test-provenance transition pending reviewed
+  integration; signed D-138 commit `158dffca...a6e8318` integrated after green
+  PR CI run `33100049450` and green exact-SHA post-main CI run `33101131039`
+  across Python 3.11, 3.12.3, and 3.14; D-136 historical audit and pytest
+  hook unchanged; repaired driver, composite acceptance, focused tests, and
+  conftest transition reserved for D-140; both fixed one-use executions unrun;
+  tracked claim unchanged, unusable, and unconsumed; zero official,
+  private-byte, claim, fit, prediction, metric, confirmatory, blinded-test,
+  TDI, submission, leaderboard, portal, upload, or model-quality operation
+- Decision: Accept
+  `global_v2_maplight_robustness_official_orchestration_test_transition_contract.json`
+  at SHA-256 `6703ad30...45709c2c`. Preserve the immutable D-135 receipt, D-136
+  bridge, historical aggregate-audit file, and current pytest hook unchanged
+  in this contract-only milestone. Freeze exactly three prospective D-140
+  retirements and no others:
+  `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_acceptance_binds_exact_contract_and_integrated_implementation`,
+  `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_provenance_bridge_retires_only_the_obsolete_pre_acceptance_state`,
+  and
+  `tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::test_claim_derivation_is_read_only_and_fills_exactly_five_receipts`.
+  D-140 must add the exact conftest markers and bind each retirement to a
+  replacement current-state assertion in its new focused tests before any
+  composite acceptance can run.
+- Evidence: D-136 correctly restored the D-134 at-attempt snapshot and recorded
+  the then-live D-135/D-136 transition. Its first two named historical nodes
+  intentionally compare immutable receipts with the live historical official
+  driver and hook-bound audit bytes; the third exercises the historical
+  five-future-field derivation. D-140 is required to bind the repaired driver,
+  composite acceptance, new focused tests, D-137, D-138, and D-139, so those
+  three assertions become false by the authorized state transition rather than
+  by scientific drift. Every other D-135/D-136 aggregate, cleanup, resource,
+  claim-template, and zero-authority audit remains valid and active. The
+  six D-139 contract-integrity tests at SHA-256
+  `185555b2...a0df90a0` prove exact-node cardinality,
+  unchanged historical bytes and hook, replacement-binding requirements, and
+  zero authority. This milestone changes no implementation or test collection.
+- Alternatives: Modify the immutable D-135 receipt or D-136 bridge; edit the
+  historical audit file; broadly skip a file, class, prefix, or changing hash;
+  let stale live-byte assertions block D-140; mark nodes before contract
+  integration; omit replacement current-state coverage; combine this
+  provenance transition with implementation; repeat D-135; or run either fixed
+  one-use gate from a contract or implementation branch.
+- Reversal condition: Any drift in the exact three node IDs, historical audit
+  or hook bytes, replacement-current-state mapping, D-137/D-138 lineage,
+  tracked claim, zero-authority boundary, signed integration, or exact-SHA
+  post-main CI blocks progression. Otherwise integrate D-139 by signed
+  fast-forward and require green post-main CI, then let D-140 change only the
+  repaired official driver, fixed composite acceptance driver, dedicated
+  focused tests, and exact frozen conftest markers/bindings. Integrate D-140
+  and require green post-main CI before running the fixed composite acceptance
+  exactly once.
