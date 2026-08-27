@@ -333,13 +333,57 @@ at SHA-256 `6703ad30...45709c2c`. The D-136
 bridge, its historical aggregate audit file, and the current pytest hook remain
 unchanged. The contract prospectively identifies exactly three D-136 nodes
 whose live-driver and pre-repair claim-derivation assertions become obsolete
-only when D-140 lands. D-140 must mark exactly those nodes and bind each one to
-replacement current-state coverage in the new focused suite; broad, hash-
+only when the next implementation lands. D-141 must mark exactly those nodes
+and bind each one to replacement current-state coverage in the new focused suite; broad, hash-
 driven, prefix, file, or class skips are forbidden. Six contract tests at
 SHA-256 `185555b2...a0df90a0` freeze that cardinality and zero-authority
 boundary. D-139 changes no production, test collection, science, claim,
 resource, status, accounting, selection, privacy, or one-use state. The fixed
 composite acceptance and official attempt remain unrun.
+
+Signed D-139 commit `3b9c251f6875fedb33e51c4420cd8634c6e4cf29` is integrated,
+and exact-SHA post-main CI run `33103967048` is green across Python 3.11,
+3.12.3, and 3.14.
+
+The uncommitted prospective implementation passed 118 safe focused/contract
+tests, but the safe repository suite, run with permanently barred
+`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
+ignored, produced `1415 passed, 8 skipped, 2 failed` in about 352.96 seconds.
+Both failures are source-shape-only assertions in immutable D-134 focused
+snapshot SHA-256
+`3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`:
+`test_exact_fit_topology_and_conditional_stage_c_are_unchanged` and
+`test_supervisor_starts_before_claim_consumption_and_official_access`.
+
+D-140 therefore freezes the contract-only
+[`global_v2_maplight_robustness_official_orchestration_source_shape_transition_contract.json`](global_v2_maplight_robustness_official_orchestration_source_shape_transition_contract.json)
+at SHA-256 `d4ff0e57b4c5d8b6bae808d0749f5b8e116965f18f2df3fee6e04e58dd727417`;
+its seven contract tests have SHA-256
+`35bcb0958bc66c386b82ab13171b453c6f60fde81dcb40d329a2f9b659c67da6`.
+All seven D-140 tests and all 25 combined D-137 through D-140 contract tests
+pass.
+It maps the failures exactly to
+`test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging`
+and
+`test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+The first future D-141 node owns exact `540/180/300` fit identities, all five
+feature widths, predictor-authority cross rejections, the conditional stage
+order including `selected != "G2-7-M0-FULL"`, and cleanup-before-staging. The
+second owns outer/child supervision and claim chronology, exact `raw_observed`,
+publication-root/parent arguments, equal limits, absent fixed root, aggregate-
+bytes-only failure accounting, common-seal-exclusive publication, and absence
+of the obsolete child/parent terminal names.
+
+D-141 may add only these two collection markers while preserving the prior
+four, for six total, and must bind
+`d140_source_shape_transition_contract_sha256`. D-140 changes no implementation,
+conftest, historical test, science, claim, gate, fit, prediction, metric,
+resource, selection, privacy, or one-use state. The D-141 implementation
+remains uncommitted and unbound. D-140 grants zero collection, implementation,
+formal-acceptance, official, claim, science, model-quality, confirmatory,
+submission, or upload authority. Integrate D-140 and require green exact-SHA
+post-main CI, then package and integrate D-141 before the sole fixed composite
+acceptance may run.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)

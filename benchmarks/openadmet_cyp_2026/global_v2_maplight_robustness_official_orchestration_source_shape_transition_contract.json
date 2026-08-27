@@ -1,0 +1,168 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_official_orchestration_source_shape_transition_contract.v1",
+  "freeze_date": "2026-08-27",
+  "decision_id": "D-140",
+  "gate": "G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_SOURCE_SHAPE_TRANSITION_CONTRACT_FROZEN",
+  "status": "contract_only_no_source_shape_retirement_or_d141_integration_or_acceptance_or_official_execution_yet",
+  "contract_id": "G2-7H-MAPLIGHT-ROBUSTNESS-OFFICIAL-ORCHESTRATION-SOURCE-SHAPE-TRANSITION-V1",
+  "base_commit": "3b9c251f6875fedb33e51c4420cd8634c6e4cf29",
+  "base_commit_signature_verified": true,
+  "base_commit_signer": "261114960+zchboswell@users.noreply.github.com",
+  "purpose": "Preserve the immutable D-134 focused snapshot while retiring only two source-shape assertions made obsolete by the separately reviewed D-141 common-seal orchestration implementation.",
+  "hypothesis": "The repository can remain validator-clean without rewriting historical evidence if collection skips exactly two obsolete source-shape nodes and the D-141 focused suite replaces each with a behaviorally equivalent assertion over the corrected child and supervised common-seal boundary.",
+  "targeted_failure": "The immutable D-134 focused snapshot at SHA-256 3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f contains exactly two tests coupled to the former in-child cleanup, PENDING_TERMINAL_ROOT, and parent _finalize_terminal source shape. The D-141 common-seal implementation removes those call names while preserving every other frozen fit-topology, predictor-authority, stage-order, supervision, claim-order, resource-boundary, failure-accounting, cleanup, and terminal-publication assertion in those functions.",
+  "acceptance_criterion": "After this contract is independently reviewed, integrated by signed fast-forward, and green on exact-SHA main, D-141 may add exactly two skip markers to tests/conftest.py in addition to the four previously frozen skips and must add the two exact replacement nodes in the existing D-141 focused path. The historical snapshot remains byte-identical; D-137, D-138, and D-139 lineage remains exact; the tracked claim, science kernel, candidates, fits, predictions, metrics, gates, and one-use roots remain unchanged; no composite acceptance or official execution occurs from an implementation branch.",
+  "occam_boundary": "Do not rewrite the historical focused snapshot. Add only two exact collection markers and their two exact focused replacements in D-141, plus the minimum SHA-256 provenance binding needed to authenticate this contract. Add no candidate, feature, parameter, seed, group, fit, prediction, metric, retry, cache, framework, service, or scientific interpretation.",
+  "parent_evidence": {
+    "d137_official_orchestration_repair_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_repair_contract.json",
+      "sha256": "f6576d61147731066dd09577338ab236b5ee0054eb4380377fa3bf6f0534b967",
+      "integrated_commit": "0dbbc7013b5303ef2f1535455d458b87208df1b9"
+    },
+    "d138_terminal_seal_erratum": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_seal_erratum.json",
+      "sha256": "a3e1bd653f28297357380ad14da3fcd640d89d3476954830c8fd63c2f3faeb33",
+      "integrated_commit": "158dffcadfb71305d7de7b84279cfee96a6e8318"
+    },
+    "d139_test_provenance_transition_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_test_transition_contract.json",
+      "sha256": "6703ad308d5a4188e5b42aa325cf59d9d10729e08ba0ed2c0dce44d445709c2c",
+      "integrated_commit": "3b9c251f6875fedb33e51c4420cd8634c6e4cf29"
+    }
+  },
+  "historical_source_shape_provenance": {
+    "focused_snapshot_path": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py",
+    "focused_snapshot_sha256": "3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f",
+    "focused_snapshot_test_function_count": 9,
+    "focused_snapshot_mutation_allowed": false,
+    "previously_retired_node_count_in_snapshot": 1,
+    "newly_retired_node_count": 2,
+    "retained_active_node_count_after_transition": 6,
+    "newly_retired_node_ids": [
+      "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_exact_fit_topology_and_conditional_stage_c_are_unchanged",
+      "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_supervisor_starts_before_claim_consumption_and_official_access"
+    ]
+  },
+  "d141_replacement_evidence": {
+    "focused_tests_path": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py",
+    "replacement_node_count": 2,
+    "replacement_node_ids": [
+      "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging",
+      "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication"
+    ],
+    "exact_transition_map": [
+      {
+        "historical_node_id": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_exact_fit_topology_and_conditional_stage_c_are_unchanged",
+        "replacement_node_id": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging",
+        "replacement_scope": "prove Stage A=540, Stage B=180, and conditional Stage C=300 fit identities; exact selection feature widths G2-7-M0-FULL=2563, G2-7-M1-DROP-MORGAN=1539, G2-7-M2-DROP-AVALON=1539, G2-7-M3-DROP-ERG=2248, and G2-7-M4-DROP-DESCRIPTORS=2363; both predictor-authority cross rejections for synthetic=True with real_catboost_predictor and synthetic=False with deterministic_test_predictor; Stage A -> selection -> Stage B -> conditional Stage C chronology with exact condition selected != \"G2-7-M0-FULL\"; and corrected source chronology _terminal_bytes -> _cleanup_owned_root(work) -> _stage_payload(files)"
+      },
+      {
+        "historical_node_id": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_supervisor_starts_before_claim_consumption_and_official_access",
+        "replacement_node_id": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication",
+        "replacement_scope": "prove run_supervised is present in run_official_attempt and _consume_claim is absent from run_official_attempt; child chronology resource_checkpoint -> derive_consumed_claim -> _consume_claim -> compile_capabilities -> Stage A; exact raw_observed = supervisor.run_supervised assignment; exact publication_root=PUBLICATION_STAGING_ROOT and writable_publication_parent=OFFICIAL_ATTEMPT_ROOT.parent supervisor arguments; official.LIMITS == acceptance.LIMITS; OFFICIAL_ATTEMPT_ROOT == /home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1 and that root is absent; _failure_payload contains accounting_complete and returns aggregate bytes only with no terminal path or publication; outer chronology run_supervised -> _seal_with_fallback places the common seal after supervision and makes it the exclusive terminal publisher; and _finalize_terminal is absent from run_official_attempt while PENDING_TERMINAL_ROOT is absent from the child"
+      }
+    ],
+    "future_nodes_may_be_absent_during_contract_freeze": true
+  },
+  "future_collection_transition": {
+    "only_existing_file_with_transition_specific_behavior_change": "tests/conftest.py",
+    "collection_constant": "_PRE_D141_ORCHESTRATION_SOURCE_SHAPE_NODES",
+    "marker_kind": "pytest.mark.skip",
+    "exact_new_markers": [
+      {
+        "node_id": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_exact_fit_topology_and_conditional_stage_c_are_unchanged",
+        "reason": "historical D-134 child terminal-shape assertion; D-141 corrected child cleanup/staging test owns current-state validation"
+      },
+      {
+        "node_id": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_supervisor_starts_before_claim_consumption_and_official_access",
+        "reason": "historical D-134 parent terminal-shape assertion; D-141 supervised common-seal test owns current-state validation"
+      }
+    ],
+    "previously_frozen_skip_count": 4,
+    "expected_total_skip_count_after_transition": 6,
+    "previous_d134_pre_acceptance_skip_is_preserved": true,
+    "previous_d139_three_node_transition_is_preserved": true,
+    "deselect_or_xfail_allowed": false,
+    "additional_retired_nodes_allowed": false
+  },
+  "future_transition_bindings": {
+    "field_name": "d140_source_shape_transition_contract_sha256",
+    "binding_only_no_scientific_behavior_change": true,
+    "locations": [
+      {
+        "path": "research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py",
+        "required_binding": "authenticate the exact integrated D-140 contract and include its SHA-256 in official attempt receipt implementation_lineage"
+      },
+      {
+        "path": "research/maplight-fixed/run_global_v2_maplight_robustness_official_orchestration_acceptance.py",
+        "required_binding": "authenticate the exact integrated D-140 contract and include its SHA-256 in candidate composite lineage and validation"
+      },
+      {
+        "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_acceptance.json",
+        "required_binding": "publish the exact D-140 contract SHA-256 in the aggregate-only accepted composite receipt"
+      },
+      {
+        "path": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py",
+        "required_binding": "assert the exact integrated D-140 contract SHA-256 and both replacement-node responsibilities"
+      }
+    ]
+  },
+  "immutable_boundary": {
+    "tracked_claim": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim_v2.json",
+      "sha256": "d7e68837a9df0b392eab7d03282ec84d21b8787f4b2ac14b1fc79fec44df6f9f",
+      "mutation_allowed": false
+    },
+    "historical_focused_snapshot": {
+      "path": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py",
+      "sha256": "3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f",
+      "mutation_allowed": false
+    },
+    "science_kernel_mutation_allowed": false,
+    "claim_mutation_allowed": false,
+    "gate_mutation_allowed": false
+  },
+  "contract_package": {
+    "new_files": [
+      "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_source_shape_transition_contract.json",
+      "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_source_shape_transition_contract.py"
+    ],
+    "existing_production_or_test_collection_files_changed_by_contract_freeze": 0
+  },
+  "current_milestone_accounting": {
+    "pytest_collection_markers_added": 0,
+    "implementation_files_changed": 0,
+    "official_source_or_baseline_bytes_opened": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "model_double_invocations": 0,
+    "real_catboost_fits": 0,
+    "predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "private_portal_observations_recorded": 0,
+    "formal_composite_acceptance_runs": 0,
+    "official_robustness_runs": 0,
+    "live_uploads": 0
+  },
+  "current_authority": {
+    "test_collection_transition": false,
+    "implementation": false,
+    "model_quality": false,
+    "formal_composite_acceptance": false,
+    "official_execution": false,
+    "official_claim_consumption": false,
+    "confirmatory": false,
+    "blinded_test": false,
+    "submission_generation": false,
+    "live_upload": false
+  },
+  "progression_rule": "Integrate this D-140 contract and require green exact-SHA post-main CI before D-141 changes tests/conftest.py, the corrected orchestration implementation, or its focused tests. D-141 must preserve all immutable hashes and prior skip transitions, prove both exact replacements, and may not invoke the fixed composite acceptance or official execution from its implementation branch."
+}

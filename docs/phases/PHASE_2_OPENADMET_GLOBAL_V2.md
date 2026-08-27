@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-139 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-140 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1286,34 +1286,80 @@ Signed D-138 commit `158dffca...a6e8318` is integrated after green PR CI run
 3.11, 3.12.3, and 3.14.
 
 D-139 freezes only the prospective test-provenance transition required when
-D-140 replaces the historical live official driver and five-field claim
-derivation. Its contract SHA-256 is `6703ad30...45709c2c`, and six static
+the next implementation replaces the historical live official driver and
+five-field claim derivation. Its contract SHA-256 is
+`6703ad30...45709c2c`, and six static
 contract tests at `185555b2...a0df90a0` pass. The accepted D-136 bridge, its
 historical audit file, and the current pytest hook remain unchanged in D-139.
-D-140 may retire exactly three historical nodes: the D-135 live-implementation
+D-141 may retire exactly three historical nodes: the D-135 live-implementation
 binding, the D-136 live-bridge
 binding, and the pre-repair five-field claim-derivation audit. Their full exact
 node IDs are frozen in the D-139 contract. Every retirement must be marked by
-the D-140 hook and paired with a replacement current-state assertion in the
-new D-140 focused tests; all other historical audits remain active. This is a
+the D-141 hook and paired with a replacement current-state assertion in the
+new D-141 focused tests; all other historical audits remain active. This is a
 test-provenance transition, not science or model-quality evidence. It changes
 no implementation, candidate, feature, seed, group, fit, prediction, metric,
 gate, resource, status, accounting, claim, privacy, selection-token, or
 no-runner-up rule and runs neither fixed one-use gate.
 
+Signed D-139 commit `3b9c251f6875fedb33e51c4420cd8634c6e4cf29` is integrated,
+and exact-SHA post-main CI run `33103967048` is green across Python 3.11,
+3.12.3, and 3.14.
+
+The uncommitted prospective implementation passed 118 safe focused/contract
+tests. The safe repository suite, run with permanently barred
+`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
+ignored, then reported `1415 passed, 8 skipped, 2 failed` in about 352.96
+seconds.
+Both failures are source-shape assertions in immutable D-134 focused snapshot
+SHA-256 `3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`:
+
+- `tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_exact_fit_topology_and_conditional_stage_c_are_unchanged`; and
+- `tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_supervisor_starts_before_claim_consumption_and_official_access`.
+
+D-140 therefore freezes only the supplemental source-shape transition contract
+at SHA-256 `d4ff0e57b4c5d8b6bae808d0749f5b8e116965f18f2df3fee6e04e58dd727417`.
+Its seven contract tests have SHA-256
+`35bcb0958bc66c386b82ab13171b453c6f60fde81dcb40d329a2f9b659c67da6`.
+All seven D-140 tests and all 25 combined D-137 through D-140 contract tests
+pass.
+The exact D-141 replacements are
+`test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging`,
+covering Stage A/B/C identities `540/180/300`, five exact feature widths,
+predictor-authority cross rejection, stage order with exact condition
+`selected != "G2-7-M0-FULL"`, and cleanup-before-staging; and
+`test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`,
+covering supervisor/claim/child chronology, exact `raw_observed`, both
+publication-root/parent arguments, equal limits, fixed-root absence,
+aggregate-bytes-only `_failure_payload` accounting, common-seal-exclusive
+publication, and absence of the obsolete child/parent terminal names. D-141
+may add only these two skip markers while preserving the prior four, for six
+total, and must bind
+`d140_source_shape_transition_contract_sha256` through every frozen location.
+
+D-140 changes no implementation, collection hook, historical test, science,
+claim, gate, fit, prediction, metric, resource, status, accounting, selection,
+privacy, or one-use state. The D-141 implementation remains uncommitted and its
+hashes are not bound as D-140 evidence. D-140 grants zero test-collection,
+implementation, formal-acceptance, official, claim, scientific, model-quality,
+confirmatory, submission, or upload authority.
+
 ## Exact next action
 
-Review and integrate only the D-139 test-provenance transition contract and
-require green exact-SHA post-main CI for its signed commit. D-138 is already
-integrated and green at exact-SHA post-main run `33101131039`. Next, D-140 may
-package only the repaired official driver, fixed no-argument composite
-acceptance driver, dedicated focused tests, and exact conftest markers and
-replacement bindings frozen by D-139. Review, integrate, and require green
-exact-SHA post-main CI for D-140 before running the fixed composite acceptance
-exactly once. Do not run either the composite acceptance or official G2-7G
-driver yet. D-135 must not be repeated. The tracked claim must remain unchanged
-and unconsumed, all new fixed roots must remain absent, and no official source
-or baseline byte may be opened. D-127 and D-128 paths remain barred.
+Review and integrate only the D-140 contract and knowledgebase package through
+the signed fast-forward-only workflow, then require green exact-SHA post-main
+CI. D-139 is already integrated and green at run `33103967048`. After D-140 is
+green on clean synchronized `main`, package the still-uncommitted D-141
+implementation with exactly the six-marker conftest state and both replacements.
+Review and integrate D-141 and require green exact-SHA post-main CI. Only then
+prove the fixed composite parent/work/acceptance/rejection roots absent and run
+the sole fixed no-argument composite acceptance exactly once. Do not run that
+acceptance or the official G2-7G driver from either branch, and do not preflight
+the official attempt until the resulting aggregate acceptance is separately
+reviewed, integrated, and green on main. D-135 must not be repeated. The tracked
+claim must remain unchanged and unconsumed, all official fixed roots must remain
+absent, and no official source or baseline byte may be opened. D-127 and D-128
+paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

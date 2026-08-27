@@ -461,21 +461,62 @@ exact-SHA post-main run `33101131039` is green across Python 3.11, 3.12.3, and
 3.14.
 
 D-139 freezes a contract-only test-provenance transition at SHA-256
-`6703ad30...45709c2c` before D-140 changes the live repaired driver and current
-claim derivation. The D-136 historical audit file and `tests/conftest.py`
-remain unchanged in D-139. Exactly three
-D-136 nodes prospectively become historical when D-140 lands: the assertions
+`6703ad30...45709c2c` before the next implementation changes the live repaired
+driver and current claim derivation. The D-136 historical audit file and
+`tests/conftest.py` remain unchanged in D-139. Exactly three D-136 nodes
+prospectively become historical when D-141 lands: the assertions
 that bind the immutable D-135 receipt and D-136 bridge directly to the live
 historical driver, plus the pre-repair five-field claim-derivation assertion.
-D-140 may mark only those exact nodes and must bind each retirement to a
+D-141 may mark only those exact nodes and must bind each retirement to a
 replacement current-state assertion in its new focused tests; every other
 historical audit remains active. D-139 changes no implementation, science,
 claim, status, accounting, resource, privacy, or selection rule and performs
 zero formal, official, claim, fit, prediction, metric, confirmatory,
-blinded-test, submission, leaderboard, or upload operation. Reviewed D-139
-integration and green exact-SHA post-main CI precede D-140. Six static contract
-tests at `185555b2...a0df90a0` pass. Reviewed D-140 integration and green
-post-main CI precede the sole fixed composite acceptance.
+blinded-test, submission, leaderboard, or upload operation. Six static contract
+tests at `185555b2...a0df90a0` pass. D-140's supplemental source-shape contract
+now precedes the D-141 implementation.
+
+Signed D-139 commit `3b9c251f6875fedb33e51c4420cd8634c6e4cf29` passed exact-SHA
+post-main CI run `33103967048` across Python 3.11, 3.12.3, and 3.14. An
+uncommitted prospective implementation then passed 118 safe focused/contract
+tests but exposed two additional immutable source-shape failures in the safe
+repository suite, run with permanently barred
+`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
+ignored: `1415 passed, 8 skipped, 2 failed` in about 352.96 seconds. D-140
+records that negative evidence and freezes only the supplemental source-shape
+transition contract at
+SHA-256 `d4ff0e57b4c5d8b6bae808d0749f5b8e116965f18f2df3fee6e04e58dd727417`;
+its seven contract tests have SHA-256
+`35bcb0958bc66c386b82ab13171b453c6f60fde81dcb40d329a2f9b659c67da6`.
+All seven D-140 tests and all 25 combined D-137 through D-140 contract tests
+pass.
+
+The exact failures in immutable D-134 focused snapshot
+`3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`
+are `test_exact_fit_topology_and_conditional_stage_c_are_unchanged` and
+`test_supervisor_starts_before_claim_consumption_and_official_access`. D-141
+must replace them exactly with
+`test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging`
+and
+`test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+The first replacement owns all fit identities, five exact feature widths,
+predictor-authority cross rejections, stage chronology, and cleanup-before-
+staging chronology, including exact condition `selected != "G2-7-M0-FULL"`.
+The second owns supervisor/claim/child chronology, exact `raw_observed`, both
+publication arguments, limits and fixed-root absence, aggregate-bytes-only
+`_failure_payload` accounting, common-seal-exclusive publication, and absence
+of the two obsolete terminal call names. D-141 may add only those two markers
+while retaining the prior four, for six total, and must bind
+`d140_source_shape_transition_contract_sha256`.
+
+D-140 changes no implementation, conftest, historical snapshot, science,
+claim, gate, fit, prediction, metric, resource, selection, or one-use state.
+The uncommitted implementation has no D-140-bound hashes or authority. Review,
+integrate, and require green exact-SHA post-main CI for D-140; then package,
+review, integrate, and require green post-main CI for D-141 before preflighting
+the sole fixed no-argument composite acceptance. D-140 grants zero collection,
+implementation, gate, one-use, official, claim, science, or model-quality
+authority.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
