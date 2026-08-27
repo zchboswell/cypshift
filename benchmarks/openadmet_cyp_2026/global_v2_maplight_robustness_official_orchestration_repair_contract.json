@@ -1,0 +1,401 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_official_orchestration_repair_contract.v1",
+  "freeze_date": "2026-08-27",
+  "gate": "G2_7H_MAPLIGHT_ROBUSTNESS_OFFICIAL_ORCHESTRATION_REPAIR_CONTRACT_FROZEN",
+  "status": "contract_only_no_repair_implementation_or_acceptance_or_official_execution_yet",
+  "contract_id": "G2-7H-MAPLIGHT-ROBUSTNESS-OFFICIAL-ORCHESTRATION-REPAIR-V1",
+  "base_commit": "1c0c5d0f293579a8748e25b3951f9234409bfa39",
+  "purpose": "Repair only the fail-closed official orchestration boundary discovered during the final pre-consumption audit while inheriting the immutable D-135 science-kernel acceptance and leaving every frozen scientific primitive unchanged.",
+  "hypothesis": "The accepted D-122 battery can be executed without changing its science once the official driver makes the underpowered status reachable, distinguishes hard resource exhaustion from ordinary execution failure, preserves cumulative supervision, records truthful aggregate allowed-input accounting, and removes fixed publication staging without following symlinks.",
+  "targeted_failure": "The integrated D-134 official driver would collapse underpowered and ordinary process failures into resource-aborted, discard the supervisor observation on every supervised failure, leave allowed official source, target, feature, baseline, and claim-use accounting falsely zero, and could retain publication staging or dereference a symlinked cleanup root after interruption.",
+  "acceptance_criterion": "After reviewed integration and green exact-SHA post-main CI, one new fixed no-argument zero-official composite acceptance must exercise the corrected five-status orchestration boundary in two opposite scenario orders, preserve structured cumulative observations, prove exact aggregate accounting formulas, remove fixed staging and symlinks safely, publish no partial terminal, and retain zero official, claim, fit, prediction, metric, confirmatory, blinded-test, TDI, submission, leaderboard, or upload authority.",
+  "occam_boundary": "Change only the single-use official driver and add one fixed composite acceptance driver plus dedicated focused tests. Preserve the accepted runner, robustness compiler, scoring compiler, no-fit wrapper, cumulative supervisor, MapLight runner, model runtime, candidates, features, parameters, seeds, groups, fits, predictions, metrics, gates, clips, selection token, and no-runner-up rule byte-for-byte.",
+  "immutable_parent_evidence": {
+    "corrected_execution_contract_v2": {
+      "path": "global_v2_maplight_robustness_execution_contract_v2.json",
+      "sha256": "9464b0947255298a8de8836af6178857841bb2a55bc5c0f4897be2ba91151bcf"
+    },
+    "tracked_unconsumed_claim_v2": {
+      "path": "global_v2_maplight_robustness_execution_claim_v2.json",
+      "sha256": "d7e68837a9df0b392eab7d03282ec84d21b8787f4b2ac14b1fc79fec44df6f9f",
+      "required_status": "G2_7G_MAPLIGHT_ROBUSTNESS_CLAIM_UNCONSUMED",
+      "required_consumptions": 0,
+      "required_future_null_fields": 5,
+      "mutation_allowed": false
+    },
+    "d135_science_kernel_acceptance": {
+      "path": "global_v2_maplight_robustness_execution_acceptance_v2.json",
+      "sha256": "4c886d0dd51bfb48095ac2a8f88b202e78cb85f840f8f7bd474c2982ffedf390",
+      "required_status": "G2_7G_MAPLIGHT_ROBUSTNESS_EXECUTION_ACCEPTED",
+      "inherited_model_double_fits": 3480,
+      "inherited_synthetic_predictions": 667872,
+      "inherited_real_catboost_controls": 2,
+      "rerun_or_repair": false
+    },
+    "d136_test_provenance_bridge": {
+      "path": "global_v2_maplight_robustness_focused_test_provenance_bridge.json",
+      "sha256": "2820c30f387d138d115b36f621b038dc75a1f5af43a7fa9f97b3b837a33a0dc3",
+      "integrated_commit": "1c0c5d0f293579a8748e25b3951f9234409bfa39",
+      "post_main_ci_run": 33090557041,
+      "post_main_ci_conclusion": "success"
+    },
+    "historical_accepted_official_driver": {
+      "path": "research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py",
+      "sha256": "1675336e449ba9a8327406cb37f82f08e3547076ce6c69fa0ade70c5a3de57fc",
+      "execution_authority_after_this_contract": false
+    },
+    "historical_formal_acceptance_driver": {
+      "path": "research/maplight-fixed/run_global_v2_maplight_robustness_execution_acceptance_v2.py",
+      "sha256": "7cb471ce6c39e4633b91556cd2c09ee7406dd39912b5d69200fad9372a42e473"
+    },
+    "historical_formal_focused_tests": {
+      "path": "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py",
+      "sha256": "3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f"
+    }
+  },
+  "immutable_science_kernel": {
+    "scientific_runner": {
+      "path": "research/maplight-fixed/global_v2_maplight_robustness_scientific_runner.py",
+      "sha256": "dca9b8d1be51a29fa4e2269949d1f3339ecf14d99b91f203aa2cacdd2ca90bde"
+    },
+    "robustness_compiler": {
+      "path": "research/maplight-fixed/global_v2_maplight_robustness_execution_compiler.py",
+      "sha256": "029afd827e3a86718e7e2493594bbc6e6ed78e258534221e32acc2027ace72a7"
+    },
+    "scoring_compiler": {
+      "path": "research/maplight-fixed/global_v2_maplight_robustness_scoring_compiler.py",
+      "sha256": "6f15205fccb4a7c2e1cc2c7244e31acf15d7fd34b285c85145bfde551da6f492"
+    },
+    "no_fit_wrapper": {
+      "path": "research/maplight-fixed/global_v2_maplight_robustness_execution_wrapper.py",
+      "sha256": "a6e02c244d6bd1b7bcb020dcf9627f68d453ae25827527e6de9acdaa30226c66"
+    },
+    "resource_supervisor": {
+      "path": "research/maplight-fixed/global_v2_maplight_resource_supervisor.py",
+      "sha256": "0d7b016b638fb4019eb377328f63a193d23fd6763540a636bd821cbabed63cec"
+    },
+    "maplight_runner": {
+      "path": "research/maplight-fixed/global_v2_maplight_runner.py",
+      "sha256": "154f8d231c490da7d2af419bfb533ec18a17c2d4ec3938c0373995a3a9acb93f"
+    },
+    "change_rule": "Any byte change to one of these six sources invalidates modular inheritance from D-135 and requires a separately frozen full scientific reacceptance before official access."
+  },
+  "repair_surface": {
+    "production_files_that_may_change": [
+      "research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py"
+    ],
+    "new_acceptance_driver": "research/maplight-fixed/run_global_v2_maplight_robustness_official_orchestration_acceptance.py",
+    "new_focused_tests": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py",
+    "allowed_driver_changes": [
+      "authenticate D-135 as historical science-kernel evidence and require one new composite orchestration acceptance before claim derivation can succeed",
+      "catch only RobustnessExecutionUnderpowered inside the supervised child and stage its aggregate status after private cleanup",
+      "parse the accepted supervisor's canonical reason-and-observation exception without changing the supervisor",
+      "classify only the four exact hard resource maxima as resource-aborted and every other supervised defect as failed",
+      "reconstruct and validate allowed aggregate accounting from immutable call sites, accepted cardinalities, capability manifests, and stage manifests",
+      "use one fixed supervisor-owned publication staging root, remove only exact owned roots, and unlink symlinks without following them",
+      "append cumulative supervision to the already aggregate-only staged manifest and atomically promote it without replacement",
+      "append one aggregate attempt_receipt.json inside the status-specific terminal root before atomic no-replace promotion",
+      "publish the consumed claim through one fixed temporary file, file and directory fsyncs, and atomic no-replace promotion so no partial attempt_claim.json can become visible"
+    ],
+    "forbidden_driver_changes": [
+      "candidate, feature, parameter, seed, group, fold, fit, prediction, metric, bootstrap, threshold, gate, clipping, calibration, blend, cache, concurrency, retry, resume, move, overwrite, replacement, or runner-up change",
+      "official source or baseline path, allowlist, receipt, or read-order change",
+      "claim template mutation or any field beyond the five frozen future receipts",
+      "new runtime, dependency, framework, service, or submission behavior"
+    ]
+  },
+  "terminal_taxonomy": {
+    "scientific_success": "G2_7_PRIMARY_CONTENDER_FROZEN",
+    "clean_support_stop": "G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED",
+    "scientific_rejection": "G2_7_MAPLIGHT_ROBUSTNESS_REJECTED",
+    "hard_resource_abort": "G2_7C_MAPLIGHT_ROBUSTNESS_RESOURCE_ABORTED",
+    "execution_failure": "G2_7_MAPLIGHT_ROBUSTNESS_FAILED",
+    "hard_resource_reasons": [
+      "wall limit exceeded",
+      "CPU limit exceeded",
+      "storage limit exceeded",
+      "simultaneous RSS limit exceeded"
+    ],
+    "failed_reasons": [
+      "warning or stderr output observed",
+      "supervised process exited nonzero",
+      "no resource checkpoint was acknowledged",
+      "resource checkpoint request differs",
+      "descendant detached from the supervised process group",
+      "supervisor failure",
+      "malformed or absent supervisor observation",
+      "cleanup, staging, accounting, receipt, or publication failure"
+    ],
+    "supervisor_exception_protocol": {
+      "delimiter": "; observation=",
+      "required_observation_fields": [
+        "wall_seconds",
+        "cpu_seconds",
+        "peak_storage_bytes",
+        "peak_simultaneous_rss_bytes",
+        "gpu_hours",
+        "checkpoints_acknowledged",
+        "descendant_processes_observed",
+        "return_code",
+        "cleanup_complete",
+        "network_namespace_isolated",
+        "gpu_environment_hidden",
+        "detached_children_observed",
+        "warnings_observed"
+      ],
+      "validation": "Require exactly the 13 accepted ResourceObservation fields with no extras: finite nonnegative wall, CPU, and GPU values; nonnegative integer storage, RSS, checkpoint, descendant, detached, and warning values; an integer-or-null return code; and exact booleans. The four hard-resource reason strings are classified only after this validation. A missing or malformed observation after claim consumption is FAILED and never resource-aborted; before claim consumption the pre-consumption rule applies and no terminal is fabricated.",
+      "scientific_or_underpowered_success": "Require return_code to be the integer zero and not a boolean; checkpoints_acknowledged and descendant_processes_observed both greater than zero; cleanup_complete, network_namespace_isolated, and gpu_environment_hidden all true; gpu_hours, detached_children_observed, and warnings_observed all zero; and every observed wall, CPU, storage, and simultaneous-RSS value within the frozen parent hard limits before the cumulative seal rule is applied."
+    },
+    "underpowered_rule": "Only the compiler's exact RobustnessExecutionUnderpowered exception may produce UNDERPOWERED. It must occur after claim consumption and allowed official source parsing but before any model fit, prediction, baseline open, selection token, or development metric.",
+    "cleanup_rule": "Any cleanup defect changes a scientific or underpowered status to FAILED. Unknown supervisor reasons fail closed as FAILED and can never become a scientific or resource success."
+  },
+  "aggregate_accounting": {
+    "semantic_rule": "Counters record authoritative capability crossings, not operating-system read syscalls or repeated in-memory parsing. Each physical official source file opened into a trusted compiler counts its rows or values once for that compiler; a later independent compiler or scorer open counts again. The legacy official_source_rows_opened counter means direct endpoint rows only, official_target_values_opened means finite central point values only, and the legacy official_feature_identity_rows_opened, official_feature_matrix_rows_opened, and official_feature_rows_opened counters cover only the raw source-to-compiler crossing. Raw group-fold rows, finite reported-bound values, generated model features, generated model folds, generated predictions reopened for scoring, scoring truth, training targets, and baseline predictions use separate granular counters. Copying or reparsing bytes already held inside one trusted component does not create another open.",
+    "official_population": {
+      "all_molecules": 4905,
+      "development_molecules": 3908,
+      "confirmatory_molecules": 997,
+      "direct_endpoint_rows": 19620,
+      "accepted_group_fold_rows": 73575,
+      "baseline_outer_prediction_rows_per_open": 46896,
+      "finite_development_point_values": 5197
+    },
+    "underpowered_formula": {
+      "official_source_rows_opened": "19620",
+      "official_group_fold_rows_opened": "73575",
+      "official_generated_model_fold_rows_opened": "0",
+      "official_all_fold_rows_opened": "73575",
+      "official_source_target_values_opened": "5197",
+      "official_target_values_opened": "5197 central point values",
+      "official_reported_bound_values_opened": "0",
+      "official_feature_identity_rows_opened": "4905",
+      "official_feature_matrix_rows_opened": "4 * 4905",
+      "official_feature_rows_opened": "5 * 4905",
+      "official_generated_model_feature_rows_opened": "0",
+      "official_all_feature_rows_opened": "5 * 4905",
+      "official_baseline_rows_opened": "0",
+      "official_scoring_truth_values_opened": "0",
+      "official_training_target_values_opened": "0",
+      "official_model_fits": "0",
+      "official_predictions_generated": "0",
+      "official_prediction_rows_opened_for_scoring": "0",
+      "development_metric_evaluations": "0",
+      "claims_consumed": "1"
+    },
+    "completed_battery_formula": {
+      "official_source_rows_opened": "2 * 19620 for the robustness and scoring compiler decode passes",
+      "official_group_fold_rows_opened": "73575 for the robustness compiler source crossing; the scoring compiler does not reopen group_folds.csv",
+      "official_generated_model_fold_rows_opened": "5 * model_fold_rows when full MapLight is retained or 6 * model_fold_rows when the selected deletion triggers stage C; model_fold_rows is the exact authenticated D-126 generated folds-capability count derived from its preflight exclusions and receipt",
+      "official_all_fold_rows_opened": "73575 plus official_generated_model_fold_rows_opened",
+      "official_source_target_values_opened": "2 * 5197 for the robustness and scoring compiler source decodes",
+      "official_scoring_truth_values_opened": "5 * 5197 for three scoring-compiler capability validations plus selection and terminal scoring",
+      "official_reported_bound_values_opened": "6 * counts.tutorial_eligible_rows from the authenticated scoring-capability manifest: two finite bounds during scoring compilation and two during each of selection and terminal scoring",
+      "official_training_target_values_opened": "sum of the exact completed stage manifests",
+      "official_target_values_opened": "7 * 5197 central point values plus the sum of stage-manifest training_target_values_opened; finite reported bounds are counted separately",
+      "official_feature_identity_rows_opened": "4905",
+      "official_feature_matrix_rows_opened": "4 * 4905",
+      "official_feature_rows_opened": "5 * 4905",
+      "official_generated_model_feature_rows_opened": "4 * 4 * 3908 when full MapLight is retained or 5 * 4 * 3908 when the selected deletion triggers stage C",
+      "official_all_feature_rows_opened": "5 * 4905 plus official_generated_model_feature_rows_opened",
+      "official_baseline_rows_opened": "2 * 46896 for the frozen selection and terminal scoring opens",
+      "official_model_fits": "720 when full MapLight is retained or 1020 when the selected deletion triggers stage C",
+      "stage_a_predictions_generated": "422064",
+      "stage_b_predictions_generated": "the exact authenticated stage-B manifest value, greater than zero and strictly less than its 140688 upper bound because every non-primary overlay excludes confirmatory-touching development molecules",
+      "stage_c_predictions_generated": "0 when full MapLight is retained or 234480 when the selected deletion triggers stage C",
+      "official_predictions_generated": "the exact sum of completed stage manifests; strictly less than 562752 when full MapLight is retained or strictly less than 797232 when the selected deletion triggers stage C",
+      "official_prediction_rows_opened_for_scoring": "2 * stage_a_predictions_generated plus stage_b_predictions_generated plus stage_c_predictions_generated: Stage A is opened for selection and terminal scoring, while Stage B and conditional Stage C are opened only for terminal scoring",
+      "development_metric_evaluations": "1 complete frozen battery",
+      "tutorial_metric_calls": "56 exactly",
+      "maximum_tutorial_metric_calls": "80",
+      "claims_consumed": "1"
+    },
+    "prediction_count_erratum": {
+      "parent_contract_labels": "D-122 and D-133 label 562752 as a minimum total and 797232 as a maximum total by adding the 140688 stage-B upper bound.",
+      "corrected_interpretation": "Both numbers are unattainable branch upper projections, not exact totals: the frozen active-fold logic requires positive confirmatory-touch exclusions for every non-primary Stage-B overlay. Exact official prediction accounting is therefore the authenticated sum of the completed stage manifests.",
+      "science_change": false,
+      "mechanics_change": false,
+      "selection_change": false
+    },
+    "failure_rule": "A failed or resource-aborted terminal preserves every aggregate counter recoverable from a validated staged manifest and marks accounting_complete false when an interrupted child makes an exact count unavailable. It may never invent zero work after work began.",
+    "must_remain_zero": [
+      "confirmatory_truth_values_opened",
+      "historical_row_level_artifacts_opened",
+      "blinded_test_rows_opened",
+      "tdi_rows_opened",
+      "external_records_acquired",
+      "submission_rows_generated",
+      "official_metric_calls",
+      "leaderboard_observations_used_for_selection",
+      "live_uploads",
+      "private_portal_observations_recorded"
+    ]
+  },
+  "supervision_and_publication": {
+    "fixed_publication_staging_root": "/home/zbos/cypshift-private/openadmet-2026/.g2-7h-maplight-robustness-terminal-staging",
+    "fixed_restricted_root": "/home/zbos/cypshift-private/openadmet-2026/.g2-7g-maplight-robustness-development-attempt-1-restricted",
+    "fixed_attempt_root": "/home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1",
+    "fixed_claim_staging_path": "/home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1/.attempt-claim-staging",
+    "fixed_final_terminal": "/home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1/terminal",
+    "supervised_boundary": "The accepted supervisor begins before claim consumption, owns the fixed publication staging root, measures every private compiler/model/scorer/diagnostic/cleanup operation, and receives the complete aggregate-only terminal payload after private cleanup. Any child or supervisor failure removes that fixed staging root before control returns.",
+    "post_supervision_seal": "A ResourceObservation cannot truthfully include its own later serialization. After either a successful ResourceObservation, a canonical exception observation once valid claim consumption is proven, or a missing or malformed exception observation after valid claim consumption for an accounting-incomplete FAILED terminal only, the outer process may only clean exact owned aggregate staging, validate and add any available observation and the exact limits to an aggregate-only manifest, create the aggregate-only attempt_receipt.json that binds every other staged file, fsync the files and staging directory, make the fixed staging tree read-only, and atomically rename it without replacement to the final terminal. Scientific, underpowered, rejected, resource-aborted, and failed terminals all use this same bounded seal. This seal may open no official, baseline, model, truth, prediction, confirmatory, blinded-test, TDI, submission, leaderboard, portal, or upload capability.",
+    "post_supervision_seal_limits": {
+      "maximum_terminal_bytes": 16777216,
+      "maximum_attempt_receipt_bytes": 1048576,
+      "maximum_wall_seconds": 5.0,
+      "maximum_cpu_seconds": 5.0,
+      "additional_official_or_baseline_opens": 0,
+      "additional_model_fits": 0,
+      "additional_predictions": 0,
+      "additional_metric_evaluations": 0
+    },
+    "cumulative_resource_rule": {
+      "parent_hard_limits": {
+        "wall_seconds": 27648.0,
+        "cpu_seconds": 460800.0,
+        "storage_bytes": 51200000000,
+        "simultaneous_rss_bytes": 16492674416,
+        "gpu_hours": 0.0
+      },
+      "success_reservation": "Before sealing a scientific, rejected, or underpowered payload, require observed wall_seconds plus the full 5-second seal reservation and observed cpu_seconds plus the full 5-second seal reservation to remain within the parent hard maxima. Require GPU hours exactly zero. The full 16,777,216-byte terminal reservation plus observed peak storage must remain within 51,200,000,000 bytes, and the outer seal process must remain within the 16,492,674,416-byte simultaneous-RSS maximum through atomic promotion. This worst-case reservation binds the otherwise self-referential receipt serialization without widening D-125.",
+      "failure_rule": "A canonical hard-limit observation publishes only RESOURCE_ABORTED; an ordinary canonical exception publishes only FAILED. A missing or malformed post-claim observation may publish only an accounting-incomplete FAILED terminal and never claim resource compliance. Every resource or failed terminal seal still obeys the 5-second wall, 5-second CPU, 16,777,216-byte terminal, 1,048,576-byte receipt, zero-GPU, and zero-additional-science limits.",
+      "seal_failure_rule": "A non-resource seal defect before final promotion permits exactly one same-invocation minimal FAILED seal after symlink-safe staging cleanup; this is evidence publication, not a scientific retry. A hard seal-resource breach permits exactly one minimal RESOURCE_ABORTED seal. If the final path already exists or the minimal seal or atomic promotion fails, clean fixed staging, retain the consumed claim, publish no replacement terminal, propagate a terminally blocking error, and never reinvoke the fixed claim or driver."
+    },
+    "aggregate_receipt": "terminal/attempt_receipt.json is the aggregate attempt receipt and binds every other status-specific terminal file, the consumed claim, implementation lineage, accounting, cumulative supervision, cleanup, and denied authority. It is contained inside the one atomically promoted terminal root; no sibling receipt root is required or permitted.",
+    "status_specific_file_sets": {
+      "scientific_success_or_rejection": [
+        "attempt_receipt.json",
+        "manifest.json",
+        "primary_metrics.json",
+        "robustness.json",
+        "selection.json"
+      ],
+      "underpowered": [
+        "attempt_receipt.json",
+        "manifest.json",
+        "preflight.json"
+      ],
+      "resource_or_failed": [
+        "attempt_receipt.json",
+        "manifest.json"
+      ]
+    },
+    "cleanup": "Cleanup operates only on exact fixed children. A symlink at or below an owned cleanup root is unlinked and never followed. Interrupted fixed staging is removed by the supervisor on child failure and by the outer fail-closed publisher before any failure terminal.",
+    "pre_consumption_failure": "If supervision or the child fails before attempt_claim.json is atomically published, unlink without following any fixed claim-staging symlink, remove only the fixed claim staging path, fixed restricted root, fixed publication staging root, and empty fixed attempt root, require all five paths plus claim, receipt, and terminal absent, and propagate a fail-closed pre-consumption error. Do not fabricate a consumed claim or official terminal. The same fixed claim and driver are never reinvoked; progression stops unless the user separately authorizes a genuinely new scientific plan with a new contract, claim, and root, not a retry or replacement.",
+    "final_attempt_file_set": [
+      "attempt_claim.json",
+      "terminal"
+    ],
+    "final_attempt_file_set_precondition": "The exact final attempt file set applies only after a valid attempt_claim.json proves that the sole claim was consumed.",
+    "terminal_read_only": true,
+    "atomic_no_replace": true
+  },
+  "composite_acceptance": {
+    "driver_path": "research/maplight-fixed/run_global_v2_maplight_robustness_official_orchestration_acceptance.py",
+    "focused_tests_path": "tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py",
+    "fixed_parent_root": "/tmp/cypshift-g2-7h",
+    "fixed_work_root": "/tmp/cypshift-g2-7h/official-orchestration-acceptance-attempt-1",
+    "acceptance_path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_acceptance.json",
+    "rejection_path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_rejection.json",
+    "attempts": 1,
+    "retry": false,
+    "resume": false,
+    "move": false,
+    "overwrite": false,
+    "replacement": false,
+    "required_scenarios_per_order": [
+      "scientific_success",
+      "clean_underpowered",
+      "scientific_rejection",
+      "hard_wall_resource_abort",
+      "ordinary_nonzero_failure",
+      "pre_consumption_supervisor_failure"
+    ],
+    "scenario_orders": [
+      "forward",
+      "reverse"
+    ],
+    "required_mechanics": [
+      "all five public statuses are reachable only from their frozen cause",
+      "supervisor observations round-trip through the strict accepted schema and limits",
+      "normalized status, file-set, accounting, receipt, and cleanup maps are identical across scenario order",
+      "scientific and rejected four-file payload semantics inherit D-135 unchanged",
+      "underpowered contains only aggregate support and zero fit, prediction, baseline, token, runner-up, or metric work",
+      "hard wall maps only to resource-aborted and real nonzero maps only to failed",
+      "a pre-consumption supervisor failure propagates without an attempt root, consumed claim, receipt, terminal, or second invocation",
+      "claim publication uses a fixed temporary file plus file and directory fsyncs and atomic no-replace promotion; interruption leaves no partial claim, claim staging, restricted root, or empty attempt root",
+      "successful and canonical-exception outcomes share the same cumulative bounded seal; injected seal faults and final-path collisions never overwrite or authorize another scientific invocation",
+      "fixed staging, deliberately orphaned staging, and symlinked cleanup roots are removed without touching an external sentinel",
+      "final terminals are atomic, no-replace, aggregate-only, read-only, and retain no private root"
+    ],
+    "forbidden_operations": {
+      "official_source_or_baseline_bytes_opened": 0,
+      "claims_created": 0,
+      "claims_consumed": 0,
+      "model_double_invocations": 0,
+      "real_catboost_fits": 0,
+      "predictions_generated": 0,
+      "development_metric_evaluations": 0,
+      "confirmatory_truth_values_opened": 0,
+      "historical_row_level_artifacts_opened": 0,
+      "blinded_test_rows_opened": 0,
+      "tdi_rows_opened": 0,
+      "external_records_acquired": 0,
+      "submission_rows_generated": 0,
+      "official_metric_calls": 0,
+      "leaderboard_observations_used_for_selection": 0,
+      "private_portal_observations_recorded": 0,
+      "live_uploads": 0
+    },
+    "authority": "Mechanics and orchestration evidence only. It inherits D-135 science-kernel evidence but creates no model-quality result and no official execution authority until its aggregate acceptance is separately reviewed, integrated, and green on main."
+  },
+  "future_claim_derivation": {
+    "tracked_template_mutation": false,
+    "fields_filled_in_one_private_derivative": {
+      "future_scientific_runner_source_sha256": "unchanged D-135 scientific runner SHA-256",
+      "future_official_attempt_driver_source_sha256": "future corrected official driver SHA-256",
+      "future_official_shaped_acceptance_driver_source_sha256": "future composite acceptance driver SHA-256",
+      "future_official_shaped_execution_acceptance_sha256": "future reviewed composite acceptance SHA-256",
+      "future_focused_tests_sha256": "future dedicated orchestration focused-tests SHA-256"
+    },
+    "precondition": "Derivation must validate D-135 against the historical official-driver hash, then validate the new composite acceptance against the live corrected driver, acceptance driver, focused tests, this repair contract, D-136, and every unchanged science-kernel hash. Until the composite receipt is integrated and post-main CI is green, derivation and official execution must fail before supervision, claim consumption, or official access."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "contract_tests_created": 1,
+    "production_files_changed": 0,
+    "acceptance_drivers_created": 0,
+    "future_repair_focused_tests_created": 0,
+    "formal_acceptances_repeated": 0,
+    "composite_acceptances_run": 0,
+    "official_source_or_baseline_bytes_opened": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "model_double_invocations": 0,
+    "real_catboost_fits": 0,
+    "predictions_generated": 0,
+    "development_metric_evaluations": 0,
+    "confirmatory_truth_values_opened": 0,
+    "historical_row_level_artifacts_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "external_records_acquired": 0,
+    "submission_rows_generated": 0,
+    "official_metric_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "private_portal_observations_recorded": 0,
+    "live_uploads": 0
+  },
+  "current_authority": {
+    "repair_contract_frozen": true,
+    "repair_implementation": false,
+    "composite_acceptance": false,
+    "official_claim_consumption": false,
+    "official_source_or_baseline_access": false,
+    "development_fitting_or_scoring": false,
+    "confirmatory_access": false,
+    "blinded_test_access": false,
+    "submission_generation": false,
+    "live_upload": false
+  },
+  "next_gate": "Implement only the driver-local repair, one fixed composite acceptance driver, and dedicated focused tests. After reviewed signed integration and green exact-SHA post-main CI, run that fixed no-argument acceptance exactly once. Do not repeat D-135, consume the official claim, open an official source or baseline byte, run a model fit or development metric, access confirmatory or blinded-test data, generate a submission, use leaderboard evidence, or upload in either milestone."
+}

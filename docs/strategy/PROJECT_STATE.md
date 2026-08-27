@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-136. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-137. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -677,8 +677,12 @@ SHA-256 `9464b094...91151bcf` and a new immutable unconsumed claim at
 PR #169 and passed post-main CI run `32911452732` before this freeze. The
 contract binds exact D-122 science, D-125 cumulative limits, D-126 no-fit
 mechanics, and D-132 eight-field scorer acceptance. It preserves the exact
-720–1,020 fits, 562,752–797,232 prediction identities, one selection token,
-and no runner-up. The new fixed G2-7G root was absent at freeze; the claim has
+720–1,020 fits, one selection token, and no runner-up. D-137 later corrects
+only the prospective prediction-count labels: `562,752` and `797,232` are
+unattainable branch upper projections because required Stage-B
+confirmatory-touch exclusions are positive; the official count must be the
+exact completed-stage-manifest sum below the applicable projection. The new
+fixed G2-7G root was absent at freeze; the claim has
 five null future receipts, zero consumptions, `usable=false`, and no official
 or model authority. The D-127 claim/root and D-128 attempt remain permanently
 barred. Thirteen focused tests pass. This milestone opens no official row and
@@ -756,6 +760,68 @@ official attempt root, restricted root, private claim, or private byte was
 created or opened; and fits, predictions, metrics, claim operations, official
 operations, and model-quality authority remain zero. Fixed MapLight remains
 the best validated internal system at component-macro MAE `0.5837812652`.
+
+D-137 freezes the fail-closed G2-7H official-orchestration repair contract at
+[`global_v2_maplight_robustness_official_orchestration_repair_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_repair_contract.json),
+SHA-256 `f6576d61...0534b967`. Signed D-136 commit
+`1c0c5d0f...4409bfa39` was integrated and passed exact-SHA post-main CI run
+`33090557041` before the final official pre-consumption audit. That audit
+rejected execution before supervision: the historical official driver would
+map compiler underpower and ordinary supervised process defects to
+`G2_7C_MAPLIGHT_ROBUSTNESS_RESOURCE_ABORTED`, lose the structured cumulative
+observation on supervised failure, report allowed-input accounting as zero
+after work began, and lack fixed publication-staging and symlink-safe cleanup
+proof. The still-unrun one-use official attempt, tracked claim, fixed roots, and
+official source and baseline bytes were untouched. The contract inherits the
+immutable D-135 3,480-fit science-kernel acceptance without rerun and freezes
+the smallest repair: change only the official driver, add one fixed
+zero-official composite acceptance driver and dedicated focused tests, make all
+five public statuses reachable only from their exact cause, preserve cumulative
+supervision through canonical delimiter `; observation=` and exact 13-field
+typed observations, preserve authoritative-capability-crossing accounting, and bind every
+status-specific terminal through an in-terminal `attempt_receipt.json`, retain
+aggregate `preflight.json` on underpower, bound the post-supervision seal, and
+safely remove fixed staging and restricted roots without following symlinks.
+The claim itself must be staged at one fixed path, file- and directory-fsynced,
+then atomically promoted without replacement. A pre-consumption supervisor
+failure is the sixth scenario in each of two opposite orders; it must clean
+claim staging, restricted state, publication staging, and any empty attempt
+root, leave no claim, receipt, or terminal, and stop rather than fabricate an
+official disposition. The composite acceptance freezes eleven mechanics checks.
+
+Only after exact observation-schema validation may one of the four hard-
+resource reasons become resource-aborted. A missing or malformed observation
+after claim consumption may publish only an accounting-incomplete failed
+terminal through the same bounded seal and may not claim resource compliance;
+before claim consumption it follows the no-terminal cleanup rule. Scientific,
+rejected, and underpowered sealing also requires integer-zero return, positive
+checkpoints and descendants, complete cleanup/isolation, zero
+GPU/detachment/warnings, and observation plus the full
+five-second/five-second/16-MiB worst-case seal reservation within the unchanged
+parent hard maxima. Successful and canonical-exception outcomes share that one
+bounded seal. A seal defect permits only one same-invocation minimal failed or
+resource-aborted disposition; a final-path collision or failed minimal seal
+publishes no replacement, retains the consumed claim, and blocks permanently.
+
+The accounting correction separates 73,575 group-fold rows, 5,197 finite
+central points per source decode, finite reported bounds at exactly six times
+the authenticated tutorial-eligible count, raw versus generated model-feature
+and fold rows, generated predictions reopened for selection/terminal scoring,
+scoring truth, training targets, and baseline predictions. The completed
+battery still makes exactly 56 tutorial calls under the frozen maximum of 80.
+D-137 also records a count-label erratum: D-122/D-133 values `562,752` and
+`797,232` are unattainable branch upper projections because Stage-B overlay
+exclusions are mandatory; exact official predictions are the sum of completed
+stage manifests and are strictly below the applicable projection. This changes
+no science, mechanics, or selection. The runner, compiler, scorer, wrapper,
+supervisor, MapLight implementation, candidates, features, seeds, groups, fits,
+predictions, metrics, gates, resources, one-token selection, and no-runner-up
+rule remain byte-for-byte unchanged. This milestone creates no repair
+implementation and runs no acceptance, official, claim, fit, prediction,
+metric, confirmatory, blinded-test, submission, leaderboard, or upload
+operation. Fixed MapLight remains the best validated internal system at
+component-macro MAE `0.5837812652`. Nine contract-integrity tests at SHA-256
+`814675f2...1490f9c9` and all 29 safe related tests pass.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1407,17 +1473,18 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-136 focused-test provenance bridge SHA-256
-`2820c30f...33a0dc3` through the signed fast-forward-only workflow, then
-require green post-main CI for that exact commit. Only afterward perform a
-fresh G2-7G official-development preflight from clean synchronized `main` and invoke
-the fixed no-argument one-use official driver exactly once with
-`uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
-Do not run it from the bridge branch. The supervised child must
-consume the sole private claim before any official source or baseline byte is
-opened; the tracked claim remains immutable. Do not retry, resume, repair,
-move, overwrite, replace, or run a smaller or alternate battery. The D-127
-claim/root and D-128 attempt remain permanently barred.
+Review and integrate the D-137 repair contract SHA-256
+`f6576d61...0534b967` through the signed fast-forward-only workflow and require
+green post-main CI for that exact commit. Only afterward implement the
+driver-local orchestration repair, one fixed no-argument composite acceptance
+driver, and dedicated focused tests exactly as frozen. Do not run the composite
+acceptance or the official G2-7G attempt from the contract or implementation
+branch. D-135 is inherited immutable science-kernel evidence and must not be
+repeated, repaired, resumed, or reinterpreted. The tracked claim remains
+unchanged, unusable, and unconsumed; the official attempt, restricted, staging,
+acceptance, and rejection roots must remain absent; and no official source or
+baseline byte may be opened. The D-127 claim/root and D-128 attempt remain
+permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0

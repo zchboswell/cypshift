@@ -251,6 +251,65 @@ rejected by host receipt `37429202...e8f5b1` because hosted CI cannot provide
 the accepted local namespace boundary. Only live fault injection is skipped on
 hosted CI; it remains mandatory in local acceptance.
 
+The corrected G2-7G boundary is frozen in
+[`global_v2_maplight_robustness_execution_contract_v2.json`](global_v2_maplight_robustness_execution_contract_v2.json)
+with immutable unconsumed template
+[`global_v2_maplight_robustness_execution_claim_v2.json`](global_v2_maplight_robustness_execution_claim_v2.json),
+at SHA-256 values `9464b094...91151bcf` and `d7e68837...44df6f9f`. Its sole
+formal synthetic execution is accepted in
+[`global_v2_maplight_robustness_execution_acceptance_v2.json`](global_v2_maplight_robustness_execution_acceptance_v2.json),
+SHA-256 `4c886d0d...edf390`: two opposite-order roots traversed both the
+720-fit full-retained and 1,020-fit deletion-selected profiles, with 3,480
+model-double fits, 667,872 synthetic predictions, two real CatBoost controls,
+byte-identical maps, cumulative supervision, and complete cleanup. The D-136
+provenance bridge is
+[`global_v2_maplight_robustness_focused_test_provenance_bridge.json`](global_v2_maplight_robustness_focused_test_provenance_bridge.json),
+SHA-256 `2820c30f...33a0dc3`.
+
+The final pre-consumption audit then stopped the still-unrun official path and
+D-137 froze the narrow repair in
+[`global_v2_maplight_robustness_official_orchestration_repair_contract.json`](global_v2_maplight_robustness_official_orchestration_repair_contract.json),
+SHA-256 `f6576d61...0534b967`. The historical driver would collapse clean
+underpower and ordinary child failure into resource-aborted, lose the
+structured supervisor observation, retain false zero accounting after work
+began, and lacked accepted atomic claim publication, fixed publication and
+restricted-root cleanup, and symlink-safe cleanup evidence.
+The contract permits only a future official-driver patch plus one fixed
+zero-official composite acceptance driver and focused tests. It inherits D-135
+without rerun and changes no accepted science-kernel byte or model identity.
+Supervisor failures use canonical delimiter `; observation=` and exactly 13
+typed fields with no extras before classification. Malformed post-claim
+evidence may publish only accounting-incomplete failed through the same bounded
+seal, while malformed pre-claim evidence follows the no-terminal rule.
+Accounting counts authoritative capability crossings; each consumed-claim
+terminal binds an in-terminal `attempt_receipt.json`, underpowered retains
+aggregate `preflight.json`, and the post-supervision seal is explicitly
+bounded while creating and fsyncing the aggregate receipt. Claim publication
+uses a fixed staging path, file and directory fsyncs, and atomic no-replace
+promotion. The two-order acceptance has six scenarios and eleven mechanics
+checks, including a pre-consumption supervisor failure that cleans claim
+staging, the restricted root, publication staging, and any empty attempt root
+without fabricating a disposition.
+
+Granular accounting binds 73,575 group-fold rows, central points, finite
+reported bounds, raw/generated feature and fold rows, generated prediction
+reopens for scoring, scoring truth, training targets, baseline rows, and exact
+56-of-80 tutorial calls. D-137 also records that
+D-122/D-133's `562,752`/`797,232` official prediction labels are unattainable
+branch upper projections after mandatory Stage-B exclusions; the official
+count is the exact completed-stage-manifest sum below the applicable
+projection. No science, mechanics, or selection changes. Nine contract-
+integrity tests at `814675f2...1490f9c9` and all 29 safe related tests pass.
+Strict success invariants and full worst-case seal reservation stay within the
+unchanged parent limits; successful and canonical-exception outcomes share one
+bounded seal. Seal defects and final-path collisions cannot overwrite a
+terminal or authorize another fixed invocation.
+This contract milestone created no implementation and ran no acceptance,
+official, claim, fit, prediction, metric, confirmatory, blinded-test,
+submission, leaderboard, or upload operation. The tracked claim and all fixed
+roots remain untouched; fixed MapLight remains `0.5837812652` internal
+component-macro MAE.
+
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)
 and exact

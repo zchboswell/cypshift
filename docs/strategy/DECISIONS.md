@@ -4667,3 +4667,116 @@
   blocks progression. Otherwise integrate D-136 by signed fast-forward, require
   green exact-SHA post-main CI, then repeat only the fresh fail-before-work
   preflight and invoke the still-unrun sole no-argument official execution.
+
+## D-137 — Freeze a driver-only official-orchestration repair before claim use
+
+- Date: 2026-08-27
+- Status: accepted contract-only G2-7H evidence pending reviewed integration;
+  D-135 science-kernel acceptance inherited and not repeated; repair
+  implementation and composite acceptance absent; official execution unrun;
+  tracked claim unchanged, unusable, and unconsumed; fixed official,
+  restricted, staging, acceptance, and rejection roots absent; zero official
+  source or baseline byte, fit, prediction, metric, confirmatory, blinded-test,
+  TDI, submission, leaderboard-selection, private-portal-record, upload, or
+  model-quality operation
+- Decision: Accept
+  `global_v2_maplight_robustness_official_orchestration_repair_contract.json`
+  at SHA-256 `f6576d61...0534b967`. Freeze the smallest correction for the
+  fail-closed final pre-consumption audit: change only the official driver in
+  production, add one fixed zero-official composite acceptance driver and
+  dedicated focused tests, and inherit D-135's immutable accepted science
+  kernel without rerunning it.
+- Evidence: Signed D-136 commit `1c0c5d0f...4409bfa39` passed exact-SHA
+  post-main CI run `33090557041`. The subsequent fresh static audit stopped
+  the still-unrun official path before supervision. The compiler's exact
+  `RobustnessExecutionUnderpowered` would escape the supervised child; the
+  accepted supervisor would convert it and ordinary child failures to the
+  same exception form; and the historical official driver would classify any
+  such exception as `G2_7C_MAPLIGHT_ROBUSTNESS_RESOURCE_ABORTED`, discard its
+  structured cumulative observation, and retain false zero-valued allowed-
+  input accounting after work began. Atomic staged-and-fsynced claim
+  publication, fixed publication/restricted-root cleanup, complete interrupted
+  cleanup, and symlink-unlink-without-following behavior also lacked acceptance
+  proof. No attempt, claim-staging, restricted, or publication root, private
+  claim, or official source or baseline byte was created or opened.
+
+  The contract makes all five frozen statuses reachable only from their exact
+  cause, limits resource-aborted to the four exact hard wall, CPU, storage,
+  and simultaneous-RSS maxima, maps every other supervised defect to failed,
+  records structured cumulative supervision through canonical delimiter
+  `; observation=` and exactly 13 typed fields with no extras, reconstructs and
+  validates aggregate allowed-input accounting, stages and fsyncs claim publication,
+  and fixes atomic no-replace status-specific publication with symlink-safe
+  cleanup. Accounting represents authoritative capability crossings, not
+  syscalls or repeated in-memory parsing. It separately binds 73,575 group-
+  fold rows, source central points, finite reported bounds at exactly six times
+  the authenticated tutorial-eligible count, raw and generated model-feature
+  and fold rows, generated prediction reopens for selection/terminal scoring,
+  scoring truth, training targets, baseline predictions, and exactly 56
+  tutorial calls under the frozen maximum of 80.
+
+  Every consumed-claim terminal includes `attempt_receipt.json`; underpowered
+  also includes aggregate `preflight.json`. The bounded post-supervision seal
+  may create and fsync that receipt, bind the observation, make the terminal
+  read-only, and atomically promote it within 16 MiB, 1 MiB receipt, and five
+  wall- and CPU-seconds with zero additional official open, fit, prediction,
+  or metric. A pre-consumption supervisor failure removes fixed claim staging,
+  the restricted root, publication staging, and any empty attempt root, leaves
+  claim, receipt, and terminal absent, and stops automation without fabricating
+  one of the five consumed-claim statuses or permitting a second fixed
+  invocation. Its future composite acceptance therefore exercises six
+  scenarios per order—scientific success, clean underpower, scientific
+  rejection, hard-wall abort, ordinary nonzero failure, and pre-consumption
+  supervisor failure—and eleven exact mechanics checks in forward and reverse
+  order with identical normalized maps and zero official operation, claim use,
+  model fit, prediction, or metric.
+
+  Hard-resource classification occurs only after exact observation-schema,
+  type, finiteness, nonnegative, return-code, and boolean validation. A missing
+  or malformed observation after claim consumption may publish only an
+  accounting-incomplete failed terminal through the same bounded seal and
+  never claim resource compliance; the same defect before claim consumption
+  follows the no-terminal cleanup rule.
+
+  Scientific, rejected, and underpowered sealing additionally requires integer-
+  zero return, positive checkpoints and descendants, complete cleanup and
+  isolation, zero GPU/detachment/warnings, and every observed resource within
+  the exact parent maxima. The full five wall-seconds, five CPU-seconds, 16-MiB
+  terminal, and 1-MiB receipt reservation must still fit within the unchanged
+  7.68-hour, 128-core-hour, 51.2-GB, 15.36-GiB, zero-GPU envelope. Successful
+  and canonical-exception outcomes use this same bounded seal. One
+  same-invocation minimal failed or resource-aborted seal is the only permitted
+  response to a seal fault; a final-path collision, failed minimal seal, or
+  failed promotion cleans staging, retains the consumed claim, publishes no
+  replacement, and permanently blocks reinvocation.
+
+  D-137 also freezes an accounting-label erratum. D-122 and D-133 called
+  `562,752` a minimum and `797,232` a maximum official total, but both are
+  unattainable branch upper projections: every non-primary Stage-B overlay
+  must exclude confirmatory-touching development molecules. Exact official
+  predictions are the authenticated sum of completed stage manifests and are
+  strictly below the applicable projection. This changes no science,
+  mechanics, or selection. The scientific runner,
+  robustness and scoring compilers, no-fit wrapper, cumulative supervisor,
+  MapLight runner, candidate, feature, parameter, seed, group, fold, fit,
+  prediction, metric, gate, resource, token, and no-runner-up identities stay
+  byte-for-byte unchanged. D-135's 3,480 model-double fits, 667,872 synthetic
+  predictions, and two real CatBoost controls remain immutable inherited
+  evidence and are not repeated.
+  Nine contract-integrity tests at SHA-256
+  `814675f28c637b30a7d8eea3bf275ee28e39694f1b33127403e95f261490f9c9`
+  and all 29 safe related tests pass.
+- Alternatives: Invoke the known-defective driver; relabel compiler underpower
+  as a resource abort; treat all supervisor exceptions alike; invent zero
+  accounting after work begins; modify the accepted supervisor or science
+  kernel; rerun D-135; expand candidates, features, seeds, groups, retries,
+  caches, concurrency, resources, frameworks, or services; mutate or consume
+  the tracked claim; open an official byte while diagnosing; or use private
+  portal or leaderboard evidence.
+- Reversal condition: Any contract, immutable-parent, driver-only surface,
+  terminal-cause, observation, accounting, staging, cleanup, symlink, receipt,
+  fixed-root, claim, privacy, integration, or post-main-CI drift blocks
+  progression. Otherwise integrate D-137 by signed fast-forward, require green
+  exact-SHA post-main CI, then implement only the frozen driver patch, fixed
+  no-argument composite acceptance driver, and focused tests. Do not run the
+  composite acceptance or official execution from either branch.

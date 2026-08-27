@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-136 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-137 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1172,18 +1172,104 @@ repeated. Production changes, scientific recipe changes, formal attempts,
 official operations, private rows opened, claims created or consumed, fits,
 predictions, metrics, and model-quality authority are all zero.
 
+D-137 freezes the driver-only G2-7H official-orchestration repair in
+[`global_v2_maplight_robustness_official_orchestration_repair_contract.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_orchestration_repair_contract.json),
+SHA-256 `f6576d61...0534b967`. Signed D-136 commit
+`1c0c5d0f...4409bfa39` passed exact-SHA post-main CI run `33090557041` before a
+fresh final pre-consumption audit rejected the still-unrun official path. The
+accepted compiler's exact underpowered exception would escape the supervised
+child; the accepted supervisor would turn that and any ordinary nonzero child
+into one exception class/form carrying canonical observation JSON; and the
+historical official driver would label each one resource-aborted while
+dropping the structured cumulative
+observation. That driver also retained zero-valued allowed-input accounting
+after work began and lacked accepted fixed publication-staging and symlink-safe
+cleanup mechanics. These are orchestration defects, not scientific evidence.
+No attempt, restricted, or staging root was created; the tracked claim remained
+byte-identical, unusable, and unconsumed; and no official source or baseline
+byte was opened.
+
+The repair contract inherits the immutable D-135 science-kernel acceptance,
+including 3,480 model-double fits, 667,872 predictions, and two real CatBoost
+controls, without rerun. It freezes byte-for-byte every runner, compiler,
+scorer, wrapper, supervisor, MapLight, candidate, feature, parameter, seed,
+group, fit, prediction, metric, gate, resource, selection-token, and
+no-runner-up identity. Only the official driver may change in production. One
+new fixed no-argument composite acceptance must exercise six scenarios in
+forward and reverse order: the five status causes plus a pre-consumption
+supervisor failure with no official status. It must round-trip cumulative
+supervision through canonical delimiter `; observation=` and exactly the 13
+accepted typed observation fields with no extras, validate exact aggregate
+accounting, satisfy all eleven frozen mechanics checks, prove atomic no-replace
+status-specific terminals, and remove fixed, restricted, orphaned, or
+symlinked staging without following an external sentinel. Claim publication
+uses one fixed temporary file, file and directory fsyncs, and atomic no-replace
+promotion; interruption must leave no partial claim, staging, restricted root,
+or empty attempt root.
+
+Accounting counts authoritative capability crossings rather than syscalls or
+in-memory reparsing. It separates 73,575 accepted group-fold rows, source
+central points, finite reported bounds at six times the authenticated tutorial-
+eligible count, raw and generated model-feature and fold rows, generated
+predictions reopened for selection/terminal scoring, scoring truth, training
+targets, and baseline predictions. Every consumed-claim terminal contains
+`attempt_receipt.json`; underpowered additionally preserves aggregate
+`preflight.json`. The post-supervision seal may create and fsync that aggregate
+receipt, bind the observation, make the tree read-only, and promote it; it is
+limited to 16 MiB of terminal, 1 MiB of receipt, five wall- and CPU-seconds,
+and zero additional official open, fit, prediction, or metric. A failure before
+atomic claim publication removes claim staging, the restricted root,
+publication staging, and any empty attempt root; it leaves claim, receipt, and
+terminal absent and cannot fabricate one of the five consumed-claim statuses.
+The same fixed claim/driver is never reinvoked.
+
+Hard-resource classification occurs only after exact observation type,
+finiteness, and nonnegative validation. A missing or malformed observation
+after claim consumption may publish only accounting-incomplete failed through
+the same bounded seal, never resource-aborted or resource-compliant; before
+claim consumption it follows the no-terminal cleanup rule. Scientific,
+rejected, and underpowered sealing also requires integer-zero return, positive
+checkpoint and descendant counts, complete cleanup/network isolation/GPU
+hiding, zero GPU hours/detached children/warnings, and all observed resources
+within the unchanged D-125/D-133 maxima.
+
+All consumed-claim outcomes—including successful, canonical-exception, and
+missing/malformed-observation failure—use the same bounded seal. The full five
+wall-seconds, five CPU-seconds, and 16-MiB terminal reservation must fit under
+the parent wall, CPU, and storage maxima;
+simultaneous RSS stays below 15.36 GiB and GPU remains zero through promotion,
+so sealing cannot widen the resource contract. A non-resource seal defect
+permits one same-invocation minimal failed seal and a hard seal breach one
+minimal resource-aborted seal. A final-path collision, failed minimal seal, or
+failed promotion cleans staging, retains the consumed claim, publishes no
+replacement terminal, and permanently blocks reinvocation.
+
+Completed battery accounting keeps the exact 720/1,020 fit branches and 56
+tutorial calls under the frozen maximum of 80. D-137 corrects the parent count
+labels only: D-122/D-133's `562,752` and `797,232` are unattainable branch upper
+projections because every non-primary Stage-B overlay must exclude
+confirmatory-touching development molecules. Official predictions are the
+exact sum of completed stage manifests and strictly below the applicable
+projection. Science, mechanics, and selection are unchanged. The acceptance is
+zero-official: it may consume no claim and run no model fit,
+prediction, development metric, confirmatory, blinded-test, TDI, submission,
+leaderboard, or upload operation. This D-137 milestone creates only the
+contract; nine contract-integrity tests at `814675f2...1490f9c9` and all 29
+safe related tests pass, while implementation and both one-use executions
+remain closed. Fixed MapLight remains the best validated internal system at
+component-macro MAE `0.5837812652`.
+
 ## Exact next action
 
-Review and integrate D-136 bridge receipt `2820c30f...33a0dc3` through the
-signed fast-forward-only workflow, then require green post-main CI for that
-exact commit. Only afterward run a fresh official G2-7G preflight from clean
-synchronized `main` and invoke the fixed no-argument official driver exactly
-once with
-`uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
-Do not run it from the bridge branch. The supervised child must
-consume the sole private claim before opening any official source or baseline
-byte; the tracked claim remains immutable. No retry, resume, repair, move,
-overwrite, replacement, smaller battery, or alternate order is authorized.
+Review and integrate D-137 contract `f6576d61...0534b967` through the signed
+fast-forward-only workflow, then require green post-main CI for that exact
+commit. Only afterward implement the exact driver-local repair, fixed
+no-argument composite acceptance driver, and dedicated focused tests. Review,
+integrate, and require green exact-SHA post-main CI for that implementation
+before running the composite acceptance exactly once. Do not run either the
+composite acceptance or official G2-7G driver yet. D-135 must not be repeated.
+The tracked claim must remain unchanged and unconsumed, all new fixed roots
+must remain absent, and no official source or baseline byte may be opened.
 D-127 and D-128 paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload

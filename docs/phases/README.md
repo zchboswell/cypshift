@@ -341,7 +341,10 @@ claim are now required before any official path.
 D-133 freezes that corrected G2-7G execution contract at SHA-256
 `9464b094...91151bcf` and its new unusable claim at `d7e68837...44df6f9f`. It
 binds D-122 science, D-125 cumulative limits, D-126 mechanics, and D-132 eight-field
-scoring while keeping the exact 720–1,020 fits and 562,752–797,232 predictions.
+scoring while keeping the exact 720–1,020 fits. D-137 later corrects only the
+prediction-count labels: `562,752` and `797,232` are unattainable branch upper
+projections after required Stage-B exclusions, so the official total must be
+the exact completed-stage-manifest sum below the applicable projection.
 The new fixed root is absent; five future receipts are null, consumptions are
 zero, and `usable=false`. D-127 and D-128 paths remain barred. Thirteen focused
 tests pass, and no official row, fit, metric, claim consumption, submission, or
@@ -395,6 +398,48 @@ assertion is skipped. Production, science, formal-attempt, official-operation,
 fit, prediction, metric, and model-quality evidence remain unchanged and zero.
 Reviewed D-136 integration and green post-main CI must precede a fresh exact
 official preflight and the still-unrun sole no-argument official execution.
+
+D-137 freezes a driver-only G2-7H orchestration repair contract at SHA-256
+`f6576d61...0534b967` after that final pre-consumption audit rejected the
+historical driver before official execution. D-136 signed commit
+`1c0c5d0f...4409bfa39` passed exact-SHA post-main CI run `33090557041`; the
+subsequent audit proved compiler underpower and ordinary supervised failure
+would be collapsed into resource-aborted, cumulative failure observations and
+truthful allowed-input accounting would be lost, and fixed publication-staging
+plus symlink-safe cleanup lacked acceptance evidence. The claim, fixed roots,
+and official source and baseline bytes remained untouched. D-137 inherits
+D-135's immutable 3,480-fit science-kernel acceptance without rerun and changes
+no scientific primitive. It authorizes only a future official-driver patch,
+one fixed zero-official composite acceptance driver, and dedicated tests. The
+future two-order acceptance has six scenarios per order: the five consumed-
+claim statuses plus a pre-consumption supervisor failure that must leave no
+claim or attempt, across eleven frozen mechanics checks. Supervisor exceptions
+use exact delimiter `; observation=` and an exact 13-field typed observation
+before cause classification. Malformed post-claim evidence may publish only
+accounting-incomplete failed through the same bounded seal; malformed pre-
+claim evidence publishes no terminal. Claim
+publication is fixed-path staged, fsynced, atomic, and no-replace; restricted
+and publication roots must clean without following symlinks. Accounting
+separately binds 73,575 group-fold rows, central points, finite reported
+bounds, raw/generated feature and fold rows, generated
+prediction reopens for scoring, scoring truth, training targets, baseline rows,
+exact 56-of-80 tutorial calls, and completed stage manifests. It also corrects
+D-122/D-133's `562,752`/`797,232` labels to
+unattainable branch upper projections; actual official predictions are the
+exact stage-manifest sum below the applicable projection, with no science,
+mechanics, or selection change. Scientific/underpowered success additionally
+requires strict integer-zero return, positive checkpoint/descendant counts,
+cleanup/isolation, zero GPU/detachment/warnings, and full worst-case seal
+reservation within the unchanged parent limits. All canonical outcomes share
+the bounded seal; a seal fault or final-path collision cannot overwrite or
+authorize another invocation. This contract milestone runs no acceptance,
+official, claim, fit, prediction, metric, confirmatory, blinded-test,
+submission, leaderboard, or upload operation. Nine contract-integrity tests at
+`814675f2...1490f9c9` and all 29
+safe related tests pass; fixed MapLight remains `0.5837812652` component-macro
+MAE. Reviewed integration and green exact-SHA post-main CI must precede
+implementation, and the composite and official one-use executions remain
+closed.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
