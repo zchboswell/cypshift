@@ -1,9 +1,9 @@
-# Next orchestrator kickoff — integrate D-144, complete D-145 validator hygiene, then stop
+# Next orchestrator kickoff — integrate D-146 evidence closure, then stop
 
 This handoff is active on branch
-`codex/g2-7g-post-attempt-test-transition-contract`. D-143 is integrated as
-signed commit `d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run
-`33121287357` and exact-SHA post-main CI run `33122070763` are green.
+`codex/g2-7g-post-attempt-transition-evidence`. D-145 is integrated as signed
+commit `ce289b5fccaaf1d63343553961ad41309db19d04`; PR #182 CI run `33125925508`
+and exact-SHA post-main CI run `33126546606` are green.
 
 After a fresh green read-only preflight, the sole fixed no-argument G2-7G
 official driver ran exactly once under cumulative supervision. It consumed the
@@ -33,7 +33,7 @@ Read completely, in order:
 3. `docs/phases/README.md`;
 4. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
 5. `docs/strategy/PROJECT_CHARTER.md`;
-6. D-122 through D-144 in `docs/strategy/DECISIONS.md`;
+6. D-122 through D-146 in `docs/strategy/DECISIONS.md`;
 7. the final relevant rows of `runs/experiment_ledger.csv`;
 8. the public G2-7 contracts, D-135 acceptance, D-136 bridge, D-137/D-138
    mechanics, D-139/D-140 transitions, D-141 implementation hashes, D-142
@@ -45,9 +45,10 @@ metadata as authoritative. Do not inspect a protected path to refresh context.
 Never inspect, import, copy, execute, patch, or derive code from the rejected
 G2-7B runner or driver. D-127/D-128 remain permanently barred.
 
-If the user says only “continue,” resume the earliest unfinished D-144
-contract integration or D-145 validator-hygiene step below. Do not infer
-authority to run another scientific gate.
+If the user says only “continue,” resume only the earliest unfinished D-146
+knowledgebase review, signed integration, or exact-SHA post-main CI step below.
+If D-146 is already integrated and green, audit and report the terminal stop;
+do not infer authority to run another scientific gate.
 
 ## Verified parent lineage
 
@@ -103,9 +104,28 @@ authority to run another scientific gate.
   `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`,
   SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`,
   29,788 bytes / 732 lines, `1/1 passed`
+- D-144 signed integrated commit / PR:
+  `5d7ed5db76ec0928ba34e19e72ab839ee556d51e` / #181
+- D-144 PR/post-main CI:
+  `33123874692` / `33124525495`, both `success`
+- D-145 exact ten-marker conftest:
+  `tests/conftest.py`, SHA-256
+  `e92e9114ff874e71e8468320595489bc5d294653d6ff93b347cc3be27f9a01d9`,
+  4,452 bytes / 110 lines
+- D-145 sole comprehensive public audit:
+  `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition.py`,
+  SHA-256 `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`,
+  23,826 bytes / 603 lines
+- D-145 focused/safe evidence:
+  `2/2 passed`; bounded safe suite `1425 passed, 14 skipped, 0 failed` in
+  341.76 seconds
+- D-145 signed integrated commit / PR:
+  `ce289b5fccaaf1d63343553961ad41309db19d04` / #182
+- D-145 PR/post-main CI:
+  `33125925508` / `33126546606`, both `success`
 
-Before committing D-144, prove these exact stable values and that no pending
-marker remains in the nine-file package.
+Before advancing PR #183, prove these exact stable values and that no pending
+marker or stale progression instruction remains in the seven-file package.
 
 ## Exact official outcome
 
@@ -246,113 +266,88 @@ need a later contract resolving the identical-contender/control boundary.
 That hypothetical clause creates no current contract or execution authority.
 D-143 has no contender lock at all. Therefore G2-8 and G2-9 remain closed.
 
-## Exact D-144 package
+## Exact D-146 package
 
-The coherent tracked package contains exactly nine files:
+The coherent tracked package contains exactly seven files:
 
-1. `benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_post_attempt_test_transition_contract.json`;
-2. `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`;
-3. `benchmarks/openadmet_cyp_2026/README.md`;
-4. `docs/phases/README.md`;
-5. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
-6. `docs/strategy/PROJECT_STATE.md`;
-7. `docs/strategy/DECISIONS.md`;
-8. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
-9. `runs/experiment_ledger.csv`.
+1. `benchmarks/openadmet_cyp_2026/README.md`;
+2. `docs/phases/README.md`;
+3. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
+4. `docs/strategy/PROJECT_STATE.md`;
+5. `docs/strategy/DECISIONS.md`;
+6. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
+7. `runs/experiment_ledger.csv`.
 
-Do not modify a driver, compiler, claim, D-143 record/audit, historical test,
-conftest, private artifact, or barred path. D-144 is the contract and its
-contract audit only; it does not implement collection changes.
+Do not modify conftest, the D-145 audit, a historical test, contract, driver,
+compiler, claim, D-143 record/audit, science file, private artifact, or barred
+path. D-146 is knowledgebase/ledger closure only.
 
 The ledger row must have exactly 18 columns and distinguish:
 
-- D-143 signed/green parent lineage;
-- the four exact future retired nodes;
-- six prior markers and ten future total;
-- one future D-145 comprehensive public audit;
-- zero current collection/implementation change; and
-- zero science, claim, private-data, model-quality, confirmatory, submission,
-  G2-8, or downstream authority.
+- D-144 and D-145 signed/green parent lineage;
+- exact conftest/audit hashes, six prior plus four added markers for ten total,
+  and one active comprehensive audit;
+- focused `2/2` and bounded safe-suite `1425/14/0` evidence;
+- unchanged historical tests and D-143 evidence; and
+- zero official, claim, protected-data, development-robustness/official
+  fit/prediction/metric, token, contender, science, model-quality, G2-8,
+  confirmatory, submission, validator, leaderboard, portal, credential, upload,
+  or downstream authority; routine public synthetic CI parity stays explicitly
+  separate.
 
-## Completed local safe-suite evidence
+## Completed D-145 validator-hygiene evidence
 
 The exact safe repository boundary, with the permanently barred
 `tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
-ignored, completed with `1425 passed, 10 skipped, 2 failed` in 357.51 seconds.
-The failures are exactly:
+ignored, completed with `1425 passed, 14 skipped, 0 failed` in 341.76 seconds.
+The D-144/D-145 focused pair passed `2/2`. D-145 preserves the six prior exact
+markers, adds only the four frozen D-144 markers for ten total, keeps its sole
+comprehensive audit and unrelated nodes active, and keeps every prior
+replacement active except the exact transitioned D-141 supervisor node.
 
-- `tests/test_openadmet_global_v2_maplight_robustness_execution_contract_v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze`; and
-- `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+The public audit owns live collection/hash state while preserving every frozen
+D-133/D-141/D-142 responsibility and the D-143 aggregate UNDERPOWERED
+boundary. It imports no driver, opens no tracked claim, and probes no protected
+root. Historical tests and D-143 evidence remain unchanged. This is
+validator-hygiene evidence only; it does not select a contender, validate full
+MapLight, alter model quality, or open G2-8. The terminal scientific stop is
+unchanged.
 
-Both are historical pre-execution root-absence assertions. The sole fixed root
-is now intentionally present as immutable consumed-claim/terminal evidence, so
-their state premise changed exactly as the one-use contract required. The
-result is expected negative state-transition evidence. It is not a failure of
-the D-143 record, audit, terminal status, accounting, privacy, mechanics,
-scientific interpretation, or model quality. Do not patch either historical
-test or broaden collection inside D-143.
+## Continuation and restart handoff
 
-After D-143 integration and green exact-SHA post-main CI, D-144 must freeze a
-contract-only transition for exactly four nodes:
+The user explicitly canceled the prior 2026-08-27 21:00 ET pause gate at
+20:04 ET. Continue the authorized D-146 review/integration objective without a
+time-based stop. This cancellation changes only the workstation-availability
+boundary: it grants no scientific, official, private-data, claim, G2-8,
+confirmatory, submission, or upload authority.
 
-1. the D-133 root-absence-at-freeze node listed above;
-2. the D-141 pre-execution root-absence/source-shape node listed above;
-3. `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`;
-4. `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
-
-The first two fail now because the terminal root is intentionally retained.
-The latter two pass now but become historical when D-145 changes the live
-conftest marker set/hash. D-144 must preserve the existing six exact skips,
-freeze four new exact markers and ten total after transition, and grant zero
-collection behavior or science/gate/private authority. Only after D-144 is
-reviewed, integrated, and green may D-145 add those four conftest markers and
-one new comprehensive public replacement audit. That audit must own the new
-ten-marker collection/hash state and every surviving semantic assertion from
-the two currently failing nodes. Using public/static evidence without driver
-import or live protected-state inspection, it must preserve D-133 historical
-`attempt_root_absent_at_freeze`, corrected official-attempt-root identity and
-exact barred-D-127 distinction, tracked-public-claim fixed-root mapping, and
-frozen read boundary; plus D-141's D-140 source-shape binding, outer/child
-supervisor-to-claim-to-compile-to-Stage-A chronology, raw-observation
-assignment, publication and writable-parent arguments equal to resource
-limits, fixed attempt-root identity, aggregate-only `_failure_payload`
-accounting, common-seal exclusivity, and absence of parent
-`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`.
-D-145 may not mutate D-143 evidence, a driver,
-claim, science, gate, or protected artifact. G2-8 remains closed throughout.
-
-## 9 PM ET pause / resume handoff
-
-Hard pause deadline: 2026-08-27 21:00 ET. Do not leave a test, build, GitHub
-poll, shell, scientific driver, or monitor running across that pause. No
-scientific or official process should be active at the D-144 packaging stage.
-
-Immediately before pausing, update this section or the active task report with:
+Before yielding or handing off for any other reason, update this section or the
+active task report with:
 
 - exact branch and HEAD;
-- exact D-144 nine-file package status and whether the worktree is clean;
-- final D-144 contract and audit-test hashes/counts;
-- focused, safe-suite, CSV, Ruff, format, compile, build, and diff-check state;
+- exact D-146 seven-file package status and whether the worktree is clean;
+- final D-145 conftest/audit hashes, focused count, and bounded safe-suite
+  result;
+- CSV 18-column/embedded-JSON and diff-check state;
 - commit signature/identity if committed;
 - branch push and PR number/check state if opened;
 - main integration SHA and post-main CI run/conclusion if integrated; and
-- D-145 transition state, if it has begun; and
 - heartbeat automation state and confirmation that it remains paused; and
 - confirmation that no process is active and no protected capability opened.
 
-If D-144 or D-145 is unfinished when the user says `continue`, authenticate
-Git, hashes, exact
-transition-node identities, PR/CI state, and the absence of active processes.
-Resume only the unfinished contract-first validator-hygiene sequence: D-144
-contract-only integration and post-main CI, then D-145's four exact conftest
-markers plus one comprehensive public replacement audit and post-main CI. Do not infer G2-8,
-full-MapLight retention, confirmatory, or private-data authority from either
-milestone.
+If D-146 is unfinished when the user says `continue`, first authenticate Git
+branch, HEAD, complete status/diff, the exact D-145 hashes and signed/CI
+lineage, relevant processes, and current PR/CI state. Resume only the
+unfinished seven-file D-146 review, signed integration, or exact-SHA
+post-main-CI step. Do not modify D-145 behavior, a test, contract, record,
+driver, claim, or science file.
 
-If D-145 is integrated and post-main CI is green when the user says `continue`,
-audit and report the terminal scientific stop. New science requires explicit
-prospective user direction and a genuinely new hypothesis; it cannot be a
-retry, repair, replacement, support relaxation, or reinterpretation of G2-7G.
+If D-146 is integrated and post-main CI is green when the user says `continue`,
+audit and report the terminal scientific stop. Do not infer G2-8,
+full-MapLight retention, confirmatory, submission, or private-data authority.
+New science requires explicit prospective user direction and a genuinely new
+hypothesis; it cannot be a retry, repair, replacement, support relaxation, or
+reinterpretation of G2-7G.
 
 Across every resume case: no retry or claim derivation; no official/private root
 listing, opening, hashing, copying, or mutation; no barred-file access; no
@@ -360,24 +355,23 @@ confirmatory, historical-row, blinded-test, TDI, submission, validator,
 leaderboard, portal, credential, or upload capability. Do not reactivate the
 heartbeat automation unless the user explicitly asks.
 
-Current restart snapshot at 2026-08-27 18:45 ET:
+Restart snapshot captured after the 2026-08-27 pause cancellation:
 
-- branch: `codex/g2-7g-post-attempt-test-transition-contract`;
-- HEAD/base: signed D-143 main commit
-  `d630702074bfefa4bda4730ba7c1b7519c3c6f1a`;
-- D-143 review/CI: PR CI `33121287357` and exact-SHA post-main CI
-  `33122070763` succeeded;
-- worktree: exactly the two new D-144 contract/test files plus the seven
-  modified standard knowledgebase/ledger surfaces; final contract/test
-  hashes, sizes, line counts, and `1/1 passed` are listed above;
-- D-144 validation: standalone audit, test-owner Ruff and format check, ledger
-  `195`-row/18-column structure and embedded JSON, and `git diff --check` are
-  green; the core owner also reported compilation green;
-- D-144 commit/push/PR: not yet created;
-- D-145: not begun; conftest and historical tests remain unchanged;
+- branch: `codex/g2-7g-post-attempt-transition-evidence`;
+- base: signed D-145 main commit
+  `ce289b5fccaaf1d63343553961ad41309db19d04`;
+- D-144 review/CI: signed commit
+  `5d7ed5db76ec0928ba34e19e72ab839ee556d51e`, PR #181 CI `33123874692`,
+  and exact-SHA post-main CI `33124525495` succeeded;
+- D-145 review/CI: PR #182 CI `33125925508` and exact-SHA post-main CI
+  `33126546606` succeeded for the signed D-145 commit;
+- D-146 branch/PR: the seven-file signed closure is pushed on
+  `codex/g2-7g-post-attempt-transition-evidence` in PR #183; authenticate the
+  exact signed head after this user-directed handoff update and require all
+  three CI lanes before local fast-forward-only integration;
 - active official/composite driver processes: none;
 - long-running test, build, shell, or monitor processes: none observed at
-  18:45 EDT;
+  snapshot capture;
 - heartbeat automation `monitor-official-trace-recovery`: `PAUSED` as of
   2026-08-27 18:00 EDT; its native update hung without mutation, after which
   only the exact local automation status field was changed from `ACTIVE` to
@@ -387,41 +381,23 @@ Current restart snapshot at 2026-08-27 18:45 ET:
 
 ## Exact next action
 
-1. Inspect the D-144 nine-file diff only.
-2. Authenticate and reconcile the stable contract/test hashes and standalone
-   test count across all seven knowledgebase/ledger surfaces.
-3. Prove the contract freezes exactly four future retired nodes, preserves the
-   six prior markers, requires ten future exact markers, and makes the sole
-   D-145 replacement audit own the complete surviving public/static semantics
-   of the two currently failing nodes without protected access or driver
-   import.
-4. Prove no placeholder, conftest or historical-test change, stale official
-   attempt instruction, science/claim/private operation, or G2-8 authority
-   remains.
-5. Run the standalone D-144 contract test and proportional public validation.
-6. Run `git diff --check`, Ruff/format/compile for the new public test, CSV
-   structural validation at exactly 18 columns with valid embedded JSON, and
-   proportional repository checks with permanently barred G2-7B paths
-   explicitly excluded.
-7. Make one atomic SSH-signed D-144 commit as `zchboswell` with no AI
-   attribution.
-8. Push the branch, open a PR, require all checks, and integrate the reviewed
-   signed commit locally with fast-forward only; do not use GitHub's hosted
-   rebase merge.
-9. Push `main` and require green exact-SHA post-main CI.
-10. Only then implement D-145 in exactly `tests/conftest.py` plus one new
-    comprehensive public audit: add the four frozen markers, own the new
-    ten-marker collection/hash state, and preserve every contracted surviving
-    assertion.
-11. Review, sign, integrate D-145 with fast-forward only, and require green
-    exact-SHA post-main CI.
-12. Report the frozen scientific stop and request user direction only for a
-    genuinely new prospective plan.
+1. Authenticate PR #183's current exact SSH-signed head against the D-145 base,
+   seven-file scope, ledger integrity, hashes, and terminal authority boundary.
+   Treat any superseded pre-amend CI run as non-authoritative.
+2. Require all three replacement PR CI lanes to pass on that exact head.
+3. Recheck that PR #183 is open, non-draft, mergeable and clean; that its head
+   is one signed `zchboswell` commit over D-145; and that the local branch,
+   index, and worktree are synchronized and clean.
+4. Integrate the reviewed signed commit locally with fast-forward only; do not
+   use GitHub's hosted rebase merge. Push `main` without rewriting the commit.
+5. Require green push-event post-main CI on the exact integrated SHA and confirm
+   that PR #183's merge OID equals its signed head.
+6. Report the frozen scientific stop and request user direction only for a
+   genuinely new prospective plan.
 
-Continue only through D-144/D-145 validator hygiene. Never continue into G2-8.
-After step 11, stop: the frozen one-use scientific gate
-ended underpowered and the frozen plan contains no authorized scientific
-fallback.
+Never continue into G2-8. After step 5, stop the active scientific path: the
+frozen one-use gate ended underpowered and the frozen plan contains no
+authorized scientific fallback.
 
 ## Closed operations
 
@@ -440,7 +416,8 @@ fallback.
   retry, cache, concurrency change, framework, or service.
 - Do not live-upload.
 - Do not reactivate `monitor-official-trace-recovery` without explicit user
-  direction, and leave no long-running process at the 21:00 ET pause.
+  direction. Do not abandon an unowned long-running process when yielding for
+  any other reason.
 
 Any future lane requires separate explicit user authorization and a materially
 new prospective hypothesis, contract, claim, and root. It cannot repair,

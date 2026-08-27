@@ -623,20 +623,22 @@ MapLight-retention token, or model-quality result. Full MapLight remains only
 the best previously validated internal system at component-macro MAE
 `0.5837812652`. Because the attempt froze no contender, G2-8 and every
 confirmatory, blinded-test, submission, validator, leaderboard, portal, and
-upload capability remain closed. D-143 is integrated as signed commit
-`d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run `33121287357` and
-post-main CI run `33122070763` are green. D-144 freezes the contract-only
-transition at
+upload capability remain closed. D-144 is integrated as signed commit
+`5d7ed5db76ec0928ba34e19e72ab839ee556d51e`; PR #181 CI run `33123874692`
+and exact-SHA post-main CI run `33124525495` are green. Its contract-only
+transition is frozen at
 `benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_post_attempt_test_transition_contract.json`,
 SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
 (18,216 bytes), with contract test
 `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`,
 SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
 (29,788 bytes), at `1/1 passed`. It freezes
-exactly four future nodes, preserves the prior six markers, and requires ten
-total after D-145. D-144 changes no collection state or scientific authority.
-Only after its signed integration and green post-main CI may D-145 add the four
-exact conftest markers and one comprehensive public audit covering
+exactly four nodes, preserves the prior six markers, and requires ten total.
+D-145 is integrated as signed commit
+`ce289b5fccaaf1d63343553961ad41309db19d04`; PR #182 CI run `33125925508`
+and exact-SHA post-main CI run `33126546606` are green. It preserves the prior
+six exact conftest markers, adds the four contracted markers for ten total,
+and adds one comprehensive public audit covering
 collection/hash state and all surviving root-node semantics: D-133 historical
 `attempt_root_absent_at_freeze`, corrected official-attempt-root identity and
 exact barred-D-127 distinction, tracked-public-claim fixed-root mapping, and
@@ -645,10 +647,16 @@ supervisor-to-claim-to-compile-to-Stage-A chronology, raw-observation
 assignment, publication and writable-parent arguments equal to resource
 limits, fixed attempt-root identity, aggregate-only `_failure_payload`
 accounting, common-seal exclusivity, and absence of parent
-`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`. The audit may
-neither import a driver nor inspect live protected state. Require green
-post-main CI, then stop this submission path. This validator-hygiene sequence
-opens no G2-8 or scientific authority. No retry,
+`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`. The exact conftest and
+audit SHA-256 values are
+`e92e9114ff874e71e8468320595489bc5d294653d6ff93b347cc3be27f9a01d9`
+and `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`.
+Focused tests passed `2/2`; the bounded safe suite completed in 341.76 seconds
+with `1425 passed, 14 skipped, 0 failed`. The audit imports no driver
+and inspects no protected state; historical tests and D-143 evidence remain
+unchanged. D-146 records this validator-clean state, then the submission path
+stops. This validator-hygiene sequence opens no G2-8 or scientific authority.
+No retry,
 repair, replacement, support relaxation, reinterpretation, or runner-up
 promotion is authorized.
 

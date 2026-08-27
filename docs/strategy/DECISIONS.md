@@ -5318,3 +5318,63 @@
   workflow, require green post-main CI, then let D-145 change only conftest and
   the one public audit. After reviewed D-145 integration and green post-main
   CI, stop with G2-8 closed.
+
+## D-146 — Accept validator-clean post-attempt provenance and close the active path
+
+- Date: 2026-08-27
+- Status: accepted knowledgebase/ledger closure evidence pending reviewed
+  signed integration; D-144 is integrated as signed commit
+  `5d7ed5db76ec0928ba34e19e72ab839ee556d51e` through PR #181 with green PR CI
+  run `33123874692` and green exact-SHA post-main CI run `33124525495`; D-145
+  is integrated as signed commit
+  `ce289b5fccaaf1d63343553961ad41309db19d04` through PR #182 with green PR CI
+  run `33125925508` and green exact-SHA post-main CI run `33126546606`
+- Decision: Accept the D-144-authorized D-145 transition as exact
+  validator-hygiene evidence and close the active Global-v2 submission path.
+  Bind `tests/conftest.py` at SHA-256
+  `e92e9114ff874e71e8468320595489bc5d294653d6ff93b347cc3be27f9a01d9`
+  (4,452 bytes / 110 lines) and the sole comprehensive public audit
+  `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition.py`
+  at SHA-256
+  `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`
+  (23,826 bytes / 603 lines). Preserve all six prior exact markers, add only
+  the four frozen markers for exactly ten, keep the sole D-145 audit and
+  unrelated nodes active, and keep every prior replacement active except the
+  exact transitioned D-141 supervisor node.
+- Evidence: The D-144/D-145 focused pair passed `2/2`. The exact bounded safe
+  command
+  `uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+  completed with `1425 passed, 14 skipped, 0 failed` in 341.76 seconds.
+  Historical tests, the D-143 public record/audit, contracts, drivers, claims,
+  and science bytes are unchanged. The comprehensive audit owns the live
+  conftest hash/collection state, treats the D-142 conftest hash as historical,
+  preserves every contracted D-133/D-141/D-142 responsibility, proves the
+  D-143 aggregate UNDERPOWERED terminal boundary, imports no driver, opens no
+  tracked claim, and probes no protected root. Local CI parity also passed
+  Ruff, format, compilation, mypy over 78 source files, isolated build, and a
+  byte-identical Python 3.12.3 installed-wheel two-root vertical slice.
+- Authority boundary: D-146 changes only seven knowledgebase/ledger surfaces.
+  D-145/D-146 perform zero driver execution, official attempt, claim
+  creation/consumption, official-source/baseline open, protected-data access,
+  development-robustness or official model fit/prediction/metric, selection
+  token, contender lock, or submission operation. The two-root installed-wheel
+  public synthetic-fixture smoke is CI parity only. They create no robustness or
+  model-quality evidence and grant no G2-8, confirmatory, blinded-test,
+  full-training, submission, validator, leaderboard, portal, credential,
+  upload, or other scientific authority. Full MapLight remains only the best
+  previously validated internal system at component-macro MAE `0.5837812652`;
+  the consumed attempt did not select, retain, or robustness-validate it.
+- Alternatives: Rewrite a historical test; broaden or add a collection skip;
+  add another audit; mutate D-143 evidence, a contract, driver, claim, record,
+  or science file; retry, repair, replace, relax, reorder, or reinterpret
+  G2-7G; infer a full-MapLight token; promote a runner-up; open G2-8 or
+  protected data; generate, validate, or upload a submission.
+- Reversal condition: Any mismatch in D-144/D-145 signed lineage or CI, either
+  D-145 hash, exact ten-marker/one-active-audit state, focused or bounded-suite
+  result, historical/D-143 bytes, privacy boundary, zero-authority accounting,
+  seven-file scope, signed integration, or exact-SHA post-main CI blocks D-146
+  acceptance but cannot authorize scientific progression. Otherwise integrate
+  D-146 through signed fast-forward-only review, require green post-main CI,
+  and stop. New science requires explicit prospective user direction and a
+  genuinely new hypothesis/contract; it cannot retry, repair, replace, relax,
+  or reinterpret the consumed G2-7G attempt.

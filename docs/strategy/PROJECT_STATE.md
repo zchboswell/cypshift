@@ -4,7 +4,9 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-144. The externally supplied
+Phase 2 Global-v2 is at a terminal scientific stop under D-084 through D-146;
+only reviewed D-146 knowledgebase/ledger integration remains. The externally
+supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -1091,34 +1093,59 @@ relaxation, runner-up promotion, and reinterpretation are all forbidden.
 Because no G2-7 primary contender was frozen, D-143 grants zero confirmatory,
 blinded-test, submission, validator, leaderboard, portal, or upload authority.
 
-D-143 is integrated as signed commit
-`d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run `33121287357` and
-exact-SHA post-main CI run `33122070763` are green. D-144 now freezes the
-contract-only post-attempt collection transition at
+D-144 is integrated as signed commit
+`5d7ed5db76ec0928ba34e19e72ab839ee556d51e`; PR #181 CI run `33123874692`
+and exact-SHA post-main CI run `33124525495` are green. Its contract-only
+post-attempt collection transition is frozen at
 `benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_post_attempt_test_transition_contract.json`,
 SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
 (18,216 bytes), with public contract audit
 `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`,
 SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
-(29,788 bytes), at `1/1 passed`. The contract
-retires nothing now. It freezes exactly four future D-145 node markers,
-preserves the prior six, requires exactly ten after transition, and permits
-D-145 to change only `tests/conftest.py` plus one comprehensive public audit.
-That future audit must own exact collection/hash state and every surviving
-assertion from the two current root-absence failures. Without importing a
-driver or inspecting live protected state, it must preserve the D-133
+(29,788 bytes), at `1/1 passed`. The contract itself retired nothing. It froze
+exactly four D-145 node markers, preserved the prior six, required exactly ten
+after transition, and permitted D-145 to change only `tests/conftest.py` plus
+one comprehensive public audit. That integrated audit owns exact
+collection/hash state and every surviving assertion from the two formerly
+failing root-absence nodes. Without importing a driver or inspecting live
+protected state, it preserves the D-133
 historical `attempt_root_absent_at_freeze` fact, corrected official-attempt-root
 identity and exact distinction from barred D-127, tracked-public-claim
-fixed-root mapping, and frozen read boundary. It must also preserve D-141's
+fixed-root mapping, and frozen read boundary. It also preserves D-141's
 D-140 source-shape binding; outer and child
 supervisor-to-claim-to-compile-to-Stage-A chronology; raw-observation
 assignment; publication and writable-parent arguments equal to the resource
 limits; fixed attempt-root identity; aggregate-only `_failure_payload`
 accounting; common-seal exclusivity; and absence of parent
-`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`. D-144 changes no
-collection behavior, historical test, record, driver, science, claim, private
-artifact, gate, candidate, fit, prediction, metric, or authority; G2-8 remains
-closed.
+`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`.
+
+D-145 is integrated as signed commit
+`ce289b5fccaaf1d63343553961ad41309db19d04`; PR #182 CI run `33125925508`
+and exact-SHA post-main CI run `33126546606` are green. It changes exactly
+`tests/conftest.py`, SHA-256
+`e92e9114ff874e71e8468320595489bc5d294653d6ff93b347cc3be27f9a01d9`
+(4,452 bytes / 110 lines), and adds the sole comprehensive public audit
+`tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition.py`,
+SHA-256 `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`
+(23,826 bytes / 603 lines). The D-144/D-145 focused pair passed `2/2`.
+The bounded safe repository suite, with the permanently barred G2-7B test
+explicitly ignored, completed with `1425 passed, 14 skipped, 0 failed` in
+341.76 seconds. All six prior exact markers remain, exactly four contracted
+markers were added for ten total, and the sole D-145 audit plus unrelated
+nodes remain active; every prior replacement remains active except the exact
+transitioned D-141 supervisor node. Historical tests, D-143 evidence, drivers,
+contracts, claims, science, and protected artifacts are unchanged.
+
+D-146 accepts only that validator-hygiene evidence and closes the active path.
+It records no new scientific model or data behavior: zero driver execution,
+official attempt, claim creation/consumption, protected-data access,
+development-robustness or official fit/prediction/metric, selection token,
+contender, or model-quality authority. The two-root installed-wheel synthetic
+fixture smoke is CI parity only, not development or model-quality evidence.
+D-145/D-146 do
+not robustness-validate or select full MapLight, do not alter the terminal
+UNDERPOWERED interpretation, and grant no G2-8, confirmatory, blinded-test,
+submission, validator, leaderboard, portal, credential, or upload authority.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1770,19 +1797,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review the exact two-file D-144 contract package and these seven
-knowledgebase/ledger surfaces. Reconcile the final contract/test hashes and
-test count, authenticate all four future node IDs, six prior markers, ten
-future total, immutable D-143 lineage, and zero-authority boundary. Run
-proportional checks, then make one atomic signed D-144 commit. Push the branch,
-open a PR, require all checks, integrate the reviewed signed commit locally by
-fast-forward only, push `main`, and require green exact-SHA post-main CI.
+Authenticate PR #183's current exact SSH-signed D-146 head against the seven
+knowledgebase/ledger files, D-144/D-145 lineage, final two-file hashes, exact
+ten-marker/one-audit state, focused result, validator-clean bounded safe suite,
+terminal scientific interpretation, and zero-authority accounting. Require all
+three PR checks on that exact head, then integrate it locally by fast-forward
+only, push `main` without rewriting the commit, and require green exact-SHA
+post-main CI.
 
-Only then may D-145 change `tests/conftest.py` and add one comprehensive public
-replacement audit covering collection/hash state and all surviving semantics
-from the two current root-absence failures. Integrate D-145 and require
-green post-main CI, then stop the current Global-v2 submission path. G2-8
-remains closed throughout this validator-hygiene sequence. The consumed G2-7G attempt is
+Then stop the current Global-v2 submission path and report the terminal
+scientific boundary. G2-8 remains closed. The consumed G2-7G attempt is
 terminal and cannot be repeated or reinterpreted; it selected no contender,
 and the frozen G2-8 boundary opens only after an accepted G2-7 contender lock.
 Do not access confirmatory truth, historical row-level artifacts, blinded test,

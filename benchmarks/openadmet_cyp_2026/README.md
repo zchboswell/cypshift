@@ -511,9 +511,9 @@ and unconsumed.
 D-143 is terminal pre-science negative evidence, not accepted robustness or
 model quality. Full MapLight remains the best previously validated internal
 system at component-macro MAE `0.5837812652`, but G2-7G did not select or
-robustness-validate it. No G2-8 contender lock exists. D-143 is integrated as
-signed commit `d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run
-`33121287357` and exact-SHA post-main CI run `33122070763` are green. D-144
+robustness-validate it. No G2-8 contender lock exists. D-144 is integrated as
+signed commit `5d7ed5db76ec0928ba34e19e72ab839ee556d51e`; PR #181 CI run
+`33123874692` and exact-SHA post-main CI run `33124525495` are green. It
 freezes the contract-only transition at
 [`global_v2_maplight_robustness_post_attempt_test_transition_contract.json`](global_v2_maplight_robustness_post_attempt_test_transition_contract.json),
 SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
@@ -521,7 +521,7 @@ SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
 `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`,
 SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
 (29,788 bytes), at `1/1 passed`. It freezes
-four future markers, preserves six prior markers, requires ten total, and
+four markers, preserves six prior markers, requires ten total, and
 permits D-145 to change only conftest plus one comprehensive public audit for
 collection/hash state and surviving root-node semantics. Without driver import
 or live protected-state inspection, the audit must preserve D-133 historical
@@ -533,9 +533,19 @@ assignment, publication and writable-parent arguments equal to resource
 limits, fixed attempt-root identity, aggregate-only `_failure_payload`
 accounting, common-seal exclusivity, and absence of parent
 `_finalize_terminal` and child `PENDING_TERMINAL_ROOT`.
-D-144 itself changes
-no collection behavior. Require reviewed integration and green post-main CI
-for D-144 and D-145, then stop. Both grant no
+
+D-145 is integrated as signed commit
+`ce289b5fccaaf1d63343553961ad41309db19d04`; PR #182 CI run `33125925508`
+and exact-SHA post-main CI run `33126546606` are green. It preserves the six
+prior markers and adds the four contracted markers in `tests/conftest.py`,
+SHA-256 `e92e9114ff874e71e8468320595489bc5d294653d6ff93b347cc3be27f9a01d9`,
+for exactly ten. Its sole new comprehensive public audit
+`tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition.py`
+has SHA-256 `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`.
+Focused tests passed `2/2`; the bounded safe suite completed in 341.76 seconds
+with `1425 passed, 14 skipped, 0 failed`. Historical tests and D-143
+evidence remain unchanged. D-146 records this validator-clean state and stops
+the active path. D-144/D-145/D-146 grant no
 science, gate, private-data, claim, model-quality, or G2-8 authority. No retry,
 repair, support relaxation, replacement, reinterpretation, confirmatory
 access, submission generation, validator run, leaderboard use, portal access,
