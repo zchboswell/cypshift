@@ -265,7 +265,7 @@ def synthetic_capabilities(tmp_path_factory: pytest.TempPathFactory) -> dict[str
     }
 
 
-def test_both_conditional_paths_freeze_exact_counts_without_official_access(
+def test_both_conditional_paths_freeze_exact_counts_without_formal_acceptance(
     synthetic_capabilities: dict[str, Path],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -413,10 +413,9 @@ def test_both_conditional_paths_freeze_exact_counts_without_official_access(
     assert manifest["model_binaries_retained"] == 0
     assert tutorial_calls == 56
     assert manifest["tutorial_metric_calls"] == 56
-    assert (
-        sum(full_manifest["fit_counts"].values()) + sum(manifest["fit_counts"].values())
-        == 1740
-    )
+    assert sum(full_manifest["fit_counts"].values()) + sum(
+        manifest["fit_counts"].values()
+    ) == 1740
     endpoints = set(compiler.ENDPOINTS)
     robustness = _load(deletion_terminal / "robustness.json")
     assert all(
@@ -443,9 +442,9 @@ def test_both_conditional_paths_freeze_exact_counts_without_official_access(
         for value in robustness["clipping"]["diagnostics"].values()
     )
     missing_predictions = runner._baseline_predictions(
-        deletion_baseline,
-        synthetic=True,
-        fold_map=runner._model_arrays_and_folds(model, synthetic=True)[2],
+        deletion_baseline, synthetic=True, fold_map=runner._model_arrays_and_folds(
+            model, synthetic=True
+        )[2]
     )[1]
     missing_predictions.pop(next(iter(missing_predictions)))
     with pytest.raises(
@@ -505,25 +504,14 @@ def test_supervisor_starts_before_claim_consumption_and_official_access() -> Non
     assert not official.OFFICIAL_ATTEMPT_ROOT.exists()
 
 
-def test_formal_acceptance_is_fixed_accepted_and_has_zero_authority() -> None:
+def test_formal_acceptance_is_fixed_unrun_and_has_zero_authority() -> None:
     assert acceptance.FIXED_PARENT_ROOT == Path("/tmp/cypshift-g2-7g")
     assert acceptance.FIXED_WORK_ROOT == (
         Path("/tmp/cypshift-g2-7g/execution-acceptance-attempt-1")
     )
     assert not acceptance.FIXED_PARENT_ROOT.exists()
-    assert acceptance.ACCEPTANCE.is_file()
+    assert not acceptance.ACCEPTANCE.exists()
     assert not acceptance.REJECTION.exists()
-    assert maplight.sha256_path(acceptance.ACCEPTANCE) == (
-        "4c886d0dd51bfb48095ac2a8f88b202e78cb85f840f8f7bd474c2982ffedf390"
-    )
-    receipt = _load(acceptance.ACCEPTANCE)
-    assert receipt["status"] == "G2_7G_MAPLIGHT_ROBUSTNESS_EXECUTION_ACCEPTED"
-    assert receipt["cleanup_complete_before_publication"] is True
-    assert receipt["private_roots_retained"] == 0
-    assert receipt["official_operations"] == 0
-    assert receipt["claims_created"] == receipt["claims_consumed"] == 0
-    assert receipt["claim_authority"] is False
-    assert receipt["model_quality_authority"] is False
     child = inspect.getsource(acceptance._child)
     root = inspect.getsource(acceptance._execute_root)
     assert child.count("_execute_root(") == 2

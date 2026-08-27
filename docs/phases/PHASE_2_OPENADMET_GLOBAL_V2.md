@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-135 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-136 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1153,15 +1153,34 @@ aggregate receipt-audit tests at `80c08d89...7fca97e` pass. The immutable
 receipt retains the exact at-attempt D-134 focused-test hash
 `3fedd87e...4228c53f`.
 
+D-136 reconciles the live focused-test provenance without changing accepted
+production or scientific bytes. After signed D-135 integration and green
+post-main CI run `33085677193`, the unchanged official-driver preflight proved
+it would fail closed because the live acceptance-bound focused-test file was
+D-135's post-state blob `625f3ae0...0c6ca2b`, while the immutable formal receipt binds
+the at-attempt D-134 snapshot `3fedd87e...4228c53f`. The mismatch was detected
+before cumulative supervision, private claim creation or consumption, root
+creation, and any official source or baseline byte open. Bridge receipt
+[`global_v2_maplight_robustness_focused_test_provenance_bridge.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_focused_test_provenance_bridge.json),
+SHA-256 `2820c30f...33a0dc3`, restores exact `3fedd87e...4228c53f`, preserves
+`625f3ae0...0c6ca2b` as D-135 historical lineage, and retires only the
+snapshot's obsolete pre-acceptance absence assertion through pytest hook
+`e931ec84...d5848727a`. The expanded aggregate/current-state and public
+in-memory claim-derivation audit is `719c0f71...61bb4a2f`; 15 active focused
+tests pass and one historical assertion is skipped. No formal acceptance was
+repeated. Production changes, scientific recipe changes, formal attempts,
+official operations, private rows opened, claims created or consumed, fits,
+predictions, metrics, and model-quality authority are all zero.
+
 ## Exact next action
 
-Review and integrate D-135 receipt `4c886d0d...edf390` through the signed
-fast-forward-only workflow, then require green post-main CI for that exact
-commit. Only afterward run a fresh official G2-7G preflight from clean
+Review and integrate D-136 bridge receipt `2820c30f...33a0dc3` through the
+signed fast-forward-only workflow, then require green post-main CI for that
+exact commit. Only afterward run a fresh official G2-7G preflight from clean
 synchronized `main` and invoke the fixed no-argument official driver exactly
 once with
 `uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
-Do not run it from the acceptance-milestone branch. The supervised child must
+Do not run it from the bridge branch. The supervised child must
 consume the sole private claim before opening any official source or baseline
 byte; the tracked claim remains immutable. No retry, resume, repair, move,
 overwrite, replacement, smaller battery, or alternate order is authorized.

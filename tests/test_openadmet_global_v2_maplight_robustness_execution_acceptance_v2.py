@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Any, cast
 
@@ -11,6 +12,11 @@ RESEARCH = ROOT / "research" / "maplight-fixed"
 ACCEPTANCE = BENCHMARK / "global_v2_maplight_robustness_execution_acceptance_v2.json"
 CONTRACT = BENCHMARK / "global_v2_maplight_robustness_execution_contract_v2.json"
 CLAIM = BENCHMARK / "global_v2_maplight_robustness_execution_claim_v2.json"
+BRIDGE = BENCHMARK / "global_v2_maplight_robustness_focused_test_provenance_bridge.json"
+FOCUSED_TESTS = (
+    ROOT / "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py"
+)
+CONFTEST = ROOT / "tests/conftest.py"
 ACCEPTANCE_SHA256 = "4c886d0dd51bfb48095ac2a8f88b202e78cb85f840f8f7bd474c2982ffedf390"
 CLAIM_SHA256 = "d7e68837a9df0b392eab7d03282ec84d21b8787f4b2ac14b1fc79fec44df6f9f"
 
@@ -44,9 +50,93 @@ def test_acceptance_binds_exact_contract_and_integrated_implementation() -> None
     assert receipt["official_shaped_acceptance_driver_source_sha256"] == _sha256(
         RESEARCH / "run_global_v2_maplight_robustness_execution_acceptance_v2.py"
     )
-    assert receipt["focused_tests_sha256"] == (
-        "3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f"
+    assert (
+        receipt["focused_tests_sha256"]
+        == _sha256(FOCUSED_TESTS)
+        == ("3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f")
     )
+
+
+def test_provenance_bridge_retires_only_the_obsolete_pre_acceptance_state() -> None:
+    bridge = _load(BRIDGE)
+    assert bridge["status"] == "G2_7G_FOCUSED_TEST_PROVENANCE_RECONCILED"
+    assert bridge["parent_commit"] == ("7450676da651e86bab341c7434dd1b9dd2f19388")
+    assert bridge["contract_sha256"] == _sha256(CONTRACT)
+    assert bridge["tracked_claim_sha256"] == _sha256(CLAIM)
+    assert bridge["formal_acceptance_sha256"] == _sha256(ACCEPTANCE)
+    assert bridge["scientific_runner_sha256"] == _sha256(
+        RESEARCH / "global_v2_maplight_robustness_scientific_runner.py"
+    )
+    assert bridge["official_driver_sha256"] == _sha256(
+        RESEARCH / "run_global_v2_maplight_robustness_official_v2.py"
+    )
+    assert bridge["formal_acceptance_driver_sha256"] == _sha256(
+        RESEARCH / "run_global_v2_maplight_robustness_execution_acceptance_v2.py"
+    )
+    assert bridge["formal_focused_tests_sha256"] == _sha256(FOCUSED_TESTS)
+    assert bridge["d135_post_acceptance_state_tests_sha256"] == (
+        "625f3ae0c8d61dc76775240606a2662d7b9b80b5ffe0c05344b9a587f0c6ca2b"
+    )
+    assert bridge["post_acceptance_audit_tests_sha256"] == _sha256(Path(__file__))
+    assert bridge["pytest_transition_hook_sha256"] == _sha256(CONFTEST)
+    assert bridge["retired_test_nodeid"] == (
+        "tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::"
+        "test_formal_acceptance_is_fixed_unrun_and_has_zero_authority"
+    )
+    assert bridge["replacement_current_state_test"] == (
+        "tests/test_openadmet_global_v2_maplight_robustness_execution_acceptance_v2.py::"
+        "test_cumulative_supervision_cleanup_and_zero_authority_are_complete"
+    )
+    assert bridge["production_files_changed"] == 0
+    assert bridge["formal_acceptance_attempts"] == 0
+    assert bridge["official_operations"] == 0
+    assert bridge["claims_created"] == bridge["claims_consumed"] == 0
+    assert bridge["model_quality_authority"] is False
+
+
+def test_claim_derivation_is_read_only_and_fills_exactly_five_receipts() -> None:
+    before = CLAIM.read_bytes()
+    sys.path.insert(0, str(RESEARCH))
+    try:
+        import run_global_v2_maplight_robustness_official_v2 as official
+    finally:
+        sys.path.remove(str(RESEARCH))
+
+    assert not official.OFFICIAL_ATTEMPT_ROOT.exists()
+    assert not official.RESTRICTED_ROOT.exists()
+    consumed = official.derive_consumed_claim()
+    template = cast(dict[str, Any], json.loads(before))
+    future = {key for key in template if key.startswith("future_")}
+    changed = {key for key in consumed if consumed.get(key) != template.get(key)}
+    assert future == {
+        "future_scientific_runner_source_sha256",
+        "future_official_attempt_driver_source_sha256",
+        "future_official_shaped_acceptance_driver_source_sha256",
+        "future_official_shaped_execution_acceptance_sha256",
+        "future_focused_tests_sha256",
+    }
+    assert changed == future | {"status", "consumptions"}
+    assert consumed["status"] == "G2_7G_MAPLIGHT_ROBUSTNESS_CLAIM_CONSUMED"
+    assert consumed["consumptions"] == 1
+    assert consumed["usable"] is False
+    assert consumed["future_scientific_runner_source_sha256"] == _sha256(
+        RESEARCH / "global_v2_maplight_robustness_scientific_runner.py"
+    )
+    assert consumed["future_official_attempt_driver_source_sha256"] == _sha256(
+        RESEARCH / "run_global_v2_maplight_robustness_official_v2.py"
+    )
+    assert consumed[
+        "future_official_shaped_acceptance_driver_source_sha256"
+    ] == _sha256(
+        RESEARCH / "run_global_v2_maplight_robustness_execution_acceptance_v2.py"
+    )
+    assert consumed["future_official_shaped_execution_acceptance_sha256"] == _sha256(
+        ACCEPTANCE
+    )
+    assert consumed["future_focused_tests_sha256"] == _sha256(FOCUSED_TESTS)
+    assert CLAIM.read_bytes() == before
+    assert not official.OFFICIAL_ATTEMPT_ROOT.exists()
+    assert not official.RESTRICTED_ROOT.exists()
 
 
 def test_opposite_roots_cover_both_frozen_conditional_profiles() -> None:

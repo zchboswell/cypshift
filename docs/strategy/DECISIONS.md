@@ -4613,3 +4613,57 @@
   Otherwise the next gate is the exact official G2-7G preflight followed by
   one no-argument claim-consuming execution; no official byte may open before
   the supervised child consumes that claim.
+
+## D-136 — Reconcile focused-test provenance before official execution
+
+- Date: 2026-08-27
+- Status: accepted provenance-bridge implementation evidence pending reviewed
+  integration; D-135 formal acceptance immutable; official execution unrun;
+  attempt and restricted roots absent; tracked claim unchanged, unusable, and
+  unconsumed; zero production, science, formal-attempt, official-operation,
+  private-byte, fit, prediction, metric, submission, upload, or model-quality
+  operation
+- Decision: Accept the narrow focused-test provenance bridge at aggregate
+  receipt SHA-256 `2820c30f...33a0dc3`. Restore the exact D-134 focused-test
+  snapshot bound by the immutable formal receipt, preserve the D-135 post-state
+  bytes as historical lineage, and retire only the restored snapshot's
+  obsolete pre-acceptance absence assertion during post-acceptance collection.
+  Do not change production or scientific recipe bytes and do not repeat either
+  one-use gate.
+- Evidence: Signed D-135 commit `7450676...` passed exact-SHA post-main CI run
+  `33085677193`. The first unchanged official-driver preflight then proved a
+  deterministic rejection would occur before cumulative supervision because
+  the formal receipt
+  binds focused tests `3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`
+  while the live D-135 state-transition file had SHA-256
+  `625f3ae0c8d61dc76775240606a2662d7b9b80b5ffe0c05344b9a587f0c6ca2b`.
+  No official attempt or restricted root, private claim, or official source or
+  baseline byte was created or opened during that read-only proof; the tracked
+  claim did not change or consume. The bridge restores exact
+  `3fedd87e...4228c53f`, keeps
+  `625f3ae0...0c6ca2b` as immutable D-135 historical lineage, binds pytest
+  transition hook
+  `e931ec84186da7f06e1ab6ceea909bb01647acb3de01bb60b539e22d5848727a`,
+  and expands the acceptance/current-state plus public in-memory claim-
+  derivation audit at
+  `719c0f71a8a0e403f590e1aced8a38b3c6131ff915a2bc9f8234126761bb4a2f`.
+  The combined focused set has 15 active passes and one explicitly historical
+  skip. Claim derivation fills exactly the five frozen future receipt fields
+  in memory while changing no tracked byte or private root. Production files
+  changed, scientific recipes changed, formal acceptances repeated, official
+  operations, claims created or consumed, private rows opened, model fits,
+  predictions, development metrics, and model-quality authority are all zero.
+  The exact 55-node relevant suite has 54 active passes plus the historical
+  skip, and the safe repository suite has 1,302 passes with five skips total;
+  Ruff, mypy, build, and two installed deterministic vertical slices pass.
+- Alternatives: Rewrite the immutable D-135 receipt; change the official
+  driver or its fail-closed comparison; retain only the post-state test hash;
+  drop current-state coverage; mark more than the exact obsolete node skipped;
+  create or consume a claim during testing; open an official byte to diagnose
+  a public hash mismatch; or proceed from an unintegrated bridge branch.
+- Reversal condition: Any contract, claim, acceptance, implementation,
+  receipt-bound snapshot, historical-blob, transition-hook, current-state
+  audit, claim-derivation, root, privacy, integration, or post-main-CI drift
+  blocks progression. Otherwise integrate D-136 by signed fast-forward, require
+  green exact-SHA post-main CI, then repeat only the fresh fail-before-work
+  preflight and invoke the still-unrun sole no-argument official execution.

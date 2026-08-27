@@ -372,11 +372,29 @@ observed 6,985 checkpoints and 13 descendants with complete cleanup and zero
 warnings, GPU use, detachment, official operations, claim creation or
 consumption, or retained private roots. This is synthetic execution-mechanics
 evidence only; fixed MapLight
-remains `0.5837812652` component-macro MAE. Reviewed D-135 integration and
-green post-main CI must precede the sole official G2-7G attempt.
+remains `0.5837812652` component-macro MAE. D-135 was subsequently integrated
+by signed fast-forward and passed exact-SHA post-main CI; D-136 below records
+the ensuing fail-closed preflight before the still-unrun official attempt.
 Nine post-attempt state-transition tests (`625f3ae0...0c6ca2b`) and five
 aggregate receipt-audit tests (`80c08d89...7fca97e`) pass; the formal receipt
 retains the exact at-attempt D-134 test hash.
+
+D-136 records a fail-closed provenance preflight and the smallest non-
+scientific correction. After D-135 signed integration and green exact-SHA
+post-main CI, the unchanged official-driver preflight proved a rejection would
+occur before supervision
+because the live focused-test file was the D-135 post-state blob
+`625f3ae0...0c6ca2b`, not the immutable receipt-bound D-134 snapshot
+`3fedd87e...4228c53f`. No root or private claim was created, no claim was
+consumed, and no official source or baseline byte was opened. Bridge receipt
+`2820c30f...33a0dc3` restores the exact receipt-bound snapshot, preserves the
+D-135 blob as historical lineage, skips only its obsolete pre-run absence
+assertion through hook `e931ec84...d5848727a`, and binds expanded current-state
+audit `719c0f71...61bb4a2f`. Fifteen active focused tests pass and one historical
+assertion is skipped. Production, science, formal-attempt, official-operation,
+fit, prediction, metric, and model-quality evidence remain unchanged and zero.
+Reviewed D-136 integration and green post-main CI must precede a fresh exact
+official preflight and the still-unrun sole no-argument official execution.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

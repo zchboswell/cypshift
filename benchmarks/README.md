@@ -65,7 +65,14 @@ The current G2-7 chain is:
   [`global_v2_maplight_robustness_execution_acceptance_v2.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_acceptance_v2.json),
   SHA-256 `4c886d0d...ffedf390`; post-attempt state-transition tests at
   `625f3ae0...0c6ca2b` and aggregate receipt-audit tests at
-  `80c08d89...7fca97e`.
+  `80c08d89...7fca97e`;
+- D-136 focused-test provenance bridge:
+  [`global_v2_maplight_robustness_focused_test_provenance_bridge.json`](openadmet_cyp_2026/global_v2_maplight_robustness_focused_test_provenance_bridge.json),
+  SHA-256 `2820c30f...33a0dc3`; restored acceptance-bound focused tests at
+  `3fedd87e...4228c53f`, D-135 post-state historical blob at
+  `625f3ae0...0c6ca2b`, pytest transition hook at
+  `e931ec84...d5848727a`, and expanded audit tests at
+  `719c0f71...61bb4a2f`.
 
 Pre-implementation audit proved that D-127 cannot satisfy exact D-122 scoring:
 its accepted scorer capability exposes central `point` only, while the frozen
@@ -77,14 +84,20 @@ acceptance produced byte-identical synthetic capabilities but failed mandatory
 cleanup-root safety, so D-129 rejects it with no acceptance and zero attempts
 remaining. D-130 now freezes a separately identified fixed-root path that must
 prove cleanup safety before any work, with zero fit and zero metric. Official
-development access remains closed until D-135 is reviewed, integrated, and
+development access remains closed until D-136 is reviewed, integrated, and
 green on main. G2-7F is accepted after one formal attempt. The sole G2-7G
 formal acceptance then passed two opposite-order roots, both conditional
 profiles, 3,480 model-double fits, two bounded real CatBoost controls,
 byte-identical capabilities and aggregate terminals, cumulative supervision,
 and complete cleanup. It performed zero official or claim operations and
 creates no model-quality authority; the distinct G2-7G claim remains unusable
-and unconsumed.
+and unconsumed. After D-135 integration, the first fresh preflight proved the
+unchanged official driver would reject before supervision because the live
+focused-test bytes no
+longer matched the immutable formal receipt. D-136 restores the exact bound
+snapshot and skips only its obsolete pre-acceptance absence assertion. The
+read-only proof created no root or private claim, consumed nothing, and opened
+no official source or baseline byte; the sole official execution remains unrun.
 
 ## OpenADMET TRACE source rows
 

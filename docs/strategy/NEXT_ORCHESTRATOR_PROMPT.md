@@ -1,16 +1,16 @@
-# Next orchestrator kickoff — G2-7G sole official execution gate
+# Next orchestrator kickoff — integrate D-136, then sole G2-7G official gate
 
-This handoff becomes active only after D-135 is integrated on `main` through
-the repository's signed fast-forward-only workflow and post-main CI is green
-for that exact commit. Until then, review and integrate only the D-135
-aggregate acceptance milestone. Do not run the official driver from its
-milestone branch.
+This handoff becomes active with D-136 on its focused-test provenance-bridge
+branch. Review and integrate that bridge through the repository's signed
+fast-forward-only workflow and require green post-main CI for the exact
+integrated commit. Do not run the official driver from the bridge branch.
 
 The objective remains the smallest scientifically defensible path to a
 materially better OpenADMET CYP 2026 submission. Frozen family-safe evidence
 outranks leaderboard evidence. Fixed MapLight remains the best validated
 system at internal component-macro MAE `0.5837812652` (`0.5838`); D-135 is
-synthetic execution-mechanics evidence and makes no model-quality claim.
+synthetic execution-mechanics evidence, D-136 is provenance/infrastructure
+evidence, and neither makes a model-quality claim.
 
 ## Restore authoritative context first
 
@@ -20,10 +20,10 @@ Read and follow `AGENTS.md`, then read in order:
 2. `docs/phases/README.md`
 3. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`
 4. `docs/strategy/PROJECT_CHARTER.md`
-5. D-122 through D-135 in `docs/strategy/DECISIONS.md`
+5. D-122 through D-136 in `docs/strategy/DECISIONS.md`
 6. the final relevant rows of `runs/experiment_ledger.csv`
 7. the exact G2-7G contract, claim, runner, official driver, accepted formal
-   receipt, and focused tests
+   receipt, provenance bridge, transition hook, and focused tests
 
 Treat clean synchronized `main`, immutable receipts, CI, and exact fixed-root
 existence as authoritative. If a one-use attempt already exists or the claim
@@ -46,12 +46,18 @@ patched, benchmarked, or used to derive code.
   `7cb471ce6c39e4633b91556cd2c09ee7406dd39912b5d69200fad9372a42e473`
 - at-attempt D-134 focused tests:
   `3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`
-- post-attempt state-transition tests:
+- D-135 post-attempt state-transition historical blob:
   `625f3ae0c8d61dc76775240606a2662d7b9b80b5ffe0c05344b9a587f0c6ca2b`
-- aggregate receipt-audit tests:
+- D-135 aggregate receipt-audit historical blob:
   `80c08d89eabfcfb17d73ea19f833ee46005f0bac0421b2a1bb239191e7fca97e`
 - sole formal acceptance receipt:
   `4c886d0dd51bfb48095ac2a8f88b202e78cb85f840f8f7bd474c2982ffedf390`
+- D-136 focused-test provenance bridge:
+  `2820c30f387d138d115b36f621b038dc75a1f5af43a7fa9f97b3b837a33a0dc3`
+- D-136 pytest transition hook:
+  `e931ec84186da7f06e1ab6ceea909bb01647acb3de01bb60b539e22d5848727a`
+- D-136 expanded post-acceptance audit tests:
+  `719c0f71a8a0e403f590e1aced8a38b3c6131ff915a2bc9f8234126761bb4a2f`
 
 The formal status is `G2_7G_MAPLIGHT_ROBUSTNESS_EXECUTION_ACCEPTED`. Two
 fresh roots reversed physical and fit order. Each ran exact M0/full retention
@@ -65,9 +71,22 @@ storage 104,341,504 bytes. Cleanup was complete, with zero warnings, GPU,
 detached children, official operations, claim creation or consumption, or
 retained private roots.
 
+After D-135 integration and green post-main CI run `33085677193`, the first
+unchanged official-driver preflight proved a deterministic rejection would
+occur before cumulative supervision because its immutable receipt comparison
+expected live focused-test hash `3fedd87e...4228c53f` but found D-135 post-state blob
+`625f3ae0...0c6ca2b`. It created no attempt or restricted root, no private
+claim, and no official source or baseline byte open. It did not consume the
+one-use execution. D-136 restores exact `3fedd87e...4228c53f`, retains
+`625f3ae0...0c6ca2b` as historical lineage, and skips only that snapshot's
+obsolete pre-acceptance absence assertion. The combined focused set has 15
+active passes and one historical skip. Production and scientific bytes are
+unchanged; every formal, official, claim, fit, prediction, metric, and
+model-quality operation attributable to D-136 remains zero.
+
 ## Fresh preflight before the irreversible attempt
 
-After D-135 integration and exact-SHA green post-main CI, prove all of the
+After D-136 integration and exact-SHA green post-main CI, prove all of the
 following without opening, listing, or hashing official source or baseline
 bytes:
 

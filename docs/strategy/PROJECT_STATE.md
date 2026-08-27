@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-135. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-136. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -733,6 +733,30 @@ The nine post-attempt state-transition tests at SHA-256
 `80c08d89...7fca97e` pass; the immutable receipt still binds the exact
 at-attempt D-134 focused-test hash `3fedd87e...4228c53f`.
 
+D-136 reconciles that immutable at-attempt test provenance after the first
+post-integration official-driver preflight proved a deterministic rejection
+would occur before supervision. D-135 had changed the live acceptance-bound
+focused-test bytes
+from receipt-bound `3fedd87e...4228c53f` to post-state blob
+`625f3ae0...0c6ca2b`; the unchanged driver would therefore fail closed before
+creating a root, consuming a claim, or opening an official source or baseline
+byte. The tracked provenance bridge
+[`global_v2_maplight_robustness_focused_test_provenance_bridge.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_focused_test_provenance_bridge.json),
+SHA-256 `2820c30f...33a0dc3`, restores the exact `3fedd87e...4228c53f`
+snapshot, retains `625f3ae0...0c6ca2b` as immutable D-135 historical lineage,
+and retires only its now-obsolete pre-acceptance absence assertion through
+pytest hook `e931ec84...d5848727a`. The expanded current-state and public
+in-memory claim-derivation audit is `719c0f71...61bb4a2f`; 15 active focused
+tests pass and the one exact historical assertion is skipped. Production and
+scientific recipe bytes are unchanged. The exact 55-node relevant suite has 54
+active passes plus that skip; the safe repository suite has 1,302 passes and
+five skips total. Ruff, mypy, package build, and two byte-identical installed
+Python 3.12.3 vertical slices are green. No formal acceptance was repeated; no
+official attempt root, restricted root, private claim, or private byte was
+created or opened; and fits, predictions, metrics, claim operations, official
+operations, and model-quality authority remain zero. Fixed MapLight remains
+the best validated internal system at component-macro MAE `0.5837812652`.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1383,13 +1407,13 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-135 aggregate formal acceptance receipt SHA-256
-`4c886d0d...edf390` through the signed fast-forward-only workflow, then require
-green post-main CI for that exact commit. Only afterward perform a fresh
-G2-7G official-development preflight from clean synchronized `main` and invoke
+Review and integrate the D-136 focused-test provenance bridge SHA-256
+`2820c30f...33a0dc3` through the signed fast-forward-only workflow, then
+require green post-main CI for that exact commit. Only afterward perform a
+fresh G2-7G official-development preflight from clean synchronized `main` and invoke
 the fixed no-argument one-use official driver exactly once with
 `uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
-Do not run it from the acceptance-milestone branch. The supervised child must
+Do not run it from the bridge branch. The supervised child must
 consume the sole private claim before any official source or baseline byte is
 opened; the tracked claim remains immutable. Do not retry, resume, repair,
 move, overwrite, replace, or run a smaller or alternate battery. The D-127
