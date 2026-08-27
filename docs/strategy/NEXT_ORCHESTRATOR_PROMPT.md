@@ -1,10 +1,11 @@
-# Next orchestrator kickoff — integrate D-140, then implement D-141
+# Next orchestrator kickoff — integrate D-141, then run the sole composite acceptance
 
-This handoff becomes active on the contract-only D-140 source-shape transition
-branch. Signed D-139 commit `3b9c251f6875fedb33e51c4420cd8634c6e4cf29` is
-integrated and exact-SHA post-main CI run `33103967048` is green across Python
-3.11, 3.12.3, and 3.14. Review, integrate, and require green post-main CI for
-the exact D-140 contract before packaging any D-141 implementation byte.
+This handoff becomes active on the four-file D-141 official-orchestration
+implementation branch. Signed D-140 commit
+`6e3cb96299cefc928be09fee10008c4c7ac651f5` is integrated and exact-SHA
+post-main CI run `33109592304` is green across Python 3.11, 3.12.3, and 3.14.
+Review, sign, integrate, and require green post-main CI for the exact D-141
+implementation before preflighting the sole fixed composite acceptance.
 
 The objective remains the smallest scientifically defensible path to a
 materially better OpenADMET CYP 2026 submission. Frozen family-safe evidence
@@ -13,8 +14,9 @@ system at internal component-macro MAE `0.5837812652`. D-135 is immutable
 science-kernel mechanics evidence, D-136 is historical test provenance, D-137
 is the driver-only repair contract, D-138 corrects the seal order, and D-139
 freezes the first exact historical-test transition. D-140 adds only the two-node
-source-shape transition exposed by safe-suite negative evidence. None is
-implementation or model-quality evidence.
+source-shape transition exposed by safe-suite negative evidence. D-141 is the
+bounded mechanics implementation of those frozen contracts; it is not science
+or model-quality evidence.
 
 ## Restore authoritative context first
 
@@ -24,11 +26,11 @@ Read and follow `AGENTS.md`, then read completely in order:
 2. `docs/phases/README.md`
 3. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`
 4. `docs/strategy/PROJECT_CHARTER.md`
-5. D-122 through D-140 in `docs/strategy/DECISIONS.md`
+5. D-122 through D-141 in `docs/strategy/DECISIONS.md`
 6. the final relevant rows of `runs/experiment_ledger.csv`
 7. the exact G2-7G contract, claim, D-135 receipt, D-136 bridge, D-137 repair
-   contract, D-138 seal erratum, D-139 test-transition contract, and D-140
-   source-shape transition contract
+   contract, D-138 seal erratum, D-139 test-transition contract, D-140
+   source-shape transition contract, and exact D-141 four-file implementation
 
 Treat clean synchronized `main`, immutable receipts, exact-SHA CI, and exact
 fixed-root existence checks as authoritative. If a one-use attempt already
@@ -76,77 +78,84 @@ the rejected G2-7B runner/driver. D-127/D-128 remain permanently barred.
   `d4ff0e57b4c5d8b6bae808d0749f5b8e116965f18f2df3fee6e04e58dd727417`
 - D-140 contract tests:
   `35bcb0958bc66c386b82ab13171b453c6f60fde81dcb40d329a2f9b659c67da6`
+- D-140 integrated commit:
+  `6e3cb96299cefc928be09fee10008c4c7ac651f5`
+- D-140 post-main CI:
+  `33109592304` (`success`; Python 3.11, 3.12.3, and 3.14)
+- D-141 corrected official driver:
+  `feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`
+- D-141 fixed composite acceptance driver:
+  `3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`
+- D-141 focused tests:
+  `f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`
+- D-141 exact six-marker conftest:
+  `03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`
 
 D-135 already proved two opposite-order roots and both conditional profiles,
 3,480 model-double fits, 667,872 synthetic predictions, two real CatBoost
 controls, byte-identical maps, cumulative supervision, and cleanup. Do not
 rerun or reinterpret it.
 
-## D-140 contract-only evidence
+## D-141 implementation evidence
 
-An uncommitted prospective implementation passed 118 safe focused/contract
-tests, but the safe repository suite, run with permanently barred
-`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
-ignored, reported `1415 passed, 8 skipped, 2 failed` in about 352.96 seconds.
-All seven D-140 tests and all 25 combined D-137 through D-140 contract tests
-pass. This is negative pre-integration evidence. It neither accepts nor
-binds the implementation. The two failures are exact source-shape assertions
-in immutable D-134 focused snapshot SHA-256
-`3fedd87eb86f485167a53564cb440409056d82982f329db888028e294228c53f`:
+D-141 changes exactly four files: the corrected official driver, fixed
+no-argument composite acceptance driver, dedicated focused tests, and
+`tests/conftest.py`. It preserves the immutable D-135 science kernel and every
+frozen D-122 candidate, feature, seed, group, fit, prediction, metric,
+resource, selection-token, and no-runner-up rule.
 
-- `tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_exact_fit_topology_and_conditional_stage_c_are_unchanged`
-- `tests/test_openadmet_global_v2_maplight_robustness_scientific_runner_v2.py::test_supervisor_starts_before_claim_consumption_and_official_access`
+The official driver implements D-137/D-138's exact five-status taxonomy,
+strict 13-field cumulative supervision, capability-crossing accounting,
+atomic one-use claim publication, symlink-safe owned-root cleanup, one bounded
+common seal, collision/inode/device/mode/hash validation, and exact hard-
+resource versus ordinary-failure classification. The fixed composite driver
+uses two opposite scenario orders and proves all six scenarios, terminal
+accounting, publication, cleanup, and zero-operation evidence without opening
+official bytes or creating, mutating, or consuming a tracked/private claim.
+Synthetic fixture claims remain confined to disposable public roots.
 
-D-140 preserves that file byte-identically and freezes exactly these future
-D-141 replacement nodes:
+D-139's three historical nodes and D-140's two source-shape nodes are the only
+retired assertions. The exact five replacement responsibilities are active;
+all other historical audits remain active. The live top-level composite,
+applicable scenario receipts, and real attempt receipt lineage bind
+`d139_test_transition_contract_sha256` and
+`d140_source_shape_transition_contract_sha256`.
 
-- `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_corrected_child_preserves_fit_topology_and_cleans_before_terminal_staging`
-- `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`
+Exact validation:
 
-The first replacement must prove Stage A=540, Stage B=180, and conditional
-Stage C=300 fit identities; exact widths `2563/1539/1539/2248/2363`; both
-predictor-authority cross rejections for `synthetic=True` with
-`real_catboost_predictor` and `synthetic=False` with
-`deterministic_test_predictor`; Stage A -> selection -> Stage B ->
-conditional Stage C with exact condition `selected != "G2-7-M0-FULL"`; and
-`_terminal_bytes -> _cleanup_owned_root(work) -> _stage_payload(files)`.
+- 103 focused orchestration tests pass;
+- immutable D-134 focused tests report `6 passed, 3 skipped`;
+- D-136 historical audit reports `4 passed, 3 skipped`;
+- the current D-137-through-D-141 five-file suite reports `128 passed, 0
+  skipped, 0 failed` in 0.74 seconds (0.96 wrapper wall-seconds); and
+- `uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+  reports `1425 passed, 10 skipped, 0 failed` in 346.49 seconds (346.98
+  wrapper wall-seconds; 902,124 KiB maximum RSS).
 
-The second replacement must prove `run_supervised` is in, and `_consume_claim`
-is absent from, `run_official_attempt`; child chronology `resource_checkpoint
--> derive_consumed_claim -> _consume_claim -> compile_capabilities -> Stage A`;
-exact `raw_observed = supervisor.run_supervised`; exact
-`publication_root=PUBLICATION_STAGING_ROOT` and
-`writable_publication_parent=OFFICIAL_ATTEMPT_ROOT.parent`; equal official and
-acceptance limits; the exact absent official attempt root at
-`/home/zbos/cypshift-private/openadmet-2026/g2-7g-maplight-robustness-development-attempt-1`;
-`_failure_payload` accounting-complete aggregate bytes with no terminal path or
-publication;
-outer `run_supervised -> _seal_with_fallback`; exclusive common-seal terminal
-publication; and absence of parent `_finalize_terminal` and child
-`PENDING_TERMINAL_ROOT`.
+The 128-test result supersedes the earlier 118-test prospective result. Diff
+integrity, Ruff over allowed paths with all barred G2-7B paths explicitly
+excluded, strict mypy over 78 source files, package build, and two independent
+installed-wheel roots with an empty recursive diff also pass.
 
-D-141 may add exactly two skip markers to `tests/conftest.py`, preserving the
-previous four for six total, and must bind field
-`d140_source_shape_transition_contract_sha256` in the corrected driver,
-composite driver/receipt, and focused tests. D-140 itself changes no production
-or collection file and grants zero collection, implementation, formal-
-acceptance, official, claim, science, model-quality, confirmatory, submission,
-or upload authority. The prospective D-141 implementation remains uncommitted;
-its hashes are not D-140 evidence.
+D-141 ran neither fixed one-use gate. It mutated or consumed no tracked claim,
+created or opened no private claim, opened no official/private source or
+baseline byte, and performed no fit, prediction, development metric,
+confirmatory, blinded-test, TDI, submission, leaderboard, portal, or upload
+operation. It grants zero formal-acceptance, official, tracked/private-claim,
+science, model-quality, confirmatory, submission, or upload authority.
 
 ## Exact next gate
 
-Run the remaining contract-focused and normal repository checks, make one
-atomic signed D-140 contract-only commit, push the branch, open a PR, require
-all checks, integrate locally by fast-forward only, push `main`, and require
-green exact-SHA post-main CI. Then package only the still-uncommitted D-141
-corrected implementation, exact six-marker conftest transition, and both
-replacement nodes/bindings. Review, integrate, and require green exact-SHA
-post-main CI for D-141. Do not run the fixed acceptance from either branch.
-Only after D-141 is green on clean synchronized `main`, prove the fixed
-composite parent/work/acceptance/rejection roots absent and invoke the sole
-fixed no-argument composite acceptance exactly once. Package its aggregate as
-a separate reviewed milestone before any official G2-7G preflight.
+Make one atomic signed D-141 implementation-and-knowledgebase commit, push the
+branch, open a PR, require all checks, integrate locally by fast-forward only,
+push `main`, and require green exact-SHA post-main CI. Do not run the fixed
+acceptance from the implementation branch. Only after D-141 is green on clean
+synchronized `main`, run a fresh read-only preflight proving the fixed
+composite parent, work, acceptance, and rejection roots absent, then invoke the
+sole fixed no-argument composite acceptance exactly once. Do not retry, move,
+repair, resume, overwrite, or replace it. Package its immutable aggregate
+acceptance or rejection as a separate reviewed milestone before any official
+G2-7G preflight.
 
 ## Closed capabilities
 

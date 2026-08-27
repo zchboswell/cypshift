@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-140. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-141. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -930,12 +930,46 @@ composite driver and receipt, and focused tests.
 
 D-140 changes no implementation, `tests/conftest.py`, historical snapshot,
 science, claim, gate, candidate, fit, prediction, metric, resource, selection,
-privacy, or one-use state. The prospective D-141 implementation remains
-uncommitted and unbound; no implementation hash is D-140 evidence. The fixed
-composite acceptance and official attempt remain unrun. D-140 grants zero test
-collection, implementation, one-use, official, claim, science, model-quality,
-confirmatory, submission, or upload authority. Fixed MapLight remains the best
-validated internal system at component-macro MAE `0.5837812652`.
+privacy, or one-use state. At that milestone the prospective D-141
+implementation remained uncommitted and unbound; no implementation hash is
+D-140 evidence. Signed D-140 commit
+`6e3cb96299cefc928be09fee10008c4c7ac651f5` is now integrated, and exact-SHA
+post-main CI run `33109592304` is green across Python 3.11, 3.12.3, and 3.14.
+
+D-141 now packages only the corrected official driver, fixed no-argument
+composite acceptance driver, dedicated focused tests, and exact six-marker
+collection transition. Their exact SHA-256 values are, respectively,
+`feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`,
+`3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`,
+`f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`,
+and `03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`.
+The implementation preserves the frozen D-135 science kernel and D-122
+battery while implementing D-137/D-138's five-status, cumulative-supervision,
+authoritative-accounting, atomic-claim, bounded common-seal, inode/mode,
+symlink-safe cleanup, and resource rules. It completes the exact D-139
+three-node and D-140 two-node historical transitions and binds
+`d139_test_transition_contract_sha256` and
+`d140_source_shape_transition_contract_sha256` through the live composite and
+attempt receipt lineages.
+
+Validation is green: 103 focused orchestration tests; the immutable D-134 file
+at `6 passed, 3 skipped`; the D-136 audit at `4 passed, 3 skipped`; and 128
+current D-137-through-D-141 related tests. The exact safe repository command
+`uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+reported `1425 passed, 10 skipped, 0 failed` in 346.49 seconds (346.98 wrapper
+wall-seconds; 902,124 KiB maximum RSS). Diff integrity, Ruff across explicitly
+allowed Python paths, strict mypy across 78 source files, package build, and
+two-root installed-wheel determinism also pass. The earlier 118-test
+prospective result is superseded by this exact current evidence.
+
+D-141 is implementation and synthetic-test evidence only. It ran neither the
+fixed composite acceptance nor official attempt. Disposable synthetic fixture
+claim mechanics were exercised only on temporary public roots; no tracked
+claim was mutated or consumed, no private claim was created or opened, and no
+official or private byte was opened. D-141 grants no science, model-quality,
+formal-acceptance, official, confirmatory, submission, or upload authority.
+Fixed MapLight remains the best validated internal system at component-macro
+MAE `0.5837812652`.
 
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
@@ -1587,16 +1621,16 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate only the two-file D-140 source-shape transition contract
-and this knowledgebase milestone through the signed fast-forward-only workflow,
-then require green exact-SHA post-main CI. D-139 is already integrated and
-green at post-main run `33103967048`. Only after D-140 is green may D-141
-package the still-uncommitted corrected driver, fixed composite acceptance,
-focused tests, and exact six-marker conftest state with both D-140 replacement
-bindings. Review and integrate D-141 and require green exact-SHA post-main CI;
-only then prove the fixed composite roots absent and run the sole fixed
+Review, sign, and integrate the exact four-file D-141 implementation and this
+seven-file knowledgebase milestone through the fast-forward-only workflow,
+then require green exact-SHA post-main CI. D-140 is already integrated and
+green at post-main run `33109592304`. Only after D-141 is green on clean,
+synchronized `main` may a fresh read-only preflight prove the fixed composite
+parent, work, acceptance, and rejection roots absent and invoke the sole fixed
 no-argument composite acceptance exactly once. Do not run that acceptance or
-the official G2-7G attempt from either contract or implementation branch.
+the official G2-7G attempt from the implementation branch. Package any
+immutable aggregate acceptance or rejection as a separate reviewed milestone
+before any official preflight.
 D-135 remains inherited immutable science-kernel evidence and must not be
 repeated, repaired, resumed, or reinterpreted. The tracked claim remains
 unchanged, unusable, and unconsumed; official attempt, restricted, staging,

@@ -4977,3 +4977,73 @@
   implementation with exactly six markers, both replacement nodes, and the
   frozen binding. Integrate D-141 and require green post-main CI before
   preflighting and invoking the sole fixed composite acceptance exactly once.
+
+## D-141 — Accept the bounded official-orchestration implementation for review
+
+- Date: 2026-08-27
+- Status: accepted implementation and synthetic-test evidence pending reviewed
+  signed integration; signed D-140 commit
+  `6e3cb96299cefc928be09fee10008c4c7ac651f5` is integrated with green exact-SHA
+  post-main CI run `33109592304` across Python 3.11, 3.12.3, and 3.14; fixed
+  composite acceptance and official G2-7G attempt remain unrun; tracked claim
+  unchanged, unusable, and unconsumed; zero official/private-byte or
+  tracked/private-claim mutation or consumption and zero fit, prediction,
+  development-metric, confirmatory, blinded-test, TDI, submission, leaderboard,
+  portal, upload, science, or model-quality operation or authority
+- Decision: Accept exactly four D-141 files for review: corrected official
+  driver SHA-256
+  `feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`,
+  fixed no-argument composite acceptance driver
+  `3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`,
+  dedicated focused tests
+  `f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`,
+  and exact six-marker `tests/conftest.py`
+  `03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`.
+  Preserve the immutable D-135 science kernel and D-122 battery exactly.
+  Implement only D-137/D-138 official orchestration, complete only the exact
+  D-139 three-node and D-140 two-node test transitions, and bind both
+  transition-contract hashes through composite and real receipt lineage.
+- Evidence: D-141 provides exact five-status taxonomy, strict cumulative
+  13-field supervisor observations, capability-crossing accounting, atomic
+  one-use claim publication, symlink-safe cleanup, one shared bounded common
+  seal, no-replace collision behavior, inode/device/mode/hash validation, and
+  exact hard-resource versus ordinary-failure classification. Its fixed
+  composite driver covers two opposite scenario orders and six scenarios with
+  aggregate-only zero-operation evidence. The implementation passes 103
+  focused orchestration tests; immutable D-134 at `6 passed, 3 skipped`; D-136
+  at `4 passed, 3 skipped`; and the exact current D-137-through-D-141 related
+  suite at `128 passed, 0 skipped, 0 failed` in 0.74 seconds (0.96 wrapper
+  wall-seconds). This supersedes the earlier 118-test prospective count.
+
+  The exact safe command
+  `uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+  reports `1425 passed, 10 skipped, 0 failed` in 346.49 seconds (346.98 wrapper
+  wall-seconds; 902,124 KiB maximum RSS). Diff integrity, Ruff over allowed
+  paths with barred G2-7B paths explicitly excluded, strict mypy across 78
+  source files, package build, and two independent installed-wheel runs with
+  byte-identical output also pass. The four hashes remained stable before and
+  after validation.
+
+  No fixed composite acceptance was invoked. Disposable synthetic fixture
+  claims were used only in temporary public roots. No official source/baseline
+  byte or fixed private root was opened or created, and no private claim was
+  created or opened. Read-only authentication of the tracked public claim
+  occurred; those bytes remain identical, unusable, and unconsumed. D-141
+  changes no candidate, feature, seed, group, fit topology, prediction rule, metric,
+  resource ceiling, selection token, no-runner-up rule, or frozen fallback. It
+  is implementation evidence only and grants zero formal-acceptance, official,
+  claim, science, model-quality, confirmatory, submission, or upload authority.
+- Alternatives: Run the fixed acceptance from the implementation branch;
+  combine implementation and one-use evidence; retain the five obsolete audit
+  nodes; broaden skips; change historical snapshots; add a candidate, feature,
+  seed, group, retry, cache, concurrency, framework, or service; modify the
+  science kernel, status taxonomy, accounting, resource, selection, or privacy
+  contract; open official or confirmatory bytes; or use leaderboard evidence.
+- Reversal condition: Any drift in one of the four D-141 hashes, D-137/D-138
+  mechanics, exact D-139/D-140 transition cardinality, historical active-node
+  set, lineage bindings, safe-suite result, zero-operation boundary, signed
+  integration, or exact-SHA post-main CI blocks progression. Otherwise
+  integrate D-141 by signed fast-forward, require green post-main CI, then run
+  a fresh fixed-root preflight and invoke the sole no-argument composite
+  acceptance exactly once. Package its immutable aggregate as a separate
+  reviewed milestone before any official attempt preflight.

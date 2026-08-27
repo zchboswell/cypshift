@@ -511,12 +511,42 @@ while retaining the prior four, for six total, and must bind
 
 D-140 changes no implementation, conftest, historical snapshot, science,
 claim, gate, fit, prediction, metric, resource, selection, or one-use state.
-The uncommitted implementation has no D-140-bound hashes or authority. Review,
-integrate, and require green exact-SHA post-main CI for D-140; then package,
-review, integrate, and require green post-main CI for D-141 before preflighting
-the sole fixed no-argument composite acceptance. D-140 grants zero collection,
-implementation, gate, one-use, official, claim, science, or model-quality
-authority.
+The prospective implementation had no D-140-bound hashes or authority. Signed
+D-140 commit `6e3cb96299cefc928be09fee10008c4c7ac651f5` is now integrated,
+and exact-SHA post-main CI run `33109592304` is green across Python 3.11,
+3.12.3, and 3.14.
+
+D-141 packages exactly four implementation/test files: corrected official
+driver SHA-256
+`feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`,
+fixed composite acceptance driver
+`3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`,
+focused tests
+`f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`,
+and six-marker conftest
+`03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`.
+It preserves the D-135 science kernel, implements the frozen D-137/D-138
+five-status, supervision, accounting, claim, common-seal, cleanup, inode, and
+resource mechanics, completes exactly the D-139 and D-140 transitions, and
+binds both contract hashes into composite and real receipt lineage.
+
+All 103 focused orchestration tests pass; immutable D-134 reports `6 passed, 3
+skipped`; D-136 reports `4 passed, 3 skipped`; and the current five-file
+D-137-through-D-141 related suite reports 128 passes. The safe repository suite
+with permanently barred
+`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
+ignored reports `1425 passed, 10 skipped, 0 failed` in 346.49 seconds (346.98
+wrapper wall-seconds; 902,124 KiB maximum RSS). Ruff on allowed paths, strict
+mypy, build, and two-root installed-wheel determinism pass. The earlier
+118-test prospective result is superseded.
+
+D-141 ran no fixed acceptance or official attempt. Disposable synthetic
+fixture claims were confined to temporary public roots; no tracked claim was
+changed or consumed, no private claim was created or opened, and no
+official/private byte was opened. D-141 has zero science, model-quality,
+formal-gate, official, confirmatory, submission, or upload authority. Review,
+sign, integrate, and require green exact-SHA post-main CI for D-141 before a
+fresh preflight and the sole fixed no-argument composite acceptance.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

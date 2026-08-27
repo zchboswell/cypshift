@@ -378,12 +378,43 @@ D-141 may add only these two collection markers while preserving the prior
 four, for six total, and must bind
 `d140_source_shape_transition_contract_sha256`. D-140 changes no implementation,
 conftest, historical test, science, claim, gate, fit, prediction, metric,
-resource, selection, privacy, or one-use state. The D-141 implementation
-remains uncommitted and unbound. D-140 grants zero collection, implementation,
-formal-acceptance, official, claim, science, model-quality, confirmatory,
-submission, or upload authority. Integrate D-140 and require green exact-SHA
-post-main CI, then package and integrate D-141 before the sole fixed composite
-acceptance may run.
+resource, selection, privacy, or one-use state. At that milestone the D-141
+implementation remained uncommitted and unbound. Signed D-140 commit
+`6e3cb96299cefc928be09fee10008c4c7ac651f5` is now integrated and exact-SHA
+post-main CI run `33109592304` is green across Python 3.11, 3.12.3, and 3.14.
+
+D-141 packages the corrected official driver at SHA-256
+`feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`,
+fixed no-argument composite acceptance driver at
+`3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`,
+focused tests at
+`f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`,
+and exact six-marker conftest at
+`03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`.
+It implements the D-137/D-138 five-status, cumulative-supervision,
+authoritative-accounting, atomic-claim, bounded-common-seal, cleanup,
+collision/inode/mode, and resource mechanics without changing the D-135
+science kernel. It completes only the exact D-139 and D-140 historical
+transitions and binds both contract hashes into aggregate and real receipt
+lineage.
+
+Validation reports 103 focused passes; immutable D-134 at `6 passed, 3
+skipped`; D-136 at `4 passed, 3 skipped`; and 128 exact current
+D-137-through-D-141 related passes. The safe repository suite with permanently
+barred `tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+explicitly ignored reports `1425 passed, 10 skipped, 0 failed` in 346.49
+seconds (346.98 wrapper wall-seconds; 902,124 KiB maximum RSS). Ruff over
+allowed paths, strict mypy, build, and two-root installed-wheel determinism are
+green. The earlier 118-test prospective count is superseded.
+
+D-141 ran no fixed acceptance or official attempt. Disposable synthetic fixture
+claims were confined to temporary public roots; no tracked claim was mutated
+or consumed, no private claim was created or opened, and no official/private
+byte was opened. Read-only authentication of the tracked public template
+occurred; it remains byte-identical, unusable, and unconsumed. D-141 grants
+zero science, model-quality, formal-acceptance, official, confirmatory,
+submission, or upload authority. Review, sign, integrate, and require green
+exact-SHA post-main CI before the sole fixed composite acceptance may run.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)

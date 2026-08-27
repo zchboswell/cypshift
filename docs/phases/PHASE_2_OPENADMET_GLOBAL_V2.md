@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-140 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-141 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1339,24 +1339,65 @@ total, and must bind
 
 D-140 changes no implementation, collection hook, historical test, science,
 claim, gate, fit, prediction, metric, resource, status, accounting, selection,
-privacy, or one-use state. The D-141 implementation remains uncommitted and its
-hashes are not bound as D-140 evidence. D-140 grants zero test-collection,
-implementation, formal-acceptance, official, claim, scientific, model-quality,
-confirmatory, submission, or upload authority.
+privacy, or one-use state. At that milestone the D-141 implementation remained
+uncommitted and its hashes were not D-140 evidence. Signed D-140 commit
+`6e3cb96299cefc928be09fee10008c4c7ac651f5` is now integrated and exact-SHA
+post-main CI run `33109592304` is green across Python 3.11, 3.12.3, and 3.14.
+
+D-141 implements only the frozen official-orchestration mechanics. The exact
+SHA-256 values are official driver
+`feab960a54dd5ff818e29d062ad8eba48538658fe38a75d01f7c76f3d2daf103`,
+fixed composite acceptance driver
+`3e209b88df7634f47884ce45653673a5407310575146392a77811fb4ed67ba9f`,
+focused tests
+`f17b5b2f39b92892b046f289d6ebdb1888d705ea7a27ea24b3ca3013d39289b0`,
+and exact six-marker conftest
+`03d92bf3a2890a61190a6a4fc7a6bc59fa900ed6ea4b904223b1f2f991699d95`.
+The implementation preserves every D-135 science byte, candidate, feature,
+seed, group, fit, prediction, metric, resource, selection-token, and no-runner-
+up rule. It implements D-137/D-138's exact five terminal statuses, strict
+cumulative observation, authoritative accounting, atomic one-use claim
+publication, bounded common seal, collision/inode/mode validation, symlink-safe
+cleanup, and fail-closed resource boundary. The fixed composite driver proves
+the mechanics over two opposite scenario orders without an official operation
+or tracked/private-claim mutation/consumption; its synthetic fixture claims
+stay confined to disposable public roots. D-139's exact three historical nodes
+and D-140's exact two
+source-shape nodes are retired only through their frozen replacements; the
+other historical audits remain active. Both transition-contract SHA-256 values
+are bound through top-level composite evidence, every applicable scenario
+receipt, and real attempt receipt lineage.
+
+Validation passes: 103 focused orchestration tests; immutable D-134 at `6
+passed, 3 skipped`; D-136 at `4 passed, 3 skipped`; and exactly 128 current
+D-137-through-D-141 related tests in 0.74 seconds (0.96 wrapper wall-seconds).
+The exact safe repository suite, with permanently barred
+`tests/test_openadmet_global_v2_maplight_robustness_synthetic.py` explicitly
+ignored, reports `1425 passed, 10 skipped, 0 failed` in 346.49 seconds (346.98
+wrapper wall-seconds; 902,124 KiB maximum RSS). Diff check, Ruff over allowed
+paths, strict mypy across 78 source files, build, and two-root installed-wheel
+determinism pass. This supersedes the earlier 118-test prospective result.
+
+D-141 ran neither one-use gate, touched no fixed private root or official
+source/baseline byte, and changed no scientific outcome. Disposable synthetic
+fixture claims were confined to temporary public roots. Read-only public-claim
+authentication occurred in tests; the tracked claim remains byte-identical,
+unusable, and unconsumed, and no private claim was created or opened. D-141
+grants zero formal-acceptance, official, tracked/private-claim, science,
+model-quality, confirmatory, submission, or upload authority.
 
 ## Exact next action
 
-Review and integrate only the D-140 contract and knowledgebase package through
-the signed fast-forward-only workflow, then require green exact-SHA post-main
-CI. D-139 is already integrated and green at run `33103967048`. After D-140 is
-green on clean synchronized `main`, package the still-uncommitted D-141
-implementation with exactly the six-marker conftest state and both replacements.
-Review and integrate D-141 and require green exact-SHA post-main CI. Only then
-prove the fixed composite parent/work/acceptance/rejection roots absent and run
-the sole fixed no-argument composite acceptance exactly once. Do not run that
-acceptance or the official G2-7G driver from either branch, and do not preflight
-the official attempt until the resulting aggregate acceptance is separately
-reviewed, integrated, and green on main. D-135 must not be repeated. The tracked
+Review, sign, and integrate the exact D-141 implementation plus this seven-file
+knowledgebase package through the fast-forward-only workflow, then require
+green exact-SHA post-main CI. D-140 is already integrated and green at run
+`33109592304`. Only after D-141 is green on clean synchronized `main` may a
+fresh read-only preflight prove the fixed composite parent, work, acceptance,
+and rejection roots absent and run the sole fixed no-argument composite
+acceptance exactly once. Do not run that acceptance or the official G2-7G
+driver from the implementation branch, and do not preflight the official
+attempt until the resulting aggregate acceptance is separately reviewed,
+integrated, and green on main. D-135 must not be repeated. The tracked
 claim must remain unchanged and unconsumed, all official fixed roots must remain
 absent, and no official source or baseline byte may be opened. D-127 and D-128
 paths remain barred.
