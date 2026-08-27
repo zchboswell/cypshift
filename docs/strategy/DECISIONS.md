@@ -5254,3 +5254,67 @@
   requires separate explicit user authorization and a genuinely new
   prospective scientific hypothesis and contract; it cannot be a retry,
   repair, replacement, support relaxation, or reinterpretation of G2-7G.
+
+## D-144 — Freeze the post-attempt exact-node test transition before collection changes
+
+- Date: 2026-08-27
+- Status: accepted contract-only validator-hygiene evidence pending reviewed
+  signed integration; D-143 is integrated as signed commit
+  `d630702074bfefa4bda4730ba7c1b7519c3c6f1a` with green PR CI run
+  `33121287357` and green exact-SHA post-main CI run `33122070763`; D-144
+  changes no collection, implementation, historical test, official result,
+  science, claim, private artifact, gate, or authority; G2-8 remains closed
+- Decision: Accept only
+  `global_v2_maplight_robustness_post_attempt_test_transition_contract.json`
+  at SHA-256
+  `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
+  (18,216 bytes) and its public contract test
+  `tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`
+  at SHA-256
+  `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
+  (29,788 bytes), with `1/1 passed`. Freeze four and only four future D-145
+  retirements while preserving all six existing exact markers:
+
+  1. `tests/test_openadmet_global_v2_maplight_robustness_execution_contract_v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze`;
+  2. `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`;
+  3. `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`;
+  4. `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
+
+  Require exactly ten markers after D-145. Authorize D-145 to change only
+  `tests/conftest.py` and add one comprehensive public audit that owns the new
+  collection/hash state and every surviving semantic assertion from nodes 1
+  and 2. Without importing a driver or inspecting live protected state, that
+  audit must preserve node 1's D-133 historical
+  `attempt_root_absent_at_freeze` fact, corrected official-attempt-root identity
+  and exact barred-D-127 distinction, tracked-public-claim fixed-root mapping,
+  and frozen read boundary. It must preserve node 2's D-141 D-140 source-shape
+  binding, outer/child supervisor-to-claim-to-compile-to-Stage-A chronology,
+  raw-observation assignment, publication and writable-parent arguments equal
+  to resource limits, fixed attempt-root identity, aggregate-only
+  `_failure_payload` accounting, common-seal exclusivity, and absence of parent
+  `_finalize_terminal` and child `PENDING_TERMINAL_ROOT`. Nodes 3 and 4 are
+  frozen prospectively because the conftest marker
+  set/hash change will make their six-marker/live-hash premises historical.
+- Evidence: D-143's local safe suite, with the permanently barred G2-7B test
+  explicitly ignored, reported `1425 passed, 10 skipped, 2 failed` in 357.51
+  seconds. Only nodes 1 and 2 failed, solely because the authorized one-use
+  root now retains immutable consumed-claim/terminal evidence. Nodes 3 and 4
+  still pass before collection changes. The D-144 contract preserves the
+  historical files byte-for-byte, binds the signed D-143 record/test lineage,
+  forbids file/class/prefix skipping, deselection, xfail, and any fifth node,
+  and grants no implementation or collection authority. This is validator
+  provenance, not new model-quality or scientific evidence.
+- Alternatives: Modify any historical test; add conftest markers before a
+  reviewed contract; broaden a skip to a file, class, prefix, or changing
+  hash; retire only the two currently failing nodes and let D-145 break the
+  collection/hash audits; combine D-144 contract and D-145 implementation;
+  alter the D-143 record or test; reopen, retry, repair, replace, or reinterpret
+  G2-7G; open protected data; or infer G2-8 authority.
+- Reversal condition: Any drift in either D-144 hash, D-143 signed lineage,
+  exact four-node cardinality, prior-six preservation, future-ten total,
+  D-145 two-file limit, comprehensive replacement scope, historical bytes,
+  zero-authority boundary, signed integration, or exact-SHA post-main CI
+  blocks D-145. Otherwise integrate D-144 through the signed fast-forward-only
+  workflow, require green post-main CI, then let D-145 change only conftest and
+  the one public audit. After reviewed D-145 integration and green post-main
+  CI, stop with G2-8 closed.

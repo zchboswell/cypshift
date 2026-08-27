@@ -511,17 +511,31 @@ and unconsumed.
 D-143 is terminal pre-science negative evidence, not accepted robustness or
 model quality. Full MapLight remains the best previously validated internal
 system at component-macro MAE `0.5837812652`, but G2-7G did not select or
-robustness-validate it. No G2-8 contender lock exists. After signed D-143
-integration and green post-main CI, freeze D-144 as a contract-only transition
-for exactly four nodes: the two current absence failures plus the D-140
-six-skip collection audit
-`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`
-and D-142 acceptance-record live-conftest-hash audit
-`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
-Preserve the prior six skips and freeze ten total, then let D-145 add only the
-four exact conftest markers and one comprehensive public replacement audit for
-collection/hash state and surviving root-node semantics. Require reviewed
-integration and green post-main CI for each, then stop. D-144/D-145 grant no
+robustness-validate it. No G2-8 contender lock exists. D-143 is integrated as
+signed commit `d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run
+`33121287357` and exact-SHA post-main CI run `33122070763` are green. D-144
+freezes the contract-only transition at
+[`global_v2_maplight_robustness_post_attempt_test_transition_contract.json`](global_v2_maplight_robustness_post_attempt_test_transition_contract.json),
+SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
+(18,216 bytes), with public contract test
+`tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`,
+SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
+(29,788 bytes), at `1/1 passed`. It freezes
+four future markers, preserves six prior markers, requires ten total, and
+permits D-145 to change only conftest plus one comprehensive public audit for
+collection/hash state and surviving root-node semantics. Without driver import
+or live protected-state inspection, the audit must preserve D-133 historical
+`attempt_root_absent_at_freeze`, corrected official-attempt-root identity and
+exact barred-D-127 distinction, tracked-public-claim fixed-root mapping, and
+frozen read boundary; plus D-141's D-140 source-shape binding, outer/child
+supervisor-to-claim-to-compile-to-Stage-A chronology, raw-observation
+assignment, publication and writable-parent arguments equal to resource
+limits, fixed attempt-root identity, aggregate-only `_failure_payload`
+accounting, common-seal exclusivity, and absence of parent
+`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`.
+D-144 itself changes
+no collection behavior. Require reviewed integration and green post-main CI
+for D-144 and D-145, then stop. Both grant no
 science, gate, private-data, claim, model-quality, or G2-8 authority. No retry,
 repair, support relaxation, replacement, reinterpretation, confirmatory
 access, submission generation, validator run, leaderboard use, portal access,

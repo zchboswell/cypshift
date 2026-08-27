@@ -1508,26 +1508,47 @@ grants zero confirmatory, blinded-test, TDI, full-training, submission,
 validator, official-metric, leaderboard, portal, credential, upload, science,
 or model-quality authority.
 
+D-143 is integrated as signed commit
+`d630702074bfefa4bda4730ba7c1b7519c3c6f1a`; PR CI run `33121287357` and
+exact-SHA post-main CI run `33122070763` are green. D-144 freezes only the
+post-attempt test-transition contract
+`benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_post_attempt_test_transition_contract.json`
+at SHA-256 `d5eb773fc2584deaf31c5f3a3a283e365b6540d0c714fd08cb70ec02937b735f`
+(18,216 bytes) and its public contract test
+`tests/test_openadmet_global_v2_maplight_robustness_post_attempt_test_transition_contract.py`
+at SHA-256 `a654075771d9f42ac3a7dcbf058e8ca4dba879660888c2aa4262d1e4ea60a1fa`
+(29,788 bytes), with `1/1 passed`. It
+authorizes no collection change now. The contract binds four future node
+markers, preserves the prior six, requires ten after transition, and limits
+D-145 to `tests/conftest.py` plus one comprehensive public audit of exact
+collection/hash state and all surviving root-node semantics. Using public
+static evidence only, that audit must preserve D-133 historical
+`attempt_root_absent_at_freeze`, corrected official-attempt-root identity and
+exact barred-D-127 distinction, tracked-public-claim fixed-root mapping, and
+frozen read boundary; plus D-141's D-140 source-shape binding, outer/child
+supervisor-to-claim-to-compile-to-Stage-A chronology, raw-observation
+assignment, publication and writable-parent arguments equal to resource
+limits, fixed attempt-root identity, aggregate-only `_failure_payload`
+accounting, common-seal exclusivity, and absence of parent
+`_finalize_terminal` and child `PENDING_TERMINAL_ROOT`. It
+must not import a driver or inspect live protected state. D-144 opens zero
+science, claim, private-data, model-quality, confirmatory, submission, or G2-8
+authority.
+
 ## Exact next action
 
-Finish the public D-143 record/audit, bind their exact stable hashes through
-the seven knowledgebase/ledger surfaces, and review the exact bounded
-two-failure safe-suite evidence without collecting or opening the permanently
-barred G2-7B path. Review the nine-file package, make one atomic SSH-signed
-commit as `zchboswell`, push its `codex/` branch, open a PR, require green
-checks, fast-forward the reviewed signed commit locally onto `main`, push, and
-require green exact-SHA post-main CI.
+Review the exact two-file D-144 contract package and exactly seven
+knowledgebase/ledger surfaces. Reconcile stable hashes and test count; prove
+the exact four future node IDs, six prior markers, ten future total, immutable
+D-143 lineage, D-145 two-file limit, and zero-authority boundary. Run
+proportional checks, make one atomic SSH-signed commit as `zchboswell`, push its
+`codex/` branch, open a PR, require green checks, fast-forward the reviewed
+signed commit locally onto `main`, push, and require green exact-SHA post-main
+CI.
 
-Then freeze D-144 as a contract-only transition for exactly four nodes: the
-two historical root-absence failures,
-`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`,
-and
-`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
-D-144 preserves the prior six exact skips, freezes ten total, and grants zero
-collection/science/gate authority. Integrate D-144 and require green post-main
-CI before D-145 changes only `tests/conftest.py` and adds one comprehensive
-public replacement audit covering collection/hash state and all surviving
-semantics from the two currently failing nodes. Integrate D-145, require green
+Only then may D-145 change `tests/conftest.py` and add one comprehensive public
+audit covering exact collection/hash state and all surviving semantics from
+the two current root-absence failures. Integrate D-145, require green
 post-main CI, and then stop. G2-8 remains closed
 throughout. G2-7G is consumed and terminal. It cannot be retried, resumed,
 moved, repaired, overwritten, replaced, reduced, rerun under another order,
