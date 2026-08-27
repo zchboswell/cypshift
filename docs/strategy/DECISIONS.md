@@ -5124,3 +5124,133 @@
   supervisor readiness, and source/baseline allowlist receipts authenticate,
   invoke the sole fixed no-argument G2-7G official driver exactly once. Do not
   retry, resume, move, repair, overwrite, replace, or reinterpret it.
+
+## D-143 — Accept the official G2-7G underpowered terminal as pre-science negative evidence
+
+- Date: 2026-08-27
+- Status: accepted aggregate terminal negative evidence pending reviewed
+  signed integration; D-142 is integrated as signed commit
+  `d70d817dd2d7e30f63f6066dfbfdc4cef7e02bd3` through PR #179 with green PR
+  CI run `33116144405` and green exact-SHA post-main CI run `33116954304`;
+  the sole fixed no-argument official G2-7G attempt ran once, consumed its
+  private claim once, exited zero, and published
+  `G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED`; no contender, confirmatory score,
+  blinded-test prediction, submission, validation, leaderboard observation,
+  portal operation, or upload is authorized
+- Decision: Accept the canonical privacy-safe public projection
+  `global_v2_maplight_robustness_official_underpowered.json`, schema
+  `cypshift.openadmet_cyp_2026.global_v2_maplight_robustness_official_underpowered.v1`,
+  at SHA-256
+  `d52bee5e4ed4669c6db7e3061fc8aed8f55e81a0e4d3d17aca73e326df184a2d`
+  and size 9,945 bytes. Accept its public-only audit test
+  `tests/test_openadmet_global_v2_maplight_robustness_official_underpowered.py`
+  at SHA-256
+  `e5d65bf32a9185ea3c3c63bb658d5418e8393ec534488f50cbeb4dad1a8354ce`,
+  size 21,081 bytes, with `1/1 passed`. Treat the terminal as a clean
+  pre-science support stop and permanent consumption of the one-use lane. Do
+  not characterize it as accepted robustness, a full-MapLight retention token,
+  scientific rejection of MapLight, or any model-quality result.
+- Evidence: D-142's signed integration and all three exact-SHA post-main CI
+  lanes were green before a fresh official preflight. The accepted driver then
+  ran once with no caller-selected root or output. Only the exact compiler
+  `RobustnessExecutionUnderpowered` route produced the status, after the
+  supervised child consumed the private claim and parsed the allowed official
+  development source but before any fit, prediction, baseline open, selection
+  token, or development metric.
+
+  Complete terminal accounting records 19,620 direct endpoint rows, 73,575
+  group-fold rows, 5,197 finite central point values, 4,905 feature-identity
+  rows, 19,620 feature-matrix rows, and 24,525 total feature rows. Baseline
+  prediction rows, scoring truth, training targets, reported bounds, generated
+  model folds/features, prediction rows reopened for scoring, official model
+  fits, Stage A/B/C predictions, tutorial calls, and development metric
+  evaluations are all zero. The manifest has `selected_candidate=null`,
+  `selection_tokens=0`, and `runner_ups=0`; no row-level value or model binary
+  is retained. The public record distinguishes those authorized aggregate
+  official reads from its denied *future* authority instead of making a false
+  zero-official-operation claim.
+
+  All frozen numeric minima pass across all 240 support cells. The one preflight
+  failure has exact reason `TAUTOMER_MERGED:confirmatory_touch_not_exercised`.
+  The frozen predicate requires confirmatory-touch exercise before fitting;
+  observed support and exclusion values remain omitted from the public
+  projection. The failure is label-free family-support mechanics, not an
+  endpoint error or model-quality observation.
+
+  The exact cumulative observation has integer return code zero, three
+  checkpoints, two descendants, cleanup complete, isolated networking, hidden
+  GPU environment, and zero GPU-hours, detached children, and warnings. It
+  used 33.09143570300148 wall-seconds, 33.194318974000005 CPU-seconds, 8,192
+  peak storage bytes, and 289,660,928 peak simultaneous RSS bytes, all below
+  the D-137 maxima. The common seal retained exactly `attempt_receipt.json`,
+  `manifest.json`, and `preflight.json` under the read-only terminal. The
+  restricted work root, publication staging, and claim staging are absent. The
+  fixed attempt root correctly remains with exactly `attempt_claim.json` and
+  `terminal`; this is immutable one-use evidence, not retained scientific work
+  state.
+
+  The public projection contains only exact public lineage; hashes, sizes, and
+  observed modes for private aggregate evidence; allowlisted accounting and
+  resources; cleanup and terminal shape; a bounded support-stop summary; and
+  denied authority. It copies no private receipt, manifest, preflight, support
+  table, path, row, molecule identifier, structure, target, prediction,
+  component membership, feature matrix, model, PID, unrestricted log, portal
+  identifier, score, or rank. Duplicate-key and nonfinite rejection plus
+  sorted two-space JSON with one LF define portable identity; private `0444`/
+  `0555` modes are observations, not Git checkout invariants.
+
+  The dedicated public audit passes `1/1`; Ruff check, Ruff format check,
+  Python compilation, record canonical/hash/size verification, 18-column CSV
+  and embedded-JSON validation, and diff integrity are green. The completed
+  local safe repository suite, with the permanently barred G2-7B test
+  explicitly ignored, reports `1425 passed, 10 skipped, 2 failed` in 357.51
+  seconds. Its only failures are
+  `tests/test_openadmet_global_v2_maplight_robustness_execution_contract_v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze`
+  and
+  `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+  Both are historical pre-execution root-absence assertions invalidated only
+  by the intended immutable terminal retention. This is expected negative
+  state-transition evidence, not a D-143 semantic, privacy, mechanics,
+  scientific, or model-quality failure.
+
+  The tracked public claim template remains byte-identical, unusable, and
+  unconsumed. The private derived claim is permanently consumed. Full MapLight
+  remains the best previously validated system at internal component-macro MAE
+  `0.5837812652`, but this attempt neither selected nor robustness-validated
+  it. D-122's full-default clause belongs inside completed Stage-A selection
+  and yields one token; applying it to a terminal with null candidate and zero
+  token would be post-outcome reinterpretation. The frozen G2-8 boundary
+  requires an accepted G2-7 contender lock, so D-143 grants zero model-quality,
+  confirmatory, blinded-test, TDI, full-training, submission, validator,
+  official-metric, leaderboard, portal, credential, or upload authority.
+- Alternatives: Retry, resume, move, repair, overwrite, replace, or shrink the
+  battery; rerun under another order or root; relax the observed family-support
+  rule; adjust a component, mask, candidate, seed, group, threshold, feature,
+  denominator, cache, or concurrency; issue a full-MapLight token after the
+  fact; promote a runner-up; inspect private row-level evidence; copy the
+  private aggregate terminal verbatim into Git; expose support tables or
+  private paths; open confirmatory truth or blinded test; use portal or
+  leaderboard evidence; generate or validate a submission; or upload.
+- Reversal condition: Any mismatch in the private immutable receipt hashes,
+  public projection bytes, exact status, lineage, underpowered accounting,
+  cumulative observation, cleanup/file-set evidence, privacy allowlist,
+  zero-science facts, or dedicated audit test blocks D-143 packaging but never
+  authorizes another official attempt. Otherwise integrate D-143 through the
+  signed fast-forward-only workflow and require green exact-SHA post-main CI.
+  Then freeze and integrate D-144 as a contract-only exact-four-node
+  transition: the two current root-absence failures, the D-140 six-skip
+  collection audit
+  `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`,
+  and the D-142 acceptance-record live-conftest-hash audit
+  `tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
+  Preserve the prior six exact skips and freeze ten total. Only then may D-145
+  change conftest with the four exact markers and add one comprehensive public
+  replacement audit covering collection/hash state and every surviving
+  assertion from the two currently failing nodes; require green post-main CI
+  after each milestone. D-144/D-145 are
+  validator-hygiene evidence only and grant zero science, gate, private-data,
+  claim, model-quality, confirmatory, or submission authority. After D-145,
+  stop this Global-v2 submission path with G2-8 closed. A future lane
+  requires separate explicit user authorization and a genuinely new
+  prospective scientific hypothesis and contract; it cannot be a retry,
+  repair, replacement, support relaxation, or reinterpretation of G2-7G.

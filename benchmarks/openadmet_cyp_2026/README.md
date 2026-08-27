@@ -452,10 +452,80 @@ metrics, and private row access. The receipt separately and transparently
 records 10 disposable scenario fixture-claim publications, six probe
 publications, and one intentionally interrupted synthetic staging. Those
 public synthetic mechanics confer no official claim or model-quality
-authority. D-142 is aggregate orchestration acceptance only. After signed
-reviewed integration and green exact-SHA post-main CI, perform a fresh official
-one-use preflight and only then invoke the sole no-argument G2-7G official
-driver once.
+authority. D-142 is aggregate orchestration acceptance only. Its frozen next
+gate was a fresh official one-use preflight followed by the sole no-argument
+G2-7G official driver; both subsequently occurred once before D-143.
+
+D-142 is integrated as signed commit
+`d70d817dd2d7e30f63f6066dfbfdc4cef7e02bd3`; PR CI run `33116144405` and
+post-main CI run `33116954304` are green. The sole fixed G2-7G official attempt
+then consumed its private claim once and published clean status
+`G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED` with return code zero. D-143 indexes
+the privacy-safe canonical public record
+[`global_v2_maplight_robustness_official_underpowered.json`](global_v2_maplight_robustness_official_underpowered.json)
+at SHA-256
+`d52bee5e4ed4669c6db7e3061fc8aed8f55e81a0e4d3d17aca73e326df184a2d`
+and size 9,945 bytes. Its standalone audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_underpowered.py`
+has SHA-256
+`e5d65bf32a9185ea3c3c63bb658d5418e8393ec534488f50cbeb4dad1a8354ce`,
+size 21,081 bytes, and reports `1/1 passed`.
+
+The completed local safe repository suite, with the permanently barred G2-7B
+test explicitly ignored, reports `1425 passed, 10 skipped, 2 failed` in
+357.51 seconds. The exact failures are
+`tests/test_openadmet_global_v2_maplight_robustness_execution_contract_v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze`
+and
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+The one-use root is now intentionally retained as immutable evidence, so this
+is expected negative state-transition evidence rather than a D-143 record,
+terminal, privacy, mechanics, or scientific failure.
+
+The public record binds private aggregate source hashes but copies no private
+file. It retains only frozen lineage, status, allowlisted compiler accounting,
+bounded cumulative supervision, cleanup and terminal shape, a redacted
+support-stop summary, and denied authority. It contains no absolute/private
+path, support table, row or molecule identity, structure, target, prediction,
+component membership, feature matrix, model, PID, unrestricted log, portal
+identifier, score, or rank. Canonical identity is unique-key, finite sorted
+two-space JSON plus one LF; observed private modes are evidence but not Git
+checkout invariants.
+
+The allowed preflight opened 19,620 direct endpoint rows, 73,575 group-fold
+rows, 5,197 finite central values, 4,905 feature identities, 19,620 matrix rows,
+and 24,525 total feature rows. It opened no baseline, scoring-truth, or
+training-target capability and ran zero fits, predictions, or metrics. The
+terminal has `selected_candidate=null`, zero selection tokens, and no runner-
+up. All numeric support minima pass, but the one frozen exercise predicate
+fails with exact reason `TAUTOMER_MERGED:confirmatory_touch_not_exercised`.
+The frozen predicate requires confirmatory-touch exercise before fitting;
+observed support and exclusion values remain omitted. Resource observation is
+33.09143570300148 wall-seconds,
+33.194318974000005 CPU-seconds, 8,192 peak storage bytes, 289,660,928 peak RSS
+bytes, three checkpoints, and two descendants, with zero GPU, warnings,
+detached children, retained row values, or models. The fixed attempt root
+retains only the consumed claim and its three-file aggregate terminal; private
+work and staging roots are gone. The tracked public template remains unchanged
+and unconsumed.
+
+D-143 is terminal pre-science negative evidence, not accepted robustness or
+model quality. Full MapLight remains the best previously validated internal
+system at component-macro MAE `0.5837812652`, but G2-7G did not select or
+robustness-validate it. No G2-8 contender lock exists. After signed D-143
+integration and green post-main CI, freeze D-144 as a contract-only transition
+for exactly four nodes: the two current absence failures plus the D-140
+six-skip collection audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`
+and D-142 acceptance-record live-conftest-hash audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
+Preserve the prior six skips and freeze ten total, then let D-145 add only the
+four exact conftest markers and one comprehensive public replacement audit for
+collection/hash state and surviving root-node semantics. Require reviewed
+integration and green post-main CI for each, then stop. D-144/D-145 grant no
+science, gate, private-data, claim, model-quality, or G2-8 authority. No retry,
+repair, support relaxation, replacement, reinterpretation, confirmatory
+access, submission generation, validator run, leaderboard use, portal access,
+or upload is authorized.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)

@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-142. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-143. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -1019,6 +1019,78 @@ blinded-test, submission, leaderboard, portal, or upload authority. Fixed
 MapLight therefore remains the best validated internal system at
 component-macro MAE `0.5837812652`.
 
+D-142 is integrated as signed commit
+`d70d817dd2d7e30f63f6066dfbfdc4cef7e02bd3` through PR #179. PR CI run
+`33116144405` and exact-SHA post-main CI run `33116954304` are green across
+Python 3.11, 3.12.3, and 3.14. After a fresh green official preflight, the sole
+fixed no-argument G2-7G driver ran exactly once under cumulative supervision
+and exited zero. It consumed the sole private claim and published the
+contracted clean terminal
+`G2_7_MAPLIGHT_ROBUSTNESS_UNDERPOWERED`.
+
+D-143 records that official terminal as immutable pre-science negative
+evidence in
+[`global_v2_maplight_robustness_official_underpowered.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_official_underpowered.json),
+SHA-256 `d52bee5e4ed4669c6db7e3061fc8aed8f55e81a0e4d3d17aca73e326df184a2d`
+and size 9,945 bytes. The canonical public projection contains
+only allowlisted aggregate evidence; the dedicated public audit test
+`tests/test_openadmet_global_v2_maplight_robustness_official_underpowered.py`
+has SHA-256 `e5d65bf32a9185ea3c3c63bb658d5418e8393ec534488f50cbeb4dad1a8354ce`,
+size 21,081 bytes, and reports `1/1 passed`. The private aggregate receipt,
+manifest, and preflight remain in the fixed read-only attempt root and are represented
+publicly only by hashes, bounded counts, and contracted status evidence. No
+private path, molecule, structure, target, support table, prediction, model,
+component membership, process identifier, unrestricted log, or portal value is
+published.
+
+The completed local safe repository suite, with the permanently barred G2-7B
+test explicitly ignored, reports `1425 passed, 10 skipped, 2 failed` in
+357.51 seconds. The only failures are the exact historical pre-execution
+root-absence nodes
+`tests/test_openadmet_global_v2_maplight_robustness_execution_contract_v2.py::test_new_attempt_root_is_distinct_and_absent_at_freeze`
+and
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_supervisor_precedes_claim_consumption_and_common_seal_owns_terminal_publication`.
+Their absence premises became false only because the authorized one-use attempt
+correctly retained its immutable consumed-claim/terminal root. This is expected
+negative test-state-transition evidence, not a D-143 record, terminal,
+mechanics, privacy, semantic, or scientific failure.
+
+The official compiler was allowed to parse the frozen development source after
+claim consumption. Complete underpowered accounting records 19,620 direct
+endpoint rows, 73,575 group-fold rows, 5,197 finite central target values,
+4,905 feature-identity rows, 19,620 feature-matrix rows, and 24,525 aggregate
+feature rows. It opened zero baseline rows and zero scoring or training target
+capabilities; produced zero Stage A, B, or C fits and predictions; called zero
+development metrics; issued zero selection tokens and no runner-up; and froze
+no candidate. All 240 numeric support cells and the four per-endpoint finite-
+target minima passed. The sole failure had exact reason
+`TAUTOMER_MERGED:confirmatory_touch_not_exercised`. The frozen predicate
+requires confirmatory-touch exercise before fitting; observed support and
+exclusion values remain omitted.
+
+The supervised observation used 33.09143570300148 wall-seconds,
+33.194318974000005 CPU-seconds, 8,192 peak storage bytes, and 289,660,928 peak
+simultaneous RSS bytes. It returned integer zero, acknowledged three
+checkpoints and two descendants, and recorded zero GPU-hours, warnings, or
+detached children. Network isolation, hidden GPU environment, and cleanup are
+true. Cleanup preceded the one-attempt common seal; the restricted,
+publication-staging, and claim-staging roots are absent. The fixed immutable
+attempt root correctly retains only the consumed claim and three-file
+aggregate terminal.
+
+This is not a MapLight robustness pass or a model-quality result. The D-122
+full-default rule operates only inside the completed Stage-A selection; an
+underpowered terminal is required to have `selected_candidate=null` and zero
+selection tokens before any fit or metric. Exact full MapLight therefore
+remains the best *previously validated* internal system at component-macro MAE
+`0.5837812652`, but D-143 neither reselects nor robustness-validates it. The
+tracked public claim template remains byte-identical, unusable, and
+unconsumed; the private derived claim is consumed permanently. Retry, resume,
+move, repair, overwrite, replacement, smaller battery, source/support
+relaxation, runner-up promotion, and reinterpretation are all forbidden.
+Because no G2-7 primary contender was frozen, D-143 grants zero confirmatory,
+blinded-test, submission, validator, leaderboard, portal, or upload authority.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1669,27 +1741,37 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review, sign, and integrate the immutable D-142 composite-acceptance receipt
-and this aggregate evidence through the fast-forward-only workflow, then
-require green exact-SHA post-main CI. Only after D-142 is green on clean,
-synchronized `main` may a fresh read-only official preflight authenticate the
-D-122 contract, D-135 through D-142 receipt chain, unchanged unusable tracked
-claim, pinned runtimes and resource envelope, exact fixed-root absence, and
-official source/baseline allowlist receipts without opening their bytes. Then
-invoke the sole fixed no-argument G2-7G official driver exactly once. Do not
-run it from the D-142 packaging branch and do not retry, resume, move, repair,
-overwrite, replace, or reinterpret either one-use gate.
-D-135 remains inherited immutable science-kernel evidence and must not be
-repeated, repaired, resumed, or reinterpreted. The tracked claim remains
-unchanged, unusable, and unconsumed; official attempt, restricted, staging,
-and claim-staging roots must remain absent before the supervised child; and no
-official source or baseline byte may open before the sole private claim is
-atomically consumed inside supervision.
-The D-127 claim/root and D-128 attempt remain permanently barred.
-Confirmatory truth, historical row-level artifacts, blinded test, TDI,
-submission generation, official metric, leaderboard selection, and upload
-capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
-remain closed; `global_TDI` remains the TDI fallback.
+Review the canonical D-143 public underpowered record, its dedicated audit
+test, exactly seven knowledgebase/ledger surfaces, and the bounded two-failure
+safe-suite evidence. Reconcile final hashes and aggregate values, run
+proportional checks, then make one atomic signed D-143 commit. Push the branch,
+open a PR, require all checks, integrate the reviewed signed commit locally by
+fast-forward only, push `main`, and require green exact-SHA post-main CI.
+
+After D-143 post-main CI is green, freeze a separate D-144 contract-only
+transition for exactly four nodes: the two historical root-absence failures,
+the D-140 six-skip collection audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration.py::test_d140_source_shape_collection_has_six_exact_skips_and_active_replacements`,
+and the D-142 acceptance-record live-conftest-hash audit
+`tests/test_openadmet_global_v2_maplight_robustness_official_orchestration_acceptance_record.py::test_formal_orchestration_acceptance_record_is_exact_and_static`.
+D-144 preserves the prior six exact skips, freezes ten total after transition,
+and changes no collection behavior. Integrate D-144 and require green post-main
+CI before D-145 changes only `tests/conftest.py` and adds one comprehensive
+public replacement audit covering collection/hash state and all surviving
+semantics from the two currently failing nodes. Integrate D-145 and require
+green post-main CI, then stop the current Global-v2 submission path. G2-8
+remains closed throughout this validator-hygiene sequence. The consumed G2-7G attempt is
+terminal and cannot be repeated or reinterpreted; it selected no contender,
+and the frozen G2-8 boundary opens only after an accepted G2-7 contender lock.
+Do not access confirmatory truth, historical row-level artifacts, blinded test,
+TDI, submission generation, the official validator, official metric,
+leaderboard, private portal, credentials, or upload capabilities. Do not call
+the full-default rule a retention token: no token was issued. Any future work
+would require separate explicit user authorization for a genuinely new,
+prospective scientific hypothesis and contract. It may not repair or replace
+G2-7G, relax observed support, promote a runner-up, or use this outcome to tune
+a candidate. D-127/D-128, EXP-G3, G1/G2/M1/X1/T2, and immutable R5D/I0 remain
+closed; `global_TDI` remains only the frozen TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.
