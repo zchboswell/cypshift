@@ -4567,3 +4567,49 @@
   or post-main-CI drift revokes D-134 before formal acceptance. Otherwise run
   the integrated no-argument acceptance exactly once and interpret only its
   aggregate synthetic mechanics evidence.
+
+## D-135 — Accept the corrected robustness execution mechanics
+
+- Date: 2026-08-27
+- Status: accepted sole formal two-root synthetic execution evidence pending
+  reviewed integration; fixed work root cleaned; official attempt root absent;
+  distinct claim unusable and unconsumed; zero official, claim, submission,
+  leaderboard-selection, private-portal-record, upload, or model-quality
+  operation
+- Decision: Accept the immutable aggregate execution acceptance at SHA-256
+  `4c886d0d...ffedf390` as mechanics, determinism, bounded-runtime-control, and
+  cumulative-supervision evidence only. It does not measure model quality and
+  cannot authorize official access until this evidence is reviewed, integrated
+  by signed fast-forward, and green on post-main CI.
+- Evidence: The sole fixed no-argument formal attempt completed two fresh roots
+  with opposite physical and fit-launch order. Each root traversed both frozen
+  profiles: full retention selected synthetic `G2-7-M0-FULL` after exactly 540
+  stage-A plus 180 stage-B model-double fits, while deletion selection chose
+  synthetic `G2-7-M2-DROP-AVALON` only after the same 720 fits plus 300
+  conditional stage-C fits. Across roots this is exactly 3,480 model-double
+  fits and 667,872 synthetic prediction identities. Model and scorer
+  capability maps and all eight aggregate terminal files are byte-identical
+  across order. Exactly two bounded real CatBoost controls produced finite
+  predictions. One cumulative supervisor acknowledged 6,985 checkpoints,
+  observed 13 descendants and no detached children, and completed in
+  187.6251 wall-seconds and 381.1205 CPU-seconds with 435,781,632-byte peak
+  simultaneous RSS, 104,341,504-byte peak storage, zero warnings, and zero GPU
+  hours. Cleanup completed before publication, no private root remains, and
+  the receipt records zero official operations, zero claims created or
+  consumed, and false claim and model-quality authority.
+  The nine updated state-transition tests at SHA-256
+  `625f3ae0...0c6ca2b` and five receipt-audit tests at
+  `80c08d89...7fca97e` pass; the formal receipt continues to bind the exact
+  at-attempt D-134 focused-test hash `3fedd87e...4228c53f`.
+- Alternatives: Repeat, repair, resume, relocate, or reinterpret the one-use
+  formal attempt; promote its synthetic profile choices as scientific
+  evidence; alter candidates, features, seeds, groups, retries, calibration,
+  blends, caches, concurrency, resources, or frameworks; consume the claim
+  before reviewed integration; or use private portal evidence.
+- Reversal condition: The acceptance is immutable. Any contract,
+  implementation, focused-test-at-attempt, root-order, conditional-profile,
+  fit, prediction, capability, terminal, real-control, runtime, supervision,
+  cleanup, privacy, integration, or post-main-CI drift blocks progression.
+  Otherwise the next gate is the exact official G2-7G preflight followed by
+  one no-argument claim-consuming execution; no official byte may open before
+  the supervised child consumes that claim.

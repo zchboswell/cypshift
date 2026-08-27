@@ -362,6 +362,22 @@ development metrics, submissions, leaderboard selection, and uploads remain
 zero. Reviewed integration and green post-main CI must precede the sole formal
 two-root acceptance.
 
+D-135 accepts that sole formal G2-7G attempt at aggregate receipt SHA-256
+`4c886d0d...edf390`. Two opposite-order roots each traversed the 720-fit
+M0/full-retained and 1,020-fit deterministic M2/drop-Avalon profiles, for 3,480
+model-double invocations and 667,872 synthetic predictions total. Capability
+and aggregate-terminal maps were byte-identical; exactly two bounded real
+CatBoost controls completed under cumulative supervision. The supervisor
+observed 6,985 checkpoints and 13 descendants with complete cleanup and zero
+warnings, GPU use, detachment, official operations, claim creation or
+consumption, or retained private roots. This is synthetic execution-mechanics
+evidence only; fixed MapLight
+remains `0.5837812652` component-macro MAE. Reviewed D-135 integration and
+green post-main CI must precede the sole official G2-7G attempt.
+Nine post-attempt state-transition tests (`625f3ae0...0c6ca2b`) and five
+aggregate receipt-audit tests (`80c08d89...7fca97e`) pass; the formal receipt
+retains the exact at-attempt D-134 test hash.
+
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in
 [`docs/archive/phases/PHASE_1_OPENADMET_TRACE.md`](../archive/phases/PHASE_1_OPENADMET_TRACE.md),

@@ -1102,7 +1102,7 @@ At every fresh start or context restoration:
 1. read `docs/strategy/PROJECT_STATE.md`;
 2. read `docs/phases/README.md` and this file;
 3. read `docs/strategy/PROJECT_CHARTER.md`;
-4. read D-082 through D-134 in `docs/strategy/DECISIONS.md`;
+4. read D-082 through D-135 in `docs/strategy/DECISIONS.md`;
 5. verify clean synchronized `main` and the exact active gate;
 6. inspect the last relevant experiment-ledger rows and immutable receipts;
 7. execute only the next unpassed gate through its contract-first microcycle.
@@ -1133,18 +1133,39 @@ execution covered 720 and 1,020 model-double fit identities; nine focused and
 accounting. This is not the formal acceptance and grants no model,
 official, claim, confirmatory, submission, or upload authority.
 
+D-135 accepts the sole formal G2-7G synthetic execution at
+[`global_v2_maplight_robustness_execution_acceptance_v2.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_acceptance_v2.json),
+SHA-256 `4c886d0d...edf390`. Two fresh roots reversed physical source and fit order,
+and both roots traversed both frozen profiles: exact M0/full retention used 720
+model-double fits and deterministic M2/drop-Avalon used 1,020, for 3,480
+invocations and 667,872 synthetic predictions total. Capability maps and
+aggregate terminal maps were byte-identical across root order. Exactly two
+bounded real CatBoost controls completed. The cumulative supervisor recorded
+187.62508345600054 wall-seconds, 381.12050561399997 CPU-seconds, 435,781,632
+bytes peak simultaneous RSS, 104,341,504 bytes peak storage, 6,985 checkpoints,
+and 13 descendants. Cleanup was complete with zero warnings, GPU use, detached
+children, official operations, claim creation or consumption, or retained
+private roots. This accepts execution mechanics only and grants no
+model-quality authority; fixed MapLight remains `0.5837812652` component-macro
+MAE.
+Nine post-attempt state-transition tests at `625f3ae0...0c6ca2b` and five
+aggregate receipt-audit tests at `80c08d89...7fca97e` pass. The immutable
+receipt retains the exact at-attempt D-134 focused-test hash
+`3fedd87e...4228c53f`.
+
 ## Exact next action
 
-Review and integrate D-134 runner `dca9b8d1...2ca90bde`, one-use driver
-`1675336e...a3de57fc`, acceptance driver `7cb471ce...2a42e473`, and tests
-`3fedd87e...4228c53f`, then require green post-main CI. Only afterward invoke
-the sole fixed no-argument two-root formal synthetic acceptance from clean
-`main`. Do not run it from this implementation branch; mutate the claim; open
-an official byte or baseline; fit a scientific model; score official
-development truth; or access confirmatory truth before integration. D-127 and
-D-128 paths remain barred.
-Submission generation, official metric, leaderboard selection, and upload
-remain closed.
+Review and integrate D-135 receipt `4c886d0d...edf390` through the signed
+fast-forward-only workflow, then require green post-main CI for that exact
+commit. Only afterward run a fresh official G2-7G preflight from clean
+synchronized `main` and invoke the fixed no-argument official driver exactly
+once with
+`uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
+Do not run it from the acceptance-milestone branch. The supervised child must
+consume the sole private claim before opening any official source or baseline
+byte; the tracked claim remains immutable. No retry, resume, repair, move,
+overwrite, replacement, smaller battery, or alternate order is authorized.
+D-127 and D-128 paths remain barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 remain closed. `global_TDI` remains the TDI fallback.

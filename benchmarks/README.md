@@ -54,7 +54,18 @@ The current G2-7 chain is:
   [`global_v2_maplight_robustness_execution_contract_v2.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_contract_v2.json)
   at `9464b094...91151bcf` and
   [`global_v2_maplight_robustness_execution_claim_v2.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_claim_v2.json)
-  at `d7e68837...44df6f9f`.
+  at `d7e68837...44df6f9f`;
+- D-134 integrated corrected execution implementation:
+  [`global_v2_maplight_robustness_scientific_runner.py`](../research/maplight-fixed/global_v2_maplight_robustness_scientific_runner.py)
+  at `dca9b8d1...2ca90bde`, official driver at
+  `1675336e...a3de57fc`, formal acceptance driver at
+  `7cb471ce...2a42e473`, and focused tests at
+  `3fedd87e...4228c53f`;
+- D-135 sole formal corrected execution acceptance:
+  [`global_v2_maplight_robustness_execution_acceptance_v2.json`](openadmet_cyp_2026/global_v2_maplight_robustness_execution_acceptance_v2.json),
+  SHA-256 `4c886d0d...ffedf390`; post-attempt state-transition tests at
+  `625f3ae0...0c6ca2b` and aggregate receipt-audit tests at
+  `80c08d89...7fca97e`.
 
 Pre-implementation audit proved that D-127 cannot satisfy exact D-122 scoring:
 its accepted scorer capability exposes central `point` only, while the frozen
@@ -66,9 +77,14 @@ acceptance produced byte-identical synthetic capabilities but failed mandatory
 cleanup-root safety, so D-129 rejects it with no acceptance and zero attempts
 remaining. D-130 now freezes a separately identified fixed-root path that must
 prove cleanup safety before any work, with zero fit and zero metric. Official
-development access remains closed. G2-7F is accepted after one formal attempt,
-and G2-7G now freezes a distinct unusable claim; neither creates model-quality
-or official authority.
+development access remains closed until D-135 is reviewed, integrated, and
+green on main. G2-7F is accepted after one formal attempt. The sole G2-7G
+formal acceptance then passed two opposite-order roots, both conditional
+profiles, 3,480 model-double fits, two bounded real CatBoost controls,
+byte-identical capabilities and aggregate terminals, cumulative supervision,
+and complete cleanup. It performed zero official or claim operations and
+creates no model-quality authority; the distinct G2-7G claim remains unusable
+and unconsumed.
 
 ## OpenADMET TRACE source rows
 

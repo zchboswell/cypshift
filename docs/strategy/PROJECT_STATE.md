@@ -4,7 +4,7 @@ Last updated: 2026-08-27
 
 ## Status
 
-Phase 2 Global-v2 is active under D-084 through D-134. The externally supplied
+Phase 2 Global-v2 is active under D-084 through D-135. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
@@ -710,6 +710,29 @@ or upload operation occurred; fixed MapLight remains 0.5838 component-macro
 MAE. This is implementation evidence only, not model-quality or execution
 acceptance evidence.
 
+D-135 accepts the sole G2-7G formal synthetic execution attempt with status
+`G2_7G_MAPLIGHT_ROBUSTNESS_EXECUTION_ACCEPTED` at aggregate receipt
+[`global_v2_maplight_robustness_execution_acceptance_v2.json`](../../benchmarks/openadmet_cyp_2026/global_v2_maplight_robustness_execution_acceptance_v2.json),
+SHA-256 `4c886d0d...edf390`. Two fresh roots reversed physical source and fit order,
+and each traversed both frozen conditional profiles: M0/full retention used
+exactly 720 model-double fit identities and deterministic M2/drop-Avalon used
+exactly 1,020. The 3,480 total model-double invocations generated 667,872
+synthetic predictions. Capability maps and aggregate terminal maps were
+byte-identical across root order, and exactly two bounded real CatBoost
+compatibility controls completed. Cumulative supervision observed 6,985
+checkpoints and 13 descendants over 187.625 wall-seconds and 381.121
+CPU-seconds, with 435,781,632-byte peak simultaneous RSS and 104,341,504-byte
+peak storage. Cleanup completed with zero warnings, GPU use, detached children,
+official operations, claim creation or consumption, or retained private roots.
+The formal acceptance grants mechanics authority only: it creates no
+model-quality, official-development, confirmatory, submission, leaderboard, or
+upload evidence. Fixed MapLight remains the best validated internal system at
+component-macro MAE `0.5837812652` (`0.5838`).
+The nine post-attempt state-transition tests at SHA-256
+`625f3ae0...0c6ca2b` and five aggregate receipt-audit tests at
+`80c08d89...7fca97e` pass; the immutable receipt still binds the exact
+at-attempt D-134 focused-test hash `3fedd87e...4228c53f`.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1360,16 +1383,17 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Review and integrate the D-134 scientific runner SHA-256
-`dca9b8d1...2ca90bde`, one-use official driver `1675336e...a3de57fc`,
-official-shaped acceptance driver `7cb471ce...2a42e473`, and focused tests
-`3fedd87e...4228c53f`, then require green post-main CI. Only afterward invoke
-the fixed no-argument formal synthetic acceptance exactly once from clean
-`main`. Do not run it from the implementation branch, mutate the tracked
-claim, create or consume an official claim, open an official byte or baseline,
-fit a scientific model, score official development truth, or access
-confirmatory truth before the exact implementation is reviewed, integrated,
-and green. The D-127 claim/root and D-128 attempt remain permanently barred.
+Review and integrate the D-135 aggregate formal acceptance receipt SHA-256
+`4c886d0d...edf390` through the signed fast-forward-only workflow, then require
+green post-main CI for that exact commit. Only afterward perform a fresh
+G2-7G official-development preflight from clean synchronized `main` and invoke
+the fixed no-argument one-use official driver exactly once with
+`uv run --python 3.12.3 python research/maplight-fixed/run_global_v2_maplight_robustness_official_v2.py`.
+Do not run it from the acceptance-milestone branch. The supervised child must
+consume the sole private claim before any official source or baseline byte is
+opened; the tracked claim remains immutable. Do not retry, resume, repair,
+move, overwrite, replace, or run a smaller or alternate battery. The D-127
+claim/root and D-128 attempt remain permanently barred.
 Confirmatory truth, historical row-level artifacts, blinded test, TDI,
 submission generation, official metric, leaderboard selection, and upload
 capability remain closed. EXP-G3 and G1/G2/M1/X1/T2 plus immutable R5D/I0
