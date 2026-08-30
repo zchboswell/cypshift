@@ -1,0 +1,1687 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_capability_contract.v1",
+  "recorded_at_utc": "2026-08-30T21:12:00Z",
+  "freeze_date": "2026-08-30",
+  "gate": "G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN",
+  "status": "G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN",
+  "contract_id": "GLOBAL_V3_G4_GIN300_CAPABILITY",
+  "experiment_id": "EXP-G4-GIN300",
+  "base_commit": "b5cf47c6bc8ccc2dc29c7167b1a436d792338509",
+  "purpose": "Freeze, without executing, the sole Linux x86_64 CPU rights, provenance, runtime, three-object parity, official-shaped synthetic mechanics, and prefit resource-capability attempt that can make the D147 EXP-G4-GIN300 pretrained representation eligible for a later label-free official feature claim.",
+  "targeted_failure": "The historical Darwin MolFeat result can fail to transfer because public checkpoint identities or rights are incomplete, SNAP-to-DGL tensor conversion is wrong, graph construction differs, Linux inference is not numerically equivalent, a hidden network or cache changes the object, the exact 180-fit topology is implemented incorrectly, or the fixed design cannot preserve 20 percent resource margin.",
+  "occam_boundary": "Use one wheel-only Python 3.10.13 CPU runtime, the three exact public objects already named by D147, one complete 57-key SNAP-to-DGL mapping, one existing eight-row redistributable fixture, two opposite-order official-shaped synthetic roots, a deterministic full-topology model double, and exactly six real CatBoost fits. There is no alternate checkpoint, runtime, graph, tolerance, probe, optimization, retry, repair, reduced design, or second attempt.",
+  "contract_only_boundary": {
+    "current_authority": "Static contract, exact runtime-manifest bytes, third-party notice bytes, and public static tests only.",
+    "current_prohibitions": "D148 may not create or install the runtime, download or retain a wheel, fetch or load any checkpoint, deserialize any tensor or pickle, implement a feature builder or runner, execute parity or a model, generate an embedding, create or consume a claim, open an official or private row, or produce a scientific result.",
+    "no_implicit_authority": "A frozen contract is not capability acceptance, provenance clearance, feature authority, model-quality evidence, a contender lock, or submission authority.",
+    "implementation_gate": "Only after this exact D148 package is independently reviewed, committed once with an SSH signature by zchboswell, integrated locally by fast-forward only, pushed without rewriting, and green on exact-SHA post-main CI may D149 create and validate the exact zero-execution implementation package. Only after that D149 package is separately reviewed, SSH-signed, fast-forward integrated, pushed, and exact-SHA post-main green may D150 invoke the sole formal one-use attempt."
+  },
+  "integrated_d147_lineage": {
+    "commit": "b5cf47c6bc8ccc2dc29c7167b1a436d792338509",
+    "parent_commit": "d029bb3b154f1721d094dae76e5587c0c927da2e",
+    "commit_signature": "valid SSH signature for zchboswell; commit object must remain byte-identical",
+    "pull_request": 184,
+    "pull_request_merge_mode": "mergeCommit equals signed head exactly; no hosted rewrite",
+    "pull_request_ci_run": 33327853790,
+    "pull_request_ci_lanes_green": 3,
+    "post_main_push_ci_run": 33328374514,
+    "post_main_ci_lanes_green": 3,
+    "d147_contract": {
+      "path": "global_v3_g4_gin300_contract.json",
+      "sha256": "b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e",
+      "size_bytes": 37092,
+      "lines": 485
+    },
+    "d147_static_test": {
+      "path": "../../tests/test_openadmet_global_v3_g4_gin300_contract.py",
+      "sha256": "c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc",
+      "size_bytes": 31371,
+      "lines": 815,
+      "focused_result": "9 passed"
+    },
+    "required_state": "The D147 contract is integrated and exact-SHA green; Global-v2 and G2-7G remain closed, G2-7G remains UNDERPOWERED, fixed MapLight remains only the immutable development baseline, and no old claim, root, terminal, or authority transfers."
+  },
+  "bound_public_parents": {
+    "challenge_contract": {
+      "path": "challenge_contract.json",
+      "sha256": "344d3414d03bb98e57def998e80ab4cf315c1bebe7c01cb9d7c1c32ba3cd6123"
+    },
+    "global_v2_contract": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "maplight_source_contract": {
+      "path": "../maplight_source_contract.json",
+      "sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8"
+    },
+    "historical_gin_contract": {
+      "path": "../maplight_gin_contract.json",
+      "sha256": "d88c3b42c09f200939759e021fc15163da3ba501360079eea29a0139df11e55e"
+    },
+    "fixture": {
+      "path": "../fixtures/maplight_fixed_parity_v1.csv",
+      "sha256": "70ae570bbdbb5c8a225cfd20ab72f0d8f8b43dc1a3a6b2d3356bc52f4f4a513c",
+      "size_bytes": 267,
+      "physical_lines": 9,
+      "data_rows": 8,
+      "columns": [
+        "fixture_id",
+        "pandas_index",
+        "raw_smiles"
+      ],
+      "rights": "tracked redistributable synthetic chemistry fixture"
+    },
+    "challenge_rules_snapshot": {
+      "space_revision": "4a87b2dcc800036b745e4c7bbb0023be817b5408",
+      "config_sha256": "342cd287e63a79c61b8e18fa46e81950ebb7333b6e91ee427af18426e04ca52f",
+      "permission": "External data and pretrained models are permitted, with accurate disclosure; this does not waive third-party rights or notice duties."
+    }
+  },
+  "tracked_d148_dependencies": {
+    "linux_runtime_manifest": {
+      "path": "global_v3_g4_gin300_linux_x86_64_runtime_manifest.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_linux_x86_64_runtime_manifest.v1",
+      "sha256": "67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01",
+      "size_bytes": 166425,
+      "lines": 4008,
+      "cpu_only": true,
+      "package_count": 96,
+      "wheel_count": 96,
+      "dependency_edge_count": 185,
+      "selected_wheel_total_size_bytes": 539395366,
+      "resolved_package_set_sha256": "f6bddf33d6b33c6319cd42513879ac0366619ee022ce451fe688ac588bf87e1c",
+      "selected_wheel_inventory_sha256": "f31d9d9b760c809d819ce5b0969e4339788b11659c45f2fdc3fbdb72f64edba9",
+      "dependency_edges_sha256": "b7ce0c4706520beacbb761671706563c8a702d54022297f197c84048275d29b1",
+      "license_assignment_count": 96,
+      "license_assignments_sha256": "dafbe12e4300c29b08bda431ec3613271b5bc02df4f954c4927b9ba0140561fb",
+      "runtime_distribution_artifact_count": 97,
+      "runtime_distribution_total_size_bytes": 566804656,
+      "runtime_distribution_inventory_sha256": "f1949018f8d3e572b727517465fb7dcdbc12a03aa01c8dcb36967c56910212b2",
+      "runtime_distribution_inventory_canonical_bytes": 37820,
+      "runtime_distribution_inventory_digest_rule": "Use the exact manifest inventory.runtime_distribution_inventory_digest_contract over all 97 records; no locally inferred serialization is accepted.",
+      "molfeat_extras": [
+        "dgl",
+        "transformer"
+      ],
+      "transformer_extra_boundary": "huggingface-hub, regex, safetensors, sentencepiece, tokenizers, and transformers are frozen only because MolFeat 0.9.2 initialization statically imports its optional Hugging Face module on the DGL path. They grant no transformer model, tokenizer model, remote repository, cache-population, feature, checkpoint, or network authority.",
+      "interpreter": {
+        "implementation": "CPython",
+        "version": "3.10.13",
+        "python_build_standalone_release": "20240224",
+        "repository": "astral-sh/python-build-standalone",
+        "tag_commit": "61ace30326ba7c32325c6633665cc571ac56b82a",
+        "archive_filename": "cpython-3.10.13+20240224-x86_64-unknown-linux-gnu-install_only.tar.gz",
+        "archive_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-x86_64-unknown-linux-gnu-install_only.tar.gz",
+        "archive_sha256": "d995d032ca702afd2fc3a689c1f84a6c64972ecd82bba76a61d525f08eb0e195",
+        "archive_size_bytes": 27409290,
+        "checksum_sidecar": {
+          "filename": "cpython-3.10.13+20240224-x86_64-unknown-linux-gnu-install_only.tar.gz.sha256",
+          "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-x86_64-unknown-linux-gnu-install_only.tar.gz.sha256",
+          "sha256": "9e57b23cb72164f981d9c6a52bdb555557639de897631f54fe1255181464e4b3",
+          "size_bytes": 65
+        },
+        "installed_executable_sha256": null,
+        "installed_executable_rule": "D148 cannot know the installed executable hash without the forbidden archive fetch and authenticated extraction. D150 must record and bind it once in the runtime receipt before any import or execution, then fail closed on every mismatch.",
+        "license": {
+          "cpython_spdx_expression": "PSF-2.0",
+          "build_project_spdx_expression": "BSD-3-Clause",
+          "build_project_license_source_url": "https://raw.githubusercontent.com/astral-sh/python-build-standalone/20240224/LICENSE",
+          "build_project_license_sha256": "02e7aaf3645b50fb9056b18528e2ca3474a6628fe3396ae4dd326f6618e0aad7",
+          "build_project_license_bytes": 1495,
+          "bundled_notice_rule": "D150 must inspect and retain the archive's PYTHON.json inventory and all bundled third-party notices, publish only hashes and aggregate facts, and prohibit archive redistribution."
+        }
+      },
+      "rule": "Every runtime artifact, platform tag, digest, package version, license, and notice is closed by the manifest. The contract does not fetch, extract, install, import, or execute it."
+    },
+    "third_party_notices": {
+      "path": "global_v3_g4_gin300_third_party_notices.md",
+      "sha256": "b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb",
+      "rule": "The notice must travel with every future aggregate method report or local capability bundle; no checkpoint or pretraining data travels with it."
+    },
+    "runtime_cutoff_exception": {
+      "package": "future",
+      "historical_version": "0.18.3",
+      "frozen_linux_version": "1.0.0",
+      "reason": "future 0.18.3 has no compatible wheel in the frozen Linux closure and is sdist-only; future 1.0.0 is the sole post-cutoff Python-package-wheel infrastructure exception.",
+      "scientific_effect": "None is assumed. Exact three-path fixture parity must pass in D150; any behavior drift fails closed instead of changing another package.",
+      "all_other_versions": "All other Python package wheels preserve the historical 2023-11-07 scientific/runtime lock and its exact frozen transitive closure.",
+      "interpreter_cutoff_boundary": "The separately frozen python-build-standalone 20240224 install_only archive is an interpreter infrastructure distribution, not a Python package wheel and not governed by the historical package-wheel upload cutoff. Its exact identity is immutable and grants no alternate interpreter or build authority."
+    }
+  },
+  "future_d149_implementation_package": {
+    "implementation_and_lock_paths": [
+      "research/maplight-gin-openadmet/.python-version",
+      "research/maplight-gin-openadmet/pyproject.toml",
+      "research/maplight-gin-openadmet/uv.lock",
+      "research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py",
+      "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py"
+    ],
+    "public_test_paths": [
+      "tests/test_openadmet_global_v3_g4_gin300_capability.py",
+      "tests/test_openadmet_global_v3_g4_gin300_capability_result.py"
+    ],
+    "public_result_path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json",
+    "narrative_evidence_paths": [
+      "benchmarks/openadmet_cyp_2026/README.md",
+      "docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md",
+      "docs/phases/README.md",
+      "docs/strategy/DECISIONS.md",
+      "docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md",
+      "docs/strategy/PROJECT_STATE.md"
+    ],
+    "experiment_ledger_path": "runs/experiment_ledger.csv",
+    "d149_exact_allowed_created_or_modified_path_count": 14,
+    "d149_exact_allowed_created_or_modified_paths": [
+      "research/maplight-gin-openadmet/.python-version",
+      "research/maplight-gin-openadmet/pyproject.toml",
+      "research/maplight-gin-openadmet/uv.lock",
+      "research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py",
+      "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py",
+      "tests/test_openadmet_global_v3_g4_gin300_capability.py",
+      "tests/test_openadmet_global_v3_g4_gin300_capability_result.py",
+      "benchmarks/openadmet_cyp_2026/README.md",
+      "docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md",
+      "docs/phases/README.md",
+      "docs/strategy/DECISIONS.md",
+      "docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md",
+      "docs/strategy/PROJECT_STATE.md",
+      "runs/experiment_ledger.csv"
+    ],
+    "d149_zero_execution_authority": "D149 creates and statically/synthetically validates only the exact implementation, isolated lock, tests, and aggregate narrative/ledger evidence above. It may not fetch an artifact, extract an interpreter, create or install a runtime, import a scientific closure package, open or deserialize a checkpoint, create a private root, execute parity/synthetic capability/CatBoost, create or consume a claim, or create the result file.",
+    "d149_internal_freeze_delegation": "Within D148's exact observable identities, caps, states, counts, authority, and failure semantics, D149 must choose exactly once and encode as immutable literal code: one closed control kind/stage/aggregate enum with exact branch orders and checkpoint counts; exact pipe/subprocess drain wiring within every D148 byte cap; one pinned public DGL sequence rooted at dgllife.model.pretrain.property_prediction.create_property_model with model name gin_supervised_masking, direct exact dgllife.model.gnn.gin.GIN, strict 57-key state loading/eval, and no network loader; and one pinned public MolFeat local-file-store/PretrainedDGLTransformer call and output-observation sequence satisfying the exact local bucket, constructor, direct-GIN, graph, pooling, shape, and hash outcomes. The two public D149 tests must statically bind those literal enums/calls/order and reject dynamic dispatch, alternate API, fallback, reflection, guessed traversal, environment choice, or unbounded channel. D149 executes none of them. Review and signed integration bind the exact builder/runner/test hashes into the D150 claim, so D150 cannot revise any sequence after artifact or numeric observation. This delegation covers only outcome-neutral internal call/wire detail and grants no new path, API surface, object, tolerance, resource, retry, or execution authority.",
+    "d149_result_presence": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json must remain absent throughout D149 and at its signed integration.",
+    "d150_exact_allowed_created_or_modified_path_count": 8,
+    "d150_exact_allowed_created_or_modified_paths": [
+      "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json",
+      "benchmarks/openadmet_cyp_2026/README.md",
+      "docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md",
+      "docs/phases/README.md",
+      "docs/strategy/DECISIONS.md",
+      "docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md",
+      "docs/strategy/PROJECT_STATE.md",
+      "runs/experiment_ledger.csv"
+    ],
+    "isolated_project_contract": {
+      "python_version_file_exact_bytes": "3.10.13\n",
+      "purpose": "The isolated pyproject and lock encode the exact manifest-bound CPython 3.10.13 plus 96-wheel scientific closure for authenticated child installation only. They are never the outer launcher project and are never synced before claim consumption.",
+      "evidence_mirror_shape": {
+        "lock_format": "uv lock version 1, revision 3",
+        "package_tables": 97,
+        "virtual_root_tables": 1,
+        "runtime_distribution_tables": 96,
+        "declared_root_requirements": 11,
+        "transitive_dependency_edges_excluding_root_edges": 185,
+        "pypi_wheel_records": 95,
+        "pytorch_cpu_index_wheel_records": 1,
+        "sdist_records": 0
+      },
+      "lock_acceptance": "The mechanically authored Linux-targeted pyproject/lock evidence mirror must reproduce every exact package, version, filename, URL, SHA-256, size, upload time, dependency edge, Python ABI, platform tag, CPU-only exclusion, and future 1.0.0 exception in the D148 runtime manifest. A pure standard-library tomllib projection must prove the exact evidence_mirror_shape and manifest equality during D149. The runtime manifest remains authoritative: this mirror is never installation authority, a universal-resolution claim, or permission to run uv sync. Zero VCS, path, editable, sdist, alternate index, alternate interpreter, or unbound artifact is allowed."
+    },
+    "runtime_install_contract": {
+      "host_installer": {
+        "basename": "uv",
+        "private_exact_path": "/home/zbos/.local/bin/uv",
+        "version": "0.12.3",
+        "executable_sha256": "729d27dbea534ee540a2d3ef43a62fa1a10af7fcbb6d57a70d5859509f624578",
+        "owner_uid": 1000,
+        "owner_gid": 1000,
+        "mode_octal": "0755",
+        "size_bytes": 56004256,
+        "fd_execution": "Outer opens private_exact_path read-only with no-follow/close-on-exec after lstat authentication, fstats and hashes that regular file, and gives the open description one reserved uv_fd inherited by the exact controller Popen through pass_fds alongside its bounded control descriptors; only stat/hash facts traverse the control messages. Immediately before install, the controller re-fstats and rehashes uv_fd, then launches subprocess args beginning with public argv0 `uv` using executable=/proc/self/fd/<uv_fd>, pass_fds=(uv_fd,), close_fds=true, and the exact sanitized controller environment. The descriptor is inherited only by that uv child and closed everywhere afterward. The private absolute path never enters subprocess args, environment, stdout/stderr, receipt, result, narrative, or log.",
+        "resolution": "At D150 outer preflight authenticate only private_exact_path as one regular nonsymlink with the exact owner/group/mode/size/version/SHA-256, and bind device/inode/mode/size/hash/version into the private future claim without emitting its absolute path in the public result or narratives. Immediately before the sole offline wheel install, the controller reauthenticates the same device/inode/owner/group/mode/size/hash/version through fd_execution; PATH is never uv authority. A preflight mismatch does not consume the claim; a later mismatch fails the consumed attempt. The private claim records basename/version/hash/stat; the public result records only the aggregate runtime-rights inventory hash."
+      },
+      "exact_private_layout": {
+        "interpreter_root": "runtime_root/interpreter",
+        "interpreter_executable": "runtime_root/interpreter/python/bin/python3.10",
+        "runtime_venv": "runtime_root/venv",
+        "worker_executable": "runtime_root/venv/bin/python3.10"
+      },
+      "archive_extraction": "Authenticate the full interpreter archive hash and size before opening it. Pre-scan every tar member and reject duplicate names, absolute paths, dot-dot traversal, device, FIFO, socket, hardlink, ownership preservation, suid/sgid bit, or symlink whose normalized target escapes the extraction root. Extract with no owner preservation, restrictive umask, and no overwrite into a fresh private interpreter directory. Require exactly one top-level python directory and regular nonsymlink python/bin/python3.10. Safely validate every archive symlink remains internal and record only an aggregate alias-inventory hash/count; do not assume any uninspected python or python3 alias topology. Do not execute anything until the safety scan, extraction inventory, exact python/PYTHON.json inspection, and all bundled notice hashes complete.",
+      "interpreter_identity": "Extract only into exact runtime_root/interpreter. The extracted regular runtime_root/interpreter/python/bin/python3.10 must report exact CPython 3.10.13 and its first installed-executable SHA-256 is recorded in the private runtime receipt before use. Create a fresh copied venv with exact argv `runtime_root/interpreter/python/bin/python3.10 -I -B -m venv --without-pip --copies runtime_root/venv`; require regular copied runtime_root/venv/bin/python3.10 whose SHA-256 exactly equals the recorded base executable, no pip bootstrap, and pyvenv.cfg include-system-site-packages = false with exact home pointing to runtime_root/interpreter/python/bin, the directory containing the authenticated base executable. No other interpreter or venv layout is allowed, and bytecode-cache writes are forbidden.",
+      "wheel_install_command": "With UV_NO_PROGRESS=1, authenticated uv 0.12.3 executes `uv pip install --quiet --offline --no-index --no-deps --only-binary :all: --no-cache --no-python-downloads --exact --strict --link-mode copy --python <runtime_root>/venv/bin/python3.10 <96 exact local wheel paths in manifest order>`. Reauthenticate every wheel size and SHA-256 immediately before this one install. Capture bounded stdout/stderr and require both empty on success. Copy mode forbids cache/temp hardlinks, reflinks, and symlink dependencies in the retained runtime. No resolver, index, build, dependency fetch, cache, source, progress output, warning, or second install is allowed.",
+      "wheel_rights_inspection": "After whole-wheel hash verification and before install, inspect every wheel as ZIP with standard-library code. Reject duplicate names, encryption, absolute/dot-dot paths, backslashes, symlinks, devices, FIFOs, sockets, or escaping members. Require exactly one `<normalized-distribution>.dist-info/METADATA` whose normalized Name and Version equal the manifest record. Across every member in the entire safety-validated wheel, not only dist-info, case-insensitively collect any basename beginning LICENSE, COPYING, NOTICE, AUTHORS, COPYRIGHT, or ATTRIBUTION; hash and retain each exact matching member once, then record canonical relative-name/hash/byte records and aggregate count/bytes/SHA-256. Compare the manifest license assignment and normalized sole-METADATA License plus Classifier evidence mechanically. Zero bundled notice members is accepted if and only if that exact manifest package record has a nonempty frozen canonical_license_ids/SPDX assignment, nonempty exact metadata_evidence, and a notice_obligation that requires retaining every notice file supplied by the selected wheel; any absent, empty, contradictory, or ambiguous assignment fails. For the runtime manifest's `fail closed on a missing/incompatible notice` language, missing means a member the selected wheel supplies or its frozen metadata/assignment requires but that inspection cannot find, authenticate, classify, or retain; zero members actually supplied under the exact rule above is not a missing file. Every nonzero supplied member is hashed and retained locally with its wheel evidence. This deterministic local-inspection rule is not a waiver of any redistribution duty, and no subjective substitution or missing supplied member is allowed.",
+      "interpreter_rights_inspection": "Require exact archive member python/PYTHON.json, strict JSON with no duplicate/nonfinite values, CPython 3.10.13 identity, and its bundled file/license inventory. Canonicalize and hash its records plus every archive license/notice member, require PSF-2.0 CPython evidence and the frozen BSD-3-Clause python-build-standalone project license identity, and fail on an unclassified/missing bundled component notice. Publish only aggregate counts, byte totals, and hashes; never redistribute archive members.",
+      "post_install_gate": "Through exact regular runtime_root/venv/bin/python3.10 with -I -B, importlib.metadata normalized distribution name/version pairs must equal the exact 96-record manifest set. pip, setuptools, wheel, missing/extra distributions, editable metadata, direct_url.json, invalid or escaping RECORD paths, RECORD hash/size mismatch, dependency-validation errors, and any generated pyc/__pycache__ all fail before scientific import. The base archive's bundled packages are interpreter infrastructure only, inventoried through PYTHON.json, unreachable because system_site_packages is false, and never counted as scientific runtime packages.",
+      "runtime_rights_inventory_binding": "runtime_rights_inventory_sha256 is SHA-256 of strict compact UTF-8 canonical JSON with exact insertion-order keys runtime_manifest_sha256, wheel_notice_inventory_sha256, wheel_notice_file_count, wheel_notice_bytes, interpreter_notice_inventory_sha256, interpreter_notice_file_count, interpreter_notice_bytes. The two nested inventory hashes come from the exact mechanically sorted relative-name/hash/byte/license evidence required by wheel_rights_inspection and interpreter_rights_inspection; counts and bytes are nonnegative integers. The mapping uses separators comma/colon, ensure_ascii=false, no BOM, duplicate, nonfinite value, negative zero, path outside its inspected archive, or absolute/private path. The child computes it before scientific import and the outer authenticates the aggregate fields; it is rights evidence, not the retained filesystem-tree digest.",
+      "retained_runtime_tree_inventory": {
+        "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_retained_runtime_tree.v1",
+        "record_keys_in_order": [
+          "path",
+          "kind",
+          "mode_octal",
+          "uid",
+          "gid",
+          "size_bytes",
+          "sha256",
+          "symlink_target"
+        ],
+        "walk_and_records": "After all runtime/scientific use and before success cleanup verification, walk runtime_root itself as path `.` and every descendant with lstat/openat no-follow operations, sorted by exact UTF-8 relative-path bytes. Reject invalid UTF-8/surrogate/NUL/backslash, empty or dot/dot-dot component, duplicate normalized path, mount crossing, socket/device/FIFO, hardlink or regular-file link count other than one, symlink link count other than one, cross-root inode, or symlink whose relative normalized target escapes runtime_root. kind is exactly directory, regular, or symlink. Every record has all eight keys: directory has size_bytes 0, sha256 null, symlink_target null; regular has exact st_size, streaming content SHA-256, symlink_target null; symlink has the UTF-8 target byte length, SHA-256 of those exact target bytes, and the exact relative target string. uid and gid are exactly 1000. mode_octal is four lowercase octal digits from lstat permission bits after sealing.",
+        "read_only_seal": "On a proposed success only, after the last worker exits and every descriptor is closed, outer reauthenticates the unsealed inventory, opens every regular file no-follow, fchmods it to exactly 0555 when any authenticated preseal execute bit was set and otherwise 0444, then fsyncs that same descriptor after the mode change. Chmod every directory bottom-up to 0555 and runtime_root last without following symlinks, then fsync each directory after all child and mode changes. Symlink permission bits must lstat as 0777 and every target remain internal. Only after those durability operations rewalk and rehash the sealed tree twice from independent file descriptors. No entry may be created, deleted, renamed, linked, written, or chmodded afterward except the narrowly frozen pre-completion retention-revocation deletion path; after a valid outer completion receipt even that exception is forbidden. A mismatch or write bit is CLEANUP_FAILED and revokes retention authority.",
+        "canonical_digest": "Serialize exactly one strict compact UTF-8 JSON object with insertion-order keys schema_version and records; records is the sorted array above, separators are comma/colon, ensure_ascii=false, and no trailing LF is included. retained_runtime_tree_sha256 is SHA-256 of those bytes. retained_runtime_tree_entry_count is len(records), including the `.` root record; retained_runtime_tree_regular_bytes is the exact sum of size_bytes for regular records only. All three values are outer-verified and bound into the public rights_and_objects object so a later contract can rewalk the private retained tree without trusting D150 process state."
+      },
+      "worker_interpreter": "Every post-install and offline scientific process uses exact regular runtime_root/venv/bin/python3.10 with -I -B and empty PYTHONPATH/PYTHONHOME; no python or python3 alias, root, base-interpreter site package, user site, host executable, or bytecode-cache write may satisfy or mutate an import."
+    },
+    "root_environment_immutability": {
+      "pyproject_path": "pyproject.toml",
+      "pyproject_sha256": "6b6a79c6400834ffe019eaae6fe758b531f9a212cfed8eaa19435124aeb6817a",
+      "uv_lock_path": "uv.lock",
+      "uv_lock_sha256": "33d9382256de7992ce9ff7a7edc125d4771546a25ef3be5f1160627846d2c9b6",
+      "launcher_interpreter": {
+        "exact_path": "/usr/bin/python3.12",
+        "implementation": "CPython",
+        "version": "3.12.3",
+        "executable_sha256": "1643dacd9feaedc58f3cc581e4d22577dfe25c09b10282936186ccf0f2e61118",
+        "rule": "Before D150 the operator verifies the exact root-owned regular nonsymlink system executable, version, and SHA-256. The stdlib-only runner immediately reauthenticates its own sys.executable device/inode/mode/size/hash/version before any other action. No root venv or package is imported."
+      },
+      "host_git": {
+        "exact_path": "/usr/bin/git",
+        "version": "2.43.0",
+        "executable_sha256": "2a8c18fbf43da9f692d75474c72bea9dfd796c260b0f3dfe456376abc3bbd668",
+        "owner_uid": 0,
+        "mode_octal": "0755",
+        "exact_environment": {
+          "PATH": "/usr/bin",
+          "HOME": "/nonexistent",
+          "LANG": "C",
+          "LC_ALL": "C",
+          "GIT_CONFIG_NOSYSTEM": "1",
+          "GIT_CONFIG_GLOBAL": "/dev/null",
+          "GIT_OPTIONAL_LOCKS": "0",
+          "GIT_NO_REPLACE_OBJECTS": "1"
+        },
+        "exact_command_prefix": [
+          "/usr/bin/git",
+          "--no-replace-objects",
+          "-c",
+          "core.fsmonitor=false",
+          "-c",
+          "core.untrackedCache=false",
+          "--git-dir=<authenticated_repository_root>/.git",
+          "--work-tree=<authenticated_repository_root>"
+        ],
+        "exact_read_only_subcommands_in_order": [
+          "symbolic-ref --quiet HEAD",
+          "rev-parse --absolute-git-dir",
+          "rev-parse --show-toplevel",
+          "rev-parse --is-bare-repository",
+          "rev-parse --show-object-format",
+          "rev-parse --verify HEAD^{commit}",
+          "rev-list --parents --max-count=1 HEAD",
+          "ls-files -z -- benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json (required empty output)",
+          "ls-files --stage -z -- <exact authenticated input path list>",
+          "ls-tree -z HEAD -- <exact authenticated input path list>"
+        ],
+        "authenticated_input_paths": [
+          "research/maplight-gin-openadmet/.python-version",
+          "research/maplight-gin-openadmet/pyproject.toml",
+          "research/maplight-gin-openadmet/uv.lock",
+          "research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py",
+          "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py",
+          "tests/test_openadmet_global_v3_g4_gin300_capability.py",
+          "tests/test_openadmet_global_v3_g4_gin300_capability_result.py",
+          "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json",
+          "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json",
+          "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md",
+          "benchmarks/fixtures/maplight_fixed_parity_v1.csv"
+        ],
+        "repository_metadata_rejections": "Require .git to be the exact owned nonsymlink directory, rev-parse absolute-git-dir and show-toplevel to equal the exact repository paths, is-bare-repository false, Git object format sha1, and lstat-absent .git/config.worktree, .git/info/grafts, .git/shallow, .git/objects/info/alternates, and every refs/replace entry. Standard-library parsing of regular .git/config rejects include/includeIf, extensions.worktreeConfig, core.worktree, and any redirection of Git dir/worktree/object/index. Reject linked-worktree indirection, submodule/gitlink input, sparse-index/skip-worktree/assume-unchanged input, symlink input, missing/untracked input, non-100644 mode, duplicate stage, merge stage, or non-blob tree entry.",
+        "byte_authentication": "Read every exact worktree input with standard-library no-follow regular-file checks, compute its Git SHA-1 as sha1(`blob ` + decimal_byte_length + NUL + exact_bytes), and require equality with the single 100644 stage-0 ls-files and HEAD ls-tree blob ids. Compute the seven D149 SHA-256 values from the same authenticated bytes. Do not use checkout filters, clean/smudge, textconv, cat-file content, external diff, hooks, or repository config as byte authority.",
+        "external_clean_main_precondition": "Immediately before the exact D150 command, the human/orchestrator must separately verify symbolic main and an empty full nonignored index/worktree status using the reviewed repository workflow, then invoke without editing. This is an external pre-execution gate recorded later in the allowed narratives/ledger, not a claim/result field and not a cleanliness fact the offline runner derives. Unrelated ignored/private paths grant no authority and remain hidden because the science sandbox mounts no repository root.",
+        "rule": "Outer preflight authenticates this exact regular nonsymlink root-owned executable, then invokes only exact_command_prefix plus each closed object/index subcommand under exactly exact_environment. symbolic-ref output is refs/heads/main; absolute Git dir/top-level and non-bare state equal the fixed root; object format is sha1; rev-list returns one exact HEAD commit with one parent equal to the D149-embedded integrated D148 commit; result path is absent from the index. The runner claims cleanliness only for the 11 authenticated input paths by exact stage/HEAD blob/mode/worktree-byte equality, never for unrelated worktree state. Local repository config cannot redirect the closed operations, and every caller proxy, credential, SSH, pager, editor, replace-ref, fsmonitor, untracked-cache, optional-lock, and external-diff influence is disabled or rejected. Git never reads a remote, writes the index/config/object database, runs a hook, or supplies PR/signature/CI evidence."
+      },
+      "rule": "Both root dependency files remain byte-unchanged and unused by formal execution. The direct system-Python launcher performs zero dependency resolution, sync, install, uninstall, cache mutation, or network access; any launcher mismatch fails before child supervision and grants no claim authority."
+    },
+    "future_d150_outer_launcher": {
+      "working_directory": "repository root",
+      "exact_command": "/usr/bin/env -i PATH=/usr/bin LANG=C.UTF-8 LC_ALL=C.UTF-8 TZ=UTC PYTHONNOUSERSITE=1 /usr/bin/python3.12 -I -S -B research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py",
+      "exact_argv": [
+        "/usr/bin/env",
+        "-i",
+        "PATH=/usr/bin",
+        "LANG=C.UTF-8",
+        "LC_ALL=C.UTF-8",
+        "TZ=UTC",
+        "PYTHONNOUSERSITE=1",
+        "/usr/bin/python3.12",
+        "-I",
+        "-S",
+        "-B",
+        "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py"
+      ],
+      "outer_cli": "Accept no positional argument and no option. In particular, no root, output, URL, cache, package, status, seed, tolerance, resource, or retry override exists. The single-file stdlib-only runner locates repository inputs only from Path(__file__), imports no local module because -I -S remove script/repo/site paths, and authenticates its system interpreter plus exact D148/D149 inputs before spawn.",
+      "operator_entry_environment": {
+        "PATH": "/usr/bin",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "TZ": "UTC",
+        "PYTHONNOUSERSITE": "1"
+      },
+      "entry_environment_rule": "Invoke the exact /usr/bin/env -i prelauncher argv, which execs the exact system Python with env equal to operator_entry_environment and no other key. In particular the Python process receives no LD_PRELOAD, LD_LIBRARY_PATH, PYTHONPATH, PYTHONHOME, other PYTHON variable, proxy, cloud, token, credential, Git, SSH, SSL, HOME, or XDG variable. The runner's first Python instruction compares os.environ to the exact mapping and exits preclaim on any mismatch. /usr/bin/env, the host loader, and OS before Python exec are trusted external preconditions; the runner does not pretend it can retroactively authenticate them.",
+      "mandatory_lineage_authenticated_checkpoint": "Before tool/root preflight, supervisor spawn, result construction, or any private-root/network action, the outer must authenticate its exact system Python and entry environment; exact contract/runtime/notices/fixture bytes; exact Git executable and closed object/index checks; symbolic main HEAD, fixed Git-dir/worktree/object format, sole embedded D148 parent, exact seven D149 regular blobs/hashes/modes, and public-result lstat/index absence. It does not claim unrelated-worktree cleanliness. Only then set the in-memory boolean/stage lineage_authenticated=true. It is never inferred or nullable. Any failure leaves it false, is internal LINEAGE_AUTHENTICATION_FAILED, creates no claim/root/result, and grants no retry authority. Every common-seal path requires it true and copies only its authenticated identities into the result.",
+      "mandatory_seal_preflight_authenticated_checkpoint": "Immediately after lineage authentication and before remaining uv/bwrap/CA checks, authenticate the public-result parent and publication-staging parent as expected owned nonsymlink directories on one filesystem; require the result destination, publication staging, all six fixed roots, and transactional claim staging lstat-absent and unambiguous; bind parent device/inode/mode/owner and no-replace capability in memory. Only then set seal_preflight_authenticated=true. Any failure or race before this checkpoint is internal SEAL_PREFLIGHT_AUTHENTICATION_FAILED, creates no claim/root/result, and cannot use an unsafe path to report its own failure. Every public result requires both lineage_authenticated and seal_preflight_authenticated true; later path collision follows its separately frozen internal/postconsumption rule.",
+      "outer_completion_receipt": "After and only after common-seal promotion, destination-parent fsync, read-only inode/schema reauthentication, publication-staging removal, a second fsync of the staging root's parent after that rmdir, lstat reauthentication that the staging root remains absent, and a final in-process wall/CPU/storage/RSS envelope sample all pass, form exactly one bounded ASCII stdout line `CYPSHIFT_G3_G4_GIN300_COMMON_SEAL_COMPLETED sha256=<64 lowercase result-byte hex>\n`; the hash must equal the final public result bytes. With stderr still empty, use stdout's authenticated inherited descriptor for one final controlled write, require the full at-most-128-byte line written, then execute direct zero exit with no allocation, sample, cleanup, flush, handler, or other work. Every defect known before that write emits no completion line and exits nonzero. A partial/failed write or a receipt followed by nonzero/ambiguous completion cannot be retracted; it is permanently non-authoritative under d150_operator_integration_gate. No other stdout/stderr is allowed.",
+      "internal_cli": "The runner accepts exactly one private flag, --child, only in the exact child command constructed by its authenticated outer process. --child cannot be combined with a positional argument or any other option and is not a second public entry point.",
+      "exact_child_command": "[sys.executable, '-I', '-S', '-B', authenticated_runner_path, '--child'] under the same reauthenticated system CPython 3.12.3 executable",
+      "scientific_runtime_distinction": "The outer and stdlib controller never import a package from the isolated GIN closure. Only after claim consumption may the child fetch, extract, and install the exact CPython 3.10.13 runtime, then launch scientific workers through that exact installed interpreter."
+    },
+    "future_d150_runner_local_supervision": {
+      "private_api": "The authenticated runner defines and calls one module-local run_supervised implementation. It imports or modifies no historical resource supervisor, exposes no importable public API, and supervises exactly one stdlib --child controller plus every descendant from child start through fetch, install, offline work, cleanup handoff, and return.",
+      "host_sandbox_tool": {
+        "basename": "bwrap",
+        "version": "0.9.0",
+        "executable_sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712",
+        "resolution": "At D150 outer preflight resolve bwrap through PATH, require a regular nonsymlink executable with exact version and SHA-256, and bind device/inode/mode/size/hash/version without publishing its absolute path. Immediately before sandbox launch, reauthenticate the same identity and invoke that resolved executable even though the argv template displays its public basename. A preflight mismatch does not consume; a later mismatch fails the consumed attempt before scientific import."
+      },
+      "ready_checkpoint": "run_supervised uses inherited pipe/socket file descriptors and bounded in-memory stdout/stderr only; it creates no filesystem root. The controller's first externally visible action is the exact acknowledged checkpoint stage:child_ready_preclaim. Before it, the controller performs no claim derivation, filesystem creation, network request, runtime action, scientific import, checkpoint open, or payload staging.",
+      "network_callsite_rule": "All socket/HTTP opens and the exact sequential artifact fetch loop exist only inside one statically identifiable runner fetch function. Exactly 96 wheels, one interpreter archive, one checksum sidecar, three checkpoint/model objects, and one 606-byte MolFeat provenance-metadata object are fetched there only after the consumed-claim tombstone exists. The controller/fetch phase imports or calls no requests, fsspec, package model store, Hugging Face, dynamic URL, or other network API. Across the entire attempt every remote fsspec protocol is forbidden; the sole exception is Process C's offline read-only fsspec local-file backend against the exact authenticated object_root/molfeat-store bucket, with no socket, cache, write, discovery, alternate path, or remote/default store.",
+      "controller_boundary": "The controller uses only Python standard-library tarfile/filesystem/network operations plus the authenticated uv subprocess. A host tar executable is forbidden. It never imports torch, dgl, dgllife, molfeat, rdkit, numpy, pandas, scipy, sklearn, or catboost; never deserializes or opens checkpoint tensor payloads; and never performs graph, embedding, or model work.",
+      "offline_worker_boundary": "After every artifact is authenticated and the exact runtime is installed offline from the fetched wheel cache, the controller closes and proves absence of live INET/INET6 sockets. It launches the individually mounted build_global_v3_g4_gin300_capability.py with no arguments through the exact installed versioned venv Python only inside the frozen bubblewrap --unshare-all sandbox, with GPU devices, caller HOME, credentials, Git configuration, caches, official/protected roots, repository root, and unrelated files hidden and exact inputs individually read-only. That builder is the only file allowed to import scientific packages; it uses multiprocessing spawn for the three fresh parity processes and no worker has a network callsite.",
+      "offline_worker_sandbox": {
+        "exact_argv_template": [
+          "bwrap",
+          "--die-with-parent",
+          "--new-session",
+          "--unshare-all",
+          "--clearenv",
+          "--ro-bind",
+          "/usr",
+          "/usr",
+          "--ro-bind",
+          "/lib",
+          "/lib",
+          "--ro-bind",
+          "/lib64",
+          "/lib64",
+          "--ro-bind",
+          "/etc/ld.so.cache",
+          "/etc/ld.so.cache",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--dir",
+          "/inputs",
+          "--ro-bind",
+          "<authenticated_builder_file>",
+          "/inputs/build_global_v3_g4_gin300_capability.py",
+          "--ro-bind",
+          "<authenticated_capability_contract>",
+          "/inputs/capability_contract.json",
+          "--ro-bind",
+          "<authenticated_runtime_manifest>",
+          "/inputs/runtime_manifest.json",
+          "--ro-bind",
+          "<authenticated_third_party_notices>",
+          "/inputs/third_party_notices.md",
+          "--ro-bind",
+          "<authenticated_isolated_python_version>",
+          "/inputs/.python-version",
+          "--ro-bind",
+          "<authenticated_isolated_pyproject>",
+          "/inputs/pyproject.toml",
+          "--ro-bind",
+          "<authenticated_isolated_uv_lock>",
+          "/inputs/uv.lock",
+          "--ro-bind",
+          "<authenticated_eight_row_fixture>",
+          "/inputs/maplight_fixed_parity_v1.csv",
+          "--dir",
+          "/home",
+          "--dir",
+          "/home/zbos",
+          "--dir",
+          "/home/zbos/cypshift-private",
+          "--dir",
+          "/home/zbos/cypshift-private/openadmet-2026",
+          "--ro-bind",
+          "<authenticated_runtime_root>",
+          "<exact_runtime_root>",
+          "--ro-bind",
+          "<verified_object_view>",
+          "<exact_object_root>",
+          "--bind",
+          "<exclusive_attempt_work>",
+          "/work",
+          "--dir",
+          "/tmp",
+          "--bind",
+          "<exclusive_sandbox_tmp>",
+          "/tmp",
+          "--dir",
+          "/home/worker",
+          "--bind",
+          "<exclusive_sandbox_home>",
+          "/home/worker",
+          "--chdir",
+          "/work",
+          "--setenv",
+          "PATH",
+          "<exact_runtime_root>/venv/bin:/usr/bin",
+          "--setenv",
+          "HOME",
+          "/home/worker",
+          "--setenv",
+          "TMPDIR",
+          "/tmp",
+          "--setenv",
+          "PYTHONNOUSERSITE",
+          "1",
+          "--setenv",
+          "DGLBACKEND",
+          "pytorch",
+          "--setenv",
+          "CUDA_VISIBLE_DEVICES",
+          "",
+          "--setenv",
+          "HF_HUB_OFFLINE",
+          "1",
+          "--setenv",
+          "TRANSFORMERS_OFFLINE",
+          "1",
+          "--setenv",
+          "MOLFEAT_MODEL_STORE_BUCKET",
+          "<exact_object_root>/molfeat-store",
+          "--setenv",
+          "TOKENIZERS_PARALLELISM",
+          "false",
+          "--setenv",
+          "LANG",
+          "C.UTF-8",
+          "--setenv",
+          "LC_ALL",
+          "C.UTF-8",
+          "--setenv",
+          "TZ",
+          "UTC",
+          "--",
+          "<exact_runtime_root>/venv/bin/python3.10",
+          "-I",
+          "-B",
+          "/inputs/build_global_v3_g4_gin300_capability.py"
+        ],
+        "mount_rule": "No read-only bind of host / or repository root is allowed. Substitute every placeholder only with its preauthenticated exact path. Bind the eight listed public input files individually. Bind the complete authenticated runtime_root, including interpreter root, copied venv, and base stdlib, at its identical frozen absolute path so pyvenv.cfg/home resolution cannot change; bind only the verified four-object local object view at its identical exact object_root. exclusive_attempt_work, exclusive_sandbox_tmp, and exclusive_sandbox_home are exact distinct uid/gid-1000 mode-0700 subdirectories attempt_root/worker-work, attempt_root/sandbox-tmp, and attempt_root/sandbox-home, created only after claim promotion; bind them writable at /work, /tmp, and /home/worker so every allocated byte is inside the sampled attempt root. No tmpfs or host temp is allowed. Only minimal loader directories, proc/dev, these closed inputs, and three exclusive work subtrees are visible. .git, data, artifacts, caches, unlisted repo files, /sys, host home contents, host tmp, other caller/private/official/protected roots, credentials, sockets, and dri/nvidia/kfd devices are absent.",
+        "environment_rule": "--clearenv precedes the exact setenv allowlist. Therefore every proxy, cloud, AWS/GCP/Azure, Hugging Face token/cache, Git, SSH, credential, Python path/home, user-site, and loader-injection variable is absent unless explicitly listed. MOLFEAT_MODEL_STORE_BUCKET is the one frozen local-store selector and equals the exact read-only object_root/molfeat-store subdirectory; it is not caller-controlled. No environment value may override another contract path, URL, hash, seed, tolerance, status, resource limit, or mode.",
+        "namespace_rule": "--unshare-all supplies a new network, user, PID, IPC, UTS, cgroup, and mount namespace; no --share-net or interface setup is allowed. Verify no INET/INET6 socket and no accelerator node before scientific import. The one exact bwrap --new-session boundary for the sole builder launch is an authorized nested descendant session, not a detached child: run_supervised records its leader PID/start time before acknowledging sandbox entry, recursively tracks that leader and every descendant across namespace PID translation, and signals that session/tree explicitly during whole-tree termination. detached_children_observed counts only an unauthorized escape, untracked ancestry/session, second nested session, daemonization, double-fork escape, or descendant outside the fixed controller tree plus this one recorded bwrap subtree; success requires zero."
+      },
+      "single_observation": "One monotonic wall clock, cumulative outer/controller/all-descendant CPU counter, restricted-storage sampler, simultaneous-RSS sampler, descendant/process-group audit, warning/stderr counter, checkpoint counter, and GPU counter begin immediately before controller spawn and continue without reset through network/install, offline work, child return/reap, outer authoritative cleanup, proposed-success runtime/SNAP read-only sealing and double reinventory, any status-downgrade cleanup, and final preseal verification. No phase restart, baseline reset, unobserved helper, unauthorized detached child, or second supervisor is allowed. Candidate result resource values freeze that final preseal snapshot plus the exact common-seal wall/CPU/storage/RSS reserve. Common seal then runs exclusively inside its separately frozen 5-second wall, 5-second CPU, 2,097,152-byte staging, and 268,435,456-byte outer-RSS envelope. A seal-envelope defect follows common-seal nonpublication semantics, not HARD_RESOURCE_CEILING_BREACHED, and emits no receipt.",
+      "bounded_channel_contract": {
+        "controller_stdout_maximum_bytes": 65536,
+        "controller_stderr_maximum_bytes": 65536,
+        "control_frame_maximum_bytes": 16384,
+        "control_frame_maximum_count": 64,
+        "control_stream_maximum_bytes": 1048576,
+        "child_payload_maximum_bytes": 524288,
+        "outer_receipt_stdout_maximum_bytes": 128,
+        "framing": "Each inherited child-to-outer control frame is exactly one four-byte unsigned big-endian payload length followed by that many UTF-8 bytes of strict compact JSON with separators comma/colon, no duplicate key, BOM, NaN, Infinity, negative zero, trailing byte, or descriptor substitution. Each mapping has exact insertion-order keys schema_version, sequence, kind, stage, aggregate; schema_version is cypshift.openadmet_cyp_2026.global_v3_g4_gin300_capability_control.v1, sequence is a contiguous zero-based integer, kind is exactly ready, checkpoint, terminal, or controlled_failure, and aggregate is bounded aggregate-only data with no private path, URL query, exception text, traceback, tensor, graph, embedding, feature, label, prediction, molecule, or raw log. D148 does not pretend to enumerate outcome-neutral internal progress stages: D149 must freeze one closed kind/stage/aggregate-schema tuple and exact branch orders as literal runner constants, and its implementation test must prove every send/receive belongs to those constants before D150. The integrated D149 runner/test hashes then bind that choice into the one-use claim; D150 has no dynamic, environment, result-dependent, or post-observation extension authority.",
+        "ready_ack_transport": "Before spawn, outer creates exactly two anonymous unidirectional Linux pipes with close-on-exec: one child-to-outer framed-control pipe and one outer-to-child ready-ack pipe. Exact child pass_fds contains three inherited descriptors only: the authenticated read-only uv_fd required by host_installer.fd_execution, the child control-write pipe end, and the child ack-read pipe end. Outer closes every unused pipe end immediately and passes no filesystem socket. Within 30.0 monotonic seconds of spawn the first and only kind=ready frame must have sequence 0, stage child_ready_preclaim, and aggregate exactly {claim_paths_absent:true}; the child then blocks without filesystem/network action. Outer validates the frame plus reauthenticated absent claim paths and writes exact ASCII bytes `ACK child_ready_preclaim\n` once within the same 30.0-second overall ready deadline, closes the ack pipe, and only receipt of exactly those bytes authorizes claim derivation. No valid ready frame by the deadline, clean EOF before any ready frame, or any observed child filesystem/network/claim action before ACK is CHILD_READY_FAILED at phase child_preclaim. A malformed, truncated, extra, duplicated, or reordered ready frame; any second ready frame; any ACK-pipe identity/write/read defect; or any short, extra, or mismatched ACK byte is SUPERVISED_EXECUTION_FAILED at phase supervision. Both partitions stop/reap the tree and cannot consume the claim.",
+        "terminal_semantics": "D149's closed enum contains exactly one terminal frame form after the bounded child payload has been fsynced and reauthenticated. It carries only proposed status plus payload byte count/SHA-256 and is never an outer publication receipt. A controlled failure may end at a D149-frozen valid prefix; a crash may end without a terminal frame and is synthesized only by the outer's bounded failure rules. checkpoints_acknowledged equals the exact number of validated ready/checkpoint frames defined for the observed D149-frozen branch; the D149 result test binds each allowed branch count. No intermediate frame itself grants claim, parity, resource, cleanup, or publication authority.",
+        "enforcement": "run_supervised concurrently drains controller stdout, stderr, and the control descriptor from spawn. It retains in memory only counts, fixed booleans, the current bounded frame, and authenticated aggregate fields. Controller stdout and stderr must each contain exactly zero bytes for a successful operation; observing any byte is a supervision defect and the byte content is discarded, never copied to a payload or result. Reject before allocation when a declared frame exceeds 16,384 bytes, after frame 64, or when cumulative framed bytes would exceed 1,048,576. At the first stdout/stderr or framing/schema/D149-frozen-order/cap defect, stop new work and use the exact whole-tree termination protocol. The only formal outer stdout is the exact successful common-seal receipt bounded by 128 bytes; formal outer stderr is always empty. Missing, extra, truncated, reordered, duplicated, or post-terminal control data is SUPERVISED_EXECUTION_FAILED, with no raw channel bytes published."
+      },
+      "descendant_stdio_contract": {
+        "uv_stdout_maximum_bytes": 65536,
+        "uv_stderr_maximum_bytes": 65536,
+        "bwrap_subtree_stdout_maximum_bytes": 65536,
+        "bwrap_subtree_stderr_maximum_bytes": 65536,
+        "all_descendant_stdio_maximum_bytes": 262144,
+        "wiring_and_enforcement": "The controller launches the one uv install and the one bwrap builder with distinct stdout=PIPE and stderr=PIPE, close_fds=true except the explicit uv/control descriptors, and no inherited terminal. Every builder-spawned scientific process inherits only the bwrap subtree's two pipes, never a host terminal or new log file. The controller drains all live pipes concurrently in at-most-4,096-byte reads, retains only saturating byte counters and first-byte booleans, and discards content immediately. Success requires every one of the four streams exactly empty. Before allocating, reject any per-stream or cumulative cap excess; at the first byte, EOF/order defect, or cap breach stop new work and invoke whole-tree termination. uv output maps to RUNTIME_INTEGRITY_FAILED; bwrap/worker output or an ambiguous routing/cap maps to SUPERVISED_EXECUTION_FAILED. No stdout/stderr byte enters a control frame, payload, result, narrative, receipt, or unrestricted log."
+      },
+      "hard_resource_ceiling_enforcement": {
+        "exact_limits": {
+          "wall_seconds": 43200,
+          "cpu_seconds": 345600,
+          "restricted_storage_bytes": 32000000000,
+          "rss_bytes": 17179869184,
+          "gpu_visibility_or_use": 0
+        },
+        "first_breach_rule": "At every at-most-0.05-second sample and acknowledged checkpoint from controller spawn through final preseal verification, compare the one cumulative observation to the exact limits without rounding. The first observed wall, CPU, restricted-storage, or simultaneous-RSS value strictly greater than its limit, or any visible accelerator device, accelerator runtime activation, or GPU use greater than zero, irrevocably triggers a hard breach. Equality to a non-GPU limit is not a breach. If multiple facts first breach in one sample, report only the first trigger in fixed priority gpu_visibility_or_use, wall_seconds, cpu_seconds, restricted_storage_bytes, rss_bytes. Stop accepting checkpoints and starting fetches, installs, workers, fits, predictions, feature hashes, result stages, or other new work immediately. Required outer cleanup, retention revocation, symlink-safe deletion, sampling, and reap continue as non-authoritative safety work after a trigger and cannot turn the breach into a pass. After preseal snapshot, the distinct common-seal envelope applies; its breach is a nonpublishable common-seal defect, never this hard-ceiling code.",
+        "whole_tree_termination": "Before controller spawn, the outer calls Linux prctl(PR_SET_CHILD_SUBREAPER, 1), starts the controller in one new session/process group, and records PID plus /proc start-time identities. On a hard breach or bounded-channel enforcement defect while any authenticated child is live, send SIGTERM once to the fixed process group and every recursively enumerated authenticated descendant not in it, then sample/reap for exactly 2.0 monotonic seconds without starting work. At the grace deadline send SIGKILL once to every surviving authenticated process-group member or recursive descendant, then wait4-reap every descendant and prove the process group and recursive tree empty. If a first breach occurs only after the entire tree was already authenticated empty during outer cleanup/sealing, the termination portion is already satisfied: send no signal to a nonexistent/reused group, continue only mandatory cleanup and sampling, and retain the same breach classification. PID reuse, an escaped/detached descendant, unreadable or missing /proc identity, failed required signal, unreaped child, or ambiguous tree makes the outcome SUPERVISED_EXECUTION_FAILED. A completely enforced resource trigger is HARD_RESOURCE_CEILING_BREACHED; it is never RESOURCE_MARGIN_MISSED.",
+        "result_binding": "The public supervision object reports only hard_ceiling_trigger and hard_ceiling_observed_value. Both are null unless failure.code is HARD_RESOURCE_CEILING_BREACHED. For that code, trigger is exactly one fixed-priority name above and observed_value is the first finite nonnegative integer or number that breached its corresponding limit, with gpu visibility/use represented by an integer at least one. The termination protocol, or its authenticated tree-already-empty case, must complete before every cleanup step remaining after the trigger and before result construction/common seal; raw process, signal, PID, path, or log data is private. A breach before successful claim promotion preserves claim_consumed=false only when the claim paths remain proven absent; every breach after successful claim promotion preserves the permanent tombstone."
+      },
+      "outer_claim_boundary": "The outer process authenticates implementation and parent bytes, performs fixed-root and terminal-absence preflight, and calls run_supervised. It never derives, creates, consumes, writes, moves, or repairs the claim."
+    },
+    "test_responsibilities": {
+      "implementation_test": "Statically and synthetically prove the exact path/CLI/API allowlist, root environment immutability, only runner-local network callsites, only builder scientific imports, ready-checkpoint and claim chronology, single cumulative supervision, direct bare-GIN extraction, sandbox, topology, parity, resource formulas, cleanup-before-seal, and failure/collision behavior without fetching an artifact or creating the runtime.",
+      "result_test": "Strictly validate canonical aggregate result bytes, exact schema/status/failure enums, claim chronology, identities, counts, cleanup, one-use, resource limits, no private paths or row-level values, and no-replace single-terminal semantics. The exact dual-state validator has four cases: absent+untracked passes D149; present+untracked immediately after D150 requires the live regular nonsymlink single-link 0444 sealed inode and full validation; present+tracked requires Git mode 100644, worktree bytes exactly equal the authenticated Git blob, no staged/unstaged difference, and full validation while accepting checkout filesystem mode 0644 or the original 0444; absent+tracked always fails. Thus deletion after D150 integration fails. The test may validate in-memory synthetic payload bytes but may not create a fixture result or manufacture acceptance.",
+      "no_collection_change": "tests/conftest.py, historical tests, and collection policy are immutable; no skip, xfail, deselection, marker, or expected-failure change is allowed."
+    },
+    "no_other_file_or_api_rule": "D149 may create or modify exactly its 14 listed implementation/evidence paths and no result; D150 may create or modify exactly its eight listed result/evidence paths and no implementation, lock, or test. The six narrative files and ledger may record only exact aggregate evidence for their milestone. No root dependency/configuration edit, other existing source/test edit, conftest change, new package export, console script, service, notebook, plugin, dynamic loader, environment-controlled authority, alternate CLI, root/output override, second result, or other API is authorized. A D149 scope need fails before integration. Any D150 need for another file or callable permanently fails the consumed attempt instead of expanding scope."
+  },
+  "rights_provenance_and_notices": {
+    "supported_claim": "public pretrained-representation transfer",
+    "forbidden_claims": [
+      "clean zero-shot transfer",
+      "uncontaminated external validation",
+      "strict family holdout from all pretraining",
+      "known absence of OpenADMET structure overlap",
+      "known absence of OpenADMET assay overlap",
+      "artifact-specific license terms that the upstream metadata does not state"
+    ],
+    "pretraining_lineage": {
+      "node_level": "approximately two million ZINC15 molecules",
+      "graph_level": "approximately 456,000 ChEMBL molecules across 1,310 assays",
+      "openadmet_structure_overlap": "unknown",
+      "openadmet_assay_overlap": "unknown",
+      "disclosure": "Any future method report must name SNAP supervised masking, DGL-LifeSci 0.3.2, MolFeat 0.9.2, the ZINC15 and ChEMBL lineage, and both unknown-overlap facts."
+    },
+    "snap": {
+      "repository": "https://github.com/snap-stanford/pretrain-gnns",
+      "commit": "8b20528a83b8869ce16451305b32c827258d19a3",
+      "checkpoint_path": "chem/model_gin/supervised_masking.pth",
+      "checkpoint_url": "https://raw.githubusercontent.com/snap-stanford/pretrain-gnns/8b20528a83b8869ce16451305b32c827258d19a3/chem/model_gin/supervised_masking.pth",
+      "checkpoint_git_blob": "1f8de843feb5b51e73488a95096283028820583e",
+      "checkpoint_sha256": "375cd40af9f21d2a92ed1acbdea9efad14254c36703bb0e3a7e433e09e624ce1",
+      "checkpoint_size_bytes": 7452448,
+      "model_source_path": "chem/model.py",
+      "model_source_git_blob": "a7195ed96482adc2b9fdce95d187893ba22a4f6e",
+      "model_source_sha256": "af71f0752291219da05423555d25240ad05fe77187453ed1261bfb5dd72b8b7b",
+      "feature_source_path": "chem/loader.py",
+      "feature_source_git_blob": "81758ad5305f5b9dec879153c1b4f1b21b469dc3",
+      "feature_source_sha256": "3ee8eda553c8e15485a5449f0c25cc2f2094c3f54e3f877d6d5ee5259e5e766f",
+      "license": "MIT",
+      "license_git_blob": "4ec60e59108c68fc9a8d507920c393d7a1cda23b",
+      "future_role": "Sole canonical future feature-weight source after successful conversion and parity. The object remains local and nonredistributed."
+    },
+    "dgl_lifesci": {
+      "repository": "https://github.com/awslabs/dgl-lifesci",
+      "version": "0.3.2",
+      "commit": "20cee8f3a2be314e34c0e696e797884630d0863e",
+      "checkpoint_url": "https://data.dgl.ai/dgllife/pre_trained/gin_supervised_masking.pth",
+      "checkpoint_expected_size_bytes": 7454321,
+      "checkpoint_expected_etag": "98fae61c9c23ce19ce4e57614f0f9450",
+      "checkpoint_sha256_at_freeze": null,
+      "checkpoint_sha256_binding": "The DGL object has no trusted SHA-256 at D148 freeze. D150 must fetch it once into a new isolated staging file, validate URL, host, status, encoding, size, and ETag, compute and immutably record SHA-256 before any torch deserialization, then bind that first hash for the rest of the consumed attempt. Content-Encoding is accepted only when absent or one case-insensitive identity token; every other or multiple value fails. ETag must be exactly one strong quoted value with no W/, comma, escape, or multiple field value; strip exactly one ASCII quote pair and require inner lowercase token 98fae61c9c23ce19ce4e57614f0f9450. A transport mismatch fails without deserialization. A second download is forbidden.",
+      "checkpoint_loader_path": "python/dgllife/model/pretrain/__init__.py",
+      "checkpoint_loader_git_blob": "5fd734cecde17372cdbba486a3c6bdf693e4c331",
+      "checkpoint_loader_sha256": "cb41567922e80e0632b467e5bb78fee2d7dc6a50b1c049edb5a920482a251218",
+      "checkpoint_loader_size_bytes": 26246,
+      "model_factory_path": "python/dgllife/model/pretrain/property_prediction.py",
+      "model_factory_git_blob": "b5ab80f6123f3c393659e6accdce375c114121f8",
+      "model_factory_sha256": "a0023c5bff685f4d615ff73bde8caf8519a1f06e64b87926bb0a831129ec3387",
+      "gin_source_path": "python/dgllife/model/gnn/gin.py",
+      "gin_source_git_blob": "300fda49f1489c7a3f00f3b6a2c9a39325754756",
+      "gin_source_sha256": "11666eec18b2ebf501f0d4ee06599614b127448e2fc3c170f6ef443f5490ea78",
+      "featurizer_source_path": "python/dgllife/utils/featurizers.py",
+      "featurizer_source_git_blob": "3423bf8552885352edcd92f6d102034672a6e3cf",
+      "featurizer_source_sha256": "52311b84715242fc4c42d869a6354f4ca20115d0646bc82158fb9de535ded889",
+      "graph_builder_source_path": "python/dgllife/utils/mol_to_graph.py",
+      "graph_builder_source_git_blob": "9b3416e48ed55570817f03fe278457fa34dbd055",
+      "graph_builder_source_sha256": "8ad8a77f2e4066a82faec59bd8c1d0c9888c6e1cfec0f410b034e9c3a74172e9",
+      "license": "Apache-2.0",
+      "license_git_blob": "67db8588217f266eb561f75fae738656325deac9",
+      "future_role": "Parity-only public reference object. Delete and verify absence before outer terminal sealing; never use it as a later official feature source."
+    },
+    "molfeat": {
+      "repository": "https://github.com/datamol-io/molfeat",
+      "version": "0.9.2",
+      "commit": "4390f9fce25fa2da94338227f7c8f33a23e25b2a",
+      "metadata_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json",
+      "metadata_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
+      "metadata_size_bytes": 606,
+      "artifact_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/model.save",
+      "artifact_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
+      "artifact_size_bytes": 7467310,
+      "artifact_license_field": null,
+      "model_usage": null,
+      "loader_path": "molfeat/trans/pretrained/dgl_pretrained.py",
+      "loader_git_blob": "02ca594664d20b2ad627010d4b615d7eedd03611",
+      "loader_sha256": "c98e91c7a0860bdda01f6155b6fb853488e8b54de8f4052fedc967dd772010b9",
+      "license": "Apache-2.0",
+      "license_git_blob": "b751c103f21bdb8962d43b87a5429dbdb24fcfcf",
+      "future_role": "Parity-only historical API reference object. Its metadata does not state an artifact-specific license. Use is confined to local nonredistributed parity in the isolated one-use attempt, then delete it."
+    },
+    "rights_acceptance_rule": "All exact code licenses, source identities, notice text, object identities, unknown-overlap disclosures, local-only roles, and nonredistribution controls must remain true. Any contradiction, new term, object substitution, missing notice, or need to redistribute is an ineligibility failure before official access.",
+    "nonredistribution": "No SNAP, DGL-LifeSci, or MolFeat checkpoint; checkpoint-derived tensor; raw embedding; pretraining molecule; unrestricted log; runtime cache; or secret-bearing path may enter Git, CI artifacts, documentation bundles, submission files, public terminals, method-report attachments, or publication bundles. Public outputs contain only hashes, sizes, licenses/notices, aggregate parity/resource facts, counters, and deterministic statuses."
+  },
+  "network_fetch_offline_sandbox_and_cleanup": {
+    "formal_attempt_network_phase": {
+      "controller_child_exact_environment": {
+        "PATH": "/usr/bin",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "TZ": "UTC",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-capability-attempt-1/controller-tmp",
+        "UV_NO_CONFIG": "1",
+        "UV_NO_PROGRESS": "1",
+        "UV_OFFLINE": "1"
+      },
+      "environment_rule": "run_supervised spawns the stdlib child with env equal to controller_child_exact_environment and no other key. HOME, XDG variables, HTTP_PROXY, HTTPS_PROXY, ALL_PROXY, NO_PROXY and lowercase variants, REQUESTS_CA_BUNDLE, CURL_CA_BUNDLE, SSL_CERT_FILE, SSL_CERT_DIR, SSLKEYLOGFILE, cloud/AWS/GCP/Azure variables, Hugging Face tokens/caches, Git/SSH variables, credentials, PYTHONPATH, PYTHONHOME, loader injection, and caller state are absent. UV_NO_CONFIG=1 prevents repository/user/system uv configuration discovery; UV_OFFLINE and UV_NO_PROGRESS reinforce the exact installer flags. No tempfile API may be called before claim promotion. Immediately afterward create only exact attempt_root/controller-tmp as owned mode 0700; controller, standard-library tempfile/tar operations, venv creation, and the exact uv subprocess must use this TMPDIR. TEMP/TMP and host /tmp/default fallback are forbidden. The sampler and outer cleanup include this subtree. Authenticated private executable paths/facts travel only through inherited bounded control descriptors, never environment variables, argv, logs, or public output.",
+      "tls_trust": {
+        "ca_file": "/etc/ssl/certs/ca-certificates.crt",
+        "owner_uid": 0,
+        "mode_octal": "0644",
+        "sha256": "6602a85a36afc2e51c66a0df5ae3d383c5b7c2fed93339ccef7d37e01faf09e8",
+        "rule": "Outer preflight requires this exact regular nonsymlink root-owned file and binds its device/inode/mode/size/hash into the private claim. The controller reauthenticates that same identity immediately before the first GET and constructs ssl.create_default_context with this explicit cafile, CERT_REQUIRED, and hostname checking. No environment or alternate trust source is accepted."
+      },
+      "allowed_runtime_hosts": "Only the exact initial interpreter-archive, checksum-sidecar, and wheel URLs already digest-bound by the runtime manifest. Every wheel URL is final. Only the two exact initial github.com python-build-standalone release URLs may follow the separately frozen GitHub release-asset redirect policy.",
+      "allowed_model_urls": [
+        "https://raw.githubusercontent.com/snap-stanford/pretrain-gnns/8b20528a83b8869ce16451305b32c827258d19a3/chem/model_gin/supervised_masking.pth",
+        "https://data.dgl.ai/dgllife/pre_trained/gin_supervised_masking.pth",
+        "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/model.save"
+      ],
+      "allowed_provenance_metadata_urls": [
+        "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json"
+      ],
+      "metadata_reconciliation": "The three-object boundary continues to mean exactly three checkpoint/model byte objects: SNAP, DGL-LifeSci, and MolFeat model.save. The additional 606-byte metadata.json is one exact provenance-metadata response already identity-inspected by D147, not a checkpoint, model, metadata refresh, discovery request, or fourth representation. D150 fetches it once only to construct the faithful offline public MolFeat ModelStore; its exact URL, size, SHA-256, null license, and null model_usage must match before local publication.",
+      "exact_102_body_request_order": "1 checksum sidecar; 2 interpreter archive; 3-98 the 96 exact wheel GETs in runtime-manifest packages array order; 99 SNAP; 100 DGL-LifeSci; 101 MolFeat metadata.json; 102 MolFeat model.save. Each body is requested exactly once, sequentially, with no concurrency, HEAD dependency, range, resume, retry, discovery, or reordered fetch.",
+      "stream_and_timeout_contract": {
+        "read_chunk_bytes": 1048576,
+        "connect_and_tls_timeout_seconds": 30,
+        "per_read_inactivity_timeout_seconds": 120,
+        "per_object_monotonic_total_seconds": 1800,
+        "retry_count": 0,
+        "rule": "Use a fresh socket/response per request. The 30-second deadline covers TCP connect plus TLS handshake; after headers, set every blocking body read inactivity timeout to 120 seconds; independently abort when monotonic elapsed for that object exceeds 1,800 seconds before or after any read. All time remains inside the one 43,200-second supervised wall interval. Timeout, short read, excess byte, socket/TLS error, or premature EOF closes response/socket and staging, maps to ARTIFACT_FETCH_FAILED after claim, and never triggers retry, resume, Range, mirror, or a second request."
+      },
+      "response_contract": "Each direct or post-redirect final response is exactly HTTP 200. Content-Length may be absent; if present it is exactly one unsigned decimal value equal to the frozen expected size. Reject multiple/invalid/mismatched length before body write. Stream exact 1,048,576-byte maximum reads, abort immediately if cumulative bytes would exceed expected, and require final byte count exact. A response Content-Encoding is accepted only when absent or exactly one case-insensitive identity token; reject every other or multiple value. Known hashes must match before publication; DGL instead uses exact size/strong ETag plus its first streamed SHA rule.",
+      "method": "Fetch sequentially through the runner's sole exact stdlib GET-stream function. Build an isolated urllib opener with ProxyHandler({}), the explicit authenticated TLS context, and the frozen validating redirect handler; install no cookie, password, digest/basic-auth, cache, or credential handler and never use the process-global opener. Every initial and reconstructed redirect request is exact HTTPS GET with exactly two caller headers, User-Agent: cypshift-g3-g4-gin300-capability/1 and Accept-Encoding: identity; urllib may synthesize only protocol-required Host/connection headers. Use exclusive-create staging files, the exact stream/time contract, streaming SHA-256, exact byte counts, fsync, and atomic no-replace publication into the private object store or wheel cache. Known runtime, SNAP, and MolFeat hashes and sizes must match before publication. Apply the exact strong-quoted DGL ETag normalization and first-hash-before-deserialization rule. The controller imports no scientific package and opens no checkpoint payload.",
+      "github_release_asset_redirect_policy": {
+        "scope": "Only the exact manifest-bound python-build-standalone archive and checksum-sidecar initial URLs on github.com; every other redirect is rejected.",
+        "maximum_redirects": 2,
+        "successful_attempt_exact_redirects": "Exactly one redirect for the interpreter archive and exactly one redirect for the checksum sidecar, hence exactly two redirects in successful D150 accounting. Zero, an additional hop, or a redirect for any other object is an integrity failure.",
+        "transport": "The only successful initial redirect status is exact HTTP 302, once for each of the two scoped github.com URLs. Every hop is HTTPS with no scheme downgrade, userinfo, fragment, credential, cookie, authorization, proxy-authorization, or arbitrary caller-header forwarding. The custom handler discards the original request object and constructs a fresh destination GET carrying exactly the same frozen User-Agent and Accept-Encoding headers and nothing else caller-supplied; its final response must be 200.",
+        "allowed_redirect_destination": "Exact host release-assets.githubusercontent.com, default HTTPS port, and path prefix /github-production-release-asset/162334160/. No IP literal, subdomain, lookalike suffix, alternate port, path traversal, or other host/path is accepted.",
+        "authority": "The manifest-bound initial github.com URL, filename, byte size, and SHA-256 remain authoritative. Expiring destination query parameters grant no reusable URL or identity authority.",
+        "receipt": "Record only ordered redirect status plus normalized scheme, host, port, and path. Strip query, fragment, userinfo, cookies, credentials, and signed tokens from all receipts, logs, exceptions, and public output."
+      },
+      "forbidden": "No Git clone, source archive, remote model-store discovery, unpinned index resolution, HTTP cache reuse, global cache, home cache, range-resume, retry after a completed mismatch, alternate mirror, Hugging Face access, telemetry, metadata refresh, fourth checkpoint/model object, or second provenance-metadata object."
+    },
+    "offline_phase": {
+      "network": "After exact runtime and object fetch, every scientific import, deserialization, tensor conversion, graph build, parity worker, synthetic root, CatBoost fit, prediction, and reduction runs in a fresh nested Linux network namespace with no usable, up, or configured interface: the kernel loopback device may exist only down and unconfigured, and no address, route, DNS, INET/INET6 socket, or interface setup is allowed. The outer aggregate-only cleanup/common seal performs no network operation. Any failed namespace isolation stops before import or load.",
+      "environment": {
+        "DGLBACKEND": "pytorch",
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1",
+        "MOLFEAT_MODEL_STORE_BUCKET": "object_root/molfeat-store from verified_object_view_layout",
+        "TOKENIZERS_PARALLELISM": "false"
+      },
+      "filesystem": "Never bind the repository root. Bind only the eight individually authenticated public input files plus the complete exact runtime root and verified four-object view read-only; give the worker exact distinct attempt_root/worker-work, attempt_root/sandbox-tmp, and attempt_root/sandbox-home subtrees at /work, /tmp, and /home/worker. All are sampler-visible, symlink-safe, mode 0700, and deleted by authoritative cleanup; no sandbox tmpfs or host temp exists. Hide .git, data, artifacts, caches, every unlisted repo path, caller home, credentials, SSH agent, Git config, unrelated data, official/protected roots, portal state, and accelerator devices.",
+      "workers": "Use spawn, never fork. One worker or one 16-thread CatBoost fit runs at a time. GIN workers set PyTorch interop and intraop threads to one. GPU visibility and use must remain exactly zero. Every formal Python argv uses -I, so no PYTHONHASHSEED environment value is treated as active. Determinism instead requires sorted iteration and canonical reductions, eval-mode GIN with no stochastic draw, the exact D147 SeedSequence controls 20260816/20260817, and CatBoost random_seed=1; unordered set/dict traversal may not affect any byte."
+    },
+    "private_roots": {
+      "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-capability-attempt-1",
+      "runtime_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-linux-runtime-v1",
+      "wheel_cache_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-wheel-cache-v1",
+      "object_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-object-store-v1",
+      "claim_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-capability-claim-1",
+      "publication_staging_root": "/home/zbos/cypshift-private/openadmet-2026/.g3-g4-gin300-capability-terminal-staging",
+      "transactional_claim_staging_path": "/home/zbos/cypshift-private/openadmet-2026/.g3-g4-gin300-capability-claim-staging-1",
+      "rule": "Outer D150 preflight requires all six exact roots plus the transactional claim-staging path absent, on expected owned nonsymlink parents, with claim staging and claim_root on one filesystem and publication staging and the public result parent on one filesystem. run_supervised and child ready use inherited descriptors and memory only, so all remain absent. After ready, the child may create only the exact transactional claim-staging path as part of the atomic claim transaction; it must be absent after no-replace promotion or every exit. Only after the permanent claim_root tombstone authenticates may the child create attempt_root, runtime_root, wheel_cache_root, object_root, or publication_staging_root. Symlinks, hard-link aliases, mount aliases, traversal, an existing parent-owned attempt, or any path outside these exact roots fails closed."
+    },
+    "verified_object_view_layout": {
+      "exact_regular_files": [
+        "object_root/snap/supervised_masking.pth",
+        "object_root/dgl/gin_supervised_masking.pth",
+        "object_root/molfeat-store/dgllife/gin_supervised_masking/0/metadata.json",
+        "object_root/molfeat-store/dgllife/gin_supervised_masking/0/model.save"
+      ],
+      "rule": "After all four network objects are streamed, first-hashed, no-replace published, and before any scientific import, object_root contains exactly the four regular nonsymlink single-link files above and their necessary directories, with no other entry. SNAP, MolFeat metadata, and MolFeat model sizes/hashes equal their frozen identities; DGL size/ETag and first hash equal its frozen first-hash rule. Files are uid/gid 1000 mode 0444; every directory is uid/gid 1000 mode 0555. Fsync, no-follow rewalk, hash, and mount the parent object_root read-only into bwrap. Only object_root/molfeat-store is the MolFeat bucket and contains exactly its two model-store files beneath the pinned dgllife/name/version layout; SNAP and DGL siblings are not store entries. Any cache, lock, index, alternate file, symlink, hardlink, write bit, or layout drift fails before deserialization."
+    },
+    "cleanup": {
+      "child_handoff": "The child performs best-effort deletion of temporary HOME/TMP, partial files, unsafe/extracted archive staging, deserialized models, DGL and MolFeat parity objects, embeddings, synthetic features, labels, models, predictions, and worker logs, then writes at most one bounded aggregate-only child_payload.json into the exact publication_staging_root and returns. It never writes or promotes the public result.",
+      "outer_authoritative_cleanup": "After run_supervised returns or raises, the outer authenticates any bounded aggregate child/crash payload into bounded memory, deletes the child-owned publication_staging_root, then performs the authoritative symlink-safe cleanup and verification before common sealing. On capability success retain only the exact recursively sealed installed runtime_root, exact sealed SNAP-only object_root, and permanent claim_root tombstone. On every other status retain only the permanent claim_root tombstone. Remove attempt_root, wheel_cache_root, interpreter archive/sidecar, DGL object, MolFeat model/metadata, publication staging, and every other mutable object before result bytes are formed.",
+      "object_view_success_reduction": "After every sandbox/process/object descriptor is closed and before proposed-success SNAP sealing, outer reauthenticates the exact four-file verified_object_view_layout. Open object_root and descendants with directory/no-follow descriptors; fchmod only object_root, dgl, molfeat-store, and its descendant directories to 0700 as needed for deletion, never chmod or open through a symlink; unlink the authenticated DGL file and both authenticated MolFeat files; rmdir the now-empty dgl and molfeat-store trees bottom-up; fsync object_root; and reauthenticate that exactly snap/supervised_masking.pth remains unchanged. Then apply retained_snap_layout_and_seal. This one expected reduction occurs only after parity/scientific work and grants no checkpoint substitution, write, retry, or retention of DGL/MolFeat. Any extra/missing/mismatched entry or deletion ambiguity is CLEANUP_FAILED and revokes success retention.",
+      "non_success_object_view_deletion": "For every non-success before a proposed-success seal, after sandbox unmount and all object descriptors close, outer compares object_root to the controller's bounded no-replace fetch inventory, opens only owned uid/gid-1000 directories no-follow, fchmods those directories top-down to 0700 as needed, unlinks only authenticated regular partial/final files, removes directories bottom-up, fsyncs the private parent, and verifies object_root absent. It follows no symlink, deletes no unknown inode, and grants no object read/deserialization/retry authority. An extra, aliased, unowned, special, or mismatched entry makes cleanup fail closed rather than broadening deletion.",
+      "consumed_claim_retention": "Retain the fixed consumed claim and its hash permanently read-only after atomic creation, including after a crash before terminal publication. It is a one-use tombstone, not runtime or scientific evidence, and may never be deleted, moved, overwritten, reset, or reused.",
+      "success_retention": "Retain only the exact manifest-bound CPU runtime sealed and inventoried by runtime_install_contract.retained_runtime_tree_inventory and the verified SNAP checkpoint in its exact sealed object-root layout below for a later separately claimed label-free feature build. Retain no DGL checkpoint or MolFeat checkpoint, interpreter archive, checksum sidecar, provenance metadata, or wheel cache. Their observed hashes and aggregate parity facts remain in the public receipt.",
+      "retained_snap_layout_and_seal": "On proposed success, object_root contains exactly directory snap and regular file snap/supervised_masking.pth and no other entry. The file is single-link, nonsymlink, uid/gid 1000, exact size 7,452,448, and exact SHA-256 375cd40af9f21d2a92ed1acbdea9efad14254c36703bb0e3a7e433e09e624ce1; outer opens it no-follow, fchmods to 0444, then fsyncs the same descriptor after the mode change. Chmod snap and object_root, both uid/gid-1000 nonsymlink directories, to 0555 and fsync each after all child and mode changes. Outer then opens and streams the sealed file no-follow twice, independently verifies bytes/stat/layout after every deletion and before result construction, and permits no mutation except pre-completion retention revocation. DGL, MolFeat model, MolFeat metadata, archive, sidecar, staging, lock, alternate name, or extra entry is absent. Any defect is CLEANUP_FAILED and removes all success-retention authority.",
+      "pre_completion_retention_revocation": "The sealed runtime and SNAP-only object root acquire retention authority only after common-seal promotion, parent fsync, promoted-byte validation, staging removal, and the exact zero-exit completion receipt. If any candidate-success prepromotion, promotion, post-promotion, staging-removal, receipt, or other unsealed defect occurs first, irrevocably revoke retention, never change destination bytes or tombstone, and best-effort delete both roots. For deletion only, open each last-authenticated uid/gid-1000 root with directory/no-follow descriptors, reauthenticate it against the sealed inventory/layout, chmod root then descendant directories top-down to exactly 0700 without following symlinks, unlink regular/symlink entries and rmdir directories bottom-up with openat/unlinkat no-follow operations, fsync the private parent, and verify absence. This permission change grants no runtime/scientific/retry authority, cannot alter or create a result, and is never permitted after a valid completion receipt. A mismatch stops traversal at the unsafe entry, remains an unsealed non-authoritative failure, and cannot be reported as successful cleanup.",
+      "failure_retention": "Before sealing any non-success result, remove the runtime, wheel cache, every checkpoint/provenance object, and every mutable/private attempt artifact except the permanent consumed-claim tombstone. EXP-G4-GIN300 closes.",
+      "absence_durability_rule": "Whenever authoritative cleanup removes any fixed or staging root whose absence enters cleanup evidence, including attempt_root, wheel_cache_root, child-owned publication_staging_root, transactional claim staging, and every nonretained runtime_root or object_root, complete no-follow child deletion and root rmdir, then fsync that root's already authenticated parent after the rmdir and lstat no-follow to prove the root remains absent before recording the boolean, cleanup digest, preseal fact, or completion receipt. Perform this parent fsync/absence proof after every individual root rmdir even when roots share a parent. A missing parent identity, fsync error, reappearance, alias, or ambiguous absence is CLEANUP_FAILED or, after result promotion, a nonpublishable post-promotion defect; memory state alone is never durable absence evidence.",
+      "cleanup_aggregate_inventory_digest": "aggregate_inventory_sha256 is SHA-256 of strict compact UTF-8 canonical JSON, no trailing LF, with exact insertion-order keys claim_tombstone_retained, attempt_root_absent, wheel_cache_absent, child_payload_staging_absent_before_seal, runtime_retained, snap_retained, other_objects_absent, retained_runtime_tree_sha256, retained_runtime_tree_entry_count, retained_runtime_tree_regular_bytes, snap_sha256. The first seven values equal the public cleanup booleans. On proposed success, the three runtime-tree values equal the outer-verified rights_and_objects values and snap_sha256 equals the outer-verified rights_and_objects.snap_sha256; on every non-success the runtime-tree values and snap_sha256 are null. Use separators comma/colon, ensure_ascii=false, no duplicate/nonfinite/negative-zero value or private path. This digest authenticates the aggregate cleanup projection; the retained runtime-tree digest and fixed SNAP layout authenticate the underlying retained bytes.",
+      "preseal_verification": "Before result construction, verify publication_staging_root absent; proposed success records the canonical sealed runtime tree count/bytes/hash and fixed SNAP bytes/layout, while every status records aggregate canonical path absence/presence, link counts, ownership, permissions, and cleanup completion through cleanup_aggregate_inventory_digest. No absolute path is public. Cleanup failure forces G3_G4_GIN300_FAILED and grants no retained-object authority.",
+      "staging_lifecycle": "Only after preseal cleanup verification, the common seal recreates the exact owned publication_staging_root solely for canonical result staging, atomically promotes one already read-only result no-replace, fsyncs both parents, and removes the now-empty staging root. The immutable result records only the verified preseal child-staging absence, never a circular post-promotion cleanup claim. The staging root is absent when the terminal operation completes and is best-effort removed after every unsealed failure."
+    }
+  },
+  "snap_to_dgl_tensor_conversion": {
+    "architecture": {
+      "num_layers": 5,
+      "embedding_dimension": 300,
+      "jumping_knowledge": "last",
+      "dropout": 0.5,
+      "node_embedding_cardinalities": [
+        120,
+        3
+      ],
+      "edge_embedding_cardinalities": [
+        6,
+        3
+      ],
+      "evaluation_mode": true,
+      "pooling_after_gnn": "mean"
+    },
+    "canonical_destination_key_count": 57,
+    "canonical_float32_elements": 1860900,
+    "canonical_int64_scalar_elements": 5,
+    "canonical_raw_tensor_bytes": 7443640,
+    "global_mapping": [
+      {
+        "snap": "x_embedding1.weight",
+        "dgl": "node_embeddings.0.weight",
+        "shape": [
+          120,
+          300
+        ],
+        "dtype": "torch.float32"
+      },
+      {
+        "snap": "x_embedding2.weight",
+        "dgl": "node_embeddings.1.weight",
+        "shape": [
+          3,
+          300
+        ],
+        "dtype": "torch.float32"
+      }
+    ],
+    "per_layer_mapping": {
+      "layer_indices": "i in 0,1,2,3,4",
+      "rules": [
+        {
+          "snap": "gnns.{i}.mlp.0.weight",
+          "dgl": "gnn_layers.{i}.mlp.0.weight",
+          "shape": [
+            600,
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "gnns.{i}.mlp.0.bias",
+          "dgl": "gnn_layers.{i}.mlp.0.bias",
+          "shape": [
+            600
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "gnns.{i}.mlp.2.weight",
+          "dgl": "gnn_layers.{i}.mlp.2.weight",
+          "shape": [
+            300,
+            600
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "gnns.{i}.mlp.2.bias",
+          "dgl": "gnn_layers.{i}.mlp.2.bias",
+          "shape": [
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "gnns.{i}.edge_embedding1.weight",
+          "dgl": "gnn_layers.{i}.edge_embeddings.0.weight",
+          "shape": [
+            6,
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "gnns.{i}.edge_embedding2.weight",
+          "dgl": "gnn_layers.{i}.edge_embeddings.1.weight",
+          "shape": [
+            3,
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "batch_norms.{i}.weight",
+          "dgl": "gnn_layers.{i}.bn.weight",
+          "shape": [
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "batch_norms.{i}.bias",
+          "dgl": "gnn_layers.{i}.bn.bias",
+          "shape": [
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "batch_norms.{i}.running_mean",
+          "dgl": "gnn_layers.{i}.bn.running_mean",
+          "shape": [
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "batch_norms.{i}.running_var",
+          "dgl": "gnn_layers.{i}.bn.running_var",
+          "shape": [
+            300
+          ],
+          "dtype": "torch.float32"
+        },
+        {
+          "snap": "batch_norms.{i}.num_batches_tracked",
+          "dgl": "gnn_layers.{i}.bn.num_batches_tracked",
+          "shape": [],
+          "dtype": "torch.int64"
+        }
+      ],
+      "expanded_keys": 55
+    },
+    "conversion_algorithm": "Authenticate and hash the SNAP file before safe CPU weights-only deserialization. Require an exact plain mapping with exactly the 57 source keys above; no module prefix, nested fallback, key guessing, missing key, extra key, duplicate key, transpose, reshape, squeeze, cast, byte swap, device transfer, or silent copy is accepted. For each exact rule, detach, clone, and make a CPU-contiguous tensor without numeric conversion, then publish the destination key. Require exact destination key set, dtype, shape, element count, and raw C-order tensor SHA-256.",
+    "native_dgl_extraction": "Pinned DGL-LifeSci 0.3.2 function dgllife.model.pretrain.property_prediction.create_property_model with exact model name gin_supervised_masking returns the exact bare class dgllife.model.gnn.gin.GIN with node cardinalities [120,3], edge cardinalities [6,3], five layers, embedding dimension 300, JK last, and dropout 0.5. Accept only either a plain mapping whose exact key set is the 57 unprefixed canonical destination keys, or a mapping with the sole key model_state_dict whose value is that exact 57-key mapping. The D149-frozen public call sequence must load that selected map strictly and set/verify eval mode directly on the bare GIN before observation. No remote load_pretrained call, gnn. prefix, prefix stripping, predictor, readout, head, wrapper, extra mapping key, class substitution, attribute traversal, or non-strict load is permitted.",
+    "molfeat_extraction": "Construct one private read-only MolFeat ModelStore rooted exactly at object_root/molfeat-store with exactly two regular nonsymlink, single-link, mode-0444 files and no extra entry beneath that bucket: dgllife/gin_supervised_masking/0/metadata.json is exactly 606 bytes at SHA-256 75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02, and dgllife/gin_supervised_masking/0/model.save is exactly 7,467,310 bytes at SHA-256 6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9. Every relative directory component is mode 0555, nonsymlink, and owned by the attempt; the bucket contains no alternate group/name/version, index, cache, lock, or metadata. Before importing any MolFeat module, the exact bwrap environment sets MOLFEAT_MODEL_STORE_BUCKET to the identical read-only object_root/molfeat-store mount and Process C requires byte-for-byte equality to that frozen value. Then import exactly molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer and construct exactly PretrainedDGLTransformer(kind='gin_supervised_masking', dtype=float) with no other constructor argument. Its public ModelStore search must parse only the exact local metadata, select only group dgllife/name gin_supervised_masking/version 0, and open only the exact local model.save. The pinned local-store implementation may use only fsspec's local file protocol/backend against that exact bucket; D149 freezes and statically tests its explicit local call sequence. Every network/remote fsspec protocol, remote/default store, download, cache, alternate version, constructor fallback, or post-import environment change is forbidden. The pinned loader begins with its DGLModel record and, after DGLModel.load joblib deserialization and eval, exposes self.featurizer as the direct exact class dgllife.model.gnn.gin.GIN. The metadata must still have null license and model_usage. That bare GIN state must contain exactly the same 57 unprefixed keys and architecture; AvgPooling is external to the model and is used only by the pinned transformer embedding path. No private _model injection, serialized wrapper, predictor, readout, head, gnn. prefix, alternate module graph, nested attribute search, or guessed extraction is permitted.",
+    "bare_gin_class_failure": "Any DGL or MolFeat root-class, wrapper-form, state-key, architecture, external-AvgPooling, or module-graph mismatch is G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED; never strip, ignore, or discover around it.",
+    "three_object_tensor_gate": "Extract canonical destination tensors from the converted SNAP model, native DGL object, and MolFeat-contained DGL model. Require exactly 57 canonical keys and exact tensor-byte equality for every key across all three paths. This tensor gate has no tolerance. The aggregate manifest sorts by destination key and records key, dtype, shape, element count, raw-byte SHA-256, and a canonical aggregate SHA-256.",
+    "deserialization_safety": "Known hashes must pass first. The null-SHA DGL object follows its first-hash rule. Load in a no-network, read-only, secret-free sandbox with CPU map location and the runtime's restricted weights-only mechanism where the format permits. MolFeat joblib deserialization is allowed only inside that sandbox; immediately reject any object whose exact class, module graph, model architecture, or state dictionary differs."
+  },
+  "graph_and_embedding_contract": {
+    "input": "Read the eight fixture raw_smiles strings exactly in file order as UTF-8. Reject blank, changed, failed, or additional rows. Cache and compare only by SHA-256 of each exact raw UTF-8 string; standardized structure identity may not substitute.",
+    "rdkit_parse": "Use pinned RDKit 2023.3.3 Chem.MolFromSmiles on each exact raw string, default sanitization, implicit hydrogens, zero virtual nodes, and no repair. Every row must parse exactly once in each fresh process.",
+    "atom_order": "canonical_atom_order is false. Preserve RDKit atom indices from the parsed exact raw string.",
+    "directed_edges": "Iterate RDKit bonds in bond index order; append begin-to-end then end-to-begin for each bond. Append one self-loop per atom after all bond edges, in node index order.",
+    "atom_features": {
+      "atomic_number": "int64 index in [1,2,...,118], giving atomic_number minus one and cardinality 120",
+      "chirality_type": "int64 index in [CHI_UNSPECIFIED, CHI_TETRAHEDRAL_CW, CHI_TETRAHEDRAL_CCW, CHI_OTHER], cardinality 3 in the model; any index outside 0..2 fails",
+      "unsupported": "Any atomic number or chirality outside the frozen accepted categories fails; do not map to an unknown token."
+    },
+    "edge_features": {
+      "bond_type": "int64 index in [SINGLE, DOUBLE, TRIPLE, AROMATIC]; self-loop index 4; model cardinality 6",
+      "bond_direction_type": "int64 index in [NONE, ENDUPRIGHT, ENDDOWNRIGHT]; self-loop direction 0; model cardinality 3",
+      "unsupported": "Any unsupported bond type or direction fails; no aromatic, stereo, or self-loop reinterpretation is allowed."
+    },
+    "graph_fingerprint": "For every row and process, hash a canonical manifest containing exact raw hash, atom count, directed edge count, int64 source nodes, destination nodes, atomic-number indices, chirality indices, bond-type indices, and bond-direction indices. Require byte-identical graph manifests across converted SNAP, native DGL, and MolFeat paths before comparing embeddings.",
+    "inference": "Use one CPU batch of eight rows, batch_size 32, model.eval(), torch.no_grad(), one intraop and one interop thread, five GIN layers, JK last, dropout disabled by eval, and mean pooling. The model performs float32 CPU arithmetic. Cast the final pooled 8 by 300 array once to little-endian numpy float64, require C contiguity and finiteness, and serialize non-pickle NPY v1.0.",
+    "fresh_processes": [
+      "Process A deserializes the authenticated SNAP object exactly once, applies the frozen conversion once, builds the eight parity graphs directly with pinned DGL-LifeSci, and emits private graph/tensor/embedding hashes. It then remains alive at an acknowledged bounded-control barrier with that one converted eval-mode backbone in memory. If the coordinator declares PARITY_COMPLETE_EXACT or PARITY_NUMERIC_PROVISIONAL, the same Process A builds both scaled 3,908-row roots sequentially and exits after their aggregate receipts; it may not reload, redeserialize, respawn, serialize, or publish the backbone. `Uncached` scaled roots means every molecule/graph/embedding array and identity manifest is rebuilt independently per root, not that the checkpoint/model is deserialized twice.",
+      "Process B loads only the authenticated native DGL object, builds graphs directly with pinned DGL-LifeSci, and emits the same private hash schema.",
+      "Process C loads only the authenticated MolFeat artifact and invokes the pinned PretrainedDGLTransformer graph and mean-pooling path from its local store with every network path disabled."
+    ],
+    "process_lifetime_and_accounting": "Processes A, B, and C are exactly the three spawn processes and each performs exactly one checkpoint/model deserialization. Processes B and C exit and are reaped after their authenticated parity receipt; Process A follows its frozen barrier/scaled-work lifetime. A crash, early exit, second spawn, checkpoint reopen, model serialization, or worker substitution fails without restart. Therefore clean accounting is exactly three parity processes, three checkpoint objects deserialized, 24 eight-row parity graphs plus 7,816 scaled graphs, and 7,840 total graphs/GIN rows.",
+    "parity_decision": {
+      "primary_exact": "Pass when the three graph manifests, 57-key tensor manifests, and 8 by 300 float64 NPY element bytes are all exactly identical.",
+      "predeclared_numeric_fallback": "Only if graph and tensor manifests are still exact but float serialization or Linux arithmetic makes the pooled arrays non-identical, compute all three pairwise maximum absolute element differences in float64. The sole allowed tolerance is max_abs <= 0.0000001 with rtol exactly zero; shape, row order, column order, and finiteness must already match. This tolerance cannot excuse a tensor or graph difference.",
+      "prediction_fixture_maplight": "For fixture row ordinal r in 0..7 and MapLight column j in 0..2562, emit float64 ((((r + 1) * 131 + (j + 1) * 17 + ((r + 1) xor (j + 1))) mod 2003) - 1001) / 1001. Require one finite C-contiguous 8 by 2,563 matrix and reuse its exact read-only bytes for all three paths in both roots.",
+      "prediction_fallback": "The numeric fallback passes only if both independently fitted real-probe candidate CatBoost models produce byte-identical float64 predictions for all eight fixture rows when the same frozen synthetic 2,563-column fixture block is concatenated separately with each of the three GIN arrays. Compare converted SNAP versus DGL, converted SNAP versus MolFeat, and DGL versus MolFeat in each root. Any prediction-byte difference fails.",
+      "conditional_state_machine": "After exact tensor and graph gates, test pooled element-byte equality first. If exact, set state PARITY_COMPLETE_EXACT immediately, execute zero fixture fallback predictions, and proceed through scaled GIN, both synthetic roots, model-double traversal, all six real probes, and resource projection. If element bytes differ but all three finite pairwise float64 max_abs values are <=0.0000001 with rtol zero, set state PARITY_NUMERIC_PROVISIONAL. That state grants authority only to execute the already-frozen scaled-GIN work, two synthetic roots, model-double traversal, and six real probes needed for the capability and two candidate models; it is not parity acceptance, capability acceptance, or a resource pass. The one candidate real-probe model from each root then predicts the three exact eight-row GIN fixture matrices, for exactly 2 roots * 3 paths * 8 rows = 48 fallback predictions. Pairwise byte equality in both roots advances to PARITY_COMPLETE_NUMERIC; only then may the collected complete observations be reduced into resource acceptance. Any pairwise max_abs above tolerance fails PARITY_FAILED before scaled or CatBoost work. Any fallback prediction byte, shape, order, or finiteness difference fails PARITY_FAILED. A malformed topology, scaled fixture, synthetic root, model-double traversal, or CatBoost prerequisite while provisional is SYNTHETIC_INTEGRITY_FAILED and G3_G4_GIN300_FAILED, not evidence of representation disparity; an operational/supervision defect uses its operational failed code; a hard ceiling uses HARD_RESOURCE_CEILING_BREACHED. RESOURCE_MARGIN_MISSED is considered only after exact or numeric parity is complete and every prerequisite observation is complete.",
+      "no_observed_choice": "Exact parity is tested first. The 1e-7 absolute threshold, zero relative tolerance, provisional state, two-model prediction requirement, exact 48-row fallback count, and failure precedence are frozen now and may not be relaxed, rounded, quantized, reordered, or selected after seeing D150 values."
+    },
+    "private_outputs": "Raw graphs, tensor values, embeddings, and prediction rows remain private and are deleted. The public terminal reports only shapes, finite counts, manifest hashes, exact-equality booleans, pairwise maximum absolute differences, prediction-equality booleans, and zero/aggregate counters."
+  },
+  "official_shaped_synthetic_capability": {
+    "scientific_interpretation": "None. All structures, features, labels, controls, fits, predictions, and timings are mechanics/resource probes over deterministic redistributable synthetic identities. No metric is evaluated and no recipe is selected.",
+    "topology": {
+      "development_molecules": 3908,
+      "development_components": 3640,
+      "components_with_two_molecules": 268,
+      "components_with_one_molecule": 3372,
+      "exact_raw_duplicate_pairs": 32,
+      "endpoints": [
+        "CYP1A2",
+        "CYP2C9",
+        "CYP2D6",
+        "CYP3A4"
+      ],
+      "repeats": 3,
+      "outer_folds": 5,
+      "systems": [
+        "G4-MAPL2563-GIN300",
+        "G4-MAPL2563-SHUFFLED-GIN300",
+        "G4-MAPL2563-NOISE300"
+      ],
+      "fit_identities": 180,
+      "prediction_rows_per_system": 46896,
+      "prediction_rows_total": 140688,
+      "formula": "3908 molecules times 3 repeats times 4 endpoints equals 46,896 complete outer-validation prediction rows per system; three systems equal 140,688. Three systems times 3 repeats times 5 folds times 4 endpoints equals 180 fits."
+    },
+    "identity_construction": "Create components C000000 through C003639. Create one primary molecule M000000 through M003639, then 268 second molecules M003640 through M003907 assigned to components C000000 through C000267. For the first 32 two-molecule components, both molecules share the exact raw_structure_sha256 derived from the primary identity; every other molecule has a distinct SHA-256 derived only from the UTF-8 string GLOBAL-V3-G4-GIN300-SYNTHETIC|molecule_id. Physical source order is not semantic.",
+    "fold_construction": "For repeat_index 0,1,2, assign component_index c to outer fold (c + repeat_index) mod 5. Every molecule in a component follows that component. Each repeat has exactly 728 components per fold; molecule fold sizes differ only by the deterministic distribution of the 268 doubletons. No identity, exact duplicate, or component crosses a fold.",
+    "feature_construction": {
+      "raw_identity_index": "Use the primary molecule index for each exact-raw duplicate pair and the molecule index otherwise, so exact raw duplicates receive identical features.",
+      "maplight": "For row raw_identity_index i and column j in 0..2562, emit float64 ((((i + 1) * 131 + (j + 1) * 17 + ((i + 1) xor (j + 1))) mod 2003) - 1001) / 1001. In the four accepted global descriptor columns 2402, 2404, 2406, and 2408, replace the value with the canonical quiet float64 NaN iff (37*i + 53*j + 20260818) mod 97 equals zero. Preserve only those NaNs; reject every infinity or other NaN.",
+      "gin": "For row raw_identity_index i and GIN column k in 0..299, emit finite float64 ((((i + 1) * (k + 3) + 19*k + 20260819) mod 2003) - 1001) / 1001 as the mechanics-only true block. This is not a checkpoint embedding.",
+      "candidate": "Concatenate the 2,563 MapLight columns then the 300 mechanics-only GIN columns into a C-contiguous 3,908 by 2,863 float64 matrix.",
+      "controls": "For every repeat, fold, and train/validation partition, generate whole-vector shuffle and Gaussian noise exactly from the D147 SeedSequence rules with seeds 20260816 and 20260817 over sorted unique raw_structure_sha256 values inside that partition. Expand exact-raw duplicates identically. No donor, identity, or vector crosses a partition.",
+      "labels": "For molecule index i and endpoint index e in 0..3, emit the contract-frozen redistributable synthetic central target float64 4.0 + (((97*i + 53*e + 20260820) mod 601) / 100.0). All 15,632 values are finite. These labels exist only inside each synthetic root and may not be called official or scientific."
+    },
+    "scaled_checkpoint_gin_probe": {
+      "purpose": "Measure the actual converted-SNAP GIN graph/embedding work at the exact two-root future feature-build row count rather than extrapolating 8-row fixture timing. It is redistributable resource/mechanics evidence only and opens no official structure or label.",
+      "synthetic_smiles": "Define raw(n) for integer n in 0..3907 by a = 12 + floor(n / 999), b = 1 + (n mod 999), and the exact ASCII raw SMILES '[' + decimal(a) + 'CH3][' + decimal(b) + 'CH2]' + 62 uppercase 'C' characters. Thus a is 12..15 and b is 1..999, respecting the frozen three-digit isotope syntax. For each primary molecule index i in 0..3639 use raw(i). For second molecule index m in 3640..3907 with component index c=m-3640, reuse raw(c) when c<32 and otherwise use raw(m). Reject unless pinned RDKit parses every string to exactly 64 carbon atoms and 63 bonds, the first 32 pairs alone are exact-raw duplicates, all other raw strings are distinct, and every frozen DGL categorical feature is in range.",
+      "execution": "Only after three-object tensor and graph gates succeed and eight-row embeddings either complete exact parity or enter the frozen numeric-provisional state, use the converted authenticated SNAP backbone in eval/no_grad float32 CPU mode and the frozen graph contract to build exactly two independent 3,908 by 300 float64 arrays. Root A consumes ascending physical rows; root B consumes descending physical rows. Use batch_size 32, one GIN worker and one intraop/interop thread at a time, then canonical-sort by molecule_id and require byte-identical finite C-contiguous NPY v1.0 element bytes and identity manifests. Provisional authority exists only to reach the frozen fallback decision and cannot be reported as complete parity or resource acceptance.",
+      "counts": {
+        "roots": 2,
+        "rows_per_root": 3908,
+        "total_checkpoint_gin_rows": 7816,
+        "atoms_per_row": 64,
+        "bonds_per_row": 63,
+        "embedding_columns": 300
+      },
+      "resource_rule": "Measure complete materialization, graph construction, inference, canonicalization, NPY/manifest writing, hashing, equality validation, and deletion for both roots under the single cumulative supervisor. Add the directly measured two-root wall and CPU seconds to the projected 180-fit CatBoost work; do not scale the eight-row parity timing."
+    },
+    "two_roots": {
+      "root_a": "Write physical source rows ascending and traverse model-double stages in system, endpoint, repeat, fold order; run real probes candidate, shuffle, noise.",
+      "root_b": "Write physical source rows descending and traverse model-double stages in reverse order; run real probes noise, shuffle, candidate.",
+      "canonicalization": "Authenticate then canonical-sort identities before feature/control construction, fitting, prediction, and reduction. Opposite physical and launch order must not change any scientific-mechanics terminal byte.",
+      "independence": "Each root rebuilds every fixture byte and may not read, link, copy, cache, seed from, or infer another root's feature, label, control, model, prediction, or terminal payload.",
+      "equality": "Require byte-identical canonical identity manifests, fold maps, feature/control manifests, full-topology model-double predictions, accounting, and real-probe prediction payloads across roots. Resource observations and root labels are compared by frozen formulas but excluded from byte-equality."
+    },
+    "full_topology_model_double": {
+      "rule": "Traverse every exact system, endpoint, repeat, and fold identity once. Each stage may read only its current training partition's synthetic target capability and its system's train/validation feature capabilities. It must not open validation target bytes. Emit deterministic finite predictions for every complete matching validation population, then freeze all rows before any aggregate accounting opens synthetic truth.",
+      "prediction_formula": "For each fit, canonical-sort current training molecule_id, compute training_mean as Python math.fsum of the permitted float64 synthetic targets divided by the exact training count, then for validation molecule index i, system index s, endpoint index e, repeat index r, and fold index f emit float64 training_mean + ((((i + 1)*31 + (s + 1)*17 + (e + 1)*13 + (r + 1)*7 + (f + 1)*5) mod 101) - 50) / 1000. Indices use the contract order and i is the canonical global molecule index. No validation target or model-quality statistic enters the formula.",
+      "required_fits": 180,
+      "required_predictions": 140688,
+      "baseline_refits": 0,
+      "metric_evaluations": 0,
+      "bootstrap_replicates": 0,
+      "acceptance": "Unique exact fit identities, complete prediction identities, family containment, stage least privilege, no cross-root input, immutable no-replace publication, canonical reductions, accounting, and cleanup all pass in both roots."
+    },
+    "real_catboost_probe": {
+      "fits_per_root": 3,
+      "roots": 2,
+      "total_fits": 6,
+      "probe_cell": "repeat_index 0, outer_fold 0, endpoint CYP1A2; one fit for each of the three systems per root",
+      "training_rows": "Every finite synthetic CYP1A2 row outside repeat-0 fold 0; validation is the complete repeat-0 fold-0 population.",
+      "features": "Full 2,863-column float64 matrices with the exact synthetic MapLight NaN rule and exact candidate/shuffle/noise construction.",
+      "labels": "Only the contract-frozen redistributable synthetic central-target formula above. No official target, baseline prediction, historical row, or metric capability may resolve.",
+      "model": {
+        "api": "catboost.CatBoostRegressor",
+        "loss_function": "MAE",
+        "random_strength": 2,
+        "random_seed": 1,
+        "task_type": "CPU",
+        "thread_count": 16,
+        "verbose": 0,
+        "allow_writing_files": false,
+        "omitted": [
+          "eval_set",
+          "early_stopping_rounds",
+          "use_best_model",
+          "iterations",
+          "nan_mode"
+        ],
+        "required_resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757"
+      },
+      "prediction_requirements": "Every one of the six fitted models predicts its exact 782-row repeat-0/fold-0 validation population, totaling 4,692 finite float64 validation predictions, with exact row identity and root-to-root byte equality for each system's validation payload. In the primary-exact parity branch, no model predicts a parity fixture and parity_fallback_predictions is exactly zero. Only in PARITY_NUMERIC_PROVISIONAL, the candidate-system model from each root additionally predicts all three eight-row parity matrices, totaling exactly 48 fallback predictions, and must pass the frozen pairwise prediction-byte comparisons before parity becomes complete. The shuffle and noise models never predict a parity fixture.",
+      "forbidden": "No warm start, Pool reuse, quantization reuse, eval set, thread-count change, constructor change, fit argument, synthetic score, timing-driven edit, second probe, or official-shaped target interpretation."
+    }
+  },
+  "resource_projection": {
+    "parent_execution_ceiling": {
+      "cpu_core_hours": 96,
+      "cpu_seconds": 345600,
+      "gpu_hours": 0,
+      "restricted_storage_gb": 32,
+      "restricted_storage_bytes_decimal": 32000000000,
+      "maximum_wall_hours": 12,
+      "maximum_wall_seconds": 43200,
+      "maximum_peak_simultaneous_rss_gib": 16,
+      "maximum_peak_simultaneous_rss_bytes": 17179869184
+    },
+    "required_20_percent_margin": {
+      "maximum_projected_cpu_core_hours": 76.8,
+      "maximum_projected_cpu_seconds": 276480,
+      "maximum_projected_gpu_hours": 0,
+      "maximum_projected_restricted_storage_gb": 25.6,
+      "maximum_projected_restricted_storage_bytes_decimal": 25600000000,
+      "maximum_projected_wall_hours": 9.6,
+      "maximum_projected_wall_seconds": 34560,
+      "maximum_peak_simultaneous_rss_gib": 12.8,
+      "maximum_peak_simultaneous_rss_bytes_floor": 13743895347
+    },
+    "measurement": "From immediately before controller spawn through final outer authoritative cleanup, any proposed-success runtime/SNAP sealing and double inventory, any downgrade deletion, and final preseal verification, use one monotonic wall clock without reset. At least every 0.05 seconds and every acknowledged checkpoint, enumerate the fixed process group and every recursive descendant from /proc using PID plus start-time identity. Live cumulative CPU is outer time.process_time_ns elapsed plus each unique live identity's /proc stat utime+stime divided by the authenticated CLK_TCK; when an identity is reaped, transfer it exactly once to a reaped ledger using final wait4 user+system CPU and remove its live term, never add an earlier sample, so each process's cumulative CPU appears once and a live 16-thread fit is detectable before exit. Sum live resident pages for all unique processes at the same sample and retain the maximum; on reap retain final rusage evidence without substituting per-process max RSS for simultaneous RSS. At the same cadence, lstat every exact restricted root without following links and sum each unique regular inode as max(st_size, st_blocks*512), directory allocated blocks, and all staging/retained files; reject special files or cross-root hardlinks and retain the maximum. Measure D149-frozen checkpoint counts, descendants, unauthorized detachments, warnings/stderr, signals, return code, cleanup, network isolation, and GPU visibility/use. Required cleanup after a trigger remains sampled but cannot restore authority. Candidate supervision fields bind this final preseal snapshot; resource projection adds the entire separately enforced common-seal envelope.",
+    "gin_projection": "Use the complete directly measured wall seconds and CPU seconds for both uncached 3,908-row converted-SNAP GIN roots, including their materialization, graph construction, inference, canonicalization, receipt, equality, and cleanup. The required counts are exactly 2 roots and 7,816 checkpoint-GIN rows. Do not multiply or extrapolate eight-row fixture timing.",
+    "fit_projection": "For each root, sum the three complete measured real-CatBoost-probe stage wall seconds and CPU seconds, then multiply that sum by 60 because each of the three systems has exactly 60 future fits. Use the worse projected root independently for wall and CPU. Every complete interval includes feature/control materialization, construction, fit, all 782 validation predictions, receipt hashing, and supervisor overhead; only the numeric-provisional candidate interval additionally includes its three-by-eight frozen fallback predictions, while the primary-exact branch and shuffle/noise intervals include zero fixture predictions. Subtract nothing and assume no parallel speedup.",
+    "total_time_projection": "For wall and CPU separately, define measured_fixed_overhead as the full final-preseal cumulative observation minus the six real-CatBoost-probe intervals minus the two scaled-GIN intervals; require it finite and nonnegative. projected = measured_fixed_overhead + measured_two_root_GIN + 60 * max(root_A_three_probe_sum, root_B_three_probe_sum) + 5.0 seconds reserved for the complete outer common seal, validation, staging removal, receipt, and exit. Compare projected wall seconds to 34,560 and projected CPU seconds to 276,480. No observed concurrency or cache speedup is credited; successful completion separately proves actual seal wall and CPU each stayed within the shared five-second envelope.",
+    "storage_projection": "Define measured_peak_restricted_bytes by the final-preseal sampler across all seven restricted paths: attempt root, runtime root, wheel-cache root, object-store root, permanent claim root, transactional claim-staging path, and publication-staging root. Define exact future-output/filesystem reserve as 33,554,432 bytes = 2 * 16,777,216, covering two simultaneous 3,908 by 300 float64 NPY feature roots, headers, identity manifests, receipts, directory blocks, and the common seal's at-most-2,097,152 staging bytes beyond the preseal snapshot. projected_restricted_storage_bytes = measured_peak_restricted_bytes + 33,554,432. Compare to the decimal threshold 25,600,000,000 bytes; GB here is exactly 1,000,000,000 bytes, never GiB. Common seal separately enforces its exact staging cap; an excess is nonpublication, not a post-hoc resource result edit.",
+    "rss_projection": "Define projected peak as max(the largest final-preseal simultaneous outer-plus-controller-plus-all-descendant RSS sample, the common seal's 268,435,456-byte outer RSS cap) without scaling down, and compare that integer byte value to floor(12.8 * 2^30) = 13,743,895,347 bytes. Sampling every at most 0.05 seconds plus stage-boundary samples is mandatory through preseal verification; a missing /proc identity, escaped/detached process, or incomplete sample fails rather than imputes. Common seal separately enforces its exact RSS cap; an excess is nonpublication.",
+    "gpu_projection": "Must equal exactly zero, with accelerator devices hidden and no CUDA, ROCm, MPS, NCCL, or GPU package/runtime present.",
+    "concurrency": "Exactly one one-thread GIN worker or one 16-thread CatBoost fit at a time. Do not overlap roots, workers, fits, hashing, compression, or unrelated memory-heavy work to improve wall projection.",
+    "acceptance": "Only after exact or numeric parity completes, every 20-percent-margin maximum passes conjunctively using its own worst complete observation. Equality passes non-GPU maxima. The predeclared <=1e-7 embedding parity branch and the one bounded common-seal pre-promotion fallback are not resource fallbacks. Any hard-ceiling trigger, warning, dependency/runtime/scientific fallback, retry, nonzero return, signal, timeout, unauthorized detached child, missing checkpoint, incomplete observation, or cleanup/network/GPU defect is not a resource pass.",
+    "hard_ceiling_failure_status": "Every completely enforced first hard-ceiling breach is failure code HARD_RESOURCE_CEILING_BREACHED and status G3_G4_GIN300_FAILED. An incomplete or ambiguous termination/tree observation is SUPERVISED_EXECUTION_FAILED and the same failed status. Neither may emit G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT.",
+    "resource_failure_status": "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT",
+    "resource_failure_effect": "Reject and close EXP-G4-GIN300 before any official row, target, feature claim, or model-quality operation. No optimization pass, reduced design, alternate runtime, second probe, or larger ceiling is authorized."
+  },
+  "future_d150_result_contract": {
+    "path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json",
+    "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_capability_result.v1",
+    "maximum_result_bytes": 1048576,
+    "canonical_encoding": "UTF-8 strict JSON with no BOM, duplicate key, NaN, Infinity, or negative zero; json.dumps ensure_ascii=false allow_nan=false indent=2 insertion order plus exactly one LF. Every mapping key and array order is frozen below. The live untracked D150 promoted inode is regular, nonsymlink, single-link, and mode 0444. Git records the integrated file as regular nonexecutable mode 100644 and does not preserve owner-write absence; a tracked checkout may be filesystem mode 0644 or the original 0444 only under the dual-state validator, with exact canonical bytes and Git-blob equality authoritative.",
+    "allowed_statuses": [
+      "G3_G4_GIN300_FAILED",
+      "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED",
+      "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT",
+      "G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED"
+    ],
+    "exact_top_level_keys_in_order": [
+      "schema_version",
+      "recorded_at_utc",
+      "experiment_id",
+      "capability_contract_sha256",
+      "d148_commit",
+      "d149_commit",
+      "implementation_lineage",
+      "status",
+      "claim",
+      "rights_and_objects",
+      "tensor_graph_parity",
+      "synthetic_capability",
+      "resource_projection",
+      "supervision",
+      "cleanup",
+      "accounting",
+      "failure",
+      "live_seal_mode_octal",
+      "next_gate"
+    ],
+    "exact_nested_keys_in_order": {
+      "implementation_lineage": [
+        "python_version_file_sha256",
+        "isolated_pyproject_sha256",
+        "isolated_uv_lock_sha256",
+        "builder_sha256",
+        "runner_sha256",
+        "implementation_test_sha256",
+        "result_test_sha256",
+        "runtime_manifest_sha256"
+      ],
+      "claim": [
+        "claim_id",
+        "claim_consumed",
+        "claim_sha256",
+        "nonce",
+        "tombstone_retained"
+      ],
+      "rights_and_objects": [
+        "complete",
+        "third_party_notices_sha256",
+        "snap_sha256",
+        "dgl_first_sha256",
+        "molfeat_metadata_sha256",
+        "molfeat_model_sha256",
+        "runtime_rights_inventory_sha256",
+        "installed_runtime_python_sha256",
+        "retained_runtime_tree_sha256",
+        "retained_runtime_tree_entry_count",
+        "retained_runtime_tree_regular_bytes",
+        "unknown_overlap_disclosed",
+        "nonredistribution_passed"
+      ],
+      "tensor_graph_parity": [
+        "complete",
+        "bare_gin_classes_exact",
+        "tensor_manifest_sha256",
+        "tensor_bytes_exact",
+        "graph_manifest_sha256",
+        "graph_bytes_exact",
+        "embedding_bytes_exact",
+        "numeric_fallback_used",
+        "snap_dgl_max_abs",
+        "snap_molfeat_max_abs",
+        "dgl_molfeat_max_abs",
+        "prediction_fallback_bytes_exact"
+      ],
+      "synthetic_capability": [
+        "complete",
+        "molecules",
+        "components",
+        "model_double_fits_per_root",
+        "model_double_predictions_per_root",
+        "real_catboost_fits",
+        "scaled_gin_roots",
+        "scaled_gin_rows",
+        "root_bytes_equal"
+      ],
+      "resource_projection": [
+        "complete",
+        "projected_wall_seconds",
+        "projected_cpu_seconds",
+        "projected_restricted_storage_bytes",
+        "peak_simultaneous_rss_bytes",
+        "gpu_hours",
+        "all_20_percent_margins_passed"
+      ],
+      "supervision": [
+        "complete",
+        "wall_seconds",
+        "cpu_seconds",
+        "peak_restricted_storage_bytes",
+        "peak_simultaneous_rss_bytes",
+        "hard_ceiling_trigger",
+        "hard_ceiling_observed_value",
+        "checkpoints_acknowledged",
+        "descendants_observed",
+        "detached_children_observed",
+        "warnings_or_stderr_observed",
+        "return_code",
+        "offline_workers_network_isolated",
+        "gpu_hidden_and_unused"
+      ],
+      "cleanup": [
+        "complete_before_seal",
+        "claim_tombstone_retained",
+        "attempt_root_absent",
+        "wheel_cache_absent",
+        "child_payload_staging_absent_before_seal",
+        "runtime_retained",
+        "snap_retained",
+        "other_objects_absent",
+        "aggregate_inventory_sha256"
+      ],
+      "accounting": [
+        "runtime_artifacts_fetched",
+        "runtime_bytes_fetched",
+        "checkpoint_model_objects_fetched",
+        "checkpoint_model_bytes_fetched",
+        "provenance_metadata_objects_fetched",
+        "provenance_metadata_bytes_fetched",
+        "http_redirects_followed",
+        "runtime_environments_created",
+        "checkpoint_objects_deserialized",
+        "parity_processes",
+        "graphs_built",
+        "gin_rows_built",
+        "synthetic_roots",
+        "model_double_fits",
+        "model_double_predictions",
+        "real_catboost_fits",
+        "real_catboost_validation_predictions",
+        "parity_fallback_predictions",
+        "official_inputs_opened",
+        "official_target_values_opened",
+        "model_quality_metrics",
+        "claims_consumed",
+        "result_files_published",
+        "gpu_hours"
+      ],
+      "failure": [
+        "phase",
+        "code",
+        "detail_count"
+      ]
+    },
+    "top_level_and_lineage_value_binding": "schema_version equals the frozen result schema string; experiment_id is exactly EXP-G4-GIN300; capability_contract_sha256 is the SHA-256 of the exact tracked D148 contract bytes authenticated at D150; d148_commit is the exact integrated signed D148 commit embedded during D149 and authenticated as the sole parent of local main HEAD; d149_commit is that exact authenticated 40-hex local main HEAD. recorded_at_utc is the outer common-seal UTC second and has no selection authority. implementation_lineage contains, in its frozen key order, the seven SHA-256 values computed from the exact authenticated D149 files named by claim_contract.implementation_hash_keys_in_order followed by runtime_manifest_sha256 equal to 67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01. When claim_consumed=true, the result d148/d149/contract/runtime/implementation identities must equal the canonical tombstone values; when false, they equal the same outer-preflight identities and no claim value is invented. status is exactly one allowed_statuses member, failure obeys its exact phase/code pair and terminal precedence, live_seal_mode_octal is exactly string 0444 because the staged inode is already authenticated read-only before promotion, and next_gate obeys exact_next_gate_by_status. No field is caller-supplied.",
+    "claim_value_binding": "claim.claim_id is always GLOBAL_V3_G4_GIN300_CAPABILITY_ATTEMPT_1. claim_consumed=false requires claim_sha256=null, nonce=null, tombstone_retained=false, and no claim-root bytes; this form is allowed only for a publishable outer/preclaim failure. claim_consumed=true requires claim_sha256 equal the SHA-256 of the exact retained canonical attempt_claim.json, nonce equal its nonce field and nonce_derivation, tombstone_retained=true, and exact equality of every shared result/claim lineage value. There is no third state, inferred nonce, repaired tombstone, or consumed-false result after successful claim promotion.",
+    "supervision_field_semantics": "descendants_observed is the nonnegative integer cardinality of unique authenticated (host PID, /proc start-time) outer-descendant identities ever seen from controller spawn through final reap, including the controller exactly once; it is never a live-process sum, per-sample sum, thread count, or PID without start-time identity. warnings_or_stderr_observed is the integer count from 0 through 6 of the six fixed forbidden streams controller stdout, controller stderr, uv stdout, uv stderr, bwrap-subtree stdout, and bwrap-subtree stderr that emitted at least one byte, counting each stream at most once regardless of byte count; success is 0. return_code is null only when the controller was never spawned or an authenticated wait status is unavailable/ambiguous; otherwise it is the exact signed subprocess status, integer 0 through 255 for normal exit or -1 through -64 for termination by that signal. Success requires 0. return_code is explicitly exempt from the generic nonnegative-count rule.",
+    "accepted_parity_value_binding": {
+      "primary_exact": "tensor_graph_parity.complete, bare_gin_classes_exact, tensor_bytes_exact, graph_bytes_exact, and embedding_bytes_exact are true; both aggregate tensor_manifest_sha256 and graph_manifest_sha256 are nonnull and each authenticates all three paths; numeric_fallback_used is false; all three pairwise max_abs values are exact JSON 0.0; prediction_fallback_bytes_exact is null because the real-model fallback is not executed; accounting.parity_fallback_predictions is 0.",
+      "predeclared_numeric_fallback": "tensor_graph_parity.complete, bare_gin_classes_exact, tensor_bytes_exact, and graph_bytes_exact are true; embedding_bytes_exact is false; both aggregate tensor_manifest_sha256 and graph_manifest_sha256 are nonnull and each authenticates all three paths; numeric_fallback_used is true; each pairwise max_abs is finite, nonnegative, and <=0.0000001 with rtol zero; prediction_fallback_bytes_exact is true after both independent root models pass every frozen prediction-byte comparison; accounting.parity_fallback_predictions is 48.",
+      "rule": "G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED permits exactly one of these mutually exclusive objects. The numeric branch is the only accepted-success false pass boolean. No null/false prediction receipt is accepted when numeric_fallback_used=true, and prediction fallback may not run or report a boolean when numeric_fallback_used=false. An ineligible or failed result reports only values actually available before its exact failure code; unavailable later values are null."
+    },
+    "accepted_success_nested_value_binding": {
+      "rights_and_objects": "complete=true; third_party_notices_sha256 equals b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb; snap_sha256 equals 375cd40af9f21d2a92ed1acbdea9efad14254c36703bb0e3a7e433e09e624ce1; dgl_first_sha256 is the lowercase 64-hex first streamed hash immutably fixed before its first deserialization and reauthenticated thereafter; molfeat_metadata_sha256 equals 75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02; molfeat_model_sha256 equals 6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9; runtime_rights_inventory_sha256 equals runtime_install_contract.runtime_rights_inventory_binding; installed_runtime_python_sha256 equals the first authenticated base/copy executable hash; the retained-runtime digest/count/bytes equal the outer double inventory; unknown_overlap_disclosed=true; nonredistribution_passed=true.",
+      "synthetic_capability": "complete=true, molecules=3908, components=3640, model_double_fits_per_root=180, model_double_predictions_per_root=140688, real_catboost_fits=6, scaled_gin_roots=2, scaled_gin_rows=7816, and root_bytes_equal=true. No other accepted value is valid.",
+      "resource_projection": "complete=true; projected_wall_seconds and projected_cpu_seconds equal total_time_projection; projected_restricted_storage_bytes equals storage_projection; peak_simultaneous_rss_bytes equals rss_projection's projected peak; gpu_hours is exact JSON 0; all_20_percent_margins_passed=true; and every value is finite, nonnegative, and within its exact required_20_percent_margin threshold. No partial, sampled-only, rounded, or post-seal-substituted value is accepted.",
+      "supervision": "complete=true; wall_seconds, cpu_seconds, peak_restricted_storage_bytes, and peak_simultaneous_rss_bytes equal the final preseal cumulative observation; hard_ceiling_trigger and hard_ceiling_observed_value are null; checkpoints_acknowledged equals the exact accepted branch count frozen by the integrated D149 control enum; descendants_observed equals the independently reconstructed unique PID/start-time ledger count for the closed controller plus authorized bwrap subtree; detached_children_observed=0; warnings_or_stderr_observed=0; return_code=0; offline_workers_network_isolated=true; gpu_hidden_and_unused=true. Every observed descendant must belong to the authenticated closed tree and every expected process must appear; no arbitrary count satisfies the binding.",
+      "cleanup": "complete_before_seal=true, claim_tombstone_retained=true, attempt_root_absent=true, wheel_cache_absent=true, child_payload_staging_absent_before_seal=true, runtime_retained=true, snap_retained=true, other_objects_absent=true, and aggregate_inventory_sha256 equals cleanup_aggregate_inventory_digest over these facts plus the identical retained-runtime and SNAP hashes/counts. The exact tombstone, sealed runtime, and SNAP-only layout are reauthenticated immediately before candidate construction.",
+      "failure_and_status": "status is G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED; failure.phase=null, failure.code=null, failure.detail_count=0; claim is consumed with its exact retained tombstone; accounting obeys success_exact_accounting and accepted_parity_value_binding; every phase complete/pass fact above is conjunctive. Any mismatch is G3_G4_GIN300_FAILED unless the frozen terminal precedence assigns an earlier rights/parity ineligibility or complete resource-margin miss; it can never remain accepted."
+    },
+    "success_exact_accounting": {
+      "runtime_artifacts_fetched": 98,
+      "runtime_artifacts_definition": "96 exact wheel files + one exact interpreter archive + one exact 65-byte checksum sidecar; the runtime manifest's 97-distribution inventory excludes the separately fetched sidecar.",
+      "runtime_bytes_fetched": 566804721,
+      "runtime_bytes_formula": "539395366 wheel bytes + 27409290 interpreter-archive bytes + 65 checksum-sidecar bytes",
+      "checkpoint_model_objects_fetched": 3,
+      "checkpoint_model_bytes_fetched": 22374079,
+      "checkpoint_model_bytes_formula": "7452448 SNAP + 7454321 DGL-LifeSci + 7467310 MolFeat model.save bytes",
+      "provenance_metadata_objects_fetched": 1,
+      "provenance_metadata_bytes_fetched": 606,
+      "http_redirects_followed": 2,
+      "runtime_environments_created": 1,
+      "checkpoint_objects_deserialized": 3,
+      "parity_processes": 3,
+      "graphs_built": 7840,
+      "graphs_formula": "3 parity processes * 8 fixture rows + 2 scaled roots * 3908 rows",
+      "gin_rows_built": 7840,
+      "synthetic_roots": 2,
+      "model_double_fits": 360,
+      "model_double_predictions": 281376,
+      "real_catboost_fits": 6,
+      "real_catboost_validation_predictions": 4692,
+      "real_catboost_validation_predictions_formula": "6 real CatBoost fits * 782 repeat-0/fold-0 validation rows; fold 0 has 728 components plus 54 second molecules whose component indices 0..267 are divisible by 5",
+      "parity_fallback_predictions_by_branch": {
+        "primary_exact": 0,
+        "predeclared_numeric_fallback": 48
+      },
+      "parity_fallback_predictions_formula": "numeric branch only: 2 candidate models, one per root, * 3 exact GIN fixture paths * 8 rows",
+      "official_inputs_opened": 0,
+      "official_target_values_opened": 0,
+      "model_quality_metrics": 0,
+      "claims_consumed": 1,
+      "result_files_published": 1,
+      "gpu_hours": 0,
+      "rule": "A clean capability success requires the accounting object to equal every non-branch numeric value above exactly and parity_fallback_predictions to equal the exact value selected by accepted_parity_value_binding. Formulas and the branch mapping are explanatory contract objects and are not result keys. Any different count or byte total is an accounting-integrity defect and therefore G3_G4_GIN300_FAILED, never a tolerable partial success."
+    },
+    "exact_next_gate_by_status": {
+      "G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED": "After this exact D150 result/evidence package is reviewed, SSH-signed, fast-forward integrated, pushed, and exact-SHA post-main green, a separate immutable one-use label-free official feature contract may be drafted; this capability terminal itself authorizes zero official access.",
+      "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED": "EXP-G4-GIN300 is permanently closed with no retry, repair, alternate artifact, automatic successor, official access, or downstream claim.",
+      "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT": "EXP-G4-GIN300 is permanently closed with no retry, repair, reduced design, larger resource ceiling, automatic successor, official access, or downstream claim.",
+      "G3_G4_GIN300_FAILED": "EXP-G4-GIN300 is permanently closed with no retry, resume, repair, automatic successor, official access, or downstream claim."
+    },
+    "next_gate_rule": "The result's next_gate value must equal the one exact string selected by its status from exact_next_gate_by_status. The immutable result test rejects every other string, null, omission, or contradictory authority statement.",
+    "field_and_nullability_rules": "All booleans are JSON booleans, counts are nonnegative integers, hashes are lowercase 64-hex strings, finite resource values are nonnegative JSON integers or numbers, and recorded_at_utc is canonical UTC seconds. A phase aggregate has complete=false and every unavailable hash/value null; no key is omitted. claim_consumed=false requires claim_sha256, nonce, and tombstone_retained all null/false. claim_consumed=true requires nonnull exact claim_sha256/nonce and tombstone_retained=true even after crash. installed_runtime_python_sha256 is null before authenticated extraction and a required lowercase 64-hex first-executable hash whenever runtime rights are complete; success requires it nonnull. retained_runtime_tree_sha256, retained_runtime_tree_entry_count, and retained_runtime_tree_regular_bytes are all null until proposed-success outer read-only sealing/reinventory completes; success requires a lowercase 64-hex digest plus positive integer entry count and positive integer regular-byte total exactly following retained_runtime_tree_inventory, while every non-success requires all three null. supervision.hard_ceiling_trigger and hard_ceiling_observed_value are both null unless failure.code is HARD_RESOURCE_CEILING_BREACHED, in which case both follow hard_resource_ceiling_enforcement.result_binding. Success requires every complete/pass boolean true except the one exact embedding_bytes_exact=false numeric branch frozen by accepted_parity_value_binding; cleanup retention runtime_retained=true and snap_retained=true. Every non-success requires runtime_retained=false and snap_retained=false. No absolute/private path, URL query, hostname token, exception text, traceback, tensor, graph, embedding, feature, label, prediction, molecule, SMILES, row identity, package file list, or unrestricted log is permitted.",
+    "child_payload": {
+      "path": "publication_staging_root/child_payload.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_capability_child_payload.v1",
+      "maximum_bytes": 524288,
+      "exact_keys_in_order": [
+        "schema_version",
+        "claim_sha256",
+        "proposed_status",
+        "rights_and_objects",
+        "tensor_graph_parity",
+        "synthetic_capability",
+        "resource_projection",
+        "accounting",
+        "failure"
+      ],
+      "rule": "The child writes at most this one canonical aggregate-only file no-replace after best-effort cleanup. Nested objects use the result key/type schemas above with exact child-only overrides: rights_and_objects.retained_runtime_tree_sha256, retained_runtime_tree_entry_count, and retained_runtime_tree_regular_bytes are null; every resource_projection key is null except complete=false because cumulative outer cleanup/sealing observation is unfinished; and accounting.result_files_published is 0 because no publication has occurred. Thus a child proposed-success payload is intentionally not yet a valid final-success result. It contains no supervision or authoritative cleanup claim. The outer treats every byte as untrusted and authenticates schema/bounds/types plus available scientific status consistency. Its only permitted overlays are: preserve or downgrade proposed_status/failure by frozen precedence; fill the three runtime-tree fields after outer sealing/reinventory; derive and replace the entire resource_projection object from authenticated D149-frozen stage markers plus the one cumulative observation and common-seal reserve; add the exact supervision and cleanup objects; and replace result_files_published with 1 only in candidate common-seal bytes as a no-replace publication commitment. It preserves every other child rights/object, parity, synthetic, accounting, and failure aggregate byte-for-value unless downgrading makes a later unavailable field null under the frozen schema. The publication count becomes authoritative only after promotion, parent fsync, validation, staging removal, exact completion receipt, and zero exit; unsealed destination bytes remain permanently non-authoritative."
+    },
+    "failure_payload": {
+      "phases": [
+        null,
+        "outer_preflight",
+        "child_preclaim",
+        "claim",
+        "runtime_fetch_install",
+        "rights_objects",
+        "tensor_graph_parity",
+        "synthetic_capability",
+        "resource_projection",
+        "supervision",
+        "cleanup",
+        "common_seal"
+      ],
+      "codes": [
+        null,
+        "OUTER_TOOL_PREFLIGHT_FAILED",
+        "SUPERVISOR_START_FAILED",
+        "CHILD_READY_FAILED",
+        "CLAIM_DERIVATION_FAILED",
+        "RUNTIME_INTEGRITY_FAILED",
+        "ARTIFACT_FETCH_FAILED",
+        "RIGHTS_OR_NOTICE_FAILED",
+        "OBJECT_IDENTITY_FAILED",
+        "BARE_GIN_OR_TENSOR_FAILED",
+        "GRAPH_FAILED",
+        "PARITY_FAILED",
+        "SYNTHETIC_INTEGRITY_FAILED",
+        "RESOURCE_MARGIN_MISSED",
+        "HARD_RESOURCE_CEILING_BREACHED",
+        "SUPERVISED_EXECUTION_FAILED",
+        "PAYLOAD_INVALID",
+        "CLEANUP_FAILED",
+        "COMMON_SEAL_PREPROMOTION_FAILED",
+        "UNCLASSIFIED_CONTROLLED_FAILURE"
+      ],
+      "non_publishable_internal_outcomes": [
+        "LINEAGE_AUTHENTICATION_FAILED",
+        "SEAL_PREFLIGHT_AUTHENTICATION_FAILED",
+        "RESULT_COLLISION",
+        "CLAIM_COLLISION",
+        "COMMON_SEAL_PROMOTION_FAILED",
+        "COMMON_SEAL_POSTPROMOTION_FAILED"
+      ],
+      "allowed_phase_code_pairs": {
+        "outer_preflight": [
+          "OUTER_TOOL_PREFLIGHT_FAILED"
+        ],
+        "child_preclaim": [
+          "SUPERVISOR_START_FAILED",
+          "CHILD_READY_FAILED"
+        ],
+        "claim": [
+          "CLAIM_DERIVATION_FAILED"
+        ],
+        "runtime_fetch_install": [
+          "RUNTIME_INTEGRITY_FAILED",
+          "ARTIFACT_FETCH_FAILED"
+        ],
+        "rights_objects": [
+          "RIGHTS_OR_NOTICE_FAILED",
+          "OBJECT_IDENTITY_FAILED"
+        ],
+        "tensor_graph_parity": [
+          "BARE_GIN_OR_TENSOR_FAILED",
+          "GRAPH_FAILED",
+          "PARITY_FAILED"
+        ],
+        "synthetic_capability": [
+          "SYNTHETIC_INTEGRITY_FAILED"
+        ],
+        "resource_projection": [
+          "RESOURCE_MARGIN_MISSED"
+        ],
+        "supervision": [
+          "HARD_RESOURCE_CEILING_BREACHED",
+          "SUPERVISED_EXECUTION_FAILED",
+          "UNCLASSIFIED_CONTROLLED_FAILURE"
+        ],
+        "cleanup": [
+          "CLEANUP_FAILED"
+        ],
+        "common_seal": [
+          "PAYLOAD_INVALID",
+          "COMMON_SEAL_PREPROMOTION_FAILED"
+        ]
+      },
+      "rule": "Success uses phase/code null and detail_count 0. Failure uses one exact nonnull enum pair and a bounded nonnegative detail_count no greater than 65535. Never publish exception/repr/message/path/line/traceback/stdout/stderr. Rights/object/tensor/graph/parity codes map to the ineligible status after integrity; RESOURCE_MARGIN_MISSED maps only to resource-infeasible after a complete projection; HARD_RESOURCE_CEILING_BREACHED and every malformed/operational/supervision/cleanup/seal code map only to failed. The six non_publishable_internal_outcomes may be held only in bounded in-memory operator/supervisor state: lineage-authentication failure has no truthful mandatory result identity, seal-preflight failure has no safe destination/staging/root basis, result or claim collision leaves foreign/unknown state that cannot be reconciled, promotion failure leaves no trustworthy promoted result, and post-promotion failure cannot retroactively alter promoted bytes. The immutable result test rejects all six strings anywhere in a result. CLAIM_DERIVATION_FAILED is publishable only while both mandatory checkpoints remain true and claim_root plus transactional claim staging are proven absent."
+    },
+    "common_seal": {
+      "owner": "Only the authenticated outer process after run_supervised and authoritative cleanup.",
+      "shared_envelope": {
+        "maximum_total_attempts": 2,
+        "maximum_wall_seconds_total": 5.0,
+        "maximum_cpu_seconds_total": 5.0,
+        "maximum_staging_allocated_bytes": 2097152,
+        "maximum_outer_rss_bytes": 268435456
+      },
+      "first_attempt": "Authenticate child/crash aggregate, supervision, claim/tombstone, implementation, and cleanup; construct exact result schema; enforce size/RSS/time; create the exact staging root and write one exclusive regular staging file initially mode 0600, fsync and reauthenticate bytes, then set the staged file 0444, fsync file and staging directory, and reauthenticate inode/hash/size/mode/link count before promotion. Atomically rename that already read-only file no-replace with Linux renameat2 RENAME_NOREPLACE to the absent public result on the same filesystem, fsync both rename parents, perform no post-promotion result mutation, and validate exact promoted inode/hash/size/mode/schema. Remove the now-empty publication_staging_root, fsync its parent again after rmdir, and lstat-reauthenticate staging-root absence before the final envelope sample and completion receipt.",
+      "single_fallback": "One minimal aggregate-only G3_G4_GIN300_FAILED fallback is allowed only when the first proposed status was already non-success, preseal cleanup had verified runtime_retained=false and snap_retained=false, and the first seal attempt has a controlled serialization, validation, size, RSS, or time defect strictly before promotion and not a destination collision. Delete owned staging, reuse only those already-verified non-success cleanup/tombstone facts, construct the same exact top-level schema with unavailable phase aggregates false/null and failure code COMMON_SEAL_PREPROMOTION_FAILED, then make one final attempt inside the original shared envelope. It is not a scientific/runtime/parity retry and never downgrades a proposed success.",
+      "no_fallback_cases": "No fallback, deletion/overwrite/move of destination bytes, repair, or second result is allowed when the first proposed status was success; for preflight/final destination collision, claim collision, rename/promotion error, ambiguous promotion state, fsync error after promotion, post-promotion validation error, fallback defect, or exhausted envelope; or after fallback begins. Preserve any destination bytes and retain the tombstone if consumed. On every unsealed seal failure, revoke all success-retention authority, best-effort remove owned staging plus runtime, SNAP, and every mutable root, and stop with no public cleanup claim; this emergency cleanup is outside the five-second publication envelope, cannot create/alter a result, and is not retry, resume, or downstream authority. Any destination bytes left by promotion/post-promotion failure plus a nonzero or ambiguous runner completion are permanently non-authoritative and may never be staged, committed, integrated, or used by the result test to rehabilitate the attempt, even when their JSON schema happens to validate.",
+      "preconsumption_failure": "Only after mandatory lineage_authenticated and seal_preflight_authenticated checkpoints, a remaining uv/bwrap/CA tool-check failure, supervisor-start failure, child-ready failure, safely and completely reaped ready/ACK-transport supervision failure, claim-derivation failure, or completely enforced hard-resource breach before claim promotion may common-seal aggregate G3_G4_GIN300_FAILED with claim_consumed=false. First stop/reap any started tree, clean every owned transient path, prove claim_root and transactional claim staging absent with no tombstone, and reauthenticate every bound safe destination/staging/root absence. No other preconsumption class is publishable. A system-Python, Git, branch/HEAD/parent, contract/runtime/notices/fixture, seven-file, result-absence, parent, fixed-root, staging, collision, ambiguous-rename, or mandatory-checkpoint authentication failure is internal and nonpublishable because mandatory identity or safe-seal facts are not established.",
+      "postconsumption_failure": "After atomic claim promotion, every crash/interruption remains consumed. The outer retains/authenticates the tombstone, performs authoritative cleanup, synthesizes bounded aggregate FAILED when child payload is missing/malformed, and common-seals when possible without retry or resume."
+    },
+    "presence_and_collision": "The result path must be lstat-absent and untracked at D148/D149 and lstat-absent at D150 outer preflight before claim consumption. Any preflight file, directory, symlink, hardlink alias, or race collision fails closed; no existing bytes are read as this attempt, removed, moved, overwritten, or used to justify a retry. After D150, validation follows the exact absent/present times untracked/tracked four-case rule frozen in the result test: live untracked seal mode is 0444, whereas an integrated Git checkout is exact regular mode 100644 in Git and may materialize as filesystem 0644 or retained 0444.",
+    "d150_operator_integration_gate": "The operator may run git add or modify the six narratives/ledger only after the exact formal command exits zero and emits the exact outer_completion_receipt whose SHA-256 matches the final result bytes. This is a seal-success receipt for any valid terminal status, not scientific acceptance and not a ninth file. Nonzero/ambiguous completion, missing/malformed receipt, receipt-hash mismatch, or any unsealed/post-promotion defect permanently forbids staging or integrating whatever destination bytes may remain; a standalone schema test cannot override this gate."
+  },
+  "future_d150_formal_one_use_boundary": {
+    "claim_id": "GLOBAL_V3_G4_GIN300_CAPABILITY_ATTEMPT_1",
+    "current_claim_status": "NOT_CREATED_D148_HAS_ZERO_EXECUTION_AUTHORITY",
+    "future_public_terminal_path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_result.json",
+    "future_terminal_presence_at_d148_freeze": false,
+    "creation_preconditions": "D148 and the exact 14-path D149 implementation package are each independently reviewed, SSH-signed once by zchboswell, integrated locally fast-forward-only without rewrite, pushed, and green on their exact-SHA post-main CI. Before the no-argument D150 invocation, the human/orchestrator verifies the reviewed PR, full clean symbolic main, and exact D149 post-main-green run externally and later records that evidence only in the allowed D150 narratives/ledger; the immutable offline runner neither receives nor claims to authenticate a CI run id, lane count, or unrelated-worktree cleanliness. Machine preflight authenticates exact symbolic-main topology at the integrated D149 commit, its sole D148 parent, the exact 11 stage/HEAD/worktree input blobs comprising five implementation/lock files, two tests, and D148 contract/runtime/notices/fixture, plus direct system Python, uv, bwrap, exact host Git, and the frozen CA bundle. The public result is absent; all six fixed roots and transactional claim-staging path are absent; no runtime, wheel, checkpoint, metadata, cache, claim, or attempt state exists. Any known mismatch is a pre-consumption failure and must not burn the claim.",
+    "external_d149_integration_gate": "The D149 reviewed-PR identity, signed fast-forward integration, push, exact-SHA post-main run id, and all-green lane evidence are mandatory operator/orchestrator preconditions but are deliberately outside claim/result machine inputs. They may be written only to the six D150 narrative surfaces and ledger after the formal invocation. This narrow external gate does not grant an argument, environment variable, network call, receipt file, alternate CLI, or ninth D150 path.",
+    "claim_contract": {
+      "root": "claim_root from network_fetch_offline_sandbox_and_cleanup.private_roots",
+      "file": "claim_root/attempt_claim.json",
+      "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_capability_claim.v1",
+      "maximum_bytes": 65536,
+      "canonical_encoding": "The same strict canonical JSON encoding as the result contract.",
+      "exact_keys_in_order": [
+        "schema_version",
+        "claim_id",
+        "nonce",
+        "d148_commit",
+        "d148_contract_sha256",
+        "runtime_manifest_sha256",
+        "d149_commit",
+        "implementation_hashes",
+        "implementation_hashes_sha256",
+        "fixed_roots",
+        "public_result_path",
+        "object_identities",
+        "tool_identities",
+        "resource_limits",
+        "allowed_statuses",
+        "created_at_utc"
+      ],
+      "implementation_hash_keys_in_order": [
+        "research/maplight-gin-openadmet/.python-version",
+        "research/maplight-gin-openadmet/pyproject.toml",
+        "research/maplight-gin-openadmet/uv.lock",
+        "research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py",
+        "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py",
+        "tests/test_openadmet_global_v3_g4_gin300_capability.py",
+        "tests/test_openadmet_global_v3_g4_gin300_capability_result.py"
+      ],
+      "fixed_root_keys_in_order": [
+        "attempt_root",
+        "runtime_root",
+        "wheel_cache_root",
+        "object_root",
+        "claim_root",
+        "publication_staging_root",
+        "transactional_claim_staging_path"
+      ],
+      "object_identity_keys_in_order": [
+        "runtime_manifest_sha256",
+        "interpreter_archive_sha256",
+        "interpreter_archive_size_bytes",
+        "interpreter_sidecar_sha256",
+        "interpreter_sidecar_size_bytes",
+        "wheel_inventory_sha256",
+        "wheel_count",
+        "wheel_total_size_bytes",
+        "snap_sha256",
+        "snap_size_bytes",
+        "dgl_expected_size_bytes",
+        "dgl_expected_etag_token",
+        "dgl_sha256_at_claim",
+        "dgl_first_hash_rule",
+        "molfeat_metadata_sha256",
+        "molfeat_metadata_size_bytes",
+        "molfeat_model_sha256",
+        "molfeat_model_size_bytes"
+      ],
+      "tool_identity_keys_in_order": [
+        "system_python_basename",
+        "system_python_version",
+        "system_python_sha256",
+        "system_python_st_dev",
+        "system_python_st_ino",
+        "system_python_st_mode",
+        "system_python_st_size",
+        "uv_basename",
+        "uv_version",
+        "uv_sha256",
+        "uv_st_dev",
+        "uv_st_ino",
+        "uv_st_mode",
+        "uv_st_size",
+        "bwrap_basename",
+        "bwrap_version",
+        "bwrap_sha256",
+        "bwrap_st_dev",
+        "bwrap_st_ino",
+        "bwrap_st_mode",
+        "bwrap_st_size",
+        "git_basename",
+        "git_version",
+        "git_sha256",
+        "git_st_dev",
+        "git_st_ino",
+        "git_st_mode",
+        "git_st_size",
+        "ca_bundle_public_path",
+        "ca_bundle_sha256",
+        "ca_bundle_st_dev",
+        "ca_bundle_st_ino",
+        "ca_bundle_st_mode",
+        "ca_bundle_st_size"
+      ],
+      "resource_limit_keys_in_order": [
+        "wall_seconds",
+        "cpu_seconds",
+        "restricted_storage_bytes",
+        "rss_bytes",
+        "gpu_hours",
+        "seal_wall_seconds",
+        "seal_cpu_seconds",
+        "seal_staging_bytes",
+        "seal_rss_bytes"
+      ],
+      "fixed_roots_exact_values": {
+        "attempt_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-capability-attempt-1",
+        "runtime_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-linux-runtime-v1",
+        "wheel_cache_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-wheel-cache-v1",
+        "object_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-object-store-v1",
+        "claim_root": "/home/zbos/cypshift-private/openadmet-2026/g3-g4-gin300-capability-claim-1",
+        "publication_staging_root": "/home/zbos/cypshift-private/openadmet-2026/.g3-g4-gin300-capability-terminal-staging",
+        "transactional_claim_staging_path": "/home/zbos/cypshift-private/openadmet-2026/.g3-g4-gin300-capability-claim-staging-1"
+      },
+      "object_identities_exact_values": {
+        "runtime_manifest_sha256": "67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01",
+        "interpreter_archive_sha256": "d995d032ca702afd2fc3a689c1f84a6c64972ecd82bba76a61d525f08eb0e195",
+        "interpreter_archive_size_bytes": 27409290,
+        "interpreter_sidecar_sha256": "9e57b23cb72164f981d9c6a52bdb555557639de897631f54fe1255181464e4b3",
+        "interpreter_sidecar_size_bytes": 65,
+        "wheel_inventory_sha256": "f31d9d9b760c809d819ce5b0969e4339788b11659c45f2fdc3fbdb72f64edba9",
+        "wheel_count": 96,
+        "wheel_total_size_bytes": 539395366,
+        "snap_sha256": "375cd40af9f21d2a92ed1acbdea9efad14254c36703bb0e3a7e433e09e624ce1",
+        "snap_size_bytes": 7452448,
+        "dgl_expected_size_bytes": 7454321,
+        "dgl_expected_etag_token": "98fae61c9c23ce19ce4e57614f0f9450",
+        "dgl_sha256_at_claim": null,
+        "dgl_first_hash_rule": "The first streamed D150 body SHA-256 is computed and immutably receipted before any deserialization and is the only DGL SHA-256 accepted for the consumed attempt.",
+        "molfeat_metadata_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
+        "molfeat_metadata_size_bytes": 606,
+        "molfeat_model_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
+        "molfeat_model_size_bytes": 7467310
+      },
+      "tool_identities_exact_static_values": {
+        "system_python_basename": "python3.12",
+        "system_python_version": "3.12.3",
+        "system_python_sha256": "1643dacd9feaedc58f3cc581e4d22577dfe25c09b10282936186ccf0f2e61118",
+        "uv_basename": "uv",
+        "uv_version": "0.12.3",
+        "uv_sha256": "729d27dbea534ee540a2d3ef43a62fa1a10af7fcbb6d57a70d5859509f624578",
+        "bwrap_basename": "bwrap",
+        "bwrap_version": "0.9.0",
+        "bwrap_sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712",
+        "git_basename": "git",
+        "git_version": "2.43.0",
+        "git_sha256": "2a8c18fbf43da9f692d75474c72bea9dfd796c260b0f3dfe456376abc3bbd668",
+        "ca_bundle_public_path": "/etc/ssl/certs/ca-certificates.crt",
+        "ca_bundle_sha256": "6602a85a36afc2e51c66a0df5ae3d383c5b7c2fed93339ccef7d37e01faf09e8"
+      },
+      "resource_limits_exact_values": {
+        "wall_seconds": 43200,
+        "cpu_seconds": 345600,
+        "restricted_storage_bytes": 32000000000,
+        "rss_bytes": 17179869184,
+        "gpu_hours": 0,
+        "seal_wall_seconds": 5.0,
+        "seal_cpu_seconds": 5.0,
+        "seal_staging_bytes": 2097152,
+        "seal_rss_bytes": 268435456
+      },
+      "top_level_value_rules": "schema_version and claim_id equal the frozen constants; nonce follows nonce_derivation; d148_commit is the exact integrated signed D148 40-hex commit; d148_contract_sha256 is the final tracked contract byte hash; runtime_manifest_sha256 equals the frozen runtime hash; d149_commit is the exact integrated signed D149 40-hex commit; implementation_hashes has the exact seven keys and lowercase SHA-256 values; public_result_path equals the frozen repository-relative path; allowed_statuses equals the result status array exactly; created_at_utc is strict UTC seconds. No CI run id or lane count enters the claim/result. No other key or value source exists.",
+      "nonce_derivation": "implementation_hashes_sha256 is SHA-256 of the compact UTF-8 canonical JSON implementation_hashes mapping with separators comma/colon and insertion order above. nonce is lowercase SHA-256 of the exact UTF-8 concatenation `GLOBAL_V3_G4_GIN300_CAPABILITY_ATTEMPT_1\n` + d148_contract_sha256 + `\n` + d149_commit + `\n` + implementation_hashes_sha256 + `\n` + runtime_manifest_sha256 + `\n`. No random, time, host, PID, path, or mutable input enters it.",
+      "fixed_and_object_contents": "Every nested mapping uses its exact key order above. fixed_roots and object_identities equal their exact-value mappings byte-for-value. tool_identities interleaves each frozen Python/uv/bwrap/Git basename-or-public-path, version where applicable, and hash with the authenticated nonnegative integer st_dev/st_ino/st_mode/st_size observed at D150 preflight; it records no private resolved path. The same four stat values plus hash/version reauthenticate before each later uv, bwrap, or Git use, and the CA bundle identity reauthenticates before fetch. resource_limits equals its exact-value mapping. allowed_statuses equals future_d150_result_contract.allowed_statuses in order. created_at_utc is strict canonical UTC seconds and has no authority role.",
+      "atomic_consumption": "Only after stage:child_ready_preclaim acknowledgment, build the complete canonical claim under the sole transactional claim-staging path with mkdir/open exclusive no-follow semantics, staging directory 0700, file 0600, bounded writes, file fsync, and byte reauthentication. Before promotion, set the staged claim file 0444 and staged root 0555, then fsync both and reauthenticate regular-file/root inode, owner, link counts, modes, exact bytes, and SHA-256 so a crash immediately after promotion cannot expose a writable tombstone. Atomically promote that already finalized directory to absent claim_root with Linux renameat2 RENAME_NOREPLACE, fsync the parent, and post-promotion only reauthenticate/fsync without mutation. claim_sha256 everywhere means SHA-256 of the exact canonical attempt_claim.json bytes. Successful no-replace promotion is the sole consumption instant and permanent tombstone. The staging path is absent afterward.",
+      "collision_and_crash": "Any claim-root or staging collision, symlink, alias, ownership/mode/link mismatch, ambiguous rename, or malformed bytes fails closed without overwrite, move, repair, or retry. Before successful promotion claim_consumed=false; after promotion every crash/interruption is consumed forever. The outer never removes a valid tombstone."
+    },
+    "supervision_claim_cleanup_seal_chronology": [
+      "1. Outer reaches mandatory lineage_authenticated, then mandatory seal_preflight_authenticated over the result/staging parents and all absent roots, then authenticates remaining uv/bwrap/CA tool bytes; it creates no root or network state.",
+      "2. With both mandatory checkpoints still true, outer calls its runner-local run_supervised once using inherited descriptors and bounded memory only; outer never derives or consumes a claim.",
+      "3. The stdlib child authenticates itself and emits acknowledged stage:child_ready_preclaim before filesystem or network activity.",
+      "4. Child derives and stages the exact claim, makes the staged file/root 0444/0555, fsyncs and reauthenticates final bytes/modes, then atomically promotes it no-replace and performs only post-promotion reauthentication/fsync with no mutation. Only after that permanent tombstone authenticates may it create attempt/runtime/wheel/object roots or call the sole fetch function.",
+      "5. The same supervised child fetches and installs the exact runtime, verifies rights/objects, then launches every scientific operation in the frozen nested offline sandbox under one cumulative observation. Eight-row parity either completes exactly before later work or enters only the frozen numeric-provisional state; that state must complete the exact 48-prediction fallback after the two candidate probes before parity/resource acceptance.",
+      "6. Child performs best-effort mutable cleanup, stages at most one bounded aggregate-only payload, and returns without publishing a result.",
+      "7. Outer handles return/crash, authenticates or replaces malformed/missing child evidence with bounded aggregate FAILED, authoritatively cleans and verifies all mutable roots while retaining the tombstone and success-only runtime plus SNAP.",
+      "8. Only after cleanup facts are complete, outer invokes the one common seal and atomically publishes at most one canonical no-replace aggregate result. No retry or resume exists."
+    ],
+    "sole_authorized_operations_after_consumption": "Fetch exactly 96 wheels, one interpreter archive, one checksum sidecar, three checkpoint/model objects, and one 606-byte MolFeat provenance-metadata object; create the exact runtime; verify rights/notices/object identities; deserialize only in the offline sandbox; execute exact tensor/graph gates and eight-row embeddings; either complete exact parity immediately or enter only the frozen numeric-provisional state; execute two uncached 3,908-row converted-SNAP GIN probes; build two official-shaped synthetic roots; traverse 180 model-double fit identities and 140,688 prediction rows per root; perform exactly six real CatBoost fits and 4,692 validation predictions; only in the numeric-provisional branch execute exactly 48 candidate-model fallback predictions and require them to complete parity; project resources only after parity completes; stage one aggregate child payload; clean and verify; then outer common-seals one aggregate result.",
+    "forbidden_after_consumption": "No code edit, lock edit, dependency resolution, alternate wheel, alternate checkpoint, retry, resume, repair, second root pair, second real probe, result-dependent tolerance, official/private/protected input, target-bearing challenge byte, fixed-baseline row, metric, bootstrap, selection, contender, confirmatory/test/TDI row, submission, validator, leaderboard selection, portal credential, or upload.",
+    "preconsumption_and_postconsumption_failures": "Before claim promotion, a public aggregate FAILED is possible only after lineage_authenticated and seal_preflight_authenticated are both true, every safe destination/staging/fixed-root absence remains reauthenticated, and the failure is the later frozen outer-tool, supervisor-start, child-ready, safely and completely reaped ready/ACK-transport supervision, claim-derivation, or completely enforced hard-resource class with claim_root and transactional staging proven absent. Lineage failure, seal-preflight failure, result collision, claim collision, unsafe/incompletely reaped supervision state, or any ambiguous root/rename state is internal and nonpublishable. Every failure after successful claim promotion retains claim_consumed=true and the authenticated tombstone, performs outer cleanup, and publishes bounded aggregate FAILED only when mandatory seal facts remain true. A collision, ambiguous promotion, promotion defect, or post-promotion defect prevents authoritative publication and never authorizes overwrite, fallback, repair, or retry.",
+    "terminal_publication": "Use only future_d150_result_contract. Publish exactly one no-replace aggregate JSON result after classification and verified cleanup. Partial work, private rows, embeddings, models, predictions, and logs are never a terminal and never grant authority.",
+    "attempt_limit": 1,
+    "retry_limit": 0,
+    "resume_allowed": false,
+    "move_or_overwrite_allowed": false
+  },
+  "terminal_classification": {
+    "precedence": [
+      "G3_G4_GIN300_FAILED for malformed lineage, claim, implementation, runtime, schema, topology, accounting, operational, publication, or cleanup integrity",
+      "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED for rights, notice, object, hash, tensor, graph, embedding, Linux parity, or nonredistribution failure after integrity is established",
+      "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT for a complete valid capability whose frozen 20-percent-margin resource gate misses",
+      "G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED only when every prior gate and every resource maximum passes"
+    ],
+    "capability_success": {
+      "status": "G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED",
+      "meaning": "Rights/provenance disclosures, exact object identities, tensor conversion, graph construction, three-path fixture parity, official-shaped synthetic mechanics, deterministic real API probe, resource margin, sandbox, publication, and cleanup passed.",
+      "authority": "Capability-only engineering evidence. After reviewed signed integration and exact-SHA post-main green, it may support a separate immutable one-use label-free official feature contract and claim. It does not authorize an official row now and is not scientific ACCEPTED."
+    },
+    "ineligible": {
+      "status": "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED",
+      "effect": "Permanently close EXP-G4-GIN300 with zero official access and no in-place repair, fallback, alternate artifact, or automatic successor."
+    },
+    "resource_infeasible": {
+      "status": "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT",
+      "effect": "Permanently close EXP-G4-GIN300 before official access or claim creation for a later feature/development attempt."
+    },
+    "failed": {
+      "status": "G3_G4_GIN300_FAILED",
+      "effect": "Permanently close the sole capability lane and attempt whether failure occurs before or after claim promotion; incomplete or malformed work has no retry, parity, resource, scientific, or downstream authority."
+    },
+    "reserved_later_status": {
+      "status": "G3_G4_GIN300_RESOURCE_ABORTED",
+      "rule": "Reserved exclusively for a later hard claim-bound official label-free feature or official development resource breach. The D148-D150 capability sequence may not emit this status."
+    }
+  },
+  "current_d148_accounting": {
+    "scope": "Incremental D148 activity only. D148 made the exact or explicitly lower-bounded public metadata/HEAD/source reads enumerated below. It fetched zero checkpoint/model, interpreter-archive, wheel, transformer-model, or tokenizer-model bodies and executed no artifact, but did read the separately disclosed 606-byte MolFeat metadata, 65-byte checksum sidecar, and 1,495-byte build-project license bodies. Raw runtime-evidence HTTP transaction/retry/cache totals and aggregate metadata-response bytes were not instrumented and are not guessed. This does not erase D147's disclosed temporary public SNAP source archive, 33 temporarily persisted public checkpoint files totaling 204,567,885 bytes, or one 7,452,448-byte SNAP checkpoint opened only for hashing; those historical counts remain bound by the integrated D147 contract.",
+    "contracts_created": 1,
+    "third_party_notice_files_created": 1,
+    "runtime_manifest_files_created": 1,
+    "public_static_test_files_created": 1,
+    "runtime_environments_created": 0,
+    "interpreter_archives_downloaded_or_extracted": 0,
+    "runtime_wheels_downloaded_or_installed": 0,
+    "checkpoint_network_requests": 6,
+    "checkpoint_head_requests": 6,
+    "checkpoint_body_get_requests": 0,
+    "provenance_metadata_head_requests": 1,
+    "provenance_metadata_get_requests": 1,
+    "provenance_metadata_body_bytes": 606,
+    "interpreter_artifact_head_requests": 2,
+    "artifact_body_bytes_from_d148_head_checks": 0,
+    "runtime_pypi_release_json_distinct_resources": 95,
+    "runtime_spdx_license_json_distinct_resources": 9,
+    "runtime_pytorch_cpu_simple_index_distinct_resources": 1,
+    "runtime_interpreter_github_release_or_tag_metadata_resources_at_least": 1,
+    "runtime_interpreter_github_release_or_tag_metadata_exact_total_retained": false,
+    "runtime_interpreter_checksum_sidecar_get_requests": 1,
+    "runtime_interpreter_checksum_sidecar_body_bytes": 65,
+    "runtime_build_project_license_get_requests": 1,
+    "runtime_build_project_license_body_bytes": 1495,
+    "runtime_torch_wheel_head_requests_at_least": 2,
+    "runtime_torch_wheel_head_request_exact_total_retained": false,
+    "runtime_torch_wheel_body_bytes": 0,
+    "exact_small_provenance_checksum_license_body_bytes": 2166,
+    "exact_small_body_bytes_formula": "606 MolFeat metadata + 65 interpreter checksum sidecar + 1495 python-build-standalone license",
+    "runtime_public_http_transaction_exact_total_retained": false,
+    "runtime_public_metadata_response_bytes_exact_total_retained": false,
+    "public_source_requests_at_least": 15,
+    "public_source_request_exact_total_retained": false,
+    "public_source_response_bytes_exact_total_retained": false,
+    "checkpoint_files_fetched_or_retained": 0,
+    "checkpoint_bytes_fetched_or_read": 0,
+    "checkpoint_tensors_deserialized_or_executed": 0,
+    "implementation_files_created": 0,
+    "claims_created_or_consumed": 0,
+    "parity_processes_executed": 0,
+    "graphs_built": 0,
+    "gin_feature_rows_built": 0,
+    "synthetic_feature_rows_built": 0,
+    "official_inputs_opened": 0,
+    "official_structure_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "baseline_prediction_rows_opened": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "development_metrics": 0,
+    "bootstrap_replicates": 0,
+    "selection_tokens": 0,
+    "contenders_locked": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "validator_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "portal_credentials_opened": 0,
+    "live_uploads": 0,
+    "gpu_hours": 0
+  },
+  "invalidation": "Any D147 lineage or CI mismatch; parent, fixture, runtime-manifest, notice, source, license, URL, object, tensor-map, graph, parity, synthetic-topology, CatBoost, traversal, prediction, resource, sandbox, cleanup-before-seal, result schema, status, one-use, accounting, implementation allowlist, or zero-authority drift invalidates this contract and blocks D149 implementation and D150 execution. Invalidation cannot reopen any closed lane or authorize an alternate G4 path.",
+  "next_gate": "After this exact D148 package is independently audited, SSH-signed once by zchboswell, reviewed on an exact-head pull request with all checks green, fast-forward integrated locally without rewriting, pushed to main, and green on exact-SHA post-main CI, D149 may create and validate only the exact 14-path zero-execution implementation/evidence package; it may not create the result or consume the claim. Only after exact D149 review, SSH-signed fast-forward integration, push, and exact-SHA post-main green may D150 run the frozen direct-system-Python CLI once, consume the sole claim, and create the eight-path result/evidence package. Until D150 claim consumption no artifact body, runtime, checkpoint deserialization, graph, embedding, synthetic root, CatBoost fit, prediction, resource projection, claim, official row, metric, contender, submission, portal, or upload operation is authorized."
+}

@@ -1,0 +1,4008 @@
+{
+  "contract_only_accounting": {
+    "checkpoint_or_model_bytes_downloaded": 0,
+    "checkpoint_or_model_bytes_loaded": 0,
+    "dependency_or_project_runtime_changes": 0,
+    "embeddings_generated": 0,
+    "external_transformer_or_tokenizer_model_bytes_downloaded": 0,
+    "feature_builder_files_created": 0,
+    "imports_executed_in_frozen_runtime": 0,
+    "interpreter_archives_downloaded": 0,
+    "model_fits": 0,
+    "official_rows_or_targets_opened": 0,
+    "package_wheels_installed": 0,
+    "parity_executions": 0,
+    "runtime_environments_created": 0,
+    "synthetic_rows_or_labels_executed": 0
+  },
+  "freeze_date": "2026-08-30",
+  "installation_policy": {
+    "allowed_artifact_type": "Only the sole claim-bound D150 formal run may use exactly one enumerated install-only interpreter archive plus exactly one enumerated bdist_wheel per package, each authenticated by URL, filename, SHA-256, and byte size.",
+    "fetch_boundary": "D148 may inspect public package-index, release, rights, and HEAD metadata only. D149 is implementation, exact-lock, and static-validation only: it may not fetch an artifact body, create or extract an interpreter or runtime, install a wheel, import the frozen runtime, or execute parity. Only the sole claim-bound D150 formal run, after reviewed signed D149 integration and green exact-SHA post-main CI, may fetch the exact enumerated interpreter archive and package wheels into isolated non-Git storage and install them.",
+    "forbidden_accelerator_tokens_casefolded": [
+      "cuda",
+      "cudnn",
+      "hip",
+      "nccl",
+      "nvidia",
+      "rocm",
+      "triton"
+    ],
+    "forbidden_artifact_types": [
+      "sdist",
+      "VCS checkout",
+      "editable install",
+      "local path dependency",
+      "unhashed URL",
+      "alternate wheel",
+      "source build"
+    ],
+    "forbidden_packages": [
+      "cmake",
+      "lit",
+      "triton",
+      "nvidia-cublas-cu11",
+      "nvidia-cuda-cupti-cu11",
+      "nvidia-cuda-nvrtc-cu11",
+      "nvidia-cuda-runtime-cu11",
+      "nvidia-cudnn-cu11",
+      "nvidia-cufft-cu11",
+      "nvidia-curand-cu11",
+      "nvidia-cusolver-cu11",
+      "nvidia-cusparse-cu11",
+      "nvidia-nccl-cu11",
+      "nvidia-nvtx-cu11"
+    ],
+    "interpreter_artifact_boundary": "The exact python-build-standalone install_only archive is a CPython interpreter distribution, not an allowed Python package sdist. The sole claim-bound D150 formal run must verify its archive and sidecar before extraction, record the installed executable hash, inspect bundled PYTHON.json licensing, and reject every alternate interpreter artifact.",
+    "network_boundary": "D149 may issue no interpreter-archive, wheel, checkpoint, model, or tokenizer artifact-body request. Only the sole claim-bound D150 formal run, after consuming its formal claim, may use network to fetch the exact enumerated interpreter archive, wheels, and separately frozen public checkpoint objects. Network must be disabled before import, checkpoint deserialization, graph construction, parity, embedding, synthetic model, or timing execution.",
+    "project_dependency_boundary": "All GIN/runtime packages remain outside the installable cypshift core and do not modify pyproject.toml or uv.lock.",
+    "replacement_boundary": "No resolver update, alternate index, yanked replacement, source build, dependency relaxation, package add/remove, or version substitution is authorized. Any static mismatch blocks D149 integration; any later mismatch closes the D150 formal run before runtime execution.",
+    "transformer_extra_boundary": "huggingface-hub, regex, safetensors, sentencepiece, tokenizers, and transformers are import-compatibility dependencies only. No model/tokenizer artifact, remote repository, cache population, or network inference is authorized.",
+    "wheel_license_boundary": "The sole claim-bound D150 formal run must inspect and retain all license, attribution, copyright, and NOTICE members carried by every fetched wheel, publish only aggregate rights receipts, and fail closed on a missing/incompatible notice. No wheel is redistributed by D148 or D149."
+  },
+  "inventory": {
+    "dependency_edge_count": 185,
+    "dependency_edges_sha256": "b7ce0c4706520beacbb761671706563c8a702d54022297f197c84048275d29b1",
+    "direct_runtime_root_count": 11,
+    "interpreter_archive_count": 1,
+    "interpreter_archive_size_bytes": 27409290,
+    "license_assignment_count": 96,
+    "license_assignments_sha256": "dafbe12e4300c29b08bda431ec3613271b5bc02df4f954c4927b9ba0140561fb",
+    "package_count": 96,
+    "post_cutoff_interpreter_distribution_count": 1,
+    "post_cutoff_python_package_wheel_exception_count": 1,
+    "resolved_package_set_sha256": "f6bddf33d6b33c6319cd42513879ac0366619ee022ce451fe688ac588bf87e1c",
+    "runtime_distribution_artifact_count": 97,
+    "runtime_distribution_inventory_digest_contract": {
+      "algorithm": "sha256",
+      "canonical_json_serialization": {
+        "allow_nan": false,
+        "encoding": "UTF-8",
+        "ensure_ascii": false,
+        "indent": null,
+        "separators": [
+          ",",
+          ":"
+        ],
+        "sort_keys": true,
+        "terminal_newline": false
+      },
+      "interpreter_record_projection": {
+        "artifact_type": {
+          "literal": "interpreter_archive"
+        },
+        "filename": {
+          "source": "target.interpreter.archive_filename"
+        },
+        "name": {
+          "literal": "python"
+        },
+        "sha256": {
+          "source": "target.interpreter.archive_sha256"
+        },
+        "size_bytes": {
+          "source": "target.interpreter.archive_size_bytes"
+        },
+        "url": {
+          "source": "target.interpreter.archive_url"
+        },
+        "version": {
+          "source": "target.interpreter.version"
+        }
+      },
+      "record_order_fields": [
+        "artifact_type",
+        "name",
+        "version",
+        "filename"
+      ],
+      "record_order_rule": "Ascending Unicode code-point order on the listed string fields, in listed priority order.",
+      "wheel_record_projection": {
+        "artifact_type": {
+          "literal": "bdist_wheel"
+        },
+        "filename": {
+          "source": "packages[].wheel.filename"
+        },
+        "name": {
+          "source": "packages[].name"
+        },
+        "sha256": {
+          "source": "packages[].wheel.sha256"
+        },
+        "size_bytes": {
+          "source": "packages[].wheel.size_bytes"
+        },
+        "url": {
+          "source": "packages[].wheel.url"
+        },
+        "version": {
+          "source": "packages[].version"
+        }
+      }
+    },
+    "runtime_distribution_inventory_sha256": "f1949018f8d3e572b727517465fb7dcdbc12a03aa01c8dcb36967c56910212b2",
+    "runtime_distribution_total_size_bytes": 566804656,
+    "scientific_root_count": 7,
+    "selected_wheel_count": 96,
+    "selected_wheel_inventory_sha256": "f31d9d9b760c809d819ce5b0969e4339788b11659c45f2fdc3fbdb72f64edba9",
+    "selected_wheel_total_size_bytes": 539395366,
+    "transitive_runtime_dependency_count": 85
+  },
+  "known_risks_and_fail_closed_checks": [
+    "The interpreter identity is frozen by one python-build-standalone archive and its checksum sidecar. The sole claim-bound D150 formal run must verify the archive before extraction, then publish the installed executable hash and bundled PYTHON.json notice hash; D148 and D149 download or execute neither.",
+    "The future 1.0.0 wheel is the only Python package wheel uploaded after the historical package-wheel cutoff and has not been executed with this historical stack; D150 fixture parity is mandatory and outcome-independent.",
+    "The transformer extra is frozen solely because MolFeat 0.9.2 initialization statically imports optional Hugging Face modules on the DGL path; it authorizes no transformer model or tokenizer artifact. D149 must encode and statically audit external model fetching as disabled, and D150 must enforce that boundary throughout the formal run.",
+    "The PyTorch simple index does not publish a PEP 658 sidecar or byte size for the selected wheel. D148 binds the index fragment SHA-256 and an HTTP HEAD Content-Length of 195422835 bytes; the sole claim-bound D150 formal run must verify both after the authorized fetch and before installation.",
+    "SPDX expressions are curated from release metadata and classifiers, while catalog hashes cover canonical SPDX licenseText strings. The sole claim-bound D150 formal run must separately inspect actual wheel-bundled license and NOTICE members before installation or redistribution.",
+    "No vulnerability upgrade or security-driven version substitution is authorized inside EXP-G4-GIN300. An unacceptable runtime risk closes the lane rather than changing this closure.",
+    "Resolution is compatibility evidence only. It proves no import, checkpoint, graph, tensor, embedding, prediction, resource, or scientific parity."
+  ],
+  "license_catalog": {
+    "Apache-2.0": {
+      "license_text_bytes": 10280,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+      "name": "Apache License 2.0",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/Apache-2.0.json"
+    },
+    "BSD-2-Clause": {
+      "license_text_bytes": 1267,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df",
+      "name": "BSD 2-Clause \"Simplified\" License",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/BSD-2-Clause.json"
+    },
+    "BSD-3-Clause": {
+      "license_text_bytes": 1460,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "5a93d5831e1297ab10fe643e1a631e83be392896da14ee2951285a79012df69d",
+      "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/BSD-3-Clause.json"
+    },
+    "HPND": {
+      "license_text_bytes": 1187,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "4d9ae4a36816338dfa153d1d6f92645c45f25eaa46908d3096922e2431fb571e",
+      "name": "Historical Permission Notice and Disclaimer",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/HPND.json"
+    },
+    "ISC": {
+      "license_text_bytes": 823,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "f2ec607f67bb0dd3053b49835b02110d5cd0f8eb6da3aac4dc0b142a6b299be9",
+      "name": "ISC License",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/ISC.json"
+    },
+    "MIT": {
+      "license_text_bytes": 1078,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "name": "MIT License",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/MIT.json"
+    },
+    "MPL-2.0": {
+      "license_text_bytes": 16727,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+      "name": "Mozilla Public License 2.0",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/MPL-2.0.json"
+    },
+    "PSF-2.0": {
+      "license_text_bytes": 2427,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "ab745c5061d1dea43a3885e5b4b6befc7e983954954775c5736debeefcdfd89b",
+      "name": "Python Software Foundation License 2.0",
+      "osi_approved": false,
+      "source_url": "https://spdx.org/licenses/PSF-2.0.json"
+    },
+    "Unlicense": {
+      "license_text_bytes": 1211,
+      "license_text_serialization": "UTF-8 bytes of the decoded SPDX JSON licenseText string, with no added newline",
+      "license_text_sha256": "0bdebfeda07d45dada625ae1317c6f833186e798b171d0db640bcf32e92a8240",
+      "name": "The Unlicense",
+      "osi_approved": true,
+      "source_url": "https://spdx.org/licenses/Unlicense.json"
+    }
+  },
+  "manifest_id": "G3-G4-GIN300-D148-LINUX-X86_64-CPU-RUNTIME",
+  "next_gate": "After D148 is independently reviewed, SSH-signed, fast-forward integrated, pushed, and green on exact-SHA post-main CI, D149 may implement and statically validate only the exact locks, fetch/install sandbox, and parity/capability code. D149 may not consume the formal claim, fetch any artifact body, create or extract an interpreter or runtime, install a wheel, import the frozen runtime, deserialize a checkpoint, or execute parity. Only after reviewed signed D149 integration and green exact-SHA post-main CI may D150 consume the sole formal claim and make one isolated-runtime/provenance/parity/synthetic capability run using only these exact wheels and the separately frozen three public checkpoint objects. Any artifact, rights, notice, import, tensor, graph, parity, determinism, resource, or boundary mismatch permanently closes EXP-G4-GIN300 before official access.",
+  "packages": [
+    {
+      "dependencies": [
+        "aiohttp==3.8.6",
+        "aioitertools==0.11.0",
+        "botocore==1.31.64",
+        "wrapt==1.15.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 18,
+          "declared_license_sha256": "e99dd4b311146507c3d0a887ca12e50387fe644c8aaa86cb500b50c068062543",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/aiobotocore/2.7.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "aiobotocore",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.7.0",
+      "wheel": {
+        "filename": "aiobotocore-2.7.0-py3-none-any.whl",
+        "sha256": "aec605df77ce4635a0479b50fd849aa6b640900f7b295021ecca192e1140e551",
+        "size_bytes": 73455,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-17T16:14:05Z",
+        "url": "https://files.pythonhosted.org/packages/d0/bc/6a96a686845c9f5958fac0ecafa6050ed77d0e71553b3cfe69acbaa70191/aiobotocore-2.7.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "aiosignal==1.3.1",
+        "async-timeout==4.0.3",
+        "attrs==23.1.0",
+        "charset-normalizer==3.3.2",
+        "frozenlist==1.4.0",
+        "multidict==6.0.4",
+        "yarl==1.9.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 8,
+          "declared_license_sha256": "de7eeb1ec534ce5704b4fb4b0aba9ea51b7756ebc914f1b57b060817ae01c6ff",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/aiohttp/3.8.6/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "aiohttp",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.8.6",
+      "wheel": {
+        "filename": "aiohttp-3.8.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "0fa375b3d34e71ccccf172cab401cd94a72de7a8cc01847a7b3386204093bb47",
+        "size_bytes": 1036340,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-07T14:27:25Z",
+        "url": "https://files.pythonhosted.org/packages/41/8e/4c48881316bbced3d13089c4d0df4be321ce79a0c695d82dee9996aaf56b/aiohttp-3.8.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/aioitertools/0.11.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "aioitertools",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.11.0",
+      "wheel": {
+        "filename": "aioitertools-0.11.0-py3-none-any.whl",
+        "sha256": "04b95e3dab25b449def24d7df809411c10e62aab0cbe31a50ca4e68748c43394",
+        "size_bytes": 23683,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-09-18T02:03:58Z",
+        "url": "https://files.pythonhosted.org/packages/45/66/d1a9fd8e6ff88f2157cb145dd054defb0fd7fe2507fe5a01347e7c690eab/aioitertools-0.11.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "frozenlist==1.4.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/aiosignal/1.3.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "aiosignal",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.3.1",
+      "wheel": {
+        "filename": "aiosignal-1.3.1-py3-none-any.whl",
+        "sha256": "f8376fb07dd1e86a584e4fcdec80b36b7f81aac666ebc724e2c090300dd83b17",
+        "size_bytes": 7617,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-11-08T16:03:57Z",
+        "url": "https://files.pythonhosted.org/packages/76/ac/a7305707cb852b7e16ff80eaf5692309bde30e2b1100a1fcacdc8f731d97/aiosignal-1.3.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/annotated-types/0.6.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "annotated-types",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.6.0",
+      "wheel": {
+        "filename": "annotated_types-0.6.0-py3-none-any.whl",
+        "sha256": "0641064de18ba7a25dee8f96403ebc39113d0cb953a01429249d5c7564666a43",
+        "size_bytes": 12360,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-06T18:53:18Z",
+        "url": "https://files.pythonhosted.org/packages/28/78/d31230046e58c207284c6b2c4e8d96e6d3cb4e52354721b944d3e1ee4aa5/annotated_types-0.6.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 8,
+          "declared_license_sha256": "de7eeb1ec534ce5704b4fb4b0aba9ea51b7756ebc914f1b57b060817ae01c6ff",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/async-timeout/4.0.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "async-timeout",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.0.3",
+      "wheel": {
+        "filename": "async_timeout-4.0.3-py3-none-any.whl",
+        "sha256": "7405140ff1230c310e51dc27b3145b9092d659ce68ff733fb0cefe3ee42be028",
+        "size_bytes": 5721,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-10T16:35:55Z",
+        "url": "https://files.pythonhosted.org/packages/a7/fa/e01228c2938de91d47b307831c62ab9e4001e747789d0b05baf779a6488c/async_timeout-4.0.3-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/attrs/23.1.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "attrs",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "23.1.0",
+      "wheel": {
+        "filename": "attrs-23.1.0-py3-none-any.whl",
+        "sha256": "1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04",
+        "size_bytes": 61160,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-04-16T10:48:16Z",
+        "url": "https://files.pythonhosted.org/packages/f0/eb/fcb708c7bf5056045e9e98f62b93bd7467eb718b0202e7698eb11d66416c/attrs-23.1.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "jmespath==1.0.1",
+        "python-dateutil==2.8.2",
+        "urllib3==2.0.7"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 18,
+          "declared_license_sha256": "e99dd4b311146507c3d0a887ca12e50387fe644c8aaa86cb500b50c068062543",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/botocore/1.31.64/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "botocore",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.31.64",
+      "wheel": {
+        "filename": "botocore-1.31.64-py3-none-any.whl",
+        "sha256": "7b709310343a5b430ec9025b2e17c0bac6b16c05f1ac1d9521dece3f10c71bac",
+        "size_bytes": 11266687,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-16T19:39:41Z",
+        "url": "https://files.pythonhosted.org/packages/d0/68/6a9c405bc6c6e7d832743a458c87f21cee393ef2cf32437a0a3a07cd0ae9/botocore-1.31.64-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/cachetools/5.3.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "cachetools",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "5.3.2",
+      "wheel": {
+        "filename": "cachetools-5.3.2-py3-none-any.whl",
+        "sha256": "861f35a13a451f94e301ce2bec7cac63e881232ccce7ed67fab9b5df4d3beaa1",
+        "size_bytes": 9293,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-24T18:12:02Z",
+        "url": "https://files.pythonhosted.org/packages/a2/91/2d843adb9fbd911e0da45fbf6f18ca89d07a087c3daa23e955584f90ebf4/cachetools-5.3.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "graphviz==0.20.1",
+        "matplotlib==3.8.1",
+        "numpy==1.25.2",
+        "pandas==2.0.3",
+        "plotly==5.18.0",
+        "scipy==1.11.2",
+        "six==1.16.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 27,
+          "declared_license_sha256": "aba70acedb03d67ee088f3252d3d6d8bee4c2c0f357bd206eded53907e5bfd0e",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/catboost/1.2.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "catboost",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.2.1",
+      "wheel": {
+        "filename": "catboost-1.2.1-cp310-cp310-manylinux2014_x86_64.whl",
+        "sha256": "a7dbc9593a37b74c2573112beb26568e840f2aee6cf74926d98ca6560f509e2f",
+        "size_bytes": 98689560,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64"
+        ],
+        "upload_time_utc": "2023-08-28T11:40:45Z",
+        "url": "https://files.pythonhosted.org/packages/e9/9a/54da5a5c2a350298bda3e23013c5e2e2e837290210d54d63ef6cdaa06d1b/catboost-1.2.1-cp310-cp310-manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MPL-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 7,
+          "declared_license_sha256": "09962c1dc23fac80a0e5a88b2eb7051b74a6443a568ca2a045a4ec2fb82aeee5",
+          "license_classifiers": [
+            "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/certifi/2023.7.22/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MPL-2.0"
+      },
+      "name": "certifi",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.7.22",
+      "wheel": {
+        "filename": "certifi-2023.7.22-py3-none-any.whl",
+        "sha256": "92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9",
+        "size_bytes": 158334,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-07-22T08:39:25Z",
+        "url": "https://files.pythonhosted.org/packages/4c/dd/2234eab22353ffc7d94e8d13177aaa050113286e93e7b40eae01fbf7c3d9/certifi-2023.7.22-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/charset-normalizer/3.3.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "charset-normalizer",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.3.2",
+      "wheel": {
+        "filename": "charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "8465322196c8b4d7ab6d1e049e4c5cb460d0394da4a27d23cc242fbf0034b6b5",
+        "size_bytes": 142065,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-11-01T04:02:41Z",
+        "url": "https://files.pythonhosted.org/packages/da/f1/3702ba2a7470666a62fd81c58a4c40be00670e5006a67f4d626e57f013ae/charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/cloudpickle/3.0.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "cloudpickle",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.0.0",
+      "wheel": {
+        "filename": "cloudpickle-3.0.0-py3-none-any.whl",
+        "sha256": "246ee7d0c295602a036e86369c77fecda4ab17b506496730f2f576d9016fd9c7",
+        "size_bytes": 20088,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-16T12:51:24Z",
+        "url": "https://files.pythonhosted.org/packages/96/43/dae06432d0c4b1dc9e9149ad37b4ca8384cf6eb7700cd9215b177b914f0a/cloudpickle-3.0.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 1518,
+          "declared_license_sha256": "71fce088d32539490b264ccff6e87bf8ef50b1b1086c9dd6d3b8527416b49434",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/contourpy/1.2.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "contourpy",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.2.0",
+      "wheel": {
+        "filename": "contourpy-1.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "b69303ceb2e4d4f146bf82fda78891ef7bcd80c41bf16bfca3d0d7eb545448aa",
+        "size_bytes": 310732,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-11-03T16:56:53Z",
+        "url": "https://files.pythonhosted.org/packages/58/56/e2c43dcfa1f9c7db4d5e3d6f5134b24ed953f4e2133a4b12f0062148db58/contourpy-1.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 1487,
+          "declared_license_sha256": "cb7372e1f27c787510db83fea48ded461cb8f0e0c154017f0b1927371ab06df1",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/cycler/0.12.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "cycler",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.12.1",
+      "wheel": {
+        "filename": "cycler-0.12.1-py3-none-any.whl",
+        "sha256": "85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30",
+        "size_bytes": 8321,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-07T05:32:16Z",
+        "url": "https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "fsspec==2023.10.0",
+        "importlib-resources==6.1.0",
+        "joblib==1.3.2",
+        "loguru==0.7.2",
+        "matplotlib==3.8.1",
+        "numpy==1.25.2",
+        "packaging==23.2",
+        "pandas==2.0.3",
+        "pillow==10.1.0",
+        "platformdirs==3.11.0",
+        "scikit-learn==1.3.0",
+        "scipy==1.11.2",
+        "selfies==2.1.1",
+        "tqdm==4.66.1",
+        "typing-extensions==4.8.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "87ec4027e1c873944291bdd61ee07ed30d74d45cbb418c85ae256e0a18e9e2cc",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/datamol/0.12.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "datamol",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.12.0",
+      "wheel": {
+        "filename": "datamol-0.12.0-py3-none-any.whl",
+        "sha256": "ba4efa46c18832e4139640ec00a58e11efbb9f8d867d2b9f9ba1935c4b437633",
+        "size_bytes": 493803,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-28T01:53:04Z",
+        "url": "https://files.pythonhosted.org/packages/d2/f1/c9505b720d4484c74642cb4ff9e0476c885dc58a5482f5e1a47b2113fb00/datamol-0.12.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 15,
+          "declared_license_sha256": "746ee0b00d1542c0e419216c721fc41b1ac31a30d325c49d7ec9652a422e061b",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/decorator/5.1.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "decorator",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "5.1.1",
+      "wheel": {
+        "filename": "decorator-5.1.1-py3-none-any.whl",
+        "sha256": "b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186",
+        "size_bytes": 9073,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-01-07T08:20:03Z",
+        "url": "https://files.pythonhosted.org/packages/d5/50/83c593b07763e1161326b3b8c6686f0f4b0f24d5526546bee538c89837d6/decorator-5.1.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "networkx==3.2.1",
+        "numpy==1.25.2",
+        "psutil==5.9.6",
+        "requests==2.31.0",
+        "scipy==1.11.2",
+        "tqdm==4.66.1"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "829cabadb80beaa6d46144471ec2aee19a75f695a1d1363be431fc9b6579aa52",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/dgl/1.1.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "dgl",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.1.2",
+      "wheel": {
+        "filename": "dgl-1.1.2-cp310-cp310-manylinux1_x86_64.whl",
+        "sha256": "7b137e39029e15f929cccd8b23de45adce1b85b3b7eccc5464bbcff5ce920dfb",
+        "size_bytes": 5955955,
+        "tags": [
+          "cp310-cp310-manylinux1_x86_64"
+        ],
+        "upload_time_utc": "2023-08-15T07:12:41Z",
+        "url": "https://files.pythonhosted.org/packages/5b/8f/f6d2b3a5c0ce9e9f637a0e1078e33cd00a737269ac39bf21cf74d90675d2/dgl-1.1.2-cp310-cp310-manylinux1_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "hyperopt==0.2.7",
+        "joblib==1.3.2",
+        "networkx==3.2.1",
+        "numpy==1.25.2",
+        "pandas==2.0.3",
+        "requests==2.31.0",
+        "scikit-learn==1.3.0",
+        "scipy==1.11.2",
+        "tqdm==4.66.1"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "829cabadb80beaa6d46144471ec2aee19a75f695a1d1363be431fc9b6579aa52",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/dgllife/0.3.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "dgllife",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.3.2",
+      "wheel": {
+        "filename": "dgllife-0.3.2-py3-none-any.whl",
+        "sha256": "83147cf8972fd55f3bcbc9ab940c826fd8f85fd6c7973ae8daad2e472228e488",
+        "size_bytes": 226053,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-02-13T08:43:09Z",
+        "url": "https://files.pythonhosted.org/packages/a6/4e/f96023191b990533abf50fb172b2439e4ab5ee3efb67520a57facd33df12/dgllife-0.3.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Unlicense"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: The Unlicense (Unlicense)"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/filelock/3.13.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Unlicense"
+      },
+      "name": "filelock",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.13.1",
+      "wheel": {
+        "filename": "filelock-3.13.1-py3-none-any.whl",
+        "sha256": "57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c",
+        "size_bytes": 11740,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-30T18:29:37Z",
+        "url": "https://files.pythonhosted.org/packages/81/54/84d42a0bee35edba99dee7b59a8d4970eccdd44b99fe728ed912106fc781/filelock-3.13.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/fonttools/4.44.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "fonttools",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.44.0",
+      "wheel": {
+        "filename": "fonttools-4.44.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "50d25893885e80a5955186791eed5579f1e75921751539cc1dc3ffd1160b48cf",
+        "size_bytes": 4540366,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-11-03T12:08:56Z",
+        "url": "https://files.pythonhosted.org/packages/d7/a2/87f8aba1cac5523d212aefb4fbbdd7a9c24e7cac9ad8f7128f3c41f4762d/fonttools-4.44.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 8,
+          "declared_license_sha256": "de7eeb1ec534ce5704b4fb4b0aba9ea51b7756ebc914f1b57b060817ae01c6ff",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/frozenlist/1.4.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "frozenlist",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.4.0",
+      "wheel": {
+        "filename": "frozenlist-1.4.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "6918d49b1f90821e93069682c06ffde41829c346c66b721e65a5c62b4bab0300",
+        "size_bytes": 225731,
+        "tags": [
+          "cp310-cp310-manylinux1_x86_64",
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64",
+          "cp310-cp310-manylinux_2_5_x86_64"
+        ],
+        "upload_time_utc": "2023-07-12T20:45:31Z",
+        "url": "https://files.pythonhosted.org/packages/1e/28/74b8b6451c89c070d34e753d8b65a1e4ce508a6808b18529f36e8c0e2184/frozenlist-1.4.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/fsspec/2023.10.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "fsspec",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.10.0",
+      "wheel": {
+        "filename": "fsspec-2023.10.0-py3-none-any.whl",
+        "sha256": "346a8f024efeb749d2a5fca7ba8854474b1ff9af7c3faaf636a4548781136529",
+        "size_bytes": 166384,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-21T17:37:02Z",
+        "url": "https://files.pythonhosted.org/packages/e8/f6/3eccfb530aac90ad1301c582da228e4763f19e719ac8200752a4841b0b2d/fsspec-2023.10.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved",
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/future/1.0.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "future",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.0.0",
+      "wheel": {
+        "filename": "future-1.0.0-py3-none-any.whl",
+        "sha256": "929292d34f5872e70396626ef385ec22355a1fae8ad29e1a734c3e43f9fbc216",
+        "size_bytes": 491326,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2024-02-21T11:52:35Z",
+        "url": "https://files.pythonhosted.org/packages/da/71/ae30dadffc90b9006d77af76b393cb9dfbfc9629f339fc1574a1c52e6806/future-1.0.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "aiohttp==3.8.6",
+        "decorator==5.1.1",
+        "fsspec==2023.10.0",
+        "google-auth==2.23.4",
+        "google-auth-oauthlib==1.1.0",
+        "google-cloud-storage==2.13.0",
+        "requests==2.31.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/gcsfs/2023.10.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "gcsfs",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.10.0",
+      "wheel": {
+        "filename": "gcsfs-2023.10.0-py2.py3-none-any.whl",
+        "sha256": "f3ad41652a596ca56e44778e041f428d022add3eff62b97a47302014affd270f",
+        "size_bytes": 33986,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-23T13:20:53Z",
+        "url": "https://files.pythonhosted.org/packages/f5/a1/8c9a25281afb9c1273c6df1acbbd2d8894a8d492c2ad33ca7f780794f04a/gcsfs-2023.10.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "google-auth==2.23.4",
+        "googleapis-common-protos==1.61.0",
+        "protobuf==4.25.0",
+        "requests==2.31.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-api-core/2.12.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-api-core",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.12.0",
+      "wheel": {
+        "filename": "google_api_core-2.12.0-py3-none-any.whl",
+        "sha256": "ec6054f7d64ad13b41e43d96f735acbd763b0f3b695dabaa2d579673f6a6e160",
+        "size_bytes": 121444,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-25T16:31:14Z",
+        "url": "https://files.pythonhosted.org/packages/4d/ce/4fd62ea66b3508debc795e475336ce915929765870f0ad52328426ba016e/google_api_core-2.12.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "cachetools==5.3.2",
+        "pyasn1-modules==0.3.0",
+        "rsa==4.9"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-auth/2.23.4/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-auth",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.23.4",
+      "wheel": {
+        "filename": "google_auth-2.23.4-py2.py3-none-any.whl",
+        "sha256": "d4bbc92fe4b8bfd2f3e8d88e5ba7085935da208ee38a134fc280e7ce682a05f2",
+        "size_bytes": 183302,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-31T19:38:29Z",
+        "url": "https://files.pythonhosted.org/packages/86/a7/75911c13a242735d5aeaca6a272da380335ff4ba5f26d6b2ae20ff682d13/google_auth-2.23.4-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "google-auth==2.23.4",
+        "requests-oauthlib==1.3.1"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-auth-oauthlib/1.1.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-auth-oauthlib",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.1.0",
+      "wheel": {
+        "filename": "google_auth_oauthlib-1.1.0-py2.py3-none-any.whl",
+        "sha256": "089c6e587d36f4803ac7e0720c045c6a8b1fd1790088b8424975b90d0ee61c12",
+        "size_bytes": 19067,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-11T16:07:11Z",
+        "url": "https://files.pythonhosted.org/packages/ce/33/a907b4b67245647746dde8d61e1643ef5d210c88e090d491efd89eff9f95/google_auth_oauthlib-1.1.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "google-api-core==2.12.0",
+        "google-auth==2.23.4"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-cloud-core/2.3.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-cloud-core",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.3.3",
+      "wheel": {
+        "filename": "google_cloud_core-2.3.3-py2.py3-none-any.whl",
+        "sha256": "fbd11cad3e98a7e5b0343dc07cb1039a5ffd7a5bb96e1f1e27cee4bda4a90863",
+        "size_bytes": 29948,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-07-05T19:44:32Z",
+        "url": "https://files.pythonhosted.org/packages/a2/40/02045f776fdb6e44194f34b6375a26ce8a61bd9bd03cd8930ed91cf51a62/google_cloud_core-2.3.3-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "google-api-core==2.12.0",
+        "google-auth==2.23.4",
+        "google-cloud-core==2.3.3",
+        "google-crc32c==1.5.0",
+        "google-resumable-media==2.6.0",
+        "requests==2.31.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-cloud-storage/2.13.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-cloud-storage",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.13.0",
+      "wheel": {
+        "filename": "google_cloud_storage-2.13.0-py2.py3-none-any.whl",
+        "sha256": "ab0bf2e1780a1b74cf17fccb13788070b729f50c252f0c94ada2aae0ca95437d",
+        "size_bytes": 121126,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-31T17:41:47Z",
+        "url": "https://files.pythonhosted.org/packages/04/72/71b1b531cefa1daff8f6a2a70b4d4fa18dd4da851b5486d53578811b0838/google_cloud_storage-2.13.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-crc32c/1.5.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-crc32c",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.5.0",
+      "wheel": {
+        "filename": "google_crc32c-1.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "116a7c3c616dd14a3de8c64a965828b197e5f2d121fedd2f8c5585c547e87b02",
+        "size_bytes": 32288,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2022-09-01T14:32:21Z",
+        "url": "https://files.pythonhosted.org/packages/a9/d0/04f2846f0af1c683eb3b664c9de9543da1e66a791397456a65073b6054a2/google_crc32c-1.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "google-crc32c==1.5.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/google-resumable-media/2.6.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "google-resumable-media",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.6.0",
+      "wheel": {
+        "filename": "google_resumable_media-2.6.0-py2.py3-none-any.whl",
+        "sha256": "fc03d344381970f79eebb632a3c18bb1828593a2dc5572b5f90115ef7d11e81b",
+        "size_bytes": 80299,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-06T18:12:18Z",
+        "url": "https://files.pythonhosted.org/packages/c7/4f/b8e5e22406e5aeafa46df8799939d5eeee52f18eeed339675167fac6603a/google_resumable_media-2.6.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "protobuf==4.25.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "2af71558e438db0b73a20beab92dc278a94e1bbe974c00c1a33e3ab62d53a608",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/googleapis-common-protos/1.61.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "googleapis-common-protos",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.61.0",
+      "wheel": {
+        "filename": "googleapis_common_protos-1.61.0-py2.py3-none-any.whl",
+        "sha256": "22f1915393bb3245343f6efe87f6fe868532efc12aa26b391b15132e1279f1c0",
+        "size_bytes": 230874,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-12T16:10:22Z",
+        "url": "https://files.pythonhosted.org/packages/21/49/12996dc0238e017504dceea1d121a48bd49fb3f4416f40d59fc3e924b4f3/googleapis_common_protos-1.61.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/graphviz/0.20.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "graphviz",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.20.1",
+      "wheel": {
+        "filename": "graphviz-0.20.1-py3-none-any.whl",
+        "sha256": "587c58a223b51611c0cf461132da386edd896a029524ca61a1462b880bf97977",
+        "size_bytes": 47037,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-07-23T11:33:03Z",
+        "url": "https://files.pythonhosted.org/packages/de/5e/fcbb22c68208d39edff467809d06c9d81d7d27426460ebc598e55130c1aa/graphviz-0.20.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/h5py/3.10.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "h5py",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.10.0",
+      "wheel": {
+        "filename": "h5py-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "f42e6c30698b520f0295d70157c4e202a9e402406f50dc08f5a7bc416b24e52d",
+        "size_bytes": 4800680,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-09T14:44:00Z",
+        "url": "https://files.pythonhosted.org/packages/3b/d3/ecb4b3d2ec2c84132987e5f12ab1408f455bec1d90cd5bc408ebf37800f5/h5py-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "filelock==3.13.1",
+        "fsspec==2023.10.0",
+        "packaging==23.2",
+        "pyyaml==6.0.1",
+        "requests==2.31.0",
+        "tqdm==4.66.1",
+        "typing-extensions==4.8.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "87ec4027e1c873944291bdd61ee07ed30d74d45cbb418c85ae256e0a18e9e2cc",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/huggingface-hub/0.18.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "huggingface-hub",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.18.0",
+      "wheel": {
+        "filename": "huggingface_hub-0.18.0-py3-none-any.whl",
+        "sha256": "ee0b6b68acbf6aeb6d083ea081e981c277a1104b82ab67fdf6780ff5396830af",
+        "size_bytes": 301969,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-10T11:51:37Z",
+        "url": "https://files.pythonhosted.org/packages/ef/b5/b6107bd65fa4c96fdf00e4733e2fe5729bb9e5e09997f63074bb43d3ab28/huggingface_hub-0.18.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "cloudpickle==3.0.0",
+        "future==1.0.0",
+        "networkx==3.2.1",
+        "numpy==1.25.2",
+        "py4j==0.10.9.7",
+        "scipy==1.11.2",
+        "six==1.16.0",
+        "tqdm==4.66.1"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/hyperopt/0.2.7/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "hyperopt",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.2.7",
+      "wheel": {
+        "filename": "hyperopt-0.2.7-py2.py3-none-any.whl",
+        "sha256": "f3046d91fe4167dbf104365016596856b2524a609d22f047a066fc1ac796427c",
+        "size_bytes": 1583421,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2021-11-17T10:05:44Z",
+        "url": "https://files.pythonhosted.org/packages/b6/cd/5b3334d39276067f54618ce0d0b48ed69d91352fbf137468c7095170d0e5/hyperopt-0.2.7-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/idna/3.4/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "idna",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.4",
+      "wheel": {
+        "filename": "idna-3.4-py3-none-any.whl",
+        "sha256": "90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2",
+        "size_bytes": 61538,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-09-14T00:24:23Z",
+        "url": "https://files.pythonhosted.org/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/importlib-resources/6.1.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "importlib-resources",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "6.1.0",
+      "wheel": {
+        "filename": "importlib_resources-6.1.0-py3-none-any.whl",
+        "sha256": "aa50258bbfa56d4e33fbd8aa3ef48ded10d1735f11532b8df95388cc6bdb7e83",
+        "size_bytes": 33226,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-20T18:06:33Z",
+        "url": "https://files.pythonhosted.org/packages/65/6e/09d8816b5cb7a4006ef8ad1717a2703ad9f331dae9717d9f22488a2d6469/importlib_resources-6.1.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "markupsafe==2.1.3"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/jinja2/3.1.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "jinja2",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.1.2",
+      "wheel": {
+        "filename": "Jinja2-3.1.2-py3-none-any.whl",
+        "sha256": "6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61",
+        "size_bytes": 133101,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-04-28T17:21:25Z",
+        "url": "https://files.pythonhosted.org/packages/bc/c3/f068337a370801f372f2f8f6bad74a5c140f6fda3d9de154052708dd3c65/Jinja2-3.1.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/jmespath/1.0.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "jmespath",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.0.1",
+      "wheel": {
+        "filename": "jmespath-1.0.1-py3-none-any.whl",
+        "sha256": "02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980",
+        "size_bytes": 20256,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-06-17T18:00:10Z",
+        "url": "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "f4efa249eada90291d5db535412acdb1b0fc8ed21129a070dc3667af7631ef5c",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/joblib/1.3.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "joblib",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.3.2",
+      "wheel": {
+        "filename": "joblib-1.3.2-py3-none-any.whl",
+        "sha256": "ef4331c65f239985f3f2220ecc87db222f08fd22097a3dd5698f693875f8cbb9",
+        "size_bytes": 302207,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-09T09:23:34Z",
+        "url": "https://files.pythonhosted.org/packages/10/40/d551139c85db202f1f384ba8bcf96aca2f329440a844f924c8a0040b6d02/joblib-1.3.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3278,
+          "declared_license_sha256": "c965715253e82ae8fe4330a0504369dbbd22b1b1e735aa106e6e429aff62af9f",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/kiwisolver/1.4.5/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "kiwisolver",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.4.5",
+      "wheel": {
+        "filename": "kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+        "sha256": "ec20916e7b4cbfb1f12380e46486ec4bcbaa91a9c448b97023fde0d5bbf9e4ff",
+        "size_bytes": 1617849,
+        "tags": [
+          "cp310-cp310-manylinux2010_x86_64",
+          "cp310-cp310-manylinux_2_12_x86_64"
+        ],
+        "upload_time_utc": "2023-08-24T09:28:23Z",
+        "url": "https://files.pythonhosted.org/packages/6f/40/4ab1fdb57fced80ce5903f04ae1aed7c1d5939dda4fd0c0aa526c12fe28a/kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 11,
+          "declared_license_sha256": "dda6e5f49978b2355b302632860f2c0b8a7eeeb36426dcced89530e24477663e",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/loguru/0.7.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "loguru",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.7.2",
+      "wheel": {
+        "filename": "loguru-0.7.2-py3-none-any.whl",
+        "sha256": "003d71e3d3ed35f0f8984898359d65b79e5b21943f78af86aa5491210429b8eb",
+        "size_bytes": 62549,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-11T15:24:35Z",
+        "url": "https://files.pythonhosted.org/packages/03/0a/4f6fed21aa246c6b49b561ca55facacc2a44b87d65b8b92362a8e99ba202/loguru-0.7.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/markupsafe/2.1.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "markupsafe",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.1.3",
+      "wheel": {
+        "filename": "MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "65c1a9bcdadc6c28eecee2c119465aebff8f7a584dd719facdd9e825ec61ab52",
+        "size_bytes": 25691,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-06-02T21:42:37Z",
+        "url": "https://files.pythonhosted.org/packages/12/b3/d9ed2c0971e1435b8a62354b18d3060b66c8cb1d368399ec0b9baa7c0ee5/MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "contourpy==1.2.0",
+        "cycler==0.12.1",
+        "fonttools==4.44.0",
+        "kiwisolver==1.4.5",
+        "numpy==1.25.2",
+        "packaging==23.2",
+        "pillow==10.1.0",
+        "pyparsing==3.1.1",
+        "python-dateutil==2.8.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "PSF-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "75ae544a2b87bbbdbb3fa306ecfddaad2844063837e5491352820ce35bbde5d3",
+          "license_classifiers": [
+            "License :: OSI Approved :: Python Software Foundation License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/matplotlib/3.8.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "PSF-2.0"
+      },
+      "name": "matplotlib",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.8.1",
+      "wheel": {
+        "filename": "matplotlib-3.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "82ec95b02e894561c21e066bd0c716e4b410df141ce9441aa5af6cd937e4ade2",
+        "size_bytes": 11612231,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-11-01T00:40:31Z",
+        "url": "https://files.pythonhosted.org/packages/49/74/544b327ca211fe2c484aa6fb3264d6cf8ee994594c86ab110cfd9cf0eb2b/matplotlib-3.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "datamol==0.12.0",
+        "dgl==1.1.2",
+        "dgllife==0.3.2",
+        "filelock==3.13.1",
+        "fsspec==2023.10.0",
+        "gcsfs==2023.10.0",
+        "h5py==3.10.0",
+        "joblib==1.3.2",
+        "loguru==0.7.2",
+        "matplotlib==3.8.1",
+        "mordredcommunity==2.0.3",
+        "numpy==1.25.2",
+        "packaging==23.2",
+        "pandas==2.0.3",
+        "platformdirs==3.11.0",
+        "pmapper==1.0.3",
+        "pyarrow==14.0.0",
+        "pydantic==2.4.2",
+        "pyyaml==6.0.1",
+        "s3fs==2023.10.0",
+        "scikit-learn==1.3.0",
+        "scipy==1.11.2",
+        "sentencepiece==0.1.99",
+        "tokenizers==0.13.1",
+        "torch==2.0.1+cpu",
+        "tqdm==4.66.1",
+        "transformers==4.33.3"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "87ec4027e1c873944291bdd61ee07ed30d74d45cbb418c85ae256e0a18e9e2cc",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/molfeat/0.9.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "molfeat",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.9.2",
+      "wheel": {
+        "filename": "molfeat-0.9.2-py3-none-any.whl",
+        "sha256": "a1c45beacf884d68614b9bb2c3ba46bdd4e8d24619b4c18df7f0dbafa415576c",
+        "size_bytes": 163322,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-02T21:06:38Z",
+        "url": "https://files.pythonhosted.org/packages/e9/6e/c92d91f081853955ccacb517c22f4218cc928cb5dc52b5378eb433a9687c/molfeat-0.9.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "networkx==3.2.1",
+        "numpy==1.25.2",
+        "packaging==23.2",
+        "rdkit==2023.3.3",
+        "six==1.16.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/mordredcommunity/2.0.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "mordredcommunity",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.0.3",
+      "wheel": {
+        "filename": "mordredcommunity-2.0.3-py3-none-any.whl",
+        "sha256": "4ff850c6b79e5538964247aa45127bba68010d7e4158ce04a3a50a38006cfb94",
+        "size_bytes": 175887,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-16T13:54:40Z",
+        "url": "https://files.pythonhosted.org/packages/95/87/09d0a08042fc7fed637f557e19146f7e596bf784530bd45ebcb451d8d453/mordredcommunity-2.0.3-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/mpmath/1.3.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "mpmath",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.3.0",
+      "wheel": {
+        "filename": "mpmath-1.3.0-py3-none-any.whl",
+        "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+        "size_bytes": 536198,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-03-07T16:47:09Z",
+        "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 8,
+          "declared_license_sha256": "de7eeb1ec534ce5704b4fb4b0aba9ea51b7756ebc914f1b57b060817ae01c6ff",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/multidict/6.0.4/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "multidict",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "6.0.4",
+      "wheel": {
+        "filename": "multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "36c63aaa167f6c6b04ef2c85704e93af16c11d20de1d133e39de6a0e84582a93",
+        "size_bytes": 114509,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2022-12-24T02:29:38Z",
+        "url": "https://files.pythonhosted.org/packages/56/b5/ac112889bfc68e6cf4eda1e4325789b166c51c6cd29d5633e28fb2c2f966/multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/networkx/3.2.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "networkx",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.2.1",
+      "wheel": {
+        "filename": "networkx-3.2.1-py3-none-any.whl",
+        "sha256": "f18c69adc97877c42332c170849c96cefa91881c99a7cb3e95b7c659ebdc1ec2",
+        "size_bytes": 1647772,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-28T08:41:36Z",
+        "url": "https://files.pythonhosted.org/packages/d5/f0/8fbc882ca80cf077f1b246c0e3c3465f7f415439bdea6b899f6b19f61f70/networkx-3.2.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/numpy/1.25.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "numpy",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.25.2",
+      "wheel": {
+        "filename": "numpy-1.25.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "f08f2e037bba04e707eebf4bc934f1972a315c883a9e0ebfa8a7756eabf9e357",
+        "size_bytes": 18219190,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-07-31T14:52:07Z",
+        "url": "https://files.pythonhosted.org/packages/71/3c/3b1981c6a1986adc9ee7db760c0c34ea5b14ac3da9ecfcf1ea2a4ec6c398/numpy-1.25.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved",
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/oauthlib/3.2.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "oauthlib",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.2.2",
+      "wheel": {
+        "filename": "oauthlib-3.2.2-py3-none-any.whl",
+        "sha256": "8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca",
+        "size_bytes": 151688,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-10-17T20:04:24Z",
+        "url": "https://files.pythonhosted.org/packages/7e/80/cab10959dc1faead58dc8384a781dfbf93cb4d33d50988f7a69f1b7c9bbe/oauthlib-3.2.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0",
+          "BSD-2-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License",
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/packaging/23.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0 OR BSD-2-Clause"
+      },
+      "name": "packaging",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "23.2",
+      "wheel": {
+        "filename": "packaging-23.2-py3-none-any.whl",
+        "sha256": "8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7",
+        "size_bytes": 53011,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-01T13:50:03Z",
+        "url": "https://files.pythonhosted.org/packages/ec/1a/610693ac4ee14fcdf2d9bf3c493370e4f2ef7ae2e19217d7a237ff42367d/packaging-23.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2",
+        "python-dateutil==2.8.2",
+        "pytz==2023.3.post1",
+        "tzdata==2023.3"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 1624,
+          "declared_license_sha256": "307a961a937fe0d6f648fe3b1eab4b40e2befcf7f7412d76a0908309d499d552",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pandas/2.0.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "pandas",
+      "roles": [
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.0.3",
+      "wheel": {
+        "filename": "pandas-2.0.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "ba619e410a21d8c387a1ea6e8a0e49bb42216474436245718d7f2e88a2f8d7c0",
+        "size_bytes": 12306421,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-06-28T23:16:23Z",
+        "url": "https://files.pythonhosted.org/packages/e3/59/35a2892bf09ded9c1bf3804461efe772836a5261ef5dfb4e264ce813ff99/pandas-2.0.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "HPND"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 4,
+          "declared_license_sha256": "312a2c5cc5c300aadfc5fe04f908cbb44787c7f235603dd757e9d5a3abe7c6df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Historical Permission Notice and Disclaimer (HPND)"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pillow/10.1.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "HPND"
+      },
+      "name": "pillow",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "10.1.0",
+      "wheel": {
+        "filename": "Pillow-10.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "c0949b55eb607898e28eaccb525ab104b2d86542a85c74baf3a6dc24002edec2",
+        "size_bytes": 3499990,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-15T13:01:32Z",
+        "url": "https://files.pythonhosted.org/packages/95/7b/71e2665760b5c33af00fa9bb6d6bca068b51bf021a4ceaeee03e18689f51/Pillow-10.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/platformdirs/3.11.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "platformdirs",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.11.0",
+      "wheel": {
+        "filename": "platformdirs-3.11.0-py3-none-any.whl",
+        "sha256": "e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e",
+        "size_bytes": 17579,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-02T15:16:29Z",
+        "url": "https://files.pythonhosted.org/packages/56/29/3ec311dc18804409ecf0d2b09caa976f3ae6215559306b5b530004e11156/platformdirs-3.11.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "packaging==23.2",
+        "tenacity==8.2.3"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/plotly/5.18.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "plotly",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "5.18.0",
+      "wheel": {
+        "filename": "plotly-5.18.0-py3-none-any.whl",
+        "sha256": "23aa8ea2f4fb364a20d34ad38235524bd9d691bf5299e800bca608c31e8db8de",
+        "size_bytes": 15643397,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-25T19:43:41Z",
+        "url": "https://files.pythonhosted.org/packages/a8/07/72953cf70e3bd3a24cbc3e743e6f8539abe6e3e6d83c3c0c83426eaffd39/plotly-5.18.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pmapper/1.0.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "pmapper",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.0.3",
+      "wheel": {
+        "filename": "pmapper-1.0.3-py3-none-any.whl",
+        "sha256": "630e04af3d549aae4c0aa2a14a7d7c49c535d402971c06dc848c4eb8bc55c3a5",
+        "size_bytes": 566960,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-03-22T13:20:05Z",
+        "url": "https://files.pythonhosted.org/packages/ea/54/9838f399b6dafceeeeeb20dbfa9ad6ff2730044d831de78d78f882391c49/pmapper-1.0.3-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 20,
+          "declared_license_sha256": "15934bcfcb57d72b1b73d913180ce7f86d2773c32725efa41ddb6b14e143cb84",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/protobuf/4.25.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "protobuf",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.25.0",
+      "wheel": {
+        "filename": "protobuf-4.25.0-cp37-abi3-manylinux2014_x86_64.whl",
+        "sha256": "683dc44c61f2620b32ce4927de2108f3ebe8ccf2fd716e1e684e5a50da154054",
+        "size_bytes": 294426,
+        "tags": [
+          "cp37-abi3-manylinux2014_x86_64"
+        ],
+        "upload_time_utc": "2023-11-01T23:08:40Z",
+        "url": "https://files.pythonhosted.org/packages/ae/32/45b1cf0c5d4a3ba881f5164c26af877c0dabfe6de0019d426aa0e5cf6806/protobuf-4.25.0-cp37-abi3-manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/psutil/5.9.6/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "psutil",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "5.9.6",
+      "wheel": {
+        "filename": "psutil-5.9.6-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "748c9dd2583ed86347ed65d0035f45fa8c851e8d90354c122ab72319b5f366f4",
+        "size_bytes": 283614,
+        "tags": [
+          "cp36-abi3-manylinux2010_x86_64",
+          "cp36-abi3-manylinux2014_x86_64",
+          "cp36-abi3-manylinux_2_12_x86_64",
+          "cp36-abi3-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-15T09:09:12Z",
+        "url": "https://files.pythonhosted.org/packages/19/06/4e3fa3c1b79271e933c5ddbad3a48aa2c3d5f592a0fb7c037f3e0f619f4d/psutil-5.9.6-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 11,
+          "declared_license_sha256": "170c0f4cee6fc262f8902676b7aa0e88e11f1777f1531934116898c43fd5086a",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/py4j/0.10.9.7/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "py4j",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.10.9.7",
+      "wheel": {
+        "filename": "py4j-0.10.9.7-py2.py3-none-any.whl",
+        "sha256": "85defdfd2b2376eb3abf5ca6474b51ab7e0de341c75a02f46dc9b5976f5a5c1b",
+        "size_bytes": 200481,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-08-12T22:49:07Z",
+        "url": "https://files.pythonhosted.org/packages/10/30/a58b32568f1623aaad7db22aa9eafc4c6c194b429ff35bdc55ca2726da47/py4j-0.10.9.7-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 27,
+          "declared_license_sha256": "aba70acedb03d67ee088f3252d3d6d8bee4c2c0f357bd206eded53907e5bfd0e",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pyarrow/14.0.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "pyarrow",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "14.0.0",
+      "wheel": {
+        "filename": "pyarrow-14.0.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "8c05e6c45d303c80e41ab04996430a0251321f70986ed51213903ea7bc0b7efd",
+        "size_bytes": 38074722,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-11-01T15:27:29Z",
+        "url": "https://files.pythonhosted.org/packages/9e/25/dfc293c4913e0f36c9d17cb37be91bf7f16d20ab138a408ec63bbb6893ee/pyarrow-14.0.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-2-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "248dd895a2f89e28813b4c8c0a7d21806a35699102e4f6e32f47784b82730428",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pyasn1/0.5.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-2-Clause"
+      },
+      "name": "pyasn1",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.5.0",
+      "wheel": {
+        "filename": "pyasn1-0.5.0-py2.py3-none-any.whl",
+        "sha256": "87a2121042a1ac9358cabcaf1d07680ff97ee6404333bacca15f76aa8ad01a57",
+        "size_bytes": 83861,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-04-20T00:54:28Z",
+        "url": "https://files.pythonhosted.org/packages/14/e5/b56a725cbde139aa960c26a1a3ca4d4af437282e20b5314ee6a3501e7dfc/pyasn1-0.5.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "pyasn1==0.5.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-2-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pyasn1-modules/0.3.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-2-Clause"
+      },
+      "name": "pyasn1-modules",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.3.0",
+      "wheel": {
+        "filename": "pyasn1_modules-0.3.0-py2.py3-none-any.whl",
+        "sha256": "d3ccd6ed470d9ffbc716be08bd90efbd44d0734bc9303818f7336070984a162d",
+        "size_bytes": 181306,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-04-20T01:30:05Z",
+        "url": "https://files.pythonhosted.org/packages/cd/8e/bea464350e1b8c6ed0da3a312659cb648804a08af6cacc6435867f74f8bd/pyasn1_modules-0.3.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "annotated-types==0.6.0",
+        "pydantic-core==2.10.1",
+        "typing-extensions==4.8.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pydantic/2.4.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "pydantic",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.4.2",
+      "wheel": {
+        "filename": "pydantic-2.4.2-py3-none-any.whl",
+        "sha256": "bc3ddf669d234f4220e6e1c4d96b061abe0998185a8d7855c0126782b7abc8c1",
+        "size_bytes": 395759,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-28T07:08:34Z",
+        "url": "https://files.pythonhosted.org/packages/73/66/0a72c9fcde42e5650c8d8d5c5c1873b9a3893018020c77ca8eb62708b923/pydantic-2.4.2-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "typing-extensions==4.8.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pydantic-core/2.10.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "pydantic-core",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.10.1",
+      "wheel": {
+        "filename": "pydantic_core-2.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "8f6e6aed5818c264412ac0598b581a002a9f050cb2637a84979859e70197aa9e",
+        "size_bytes": 2049530,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-09-26T11:25:47Z",
+        "url": "https://files.pythonhosted.org/packages/86/67/d36e2237d84ac96f400e29586da1e21eabf9aa227fc9c3e4410fbc6408de/pydantic_core-2.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pyparsing/3.1.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "pyparsing",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.1.1",
+      "wheel": {
+        "filename": "pyparsing-3.1.1-py3-none-any.whl",
+        "sha256": "32c7c0b711493c72ff18a981d24f28aaf9c1fb7ed5e9667c9e84e3db623bdbfb",
+        "size_bytes": 103139,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-07-30T15:06:59Z",
+        "url": "https://files.pythonhosted.org/packages/39/92/8486ede85fcc088f1b3dba4ce92dd29d126fd96b0008ea213167940a2475/pyparsing-3.1.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "six==1.16.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0",
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "199628ddb098f90709bb2dc43f816a5a40fe31690de0e25d0f4d6455fe6bc609",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License",
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/python-dateutil/2.8.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0 OR BSD-3-Clause"
+      },
+      "name": "python-dateutil",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.8.2",
+      "wheel": {
+        "filename": "python_dateutil-2.8.2-py2.py3-none-any.whl",
+        "sha256": "961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9",
+        "size_bytes": 247702,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2021-07-14T08:19:18Z",
+        "url": "https://files.pythonhosted.org/packages/36/7a/87837f39d0296e723bb9b62bbb257d0355c7f6128853c78955f57342a56d/python_dateutil-2.8.2-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/python-dotenv/1.0.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "python-dotenv",
+      "roles": [
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.0.0",
+      "wheel": {
+        "filename": "python_dotenv-1.0.0-py3-none-any.whl",
+        "sha256": "f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a",
+        "size_bytes": 19482,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-02-24T06:46:36Z",
+        "url": "https://files.pythonhosted.org/packages/44/2f/62ea1c8b593f4e093cc1a7768f0d46112107e790c3e478532329e434f00b/python_dotenv-1.0.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pytz/2023.3.post1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "pytz",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.3.post1",
+      "wheel": {
+        "filename": "pytz-2023.3.post1-py2.py3-none-any.whl",
+        "sha256": "ce42d816b81b68506614c11e8937d3aa9e41007ceb50bfdcb0749b921bf646c7",
+        "size_bytes": 502454,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-05T01:56:55Z",
+        "url": "https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/pyyaml/6.0.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "pyyaml",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "6.0.1",
+      "wheel": {
+        "filename": "PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "ba336e390cd8e4d1739f42dfe9bb83a3cc2e80f567d8805e11b46f4a943f5515",
+        "size_bytes": 705525,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-07-17T23:57:25Z",
+        "url": "https://files.pythonhosted.org/packages/29/61/bf33c6c85c55bc45a29eee3195848ff2d518d84735eb0e2d8cb42e0d285e/PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2",
+        "pillow==10.1.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/rdkit/2023.3.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "rdkit",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.3.3",
+      "wheel": {
+        "filename": "rdkit-2023.3.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "e455df1c75fc0d6eebb173f17f9660697a9f8c2b5b32643c162362e294e83af8",
+        "size_bytes": 29711752,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-08-18T15:24:47Z",
+        "url": "https://files.pythonhosted.org/packages/bb/ee/e74ab769bb62eb8b3c79556c2af01697800f65c6e137af2f6c5ce58753bd/rdkit-2023.3.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 23,
+          "declared_license_sha256": "8abaac38411f199b1e71efd166c3218c95be016c8a2d672de0c6c168de02d5c1",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/regex/2023.10.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "regex",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.10.3",
+      "wheel": {
+        "filename": "regex-2023.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "c15ad0aee158a15e17e0495e1e18741573d04eb6da06d8b84af726cfc1ed02ee",
+        "size_bytes": 773936,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-03T16:33:57Z",
+        "url": "https://files.pythonhosted.org/packages/8f/3e/4b8b40eb3c80aeaf360f0361d956d129bb3d23b2a3ecbe3a04a8f3bdd6d3/regex-2023.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "certifi==2023.7.22",
+        "charset-normalizer==3.3.2",
+        "idna==3.4",
+        "urllib3==2.0.7"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/requests/2.31.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "requests",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.31.0",
+      "wheel": {
+        "filename": "requests-2.31.0-py3-none-any.whl",
+        "sha256": "58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f",
+        "size_bytes": 62574,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-05-22T15:12:42Z",
+        "url": "https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "oauthlib==3.2.2",
+        "requests==2.31.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "ISC"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "d8d62d58d661d5ddeff06fdf1ebc08968da4743e369c74cef96eff0241eaea05",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/requests-oauthlib/1.3.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "ISC"
+      },
+      "name": "requests-oauthlib",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.3.1",
+      "wheel": {
+        "filename": "requests_oauthlib-1.3.1-py2.py3-none-any.whl",
+        "sha256": "2577c501a2fb8d05a304c09d090d6e47c306fef15809d102b327cf8364bddab5",
+        "size_bytes": 23892,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-01-29T18:52:22Z",
+        "url": "https://files.pythonhosted.org/packages/6f/bb/5deac77a9af870143c684ab46a7934038a53eb4aa975bc0687ed6ca2c610/requests_oauthlib-1.3.1-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "pyasn1==0.5.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "2af71558e438db0b73a20beab92dc278a94e1bbe974c00c1a33e3ab62d53a608",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/rsa/4.9/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "rsa",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.9",
+      "wheel": {
+        "filename": "rsa-4.9-py3-none-any.whl",
+        "sha256": "90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7",
+        "size_bytes": 34315,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-07-20T10:28:34Z",
+        "url": "https://files.pythonhosted.org/packages/49/97/fa78e3d2f65c02c8e1268b9aba606569fe97f6c8f7c2d74394553347c145/rsa-4.9-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "aiobotocore==2.7.0",
+        "aiohttp==3.8.6",
+        "fsspec==2023.10.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/s3fs/2023.10.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "s3fs",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.10.0",
+      "wheel": {
+        "filename": "s3fs-2023.10.0-py3-none-any.whl",
+        "sha256": "3df68ff4f5f70c3338219a66df92e91fd15c6b78d0f559e57f617dfdd49feb41",
+        "size_bytes": 28788,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-21T17:55:06Z",
+        "url": "https://files.pythonhosted.org/packages/55/d1/7d6279cf80ed186a35a884fa2c22b5423611609bcca9296e47bfed0da27b/s3fs-2023.10.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/safetensors/0.4.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "safetensors",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.4.0",
+      "wheel": {
+        "filename": "safetensors-0.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "5f9909512bcb6f712bdd04c296cdfb0d8ff73d258ffc5af884bb62ea02d221e0",
+        "size_bytes": 1343964,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-10-06T10:54:57Z",
+        "url": "https://files.pythonhosted.org/packages/20/4e/878b080dbda92666233ec6f316a53969edcb58eab1aa399a64d0521cf953/safetensors-0.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "joblib==1.3.2",
+        "numpy==1.25.2",
+        "scipy==1.11.2",
+        "threadpoolctl==3.2.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 7,
+          "declared_license_sha256": "f5233d46fe7c540cc87857d6ab7c5ec987c5ae1c8850fcee4778d828bef70fde",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/scikit-learn/1.3.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "scikit-learn",
+      "roles": [
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.3.0",
+      "wheel": {
+        "filename": "scikit_learn-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "ae80c08834a473d08a204d966982a62e11c976228d306a2648c575e3ead12111",
+        "size_bytes": 10804028,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-06-30T07:55:07Z",
+        "url": "https://files.pythonhosted.org/packages/5c/e9/ee572691a3fb05555bcde41826faad29ae4bc1fb07982e7f53d54a176879/scikit_learn-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "numpy==1.25.2"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 40708,
+          "declared_license_sha256": "f28d99208fcb26116933da2fd1e9a596e9882c0994429b332abad8cd0f4e12cd",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/scipy/1.11.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "scipy",
+      "roles": [
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.11.2",
+      "wheel": {
+        "filename": "scipy-1.11.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "d690e1ca993c8f7ede6d22e5637541217fc6a4d3f78b3672a6fe454dbb7eb9a7",
+        "size_bytes": 36293944,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-08-17T22:08:27Z",
+        "url": "https://files.pythonhosted.org/packages/a8/cc/c36f3439f5d47c3b13833ce6687b43a040cc7638c502ac46b41e2d4f3d6f/scipy-1.11.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/selfies/2.1.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "selfies",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.1.1",
+      "wheel": {
+        "filename": "selfies-2.1.1-py3-none-any.whl",
+        "sha256": "5723d53cd75e8229ff4ecef5a7872ce5151ad2ef83a0898b529ee5666a91621b",
+        "size_bytes": 35475,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2022-07-14T11:38:32Z",
+        "url": "https://files.pythonhosted.org/packages/a6/0a/85449549d49196280bb20067261634ecd4c9eafb326b4d627cf97b26fba9/selfies-2.1.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 6,
+          "declared_license_sha256": "87ec4027e1c873944291bdd61ee07ed30d74d45cbb418c85ae256e0a18e9e2cc",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/sentencepiece/0.1.99/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "sentencepiece",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.1.99",
+      "wheel": {
+        "filename": "sentencepiece-0.1.99-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "019e7535108e309dae2b253a75834fc3128240aa87c00eb80732078cdc182588",
+        "size_bytes": 1298584,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-05-02T04:26:14Z",
+        "url": "https://files.pythonhosted.org/packages/7f/e5/323dc813b3e1339305f888d035e2f3725084fc4dcf051995b366dd26cc90/sentencepiece-0.1.99-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/six/1.16.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "six",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.16.0",
+      "wheel": {
+        "filename": "six-1.16.0-py2.py3-none-any.whl",
+        "sha256": "8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+        "size_bytes": 11053,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2021-05-05T14:18:17Z",
+        "url": "https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "mpmath==1.3.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/sympy/1.12/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "sympy",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.12",
+      "wheel": {
+        "filename": "sympy-1.12-py3-none-any.whl",
+        "sha256": "c3588cd4295d0c0f603d0f2ae780587e64e2efeedb3521e46b9bb1d08d184fa5",
+        "size_bytes": 5742435,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-05-10T18:22:14Z",
+        "url": "https://files.pythonhosted.org/packages/d2/05/e6600db80270777c4a64238a98d442f0fd07cc8915be2a1c16da7f2b9e74/sympy-1.12-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "cf989ea142f203f532233fa944ee1d8d5acfe6f6875e4d611f515ee108ba26df",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/tenacity/8.2.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "tenacity",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "8.2.3",
+      "wheel": {
+        "filename": "tenacity-8.2.3-py3-none-any.whl",
+        "sha256": "ce510e327a630c9e1beaf17d42e6ffacc88185044ad85cf74c0a8887c6a0f88c",
+        "size_bytes": 24401,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-14T13:22:49Z",
+        "url": "https://files.pythonhosted.org/packages/f4/f1/990741d5bb2487d529d20a433210ffa136a367751e454214013b441c4575/tenacity-8.2.3-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/threadpoolctl/3.2.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "threadpoolctl",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "3.2.0",
+      "wheel": {
+        "filename": "threadpoolctl-3.2.0-py3-none-any.whl",
+        "sha256": "2b7818516e423bdaebb97c723f86a7c6b0a83d3f3b0970328d66f4d9104dc032",
+        "size_bytes": 15539,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-07-13T14:53:39Z",
+        "url": "https://files.pythonhosted.org/packages/81/12/fd4dea011af9d69e1cad05c75f3f7202cdcbeac9b712eea58ca779a72865/threadpoolctl-3.2.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 18,
+          "declared_license_sha256": "e99dd4b311146507c3d0a887ca12e50387fe644c8aaa86cb500b50c068062543",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/tokenizers/0.13.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "tokenizers",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "0.13.1",
+      "wheel": {
+        "filename": "tokenizers-0.13.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "680bc0e357b7da6d0d01634bffbd002e866fdaccde303e1d1af58f32464cf308",
+        "size_bytes": 7569080,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2022-10-06T12:58:04Z",
+        "url": "https://files.pythonhosted.org/packages/59/d2/e90fee4381e41ca0a1d3cbeae1f98343e46ac050909f608846114e9b7992/tokenizers-0.13.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "filelock==3.13.1",
+        "jinja2==3.1.2",
+        "networkx==3.2.1",
+        "sympy==1.12",
+        "typing-extensions==4.8.0"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 12,
+          "declared_license_sha256": "118dbcd2d5c9f9b296a9ede9fcc469c5840f7b98ad2c88461055bf2ceda38037",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyTorch CPU simple-index entry plus upstream v2.0.1 licensing; exact wheel METADATA inspection is deferred to the sole claim-bound D150 formal run",
+          "source_url": "https://download.pytorch.org/whl/cpu/torch/"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "torch",
+      "roles": [
+        "scientific-root",
+        "direct-runtime-root"
+      ],
+      "source_index_id": "pytorch-cpu",
+      "version": "2.0.1+cpu",
+      "wheel": {
+        "filename": "torch-2.0.1+cpu-cp310-cp310-linux_x86_64.whl",
+        "public_index_evidence": {
+          "canonical_anchor_href": "https://download-r2.pytorch.org/whl/cpu/torch-2.0.1%2Bcpu-cp310-cp310-linux_x86_64.whl#sha256=fec257249ba014c68629a1994b0c6e7356e20e1afc77a87b9941a40e5095285d",
+          "canonical_anchor_href_bytes": 158,
+          "canonical_anchor_href_serialization": "UTF-8 bytes of the exact selected HTML href attribute value after HTML entity decoding, with no surrounding quotes, leading or trailing whitespace, or terminal newline.",
+          "canonical_anchor_href_sha256": "78bd602a47707644bb24ef5f3d401186c55c3263a815178d3057ddc8d02d6ca7",
+          "index_fragment_algorithm": "sha256",
+          "index_fragment_sha256": "fec257249ba014c68629a1994b0c6e7356e20e1afc77a87b9941a40e5095285d",
+          "index_page_url": "https://download.pytorch.org/whl/cpu/torch/",
+          "wheel_digest_input_serialization": "SHA-256 is computed over the exact distribution-file byte stream addressed by canonical_anchor_href before '#'; no archive extraction, decoding, normalization, canonicalization, or added bytes."
+        },
+        "sha256": "fec257249ba014c68629a1994b0c6e7356e20e1afc77a87b9941a40e5095285d",
+        "size_bytes": 195422835,
+        "tags": [
+          "cp310-cp310-linux_x86_64"
+        ],
+        "upload_time_utc": "2023-10-06T00:27:14Z",
+        "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.0.1%2Bcpu-cp310-cp310-linux_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT",
+          "MPL-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 15,
+          "declared_license_sha256": "497716e0cebf8fb1944bbac349083f8ba656e10320c3f9811a955fc8786d0cc1",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License",
+            "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/tqdm/4.66.1/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MPL-2.0 AND MIT"
+      },
+      "name": "tqdm",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.66.1",
+      "wheel": {
+        "filename": "tqdm-4.66.1-py3-none-any.whl",
+        "sha256": "d302b3c5b53d47bce91fea46679d9c3c6508cf6332229aa1e7d8653723793386",
+        "size_bytes": 78258,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-08-10T11:38:57Z",
+        "url": "https://files.pythonhosted.org/packages/00/e5/f12a80907d0884e6dff9c16d0c0114d81b8cd07dc3ae54c5e962cc83037e/tqdm-4.66.1-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "filelock==3.13.1",
+        "huggingface-hub==0.18.0",
+        "numpy==1.25.2",
+        "packaging==23.2",
+        "pyyaml==6.0.1",
+        "regex==2023.10.3",
+        "requests==2.31.0",
+        "safetensors==0.4.0",
+        "tokenizers==0.13.1",
+        "tqdm==4.66.1"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 18,
+          "declared_license_sha256": "075e5377ffe49ea3415840cb784d85a27084d48632eff977f849c2892e766840",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/transformers/4.33.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "transformers",
+      "roles": [
+        "transitive-import-compatibility-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.33.3",
+      "wheel": {
+        "filename": "transformers-4.33.3-py3-none-any.whl",
+        "sha256": "7150bbf6781ddb3338ce7d74f4d6f557e6c236a0a1dd3de57412214caae7fd71",
+        "size_bytes": 7637800,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-27T15:08:02Z",
+        "url": "https://files.pythonhosted.org/packages/98/46/f6a79f944d5c7763a9bc13b2aa6ac72daf43a6551f5fb03bccf0a9c2fec1/transformers-4.33.3-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "PSF-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: Python Software Foundation License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/typing-extensions/4.8.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "PSF-2.0"
+      },
+      "name": "typing-extensions",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "4.8.0",
+      "wheel": {
+        "filename": "typing_extensions-4.8.0-py3-none-any.whl",
+        "sha256": "8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0",
+        "size_bytes": 31584,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-09-18T04:01:55Z",
+        "url": "https://files.pythonhosted.org/packages/24/21/7d397a4b7934ff4028987914ac1044d3b7d52712f30e2ac7a2ae5bc86dd0/typing_extensions-4.8.0-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "2af71558e438db0b73a20beab92dc278a94e1bbe974c00c1a33e3ab62d53a608",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/tzdata/2023.3/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "tzdata",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2023.3",
+      "wheel": {
+        "filename": "tzdata-2023.3-py2.py3-none-any.whl",
+        "sha256": "7e65763eef3120314099b6939b5546db7adce1e7d6f2e179e3df563c70511eda",
+        "size_bytes": 341835,
+        "tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-03-29T01:41:02Z",
+        "url": "https://files.pythonhosted.org/packages/d5/fb/a79efcab32b8a1f1ddca7f35109a50e4a80d42ac1c9187ab46522b2407d7/tzdata-2023.3-py2.py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "MIT"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 0,
+          "declared_license_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "license_classifiers": [
+            "License :: OSI Approved :: MIT License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/urllib3/2.0.7/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "MIT"
+      },
+      "name": "urllib3",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "2.0.7",
+      "wheel": {
+        "filename": "urllib3-2.0.7-py3-none-any.whl",
+        "sha256": "fdb6d215c776278489906c2f8916e6e7d4f5a9b602ccbcfdf7f016fc8da0596e",
+        "size_bytes": 124213,
+        "tags": [
+          "py3-none-any"
+        ],
+        "upload_time_utc": "2023-10-17T17:46:48Z",
+        "url": "https://files.pythonhosted.org/packages/d2/b2/b157855192a68541a91ba7b2bbcb91f1b4faa51f8bae38d8005c034be524/urllib3-2.0.7-py3-none-any.whl"
+      }
+    },
+    {
+      "dependencies": [],
+      "license": {
+        "canonical_license_ids": [
+          "BSD-3-Clause"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 3,
+          "declared_license_sha256": "49d9777da612e1f4e9269fa9f93ea324a66f9dcc7722ad812de124ef3f266d93",
+          "license_classifiers": [
+            "License :: OSI Approved :: BSD License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/wrapt/1.15.0/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "BSD-3-Clause"
+      },
+      "name": "wrapt",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.15.0",
+      "wheel": {
+        "filename": "wrapt-1.15.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "2fbfbca668dd15b744418265a9607baa970c347eefd0db6a518aaf0cfbd153c0",
+        "size_bytes": 78426,
+        "tags": [
+          "cp310-cp310-manylinux1_x86_64",
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64",
+          "cp310-cp310-manylinux_2_5_x86_64"
+        ],
+        "upload_time_utc": "2023-02-27T01:55:58Z",
+        "url": "https://files.pythonhosted.org/packages/7f/b6/6dc0ddacd20337b4ce6ab0d6b0edc7da3898f85c4f97df7f30267e57509e/wrapt-1.15.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    },
+    {
+      "dependencies": [
+        "idna==3.4",
+        "multidict==6.0.4"
+      ],
+      "license": {
+        "canonical_license_ids": [
+          "Apache-2.0"
+        ],
+        "metadata_evidence": {
+          "declared_license_bytes": 10,
+          "declared_license_sha256": "2af71558e438db0b73a20beab92dc278a94e1bbe974c00c1a33e3ab62d53a608",
+          "license_classifiers": [
+            "License :: OSI Approved :: Apache Software License"
+          ],
+          "source_kind": "PyPI release JSON metadata",
+          "source_url": "https://pypi.org/pypi/yarl/1.9.2/json"
+        },
+        "notice_obligation": "Retain every license, attribution, copyright, and NOTICE file supplied by the selected wheel in any later redistribution; D148 redistributes no wheel.",
+        "spdx_expression": "Apache-2.0"
+      },
+      "name": "yarl",
+      "roles": [
+        "transitive-runtime-dependency"
+      ],
+      "source_index_id": "pypi",
+      "version": "1.9.2",
+      "wheel": {
+        "filename": "yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "891c0e3ec5ec881541f6c5113d8df0315ce5440e244a716b95f2525b7b9f3608",
+        "size_bytes": 268794,
+        "tags": [
+          "cp310-cp310-manylinux2014_x86_64",
+          "cp310-cp310-manylinux_2_17_x86_64"
+        ],
+        "upload_time_utc": "2023-04-25T19:08:09Z",
+        "url": "https://files.pythonhosted.org/packages/c9/d4/a5280faa1b8e9ad3a52ddc4c9aea94dd718f9c55f1e10cfb14580f5ebb45/yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    }
+  ],
+  "parent": {
+    "base_commit": "b5cf47c6bc8ccc2dc29c7167b1a436d792338509",
+    "contract_path": "global_v3_g4_gin300_contract.json",
+    "contract_sha256": "b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e"
+  },
+  "purpose": "Freeze one deterministic, wheel-only, CPU-only Linux x86_64 Python runtime closure for later GIN provenance/parity and synthetic mechanics. This file is metadata and contract evidence only.",
+  "recorded_at_utc": "2026-08-30T18:58:05Z",
+  "resolver_contract": {
+    "direct_runtime_roots": [
+      "catboost==1.2.1",
+      "dgl==1.1.2",
+      "dgllife==0.3.2",
+      "molfeat==0.9.2",
+      "numpy==1.25.2",
+      "pandas==2.0.3",
+      "python-dotenv==1.0.0",
+      "rdkit==2023.3.3",
+      "scikit-learn==1.3.0",
+      "scipy==1.11.2",
+      "torch==2.0.1+cpu"
+    ],
+    "historical_lock": {
+      "path": "../../research/maplight-gin/uv.lock",
+      "sha256": "20f99263340b244fc1b202752d6a096efd0354e401e7f87a8029d9546813225d"
+    },
+    "historical_python_package_wheel_upload_cutoff_exclusive_utc": "2023-11-07T00:00:00Z",
+    "historical_static_import_evidence": {
+      "path": "../../research/maplight-gin/README.md",
+      "sha256": "d2f31cc6190055008f7c5d5b701b531344f632a42a10162e409d86925a524dd6",
+      "statement": "The tracked v3 reproduction record freezes MolFeat's transformer extra solely because the package initializer imports its optional Hugging Face module on the DGL-only path."
+    },
+    "infrastructure_exception": {
+      "authority": "This exception grants no tuning, alternate-version, repair, retry, or substitution authority. D149 must encode and statically audit this exact exception without exercising it; D150 must fail closed if fixture provenance/parity, prediction parity, or runtime compatibility fails.",
+      "historical_artifact_problem": "PyPI publishes no wheel for future 0.18.3, so the mandatory no-sdist resolver cannot construct the closure.",
+      "historical_version": "0.18.3",
+      "package": "future",
+      "replacement_upload_time_utc": "2024-02-21T11:52:35Z",
+      "replacement_version": "1.0.0",
+      "replacement_wheel_sha256": "929292d34f5872e70396626ef385ec22355a1fae8ad29e1a734c3e43f9fbc216",
+      "scientific_status": "Non-scientific transitive compatibility substitution forced solely by the no-sdist rule."
+    },
+    "interpreter_cutoff_boundary": "The separately frozen python-build-standalone 20240224 install_only archive is an interpreter infrastructure distribution, not a Python package wheel and not governed by the historical package-wheel upload cutoff. Its exact release, tag commit, URL, SHA-256, size, sidecar, and license are immutable; no alternate interpreter or build release is authorized.",
+    "molfeat_extras": [
+      "dgl",
+      "transformer"
+    ],
+    "normalized_command": "uv pip compile requirements.in --constraint historical-pins.txt --python-version 3.10.13 --python-platform x86_64-manylinux2014 --torch-backend cpu --only-binary :all: --no-cache --no-python-downloads --format pylock.toml",
+    "resolution_result": "SAT: 96 exact wheels, zero sdist/VCS/editable artifact, zero accelerator package",
+    "scientific_roots": [
+      "catboost==1.2.1",
+      "dgl==1.1.2",
+      "dgllife==0.3.2",
+      "molfeat==0.9.2",
+      "numpy==1.25.2",
+      "rdkit==2023.3.3",
+      "torch==2.0.1+cpu"
+    ],
+    "transformer_extra_boundary": "MolFeat 0.9.2 initialization statically imports its optional Hugging Face module on the DGL path. The transformer extra is therefore frozen only for import compatibility; it authorizes no transformer model, tokenizer model, remote repository, cache population, or external model fetch.",
+    "uv_version": "0.12.3",
+    "version_policy": "Preserve the historical lock version for every Python package except Torch local version +cpu and the single future==1.0.0 Python-package-wheel infrastructure exception below. No other post-cutoff Python package wheel is allowed. The separately frozen 20240224 interpreter archive is governed only by interpreter_cutoff_boundary."
+  },
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_linux_x86_64_runtime_manifest.v1",
+  "source_indexes": [
+    {
+      "artifact_hosts": [
+        "files.pythonhosted.org"
+      ],
+      "id": "pypi",
+      "index_url": "https://pypi.org/simple",
+      "policy": "All non-Torch packages; exact selected wheels only."
+    },
+    {
+      "artifact_hosts": [
+        "download-r2.pytorch.org"
+      ],
+      "id": "pytorch-cpu",
+      "index_url": "https://download.pytorch.org/whl/cpu",
+      "policy": "Torch only; exact 2.0.1+cpu CPython 3.10 Linux x86_64 wheel. PyPI Torch is forbidden."
+    }
+  ],
+  "status": "FROZEN_CONTRACT_ONLY",
+  "target": {
+    "architecture": "x86_64",
+    "cpu_only": true,
+    "gpu_hours": 0,
+    "implementation": "CPython",
+    "interpreter": {
+      "archive_filename": "cpython-3.10.13+20240224-x86_64-unknown-linux-gnu-install_only.tar.gz",
+      "archive_sha256": "d995d032ca702afd2fc3a689c1f84a6c64972ecd82bba76a61d525f08eb0e195",
+      "archive_size_bytes": 27409290,
+      "archive_type": "python-build-standalone install_only CPython distribution; not a Python package sdist",
+      "archive_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-x86_64-unknown-linux-gnu-install_only.tar.gz",
+      "checksum_sidecar": {
+        "content_without_terminal_newline": "d995d032ca702afd2fc3a689c1f84a6c64972ecd82bba76a61d525f08eb0e195",
+        "filename": "cpython-3.10.13+20240224-x86_64-unknown-linux-gnu-install_only.tar.gz.sha256",
+        "sha256": "9e57b23cb72164f981d9c6a52bdb555557639de897631f54fe1255181464e4b3",
+        "size_bytes": 65,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20240224/cpython-3.10.13%2B20240224-x86_64-unknown-linux-gnu-install_only.tar.gz.sha256"
+      },
+      "implementation": "CPython",
+      "installed_executable_rule": "D148 and D149 cannot know this without their forbidden archive fetch/extraction. The sole claim-bound D150 formal run must record it once after authenticated extraction, bind it into the accepted runtime receipt, and fail closed on every later mismatch.",
+      "installed_executable_sha256": null,
+      "license": {
+        "build_project_license_bytes": 1495,
+        "build_project_license_sha256": "02e7aaf3645b50fb9056b18528e2ca3474a6628fe3396ae4dd326f6618e0aad7",
+        "build_project_license_source_url": "https://raw.githubusercontent.com/astral-sh/python-build-standalone/20240224/LICENSE",
+        "build_project_spdx_expression": "BSD-3-Clause",
+        "bundled_notice_rule": "The archive carries CPython and bundled third-party components. The sole claim-bound D150 formal run must inspect and retain its PYTHON.json license inventory and all included notices, publish only hashes/aggregate facts, and prohibit archive redistribution.",
+        "cpython_spdx_expression": "PSF-2.0"
+      },
+      "python_build_standalone_release": "20240224",
+      "repository": "astral-sh/python-build-standalone",
+      "tag_commit": "61ace30326ba7c32325c6633665cc571ac56b82a",
+      "version": "3.10.13"
+    },
+    "operating_system": "Linux",
+    "python_abi": "cp310",
+    "python_version": "3.10.13",
+    "wheel_platform": "x86_64-manylinux2014 resolver target; older compatible manylinux1/manylinux2010 tags and exact PyTorch linux_x86_64 CPU tag are allowed only as enumerated below"
+  }
+}

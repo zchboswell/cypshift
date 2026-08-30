@@ -5382,10 +5382,9 @@
 ## D-147 — Freeze the distinct Global-v3 EXP-G4-GIN300 pretrained-transfer experiment
 
 - Date: 2026-08-30
-- Status: accepted contract-only evidence pending reviewed signed integration;
-  D-146 is integrated as signed commit
-  `d029bb3b154f1721d094dae76e5587c0c927da2e` through PR #183 with green PR CI
-  run `33323263534` and green exact-SHA post-main CI run `33323845649`;
+- Status: accepted and integrated as signed commit
+  `b5cf47c6bc8ccc2dc29c7167b1a436d792338509` through PR #184 with green PR CI
+  run `33327853790` and green exact-SHA post-main CI run `33328374514`;
   Global-v2 remains closed, G2-7G remains permanently UNDERPOWERED, and G2-8
   remains closed
 - Decision: Accept only the canonical Global-v3 contract
@@ -5463,11 +5462,11 @@
   public static tests. D-148 may not fetch or load a checkpoint, create a
   runtime, implement a feature builder, execute parity or a model, open an
   official row or target, or create a claim. Only after D-148 receives the same
-  signed/integrated/green treatment may D-149 create the isolated Linux runtime
-  and narrow public implementation, fetch only the three frozen public
-  checkpoint objects into isolated non-Git storage, and execute redistributable
-  fixture provenance/parity and synthetic mechanics under one frozen formal
-  attempt. Any rights, notice, object-hash, tensor, graph, embedding,
+  signed/integrated/green treatment may a later milestone implement and then
+  execute the frozen boundary. D-148 subsequently supersedes the prospective
+  assignment here: D-149 is implementation/static validation only, while D-150
+  owns the sole formal invocation. Any rights, notice, object-hash, tensor,
+  graph, embedding,
   Linux-parity, nonredistribution, determinism, or resource failure closes the
   lane before official access, without in-place repair.
   Any future CatBoost API/timing probe must use only contract-frozen
@@ -5491,6 +5490,134 @@
   unknown-overlap disclosure, rights/nonredistribution boundary, terminal
   precedence, D-148/D-149 separation, nine-file scope, zero-authority
   accounting, signed integration, or exact-SHA post-main CI blocks D-148 but
-  cannot reopen any closed lane. Otherwise integrate D-147 through the signed
-  fast-forward-only workflow, require green post-main CI, then freeze D-148
-  contract-only.
+  cannot reopen any closed lane. That signed fast-forward-only integration and
+  green post-main CI subsequently completed; D-148 now supersedes only the old
+  prospective D-149 execution assignment while preserving every D-147
+  scientific and authority boundary.
+
+## D-148 — Freeze the EXP-G4-GIN300 capability, runtime, and one-use boundary
+
+- Date: 2026-08-30
+- Status: accepted contract-only evidence pending reviewed signed integration;
+  D-147 is integrated as signed commit
+  `b5cf47c6bc8ccc2dc29c7167b1a436d792338509` through PR #184 with green PR CI
+  run `33327853790` and green exact-SHA post-main CI run `33328374514`;
+  Global-v2 remains closed, G2-7G remains permanently UNDERPOWERED, and G2-8
+  remains closed.
+- Decision: Freeze status `G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN`
+  through the canonical capability contract
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`
+  at SHA-256
+  `df8796575c3d6093dd4038f4268417a979b8edca14245a7acff26e3db18eaa44`
+  (184,100 bytes / 1,687 lines), the bound Linux x86_64 CPU-runtime manifest at
+  SHA-256
+  `67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01`
+  (166,425 bytes / 4,008 lines), and the third-party notices at SHA-256
+  `b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb`
+  (12,456 bytes / 241 lines). Bind the strict public audit at SHA-256
+  `d9318267ff607703b9d957fc2fa13b79af61740b486471ab0556c06f3205bb12`
+  (97,426 bytes / 2,509 lines) with `15/15 passed`.
+- Runtime boundary: Bind install-only CPython 3.10.13 plus exactly 96 CPU
+  wheels, 185 dependency edges, 539,395,366 wheel bytes, and 97 manifest
+  distribution artifacts totaling 566,804,656 bytes. Require the full
+  `molfeat[dgl,transformer]` closure and forbid CUDA, NCCL, and Triton. Permit
+  exactly one post-cutoff package wheel, `future==1.0.0`, because the historical
+  version is sdist-only; disclose the separately frozen 20240224 interpreter as
+  infrastructure. A future clean fetch authenticates 98 runtime network files
+  including the sidecar (566,804,721 bytes), three model/checkpoint objects
+  (22,374,079 bytes), one 606-byte MolFeat metadata object, and exactly two
+  redirects.
+- Capability oracle: Require three isolated CPU processes over the fixed
+  eight-row redistributable fixture. The SNAP conversion, native DGL loader,
+  and MolFeat public local-store path must all yield the exact bare
+  `dgllife.model.gnn.gin.GIN` with 57 unprefixed state keys and no predictor,
+  readout, head, wrapper, prefix, or extra key. Tensor and graph manifests are
+  exact. Embeddings must either be byte-identical or follow the prospectively
+  frozen `max_abs <= 1e-7`, `rtol=0` numeric branch and then yield 48 exact
+  fallback predictions from the two candidate models. Require two uncached
+  3,908-row GIN roots, the 3,908-molecule / 3,640-component official-shaped
+  synthetic topology, 180 model-double fits and 140,688 predictions per root,
+  six real CatBoost fits and 4,692 validation predictions, and 20% wall, CPU,
+  storage, and simultaneous-RSS prefit margin with zero GPU.
+- Supervision and one-use boundary: Freeze fixed private roots, authenticated
+  public objects and tools, an outer stdlib supervisor that never consumes the
+  claim, and a child that reaches an acknowledged ready checkpoint before it
+  atomically consumes and permanently tombstones the sole claim. No private
+  work root or network operation exists before consumption. Fetch is exact,
+  sequential, bounded, and nonresumable; every deserialize/tensor/graph/
+  embedding/CatBoost worker executes inside the frozen offline CPU sandbox.
+  The child returns only a bounded aggregate payload. The outer authoritatively
+  cleans and verifies mutable roots before common seal, retains only the exact
+  runtime and SNAP object on a fully accepted candidate, and publishes one
+  no-replace aggregate result. No retry, resume, repair, alternate object, or
+  second terminal exists.
+- Milestone split: D-149 is exactly a 14-path implementation, lock, test,
+  narrative, and ledger milestone. It may author the isolated-project evidence
+  mirror, builder, stdlib runner, and two public tests, but it may fetch no
+  artifact body, create no private root/runtime, import or execute the
+  scientific stack, deserialize no checkpoint, run no parity/scaled-GIN/
+  synthetic/CatBoost operation, consume no claim, and publish no result. Only
+  after D-149 is reviewed, SSH-signed, fast-forward integrated, and green on
+  exact-SHA post-main CI may separate eight-path D-150 perform the single formal
+  capability invocation. This split supersedes D-147's prospective assignment
+  of both implementation and execution to D-149.
+- D-148 evidence accounting: Contract preparation downloaded zero wheel,
+  interpreter-archive, checkpoint/model, transformer, or tokenizer artifact
+  bodies; created or installed no runtime; imported or executed no scientific
+  package; and ran no model, parity, feature, fit, prediction, or resource
+  probe. It recorded six checkpoint/model HEAD requests and zero such body
+  bytes; one 606-byte MolFeat metadata GET plus one HEAD; two interpreter
+  archive/sidecar HEAD requests with zero body on those HEADs; 95
+  distinct PyPI release-JSON resources; nine SPDX JSON resources; the PyTorch
+  CPU simple-index resource; one 65-byte checksum-sidecar GET; and one
+  1,495-byte build-license GET. Total public-source transactions and metadata
+  bytes not instrumented during the audit remain unknown and are not inferred.
+- Validation evidence: The focused static audit passes `15/15`. The exact
+  bounded safe-suite command
+  `PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -v uv run --locked pytest -p no:cacheprovider --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+  completed with `1449 passed, 14 skipped, 0 failed` in 349.72 pytest seconds /
+  350.21 wall-seconds at 903,624 kB maximum RSS and exit status zero. Ruff over
+  325 allowed Python files with the exact barred G2-7B runner, driver, and test
+  excluded; format and temporary compilation of the D-148 audit; mypy over 78
+  source files; offline isolated build; and a fresh Python 3.12.3 installed-
+  wheel two-root audit/train/predict/report replay all pass. The two smoke roots
+  are byte-identical at 9 files / 36,758 bytes each. The 11 package hashes and
+  Git status are identical before and after validation. Incidental build and
+  tree hashes are not frozen and confer no scientific or execution authority.
+- Terminal meaning: A clean D-150 result
+  `G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED` is capability-only engineering
+  evidence and explicitly not scientific `ACCEPTED`, model-quality evidence,
+  official access, feature authority, development authority, or selection.
+  Rights, notice, object, tensor, graph, parity, or nonredistribution defects
+  map to
+  `G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED`; a complete
+  prefit projection margin miss maps to
+  `G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT`; malformed, operational,
+  incomplete-integrity, hard-ceiling, or supervision failures map to
+  `G3_G4_GIN300_FAILED`. `G3_G4_GIN300_RESOURCE_ABORTED` remains reserved for
+  a later claim-bound official feature/development attempt and cannot be
+  emitted by D-148, D-149, or D-150.
+- Authority boundary: D-148 changes only its contract, runtime manifest,
+  notices, public static audit, six narrative surfaces, and ledger. It creates
+  no checkpoint-fetch/load authority, runtime/execution authority, official or
+  private-data read authority, scientific/model-quality evidence, claim,
+  contender, selection, confirmatory/test/TDI, submission, validator,
+  leaderboard, portal, credential, upload, or GPU authority. D-127/D-128 and
+  every closed Global-v2 path remain barred.
+- Alternatives: Let D-149 execute before its own reviewed integration; combine
+  code creation and one-use claim consumption; fetch or install during D-148 or
+  D-149; use a non-CPU runtime or unbound wheel; infer checkpoint structure;
+  accept a head/wrapper/prefix mismatch; relax tensor, graph, or embedding
+  parity after observing it; retry a fetch or claim; clean after publication;
+  publish a partial/private payload; use official targets for a capability
+  probe; reinterpret capability success as scientific acceptance; or emit
+  `RESOURCE_ABORTED` before a later official claim-bound operation.
+- Reversal condition: Any mismatch in integrated D-147 lineage, one of the four
+  D-148 core identities, canonical bytes, CPU-runtime inventory, rights/notices,
+  direct bare-GIN tensor map, graph/parity oracle, synthetic topology and
+  operation counts, resource formulas, one-use chronology, cleanup-before-seal
+  boundary, D-149-zero/D-150-run split, terminal taxonomy, zero-authority or
+  public-network accounting, tracked scope, signed review, or exact-SHA CI
+  blocks D-148 integration without opening any scientific or official lane.
+  Otherwise integrate D-148 through the signed fast-forward-only workflow and
+  begin only the zero-execution D-149 implementation milestone.

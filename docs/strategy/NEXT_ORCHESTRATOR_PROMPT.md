@@ -1,24 +1,18 @@
-# Next orchestrator kickoff — integrate D-147, then freeze D-148 contract-only
+# Next orchestrator kickoff — integrate D-148, then implement D-149 without execution
 
-The current objective is the smallest scientifically defensible path to another
+The current objective remains the smallest scientifically defensible path to a
 competitive OpenADMET CYP 2026 submission. Frozen challenge-family-held-out
-validation outranks leaderboard evidence. The active branch is
-`codex/global-v3-g4-gin300-contract`, based on signed D-146 `main` commit
-`d029bb3b154f1721d094dae76e5587c0c927da2e`.
+validation outranks leaderboard evidence. Global-v2 is closed: G2-7G is
+permanently UNDERPOWERED before science, selected no candidate or runner-up,
+and opens no G2-8 or submission authority.
 
-D-146 is complete and historical. PR #183 merged that exact signed commit; PR
-CI run `33323263534` and exact-SHA post-main CI run `33323845649` are green.
-Global-v2 remains closed. The sole G2-7G attempt is permanently UNDERPOWERED
-before science, selected no candidate or runner-up, issued no token, and opens
-no G2-8 or submission authority.
-
-Under explicit 2026-08-30 user direction, D-147 freezes a genuinely distinct
-contract-only Global-v3 hypothesis, `EXP-G4-GIN300`. It has a new identity and
-requires future claims and roots. It is not a retry, repair, resume,
-replacement, support relaxation, reinterpretation, or continuation of G2-7G,
-EXP-G1, EXP-G2, EXP-G3, EXP-M1, EXP-X1, EXP-T2, TRACE, R5D, D-127, or D-128.
-No prior claim, root, terminal, private capability, or one-use authority may
-transfer into it. No time-based pause gate is active.
+The genuinely distinct Global-v3 `EXP-G4-GIN300` scientific contract is
+integrated as signed D-147 commit
+`b5cf47c6bc8ccc2dc29c7167b1a436d792338509`; PR #184 CI run `33327853790`
+and exact-SHA post-main CI run `33328374514` are green. D-148 now freezes only
+its Linux x86_64 rights, provenance, CPU-runtime, tensor/graph/parity,
+label-free synthetic-capability, prefit-resource, one-use supervision, cleanup,
+and terminal-publication contract. No time-based pause gate is active.
 
 ## Restore authoritative context first
 
@@ -29,313 +23,201 @@ Read completely, in order:
 3. `docs/phases/README.md`;
 4. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
 5. `docs/strategy/PROJECT_CHARTER.md`;
-6. D-122 through D-147 in `docs/strategy/DECISIONS.md`;
+6. D-147 and D-148 in `docs/strategy/DECISIONS.md`;
 7. the final relevant rows of `runs/experiment_ledger.csv`;
 8. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json`;
-9. `tests/test_openadmet_global_v3_g4_gin300_contract.py`;
-10. the public parent contracts and aggregate receipts named by the D-147
-    contract.
+9. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`;
+10. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json`;
+11. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md`;
+12. `tests/test_openadmet_global_v3_g4_gin300_capability_contract.py`.
 
-Treat the signed Git history, current exact worktree, canonical contract bytes,
-public receipt hashes, and green exact-SHA checks as authoritative. Do not open
-a protected path to refresh context. Never inspect, import, copy, execute,
-patch, or derive code from a barred runner or driver. D-127/D-128 and the old
-G2-7 paths remain closed.
+Treat signed Git history, canonical tracked bytes, public source receipts, and
+green exact-SHA checks as authority. Do not open a protected path to refresh
+context. Never inspect, import, copy, execute, patch, or derive code from a
+barred runner or driver. D-127/D-128 and every closed G2-7 path remain barred.
 
-## Exact D-147 core
+## Exact D-148 package
 
-The canonical contract is:
+The current status is
+`G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN`.
 
-- path:
-  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json`;
-- status: `G3_1_EXP_G4_GIN300_CONTRACT_FROZEN`;
-- SHA-256:
-  `b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e`;
-- size: 37,092 bytes / 485 lines;
-- base commit: `d029bb3b154f1721d094dae76e5587c0c927da2e`.
+- Capability contract:
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`,
+  SHA-256
+  `df8796575c3d6093dd4038f4268417a979b8edca14245a7acff26e3db18eaa44`,
+  184,100 bytes / 1,687 lines.
+- CPU-runtime manifest:
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json`,
+  SHA-256
+  `67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01`,
+  166,425 bytes / 4,008 lines.
+- Third-party notices:
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md`,
+  SHA-256
+  `b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb`,
+  12,456 bytes / 241 lines.
+- Strict public static audit:
+  `tests/test_openadmet_global_v3_g4_gin300_capability_contract.py`, SHA-256
+  `d9318267ff607703b9d957fc2fa13b79af61740b486471ab0556c06f3205bb12`,
+  97,426 bytes / 2,509 lines, focused result `15/15 passed`.
 
-The strict public static audit is:
+Recompute these identities from the exact worktree; do not trust prose alone.
+Parse both JSON contracts and the runtime manifest with duplicate-key and
+nonfinite rejection, require their exact two-space-indented UTF-8 canonical
+serialization plus terminal LF, and run the strict focused audit plus the
+bounded public repository checks authorized by the current workflow. None of
+those checks may fetch an artifact, create the runtime, or execute scientific
+code.
 
-- path: `tests/test_openadmet_global_v3_g4_gin300_contract.py`;
-- SHA-256:
-  `c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc`;
-- size: 31,371 bytes / 815 lines;
-- focused result: `9/9 passed`.
+The exact bounded safe-suite command
+`PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -v uv run --locked pytest -p no:cacheprovider --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+completed with `1449 passed, 14 skipped, 0 failed` in 349.72 pytest seconds /
+350.21 wall-seconds at 903,624 kB maximum RSS and exit status zero. Ruff over
+325 allowed Python files with the exact barred G2-7B runner/driver/test
+excluded, format and temporary compilation of the D-148 audit, mypy over 78
+source files, offline isolated build, and a fresh Python 3.12.3 installed-wheel
+two-root audit/train/predict/report replay are green. The two roots are
+byte-identical at 9 files / 36,758 bytes each. The 11 package hashes and Git
+status remained identical; incidental build and tree hashes are not frozen.
 
-The bounded safe repository command is:
+## Frozen capability and runtime oracle
 
-`uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+The runtime manifest binds install-only CPython 3.10.13 and exactly 96 CPU
+wheels, 185 dependency edges, 539,395,366 wheel bytes, and 97 distribution
+artifacts totaling 566,804,656 bytes. It includes the complete
+`molfeat[dgl,transformer]` closure and no CUDA, NCCL, or Triton. The one
+post-cutoff package-wheel exception is `future==1.0.0`; the frozen 20240224
+interpreter is separately disclosed infrastructure. A future successful fetch
+authenticates 98 runtime network files including the checksum sidecar
+(566,804,721 bytes), three model/checkpoint objects (22,374,079 bytes), one
+606-byte MolFeat metadata object, and exactly two redirects.
 
-It completed with `1434 passed, 14 skipped, 0 failed` in 347.99 pytest seconds /
-348.42 wall-seconds at 901,484 KiB maximum RSS. Ruff, mypy, isolated build,
-and installed-wheel two-root reproduction are green. Treat these as repository
-and CI parity evidence only; they create no model-quality or downstream
-authority and do not freeze incidental wheel or tree hashes.
+The parity oracle uses three isolated CPU processes on the same fixed eight-row
+redistributable fixture. The SNAP conversion, native DGL loader, and MolFeat
+public local-store path must all yield the direct bare
+`dgllife.model.gnn.gin.GIN` with exactly 57 unprefixed state keys and no head,
+readout, wrapper, prefix, or extra. Tensor and graph manifests must match
+exactly. The 8x300 embeddings must either match byte-for-byte or enter only the
+predeclared `max_abs <= 1e-7`, `rtol=0` branch and then produce 48 exact
+fallback predictions from the two candidate models.
 
-The frozen current rules snapshot is Space revision
-`4a87b2dcc800036b745e4c7bbb0023be817b5408`, config Git blob
-`fd3a6aadf8938f0a142ef309768bf461aae7f802`, and config SHA-256
-`342cd287e63a79c61b8e18fa46e81950ebb7333b6e91ee427af18426e04ca52f`.
-It permits external data and pretrained models, requires accurate disclosure,
-and grants no current portal or upload authority. A future submission milestone
-must reauthenticate the then-current rules and method-report requirements.
+The resource oracle includes two uncached 3,908-row GIN passes, an
+official-shaped 3,908-molecule / 3,640-component synthetic topology, 180
+model-double fits and 140,688 predictions per root, six real CatBoost fits with
+4,692 validation predictions, and 20% projected wall, CPU, storage, and
+simultaneous-RSS margin. GPU visibility and use are zero.
 
-## Frozen scientific design
+## D-148 authority and evidence accounting
 
-The hypothesis is that a fixed supervised-masking GIN contributes useful
-molecular context beyond handcrafted MapLight features, especially for CYP1A2
-or CYP2D6. The exact candidate is:
+D-148 is contract and public evidence only. It created no runtime, wheel cache,
+private object root, claim, or result. It downloaded no wheel,
+interpreter-archive, checkpoint, model, transformer, or tokenizer artifact
+body; deserialized or executed no checkpoint; imported or ran no scientific
+stack; performed no parity, GIN, CatBoost, feature, fit, prediction, or
+resource-probe operation; and opened no official/private scientific input.
 
-- unchanged accepted MapLight columns `0:2563`;
-- exact provenance-cleared 300-column `gin_supervised_masking` block at
-  `2563:2863`;
-- one fixed `CatBoostRegressor` with MAE loss, `random_strength=2`, model seed
-  `1`, CPU, 16 threads, and no additional fit argument.
+The public audit recorded six checkpoint/model HEAD requests with zero body
+bytes; one 606-byte MolFeat metadata GET plus one HEAD; two interpreter
+archive/sidecar HEAD requests with zero body on those HEADs; 95 distinct PyPI
+release-JSON resources; nine distinct SPDX JSON resources; the PyTorch CPU
+simple-index resource; one 65-byte checksum-sidecar GET; and one 1,495-byte
+build-project-license GET. Raw retries, total public metadata transactions, and
+aggregate metadata bytes were not instrumented and must remain unknown rather
+than inferred.
 
-Two mandatory same-learner controls are fixed:
+## Exact D-149 scope: code and static validation only
 
-- `G4-MAPL2563-SHUFFLED-GIN300`, with whole 300-value donor vectors permuted
-  only within each exact repeat/fold/train-or-validation partition; and
-- `G4-MAPL2563-NOISE300`, with Gaussian vectors generated only within each
-  exact repeat/fold/train-or-validation partition.
+D-149 may change exactly 14 paths:
 
-No donor, identity, feature vector, or noise assignment may cross the outer
-training-validation boundary. Exact duplicate raw hashes remain identical
-inside a partition. No alternative permutation, distribution, seed,
-normalization, checkpoint, or post-outcome control is allowed.
+1. `research/maplight-gin-openadmet/.python-version`;
+2. `research/maplight-gin-openadmet/pyproject.toml`;
+3. `research/maplight-gin-openadmet/uv.lock`;
+4. `research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py`;
+5. `research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py`;
+6. `tests/test_openadmet_global_v3_g4_gin300_capability.py`;
+7. `tests/test_openadmet_global_v3_g4_gin300_capability_result.py`;
+8. `benchmarks/openadmet_cyp_2026/README.md`;
+9. `docs/phases/README.md`;
+10. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
+11. `docs/strategy/PROJECT_STATE.md`;
+12. `docs/strategy/DECISIONS.md`;
+13. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
+14. `runs/experiment_ledger.csv`.
 
-A future development attempt, only after all intervening gates, is fixed at:
+The root `pyproject.toml` and `uv.lock` remain unchanged. The isolated lock is a
+Linux-targeted evidence mirror of the manifest, not install authority or a
+universal-resolution claim. D-149 must freeze/test one explicit implementation
+of every delegated bounded internal choice, including the public DGL/MolFeat
+call sequence, bounded control-frame enum, descendant stdio routing, and exact
+result dual-state validator. It must remain deterministic and fail closed.
 
-- three systems;
-- three repeats, five outer challenge-family folds, and four endpoints;
-- 60 fits per system and exactly 180 new fits total;
-- 46,896 prediction rows per system and 140,688 new rows total;
-- zero baseline refits and zero inner-selection fits;
-- 48 tutorial calls;
-- one synchronized 2,000-replicate component-bootstrap stream shared across
-  five fixed contrasts, with at most 20,000 synchronized draw attempts total.
+D-149 must perform zero artifact body fetch, runtime creation or install,
+private-root creation, scientific import, checkpoint load or deserialization,
+tensor/graph/embedding operation, parity process, scaled GIN pass, synthetic
+construction, CatBoost fit or prediction, claim construction or consumption,
+result publication, official/private read, or GPU operation. Do not run the
+formal launcher while creating or reviewing D-149. The public result must stay
+absent and untracked.
 
-Candidate promotion requires every baseline member: at least 3% tutorial-
-primary improvement, 0.015 absolute component-macro MAE improvement, paired
-component-bootstrap upper 95% bound below zero, at least 8/15 favorable cells,
-no endpoint degradation above 0.015, and at least one of CYP1A2/CYP2D6
-improving by 0.010. Attribution additionally requires at least 1% tutorial-
-primary and 0.005 component-macro improvement over each control, paired upper
-bounds below zero, at least 8/15 favorable cells against each, and neither
-control independently passing the baseline gate. Equality is insufficient for
-the paired upper-bound and favorable-cell gates. A clean miss closes the lane.
+## Future D-150 boundary — not current authority
 
-No tuning, early stopping, calibration, stack, blend, seed bagging,
-endpoint-specific recipe, external label, assay-context feature, residual
-search, alternate checkpoint, support relaxation, control, runner-up, or
-outcome-driven successor is authorized.
+Only after D-149 is independently reviewed, SSH-signed, integrated locally by
+fast-forward only, pushed without rewriting, and green on exact-SHA post-main
+CI may D-150 perform one formal invocation. D-150 changes exactly the aggregate
+result, these six narrative surfaces, and the ledger; it does not change the
+runner, builder, lock, or tests.
 
-## Provenance, rights, and claims boundary
+The frozen launcher is direct system Python with an empty operator environment,
+no arguments, and no root-environment sync. The outer authenticates lineage,
+tools, roots, and result absence before spawn. A child reaches the acknowledged
+ready checkpoint and then atomically consumes and permanently tombstones the
+sole claim before any private-root creation or network operation. Fetch is
+sequential, exact, bounded, and nonresumable. Every checkpoint deserialize,
+tensor/graph/embedding operation, and CatBoost worker runs offline inside the
+frozen CPU-only sandbox. The child emits only a bounded aggregate payload. The
+outer authoritatively cleans and verifies all mutable roots while retaining
+only the contract-authorized runtime and SNAP object on a proposed success;
+only then may common seal publish one no-replace canonical aggregate terminal.
+No retry, resume, replacement claim, alternate artifact, or post-publication
+cleanup exists.
 
-Historical fixed-plus-GIN evidence improved binary CYP2C9, CYP2D6, and CYP3A4
-AUPRC under scaffold and chemistry-community holdouts. The shuffle and noise
-controls did not reproduce those gains. This is supportive mechanism and
-feasibility evidence only. It is not OpenADMET pIC50 evidence, contains no
-historical CYP1A2 GIN result, and cannot satisfy development, robustness,
-confirmatory, or submission gates.
-
-The pretraining lineage contains approximately two million ZINC15 molecules
-and approximately 456,000 ChEMBL molecules across 1,310 assays. OpenADMET
-structure and assay overlap are unknown. This must be disclosed. Do not claim
-clean zero-shot transfer, uncontaminated external validation, strict family
-holdout from all pretraining, known absence of challenge-structure overlap, or
-known absence of challenge-assay overlap.
-
-Prospective eligibility requires exact SNAP, DGL-LifeSci, and MolFeat object
-identity; rights and notices; complete tensor conversion coverage; identical
-graph construction; exact 300-column finite float64 embeddings; Linux x86_64
-parity; and strict nonredistribution. No checkpoint or pretraining data may
-enter Git, CI artifacts, submission files, public terminals, documentation
-bundles, or publication bundles.
-
-Contract preparation performed a bounded public-source rights/hash audit:
-
-- one public SNAP source archive downloaded to temporary non-Git storage;
-- 33 public checkpoint files / 204,567,885 bytes temporarily persisted outside
-  Git;
-- one SNAP checkpoint / 7,452,448 bytes opened only for hashing;
-- zero DGL checkpoint bytes downloaded;
-- zero MolFeat checkpoint bytes downloaded;
-- zero checkpoint tensors deserialized or executed;
-- zero embeddings generated;
-- zero checkpoint files added to Git or the workspace.
-
-Do not summarize this as zero checkpoint download or zero checkpoint read.
-Equally, do not call it model loading, checkpoint execution, feature generation,
-or parity evidence. It creates no current checkpoint-fetch or model-load
-authority.
-
-## Exact D-147 package and authority
-
-The coherent tracked package contains exactly nine files:
-
-1. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json`;
-2. `tests/test_openadmet_global_v3_g4_gin300_contract.py`;
-3. `benchmarks/openadmet_cyp_2026/README.md`;
-4. `docs/phases/README.md`;
-5. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
-6. `docs/strategy/PROJECT_STATE.md`;
-7. `docs/strategy/DECISIONS.md`;
-8. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
-9. `runs/experiment_ledger.csv`.
-
-D-147 consists of one contract, one public static test, and the exactly
-disclosed bounded public source-rights/hash audit above. It changes no
-dependency or runtime and adds no implementation. Beyond that audit, it opens
-zero pretraining row, official input,
-official structure, target value, baseline prediction, feature row,
-confirmatory truth, historical row-level artifact, blinded-test row, or TDI
-row. It performs zero GIN feature build, model fit, prediction, development
-metric, bootstrap, claim creation or consumption, selection token, contender
-lock, full training, submission row, validator call, official metric,
-leaderboard selection, portal or credential access, live upload, or GPU
-operation. Its current authority is limited to the contract and public static
-audit; the source-rights/hash audit grants no model or execution authority.
-
-Do not modify a dependency, runtime, implementation, historical test, old
-contract, driver, compiler, claim, terminal, D-143/D-146 evidence, protected
-artifact, or barred path in D-147.
-
-The ledger row must parse as exactly 18 columns and distinguish the temporary
-public-source hash accounting from zero deserialization/execution. It must bind
-the two core hashes, D-146 signed/green parent, current rules snapshot,
-candidate/control identities, budgets, unknown-overlap disclosure,
-D-148/D-149 separation, and every zero-authority counter. Its self-referential
-commit field remains `not_applicable_self_referential_commit`.
+A clean result `G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED` is engineering
+capability evidence only. It is not scientific `ACCEPTED`, model-quality
+evidence, official access, feature generation authority, development authority,
+or a selection token. Rights/object/tensor/graph/parity/nonredistribution defects
+map exactly to
+`G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED`; a complete
+prefit resource-margin miss maps to
+`G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT`; malformed, operational,
+incomplete-integrity, hard-ceiling, or supervision failures map to
+`G3_G4_GIN300_FAILED`. `G3_G4_GIN300_RESOURCE_ABORTED` remains reserved for a
+later claim-bound official feature/development attempt and cannot be emitted by
+D-148, D-149, or D-150.
 
 ## Exact next action
 
-1. Authenticate the D-147 nine-file diff against signed base
-   `d029bb3b154f1721d094dae76e5587c0c927da2e`. Reject any tenth file or any
-   modification outside the package.
-2. Recompute the contract and test hashes/sizes, parse the contract with
-   duplicate-key and nonfinite rejection, and require the focused static audit
-   to pass `9/9`.
-3. Parse `runs/experiment_ledger.csv` as exactly 18 columns per row, parse every
-   embedded JSON field, and confirm the D-147 row is the sole append.
-4. Verify every narrative surface agrees on the distinct-lane boundary,
-   temporary public-source audit accounting, exact design and gates,
-   zero-authority facts, and D-148 contract-only then D-149 implementation
-   sequence. Remove every stale current-tense instruction to integrate D-146 or
-   stop all future prospective work.
-5. Run the bounded relevant repository checks, Ruff, format, compilation,
-   typing, isolated build, and installed-wheel parity required by the current
-   workflow. Do not execute a GIN worker, checkpoint, model, official driver, or
-   protected capability.
-6. Create one coherent SSH-signed `zchboswell` commit with no AI attribution.
-   Push the branch, open a pull request, and require all checks on the exact
-   signed head.
-7. Recheck clean mergeability and integrate the reviewed signed commit locally
-   with fast-forward only. Do not use GitHub's hosted rebase merge. Push `main`
-   without rewriting the commit and require green push-event exact-SHA
-   post-main CI.
-8. Only then begin D-148, and begin it as contract-only.
+1. Authenticate the D-148 package and all four core identities against signed
+   D-147 commit `b5cf47c6bc8ccc2dc29c7167b1a436d792338509`.
+2. Require the final focused D-148 public audit, canonical JSON checks,
+   narrative/ledger consistency, Ruff/format/compile checks, and diff check to
+   pass without artifact fetch or scientific execution.
+3. Create one coherent SSH-signed `zchboswell` D-148 commit with no AI
+   attribution. Push it, open a pull request, and require all checks on the
+   exact signed head.
+4. Recheck mergeability and integrate locally with fast-forward only. Do not
+   use GitHub's hosted rebase merge. Push `main` without rewriting the commit
+   and require green exact-SHA post-main CI.
+5. Only then create D-149's exact 14-path implementation/static-test package.
+   Do not invoke it, fetch any frozen body, create any private runtime/root, or
+   consume the formal attempt.
+6. Review, sign, integrate, and require exact-SHA-green D-149 before considering
+   the separate D-150 formal invocation. D-150 is not authorized from an
+   unreviewed D-149 branch.
 
-## D-148 contract-only and D-149 implementation
-
-D-148 may freeze only the deterministic Linux x86_64 rights/provenance/runtime
-and label-free synthetic-capability contract plus public static tests. It must
-bind:
-
-- the isolated Python 3.10.13 environment and every wheel, hash, license, and
-  notice;
-- the three exact SNAP, DGL-LifeSci, and MolFeat public checkpoint objects;
-- temporary non-Git storage, no-network-after-fetch, and nonredistribution;
-- complete SNAP-to-DGL state-dictionary conversion with no missing, extra,
-  silently reshaped, or unaccounted tensor;
-- three fresh CPU-process executions on the same existing eight-row
-  redistributable fixture;
-- identical graph construction, exact 300-column finite float64 output, and
-  byte-identical pooled embeddings when serialization permits;
-- any necessary numeric tolerance prospectively, before observing a
-  difference, while retaining identical downstream fixture predictions;
-- two opposite-order synthetic feature/model roots, deterministic terminals,
-  cleanup, and 20% resource margin for the future 180-fit workload;
-- a bounded real CatBoost API/timing probe using only contract-frozen
-  redistributable synthetic labels and no official target;
-- fail-closed ineligible and resource-infeasible prefit statuses.
-
-D-148 itself may not fetch or load a checkpoint, create a runtime, implement a
-feature builder, execute parity or a model, open an official row or target, or
-create a claim.
-
-Only after D-148 is independently reviewed, SSH-signed, fast-forward
-integrated, and green on exact-SHA post-main CI may D-149:
-
-- create the isolated Linux runtime and narrow public implementation;
-- fetch only the three frozen public checkpoint objects into isolated non-Git
-  storage;
-- run redistributable fixture provenance/parity and synthetic mechanics under
-  one frozen formal-attempt boundary; and
-- publish only hashes, notices, aggregate parity/resource facts, cleanup, and a
-  deterministic terminal.
-
-Any rights, notice, object-hash, tensor-coverage, graph, embedding, shape,
-finiteness, Linux-parity, nonredistribution, determinism, or resource defect
-closes `EXP-G4-GIN300` before official access. There is no in-place repair,
-fallback, alternate artifact, automatic successor, reduced design, second
-probe, or enlarged ceiling.
-
-A hard claim-bound feature or development wall, CPU, restricted-storage,
-peak-RSS, GPU, or supervisor breach publishes
-`G3_G4_GIN300_RESOURCE_ABORTED`. Partial scientific evidence from that attempt
-has zero model-quality authority.
-
-## Continuation and handoff
-
-If the user says `continue` while D-147 is unfinished, authenticate the branch,
-HEAD, worktree, exact nine-file diff, final two core hashes, focused result,
-ledger integrity, and current PR/CI state. Resume only the earliest unfinished
-D-147 validation, signed review, fast-forward integration, or exact-SHA
-post-main-CI step.
-
-If D-147 is integrated and post-main CI is green, continue only with D-148
-contract drafting and static review. Do not combine D-148 with runtime creation,
-checkpoint fetch, implementation, or execution.
-
-If D-148 is also integrated and post-main CI is green, D-149 may proceed only
-under its exact frozen single-use implementation/formal-attempt boundary. Do not
-infer official structure, target, feature, fit, metric, confirmatory, test,
-submission, portal, or upload authority from a capability pass.
-
-Before any later handoff, record:
-
-- exact branch, HEAD, base, and clean/dirty state;
-- exact package files and hashes;
-- focused, ledger, format, typing, build, and CI results;
-- commit signature and author identity;
-- branch push, PR, exact-head check state, integration SHA, and post-main run;
-- any active process and all temporary non-Git roots;
-- exact public checkpoint hash-only accounting versus model execution;
-- every protected/official/claim/fit/metric/submission counter; and
-- the earliest authorized next gate.
-
-## Closed operations
-
-- Never invoke or reinterpret G2-7G, G2-8, D-127, D-128, or another closed
-  experiment.
-- Never reuse or derive from an old claim, root, terminal, or one-use authority.
-- Through D-148, do not fetch or load checkpoint model bytes, create the GIN
-  runtime, implement a feature builder, or execute parity or a model.
-- Do not open official structures, targets, baseline OOF rows, confirmatory
-  truth, historical row-level evidence, blinded test, or TDI data.
-- Do not fit a model, generate a prediction, evaluate a development or official
-  metric, run a validator, generate a submission, or live-upload.
-- Do not use leaderboard or portal evidence for selection.
-- Do not expose a private identifier, score, rank, path, row value, credential,
-  checkpoint, embedding row, pretraining molecule, or unrestricted log.
-- Do not add a candidate, feature, seed, group, threshold, calibration, blend,
-  retry, cache, concurrency change, framework, service, or outcome-driven
-  successor.
-- Do not call fixed MapLight retained or selected by the underpowered outcome.
-- Do not claim clean zero-shot or uncontaminated external validation.
-
-`EXP-G4-GIN300` may reach a submission artifact only after separate accepted
-capability, official label-free feature, development, robustness/contender,
-sealed confirmatory, full-training, and byte-identical 750-row submission
-milestones. Portal credentials and upload remain separately human-armed.
+Throughout D-148 and D-149, do not access official structures or targets,
+baseline OOF rows, confirmatory truth, historical row-level artifacts, blinded
+test, TDI, submission generation, validator, official metric, leaderboard,
+private portal, credentials, or upload capabilities. Do not call full MapLight
+retained, promote a runner-up, relax the failed G2-7G support outcome, or use it
+to tune this lane. D-127/D-128, EXP-G3, G1/G2/M1/X1/T2, TRACE, R5D, and I0
+remain closed; `global_TDI` remains only the frozen TDI fallback.
