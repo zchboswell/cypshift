@@ -1,0 +1,485 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_contract.v1",
+  "recorded_at_utc": "2026-08-30T17:41:08Z",
+  "freeze_date": "2026-08-30",
+  "gate": "G3_1_EXP_G4_GIN300_CONTRACT_FROZEN",
+  "status": "G3_1_EXP_G4_GIN300_CONTRACT_FROZEN",
+  "contract_id": "GLOBAL_V3_G4_GIN300",
+  "experiment_id": "EXP-G4-GIN300",
+  "base_commit": "d029bb3b154f1721d094dae76e5587c0c927da2e",
+  "purpose": "Freeze a genuinely new challenge-fold-family-held-out pretrained-transfer test of whether one fixed CatBoost expert over the exact 2,563-column MapLight representation concatenated with a provenance-cleared 300-column pretrained GIN representation materially improves the immutable fixed-MapLight development baseline while acknowledging that pretraining overlap is unknown.",
+  "hypothesis": "A frozen supervised-masking GIN contributes transferable molecular context that the handcrafted MapLight blocks miss, especially for CYP1A2 or CYP2D6, and the gain will survive OpenADMET challenge-family holdout while disappearing under fold-local whole-vector shuffle and matched Gaussian-noise controls. This does not assert family separation from the unknown pretraining corpus.",
+  "targeted_failure": "Fixed MapLight may underrepresent learned substructure context, while historical GIN evidence may instead reflect source-domain transfer, preprocessing identity, unknown pretraining overlap, or representation scale rather than useful CYP pIC50 signal; two partition-local mechanistic controls and paired challenge-family-held-out evaluation are the simplest falsifiers.",
+  "occam_boundary": "Add exactly one frozen 300-column representation to the accepted 2,563 MapLight columns and keep the accepted CatBoost learner unchanged. Run one true candidate and two mandatory same-learner representation controls. Use no tuning, early stopping, calibration, stacking, blending, seed bagging, endpoint-specific recipe, external label, assay-context feature, residual search, support relaxation, or outcome-driven successor. A clean miss permanently closes EXP-G4-GIN300.",
+  "distinctness_and_closed_lane_boundary": {
+    "new_lane": "Global-v3 EXP-G4-GIN300 is a prospective pretrained-representation experiment with a new contract, future implementation, future claim identity, and future fixed roots.",
+    "not_a_retry": "It is not a retry, repair, resume, replacement, support relaxation, reinterpretation, or continuation of G2-7G, EXP-G1, EXP-G2, EXP-G3, EXP-M1, EXP-X1, EXP-T2, TRACE, R5D, D127, or D128.",
+    "g2_7g_terminal": "The immutable G2-7G result remains UNDERPOWERED with zero fits, predictions, metrics, selection tokens, contenders, runner-ups, confirmatory authority, or submission authority.",
+    "maplight_boundary": "Fixed MapLight remains the immutable development baseline and best previously validated internal system; it is not automatically retained, promoted, or selected by G2-7G or this contract freeze.",
+    "old_claims_and_roots": "No prior claim, attempt root, terminal root, private capability, or one-use authority may be reopened, reused, moved, overwritten, or derived into this lane."
+  },
+  "parents": {
+    "challenge_contract": {
+      "path": "challenge_contract.json",
+      "sha256": "344d3414d03bb98e57def998e80ab4cf315c1bebe7c01cb9d7c1c32ba3cd6123"
+    },
+    "global_v2_contract": {
+      "path": "global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d"
+    },
+    "fixed_maplight_reproduction": {
+      "path": "global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482"
+    },
+    "g2_7g_underpowered": {
+      "path": "global_v2_maplight_robustness_official_underpowered.json",
+      "sha256": "d52bee5e4ed4669c6db7e3061fc8aed8f55e81a0e4d3d17aca73e326df184a2d"
+    },
+    "maplight_source_contract": {
+      "path": "../maplight_source_contract.json",
+      "sha256": "a2a608e327cd7adc5e54f24edbcb41007ef03313c26db582f37c9d85836b23a8"
+    },
+    "maplight_gin_contract": {
+      "path": "../maplight_gin_contract.json",
+      "sha256": "d88c3b42c09f200939759e021fc15163da3ba501360079eea29a0139df11e55e"
+    },
+    "maplight_gin_stage_b_contract": {
+      "path": "../maplight_gin_stage_b_contract.json",
+      "sha256": "8d5c6f95e700760cdb31cb7b293c24da779adefa28a6f72e9cffdce5571bb906"
+    },
+    "historical_gin_report": {
+      "path": "../PHASE_0_75_REPORT.md",
+      "sha256": "ad55a6d03eddb38f2b1af1c15006c3ca8f3a274627eea9de466f242b39e7fece"
+    }
+  },
+  "accepted_receipt_strings": {
+    "dataset_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+    "direct_observations_sha256": "00b1ac95cc73dda2699f2f05bc33200d1119a197d7a92ae900cde78d722f00b7",
+    "group_folds_sha256": "91678d68b2f9ac3913f6b679dd284f82ba2a040d803de83655bf89906f31f774",
+    "r2b_manifest_sha256": "08dcf61cded99fae046bff49b57b0c4a12082cd8714c779ac44a351bf1a0c8c8",
+    "r3a_feature_manifest_sha256": "32a950959ceca0641b56518e2059069a275ced64cf399d095aa5bce522c8026b",
+    "feature_rows_sha256": "14260507a8fc6740e94dab848dc7fc87f1d45a57c2a2c67cfb2142fbea36cb30",
+    "maplight_rdkit_descriptors_sha256": "4a85afd7340121e175691775b944bcc0c2d4f7765ea729565d0f3c885e8c9905",
+    "fixed_maplight_outer_oof_sha256": "189c25b7d5bb923ddbc31764947fa6fc08d4c27a7063c4ede6cdabb93ccdd7e4",
+    "read_boundary": "This contract authenticates public receipt strings only. It opens no official, private, target-bearing, baseline-row, feature-row, checkpoint, or model byte. Later milestones must reauthenticate every receipt before accessing their narrowly authorized input."
+  },
+  "challenge_rules_snapshot": {
+    "space_revision": "4a87b2dcc800036b745e4c7bbb0023be817b5408",
+    "config_path": "config.py",
+    "config_git_blob": "fd3a6aadf8938f0a142ef309768bf461aae7f802",
+    "config_sha256": "342cd287e63a79c61b8e18fa46e81950ebb7333b6e91ee427af18426e04ca52f",
+    "submission_path": "submission.py",
+    "submission_git_blob": "70fea5f18929a64cce98547d0437790b4707e5b0",
+    "permission": "The frozen current Space rules explicitly permit external data and pretrained models. Proprietary training data must be disclosed; open-source code is optional for ordinary ranking and requires its own accurate disclosure.",
+    "method_report": "A method-report link is required before the deadline for final-leaderboard eligibility. Any future report must disclose this exact checkpoint chain, ZINC15 and ChEMBL pretraining lineage, and unknown challenge overlap.",
+    "refresh_rule": "A later submission artifact must reauthenticate then-current rules and disclosures; this snapshot grants no portal or upload authority."
+  },
+  "pretrained_eligibility_gate": {
+    "supported_claim": "public pretrained-representation transfer",
+    "forbidden_claims": [
+      "clean zero-shot transfer",
+      "uncontaminated external validation",
+      "strict family holdout from all pretraining",
+      "known absence of challenge-structure overlap",
+      "known absence of challenge-assay overlap"
+    ],
+    "snap": {
+      "repository": "snap-stanford/pretrain-gnns",
+      "commit": "8b20528a83b8869ce16451305b32c827258d19a3",
+      "checkpoint_path": "chem/model_gin/supervised_masking.pth",
+      "checkpoint_git_blob": "1f8de843feb5b51e73488a95096283028820583e",
+      "checkpoint_sha256": "375cd40af9f21d2a92ed1acbdea9efad14254c36703bb0e3a7e433e09e624ce1",
+      "checkpoint_size_bytes": 7452448,
+      "license": "MIT",
+      "license_git_blob": "4ec60e59108c68fc9a8d507920c393d7a1cda23b"
+    },
+    "dgl_lifesci": {
+      "version": "0.3.2",
+      "commit": "20cee8f3a2be314e34c0e696e797884630d0863e",
+      "pretrained_mapping_git_blob": "b5ab80f6123f3c393659e6accdce375c114121f8",
+      "pretrained_mapping_sha256": "a0023c5bff685f4d615ff73bde8caf8519a1f06e64b87926bb0a831129ec3387",
+      "provenance_readme_git_blob": "5aed7895ce8812ca7015a526a5a55725e5d5a00b",
+      "remote_checkpoint_url": "https://data.dgl.ai/dgllife/pre_trained/gin_supervised_masking.pth",
+      "remote_checkpoint_expected_size_bytes": 7454321,
+      "remote_checkpoint_expected_etag": "98fae61c9c23ce19ce4e57614f0f9450",
+      "remote_checkpoint_sha256": null,
+      "license": "Apache-2.0",
+      "license_git_blob": "67db8588217f266eb561f75fae738656325deac9"
+    },
+    "molfeat": {
+      "version": "0.9.2",
+      "commit": "4390f9fce25fa2da94338227f7c8f33a23e25b2a",
+      "etl_notebook_git_blob": "cb6e21e64409cb681dbc5aa49a5033c87cdf46ea",
+      "etl_notebook_sha256": "44097ef751c5c3cbd19c3fbd7307e0e3439cc7847c26dcc082ce65d594a142fc",
+      "runtime_loader_git_blob": "02ca594664d20b2ad627010d4b615d7eedd03611",
+      "metadata_url": "https://fs.molfeat.datamol.io/artifacts/dgllife/gin_supervised_masking/0/metadata.json",
+      "metadata_sha256": "75ea305d643d800b8b272819a78b842d5aca1c4ad55d47207321ab9b81d44d02",
+      "metadata_size_bytes": 606,
+      "artifact_sha256": "6d0f8febad73e437772ebffc2ac32253d79f86ee138cfc233590ae50fb1cfeb9",
+      "artifact_size_bytes": 7467310,
+      "artifact_license_field": null,
+      "model_usage": null,
+      "license": "Apache-2.0",
+      "license_git_blob": "b751c103f21bdb8962d43b87a5429dbdb24fcfcf"
+    },
+    "pretraining_lineage": {
+      "node_level": "approximately two million ZINC15 molecules",
+      "graph_level": "approximately 456,000 ChEMBL molecules across 1,310 assays",
+      "openadmet_structure_overlap": "unknown",
+      "openadmet_assay_overlap": "unknown",
+      "policy": "Unknown overlap is allowed by the frozen challenge rules but must be disclosed and prevents clean external-validation claims. No pretraining corpus may be downloaded, opened, reconstructed, or redistributed under this milestone."
+    },
+    "future_provenance_parity": {
+      "required_before_any_official_row_or_target": true,
+      "objects": [
+        "exact SNAP checkpoint",
+        "exact DGL-LifeSci remote checkpoint",
+        "exact MolFeat artifact"
+      ],
+      "non_git_cache": "Fetch into isolated non-Git storage and record transport URL, retrieval timestamp, SHA-256, size, and retained license or notice for every object.",
+      "tensor_coverage": "Prove SNAP-to-DGL state-dictionary conversion with no missing, extra, silently reshaped, or unaccounted tensor.",
+      "fixture": "Run the converted SNAP checkpoint, pinned DGL-LifeSci checkpoint, and pinned MolFeat artifact in three fresh CPU processes on the same existing eight-row redistributable fixture.",
+      "embedding_gate": "Require identical graph construction, exact 300-column shape, finite float64 output, and byte-identical pooled embeddings when serialization permits. Any prospective numeric tolerance must be frozen in a later contract before execution, cannot be chosen from observed differences, and must preserve identical downstream fixture predictions.",
+      "publication": "Publish hashes, aggregate parity facts, and required notices only. Never publish a checkpoint, embedding row, raw pretraining molecule, or unrestricted log.",
+      "success_authority": "A separately reviewed accepted parity receipt may authorize only local nonredistributed GIN feature construction under a later claim.",
+      "failure_status": "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED",
+      "failure_effect": "Zero official rows, labels, fits, predictions, or metrics. Permanently close EXP-G4-GIN300 without in-place repair, fallback, alternate artifact, or automatic successor."
+    },
+    "redistribution": "No SNAP, DGL-LifeSci, or MolFeat checkpoint and no pretraining data may enter Git, CI artifacts, submission files, public terminals, documentation bundles, or publication bundles. Local nonredistributed inference is the maximum prospective use authorized after parity."
+  },
+  "historical_support_only": {
+    "population": "Historical binary CYP2C9, CYP2D6, and CYP3A4 evidence; not OpenADMET pIC50 regression and no historical CYP1A2 GIN result.",
+    "scaffold_macro_auprc_delta_vs_fixed_maplight": 0.0614,
+    "community_macro_auprc_delta_vs_fixed_maplight": 0.0574,
+    "all_three_historical_tasks_improved": true,
+    "shuffle_and_noise_controls_reproduced_gain": false,
+    "authority": "Supportive mechanism and feasibility evidence only. It selects this prospective hypothesis but cannot satisfy any OpenADMET development, robustness, confirmatory, or submission gate."
+  },
+  "population_and_splits": {
+    "label_free_assignment": {
+      "all_molecules": 4905,
+      "all_components": 4553,
+      "development_molecules": 3908,
+      "development_components": 3640,
+      "confirmatory_molecules": 997,
+      "confirmatory_components": 913
+    },
+    "endpoints": [
+      "CYP1A2",
+      "CYP2C9",
+      "CYP2D6",
+      "CYP3A4"
+    ],
+    "targeted_weak_endpoints": [
+      "CYP1A2",
+      "CYP2D6"
+    ],
+    "repeats": 3,
+    "outer_folds": 5,
+    "repeat_seeds": [
+      20260810,
+      20260811,
+      20260812
+    ],
+    "family_rule": "Preserve every accepted group_folds.csv assignment. No molecule, exact duplicate, similarity component, or analog family may cross an outer training-validation boundary. Never rebalance, reseed, or use target availability, target magnitude, model output, checkpoint similarity, confirmatory truth, test structure, or portal evidence.",
+    "training_mask": "Fit one endpoint model on finite reported central values in the current outer-training component partition. Missing endpoint values remain absent and are never imputed.",
+    "prediction_population": "Each endpoint model predicts every label-free molecule in its matching outer-validation partition. Metrics open only after all 180 new fits and all 140,688 new candidate/control prediction rows are complete and immutable.",
+    "preflight_minima": {
+      "development_finite_targets_per_endpoint": 750,
+      "outer_training_targets_per_endpoint_repeat_fold": 400,
+      "outer_validation_targets_per_endpoint_repeat_fold": 75
+    },
+    "underpowered": "After every parent, receipt, schema, partition, family, identity, and raw-capability integrity check passes, a clean failure of an authenticated numerical minimum or positive finite tutorial denominator publishes G3_G4_GIN300_UNDERPOWERED with zero fits. It cannot move a component, alter a mask, choose another split, or change the model.",
+    "integrity_failure": "Any parent, receipt, schema, partition, family, identity, raw-capability, or other integrity defect publishes G3_G4_GIN300_FAILED, never UNDERPOWERED."
+  },
+  "feature_contract": {
+    "exact_raw_identity": "GIN consumes the receipt-bound exact raw SMILES and caches only by raw_structure_sha256. Standardized-structure hashes may not key, collapse, substitute, or deduplicate GIN embeddings.",
+    "raw_capability": "A later label-free compiler may expose exact raw SMILES only to the isolated GIN worker, bind raw_structure_sha256 before parse, and strip raw strings before any model stage. The current accepted feature_rows.csv lacks raw SMILES and cannot be used as a GIN input.",
+    "maplight": {
+      "columns": 2563,
+      "blocks": "Morgan count 1024, Avalon count 1024, ErG 315, and exact ordered RDKit descriptors 200",
+      "source": "Use the exact accepted MapLight bytes and ordering without recomputation, imputation, scaling, selection, compression, or target encoding."
+    },
+    "gin": {
+      "alias": "gin_supervised_masking",
+      "columns": 300,
+      "pooling": "mean",
+      "batch_size": 32,
+      "add_self_loop": true,
+      "atom_and_bond_features": "pinned DGL-LifeSci pretrained categorical featurizers",
+      "dtype": "float64",
+      "layout": "finite C-contiguous dense matrix",
+      "source": "Only the exact provenance-cleared checkpoint chain may construct this block."
+    },
+    "candidate_matrix": {
+      "system_id": "G4-MAPL2563-GIN300",
+      "column_order": "exact MapLight columns 0:2563 followed by exact GIN columns 2563:2863",
+      "total_columns": 2863,
+      "dtype": "float64 C-contiguous dense matrix",
+      "preprocessing": "None. No imputation, scaling, clipping, selection, projection, normalization, compression, or target encoding."
+    },
+    "two_root_rule": "Under one future one-use feature claim and before any target or baseline-prediction access, exactly two fresh opposite-order feature builds over the exact 3,908-molecule development population must produce byte-identical identity-sorted raw hashes, feature matrices, manifests, and public aggregate receipts. The two builds are the sole operation authorized by that future claim.",
+    "forbidden": "No standardized-hash GIN cache, checkpoint fine-tuning, gradient update, auxiliary target, external labeled row, confirmatory-derived feature, blinded-test-derived feature, assay-context feature, learned calibration, residual feature, target encoding, transductive statistic, or portal-derived value."
+  },
+  "control_contract": {
+    "controls": [
+      {
+        "system_id": "G4-MAPL2563-SHUFFLED-GIN300",
+        "seed": 20260816,
+        "rule": "For each repeat_index in 0..2, outer_fold in 0..4, and partition_code 0=train or 1=validation, sort unique raw_structure_sha256 values inside that exact partition; call numpy.random.default_rng(numpy.random.SeedSequence([20260816, repeat_index, outer_fold, partition_code])).permutation(n_unique_partition) exactly once; assign whole 300-value GIN donor vectors only within that partition; expand exact duplicate raw hashes identically inside the partition; concatenate to unchanged MapLight. No donor, raw identity, or feature vector may cross the training-validation boundary, and columns are never shuffled independently."
+      },
+      {
+        "system_id": "G4-MAPL2563-NOISE300",
+        "seed": 20260817,
+        "rule": "For each repeat_index in 0..2, outer_fold in 0..4, and partition_code 0=train or 1=validation, sort unique raw_structure_sha256 values inside that exact partition; call numpy.random.default_rng(numpy.random.SeedSequence([20260817, repeat_index, outer_fold, partition_code])).standard_normal((n_unique_partition, 300)) exactly once; preserve float64 C-contiguous bytes; expand exact duplicate raw hashes identically inside the partition; concatenate to unchanged MapLight. Training noise assignments never depend on validation identities."
+      }
+    ],
+    "same_learner": "Candidate and both controls use identical CatBoost constructor, fold assignments, masks, model seed, prediction populations, scorer, and resource limits.",
+    "predeclared_only": "No alternative permutation, noise distribution, amplitude, seed, normalization, checkpoint, or post-outcome control is authorized."
+  },
+  "runtime_contract": {
+    "future_platform": "Linux x86_64 CPU",
+    "historical_platform": "Darwin arm64; historical reproducibility evidence only",
+    "future_python": "3.10.13",
+    "historical_versions": {
+      "numpy": "1.25.2",
+      "torch": "2.0.1",
+      "dgl": "1.1.2",
+      "dgllife": "0.3.2",
+      "molfeat": "0.9.2",
+      "catboost": "1.2.1",
+      "rdkit": "2023.3.3"
+    },
+    "future_isolated_uv_lock_sha256": null,
+    "boundary": "A later contract must create an isolated Linux x86_64 lock, bind every wheel and license, prohibit network after fetch, prove fixture and two-root parity, and keep all GIN dependencies out of the installable core. This contract changes no dependency or runtime."
+  },
+  "model_contract": {
+    "api": "catboost.CatBoostRegressor",
+    "loss_function": "MAE",
+    "random_strength": 2,
+    "random_seed": 1,
+    "task_type": "CPU",
+    "thread_count": 16,
+    "verbose": 0,
+    "allow_writing_files": false,
+    "resolved_parameter_sha256": "c56235a54a883a9a4488f1c8779f9013dae777af0f99cd92c9da1c4f51e61757",
+    "fit_rule": "Create one fresh model per system, endpoint, repeat, and outer fold. Fit once on the exact finite-central outer-training rows with no eval set or additional fit argument, then predict the complete matching outer-validation feature population.",
+    "prohibited": "No parameter change, grid, inner tuning, early stopping, validation Dataset, callback, custom loss, custom metric, continuation, warm start, model reuse, GPU, changed thread count, ensemble, calibration, stack, blend, endpoint-specific recipe, or seed averaging."
+  },
+  "fit_prediction_metric_budget": {
+    "systems": [
+      "G4-MAPL2563-GIN300",
+      "G4-MAPL2563-SHUFFLED-GIN300",
+      "G4-MAPL2563-NOISE300"
+    ],
+    "outer_contexts_per_system": 15,
+    "endpoints_per_outer_context": 4,
+    "fits_per_endpoint_context": 1,
+    "exact_new_fits_per_system": 60,
+    "exact_new_fits_total": 180,
+    "baseline_refits": 0,
+    "inner_selection_fits": 0,
+    "expected_outer_prediction_rows_per_system": 46896,
+    "expected_new_outer_prediction_rows_total": 140688,
+    "fixed_maplight_prediction_rows_reopened_after_candidate_freeze": 46896,
+    "tutorial_calls": 48,
+    "synchronized_component_bootstrap_streams": 1,
+    "bootstrap_contrasts": [
+      "candidate_minus_fixed_maplight",
+      "candidate_minus_shuffled_gin",
+      "candidate_minus_noise300",
+      "shuffled_gin_minus_fixed_maplight",
+      "noise300_minus_fixed_maplight"
+    ],
+    "bootstrap_contrast_count": 5,
+    "accepted_synchronized_replicates": 2000,
+    "maximum_synchronized_draw_attempts_total": 20000,
+    "bootstrap_system_metric_evaluations": 8000,
+    "bootstrap_paired_differences": 10000,
+    "budget_rule": "Every identity is mandatory. Unused fit, prediction, metric, time, CPU, storage, or memory capacity cannot fund a retry, alternate control, additional seed, parameter, feature, preprocessing rule, blend, or successor."
+  },
+  "capability_and_stage_contract": {
+    "source_compiler": "May later authenticate exact development receipt strings and expose exact raw structure only to the label-free GIN worker. It cannot resolve a target, baseline prediction, confirmatory truth, blinded-test row, TDI row, submission row, metric, leaderboard, credential, or upload path.",
+    "feature_builder": "May later read only label-free structures and provenance-cleared local checkpoint bytes. It publishes immutable label-free feature capabilities and zero model or metric result.",
+    "outer_model": "May later read one system's features and one endpoint's current outer-training target capability. It cannot resolve outer-validation truth, baseline predictions, another endpoint's targets, scorer output, confirmatory truth, test structures, or portal evidence.",
+    "prediction_freezer": "Requires all 180 fit identities and 140,688 complete candidate/control prediction rows with unique expected row identities, then publishes immutable identity-sorted bytes before any scorer opens truth or baseline predictions.",
+    "scorer": "Only after prediction freeze may read development outer truth and immutable fixed-MapLight predictions on exact paired identities. It emits aggregate metrics, bootstrap summaries, counts, and no public row-level artifact.",
+    "publisher": "May publish one aggregate terminal after deleting mutable target, raw-string, feature, model, prediction, and scorer state."
+  },
+  "development_evaluation": {
+    "paired_identity": "All systems and fixed MapLight require the same molecule, endpoint, D-032 component, repeat, outer fold, target mask, and scorer row after canonical sorting. Any missing, extra, duplicate, or cross-system identity fails before a metric.",
+    "primary_metric": {
+      "id": "TUTORIAL_MA_ST_RAE_858AE63_V1",
+      "direction": "lower_is_better",
+      "repeat_rule": "For each repeat, join all five outer folds into one OOF prediction per development molecule and endpoint. Compute four endpoint tutorial ST-RAE values and their arithmetic macro mean; average the three repeat macro values.",
+      "relative_improvement": "relative_improvement(first, comparator) = (comparator_primary - first_primary) / comparator_primary; a nonpositive or nonfinite comparator fails closed.",
+      "name_boundary": "This is the pinned tutorial metric only. Live-backend parity remains unverified and no local value may be called an official score."
+    },
+    "component_macro_mae": {
+      "repeat_rule": "Within each endpoint and repeat complete OOF population, give each D-032 component equal total weight divided across its finite-central rows. Average four endpoints, then three repeats.",
+      "absolute_improvement": "absolute_component_improvement(first, comparator) = comparator_component_macro_mae minus first_component_macro_mae on identical rows.",
+      "endpoint_improvement": "endpoint_improvement(first, comparator) = comparator endpoint component-MAE minus first endpoint component-MAE after averaging each system's three repeat component-equal values."
+    },
+    "favorable_cells": "For each of 15 repeat-by-outer-fold cells, macro-average four endpoint component-equal MAEs. A cell is favorable only when the first named system is strictly lower than its comparator on identical rows.",
+    "paired_component_bootstrap": {
+      "difference": "first named system component-macro MAE minus comparator component-macro MAE",
+      "unit": "D-032 component shared across endpoints, repeats, and every system",
+      "seed": 20260830,
+      "accepted_replicates": 2000,
+      "maximum_attempts_total": 20000,
+      "contrasts": [
+        "candidate_minus_fixed_maplight",
+        "candidate_minus_shuffled_gin",
+        "candidate_minus_noise300",
+        "shuffled_gin_minus_fixed_maplight",
+        "noise300_minus_fixed_maplight"
+      ],
+      "draw": "Sample the sorted union of scored development components with replacement at the original component count. Reuse one multiplicity vector across all four systems and all five contrasts for each accepted replicate; never restart or use a contrast-specific stream.",
+      "rejection": "Reject a draw when any required system lacks an eligible endpoint row or any result is nonfinite.",
+      "interval": "Sort accepted differences and linearly interpolate p=0.025 and p=0.975 using h=(n-1)*p."
+    },
+    "baseline_promotion": {
+      "candidate": "G4-MAPL2563-GIN300",
+      "comparator": "fixed MapLight",
+      "minimum_relative_primary_improvement": 0.03,
+      "minimum_absolute_component_macro_mae_improvement": 0.015,
+      "paired_component_mae_upper_95_below_zero": true,
+      "minimum_favorable_outer_cells": 8,
+      "total_outer_cells": 15,
+      "maximum_endpoint_component_mae_degradation": 0.015,
+      "minimum_improved_targeted_endpoints": 1,
+      "targeted_endpoints": [
+        "CYP1A2",
+        "CYP2D6"
+      ],
+      "minimum_targeted_endpoint_component_mae_improvement": 0.01
+    },
+    "attribution_gate": {
+      "comparators": [
+        "G4-MAPL2563-SHUFFLED-GIN300",
+        "G4-MAPL2563-NOISE300"
+      ],
+      "minimum_relative_primary_improvement_vs_each": 0.01,
+      "minimum_absolute_component_macro_mae_improvement_vs_each": 0.005,
+      "paired_component_mae_upper_95_below_zero_vs_each": true,
+      "minimum_favorable_outer_cells_vs_each": 8,
+      "total_outer_cells": 15,
+      "control_may_pass_baseline_promotion": false,
+      "interpretation": "True GIN must beat each control conjunctively, and neither control may independently satisfy every fixed-MapLight promotion member. This attributes any promotion to learned representation content rather than width, scale, learner capacity, or arbitrary vector assignment."
+    },
+    "logic": "Every baseline-promotion and attribution member is conjunctive. Equality passes numeric minimum or maximum gates except paired upper bounds and favorable-cell comparisons, which must be strictly favorable.",
+    "decision": "A complete pass advances only the exact fixed G4 candidate to a separate preregistered robustness and contender-lock contract. Any clean miss permanently rejects EXP-G4-GIN300 without a blend, grid, extra seed, feature change, endpoint repair, alternate checkpoint, support relaxation, or outcome-driven successor."
+  },
+  "resource_ceiling": {
+    "cpu_core_hours": 96,
+    "gpu_hours": 0,
+    "restricted_storage_gb": 32,
+    "maximum_wall_hours": 12,
+    "maximum_peak_simultaneous_rss_gib": 16,
+    "concurrency": "Exactly one 16-thread CatBoost fit or one CPU GIN worker at a time. No model fit, feature worker, GPU operation, or unrelated memory-heavy job may overlap."
+  },
+  "resource_feasibility_gate": {
+    "required_before_claim": true,
+    "maximum_projected_cpu_core_hours": 76.8,
+    "maximum_projected_gpu_hours": 0,
+    "maximum_projected_restricted_storage_gb": 25.6,
+    "maximum_projected_wall_hours": 9.6,
+    "maximum_peak_simultaneous_rss_gib": 12.8,
+    "margin": "Every projected maximum preserves 20% margin below the execution ceiling.",
+    "method": "A later contract must bind the isolated runtime and accepted provenance receipt, prove two opposite-order synthetic feature/model roots, and run a predeclared bounded real CatBoost API/timing probe using only contract-frozen redistributable synthetic labels and no official target. Project the exact 180-fit workload from the worse accepted root without subtracting harness overhead.",
+    "failure_status": "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT",
+    "failure": "A miss publishes the resource-infeasible prefit terminal and rejects EXP-G4-GIN300 before official input or claim creation. No optimization pass, reduced design, alternate runtime, second probe, or larger ceiling is authorized."
+  },
+  "terminal_statuses": {
+    "G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED": "Any rights, notice, object hash, tensor-coverage, graph, embedding, shape, finiteness, Linux-parity, or nonredistribution defect before official data access.",
+    "G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT": "The separately frozen no-target feasibility projection misses any 20%-margin maximum before an official feature or development claim exists.",
+    "G3_G4_GIN300_UNDERPOWERED": "Clean prefit support or denominator failure with zero fits.",
+    "G3_G4_GIN300_RESOURCE_ABORTED": "A claim-bound feature or development attempt reaches any hard wall, CPU, restricted-storage, peak-RSS, GPU, or supervisor limit; partial scientific evidence has zero model-quality authority.",
+    "G3_G4_GIN300_FAILED": "Any receipt, runtime, family, feature, capability, fit, parameter, prediction-freeze, paired-join, metric, bootstrap, cleanup, publication, or authority defect that is not a classified resource breach.",
+    "G3_G4_GIN300_REJECTED": "Complete clean supported evidence fails at least one baseline-promotion or attribution member.",
+    "G3_G4_GIN300_ACCEPTED": "Complete clean supported evidence passes every baseline-promotion and attribution member.",
+    "precedence": [
+      "INELIGIBLE before any official row or target",
+      "RESOURCE_INFEASIBLE_PREFIT before any official feature or development claim",
+      "UNDERPOWERED for clean prefit support failure",
+      "RESOURCE_ABORTED for a hard claim-bound feature or development resource breach",
+      "FAILED for any integrity or authority defect",
+      "REJECTED for a clean scientific miss",
+      "ACCEPTED only when every prior gate and scientific criterion passes"
+    ],
+    "common_effect": "Every terminal is single-use and immutable. No retry, resume, move, overwrite, repair, fallback, replacement, alternate candidate, runner-up, or outcome-driven reinterpretation is authorized."
+  },
+  "milestone_sequence": {
+    "D147": "Contract, public static test, and the exactly disclosed bounded public source-rights/hash audit only. That audit temporarily persisted public checkpoint files outside Git and opened one SNAP checkpoint only for hashing; it deserialized or executed no tensor. D147 grants no dependency, runtime, implementation, retained checkpoint, checkpoint model-load or execution, feature, official row, target, baseline prediction, fit, metric, claim, or downstream authority.",
+    "D148_contract": "After D147 signed integration and exact-SHA post-main green, freeze only a separate Linux rights/provenance/runtime and label-free synthetic-capability contract. D148 may add its public static tests but may not fetch or load a checkpoint, create a runtime, implement a feature builder, execute parity or a model, open an official row or target, or create a claim.",
+    "D149_implementation": "Only after D148 is independently reviewed, SSH-signed, fast-forward integrated, and green on exact-SHA post-main CI may D149 create the isolated Linux runtime and narrow public implementation, fetch only the three frozen public checkpoint objects into isolated non-Git storage, and run redistributable fixture provenance/parity plus synthetic mechanics under one frozen formal-attempt boundary.",
+    "future_feature_claim": "Only after accepted capability integration may a distinct immutable one-use claim and fresh fixed roots authorize exactly two opposite-order label-free official GIN feature builds over the same 3,908 development molecules, still with zero target, fit, metric, confirmatory, test, or submission authority.",
+    "future_development_claim": "Only after accepted byte-identical label-free features may a second distinct immutable claim and fresh root authorize one 180-fit challenge-fold-family-held-out development attempt; pretraining overlap remains unknown.",
+    "future_robustness": "Only G3_G4_GIN300_ACCEPTED may advance the exact candidate to a separate robustness and contender-lock contract; no control or rejected candidate advances.",
+    "future_confirmatory": "Only a reviewed accepted contender lock and exact-SHA green integration may authorize one sealed confirmatory evaluation of exactly that contender. A miss promotes no runner-up and reopens no development choice.",
+    "future_submission": "Only a confirmatory pass may authorize full training and two independent byte-identical 750-row blinded-test artifacts under the then-current validator. Portal credential access and upload remain separately human-armed."
+  },
+  "current_milestone_accounting": {
+    "contracts_created": 1,
+    "public_static_tests_created": 1,
+    "dependency_or_runtime_changes": 0,
+    "implementation_files_created": 0,
+    "public_snap_source_archives_downloaded_to_temporary_non_git_storage": 1,
+    "public_checkpoint_files_temporarily_persisted_outside_git": 33,
+    "public_checkpoint_bytes_temporarily_persisted_outside_git": 204567885,
+    "public_checkpoint_files_opened_only_for_hashing": 1,
+    "public_checkpoint_bytes_read_only_for_hashing": 7452448,
+    "dgl_checkpoint_bytes_downloaded": 0,
+    "molfeat_checkpoint_bytes_downloaded": 0,
+    "checkpoint_tensors_deserialized_or_executed": 0,
+    "checkpoint_files_added_to_git_or_workspace": 0,
+    "pretraining_rows_opened": 0,
+    "official_inputs_opened": 0,
+    "official_structure_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "baseline_prediction_rows_opened": 0,
+    "gin_feature_rows_built": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "development_metrics": 0,
+    "selection_tokens": 0,
+    "contenders_locked": 0,
+    "claims_created_or_consumed": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "submission_rows_generated": 0,
+    "validator_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "portal_credentials_opened": 0,
+    "live_uploads": 0,
+    "gpu_hours": 0
+  },
+  "current_authority": {
+    "contract_and_public_static_test": true,
+    "dependency_or_runtime_change": false,
+    "checkpoint_fetch_or_load": false,
+    "provenance_parity_execution": false,
+    "implementation": false,
+    "synthetic_feature_or_model_execution": false,
+    "official_structure_access": false,
+    "official_target_access": false,
+    "baseline_prediction_access": false,
+    "gin_feature_build": false,
+    "model_fit": false,
+    "prediction": false,
+    "development_metric": false,
+    "claim_creation_or_consumption": false,
+    "robustness": false,
+    "contender_lock": false,
+    "confirmatory": false,
+    "blinded_test": false,
+    "tdi": false,
+    "submission_artifact": false,
+    "validator": false,
+    "leaderboard_selection": false,
+    "portal_credentials": false,
+    "upload": false
+  },
+  "next_gate": "After independent review, one SSH-signed D147 commit, pull-request checks, local fast-forward-only integration, main push, and green exact-SHA post-main CI, freeze D148 as a separate contract-only deterministic Linux rights/provenance/runtime and label-free synthetic-capability milestone. D148 may not fetch or load a checkpoint, create a runtime, implement or execute parity, open an official row or target, build an official feature, create or consume a claim, fit a model, compute a metric, access confirmatory or blinded-test data, generate a submission, run a validator, observe a leaderboard for selection, access portal credentials, or upload. Only a later reviewed, SSH-signed, integrated, exact-SHA-green D149 implementation may fetch the three frozen public checkpoint objects into isolated non-Git storage and execute redistributable fixture parity and synthetic mechanics."
+}

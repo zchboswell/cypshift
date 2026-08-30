@@ -544,12 +544,77 @@ for exactly ten. Its sole new comprehensive public audit
 has SHA-256 `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`.
 Focused tests passed `2/2`; the bounded safe suite completed in 341.76 seconds
 with `1425 passed, 14 skipped, 0 failed`. Historical tests and D-143
-evidence remain unchanged. D-146 records this validator-clean state and stops
-the active path. D-144/D-145/D-146 grant no
+evidence remain unchanged. D-146 records this validator-clean state and closed
+the Global-v2 path. D-144/D-145/D-146 grant no
 science, gate, private-data, claim, model-quality, or G2-8 authority. No retry,
 repair, support relaxation, replacement, reinterpretation, confirmatory
 access, submission generation, validator run, leaderboard use, portal access,
 or upload is authorized.
+
+D-146 is integrated as signed commit
+`d029bb3b154f1721d094dae76e5587c0c927da2e`; PR #183 CI run `33323263534`
+and exact-SHA post-main CI run `33323845649` are green. D-147 begins only the
+separately named Global-v3 `EXP-G4-GIN300` contract lane under explicit
+2026-08-30 user direction. It is not a retry, repair, continuation,
+replacement, support relaxation, or reinterpretation of G2-7G, and no prior
+claim, root, terminal, or one-use authority transfers into it.
+
+The canonical D-147 contract is
+[`global_v3_g4_gin300_contract.json`](global_v3_g4_gin300_contract.json),
+SHA-256 `b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e`
+and size 37,092 bytes / 485 lines. Its strict public audit
+`tests/test_openadmet_global_v3_g4_gin300_contract.py` has SHA-256
+`c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc`,
+size 31,371 bytes / 815 lines, and reports `9/9 passed`.
+The bounded safe repository command
+`uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+completed with `1434 passed, 14 skipped, 0 failed` in 347.99 pytest seconds /
+348.42 wall-seconds at 901,484 KiB maximum RSS. Ruff, mypy, isolated build,
+and installed-wheel two-root reproduction are also green; those parity checks
+add no model-quality or downstream authority.
+
+The frozen candidate concatenates the exact 2,563 accepted MapLight columns
+with one 300-column supervised-masking GIN block and keeps the accepted fixed
+CatBoost learner unchanged. Two mandatory partition-local controls use
+whole-vector-shuffled GIN and matched Gaussian noise. A later one-use
+development claim, if every intervening gate is accepted, would authorize
+exactly 180 new fits, 140,688 new prediction rows, zero baseline refits, and
+one synchronized 2,000-replicate component-bootstrap stream over five fixed
+contrasts. No tuning, early stopping, alternate checkpoint, seed bagging,
+endpoint-specific recipe, blend, calibration, stack, residual search, control,
+or runner-up can become an outcome-driven successor.
+
+Historical fixed-plus-GIN improvements on binary CYP2C9, CYP2D6, and CYP3A4
+are supportive mechanism evidence only. They are not OpenADMET pIC50 evidence,
+include no historical CYP1A2 result, and cannot prove separation from the
+unknown ZINC15/ChEMBL pretraining corpus. Current rules permit pretrained
+models, but exact SNAP/DGL-LifeSci/MolFeat object identity, rights and notices,
+tensor conversion, graph construction, Linux parity, unknown challenge overlap
+disclosure, and nonredistribution remain prospective eligibility gates.
+Clean-zero-shot and uncontaminated-external-validation claims are forbidden.
+
+D-147 consists of the contract, public static audit, and exactly disclosed
+bounded public source-rights/hash audit; it changes no dependency or runtime.
+Contract preparation downloaded one public SNAP source archive to
+temporary non-Git storage, temporarily persisted 33 checkpoint files totaling
+204,567,885 bytes, and opened one 7,452,448-byte SNAP checkpoint only for
+hashing. Zero DGL/MolFeat checkpoint bytes were downloaded, zero checkpoint
+tensors were deserialized or executed, and no checkpoint entered Git or the
+workspace. This grants no current checkpoint-fetch, model-load, or execution
+authority. D-147 opens no official or pretraining row and performs zero feature
+build, fit, prediction, metric, claim, contender, confirmatory/test/TDI,
+submission, validator, leaderboard, portal, credential, upload, or GPU
+operation. After reviewed signed integration and green exact-SHA
+post-main CI, D-148 may freeze only the separate Linux
+rights/provenance/runtime and label-free synthetic-capability contract. D-148
+may not fetch, implement, or execute. Only a later reviewed and integrated
+D-149 may create the isolated runtime and implementation, fetch the three exact
+public checkpoint objects into isolated non-Git storage, and run
+redistributable fixture parity and synthetic mechanics.
+Any future CatBoost API/timing probe must use only contract-frozen
+redistributable synthetic labels and no official target. A hard claim-bound
+feature or development resource breach is `G3_G4_GIN300_RESOURCE_ABORTED`;
+partial scientific evidence then has zero model-quality authority.
 
 That G2-1 firewall is now synthetically accepted under
 [`global_v2_synthetic_firewall_contract.json`](global_v2_synthetic_firewall_contract.json)

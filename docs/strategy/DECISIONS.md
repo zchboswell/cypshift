@@ -5378,3 +5378,119 @@
   and stop. New science requires explicit prospective user direction and a
   genuinely new hypothesis/contract; it cannot retry, repair, replace, relax,
   or reinterpret the consumed G2-7G attempt.
+
+## D-147 — Freeze the distinct Global-v3 EXP-G4-GIN300 pretrained-transfer experiment
+
+- Date: 2026-08-30
+- Status: accepted contract-only evidence pending reviewed signed integration;
+  D-146 is integrated as signed commit
+  `d029bb3b154f1721d094dae76e5587c0c927da2e` through PR #183 with green PR CI
+  run `33323263534` and green exact-SHA post-main CI run `33323845649`;
+  Global-v2 remains closed, G2-7G remains permanently UNDERPOWERED, and G2-8
+  remains closed
+- Decision: Accept only the canonical Global-v3 contract
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json` at SHA-256
+  `b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e`
+  (37,092 bytes / 485 lines) and its strict public static audit
+  `tests/test_openadmet_global_v3_g4_gin300_contract.py` at SHA-256
+  `c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc`
+  (31,371 bytes / 815 lines), with `9/9 passed`. Freeze a genuinely new
+  challenge-fold-family-held-out pretrained-transfer hypothesis: concatenate
+  the exact 300-column `gin_supervised_masking` representation after the
+  accepted 2,563 MapLight columns and keep the accepted fixed CatBoost learner,
+  parameters, folds, masks, and seed unchanged. Compare the true GIN block with
+  two mandatory same-learner, partition-local controls: whole-vector-shuffled
+  GIN and matched Gaussian noise. The controls may not move a donor, identity,
+  or feature vector across a training-validation boundary.
+- Scientific gate: A future separately authorized development attempt is fixed
+  at three systems, three repeats, five outer challenge-family folds, four
+  endpoints, exactly 180 new fits, 140,688 new outer-prediction rows, zero
+  baseline refits, 48 tutorial calls, and one synchronized 2,000-replicate
+  component-bootstrap stream shared across five contrasts. Candidate promotion
+  requires every frozen baseline member: at least 3% tutorial-primary
+  improvement, 0.015 absolute component-macro MAE improvement, paired upper
+  95% bound below zero, at least 8/15 favorable cells, no endpoint degradation
+  above 0.015, and at least one of CYP1A2/CYP2D6 improving by 0.010. Attribution
+  additionally requires at least 1% tutorial-primary and 0.005 component-macro
+  improvement over each control, paired upper bounds below zero, at least 8/15
+  favorable cells against each, and neither control independently passing the
+  baseline gate. Every member is conjunctive. A clean miss closes
+  `EXP-G4-GIN300`; no tuning, blend, extra seed, alternate checkpoint, endpoint
+  repair, control, runner-up, or outcome-driven successor is authorized.
+- Provenance boundary: Historical fixed-plus-GIN evidence improved binary
+  CYP2C9, CYP2D6, and CYP3A4 AUPRC under scaffold and chemistry-community
+  holdouts, while shuffle/noise controls did not reproduce the gain. That is
+  hypothesis support only: it is not OpenADMET pIC50 evidence, contains no
+  historical CYP1A2 result, and cannot establish family separation from the
+  unknown pretraining corpus. The frozen current Space rules permit pretrained
+  models, but the ZINC15/ChEMBL pretraining lineage has unknown OpenADMET
+  structure and assay overlap. That overlap must be disclosed and forbids clean
+  zero-shot, uncontaminated external-validation, strict pretraining-family-
+  holdout, and known-no-overlap claims. Exact SNAP, DGL-LifeSci, and MolFeat
+  object identity; rights and notices; tensor conversion; graph construction;
+  Linux parity; and nonredistribution are mandatory prospective eligibility
+  gates.
+- Public-source audit accounting: Contract preparation downloaded one public
+  SNAP source archive to temporary non-Git storage, temporarily persisted 33
+  public checkpoint files totaling 204,567,885 bytes, and opened one
+  7,452,448-byte SNAP checkpoint only for hashing. It downloaded zero DGL or
+  MolFeat checkpoint bytes, deserialized or executed zero checkpoint tensors,
+  generated zero embeddings, and added no checkpoint to Git or the workspace.
+  This is bounded source-rights/hash evidence, not checkpoint model loading,
+  parity execution, feature generation, or current fetch/load authority.
+- Validation evidence: The focused contract audit passes `9/9`. The bounded
+  safe repository command
+  `uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+  completed with `1434 passed, 14 skipped, 0 failed` in 347.99 pytest seconds /
+  348.42 wall-seconds at 901,484 KiB maximum RSS. Ruff, mypy, isolated build,
+  and installed-wheel two-root reproduction are green. These are repository and
+  CI parity checks only; they create no model-quality or downstream authority.
+- Authority boundary: D-147 consists of one contract, one public static test,
+  and the exactly disclosed bounded public source-rights/hash audit. It changes
+  no dependency or runtime and adds no implementation. It
+  opens zero pretraining row, official input, official structure, target value,
+  baseline prediction, feature row, confirmatory truth, historical row-level
+  artifact, blinded-test row, or TDI row. It performs zero GIN feature build,
+  model fit, prediction, development metric, bootstrap, claim creation or
+  consumption, selection token, contender lock, full training, submission row,
+  validator call, official metric, leaderboard selection, portal or credential
+  access, live upload, or GPU operation. The only current authority is the
+  contract and public static audit.
+- Sequence: After D-147 is independently reviewed, SSH-signed, integrated
+  locally by fast-forward only, pushed without rewriting, and green on exact-SHA
+  post-main CI, D-148 may freeze only a separate Linux x86_64
+  rights/provenance/runtime and label-free synthetic-capability **contract** and
+  public static tests. D-148 may not fetch or load a checkpoint, create a
+  runtime, implement a feature builder, execute parity or a model, open an
+  official row or target, or create a claim. Only after D-148 receives the same
+  signed/integrated/green treatment may D-149 create the isolated Linux runtime
+  and narrow public implementation, fetch only the three frozen public
+  checkpoint objects into isolated non-Git storage, and execute redistributable
+  fixture provenance/parity and synthetic mechanics under one frozen formal
+  attempt. Any rights, notice, object-hash, tensor, graph, embedding,
+  Linux-parity, nonredistribution, determinism, or resource failure closes the
+  lane before official access, without in-place repair.
+  Any future CatBoost API/timing probe must use only contract-frozen
+  redistributable synthetic labels and no official target. A hard claim-bound
+  feature or development resource breach publishes
+  `G3_G4_GIN300_RESOURCE_ABORTED`; partial scientific evidence then has zero
+  model-quality authority.
+- Alternatives: Retry, repair, replace, resume, relax, or reinterpret G2-7G;
+  reuse a prior claim or root; treat fixed MapLight as selected by the
+  underpowered terminal; choose a candidate from the failed support outcome;
+  use standardized rather than exact-raw identity for GIN; fine-tune a
+  checkpoint; normalize, select, compress, calibrate, stack, or blend features;
+  add an endpoint-specific recipe, extra seed, model, checkpoint, control, or
+  fallback; use confirmatory, test, TDI, leaderboard, or portal evidence; claim
+  clean external validation; combine D-147 contract with D-148 or D-149
+  implementation; or fetch/run before the required signed gates.
+- Reversal condition: Any mismatch in the contract/test hash, canonical bytes,
+  D-146 signed/green base, rules snapshot, parent receipts, exact-raw or family
+  boundary, candidate/control identity, fit/prediction/bootstrap budget,
+  promotion or attribution gate, public-source audit accounting,
+  unknown-overlap disclosure, rights/nonredistribution boundary, terminal
+  precedence, D-148/D-149 separation, nine-file scope, zero-authority
+  accounting, signed integration, or exact-SHA post-main CI blocks D-148 but
+  cannot reopen any closed lane. Otherwise integrate D-147 through the signed
+  fast-forward-only workflow, require green post-main CI, then freeze D-148
+  contract-only.

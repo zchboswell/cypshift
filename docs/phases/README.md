@@ -6,6 +6,15 @@ residual only if global out-of-fold evidence justifies it:
 
 - [`PHASE_2_OPENADMET_GLOBAL_V2.md`](PHASE_2_OPENADMET_GLOBAL_V2.md)
 
+Global-v2 is closed at D-146. Its sole G2-7G attempt remains permanently
+UNDERPOWERED before science, selected no contender, and opens no G2-8 or
+submission authority. D-146 is integrated as signed commit
+`d029bb3b154f1721d094dae76e5587c0c927da2e`; PR #183 CI run `33323263534`
+and exact-SHA post-main CI run `33323845649` are green. Under explicit
+2026-08-30 user direction, the active Phase 2 work is now only the distinct
+contract-only Global-v3 `EXP-G4-GIN300` lane frozen by D-147. It cannot retry,
+repair, replace, relax, or reinterpret G2-7G or any other closed experiment.
+
 G2-0 freezes the contract-led sequence, G2-1 accepts its synthetic-only
 capability and tutorial-metric firewall, G2-2A freezes the sealed-holdout-safe
 MapLight reproduction contract, and G2-2B accepts the exact-runtime synthetic
@@ -654,11 +663,55 @@ and `2a58d9423aa99f6b441b9d173b9e2c9e263117ced46343e7e90acf90bad7eac3`.
 Focused tests passed `2/2`; the bounded safe suite completed in 341.76 seconds
 with `1425 passed, 14 skipped, 0 failed`. The audit imports no driver
 and inspects no protected state; historical tests and D-143 evidence remain
-unchanged. D-146 records this validator-clean state, then the submission path
-stops. This validator-hygiene sequence opens no G2-8 or scientific authority.
-No retry,
-repair, replacement, support relaxation, reinterpretation, or runner-up
-promotion is authorized.
+unchanged. D-146 records this validator-clean state and closed the Global-v2
+submission path. This validator-hygiene sequence opens no G2-8 or scientific
+authority. No retry, repair, replacement, support relaxation, reinterpretation,
+or runner-up promotion is authorized.
+
+D-147 freezes the separate Global-v3 `EXP-G4-GIN300` contract at SHA-256
+`b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e`
+(37,092 bytes / 485 lines), with its strict public audit at SHA-256
+`c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc`
+(31,371 bytes / 815 lines) and `9/9 passed`. The frozen candidate is one fixed
+CatBoost expert over the exact 2,563 MapLight columns followed by 300
+supervised-masking GIN columns. Fold-local whole-vector-shuffle and
+Gaussian-noise controls must distinguish learned representation content from
+width, scale, and arbitrary assignment. A later development attempt would use
+exactly 180 new fits and 140,688 new prediction rows with zero baseline refits;
+D-147 itself performs none.
+
+The bounded safe repository command
+`uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+completed with `1434 passed, 14 skipped, 0 failed` in 347.99 pytest seconds /
+348.42 wall-seconds at 901,484 KiB maximum RSS. Ruff, mypy, isolated build,
+and installed-wheel two-root reproduction are green. This is repository and CI
+parity evidence only, not model-quality or downstream authority.
+
+The historical GIN gains cover binary CYP2C9, CYP2D6, and CYP3A4 only and are
+supportive hypothesis evidence, not OpenADMET pIC50 or CYP1A2 evidence.
+Pretraining overlap with OpenADMET structures and assays is unknown, must be
+disclosed, and forbids clean-zero-shot or uncontaminated-external-validation
+claims. D-147 consists of the contract, public static audit, and exactly
+disclosed bounded public source-rights/hash audit; it changes no dependency or
+runtime. Contract preparation downloaded one public SNAP source
+archive to temporary non-Git storage, temporarily persisted 33 checkpoint files
+(204,567,885 bytes), and opened one 7,452,448-byte SNAP checkpoint only for
+hashing; zero DGL/MolFeat checkpoint bytes were downloaded, zero checkpoint
+tensors were deserialized or executed, and no checkpoint entered Git or the
+workspace. That audit grants no current checkpoint-fetch or model-load
+authority. D-147 performs zero official-input, feature, fit, prediction, metric,
+claim, contender, confirmatory/test/TDI, submission, validator, leaderboard,
+portal, credential, upload, or GPU operation. After signed integration and green
+exact-SHA post-main CI, D-148 may freeze only the separate Linux
+rights/provenance/runtime and label-free synthetic-capability contract. D-148
+may not fetch, implement, or run; only a later reviewed and integrated D-149 may
+create the isolated runtime, fetch the three frozen public checkpoint objects
+into non-Git storage, and execute redistributable fixture parity and synthetic
+mechanics.
+Any later CatBoost API/timing probe must use only contract-frozen
+redistributable synthetic labels and no official target. A hard claim-bound
+feature or development resource breach is `G3_G4_GIN300_RESOURCE_ABORTED`, and
+partial scientific evidence has zero model-quality authority.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

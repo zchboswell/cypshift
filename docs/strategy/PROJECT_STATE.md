@@ -1,22 +1,29 @@
 # Project state
 
-Last updated: 2026-08-27
+Last updated: 2026-08-30
 
 ## Status
 
-Phase 2 Global-v2 is at a terminal scientific stop under D-084 through D-146;
-only reviewed D-146 knowledgebase/ledger integration remains. The externally
-supplied
+Phase 2 Global-v2 is closed at its terminal scientific stop under D-084 through
+D-146. D-146 is integrated as signed commit
+`d029bb3b154f1721d094dae76e5587c0c927da2e`; PR #183 CI run `33323263534`
+and exact-SHA post-main CI run `33323845649` are green. Under explicit
+2026-08-30 user direction, Phase 2 now proceeds only through the genuinely
+distinct contract-only Global-v3 `EXP-G4-GIN300` lane frozen by D-147. This is
+not a retry, repair, replacement, support relaxation, or reinterpretation of
+G2-7G; its immutable UNDERPOWERED terminal, zero selection, and closed G2-8
+boundary remain unchanged. The externally supplied
 2026-08-24 audit has a privacy-sanitized public copy at
 [`OPENADMET_CYP_2026_AUDIT_2026-08-24.md`](OPENADMET_CYP_2026_AUDIT_2026-08-24.md)
 with SHA-256 `0b87f86e...0c10312`, bound by redaction receipt
 `8a738405...a23798`; the original imported SHA-256 `88cfcb71...f79e` remains
 immutable lineage in G2-0. It is reconciled into the authoritative
 [`PHASE_2_OPENADMET_GLOBAL_V2.md`](../phases/PHASE_2_OPENADMET_GLOBAL_V2.md).
-The primary build is now a family-safe, cross-fitted heterogeneous global
-ensemble, followed by masked multitask and provenance-controlled external
-transfer ablations. A materially new, default-to-global residual TRACE-v2
-hypothesis is conditionally authorized only after positive global OOF evidence.
+The closed Global-v2 program tested a family-safe, cross-fitted heterogeneous
+global ensemble followed by masked-multitask and provenance-controlled external
+transfer ablations. Its default-to-global residual TRACE-v2 hypothesis was not
+activated because no accepted stronger global successor produced the required
+positive OOF evidence.
 G2-0 is frozen at contract SHA-256 `612b8cea...e5c0d`. Dataset and Space heads
 are unchanged; tutorial revision `858ae63...` now supplies the backend-derived
 ST-RAE implementation and macro arithmetic while the accepted validator bytes
@@ -1147,6 +1154,53 @@ not robustness-validate or select full MapLight, do not alter the terminal
 UNDERPOWERED interpretation, and grant no G2-8, confirmatory, blinded-test,
 submission, validator, leaderboard, portal, credential, or upload authority.
 
+D-147 freezes only the new Global-v3 `EXP-G4-GIN300` contract and its public
+static audit. The canonical contract is
+`benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json`, SHA-256
+`b48dc0c39c12b06cdd99693539cca18b99c73d8b801e81a416e52a798df8fd4e`
+(37,092 bytes / 485 lines). Its strict public audit is
+`tests/test_openadmet_global_v3_g4_gin300_contract.py`, SHA-256
+`c32e8054da4c92f763c065c8d58d340993f6917c5c6a6d3580659febea69e3dc`
+(31,371 bytes / 815 lines), at `9/9 passed`. The hypothesis adds exactly one
+frozen 300-column supervised-masking GIN block after the unchanged 2,563
+MapLight columns while retaining the accepted fixed CatBoost learner. A future
+development attempt, if separately authorized, compares the true GIN candidate
+with fold-local whole-vector-shuffle and Gaussian-noise controls using exactly
+180 new fits, 140,688 new outer-prediction rows, zero baseline refits, one
+synchronized 2,000-replicate component-bootstrap stream, and the frozen
+conjunctive promotion and attribution gates. Historical binary CYP2C9, CYP2D6,
+and CYP3A4 GIN gains are hypothesis support only: they are not OpenADMET pIC50
+evidence, include no historical CYP1A2 result, and cannot establish separation
+from the unknown pretraining corpus.
+
+The bounded safe repository command
+`uv run --locked pytest --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
+completed with `1434 passed, 14 skipped, 0 failed` in 347.99 pytest seconds /
+348.42 wall-seconds at 901,484 KiB maximum RSS. Ruff, mypy, isolated build,
+and installed-wheel two-root reproduction are green. These checks are
+repository and CI parity evidence only and create no model-quality or
+downstream authority.
+
+The current Space snapshot permits pretrained models, but D-147 treats rights,
+license notices, exact SNAP/DGL-LifeSci/MolFeat object identity, tensor coverage,
+Linux parity, and nonredistribution as mandatory prospective eligibility gates.
+Unknown OpenADMET structure and assay overlap must be disclosed and forbids
+clean-zero-shot, uncontaminated-external-validation, and pretraining-family-
+separation claims. D-147 consists of one contract, one public static test, and
+the exactly disclosed bounded public source-rights/hash audit. It changes no
+dependency or runtime. During contract preparation, that audit downloaded one
+SNAP source archive to temporary non-Git storage,
+temporarily persisted 33 public checkpoint files totaling 204,567,885 bytes,
+and opened one 7,452,448-byte SNAP checkpoint only for hashing. It downloaded
+zero DGL or MolFeat checkpoint bytes, deserialized or executed zero checkpoint
+tensors, and added no checkpoint to Git or the workspace. That bounded
+source-rights/hash evidence grants no current checkpoint-fetch, model-load, or
+execution authority. D-147 opens no pretraining row, official input, structure,
+target, baseline prediction, or feature row and performs zero feature builds,
+fits, predictions, metrics, claims, selection tokens, contender locks,
+confirmatory/test/TDI operations, submission rows, validator calls, leaderboard
+selection, portal access, credential access, uploads, or GPU work.
+
 R5D and I0 remain immutable negative history: they may not be rerun, repaired,
 or tuned from row-level outcomes. D-085 supersedes only D-082's forward-looking
 ban on every new local hypothesis; it does not reinterpret the official
@@ -1797,27 +1851,43 @@ is in [`runs/experiment_ledger.csv`](../../runs/experiment_ledger.csv).
 
 ## Exact next action
 
-Authenticate PR #183's current exact SSH-signed D-146 head against the seven
-knowledgebase/ledger files, D-144/D-145 lineage, final two-file hashes, exact
-ten-marker/one-audit state, focused result, validator-clean bounded safe suite,
-terminal scientific interpretation, and zero-authority accounting. Require all
-three PR checks on that exact head, then integrate it locally by fast-forward
-only, push `main` without rewriting the commit, and require green exact-SHA
-post-main CI.
+Authenticate the exact D-147 nine-file package: the canonical contract and
+public static audit plus the six narrative knowledgebase surfaces and the
+18-column experiment-ledger row. Reconfirm the two core hashes and sizes,
+`9/9` focused result, D-146 signed/green base, current rules snapshot, exact
+candidate/control identities, fit/prediction/bootstrap budgets, challenge-
+family-held-out and unknown-pretraining-overlap wording, terminal precedence,
+D-148/D-149 sequencing, and zero-authority accounting. Require one atomic
+SSH-signed `zchboswell` commit, all pull-request checks on that exact head,
+local fast-forward-only integration, a non-rewriting push of `main`, and green
+exact-SHA post-main CI.
 
-Then stop the current Global-v2 submission path and report the terminal
-scientific boundary. G2-8 remains closed. The consumed G2-7G attempt is
-terminal and cannot be repeated or reinterpreted; it selected no contender,
-and the frozen G2-8 boundary opens only after an accepted G2-7 contender lock.
-Do not access confirmatory truth, historical row-level artifacts, blinded test,
-TDI, submission generation, the official validator, official metric,
-leaderboard, private portal, credentials, or upload capabilities. Do not call
-the full-default rule a retention token: no token was issued. Any future work
-would require separate explicit user authorization for a genuinely new,
-prospective scientific hypothesis and contract. It may not repair or replace
-G2-7G, relax observed support, promote a runner-up, or use this outcome to tune
-a candidate. D-127/D-128, EXP-G3, G1/G2/M1/X1/T2, and immutable R5D/I0 remain
-closed; `global_TDI` remains only the frozen TDI fallback.
+Only then may D-148 freeze a separate **contract-only** Linux x86_64
+rights/provenance/runtime and label-free synthetic-capability boundary. D-148
+may add its public static tests but may not fetch or load a checkpoint, create a
+runtime, implement a feature builder, execute parity or a model, open an
+official row or target, or create a claim. Only after D-148 is independently
+reviewed, SSH-signed, fast-forward integrated, and green on exact-SHA post-main
+CI may D-149 create the isolated Linux runtime and narrow public
+implementation, fetch only the three frozen public checkpoint objects into
+isolated non-Git storage, and run redistributable fixture provenance/parity and
+synthetic mechanics under one frozen formal-attempt boundary. Any rights,
+notice, object-hash, tensor-coverage, graph, embedding, Linux-parity,
+nonredistribution, determinism, or resource defect must close `EXP-G4-GIN300`
+without official access or an in-place repair.
+Any future CatBoost API/timing probe must use only contract-frozen
+redistributable synthetic labels and no official target. A hard claim-bound
+feature or development resource breach is `G3_G4_GIN300_RESOURCE_ABORTED`;
+partial scientific evidence then has zero model-quality authority.
+
+Throughout D-147 and D-148, do not access official structures or targets,
+baseline OOF rows, confirmatory truth, historical row-level artifacts, blinded
+test, TDI, submission generation, validator, official metric, leaderboard,
+private portal, credentials, or upload capabilities. G2-7G remains consumed and
+terminal; G2-8 remains closed. Do not call the full-default rule a retention
+token, promote a runner-up, relax observed support, or use the underpowered
+outcome to tune this lane. D-127/D-128, EXP-G3, G1/G2/M1/X1/T2, and immutable
+R5D/I0 remain closed; `global_TDI` remains only the frozen TDI fallback.
 
 Completed phase plans and superseded intake notes are archived under
 [`docs/archive/`](../archive/). No completed plan is an active instruction.
