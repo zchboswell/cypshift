@@ -1,0 +1,276 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.global_v3_g4_gin300_transition_rejection.v1",
+  "recorded_at_utc": "2026-08-31T01:03:38Z",
+  "status": "G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED",
+  "gate": "G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED",
+  "record_id": "GLOBAL_V3_G4_GIN300_TRANSITION_REJECTION",
+  "experiment_id": "EXP-G4-GIN300",
+  "decision": "reject_transition_close_g4_preclaim_and_pivot_to_fixed_maplight",
+  "terminal": true,
+  "immutable_d148_parent": {
+    "integrated_commit": "f0f3b6f9380eebef0b03d87f29eb659ffc84f8d5",
+    "files": [
+      {
+        "path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json",
+        "sha256": "df8796575c3d6093dd4038f4268417a979b8edca14245a7acff26e3db18eaa44",
+        "size_bytes": 184100,
+        "lines_lf": 1687
+      },
+      {
+        "path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json",
+        "sha256": "67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01",
+        "size_bytes": 166425,
+        "lines_lf": 4008
+      },
+      {
+        "path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md",
+        "sha256": "b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb",
+        "size_bytes": 12456,
+        "lines_lf": 241
+      },
+      {
+        "path": "tests/test_openadmet_global_v3_g4_gin300_capability_contract.py",
+        "sha256": "d9318267ff607703b9d957fc2fa13b79af61740b486471ab0556c06f3205bb12",
+        "size_bytes": 97426,
+        "lines_lf": 2509
+      }
+    ],
+    "preservation": "D148 remains the exact integrated prospective capability record and historical design evidence. It was never consumed, does not become an executed result, and grants no authority to repair, retry, or reinterpret G4 after this terminal close."
+  },
+  "rejected_transition_evidence": [
+    {
+      "role": "transition_contract_candidate",
+      "sha256": "2c11b90d08038a05efd01bd40cb92ac79bc74544cc67807d2dd9b09111fa94af",
+      "size_bytes": 72296,
+      "lines_lf": 582,
+      "blockers": [
+        "Approved ordinary-public-root-project CI created an ephemeral project wheel, temporary venv, public fixture roots, train/predict/report outputs, and 42 explicit public predictions, while this candidate's unscoped accounting asserted zero runtime, wheel, scientific-package, root, and prediction activity.",
+        "Its unscoped prospective, prohibition, invalidation, and next-gate language therefore treated permitted public repository validation as fixed G4 execution and could self-invalidate."
+      ],
+      "authority": "rejected_hash_identity_only"
+    },
+    {
+      "role": "transition_static_test_candidate",
+      "sha256": "0c685112421929b715912450e8eeb0e8e7ae5534806c19a7bee8fac6ecdada2d",
+      "size_bytes": 67654,
+      "lines_lf": 1905,
+      "focused_test_cases_passed": 3,
+      "mutation_cases_passed": 93,
+      "blockers": [
+        "The test bound the factually false 2c11 accounting candidate and therefore could not establish a truthful transition contract.",
+        "Focused structural and mutation success did not authenticate the already-observed ordinary public CI activity and granted no implementation, scientific, claim, result, or integration authority."
+      ],
+      "authority": "rejected_hash_identity_only"
+    },
+    {
+      "role": "transition_accounting_repair_candidate",
+      "sha256": "1def7c6c31a84508e8d50f67a817ff486c30fad3f502dbefcc094e7b6ea7615f",
+      "size_bytes": 79319,
+      "lines_lf": 646,
+      "blockers": [
+        "The future D150 zero-execution boundary remained unscoped and would forbid the temporary public synthetic fixtures and ordinary repository-safe CI that D150 static validation required.",
+        "Its invalidation rule treated suite-internal temporary public roots, train calls, and predictions whose aggregate totals were intentionally uninstrumented as forbidden extra standalone smoke activity.",
+        "Its allowed-validation rule asserted zero network and download for the entire public CI class even though first-suite network and download transaction totals were not instrumented or retained; only UV_OFFLINE and no observed download were established for the explicit build/install smoke."
+      ],
+      "authority": "rejected_hash_identity_only"
+    }
+  ],
+  "rejected_evidence_publication_boundary": {
+    "candidate_and_test_hashes_and_stats_published": 3,
+    "rejected_candidate_bytes_published": 0,
+    "quarantine_or_archive_paths_published": 0,
+    "quarantine_or_archive_bytes_published": 0,
+    "rejected_narrative_patch_identity_published": 0,
+    "rule": "Rejected candidate, test, patch, quarantine, archive, and temporary locations are not public evidence. Only the three candidate/test hashes, byte and LF counts, and blocker facts above are retained."
+  },
+  "ordinary_public_validation_accounting": {
+    "authority": "Repository-safe validation of the already-tracked public root project and public or synthetic fixtures only. It is not D150 implementation execution, D151 restricted capability science, model-quality evidence, or submission authority.",
+    "offline_public_project_build": {
+      "invocations": 1,
+      "uv_offline_configured": true,
+      "raw_network_transaction_exact_total_retained": false,
+      "raw_network_response_bytes_exact_total_retained": false,
+      "download_observed": false,
+      "uv_internal_isolated_build_environment_or_cache_object_exact_total_retained": false,
+      "uv_internal_isolated_build_environment_or_cache_bytes_exact_total_retained": false,
+      "artifacts": [
+        {
+          "kind": "sdist",
+          "sha256": "5ab8819134b0e9dc9dbde1dc9120138b01f7de2c4b8816873829755a65903026",
+          "size_bytes": 338214,
+          "hash_authority": "incidental_non_authoritative"
+        },
+        {
+          "kind": "wheel",
+          "sha256": "525924df7092529bd12f7fda111a0444ee900ab4db657dfdc33ce2593a88f594",
+          "size_bytes": 406405,
+          "hash_authority": "incidental_non_authoritative"
+        }
+      ]
+    },
+    "offline_public_project_install": {
+      "fresh_explicit_temporary_virtual_environments": 1,
+      "python_version": "3.12.3",
+      "uv_offline_configured": true,
+      "raw_network_transaction_exact_total_retained": false,
+      "raw_network_response_bytes_exact_total_retained": false,
+      "download_observed": false,
+      "cached_distributions_installed": [
+        "cypshift==0.2.0.dev0",
+        "numpy==2.5.2",
+        "pillow==12.3.0",
+        "rdkit==2026.3.5"
+      ],
+      "cached_distribution_count": 4,
+      "global_cache_read_mutation_and_atime_operation_exact_totals_retained": false
+    },
+    "explicit_public_audit_train_predict_report_smoke": {
+      "preliminary_path_exists_failures_before_reported_work": 1,
+      "successful_root_count": 2,
+      "per_root": {
+        "files": 9,
+        "bytes": 36758,
+        "accepted": 7,
+        "quarantined": 1,
+        "warnings": 7,
+        "supported": 3,
+        "unsupported": 1,
+        "predictions": 21
+      },
+      "successful_audit_invocations": 2,
+      "train_invocations": 2,
+      "predict_invocations": 2,
+      "report_invocations": 2,
+      "predictions_total": 42,
+      "root_outputs_byte_identical": true,
+      "internal_fit_metric_and_import_event_exact_totals_retained": false
+    },
+    "typing_cache_observation": {
+      "preexisting_ignored_repository_cache_entry": ".mypy_cache/3.12/cache.3.db",
+      "observed_birth_date": "2026-08-17",
+      "observed_modification_time_text": "2026-08-30 20:40:36",
+      "exact_mutating_operation_retained": false,
+      "interpretation": "The ignored cache entry predated D149 and was observed modified during validation, but the exact operation was not instrumented and is not guessed. It is not a new task-owned explicit artifact and grants no authority.",
+      "authoritative_rerun_used_task_temporary_cache": true,
+      "authoritative_task_temporary_cache_deleted_and_absent": true
+    },
+    "first_full_repository_safe_suite": {
+      "passed": 1452,
+      "skipped": 14,
+      "failed": 0,
+      "pytest_seconds": 358.81,
+      "wall_seconds": 359.31,
+      "maximum_resident_set_kib": 900212,
+      "network_transaction_exact_total": "unknown_not_instrumented",
+      "network_response_bytes_exact_total": "unknown_not_instrumented",
+      "download_exact_total": "unknown_not_instrumented",
+      "public_package_import_scientific_mechanics_and_cache_operation_exact_totals_retained": false,
+      "authority": "superseded_validation_observation_not_scientific_evidence"
+    },
+    "cleanup": {
+      "explicit_task_temporary_build_roots_deleted_and_absent": true,
+      "explicit_task_temporary_virtual_environment_deleted_and_absent": true,
+      "explicit_task_temporary_public_smoke_roots_deleted_and_absent": true,
+      "new_task_owned_explicit_persistent_public_validation_artifacts_created": 0
+    },
+    "uncertainty_rule": "Uninstrumented environment, cache, network, download, import, fit, metric, and suite-internal scientific-mechanics totals are stated as unknown or not retained, never guessed or presented as zero."
+  },
+  "fixed_g4_preclaim_accounting": {
+    "restricted_root_count": 7,
+    "restricted_roots_created_or_opened": 0,
+    "future_implementation_path_count": 7,
+    "future_implementation_paths": [
+      "research/maplight-gin-openadmet/.python-version",
+      "research/maplight-gin-openadmet/pyproject.toml",
+      "research/maplight-gin-openadmet/uv.lock",
+      "research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py",
+      "research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py",
+      "tests/test_openadmet_global_v3_g4_gin300_capability.py",
+      "tests/test_openadmet_global_v3_g4_gin300_capability_result.py"
+    ],
+    "future_implementation_paths_created": 0,
+    "isolated_runtime_environments_created": 0,
+    "runtime_wheels_downloaded_or_installed": 0,
+    "checkpoint_or_model_bodies_fetched_or_opened": 0,
+    "checkpoint_tensors_deserialized_or_executed": 0,
+    "isolated_scientific_packages_imported": 0,
+    "parity_processes_executed": 0,
+    "graphs_built": 0,
+    "embeddings_generated": 0,
+    "synthetic_roots_built": 0,
+    "model_fits": 0,
+    "predictions": 0,
+    "official_inputs_opened": 0,
+    "official_target_values_opened": 0,
+    "private_scientific_rows_opened": 0,
+    "metrics": 0,
+    "bootstrap_replicates": 0,
+    "selection_tokens": 0,
+    "contenders_locked": 0,
+    "confirmatory_truth_values_opened": 0,
+    "blinded_test_rows_opened": 0,
+    "tdi_rows_opened": 0,
+    "validator_calls": 0,
+    "leaderboard_observations_used_for_selection": 0,
+    "systemd_units_created": 0,
+    "delegated_cgroups_created": 0,
+    "claims_created": 0,
+    "claims_consumed": 0,
+    "result_files_created": 0,
+    "submission_rows_generated": 0,
+    "portal_credentials_opened": 0,
+    "live_uploads": 0,
+    "gpu_hours": 0
+  },
+  "terminal_effect": {
+    "g4_closed_preclaim": true,
+    "claim_created": false,
+    "claim_consumed": false,
+    "retry_or_resume_authorized": false,
+    "replacement_g4_transition_authorized": false,
+    "d150_implementation_authorized": false,
+    "d151_execution_authorized": false,
+    "g4_result_authorized": false,
+    "reversal_condition": "None inside EXP-G4-GIN300. Any future representation-diverse work requires a separately named prospective contract and may not repair, retry, or inherit unearned authority from G4."
+  },
+  "baseline_pivot": {
+    "route": "fixed_maplight",
+    "basis": "strongest_previously_validated_internal_baseline",
+    "internal_development_component_macro_mae": 0.5837812652150708,
+    "selected_by_g4": false,
+    "robustness_accepted": false,
+    "g2_8_status": "CLOSED",
+    "accepted_direct_candidate": {
+      "submission_sha256": "9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b",
+      "manifest_sha256": "96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6",
+      "public_handoff_path": "benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md",
+      "bytes_may_be_reserialized": false
+    },
+    "interpretation": "The fixed MapLight baseline is retained because it is the strongest previously validated internal system, not because G4 selected it or because G2-7G accepted its robustness. The direct candidate hashes are an immutable existing handoff identity, not a new model-quality or portal claim.",
+    "submission_preparation_requires_separate_prospective_baseline_contract": true,
+    "upload_authority_granted": false,
+    "portal_status_or_result_claimed": false
+  },
+  "d149_terminal_package": {
+    "exact_path_count": 9,
+    "exact_paths": [
+      "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json",
+      "tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py",
+      "benchmarks/openadmet_cyp_2026/README.md",
+      "docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md",
+      "docs/phases/README.md",
+      "docs/strategy/DECISIONS.md",
+      "docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md",
+      "docs/strategy/PROJECT_STATE.md",
+      "runs/experiment_ledger.csv"
+    ],
+    "record_paths": 1,
+    "test_paths": 1,
+    "narrative_paths": 6,
+    "ledger_paths": 1,
+    "transition_contract_paths": 0,
+    "integration_gate": "Only this exact terminal rejection package may be reviewed, SSH-signed once by zchboswell, integrated locally by fast-forward without rewrite after green checks, pushed, and proven green on exact-SHA post-main CI. No rejected transition candidate, implementation byte, claim, result, or private path may enter the package."
+  },
+  "invalidation": "Invalidate this terminal receipt if any rejected candidate or quarantine location is published; any fixed G4 restricted root, implementation path, runtime, checkpoint/model body, scientific object, claim, result, unit, cgroup, metric, submission row, credential, or upload is created or opened; ordinary public validation uncertainty is rewritten as zero; MapLight is called G4-selected or robustness-accepted; G2-8 is reopened; the accepted direct candidate hashes change; submission preparation or upload is authorized without a separate prospective baseline contract; any private path appears; or this D149 terminal package changes, adds, stages, or commits any additional path outside its exact nine-path allowlist. Preexisting repository paths untouched by this D149 package do not trigger this clause.",
+  "next_gate": "Close and integrate this exact D149 terminal rejection package. There is no G4 retry, repair, implementation, claim, result, or execution gate. Any submission preparation must begin with a separately reviewed prospective fixed-MapLight baseline contract that reauthenticates the accepted direct candidate hashes without opening private portal evidence or granting upload authority here."
+}

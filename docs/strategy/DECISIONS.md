@@ -5498,12 +5498,12 @@
 ## D-148 — Freeze the EXP-G4-GIN300 capability, runtime, and one-use boundary
 
 - Date: 2026-08-30
-- Status: accepted contract-only evidence pending reviewed signed integration;
-  D-147 is integrated as signed commit
-  `b5cf47c6bc8ccc2dc29c7167b1a436d792338509` through PR #184 with green PR CI
-  run `33327853790` and green exact-SHA post-main CI run `33328374514`;
-  Global-v2 remains closed, G2-7G remains permanently UNDERPOWERED, and G2-8
-  remains closed.
+- Status: accepted and integrated as signed commit
+  `f0f3b6f9380eebef0b03d87f29eb659ffc84f8d5` through PR #185 with green PR CI
+  run `33337794223` and green exact-SHA post-main CI run `33338342415`; its
+  signed parent is D-147 commit
+  `b5cf47c6bc8ccc2dc29c7167b1a436d792338509`; Global-v2 remains closed, G2-7G
+  remains permanently UNDERPOWERED, and G2-8 remains closed.
 - Decision: Freeze status `G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN`
   through the canonical capability contract
   `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`
@@ -5619,5 +5619,143 @@
   boundary, D-149-zero/D-150-run split, terminal taxonomy, zero-authority or
   public-network accounting, tracked scope, signed review, or exact-SHA CI
   blocks D-148 integration without opening any scientific or official lane.
-  Otherwise integrate D-148 through the signed fast-forward-only workflow and
-  begin only the zero-execution D-149 implementation milestone.
+  That signed fast-forward-only integration and green post-main CI completed.
+  D-149 below supersedes only D-148's prospective later-milestone schedule;
+  D-148 remains immutable contract-only history.
+
+## D-149 — Close EXP-G4-GIN300 preclaim after terminal transition audit
+
+- Date: 2026-08-30
+- Status: terminal decision accepted at
+  `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`; the exact nine-path public
+  record/test/narrative/ledger package remains pending independent review,
+  final identity freeze, SSH-signed integration, and green exact-SHA post-main
+  CI. A packaging defect may block the record but cannot reopen G4.
+- Decision: Permanently close `EXP-G4-GIN300` before claim consumption. Record
+  the closure under schema
+  `cypshift.openadmet_cyp_2026.global_v3_g4_gin300_transition_rejection.v1` in
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json`
+  at SHA-256
+  `10a7f783d73ae60c6da479ffbd8cd3e3443b3f8dace88e177fd9c17c44e1331c`
+  (14,871 bytes / 276 LF). Its strict public test is
+  `tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py` at SHA-256
+  `f033a7577dca4eafd3cec979938292fcb0d7b6ef80f0e86d6134fc8d9f4d944f`
+  (43,378 bytes / 1,226 LF), focused result `4 passed`, and 76 independent
+  fail-closed mutations. Ruff check/format, Python 3.10 AST parsing, temporary
+  compilation, and exact-scope diff checks are green.
+- Rejected prospective identities: The transition contract at SHA-256
+  `2c11b90d08038a05efd01bd40cb92ac79bc74544cc67807d2dd9b09111fa94af`
+  (72,296 bytes / 582 LF), its static test at SHA-256
+  `0c685112421929b715912450e8eeb0e8e7ae5534806c19a7bee8fac6ecdada2d`
+  (67,654 bytes / 1,905 LF), and the corrected contract at SHA-256
+  `1def7c6c31a84508e8d50f67a817ff486c30fad3f502dbefcc094e7b6ea7615f`
+  (79,319 bytes / 646 LF) are non-integrable, non-authoritative negative
+  evidence. None was integrated, and none grants implementation, execution,
+  claim, result, or scientific authority.
+- Targeted failure: Independent terminal audit proved that the attempted
+  transition's unqualified zero-accounting claims could not truthfully describe
+  the repository validation already performed. Treating a green public suite,
+  offline build/install, and public-fixture vertical slice as literal zero
+  runtime/import/train/prediction/cache/network activity would manufacture
+  evidence. The single/final prospective correction boundary therefore closes
+  G4 rather than opening another contract chain.
+- First-suite evidence: The first bounded safe suite passed `1452 passed,
+  14 skipped, 0 failed` in 358.81 pytest seconds / 359.31 wall-seconds at
+  900,212 KiB maximum RSS. The suite did not instrument or retain aggregate raw
+  network transactions/bytes, downloads, package imports, internal scientific/
+  model operations, or cache effects; every such total remains unknown. A
+  passing count cannot convert those unknowns to zero.
+- Explicit public-CI accounting: With `UV_OFFLINE=1` configured, one isolated
+  build produced a 338,214-byte sdist and a 406,405-byte wheel. Their hashes are
+  incidental and non-frozen. One temporary CPython 3.12.3 environment installed
+  four cached distributions: `cypshift 0.2.0.dev0`, NumPy 2.5.2, Pillow 12.3.0,
+  and RDKit 2026.3.5. No download was observed, but raw build/install network
+  transaction and byte totals were not instrumented and remain unknown. Two
+  successful explicit public-fixture audit/train/predict/report roots were
+  byte-identical at 9 files / 36,758 bytes each. Each reported 7 accepted,
+  1 quarantined, 7 warnings, 3 supported, 1 unsupported, and 21 predictions,
+  for exactly 2 train, 2 predict, 2 report, and 42 prediction operations.
+- Unknown and cleanup accounting: Internal library fit/metric/import totals,
+  build-isolation environment/cache counts, and global cache mutation/access-
+  time effects were not instrumented and remain unknown. One pre-audit failed
+  closed on an already-existing path before reported work. The preexisting
+  ignored `.mypy_cache/3.12/cache.3.db` was observed modified, but the exact
+  mutating operation was not instrumented and remains unknown; the
+  authoritative mypy rerun used temporary state. All explicit task temporary
+  roots were deleted and are absent. Do not freeze incidental build or smoke-
+  tree hashes.
+- Pre-ledger validation: After record/test freeze and before ledger mutation,
+  the exact eight pre-ledger identities were unchanged across command `PYTHONDONTWRITEBYTECODE=1 UV_OFFLINE=1 /usr/bin/time -v uv run --locked --offline --no-sync pytest -p no:cacheprovider --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`.
+  It exited 0 with `1453 passed, 14 skipped, 0 failed` in 345.74 pytest seconds /
+  346.19 wall-seconds at 904,176 KiB maximum RSS. These offline controls do not
+  convert uninstrumented raw network, cache, or import totals into zero.
+- Exact G4 zero boundary: The public CI operations above are not G4 execution.
+  The fixed G4 vector is comprehensive zero: all seven restricted roots and
+  seven future implementation paths stayed absent; no isolated runtime/wheel,
+  checkpoint/model body or tensor, scientific import, parity process, graph,
+  embedding, synthetic root, fit, prediction, official/private/confirmatory/
+  blinded-test/TDI read, metric, bootstrap, selection token, contender,
+  systemd unit, delegated cgroup, claim, result, submission, validator,
+  leaderboard-selection observation, portal credential, upload, or GPU use
+  occurred.
+- Terminal meaning: D-147 and D-148 remain immutable integrated prospective
+  contract history. Their implementation/run schedule never activated and is
+  superseded by this preclaim closure. G4 has no retry, repair, replacement,
+  alternate observer, relaxed accounting, new transition, or outcome-driven
+  successor. No D-149 record defect or future implementation idea may reopen
+  it.
+- Package scope: D-149 changes exactly nine paths: the rejection record, its
+  strict public test, `benchmarks/openadmet_cyp_2026/README.md`,
+  `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`, `docs/phases/README.md`,
+  `docs/strategy/DECISIONS.md`, `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`,
+  `docs/strategy/PROJECT_STATE.md`, and `runs/experiment_ledger.csv`. It adds
+  no implementation, project lock, scientific runtime, claim, or result.
+- Ledger receipt: `runs/experiment_ledger.csv` is bound at SHA-256
+  `515801a45120ea07fada9b3193a4f10614074b77674d0f3b0ea0c01dabaa26fa`
+  (437,803 bytes / 200 LF). Its unchanged 431,853-byte prefix has SHA-256
+  `53def734ac3bb96d83fb8af2f7c37d42504382caacc63f2e2395f115e0aace56`;
+  the sole appended 18-field row has SHA-256
+  `0bd57d22c25b5162ca811e0dde542c4a45abee27d4f21662bd2c21c1a2992baf`
+  (5,950 bytes including LF). Its compact `config` and `metrics` JSON round-trip
+  exactly, and visual audit is clean.
+- Competitive backout: Historical receipts bind the accepted direct MapLight
+  candidate's submission SHA-256
+  `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`
+  and manifest SHA-256
+  `96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6`.
+  The immutable tracked handoff has SHA-256
+  `6a9402ca3fdf02dbcad079cba82162132e5b149f6adf69f80ea05d177e1ecec4`
+  (2,919 bytes / 55 LF). It records 750 ordered rows, 3,000 finite predictions,
+  and a historically valid pinned-validator result with zero errors. Current
+  private candidate existence and bytes are deliberately unknown and unopened;
+  the candidate is not currently reauthenticated or upload-ready.
+  Fixed MapLight remains the strongest validated internal baseline at
+  component-macro MAE `0.5837812652150708`. Historical receipts establish an
+  accepted deterministic direct deployment candidate, but it was neither
+  selected nor robustness-accepted by G2-7G. The MAE is prior internal
+  development evidence, not an official or leaderboard score, reselection, or
+  robustness result. G2-8 remains closed.
+  This backout preserves a competitive route without reinterpreting any failed
+  experiment.
+- Authority boundary: D-149 grants no new submission generation, validator,
+  official metric, leaderboard, portal, credential, or upload authority. The
+  exact next action is a separate nine-path contract-only milestone comprising
+  `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json`,
+  `tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py`,
+  these six narratives, and ledger. It permits zero private candidate reads,
+  validator calls, portal/credential access, or uploads. A future one-use
+  read-only reauthentication result is separate; any upload remains a later
+  human-authorized operation.
+- Alternatives: Integrate any rejected transition identity; underreport public
+  CI operations; infer zero from `UV_OFFLINE=1` or a green suite; guess unknown
+  network/cache/import/model totals; freeze incidental artifact hashes; build a
+  second G4 correction; consume or replace the G4 claim; call MapLight selected
+  or robustness-accepted; reopen G2-8; consult portal/leaderboard evidence; or
+  upload before a separate reauthentication contract.
+- Reversal condition: Any wrong rejected identity, false known/unknown
+  accounting, nonzero G4 operation, missing preclaim/no-retry closure, tenth
+  D-149 path, placeholder at integration, MapLight identity drift, selection or
+  robustness overclaim, G2-8 reopening, or portal/upload authority blocks the
+  D-149 record package. It cannot revive G4. Otherwise integrate only the exact
+  nine-path terminal package through signed fast-forward-only review and green
+  exact-SHA CI, then begin the separate MapLight reauthentication contract.

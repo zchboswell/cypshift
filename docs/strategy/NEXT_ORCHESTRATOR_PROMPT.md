@@ -1,18 +1,18 @@
-# Next orchestrator kickoff — integrate D-148, then implement D-149 without execution
+# Next orchestrator kickoff — integrate D-149 G4 closure, then contract direct MapLight reauthentication
 
-The current objective remains the smallest scientifically defensible path to a
-competitive OpenADMET CYP 2026 submission. Frozen challenge-family-held-out
-validation outranks leaderboard evidence. Global-v2 is closed: G2-7G is
+The current objective is the strongest scientifically defensible path to a
+competitive OpenADMET CYP 2026 submission. Global-v2 is closed: G2-7G is
 permanently UNDERPOWERED before science, selected no candidate or runner-up,
-and opens no G2-8 or submission authority.
+and opens no G2-8 authority. The distinct Global-v3 `EXP-G4-GIN300` lane is
+also permanently closed before claim consumption under D-149 status
+`G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`. Do not implement, retry, repair,
+replace, or redesign G4.
 
-The genuinely distinct Global-v3 `EXP-G4-GIN300` scientific contract is
-integrated as signed D-147 commit
-`b5cf47c6bc8ccc2dc29c7167b1a436d792338509`; PR #184 CI run `33327853790`
-and exact-SHA post-main CI run `33328374514` are green. D-148 now freezes only
-its Linux x86_64 rights, provenance, CPU-runtime, tensor/graph/parity,
-label-free synthetic-capability, prefit-resource, one-use supervision, cleanup,
-and terminal-publication contract. No time-based pause gate is active.
+The active backout is separate: first integrate the exact D-149 terminal
+record, then prospectively contract a read-only reauthentication of the already
+accepted direct MapLight candidate. That route preserves the strongest
+validated internal baseline without calling it selected or robustness-accepted
+and without reopening G2-8. No portal or upload authority is active.
 
 ## Restore authoritative context first
 
@@ -23,201 +23,214 @@ Read completely, in order:
 3. `docs/phases/README.md`;
 4. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
 5. `docs/strategy/PROJECT_CHARTER.md`;
-6. D-147 and D-148 in `docs/strategy/DECISIONS.md`;
+6. D-076, D-147, D-148, and D-149 in `docs/strategy/DECISIONS.md`;
 7. the final relevant rows of `runs/experiment_ledger.csv`;
 8. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_contract.json`;
 9. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`;
-10. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json`;
-11. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md`;
-12. `tests/test_openadmet_global_v3_g4_gin300_capability_contract.py`.
+10. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json`;
+11. `tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py`;
+12. `benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md`.
 
-Treat signed Git history, canonical tracked bytes, public source receipts, and
-green exact-SHA checks as authority. Do not open a protected path to refresh
-context. Never inspect, import, copy, execute, patch, or derive code from a
-barred runner or driver. D-127/D-128 and every closed G2-7 path remain barred.
+D-147 is immutable integrated scientific-contract history at signed commit
+`b5cf47c6bc8ccc2dc29c7167b1a436d792338509`; PR #184 CI run `33327853790`
+and exact-SHA post-main CI run `33328374514` are green. D-148 is immutable
+integrated capability-contract history at signed commit
+`f0f3b6f9380eebef0b03d87f29eb659ffc84f8d5`; PR #185 CI run `33337794223`
+and exact-SHA post-main CI run `33338342415` are green. Their prospective
+implementation/run schedule never activated and is superseded by D-149's
+terminal preclaim closure.
 
-## Exact D-148 package
+Treat signed Git history, canonical tracked bytes, and exact public receipts as
+authority. Do not open a protected path merely to refresh context. Never
+inspect, import, copy, execute, patch, or derive code from a barred runner or
+driver. D-127/D-128 and every closed G2-7 path remain barred.
 
-The current status is
-`G3_2_EXP_G4_GIN300_CAPABILITY_CONTRACT_FROZEN`.
+## Exact D-149 terminal record
 
-- Capability contract:
-  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_capability_contract.json`,
+The record schema is
+`cypshift.openadmet_cyp_2026.global_v3_g4_gin300_transition_rejection.v1` and
+its status is `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`.
+
+- Rejection record:
+  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json`,
   SHA-256
-  `df8796575c3d6093dd4038f4268417a979b8edca14245a7acff26e3db18eaa44`,
-  184,100 bytes / 1,687 lines.
-- CPU-runtime manifest:
-  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_linux_x86_64_runtime_manifest.json`,
+  `10a7f783d73ae60c6da479ffbd8cd3e3443b3f8dace88e177fd9c17c44e1331c`,
+  14,871 bytes / 276 LF.
+- Strict public rejection test:
+  `tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py`,
   SHA-256
-  `67b58fc5eb9d1d3c0652bad9fa85eb1e688ed4bfb93d9ee107cad4db3e0ace01`,
-  166,425 bytes / 4,008 lines.
-- Third-party notices:
-  `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_third_party_notices.md`,
-  SHA-256
-  `b76b026a7ed61c0c33cc9f78d66ca235e01e9d2c504126238e0f6e0f58e18deb`,
-  12,456 bytes / 241 lines.
-- Strict public static audit:
-  `tests/test_openadmet_global_v3_g4_gin300_capability_contract.py`, SHA-256
-  `d9318267ff607703b9d957fc2fa13b79af61740b486471ab0556c06f3205bb12`,
-  97,426 bytes / 2,509 lines, focused result `15/15 passed`.
+  `f033a7577dca4eafd3cec979938292fcb0d7b6ef80f0e86d6134fc8d9f4d944f`,
+  43,378 bytes / 1,226 LF, focused result `4 passed`, and 76 independent
+  fail-closed mutations.
 
-Recompute these identities from the exact worktree; do not trust prose alone.
-Parse both JSON contracts and the runtime manifest with duplicate-key and
-nonfinite rejection, require their exact two-space-indented UTF-8 canonical
-serialization plus terminal LF, and run the strict focused audit plus the
-bounded public repository checks authorized by the current workflow. None of
-those checks may fetch an artifact, create the runtime, or execute scientific
-code.
+Ruff check/format, Python 3.10 AST parsing, temporary compilation, and
+exact-scope diff checks are green. Recompute every identity from the final
+worktree; do not trust prose alone. Parse the record
+with duplicate-key, BOM, nonfinite-number, negative-zero, non-UTF-8, and
+trailing-byte rejection and require exact canonical UTF-8 bytes plus terminal
+LF.
 
-The exact bounded safe-suite command
-`PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -v uv run --locked pytest -p no:cacheprovider --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`
-completed with `1449 passed, 14 skipped, 0 failed` in 349.72 pytest seconds /
-350.21 wall-seconds at 903,624 kB maximum RSS and exit status zero. Ruff over
-325 allowed Python files with the exact barred G2-7B runner/driver/test
-excluded, format and temporary compilation of the D-148 audit, mypy over 78
-source files, offline isolated build, and a fresh Python 3.12.3 installed-wheel
-two-root audit/train/predict/report replay are green. The two roots are
-byte-identical at 9 files / 36,758 bytes each. The 11 package hashes and Git
-status remained identical; incidental build and tree hashes are not frozen.
+The following attempted prospective identities are permanently rejected and
+non-integrable:
 
-## Frozen capability and runtime oracle
+- transition contract SHA-256
+  `2c11b90d08038a05efd01bd40cb92ac79bc74544cc67807d2dd9b09111fa94af`,
+  72,296 bytes / 582 LF;
+- transition static test SHA-256
+  `0c685112421929b715912450e8eeb0e8e7ae5534806c19a7bee8fac6ecdada2d`,
+  67,654 bytes / 1,905 LF;
+- corrected transition contract SHA-256
+  `1def7c6c31a84508e8d50f67a817ff486c30fad3f502dbefcc094e7b6ea7615f`,
+  79,319 bytes / 646 LF.
 
-The runtime manifest binds install-only CPython 3.10.13 and exactly 96 CPU
-wheels, 185 dependency edges, 539,395,366 wheel bytes, and 97 distribution
-artifacts totaling 566,804,656 bytes. It includes the complete
-`molfeat[dgl,transformer]` closure and no CUDA, NCCL, or Triton. The one
-post-cutoff package-wheel exception is `future==1.0.0`; the frozen 20240224
-interpreter is separately disclosed infrastructure. A future successful fetch
-authenticates 98 runtime network files including the checksum sidecar
-(566,804,721 bytes), three model/checkpoint objects (22,374,079 bytes), one
-606-byte MolFeat metadata object, and exactly two redirects.
+None was integrated. None grants implementation, execution, claim, result,
+model-quality, scientific, submission, or portal authority. Do not recreate or
+repair them, use them as implementation bases, or carry their prospective
+launcher/supervision design into current instructions.
 
-The parity oracle uses three isolated CPU processes on the same fixed eight-row
-redistributable fixture. The SNAP conversion, native DGL loader, and MolFeat
-public local-store path must all yield the direct bare
-`dgllife.model.gnn.gin.GIN` with exactly 57 unprefixed state keys and no head,
-readout, wrapper, prefix, or extra. Tensor and graph manifests must match
-exactly. The 8x300 embeddings must either match byte-for-byte or enter only the
-predeclared `max_abs <= 1e-7`, `rtol=0` branch and then produce 48 exact
-fallback predictions from the two candidate models.
+## Why G4 is closed
 
-The resource oracle includes two uncached 3,908-row GIN passes, an
-official-shaped 3,908-molecule / 3,640-component synthetic topology, 180
-model-double fits and 140,688 predictions per root, six real CatBoost fits with
-4,692 validation predictions, and 20% projected wall, CPU, storage, and
-simultaneous-RSS margin. GPU visibility and use are zero.
+Independent terminal audit showed that the attempted transition's
+unqualified zero-accounting claims could not truthfully describe its own
+public repository validation. A green suite does not prove zero network,
+download, import, internal model operation, or cache effect unless those facts
+were instrumented. The final prospective correction boundary was therefore
+falsified before claim consumption. The correct outcome is permanent G4
+closure, not another transition contract.
 
-## D-148 authority and evidence accounting
+The first bounded safe suite passed `1452 passed, 14 skipped, 0 failed` in
+358.81 pytest seconds / 359.31 wall-seconds at 900,212 KiB maximum RSS. Its
+aggregate raw network transactions/bytes, downloads, package imports, internal
+scientific/model operations, and cache effects were not instrumented or
+retained. Every such total remains unknown and must not be guessed.
 
-D-148 is contract and public evidence only. It created no runtime, wheel cache,
-private object root, claim, or result. It downloaded no wheel,
-interpreter-archive, checkpoint, model, transformer, or tokenizer artifact
-body; deserialized or executed no checkpoint; imported or ran no scientific
-stack; performed no parity, GIN, CatBoost, feature, fit, prediction, or
-resource-probe operation; and opened no official/private scientific input.
+With `UV_OFFLINE=1` configured, one isolated build produced a 338,214-byte
+sdist and a 406,405-byte wheel. Their hashes are incidental and non-frozen.
+One temporary CPython 3.12.3 environment installed four cached distributions:
+`cypshift 0.2.0.dev0`, NumPy 2.5.2, Pillow 12.3.0, and RDKit 2026.3.5. No
+download was observed, but raw build/install network transactions and bytes
+were not instrumented and remain unknown.
 
-The public audit recorded six checkpoint/model HEAD requests with zero body
-bytes; one 606-byte MolFeat metadata GET plus one HEAD; two interpreter
-archive/sidecar HEAD requests with zero body on those HEADs; 95 distinct PyPI
-release-JSON resources; nine distinct SPDX JSON resources; the PyTorch CPU
-simple-index resource; one 65-byte checksum-sidecar GET; and one 1,495-byte
-build-project-license GET. Raw retries, total public metadata transactions, and
-aggregate metadata bytes were not instrumented and must remain unknown rather
-than inferred.
+Two successful explicit public-fixture audit/train/predict/report roots were
+byte-identical at 9 files / 36,758 bytes each. Each reported 7 accepted,
+1 quarantined, 7 warnings, 3 supported, 1 unsupported, and 21 predictions, for
+exactly 2 train, 2 predict, 2 report, and 42 prediction operations. Internal
+library fit/metric/import totals, build-isolation environment/cache counts, and
+global cache mutation/access-time effects were not instrumented and remain
+unknown. One pre-audit failed closed on an already-existing path before it
+reported work. The preexisting ignored `.mypy_cache/3.12/cache.3.db` was
+observed modified, but the exact mutating operation was not instrumented and
+remains unknown; the authoritative mypy rerun used temporary state. Every
+explicit task temporary root was deleted and is absent.
 
-## Exact D-149 scope: code and static validation only
+After record/test freeze and before ledger mutation, the exact eight pre-ledger
+identities were unchanged across command `PYTHONDONTWRITEBYTECODE=1 UV_OFFLINE=1 /usr/bin/time -v uv run --locked --offline --no-sync pytest -p no:cacheprovider --ignore=tests/test_openadmet_global_v2_maplight_robustness_synthetic.py`.
+It exited 0 with `1453 passed, 14 skipped, 0 failed` in 345.74 pytest seconds /
+346.19 wall-seconds at 904,176 KiB maximum RSS. These offline controls do not
+convert uninstrumented raw network, cache, or import totals into zero.
 
-D-149 may change exactly 14 paths:
+These are public CI operations, not G4 execution. The fixed G4 vector is
+comprehensive zero: all seven restricted roots and seven future implementation
+paths stayed absent; no isolated runtime/wheel, checkpoint/model body or tensor,
+scientific import, parity process, graph, embedding, synthetic root, fit,
+prediction, official/private/confirmatory/blinded-test/TDI read, metric,
+bootstrap, selection token, contender, systemd unit, delegated cgroup, claim,
+result, submission, validator, leaderboard-selection observation, portal
+credential, upload, or GPU use occurred. G4 remains preclaim and has no retry,
+repair, replacement, relaxed accounting, alternate contract, or outcome-driven
+successor.
 
-1. `research/maplight-gin-openadmet/.python-version`;
-2. `research/maplight-gin-openadmet/pyproject.toml`;
-3. `research/maplight-gin-openadmet/uv.lock`;
-4. `research/maplight-gin-openadmet/build_global_v3_g4_gin300_capability.py`;
-5. `research/maplight-gin-openadmet/run_global_v3_g4_gin300_capability.py`;
-6. `tests/test_openadmet_global_v3_g4_gin300_capability.py`;
-7. `tests/test_openadmet_global_v3_g4_gin300_capability_result.py`;
-8. `benchmarks/openadmet_cyp_2026/README.md`;
-9. `docs/phases/README.md`;
-10. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
-11. `docs/strategy/PROJECT_STATE.md`;
-12. `docs/strategy/DECISIONS.md`;
-13. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
-14. `runs/experiment_ledger.csv`.
+## Exact D-149 package
 
-The root `pyproject.toml` and `uv.lock` remain unchanged. The isolated lock is a
-Linux-targeted evidence mirror of the manifest, not install authority or a
-universal-resolution claim. D-149 must freeze/test one explicit implementation
-of every delegated bounded internal choice, including the public DGL/MolFeat
-call sequence, bounded control-frame enum, descendant stdio routing, and exact
-result dual-state validator. It must remain deterministic and fail closed.
+D-149 changes exactly nine paths:
 
-D-149 must perform zero artifact body fetch, runtime creation or install,
-private-root creation, scientific import, checkpoint load or deserialization,
-tensor/graph/embedding operation, parity process, scaled GIN pass, synthetic
-construction, CatBoost fit or prediction, claim construction or consumption,
-result publication, official/private read, or GPU operation. Do not run the
-formal launcher while creating or reviewing D-149. The public result must stay
-absent and untracked.
+1. `benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json`;
+2. `tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py`;
+3. `benchmarks/openadmet_cyp_2026/README.md`;
+4. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
+5. `docs/phases/README.md`;
+6. `docs/strategy/DECISIONS.md`;
+7. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
+8. `docs/strategy/PROJECT_STATE.md`;
+9. `runs/experiment_ledger.csv`.
 
-## Future D-150 boundary — not current authority
+The ledger is bound at SHA-256
+`515801a45120ea07fada9b3193a4f10614074b77674d0f3b0ea0c01dabaa26fa`
+(437,803 bytes / 200 LF). Its unchanged 431,853-byte prefix has SHA-256
+`53def734ac3bb96d83fb8af2f7c37d42504382caacc63f2e2395f115e0aace56`;
+the sole appended 18-field row has SHA-256
+`0bd57d22c25b5162ca811e0dde542c4a45abee27d4f21662bd2c21c1a2992baf`
+(5,950 bytes including LF). Its compact `config` and `metrics` JSON round-trip
+exactly, and visual audit is clean.
 
-Only after D-149 is independently reviewed, SSH-signed, integrated locally by
-fast-forward only, pushed without rewriting, and green on exact-SHA post-main
-CI may D-150 perform one formal invocation. D-150 changes exactly the aggregate
-result, these six narrative surfaces, and the ledger; it does not change the
-runner, builder, lock, or tests.
+No implementation, isolated-project lock, capability result, claim, model,
+runtime, or submission artifact belongs in this package. Prove every other path
+absent from the diff. A defect in the record/test/narrative package blocks
+integration but cannot reopen G4.
 
-The frozen launcher is direct system Python with an empty operator environment,
-no arguments, and no root-environment sync. The outer authenticates lineage,
-tools, roots, and result absence before spawn. A child reaches the acknowledged
-ready checkpoint and then atomically consumes and permanently tombstones the
-sole claim before any private-root creation or network operation. Fetch is
-sequential, exact, bounded, and nonresumable. Every checkpoint deserialize,
-tensor/graph/embedding operation, and CatBoost worker runs offline inside the
-frozen CPU-only sandbox. The child emits only a bounded aggregate payload. The
-outer authoritatively cleans and verifies all mutable roots while retaining
-only the contract-authorized runtime and SNAP object on a proposed success;
-only then may common seal publish one no-replace canonical aggregate terminal.
-No retry, resume, replacement claim, alternate artifact, or post-publication
-cleanup exists.
+## Competitive backout
 
-A clean result `G3_3_EXP_G4_GIN300_CAPABILITY_ACCEPTED` is engineering
-capability evidence only. It is not scientific `ACCEPTED`, model-quality
-evidence, official access, feature generation authority, development authority,
-or a selection token. Rights/object/tensor/graph/parity/nonredistribution defects
-map exactly to
-`G3_G4_GIN300_INELIGIBLE_PRETRAINED_PROVENANCE_OR_PARITY_FAILED`; a complete
-prefit resource-margin miss maps to
-`G3_G4_GIN300_RESOURCE_INFEASIBLE_PREFIT`; malformed, operational,
-incomplete-integrity, hard-ceiling, or supervision failures map to
-`G3_G4_GIN300_FAILED`. `G3_G4_GIN300_RESOURCE_ABORTED` remains reserved for a
-later claim-bound official feature/development attempt and cannot be emitted by
-D-148, D-149, or D-150.
+Historical receipts describe the accepted direct MapLight candidate that is the
+concrete submission backout:
+
+- submission SHA-256
+  `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`;
+- manifest SHA-256
+  `96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6`.
+- immutable tracked handoff SHA-256
+  `6a9402ca3fdf02dbcad079cba82162132e5b149f6adf69f80ea05d177e1ecec4`,
+  2,919 bytes / 55 LF.
+
+It was accepted after two independent byte-identical four-endpoint rehearsals,
+contains 750 ordered rows and 3,000 finite predictions, and historically passed
+the pinned competition validator with zero errors. Fixed MapLight remains the
+strongest validated internal baseline at component-macro MAE
+`0.5837812652150708`.
+Those are meaningful historical receipts. The MAE is prior internal development
+evidence, not an official or leaderboard score, reselection, or robustness
+result. The receipts do not make MapLight selected or robustness-accepted by
+G2-7G, do not create a G2-8 contender lock, and do not open G2-8. Current
+private candidate existence and bytes are deliberately unknown and unopened;
+the candidate is not currently reauthenticated or upload-ready.
+
+The next milestone is a new exact nine-path contract-only package:
+
+1. `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json`;
+2. `tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py`;
+3. `benchmarks/openadmet_cyp_2026/README.md`;
+4. `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`;
+5. `docs/phases/README.md`;
+6. `docs/strategy/DECISIONS.md`;
+7. `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`;
+8. `docs/strategy/PROJECT_STATE.md`;
+9. `runs/experiment_ledger.csv`.
+
+That contract-only package may bind the immutable handoff and historical
+candidate receipts against current public requirements. It performs zero
+private candidate read, validator call, portal/credential access, or upload and
+does not claim current private-byte existence. A future one-use read-only
+reauthentication result is a separate milestone. Any upload remains a later
+human-authorized operation. Do not mutate or regenerate the candidate or use
+leaderboard/private-portal state for model choice.
 
 ## Exact next action
 
-1. Authenticate the D-148 package and all four core identities against signed
-   D-147 commit `b5cf47c6bc8ccc2dc29c7167b1a436d792338509`.
-2. Require the final focused D-148 public audit, canonical JSON checks,
-   narrative/ledger consistency, Ruff/format/compile checks, and diff check to
-   pass without artifact fetch or scientific execution.
-3. Create one coherent SSH-signed `zchboswell` D-148 commit with no AI
-   attribution. Push it, open a pull request, and require all checks on the
-   exact signed head.
-4. Recheck mergeability and integrate locally with fast-forward only. Do not
-   use GitHub's hosted rebase merge. Push `main` without rewriting the commit
-   and require green exact-SHA post-main CI.
-5. Only then create D-149's exact 14-path implementation/static-test package.
-   Do not invoke it, fetch any frozen body, create any private runtime/root, or
-   consume the formal attempt.
-6. Review, sign, integrate, and require exact-SHA-green D-149 before considering
-   the separate D-150 formal invocation. D-150 is not authorized from an
-   unreviewed D-149 branch.
+1. Recompute the exact record/test hashes, byte counts, and LF counts; require
+   canonical JSON, the focused rejection test, stale-live-G4 scans, exact
+   nine-path scope, and the bounded repository-safe checks. Preserve truthful
+   known/unknown public-CI accounting.
+2. Create one coherent SSH-signed `zchboswell` D-149 commit with no AI
+   attribution. Push it, open an exact-head pull request, and require all checks
+   on that signed head.
+3. Recheck mergeability and integrate locally by fast-forward only. Do not use
+   GitHub's hosted rebase merge. Push `main` without rewriting the commit and
+   require green exact-SHA post-main CI.
+4. Only then draft the exact nine-path direct-baseline reauthentication-handoff
+   contract package above. Keep it contract/static evidence only, with zero
+   private candidate read, validator call, portal/credential access, or upload.
 
-Throughout D-148 and D-149, do not access official structures or targets,
-baseline OOF rows, confirmatory truth, historical row-level artifacts, blinded
-test, TDI, submission generation, validator, official metric, leaderboard,
-private portal, credentials, or upload capabilities. Do not call full MapLight
-retained, promote a runner-up, relax the failed G2-7G support outcome, or use it
-to tune this lane. D-127/D-128, EXP-G3, G1/G2/M1/X1/T2, TRACE, R5D, and I0
-remain closed; `global_TDI` remains only the frozen TDI fallback.
+Throughout D-149, do not access official structures or targets, baseline OOF
+rows, confirmatory truth, historical row-level artifacts, blinded-test bytes,
+TDI, private portal state, credentials, leaderboard observations, or upload
+capabilities. Do not call MapLight selected, retained by G2-7G, or robustness-
+accepted. Do not reopen G2-8. `global_TDI` remains only the frozen TDI fallback.
