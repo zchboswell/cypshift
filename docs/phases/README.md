@@ -17,8 +17,12 @@ integrated contract-only history at signed commit
 and exact-SHA post-main CI run `33338342415` are green. D-149 now terminally
 closes `EXP-G4-GIN300` before claim consumption at
 `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`. No implementation, capability run, or
-scientific attempt follows it. The live next action is a separately contracted
-read-only reauthentication of the accepted direct MapLight candidate.
+scientific attempt follows it. D-149 is integrated as signed commit
+`0bf9b253002399a61e3d8d4e37e1a957ebd198ec`; PR #186 CI run `33348758894`
+and exact-SHA post-main CI run `33349365347` are green. D-150 now freezes only
+the separately bounded conditional read-only reauthentication handoff for the
+historically accepted direct MapLight candidate. A future one-use result and
+any human-authorized upload remain separate milestones.
 
 G2-0 freezes the contract-led sequence, G2-1 accepts its synthetic-only
 capability and tutorial-metric firewall, G2-2A freezes the sealed-holdout-safe
@@ -838,12 +842,117 @@ macro MAE `0.5837812652150708`, but it was neither selected nor
 robustness-accepted by G2-7G. The MAE is prior internal development evidence,
 not an official or leaderboard score, reselection, or robustness result. G2-8
 remains closed.
-The exact next milestone is a nine-path contract-only package:
+D-149 is integrated as signed commit
+`0bf9b253002399a61e3d8d4e37e1a957ebd198ec` through PR #186. The exact-head
+PR CI run `33348758894` and exact-SHA post-main push CI run `33349365347` are
+green across Python 3.11, 3.12.3, and 3.14; integration preserved the signed
+commit without rewriting.
+
+D-150 freezes the direct-baseline reauthentication handoff contract at
 `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json`,
+under schema
+`cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_handoff_contract.v1`
+and status `DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN`, SHA-256
+`589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`
+(22,489 bytes / 431 LF), with strict public static test
 `tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py`,
-these six narratives, and ledger. It opens zero private candidate byte,
-validator, portal, credential, or upload capability. A future one-use read-only
-reauthentication result and any later human-authorized upload are separate.
+SHA-256 `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`
+(89,220 bytes / 2,556 LF). Its focused result is `5 passed`, and exactly 196
+independent fail-closed mutations are rejected.
+
+Pre-propagation validation was executed once against the exact quiescent
+nine-path snapshot before this paragraph and the sole D-150 ledger row were
+updated: contract `589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`,
+test `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`,
+benchmark README `6fa3fb503dc9fbe4cae53e39056ff43052ee097ddc15733d5d93fb3e1d78d318`,
+active phase `20c0886be11f9abe72cc5a8500691adc3e6b165a1be14b3421cbeee9a05972b7`,
+phases README `6211ab1251e486fe816982dd125f2d2b8e93757a3c879e1431354c7f668dbec1`,
+decisions `07685ffe1d6a5168db37aada2b78ddcce79dfdd6aed06ec4536aed079828288c`,
+next prompt `28c2ad685778cdd489517b2c987976f0776d5a3140a95e6c82c58981ab935036`,
+project state `c88afa585d2ad5ee2186382921d109358f6acea4a5beb7b171ebe8dcdd112195`,
+and ledger `a2eaad989ecc61e95012388ea6414c1356f6e8ede83660ace6ec163aaae9f094`.
+The focused D-150 plus D-149 pair passed 9/9 with zero fail or skip in
+0.42 pytest seconds / 0.67 wall-seconds at 43,432 KiB maximum RSS. Ruff passed
+on the exact 327 public Python paths with the barred trio excluded; the focused
+two-test format check passed; Python 3.10.13 AST parsing and temporary
+compilation passed 2/2; and mypy passed on 78 source files in 3.57 seconds at
+268,924 KiB maximum RSS. The safe suite passed 1,458 with 14 skipped and zero
+failed in 363.81 pytest seconds / 364.38 wall-seconds at 903,120 KiB maximum
+RSS. The offline native `uv build` passed. The forced PEP 517 offline route
+was unavailable only because `uv-build` was not cached and is not a blocker.
+Two Python 3.12.3 installed-wheel roots were byte-identical at 9 files / 36,758
+bytes each; each replay recorded 7 accepted, 1 quarantined, 7 warnings,
+3 supported, 1 unsupported, and 21 predictions. Uninstrumented suite/internal
+network, cache, import, fit, metric, and validator totals were not retained and
+remain unknown rather than guessed as zero. Scoped private, official,
+candidate-validator, portal, credential, upload, and GPU operations remained
+zero. Incidental build and tree hashes are not frozen. This is pre-propagation
+evidence; final focused and diff checks are rerun after narrative/ledger
+propagation.
+
+The latest-tracked public requirement snapshot as of
+`2026-08-24T04:21:32Z` binds dataset, Space, and tutorial heads
+`85f8b358d0a2056a98b990dd75d3b3ec9247862b`,
+`13c5057b37d1e72b3f036dd0d59718b1823f8fdd`, and
+`858ae63ce79934113bccdb7fc65467de5f7b1935`, plus
+`source_receipts.json`/`764e59d3...36974`,
+`challenge_contract.json`/`344d3414...6123`, and
+`submission_contract.json`/`4be9933c...9a3c`. It requires 750 rows, six
+ordered identifier/SMILES/direct-prediction columns, numeric predictions, and
+finite values. `live_public_rule_refresh_performed=false` and
+`live_current_rules_claimed=false`: this is not a live rules refresh or claim
+about current portal/backend behavior. Live-backend parity, row order,
+duplicate-identifier behavior, and extra-column behavior remain unresolved,
+so no current validator or upload-readiness claim exists.
+
+This contract-only milestone binds the immutable tracked handoff, historical
+submission and manifest identities, the historical 750-row / 3,000-finite-
+prediction pinned-validator valid/zero-error evidence, and the latest-tracked
+public snapshot frozen in the contract. It does not establish that the private
+candidate currently exists, is readable, still has those bytes, or currently
+passes validation. The later reauthentication remains raw-byte hashing only;
+it cannot make a current validator claim. It does not reselect or robustness-
+accept MapLight, and G2-8 remains closed.
+
+D-150 changes exactly nine paths: the contract, its strict public test, these
+six narratives, and ledger. It opens zero private candidate or official row,
+calls zero validator, and performs zero submission regeneration, model fit,
+prediction, metric, portal/credential, leaderboard-selection, upload, or GPU
+operation. It adds no runner, validator wrapper, upload integration, model, or
+private artifact.
+
+Only reviewed signed integration and green exact-SHA post-main CI can unlock a
+separate one-use read-only reauthentication result milestone. On success that
+gate opens and enumerates the root exactly once and opens each exact file
+exactly once only to hash raw bytes in memory. On failure each operation is
+attempted at most once, the first defect stops the protocol, and no later
+operation runs. It may authenticate only the unchanged historical candidate.
+A missing or unreadable candidate, identity drift, latest-tracked public
+snapshot identity drift, any need for parsing or a validator, or accounting/
+cleanup defect stops the
+direct route with no
+regeneration, refit, reprediction, rewrite, reformat, repair, retry,
+replacement, or alternate candidate. Result publication is at most one no-
+replace write. A safely classified success or failure publishes one result
+only after all descriptors are closed and in-memory candidate bytes are
+discarded, at
+`benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_result.json`,
+schema `cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_result.v1`.
+It retains only expected public hashes and aggregate outcome accounting, never
+a private locator, stat metadata, or candidate bytes. A crash, ambiguous
+cleanup, or publication failure may leave the result absent, but durable
+evidence that private locator resolution began still consumes the sole
+invocation and withdraws the route without retry. With G4 and G2-8 closed,
+that stop is the competition backout condition for this build. A safely
+published success uses `DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY` and route
+state `DIRECT_BASELINE_ROUTE_REAUTHENTICATED`; a safely published failure uses
+`DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED` and route state
+`DIRECT_BASELINE_ROUTE_WITHDRAWN` in the same immutable result. Every failure,
+ambiguity, or need for another attempt withdraws the route, including an absent
+or unauthenticatable result after durable evidence that the attempt began. A
+clean result still grants only a human handoff and keeps
+`upload_authority=false`. Live upload remains a later, candidate-specific,
+human-authorized operation.
 
 Phase 1 completed at authenticated `R5_ORACLE_NO_SIGNAL`. Its full plan and
 chronology are archived in

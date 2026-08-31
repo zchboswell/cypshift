@@ -1,0 +1,431 @@
+{
+  "schema_version": "cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_handoff_contract.v1",
+  "recorded_at_utc": "2026-08-31T02:14:49Z",
+  "status": "DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN",
+  "gate": "DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN",
+  "record_id": "DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT",
+  "contract_only": true,
+  "purpose": "Freeze one future single-use read-only byte reauthentication of the historically accepted fixed-MapLight direct candidate. This milestone opens no private candidate byte, invokes no validator, accesses no portal or credential, performs no upload, and grants no upload authority.",
+  "immutable_d149_parent": {
+    "integrated_commit": "0bf9b253002399a61e3d8d4e37e1a957ebd198ec",
+    "integration_proof": {
+      "pull_request": 186,
+      "exact_head_pull_request_ci_run": 33348758894,
+      "exact_sha_post_main_ci_run": 33349365347,
+      "pull_request_ci_green": true,
+      "post_main_ci_green": true,
+      "integration_method": "local_fast_forward_only_without_commit_rewrite"
+    },
+    "transition_rejection": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v3_g4_gin300_transition_rejection.json",
+      "sha256": "10a7f783d73ae60c6da479ffbd8cd3e3443b3f8dace88e177fd9c17c44e1331c",
+      "size_bytes": 14871,
+      "lines_lf": 276,
+      "status": "G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED"
+    },
+    "transition_rejection_test": {
+      "path": "tests/test_openadmet_global_v3_g4_gin300_transition_rejection.py",
+      "sha256": "f033a7577dca4eafd3cec979938292fcb0d7b6ef80f0e86d6134fc8d9f4d944f",
+      "size_bytes": 43378,
+      "lines_lf": 1226
+    },
+    "experiment_ledger_parent": {
+      "path": "runs/experiment_ledger.csv",
+      "sha256": "515801a45120ea07fada9b3193a4f10614074b77674d0f3b0ea0c01dabaa26fa",
+      "size_bytes": 437803,
+      "lines_lf": 200
+    },
+    "preservation": "D149 remains terminal immutable history. G4 stays closed preclaim with no retry, repair, replacement, implementation, claim, result, or successor correction."
+  },
+  "immutable_public_evidence": {
+    "tracked_handoff": {
+      "path": "benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md",
+      "sha256": "6a9402ca3fdf02dbcad079cba82162132e5b149f6adf69f80ea05d177e1ecec4",
+      "size_bytes": 2919,
+      "lines_lf": 55,
+      "historical_candidate_locator": "not_republished_resolve_privately_from_authenticated_tracked_handoff",
+      "historical_root_mode": "0555",
+      "historical_file_mode": "0444"
+    },
+    "latest_tracked_public_requirement_snapshot": {
+      "as_of_utc": "2026-08-24T04:21:32Z",
+      "live_public_rule_refresh_performed": false,
+      "live_current_rules_claimed": false,
+      "repository_heads": {
+        "dataset": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+        "space": "13c5057b37d1e72b3f036dd0d59718b1823f8fdd",
+        "tutorial": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+      },
+      "tracked_files": [
+        {
+          "path": "benchmarks/openadmet_cyp_2026/source_receipts.json",
+          "sha256": "764e59d37cc12993babce64208117d47612a1551bdcf30d1a22d10eb60636974",
+          "size_bytes": 10485,
+          "lines_lf": 123
+        },
+        {
+          "path": "benchmarks/openadmet_cyp_2026/challenge_contract.json",
+          "sha256": "344d3414d03bb98e57def998e80ab4cf315c1bebe7c01cb9d7c1c32ba3cd6123",
+          "size_bytes": 7889,
+          "lines_lf": 123
+        },
+        {
+          "path": "benchmarks/openadmet_cyp_2026/submission_contract.json",
+          "sha256": "4be9933cd5e9404603d8971e49847bb240eff99f09874696c769a4fafd0d9a3c",
+          "size_bytes": 2378,
+          "lines_lf": 49
+        }
+      ],
+      "direct_requirements": {
+        "rows": 750,
+        "required_columns_ordered": [
+          "SMILES",
+          "Molecule_Name",
+          "CYP1A2_pIC50_direct_inhibition",
+          "CYP2C9_pIC50_direct_inhibition",
+          "CYP2D6_pIC50_direct_inhibition",
+          "CYP3A4_pIC50_direct_inhibition"
+        ],
+        "prediction_type": "numeric",
+        "finite_values_required": true,
+        "live_backend_parity": "unresolved",
+        "row_order": "unresolved",
+        "duplicate_identifier_behavior": "unresolved",
+        "extra_columns": "unresolved"
+      },
+      "interpretation": "This is the latest tracked snapshot bound before D150, not a live rules refresh or claim about current portal/backend behavior."
+    },
+    "global_v2_experiment_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_experiment_contract.json",
+      "sha256": "612b8cea20cba8fb5d209fdd2d92a42feb652477c358f92ed710449d091e5c0d",
+      "size_bytes": 31142,
+      "lines_lf": 346
+    },
+    "historical_candidate_identity": {
+      "system_id": "TRACE-G0-MAPL-FIXED",
+      "submission_filename": "submission.csv",
+      "submission_sha256": "9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b",
+      "manifest_filename": "manifest.json",
+      "manifest_sha256": "96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6",
+      "rows": 750,
+      "finite_predictions": 3000,
+      "bytes_may_be_reserialized": false,
+      "historical_validator": {
+        "tutorial_commit": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+        "validator_sha256": "276a53d7f22ff973aaf567e64d977202995e91ba3cef2bbdc4de71c13bdebcb2",
+        "official_blinded_test_revision": "85f8b358d0a2056a98b990dd75d3b3ec9247862b",
+        "official_blinded_test_sha256": "a342f8444a8dcb531ca12f3685293f0bd6c36ae9073f491e44a9bc1cc4b741f9",
+        "valid": true,
+        "errors": 0,
+        "authority": "historical_public_receipt_only_not_a_current_validator_call_or_live_backend_claim"
+      }
+    },
+    "direct_deployment_contract": {
+      "path": "benchmarks/openadmet_cyp_2026/direct_maplight_deployment_contract.json",
+      "sha256": "918fc1358e3394f32cd21b2f57b283f584e97242068fa0dc60448babc3963960",
+      "size_bytes": 8266,
+      "lines_lf": 189
+    },
+    "fixed_maplight_internal_development_evidence": {
+      "path": "benchmarks/openadmet_cyp_2026/global_v2_maplight_official_reproduction.json",
+      "sha256": "767750305a36eb7e9a850c221c67534534ddac85a6125683192266651f7a4482",
+      "size_bytes": 5001,
+      "lines_lf": 122,
+      "status": "G2_2_MAPLIGHT_REPRODUCED",
+      "component_macro_mae": 0.5837812652150708,
+      "interpretation": "Prior family-safe internal development evidence only; not an official challenge metric, leaderboard score, reselection, G4 selection, or G2-7G robustness acceptance."
+    },
+    "exact_ledger_rows": [
+      {
+        "physical_line": 120,
+        "experiment_id": "trace-direct-maplight-deployment-synthetic",
+        "sha256": "58626ea76a52e1c746c9991a21f32e8d3928cd47f021a35087ecd157423c4025",
+        "size_bytes_including_lf": 2263,
+        "fields": 18
+      },
+      {
+        "physical_line": 121,
+        "experiment_id": "trace-direct-maplight-official-candidate",
+        "sha256": "e7b2502ff1d82b893e9b3ba06d49eba37f35720b0cd9c977a412350bd52d3d67",
+        "size_bytes_including_lf": 1945,
+        "fields": 18
+      },
+      {
+        "physical_line": 126,
+        "experiment_id": "direct-maplight-competition-validator",
+        "sha256": "d0273042efb653b5fc3604f69944ff8a6b19ffdef582d3fcedff47f35c01ffeb",
+        "size_bytes_including_lf": 1245,
+        "fields": 18
+      },
+      {
+        "physical_line": 141,
+        "experiment_id": "global-v2-g2-2c-official-reproduced",
+        "sha256": "2b1e3f9742396d500b8697f4f37a0cbd9dc72e5b5f47779b7a5aa1f89773d0e6",
+        "size_bytes_including_lf": 2123,
+        "fields": 18
+      },
+      {
+        "physical_line": 200,
+        "experiment_id": "global-v3-g3-2-exp-g4-gin300-transition-rejected",
+        "sha256": "0bd57d22c25b5162ca811e0dde542c4a45abee27d4f21662bd2c21c1a2992baf",
+        "size_bytes_including_lf": 5950,
+        "fields": 18
+      }
+    ],
+    "precedence": "Historical D075, D076, validator, and handoff statements are immutable evidence, not current operational authority. D149 and this later contract control current action."
+  },
+  "current_candidate_state": {
+    "candidate_existence": "unknown_unopened",
+    "root_type_and_mode": "unknown_unopened",
+    "root_entry_set": "unknown_unopened",
+    "submission_existence": "unknown_unopened",
+    "submission_bytes": "unknown_unopened",
+    "submission_sha256": "unknown_unopened",
+    "manifest_existence": "unknown_unopened",
+    "manifest_bytes": "unknown_unopened",
+    "manifest_sha256": "unknown_unopened",
+    "current_validator_result": "unknown_not_invoked",
+    "current_live_backend_parity": "unknown_unresolved",
+    "current_portal_state": "unknown_unopened",
+    "current_leaderboard_state": "unknown_unopened",
+    "reauthenticated": false,
+    "upload_ready": false,
+    "selected_by_g4": false,
+    "robustness_accepted_by_g2_7g": false,
+    "g2_8_status": "CLOSED"
+  },
+  "current_authority": {
+    "read_private_candidate_now": false,
+    "resolve_private_candidate_locator_now": false,
+    "invoke_candidate_or_official_competition_validator_now": false,
+    "open_official_data_now": false,
+    "generate_or_regenerate_submission": false,
+    "copy_or_reserialize_candidate": false,
+    "open_portal_or_credentials": false,
+    "observe_leaderboard": false,
+    "upload": false,
+    "upload_authority": false,
+    "future_single_use_read_only_reauthentication_after_all_prerequisites": true,
+    "future_result_is_separate_milestone": true
+  },
+  "contract_milestone_accounting": {
+    "scope": "D150 contract-milestone candidate/private/official/portal operations only. Ordinary tracked-public repository reads and validation are not candidate execution.",
+    "tracked_public_handoff_locator_reference_read_and_bound": true,
+    "private_candidate_filesystem_locator_resolution_or_access_attempts": 0,
+    "private_candidate_roots_opened": 0,
+    "private_candidate_directory_entries_read": 0,
+    "private_candidate_files_opened": 0,
+    "private_candidate_bytes_read": 0,
+    "private_candidate_hashes_computed": 0,
+    "candidate_or_official_competition_validator_calls": 0,
+    "private_candidate_validator_calls": 0,
+    "official_dataset_files_opened": 0,
+    "official_rows_opened": 0,
+    "official_target_values_opened": 0,
+    "official_metric_calls": 0,
+    "model_fits": 0,
+    "predictions_generated": 0,
+    "submission_rows_generated": 0,
+    "candidate_copies_or_reserializations": 0,
+    "portal_credentials_opened": 0,
+    "portal_pages_opened": 0,
+    "leaderboard_observations": 0,
+    "uploads": 0,
+    "future_reauthentication_attempts_consumed": 0,
+    "public_repository_validation_validator_import_cache_network_and_internal_totals_retained": false,
+    "public_repository_validation_rule": "Uninstrumented public-CI validator, network, cache, import, fit, metric, and suite-internal operation totals remain unknown, are not guessed as zero, and do not alter the scoped candidate/private zeros."
+  },
+  "future_single_use_read_only_reauthentication": {
+    "activation_state": "blocked_pending_review_signed_integration_and_post_main_ci",
+    "prerequisites_satisfied_by_this_contract": false,
+    "prerequisites": {
+      "semantics": "Every true value below is a future mandatory condition, not a claim that this unintegrated contract already satisfies it.",
+      "contract_reviewed_and_integrated_as_one_ssh_signed_zchboswell_commit": true,
+      "exact_head_pull_request_checks_green": true,
+      "local_fast_forward_only_integration_without_commit_rewrite": true,
+      "exact_sha_post_main_ci_green": true,
+      "worktree_clean_and_parent_evidence_exact": true,
+      "private_candidate_contact_before_prerequisites": false
+    },
+    "attempt": {
+      "maximum_invocations": 1,
+      "invocations_consumed_by_this_contract": 0,
+      "retry": false,
+      "resume": false,
+      "repair": false,
+      "replacement": false,
+      "copy_to_fresh_root": false,
+      "second_attempt_if_ambiguous": false,
+      "any_started_private_locator_resolution_consumes_invocation": true,
+      "result_must_be_separate_immutable_milestone": true
+    },
+    "locator_resolution": {
+      "sole_source_path": "benchmarks/openadmet_cyp_2026/DIRECT_BASELINE_HANDOFF.md",
+      "sole_source_sha256": "6a9402ca3fdf02dbcad079cba82162132e5b149f6adf69f80ea05d177e1ecec4",
+      "expected_exact_locator": "unique_Accepted_root_value_resolved_privately_from_authenticated_tracked_handoff_not_republished",
+      "resolve_only_after_authenticating_exact_tracked_handoff_bytes": true,
+      "private_filesystem_locator_resolution_count": 1,
+      "alternate_locator_or_search": false,
+      "environment_variable_or_glob_locator": false,
+      "portal_or_credential_locator": false
+    },
+    "filesystem_preflight": {
+      "successful_root_open_count_on_success": 1,
+      "root_open_attempts_maximum": 1,
+      "successful_root_enumeration_count_on_success": 1,
+      "root_enumeration_attempts_maximum": 1,
+      "root_must_be_real_directory_not_symlink": true,
+      "directory_fd_identity_must_match_privately_extracted_locator": true,
+      "separate_realpath_call_required": false,
+      "root_mode_exact": "0555",
+      "exact_sorted_entries": [
+        "manifest.json",
+        "submission.csv"
+      ],
+      "extra_or_missing_entry_fails_closed": true,
+      "stop_immediately_after_first_defect_with_zero_later_operations": true,
+      "nofollow_root_and_files": true,
+      "path_traversal_or_recursive_search": false
+    },
+    "files": [
+      {
+        "name": "manifest.json",
+        "expected_sha256": "96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6",
+        "type": "regular_file_not_symlink",
+        "mode_exact": "0444",
+        "maximum_open_count": 1,
+        "parse_or_deserialize": false
+      },
+      {
+        "name": "submission.csv",
+        "expected_sha256": "9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b",
+        "type": "regular_file_not_symlink",
+        "mode_exact": "0444",
+        "maximum_open_count": 1,
+        "parse_or_deserialize": false
+      }
+    ],
+    "byte_hash_protocol": {
+      "open_flags": "read_only_and_nofollow_relative_to_authenticated_root_directory",
+      "whole_file_bytes_read_into_memory_only": true,
+      "candidate_files_opened_exactly_once_each_on_success": true,
+      "candidate_file_open_attempts_maximum_each": 1,
+      "stable_fstat_before_and_after_read_required": true,
+      "stable_fstat_fields": [
+        "st_dev",
+        "st_ino",
+        "st_mode",
+        "st_nlink",
+        "st_uid",
+        "st_gid",
+        "st_size",
+        "st_mtime_ns",
+        "st_ctime_ns"
+      ],
+      "sha256_computed_in_memory": true,
+      "expected_hashes_required_exactly": true,
+      "candidate_bytes_written_or_retained": false,
+      "temporary_files_or_copies": false,
+      "csv_parse": false,
+      "json_parse": false,
+      "candidate_or_official_competition_validator_call": false,
+      "private_candidate_validator_call": false,
+      "official_data_open": false,
+      "network_or_portal_access": false,
+      "upload": false
+    },
+    "cleanup_and_publication": {
+      "close_root_and_file_descriptors_before_result": true,
+      "discard_all_in_memory_candidate_bytes_before_result": true,
+      "retain_or_publish_private_locator_path_or_candidate_bytes": false,
+      "retain_or_publish_private_stat_metadata": false,
+      "retain_only_expected_public_hashes_and_aggregate_outcome_accounting": true,
+      "cleanup_must_complete_before_result_publication": true,
+      "result_path": "benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_result.json",
+      "result_schema_version": "cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_result.v1",
+      "result_publication_count_maximum": 1,
+      "safe_success_or_safe_classified_failure_publication_count": 1,
+      "result_publication_no_replace": true,
+      "result_is_not_part_of_this_contract_package": true,
+      "crash_ambiguous_cleanup_or_publication_failure_may_leave_result_absent": true,
+      "crash_ambiguous_cleanup_or_publication_failure_effect": "DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED_and_DIRECT_BASELINE_ROUTE_WITHDRAWN",
+      "external_handoff_rule": "If durable evidence shows the private invocation began but the no-replace result is absent or cannot be authenticated, treat the invocation as consumed and the route as withdrawn. Do not rerun, repair, replace, or publish a fabricated success."
+    },
+    "forbidden_operations": [
+      "candidate generation or regeneration",
+      "candidate copy, move, chmod, chown, touch, repair, replacement, reserialization, parsing, or validation",
+      "official dataset, label, feature, structure, row, metric, or scoring access",
+      "model fit, prediction, calibration, clipping, ensemble, selection, or transduction",
+      "portal, browser, credential, leaderboard, network, or upload access",
+      "retry, resume, alternate locator, recursive search, second attempt, or post-failure remedy"
+    ],
+    "success_effect": {
+      "required_result_status": "DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY",
+      "route_state": "DIRECT_BASELINE_ROUTE_REAUTHENTICATED",
+      "candidate_bytes_authenticated": true,
+      "candidate_selected_or_robustness_accepted": false,
+      "g2_8_reopened": false,
+      "validator_current": false,
+      "upload_ready_claimed": false,
+      "upload_authority": false,
+      "next_action": "Stop. Preserve the read-only result. Any upload remains a later separate human-authorized operation."
+    },
+    "failure_effect": {
+      "safe_classified_failure_result_status": "DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED",
+      "ambiguous_or_absent_result_effective_status": "DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED",
+      "route_state": "DIRECT_BASELINE_ROUTE_WITHDRAWN",
+      "triggers": [
+        "missing, unreadable, ambiguous, symlinked, non-regular, mode-drifted, extra-entry, or unstable root or file",
+        "submission or manifest SHA-256 mismatch",
+        "tracked handoff or bound latest-tracked public requirement snapshot identity mismatch",
+        "any forbidden operation, accounting uncertainty inside the private attempt, cleanup defect, or need for retry, repair, replacement, alternate locator, validator, official data, portal, credential, or upload access"
+      ],
+      "invocation_consumed": true,
+      "retry_or_remedy": false,
+      "candidate_upload_ready": false,
+      "upload_authority": false,
+      "competition_backout": "Withdraw the direct-baseline route. Do not upload, regenerate, or substitute a candidate under this contract."
+    }
+  },
+  "future_status_taxonomy": {
+    "contract_status": "DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN",
+    "sole_success_status": "DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY",
+    "sole_failure_status": "DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED",
+    "failure_route_state": "DIRECT_BASELINE_ROUTE_WITHDRAWN",
+    "success_and_failure_are_terminal_for_the_single_invocation": true,
+    "ambiguous_or_second_attempt_needed_is_failure": true,
+    "started_invocation_with_absent_or_unauthentic_result_is_consumed_and_withdrawn": true,
+    "all_success_failure_and_absent_result_states_preserve_upload_authority_false": true
+  },
+  "exact_package_scope": {
+    "exact_path_count": 9,
+    "exact_paths": [
+      "benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json",
+      "tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py",
+      "benchmarks/openadmet_cyp_2026/README.md",
+      "docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md",
+      "docs/phases/README.md",
+      "docs/strategy/DECISIONS.md",
+      "docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md",
+      "docs/strategy/PROJECT_STATE.md",
+      "runs/experiment_ledger.csv"
+    ],
+    "contract_paths": 1,
+    "test_paths": 1,
+    "narrative_paths": 6,
+    "ledger_paths": 1,
+    "implementation_paths": 0,
+    "result_paths": 0,
+    "private_paths": 0
+  },
+  "invalidation": "Invalidate and do not integrate this contract package if the D149 parent, tracked handoff, latest-tracked public requirement snapshot, historical candidate, MapLight development, or exact ledger-row identity drifts; any current private candidate filesystem locator is resolved or candidate byte is opened; any candidate, private, or official-competition validator, official-data, metric, portal, credential, leaderboard, or upload operation occurs; current existence or upload readiness is claimed; MapLight is called G4-selected or G2-7G robustness-accepted; G2-8 or G4 is reopened; the changed-path set differs in any way from the exact nine-path allowlist, including any required path absent or any outside path present; public-CI suite-internal synthetic validator imports or calls and other unknown totals are incorrectly treated as scoped candidate operations or guessed as zero; the one-use future protocol permits parsing, copying, reserialization, retry, repair, replacement, alternate search, more than one file open each, private locator/stat publication, a separate realpath resolution, or publication before cleanup; or failure does not withdraw the route.",
+  "competitive_backout": {
+    "continue_now": "Freeze this contract because the historically accepted candidate remains the strongest defensible direct route, while making no current-byte or upload-readiness claim.",
+    "continue_after_success": "A separate exact read-only success may preserve the route for later explicit human upload authorization; it does not itself authorize upload.",
+    "back_out_after_failure_or_ambiguity": "Set DIRECT_BASELINE_ROUTE_WITHDRAWN and stop the direct submission route without retry, regeneration, substitution, validator rescue, portal access, or upload.",
+    "g4_terminal": true,
+    "g2_8_status": "CLOSED",
+    "alternate_model_or_candidate_authorized": false
+  },
+  "next_gate": "Review only this exact nine-path contract-only package. After one SSH-signed zchboswell commit, exact-head green pull-request checks, local fast-forward-only integration without rewrite, and green exact-SHA post-main CI, execute at most one separately recorded read-only hash reauthentication exactly as frozen. Success stops at DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY with no upload authority. Any failure, ambiguity, or need for another attempt records DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED and DIRECT_BASELINE_ROUTE_WITHDRAWN."
+}

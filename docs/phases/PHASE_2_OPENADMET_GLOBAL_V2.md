@@ -10,8 +10,12 @@ integrated contract-only history at signed commit
 and exact-SHA post-main CI run `33338342415` are green. D-149 now terminally
 closes that lane preclaim at `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`; no
 implementation, capability run, G4 claim, or G4 scientific attempt follows.
-The live next action is a separate contract to reauthenticate the accepted
-direct MapLight candidate without opening portal or upload authority.
+D-149 is integrated as signed commit
+`0bf9b253002399a61e3d8d4e37e1a957ebd198ec`; PR #186 CI run `33348758894`
+and exact-SHA post-main CI run `33349365347` are green. D-150 now freezes only
+the separate conditional read-only reauthentication handoff for the
+historically accepted direct MapLight candidate. The future one-use result and
+any human-authorized upload remain distinct later milestones.
 
 Historical Global-v2 status: G2-2 development baseline reproduced, G2-3A
 `EXP-G1` frozen,
@@ -1728,13 +1732,13 @@ the sole appended 18-field row has SHA-256
 (5,950 bytes including LF). Its compact `config` and `metrics` JSON round-trip
 exactly, and visual audit is clean.
 
-## Exact next action
+## Direct-baseline reauthentication handoff
 
-Finalize and integrate only D-149's exact nine-path terminal record/test/
-narrative/ledger package through independent review, one SSH-signed
-`zchboswell` commit, exact-head pull-request checks, local fast-forward-only
-integration, non-rewriting push, and green exact-SHA post-main CI. A defect in
-the record can block integration but cannot reopen G4.
+D-149 is integrated as signed commit
+`0bf9b253002399a61e3d8d4e37e1a957ebd198ec` through PR #186. Its exact-head
+PR CI run `33348758894` and exact-SHA post-main push CI run `33349365347` are
+green across Python 3.11, 3.12.3, and 3.14. Integration preserved the same
+signed commit without rewriting. G4 remains permanently closed preclaim.
 
 Historical receipts bind the accepted direct MapLight candidate's submission
 SHA-256
@@ -1753,11 +1757,114 @@ macro MAE `0.5837812652150708`, prior internal development evidence rather than
 an official/leaderboard score, reselection, or robustness result. It is not a
 G2-7-selected or robustness-accepted candidate, and G2-8 stays closed.
 
-Only after D-149 integration may the separate exact nine-path contract-only
-milestone add
+D-150 freezes the exact nine-path contract-only milestone through
 `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json`,
+schema
+`cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_handoff_contract.v1`,
+status `DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN`, SHA-256
+`589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`
+(22,489 bytes / 431 LF), and
 `tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py`,
-these six narratives, and ledger. It performs zero private candidate read,
-validator call, portal/credential access, or upload. A future one-use read-only
-reauthentication result is a separate milestone; any upload still requires a
-later human-authorized operation. D-149 grants no such authority.
+SHA-256 `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`
+(89,220 bytes / 2,556 LF), plus these six narratives and ledger. Its focused
+result is `5 passed`, and exactly 196 independent fail-closed mutations are
+rejected.
+
+Pre-propagation validation was executed once against the exact quiescent
+nine-path snapshot before this paragraph and the sole D-150 ledger row were
+updated: contract `589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`,
+test `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`,
+benchmark README `6fa3fb503dc9fbe4cae53e39056ff43052ee097ddc15733d5d93fb3e1d78d318`,
+active phase `20c0886be11f9abe72cc5a8500691adc3e6b165a1be14b3421cbeee9a05972b7`,
+phases README `6211ab1251e486fe816982dd125f2d2b8e93757a3c879e1431354c7f668dbec1`,
+decisions `07685ffe1d6a5168db37aada2b78ddcce79dfdd6aed06ec4536aed079828288c`,
+next prompt `28c2ad685778cdd489517b2c987976f0776d5a3140a95e6c82c58981ab935036`,
+project state `c88afa585d2ad5ee2186382921d109358f6acea4a5beb7b171ebe8dcdd112195`,
+and ledger `a2eaad989ecc61e95012388ea6414c1356f6e8ede83660ace6ec163aaae9f094`.
+The focused D-150 plus D-149 pair passed 9/9 with zero fail or skip in
+0.42 pytest seconds / 0.67 wall-seconds at 43,432 KiB maximum RSS. Ruff passed
+on the exact 327 public Python paths with the barred trio excluded; the focused
+two-test format check passed; Python 3.10.13 AST parsing and temporary
+compilation passed 2/2; and mypy passed on 78 source files in 3.57 seconds at
+268,924 KiB maximum RSS. The safe suite passed 1,458 with 14 skipped and zero
+failed in 363.81 pytest seconds / 364.38 wall-seconds at 903,120 KiB maximum
+RSS. The offline native `uv build` passed. The forced PEP 517 offline route
+was unavailable only because `uv-build` was not cached and is not a blocker.
+Two Python 3.12.3 installed-wheel roots were byte-identical at 9 files / 36,758
+bytes each; each replay recorded 7 accepted, 1 quarantined, 7 warnings,
+3 supported, 1 unsupported, and 21 predictions. Uninstrumented suite/internal
+network, cache, import, fit, metric, and validator totals were not retained and
+remain unknown rather than guessed as zero. Scoped private, official,
+candidate-validator, portal, credential, upload, and GPU operations remained
+zero. Incidental build and tree hashes are not frozen. This is pre-propagation
+evidence; final focused and diff checks are rerun after narrative/ledger
+propagation.
+
+The latest-tracked public requirement snapshot as of
+`2026-08-24T04:21:32Z` binds dataset, Space, and tutorial heads
+`85f8b358d0a2056a98b990dd75d3b3ec9247862b`,
+`13c5057b37d1e72b3f036dd0d59718b1823f8fdd`, and
+`858ae63ce79934113bccdb7fc65467de5f7b1935`, plus the exact tracked
+`source_receipts.json`/`764e59d3...36974`,
+`challenge_contract.json`/`344d3414...6123`, and
+`submission_contract.json`/`4be9933c...9a3c` chain. It freezes 750 rows, the
+six ordered identifier/SMILES/direct-prediction columns, numeric predictions,
+and finite values. `live_public_rule_refresh_performed=false` and
+`live_current_rules_claimed=false`: this is not a live rules refresh or claim
+about current portal/backend behavior. Live-backend parity, row order,
+duplicate-identifier behavior, and extra-column behavior remain unresolved.
+D-150 and the future raw-byte gate therefore make no current validator or
+upload-readiness claim.
+
+The contract binds only the immutable tracked handoff and historical candidate
+receipts against that latest-tracked public snapshot. D-150 reads zero private
+candidate or official row, calls zero validator, and performs zero submission
+regeneration, fit, prediction, metric, portal/credential access, leaderboard-
+selection, upload, or GPU operation. Current candidate existence, bytes, and
+readability remain deliberately unknown and unopened; the current validator
+result is unknown and uninvoked.
+The milestone creates no runner, validator wrapper, upload integration, model,
+or private artifact and does not reopen G2-8.
+
+The future read-only reauthentication is a separate one-use result milestone
+that may authenticate only the historical candidate unchanged. On success it
+opens and enumerates the root exactly once and opens each exact file exactly
+once only to hash raw bytes in memory. On failure each operation is attempted
+at most once, the first defect stops the protocol, and no later operation runs.
+Candidate absence/unreadability, submission or manifest identity drift,
+latest-tracked public snapshot identity drift, any need for parsing or a
+validator, or accounting/
+cleanup failure stops the direct route with no regeneration, refit,
+reprediction, rewrite, reorder, reformat, repair, replacement, retry, or
+alternate candidate. The future gate parses, validates, copies, and retains
+nothing and opens no official data. Result publication is at most one no-
+replace write. A safely classified success or failure publishes one result
+only after all descriptors are closed and in-memory candidate bytes are
+discarded, at
+`benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_result.json`,
+schema `cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_result.v1`.
+It retains only expected public hashes and aggregate outcome accounting, never
+a private locator, stat metadata, or candidate bytes. A crash, ambiguous
+cleanup, or publication failure may leave the result absent, but durable
+evidence that private locator resolution began still consumes the sole
+invocation and withdraws the route without retry. Because G4 and G2-8 are
+already closed, that is the competition backout condition for this build. A
+safely published success uses `DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY` and
+route state `DIRECT_BASELINE_ROUTE_REAUTHENTICATED`; a safely published failure
+uses `DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED` and route state
+`DIRECT_BASELINE_ROUTE_WITHDRAWN` in the same immutable result. Every failure,
+ambiguity, or need for another attempt withdraws the route, including an absent
+or unauthenticatable result after durable evidence that the attempt began. A
+clean result leaves the route operationally eligible but keeps
+`upload_authority=false` and grants only a human handoff. Portal access and
+live upload remain outside that milestone and require a later candidate-
+specific human authorization.
+
+## Exact next action
+
+Finalize D-150's exact nine-path contract/test/narrative/ledger package through
+independent review, final identity freeze, one SSH-signed `zchboswell` commit,
+exact-head pull-request checks, local fast-forward-only integration, a non-
+rewriting push, and green exact-SHA post-main CI. A package defect blocks D-150
+without reading the candidate. Only then may the separate one-use read-only
+reauthentication result milestone begin; do not combine it with upload.

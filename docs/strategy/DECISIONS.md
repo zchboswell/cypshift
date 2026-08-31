@@ -5626,11 +5626,12 @@
 ## D-149 — Close EXP-G4-GIN300 preclaim after terminal transition audit
 
 - Date: 2026-08-30
-- Status: terminal decision accepted at
-  `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`; the exact nine-path public
-  record/test/narrative/ledger package remains pending independent review,
-  final identity freeze, SSH-signed integration, and green exact-SHA post-main
-  CI. A packaging defect may block the record but cannot reopen G4.
+- Status: terminal decision accepted and integrated at
+  `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED` as signed commit
+  `0bf9b253002399a61e3d8d4e37e1a957ebd198ec` through PR #186, with green
+  exact-head PR CI run `33348758894` and green exact-SHA post-main push CI run
+  `33349365347`. Integration preserved the signed commit without rewriting.
+  No later defect can reopen G4.
 - Decision: Permanently close `EXP-G4-GIN300` before claim consumption. Record
   the closure under schema
   `cypshift.openadmet_cyp_2026.global_v3_g4_gin300_transition_rejection.v1` in
@@ -5756,6 +5757,173 @@
   accounting, nonzero G4 operation, missing preclaim/no-retry closure, tenth
   D-149 path, placeholder at integration, MapLight identity drift, selection or
   robustness overclaim, G2-8 reopening, or portal/upload authority blocks the
-  D-149 record package. It cannot revive G4. Otherwise integrate only the exact
-  nine-path terminal package through signed fast-forward-only review and green
-  exact-SHA CI, then begin the separate MapLight reauthentication contract.
+  D-149 record package. It cannot revive G4. The exact nine-path terminal
+  package subsequently completed signed fast-forward-only review and green
+  exact-SHA CI; D-150 below freezes the separate MapLight reauthentication
+  contract.
+
+## D-150 — Freeze the conditional direct MapLight reauthentication handoff
+
+- Date: 2026-08-30
+- Status: contract-only boundary accepted; final contract/test identities are
+  frozen and independent review passed. SSH-signed integration and green exact-
+  SHA pull-request/post-main CI remain pending. No private candidate, validator,
+  portal, or upload authority is active.
+- Integrated parent: D-149 is immutable signed commit
+  `0bf9b253002399a61e3d8d4e37e1a957ebd198ec`, merged without rewriting through
+  PR #186. Exact-head PR CI run `33348758894` and exact-SHA post-main push CI
+  run `33349365347` are green across Python 3.11, 3.12.3, and 3.14. G4 remains
+  permanently closed at `G3_2_EXP_G4_GIN300_PRECLAIM_CLOSED`.
+- Numbering boundary: D-149 superseded D-148's unactivated prospective use of
+  “D-150” for a G4 capability invocation. This current D-150 is the separate
+  direct-baseline contract promised by D-149; it does not execute or revive
+  any D-148 capability.
+- Decision: Freeze only the prospective direct-baseline read-only
+  reauthentication handoff under schema
+  `cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_handoff_contract.v1`
+  and status `DIRECT_BASELINE_REAUTHENTICATION_HANDOFF_CONTRACT_FROZEN` in
+  `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_handoff_contract.json`
+  at SHA-256 `589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`
+  (22,489 bytes / 431 LF), with strict public static
+  test
+  `tests/test_openadmet_direct_baseline_reauthentication_handoff_contract.py`
+  at SHA-256
+  `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`
+  (89,220 bytes / 2,556 LF). Its focused result is `5 passed`, and exactly 196
+  independent fail-closed mutations are rejected.
+- Pre-propagation validation was executed once against the exact quiescent
+  nine-path snapshot before this paragraph and the sole D-150 ledger row were
+  updated: contract `589facbbe8b51aeee00abdcba756c9119262572954854f438c549cab7ff98fcd`,
+  test `9b2d17eb878367a6d786d3fa4606c6b64ec8e518ae4fffeac8d086738ec4a53d`,
+  benchmark README `6fa3fb503dc9fbe4cae53e39056ff43052ee097ddc15733d5d93fb3e1d78d318`,
+  active phase `20c0886be11f9abe72cc5a8500691adc3e6b165a1be14b3421cbeee9a05972b7`,
+  phases README `6211ab1251e486fe816982dd125f2d2b8e93757a3c879e1431354c7f668dbec1`,
+  decisions `07685ffe1d6a5168db37aada2b78ddcce79dfdd6aed06ec4536aed079828288c`,
+  next prompt `28c2ad685778cdd489517b2c987976f0776d5a3140a95e6c82c58981ab935036`,
+  project state `c88afa585d2ad5ee2186382921d109358f6acea4a5beb7b171ebe8dcdd112195`,
+  and ledger `a2eaad989ecc61e95012388ea6414c1356f6e8ede83660ace6ec163aaae9f094`.
+  The focused D-150 plus D-149 pair passed 9/9 with zero fail or skip in
+  0.42 pytest seconds / 0.67 wall-seconds at 43,432 KiB maximum RSS. Ruff passed
+  on the exact 327 public Python paths with the barred trio excluded; the focused
+  two-test format check passed; Python 3.10.13 AST parsing and temporary
+  compilation passed 2/2; and mypy passed on 78 source files in 3.57 seconds at
+  268,924 KiB maximum RSS. The safe suite passed 1,458 with 14 skipped and zero
+  failed in 363.81 pytest seconds / 364.38 wall-seconds at 903,120 KiB maximum
+  RSS. The offline native `uv build` passed. The forced PEP 517 offline route
+  was unavailable only because `uv-build` was not cached and is not a blocker.
+  Two Python 3.12.3 installed-wheel roots were byte-identical at 9 files / 36,758
+  bytes each; each replay recorded 7 accepted, 1 quarantined, 7 warnings,
+  3 supported, 1 unsupported, and 21 predictions. Uninstrumented suite/internal
+  network, cache, import, fit, metric, and validator totals were not retained and
+  remain unknown rather than guessed as zero. Scoped private, official,
+  candidate-validator, portal, credential, upload, and GPU operations remained
+  zero. Incidental build and tree hashes are not frozen. This is pre-propagation
+  evidence; final focused and diff checks are rerun after narrative/ledger
+  propagation.
+- Historical evidence boundary: Bind the immutable tracked handoff SHA-256
+  `6a9402ca3fdf02dbcad079cba82162132e5b149f6adf69f80ea05d177e1ecec4`
+  (2,919 bytes / 55 LF), historical submission SHA-256
+  `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`,
+  and historical manifest SHA-256
+  `96ee587c4483b3ebab274b071c0c8108e35e0abc3bc2434ac0a5f0661dcb63d6`.
+  The handoff records two byte-identical rehearsals, 750 ordered rows, 3,000
+  finite predictions, and a pinned-validator valid/zero-error result. Those are
+  immutable historical receipts, not a current private-byte or validator
+  result.
+- Latest-tracked public requirement snapshot: As of
+  `2026-08-24T04:21:32Z`, bind dataset, Space, and tutorial heads
+  `85f8b358d0a2056a98b990dd75d3b3ec9247862b`,
+  `13c5057b37d1e72b3f036dd0d59718b1823f8fdd`, and
+  `858ae63ce79934113bccdb7fc65467de5f7b1935`; `source_receipts.json` at
+  SHA-256 `764e59d37cc12993babce64208117d47612a1551bdcf30d1a22d10eb60636974`;
+  `challenge_contract.json` at
+  `344d3414d03bb98e57def998e80ab4cf315c1bebe7c01cb9d7c1c32ba3cd6123`;
+  and `submission_contract.json` at
+  `4be9933cd5e9404603d8971e49847bb240eff99f09874696c769a4fafd0d9a3c`.
+  They require 750 rows, the six ordered identifier/SMILES/direct-prediction
+  columns, numeric predictions, and finite values.
+  `live_public_rule_refresh_performed=false` and
+  `live_current_rules_claimed=false`: this is not a live rules refresh or claim
+  about current portal/backend behavior. Live-backend parity, row-order
+  authority, duplicate-identifier behavior, and extra-column behavior remain
+  unresolved. Hash-only reauthentication therefore cannot claim a current
+  validator pass or upload readiness.
+- Scientific meaning: Fixed MapLight remains the strongest prior internal
+  baseline at development component-macro MAE `0.5837812652150708`. This is
+  not an official or leaderboard score, fresh selection, or robustness result.
+  G2-7G selected no contender and did not robustness-accept MapLight; G2-8
+  remains closed. D-150 does not reinterpret any failed experiment or create a
+  scientific successor.
+- Conditional-go boundary: Current private candidate existence, readability,
+  bytes, and schema remain deliberately unknown and unopened at D-150; the
+  current validator result is unknown and uninvoked. Only after D-150 is
+  independently reviewed, frozen,
+  SSH-signed, fast-forward integrated, and green on exact-SHA post-main CI may
+  a separate one-use read-only result milestone inspect the fixed candidate
+  by opening and enumerating the root exactly once and opening each exact file
+  exactly once on success, only to hash raw bytes in memory. On failure, each
+  operation is attempted at most once, the first defect stops the protocol,
+  and no later operation runs. It may authenticate only the exact historical
+  candidate unchanged; it may not
+  parse, validate, copy, retain, open official data, regenerate, refit,
+  repredict, rewrite, reorder, reformat, patch, or replace any candidate or
+  manifest.
+- Backout rule: Candidate absence or unreadability, submission or manifest
+  identity drift, latest-tracked public snapshot identity drift, any need for a
+  parser or validator, unexpected mutable state, or incomplete accounting/
+  cleanup stops the direct route. No
+  retry, repair, resume, alternate path, new candidate, or fallback model is
+  authorized. Because G4 and G2-8 are already closed, such a failure is the
+  competition backout condition for this build rather than an invitation to
+  improvise another submission lane.
+- Result publication boundary: Publication is at most one no-replace write. A
+  safely classified success or failure publishes one result only after closing
+  every descriptor and discarding all in-memory candidate bytes, at
+  `benchmarks/openadmet_cyp_2026/direct_baseline_reauthentication_result.json`
+  under schema
+  `cypshift.openadmet_cyp_2026.direct_baseline_reauthentication_result.v1`.
+  It retains only expected public hashes and aggregate outcome accounting; it
+  retains or publishes no private locator, stat metadata, or candidate bytes.
+  A crash, ambiguous cleanup, or publication failure may leave the result
+  absent, but durable evidence that private locator resolution began still
+  consumes the sole invocation and withdraws the route without retry.
+- Future taxonomy: A safely published success uses
+  `DIRECT_BASELINE_REAUTHENTICATED_READ_ONLY` and route state
+  `DIRECT_BASELINE_ROUTE_REAUTHENTICATED`; a safely published failure uses
+  `DIRECT_BASELINE_REAUTHENTICATION_FAILED_CLOSED` and route state
+  `DIRECT_BASELINE_ROUTE_WITHDRAWN` in the same immutable result. Every
+  failure, ambiguity, or need for another attempt withdraws the route,
+  including an absent or unauthenticatable result after durable evidence that
+  the attempt began. Success leaves the route operationally eligible but
+  preserves `upload_authority=false`. D-150 itself emits no result token.
+- Milestone separation: A clean future reauthentication result grants only a
+  human handoff; it does not upload and may not consult private portal or
+  leaderboard evidence. Any live upload is a still-later, separate, candidate-
+  specific human-authorized operation. Portal credentials, private portal
+  state, and remote results remain outside D-150 and outside model selection.
+- Current operation accounting: D-150 reads zero private candidate or official
+  row, calls zero validator, and performs zero submission regeneration, fit,
+  prediction, metric, leaderboard-selection, portal/credential access, upload,
+  or GPU operation. It adds no runner, validator wrapper, credential or upload
+  integration, model, prediction artifact, private root, or result.
+- Package scope: D-150 changes exactly nine paths: the canonical contract, its
+  strict public test, `benchmarks/openadmet_cyp_2026/README.md`,
+  `docs/phases/PHASE_2_OPENADMET_GLOBAL_V2.md`, `docs/phases/README.md`, this
+  file, `docs/strategy/NEXT_ORCHESTRATOR_PROMPT.md`,
+  `docs/strategy/PROJECT_STATE.md`, and `runs/experiment_ledger.csv`. No tenth
+  path is allowed.
+- Alternatives: Reopen G4 or G2-8; call MapLight G2-7-selected or robustness-
+  accepted; treat historical validation as current; open a private candidate
+  while drafting the contract; run the validator now; regenerate or repair a
+  missing or drifting candidate; accept a self-consistent replacement; use
+  portal/leaderboard evidence for selection; combine contract freeze,
+  reauthentication result, and upload; automate credentials or upload; or
+  continue competing after the sole direct route fails closed.
+- Reversal condition: Any D-149 lineage/CI mismatch, historical receipt drift,
+  current-private-state claim, public-requirement ambiguity, missing fail-
+  closed/no-repair rule, MapLight selection or robustness overclaim, G2-8
+  reopening, private/validator/portal/upload operation, tenth path, remaining
+  placeholder at integration, unsigned or rewritten commit, or non-green
+  exact-SHA CI blocks D-150 without opening the candidate. Otherwise integrate
+  only the exact contract package, then begin the separate one-use read-only
+  result milestone.
