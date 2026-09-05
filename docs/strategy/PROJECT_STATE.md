@@ -147,7 +147,13 @@ tests cover family isolation, payload tampering, stopping/calibration lineage,
 timeout cleanup and conservative accounting for unreaped descendant CPU.
 [Verification](../../benchmarks/openadmet_cyp_2026/phase3_mlp_implementation_verification_v1.json).
 
-Sign reviewed implementation, then run both frozen repeats while full PR CI runs.
+Signed implementation `5a2769` is pushed on PR #197. The first 105-fit repeat
+completed in 355.59 seconds; all 105 retained checkpoints independently replay
+with zero prediction difference. Initial scores are poor, with a few extreme
+network outputs and very large post-scaling descriptor values under diagnosis.
+The second frozen repeat is running unchanged. PR CI found a documentation
+boundary wording regression; this follow-up restores it without changing any
+scientific source, recipe or running fit.
 Check private `active-compute.json`, result files and live processes first to avoid
 duplicate work. Authenticate/recompute both-seed incumbent and auxiliary-control
 gates with the comparator; independently replay retained checkpoint inference.
@@ -167,7 +173,7 @@ predictions outside Git. Core CLI remains RDKit-only with its synthetic fixture.
 
 Refresh source receipts before any release: latest observed dataset 3ac9c5d,
 Space 453a39a, tutorial 858ae63. Direct columns require sample STD>=0.01; TDI
-requires binary predictions containing both classes. User uploads manually;
+requires binary predictions containing both classes. Private portal activity remains outside model selection. User uploads manually;
 respect 12-hour per-track spacing and distinguish readiness from submission.
 The existing two-hour heartbeat reloads the public page, checks **glhf**, avoids
 completed work and stays quiet on unchanged/non-actionable results. Notify for
