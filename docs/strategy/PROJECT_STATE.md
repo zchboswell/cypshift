@@ -24,7 +24,7 @@ baseline or arbitrary prediction perturbation does not count.
   Two complete development replays matched. This is not an official score.
 - Historical direct candidate: 750 rows/3000 finite predictions; submission
   SHA-256 `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`.
-  Current existence and current validator compliance have not yet been checked.
+  Authenticated September 5 UTC; passes current identity, finite and sample-STD checks. Revalidation is not an additional entry.
 - TRACE R5D: G0 MAE 0.43273 versus T0 0.71589, 1/15 favorable cells. Retired.
 - G1/M1/X1/G3/G4 did not produce challenger model-quality evidence. G2-7G
   was a pre-fit support-predicate stop, not a scientific rejection of MapLight.
@@ -40,9 +40,9 @@ are the first implementation milestone.
 ## Execution status
 
 Base main: signed `ac043aaaf8dd3a7db1815859f7fa60f05c52277d` (D-150).
-D-151 policy/documentation package is being prepared for review and CI.
-The audit ran 45 targeted synthetic tests successfully; it did not rerun the
-complete historical suite or consume any private candidate/heldout operation.
+D-151 signed `3887805` integrated locally by fast-forward after PR #188 passed
+all three Python CI jobs; pushed main. Full local historical suite: 1489 passed,
+14 existing skips. D-152 source/validator/metric milestone is prepared next.
 No Phase 3 model fit, new prediction, release, or submission exists yet.
 
 The preexisting user handoff edit is preserved exactly in
@@ -68,7 +68,9 @@ Use existing locked research environments. Budget: 1000 CPU-core-hours,
 
 ## Next action
 
-Integrate D-151 after focused/full checks and source/diff review. Then implement
-current-rule submission validation and source refresh, authenticate the existing
-baseline, and produce new OOF-backed candidates. Notify the user with an actual
+Integrate D-152 current upload checks and verified public scoring. Complete the
+core-RDKit development compiler bridge, then run the fresh 80-fit nested MapLight
+and bounded inner-OOF affine calibration experiment. The locked-RDKit no-fit
+intake failed structure-hash equality before numeric target parsing; preserve
+this engineering result and compile using the original chemistry runtime. Notify the user with an actual
 absolute CSV path, evidence, track and recommendation when each release is ready.

@@ -5965,3 +5965,38 @@
   exceeded budget stops the affected candidate. Preserve the failure and keep
   other qualified candidates/fallback operational. No retrospective tuning on
   the reserved comparison and no leaderboard-based selection.
+
+
+## D-152 — Current upload validation and complete public primary scoring
+
+Date: 2026-09-04 (America/New_York).
+
+Problem: the existing baseline validator predates new Space variation checks,
+and historical challenge development results reported component MAE without
+the full tutorial bootstrap primary metric.
+
+Decision: add a small current direct/TDI CSV validator and public-source
+reauthentication command; preserve every frozen historical validator. Direct
+columns require sample STD >=0.01; the two released TDI columns require
+canonical 0/1 and both classes. Local checks additionally require exact
+blinded-test identity, column and row order. Source changes require review
+before release but do not discard compatible research checkpoints.
+
+Add the public ST-RAE bootstrap mean and separate paired-family uncertainty.
+An independent agent executed the pinned full upstream wrapper on synthetic
+unequal endpoint masks/asymmetric bounds/shuffled IDs; endpoint and macro
+means agree within 1e-14. Golden macro: 0.2538326265004878. This is public
+wrapper parity, not live-backend validation. Reviewer findings on invalid
+dimensions and perfect-baseline division were fixed before integration.
+
+The immutable prior submission and manifest match their exact hashes. The
+750-row/3000-prediction baseline passes current rules; endpoint sample STDs
+are 0.50791, 0.54207, 0.28715, 0.84242. This is zero additional entries.
+No new model fit or reserved numeric target was consumed. A subsequent
+no-fit intake check found RDKit2023 cannot reproduce every RDKit2026
+standardized hash; the planned repair is original-runtime compilation and
+a verified development-only bundle, not changed chemistry or ignored hashes.
+
+Validation: 19 upload-boundary tests and 11 independent metric tests pass;
+Ruff, strict core mypy, wheel build and installed fixture workflow pass.
+Exact-commit PR CI remains required before integration.

@@ -1,0 +1,55 @@
+{
+  "observed_at_utc": "2026-09-05T01:31:30.572555+00:00",
+  "space_revision": "453a39a27c9671aa6790bbc2d618606a9cc556c3",
+  "dataset_revision": "3ac9c5dbb83eec5780ec7fa511908698cfe1396d",
+  "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935",
+  "files": [
+    {
+      "file": "config.py",
+      "url": "https://huggingface.co/spaces/openadmet/cyp-challenge/raw/453a39a27c9671aa6790bbc2d618606a9cc556c3/config.py",
+      "sha256": "1b4f25466263e46b720f7d477b57371bfbefecad884c4f9897f2f6d380776c4b",
+      "bytes": 26656
+    },
+    {
+      "file": "submission.py",
+      "url": "https://huggingface.co/spaces/openadmet/cyp-challenge/raw/453a39a27c9671aa6790bbc2d618606a9cc556c3/submission.py",
+      "sha256": "feefde78e08ed776810e17b4998abe461fb349df4c37004bbd1a7fe9044c8544",
+      "bytes": 24910
+    },
+    {
+      "file": "evaluate_predictions.py",
+      "url": "https://raw.githubusercontent.com/OpenADMET/CYP-Challenge-Tutorial/858ae63ce79934113bccdb7fc65467de5f7b1935/evaluation/evaluate_predictions.py",
+      "sha256": "593fefdfb224030daf0fc55a1c62289177389842d55027dc4e4153018496e7c7",
+      "bytes": 20808
+    },
+    {
+      "file": "custom_scoring_functions.py",
+      "url": "https://raw.githubusercontent.com/OpenADMET/CYP-Challenge-Tutorial/858ae63ce79934113bccdb7fc65467de5f7b1935/evaluation/custom_scoring_functions.py",
+      "sha256": "c0ee287c06c0301d4b3bfd74559b90eb1bd85db68b75b7d018ae92280c0e1dd3",
+      "bytes": 14174
+    },
+    {
+      "file": "utils.py",
+      "url": "https://raw.githubusercontent.com/OpenADMET/CYP-Challenge-Tutorial/858ae63ce79934113bccdb7fc65467de5f7b1935/evaluation/utils.py",
+      "sha256": "c6ddfc1e8d8cf26c77567125680da8b9656bfa43fca31f62f0e333e21aba7cb6",
+      "bytes": 1414
+    },
+    {
+      "file": "evaluation/config.py",
+      "url": "https://raw.githubusercontent.com/OpenADMET/CYP-Challenge-Tutorial/858ae63ce79934113bccdb7fc65467de5f7b1935/evaluation/config.py",
+      "sha256": "5c1c79c3d89e2f73ede6d74672fccab8fcdd429d56db603343585a30979331b1",
+      "bytes": 2691
+    }
+  ],
+  "rules": {
+    "rows": 750,
+    "direct_sample_std_minimum": 0.01,
+    "tdi_endpoints": [
+      "CYP2D6_is_TDI",
+      "CYP3A4_is_TDI"
+    ],
+    "tdi_both_classes_required": true,
+    "hours_between_submissions_per_track": 12
+  },
+  "scope": "Public source parity only; not a live backend or portal result."
+}

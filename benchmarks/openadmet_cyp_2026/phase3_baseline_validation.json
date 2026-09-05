@@ -1,0 +1,15 @@
+{
+  "positive_counts": {},
+  "predictions": 3000,
+  "rows": 750,
+  "space_revision": "453a39a27c9671aa6790bbc2d618606a9cc556c3",
+  "standard_deviations": {
+    "CYP1A2_pIC50_direct_inhibition": 0.5079104628653442,
+    "CYP2C9_pIC50_direct_inhibition": 0.5420685204548226,
+    "CYP2D6_pIC50_direct_inhibition": 0.28714710279308125,
+    "CYP3A4_pIC50_direct_inhibition": 0.8424219151568895
+  },
+  "submission_sha256": "9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b",
+  "test_sha256": "a342f8444a8dcb531ca12f3685293f0bd6c36ae9073f491e44a9bc1cc4b741f9",
+  "track": "direct"
+}
