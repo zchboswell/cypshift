@@ -60,10 +60,13 @@ The recommended **interim** direct artifact is the first affine release:
 `/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv`
 SHA-256: `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
 It has 750 rows / 3,000 finite predictions and passes current checks. The user
-confirmed upload under **glhf**. The public leaderboard initially still shows
-the August 24 00:06 UTC entry (rank 107, MA-ST-RAE 0.9366, MA-MAE 1.0332);
-the new result is pending. Private operational receipts and the existing
-every-two-hour heartbeat track its appearance. No leaderboard selection.
+confirmed upload under **glhf**. A refreshed public observation now shows
+September 5 at 02:10 UTC: rank **107**, MA-ST-RAE **0.9335**, MA-MAE **1.0383**.
+The saved August 24 entry had rank 107, primary 0.9366 and MAE 1.0332: primary
+improves 0.33%, MAE worsens 0.0051, rank unchanged. This is a modest public
+improvement, not evidence of competitiveness or the internal 2.7% gain.
+Private operational receipts and the existing every-two-hour heartbeat retain
+comparisons. No leaderboard selection.
 See the [release handoff](../../benchmarks/openadmet_cyp_2026/PHASE3_RELEASE_HANDOFF.md)
 and [repeat audit](../../benchmarks/openadmet_cyp_2026/phase3_maplight_affine_repeat2_audit.json).
 The unchanged fixed baseline remains fallback; final promotion is outstanding.

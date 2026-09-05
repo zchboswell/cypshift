@@ -1,8 +1,8 @@
 # Phase 3 — First calibrated direct submission
 
 **Status:** generated, validated, implementation integrated after passing CI,
-and manually submitted by the user under alias **glhf**. The new public result
-is pending; the initially visible row still has the August 24 submission date.
+and manually submitted by the user under alias **glhf**. The refreshed public
+leaderboard identifies the new entry as September 5 at 02:10 UTC.
 
 ## Manual upload file
 
@@ -20,8 +20,8 @@ repeats. The authenticated fixed MapLight baseline remains fallback.
 
 The user submits manually. Honor the **12-hour interval per track**. The latest
 valid direct entry replaces the previous direct entry. Final promotion remains
-outstanding. Upload confirmation comes from the user; the leaderboard has not
-yet identified the new entry.
+outstanding. Upload confirmation comes from the user; the newly displayed
+timestamp confirms a refreshed entry, while the public page exposes no CSV hash.
 
 ## Internal evidence
 
@@ -71,9 +71,21 @@ runtime/provenance milestone; historical TDC embeddings are not challenge data.
 
 ## Public monitoring
 
-The initial public observation for glhf is the **previous** entry, submitted
-August 24 at 00:06 UTC: rank 107, MA-ST-RAE 0.9366, MA-MAE 1.0332. This does
-not measure the newly uploaded CSV. The existing heartbeat checks every two
-hours and reports when the new result appears or materially changes. Detailed
-operational receipts stay private under `phase3/monitoring`; public results
-never select parameters or candidates.
+The saved previous entry was August 24 at 00:06 UTC: rank 107, MA-ST-RAE
+0.9366, MA-MAE 1.0332. A page reload now shows **September 5 at 02:10 UTC**:
+
+| Public metric | Previous | New |
+| --- | ---: | ---: |
+| Rank | 107 | 107 |
+| MA-ST-RAE | 0.9366 | 0.9335 |
+| MA-MAE | 1.0332 | 1.0383 |
+| MA-R² | 0.0045 | -0.0086 |
+| MA-Spearman | 0.6302 | 0.6302 |
+| MA-Kendall | 0.4533 | 0.4533 |
+
+The primary score improves approximately **0.33%** using displayed rounded
+values; MAE worsens by 0.0051 and rank does not improve. This is a modest public
+improvement, much smaller than internal validation. The existing heartbeat
+checks every two hours and reports meaningful changes. Operational receipts
+stay private under `phase3/monitoring`; public results never select parameters
+or candidates. Source: [live leaderboard](https://huggingface.co/spaces/openadmet/cyp-challenge).

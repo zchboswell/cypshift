@@ -6120,10 +6120,13 @@ Final promotion and the reserved comparison remain outstanding; the calibration
 transfer to the historical larger training set remains a disclosed limitation.
 
 The user confirmed manual upload under alias glhf. Public monitoring initially
-still shows the August 24 entry; the new result is pending. Update the existing
-every-two-hour heartbeat rather than creating a duplicate. Keep timestamp/rank/
-score receipts private and report meaningful changes. These observations are
-operational only and cannot affect model selection.
+showed the August 24 entry; a later refreshed observation identifies September 5
+at 02:10 UTC, rank 107, MA-ST-RAE 0.9335 and MA-MAE 1.0383. Relative to the
+saved previous scores 0.9366 / 1.0332, the primary gain is 0.33%, MAE worsens
+0.0051 and rank is unchanged. Preserve this modest outcome without equating it
+to the internal gain. Update the existing every-two-hour heartbeat rather than
+creating a duplicate. Keep detailed timestamp/rank/score receipts private.
+These observations are operational only and cannot affect model selection.
 
 The user explicitly authorizes future strategy changes. The initial menu is
 revisable using internal evidence, costs and research. Record a new hypothesis,
