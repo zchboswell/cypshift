@@ -10,7 +10,7 @@ Track: **direct inhibition**. Candidate: **MapLight with OOF-fitted affine
 calibration**, now the recommended interim artifact after two frozen internal
 repeats. The authenticated fixed MapLight baseline remains fallback.
 
-[submission.csv](/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv)
+`/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv`
 
 - SHA-256: `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
 - Verified readonly output: 750 rows and 3,000 finite predictions, with exact
