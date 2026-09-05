@@ -224,10 +224,33 @@ outside Git; public evidence is aggregate and privacy-safe.
 7. October 30–November 2: full-training reproduction and final manual handoff.
 
 Official submission deadlines are September 24 and November 3, 23:59 UTC.
-Use the existing Ryzen 7950X; no paid compute or GPU dependency. Limits: 16
-active CPU threads, 20 GiB working memory, 100 GB private working storage and
-1000 CPU-core-hours total. Profile representative real fits before allocation;
-do not infer feasibility only from tiny or constant synthetic matrices.
+The user's September 5 UTC hardware authorization permits future research to
+use 75% of CPU capacity and the discrete GPU at 100% compute utilization. The
+inventory confirms a Ryzen 7950X (16 physical / 32 logical cores), 30.46 GiB RAM,
+and an AMD Navi31 gfx1100 GPU with approximately 20 GiB VRAM. The prospective
+aggregate CPU cap is 24 logical-CPU equivalents, including all children, BLAS,
+loaders and audits. Prefer CPUs 0–11 and 16–27, leaving four complete physical
+cores available to the desktop. A shared quota is needed for a true aggregate
+cap; independent per-process thread limits are insufficient. Retain 20 GiB
+aggregate host working memory, 100 GB private storage and 1000 CPU-core-hours.
+One GPU training job may use the full discrete GPU; start with an 18 GiB process
+VRAM budget to accommodate graphics use. Host buffers count toward host RAM.
+No paid compute is authorized. The shared user `cypshift.slice` is now verified
+at `cpu.max = 2400000 100000` and `memory.max = 21474836480`. Launch future
+project jobs under that same slice; jobs outside it are not capped by it.
+The user's systemd manager does not delegate the cpuset controller, so inherited
+`taskset` affinity is the current userspace mechanism for leaving complete cores
+free. Do not claim a hard cpuset boundary. Runtime settings must be recreated and
+verified after a user-manager restart. Earlier completed jobs were not moved.
+
+Keep already frozen RMSE and SVR recipes at their original 16-thread settings.
+The current CatBoost runtime supports no device on this AMD machine. A separate
+pinned ROCm/PyTorch environment and synthetic device/backward/save-reload check
+must establish GPU readiness before new official training; do not change the
+historical runtime or system drivers to accelerate the existing comparison.
+Profile representative real fits before allocation; do not infer feasibility
+only from tiny or constant synthetic matrices. GPU availability does not require
+choosing a less useful model or delaying a ready CPU experiment.
 
 First executable action after this milestone: refresh public source receipts,
 add current submission-validation tests, authenticate and validate the existing

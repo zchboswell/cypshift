@@ -1,6 +1,6 @@
 # Project state
 
-Updated: 2026-09-04 (America/New_York).
+Updated: 2026-09-05 UTC.
 
 ## Active work
 
@@ -91,8 +91,12 @@ features, models, raw data and credentials remain outside Git.
 
 The public CLI remains audit/train/predict/report with RDKit-only runtime;
 its median model is a product fixture baseline, not the competition model.
-Use existing locked research environments. Budget: 1000 CPU-core-hours,
-16 active threads, 20 GiB working memory, 100 GB private storage, no paid GPU.
+Preserve existing locked research environments. The user now authorizes 75%
+CPU usage (24 of 32 logical-CPU equivalents) and full local GPU compute for
+future work. Keep 20 GiB aggregate host memory, 100 GB private storage and
+1000 CPU-core-hours; no paid compute. Frozen RMSE/SVR recipes retain 16 threads.
+The AMD gfx1100 GPU has about 20 GiB VRAM, but needs a separate verified
+ROCm/PyTorch runtime. GPU preparation is distinct from official model training.
 
 ## Deep audit and revised priority
 
@@ -109,26 +113,58 @@ not reproduce analog acquisition, and deleted historical production estimators.
 Historical maximum-potency anchor selection also conditions selector queries
 to be weaker; retain that negative result without claiming all known-parent
 hypotheses are disproved. Sparse signed-int8 Avalon overflow remains a real
-separate ablation. TDI adds no direct labels on existing development identities;
-1,240 extra IDs require family-safe intake before their numeric fields are read.
+separate ablation. TDI adds no direct labels on existing development identities.
+Family-safe extra intake is now complete: 1,237 eligible extras have zero direct
+labels; three reserved-connected extras were excluded before numeric decoding.
+The independently rebuilt graph preserves all old development fold boundaries.
+Support diagnostics verify all 3,908 standardized hashes and zero >=0.60
+crossings. Approximately 72–84% of scored rows across both repeats lack a potent
+training neighbor at similarity >=0.30. These descriptive findings do not
+authorize prediction adjustments. See [the follow-up evidence](../../benchmarks/openadmet_cyp_2026/phase3_audit_followup_v1.json).
+
+The signed D-157 audit and objective-ablation implementation (`cb4adda`) passed
+all three PR #194 Python jobs, was integrated locally by fast-forward, and is
+pushed to main. Both frozen RMSE repeats completed: 160 new fits / 2.63144
+invocation CPU-core-hours. Raw RMSE is 3.74% / 3.61% worse than the calibrated
+MAE incumbent; affine RMSE is 1.26% / 0.93% worse. Neither variant passes the
+recommendation or potent-tail mechanism gates. Independent recomputation agrees.
+No RMSE production fit or submission is warranted by these outcomes. See
+[the matched results](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1_result.json).
+
+The frozen Tanimoto SVR experiment also completed: 140 fits / 16.65 seconds /
+0.00304 accounted CPU-core-hours. Raw and affine variants are 12.04% and 9.63%
+worse than the first-repeat calibrated incumbent, with positive paired-family
+intervals and endpoint harm above +0.02. Independent reconstruction verifies all
+15,272,464 kernel entries exactly and reproduces inner C choices and metrics.
+Retire this standalone recipe; no second repeat or production fit is justified.
+See [SVR results](../../benchmarks/openadmet_cyp_2026/phase3_tanimoto_svr_v1_result.json).
 
 ## Next action
 
-Complete the reviewed signed D-157 audit/objective-ablation milestone. Run the
-prespecified RMSE-versus-MAE experiment on both frozen seeds, 80 new fits each,
-10 CPU-core-hours per seed, retaining the original features. Start only from a
-signed reviewed implementation after focused checks; full PR CI may run in
-parallel. Compare both raw and inner-OOF affine RMSE to matching calibrated
-MAE OOF with the [frozen recipe](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1.json).
-Never apply RMSE calibration to the historical MAE CSV. Any qualified new model
-must be fitted on development labels, saved/reloaded, and generate its own
-validated prediction file after implementation CI/integration. Final reserve
-remains closed. Record negative results and then move to complementary data/SVR
-if the objective hypothesis fails; do not spend another cycle on offsets alone.
+Complete the signed D-158 result/hardware milestone and its PR integration.
+Both independent experiment audits passed. Do not repeat finished RMSE/SVR fits
+or spend another cycle on offsets alone. The genuine sparse count overflow still
+needs its declared isolated correction ablation; preserve the legacy comparator.
 
-In parallel, finish support diagnostics and family-safe TDI direct-field intake.
-GIN is a bounded option, not a prerequisite. The user authorizes different
-strategies when internal evidence, costs or research justify them; document
-prospective choices and preserve scientific invariants. The existing two-hour
-heartbeat prioritizes this audit-driven sequence and public monitoring, avoids
-duplicate jobs and only notifies for actual files or meaningful changes.
+Prepare a separate private ROCm/PyTorch runtime with hashed dependencies and a
+bounded synthetic device/backward/save-reload check; no system driver changes.
+Preparation is active under private `phase3/gpu-readiness-v1`: at most 2.5 GiB
+downloads / 12 GiB temporary-plus-installed space and 20 minutes for preparation.
+Do not duplicate the job; inspect its receipts before resuming. The shared user
+`cypshift.slice` CPU/RAM limits are verified at 24 CPU equivalents / 20 GiB;
+use that slice and inherited CPU affinity for future jobs. cpuset delegation is
+unavailable, so affinity is cooperative rather than a hard cpuset boundary.
+GPU availability must be demonstrated, not inferred from hardware inventory.
+Then freeze a compact direct-only / genuine-primary-screen auxiliary / shuffled-
+auxiliary MLP protocol. Initial auxiliary intake stays on established development
+identities with family-safe masks and explicit assay/replicate semantics.
+Honest grouped stopping plus inner refitting requires 105 network fits per
+repeat across all three arms, not 60. Freeze budgets after representative
+synthetic timing, before official outcomes. Keep discovery/query episode design
+as a distinct diagnostic with query membership fixed before outcomes.
+
+The first affine-MAE CSV remains the interim recommendation; final reserve
+stays closed. Future qualified models need their own saved/reloaded estimators
+and actual validated files. The existing two-hour heartbeat resumes from this
+state, avoids duplicate work and only notifies for actual files or meaningful
+changes. GPU setup must not become another unbounded prerequisite for releases.

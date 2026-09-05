@@ -66,10 +66,14 @@ singleton-heavy grouped OOF tests a different information and sampling regime.
 Two repeats establish stability within that regime, not independent campaign
 generalization. [Organizer assay and acquisition report](https://openadmet.github.io/octant-cyp-inhib-blog-post/)
 
-Add the already planned support diagnostics using fixed similarity bands,
-training-neighbor potency and error/count/uncertainty summaries. Compute support
-from outer-training labels only. Do not inspect test geometry to choose bands,
-weights, candidates or thresholds.
+The completed support diagnostic finds zero >=0.60 outer-training crossings in
+either repeat and reproduces all 3,908 standardized structure hashes. Using
+fixed similarity bands and training-only top-decile potency thresholds, approximately 72–84% across both repeats
+of scored rows lack a potent training neighbor at similarity >=0.30. Closer
+labeled support does not consistently reduce error for 1A2 or 2D6; 3A4 shows
+the clearest improvement. Global affine gains also vary across support strata.
+These descriptive subgroups do not authorize offsets or selection changes.
+No test structures or reserved targets entered this diagnostic.
 
 ### 3. Historical selected-anchor episodes condition on future query outcomes
 
@@ -114,10 +118,14 @@ that this explains broad poor performance.
 The TDI file contains all 4,905 direct identities plus 1,240 additional IDs and
 paired direct columns. For established development IDs, all 5,197 paired direct
 values/bounds/std match exactly and provide **zero additional direct labels**.
-Extra identities' numeric fields were not decoded: first build family unions
-and exclude reserved-connected rows, then count valid same-arm measurements.
-Do not call 1,240 extra rows 1,240 new usable direct labels. Keep TDI-arm primary
-screen measurements distinct from direct dose-response targets.
+The subsequent family-safe intake independently rebuilt all 6,145 identities'
+unions before decoding any extra numeric fields. Of 1,240 extras, 1,237 are
+reserve-disconnected and three are excluded. The expanded graph introduces no
+new reserved connection or crossing between old development folds. All four
+direct endpoints have **zero finite direct points, bounds or standard deviations**
+on the 1,237 eligible extras. This source cannot augment direct target coverage;
+do not build an augmentation pipeline for nonexistent labels. TDI-arm primary
+screen measurements remain a distinct potential auxiliary task.
 
 ## Revised order of work
 
@@ -127,10 +135,10 @@ screen measurements distinct from direct dose-response targets.
    Run 80 nested fits per frozen seed, 160 total, capped at 10 CPU-core-hours
    per seed. Compare raw and inner-OOF affine RMSE with the corresponding saved
    MAE and calibrated-MAE OOF. Record optimizer defaults, which differ by loss.
-2. **Improve diagnostic relevance and data coverage.** Reuse OOF for support
-   summaries, audit family-safe extra direct measurements, and design honest
-   discovery/query episodes before any new anchor experiment. Do not change
-   the existing frozen folds retrospectively.
+2. **Improve diagnostic relevance and data coverage.** Support summaries and
+   family-safe extra direct-field intake are complete; the latter adds zero
+   direct labels. Design honest discovery/query episodes before any new anchor
+   experiment. Do not change the existing frozen folds retrospectively.
 3. **Then test complementary structure models.** Keep the reviewed SVR ready;
    prioritize it and useful auxiliary assay learning over another encoder
    installation unless measured evidence changes the allocation. GIN retains
@@ -146,3 +154,49 @@ range alone establishes neither success nor failure. A globally dominated candid
 not uploaded merely because it differs. If the loss comparison fails, retain
 the data/validation improvements and move to the complementary-data/model
 hypothesis; do not stretch affine bounds to chase public scores.
+
+## Hardware-aware follow-through
+
+The first two follow-through experiments now reject simple loss replacement
+and the frozen standalone SVR recipe:
+
+| Candidate | Repeat 1 primary | Repeat 2 primary | Outcome |
+| --- | --- | --- | --- |
+| Current affine-MAE incumbent | 0.737146 | 0.729011 | Retain interim recommendation |
+| Raw RMSE | 0.764717 | 0.755300 | Worse by 3.74% / 3.61% |
+| Affine RMSE | 0.746420 | 0.735770 | Worse by 1.26% / 0.93% |
+| Raw Tanimoto SVR | 0.825871 | Not planned | Worse by 12.04% |
+| Affine Tanimoto SVR | 0.808147 | Not planned | Worse by 9.63% |
+
+These are internal public-wrapper scores; lower is better. Both RMSE variants
+also fail the frozen potent-tail mechanism criterion. SVR paired-family primary
+difference intervals are wholly positive, and its endpoint component-MAE harms
+exceed +0.02. No variant warrants a new production fit or upload. RMSE consumed
+160 fits / 2.63144 invocation CPU-core-hours; SVR completed 140 fits in 16.65
+seconds / 0.00304 accounted CPU-core-hours. Preserve these negative results,
+not just passing candidates. See [RMSE evidence](phase3_rmse_ablation_v1_result.json)
+and [SVR evidence](phase3_tanimoto_svr_v1_result.json).
+
+The user authorizes future work to use 75% of CPU capacity and the discrete GPU
+at full compute utilization. The audited machine has 32 logical CPUs, 30.46 GiB
+RAM and an AMD gfx1100 GPU with about 20 GiB VRAM. The existing CatBoost runtime
+cannot train on that AMD GPU. Preserve completed and running recipes; establish
+a separate pinned ROCm/PyTorch runtime before GPU experiments. The active phase
+records the prospective shared 24-CPU-equivalent and 20-GiB host-memory envelope.
+
+A compact direct-only versus genuine-auxiliary versus shuffled-auxiliary MLP
+is a stronger first GPU hypothesis than another encoder installation. Use
+continuous primary-screen measurements as a distinct task, preserving assay
+context and family masks. Do not interpret TDI-arm screen inhibition as a
+mechanism-specific binary label or a direct-potency bound. The screen also
+selected DRC follow-up, so auxiliary learning may reproduce selection bias;
+it must beat both controls and the incumbent on frozen internal evidence.
+The exact intake, stopping, fit count and resource recipe must be frozen before
+official fits. This is a research priority, not a qualified candidate.
+[Organizer assay methods](https://openadmet.github.io/octant-cyp-inhib-blog-post/)
+and [the organizers' PXR auxiliary-data lessons](https://openadmet.ghost.io/dont-look-back-in-error-what-we-learned-predicting-pxr-induction-part-i/)
+motivate the hypothesis without establishing CYP transfer.
+
+Aggregate intake, support and hardware receipts appear in
+[the audit follow-up](phase3_audit_followup_v1.json). Detailed scripts, the
+four-panel OOF diagnostic figure and immutable receipts remain private.

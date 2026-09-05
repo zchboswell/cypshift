@@ -6204,3 +6204,65 @@ link to a private upload file failed clean-runner CI in D-156; retaining it as
 a literal locator fixed the portability issue without changing scientific data
 or weakening the existing test. Reversal: a failed objective hypothesis retires
 that candidate, not the recovered pipeline or remaining validated hypotheses.
+
+## D-158 — Retain negative model evidence and use the available hardware
+
+Date: 2026-09-05 UTC.
+
+The frozen 160-fit RMSE experiment fails its prespecified recommendation and
+potent-tail mechanism criteria in both repeats. Raw RMSE is 3.74% / 3.61% worse
+than the same-seed affine-MAE incumbent; affine RMSE is 1.26% / 0.93% worse.
+The 140-fit Tanimoto SVR experiment is also negative: raw and affine variants
+worsen primary ST-RAE by 12.04% and 9.63%, with wholly positive paired-family
+intervals and endpoint component-MAE harm above +0.02. Independent audits
+reconstruct scores, folds, parameter choices and exact SVR kernel bytes.
+No candidate from these experiments warrants a production fit or upload. Retain
+all negative records; do not change calibration bounds after seeing outcomes.
+The first affine-MAE CSV remains the interim recommendation, reserve closed.
+
+These experiments consumed approximately 2.63449 CPU-core-hours combined
+(RMSE invocation CPU plus SVR accounted stages), excluding separate audits.
+The quick SVR result is genuine execution evidence: 20 fresh seven-fit cells,
+distinct C=1/C=10 outputs and independently reproduced selection. Estimators
+were not retained by these OOF runners, so audit does not claim independent
+estimator replay. Future production packages must retain and reload models.
+
+Family-safe extra TDI-file intake adds zero direct labels on 1,237 eligible
+extra identities; three reserved-connected extras were excluded before numeric
+decoding. The expanded graph changes no old development boundaries. Do not
+build a direct augmentation pipeline for this source. Completed support audits
+verify all 3,908 standardized hashes and zero >=0.60 crossings. Approximately
+72–84% of scored rows across both repeats lack a potent training neighbor at
+similarity >=0.30. Descriptive strata are not new calibration instructions.
+
+The user explicitly authorizes future CPU utilization up to 75% and local GPU
+utilization up to 100%. Inventory confirms 32 logical / 16 physical CPU cores,
+30.46 GiB RAM and an AMD gfx1100 GPU with about 20 GiB VRAM. Use a shared
+24-CPU-equivalent / 20-GiB host-memory slice and cooperative affinity that leaves
+four complete physical cores available. The slice's actual kernel CPU/memory
+limits are verified; cpuset is not delegated. Retain the 1000 CPU-core-hour,
+100-GB storage and no-paid-compute boundaries. This changes future resource
+allocation, not the completed 16-thread scientific recipes.
+
+The locked CatBoost environment cannot use this AMD GPU. Authorize a bounded
+private userspace-only ROCm/PyTorch readiness preparation with pinned, hashed
+artifacts, at most 2.5 GiB downloads / 12 GiB working storage and 20 minutes.
+Review the resolved dependency closure before imports and run a separate
+120-second synthetic GPU/backward/save-reload gate. No kernel, driver, global
+Python, or historical environment changes. Installation alone is not readiness.
+
+Next scientific priorities are the genuine sparse count-correction ablation
+and a small fingerprint MLP with direct-only, real auxiliary-screen and shuffled
+auxiliary controls. Primary-screen measurements stay a distinct assay task;
+selection bias is a material caveat. Freeze intake, masks, stopping, calibration
+and budget before official fitting. With honest inner stopping and refitting,
+three arms require 105 network fits per repeat, not 60. A known-parent diagnostic
+must freeze discovery/query membership before outcomes and cannot replace the
+strict-family evaluation claim. Do not let GPU setup become an unbounded gate.
+
+Validation: independent RMSE and SVR evidence audits, reviewed aggregate receipts,
+existing documentation-link check, JSON/ledger integrity and full exact-commit
+PR CI before local fast-forward integration. This milestone changes evidence and
+prospective resource policy, not production logic; no new mirror tests are added.
+Reversal: withdraw an affected claim if provenance fails; remove the private GPU
+environment if readiness fails, preserving the CPU pipeline and accepted CSV.

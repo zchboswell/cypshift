@@ -1,0 +1,100 @@
+{
+  "extra_direct_intake": {
+    "additional_direct_labels": 0,
+    "blocked_extra_rows": 3,
+    "decision": "Do not build direct augmentation for this source; no additional direct labels exist on eligible extras",
+    "eligibility_receipt_sha256": "ea4480a29595333bbc700612eb8c42264b66dd9dfd99d15e40d9fb8b42ca555e",
+    "eligible_extra_rows": 1237,
+    "endpoint_counts": {
+      "CYP1A2": {
+        "complete_point_bounds": 0,
+        "finite_bounds_without_point": 0,
+        "finite_direct_points": 0,
+        "finite_std": 0
+      },
+      "CYP2C9": {
+        "complete_point_bounds": 0,
+        "finite_bounds_without_point": 0,
+        "finite_direct_points": 0,
+        "finite_std": 0
+      },
+      "CYP2D6": {
+        "complete_point_bounds": 0,
+        "finite_bounds_without_point": 0,
+        "finite_direct_points": 0,
+        "finite_std": 0
+      },
+      "CYP3A4": {
+        "complete_point_bounds": 0,
+        "finite_bounds_without_point": 0,
+        "finite_direct_points": 0,
+        "finite_std": 0
+      }
+    },
+    "expanded_components": 5231,
+    "expanded_components_joining_multiple_old_dev_groups": 0,
+    "extra_rows": 1240,
+    "fold_crossings": {
+      "20260905": {
+        "unions_crossing_original_inner_folds_by_outer_scope": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "unions_crossing_original_outer_folds": 0
+      },
+      "20260906": {
+        "unions_crossing_original_inner_folds_by_outer_scope": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "unions_crossing_original_outer_folds": 0
+      }
+    },
+    "independent_family_review_sha256": "c96341f04d211229ad14b1f7e97ccffe096faf231061887c56b0c53d1720f732",
+    "label_count_receipt_sha256": "037682cb7c312d3dda25c475f665aa9680f9f5a3b6d2d98cfdd7a4ff3f257732",
+    "newly_reserved_connected_existing_development_rows": 0,
+    "source_sha256": "b458f599a792412292664386e8f18adc5d4a4129d6bd212ae80a60fb9b96bb60"
+  },
+  "hardware": {
+    "cpu": "AMD Ryzen 9 7950X",
+    "current_catboost_gpu_devices": 0,
+    "frozen_running_recipe_changed": false,
+    "future_user_authorized_cpu_equivalents": 24,
+    "future_user_authorized_gpu_utilization_percent": 100,
+    "gpu_architecture": "AMD Navi31 gfx1100",
+    "gpu_compute_units": 84,
+    "gpu_vram_bytes": 21458059264,
+    "implementation_status": "Prospective global cap and separate GPU runtime required; no system resource settings changed by inventory",
+    "inventory_receipt_sha256": "c16e699c80f24d964d4bc682442cb3b9e41e9168d80672296fd2bbda74ebb0ec",
+    "logical_cpus": 32,
+    "marketing_name_inference": "Likely Radeon RX 7900 XT from VRAM/CUs; PCI name is not uniquely identifying",
+    "physical_cores": 16,
+    "ram_bytes": 32707538944,
+    "ready_gpu_training_runtime": false
+  },
+  "neighbor_support": {
+    "cpu_core_hours": 0.006364642726666666,
+    "development_families": 3640,
+    "development_molecules": 3908,
+    "findings": [
+      "Zero >=0.60 outer-training crossings in both repeats",
+      "Approximately 72\u201384 percent across both repeats of scored rows lack a top-decile training neighbor at similarity >=0.30",
+      "Closer support does not consistently reduce 1A2/2D6 interval errors; 3A4 shows clearer improvement",
+      "Descriptive support strata do not authorize prediction adjustments or selection changes"
+    ],
+    "receipt_sha256": "ad632d36f56a0eb4228ab883969f4d6f516517b482c04494e66da7440c25a489",
+    "standardized_hashes_verified": 3908,
+    "wall_seconds": 23.014834598998277
+  },
+  "new_model_fits": 0,
+  "reserved_numeric_targets_opened": 0,
+  "schema": "cypshift.phase3.audit_followup.v1",
+  "scope": "Aggregate development-only evidence; no model fits, test structures or reserved numeric labels",
+  "test_structures_opened": 0
+}
