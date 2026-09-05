@@ -216,3 +216,23 @@ been decoded, so finite auxiliary-label coverage remains unverified. See
 Aggregate intake, support and hardware receipts appear in
 [the audit follow-up](phase3_audit_followup_v1.json). Detailed scripts, the
 four-panel OOF diagnostic figure and immutable receipts remain private.
+
+## Follow-through: count correction and new assay signal
+
+Both frozen count-correction repeats completed: 160 fits / 2.82403 invocation
+CPU-core-hours. Corrected affine predictions are 0.39% and 0.87% worse than
+the calibrated incumbent. Independent and canonical audits pass; neither raw
+nor affine variant qualifies. The sparse defect is real but is not evidence
+for a more competitive predictor. See [count results](phase3_corrected_counts_v1_result.json).
+
+The reviewed response preflight verifies 13,972 finite primary-screen estimates
+on 3,493 development identities, with excluded assay responses never decoded.
+These are separate auxiliary outcomes. The controlled GPU MLP tests real versus
+shuffled auxiliary supervision against matched direct-only training. See
+[coverage](phase3_primary_screen_coverage_v1.json) and D-160.
+
+A query assignment frozen before availability masks leaves 73 CYP3A4 families /
+157 queries for a possible known-parent diagnostic. Other heads lack comparable
+support. No parent was selected or potency read; availability is not a power
+calculation or evidence of acquisition-distribution fidelity. See
+[feasibility](phase3_known_parent_feasibility_v1.json).

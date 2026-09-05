@@ -1,0 +1,120 @@
+{
+  "CPU_seconds": 0.7055460689999999,
+  "aggregation_performed": false,
+  "anomaly_policy": "Counts only; no dropping, clipping, selection or inference input; outside0to1 flag is descriptive for p_value/log2fc_fdr",
+  "descriptive_anomalies": {
+    "CYP1A2": {},
+    "CYP2C9": {},
+    "CYP2D6": {},
+    "CYP3A4": {}
+  },
+  "development_molecules_with_records": 3493,
+  "development_molecules_without_records": 415,
+  "field_state_counts": {
+    "CYP1A2": {
+      "cohens_d": {
+        "finite": 3493
+      },
+      "log2fc_estimate": {
+        "finite": 3493
+      },
+      "log2fc_fdr": {
+        "finite": 3493
+      },
+      "log2fc_median": {
+        "finite": 3493
+      },
+      "log2fc_std_error": {
+        "finite": 3493
+      },
+      "p_value": {
+        "finite": 3493
+      }
+    },
+    "CYP2C9": {
+      "cohens_d": {
+        "finite": 3493
+      },
+      "log2fc_estimate": {
+        "finite": 3493
+      },
+      "log2fc_fdr": {
+        "finite": 3493
+      },
+      "log2fc_median": {
+        "finite": 3493
+      },
+      "log2fc_std_error": {
+        "finite": 3493
+      },
+      "p_value": {
+        "finite": 3493
+      }
+    },
+    "CYP2D6": {
+      "cohens_d": {
+        "finite": 3493
+      },
+      "log2fc_estimate": {
+        "finite": 3493
+      },
+      "log2fc_fdr": {
+        "finite": 3493
+      },
+      "log2fc_median": {
+        "finite": 3493
+      },
+      "log2fc_std_error": {
+        "finite": 3493
+      },
+      "p_value": {
+        "finite": 3493
+      }
+    },
+    "CYP3A4": {
+      "cohens_d": {
+        "finite": 3493
+      },
+      "log2fc_estimate": {
+        "finite": 3493
+      },
+      "log2fc_fdr": {
+        "finite": 3493
+      },
+      "log2fc_median": {
+        "finite": 3493
+      },
+      "log2fc_std_error": {
+        "finite": 3493
+      },
+      "p_value": {
+        "finite": 3493
+      }
+    }
+  },
+  "finite_log2fc_estimate_counts": {
+    "CYP1A2": 3493,
+    "CYP2C9": 3493,
+    "CYP2D6": 3493,
+    "CYP3A4": 3493
+  },
+  "metadata_rows": 13972,
+  "numeric_response_fields_decoded": 83832,
+  "official_model_fits": 0,
+  "outside_allowlist_response_fields_decoded": 0,
+  "preflight_script_sha256": "eaa4fe8cb1c393ade565a2a6509affeb502f7ef4cd6d9c99841570ae05860243",
+  "private_coverage_sha256": "6a2c0bce67c81faa70b05eb5f01976477e49e291768737b0bb133d925bf40095",
+  "reserved_response_fields_decoded": 0,
+  "response_records_sha256": "100b064da1a7888e138fa5ea398afa7792bc346e71e073fee14ccdc38eff115a",
+  "reviewed_plan_sha256": "77105925f0d2fd88945cbaf2f64fa4428342c0bb2f85062be68e78ee76161fad",
+  "rows_excluded_before_response_decode": {
+    "other_rows": 4,
+    "reserved_rows": 3528,
+    "source_rows": 17504
+  },
+  "schema": "cypshift.primary_screen_response_coverage.v1",
+  "scope": "Development-only response availability; no model quality evidence. Original metadata-only record remains unchanged.",
+  "source_sha256": "cf275440aa33d10b16e7a3a19f1b196d59dc379052175ab79b47ca43db663c7a",
+  "status": "complete",
+  "wall_seconds": 0.9600079459996778
+}

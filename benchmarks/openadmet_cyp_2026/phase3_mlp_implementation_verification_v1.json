@@ -1,0 +1,70 @@
+{
+  "cpu_gpu_integration": {
+    "epochs_per_fit": 2,
+    "maximum_matched_arm_prediction_difference": 0.0,
+    "plan_sha256": "6330a87048e16da34e27dc8ebebf64a022d4a6615becefe8aa0f0c0fca6e246a",
+    "resources": {
+      "charged_fit_cpu_seconds": 7.679416,
+      "child_cpu_seconds": 7.679418224000001,
+      "invocation_cpu_core_hours": 0.0021832661611111115,
+      "nonfit_child_cpu_seconds": 2.2240000010498306e-06,
+      "observed_fit_cpu_seconds": 7.679416,
+      "occupied_wall_seconds": 5.237411494999833,
+      "parent_cpu_seconds": 0.18033995600000002,
+      "prior_program_cpu_core_hours": 8.074197305158052,
+      "prior_seed_cpu_core_hours": 0.0,
+      "prior_seed_occupied_wall_seconds": 0.0,
+      "status": "complete",
+      "uncertainty_surcharge_cpu_seconds": 0.0
+    },
+    "result_sha256": "467bc9f0be0e876325af573ca16c8cb3d759706e22522ca98fe4e61fdce4e50d",
+    "synthetic_fits": 2
+  },
+  "failed_first_attempt": {
+    "accounting": {
+      "accounting_basis": "systemd unit process-tree CPU rounded upward by one millisecond; covers entire synthetic invocation, no other child receipts charged",
+      "cpu_core_hours": 0.003925555555555555,
+      "observed_cpu_seconds_rounded_up": 14.132,
+      "status": "failed"
+    },
+    "failure": "Blanket CUDA checkpoint load moved Adam scalar step state and exact comparison failed across CPU/GPU devices",
+    "plan_sha256": "2dba5eaf48e7257b106087620e4582a29b43f29a1c27be54a70aef29899d85ca",
+    "repair": "Load checkpoint on CPU; let model and optimizer restore device placement. Verify matching dtype/shape and exact CPU tensor values.",
+    "traceback_sha256": "809d9da2e521ba88da4bc8702f59060b67eda9ee4f9f522203efa4765365b7d9"
+  },
+  "gpu_worker_validation": {
+    "accounting": {
+      "accounting_basis": "systemd unit process-tree CPU rounded upward by one millisecond; covers entire synthetic invocation, no other child receipts charged",
+      "cpu_core_hours": 0.009905833333333334,
+      "observed_cpu_seconds_rounded_up": 35.661,
+      "status": "complete"
+    },
+    "checks": [
+      "Three empty-auxiliary matched arms produce identical predictions",
+      "Nonempty auxiliary supervision changes auxiliary head",
+      "Strict earliest stopping and reloaded complete stopping-set score",
+      "Exact fresh model/optimizer state and prediction parity",
+      "Reject hash tamper, masked NaN, forbidden stop payload, in-Git output and overwrite"
+    ],
+    "maximum_reserved_bytes": 245366784,
+    "plan_sha256": "556f21bc7cdfb26d94c1c9e160a0b0525ae6be5caf1ccf2835d55bf3ef6fa8eb",
+    "receipts_sha256": {
+      "active_aux": "42249ce8313ae86696111daef78e28de1afe0b1faddbe0e71e21fd8088bc75e5",
+      "direct": "a4f5ddf02b95bdad207f5a9cc20a65dae3b4fd297295d0233277c895ba518efb",
+      "real_aux": "e1c66cfe2eb0bb506ef40c2b7a09249f210f48ff45bf8f6ecac9105b600aff13",
+      "shuffled_aux": "83a5f27d7df0da793c3f9c568e76b9a19ce01f90afe83d1ecf00ded6f9d97aaa",
+      "stopped": "5349d1358730cfc965c6202a5c5c9ebf5de6557d17d6da293407601f4ad7de41"
+    },
+    "result_sha256": "dc41a66d771ab6004f4535a6761f4327a91ffb378cadd2f78c516a11d80c9db6",
+    "script_sha256": "c9c7739232b8a19c593692580a086d1a6949a56c4486493859c978b05f360323",
+    "synthetic_fits": 5
+  },
+  "independent_worker_review_sha256": "eef2852e0eb4f267a85487376ca96b951ed1d4870c8b2b5fc17d0db304837e64",
+  "official_data_access": false,
+  "official_fits": 0,
+  "schema": "cypshift.phase3.mlp_implementation_verification.v1",
+  "scope": "Synthetic implementation validation only; no official model quality evidence or reserved/test labels",
+  "status": "passed_after_recorded_engineering_repair",
+  "unit_validation": "26 focused runner/comparator/count/documentation tests passed; full repository Ruff passed. Exact-head full PR CI remains required before integration.",
+  "worker_sha256": "f48e2d721e3c7f99b2f1615721f70b3e23b2ceeaa8b9f2cdd53df3fdad9057b7"
+}

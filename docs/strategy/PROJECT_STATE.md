@@ -1,195 +1,174 @@
 # Project state
 
-Updated: 2026-09-05 UTC.
+Updated: 2026-09-05 UTC. Current integrated main: signed `dbb764b` (D-159),
+locally fast-forwarded and pushed after all three PR #196 Python CI jobs passed.
 
-## Active work
+## Active contract
 
-Phase 3 competition recovery is authorized by the user's approval of the audit
-and plan, including autonomous implementation, signed milestone commits/pushes,
-and regular ready-to-upload entries. The user performs manual submissions.
-D-151 prospectively replaces the former blanket no-repair/no-new-candidate
-backout rules. Historical scientific results and consumed attempts are unchanged.
+[Phase 3 competition recovery](../phases/PHASE_3_COMPETITION_RECOVERY.md) is active.
+The user authorizes autonomous implementation, strategy changes, useful agent
+delegation, signed milestone commits/PRs/pushes and actual stronger submission
+files. The user uploads manually. Target 3–4 qualified releases per week across
+direct and TDI, approximately 24–32 additional entries before November 3.
+Quality evidence and an actual validated CSV are required; arbitrary prediction
+perturbations or revalidating an old baseline do not count as new entries.
 
-Read [Phase 3](../phases/PHASE_3_COMPETITION_RECOVERY.md) for the complete
-candidate menu, nested validation, resource budget and acceptance rules.
-Target 3–4 qualified releases per week across direct and TDI, approximately
-24–32 additional entries before the November 3 deadline. Every release needs
-internal evidence and an actual validated private upload file. A repeated
-baseline or arbitrary prediction perturbation does not count.
-
-## Best evidence and current artifacts
-
-- Fixed MapLight: development component-macro MAE **0.5837812652150708**;
-  endpoint means 1A2 0.66733, 2C9 0.48997, 2D6 0.59855, 3A4 0.57927.
-  Two complete development replays matched. This is not an official score.
-- Historical direct candidate: 750 rows/3000 finite predictions; submission
-  SHA-256 `9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`.
-  Authenticated September 5 UTC; passes current identity, finiteness and
-  sample-STD checks. Revalidation is not an additional entry.
-- TRACE R5D: G0 MAE 0.43273 versus T0 0.71589, 1/15 favorable cells. Retired.
-- G1/M1/X1/G3/G4 did not produce challenger model-quality evidence. G2-7G
-  was a pre-fit support-predicate stop, not a scientific rejection of MapLight.
-- Public GIN transfer results remain encouraging historical CYP benchmark
-  evidence with disclosed overlap limitations, not challenge validation.
-
-The source audit observed dataset head `3ac9c5d`, Space `453a39a`, tutorial
-`858ae63`; only Emax dataset bytes changed relative to the former snapshot.
-The Space now rejects near-constant direct columns (sample STD <0.01) and
-single-class TDI columns. Current source receipts and production validation
-are the first implementation milestone.
-
-## Execution status
-
-Base main: signed `ac043aaaf8dd3a7db1815859f7fa60f05c52277d` (D-150).
-D-151 signed `3887805` integrated locally by fast-forward after PR #188 passed
-all three Python CI jobs; pushed main. Full local historical suite: 1489 passed,
-14 existing skips. D-152 signed `5bdf897` also integrated and pushed after all
-PR #189 CI jobs passed.
-
-D-153 through D-155 are integrated and pushed after all three Python PR CI
-jobs passed (PRs #190–#192). D-156 is also integrated after PR #193 passed
-all three jobs; main `0787661`. Two frozen 80-fit grouped repeats
-support affine calibration: primary ST-RAE improvements **2.6903%** and
-**2.7477%**, with paired-family difference intervals entirely below zero.
-The maximum endpoint component-MAE harms are +0.01733 and +0.01893, within
-the +0.02 gate. Macro component MAE worsens slightly in both repeats. These
-are internal public-wrapper results, not official scores. Both runs together
-used 2.62255 invocation CPU-core-hours; this excludes compilation and audits.
-Independent aggregate, fold and calibration audits passed.
-
-The recommended **interim** direct artifact is the first affine release:
-`/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv`
-SHA-256: `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
-It has 750 rows / 3,000 finite predictions and passes current checks. The user
-confirmed upload under **glhf**. A refreshed public observation now shows
-September 5 at 02:10 UTC: rank **107**, MA-ST-RAE **0.9335**, MA-MAE **1.0383**.
-The saved August 24 entry had rank 107, primary 0.9366 and MAE 1.0332: primary
-improves 0.33%, MAE worsens 0.0051, rank unchanged. This is a modest public
-improvement, not evidence of competitiveness or the internal 2.7% gain.
-Private operational receipts and the existing every-two-hour heartbeat retain
-comparisons. No leaderboard selection.
-See the [release handoff](../../benchmarks/openadmet_cyp_2026/PHASE3_RELEASE_HANDOFF.md)
-and [repeat audit](../../benchmarks/openadmet_cyp_2026/phase3_maplight_affine_repeat2_audit.json).
-The unchanged fixed baseline remains fallback; final promotion is outstanding.
-Do not replace the first CSV with second-repeat calibration parameters.
-
-The preexisting user handoff edit is preserved exactly in
+D-151 supersedes former blanket no-repair/no-new-candidate backouts prospectively.
+Completed contracts remain historical evidence. Read the phase, charter and
+relevant [decisions](DECISIONS.md); do not execute archived one-use plans as the
+active workflow. The user's earlier handoff edit remains byte-identical in
 [the archived midnight handoff](../archive/intake/NEXT_ORCHESTRATOR_PROMPT_2026-08-31.md),
-SHA-256 `dcb9924b2d3b01e3b4c3b6171b423ced802ae5718c8f8ee1f891f29efb0e5c55`.
-Prior detailed state is available in Git at the base commit; completed Phase 2
-chronology remains [historical reference](../phases/PHASE_2_OPENADMET_GLOBAL_V2.md).
+SHA `dcb9924b2d3b01e3b4c3b6171b423ced802ae5718c8f8ee1f891f29efb0e5c55`.
 
-## Boundaries
+## Current recommendation and public observation
 
-Preserve raw chemistry, assay context, missingness and provenance. Keep whole
-families together across all tasks; learn calibration/stopping/stacking only
-inside cross-fitting. The 997-molecule reserved partition stays closed until
-one frozen final comparison per track; disclose its historical R3C/R5 reuse.
-Private portal activity and results remain outside model selection. The user
-uploads manually; readiness is not proof of submission. Prediction files,
-features, models, raw data and credentials remain outside Git.
+The interim recommendation is the affine-MAE direct release:
+`/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv`
+SHA `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
+It has 750 rows / 3000 finite predictions and passes current checks. The user
+confirmed its upload under **glhf**. No later upload file is ready.
 
-The public CLI remains audit/train/predict/report with RDKit-only runtime;
-its median model is a product fixture baseline, not the competition model.
-Preserve existing locked research environments. The user now authorizes 75%
-CPU usage (24 of 32 logical-CPU equivalents) and full local GPU compute for
-future work. Keep 20 GiB aggregate host memory, 100 GB private storage and
-1000 CPU-core-hours; no paid compute. Frozen RMSE/SVR recipes retain 16 threads.
-The AMD gfx1100 GPU has about 20 GiB VRAM, but needs a separate verified
-ROCm/PyTorch runtime. GPU preparation is distinct from official model training.
+Refreshed public observation: September 5 at 02:10 UTC, rank 107,
+MA-ST-RAE **0.9335**, MA-MAE **1.0383**, R² **−0.0086**, Spearman **0.6302**,
+Kendall **0.4533**. The saved August 24 entry had rank 107, primary 0.9366 and
+MAE 1.0332: primary improves 0.33%, MAE worsens 0.0051, rank unchanged. This is a
+modest improvement, not competitiveness. Public metadata does not expose the
+uploaded CSV hash; association uses user confirmation and timestamp.
 
-## Deep audit and revised priority
+Two complete 80-fit grouped development repeats support affine calibration:
+primary **0.7371456380 / 0.7290110589**, improving **2.6903% / 2.7477%** over
+same-seed raw MAE. Paired-family difference intervals are entirely negative;
+maximum endpoint component-MAE harms **+0.01733 / +0.01893** meet the +0.02 gate.
+Macro component MAE worsens slightly. These are public-wrapper internal results,
+not official scores. Total invocation CPU cost: 2.62255 core-hours.
+See [handoff](../../benchmarks/openadmet_cyp_2026/PHASE3_RELEASE_HANDOFF.md) and
+[repeat audit](../../benchmarks/openadmet_cyp_2026/phase3_maplight_affine_repeat2_audit.json).
+Keep the first CSV and immutable historical manifests; do not average in the
+second repeat's calibration. Production uses historical full-training predictions
+with development-only calibration; training-size transfer is a disclosed limit.
 
-The user requested a substantial audit after the poor public result. The audit
-found no catastrophic target, unit, endpoint, feature, row-order or scoring bug:
-46,896 raw development point/bound cells match exactly; the real public wrapper
-matches within 1.11e-16; all 4,905 training and 750 test feature rows reproduce
-historical hashes; the affine CSV reproduces byte-for-byte. Reserved labels
-remained closed. See [the deep audit](../../benchmarks/openadmet_cyp_2026/PHASE3_DEEP_AUDIT.md).
+The unchanged raw-MAE accepted CSV remains fallback, SHA
+`9d3ed5ff2ba08233caf99e46d4a0e69e59ab35a337521258a92ad21488db504b`.
+Historical fixed MapLight component-macro MAE 0.5837812652 is a different metric.
+Final recommendation/promotion and the reserved comparison remain outstanding.
 
-Real weaknesses: severely compressed OOF predictions, all pIC50 >=6 examples
-below their lower bounds in both repeats, singleton-heavy validation that does
-not reproduce analog acquisition, and deleted historical production estimators.
-Historical maximum-potency anchor selection also conditions selector queries
-to be weaker; retain that negative result without claiming all known-parent
-hypotheses are disproved. Sparse signed-int8 Avalon overflow remains a real
-separate ablation. TDI adds no direct labels on existing development identities.
-Family-safe extra intake is now complete: 1,237 eligible extras have zero direct
-labels; three reserved-connected extras were excluded before numeric decoding.
-The independently rebuilt graph preserves all old development fold boundaries.
-Support diagnostics verify all 3,908 standardized hashes and zero >=0.60
-crossings. Approximately 72–84% of scored rows across both repeats lack a potent
-training neighbor at similarity >=0.30. These descriptive findings do not
-authorize prediction adjustments. See [the follow-up evidence](../../benchmarks/openadmet_cyp_2026/phase3_audit_followup_v1.json).
+## Audit outcome and completed experiments
 
-The signed D-157 audit and objective-ablation implementation (`cb4adda`) passed
-all three PR #194 Python jobs, was integrated locally by fast-forward, and is
-pushed to main. Both frozen RMSE repeats completed: 160 new fits / 2.63144
-invocation CPU-core-hours. Raw RMSE is 3.74% / 3.61% worse than the calibrated
-MAE incumbent; affine RMSE is 1.26% / 0.93% worse. Neither variant passes the
-recommendation or potent-tail mechanism gates. Independent recomputation agrees.
-No RMSE production fit or submission is warranted by these outcomes. See
-[the matched results](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1_result.json).
+The [deep audit](../../benchmarks/openadmet_cyp_2026/PHASE3_DEEP_AUDIT.md) found no
+catastrophic label/unit/endpoint/row-order/scoring/calibration bug: 46,896 raw
+point/bound cells match; the real public wrapper agrees within 1.11e-16;
+all 4905 historical train and 750 test feature rows reproduce hashes; affine CSV
+bytes reproduce exactly. No reserved labels were decoded. Historical production
+estimators were deleted, so their fresh reload cannot be claimed. Future models
+must retain and freshly reload checkpoints.
 
-The frozen Tanimoto SVR experiment also completed: 140 fits / 16.65 seconds /
-0.00304 accounted CPU-core-hours. Raw and affine variants are 12.04% and 9.63%
-worse than the first-repeat calibrated incumbent, with positive paired-family
-intervals and endpoint harm above +0.02. Independent reconstruction verifies all
-15,272,464 kernel entries exactly and reproduces inner C choices and metrics.
-Retire this standalone recipe; no second repeat or production fit is justified.
-See [SVR results](../../benchmarks/openadmet_cyp_2026/phase3_tanimoto_svr_v1_result.json).
+Real weaknesses are compressed potent-tail predictions, sparse potent neighbors,
+and validation that does not reproduce active-hit analog acquisition. All pIC50
+>=6 OOF examples fall below their lower bounds in both MAE repeats. The 3908-row
+development population has 3640 families and 90.28% singleton molecules. Support
+audits find zero forbidden >=0.60 similarity crossings; roughly 72–84% of scored
+rows lack a potent training neighbor at similarity>=0.30. These are descriptive
+diagnostics, not instructions for prediction offsets or hidden-label inference.
 
-## Next action
+Completed negative recipes; **do not rerun or create production CSVs**:
 
-Signed D-158 (`d292c69`) passed all PR #195 CI jobs, was integrated locally by
-fast-forward and pushed to main. Both independent experiment audits passed.
-Do not repeat finished RMSE/SVR fits or spend another cycle on offsets alone.
-The genuine sparse count overflow is the next isolated ablation; preserve the
-legacy comparator. Its implementation and independent review are complete,
-including proof that the reported affine coefficients come from authenticated
-inner OOF predictions. The [frozen recipe](../../benchmarks/openadmet_cyp_2026/phase3_corrected_counts_ablation_v1.json)
-uses the same MAE learner, two seeds and 80 fits per seed, capped at five
-CPU-core-hours per seed. Run from the signed reviewed D-159 implementation after
-focused checks, while full PR CI runs. Any release requires CI/integration,
-both-seed incumbent gates and new saved/reloaded production estimators. No
-corrected-count official fits or new CSVs are claimed by this prospective record.
+- RMSE:160 fits /2.63144 invocation CPU-core-hours. Raw is 3.74%/3.61% worse;
+  affine 1.26%/0.93% worse than calibrated MAE. Recommendation and tail gates fail.
+  [Results](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1_result.json).
+- Tanimoto SVR:140 fits /0.00304 CPU-core-hours. Raw/affine 12.04%/9.63% worse
+  on first repeat, positive paired difference intervals; retire without repeat 2.
+  [Results](../../benchmarks/openadmet_cyp_2026/phase3_tanimoto_svr_v1_result.json).
+- Corrected counts:160 fits /2.82403 invocation CPU-core-hours. Ten development
+  Avalon cells really overflowed int8; full corrected-count/legacy-wrap/other-
+  feature parity and all fit/inner-calibration receipts authenticate. Corrected
+  affine is 0.39%/0.87% worse; raw 3.13%/3.47% worse. Neither variant qualifies.
+  [Results](../../benchmarks/openadmet_cyp_2026/phase3_corrected_counts_v1_result.json).
 
-GPU readiness is now verified in private `phase3/gpu-readiness-v1/venv`:
-Radeon RX 7900 XT / gfx1100, PyTorch 2.12.0 + ROCm 7.14.0, Python 3.12.3.
-All 19 packages have reviewed source/size/SHA receipts. The frozen synthetic
-test passed matrix/backward checks, 20 masked Adam steps and exact prediction
-parity after a fresh checkpoint reload; peak reserved GPU memory was 164 MiB.
-No official GPU training has occurred. A duplicated package cache exceeded the
-12-GiB storage cap before GPU import; a recorded cache-only repair restored
-7.32 GiB usage without changing versions or criteria. No system driver or
-historical environment changes. See [GPU readiness evidence](../../benchmarks/openadmet_cyp_2026/phase3_gpu_readiness_v1.json).
-Do not reinstall or rerun completed readiness checks. The shared user
-`cypshift.slice` CPU/RAM limits are verified at 24 CPU equivalents / 20 GiB;
-use that slice and inherited CPU affinity for future jobs. cpuset delegation is
-unavailable, so affinity is cooperative rather than a hard cpuset boundary.
-Freeze a compact direct-only / genuine-primary-screen auxiliary / shuffled-
-auxiliary MLP protocol. Initial auxiliary intake stays on established development
-identities with family-safe masks and explicit assay/replicate semantics.
-The source metadata audit finds 3,493 development molecules with screen records,
-415 without, and exactly one published row per molecule/enzyme. Use no
-aggregation. Preserve the actual 49.5049505-uM concentration and quote-aware
-six-field prefix parsing; an exact 50-uM filter or naive comma split is wrong.
-Finite response availability remains unverified: no screen response has yet
-been decoded. See [intake metadata](../../benchmarks/openadmet_cyp_2026/phase3_primary_screen_metadata_v1.json).
-Honest grouped stopping plus inner refitting requires 105 network fits per
-repeat across all three arms, not 60. Freeze budgets after representative
-synthetic timing, before official outcomes. The matching 4,296→256→128→8 shape
-now profiles at 24.375 ms per full-size synthetic epoch / 260 MiB peak reserved
-GPU memory. Charging 105 fits × 200 epochs projects about 8.85 minutes of
-training per repeat using the slowest observed epoch, excluding startup,
-validation, scoring and I/O; this is not a guaranteed runtime bound. The initial
-profiling filename collision failed before optimizer execution and is preserved.
-See [throughput evidence](../../benchmarks/openadmet_cyp_2026/phase3_mlp_synthetic_throughput_v2.json).
-Keep discovery/query episode design
-as a distinct diagnostic with query membership fixed before outcomes.
+TRACE R5D remains retired (G0 MAE 0.43273 versus T0 0.71589;1/15 favorable cells).
+Historical maximum-potency parent selection also conditions query outcomes;
+its negative result does not disprove every honest known-parent hypothesis.
+A new identity assignment frozen before availability masks supports only a narrow
+CYP3A4 diagnostic: 73 families/157 queries, at least 14 families per fold. Other
+heads have 4/2/1 guaranteed same-endpoint-parent queries. No potency/parent was
+selected. This is feasibility, not power or blinded-distribution validation.
+[Receipt](../../benchmarks/openadmet_cyp_2026/phase3_known_parent_feasibility_v1.json).
 
-The first affine-MAE CSV remains the interim recommendation; final reserve
-stays closed. Future qualified models need their own saved/reloaded estimators
-and actual validated files. The existing two-hour heartbeat resumes from this
-state, avoids duplicate work and only notifies for actual files or meaningful
-changes. GPU setup must not become another unbounded prerequisite for releases.
+## Ready data and hardware
+
+Private root: `/home/zbos/cypshift-private/openadmet-2026/phase3`.
+Development bundle `development-v1`, manifest SHA
+`8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf`:
+3908 molecules, 5197 finite direct labels. Seeds 20260905/20260906 and original
+five outer/three inner family folds remain fixed.
+
+Primary-screen preflight verifies 3493 development molecules ×4 enzymes =13972
+finite log2fc estimates; 415 lack records. Preserve actual 49.5049505-µM context,
+quote-aware prefixes and one row per molecule/enzyme; no aggregation or filtering
+by response. All 3528 reserved rows plus 4 other rows were excluded before assay
+response decoding. These are distinct auxiliary outcomes, not pIC50 labels.
+[Coverage](../../benchmarks/openadmet_cyp_2026/phase3_primary_screen_coverage_v1.json).
+
+Expanded family audit excludes 3 reserved-connected extra TDI molecules; 1237
+eligible extras add **zero direct labels**. Existing development TDI labels have
+267/622 positives across 265/566 families for CYP2D6/CYP3A4. Extras supply only
+2/1235 negatives, respectively; other cells are missing. Freeze the TDI population
+and extra-negative policy before classifier/threshold fitting; do not silently
+pool them. [TDI coverage](../../benchmarks/openadmet_cyp_2026/phase3_tdi_class_coverage_v1.json).
+
+Hardware: Ryzen 7950X, 16 physical/32 logical CPUs, 30.46 GiB host RAM;
+Radeon RX 7900 XT/gfx1100, about 20 GiB VRAM. User authorizes 75% CPU and full GPU
+compute. Shared `cypshift.slice` is verified at 24 CPU equivalents (`cpu.max`
+2400000/100000) and 20 GiB host RAM (`memory.max`21474836480). Use cooperative
+`taskset` CPUs 0–11, 16–27; cpuset is not delegated. Recheck after manager restart.
+Retain 1000 CPU-core-hours/100GB private storage/no paid compute. Earlier frozen
+CatBoost recipes stay 16-thread CPU-only; they cannot use the AMD GPU.
+
+Verified private GPU interpreter: `gpu-readiness-v1/venv/bin/python`,
+Python 3.12.3 / PyTorch 2.12.0+rocm7.14.0 / HIP 7.14.60850 / NumPy 1.26.4.
+All 19 packages are pinned/hashed; matrix/backward/training/reload checks passed.
+Final runtime storage 7.32 GiB after a recorded duplicate-cache repair. Do not
+reinstall or rerun completed readiness/profile checks. No system driver changes.
+[Readiness](../../benchmarks/openadmet_cyp_2026/phase3_gpu_readiness_v1.json) and
+[throughput](../../benchmarks/openadmet_cyp_2026/phase3_mlp_synthetic_throughput_v2.json).
+
+## Immediate execution
+
+D-160 implements the [frozen three-arm GPU MLP](../../benchmarks/openadmet_cyp_2026/phase3_mlp_auxiliary_v1.json):
+direct-only, genuine primary-screen auxiliary and shuffled auxiliary controls.
+Same 4296→256→128→8 architecture, training-only transforms, matched randomness,
+honest grouped stopping/fresh refits, inner-only affine; 105 joint fits per seed.
+Each seed has one occupied hour/ten CPU-core-hours, including failed attempts.
+Worker uses one CPU thread and a 2-GiB GPU allocator cap within the shared slice.
+
+Five actual GPU synthetic fits and two CPU-to-GPU integration fits passed;
+independent review authenticated all seven checkpoint/prediction pairs. Preserve
+the failed initial optimizer-device reload test and its verified repair. Focused
+tests cover family isolation, payload tampering, stopping/calibration lineage,
+timeout cleanup and conservative accounting for unreaped descendant CPU.
+[Verification](../../benchmarks/openadmet_cyp_2026/phase3_mlp_implementation_verification_v1.json).
+
+Sign reviewed implementation, then run both frozen repeats while full PR CI runs.
+Check private `active-compute.json`, result files and live processes first to avoid
+duplicate work. Authenticate/recompute both-seed incumbent and auxiliary-control
+gates with the comparator; independently replay retained checkpoint inference.
+A qualified candidate needs separate production fitting and an actual validated
+CSV. No new production model or upload is claimed by this prospective milestone.
+All exact-head PR checks must pass before local fast-forward integration/release.
+
+## Continuing boundaries
+
+Keep all families together across direct/auxiliary/stop/assessment populations;
+fit transformations, stopping, calibration and selection inside cross-fitting.
+Preserve raw chemistry, assay context, censoring, missingness and provenance.
+The 997-molecule reserved partition stays closed until one frozen final comparison
+per track; disclose historical R3C/R5 reuse. No blinded-test geometry or public/
+private leaderboard selection. Keep official/generated data, checkpoints and
+predictions outside Git. Core CLI remains RDKit-only with its synthetic fixture.
+
+Refresh source receipts before any release: latest observed dataset 3ac9c5d,
+Space 453a39a, tutorial 858ae63. Direct columns require sample STD>=0.01; TDI
+requires binary predictions containing both classes. User uploads manually;
+respect 12-hour per-track spacing and distinguish readiness from submission.
+The existing two-hour heartbeat reloads the public page, checks **glhf**, avoids
+completed work and stays quiet on unchanged/non-actionable results. Notify for
+actual files, meaningful changes, failures or required action.

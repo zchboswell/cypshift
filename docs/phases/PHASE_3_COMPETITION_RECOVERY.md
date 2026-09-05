@@ -137,6 +137,18 @@ in parallel, but integration and release require all checks. A raw or affine
 variant must meet the incumbent gates in both repeats; a bug's existence alone
 does not establish a more competitive model.
 
+D-160 records the negative count result and freezes the next
+[three-arm GPU MLP recipe](../../benchmarks/openadmet_cyp_2026/phase3_mlp_auxiliary_v1.json).
+Verified primary-screen coverage supplies 13,972 distinct auxiliary outcomes on
+existing development identities. The direct-only, real and shuffled arms retain
+identical eight-head capacity and matched randomness. Honest stopping plus fresh
+inner/outer refits requires 105 joint fits per repeat. Bound each seed by one
+occupied hour and ten CPU-core-hours, retaining child-process CPU and checkpoint
+receipts. No official fits precede signed code and independent review. Real
+auxiliary learning must beat both matched controls as well as the incumbent;
+raw/affine selection and exact ties are frozen before outcomes. A qualifying
+candidate still needs its own production model and actual upload file.
+
 ## Validation and candidate menu
 
 Preserve the 997-molecule reserved partition and disclose its R3C/R5 historical

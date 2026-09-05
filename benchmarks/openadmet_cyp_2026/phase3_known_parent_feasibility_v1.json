@@ -1,0 +1,479 @@
+{
+  "actual_parent_selected": false,
+  "assignment_sha256": "b976a2daa9603b25a2686f2c0cec59d2ce9989e9d0eee925a2d9a5e0fcaed777",
+  "cpu_core_hours": 0.0011112898780555557,
+  "decoded_npz_members": [
+    "training_mask",
+    "metric_mask"
+  ],
+  "development_families": 3640,
+  "development_molecules": 3908,
+  "eligible_discovery_candidate_count_histogram": {
+    "1": 54,
+    "2": 9,
+    "3": 6,
+    "4": 6,
+    "5": 4
+  },
+  "endpoint_feasibility": {
+    "CYP1A2": {
+      "same_endpoint_parent_guaranteed": {
+        "all_five_folds_nonempty": false,
+        "families": 4,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 1,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 2,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 1,
+            "fold": 4,
+            "queries": 1
+          }
+        ],
+        "queries": 4
+      },
+      "same_endpoint_parent_possible": {
+        "all_five_folds_nonempty": false,
+        "families": 4,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 1,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 2,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 1,
+            "fold": 4,
+            "queries": 1
+          }
+        ],
+        "queries": 4
+      },
+      "selector_context": {
+        "all_five_folds_nonempty": true,
+        "families": 7,
+        "minimum_fold_families": 1,
+        "minimum_fold_queries": 1,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 2,
+            "fold": 1,
+            "queries": 2
+          },
+          {
+            "families": 2,
+            "fold": 2,
+            "queries": 2
+          },
+          {
+            "families": 1,
+            "fold": 3,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 4,
+            "queries": 1
+          }
+        ],
+        "queries": 7
+      }
+    },
+    "CYP2C9": {
+      "same_endpoint_parent_guaranteed": {
+        "all_five_folds_nonempty": false,
+        "families": 2,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 0,
+            "fold": 0,
+            "queries": 0
+          },
+          {
+            "families": 1,
+            "fold": 1,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 2,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 2
+      },
+      "same_endpoint_parent_possible": {
+        "all_five_folds_nonempty": false,
+        "families": 2,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 0,
+            "fold": 0,
+            "queries": 0
+          },
+          {
+            "families": 1,
+            "fold": 1,
+            "queries": 1
+          },
+          {
+            "families": 1,
+            "fold": 2,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 2
+      },
+      "selector_context": {
+        "all_five_folds_nonempty": false,
+        "families": 7,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 3,
+            "fold": 1,
+            "queries": 3
+          },
+          {
+            "families": 2,
+            "fold": 2,
+            "queries": 2
+          },
+          {
+            "families": 1,
+            "fold": 3,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 7
+      }
+    },
+    "CYP2D6": {
+      "same_endpoint_parent_guaranteed": {
+        "all_five_folds_nonempty": false,
+        "families": 1,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 1,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 2,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 1
+      },
+      "same_endpoint_parent_possible": {
+        "all_five_folds_nonempty": false,
+        "families": 1,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 1,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 2,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 1
+      },
+      "selector_context": {
+        "all_five_folds_nonempty": false,
+        "families": 4,
+        "minimum_fold_families": 0,
+        "minimum_fold_queries": 0,
+        "outer_folds": [
+          {
+            "families": 1,
+            "fold": 0,
+            "queries": 1
+          },
+          {
+            "families": 2,
+            "fold": 1,
+            "queries": 2
+          },
+          {
+            "families": 1,
+            "fold": 2,
+            "queries": 1
+          },
+          {
+            "families": 0,
+            "fold": 3,
+            "queries": 0
+          },
+          {
+            "families": 0,
+            "fold": 4,
+            "queries": 0
+          }
+        ],
+        "queries": 4
+      }
+    },
+    "CYP3A4": {
+      "same_endpoint_parent_guaranteed": {
+        "all_five_folds_nonempty": true,
+        "families": 73,
+        "minimum_fold_families": 14,
+        "minimum_fold_queries": 30,
+        "outer_folds": [
+          {
+            "families": 14,
+            "fold": 0,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 1,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 2,
+            "queries": 33
+          },
+          {
+            "families": 14,
+            "fold": 3,
+            "queries": 30
+          },
+          {
+            "families": 15,
+            "fold": 4,
+            "queries": 32
+          }
+        ],
+        "queries": 157
+      },
+      "same_endpoint_parent_possible": {
+        "all_five_folds_nonempty": true,
+        "families": 73,
+        "minimum_fold_families": 14,
+        "minimum_fold_queries": 30,
+        "outer_folds": [
+          {
+            "families": 14,
+            "fold": 0,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 1,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 2,
+            "queries": 33
+          },
+          {
+            "families": 14,
+            "fold": 3,
+            "queries": 30
+          },
+          {
+            "families": 15,
+            "fold": 4,
+            "queries": 32
+          }
+        ],
+        "queries": 157
+      },
+      "selector_context": {
+        "all_five_folds_nonempty": true,
+        "families": 73,
+        "minimum_fold_families": 14,
+        "minimum_fold_queries": 30,
+        "outer_folds": [
+          {
+            "families": 14,
+            "fold": 0,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 1,
+            "queries": 31
+          },
+          {
+            "families": 15,
+            "fold": 2,
+            "queries": 33
+          },
+          {
+            "families": 14,
+            "fold": 3,
+            "queries": 30
+          },
+          {
+            "families": 15,
+            "fold": 4,
+            "queries": 32
+          }
+        ],
+        "queries": 157
+      }
+    }
+  },
+  "families_with_any_discovery_selector": 79,
+  "identity_units": 3905,
+  "limitations": [
+    "Availability feasibility only; no potency-selected parent, actual known-parent model, analog-distance filter or query activity-cliff evidence",
+    "Crossendpoint guaranteed support is the lowerbound before parent selection; selector-context support does not imply sameendpoint anchor measurement",
+    "Five nonempty folds do not establish adequate independent-family power or validate the blinded acquisition distribution"
+  ],
+  "model_fits": 0,
+  "multi_molecule_identity_units": 3,
+  "multi_unit_families": 111,
+  "no_duplicate_unit_crossing": true,
+  "partition_molecules": {
+    "discovery": 174,
+    "excluded": 3530,
+    "query": 204
+  },
+  "plan": {
+    "affinity": [
+      0
+    ],
+    "availability": "Read ONLY training_mask and metric_mask NPZmembers after immutable identity-only assignment publication; no point/low/high/legacy_features decoded",
+    "cross_endpoint_bounds": "Same-endpoint parent availability possible ifANY selector-eligible discoverycandidate hasendpoint; guaranteed ifALL do",
+    "duplicate_unit": "Transitive equality over existing raw/std/connectivity/tautomer identity keys; never split a unit",
+    "five_fold_coverage": "Existing balanced nested outer folds with seed20260905. Nonempty coverage necessary, not a statistical power claim or selection gate",
+    "parent_feasibility": "Any discovery molecule with eligible3A4target; actual parent potency is unread and no parent is selected",
+    "schema": "cypshift.phase3.known_parent_availability_plan.v1",
+    "scope": "Distinct known-parent diagnostic feasibility, not primary whole-family-OOD evaluation, TRACE revival, model fits or target selection",
+    "script_sha256": "c3233bb7aa12be9b20ba6ca6fa19ea5d6ee401dcbcff5fb98993a0750fb1eafe",
+    "seed": 20260905,
+    "selector": "CYP3A4",
+    "source_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+    "split": "Within each family sort identity-key units by SHA256(canonicalJSON(seed,family,unitHash)); first floor(unit_count/2) discovery, remainder query; fewer than2units excluded",
+    "threads": 1
+  },
+  "private_result_sha256": "8bb45c6343fd21654d7c40667751d71fbe0486dc528906100817e8916b6261d4",
+  "query_assignment_frozen_before_masks": true,
+  "reserved_numeric_targets_opened": 0,
+  "schema": "cypshift.phase3.known_parent_availability_feasibility.v1",
+  "selector_eligible_discovery_candidates": 134,
+  "status": "complete",
+  "target_value_arrays_decoded": [],
+  "test_structures_opened": 0,
+  "wall_seconds": 4.001392089001456
+}

@@ -1,0 +1,62 @@
+{
+  "class_counts": {
+    "extra": {
+      "CYP2D6_is_TDI": {
+        "0": 2,
+        "missing": 1235
+      },
+      "CYP3A4_is_TDI": {
+        "0": 1235,
+        "missing": 2
+      }
+    },
+    "original": {
+      "CYP2D6_is_TDI": {
+        "0": 916,
+        "1": 267,
+        "missing": 2725
+      },
+      "CYP3A4_is_TDI": {
+        "0": 1268,
+        "1": 622,
+        "missing": 2018
+      }
+    }
+  },
+  "class_family_counts": {
+    "extra": {
+      "CYP2D6_is_TDI": {
+        "0": 2,
+        "1": 0
+      },
+      "CYP3A4_is_TDI": {
+        "0": 682,
+        "1": 0
+      }
+    },
+    "original": {
+      "CYP2D6_is_TDI": {
+        "0": 907,
+        "1": 265
+      },
+      "CYP3A4_is_TDI": {
+        "0": 1144,
+        "1": 566
+      }
+    }
+  },
+  "cpu_seconds": 0.112159364,
+  "eligible_molecules": 5145,
+  "excluded_before_class_decode": 1000,
+  "fits": 0,
+  "mapping_sha256": "e5d6051e7a060a7194e361222814f988dc5d693fe1a6fbbe40a8b969df79dbc8",
+  "other_assay_response_fields_decoded": 0,
+  "plan_sha256": "b1684f42d8927ea9ea2ba04e248f88aee3d1e3d9f79e0727c05ed846997f936f",
+  "private_result_sha256": "121187ba6369274891f09ac64488d16e6d7bc0fe9605ba0d7c8d8ab7cad24318",
+  "reserved_class_fields_decoded": 0,
+  "schema": "cypshift.phase3.tdi_class_coverage.v1",
+  "scope": "Class availability only for published CYP2D6/CYP3A4 labels; no derivation, pooling, fold choice, thresholds or fitting",
+  "script_sha256": "62feb76ce7901ce13f96b1107ffa7d56753e05cfb9f9424424fb5fea6a7b5912",
+  "source_sha256": "b458f599a792412292664386e8f18adc5d4a4129d6bd212ae80a60fb9b96bb60",
+  "wall_seconds": 0.11219220500061056
+}

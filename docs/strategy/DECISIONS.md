@@ -6333,3 +6333,112 @@ full exact-head PR CI can run concurrently and must pass before integration or
 release. Reversal: preserve legacy results and withdraw a corrected candidate
 that fails integrity or the frozen evidence gates. Keep GPU/data readiness as
 reusable independent progress; no new submission is claimed by this milestone.
+
+## D-160 — Retire the count ablation and test genuine auxiliary supervision
+
+Date: 2026-09-05 UTC; MLP protocol is prospective, before official network fits.
+
+The count ablation is complete: 160 fits / 2.82403 invocation CPU-core-hours.
+Independent reconstruction and the canonical comparator verify corrected features,
+all fit receipts, folds, metrics and inner-OOF affine lineage. Corrected affine
+predictions are 0.3918% / 0.8652% worse than the matched calibrated incumbent;
+raw predictions are 3.1287% / 3.4692% worse. Neither variant passes either seed's
+recommendation gate. Preserve the real count defect and its correction without
+claiming it explains the poor leaderboard performance. No corrected production
+fit or upload is warranted. RMSE and standalone SVR remain rejected recipes.
+
+The reviewed primary-screen response preflight now finds 3493 finite estimates
+per enzyme, 13972 total. All six preserved response fields are finite; no
+aggregation or response-based filtering occurred. Membership and assay context
+were authenticated before numeric decoding; 3528 reserved rows and four other
+rows never reached the response decoder. These are continuous log2-fold-change
+auxiliary targets in a distinct primary-screen assay, not direct pIC50 labels.
+The screen's role in selecting dose-response follow-up remains a selection-bias
+risk; coverage alone is not evidence of useful transfer.
+
+Prioritize a matched three-arm fingerprint MLP: direct-only, real auxiliary and
+training-only shuffled auxiliary. Use the existing CPU chemistry/metric runtime
+and a thin, separately verified GPU worker. No core dependency or historical
+runtime changes. Eight heads in every arm preserve capacity. Inputs are raw
+chiral binary Morgan radius 2 / 4096 bits plus the original 200 descriptors. Fit finite
+median imputation and median/IQR scaling for descriptors inside each training
+population; all-missing columns use zero/unit scale and constant columns use
+unit scale. No clipping or feature selection. Auxiliary targets use training
+median/IQR scaling, keeping masks missing. Replace missing numeric placeholders
+before masked losses. Preserve preprocessing statistics and provenance privately.
+
+Freeze 256/128 ReLU layers, dropout 0.1, Adam learning_rate0.001, betas 0.9/0.999,
+epsilon 1e-8, weight_decay 0, amsgrad=false, batch size 128, <=200 epochs. Direct loss is
+task-averaged masked point MAE at weight 1; auxiliary loss is task-averaged Huber
+with delta 1 at weight 0.25 (zero for direct-only). Empty task families contribute
+a differentiable zero. Shuffle whole four-value/four-mask molecule bundles only
+within each actual training population; no assessment row donates auxiliary
+values. Corresponding arms share model, dropout and batch seeds with separate
+shuffle randomness. Record initialization and batch-order hashes.
+
+Preserve the five outer/three inner folds and seeds 20260905/20260906. For each
+inner training population, grouped five-fold partition fold 0 supplies stopping
+rows; remaining groups fit the stopped network. Require support for every direct
+endpoint rather than searching seeds. Select earliest strict minimum direct-task
+mean MAE with patience 20 and min_delta 0. Refit fresh on all inner training rows
+for that selected epoch count before predicting untouched inner assessment rows.
+Fresh outer refits use median selected inner epochs. Only inner-refit OOF values
+fit the existing bounded affine calibration. Three arms require 105 joint fits
+per repeat, 210 total. No endpoint-specific network loop or global preprocessing.
+
+Each raw/affine direct or real variant must beat its same-seed calibrated MAE
+incumbent by >=2% primary gain, paired-family upper 95% difference bound <0, and maximum endpoint
+component-MAE harm<=0.02 in both repeats. Retain real auxiliary learning only if
+it also beats matched direct-only and shuffled arms in the same calibration
+variant, with paired upper 95% difference bound <0 and harm<=0.02 in both repeats. The shuffled arm
+is never eligible. Among qualifying variants choose the lowest first-repeat
+primary; exact ties prefer direct then real, raw then affine. These comparisons
+are related, not independent confirmations or a multiple-testing correction.
+No winner is selected from leaderboard evidence. Failure retires this recipe;
+a changed hypothesis needs a separate prospective decision.
+
+Allocate one occupied job hour and ten CPU-core-hours per seed within the
+existing program budget. Charge parent and reaped child CPU separately; the old
+in-process accounting wrapper omits worker CPU and cannot be reused unchanged.
+Use the shared 24-CPU-equivalent/20-GiB slice, cooperative affinity, one CPU thread
+and one GPU worker at a time, initially a 2-GiB GPU allocator limit. External
+worker deadlines and process-group cleanup bound failures. Preserve failed costs
+and complete checkpoints; do not silently restart a consumed output directory.
+Authenticate every array/request, save and freshly reload model/optimizer, and
+verify prediction parity at 1e-6 before accepting a fit.
+
+The separate mask-only known-parent diagnostic finds 73 CYP3A4 families/157
+queries, at least 14 families per outer fold. Other heads have only 4/2/1 guaranteed
+same-endpoint-parent queries. Query identity assignment preceded masks, and no
+parent potency or target values were decoded. Keep a narrow exploratory 3A4
+option; this does not justify replacing the whole-family primary evaluation or
+reviving TRACE. Nonempty folds are not a statistical-power claim.
+
+Validation before official training: independent implementation review, meaningful
+synthetic family-isolation/preprocessing/shuffle/lineage/accounting tests and
+actual GPU masked-training/checkpoint tests. Use signed reviewed code; full
+exact-head PR checks may run concurrently with the frozen experiment but must
+pass before integration or release. Any qualified network requires its own
+production fit, saved/reloaded estimators and a validated actual CSV. The reserved
+comparison remains closed and the existing affine-MAE CSV remains interim.
+Reversal: reject any fit with broken provenance/leakage or numerical failure;
+preserve failure evidence and the working CPU incumbent.
+
+Implementation verification now passes five actual synthetic GPU fits and two
+locked-CPU-to-GPU integration fits. Preserve the initial failed synthetic attempt:
+blanket CUDA checkpoint loading misplaced Adam scalar state. Loading on CPU and
+letting the model/optimizer restore placement passes exact state and prediction
+checks. Review also repaired a parity-receipt mismatch, child-limit inheritance
+and killed-wrapper accounting. Uncertain descendant CPU is conservatively charged
+at max(observed reaped CPU, elapsed wall times the enforced 24-CPU cap), including
+retry allowances. Normal completions retain measured process-tree CPU. The busy-
+descendant test verifies cleanup, lock release and charges without double counting.
+See [verification](../../benchmarks/openadmet_cyp_2026/phase3_mlp_implementation_verification_v1.json).
+
+A separate frozen availability check reads only the two published TDI class
+fields after expanded-family exclusion: established development has 267/622
+positive labels across 265/566 families for CYP2D6/CYP3A4. Eligible extras add
+only negatives (2/1235). Exclude all 1000 reserved-connected rows before class
+decoding. No other assay responses, fits, folds or thresholds are selected.
+Preserve the separate TDI track as a next experiment with its own frozen
+population and extra-negative ablation; do not silently pool those negatives.
