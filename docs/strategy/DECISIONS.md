@@ -6266,3 +6266,70 @@ PR CI before local fast-forward integration. This milestone changes evidence and
 prospective resource policy, not production logic; no new mirror tests are added.
 Reversal: withdraw an affected claim if provenance fails; remove the private GPU
 environment if readiness fails, preserving the CPU pipeline and accepted CSV.
+
+## D-159 — Verify GPU readiness and isolate the concrete count defect
+
+Date: 2026-09-05 UTC; prospective count experiment, before official outcomes.
+
+The private GPU environment is now operational on the Radeon RX 7900 XT/gfx1100:
+Python 3.12.3, PyTorch 2.12.0+rocm7.14.0 and HIP 7.14.60850. All 19 dependency
+artifacts have reviewed URLs, sizes and hashes. The frozen synthetic check
+passes float32 CPU/GPU matrix parity at 1e-4, finite nonzero gradients, 20 masked
+Adam steps and fresh checkpoint prediction parity at 1e-6 (observed error zero).
+Peak reserved GPU memory was 164 MiB. No official labels or GPU candidate were
+used. A duplicate-cache storage breach occurred after offline installation but
+before GPU import; preserve that failure and the cache-only repair. Final private
+storage is 7.32 GiB. System drivers and historical environments remain unchanged.
+
+Representative synthetic throughput for the planned 4296→256→128→8 network is
+24.375 ms/epoch with 260 MiB peak reserved memory. Charging all 105 fits a full
+3908-row, 200-epoch workload projects 8.85 minutes of training per repeat from
+the slowest observed epoch; this excludes startup, validation, scoring and I/O
+and is not a guaranteed bound. The first profiling attempt failed before any
+optimizer step because profile.py shadowed the standard-library module. Preserve
+its failed receipt; the separately frozen retry changed the filename and timing
+counters, not the workload. GPU availability does not establish model superiority.
+
+The primary-screen metadata audit identifies 3493 development molecules with
+four records and 415 without. The published table has no duplicate molecule/
+enzyme rows, so freeze no aggregation for future intake. Preserve the actual
+49.5049505-uM concentration and use quote-aware six-field prefix parsing before
+excluded numeric suffixes; naive comma splitting or exact50-uM filtering is
+wrong. No assay responses were decoded; finite auxiliary availability remains
+unverified. The next MLP protocol must retain distinct assay heads, family-safe
+masks, training-only preprocessing/stopping, matched controls and 105 fits per
+repeat. These intake findings do not authorize hidden or reserved labels.
+
+Measure the genuine sparse Avalon count wraparound separately. Keep the existing
+development compiler, bundle, folds, MAE learner, original RDKit runtime and
+16-thread setting. Regenerate counts as nonnegative int32, verify that wrapping
+ALL count values reproduces the legacy bytes, and require exact ErG/descriptor
+parity including allowed NaNs. Bind ordered raw identities, matrix and helper
+hashes to experiment and fit receipts. The corrected matrix must reach both
+inner and outer fits. Do not infer a model-quality improvement from fixing types.
+
+Freeze two 80-fit seeds20260905/20260906, each capped at five CPU-core-hours,
+using the shared project resource slice. Compare raw and inner-OOF affine
+variants with their authenticated same-seed calibrated-MAE incumbent. Each
+repeat must have >=2% primary gain, paired-family upper95<0 and maximum endpoint
+component-MAE harm<=0.02. If both variants qualify, choose the lower first-repeat
+primary, with exact ties favoring raw. No second-seed parameter averaging.
+Potency bands are descriptive here; the RMSE-specific mechanism gate does not
+transfer to this feature ablation. A negative result remains recorded.
+
+Independent code review caught a calibration-provenance gap and repaired it:
+all 60 inner prediction receipts now reconstruct the 20 reported outer affine
+coefficients, in addition to exact feature/fit/outer-OOF receipt validation.
+Adversarial coverage rejects coherently rewritten bounded coefficients. Historical
+MAE and RMSE defaults remain unchanged; the distinct corrected-model identity
+cannot use the legacy CSV transformation builder. A qualified model needs its
+own saved/reloaded development-only estimators and predictions, with the smaller
+training set disclosed. Reserved comparison and final promotion remain closed.
+
+Validation: focused feature/runner/comparator/release and documentation checks,
+Ruff, independent code review and locked-runtime synthetic overflow parity.
+Start official comparison only from signed reviewed code after focused checks;
+full exact-head PR CI can run concurrently and must pass before integration or
+release. Reversal: preserve legacy results and withdraw a corrected candidate
+that fails integrity or the frozen evidence gates. Keep GPU/data readiness as
+reusable independent progress; no new submission is claimed by this milestone.

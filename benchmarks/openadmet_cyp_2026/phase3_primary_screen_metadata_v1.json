@@ -1,0 +1,182 @@
+{
+  "all_source_metadata": {
+    "concentration_M_counts": {
+      "4.95049505e-05": 17504
+    },
+    "concentration_uM_values": [
+      "49.5049505000000"
+    ],
+    "duplicate_full_metadata_contexts": 0,
+    "duplicate_molecule_enzyme_pairs": 0,
+    "enzymes": {
+      "CYP1A2": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 4376
+        },
+        "rows": 4376,
+        "unique_OCNT_Batch_values": 4376,
+        "unique_molecules": 4376,
+        "unique_plate_ids": 9
+      },
+      "CYP2C9": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 4376
+        },
+        "rows": 4376,
+        "unique_OCNT_Batch_values": 4376,
+        "unique_molecules": 4376,
+        "unique_plate_ids": 9
+      },
+      "CYP2D6": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 4376
+        },
+        "rows": 4376,
+        "unique_OCNT_Batch_values": 4376,
+        "unique_molecules": 4376,
+        "unique_plate_ids": 9
+      },
+      "CYP3A4": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 4376
+        },
+        "rows": 4376,
+        "unique_OCNT_Batch_values": 4376,
+        "unique_molecules": 4376,
+        "unique_plate_ids": 9
+      }
+    },
+    "excess_rows_at_identical_context": 0,
+    "maximum_rows_per_identical_context": 1,
+    "missing_metadata_fields_by_column": {
+      "Molecule_Name": 0,
+      "OCNT_Batch": 0,
+      "SMILES": 0,
+      "concentration_M": 0,
+      "enzyme": 0,
+      "plate_id": 0
+    },
+    "rows": 17504,
+    "rows_per_molecule_enzyme_histogram": {
+      "1": 17504
+    },
+    "unique_molecule_enzyme_pairs": 17504,
+    "unique_molecules": 4376
+  },
+  "allowed_prefix_columns": [
+    "Molecule_Name",
+    "SMILES",
+    "OCNT_Batch",
+    "enzyme",
+    "plate_id",
+    "concentration_M"
+  ],
+  "cpu_core_hours": 5.4151535555555555e-05,
+  "development_metadata": {
+    "concentration_M_counts": {
+      "4.95049505e-05": 13972
+    },
+    "concentration_uM_values": [
+      "49.5049505000000"
+    ],
+    "duplicate_full_metadata_contexts": 0,
+    "duplicate_molecule_enzyme_pairs": 0,
+    "enzymes": {
+      "CYP1A2": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 3493
+        },
+        "rows": 3493,
+        "unique_OCNT_Batch_values": 3493,
+        "unique_molecules": 3493,
+        "unique_plate_ids": 9
+      },
+      "CYP2C9": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 3493
+        },
+        "rows": 3493,
+        "unique_OCNT_Batch_values": 3493,
+        "unique_molecules": 3493,
+        "unique_plate_ids": 9
+      },
+      "CYP2D6": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 3493
+        },
+        "rows": 3493,
+        "unique_OCNT_Batch_values": 3493,
+        "unique_molecules": 3493,
+        "unique_plate_ids": 9
+      },
+      "CYP3A4": {
+        "concentration_M_counts": {
+          "4.95049505e-05": 3493
+        },
+        "rows": 3493,
+        "unique_OCNT_Batch_values": 3493,
+        "unique_molecules": 3493,
+        "unique_plate_ids": 9
+      }
+    },
+    "excess_rows_at_identical_context": 0,
+    "maximum_rows_per_identical_context": 1,
+    "missing_metadata_fields_by_column": {
+      "Molecule_Name": 0,
+      "OCNT_Batch": 0,
+      "SMILES": 0,
+      "concentration_M": 0,
+      "enzyme": 0,
+      "plate_id": 0
+    },
+    "rows": 13972,
+    "rows_per_molecule_enzyme_histogram": {
+      "1": 13972
+    },
+    "unique_molecule_enzyme_pairs": 13972,
+    "unique_molecules": 3493
+  },
+  "development_molecules_without_screen_metadata": 415,
+  "development_raw_smiles_mismatches": 0,
+  "finite_response_availability_verified": false,
+  "ids_with_multiple_raw_smiles": 0,
+  "metadata_projection_sha256": "be3a623a7e82e49784e12a3219b9699db01165ec55fdfdf87b0188d72db79fc5",
+  "outside_development_and_reserved_molecules": 1,
+  "outside_development_and_reserved_rows": 4,
+  "private_audit_sha256": "34fc3663a15345184c0a0a481c6c325cdecb464aaf783430585ac33607ca7065",
+  "prospective_intake_rule": "Keep one published log2fc_estimate per existing development molecule/enzyme; no aggregation; reject source drift, unexpected duplicates, or context mismatches; skip excluded numeric suffixes before decoding",
+  "quoted_metadata_prefix_rows": 784,
+  "reserved_identity_molecules": 882,
+  "reserved_identity_rows": 3528,
+  "reserved_numeric_response_values_decoded": 0,
+  "response_columns_never_decoded": [
+    "log2fc_estimate",
+    "log2fc_std_error",
+    "p_value",
+    "log2fc_fdr",
+    "log2fc_median",
+    "cohens_d"
+  ],
+  "response_values_decoded": 0,
+  "schema": "cypshift.phase3.primary_screen_metadata_audit.v1",
+  "scope": "Source and context metadata only; no assay response decoding or official model fitting",
+  "script_sha256": "657c447ff0cd24beb24d575c5b977662f4b77d90d42794911c36fad670b04c5a",
+  "source_bytes": 3619009,
+  "source_header": [
+    "Molecule_Name",
+    "SMILES",
+    "OCNT_Batch",
+    "enzyme",
+    "plate_id",
+    "concentration_M",
+    "log2fc_estimate",
+    "log2fc_std_error",
+    "p_value",
+    "log2fc_fdr",
+    "log2fc_median",
+    "cohens_d"
+  ],
+  "source_rows": 17504,
+  "source_sha256": "cf275440aa33d10b16e7a3a19f1b196d59dc379052175ab79b47ca43db663c7a",
+  "source_url": "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/85f8b358d0a2056a98b990dd75d3b3ec9247862b/cyp-challenge-single-concentration-TRAIN.csv"
+}

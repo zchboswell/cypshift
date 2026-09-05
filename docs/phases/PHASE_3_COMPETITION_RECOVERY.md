@@ -125,6 +125,18 @@ The historical selected-anchor maximum rule is not an honest simulation of
 future analog acquisition; any new anchor experiment first needs query-outcome-
 independent discovery/selection and an explicitly distinct evaluation claim.
 
+D-159 measures the real signed-int8 count defect with a separate
+[two-seed correction recipe](../../benchmarks/openadmet_cyp_2026/phase3_corrected_counts_ablation_v1.json).
+The existing compiler and bundle stay fixed. Regenerate nonnegative counts from
+raw structures in the original runtime, prove complete modulo-256 legacy parity
+and exact ErG/descriptor parity, and bind the selected matrix to every fit.
+Comparison re-derives the outer calibrations from authenticated inner OOF.
+Use 80 fits / five CPU-core-hours per seed, preserving the learner and 16 threads.
+Start only from signed reviewed code after focused checks; full PR CI can run
+in parallel, but integration and release require all checks. A raw or affine
+variant must meet the incumbent gates in both repeats; a bug's existence alone
+does not establish a more competitive model.
+
 ## Validation and candidate menu
 
 Preserve the 997-molecule reserved partition and disclose its R3C/R5 historical
@@ -248,6 +260,9 @@ The current CatBoost runtime supports no device on this AMD machine. A separate
 pinned ROCm/PyTorch environment and synthetic device/backward/save-reload check
 must establish GPU readiness before new official training; do not change the
 historical runtime or system drivers to accelerate the existing comparison.
+The isolated runtime has now passed this synthetic gate on the RX 7900 XT;
+[the receipt](../../benchmarks/openadmet_cyp_2026/phase3_gpu_readiness_v1.json)
+records package hashes, the cache-only storage repair and test limitations.
 Profile representative real fits before allocation; do not infer feasibility
 only from tiny or constant synthetic matrices. GPU availability does not require
 choosing a less useful model or delaying a ready CPU experiment.

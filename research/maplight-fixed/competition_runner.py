@@ -34,6 +34,9 @@ from scipy import sparse
 from scipy.optimize import linprog
 
 ROOT = Path(__file__).resolve().parents[2]
+CORRECTED_RECIPE = (
+    ROOT / "benchmarks/openadmet_cyp_2026/phase3_corrected_counts_ablation_v1.json"
+)
 PARAMETERS = {
     "loss_function": "MAE",
     "random_strength": 2,
@@ -80,6 +83,117 @@ def publish(path: Path, raw: bytes) -> None:
     temporary = path.with_name(path.name + ".partial")
     temporary.write_bytes(raw)
     os.replace(temporary, path)
+
+
+def corrected_recipe(source: Path) -> tuple[dict[str, Any], str]:
+    """Accept only the separate prospective count-repair recipe, not RMSE edits."""
+    raw = CORRECTED_RECIPE.read_bytes()
+    recipe = json.loads(raw)
+    expected = {
+        "schema": "cypshift.phase3.corrected_counts_ablation.v1",
+        "status": "prespecified_before_corrected_count_outcomes",
+        "data_manifest_sha256": digest((source / "manifest.json").read_bytes()),
+        "seeds": [20260905, 20260906],
+        "new_fits_per_seed": 80,
+        "new_fits_total": 160,
+        "cpu_core_hours_per_seed": 5,
+        "cpu_core_hours_total": 10,
+        "model": {
+            "loss_function": "MAE",
+            "random_strength": 2,
+            "random_seed": 1,
+            "task_type": "CPU",
+            "thread_count": 16,
+            "verbose": 0,
+            "allow_writing_files": False,
+        },
+        "resolved_shared_settings": {
+            "depth": 6,
+            "iterations": 1000,
+            "learning_rate": 0.03,
+        },
+        "features": {
+            "mode": "corrected_counts",
+            "raw_structures": True,
+            "morgan_radius": 2,
+            "morgan_count_bits": 1024,
+            "morgan_chirality": False,
+            "avalon_count_bits": 1024,
+            "count_dtype": "int32",
+            "matrix_dtype": "float64",
+            "erg_columns": 315,
+            "descriptor_columns": 200,
+        },
+        "implementation_sha256": {
+            name: digest(Path(__file__).with_name(name).read_bytes())
+            for name in ("competition_features.py", "maplight_fixed_features.py")
+        },
+        "recommendation_gate_each_seed": {
+            "relative_macro_primary_gain_over_calibrated_incumbent_min": 0.02,
+            "paired_family_primary_upper95_max_exclusive": 0,
+            "max_endpoint_component_mae_harm": 0.02,
+        },
+        "independent_comparison_required": True,
+        "reserved_comparison": "closed",
+        "final_promotion": False,
+    }
+    if (
+        any(recipe.get(key) != value for key, value in expected.items())
+        or recipe["nested_folds"]
+        != {
+            "outer": 5,
+            "inner": 3,
+            "family_policy": "unchanged development union groups",
+        }
+        or recipe["affine"]
+        != {
+            "slope_bounds": [0.8, 1.2],
+            "intercept_bounds": [-0.25, 0.25],
+            "scope": "inner OOF interval distance; identity ties",
+        }
+    ):
+        raise ValueError("Corrected-count prospective recipe differs")
+    return recipe, digest(raw)
+
+
+def corrected_feature_matrix(data: Any) -> tuple[np.ndarray, dict[str, Any]]:
+    """Regenerate raw-structure counts and prove this changes only count storage."""
+    from competition_features import featurize_corrected_counts
+
+    features = featurize_corrected_counts(data.raw_smiles)
+    counts = features[:, :2048]
+    if (
+        features.shape != data.legacy_features.shape
+        or features.dtype != np.dtype("float64")
+        or not np.isfinite(counts).all()
+        or np.any(counts < 0)
+        or np.any(counts > np.iinfo(np.int32).max)
+        or np.any(counts != np.floor(counts))
+    ):
+        raise ValueError(
+            "Corrected feature shape or nonnegative integral counts differ"
+        )
+    wrapped = ((counts.astype(np.int64) + 128) % 256) - 128
+    if not np.array_equal(wrapped, data.legacy_features[:, :2048]):
+        raise ValueError("Corrected counts do not reproduce all legacy count bytes")
+    if not np.array_equal(
+        features[:, 2048:], data.legacy_features[:, 2048:], equal_nan=True
+    ):
+        raise ValueError("Corrected ErG/descriptors differ from legacy features")
+    changed = counts != data.legacy_features[:, :2048]
+    return features, {
+        "mode": "corrected_counts",
+        "matrix_sha256": digest(np.ascontiguousarray(features).tobytes()),
+        "shape": list(features.shape),
+        "dtype": str(features.dtype),
+        "ordered_raw_identity_sha256": digest(
+            canonical(list(zip(data.molecule_ids, data.raw_smiles, strict=True)))
+        ),
+        "all_legacy_count_bytes_reproduced": True,
+        "erg_descriptors_equal_including_nan": True,
+        "changed_count_cells": int(changed.sum()),
+        "changed_molecules": int(np.any(changed, axis=1).sum()),
+    }
 
 
 def affine_fit(
@@ -332,8 +446,18 @@ def evaluate(
     seed: int = 20260905,
     loss: str = "MAE",
     max_cpu_core_hours: float = 100,
+    feature_mode: str = "legacy",
 ) -> dict[str, Any]:
     model_parameters(loss)  # Reject unsupported objectives before creating output.
+    if feature_mode not in {"legacy", "corrected_counts"} or (
+        feature_mode == "corrected_counts"
+        and (
+            loss != "MAE" or seed not in (20260905, 20260906) or max_cpu_core_hours != 5
+        )
+    ):
+        raise ValueError(
+            "Corrected counts require frozen MAE, seed, and five-core-hour budget"
+        )
     if not np.isfinite(max_cpu_core_hours) or not 0 < max_cpu_core_hours <= 1000:
         raise ValueError("Run CPU budget must be finite and in (0, 1000]")
     if ROOT == output.resolve() or ROOT in output.resolve().parents:
@@ -345,14 +469,18 @@ def evaluate(
     with (output.parent / "compute.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         freeze_interrupted_fits(output.parent)
-        if loss == "RMSE":
+        if loss == "RMSE" or feature_mode == "corrected_counts":
             _limit_remaining_cpu(
                 min(
                     max_cpu_core_hours - spent_cpu(output),
                     1000 - spent_cpu(output.parent),
                 )
             )
-        return _evaluate_locked(source, output, seed, loss, max_cpu_core_hours)
+        if feature_mode == "legacy":
+            return _evaluate_locked(source, output, seed, loss, max_cpu_core_hours)
+        return _evaluate_locked(
+            source, output, seed, loss, max_cpu_core_hours, feature_mode
+        )
 
 
 def _evaluate_locked(
@@ -361,6 +489,7 @@ def _evaluate_locked(
     seed: int,
     loss: str = "MAE",
     max_cpu_core_hours: float = 100,
+    feature_mode: str = "legacy",
 ) -> dict[str, Any]:
     started_cpu = time.process_time()
     attempt = time.time_ns()
@@ -379,7 +508,9 @@ def _evaluate_locked(
     )
     status = "failed"
     try:
-        report = _evaluate_scientific(source, output, seed, loss, max_cpu_core_hours)
+        report = _evaluate_scientific(
+            source, output, seed, loss, max_cpu_core_hours, feature_mode
+        )
         status = "complete"
     finally:
         invocation_cpu = (time.process_time() - started_cpu) / 3600
@@ -410,6 +541,7 @@ def _evaluate_scientific(
     seed: int,
     loss: str,
     max_cpu_core_hours: float,
+    feature_mode: str = "legacy",
 ) -> dict[str, Any]:
     wall, cpu = time.monotonic(), time.process_time()
     parameters = model_parameters(loss)
@@ -418,6 +550,8 @@ def _evaluate_scientific(
         if loss == "MAE"
         else "maplight-rmse-inner-oof-affine"
     )
+    if feature_mode == "corrected_counts":
+        candidate = "maplight-corrected-counts-inner-oof-affine"
     execution_commit = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
@@ -439,6 +573,10 @@ def _evaluate_scientific(
     if runtime != expected_runtime:
         raise ValueError("Run the existing locked MapLight research environment")
     data = load_development(source)
+    features = data.legacy_features
+    feature_receipt = None
+    if feature_mode == "corrected_counts":
+        features, feature_receipt = corrected_feature_matrix(data)
     receipts = data.receipts
     if any(data.report["metric_targets_missing_bounds"]):
         raise ValueError(
@@ -486,6 +624,22 @@ def _evaluate_scientific(
         "outer": outer.tolist(),
         "inner": inner.tolist(),
     }
+    if feature_receipt is not None:
+        _, recipe_hash = corrected_recipe(source)
+        identity.update(
+            feature_receipt=feature_receipt,
+            prospective_recipe_sha256=recipe_hash,
+            compiled_manifest_sha256=digest((source / "manifest.json").read_bytes()),
+        )
+        identity["implementation"].update(
+            {
+                name: digest(Path(__file__).with_name(name).read_bytes())
+                for name in ("competition_features.py", "maplight_fixed_features.py")
+            }
+        )
+        identity["cpu_budget_policy"] = (
+            "Corrected-count MAE uses remaining-allocation CPU hard cap under shared lock, including feature construction and scoring"
+        )
     frozen = output / "experiment.json"
     if frozen.exists() and frozen.read_bytes() != canonical(identity):
         raise ValueError("Experiment inputs changed; create a new prospective attempt")
@@ -527,7 +681,7 @@ def _evaluate_scientific(
                 predict = np.flatnonzero(outer_training & (inner[fold] == inner_fold))
                 values, receipt = cached_fit(
                     output / "fits",
-                    data.legacy_features,
+                    features,
                     data.point[:, col],
                     train,
                     predict,
@@ -576,7 +730,7 @@ def _evaluate_scientific(
                 raise RuntimeError("CPU allocation exhausted before outer fitting")
             values, receipt = cached_fit(
                 output / "fits",
-                data.legacy_features,
+                features,
                 data.point[:, col],
                 train,
                 heldout,
@@ -637,14 +791,18 @@ def _evaluate_scientific(
             )
         )
     decision = release_decision(candidate_scores, baseline_scores, paired)
-    if loss == "RMSE":
+    if loss == "RMSE" or feature_mode == "corrected_counts":
         decision = {
             "within_objective_calibration": decision,
             "incumbent_comparison_complete": False,
             "release_eligible_on_paired_metrics": False,
             "promotion_metric_gate": False,
             "final_promotion": False,
-            "reason": "Raw RMSE versus its own affine calibration does not compare either candidate with the current MAE incumbent",
+            "reason": (
+                "Raw RMSE versus its own affine calibration does not compare either candidate with the current MAE incumbent"
+                if feature_mode == "legacy"
+                else "Corrected-count raw versus affine does not compare either candidate with the current MAE incumbent"
+            ),
         }
     report = {
         "status": "complete",
@@ -671,14 +829,23 @@ def _evaluate_scientific(
         "reserved_numeric_targets_opened": 0,
         "release_scope": (
             "Interim calibration may transform authenticated legacy full-train baseline; no reserved targets opened"
-            if loss == "MAE"
-            else "RMSE requires matched comparison against the MAE incumbent, new production estimator fitting and reload verification, and actual RMSE test predictions. Never apply these calibration parameters to the historical MAE CSV; no reserved targets opened"
+            if loss == "MAE" and feature_mode == "legacy"
+            else (
+                "RMSE requires matched comparison against the MAE incumbent, new production estimator fitting and reload verification, and actual RMSE test predictions. Never apply these calibration parameters to the historical MAE CSV; no reserved targets opened"
+                if feature_mode == "legacy"
+                else "Corrected-count estimators require matched comparison, saved/reloaded development-only models and their own predictions. Never apply these calibration parameters to the historical MAE CSV; no reserved targets opened"
+            )
         ),
         "resolved_parameter_variants": {
             digest(canonical(fit["resolved_parameters"])): fit["resolved_parameters"]
             for fit in fits
         },
     }
+    if feature_receipt is not None:
+        report.update(
+            feature_receipt=feature_receipt,
+            prospective_recipe_sha256=identity["prospective_recipe_sha256"],
+        )
     return report
 
 
@@ -689,6 +856,9 @@ def main() -> None:
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--seed", type=int, default=20260905)
     parser.add_argument("--loss", choices=("MAE", "RMSE"), default="MAE")
+    parser.add_argument(
+        "--features", choices=("legacy", "corrected_counts"), default="legacy"
+    )
     parser.add_argument("--max-cpu-core-hours", type=float, default=100)
     args = parser.parse_args()
     if ROOT == args.output.resolve() or ROOT in args.output.resolve().parents:
@@ -703,6 +873,7 @@ def main() -> None:
             seed=args.seed,
             loss=args.loss,
             max_cpu_core_hours=args.max_cpu_core_hours,
+            feature_mode=args.features,
         )
     except Exception as exc:
         # Distinct timestamps preserve failed engineering attempts; no model outcomes discarded.

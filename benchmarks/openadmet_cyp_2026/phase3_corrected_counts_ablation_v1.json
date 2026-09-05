@@ -1,0 +1,87 @@
+{
+  "affine": {
+    "intercept_bounds": [
+      -0.25,
+      0.25
+    ],
+    "scope": "inner OOF interval distance; identity ties",
+    "slope_bounds": [
+      0.8,
+      1.2
+    ]
+  },
+  "cpu_core_hours_per_seed": 5,
+  "cpu_core_hours_total": 10,
+  "data_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "feature_acceptance": [
+    "All corrected counts finite, nonnegative, integral and within int32",
+    "Wrapping every corrected count modulo256 reproduces original signed-int8 bytes",
+    "ErG and descriptors equal original values including allowed NaNs",
+    "Freeze ordered raw molecule identities and full regenerated matrix SHA256"
+  ],
+  "features": {
+    "avalon_count_bits": 1024,
+    "count_dtype": "int32",
+    "descriptor_columns": 200,
+    "erg_columns": 315,
+    "matrix_dtype": "float64",
+    "mode": "corrected_counts",
+    "morgan_chirality": false,
+    "morgan_count_bits": 1024,
+    "morgan_radius": 2,
+    "raw_structures": true
+  },
+  "final_promotion": false,
+  "hypothesis": "Remove signed-int8 count wraparound without changing chemistry, learner, other features or folds",
+  "if_rejected": "Retain negative model-quality result and legacy comparator; keep corrected count helper for future prospectively defined model representations",
+  "implementation_sha256": {
+    "competition_features.py": "67c19a6cc1ab7cdf2aeb36bff258a79d20d5d6e6eb83ceb9703fd0029f5db78a",
+    "maplight_fixed_features.py": "ac3d7bb88eaf1ed9da2e7ca6c3e042f57afa74344ca7094bcb72bfa7e4ebb35a"
+  },
+  "independent_comparison_required": true,
+  "model": {
+    "allow_writing_files": false,
+    "loss_function": "MAE",
+    "random_seed": 1,
+    "random_strength": 2,
+    "task_type": "CPU",
+    "thread_count": 16,
+    "verbose": 0
+  },
+  "nested_folds": {
+    "family_policy": "unchanged development union groups",
+    "inner": 3,
+    "outer": 5
+  },
+  "new_fits_per_seed": 80,
+  "new_fits_total": 160,
+  "potency_diagnostics": {
+    "bands": [
+      "<4.3",
+      "4.3<=pIC50<5",
+      "5<=pIC50<6",
+      ">=6"
+    ],
+    "purpose": "Descriptive only; no potency-mechanism acceptance gate for the count repair"
+  },
+  "recommendation_gate_each_seed": {
+    "max_endpoint_component_mae_harm": 0.02,
+    "paired_family_primary_upper95_max_exclusive": 0,
+    "relative_macro_primary_gain_over_calibrated_incumbent_min": 0.02
+  },
+  "references": "Authenticated same-seed raw and calibrated original MAE OOF; calibrated MAE is incumbent",
+  "release_if_qualified": "Separate saved/reloaded development-only estimator fit and own validated predictions; never transform historical MAE CSV using corrected-model calibration",
+  "reserved_comparison": "closed",
+  "resolved_shared_settings": {
+    "depth": 6,
+    "iterations": 1000,
+    "learning_rate": 0.03
+  },
+  "schema": "cypshift.phase3.corrected_counts_ablation.v1",
+  "seeds": [
+    20260905,
+    20260906
+  ],
+  "status": "prespecified_before_corrected_count_outcomes",
+  "variant_selection": "Among variants passing both repeats, choose lower first-repeat macro primary; exact tie favors raw. No second-seed parameters or post hoc averaging."
+}

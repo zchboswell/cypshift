@@ -26,6 +26,7 @@ from competition_metrics import (
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "benchmarks/openadmet_cyp_2026"
 RECIPE = PUBLIC / "phase3_rmse_ablation_v1.json"
+CORRECTED_RECIPE = PUBLIC / "phase3_corrected_counts_ablation_v1.json"
 SEEDS = (20260905, 20260906)
 VARIANTS = ("baseline", "calibrated")
 BANDS = (
@@ -102,6 +103,153 @@ def _close(actual: Any, expected: Any) -> bool:
     return actual == expected
 
 
+def corrected_recipe(source: Path) -> tuple[dict[str, Any], str]:
+    from competition_runner import corrected_recipe as validate
+
+    return validate(source)
+
+
+def _corrected_fit_evidence(
+    directory: Path,
+    data: DevelopmentData,
+    experiment: dict[str, Any],
+    result: dict[str, Any],
+) -> None:
+    """Rebuild features independently and bind every expected fit/prediction receipt."""
+    from competition_features import featurize_corrected_counts
+    from competition_runner import affine_fit
+
+    matrix = featurize_corrected_counts(data.raw_smiles)
+    counts = matrix[:, :2048]
+    if (
+        matrix.shape != data.legacy_features.shape
+        or matrix.dtype != np.float64
+        or not np.isfinite(counts).all()
+        or np.any(counts < 0)
+        or np.any(counts > 2**31 - 1)
+        or np.any(counts != counts.astype(np.int64))
+    ):
+        raise ValueError("Invalid regenerated corrected count matrix")
+    if not np.array_equal(
+        (counts.astype(np.int64) + 128) % 256 - 128, data.legacy_features[:, :2048]
+    ) or not np.array_equal(
+        matrix[:, 2048:], data.legacy_features[:, 2048:], equal_nan=True
+    ):
+        raise ValueError("Regenerated correction changes legacy feature semantics")
+
+    def canonical(value: Any) -> bytes:
+        return (
+            json.dumps(value, sort_keys=True, indent=2, allow_nan=False) + "\n"
+        ).encode()
+
+    changed = counts != data.legacy_features[:, :2048]
+    receipt = {
+        "mode": "corrected_counts",
+        "matrix_sha256": _hash(matrix.tobytes()),
+        "shape": list(matrix.shape),
+        "dtype": str(matrix.dtype),
+        "ordered_raw_identity_sha256": _hash(
+            canonical(list(zip(data.molecule_ids, data.raw_smiles, strict=True)))
+        ),
+        "all_legacy_count_bytes_reproduced": True,
+        "erg_descriptors_equal_including_nan": True,
+        "changed_count_cells": int(changed.sum()),
+        "changed_molecules": int(np.any(changed, axis=1).sum()),
+    }
+    if (
+        experiment.get("feature_receipt") != receipt
+        or result.get("feature_receipt") != receipt
+    ):
+        raise ValueError("Corrected feature receipt differs from regeneration")
+    outer, inner = np.asarray(experiment["outer"]), np.asarray(experiment["inner"])
+    calibration = {
+        (cell["fold"], cell["endpoint"]): cell for cell in result["outer_calibration"]
+    }
+    for fold in range(5):
+        for col in range(4):
+            inner_predictions = np.full(len(data.names), np.nan)
+            for stage in range(4):
+                train = np.flatnonzero(
+                    (outer != fold)
+                    & data.training_mask[:, col]
+                    & ((inner[fold] != stage) if stage < 3 else True)
+                )
+                predict = np.flatnonzero(
+                    ((outer != fold) & (inner[fold] == stage))
+                    if stage < 3
+                    else outer == fold
+                )
+                material = {
+                    "experiment_sha256": result["experiment_sha256"],
+                    "parameters": experiment["parameters"],
+                    "features_sha256": receipt["matrix_sha256"],
+                    "features_shape": list(matrix.shape),
+                    "features_dtype": str(matrix.dtype),
+                    "training_indices": train.tolist(),
+                    "prediction_indices": predict.tolist(),
+                    "training_targets_sha256": _hash(
+                        np.ascontiguousarray(data.point[train, col]).tobytes()
+                    ),
+                }
+                key = _hash(canonical(material))
+                cell = directory / "fits" / key
+                fit = json.loads((cell / "receipt.json").read_bytes())
+                prediction_bytes = (cell / "prediction.npy").read_bytes()
+                if (
+                    fit.get("key") != key
+                    or fit.get("inputs") != material
+                    or fit.get("prediction_sha256") != _hash(prediction_bytes)
+                ):
+                    raise ValueError(
+                        "Corrected fit receipt differs from regenerated feature identity"
+                    )
+                resolved = fit.get("resolved_parameters", {})
+                if (
+                    resolved.get("loss_function") != "MAE"
+                    or resolved.get("depth") != 6
+                    or resolved.get("iterations") != 1000
+                    or resolved.get("random_seed") != 1
+                    or resolved.get("random_strength") != 2
+                    or resolved.get("task_type") != "CPU"
+                    or not np.isclose(
+                        resolved.get("learning_rate", np.nan), 0.03, atol=1e-8, rtol=0
+                    )
+                ):
+                    raise ValueError("Corrected fit resolved learner settings differ")
+                predictions = np.load(io.BytesIO(prediction_bytes), allow_pickle=False)
+                if (
+                    predictions.shape != (len(predict),)
+                    or not np.isfinite(predictions).all()
+                ):
+                    raise ValueError("Invalid corrected fit predictions")
+                if stage == 3:
+                    with np.load(directory / "oof.npz", allow_pickle=False) as oof:
+                        if not np.array_equal(
+                            predictions, oof["baseline"][predict, col]
+                        ):
+                            raise ValueError(
+                                "Corrected OOF differs from outer fit receipt"
+                            )
+                    eligible = (outer != fold) & np.isfinite(data.point[:, col])
+                    expected_affine = affine_fit(
+                        inner_predictions[eligible],
+                        data.low[eligible, col],
+                        data.high[eligible, col],
+                    )
+                    actual_affine = calibration[fold, col]
+                    if not np.allclose(
+                        expected_affine,
+                        [actual_affine["slope"], actual_affine["intercept"]],
+                        rtol=1e-12,
+                        atol=1e-12,
+                    ):
+                        raise ValueError(
+                            "Corrected affine differs from authenticated inner OOF calibration"
+                        )
+                else:
+                    inner_predictions[predict] = predictions
+
+
 def _verify_sources(experiment: dict[str, Any], result: dict[str, Any]) -> None:
     commit = result.get("execution_git_commit", "")
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
@@ -111,6 +259,8 @@ def _verify_sources(experiment: dict[str, Any], result: dict[str, Any]) -> None:
         "competition_data.py",
         "competition_metrics.py",
     }
+    if experiment.get("candidate") == "maplight-corrected-counts-inner-oof-affine":
+        expected_names |= {"competition_features.py", "maplight_fixed_features.py"}
     if set(experiment.get("implementation", {})) != expected_names:
         raise ValueError("Incomplete experiment implementation receipts")
     for name, expected in experiment["implementation"].items():
@@ -132,10 +282,13 @@ def authenticate(
     seed: int,
     *,
     reference: bool,
+    ablation: str = "rmse",
 ) -> tuple[dict[str, Any], dict[str, np.ndarray], dict[str, str]]:
     """Authenticate one completed experiment before any comparison or scoring."""
     if seed not in SEEDS:
         raise ValueError("Only the two frozen seeds are supported")
+    if ablation not in {"rmse", "corrected_counts"}:
+        raise ValueError("Unknown frozen ablation")
     raw = {
         name: (directory / name).read_bytes()
         for name in ("result.json", "experiment.json", "oof.npz")
@@ -187,6 +340,50 @@ def authenticate(
             raise ValueError("Original MAE public reference hashes differ")
         if result.get("candidate") != "maplight-inner-oof-affine":
             raise ValueError("Original MAE candidate differs")
+    elif ablation == "corrected_counts":
+        parameters = {
+            "loss_function": "MAE",
+            "random_strength": 2,
+            "random_seed": 1,
+            "task_type": "CPU",
+            "thread_count": 16,
+            "verbose": 0,
+            "allow_writing_files": False,
+        }
+        for record in (experiment, result):
+            if (
+                record.get("objective") != "MAE"
+                or record.get("parameters") != parameters
+                or record.get("candidate")
+                != "maplight-corrected-counts-inner-oof-affine"
+            ):
+                raise ValueError(
+                    "Candidate is not the frozen corrected-count MAE ablation"
+                )
+        recipe_raw = CORRECTED_RECIPE.read_bytes()
+        recipe = json.loads(recipe_raw)
+        if (
+            experiment.get("prospective_recipe_sha256") != _hash(recipe_raw)
+            or result.get("prospective_recipe_sha256") != _hash(recipe_raw)
+            or experiment.get("compiled_manifest_sha256")
+            != recipe["data_manifest_sha256"]
+            or result.get("max_cpu_core_hours") != 5
+        ):
+            raise ValueError("Corrected experiment recipe or budget differs")
+        if not 0 <= result.get("budget_accounted_cpu_core_hours", float("inf")) <= 5:
+            raise ValueError("Corrected experiment exceeded its accounted CPU budget")
+        if not re.fullmatch(r"[0-9a-f]{40}", result.get("execution_git_commit", "")):
+            raise ValueError("Invalid execution source commit")
+        committed = subprocess.check_output(
+            [
+                "git",
+                "show",
+                f"{result['execution_git_commit']}:benchmarks/openadmet_cyp_2026/phase3_corrected_counts_ablation_v1.json",
+            ],
+            cwd=ROOT,
+        )
+        if _hash(committed) != _hash(recipe_raw):
+            raise ValueError("Corrected recipe differs from execution commit")
     else:
         parameters = {
             "loss_function": "RMSE",
@@ -251,6 +448,8 @@ def authenticate(
         ):
             raise ValueError("Outer calibration predictions differ")
     _verify_sources(experiment, result)
+    if not reference and ablation == "corrected_counts":
+        _corrected_fit_evidence(directory, data, experiment, result)
     return {"experiment": experiment, "result": result}, arrays, hashes
 
 
@@ -289,10 +488,15 @@ def potency_bands(data: DevelopmentData, prediction: np.ndarray) -> dict[str, An
 
 
 def compare_seed(
-    data: DevelopmentData, candidate: Path, reference: Path, seed: int
+    data: DevelopmentData,
+    candidate: Path,
+    reference: Path,
+    seed: int,
+    *,
+    ablation: str = "rmse",
 ) -> dict[str, Any]:
     candidate_meta, candidate_arrays, candidate_hashes = authenticate(
-        candidate, data, seed, reference=False
+        candidate, data, seed, reference=False, ablation=ablation
     )
     reference_meta, reference_arrays, reference_hashes = authenticate(
         reference, data, seed, reference=True
@@ -311,7 +515,7 @@ def compare_seed(
     )
     scores, bands = {}, {}
     for role, arrays, meta in (
-        ("rmse", candidate_arrays, candidate_meta),
+        (ablation, candidate_arrays, candidate_meta),
         ("mae", reference_arrays, reference_meta),
     ):
         scores[role], bands[role] = {}, {}
@@ -332,7 +536,7 @@ def compare_seed(
     for variant in VARIANTS:
         comparisons[variant] = {}
         for baseline in VARIANTS:
-            a, b = scores["rmse"][variant], scores["mae"][baseline]
+            a, b = scores[ablation][variant], scores["mae"][baseline]
             primary = b["macro_bootstrap_mean_st_rae"]
             if primary <= 0:
                 raise ValueError("Nonpositive incumbent primary denominator")
@@ -348,7 +552,7 @@ def compare_seed(
             changes = {}
             for band, _, _ in BANDS:
                 av, bv = (
-                    bands["rmse"][variant][band]["macro_interval_mae"],
+                    bands[ablation][variant][band]["macro_interval_mae"],
                     bands["mae"][baseline][band]["macro_interval_mae"],
                 )
                 changes[band] = av - bv if av is not None and bv is not None else None
@@ -363,7 +567,9 @@ def compare_seed(
                     and paired["upper_95"] < 0
                     and max(harms.values()) <= 0.02
                 ),
-                "tail_mechanism_gate_this_seed": bool(
+                "tail_mechanism_gate_this_seed": None
+                if ablation == "corrected_counts"
+                else bool(
                     changes["ge6"] is not None
                     and changes["lt4.3"] is not None
                     and changes["ge6"] <= -0.10
@@ -384,6 +590,8 @@ def compare(
     candidates: tuple[Path, Path],
     references: tuple[Path, Path],
     output: Path,
+    *,
+    ablation: str = "rmse",
 ) -> dict[str, Any]:
     """Require both repeats and atomically publish a new readonly private JSON."""
     output = output.resolve()
@@ -391,10 +599,14 @@ def compare(
         raise FileExistsError("Comparison output already exists")
     if any((parent / ".git").exists() for parent in (output.parent, *output.parents)):
         raise ValueError("Comparison output must be outside Git")
-    recipe, recipe_hash = _recipe(source)
+    if ablation not in {"rmse", "corrected_counts"}:
+        raise ValueError("Unknown frozen ablation")
+    recipe, recipe_hash = (
+        corrected_recipe(source) if ablation == "corrected_counts" else _recipe(source)
+    )
     data = load_development(source)
     repeats = [
-        compare_seed(data, candidates[i], references[i], seed)
+        compare_seed(data, candidates[i], references[i], seed, ablation=ablation)
         for i, seed in enumerate(SEEDS)
     ]
     decisions = {}
@@ -407,9 +619,9 @@ def compare(
             "same_primary_improvement_direction_both_seeds": all(
                 v["relative_primary_gain"] > 0 for v in evidence
             ),
-            "tail_mechanism_supported_both_seeds": all(
-                v["tail_mechanism_gate_this_seed"] for v in evidence
-            ),
+            "tail_mechanism_supported_both_seeds": None
+            if ablation == "corrected_counts"
+            else all(v["tail_mechanism_gate_this_seed"] for v in evidence),
         }
     qualified = [
         v for v in VARIANTS if decisions[v]["supported_for_interim_recommendation"]
@@ -417,7 +629,7 @@ def compare(
     selected = (
         min(
             qualified,
-            key=lambda v: repeats[0]["scores"]["rmse"][v][
+            key=lambda v: repeats[0]["scores"][ablation][v][
                 "macro_bootstrap_mean_st_rae"
             ],
         )
@@ -453,6 +665,13 @@ def compare(
         "release_authorized": False,
         "reserved_numeric_targets_opened": 0,
     }
+    if ablation == "corrected_counts":
+        report.update(
+            schema="cypshift.phase3.matched_count_comparison.v1",
+            tail_criteria=None,
+            tail_mechanism_reference=None,
+            ablation=ablation,
+        )
     raw = (
         json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + "\n"
     ).encode()
@@ -480,12 +699,16 @@ def main() -> None:
     parser.add_argument("--reference-first", type=Path, required=True)
     parser.add_argument("--reference-second", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--ablation", choices=("rmse", "corrected_counts"), default="rmse"
+    )
     args = parser.parse_args()
     result = compare(
         args.development,
         (args.candidate_first, args.candidate_second),
         (args.reference_first, args.reference_second),
         args.output,
+        ablation=args.ablation,
     )
     print(
         json.dumps(

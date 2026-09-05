@@ -141,26 +141,51 @@ See [SVR results](../../benchmarks/openadmet_cyp_2026/phase3_tanimoto_svr_v1_res
 
 ## Next action
 
-Complete the signed D-158 result/hardware milestone and its PR integration.
-Both independent experiment audits passed. Do not repeat finished RMSE/SVR fits
-or spend another cycle on offsets alone. The genuine sparse count overflow still
-needs its declared isolated correction ablation; preserve the legacy comparator.
+Signed D-158 (`d292c69`) passed all PR #195 CI jobs, was integrated locally by
+fast-forward and pushed to main. Both independent experiment audits passed.
+Do not repeat finished RMSE/SVR fits or spend another cycle on offsets alone.
+The genuine sparse count overflow is the next isolated ablation; preserve the
+legacy comparator. Its implementation and independent review are complete,
+including proof that the reported affine coefficients come from authenticated
+inner OOF predictions. The [frozen recipe](../../benchmarks/openadmet_cyp_2026/phase3_corrected_counts_ablation_v1.json)
+uses the same MAE learner, two seeds and 80 fits per seed, capped at five
+CPU-core-hours per seed. Run from the signed reviewed D-159 implementation after
+focused checks, while full PR CI runs. Any release requires CI/integration,
+both-seed incumbent gates and new saved/reloaded production estimators. No
+corrected-count official fits or new CSVs are claimed by this prospective record.
 
-Prepare a separate private ROCm/PyTorch runtime with hashed dependencies and a
-bounded synthetic device/backward/save-reload check; no system driver changes.
-Preparation is active under private `phase3/gpu-readiness-v1`: at most 2.5 GiB
-downloads / 12 GiB temporary-plus-installed space and 20 minutes for preparation.
-Do not duplicate the job; inspect its receipts before resuming. The shared user
+GPU readiness is now verified in private `phase3/gpu-readiness-v1/venv`:
+Radeon RX 7900 XT / gfx1100, PyTorch 2.12.0 + ROCm 7.14.0, Python 3.12.3.
+All 19 packages have reviewed source/size/SHA receipts. The frozen synthetic
+test passed matrix/backward checks, 20 masked Adam steps and exact prediction
+parity after a fresh checkpoint reload; peak reserved GPU memory was 164 MiB.
+No official GPU training has occurred. A duplicated package cache exceeded the
+12-GiB storage cap before GPU import; a recorded cache-only repair restored
+7.32 GiB usage without changing versions or criteria. No system driver or
+historical environment changes. See [GPU readiness evidence](../../benchmarks/openadmet_cyp_2026/phase3_gpu_readiness_v1.json).
+Do not reinstall or rerun completed readiness checks. The shared user
 `cypshift.slice` CPU/RAM limits are verified at 24 CPU equivalents / 20 GiB;
 use that slice and inherited CPU affinity for future jobs. cpuset delegation is
 unavailable, so affinity is cooperative rather than a hard cpuset boundary.
-GPU availability must be demonstrated, not inferred from hardware inventory.
-Then freeze a compact direct-only / genuine-primary-screen auxiliary / shuffled-
+Freeze a compact direct-only / genuine-primary-screen auxiliary / shuffled-
 auxiliary MLP protocol. Initial auxiliary intake stays on established development
 identities with family-safe masks and explicit assay/replicate semantics.
+The source metadata audit finds 3,493 development molecules with screen records,
+415 without, and exactly one published row per molecule/enzyme. Use no
+aggregation. Preserve the actual 49.5049505-uM concentration and quote-aware
+six-field prefix parsing; an exact 50-uM filter or naive comma split is wrong.
+Finite response availability remains unverified: no screen response has yet
+been decoded. See [intake metadata](../../benchmarks/openadmet_cyp_2026/phase3_primary_screen_metadata_v1.json).
 Honest grouped stopping plus inner refitting requires 105 network fits per
 repeat across all three arms, not 60. Freeze budgets after representative
-synthetic timing, before official outcomes. Keep discovery/query episode design
+synthetic timing, before official outcomes. The matching 4,296→256→128→8 shape
+now profiles at 24.375 ms per full-size synthetic epoch / 260 MiB peak reserved
+GPU memory. Charging 105 fits × 200 epochs projects about 8.85 minutes of
+training per repeat using the slowest observed epoch, excluding startup,
+validation, scoring and I/O; this is not a guaranteed runtime bound. The initial
+profiling filename collision failed before optimizer execution and is preserved.
+See [throughput evidence](../../benchmarks/openadmet_cyp_2026/phase3_mlp_synthetic_throughput_v2.json).
+Keep discovery/query episode design
 as a distinct diagnostic with query membership fixed before outcomes.
 
 The first affine-MAE CSV remains the interim recommendation; final reserve

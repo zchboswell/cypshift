@@ -179,10 +179,15 @@ and [SVR evidence](phase3_tanimoto_svr_v1_result.json).
 
 The user authorizes future work to use 75% of CPU capacity and the discrete GPU
 at full compute utilization. The audited machine has 32 logical CPUs, 30.46 GiB
-RAM and an AMD gfx1100 GPU with about 20 GiB VRAM. The existing CatBoost runtime
-cannot train on that AMD GPU. Preserve completed and running recipes; establish
-a separate pinned ROCm/PyTorch runtime before GPU experiments. The active phase
-records the prospective shared 24-CPU-equivalent and 20-GiB host-memory envelope.
+RAM and a Radeon RX 7900 XT / gfx1100 GPU with about 20 GiB VRAM. The historical
+CatBoost runtime remains unchanged. A separate pinned ROCm/PyTorch environment
+now passes actual GPU matrix/backward checks, 20 synthetic Adam steps and exact
+prediction parity after checkpoint reload. All 19 package artifacts have verified
+hashes. A duplicate-cache storage breach was caught before GPU execution and
+repaired without changing packages or test criteria. This establishes synthetic
+readiness, not official-data training performance. The shared 24-CPU-equivalent /
+20-GiB host-memory limits are active and verified. See
+[GPU readiness evidence](phase3_gpu_readiness_v1.json).
 
 A compact direct-only versus genuine-auxiliary versus shuffled-auxiliary MLP
 is a stronger first GPU hypothesis than another encoder installation. Use
@@ -196,6 +201,17 @@ official fits. This is a research priority, not a qualified candidate.
 [Organizer assay methods](https://openadmet.github.io/octant-cyp-inhib-blog-post/)
 and [the organizers' PXR auxiliary-data lessons](https://openadmet.ghost.io/dont-look-back-in-error-what-we-learned-predicting-pxr-induction-part-i/)
 motivate the hypothesis without establishing CYP transfer.
+
+The quote-aware primary-screen metadata audit verifies 17,504 rows covering
+4,376 molecules. Of the existing development molecules, 3,493 have four screen
+records and 415 have none. No molecule/enzyme pair is duplicated: use each
+published estimate once, with no aggregation. Preserve the actual concentration
+49.5049505 uM rather than filtering for exactly 50 uM. Quoted metadata prefixes
+occur in 784 rows, including SMILES containing commas; a naive comma split is
+incorrect. The future compiler must exclude nondevelopment numeric suffixes
+before decoding and retain assay context. No screen response values have yet
+been decoded, so finite auxiliary-label coverage remains unverified. See
+[the intake metadata](phase3_primary_screen_metadata_v1.json).
 
 Aggregate intake, support and hardware receipts appear in
 [the audit follow-up](phase3_audit_followup_v1.json). Detailed scripts, the

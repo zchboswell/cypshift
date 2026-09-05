@@ -1,0 +1,67 @@
+{
+  "accuracy_claim": false,
+  "engineering_failure": "Preserved v1 filename profile.py shadowed stdlib profile during optimizer construction; zero optimizer steps; v1 nested timing is not valid full-invocation cost. V2 uses a non-conflicting filename and completed-step counters with unchanged workload and criteria.",
+  "invocation_process_CPU_seconds": 7.851820169,
+  "invocation_wall_seconds": 4.860462962999009,
+  "official_data_opened": false,
+  "official_model_fits": 0,
+  "optimizer_steps_completed": 682,
+  "parameter_count": 1133960,
+  "peak_allocated_bytes": 249439232,
+  "peak_reserved_bytes": 272629760,
+  "plan_sha256": "724a1f3033a88eb542ae51961f1d436433f786fa59fcf2bbb4afcee3d124307b",
+  "private_result_sha256": "2d882448bbe9d08c2f969c126bb9ca7b8e2b8531cc95486d3cf0a1a17b251c27",
+  "projection": {
+    "at_mean_epoch_GPU_job_wall_hours_per_repeat": 0.14218670987505297,
+    "at_slowest_measured_epoch_GPU_job_wall_hours_per_repeat": 0.1474975891809057,
+    "at_slowest_measured_epoch_two_repeats_GPU_job_wall_hours": 0.2949951783618114,
+    "fits_per_repeat": 105,
+    "full_N_for_every_fit": 3908,
+    "max_epochs_per_fit": 200,
+    "scope": "Conservative full-N/no-early-stopping training-work projection; slowest observed epoch is not a guaranteed future upper bound. Excludes105fresh-process startups,features,stopping validation,calibration,scoring,checkpoint I/O and deployment. Per-step GPU synchronization is included; noaccuracyorlearningchoiceclaim."
+  },
+  "runtime": {
+    "GPU_architecture": "gfx1100",
+    "GPU_name": "AMD Radeon RX 7900 XT",
+    "HIP": "7.14.60850",
+    "interop_threads": 1,
+    "intraop_threads": 1,
+    "torch": "2.12.0+rocm7.14.0"
+  },
+  "schema": "cypshift.synthetic_mlp_throughput.v1",
+  "script_sha256": "33777d952be0e356c263485ccc2930fe62d3237069ecde2f082451fb4dbddc72",
+  "slice_limits": {
+    "cpu.max": "2400000 100000",
+    "memory.max": "21474836480"
+  },
+  "status": "completed",
+  "steps_per_epoch": 31,
+  "synchronized_epoch_seconds_summary": {
+    "maximum": 0.025285301002440974,
+    "mean": 0.02437486455000908,
+    "median": 0.024379415501243784,
+    "minimum": 0.023768167000525864,
+    "n": 20
+  },
+  "synchronized_step_seconds_summary": {
+    "maximum": 0.0011771989993576426,
+    "mean": 0.0007743980275277393,
+    "median": 0.0007632810029463144,
+    "minimum": 0.0007318210009543691,
+    "n": 620
+  },
+  "synthetic_mask_counts": [
+    1110,
+    1024,
+    1182,
+    1881,
+    3493,
+    3493,
+    3493,
+    3493
+  ],
+  "synthetic_training_runs": 1,
+  "timed_epochs": 20,
+  "timed_steps": 620,
+  "warmup_epochs": 2
+}
