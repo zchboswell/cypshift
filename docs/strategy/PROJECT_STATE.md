@@ -177,12 +177,24 @@ run the unchanged second105fits; both-seed gates still govern recommendation.
 Smaller prediction extremes alone do not qualify a model. Freeze signed reviewed
 source before official fits; full exact-head PR checks precede integration/release.
 
-The separate TDI implementation is under review: original3908development only,
-no extra negatives, original direct-availability folds, both-class support before
-fitting, inner-OOF thresholds and logistic/boosted comparison. A zero-fit intake
-may publish an authenticated class bundle after complete identity exclusion; pin
-its exact manifest before classifier fits. Production and an actual750-row CSV
-remain separate required work after useful validation.
+D-162 freezes the first TDI classifier experiment after all160 support cells
+pass. Bundle `tdi-development-v1` manifest
+`b66bd58cf1a61b3a198dbe7cad3b95ca21020342cce76a6d0f34ed547289e9af`
+contains original3908development only;997reserved+1240extras were discarded
+before class decoding. Actual-wrapper synthetic MCC parity is exact. Compare
+logistic and CatBoost on shared4096binary Morgan bits, original5outer/3inner
+folds, inner-OOF MCC thresholds/model selection and both frozen seeds.80fits per
+seed; stop after first if neither procedure can qualify. Useful logistic remains
+fallback; inner-selected procedure needs additional>=.02macroMCC and positive
+paired-family improvement on both seeds. No standalone CatBoost rescue.
+[Recipe](../../benchmarks/openadmet_cyp_2026/phase3_tdi_v1.json) and
+[intake](../../benchmarks/openadmet_cyp_2026/phase3_tdi_intake_support_v1.json).
+
+Independently reconstruct retained models, inner thresholds, OOF classes and
+metrics before production. A qualified TDI recipe needs8logistic or14selected-
+procedure production fits and an actual validated750-row binary CSV. No official
+TDI classifier has been fitted at this prospective freeze. The Morgan-only first
+seed is running from signed741a084 on PR198; inspect live state before proceeding.
 
 Check private `active-compute.json`, result files and live processes first to avoid
 duplicating completed jobs. No new production model or upload is ready.

@@ -1,0 +1,159 @@
+{
+  "budgets": {
+    "CPU_core_hours_per_seed": 5,
+    "CPU_core_hours_program": 1000,
+    "external_deadline": "Independent2700second process-group deadline required around official CLI; internal SIGALRM andRLIMIT_CPU also active",
+    "failed_attempts": "Charge same-seed cumulative wall/CPU; interrupted unknownwork charged conservatively before retry",
+    "occupied_wall_seconds_per_seed": 2700,
+    "shared_CPU_equivalents": 24,
+    "shared_lock": "phase3/compute.lock",
+    "shared_memory_bytes": 21474836480,
+    "shared_slice": "cypshift.slice"
+  },
+  "data_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "family_mapping_sha256": "e5d6051e7a060a7194e361222814f988dc5d693fe1a6fbbe40a8b969df79dbc8",
+  "features": {
+    "bits": 4096,
+    "chirality": true,
+    "descriptors": false,
+    "dtype": "uint8",
+    "feature_selection": false,
+    "logistic_storage": "float64CSR",
+    "mode": "binary_raw_morgan",
+    "radius": 2,
+    "scaling": false,
+    "shared_between_learners": true
+  },
+  "final_promotion": false,
+  "fit_count": "2endpoints*5outer*(2learners*3inner+2outerlearners);10extraouterfits versus70selected-only fits belong to whichever learner inner selection did not choose",
+  "folds": {
+    "assignment": "Original balanced_nested_folds(groups,original_direct_training_mask,seed)",
+    "inner": 3,
+    "outer": 5,
+    "support": "Both classes in every train/assessment population, at least two positive and two negative families in every assessment population, both seeds before any fit",
+    "unsupported": "Stop before fits; separate prospective3outer/3inner design permitted on same groups; no seed search or outcome repair"
+  },
+  "hypothesis": "A frozen nonlinear learner selected only inside grouped inner folds can improve TDI classification over a useful logistic fallback. Produce first actual TDI file only after both-seed qualification.",
+  "learners": {
+    "catboost": {
+      "allow_writing_files": false,
+      "class_weights": null,
+      "depth": 6,
+      "iterations": 1000,
+      "learning_rate": 0.03,
+      "loss_function": "Logloss",
+      "random_seed": 1,
+      "random_strength": 2,
+      "task_type": "CPU",
+      "thread_count": 16,
+      "use_best_model": false,
+      "verbose": false
+    },
+    "logistic": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1.0,
+      "max_iter": 1000,
+      "penalty": "l2",
+      "random_state": 1,
+      "solver": "liblinear",
+      "tol": 0.0001,
+      "warm_start": false
+    }
+  },
+  "native_defaults": "Remaining native optimizer defaults are fixed by pinned builds and recorded from fitted estimators; no automatic balancing, eval_set or early stopping",
+  "new_fits_per_seed": 80,
+  "new_fits_total": 160,
+  "numeric_failures": "Convergence warnings or invalid probabilities fail; no outcome-driven tolerance/iteration repair",
+  "population": {
+    "counts": {
+      "CYP2D6_is_TDI": {
+        "missing": 2725,
+        "negative": 916,
+        "positive": 267
+      },
+      "CYP3A4_is_TDI": {
+        "missing": 2018,
+        "negative": 1268,
+        "positive": 622
+      }
+    },
+    "extras_included": 0,
+    "labels": "Published0/1 with raw tokens and missing mask, never derived from other assay columns",
+    "original_development_only": 3908,
+    "published_endpoints": [
+      "CYP2D6_is_TDI",
+      "CYP3A4_is_TDI"
+    ],
+    "reserve": "closed"
+  },
+  "production_if_qualified": {
+    "folds": "balanced_group_folds(existing_groups,original_direct_training_mask,3,seed20260905),support preflight beforefit",
+    "handoff": "ImmutableactualCSV/hash/manifest/validatorreceipt;useruploadsmanually",
+    "logistic_fits": 8,
+    "scope": "Full-development3foldOOF thresholds/model choice then two final classifiers; same frozen policy, saved/reloaded models and actual750blinded predictions",
+    "selected_procedure_fits_max": 14,
+    "submission_columns": [
+      "SMILES",
+      "Molecule_Name",
+      "CYP2D6_is_TDI",
+      "CYP3A4_is_TDI"
+    ],
+    "validation": "750uniqueexactidentities/rawSMILES/order,complete0/1,bothclassesperep,modelreloadparity; noforcedflips,testthresholdadjustmentorreserve"
+  },
+  "release_eligible": false,
+  "repeat2_stop_rule": "Stop if seed1 integrity fails or neither logistic usefulness nor selected usefulness+superiority could qualify; otherwise repeat2 unchanged. No recommendation without both seeds.",
+  "retention": "All80estimators, original probabilities, inner threshold/model choices, exact IDs/features/labels/source/runtime receipts; fresh reload probability parity atol1e-12 rtol0",
+  "runtime": {
+    "catboost": "1.2.1",
+    "numpy": "1.25.2",
+    "pandas": "2.0.3",
+    "python": "3.10.13",
+    "rdkit": "2023.3.3",
+    "scikit-learn": "1.3.0",
+    "scipy": "1.11.2"
+  },
+  "schema": "cypshift.phase3.tdi_recipe.v1",
+  "scoring": {
+    "bootstrap_seed": 0,
+    "degenerate_mcc": 0,
+    "interval": "percentile2.5/97.5, degeneracy frequency retained",
+    "paired_family_samples": 2000,
+    "paired_family_seed": 20260906,
+    "paired_metric": "pooled macroMCC, candidate minus reference",
+    "primary": "mean of1000name-sorted label-masked endpoint MCC bootstrap means, macroaveraged",
+    "space_revision": "453a39a27c9671aa6790bbc2d618606a9cc556c3",
+    "standard_deviation_ddof": 1,
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+  },
+  "seeds": [
+    20260905,
+    20260906
+  ],
+  "selection": "Choose inner-selected procedure only if both-seed usefulness and superiority gates pass; otherwise useful both-seed logistic. CatBoost standalone diagnostic not an outcome-selected rescue. None useful means no submission.",
+  "status": "prospective_intake_supported_before_official_fits",
+  "superiority_gate_both_seeds": {
+    "paired_selected_minus_logistic_lower95_min_exclusive": 0,
+    "selected_also_useful": true,
+    "selected_minus_logistic_macro_public_mcc_min": 0.02
+  },
+  "tdi_bundle_manifest_sha256": "b66bd58cf1a61b3a198dbe7cad3b95ca21020342cce76a6d0f34ed547289e9af",
+  "tdi_source_sha256": "b458f599a792412292664386e8f18adc5d4a4129d6bd212ae80a60fb9b96bb60",
+  "threshold": {
+    "candidates": "sorted unique({0.5} union inner OOF probabilities)",
+    "model_tie": "logistic",
+    "optimization": "highest pooledMCC",
+    "population": "labeled pooled inner OOF only",
+    "positive_rule": "probability>=threshold",
+    "ties": "closest0.5 then lower threshold, exact score ties",
+    "unsupported_learner": "selection score negative infinity;0.5 diagnostic/fallback threshold only; both learners unsupported fails seed",
+    "valid_partition": "both predicted classes in labeled inner OOF"
+  },
+  "usefulness_gate_both_seeds": {
+    "each_endpoint_pooled_mcc_min_exclusive": 0,
+    "macro_public_mcc_min_exclusive": 0,
+    "paired_vs_constant_zero_lower95_min_exclusive": 0
+  }
+}

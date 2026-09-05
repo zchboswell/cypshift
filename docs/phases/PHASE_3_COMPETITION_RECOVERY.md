@@ -88,6 +88,13 @@ replay passed for all210 original fits. These results do not identify a bug in
 the older tree submission. The TDI track proceeds separately with original
 3908development classes and explicit support checks; extra negatives are excluded.
 
+D-162 freezes a separate first TDI entry: original3908development, no extras,
+original family folds with all160class-support cells verified;80fits perseed
+for logistic and CatBoost with inner-only MCC threshold/model selection. Use
+both-seed usefulness and>=.02selected-procedure superiority; retain useful
+logistic fallback. After independent saved-model/lineage/metric audit, production
+still requires8or14fits plus a complete validated750-row manual submission CSV.
+
 ## Small, recoverable implementation
 
 Use the existing feature/model kernels and locked research environments with a

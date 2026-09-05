@@ -1,0 +1,193 @@
+{
+  "all_support_cells_pass": true,
+  "class_counts": {
+    "CYP2D6_is_TDI": {
+      "missing": 2725,
+      "negative": 916,
+      "positive": 267
+    },
+    "CYP3A4_is_TDI": {
+      "missing": 2018,
+      "negative": 1268,
+      "positive": 622
+    }
+  },
+  "code_sha256": {
+    "competition_data.py": "f6da172da756ec02fd858d5ee79012853eb89c4ab9a2a3e48ccec495a57ad922",
+    "competition_tdi_data.py": "f707824bf5b0af5c946275e94fd6c2b6a0f28794cbeac9f16b8b45d7c8bf35f5",
+    "competition_tdi_metrics.py": "1b9bea6139ef83856b2302edc276f06633a4d2ba0cd1d38da47a7168a4efabf3"
+  },
+  "cpu_seconds": 16.41198401,
+  "development_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "estimator_synthetic_verification": {
+    "initial_attempt": "Shared lock unavailable; zero fits. Subsequent explicitly approved synthetic-only invocation ran concurrently under shared slice,16CPU affinity, no official lock or active output mutation.",
+    "official_data_reads": 0,
+    "official_fits": 0,
+    "records": {
+      "catboost": {
+        "finite": true,
+        "maximum_reload_absolute_error": 0.0,
+        "parameters": {
+          "allow_writing_files": false,
+          "class_weights": null,
+          "depth": 6,
+          "iterations": 1000,
+          "learning_rate": 0.03,
+          "loss_function": "Logloss",
+          "random_seed": 1,
+          "random_strength": 2,
+          "task_type": "CPU",
+          "thread_count": 16,
+          "use_best_model": false,
+          "verbose": false
+        },
+        "prediction_shape": [
+          12
+        ]
+      },
+      "logistic": {
+        "finite": true,
+        "maximum_reload_absolute_error": 0.0,
+        "parameters": {
+          "C": 1.0,
+          "class_weight": null,
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1.0,
+          "max_iter": 1000,
+          "penalty": "l2",
+          "random_state": 1,
+          "solver": "liblinear",
+          "tol": 0.0001,
+          "warm_start": false
+        },
+        "prediction_shape": [
+          12
+        ]
+      }
+    },
+    "resources": {
+      "fit_cpu_core_hours": 0.000728335851111111,
+      "invocation_cpu_core_hours": 0.0007849105666666667,
+      "occupied_wall_seconds": 0.7868499969990808,
+      "overhead_cpu_core_hours": 5.657471555555565e-05,
+      "prior": {
+        "program_cpu_core_hours": 9.274620667616789,
+        "seed_cpu_core_hours": 0.0,
+        "seed_occupied_wall_seconds": 0.0
+      },
+      "status": "complete"
+    },
+    "result_sha256": "9939f6eacf3f50c2e96b80663031f2e3cdac6c4872785b8ab89810f5404c7c60",
+    "synthetic_fits": 2
+  },
+  "excluded_before_class_decoding": {
+    "extra": 1240,
+    "reserved": 997
+  },
+  "execution_script_sha256": "36fe43ce3065ba4aed07234a9630ec2ae4fefa1acc6bbfe32c7365f66137d090",
+  "extra_class_fields_decoded": 0,
+  "fits": 0,
+  "fold_sha256": {
+    "20260905": "926e709700d344180d322a07dbb387b5d2cd908fe758e1af481a5456cb9f02b0",
+    "20260906": "2897253652589608032bed374ea8bffb44221896a33212c35d6c133b801d56fc"
+  },
+  "independent_review": "Root read data/metrics/plan/script; separate runner reviewer verified frozen intake/source/fold exclusion before execution.",
+  "intake_result_sha256": "0122f635fea899ce5d45c31529f30aa564fd19169117ccdef24f1369fa16b486",
+  "manifest_sha256": "b66bd58cf1a61b3a198dbe7cad3b95ca21020342cce76a6d0f34ed547289e9af",
+  "mapping_sha256": "e5d6051e7a060a7194e361222814f988dc5d693fe1a6fbbe40a8b969df79dbc8",
+  "metric_parity_result_sha256": "68c73985db3a96b7a7d54b2df64233441f1cdbe48459aea8df244aae4f5bcbf4",
+  "minimum_class_families_by_population": {
+    "inner_assessment": {
+      "CYP2D6_is_TDI": {
+        "0": 225,
+        "1": 61
+      },
+      "CYP3A4_is_TDI": {
+        "0": 291,
+        "1": 132
+      }
+    },
+    "inner_train": {
+      "CYP2D6_is_TDI": {
+        "0": 464,
+        "1": 130
+      },
+      "CYP3A4_is_TDI": {
+        "0": 595,
+        "1": 278
+      }
+    },
+    "outer_assessment": {
+      "CYP2D6_is_TDI": {
+        "0": 171,
+        "1": 44
+      },
+      "CYP3A4_is_TDI": {
+        "0": 218,
+        "1": 100
+      }
+    },
+    "outer_train": {
+      "CYP2D6_is_TDI": {
+        "0": 716,
+        "1": 203
+      },
+      "CYP3A4_is_TDI": {
+        "0": 904,
+        "1": 439
+      }
+    }
+  },
+  "official_wrapper_synthetic_parity": {
+    "cases": [
+      {
+        "case": "unequal_missing_shuffled_names",
+        "macro_mcc_mean": -0.12182512980576796,
+        "maximum_endpoint_macro_mean_std_difference": 0.0,
+        "passed": true
+      },
+      {
+        "case": "constant_zero",
+        "macro_mcc_mean": 0.0,
+        "maximum_endpoint_macro_mean_std_difference": 0.0,
+        "passed": true
+      },
+      {
+        "case": "tiny_degenerate",
+        "macro_mcc_mean": 0.28675,
+        "maximum_endpoint_macro_mean_std_difference": 0.0,
+        "passed": true
+      }
+    ],
+    "cpu_seconds": 13.011339975,
+    "fits": 0,
+    "implementation_sha256": "1b9bea6139ef83856b2302edc276f06633a4d2ba0cd1d38da47a7168a4efabf3",
+    "initial_engineering_attempt": "Stopped at import before scoring because locked environment lacks loguru; no package added",
+    "logging_only_shim": "Missing loguru replaced by no-op info/debug logger; official scoring source unchanged",
+    "official_data_reads": 0,
+    "official_source_sha256": {
+      "config": "5c1c79c3d89e2f73ede6d74672fccab8fcdd429d56db603343585a30979331b1",
+      "custom_scoring_functions": "c0ee287c06c0301d4b3bfd74559b90eb1bd85db68b75b7d018ae92280c0e1dd3",
+      "evaluate_predictions": "593fefdfb224030daf0fc55a1c62289177389842d55027dc4e4153018496e7c7",
+      "utils": "c6ddfc1e8d8cf26c77567125680da8b9656bfa43fca31f62f0e333e21aba7cb6"
+    },
+    "runtime": {
+      "numpy": "1.25.2",
+      "python": "3.10.13"
+    },
+    "schema": "cypshift.private.tdi_metric_official_parity.v1",
+    "scope": "Synthetic fixtures only; actual pinned tutorial wrapper, all1000samples/twoendpoint/macro mean and sampleSD",
+    "script_sha256": "943bbf63780ad7ac207e1ea836f6d345a6f0af5b28edd98917a56f2356259056",
+    "status": "passed",
+    "wall_seconds": 13.022474794001027
+  },
+  "other_assay_response_fields_decoded": 0,
+  "plan_sha256": "ee129e8511e2acb5947500d548c028bb9414b91586249f1774a7b74625ac2b16",
+  "reserved_numeric_targets_opened": 0,
+  "schema": "cypshift.phase3.tdi_intake_support.v1",
+  "source_sha256": "b458f599a792412292664386e8f18adc5d4a4129d6bd212ae80a60fb9b96bb60",
+  "status": "supported",
+  "support_cells": 160,
+  "wall_seconds": 19.597908793999522
+}

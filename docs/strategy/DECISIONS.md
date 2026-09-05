@@ -6493,3 +6493,79 @@ features, mode/recipe/source tampering rejection and stop-only futility semantic
 plus existing family/calibration/worker accounting tests and independent review.
 Reversal: retain the working calibrated-MAE recommendation and reject the new
 recipe if either applicable seed fails; future changes require a new hypothesis.
+
+## D-162 — Establish the first independently validated TDI entry
+
+Date: 2026-09-05 UTC; prospective before official classifier fits.
+
+The approved class intake passes all160 support cells across the unchanged
+original3908development population, five outer/three inner folds and seeds
+20260905/20260906. Fold assignment uses original direct-label availability,
+never TDI outcomes. Source/mapping/development identity and every6145row prefix
+were validated before any class decoding;997reserved+1240extra rows then skipped.
+Preserve published raw0/1 tokens and missing masks; no class derivation or extra
+negative pooling. Pin bundle manifest
+`b66bd58cf1a61b3a198dbe7cad3b95ca21020342cce76a6d0f34ed547289e9af`.
+Both classes exist in every training/assessment population; every assessment has
+at least two distinct families per class. Minimum outer positive-family counts
+are44 for2D6 and100 for3A4. No class-informed seed search is necessary.
+
+Compare shared raw chiral radius2/4096binary Morgan features with no descriptors
+or scaling: logistic C1/L2/liblinear (tol1e-4,maxiter1000,seed1,no class weights)
+and CatBoost Logloss1000iterations,depth6,learningrate.03,randomstrength2,seed1,
+16CPUthreads,no stopping/eval_set/class weights. Preserve all native fitted
+parameters and estimator checkpoints. Convergence warnings fail the attempt;
+no outcome-driven iteration/tolerance repair. Logistic uses float64CSR; CatBoost
+dense bits. Every training population includes only that endpoint's observed
+labels and keeps entire families apart from assessment populations.
+
+For each outer-training endpoint and learner, three grouped inner predictions
+supply threshold selection: unique probabilities union0.5, positive iff p>=t,
+reject constant partitions, maximize pooled MCC; exact ties closest0.5 then lower.
+Choose the higher inner MCC learner, exact ties logistic. Both unsupported fails
+the seed; an unsupported single learner uses the frozen0.5 diagnostic/fallback threshold. Fit both outer
+learners to retain honest logistic comparison, giving80fits perseed. Evaluate the
+inner-selected procedure and fixed logistic fallback; standalone CatBoost is
+only a diagnostic and cannot become a post-hoc rescue.
+
+Use actual-wrapper name order, per-endpoint missingness,1000rowbootstraps with
+RNG0, degenerate MCC0, macro bootstrap mean and sampleSD. Three synthetic cases
+match the real pinned wrapper exactly. Independently report2000paired whole-
+family bootstrap differences,seed20260906,pooled macroMCC and degeneracy counts.
+A useful model requires positive pooled MCC for each endpoint, positive public
+macroMCC and positive lower95 family bound versus constant zero, on both seeds.
+Select the inner-selected procedure only with additional public macroMCC gain
+>=0.02 and paired lower95>0 over logistic on both seeds. Otherwise retain useful
+both-seed logistic. If neither is useful, no CSV. First-seed futility stops when
+neither procedure can qualify; no first-seed recommendation or release.
+
+Allocate45minutes/five CPU-core-hours perseed, including failures, within the
+shared24CPU/20GiB slice/program total. In-process native fits record measured
+CPU; independent process-group deadlines, RLIMIT_CPU and conservative interrupted
+work accounting bound failures. Retain80models/inner probabilities/thresholds/
+identities/source/runtime receipts perseed and verify fresh reload parity1e-12.
+Independent reconstruction must verify all fit lineage, threshold/model choices,
+OOF metrics and selected-procedure gates before production. Use signed reviewed
+source after focused checks; exact-head PR CI before integration/release.
+
+If qualified, production is a distinct required stage: original3908development,
+three grouped OOF folds seed20260905 based on original direct availability, then
+OOF-only thresholds/model choice and final two classifiers. Logistic fallback
+needs8fits; selected procedure14. Only then read the actual750test structures,
+preserve exact raw identity/order, reload saved models, and write complete integer
+0/1 predictions containing both classes perendpoint. No forced flips or threshold
+adjustment when test predictions are constant. Provide immutable CSV/hash/manifest/
+validator and a manual user handoff. Reserved comparison remains closed; a model
+report or code implementation alone is not a submission.
+
+Reversal: preserve existing direct recommendation and all failed TDI evidence;
+withhold a TDI upload if integrity, usefulness, reproduction or validity fails.
+Future hypotheses may change the recipe prospectively without rewriting results.
+
+Implementation checks pass15 focused synthetic tests and actual locked-runtime
+logistic/CatBoost save-reload fits with zero probability difference. Independent
+review repaired a1–2ULP MCC arithmetic mismatch before outcomes, using the exact
+official covariance/NumPy helper for threshold ties; the regression test demands
+exact equality. A shared-root guard prevents alternative output paths bypassing
+the phase3 lock/accounting. Preserve the initial synthetic lock-miss (zero fits)
+and explicit CPU-only concurrent synthetic execution under the shared slice.
