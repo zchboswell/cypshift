@@ -6000,3 +6000,46 @@ a verified development-only bundle, not changed chemistry or ignored hashes.
 Validation: 19 upload-boundary tests and 11 independent metric tests pass;
 Ruff, strict core mypy, wheel build and installed fixture workflow pass.
 Exact-commit PR CI remains required before integration.
+
+
+## D-153 — Recoverable nested MapLight/calibration vertical slice
+
+Date: 2026-09-04 (America/New_York), before Phase 3 model outcomes.
+
+Freeze the first experiment at five outer/three inner whole-family folds, seed
+20260905, and the exact legacy MapLight MAE recipe: 80 fits. Fit the bounded
+affine interval-loss calibration solely on each outer training set's inner
+OOF predictions; score outer OOF only after predictions are complete. Identity
+wins optimization ties. Fit deployment calibration on pooled baseline OOF only
+after unbiased outer assessment. The initial allocation is 100 CPU-core-hours
+within the program's 1000-hour cap; profile the first real fit.
+
+The count-corrected and binary feature helpers are tested and available for the
+next prospective experiment, but do not enter this initial calibration result.
+Each fit checkpoints exact feature/target/training/prediction/implementation/
+runtime identity. Failures and incomplete starts remain accounted; another
+active experiment sharing the Phase 3 root cannot acquire the compute lock.
+
+A real no-fit check demonstrated the expected RDKit2023/2026 structure identity
+mismatch. Compile with core RDKit2026 and load an immutable hash-bound bundle
+without re-standardizing in the locked model runtime. This is engineering
+repair 1 for that failure class; original sources and hashes remain unchanged.
+The bundle retains3908 development molecules/3640 families, excludes997
+reserved molecules, and finds no extra quarantine. Training/metric counts are
+1110/1024/1182/1881; all bounds exist. Minimum inner training counts are
+592/546/630/1002. Core compilation took19.50s, zero fits/zero reserved numeric
+values parsed. Connectivity/tautomer unions happen before target decoding.
+
+Interim release eligibility is evaluated on paired primary/component metrics
+as in Phase 3; a result satisfying only this gate is a challenger, not final
+promotion. A qualifying affine release may transform the already authenticated
+full-training baseline using development-only OOF calibration, preserving the
+reserved selection barrier. Disclose this transfer from development-trained
+OOF to the larger historical full-training predictor. Do not retrain on reserved
+targets or count identity transformations as additional entries.
+
+Independent reviews covered metric parity, compiler boundaries and checkpoint
+recovery. Five compiler/bridge, five feature, and fifteen calibration/cache
+tests pass; these exercise leakage, real count overflow, optimization, corrupt
+receipts and interrupted publication rather than copying implementation.
+No new scientific outcome is claimed by this prospective decision.

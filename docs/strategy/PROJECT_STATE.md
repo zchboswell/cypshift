@@ -68,9 +68,9 @@ Use existing locked research environments. Budget: 1000 CPU-core-hours,
 
 ## Next action
 
-Integrate D-152 current upload checks and verified public scoring. Complete the
-core-RDKit development compiler bridge, then run the fresh 80-fit nested MapLight
-and bounded inner-OOF affine calibration experiment. The locked-RDKit no-fit
-intake failed structure-hash equality before numeric target parsing; preserve
-this engineering result and compile using the original chemistry runtime. Notify the user with an actual
+Integrate D-152 current upload checks and verified public scoring. The original-runtime development bundle now passes both runtime checks with
+3908 molecules/3640 families and all997 reserved molecules excluded. Review and
+run the signed D-153 80-fit nested MapLight/inner-OOF affine experiment, then
+produce a challenger CSV only if the prespecified paired release gate passes.
+Keep the authentic prior baseline as the recommendation until stronger evidence. Notify the user with an actual
 absolute CSV path, evidence, track and recommendation when each release is ready.
