@@ -42,8 +42,12 @@ are the first implementation milestone.
 Base main: signed `ac043aaaf8dd3a7db1815859f7fa60f05c52277d` (D-150).
 D-151 signed `3887805` integrated locally by fast-forward after PR #188 passed
 all three Python CI jobs; pushed main. Full local historical suite: 1489 passed,
-14 existing skips. D-152 source/validator/metric milestone is prepared next.
-No Phase 3 model fit, new prediction, release, or submission exists yet.
+14 existing skips. D-152 signed `5bdf897` also integrated/pushed after all PR #189 CI jobs passed.
+D-153 signed `3dd5509` is under PR #190 review/CI. Its80-fit nested experiment
+is running at the private Phase3 root `maplight-affine-v1`; firstfit5.34s, linear
+projection1.20 CPU-core-hours. Check its progress/result before starting another
+job. No new release or submission exists yet. The release builder is now ready
+for the prespecified eligibility decision.
 
 The preexisting user handoff edit is preserved exactly in
 [the archived midnight handoff](../archive/intake/NEXT_ORCHESTRATOR_PROMPT_2026-08-31.md),
@@ -68,7 +72,7 @@ Use existing locked research environments. Budget: 1000 CPU-core-hours,
 
 ## Next action
 
-Integrate D-152 current upload checks and verified public scoring. The original-runtime development bundle now passes both runtime checks with
+Finish PR #190 and release-builder CI/integration; inspect the running result. The original-runtime development bundle now passes both runtime checks with
 3908 molecules/3640 families and all997 reserved molecules excluded. Review and
 run the signed D-153 80-fit nested MapLight/inner-OOF affine experiment, then
 produce a challenger CSV only if the prespecified paired release gate passes.

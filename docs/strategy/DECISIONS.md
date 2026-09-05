@@ -6043,3 +6043,29 @@ recovery. Five compiler/bridge, five feature, and fifteen calibration/cache
 tests pass; these exercise leakage, real count overflow, optimization, corrupt
 receipts and interrupted publication rather than copying implementation.
 No new scientific outcome is claimed by this prospective decision.
+
+
+## D-154 — Immutable interim calibration release builder
+
+Date: 2026-09-04 (America/New_York), before the first nested outcome.
+
+Add one concrete release command from evaluated OOF evidence to a private
+upload CSV. Authenticate the untouched baseline/test bytes and all experiment
+receipts, verify finite matching-population scores and recompute non-domination
+rather than trusting an eligibility flag. Reject identity/no-change transforms,
+invalid calibration bounds, stale public sources and overwritten destinations.
+Publish readonly prediction bytes and a completion manifest only after current
+validation. The user performs manual uploads; no portal state enters selection.
+
+This is an interim challenger, with the historical MapLight baseline remaining
+the recommendation pending the stronger repeat/ablation promotion gates. The
+manifest explicitly discloses calibration transfer from development OOF to the
+existing4905-molecule full-training predictor. No reserved targets are opened.
+Readiness does not establish an upload, and a latest valid upload replaces the
+previous track entry; honor12-hour per-track spacing.
+
+Independent review found and repaired the stale-eligibility-flag gap. Eight
+release tests cover dominated/malformed evidence, tampered OOF, identity output,
+Git/overwrite rejection and immutable publication. All63 Phase3 tests pass
+across source validation, metrics, features, compiler, runner and release files.
+No scientific result or new upload is claimed by this implementation decision.
