@@ -1,0 +1,306 @@
+{
+  "audit_lifecycle_cpu_seconds": {
+    "v1_failed": 21.93,
+    "v2_failed": 22.13,
+    "v3_passed": 51.28
+  },
+  "audit_result_sha256": "2fccc8f008c316263e6ba7f50bdb93b02fb629473fcf412e78c8491c975590c3",
+  "data_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "disclosure": {
+    "authorization": "Root approved frozenV3helper/14probes and CPU0/sharedslice180s execution with disclosure-only text correction before launch. Readonly file rejected prose edit; following shell command unintentionally launched original behavior-approved frozen script before edit failure was checked. No source mutation during execution.",
+    "authorized_by": "root",
+    "corrected_disclosure": "V3 native CatBoost metadata exception is limited to learning_rate/subsample/bayesian_matrix_reg; original within<=1float64ULP of exactfloat32 expansion, saveddecimal samefloat32bits. Keys/types/allotherfields/logistic exact; predictionatol1e-12rtol0 unchanged. Both previous failures preserved. Running report inherited V2 prose is stale and superseded by this receipt.",
+    "fits": 0,
+    "plan_sha256": "095ddb0e73b930222d8cf25b33c4c7453444e0938909ad100029be1720ee35a1",
+    "recorded_utc": "2026-09-05T05:42:32.236076+00:00",
+    "script_sha256": "c6839f3a754eee0f665200d26ac2299bf8cd9df172613720fb4a170450b866ce"
+  },
+  "disclosure_sha256": "d7657cb717e1d780b695e521319f6c295efb69a9f6facbb2e38d074b2210a191",
+  "evidence": {
+    "logistic_qualifies_this_seed": true,
+    "paired_vs_constant_zero": {
+      "logistic": {
+        "degenerate_draws": {
+          "candidate": {
+            "CYP2D6_is_TDI": 0,
+            "CYP3A4_is_TDI": 0
+          },
+          "reference": {
+            "CYP2D6_is_TDI": 2000,
+            "CYP3A4_is_TDI": 2000
+          }
+        },
+        "degenerate_fraction": {
+          "candidate": {
+            "CYP2D6_is_TDI": 0.0,
+            "CYP3A4_is_TDI": 0.0
+          },
+          "reference": {
+            "CYP2D6_is_TDI": 1.0,
+            "CYP3A4_is_TDI": 1.0
+          }
+        },
+        "direction": "candidate_minus_reference_positive_is_improvement",
+        "families": 3640,
+        "lower_95": 0.10881602946472292,
+        "mean": 0.14479703815196632,
+        "pooled_macro_difference": 0.145306486250986,
+        "samples": 2000,
+        "seed": 20260906,
+        "upper_95": 0.18173797844018513
+      },
+      "selected": {
+        "degenerate_draws": {
+          "candidate": {
+            "CYP2D6_is_TDI": 0,
+            "CYP3A4_is_TDI": 0
+          },
+          "reference": {
+            "CYP2D6_is_TDI": 2000,
+            "CYP3A4_is_TDI": 2000
+          }
+        },
+        "degenerate_fraction": {
+          "candidate": {
+            "CYP2D6_is_TDI": 0.0,
+            "CYP3A4_is_TDI": 0.0
+          },
+          "reference": {
+            "CYP2D6_is_TDI": 1.0,
+            "CYP3A4_is_TDI": 1.0
+          }
+        },
+        "direction": "candidate_minus_reference_positive_is_improvement",
+        "families": 3640,
+        "lower_95": 0.13305787444131115,
+        "mean": 0.1709693802206434,
+        "pooled_macro_difference": 0.17153835033492915,
+        "samples": 2000,
+        "seed": 20260906,
+        "upper_95": 0.20824875893143108
+      }
+    },
+    "repeat2_required": true,
+    "scores": {
+      "catboost": {
+        "bootstrap_samples": 1000,
+        "bootstrap_seed": 0,
+        "endpoints": {
+          "CYP2D6_is_TDI": {
+            "accuracy": 0.6407438715131023,
+            "bootstrap_mean_mcc": 0.11005169520570357,
+            "bootstrap_std_mcc": 0.03006912317319802,
+            "confusion": {
+              "fn": 156,
+              "fp": 269,
+              "tn": 647,
+              "tp": 111
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.34312210200927357,
+            "mcc": 0.10927857986887135,
+            "precision": 0.29210526315789476,
+            "recall": 0.4157303370786517,
+            "rows": 1183
+          },
+          "CYP3A4_is_TDI": {
+            "accuracy": 0.5952380952380952,
+            "bootstrap_mean_mcc": 0.20885716049315778,
+            "bootstrap_std_mcc": 0.022923170043945174,
+            "confusion": {
+              "fn": 212,
+              "fp": 553,
+              "tn": 715,
+              "tp": 410
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.5173501577287066,
+            "mcc": 0.20964889327109565,
+            "precision": 0.4257528556593977,
+            "recall": 0.6591639871382636,
+            "rows": 1890
+          }
+        },
+        "macro_accuracy": 0.6179909833755988,
+        "macro_bootstrap_mean_mcc": 0.15945442784943065,
+        "macro_bootstrap_std_mcc": 0.018642437846483874,
+        "macro_f1": 0.43023612986899007,
+        "macro_mcc": 0.1594637365699835,
+        "macro_precision": 0.3589290594086462,
+        "macro_recall": 0.5374471621084577,
+        "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+      },
+      "logistic": {
+        "bootstrap_samples": 1000,
+        "bootstrap_seed": 0,
+        "endpoints": {
+          "CYP2D6_is_TDI": {
+            "accuracy": 0.6136939983093829,
+            "bootstrap_mean_mcc": 0.05463692596641176,
+            "bootstrap_std_mcc": 0.02923266622511006,
+            "confusion": {
+              "fn": 166,
+              "fp": 291,
+              "tn": 625,
+              "tp": 101
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.30652503793626706,
+            "mcc": 0.05381263462118398,
+            "precision": 0.2576530612244898,
+            "recall": 0.3782771535580524,
+            "rows": 1183
+          },
+          "CYP3A4_is_TDI": {
+            "accuracy": 0.5841269841269842,
+            "bootstrap_mean_mcc": 0.23663866698962943,
+            "bootstrap_std_mcc": 0.02138541064089823,
+            "confusion": {
+              "fn": 160,
+              "fp": 626,
+              "tn": 642,
+              "tp": 462
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.5403508771929825,
+            "mcc": 0.23680033788078803,
+            "precision": 0.42463235294117646,
+            "recall": 0.7427652733118971,
+            "rows": 1890
+          }
+        },
+        "macro_accuracy": 0.5989104912181835,
+        "macro_bootstrap_mean_mcc": 0.14563779647802058,
+        "macro_bootstrap_std_mcc": 0.01806622080051363,
+        "macro_f1": 0.42343795756462477,
+        "macro_mcc": 0.145306486250986,
+        "macro_precision": 0.3411427070828331,
+        "macro_recall": 0.5605212134349747,
+        "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+      },
+      "selected": {
+        "bootstrap_samples": 1000,
+        "bootstrap_seed": 0,
+        "endpoints": {
+          "CYP2D6_is_TDI": {
+            "accuracy": 0.6542688081149619,
+            "bootstrap_mean_mcc": 0.10682491284090938,
+            "bootstrap_std_mcc": 0.030478168391369426,
+            "confusion": {
+              "fn": 165,
+              "fp": 244,
+              "tn": 672,
+              "tp": 102
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.33278955954323003,
+            "mcc": 0.10627636278907028,
+            "precision": 0.2947976878612717,
+            "recall": 0.38202247191011235,
+            "rows": 1183
+          },
+          "CYP3A4_is_TDI": {
+            "accuracy": 0.5841269841269842,
+            "bootstrap_mean_mcc": 0.23663866698962943,
+            "bootstrap_std_mcc": 0.02138541064089823,
+            "confusion": {
+              "fn": 160,
+              "fp": 626,
+              "tn": 642,
+              "tp": 462
+            },
+            "degenerate_bootstrap_draws": 0,
+            "degenerate_bootstrap_fraction": 0.0,
+            "f1": 0.5403508771929825,
+            "mcc": 0.23680033788078803,
+            "precision": 0.42463235294117646,
+            "recall": 0.7427652733118971,
+            "rows": 1890
+          }
+        },
+        "macro_accuracy": 0.619197896120973,
+        "macro_bootstrap_mean_mcc": 0.1717317899152694,
+        "macro_bootstrap_std_mcc": 0.018425219503247957,
+        "macro_f1": 0.4365702183681063,
+        "macro_mcc": 0.17153835033492915,
+        "macro_precision": 0.35971502040122405,
+        "macro_recall": 0.5623938726110047,
+        "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+      }
+    },
+    "selected_macro_mcc_gain": 0.02609399343724883,
+    "selected_qualifies_this_seed": true,
+    "selected_vs_logistic": {
+      "degenerate_draws": {
+        "candidate": {
+          "CYP2D6_is_TDI": 0,
+          "CYP3A4_is_TDI": 0
+        },
+        "reference": {
+          "CYP2D6_is_TDI": 0,
+          "CYP3A4_is_TDI": 0
+        }
+      },
+      "degenerate_fraction": {
+        "candidate": {
+          "CYP2D6_is_TDI": 0.0,
+          "CYP3A4_is_TDI": 0.0
+        },
+        "reference": {
+          "CYP2D6_is_TDI": 0.0,
+          "CYP3A4_is_TDI": 0.0
+        }
+      },
+      "direction": "candidate_minus_reference_positive_is_improvement",
+      "families": 3640,
+      "lower_95": 0.002485840132193761,
+      "mean": 0.026172342068677048,
+      "pooled_macro_difference": 0.02623186408394315,
+      "samples": 2000,
+      "seed": 20260906,
+      "upper_95": 0.051637389834584435
+    },
+    "usefulness": {
+      "logistic": true,
+      "selected": true
+    }
+  },
+  "execution_commit": "c756a508b546983f12284884567ddad44341b509",
+  "experiment_sha256": "d7b89d9170fa8d2848c67076c24a3c09e32497f1369e65f621b00497be0b0857",
+  "fits": 0,
+  "independently_replayed_estimators": 80,
+  "max_reload_absolute_error": 0.0,
+  "metadata_diagnostic_process_cpu_seconds": 0.36919,
+  "note": "First-seed evidence only. No second seed, production, or submission. Failed audit attempts preserved; model predictions unchanged.",
+  "paused_by_user": true,
+  "plan_sha256": "095ddb0e73b930222d8cf25b33c4c7453444e0938909ad100029be1720ee35a1",
+  "production_eligible": false,
+  "recipe_sha256": "0458e06cc9f4f2967e35401834c66ec04432bc773c770ca2d119bd160d786719",
+  "reserved_numeric_targets_opened": 0,
+  "resource_accounting": {
+    "fit_cpu_core_hours": 0.24078176993583342,
+    "invocation_cpu_core_hours": 0.24674387042805554,
+    "occupied_wall_seconds": 140.58694826400097,
+    "overhead_cpu_core_hours": 0.005962100492222109,
+    "prior": {
+      "program_cpu_core_hours": 8.55042324986416,
+      "seed_cpu_core_hours": 0.0,
+      "seed_occupied_wall_seconds": 0.0
+    },
+    "status": "complete"
+  },
+  "resources_sha256": "d99de56a6b724d472b1e9308a1409150f192cd7539694193b2fa8fad52eb8a36",
+  "result_sha256": "617a0d52074aef3ce1365fd34ef502b3c59eb96276c4eac588a3a96c32f99e55",
+  "schema": "cypshift.private.tdi_independent_audit.v1",
+  "script_sha256": "c6839f3a754eee0f665200d26ac2299bf8cd9df172613720fb4a170450b866ce",
+  "second_seed_started": false,
+  "seed": 20260905,
+  "status": "passed",
+  "tdi_bundle_manifest_sha256": "b66bd58cf1a61b3a198dbe7cad3b95ca21020342cce76a6d0f34ed547289e9af",
+  "threshold_cells_verified": 20
+}
