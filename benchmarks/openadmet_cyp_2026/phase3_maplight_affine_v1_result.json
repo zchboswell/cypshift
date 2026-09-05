@@ -1,0 +1,120 @@
+{
+  "baseline": {
+    "bootstrap_samples": 1000,
+    "bootstrap_seed": 0,
+    "endpoints": {
+      "CYP1A2": {
+        "bootstrap_mean_st_rae": 0.8525834815479523,
+        "component_mae": 0.6702514724501063,
+        "groups": 1091,
+        "mae": 0.6708341481664319,
+        "rows": 1110,
+        "st_rae": 0.8515602942949326
+      },
+      "CYP2C9": {
+        "bootstrap_mean_st_rae": 0.7148140039293615,
+        "component_mae": 0.48934939874493744,
+        "groups": 1015,
+        "mae": 0.4905300132081134,
+        "rows": 1024,
+        "st_rae": 0.7146378015233242
+      },
+      "CYP2D6": {
+        "bootstrap_mean_st_rae": 0.9095257061639961,
+        "component_mae": 0.5975040317541441,
+        "groups": 1170,
+        "mae": 0.5982363061703055,
+        "rows": 1182,
+        "st_rae": 0.908993553964313
+      },
+      "CYP3A4": {
+        "bootstrap_mean_st_rae": 0.5531785086573703,
+        "component_mae": 0.5812795767354327,
+        "groups": 1668,
+        "mae": 0.5722249352168854,
+        "rows": 1881,
+        "st_rae": 0.5533683643367987
+      }
+    },
+    "macro_bootstrap_mean_st_rae": 0.75752542507467,
+    "macro_component_mae": 0.5845961199211551,
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+  },
+  "candidate": "maplight-inner-oof-affine",
+  "candidate_scores": {
+    "bootstrap_samples": 1000,
+    "bootstrap_seed": 0,
+    "endpoints": {
+      "CYP1A2": {
+        "bootstrap_mean_st_rae": 0.8315727800310986,
+        "component_mae": 0.6613485332729554,
+        "groups": 1091,
+        "mae": 0.6619951930458783,
+        "rows": 1110,
+        "st_rae": 0.8304344362642258
+      },
+      "CYP2C9": {
+        "bootstrap_mean_st_rae": 0.6911703019993768,
+        "component_mae": 0.493257423376654,
+        "groups": 1015,
+        "mae": 0.4945013071340798,
+        "rows": 1024,
+        "st_rae": 0.6908006564215445
+      },
+      "CYP2D6": {
+        "bootstrap_mean_st_rae": 0.9076836182022814,
+        "component_mae": 0.5978129226713171,
+        "groups": 1170,
+        "mae": 0.5984509125245849,
+        "rows": 1182,
+        "st_rae": 0.9071355146315792
+      },
+      "CYP3A4": {
+        "bootstrap_mean_st_rae": 0.5181558519608712,
+        "component_mae": 0.5986123300495463,
+        "groups": 1668,
+        "mae": 0.5819584626160961,
+        "rows": 1881,
+        "st_rae": 0.5185203852476795
+      }
+    },
+    "macro_bootstrap_mean_st_rae": 0.7371456380484069,
+    "macro_component_mae": 0.5877578023426182,
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+  },
+  "decision": {
+    "final_promotion": false,
+    "maximum_endpoint_component_mae_harm": 0.017332753314113547,
+    "promotion_metric_gate": true,
+    "relative_primary_improvement": 0.02690310628749422,
+    "release_eligible_on_paired_metrics": true,
+    "second_repeat_supports": false
+  },
+  "execution_git_commit": "3dd550913a808d12b6e543e9a2b60fb960bc70dc",
+  "experiment_sha256": "19c1665b9a83031a6719c5846752fbdc4acc9b2a969564838f99552e6e06fbc8",
+  "fit_cpu_core_hours": 1.2920160023961116,
+  "fits": 80,
+  "invocation_cpu_core_hours": 1.2954496798180557,
+  "new_fits": 80,
+  "oof_sha256": "64e930b6835cf31cebcfe595e924d7950d3f6448c542f9d4acaabb439168eb4a",
+  "paired_family": {
+    "candidate_minus_baseline_mean": -0.02045636595352341,
+    "families": 3640,
+    "lower_95": -0.026898020518528756,
+    "samples": 2000,
+    "seed": 20260906,
+    "upper_95": -0.013784852741226802
+  },
+  "prior_count_overflow_diagnostic": {
+    "affected_count_columns": 1,
+    "affected_molecules": 10,
+    "development_molecules": 3908,
+    "negative_cells": 10
+  },
+  "reserved_numeric_targets_opened": 0,
+  "scope": "Aggregate internal development evidence; not an official competition score or final promotion",
+  "status": "complete",
+  "submission_manifest_sha256": "be9e4e3a85284f782b88d168fa450494f508f30e663a2e341a90325ed0190753",
+  "submission_sha256": "c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f",
+  "wall_seconds": 482.0927959700002
+}

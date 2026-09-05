@@ -6069,3 +6069,39 @@ release tests cover dominated/malformed evidence, tampered OOF, identity output,
 Git/overwrite rejection and immutable publication. All63 Phase3 tests pass
 across source validation, metrics, features, compiler, runner and release files.
 No scientific result or new upload is claimed by this implementation decision.
+
+
+## D-155 — First qualified challenger and robustness follow-through
+
+Date: 2026-09-04 (America/New_York).
+
+The frozen80-fit experiment improved public-wrapper macro ST-RAE from
+0.7575254251 to0.7371456380 (2.6903%). Paired family candidate-minus-baseline
+95% interval[-0.026898,-0.013785]. Maximum endpoint component-MAE harm
+0.017333 satisfies the0.02 gate; macro component MAE worsens slightly from
+0.584596 to0.587758. Preserve this tradeoff explicitly. Runtime482.09s and
+1.29545CPU-core-hours. The promotion metric gate passes, but second-repeat
+evidence and final comparison remain outstanding.
+
+One new direct challenger CSV has been generated and current-rule validated,
+SHA256c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f.
+It applies the OOF-fitted calibration to the authenticated historical full-
+training baseline, with this transfer limitation stated in the private manifest.
+No reserved numeric labels opened. Manual upload is unconfirmed.
+
+Run the already-frozen second seed20260906 with unchanged scientific logic;
+do not tune toward the first outcome. Audit found that orphaned fit-start
+resource estimates would grow indefinitely. Freeze their conservative unknown
+charges once after shared-lock acquisition; preserve completed attempts. This
+repair does not alter the completed scientific result. Two clock/lock tests
+verify the behavior.
+
+Prepare the bounded SVR kernel/inner selection helper for the next planned
+model. Select C={1,10} on pooled inner-OOF ST-RAE, epsilon0.1; ties favorC1.
+Use float64 blocked binary Tanimoto to prevent uint8 dot overflow. Four
+scientific tests and a six-fit synthetic locked-runtime smoke pass. No official
+SVR fit has occurred. Count audit finds only10/3908 development molecules
+affected in one count column; retain the correction ablation without assuming
+a large gain. GIN readiness needs a Linux runtime and provenance/parity work,
+estimated6–10engineering hours within the two-working-day cap. Retained TDC
+embeddings cannot be assumed to match challenge molecules.

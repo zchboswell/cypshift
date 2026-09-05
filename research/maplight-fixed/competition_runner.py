@@ -192,6 +192,39 @@ def cached_fit(
     return prediction, receipt
 
 
+def freeze_interrupted_fits(root: Path) -> int:
+    """Freeze orphan charges once, only while holding the shared compute lock.
+
+    Lock acquisition establishes that an earlier lock-holding evaluator stopped.
+    Its exact fit CPU use is unknown; elapsed wall time times recorded threads
+    conservatively includes idle time until recovery. Finished attempts stay intact.
+    """
+    recovered = time.time()
+    frozen = 0
+    for start in root.rglob("fit-start-*.json"):
+        attempt = start.with_name(start.name.replace("fit-start-", "fit-attempt-"))
+        if attempt.exists():
+            continue
+        raw = start.read_bytes()
+        record = json.loads(raw)
+        elapsed = max(0.0, recovered - record["started_epoch_seconds"])
+        publish(
+            attempt,
+            canonical(
+                {
+                    "status": "interrupted_unknown",
+                    "wall_seconds": elapsed,
+                    "cpu_core_hours": elapsed * record["threads"] / 3600,
+                    "recovered_epoch_seconds": recovered,
+                    "start_sha256": digest(raw),
+                    "accounting_basis": "Elapsed wall time times recorded threads; includes recovery delay",
+                }
+            ),
+        )
+        frozen += 1
+    return frozen
+
+
 def spent_cpu(root: Path) -> float:
     """Include failed fits and conservative charges for unfinished processes."""
     total = 0.0
@@ -201,7 +234,11 @@ def spent_cpu(root: Path) -> float:
             total += float(json.loads(attempt.read_bytes())["cpu_core_hours"])
         else:
             record = json.loads(start.read_bytes())
-            total += max(0.0, time.time() - record["started_epoch_seconds"]) * 16 / 3600
+            total += (
+                max(0.0, time.time() - record["started_epoch_seconds"])
+                * record["threads"]
+                / 3600
+            )
     return total
 
 
@@ -216,6 +253,7 @@ def evaluate(
     # An interrupted process releases this lock; another active process cannot duplicate work.
     with (output.parent / "compute.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        freeze_interrupted_fits(output.parent)
         return _evaluate_locked(source, output, seed)
 
 
@@ -438,6 +476,8 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
         "fits": len(fits),
         "new_fits": sum(not f["reused"] for f in fits),
         "fit_cpu_core_hours": sum(f["cpu_core_hours"] for f in fits),
+        "budget_accounted_fit_cpu_core_hours": spent_cpu(output),
+        "program_accounted_fit_cpu_core_hours": spent_cpu(output.parent),
         "invocation_cpu_core_hours": (time.process_time() - cpu) / 3600,
         "wall_seconds": time.monotonic() - wall,
         "experiment_sha256": digest(frozen.read_bytes()),

@@ -184,3 +184,63 @@ def test_altered_receipt_input_identity_is_rejected(
     with pytest.raises(ValueError, match="Damaged"):
         runner.cached_fit(tmp_path, *args)
     assert runner.CatBoostRegressor.fits == 1
+
+
+def test_orphan_charge_is_frozen_once_and_finished_attempts_are_preserved(
+    runner: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    orphan = tmp_path / "fits" / "orphan"
+    complete = tmp_path / "fits" / "complete"
+    orphan.mkdir(parents=True)
+    complete.mkdir()
+    start = {"started_epoch_seconds": 100.0, "threads": 4}
+    for directory in (orphan, complete):
+        (directory / "fit-start-1.json").write_text(json.dumps(start))
+    finished = complete / "fit-attempt-1.json"
+    finished.write_text(json.dumps({"status": "complete", "cpu_core_hours": 0.25}))
+    before = finished.read_bytes()
+    monkeypatch.setattr(runner.time, "time", lambda: 1000.0)
+    assert runner.freeze_interrupted_fits(tmp_path) == 1
+    charged = orphan / "fit-attempt-1.json"
+    frozen = charged.read_bytes()
+    record = json.loads(frozen)
+    assert record["status"] == "interrupted_unknown"
+    assert record["cpu_core_hours"] == 1.0  # 900 seconds times four threads.
+    assert runner.spent_cpu(tmp_path) == 1.25
+    monkeypatch.setattr(runner.time, "time", lambda: 1000000.0)
+    assert runner.freeze_interrupted_fits(tmp_path) == 0
+    assert runner.spent_cpu(tmp_path) == 1.25
+    assert charged.read_bytes() == frozen
+    assert finished.read_bytes() == before
+
+
+def test_recovery_cannot_freeze_a_fit_while_another_evaluator_holds_compute_lock(
+    runner: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "compiled"
+    source.mkdir()
+    (source / "manifest.json").write_bytes(b"synthetic manifest")
+    root = tmp_path / "program"
+    orphan = root / "prior" / "fits" / "orphan"
+    orphan.mkdir(parents=True)
+    (orphan / "fit-start-1.json").write_text(
+        json.dumps(
+            {
+                "started_epoch_seconds": 100.0,
+                "threads": 4,
+            }
+        )
+    )
+    attempt = orphan / "fit-attempt-1.json"
+    monkeypatch.setattr(runner.time, "time", lambda: 1000.0)
+    monkeypatch.setattr(
+        runner, "_evaluate_locked", lambda *args: {"frozen": attempt.exists()}
+    )
+    kwargs = {"expected_compiled_sha256": runner.digest(b"synthetic manifest")}
+    with (root / "compute.lock").open("a") as other:
+        runner.fcntl.flock(other, runner.fcntl.LOCK_EX | runner.fcntl.LOCK_NB)
+        with pytest.raises(BlockingIOError):
+            runner.evaluate(source, root / "next", **kwargs)
+        assert not attempt.exists()
+    assert runner.evaluate(source, root / "next", **kwargs) == {"frozen": True}
+    assert runner.spent_cpu(root) == 1.0

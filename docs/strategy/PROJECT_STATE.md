@@ -43,11 +43,19 @@ Base main: signed `ac043aaaf8dd3a7db1815859f7fa60f05c52277d` (D-150).
 D-151 signed `3887805` integrated locally by fast-forward after PR #188 passed
 all three Python CI jobs; pushed main. Full local historical suite: 1489 passed,
 14 existing skips. D-152 signed `5bdf897` also integrated/pushed after all PR #189 CI jobs passed.
-D-153 signed `3dd5509` is under PR #190 review/CI. Its80-fit nested experiment
-is running at the private Phase3 root `maplight-affine-v1`; firstfit5.34s, linear
-projection1.20 CPU-core-hours. Check its progress/result before starting another
-job. No new release or submission exists yet. The release builder is now ready
-for the prespecified eligibility decision.
+D-153 signed `3dd5509` completed80 fits in482.09s/1.29545CPU-core-hours.
+First grouped repeat: baseline primary0.757525 -> affine0.737146 (2.6903%gain),
+paired-family95% difference[-0.026898,-0.013785], maximum endpointMAEharm0.01733.
+Macro componentMAE slightly worsens0.584596 ->0.587758. This is internal
+public-wrapper evidence, not an official score. Second repeat remains pending.
+
+New private upload file:
+`/home/zbos/cypshift-private/openadmet-2026/submissions/direct-maplight-affine-20260905-v1/submission.csv`
+SHA256 `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
+750 rows/3000 finite predictions pass current checks. Interim challenger;
+first handoff waits for implementation CI/integration. Manual upload unconfirmed.
+Frozen historical baseline remains recommendation pending stronger evidence.
+
 
 The preexisting user handoff edit is preserved exactly in
 [the archived midnight handoff](../archive/intake/NEXT_ORCHESTRATOR_PROMPT_2026-08-31.md),
@@ -72,9 +80,10 @@ Use existing locked research environments. Budget: 1000 CPU-core-hours,
 
 ## Next action
 
-Finish PR #190 and release-builder CI/integration; inspect the running result. The original-runtime development bundle now passes both runtime checks with
-3908 molecules/3640 families and all997 reserved molecules excluded. Review and
-run the signed D-153 80-fit nested MapLight/inner-OOF affine experiment, then
-produce a challenger CSV only if the prespecified paired release gate passes.
-Keep the authentic prior baseline as the recommendation until stronger evidence. Notify the user with an actual
-absolute CSV path, evidence, track and recommendation when each release is ready.
+Finish PRs #190/#191 and evidence milestone checks/integration. Run the frozen
+second repeat at private `phase3/maplight-affine-repeat2` (seed20260906), checking
+existing progress before starting a job. Then complete the count ablation and
+SVR outer runner, retain successful OOF for blends, and prepare GIN readiness.
+Notify the user with the actual CSV once the handoff gates are complete. Keep
+manual upload feedback out of model selection. Continued work is scheduled every
+two hours in this task; stay quiet unless a new file or meaningful issue is ready.
