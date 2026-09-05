@@ -1,3 +1,6 @@
+> Current work follows [Phase 3](../docs/phases/PHASE_3_COMPETITION_RECOVERY.md).
+> Earlier phase gates below are retained historical evidence.
+
 # Benchmark evidence
 
 This directory is the detailed evidence index, not the user guide. For a short

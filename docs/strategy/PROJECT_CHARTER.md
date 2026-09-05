@@ -1,6 +1,6 @@
 # Project charter
 
-Last reviewed: 2026-08-17
+Last reviewed: 2026-09-04
 
 ## Mission
 
@@ -13,30 +13,18 @@ In one sentence, the project aims to build a system that:
 > reconstructs hidden analog campaigns, predicts where each model is
 > likely to fail, and makes the simplest defensible CYP prediction.
 
-## Primary scientific thesis
+## Competition priority
 
-The primary hypothesis is that series-first, competence-aware prediction
-outperforms molecule-independent ensembles under analog-family distribution
-shift.
+Phase 3 prioritizes stronger internally validated global CYP models and regular
+manual submission handoffs. Family-safe evaluation, metric alignment and useful
+auxiliary assay data take priority over proving the original series-first idea.
+The original measured-parent TRACE design failed its official oracle test and
+is retired. Historical hypotheses and claims remain documented in Git and
+PUBLICATION_CLAIMS.md; no unsupported clinical or mechanistic claim follows.
 
-The intended contributions are, in priority order:
-
-1. Evidence that explicit analog-family modeling improves blind-like
-   parent-expansion prediction.
-2. Evidence that predicting local expert failure can improve fusion more than
-   adding another potency model.
-3. A controlled evaluation of an optional bounded scientific adjudicator,
-   retained only if it passes deterministic and shuffled-evidence controls.
-
-These are hypotheses, not established claims. `PUBLICATION_CLAIMS.md` defines
-their evidence requirements.
-
-## Current implementation boundary
-
-The repository currently contains the audited data-to-report product path and a
-reproduced strong global molecular comparator. It does not yet contain a
-validated measured-parent predictor or competence gate. Those remain the
-primary scientific tests, not implied capabilities of the present CLI.
+The RDKit-only public product path and its median fixture model remain separate
+from the isolated research models. Current work follows
+[Phase 3](../phases/PHASE_3_COMPETITION_RECOVERY.md), authorized 2026-09-04.
 
 ## Endpoint scope
 
@@ -78,8 +66,10 @@ direct targets, and two TDI targets. Official TDI column order disagrees across
 the Space and tutorial. The launch prose names MA-ST-RAE and a two-fold TDI
 shift with special low-activity rules, but R0 does not freeze executable
 ST-RAE, denominators, scored masks, interval-field meaning, TDI derivation,
-validator/backend parity, or transductive test-test permissions. Those remain
-unresolved V6/P6 blockers.
+validator/backend parity, or transductive test-test permissions. Those are
+historical R0 uncertainties. Phase 3 must refresh the public source
+contracts and distinguish unresolved backend internals from implementable public
+metric and upload checks; unknown internals do not impose a blanket work stop.
 
 No pre-launch announcement overrides the released source receipts, and no
 pre-launch model, metric, schema, or permission assumption transfers

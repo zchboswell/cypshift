@@ -1,3 +1,6 @@
+> Historical chronology. D-151 and [Phase 3](PHASE_3_COMPETITION_RECOVERY.md)
+> supersede this file's prospective instructions; historical results remain unchanged.
+
 # Phase 2 — OpenADMET global-v2
 
 Current boundary: Global-v2 closed at D-146 with G2-7G permanently

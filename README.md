@@ -28,9 +28,11 @@ The current release provides the audited foundation for that system:
 - a locally reproduced MapLight and pretrained-GIN comparator, isolated from
   the core installation.
 
-The parent-relative predictor is the next scientific layer. Until it passes
-family-held-out controls, `cypshift` should be treated as a rigorous CYP model
-development and evaluation tool—not as a clinically validated predictor.
+The measured-parent TRACE design failed its controlled CYP3A4 oracle test and
+is retired. [Phase 3](docs/phases/PHASE_3_COMPETITION_RECOVERY.md) now focuses on
+stronger global models, careful use of auxiliary assay data, and regular
+validated competition entries. The public CLI remains a reproducible fixture
+baseline; research dependencies and competition predictions stay separate.
 
 ## Why use it?
 

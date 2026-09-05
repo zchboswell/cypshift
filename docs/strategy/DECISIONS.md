@@ -5927,3 +5927,41 @@
   exact-SHA CI blocks D-150 without opening the candidate. Otherwise integrate
   only the exact contract package, then begin the separate one-use read-only
   result milestone.
+
+## D-151 — Recover the competition program and authorize regular releases
+
+- Date: 2026-09-04 (America/New_York).
+- Authority: The user approved the complete audit/recovery plan, autonomous
+  execution, signed milestone commits/pushes, and ideally dozens of additional
+  entries. The user will upload manually and asks to be notified when ready.
+- Decision: Activate Phase 3. Its prospective recoverable-execution, small
+  candidate-menu, nested-validation and release policy supersedes conflicting
+  no-repair/no-new-candidate/backout instructions in D-084 through D-150 and the
+  old kickoff. Existing contracts, consumed claims and scientific outcomes are
+  unchanged; do not reuse a closed attempt or relabel it successful. TRACE's
+  scientific NO_SIGNAL remains terminal. Scientifically untested algorithms,
+  including GIN, may be evaluated under new Phase 3 experiments.
+- Delivery: Target 3–4 evidence-backed ready-to-upload releases per week across
+  direct and TDI; disclose challengers separately from promoted recommendations.
+  No arbitrary perturbations or baseline recertifications count as new entries.
+  Keep private portal activity out of model selection and never upload for the
+  user. Preserve the final reserved comparison until contender freeze.
+- Evidence: The audit found 72 Global-v2/v3 ledger entries but one new official
+  development model-quality result; numerous infrastructure-only stops; current
+  public validator changes; and 45 passing targeted synthetic tests. Historical
+  main ac043aa contains D-150; the preexisting uncommitted kickoff is preserved
+  byte-for-byte in the archive at SHA-256
+  dcb9924b2d3b01e3b4c3b6171b423ced802ae5718c8f8ee1f891f29efb0e5c55.
+- Implementation: The active plan states the exact menu, cross-fitting,
+  calibration/blend/auxiliary controls, promotion criteria and compute ceiling.
+  Meaningful Git/manifest identities replace self-referential control chains.
+  Allow two bounded engineering repairs per failure class; scientific changes
+  require a prospective new version. No private or scientific operation is
+  performed by this documentation milestone.
+- Validation: Focused and full repository checks plus source/diff review are
+  required before signed fast-forward integration. Actual results are recorded
+  in the PR rather than inventing future CI or independent-review evidence.
+- Reversal: A data/assay/family leak, invalid release, unsupported claim or
+  exceeded budget stops the affected candidate. Preserve the failure and keep
+  other qualified candidates/fallback operational. No retrospective tuning on
+  the reserved comparison and no leaderboard-based selection.
