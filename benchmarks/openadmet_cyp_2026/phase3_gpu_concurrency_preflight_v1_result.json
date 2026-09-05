@@ -1,0 +1,23 @@
+{
+  "accounting_note": "Three services total; includes driver interval, do not add its nested CPU again.",
+  "cohorts": [],
+  "counter_samples": [],
+  "driver_sha256": "d5249e13b5beb82b68c29827fde5c1505a89ae9e4f9ca02679c163e019b6e077",
+  "error": "Approved shared-memory cap/headroom condition failed",
+  "error_type": "MemoryError",
+  "frozen_inputs_sha256": "0790e85cbc49c66333a250136d22f490a7b41cf000621aa5d6315b64abf33704",
+  "official_data_reads": 0,
+  "official_model_fits": 0,
+  "pause_status": "No retry; headroom failure before first GPU worker; no concurrency recommendation.",
+  "plan_sha256": "d970e3dc634a3fb5b6b2ac68dbd36c56f2778d216278ac56648fe1fc645b5c83",
+  "process_CPU_seconds": 0.09788581,
+  "prospectively_supported_concurrency": null,
+  "reaped_child_CPU_seconds": 0.0,
+  "result_sha256": "ecf3eea9ac083963b80e7db62ddaeed76e132a1316c2182eac22b8168359c08e",
+  "schema": "synthetic-worker-concurrency-result.v1",
+  "status": "failed",
+  "synthetic_fits": 0,
+  "total_CPU_core_hours": 2.7190502777777777e-05,
+  "total_service_cpu_seconds": 0.511,
+  "wall_seconds": 0.10036280200074543
+}

@@ -1,0 +1,85 @@
+{
+  "GPU_calls": 0,
+  "bytes": 34859448,
+  "fits": 0,
+  "historical_distinction": "Phase0.5D021 used a CYP-finetuned OpenADMET checkpoint and failing CPUcontainer; this is the generic Zenodo pretrained message-passing checkpoint. No old failed attempt rerun.",
+  "license": "MIT per ZenodoAPI, repositoryMITnotice retained",
+  "md5": "6a80b54fdb7de37ef0374d302f01e8ce",
+  "metadata_inspection_sha256": "7cf8d145cf31ed09daa7b85932f5c0041f11408ca74099556f64baa7f28479b3",
+  "official_data_reads": 0,
+  "plan_sha256": "65495f88a5a87f8e64e395c7c14228646b4de8e11431734c3193d9ddaf95be1b",
+  "process_cpu_seconds": 0.182730526,
+  "schema": "cypshift.phase3.foundation_asset_intake.v1",
+  "scientific_status": "Unscored generic descriptor-pretrained foundation checkpoint; runtime/inference readiness and a new prospective experiment remain required.",
+  "sha256": "c376624d3407204e780a0ed13a9ac097cc9bb1c13ef89cdbc633c1715c183651",
+  "source": "https://zenodo.org/records/15460715/files/chemeleon_mp.pt",
+  "source_receipts": {
+    "chemprop_pyproject": {
+      "bytes": 2388,
+      "sha256": "527697148ae0ea79f5ad27dca7ea0f29d6cb6bf9498595efbda8c606c4013550",
+      "url": "https://raw.githubusercontent.com/chemprop/chemprop/v2.3.1/pyproject.toml"
+    },
+    "fingerprint_example": {
+      "bytes": 2479,
+      "sha256": "0523f877bb2e2aa71ba53b056617543e79d71400634fcc0a55cf0c343fff74cb",
+      "url": "https://raw.githubusercontent.com/JacksonBurns/chemeleon/b5e5bd88a7070c3f278e7e65e85b792617bf125c/chemeleon_fingerprint.py"
+    },
+    "model_metadata": {
+      "bytes": 3934,
+      "sha256": "5b8fb5583b5ef1dce4fa74ae68c5c3a05806cbc15f227aa710a115be75bce141",
+      "url": "https://zenodo.org/api/records/15460715"
+    },
+    "upstream_license": {
+      "bytes": 1070,
+      "sha256": "2c385033e37eb180b2c2092e48b0b7efd18941569eeae325f7e14f1343fe8b91",
+      "url": "https://raw.githubusercontent.com/JacksonBurns/chemeleon/b5e5bd88a7070c3f278e7e65e85b792617bf125c/LICENSE"
+    }
+  },
+  "status": "verified",
+  "subsequent_safe_CPU_metadata_inspection": {
+    "GPU_calls": 0,
+    "all_finite": true,
+    "fits": 0,
+    "hyper_parameters": {
+      "V_d_transform": null,
+      "activation": "relu",
+      "bias": false,
+      "d_e": 14,
+      "d_h": 2048,
+      "d_v": 72,
+      "d_vd": null,
+      "depth": 6,
+      "dropout": 0.0,
+      "graph_transform": null,
+      "undirected": false
+    },
+    "inference_calls": 0,
+    "keys": [
+      "hyper_parameters",
+      "state_dict"
+    ],
+    "official_data_reads": 0,
+    "parameters": 8714240,
+    "process_cpu_seconds": 0.8487277299999999,
+    "status": "cpu_metadata_loaded",
+    "tensor_shapes": {
+      "W_h.weight": [
+        2048,
+        2048
+      ],
+      "W_i.weight": [
+        2048,
+        86
+      ],
+      "W_o.bias": [
+        2048
+      ],
+      "W_o.weight": [
+        2048,
+        2120
+      ]
+    },
+    "wall_seconds": 0.8489395009964937
+  },
+  "wall_seconds": 9.323801267000817
+}

@@ -1,7 +1,14 @@
 # Project state
 
-Updated: 2026-09-05 UTC. Current integrated main: signed `9de02ec` (D-160),
-locally fast-forwarded and pushed after all three PR #197 Python CI jobs passed.
+Updated: 2026-09-05 UTC. Current integrated main: signed `c756a50` (D-162),
+locally fast-forwarded and pushed after all three PR #199 Python CI jobs passed.
+
+## Paused by user — September 5
+
+All project computation and agents are stopped. Automation
+`cypshift-recovery-and-releases` is PAUSED. Do not start experiments, installs,
+production or monitoring until the user resumes. Read the
+[restart checkpoint](RESUME_AFTER_PAUSE_2026-09-05.md) first.
 
 ## Active contract
 
@@ -168,14 +175,15 @@ arms; other-head predictions for those two molecules are unscored. This does not
 explain the older tree submission. No rows were removed or altered predictions
 evaluated. [Diagnostic](../../benchmarks/openadmet_cyp_2026/phase3_mlp_descriptor_diagnostic_v1.json).
 
-The new hypothesis uses identical4096binary Morgan bits and200literal zero
-channels, retaining4296input width, all three arms, hyperparameters, folds,
-preprocessing code and unchanged GPU worker. It removes the entire descriptor
-block prospectively. First seed105fits: if no direct/real raw/affine variant
-passes every applicable incumbent/control gate, stop for futility. Otherwise
-run the unchanged second105fits; both-seed gates still govern recommendation.
-Smaller prediction extremes alone do not qualify a model. Freeze signed reviewed
-source before official fits; full exact-head PR checks precede integration/release.
+The Morgan-only ablation has now completed105fits in352.13wall seconds,
+using0.145764 invocation CPU-core-hours. Direct raw/affine primary1.15900/1.13822;
+real auxiliary raw/affine1.17340/1.13612, versus incumbent0.73715. All applicable
+incumbent gates fail. The canonical first-seed comparator authenticates105fits/
+60calibrations and triggers the frozen futility stop: **no repeat2 or production**.
+Independent replay verifies105saved networks at zero prediction difference and
+checks all input arrays contain4096binary bits plus200zerochannels. Both MLP
+recipes are retired; this is not evidence against every neural architecture.
+[Result](../../benchmarks/openadmet_cyp_2026/phase3_mlp_morgan_only_v1_result.json).
 
 D-162 freezes the first TDI classifier experiment after all160 support cells
 pass. Bundle `tdi-development-v1` manifest
@@ -192,12 +200,28 @@ paired-family improvement on both seeds. No standalone CatBoost rescue.
 
 Independently reconstruct retained models, inner thresholds, OOF classes and
 metrics before production. A qualified TDI recipe needs8logistic or14selected-
-procedure production fits and an actual validated750-row binary CSV. No official
-TDI classifier has been fitted at this prospective freeze. The Morgan-only first
-seed is running from signed741a084 on PR198; inspect live state before proceeding.
+procedure production fits and an actual validated750-row binary CSV. The first80-fit
+TDI repeat completed from signedc756a50 (PR199) in140.59seconds/0.246744CPUh.
+Logistic macroMCC0.14564; inner-selected0.17173, gain0.02609 with positive family
+lower95bound0.002486. Both procedures pass first-seed usefulness; the selected
+procedure also passes superiority. Independent audit now passes all80 exact prediction replays and20 exhaustive threshold
+checks; first-seed metrics/gates reproduce. Two earlier metadata-check failures
+are preserved. The narrow native CatBoost decimal-serialization exception and
+stale-prose correction are recorded in the
+[audit receipt](../../benchmarks/openadmet_cyp_2026/phase3_tdi_first_seed_audit_v1.json).
+Second seed and production have not started; this is not a release.
 
-Check private `active-compute.json`, result files and live processes first to avoid
-duplicating completed jobs. No new production model or upload is ready.
+The synthetic1/2/4worker profile stopped before any GPU fit: shared-slice memory
+headroom was6.52GB, below the approved8GiB minimum, largely charged file cache.
+No concurrency speedup was measured or recommended. Total service CPU0.511seconds.
+[Receipt](../../benchmarks/openadmet_cyp_2026/phase3_gpu_concurrency_preflight_v1_result.json).
+
+The next direct-model research direction is a generic pretrained graph encoder.
+The35MB MIT-licensed CheMeleon asset is hash-verified; CPU-only metadata confirms
+8.7Mfinite parameters. Dependency resolution preserves all19 existing GPU pins
+and proposes45 additional wheels. No environment was installed, graph inference
+run or official data used. Its private readiness plan awaits review after resume.
+[Research rationale](../../benchmarks/openadmet_cyp_2026/PHASE3_NEXT_REPRESENTATION.md).
 
 ## Continuing boundaries
 
@@ -213,6 +237,6 @@ Refresh source receipts before any release: latest observed dataset 3ac9c5d,
 Space 453a39a, tutorial 858ae63. Direct columns require sample STD>=0.01; TDI
 requires binary predictions containing both classes. Private portal activity remains outside model selection. User uploads manually;
 respect 12-hour per-track spacing and distinguish readiness from submission.
-The existing two-hour heartbeat reloads the public page, checks **glhf**, avoids
-completed work and stays quiet on unchanged/non-actionable results. Notify for
-actual files, meaningful changes, failures or required action.
+The two-hour heartbeat is PAUSED at user request. After an explicit resume,
+monitor **glhf** descriptively and notify only for meaningful changes or actual
+ready files; do not select models from leaderboard feedback.
