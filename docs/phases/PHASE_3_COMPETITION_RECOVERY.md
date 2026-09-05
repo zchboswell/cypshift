@@ -113,6 +113,18 @@ A reserved evaluation allows one frozen comparison per track, not one fragile
 process invocation. An identical-input retry may finish the same report; no
 different candidate or outcome-driven tuning is allowed afterward.
 
+## September 5 audit-driven update
+
+D-157 prioritizes a controlled RMSE-versus-MAE experiment and stronger support /
+acquisition diagnostics after the deep audit found pipeline integrity but weak
+potent-tail predictions. The exact two-seed, 160-fit, 20-core-hour recipe is
+[recorded here](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1.json).
+It precedes further encoder work. Preserve historical OOF and negative results;
+new production estimators must be retained and reloaded before release.
+The historical selected-anchor maximum rule is not an honest simulation of
+future analog acquisition; any new anchor experiment first needs query-outcome-
+independent discovery/selection and an explicitly distinct evaluation claim.
+
 ## Validation and candidate menu
 
 Preserve the 997-molecule reserved partition and disclose its R3C/R5 historical

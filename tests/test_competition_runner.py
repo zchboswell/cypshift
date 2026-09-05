@@ -244,3 +244,215 @@ def test_recovery_cannot_freeze_a_fit_while_another_evaluator_holds_compute_lock
         assert not attempt.exists()
     assert runner.evaluate(source, root / "next", **kwargs) == {"frozen": True}
     assert runner.spent_cpu(root) == 1.0
+
+
+def test_objective_change_cannot_reuse_mae_fit_or_automatic_rmse_parameters(
+    runner: Any,
+    tmp_path: Path,
+) -> None:
+    args = _inputs()
+    _, mae = runner.cached_fit(tmp_path, *args)
+    _, rmse = runner.cached_fit(tmp_path, *args, loss="RMSE")
+    _, repeated = runner.cached_fit(tmp_path, *args, loss="RMSE")
+    assert mae["key"] != rmse["key"]
+    assert repeated["reused"] and runner.CatBoostRegressor.fits == 2
+    assert mae["inputs"]["parameters"] == runner.PARAMETERS
+    assert "learning_rate" not in mae["resolved_parameters"]
+    assert rmse["inputs"]["parameters"] == rmse["resolved_parameters"]
+    for name, value in {
+        "loss_function": "RMSE",
+        "learning_rate": 0.03,
+        "iterations": 1000,
+        "depth": 6,
+    }.items():
+        assert rmse["resolved_parameters"][name] == value
+    with pytest.raises(ValueError, match="frozen"):
+        runner.cached_fit(tmp_path, *args, loss="unexpected-objective")
+    assert runner.CatBoostRegressor.fits == 2
+
+
+def test_rmse_evaluation_cannot_claim_incumbent_eligibility_or_use_mae_csv_builder(
+    runner: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Exercise the complete 80-cell orchestration with cheap estimators, while
+    # isolating scoring: even a favorable within-objective result cannot grant release.
+    source, output = tmp_path / "compiled", tmp_path / "rmse"
+    source.mkdir()
+    output.mkdir()
+    (source / "manifest.json").write_bytes(b"synthetic compiled manifest")
+    point = np.linspace(1, 2, 20)[:, None] + np.arange(4)[None, :] * 0.1
+    data = types.SimpleNamespace(
+        names=tuple(f"fixture-{i}" for i in range(20)),
+        molecule_ids=tuple(f"fixture-{i}" for i in range(20)),
+        groups=tuple(f"family-{i}" for i in range(20)),
+        point=point,
+        low=point.copy(),
+        high=point.copy(),
+        training_mask=np.ones((20, 4), dtype=bool),
+        metric_mask=np.ones((20, 4), dtype=bool),
+        legacy_features=np.arange(40).reshape(20, 2),
+        receipts={"fixture": "synthetic"},
+        report={"metric_targets_missing_bounds": [0] * 4},
+    )
+    monkeypatch.setattr(runner, "load_development", lambda path: data)
+    monkeypatch.setattr(runner.platform, "python_version", lambda: "3.10.13")
+    versions = {
+        "catboost": "1.2.1",
+        "numpy": "1.25.2",
+        "rdkit": "2023.3.3",
+        "scipy": "1.11.2",
+    }
+    monkeypatch.setattr(
+        runner.importlib.metadata, "version", lambda name: versions[name]
+    )
+    monkeypatch.setattr(
+        runner.subprocess, "check_output", lambda *args, **kwargs: "fixture-commit"
+    )
+    monkeypatch.setattr(
+        runner, "direct_scores", lambda *args: {"synthetic": "not-science"}
+    )
+    monkeypatch.setattr(
+        runner, "paired_family_difference", lambda *args: {"synthetic": "not-science"}
+    )
+    monkeypatch.setattr(
+        runner,
+        "release_decision",
+        lambda *args: {"release_eligible_on_paired_metrics": True},
+    )
+    report = runner._evaluate_locked(source, output, 20260905, "RMSE", 10)
+    assert report["candidate"] == "maplight-rmse-inner-oof-affine"
+    assert report["fits"] == runner.CatBoostRegressor.fits == 80
+    assert report["decision"]["within_objective_calibration"][
+        "release_eligible_on_paired_metrics"
+    ]
+    assert not report["decision"]["release_eligible_on_paired_metrics"]
+    assert not report["decision"]["promotion_metric_gate"]
+    assert not report["decision"]["final_promotion"]
+    assert "Never apply" in report["release_scope"]
+    frozen = json.loads((output / "experiment.json").read_bytes())
+    assert frozen["objective"] == frozen["parameters"]["loss_function"] == "RMSE"
+    assert report["max_cpu_core_hours"] == 10
+    assert {
+        p["loss_function"] for p in report["resolved_parameter_variants"].values()
+    } == {"RMSE"}
+    with np.load(output / "oof.npz", allow_pickle=False) as archive:
+        assert np.isfinite(archive["baseline"]).all()
+        assert np.isfinite(archive["calibrated"]).all()
+    # Even if a later comparison marks eligibility, candidate identity must stop
+    # the legacy builder from applying RMSE calibration to historical MAE bytes.
+    report["decision"]["release_eligible_on_paired_metrics"] = True
+    (output / "result.json").write_text(json.dumps(report))
+    scripts = Path(__file__).resolve().parents[1] / "scripts"
+    monkeypatch.syspath_prepend(str(scripts))
+    spec = importlib.util.spec_from_file_location(
+        "rmse_release_guard_test", scripts / "build_calibrated_competition_release.py"
+    )
+    assert spec is not None and spec.loader is not None
+    release = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(release)
+    with pytest.raises(ValueError, match="complete eligible interim challenger"):
+        release._validated_experiment(output)
+
+
+def test_nonfit_cpu_and_interrupted_overhead_are_charged_once_without_double_count(
+    runner: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    output = tmp_path / "run"
+    output.mkdir()
+    for attempt, cost in ((1, 1.0), (2, 0.5)):
+        (output / f"fit-start-{attempt}.json").write_text(
+            json.dumps({"started_epoch_seconds": 1000, "threads": 4})
+        )
+        (output / f"fit-attempt-{attempt}.json").write_text(
+            json.dumps({"cpu_core_hours": cost})
+        )
+    (output / "run-overhead-start-3.json").write_text(
+        json.dumps(
+            {
+                "pid": runner.os.getpid(),
+                "started_epoch_seconds": 1000,
+                "process_cpu_at_start": 100,
+                "threads": 4,
+                "fit_cpu_at_start": 1.0,
+            }
+        )
+    )
+    monkeypatch.setattr(runner.time, "process_time", lambda: 4600)
+    monkeypatch.setattr(runner.time, "time", lambda: 2800)
+    # Invocation CPU1.25 includes its .5 fit CPU; previous fit cost1 is separate.
+    assert runner.spent_cpu(output) == 2.25
+    assert runner.freeze_interrupted_fits(output) == 1
+    frozen = output / "run-overhead-attempt-3.json"
+    raw = frozen.read_bytes()
+    # Conservative invocation wall1800*4=2 hours, less .5 already charged fit CPU.
+    assert json.loads(raw)["cpu_core_hours"] == 1.5
+    assert runner.spent_cpu(output) == 3.0
+    monkeypatch.setattr(runner.time, "time", lambda: 1000000)
+    assert runner.freeze_interrupted_fits(output) == 0
+    assert frozen.read_bytes() == raw and runner.spent_cpu(output) == 3.0
+
+
+def test_failed_and_resumed_nonfit_work_remains_in_budget(
+    runner: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    clock = [10.0]
+    calls = [0]
+    monkeypatch.setattr(runner.time, "process_time", lambda: clock[0])
+
+    def scientific(*args: Any) -> dict[str, Any]:
+        calls[0] += 1
+        clock[0] += 3600 if calls[0] == 1 else 1800
+        if calls[0] == 1:
+            raise ValueError("Synthetic scoring failure without model fits")
+        return {}
+
+    monkeypatch.setattr(runner, "_evaluate_scientific", scientific)
+    with pytest.raises(ValueError, match="scoring failure"):
+        runner._evaluate_locked(tmp_path, tmp_path, 20260905, "RMSE", 10)
+    assert runner.spent_cpu(tmp_path) == 1.0
+    report = runner._evaluate_locked(tmp_path, tmp_path, 20260905, "RMSE", 10)
+    assert report["invocation_cpu_core_hours"] == 0.5
+    assert report["budget_accounted_fit_cpu_core_hours"] == 0
+    assert report["budget_accounted_cpu_core_hours"] == 1.5
+    assert runner.spent_cpu(tmp_path) == 1.5
+
+
+def test_rmse_hard_limit_uses_remaining_cpu_under_shared_lock(
+    runner: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source, output = tmp_path / "compiled", tmp_path / "run"
+    source.mkdir()
+    (source / "manifest.json").write_bytes(b"fixture")
+    cap_calls = []
+    monkeypatch.setattr(runner.time, "process_time", lambda: 3600.0)
+    monkeypatch.setattr(runner.resource, "getrlimit", lambda key: (20000, 20000))
+
+    def capture(key: int, limits: tuple[int, int]) -> None:
+        # Observe lock exclusion while capturing the setter; never alter pytest limits.
+        with (tmp_path / "compute.lock").open("a") as other:
+            with pytest.raises(BlockingIOError):
+                runner.fcntl.flock(other, runner.fcntl.LOCK_EX | runner.fcntl.LOCK_NB)
+        cap_calls.append((key, limits))
+
+    monkeypatch.setattr(runner.resource, "setrlimit", capture)
+    monkeypatch.setattr(runner, "spent_cpu", lambda root: 8 if root == output else 995)
+    monkeypatch.setattr(runner, "_evaluate_locked", lambda *args: {})
+    runner.evaluate(
+        source,
+        output,
+        expected_compiled_sha256=runner.digest(b"fixture"),
+        loss="RMSE",
+        max_cpu_core_hours=10,
+    )
+    assert cap_calls == [(runner.resource.RLIMIT_CPU, (10800, 10800))]
+    with pytest.raises(RuntimeError, match="exhausted"):
+        runner._limit_remaining_cpu(0)
+    assert len(cap_calls) == 1

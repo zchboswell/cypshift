@@ -6150,3 +6150,57 @@ corruption, selection and accounting. Focused suite, lint/format, strict core
 mypy and exact-commit PR CI are required before integration. Reversal: evidence
 or provenance failure withdraws the affected claim/artifact, preserving the
 baseline and unaffected candidates; no leaderboard-driven repair.
+
+## D-157 — Deep audit changes the modeling and validation priorities
+
+Date: 2026-09-05 UTC; user explicitly requested a substantial bug audit and a
+strategy change if the pipeline held up. Candidate expansion paused for audit.
+
+Independent raw-to-development comparison matches all 46,896 point/bound cells;
+the actual tutorial full wrapper matches within 1.11e-16; independently rebuilt
+training and inference feature hashes and the affine CSV match exactly. No
+catastrophic mapping, units, scoring or deployment feature defect was found.
+The original production estimators were deleted, so direct model reload remains
+unverified. Sparse int8 Avalon overflow is genuine but not an established cause
+of poor overall scores. No reserved numeric labels were opened by the audit.
+
+The model beats training-fold medians with paired evidence, but compresses
+predictions and misses every pIC50 >=6 example below its lower bound in both
+repeats. Singleton-heavy families do not simulate a dense active-hit analog
+panel. Historical selected-anchor episodes chose maximum selector potency from
+the same pool as future queries, outcome-conditioning those selector queries.
+Keep TRACE's observed failure and implementation retired; do not generalize it
+to every possible new known-parent hypothesis. Any new episode protocol must
+hide query outcomes during discovery/anchor selection and disclose its distinct
+information setting. No retrospective fold change or hidden-label inference.
+
+Change the next experiment to RMSE versus MAE with unchanged feature semantics
+and shared learning rate 0.03, depth 6, 1,000 iterations, random strength 2 and
+seed 1. Record native optimizer differences (Exact versus Newton leaves).
+Evaluate raw and bounded inner-OOF affine variants on both original family
+seeds: 80 fits each, capped at 10 CPU-core-hours each. Authenticate and compare
+with each seed's original calibrated MAE incumbent. Recommendation requires
+>=2% primary gain, paired upper95 <0 and endpoint component-MAE harm <=0.02
+in each repeat. Separately test the potent-tail mechanism against fixed bands;
+prediction variance alone is no success criterion. Details are frozen in
+benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1.json before model outcomes.
+
+The RMSE runner's own raw-versus-affine comparison cannot authorize a release.
+Its distinct candidate identity is rejected by the historical-MAE transformation
+builder. New qualified model predictions must come from saved/reloaded fitted
+estimators using development labels, with the smaller training size disclosed.
+No new submission is claimed by this prospective milestone. Failed experiments
+remain recorded and move priority to complementary similarity/auxiliary-data
+hypotheses rather than arbitrary offsets or another infrastructure prerequisite.
+
+Parallel data work audits the TDI file's extra 1,240 identities before numeric
+intake. Existing development direct fields match exactly and add zero labels;
+no additional usable targets are assumed. Model selection remains independent
+of public outcomes, and the final reserved comparison remains closed.
+
+Validation: independent audit evidence and focused objective/cache/release/
+comparison tests plus full exact-commit CI before integration. A documentation
+link to a private upload file failed clean-runner CI in D-156; retaining it as
+a literal locator fixed the portability issue without changing scientific data
+or weakening the existing test. Reversal: a failed objective hypothesis retires
+that candidate, not the recovered pipeline or remaining validated hypotheses.

@@ -47,7 +47,8 @@ all three Python CI jobs; pushed main. Full local historical suite: 1489 passed,
 PR #189 CI jobs passed.
 
 D-153 through D-155 are integrated and pushed after all three Python PR CI
-jobs passed (PRs #190–#192; main `8bffec2`). Two frozen 80-fit grouped repeats
+jobs passed (PRs #190–#192). D-156 is also integrated after PR #193 passed
+all three jobs; main `0787661`. Two frozen 80-fit grouped repeats
 support affine calibration: primary ST-RAE improvements **2.6903%** and
 **2.7477%**, with paired-family difference intervals entirely below zero.
 The maximum endpoint component-MAE harms are +0.01733 and +0.01893, within
@@ -93,18 +94,41 @@ its median model is a product fixture baseline, not the competition model.
 Use existing locked research environments. Budget: 1000 CPU-core-hours,
 16 active threads, 20 GiB working memory, 100 GB private storage, no paid GPU.
 
+## Deep audit and revised priority
+
+The user requested a substantial audit after the poor public result. The audit
+found no catastrophic target, unit, endpoint, feature, row-order or scoring bug:
+46,896 raw development point/bound cells match exactly; the real public wrapper
+matches within 1.11e-16; all 4,905 training and 750 test feature rows reproduce
+historical hashes; the affine CSV reproduces byte-for-byte. Reserved labels
+remained closed. See [the deep audit](../../benchmarks/openadmet_cyp_2026/PHASE3_DEEP_AUDIT.md).
+
+Real weaknesses: severely compressed OOF predictions, all pIC50 >=6 examples
+below their lower bounds in both repeats, singleton-heavy validation that does
+not reproduce analog acquisition, and deleted historical production estimators.
+Historical maximum-potency anchor selection also conditions selector queries
+to be weaker; retain that negative result without claiming all known-parent
+hypotheses are disproved. Sparse signed-int8 Avalon overflow remains a real
+separate ablation. TDI adds no direct labels on existing development identities;
+1,240 extra IDs require family-safe intake before their numeric fields are read.
+
 ## Next action
 
-Integrate the repeat-confirmation and SVR evaluation milestone after review and
-exact-commit CI. Then run the frozen 140-fit SVR comparison, first checking for
-an existing process/result; profile its first real cell. If qualified, complete
-its 28-fit development-only deployment and actual validated CSV. Finish the
-small corrected-count ablation and bounded GIN provenance/runtime readiness.
+Complete the reviewed signed D-157 audit/objective-ablation milestone. Run the
+prespecified RMSE-versus-MAE experiment on both frozen seeds, 80 new fits each,
+10 CPU-core-hours per seed, retaining the original features. Start only from a
+signed reviewed implementation after focused checks; full PR CI may run in
+parallel. Compare both raw and inner-OOF affine RMSE to matching calibrated
+MAE OOF with the [frozen recipe](../../benchmarks/openadmet_cyp_2026/phase3_rmse_ablation_v1.json).
+Never apply RMSE calibration to the historical MAE CSV. Any qualified new model
+must be fitted on development labels, saved/reloaded, and generate its own
+validated prediction file after implementation CI/integration. Final reserve
+remains closed. Record negative results and then move to complementary data/SVR
+if the objective hypothesis fails; do not spend another cycle on offsets alone.
 
-The user explicitly authorizes a different strategy when evidence warrants it.
-Revise prospective hypotheses, priorities and budgets using internal evidence,
-resource costs and research; record consequential changes before new outcomes.
-Do not treat the initial menu as a permanent restriction or reset historical
-failures. Preserve family isolation, cross-fitting, the reserved barrier and
-leaderboard-independent selection. Continue every two hours; notify for actual
-new files, newly visible leaderboard results or meaningful issues.
+In parallel, finish support diagnostics and family-safe TDI direct-field intake.
+GIN is a bounded option, not a prerequisite. The user authorizes different
+strategies when internal evidence, costs or research justify them; document
+prospective choices and preserve scientific invariants. The existing two-hour
+heartbeat prioritizes this audit-driven sequence and public monitoring, avoids
+duplicate jobs and only notifies for actual files or meaningful changes.

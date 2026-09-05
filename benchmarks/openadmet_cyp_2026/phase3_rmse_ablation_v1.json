@@ -1,0 +1,88 @@
+{
+  "affine": {
+    "intercept_bounds": [
+      -0.25,
+      0.25
+    ],
+    "objective": "inner OOF interval distance; identity ties",
+    "slope_bounds": [
+      0.8,
+      1.2
+    ]
+  },
+  "cpu_core_hours_per_seed": 10,
+  "cpu_core_hours_total": 20,
+  "data_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "features": "unchanged legacy MapLight; count correction remains separate ablation",
+  "final_promotion": false,
+  "frozen_at_utc": "2026-09-05T02:41:31.527127+00:00",
+  "hypothesis": "With unchanged features and shared tree settings, RMSE may retain useful potency signal suppressed by median-oriented MAE fitting",
+  "if_rejected": "Record negative result and move to complementary similarity/auxiliary-data model after validation/data-coverage audit; no leaderboard-driven offsets",
+  "model": {
+    "allow_writing_files": false,
+    "depth": 6,
+    "iterations": 1000,
+    "learning_rate": 0.03,
+    "loss_function": "RMSE",
+    "random_seed": 1,
+    "random_strength": 2,
+    "task_type": "CPU",
+    "thread_count": 16
+  },
+  "nested_folds": {
+    "family_policy": "existing frozen development union groups",
+    "inner": 3,
+    "outer": 5
+  },
+  "new_fits_per_seed": 80,
+  "new_fits_total": 160,
+  "optimizer_note": "Record native objective-dependent resolved settings; MAE uses Exact leaves while RMSE uses Newton. Shared settings are fixed, not a claim of identical optimizer behavior.",
+  "potency_diagnostics": {
+    "bands": [
+      "<4.3",
+      "4.3<=pIC50<5",
+      "5<=pIC50<6",
+      ">=6"
+    ],
+    "comparator": "Same-seed calibrated-MAE incumbent",
+    "interpretation": "Larger prediction variance alone establishes neither success nor failure; outcome-conditioned bands do not select offsets or thresholds",
+    "macro_weighting": "Arithmetic mean of the four endpoint-specific interval MAEs in each band, over the same finite-point/bounds populations; all four endpoints require nonempty finite support or the mechanism criterion is unsupported",
+    "mechanism_claim_requires_each_seed": {
+      "macro_ge6_interval_mae_improvement_min": 0.1,
+      "macro_lt4_3_interval_mae_harm_max": 0.05
+    }
+  },
+  "recommendation_gate_each_seed": {
+    "max_endpoint_component_mae_harm": 0.02,
+    "paired_family_primary_upper95_max_exclusive": 0,
+    "relative_macro_primary_gain_over_calibrated_incumbent_min": 0.02
+  },
+  "references": "Authenticated same-seed raw MAE and calibrated MAE OOF; current calibrated MAE is incumbent",
+  "release_if_qualified": {
+    "forbidden": "Do not apply RMSE calibration to historical MAE predictions",
+    "steps": [
+      "Fit four endpoint estimators on eligible development labels using fixed selected recipe",
+      "Fit any selected affine from corresponding development OOF only",
+      "Save and reload estimator files; require same-runtime prediction equality",
+      "Generate new predictions from raw test structures with exact feature recipe",
+      "Current source refresh and immutable CSV/manifest validation",
+      "Passing integrated implementation and manual user handoff"
+    ],
+    "training_scope": "development only; reserved labels closed",
+    "training_size_limitation": "3908-molecule development production refit versus prior4905 full-training baseline; disclose rather than assume parity"
+  },
+  "repeat_policy": "Both seeds must satisfy gates; no second-seed parameter substitution or post hoc averaging",
+  "reserved_comparison": "closed",
+  "schema": "cypshift.phase3.rmse_ablation.v1",
+  "seeds": [
+    20260905,
+    20260906
+  ],
+  "status": "prespecified_before_RMSE_outcomes",
+  "targeted_failure_mode": "Compressed structural predictions and strong underprediction of potent development compounds",
+  "variant_selection": "Among variants passing both repeats, choose lower first-repeat macro primary; exact tie favors raw. This is development candidate selection, not final reserved promotion.",
+  "variants": [
+    "raw_rmse",
+    "inner_oof_affine_rmse"
+  ]
+}

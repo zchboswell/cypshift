@@ -45,6 +45,26 @@ PARAMETERS = {
 }
 
 
+def model_parameters(loss: str = "MAE") -> dict[str, Any]:
+    """Preserve legacy MAE; prevent RMSE from choosing an automatic learning rate.
+
+    All 80 original MAE receipts resolve depth=6, iterations=1000, and learning
+    rate=0.029999999329447743 (CatBoost's float32 representation of 0.03).
+    Objective-specific optimization defaults remain native and are recorded.
+    """
+    if loss == "MAE":
+        return dict(PARAMETERS)
+    if loss == "RMSE":
+        return {
+            **PARAMETERS,
+            "loss_function": "RMSE",
+            "learning_rate": 0.03,
+            "iterations": 1000,
+            "depth": 6,
+        }
+    raise ValueError("Only the frozen MAE and RMSE objectives are supported")
+
+
 def digest(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
@@ -104,8 +124,11 @@ def cached_fit(
     train: np.ndarray,
     predict: np.ndarray,
     identity: dict[str, Any],
+    *,
+    loss: str = "MAE",
 ) -> tuple[np.ndarray, dict[str, Any]]:
     """Never reuse a prediction without exact train and prediction identities."""
+    parameters = model_parameters(loss)
     if features.ndim != 2 or targets.shape != (len(features),):
         raise ValueError("Invalid model array dimensions")
     for indices in (train, predict):
@@ -122,7 +145,7 @@ def cached_fit(
         raise ValueError("Illegal training membership or nonfinite training target")
     material = {
         **identity,
-        "parameters": PARAMETERS,
+        "parameters": parameters,
         "features_sha256": digest(np.ascontiguousarray(features).tobytes()),
         "training_indices": train.tolist(),
         "prediction_indices": predict.tolist(),
@@ -157,7 +180,7 @@ def cached_fit(
         directory / f"fit-start-{attempt_id}.json",
         canonical({"started_epoch_seconds": time.time(), "threads": 16}),
     )
-    model = CatBoostRegressor(**PARAMETERS)
+    model = CatBoostRegressor(**parameters)
     status = "failed"
     try:
         model.fit(features[train], targets[train])
@@ -222,11 +245,29 @@ def freeze_interrupted_fits(root: Path) -> int:
             ),
         )
         frozen += 1
+    for start in root.rglob("run-overhead-start-*.json"):
+        attempt = start.with_name(
+            start.name.replace("run-overhead-start-", "run-overhead-attempt-")
+        )
+        if attempt.exists():
+            continue
+        publish(
+            attempt,
+            canonical(
+                {
+                    "status": "interrupted_unknown",
+                    "cpu_core_hours": _overhead_cpu(start, recovered=recovered),
+                    "recovered_epoch_seconds": recovered,
+                    "accounting_basis": "Elapsed invocation wall time times threads, less already charged fit work; includes recovery delay",
+                }
+            ),
+        )
+        frozen += 1
     return frozen
 
 
-def spent_cpu(root: Path) -> float:
-    """Include failed fits and conservative charges for unfinished processes."""
+def _fit_cpu(root: Path) -> float:
+    """Fit-only charges, excluding invocation overhead to prevent double counting."""
     total = 0.0
     for start in root.rglob("fit-start-*.json"):
         attempt = start.with_name(start.name.replace("fit-start-", "fit-attempt-"))
@@ -242,9 +283,59 @@ def spent_cpu(root: Path) -> float:
     return total
 
 
+def _overhead_cpu(start: Path, *, recovered: float | None = None) -> float:
+    record = json.loads(start.read_bytes())
+    fit_delta = max(0.0, _fit_cpu(start.parent) - record["fit_cpu_at_start"])
+    if recovered is None and record["pid"] == os.getpid():
+        invocation = (time.process_time() - record["process_cpu_at_start"]) / 3600
+    else:
+        observed = time.time() if recovered is None else recovered
+        invocation = (
+            max(0.0, observed - record["started_epoch_seconds"])
+            * record["threads"]
+            / 3600
+        )
+    return max(0.0, invocation - fit_delta)
+
+
+def spent_cpu(root: Path) -> float:
+    """Charge fits and non-fit invocation CPU, including failed/interrupted work."""
+    total = _fit_cpu(root)
+    for start in root.rglob("run-overhead-start-*.json"):
+        attempt = start.with_name(
+            start.name.replace("run-overhead-start-", "run-overhead-attempt-")
+        )
+        total += (
+            float(json.loads(attempt.read_bytes())["cpu_core_hours"])
+            if attempt.exists()
+            else _overhead_cpu(start)
+        )
+    return total
+
+
+def _limit_remaining_cpu(remaining_core_hours: float) -> None:
+    """Linux limit covers fits, preprocessing, calibration and scoring mid-stage."""
+    if remaining_core_hours <= 0:
+        raise RuntimeError("CPU allocation exhausted before invocation")
+    limit = max(1, int(time.process_time() + remaining_core_hours * 3600))
+    old_limit = resource.getrlimit(resource.RLIMIT_CPU)[1]
+    if old_limit != resource.RLIM_INFINITY:
+        limit = min(limit, old_limit)
+    resource.setrlimit(resource.RLIMIT_CPU, (limit, limit))
+
+
 def evaluate(
-    source: Path, output: Path, *, expected_compiled_sha256: str, seed: int = 20260905
+    source: Path,
+    output: Path,
+    *,
+    expected_compiled_sha256: str,
+    seed: int = 20260905,
+    loss: str = "MAE",
+    max_cpu_core_hours: float = 100,
 ) -> dict[str, Any]:
+    model_parameters(loss)  # Reject unsupported objectives before creating output.
+    if not np.isfinite(max_cpu_core_hours) or not 0 < max_cpu_core_hours <= 1000:
+        raise ValueError("Run CPU budget must be finite and in (0, 1000]")
     if ROOT == output.resolve() or ROOT in output.resolve().parents:
         raise ValueError("Experiment output must stay outside Git")
     if digest((source / "manifest.json").read_bytes()) != expected_compiled_sha256:
@@ -254,11 +345,79 @@ def evaluate(
     with (output.parent / "compute.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         freeze_interrupted_fits(output.parent)
-        return _evaluate_locked(source, output, seed)
+        if loss == "RMSE":
+            _limit_remaining_cpu(
+                min(
+                    max_cpu_core_hours - spent_cpu(output),
+                    1000 - spent_cpu(output.parent),
+                )
+            )
+        return _evaluate_locked(source, output, seed, loss, max_cpu_core_hours)
 
 
-def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
+def _evaluate_locked(
+    source: Path,
+    output: Path,
+    seed: int,
+    loss: str = "MAE",
+    max_cpu_core_hours: float = 100,
+) -> dict[str, Any]:
+    started_cpu = time.process_time()
+    attempt = time.time_ns()
+    start = output / f"run-overhead-start-{attempt}.json"
+    publish(
+        start,
+        canonical(
+            {
+                "pid": os.getpid(),
+                "started_epoch_seconds": time.time(),
+                "process_cpu_at_start": started_cpu,
+                "threads": 16,
+                "fit_cpu_at_start": _fit_cpu(output),
+            }
+        ),
+    )
+    status = "failed"
+    try:
+        report = _evaluate_scientific(source, output, seed, loss, max_cpu_core_hours)
+        status = "complete"
+    finally:
+        invocation_cpu = (time.process_time() - started_cpu) / 3600
+        publish(
+            output / f"run-overhead-attempt-{attempt}.json",
+            canonical(
+                {
+                    "status": status,
+                    "cpu_core_hours": _overhead_cpu(start),
+                    "invocation_cpu_core_hours": invocation_cpu,
+                    "accounting_basis": "Measured process CPU minus newly charged fits; no fit double counting",
+                }
+            ),
+        )
+    report["invocation_cpu_core_hours"] = invocation_cpu
+    report["budget_accounted_fit_cpu_core_hours"] = _fit_cpu(output)
+    report["budget_accounted_cpu_core_hours"] = spent_cpu(output)
+    report["program_accounted_cpu_core_hours"] = spent_cpu(output.parent)
+    # Historical field is retained with its explicitly fit-only meaning.
+    report["program_accounted_fit_cpu_core_hours"] = _fit_cpu(output.parent)
+    publish(output / "result.json", canonical(report))
+    return report
+
+
+def _evaluate_scientific(
+    source: Path,
+    output: Path,
+    seed: int,
+    loss: str,
+    max_cpu_core_hours: float,
+) -> dict[str, Any]:
     wall, cpu = time.monotonic(), time.process_time()
+    parameters = model_parameters(loss)
+    candidate = (
+        "maplight-inner-oof-affine"
+        if loss == "MAE"
+        else "maplight-rmse-inner-oof-affine"
+    )
     execution_commit = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
@@ -300,6 +459,11 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                 if train.sum() < 2 or np.unique(data.point[train, col]).size < 2:
                     raise ValueError("Nested training support missing")
     identity = {
+        "objective": loss,
+        "parameters": parameters,
+        "candidate": candidate,
+        "optimizer_scope": "Shared fixed settings; objective-specific optimizer defaults are retained and recorded, not asserted identical",
+        "cpu_budget_policy": "RMSE uses a remaining-allocation Linux CPU hard cap under the shared lock; MAE retains between-fit enforcement. Both account non-fit invocation CPU",
         "runtime": {
             "python": platform.python_version(),
             **{
@@ -336,6 +500,7 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
             {
                 "git_commit": execution_commit,
                 "seed": seed,
+                "max_cpu_core_hours": max_cpu_core_hours,
                 "compiled_manifest_sha256": digest(
                     (source / "manifest.json").read_bytes()
                 ),
@@ -349,7 +514,10 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
             heldout = np.flatnonzero(~outer_training)
             calibration_predictions = np.full(len(names), np.nan)
             for inner_fold in range(3):
-                if spent_cpu(output) >= 100 or spent_cpu(output.parent) >= 1000:
+                if (
+                    spent_cpu(output) >= max_cpu_core_hours
+                    or spent_cpu(output.parent) >= 1000
+                ):
                     raise RuntimeError("CPU allocation exhausted before fitting")
                 train = np.flatnonzero(
                     outer_training
@@ -364,6 +532,7 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                     train,
                     predict,
                     fit_identity,
+                    loss=loss,
                 )
                 calibration_predictions[predict] = values
                 fits.append(receipt)
@@ -400,6 +569,11 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                 data.high[eligible, col],
             )
             train = np.flatnonzero(outer_training & data.training_mask[:, col])
+            if (
+                spent_cpu(output) >= max_cpu_core_hours
+                or spent_cpu(output.parent) >= 1000
+            ):
+                raise RuntimeError("CPU allocation exhausted before outer fitting")
             values, receipt = cached_fit(
                 output / "fits",
                 data.legacy_features,
@@ -407,6 +581,7 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                 train,
                 heldout,
                 fit_identity,
+                loss=loss,
             )
             baseline[heldout, col] = values
             calibrated[heldout, col] = slope * values + intercept
@@ -428,10 +603,8 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                 ),
             )
             print(f"Completed {len(fits)}/80 fits", flush=True)
-            if sum(f["cpu_core_hours"] for f in fits) > 100:
-                raise RuntimeError(
-                    "Initial experiment 100 CPU-core-hour allocation exhausted"
-                )
+            if spent_cpu(output) > max_cpu_core_hours:
+                raise RuntimeError("Experiment CPU-core-hour allocation exhausted")
     # Freeze complete OOF predictions before scoring or fitting deployment calibration.
     with (output / "oof.partial").open("wb") as handle:
         np.savez(
@@ -463,14 +636,27 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
                 data.high[eligible, col],
             )
         )
+    decision = release_decision(candidate_scores, baseline_scores, paired)
+    if loss == "RMSE":
+        decision = {
+            "within_objective_calibration": decision,
+            "incumbent_comparison_complete": False,
+            "release_eligible_on_paired_metrics": False,
+            "promotion_metric_gate": False,
+            "final_promotion": False,
+            "reason": "Raw RMSE versus its own affine calibration does not compare either candidate with the current MAE incumbent",
+        }
     report = {
         "status": "complete",
         "execution_git_commit": execution_commit,
-        "candidate": "maplight-inner-oof-affine",
+        "candidate": candidate,
+        "objective": loss,
+        "parameters": parameters,
+        "max_cpu_core_hours": max_cpu_core_hours,
         "baseline": baseline_scores,
         "candidate_scores": candidate_scores,
         "paired_family": paired,
-        "decision": release_decision(candidate_scores, baseline_scores, paired),
+        "decision": decision,
         "outer_calibration": calibrations,
         "deployment_calibration": deployment,
         "fits": len(fits),
@@ -483,9 +669,16 @@ def _evaluate_locked(source: Path, output: Path, seed: int) -> dict[str, Any]:
         "experiment_sha256": digest(frozen.read_bytes()),
         "oof_sha256": digest((output / "oof.npz").read_bytes()),
         "reserved_numeric_targets_opened": 0,
-        "release_scope": "Interim calibration may transform authenticated legacy full-train baseline; no reserved targets opened",
+        "release_scope": (
+            "Interim calibration may transform authenticated legacy full-train baseline; no reserved targets opened"
+            if loss == "MAE"
+            else "RMSE requires matched comparison against the MAE incumbent, new production estimator fitting and reload verification, and actual RMSE test predictions. Never apply these calibration parameters to the historical MAE CSV; no reserved targets opened"
+        ),
+        "resolved_parameter_variants": {
+            digest(canonical(fit["resolved_parameters"])): fit["resolved_parameters"]
+            for fit in fits
+        },
     }
-    publish(output / "result.json", canonical(report))
     return report
 
 
@@ -495,6 +688,8 @@ def main() -> None:
     parser.add_argument("--compiled-sha256", required=True)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--seed", type=int, default=20260905)
+    parser.add_argument("--loss", choices=("MAE", "RMSE"), default="MAE")
+    parser.add_argument("--max-cpu-core-hours", type=float, default=100)
     args = parser.parse_args()
     if ROOT == args.output.resolve() or ROOT in args.output.resolve().parents:
         raise ValueError("Experiment output must stay outside Git")
@@ -506,6 +701,8 @@ def main() -> None:
             args.output,
             expected_compiled_sha256=args.compiled_sha256,
             seed=args.seed,
+            loss=args.loss,
+            max_cpu_core_hours=args.max_cpu_core_hours,
         )
     except Exception as exc:
         # Distinct timestamps preserve failed engineering attempts; no model outcomes discarded.
