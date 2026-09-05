@@ -5966,7 +5966,6 @@
   other qualified candidates/fallback operational. No retrospective tuning on
   the reserved comparison and no leaderboard-based selection.
 
-
 ## D-152 — Current upload validation and complete public primary scoring
 
 Date: 2026-09-04 (America/New_York).
@@ -5993,14 +5992,13 @@ The immutable prior submission and manifest match their exact hashes. The
 750-row/3000-prediction baseline passes current rules; endpoint sample STDs
 are 0.50791, 0.54207, 0.28715, 0.84242. This is zero additional entries.
 No new model fit or reserved numeric target was consumed. A subsequent
-no-fit intake check found RDKit2023 cannot reproduce every RDKit2026
+no-fit intake check found RDKit 2023 cannot reproduce every RDKit 2026
 standardized hash; the planned repair is original-runtime compilation and
 a verified development-only bundle, not changed chemistry or ignored hashes.
 
 Validation: 19 upload-boundary tests and 11 independent metric tests pass;
 Ruff, strict core mypy, wheel build and installed fixture workflow pass.
 Exact-commit PR CI remains required before integration.
-
 
 ## D-153 — Recoverable nested MapLight/calibration vertical slice
 
@@ -6020,15 +6018,16 @@ Each fit checkpoints exact feature/target/training/prediction/implementation/
 runtime identity. Failures and incomplete starts remain accounted; another
 active experiment sharing the Phase 3 root cannot acquire the compute lock.
 
-A real no-fit check demonstrated the expected RDKit2023/2026 structure identity
-mismatch. Compile with core RDKit2026 and load an immutable hash-bound bundle
+A real no-fit check demonstrated the expected RDKit 2023/2026 structure identity
+mismatch. Compile with core RDKit 2026 and load an immutable hash-bound bundle
 without re-standardizing in the locked model runtime. This is engineering
 repair 1 for that failure class; original sources and hashes remain unchanged.
-The bundle retains3908 development molecules/3640 families, excludes997
-reserved molecules, and finds no extra quarantine. Training/metric counts are
-1110/1024/1182/1881; all bounds exist. Minimum inner training counts are
-592/546/630/1002. Core compilation took19.50s, zero fits/zero reserved numeric
-values parsed. Connectivity/tautomer unions happen before target decoding.
+The bundle retains 3,908 development molecules in 3,640 families, excludes 997
+reserved molecules, and finds no extra quarantine. Training and metric counts
+are 1,110/1,024/1,182/1,881; all bounds exist. Minimum inner training counts are
+592/546/630/1,002. Core compilation took 19.50 seconds, with zero fits and zero
+reserved numeric values parsed. Connectivity and tautomer unions happen before
+target decoding.
 
 Interim release eligibility is evaluated on paired primary/component metrics
 as in Phase 3; a result satisfying only this gate is a challenger, not final
@@ -6043,7 +6042,6 @@ recovery. Five compiler/bridge, five feature, and fifteen calibration/cache
 tests pass; these exercise leakage, real count overflow, optimization, corrupt
 receipts and interrupted publication rather than copying implementation.
 No new scientific outcome is claimed by this prospective decision.
-
 
 ## D-154 — Immutable interim calibration release builder
 
@@ -6060,36 +6058,35 @@ validation. The user performs manual uploads; no portal state enters selection.
 This is an interim challenger, with the historical MapLight baseline remaining
 the recommendation pending the stronger repeat/ablation promotion gates. The
 manifest explicitly discloses calibration transfer from development OOF to the
-existing4905-molecule full-training predictor. No reserved targets are opened.
+existing 4,905-molecule full-training predictor. No reserved targets are opened.
 Readiness does not establish an upload, and a latest valid upload replaces the
-previous track entry; honor12-hour per-track spacing.
+previous track entry; honor 12-hour per-track spacing.
 
 Independent review found and repaired the stale-eligibility-flag gap. Eight
 release tests cover dominated/malformed evidence, tampered OOF, identity output,
-Git/overwrite rejection and immutable publication. All63 Phase3 tests pass
+Git/overwrite rejection and immutable publication. All 63 Phase 3 tests pass
 across source validation, metrics, features, compiler, runner and release files.
 No scientific result or new upload is claimed by this implementation decision.
-
 
 ## D-155 — First qualified challenger and robustness follow-through
 
 Date: 2026-09-04 (America/New_York).
 
-The frozen80-fit experiment improved public-wrapper macro ST-RAE from
-0.7575254251 to0.7371456380 (2.6903%). Paired family candidate-minus-baseline
-95% interval[-0.026898,-0.013785]. Maximum endpoint component-MAE harm
-0.017333 satisfies the0.02 gate; macro component MAE worsens slightly from
-0.584596 to0.587758. Preserve this tradeoff explicitly. Runtime482.09s and
-1.29545CPU-core-hours. The promotion metric gate passes, but second-repeat
-evidence and final comparison remain outstanding.
+The frozen 80-fit experiment improved public-wrapper macro ST-RAE from
+0.7575254251 to 0.7371456380 (2.6903%). The paired-family 95% interval for
+candidate minus baseline is [-0.026898, -0.013785]. Maximum endpoint
+component-MAE harm of +0.017333 satisfies the +0.02 gate; macro component MAE
+worsens slightly from 0.584596 to 0.587758. Preserve this tradeoff explicitly.
+Runtime was 482.09 seconds and 1.29545 CPU-core-hours. The promotion metric gate
+passes, but second-repeat evidence and the final comparison remain outstanding.
 
 One new direct challenger CSV has been generated and current-rule validated,
-SHA256c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f.
+SHA-256: `c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f`.
 It applies the OOF-fitted calibration to the authenticated historical full-
 training baseline, with this transfer limitation stated in the private manifest.
-No reserved numeric labels opened. Manual upload is unconfirmed.
+No reserved numeric labels were opened. Manual upload is unconfirmed.
 
-Run the already-frozen second seed20260906 with unchanged scientific logic;
+Run the already-frozen second seed 20260906 with unchanged scientific logic;
 do not tune toward the first outcome. Audit found that orphaned fit-start
 resource estimates would grow indefinitely. Freeze their conservative unknown
 charges once after shared-lock acquisition; preserve completed attempts. This
@@ -6097,11 +6094,56 @@ repair does not alter the completed scientific result. Two clock/lock tests
 verify the behavior.
 
 Prepare the bounded SVR kernel/inner selection helper for the next planned
-model. Select C={1,10} on pooled inner-OOF ST-RAE, epsilon0.1; ties favorC1.
+model. Select C in {1, 10} on pooled inner-OOF ST-RAE, with epsilon 0.1; ties
+favor C=1.
 Use float64 blocked binary Tanimoto to prevent uint8 dot overflow. Four
 scientific tests and a six-fit synthetic locked-runtime smoke pass. No official
-SVR fit has occurred. Count audit finds only10/3908 development molecules
+SVR fit has occurred. The count audit finds only 10 of 3,908 development molecules
 affected in one count column; retain the correction ablation without assuming
 a large gain. GIN readiness needs a Linux runtime and provenance/parity work,
-estimated6–10engineering hours within the two-working-day cap. Retained TDC
+estimated at 6–10 engineering hours within the two-working-day cap. Retained TDC
 embeddings cannot be assumed to match challenge molecules.
+
+## D-156 — Confirm the first submission and prepare the next comparison
+
+Date: 2026-09-05 UTC.
+
+The prespecified second 80-fit repeat improves primary ST-RAE from 0.749608
+to 0.729011 (2.7477%); its paired-family interval is [-0.027209, -0.014027].
+Maximum endpoint component-MAE harm is +0.018932, below +0.02, while macro
+component MAE worsens by +0.003354. Independent recomputation authenticates
+inputs, folds, family boundaries and affine predictions, and matches primary
+metrics exactly. Runtime is 505.77 seconds / 1.32710 invocation CPU-core-hours.
+Both repeats support the first released affine CSV as the interim recommendation.
+Do not substitute second-repeat parameters or average them after seeing results.
+Final promotion and the reserved comparison remain outstanding; the calibration
+transfer to the historical larger training set remains a disclosed limitation.
+
+The user confirmed manual upload under alias glhf. Public monitoring initially
+still shows the August 24 entry; the new result is pending. Update the existing
+every-two-hour heartbeat rather than creating a duplicate. Keep timestamp/rank/
+score receipts private and report meaningful changes. These observations are
+operational only and cannot affect model selection.
+
+The user explicitly authorizes future strategy changes. The initial menu is
+revisable using internal evidence, costs and research. Record a new hypothesis,
+failure mode and acceptance criterion before outcomes; retain scientific
+invariants and historical negative results. This avoids another infrastructure
+program that cannot adapt or deliver entries.
+
+The next runnable comparison is the frozen 140-fit Tanimoto SVR evaluation:
+C in {1,10}, epsilon 0.1, same nested folds, raw and inner-OOF affine variants.
+Authenticate exact same-fold MapLight OOF and compare with both calibrated
+incumbent and raw promotion reference. Cache whole seven-fit endpoint/fold
+cells with data/runtime identities; record unknown partial attempts and their
+CPU charges. Linux limits and the shared compute lock bound execution. If a
+variant qualifies, its prospective deployment uses 24 full-development inner
+selection fits and four production fits; no reserved labels are opened.
+No official SVR fit or additional CSV is claimed by this milestone.
+
+Independent review found no remaining blocking issues. Ten SVR helper/runner
+tests pass, including outer-target independence, family isolation, checkpoint
+corruption, selection and accounting. Focused suite, lint/format, strict core
+mypy and exact-commit PR CI are required before integration. Reversal: evidence
+or provenance failure withdraws the affected claim/artifact, preserving the
+baseline and unaffected candidates; no leaderboard-driven repair.

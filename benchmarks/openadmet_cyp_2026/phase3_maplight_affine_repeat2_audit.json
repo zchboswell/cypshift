@@ -1,0 +1,143 @@
+{
+  "audit_runtime": {
+    "numpy": "1.25.2",
+    "python": "3.10.13"
+  },
+  "baseline": {
+    "bootstrap_samples": 1000,
+    "bootstrap_seed": 0,
+    "endpoints": {
+      "CYP1A2": {
+        "bootstrap_mean_st_rae": 0.83924150772538,
+        "component_mae": 0.6618506327204422,
+        "groups": 1091,
+        "mae": 0.6621333168790552,
+        "rows": 1110,
+        "st_rae": 0.8384057013966462
+      },
+      "CYP2C9": {
+        "bootstrap_mean_st_rae": 0.698397098707724,
+        "component_mae": 0.4835662883453378,
+        "groups": 1015,
+        "mae": 0.4846198342810908,
+        "rows": 1024,
+        "st_rae": 0.6981177577836872
+      },
+      "CYP2D6": {
+        "bootstrap_mean_st_rae": 0.9061522114813237,
+        "component_mae": 0.5961661562383465,
+        "groups": 1170,
+        "mae": 0.5966711860142945,
+        "rows": 1182,
+        "st_rae": 0.9052953068291668
+      },
+      "CYP3A4": {
+        "bootstrap_mean_st_rae": 0.5546409063782113,
+        "component_mae": 0.5799496769131719,
+        "groups": 1668,
+        "mae": 0.5730668097136716,
+        "rows": 1881,
+        "st_rae": 0.5549964984738265
+      }
+    },
+    "macro_bootstrap_mean_st_rae": 0.7496079310731598,
+    "macro_component_mae": 0.5803831885543246,
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+  },
+  "candidate_scores": {
+    "bootstrap_samples": 1000,
+    "bootstrap_seed": 0,
+    "endpoints": {
+      "CYP1A2": {
+        "bootstrap_mean_st_rae": 0.8237314504793934,
+        "component_mae": 0.6562456616225021,
+        "groups": 1091,
+        "mae": 0.6563644194504652,
+        "rows": 1110,
+        "st_rae": 0.822752384785136
+      },
+      "CYP2C9": {
+        "bootstrap_mean_st_rae": 0.6697005557254447,
+        "component_mae": 0.48336381413843593,
+        "groups": 1015,
+        "mae": 0.4844650521158025,
+        "rows": 1024,
+        "st_rae": 0.6691755232319341
+      },
+      "CYP2D6": {
+        "bootstrap_mean_st_rae": 0.9039659882654607,
+        "component_mae": 0.5964584569586948,
+        "groups": 1170,
+        "mae": 0.5969058214584174,
+        "rows": 1182,
+        "st_rae": 0.9030941047769345
+      },
+      "CYP3A4": {
+        "bootstrap_mean_st_rae": 0.5186462412837446,
+        "component_mae": 0.5988814470856407,
+        "groups": 1668,
+        "mae": 0.5831711180675642,
+        "rows": 1881,
+        "st_rae": 0.5191282599640203
+      }
+    },
+    "macro_bootstrap_mean_st_rae": 0.7290110589385108,
+    "macro_component_mae": 0.5837373449513183,
+    "tutorial_revision": "858ae63ce79934113bccdb7fc65467de5f7b1935"
+  },
+  "development_molecules": 3908,
+  "endpoint_component_mae_harms": {
+    "CYP1A2": -0.005604971097940115,
+    "CYP2C9": -0.00020247420690189255,
+    "CYP2D6": 0.00029230072034835963,
+    "CYP3A4": 0.01893177017246883
+  },
+  "execution_git_commit": "8bffec2a119dd013c0d8426c1461abd76b6d14eb",
+  "families": 3640,
+  "family_boundaries_pass": true,
+  "final_promotion": false,
+  "first_repeat_relative_primary_gain": 0.02690310628749422,
+  "fit_count_scope": "80 completed fits are reported in result.json; the authenticated 5 outer x 4 endpoints x (3 inner + 1 outer) plan has 80 slots. Fit-cache execution receipts were outside this audit scope.",
+  "folds_recomputed_exactly": true,
+  "input_hashes": {
+    "experiment.json": "c874ddc8768951631269bd1bc09747f2c35839b08b4e526a1f3ef514df94570e",
+    "oof.npz": "bfd7d003291ebceab7fb02cd74cf87bad4e19759e136d40c620b0283f57f0c58",
+    "result.json": "0c1e595289e6ba2dad39eb38b82e411d020429a975227705d4d79e925e6c68c7"
+  },
+  "macro_component_mae_harm": 0.0033541563969937682,
+  "metric_gate_passes_both_repeats": true,
+  "metric_recomputation_matches_result_exactly": true,
+  "minimum_training_support": 546,
+  "outer_affine_predictions_reproduced_exactly": true,
+  "paired_family": {
+    "candidate_minus_baseline_mean": -0.020771089969868872,
+    "families": 3640,
+    "lower_95": -0.02720851176135406,
+    "samples": 2000,
+    "seed": 20260906,
+    "upper_95": -0.014027393651149911
+  },
+  "public_wrapper_vectorized_reconstruction": {
+    "baseline": 0.7496079310731598,
+    "calibrated": 0.7290110589385108
+  },
+  "recommendation_limits": "Interim recommendation only; full-training calibration-transfer limitation and MAE tradeoff remain. Final reserved comparison and any required component ablations remain outstanding.",
+  "recommended_interim": "First released affine CSV c66c5f3f898745a0132f200373ca1a2af94f148598c5424c270628887d17436f is now supported by the prespecified second repeat; do not replace it with second-repeat parameters or average post hoc.",
+  "reported_completed_fits": 80,
+  "reserved_comparison_remains_closed": true,
+  "runtime_accounting": {
+    "fit_cpu_core_hours": 1.323675713052779,
+    "fits": 80,
+    "invocation_cpu_core_hours": 1.3270962663941666,
+    "program_accounted_fit_cpu_core_hours": 2.6156759034174994,
+    "wall_seconds": 505.7737272759987
+  },
+  "same_direction_both_repeats": true,
+  "scope": "Independent development-only recomputation; no reserved targets, fit caches, test structures or submission predictions opened",
+  "second_repeat_relative_primary_gain": 0.027476859943519994,
+  "second_repeat_supports": true,
+  "seed": 20260906,
+  "source_hashes_match_commit_and_current_files": true,
+  "status": "passed",
+  "verified_planned_fit_slots": 80
+}

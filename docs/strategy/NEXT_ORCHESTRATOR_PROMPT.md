@@ -26,3 +26,11 @@ Keep private portal activity and feedback out of model selection.
 
 Prefer predictive evidence and working release artifacts over new contracts.
 A blocked candidate does not block the other candidates or the baseline.
+
+The user confirmed the first calibrated CSV uploaded under alias glhf. Monitor
+the public leaderboard every two hours through the existing heartbeat and keep
+private operational receipts; distinguish the old August 24 entry from the
+new result. Report meaningful changes without using them for model selection.
+The user also authorizes evidence-driven strategy changes. Revise prospective
+priorities when internal results, costs or research justify it; document the
+reason and acceptance criteria instead of treating the initial menu as fixed.

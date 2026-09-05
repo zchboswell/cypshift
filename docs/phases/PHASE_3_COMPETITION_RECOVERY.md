@@ -68,6 +68,17 @@ Sources:
 - [Selection bias and nested validation](https://www.jmlr.org/papers/v11/cawley10a.html)
 - [Molecular validation and cross-split similarity](https://www.nature.com/articles/s42256-024-00931-6)
 
+## Strategy review
+
+The user explicitly authorized changing strategy when evidence warrants it on
+September 5 UTC. The candidate menu is an initial allocation, not a permanent
+restriction. At each milestone, reassess internal gains, complementary errors,
+resource costs, remaining time and primary research. Record a consequential
+pivot prospectively, with its failure mode, comparison and acceptance rule.
+Keep historical negative results, family isolation, cross-fitting and the
+reserved selection barrier. Public leaderboard monitoring is descriptive only
+and cannot choose models or parameters.
+
 ## Small, recoverable implementation
 
 Use the existing feature/model kernels and locked research environments with a
