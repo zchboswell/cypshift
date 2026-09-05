@@ -6442,3 +6442,54 @@ only negatives (2/1235). Exclude all 1000 reserved-connected rows before class
 decoding. No other assay responses, fits, folds or thresholds are selected.
 Preserve the separate TDI track as a next experiment with its own frozen
 population and extra-negative ablation; do not silently pool those negatives.
+
+## D-161 — Reject descriptor MLP and isolate bounded fingerprint inputs
+
+Date: 2026-09-05 UTC; new Morgan-only protocol is prospective before its fits.
+
+The frozen D-160 descriptor network completed210 joint fits in726.11wall seconds,
+using0.31213 invocation CPU-core-hours. Every direct/real raw/affine candidate
+fails both-seed incumbent gates. The canonical comparator authenticates all210
+fits and120 inner-OOF calibrations. Independent saved-network inference matches
+all210 original prediction arrays exactly; this does not reproduce historical
+training trajectories. Preserve the original recipe, worker, outputs and negative
+result. Do not create a production CSV for this recipe.
+
+A frozen post-hoc descriptive audit finds one high-leverage channel: Ipc reaches
+936365.1875 after train-only median/IQR scaling; other descriptors remain<=28.
+Two scored CYP2D6 rows account for80.75%,73.81%,91.70% of endpoint interval-error
+sums for direct,real,shuffled arms. Those molecules' other-head predictions are
+unscored. Some severe extrapolation exists, but one large-error molecule lies
+inside the training descriptor range. This is a preprocessing choice incompatible
+with the new network, not a discovered label/row bug in the old tree submission.
+No targets, rows or altered predictions were used to evaluate a repaired candidate.
+
+Test a separate Morgan-only hypothesis: original4096raw chiral radius2binary bits
+plus200literal zero channels. Keep4296input width,256/128hidden layers,eightheads,
+all three arms, all seeds/folds/losses/stopping/epoch/refit/calibration choices and
+incumbent/control gates from D-160. Removing the entire descriptor block avoids
+selecting a particular descriptor against observed errors. No clipping, output
+correction or model/row exclusion. Original recipe/worker bytes remain unchanged;
+feature mode and distinct recipe hashes bind requests/results and reconstruction.
+The original exact source vector remains authenticated against pinned5a2769;
+new Morgan-only receipts must match their current committed implementation.
+
+Prespecify first-seed futility: after105fits, reconstruct all first-seed incumbent
+and real-versus-matched-control comparisons. If no direct/real raw/affine variant
+passes every applicable first-seed gate, stop without repeat2. This preliminary
+report cannot select or release a candidate. Otherwise run all105 second-seed
+fits unchanged; recommendation still requires both-seed gates. A reduction in
+extreme predictions is explanatory evidence, not an acceptance criterion.
+
+Keep one occupied hour/ten CPU-core-hours per mode/seed, including failed retries;
+all modes charge the same program total. Shared24CPU/20GiB slice and one GPU
+worker remain mandatory. Use signed reviewed source after focused checks; all
+exact-head PR CI must pass before integration/release. A qualified model still
+needs separately implemented full-development OOF/production fitting, saved-model
+reload and an actual validated750-row CSV. Reserved labels remain closed.
+
+Validation: descriptor-poison invariance in Morgan-only mode, unchanged default
+features, mode/recipe/source tampering rejection and stop-only futility semantics,
+plus existing family/calibration/worker accounting tests and independent review.
+Reversal: retain the working calibrated-MAE recommendation and reject the new
+recipe if either applicable seed fails; future changes require a new hypothesis.

@@ -97,6 +97,46 @@ def test_training_only_transforms_and_whole_bundle_donors(runner: Any) -> None:
     )
 
 
+def test_morgan_only_ignores_extreme_descriptor_poison_and_preserves_default(
+    runner: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    data = fixture_data(12)
+    data.raw_smiles = tuple("CC" for _ in range(12))
+    data.legacy_features = np.zeros((12, 2563), dtype=np.float64)
+    data.legacy_features[:, 2363:] = np.arange(12)[:, None]
+    bits = np.zeros((12, 4096), dtype=np.uint8)
+    bits[np.arange(12), np.arange(12)] = 1
+    monkeypatch.setattr(runner, "featurize_binary_morgan", lambda _: bits.copy())
+    legacy = runner.build_features(data)
+    np.testing.assert_array_equal(legacy[:, :4096], bits)
+    np.testing.assert_array_equal(legacy[:, 4096:], data.legacy_features[:, 2363:])
+    before = runner.build_features(data, "morgan_only")
+    data.legacy_features[:, 2396] = 1e300  # Ipc's original descriptor index33.
+    data.legacy_features[0, 2363:] = np.nan
+    after = runner.build_features(data, "morgan_only")
+    np.testing.assert_array_equal(before, after)
+    np.testing.assert_array_equal(after[:, :4096], bits)
+    assert after.shape == (12, 4296) and np.all(after[:, 4096:] == 0)
+    prepared, transforms = runner.prepare_arrays(
+        after,
+        data.point,
+        data.training_mask,
+        data.point,
+        data.training_mask,
+        np.arange(8),
+        np.arange(8, 12),
+        None,
+        "direct",
+        1,
+    )
+    assert np.all(prepared["train_x"][:, 4096:] == 0)
+    assert np.all(prepared["predict_x"][:, 4096:] == 0)
+    assert transforms["descriptor_center"] == [0.0] * 200
+    assert transforms["descriptor_scale"] == [1.0] * 200
+    assert runner.build_features(data)[1, 4129] == 1e300
+    assert runner.recipe_path() != runner.recipe_path("morgan_only")
+
+
 def test_exact_105_joint_fits_family_containment_and_fresh_refits(
     runner: Any,
     tmp_path: Path,
@@ -385,6 +425,37 @@ def test_failed_attempt_retries_share_seed_allowance(
     second.mkdir()
     budget = runner.Budget(tmp_path, second, 0, seed=20260905)
     assert budget.allowance == 8 and budget.wall_allowance == 3300
+    budget.finish("synthetic")
+
+
+def test_representation_retry_allowances_are_distinct_but_program_cost_is_shared(
+    runner: Any, tmp_path: Path
+) -> None:
+    for name, mode, cost, wall in (
+        ("legacy", None, 2.0, 300.0),
+        ("morgan", "morgan_only", 1.0, 120.0),
+    ):
+        directory = tmp_path / name
+        directory.mkdir()
+        identity = {"mlp_seed": 20260905}
+        if mode is not None:
+            identity["mlp_feature_mode"] = mode
+        (directory / "run-overhead-start-0.json").write_bytes(
+            runner.canonical(identity)
+        )
+        (directory / "run-overhead-attempt-0.json").write_bytes(
+            runner.canonical({"cpu_core_hours": cost})
+        )
+        (directory / "resources.json").write_bytes(
+            runner.canonical({"occupied_wall_seconds": wall})
+        )
+    output = tmp_path / "morgan-retry"
+    output.mkdir()
+    budget = runner.Budget(tmp_path, output, 0, 20260905, "morgan_only")
+    assert (
+        budget.previous == 3 and budget.allowance == 9 and budget.wall_allowance == 3480
+    )
+    assert json.loads(budget.start.read_bytes())["mlp_feature_mode"] == "morgan_only"
     budget.finish("synthetic")
 
 

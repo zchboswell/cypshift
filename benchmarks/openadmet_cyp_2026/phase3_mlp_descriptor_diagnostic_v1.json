@@ -1,0 +1,335 @@
+{
+  "altered_predictions_evaluated": 0,
+  "descriptor_names_sha256": "3807e7d48854a45527c38195bad343b6fb1cb8b556ce034484b1657f834c31bb",
+  "development_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "endpoint_error_summary": {
+    "direct": {
+      "CYP1A2": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 0.040635609550145724,
+        "extreme_cells_fraction_of_interval_error": 0.07290556977454389,
+        "extreme_cells_interval_error_sum": 44.251173314208984,
+        "prediction_max_scored": 49.052303314208984,
+        "prediction_min_scored": -0.33322495222091675,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1110,
+        "top_error_cell_sum_fraction": {
+          "1": 0.07290556977454389,
+          "10": 0.11775350993424796,
+          "3": 0.08726115190846258,
+          "5": 0.09701098077955761
+        },
+        "unchanged_component_mae": 0.7859753242572611,
+        "unchanged_interval_error_sum": 606.9656056602134
+      },
+      "CYP2C9": {
+        "all_development_abs_prediction_gt10": 3,
+        "extreme_cells_component_mae_contribution": 0.017230172973601545,
+        "extreme_cells_fraction_of_interval_error": 0.10835530220248216,
+        "extreme_cells_interval_error_sum": 34.87108707141113,
+        "prediction_max_scored": 6.40748929977417,
+        "prediction_min_scored": -29.224245071411133,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1024,
+        "top_error_cell_sum_fraction": {
+          "1": 0.10835530220248216,
+          "10": 0.21021822275544125,
+          "3": 0.16788389009731747,
+          "5": 0.18259167775707424
+        },
+        "unchanged_component_mae": 0.5453823316018266,
+        "unchanged_interval_error_sum": 321.82169550178526
+      },
+      "CYP2D6": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 2.07832453658555,
+        "extreme_cells_fraction_of_interval_error": 0.8075053238432327,
+        "extreme_cells_interval_error_sum": 2431.0542533710936,
+        "prediction_max_scored": 6.703102111816406,
+        "prediction_min_scored": -2156.429443359375,
+        "scored_abs_prediction_gt10": 2,
+        "scored_rows": 1182,
+        "top_error_cell_sum_fraction": {
+          "1": 0.7176470073365011,
+          "10": 0.8146169838752245,
+          "3": 0.8085940102561161,
+          "5": 0.8104212676941921
+        },
+        "unchanged_component_mae": 2.7788346185451744,
+        "unchanged_interval_error_sum": 3010.573653930551
+      },
+      "CYP3A4": {
+        "all_development_abs_prediction_gt10": 2,
+        "extreme_cells_component_mae_contribution": 0.0,
+        "extreme_cells_fraction_of_interval_error": 0.0,
+        "extreme_cells_interval_error_sum": 0.0,
+        "prediction_max_scored": 7.257122993469238,
+        "prediction_min_scored": -1.8578097820281982,
+        "scored_abs_prediction_gt10": 0,
+        "scored_rows": 1881,
+        "top_error_cell_sum_fraction": {
+          "1": 0.01080435902554496,
+          "10": 0.04597803266475081,
+          "3": 0.02137321179506045,
+          "5": 0.02926171109376359
+        },
+        "unchanged_component_mae": 0.613206264835798,
+        "unchanged_interval_error_sum": 643.96386362006
+      }
+    },
+    "real_aux": {
+      "CYP1A2": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 0.041409073511767085,
+        "extreme_cells_fraction_of_interval_error": 0.07178325284239129,
+        "extreme_cells_interval_error_sum": 45.09502249633789,
+        "prediction_max_scored": 49.89615249633789,
+        "prediction_min_scored": 1.2621612548828125,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1110,
+        "top_error_cell_sum_fraction": {
+          "1": 0.07178325284239129,
+          "10": 0.11400300977829733,
+          "3": 0.0836184980866357,
+          "5": 0.09344543158703435
+        },
+        "unchanged_component_mae": 0.8027303179461239,
+        "unchanged_interval_error_sum": 628.2109086829682
+      },
+      "CYP2C9": {
+        "all_development_abs_prediction_gt10": 3,
+        "extreme_cells_component_mae_contribution": 0.0043841840774021985,
+        "extreme_cells_fraction_of_interval_error": 0.030380286753214567,
+        "extreme_cells_interval_error_sum": 8.793736742126466,
+        "prediction_max_scored": 14.652899742126465,
+        "prediction_min_scored": -2.984029531478882,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1024,
+        "top_error_cell_sum_fraction": {
+          "1": 0.030416385720141936,
+          "10": 0.11807205027229582,
+          "3": 0.06989773574792696,
+          "5": 0.0851450137386152
+        },
+        "unchanged_component_mae": 0.5302566206498929,
+        "unchanged_interval_error_sum": 289.455356809494
+      },
+      "CYP2D6": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 1.3742461500614984,
+        "extreme_cells_fraction_of_interval_error": 0.7381313860549737,
+        "extreme_cells_interval_error_sum": 1607.3211447519532,
+        "prediction_max_scored": 1565.6419677734375,
+        "prediction_min_scored": -42.109771728515625,
+        "scored_abs_prediction_gt10": 2,
+        "scored_rows": 1182,
+        "top_error_cell_sum_fraction": {
+          "1": 0.7169801295480123,
+          "10": 0.7474285063042418,
+          "3": 0.7395051166772055,
+          "5": 0.7420192049810447
+        },
+        "unchanged_component_mae": 2.068366928522393,
+        "unchanged_interval_error_sum": 2177.5542608240276
+      },
+      "CYP3A4": {
+        "all_development_abs_prediction_gt10": 3,
+        "extreme_cells_component_mae_contribution": 0.01606089735720057,
+        "extreme_cells_fraction_of_interval_error": 0.0808605061716041,
+        "extreme_cells_interval_error_sum": 53.53521703662109,
+        "prediction_max_scored": 58.722068786621094,
+        "prediction_min_scored": 1.1472173929214478,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1881,
+        "top_error_cell_sum_fraction": {
+          "1": 0.0808605061716041,
+          "10": 0.12026846029450793,
+          "3": 0.09562084951739994,
+          "5": 0.10352032253225289
+        },
+        "unchanged_component_mae": 0.6085220361447139,
+        "unchanged_interval_error_sum": 662.0687845189514
+      }
+    },
+    "shuffled_aux": {
+      "CYP1A2": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 0.07983417640999155,
+        "extreme_cells_fraction_of_interval_error": 0.1347736530904639,
+        "extreme_cells_interval_error_sum": 87.01680975830078,
+        "prediction_max_scored": 91.81793975830078,
+        "prediction_min_scored": 2.1414735317230225,
+        "scored_abs_prediction_gt10": 1,
+        "scored_rows": 1110,
+        "top_error_cell_sum_fraction": {
+          "1": 0.1347736530904639,
+          "10": 0.17280134723237497,
+          "3": 0.14423658563116368,
+          "5": 0.15287627726845984
+        },
+        "unchanged_component_mae": 0.8222075311978828,
+        "unchanged_interval_error_sum": 645.6514887215576
+      },
+      "CYP2C9": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 0.02775026165621007,
+        "extreme_cells_fraction_of_interval_error": 0.1713754295396692,
+        "extreme_cells_interval_error_sum": 56.12575620910644,
+        "prediction_max_scored": 42.12400436401367,
+        "prediction_min_scored": -3.0039002895355225,
+        "scored_abs_prediction_gt10": 2,
+        "scored_rows": 1024,
+        "top_error_cell_sum_fraction": {
+          "1": 0.11073174217539422,
+          "10": 0.23462547596320807,
+          "3": 0.19156590767002574,
+          "5": 0.20632814792819051
+        },
+        "unchanged_component_mae": 0.5496595240327413,
+        "unchanged_interval_error_sum": 327.50176825152585
+      },
+      "CYP2D6": {
+        "all_development_abs_prediction_gt10": 3,
+        "extreme_cells_component_mae_contribution": 5.25903694588797,
+        "extreme_cells_fraction_of_interval_error": 0.9170275784697726,
+        "extreme_cells_interval_error_sum": 6152.646862372924,
+        "prediction_max_scored": 6144.2939453125,
+        "prediction_min_scored": 0.8509142994880676,
+        "scored_abs_prediction_gt10": 2,
+        "scored_rows": 1182,
+        "top_error_cell_sum_fraction": {
+          "1": 0.9151299618760572,
+          "10": 0.9202039346230739,
+          "3": 0.9175522717911654,
+          "5": 0.9184492429087533
+        },
+        "unchanged_component_mae": 5.941995024979666,
+        "unchanged_interval_error_sum": 6709.336782040662
+      },
+      "CYP3A4": {
+        "all_development_abs_prediction_gt10": 4,
+        "extreme_cells_component_mae_contribution": 0.02145282093821076,
+        "extreme_cells_fraction_of_interval_error": 0.1024433404420867,
+        "extreme_cells_interval_error_sum": 71.45979781787109,
+        "prediction_max_scored": 55.033851623535156,
+        "prediction_min_scored": -1.3293209075927734,
+        "scored_abs_prediction_gt10": 2,
+        "scored_rows": 1881,
+        "top_error_cell_sum_fraction": {
+          "1": 0.07145966451061175,
+          "10": 0.1298071401016307,
+          "3": 0.10634032533922692,
+          "5": 0.11373095173301438
+        },
+        "unchanged_component_mae": 0.6216560167984867,
+        "unchanged_interval_error_sum": 697.5543506243705
+      }
+    }
+  },
+  "extreme_prediction_rows_union": 5,
+  "interpretation": "Post-hoc descriptive diagnosis of the new MLP recipe. Ipc is the sole channel above absolute scaled28; two scored CYP2D6 rows dominate error. Other-head predictions for those two molecules are unscored. Not evidence of a defect in the older tree submission; no targets/rows removed or altered predictions evaluated.",
+  "interpretation_limit": "Unchanged error decomposition and feature association only; descriptors are correlated and no intervention isolates a causal channel. No outlier deletion/clipping/rescoring or representation selection from this diagnostic.",
+  "new_fits": 0,
+  "plan_sha256": "defbda5c56761975c09bbf8226f4f8ae69d155b38ae14ad6819306d6b7f6e4f0",
+  "private_result_sha256": "6869d2907e4a98cc24cb97f0d77303002d281effe99e8a00621d2b01bd0949c4",
+  "reserved_numeric_targets_opened": 0,
+  "schema": "cypshift.phase3.mlp_descriptor_diagnostic.v1",
+  "script_sha256": "dcd95005e3474aeffe747d5a7cc70888e1cf84d253a07dee726f0739a262dac2",
+  "source_execution_commit": "5a2769021b66fbe09569afea88d9522e5da4ab17",
+  "source_experiment_sha256": "8af85d27cfd4856369d31c30be9b44ea9aa293301c2e6efcbf82db140182f142",
+  "source_result_sha256": "9bc7bcd73d20429cbd2a8bde20d51bcaa99a3e3bedf133c8172e0e60027f936d",
+  "status": "complete",
+  "test_structures_opened": 0,
+  "top_prepared_descriptor_channels": [
+    {
+      "descriptor": "Ipc",
+      "maximum_absolute_held_scaled": 936365.1875,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 17,
+        "1000.0": 6,
+        "10000.0": 4
+      }
+    },
+    {
+      "descriptor": "fr_unbrch_alkane",
+      "maximum_absolute_held_scaled": 28.0,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "Kappa3",
+      "maximum_absolute_held_scaled": 27.38655662536621,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "PEOE_VSA5",
+      "maximum_absolute_held_scaled": 26.16425132751465,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "Kappa2",
+      "maximum_absolute_held_scaled": 16.214801788330078,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "VSA_EState10",
+      "maximum_absolute_held_scaled": 15.710925102233887,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "SlogP_VSA7",
+      "maximum_absolute_held_scaled": 15.067899703979492,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "NumRotatableBonds",
+      "maximum_absolute_held_scaled": 15.0,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "MaxAbsEStateIndex",
+      "maximum_absolute_held_scaled": 13.598875045776367,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    },
+    {
+      "descriptor": "MaxEStateIndex",
+      "maximum_absolute_held_scaled": 13.598875045776367,
+      "rows_above_absolute_scaled_threshold": {
+        "100.0": 0,
+        "1000.0": 0,
+        "10000.0": 0
+      }
+    }
+  ]
+}

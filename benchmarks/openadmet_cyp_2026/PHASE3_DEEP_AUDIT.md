@@ -236,3 +236,16 @@ A query assignment frozen before availability masks leaves 73 CYP3A4 families /
 support. No parent was selected or potency read; availability is not a power
 calculation or evidence of acquisition-distribution fidelity. See
 [feasibility](phase3_known_parent_feasibility_v1.json).
+
+### New descriptor-MLP failure, separate from the original submission
+
+Both frozen network repeats fail every incumbent recommendation gate. The
+[aggregate result](phase3_mlp_auxiliary_v1_result.json) retains all210 fit/120
+calibration authentications and independent exact replay of210 saved networks.
+The [descriptive diagnostic](phase3_mlp_descriptor_diagnostic_v1.json) finds Ipc
+reaches936365 after training-only median/IQR scaling, versus<=28 for every other
+descriptor. Two scored2D6 rows dominate that endpoint's interval error; their
+other-head extreme outputs are unscored. No altered predictions were evaluated.
+This diagnoses the new MLP representation, not the older tree CSV. D-161 freezes
+a distinct all-descriptor removal with bounded binary bits and unchanged matched
+controls; prediction stability alone is insufficient for acceptance.

@@ -88,6 +88,31 @@ def test_exact_tie_and_first_repeat_order_are_prespecified(comparison: Any) -> N
         c.decide([evidence[0], evidence[0]])
 
 
+def test_morgan_futility_requires_all_applicable_gates_and_never_selects(
+    comparison: Any,
+) -> None:
+    c = comparison
+    first = repeats(c)[0]
+    first["feature_mode"] = "morgan_only"
+    for arm in c.ARMS[:2]:
+        for variant in c.VARIANTS:
+            first["comparisons"][arm][variant]["incumbent"]["gate_this_seed"] = False
+    assert c.first_seed_futility(first)["stop_repeat_two_for_futility"]
+    first["comparisons"]["real_aux"]["raw"]["incumbent"]["gate_this_seed"] = True
+    first["comparisons"]["real_aux"]["raw"]["shuffled_aux"]["gate_this_seed"] = False
+    assert c.first_seed_futility(first)["stop_repeat_two_for_futility"]
+    first["comparisons"]["real_aux"]["raw"]["shuffled_aux"]["gate_this_seed"] = True
+    decision = c.first_seed_futility(first)
+    assert not decision["stop_repeat_two_for_futility"]
+    assert (
+        decision["selected_supported_variant"] is None
+        and not decision["release_authorized"]
+    )
+    first["feature_mode"] = "morgan_descriptors"
+    with pytest.raises(ValueError, match="first Morgan-only"):
+        c.first_seed_futility(first)
+
+
 def test_gate_inclusive_gain_harm_but_strict_interval_and_no_aux_gain_floor(
     comparison: Any,
 ) -> None:
@@ -119,8 +144,13 @@ def write(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, sort_keys=True))
 
 
-@pytest.fixture
-def artifacts(comparison: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Any:
+@pytest.fixture(params=("morgan_descriptors", "morgan_only"))
+def artifacts(
+    comparison: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    request: pytest.FixtureRequest,
+) -> Any:
     """Run real CPU orchestration with a deterministic synthetic worker stand-in."""
     c = comparison
     runner = importlib.import_module("competition_mlp_runner")
@@ -138,19 +168,21 @@ def artifacts(comparison: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) 
         receipts={"synthetic": "source"},
     )
     features = np.zeros((n, 4296))
-    features[:, 4096:] = np.arange(n)[:, None]
+    if request.param == "morgan_descriptors":
+        features[:, 4096:] = np.arange(n)[:, None]
     auxiliary, mask = point - 5, np.ones_like(point, dtype=bool)
     output = tmp_path / "candidate"
     output.mkdir()
     runtime_path = tmp_path / "runtime.json"
     write(runtime_path, {"artifact_hashes": {"resolved-closure.json": "f" * 64}})
     runtime = {"path": str(runtime_path), "sha256": c.digest(runtime_path.read_bytes())}
-    recipe = json.loads(c.RECIPE.read_bytes())
+    recipe = json.loads(runner.recipe_path(request.param).read_bytes())
     recipe["gpu_runtime_receipt_sha256"] = runtime["sha256"]
     feature_spec = runner.array_file(output / "features.npy", features)
     worker = tmp_path / "synthetic-worker.py"
     worker.write_text("# Explicit synthetic stand-in; no Torch or network fits.\n")
     identity = {
+        "feature_mode": request.param,
         "seed": c.SEEDS[0],
         "names": list(data.names),
         "molecule_ids": list(data.molecule_ids),
@@ -275,6 +307,7 @@ def artifacts(comparison: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) 
         data, features, auxiliary, mask, output, c.SEEDS[0], fit
     )
     result["experiment_sha256"] = c.digest((output / "experiment.json").read_bytes())
+    result["feature_mode"] = request.param
     write(output / "result.json", result)
     write(
         output / "resources.json",
@@ -366,6 +399,73 @@ def test_all_105_requests_and_inner_calibrations_authenticate_then_reject_cohere
     write(f.output / "result.json", original_result)
     with pytest.raises(ValueError, match="requested population"):
         authenticate(f)
+
+
+def test_representation_identity_rejects_cross_mode_reuse(artifacts: Any) -> None:
+    f = artifacts
+    original = f.recipe.get("feature_mode", "morgan_descriptors")
+    f.recipe["feature_mode"] = (
+        "morgan_only" if original == "morgan_descriptors" else "morgan_descriptors"
+    )
+    with pytest.raises(ValueError, match="representation identity"):
+        authenticate(f)
+    f.recipe["feature_mode"] = original
+    if original == "morgan_only":
+        f.features[0, 4129] = 1e12
+        with pytest.raises(ValueError, match="contains descriptor"):
+            authenticate(f)
+
+
+def test_original_source_vector_remains_pinned_and_cannot_claim_morgan_only(
+    comparison: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    c = comparison
+    frozen = {name: ("original:" + name).encode() for name in c.IMPLEMENTATIONS}
+    frozen[c.RECIPE.name] = b"original-recipe"
+    monkeypatch.setattr(
+        c.subprocess, "check_output", lambda command, **_: frozen[Path(command[2]).name]
+    )
+    experiment = {
+        "execution_git_commit": "a" * 40,
+        "implementation_sha256": {
+            name: c.digest(raw)
+            for name, raw in frozen.items()
+            if name in c.IMPLEMENTATIONS
+        },
+    }
+    c.verify_sources(experiment, c.digest(b"original-recipe"))
+    experiment["feature_mode"] = "morgan_only"
+    with pytest.raises(ValueError, match="source vector"):
+        c.verify_sources(experiment, c.digest(b"original-recipe"))
+    experiment.pop("feature_mode")
+    experiment["implementation_sha256"]["competition_mlp_runner.py"] = "0" * 64
+    with pytest.raises(ValueError, match="source vector"):
+        c.verify_sources(experiment, c.digest(b"original-recipe"))
+
+
+def test_recipe_hash_and_representation_must_agree(
+    comparison: Any, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    import competition_mlp_runner as runner
+
+    c = comparison
+    manifest = tmp_path / "manifest.json"
+    manifest.write_bytes(b"synthetic development manifest")
+    paths = {}
+    for mode in runner.FEATURE_MODES:
+        recipe = json.loads(runner.recipe_path(mode).read_bytes())
+        recipe["data_manifest_sha256"] = c.digest(manifest.read_bytes())
+        paths[mode] = tmp_path / (mode + ".json")
+        write(paths[mode], recipe)
+    monkeypatch.setattr(runner, "recipe_path", lambda mode: paths[mode])
+    _, original_hash = c.recipe_for(tmp_path)
+    _, ablation_hash = c.recipe_for(tmp_path, "morgan_only")
+    assert original_hash != ablation_hash
+    changed = json.loads(paths["morgan_only"].read_bytes())
+    changed["feature_mode"] = "morgan_descriptors"
+    write(paths["morgan_only"], changed)
+    with pytest.raises(ValueError, match="representation differ"):
+        c.recipe_for(tmp_path, "morgan_only")
 
 
 def test_score_recomputation_uses_calibrated_incumbent_and_same_variant_controls(

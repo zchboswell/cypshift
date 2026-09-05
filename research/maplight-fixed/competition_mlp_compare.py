@@ -33,6 +33,7 @@ IMPLEMENTATIONS = {
     "competition_runner.py",
     "maplight_fixed_features.py",
 }
+ORIGINAL_EXECUTION_COMMIT = "5a2769021b66fbe09569afea88d9522e5da4ab17"
 
 
 def digest(raw: bytes) -> str:
@@ -53,12 +54,24 @@ def read_array(spec: dict[str, Any], directory: Path | None = None) -> np.ndarra
     return value
 
 
-def recipe_for(source: Path) -> tuple[dict[str, Any], str]:
-    raw = RECIPE.read_bytes()
+def recipe_for(
+    source: Path, feature_mode: str = "morgan_descriptors"
+) -> tuple[dict[str, Any], str]:
+    from competition_mlp_runner import recipe_path
+
+    raw = recipe_path(feature_mode).read_bytes()
     recipe = json.loads(raw)
     expected = {
-        "schema": "cypshift.phase3.mlp_auxiliary_recipe.v1",
-        "status": "prespecified_before_official_MLP_outcomes",
+        "schema": (
+            "cypshift.phase3.mlp_auxiliary_recipe.v1"
+            if feature_mode == "morgan_descriptors"
+            else "cypshift.phase3.mlp_morgan_only_recipe.v1"
+        ),
+        "status": (
+            "prespecified_before_official_MLP_outcomes"
+            if feature_mode == "morgan_descriptors"
+            else "prespecified_before_official_Morgan_only_outcomes"
+        ),
         "seeds": list(SEEDS),
         "arms": list(ARMS),
         "new_fits_per_seed": 105,
@@ -78,29 +91,66 @@ def recipe_for(source: Path) -> tuple[dict[str, Any], str]:
             ],
         },
     }
+    if recipe.get("feature_mode", "morgan_descriptors") != feature_mode:
+        raise ValueError("Recipe and requested MLP representation differ")
+    if feature_mode == "morgan_only":
+        expected["first_seed_futility"] = {
+            "enabled": True,
+            "seed": 20260905,
+            "stop_repeat_two_if": "No direct/real raw/affine variant passes every applicable first-seed incumbent and auxiliary-control gate.",
+            "otherwise": "Run all105 joint fits on20260906 unchanged; require both-seed gates.",
+            "preliminary_release_or_selection": False,
+        }
     if any(recipe.get(key) != value for key, value in expected.items()):
         raise ValueError("Prospective MLP recipe/population/gates differ")
     return recipe, digest(raw)
 
 
 def verify_sources(experiment: dict[str, Any], recipe_hash: str) -> None:
+    from competition_mlp_runner import recipe_path
+
+    feature_mode = experiment.get("feature_mode", "morgan_descriptors")
+    selected_recipe = recipe_path(feature_mode)
     commit = experiment.get("execution_git_commit", "")
     if not re.fullmatch("[0-9a-f]{40}", commit):
         raise ValueError("MLP execution source commit missing")
     sources = experiment.get("implementation_sha256", {})
     if set(sources) != IMPLEMENTATIONS:
         raise ValueError("MLP implementation receipts incomplete")
+    current = {
+        name: digest(Path(__file__).with_name(name).read_bytes()) for name in sources
+    }
+    allowed = sources == current
+    if not allowed and feature_mode == "morgan_descriptors":
+        # Exact original source vector remains replayable after an additive mode.
+        original = {
+            name: digest(
+                subprocess.check_output(
+                    [
+                        "git",
+                        "show",
+                        f"{ORIGINAL_EXECUTION_COMMIT}:research/maplight-fixed/{name}",
+                    ],
+                    cwd=ROOT,
+                )
+            )
+            for name in sources
+        }
+        original_recipe = subprocess.check_output(
+            ["git", "show", f"{ORIGINAL_EXECUTION_COMMIT}:{RECIPE.relative_to(ROOT)}"],
+            cwd=ROOT,
+        )
+        allowed = sources == original and digest(original_recipe) == recipe_hash
+    if not allowed:
+        raise ValueError("MLP current or explicitly frozen source vector differs")
     for name, expected in sources.items():
         committed = subprocess.check_output(
             ["git", "show", f"{commit}:research/maplight-fixed/{name}"], cwd=ROOT
         )
-        if (
-            digest(committed) != expected
-            or digest(Path(__file__).with_name(name).read_bytes()) != expected
-        ):
+        if digest(committed) != expected:
             raise ValueError(f"MLP execution/current scientific source differs: {name}")
     committed = subprocess.check_output(
-        ["git", "show", f"{commit}:{RECIPE.relative_to(ROOT)}"], cwd=ROOT
+        ["git", "show", f"{commit}:{selected_recipe.relative_to(ROOT)}"], cwd=ROOT
     )
     if digest(committed) != recipe_hash:
         raise ValueError("MLP execution recipe differs")
@@ -157,17 +207,7 @@ def decide(
     decisions = {}
     qualified = []
     for arm, variant in CANDIDATES:
-        eligible = all(
-            repeat["comparisons"][arm][variant]["incumbent"]["gate_this_seed"]
-            and (
-                arm == "direct"
-                or all(
-                    repeat["comparisons"][arm][variant][control]["gate_this_seed"]
-                    for control in ("direct", "shuffled_aux")
-                )
-            )
-            for repeat in repeats
-        )
+        eligible = all(passes_seed(repeat, arm, variant) for repeat in repeats)
         decisions[f"{arm}_{variant}"] = {
             "supported_for_interim_recommendation": eligible
         }
@@ -187,6 +227,34 @@ def decide(
     return decisions, None if chosen is None else {
         "arm": chosen[0],
         "variant": chosen[1],
+    }
+
+
+def passes_seed(repeat: dict[str, Any], arm: str, variant: str) -> bool:
+    return bool(
+        repeat["comparisons"][arm][variant]["incumbent"]["gate_this_seed"]
+        and (
+            arm == "direct"
+            or all(
+                repeat["comparisons"][arm][variant][control]["gate_this_seed"]
+                for control in ("direct", "shuffled_aux")
+            )
+        )
+    )
+
+
+def first_seed_futility(repeat: dict[str, Any]) -> dict[str, Any]:
+    """Prespecified stop/continue evidence only; never select or release a model."""
+    if repeat.get("seed") != SEEDS[0] or repeat.get("feature_mode") != "morgan_only":
+        raise ValueError("Futility applies only to the first Morgan-only repeat")
+    return {
+        "stop_repeat_two_for_futility": not any(
+            passes_seed(repeat, arm, variant) for arm, variant in CANDIDATES
+        ),
+        "selected_supported_variant": None,
+        "release_authorized": False,
+        "final_promotion": False,
+        "scope": "Preliminary first-seed decision; any continuation requires all105 second-seed fits and both-seed gates.",
     }
 
 
@@ -272,6 +340,14 @@ def authenticate_mlp(
     }.items():
         if experiment.get(key) != expected:
             raise ValueError(f"MLP scientific identity differs: {key}")
+    feature_mode = recipe.get("feature_mode", "morgan_descriptors")
+    if any(
+        record.get("feature_mode", "morgan_descriptors") != feature_mode
+        for record in (experiment, result)
+    ):
+        raise ValueError("MLP representation identity differs")
+    if feature_mode == "morgan_only" and np.any(features[:, 4096:] != 0):
+        raise ValueError("Morgan-only representation contains descriptor values")
     if not np.array_equal(
         read_array(experiment["features"], directory), features, equal_nan=True
     ):
@@ -717,6 +793,7 @@ def compare_seed(
         raise ValueError("Recomputed MLP paired control evidence differs")
     return {
         "seed": seed,
+        "feature_mode": recipe.get("feature_mode", "morgan_descriptors"),
         "input_hashes": {"mlp": hashes, "incumbent": incumbent_hashes},
         "scores": scores,
         "incumbent_scores": incumbent_scores,
@@ -732,23 +809,21 @@ def compare(
     candidates: tuple[Path, Path],
     references: tuple[Path, Path],
     output: Path,
+    feature_mode: str = "morgan_descriptors",
 ) -> dict[str, Any]:
-    from competition_features import featurize_binary_morgan
-    from competition_mlp_runner import load_auxiliary
+    from competition_mlp_runner import build_features, load_auxiliary
 
     output = output.resolve()
     if output.exists():
         raise FileExistsError("Comparison output already exists")
     if any((parent / ".git").exists() for parent in output.parents):
         raise ValueError("Comparison output must be outside Git")
-    recipe, recipe_hash = recipe_for(source)
+    recipe, recipe_hash = recipe_for(source, feature_mode)
     data = load_development(source)
     auxiliary, mask = load_auxiliary(
         auxiliary_path, data, recipe["auxiliary_records_sha256"]
     )
-    features = np.column_stack(
-        (featurize_binary_morgan(data.raw_smiles), data.legacy_features[:, 2363:])
-    )
+    features = build_features(data, feature_mode)
     repeats = [
         compare_seed(
             data,
@@ -769,6 +844,7 @@ def compare(
         "status": "complete",
         "scope": "Internal development comparison; no network refits or release. Paired intervals are unadjusted across prespecified comparisons.",
         "prospective_recipe_sha256": recipe_hash,
+        "feature_mode": feature_mode,
         "comparison_implementation_sha256": digest(Path(__file__).read_bytes()),
         "development_manifest_sha256": recipe["data_manifest_sha256"],
         "source_receipts": data.receipts,
@@ -803,6 +879,8 @@ def compare(
 
 
 def main() -> None:
+    from competition_mlp_runner import FEATURE_MODES
+
     parser = argparse.ArgumentParser(description=__doc__)
     for name in (
         "development",
@@ -814,6 +892,9 @@ def main() -> None:
         "output",
     ):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument(
+        "--feature-mode", choices=FEATURE_MODES, default=FEATURE_MODES[0]
+    )
     args = parser.parse_args()
     report = compare(
         args.development,
@@ -821,6 +902,7 @@ def main() -> None:
         (args.candidate_first, args.candidate_second),
         (args.reference_first, args.reference_second),
         args.output,
+        args.feature_mode,
     )
     print(
         json.dumps(

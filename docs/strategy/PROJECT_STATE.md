@@ -1,7 +1,7 @@
 # Project state
 
-Updated: 2026-09-05 UTC. Current integrated main: signed `dbb764b` (D-159),
-locally fast-forwarded and pushed after all three PR #196 Python CI jobs passed.
+Updated: 2026-09-05 UTC. Current integrated main: signed `9de02ec` (D-160),
+locally fast-forwarded and pushed after all three PR #197 Python CI jobs passed.
 
 ## Active contract
 
@@ -84,6 +84,12 @@ Completed negative recipes; **do not rerun or create production CSVs**:
   affine is 0.39%/0.87% worse; raw 3.13%/3.47% worse. Neither variant qualifies.
   [Results](../../benchmarks/openadmet_cyp_2026/phase3_corrected_counts_v1_result.json).
 
+- Original descriptor MLP:210 joint fits /0.31213 invocation CPU-core-hours.
+  All direct/real raw/affine variants fail both-seed incumbent gates. All210
+  saved networks independently reproduce predictions exactly; canonical fit,
+  stopping and calibration reconstruction passes. No production CSV.
+  [Results](../../benchmarks/openadmet_cyp_2026/phase3_mlp_auxiliary_v1_result.json).
+
 TRACE R5D remains retired (G0 MAE 0.43273 versus T0 0.71589;1/15 favorable cells).
 Historical maximum-potency parent selection also conditions query outcomes;
 its negative result does not disprove every honest known-parent hypothesis.
@@ -147,19 +153,39 @@ tests cover family isolation, payload tampering, stopping/calibration lineage,
 timeout cleanup and conservative accounting for unreaped descendant CPU.
 [Verification](../../benchmarks/openadmet_cyp_2026/phase3_mlp_implementation_verification_v1.json).
 
-Signed implementation `5a2769` is pushed on PR #197. The first 105-fit repeat
-completed in 355.59 seconds; all 105 retained checkpoints independently replay
-with zero prediction difference. Initial scores are poor, with a few extreme
-network outputs and very large post-scaling descriptor values under diagnosis.
-The second frozen repeat is running unchanged. PR CI found a documentation
-boundary wording regression; this follow-up restores it without changing any
-scientific source, recipe or running fit.
+D-161 records both completed descriptor-MLP repeats and freezes the separate
+[Morgan-only ablation](../../benchmarks/openadmet_cyp_2026/phase3_mlp_morgan_only_v1.json).
+First/second direct raw primary:2.28382/2.94232; real auxiliary:1.83077/1.28769;
+shuffled:4.31159/1.17557. All exceed incumbent0.73715/0.72901. Independent
+checkpoint replay is exact for all210 fits; it verifies inference, not historical
+training trajectories. Replay process CPU excludes small Git subprocesses.
+
+The descriptive audit identifies a new-network preprocessing failure: Ipc alone
+reaches936365 after training-only median/IQR scaling; every other descriptor is
+<=28. Five molecules have any absolute prediction>10. Two scored CYP2D6 rows
+supply80.75%/73.81%/91.70% of that endpoint's interval-error sum across the three
+arms; other-head predictions for those two molecules are unscored. This does not
+explain the older tree submission. No rows were removed or altered predictions
+evaluated. [Diagnostic](../../benchmarks/openadmet_cyp_2026/phase3_mlp_descriptor_diagnostic_v1.json).
+
+The new hypothesis uses identical4096binary Morgan bits and200literal zero
+channels, retaining4296input width, all three arms, hyperparameters, folds,
+preprocessing code and unchanged GPU worker. It removes the entire descriptor
+block prospectively. First seed105fits: if no direct/real raw/affine variant
+passes every applicable incumbent/control gate, stop for futility. Otherwise
+run the unchanged second105fits; both-seed gates still govern recommendation.
+Smaller prediction extremes alone do not qualify a model. Freeze signed reviewed
+source before official fits; full exact-head PR checks precede integration/release.
+
+The separate TDI implementation is under review: original3908development only,
+no extra negatives, original direct-availability folds, both-class support before
+fitting, inner-OOF thresholds and logistic/boosted comparison. A zero-fit intake
+may publish an authenticated class bundle after complete identity exclusion; pin
+its exact manifest before classifier fits. Production and an actual750-row CSV
+remain separate required work after useful validation.
+
 Check private `active-compute.json`, result files and live processes first to avoid
-duplicate work. Authenticate/recompute both-seed incumbent and auxiliary-control
-gates with the comparator; independently replay retained checkpoint inference.
-A qualified candidate needs separate production fitting and an actual validated
-CSV. No new production model or upload is claimed by this prospective milestone.
-All exact-head PR checks must pass before local fast-forward integration/release.
+duplicating completed jobs. No new production model or upload is ready.
 
 ## Continuing boundaries
 

@@ -79,6 +79,15 @@ Keep historical negative results, family isolation, cross-fitting and the
 reserved selection barrier. Public leaderboard monitoring is descriptive only
 and cannot choose models or parameters.
 
+D-161 completes the first descriptor-MLP experiment as negative (210fits) and
+identifies extreme Ipc leverage in a descriptive input/error audit. The separate
+Morgan-only recipe retains original bits and200zero descriptor channels with all
+matched controls. It may stop after105fits when every first-seed candidate fails;
+otherwise require the original second-seed gates. Exact checkpoint inference
+replay passed for all210 original fits. These results do not identify a bug in
+the older tree submission. The TDI track proceeds separately with original
+3908development classes and explicit support checks; extra negatives are excluded.
+
 ## Small, recoverable implementation
 
 Use the existing feature/model kernels and locked research environments with a

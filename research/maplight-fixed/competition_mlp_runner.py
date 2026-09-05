@@ -35,6 +35,28 @@ RECIPE = (
     / "benchmarks/openadmet_cyp_2026/phase3_mlp_auxiliary_v1.json"
 )
 ARMS = ("direct", "real_aux", "shuffled_aux")
+FEATURE_MODES = ("morgan_descriptors", "morgan_only")
+
+
+def recipe_path(feature_mode: str = "morgan_descriptors") -> Path:
+    if feature_mode not in FEATURE_MODES:
+        raise ValueError("Unknown MLP feature mode")
+    return (
+        RECIPE
+        if feature_mode == "morgan_descriptors"
+        else RECIPE.with_name("phase3_mlp_morgan_only_v1.json")
+    )
+
+
+def build_features(data: Any, feature_mode: str = "morgan_descriptors") -> np.ndarray:
+    """Keep original Morgan bytes; the separate ablation zeroes all descriptor inputs."""
+    recipe_path(feature_mode)  # Reject unknown modes before featurizing.
+    descriptors = (
+        data.legacy_features[:, 2363:]
+        if feature_mode == "morgan_descriptors"
+        else np.zeros((len(data.raw_smiles), 200), dtype=np.float64)
+    )
+    return np.column_stack((featurize_binary_morgan(data.raw_smiles), descriptors))
 
 
 def canonical(value: Any) -> bytes:
@@ -231,8 +253,14 @@ class Budget:
     """Single invocation: charge reaped children and parent independently."""
 
     def __init__(
-        self, root: Path, output: Path, lock_fd: int, seed: int | None = None
+        self,
+        root: Path,
+        output: Path,
+        lock_fd: int,
+        seed: int | None = None,
+        feature_mode: str = "morgan_descriptors",
     ) -> None:
+        recipe_path(feature_mode)
         self.root, self.output, self.lock_fd = root, output, lock_fd
         self.wall_start, self.cpu_start = time.monotonic(), cpu_seconds()
         self.parent_start = time.process_time()
@@ -246,7 +274,11 @@ class Budget:
         if seed is not None:
             for start in root.rglob("run-overhead-start-*.json"):
                 record = json.loads(start.read_bytes())
-                if record.get("mlp_seed") != seed:
+                if (
+                    record.get("mlp_seed") != seed
+                    or record.get("mlp_feature_mode", "morgan_descriptors")
+                    != feature_mode
+                ):
                     continue
                 prior_cpu += spent_cpu(start.parent)
                 receipt = start.parent / "resources.json"
@@ -276,6 +308,7 @@ class Budget:
                     "started_epoch_seconds": time.time(),
                     "threads": 24,
                     "mlp_seed": seed,
+                    "mlp_feature_mode": feature_mode,
                     "pid": os.getpid(),
                     "process_cpu_at_start": time.process_time(),
                     "fit_cpu_at_start": 0.0,
@@ -763,9 +796,13 @@ def evaluate(
     seed: int,
     gpu_python: Path,
     runtime_path: Path,
+    feature_mode: str = "morgan_descriptors",
 ) -> dict[str, Any]:
-    recipe_raw = RECIPE.read_bytes()
+    selected_recipe = recipe_path(feature_mode)
+    recipe_raw = selected_recipe.read_bytes()
     recipe = json.loads(recipe_raw)
+    if recipe.get("feature_mode", "morgan_descriptors") != feature_mode:
+        raise ValueError("Recipe and requested MLP representation differ")
     if seed not in recipe["seeds"] or output.resolve().is_relative_to(
         RECIPE.parents[2]
     ):
@@ -794,7 +831,7 @@ def evaluate(
         fcntl.flock(lock, fcntl.LOCK_EX)
         freeze_interrupted_fits(output.parent)
         output.mkdir(exist_ok=False)
-        budget = Budget(output.parent, output, lock.fileno(), seed)
+        budget = Budget(output.parent, output, lock.fileno(), seed, feature_mode)
         old_alarm = signal.getsignal(signal.SIGALRM)
 
         def deadline(signum: int, frame: Any) -> None:
@@ -808,7 +845,7 @@ def evaluate(
             commit = subprocess.check_output(
                 ["git", "rev-parse", "HEAD"], cwd=RECIPE.parents[2], text=True
             ).strip()
-            sources = [RECIPE, Path(__file__), worker] + [
+            sources = [selected_recipe, Path(__file__), worker] + [
                 Path(__file__).with_name(name)
                 for name in (
                     "competition_data.py",
@@ -831,15 +868,11 @@ def evaluate(
             auxiliary, mask = load_auxiliary(
                 auxiliary_path, data, recipe["auxiliary_records_sha256"]
             )
-            features = np.column_stack(
-                (
-                    featurize_binary_morgan(data.raw_smiles),
-                    data.legacy_features[:, 2363:],
-                )
-            )
+            features = build_features(data, feature_mode)
             feature_spec = array_file(output / "raw-features.npy", features)
             identity = {
                 "recipe_sha256": sha(recipe_raw),
+                "feature_mode": feature_mode,
                 "execution_git_commit": commit,
                 "gpu_runtime_receipt": runtime,
                 "seed": seed,
@@ -886,6 +919,7 @@ def evaluate(
                 )
 
             result = evaluate_arrays(data, features, auxiliary, mask, output, seed, fit)
+            result["feature_mode"] = feature_mode
             budget.remaining()
             result["experiment_sha256"] = file_sha(output / "experiment.json")
             publish(output / "result.json", canonical(result))
@@ -911,6 +945,9 @@ def main() -> None:
     parser.add_argument("--seed", type=int, choices=(20260905, 20260906), required=True)
     parser.add_argument("--gpu-python", type=Path, required=True)
     parser.add_argument("--gpu-runtime-receipt", type=Path, required=True)
+    parser.add_argument(
+        "--feature-mode", choices=FEATURE_MODES, default=FEATURE_MODES[0]
+    )
     args = parser.parse_args()
     result = evaluate(
         args.compiled,
@@ -919,6 +956,7 @@ def main() -> None:
         args.seed,
         args.gpu_python,
         args.gpu_runtime_receipt,
+        args.feature_mode,
     )
     print(
         json.dumps(

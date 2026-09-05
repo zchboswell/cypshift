@@ -1,0 +1,123 @@
+{
+  "affine": "existing affine_fit on fresh inner-refit OOF and outer-training eligible point/bounds only; slope[.8,1.2],intercept[-.25,.25],identity ties",
+  "arms": [
+    "direct",
+    "real_aux",
+    "shuffled_aux"
+  ],
+  "auxiliary": {
+    "aggregation": "none",
+    "field": "log2fc_estimate",
+    "missing_molecules": 415,
+    "molecules": 3493,
+    "rows": 13972,
+    "scaling": "fitting-only median/IQR; constant scale1",
+    "shuffle": "whole four-value plus four-mask bundle within each actual fitting population; never assessment/stopping donors"
+  },
+  "auxiliary_records_sha256": "100b064da1a7888e138fa5ea398afa7792bc346e71e073fee14ccdc38eff115a",
+  "auxiliary_retention_each_seed": {
+    "max_endpoint_component_mae_harm": 0.02,
+    "minimum_relative_gain": null,
+    "paired_family_primary_upper95_max_exclusive": 0,
+    "references": [
+      "matched direct same variant",
+      "matched shuffled same variant"
+    ]
+  },
+  "budgets": {
+    "CPU_core_hours_per_seed": 10,
+    "CPU_core_hours_program": 1000,
+    "GPU_workers": 1,
+    "lock": "output.parent/compute.lock",
+    "occupied_job_wall_seconds_per_seed": 3600,
+    "recovery": "No existing run directory resumed; failed costs retained, no interrupted fit continuation",
+    "seed_allowance_scope": "Distinct feature mode and seed, including failed retries; all modes charge the same program total.",
+    "shared_CPU_equivalents": 24,
+    "shared_host_RAM_bytes": 21474836480,
+    "shared_slice": "cypshift.slice",
+    "uncertain_child_accounting": "Timeout/kill charges max(reaped CPU, elapsed wall times enforced24CPUcap); surcharge retained in live/program/retry CPU budgets",
+    "worker_CPU_threads": 1,
+    "worker_GPU_allocator_bytes": 2147483648
+  },
+  "cpu_runtime_versions": {
+    "catboost": "1.2.1",
+    "numpy": "1.25.2",
+    "python": "3.10.13",
+    "rdkit": "2023.3.3",
+    "scipy": "1.11.2"
+  },
+  "data_manifest_sha256": "8fc2a8efbccf8aa185d6959eccd4190181e6eadad675e4e4a3e0a97bd34379bf",
+  "direct_mask": "unchanged legacy training_mask; metric population remains separate",
+  "feature_mode": "morgan_only",
+  "features": {
+    "binary_morgan_bits": 4096,
+    "binary_morgan_chirality": true,
+    "binary_morgan_radius": 2,
+    "descriptor_columns": 200,
+    "descriptor_scaling": "inert zero channels: fitting-only center0 scale1; no descriptor values enter any fit",
+    "descriptor_source": "200 literal zero channels; preserve4296 input width and exact4096 original Morgan bits",
+    "feature_selection": false
+  },
+  "final_promotion": false,
+  "first_seed_futility": {
+    "enabled": true,
+    "otherwise": "Run all105 joint fits on20260906 unchanged; require both-seed gates.",
+    "preliminary_release_or_selection": false,
+    "seed": 20260905,
+    "stop_repeat_two_if": "No direct/real raw/affine variant passes every applicable first-seed incumbent and auxiliary-control gate."
+  },
+  "folds": {
+    "family_policy": "unchanged development union groups",
+    "inner": 3,
+    "inner_refit": "fresh initialization and training-only preprocessing on all inner training at selected epoch",
+    "outer": 5,
+    "outer_refit": "fresh initialization and preprocessing on all outer training at median three selected epochs",
+    "stopping": "fold0 of fitting-only balanced_group_folds5; availability balanced; unsupported endpoints fail",
+    "stopping_metric": "four-task mean direct MAE in pIC50 on eligible stopping rows; strict improvement min_delta0 earliest tie, patience20"
+  },
+  "gpu_runtime_receipt_sha256": "67b51adfd831eb03714a3928d0896764dc7c0edc31eebf6c31318eeba6af3085",
+  "hyperparameters": {
+    "amsgrad": false,
+    "aux_weight": 0.25,
+    "batch_size": 128,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "cpu_threads": 1,
+    "dropout": 0.1,
+    "eps": 1e-08,
+    "hidden_dims": [
+      256,
+      128
+    ],
+    "huber_delta": 1.0,
+    "input_dim": 4296,
+    "learning_rate": 0.001,
+    "max_epochs": 200,
+    "min_delta": 0.0,
+    "output_dim": 8,
+    "patience": 20,
+    "vram_limit_bytes": 2147483648,
+    "weight_decay": 0.0
+  },
+  "hypothesis": "The unbounded descriptor block can destabilize this otherwise unchanged network. Test original Morgan bits with all200 descriptor inputs zero; no altered old predictions, row exclusion or isolated Ipc selection.",
+  "loss": "equally average supported tasks within direct/auxiliary families; empty family differentiable zero; direct MAE weight1, auxiliary Huber delta1 weight.25; direct arm auxiliary weight0",
+  "new_fits_per_seed": 105,
+  "new_fits_total": 210,
+  "randomness": "sha256-derived model/batch/dropout/shuffle/stop streams; arm excluded; identical eight heads and common batch/dropout prefix across arms",
+  "recommendation_gate_each_seed": {
+    "max_endpoint_component_mae_harm": 0.02,
+    "paired_family_primary_upper95_max_exclusive": 0,
+    "relative_macro_primary_gain_over_calibrated_incumbent_min": 0.02
+  },
+  "release_scope": "Independent comparator first. Qualified model requires separately authorized full-development threefold stopping+refit OOF (6 joint fits), 4 OOF affine fits and 1 final joint network fit, checkpoint reload and actual blinded predictions. Never transform historical MAE CSV.",
+  "reserved_comparison": "closed",
+  "schema": "cypshift.phase3.mlp_morgan_only_recipe.v1",
+  "seeds": [
+    20260905,
+    20260906
+  ],
+  "status": "prespecified_before_official_Morgan_only_outcomes",
+  "variant_selection": "Require both seeds. Shuffled control never eligible. Choose lower first-repeat primary among qualified direct/real raw/affine; exact ties direct before real before shuffled, then raw before affine. No outcome-driven repair/tuning."
+}
